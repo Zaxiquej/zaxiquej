@@ -243,6 +243,33 @@ function toggleSound() {
   isSoundRepeating = !isSoundRepeating;
 }
 
+// 预加载图片
+function preloadImages(images) {
+  return Promise.all(images.map((image) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = image;
+      img.onload = () => resolve();
+      img.onerror = () => reject();
+    });
+  }));
+}
+
+// 初始化游戏
+function initGame() {
+  const allCreatureImages = creatures.map((creature) => creature.image);
+  const allEvolvedCreatureImages = evolvedCreatures.map((creature) => creature.image);
+  const allImages = allCreatureImages.concat(allEvolvedCreatureImages);
+
+  preloadImages(allImages).then(() => {
+    //createGameButtons(2, creatures); // 初始时展示两个按钮
+    document.getElementById('startButton').style.display = 'block'; // 显示"开始游戏"按钮
+    document.getElementById('replayButton').style.display = 'none'; // 隐藏"重复播放"按钮
+  }).catch(() => {
+    console.error('预加载图片失败！');
+  });
+}
+
 // 开始游戏
 function startGame() {
     restartGame();
@@ -253,3 +280,6 @@ function startGame() {
 
 // 初始化游戏
 createGameButtons(0, []); // 初始时没有按钮
+
+// 页面加载完成后初始化游戏
+window.onload = initGame;
