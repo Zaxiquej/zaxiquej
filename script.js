@@ -243,30 +243,77 @@ function toggleSound() {
   isSoundRepeating = !isSoundRepeating;
 }
 
+// 全局变量，用于跟踪已加载的素材数量
+let loadedCount = 0;
+
 // 预加载图片
 function preloadImages(images) {
+  const totalImages = images.length;
+
   return Promise.all(images.map((image) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src = image;
-      img.onload = () => resolve();
+      img.onload = () => {
+        loadedCount++;
+        updateLoadingStatus(totalImages, loadedCount);
+        resolve();
+      };
       img.onerror = () => reject();
     });
   }));
 }
 
+// 预加载声音
+function preloadSounds(sounds) {
+  const totalSounds = sounds.length;
+
+  return Promise.all(sounds.map((sound) => {
+    return new Promise((resolve, reject) => {
+      const audio = new Audio();
+      audio.src = sound;
+      audio.preload = 'auto';
+      audio.onloadeddata = () => {
+        loadedCount++;
+        updateLoadingStatus(totalSounds, loadedCount);
+        resolve();
+      };
+      audio.onerror = () => reject();
+    });
+  }));
+}
+
+// 更新加载状态和百分比
+function updateLoadingStatus(total, loaded) {
+  const progress = Math.floor((loaded / total) * 100);
+  const loadingText = `素材加载中... ${progress}%`;
+  document.getElementById('loadingStatus').innerText = loadingText;
+
+  if (loaded === total) {
+    // 所有素材加载完成后，隐藏加载状态信息
+    document.getElementById('loadingStatus').style.display = 'none';
+  }
+}
+
 // 初始化游戏
-function initGame() {
+function initGame() {// 
+  document.getElementById('loadingStatus').style.display = 'block';
   const allCreatureImages = creatures.map((creature) => creature.image);
   const allEvolvedCreatureImages = evolvedCreatures.map((creature) => creature.image);
-  const allImages = allCreatureImages.concat(allEvolvedCreatureImages);
+  const allBasicCreatureImages = basic.map((creature) => creature.image);
+  const allImages = allCreatureImages.concat(allEvolvedCreatureImages).concat(allBasicCreatureImages);
 
-  preloadImages(allImages).then(() => {
+  const allCreatureSounds = creatures.map((creature) => creature.sound);
+  const allEvolvedCreatureSounds = evolvedCreatures.map((creature) => creature.sound);
+  const allBasicCreatureSounds = basic.map((creature) => creature.sound);
+  const allSounds = allCreatureSounds.concat(allEvolvedCreatureSounds).concat(allBasicCreatureSounds);
+
+    Promise.all([preloadImages(allImages), preloadSounds(allSounds)]).then(() => {
     //createGameButtons(2, creatures); // 初始时展示两个按钮
     document.getElementById('startButton').style.display = 'block'; // 显示"开始游戏"按钮
     document.getElementById('replayButton').style.display = 'none'; // 隐藏"重复播放"按钮
   }).catch(() => {
-    console.error('预加载图片失败！');
+    console.error('预加载失败！');
   });
 }
 
