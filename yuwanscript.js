@@ -324,7 +324,6 @@ function initGame() {//
       // 显示加载状态信息和进度条
   const loadingContainer = document.getElementById('loadingContainer');
   loadingContainer.style.display = 'block';
-
   preloadAll();
 }
 
