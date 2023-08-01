@@ -308,6 +308,7 @@ function preloadAll() {
   const allSounds = allCreatureSounds.concat(allEvolvedCreatureSounds).concat(allBasicCreatureSounds);
 
   total = allImages.length + allSounds.length;
+  //vercel刷新一下好吗
 
     Promise.all([preloadImages(allImages), preloadSounds(allSounds)]).then(() => {
     // 当所有素材加载完成后，更新进度条状态
