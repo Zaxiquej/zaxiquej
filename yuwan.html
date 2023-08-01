@@ -38,10 +38,19 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    #startButton {
-      display: block;
+    #loadingBar {
+      width: 0%;
+      height: 20px;
+      background-color: #4CAF50;
+      transition: width 0.3s;
     }
-    #replayButton {
+    #loadingContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #startButton {
       display: none;
     }
   </style>
@@ -60,6 +69,11 @@
 <!-- 用于显示加载状态和百分比的元素 -->
 
   <div id='Buttons'></div>
+
+  <div id="loadingContainer">
+    <div id="loadingBar"></div>
+  </div>
+
   <div class="center-container">
     <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
     <button class="center-button" id="startButton" onclick="startGame()">开始游戏</button>
