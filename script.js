@@ -312,7 +312,6 @@ function preloadAll() {
     Promise.all([preloadImages(allImages), preloadSounds(allSounds)]).then(() => {
     // 当所有素材加载完成后，更新进度条状态
     updateLoadingProgress(allImages.length + allSounds.length, allImages.length + allSounds.length);
-    //createGameButtons(2, creatures); // 初始时展示两个按钮
     document.getElementById('startButton').style.display = 'block'; // 显示"开始游戏"按钮
     document.getElementById('replayButton').style.display = 'none'; // 隐藏"重复播放"按钮
   }).catch(() => {
