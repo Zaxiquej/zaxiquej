@@ -256,7 +256,6 @@ function preloadImages(images) {
       img.src = image;
       img.onload = () => {
         loadedCount++;
-        updateLoadingStatus(totalImages, loadedCount);
         resolve();
       };
       img.onerror = () => reject();
@@ -275,24 +274,11 @@ function preloadSounds(sounds) {
       audio.preload = 'auto';
       audio.onloadeddata = () => {
         loadedCount++;
-        updateLoadingStatus(totalSounds, loadedCount);
         resolve();
       };
       audio.onerror = () => reject();
     });
   }));
-}
-
-// 更新加载状态和百分比
-function updateLoadingStatus(total, loaded) {
-  const progress = Math.floor((loaded / total) * 100);
-  const loadingText = `素材加载中... ${progress}%`;
-  document.getElementById('loadingStatus').innerText = loadingText;
-
-  if (loaded === total) {
-    // 所有素材加载完成后，隐藏加载状态信息
-    document.getElementById('loadingStatus').style.display = 'none';
-  }
 }
 
 // 初始化游戏
