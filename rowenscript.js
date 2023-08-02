@@ -154,9 +154,9 @@ function getRandomInt(n) {
 // 增加难度
 function increaseDifficulty() {
   if (score <= 11){
-    numButtons = Math.min(creatures.length, Math.floor(score / 3) + 2);
+    numButtons = Math.min(19, Math.floor(score / 3) + 2);
   } else {
-    numButtons = Math.min(creatures.length, Math.floor((score-12) / 6) + 6);
+    numButtons = Math.min(19, Math.floor((score-12) / 6) + 6);
   }
 
   timeLimit = Math.max(15,30 - Math.floor(score / 5)); // 时间减少

@@ -37,6 +37,7 @@ const creatures = [
   { id: 17, image: 'luna/image/creature17.png', sound: 'luna/sound/sound17.mp3' },
   { id: 18, image: 'luna/image/creature18.png', sound: 'luna/sound/sound18.mp3' },
   { id: 19, image: 'luna/image/creature19.png', sound: 'luna/sound/sound19.mp3' },
+  { id: 20, image: 'luna/image/creature20.png', sound: 'luna/sound/sound20.mp3' },
 ];
 
 // 创造物进化后的数据（示例数据）
@@ -60,6 +61,7 @@ const evolvedCreatures = [
   { id: 117, image: 'luna/image/creature117.png', sound: 'luna/sound/sound117.mp3' },
   { id: 118, image: 'luna/image/creature118.png', sound: 'luna/sound/sound118.mp3' },
   { id: 119, image: 'luna/image/creature119.png', sound: 'luna/sound/sound119.mp3' },
+  { id: 120, image: 'luna/image/creature120.png', sound: 'luna/sound/sound120.mp3' },
   // 依次添加其他进化后的创造物数据
 ];
 
@@ -154,9 +156,9 @@ function getRandomInt(n) {
 // 增加难度
 function increaseDifficulty() {
   if (score <= 11){
-    numButtons = Math.min(creatures.length, Math.floor(score / 3) + 2);
+    numButtons = Math.min(19, Math.floor(score / 3) + 2);
   } else {
-    numButtons = Math.min(creatures.length, Math.floor((score-12) / 6) + 6);
+    numButtons = Math.min(19, Math.floor((score-12) / 6) + 6);
   }
 
   timeLimit = Math.max(6,20 - Math.floor(score / 5)); // 时间减少
