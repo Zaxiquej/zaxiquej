@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZB验证游戏</title>
+    <link rel="stylesheet" href="Xcard.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>影之诗卡牌验证游戏</h1>
+        <p>规则：从牌库中抽取不同的卡牌，系统会问：“这些卡中，没有哪个（费用/攻击力/生命值）？” 点击正确的数字+1分，否则真正正确的选项会变绿，玩家判负。</p>
+        <button id="start-btn">开始游戏</button>
+        <div id="game-field" class="hidden">
+            <div id="card-container"></div>
+            <div id="question-container">
+                <p id="question-text"></p>
+                <div id="options-container">
+                    <button class="option-btn"></button>
+                    <button class="option-btn"></button>
+                    <button class="option-btn"></button>
+                </div>
+            </div>
+            <div id="score-container" class="hidden">
+                <p>得分：<span id="score">0</span></p>
+                <button id="restart-btn">重新开始</button>
+            </div>
+        </div>
+    </div>
+    <script src="Xcard.js"></script>
+</body>
+</html>
