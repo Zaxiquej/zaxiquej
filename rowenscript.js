@@ -159,14 +159,14 @@ function increaseDifficulty() {
     numButtons = Math.min(19, Math.floor((score-12) / 6) + 6);
   }
 
-  timeLimit = Math.max(15,30 - Math.floor(score / 5)); // 时间减少
+  timeLimit = Math.max(10,30 - Math.floor(score / 5)); // 时间减少
   refreshTimeLimit();
 
   let allCreatures;
   if (score <= 5){
     allCreatures = basic;
   } else {
-    if (score >= 24){
+    if (score >= 18){
       allCreatures = creatures.concat(evolvedCreatures);
     } else {
       allCreatures = creatures;
@@ -322,7 +322,7 @@ function preloadAll() {
 }
 
 // 初始化游戏
-function initGame() {// 
+function initGame() {//
       // 显示加载状态信息和进度条
   const loadingContainer = document.getElementById('loadingContainer');
   loadingContainer.style.display = 'block';
