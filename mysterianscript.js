@@ -204,7 +204,7 @@ function endGame() {
 // 重新开始游戏
 function restartGame() {
   score = 0;
-  timeLimit = 35;
+  timeLimit = 25;
   const initialNumButtons = 2;
   numButtons = 2;
 
