@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>是皇友就上100分</title>
+  <style>
+    /* CSS样式，用于美化游戏界面（可根据需求自行调整） */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .center-container {
+      /* 如果你想让按钮居中在页面上，可以将这里的高度设为100% */
+      /* height: 100%; */
+    }
+
+    .center-button {
+      /* 可以添加其他样式 */
+      padding: 10px 20px;
+    }
+
+    img {
+      width: 108px;
+      height: 120px;
+      margin: 10px;
+    }
+    #score {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    #timer {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    #gameButtons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #loadingBar {
+      width: 0%;
+      height: 20px;
+      background-color: #4CAF50;
+      transition: width 0.3s;
+    }
+    #loadingContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+    }
+    #startButton {
+      display: block;
+    }
+    #replayButton {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>是皇友就上100分</h1>
+  <p>点击正确关联的皇家卡牌，挑战高分吧！</p>
+  <p>游玩过程中，请确保可以听到声音</p>
+  <p>加载需要一段时间，科学上网可能可以加速，加载完获得最佳游戏体验</p>
+
+  <div id="score">分数: 0</div>
+  <div id="timer">剩余时间: 20</div>
+<div id="gameButtons"></div> <!-- 将id修改为gameButtons -->
+
+<!-- 用于显示加载状态和百分比的元素 -->
+
+  <div id='Buttons'></div>
+
+  <div id="loadingContainer">
+    <div id="loadingBar"></div>
+  </div>
+
+  <div class="center-container">
+    <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+    <button class="center-button" id="startButton" onclick="startGame()">开始游戏</button>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+    <button class="center-button" id="replayButton" onclick="replaySound()">重复播放</button>
+    </div>
+  </div>
+    <div class="footer" id="other">         <li>
+          <span> 你其实不是皇友？看看这些 -</span>
+            <a href="yuwan.html">我是鱼友</a>
+            <a href="rowen.html">我是龙友</a>
+            <a href="mysterian.html">我是法友</a>
+            <a href="arisa.html">我是妖友</a>
+            <a href="luna.html">我是死友</a>
+            <a href="vania.html">我是鬼友</a>
+            <a href="eris.html">我是教友</a>
+        </li></div>
+  <script src="erikascript.js"></script>
+</body>
+
+</html>
