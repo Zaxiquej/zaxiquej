@@ -180,9 +180,9 @@ function getRandomInt(n) {
 // 增加难度
 function increaseDifficulty() {
   if (score <= 11){
-    numButtons = Math.min(25, Math.floor(score / 3) + 3);
+    numButtons = Math.min(20, Math.floor(score / 3) + 3);
   } else {
-    numButtons = Math.min(25, Math.floor((score-12) / 5) + 7);
+    numButtons = Math.min(20, Math.floor((score-12) / 6) + 7);
   }
 
   timeLimit = Math.max(6,20 - Math.floor(score / 5)); // 时间减少
