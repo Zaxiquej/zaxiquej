@@ -14,7 +14,7 @@ startBtn.addEventListener('click', startGame);
 let score = 0;
 let round = 1;
 let timer;
-let timeLimit = 30;
+let timeLimit = 35;
 let cards = Xcardinfo; // 直接导入Xcardinfo.js的内容并赋值给cards数组
 
 // 开始游戏
@@ -27,7 +27,7 @@ function startGame() {
     gameField.style.display = 'flex';
     score = 0;
     round = 1;
-    timeLimit = 30;
+    timeLimit = 35;
     scoreDisplay.textContent = score;
     updateRound();
     showNextRound();

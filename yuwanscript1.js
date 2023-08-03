@@ -65,7 +65,7 @@ const evolvedCreatures = [
 
 // 初始化游戏状态
 let score = 0;
-let timeLimit = 20; // 初始时间限制（秒）
+let timeLimit = 25; // 初始时间限制（秒）
 let gameInterval; // 用于存储游戏倒计时的interval ID
 let isPlaying = false; // 表示是否正在播放音乐
 let isSoundRepeating = false; // 表示是否允许声音重复播放
@@ -204,7 +204,7 @@ function endGame() {
 // 重新开始游戏
 function restartGame() {
   score = 0;
-  timeLimit = 20;
+  timeLimit = 25;
   const initialNumButtons = 2;
   numButtons = 2;
 
