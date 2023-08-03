@@ -291,9 +291,11 @@ function updateLoadingProgress(total, loaded) {
     // 当所有素材加载完成后，隐藏进度条和显示"开始游戏"按钮
     const loadingContainer = document.getElementById('loadingContainer');
     const startButton = document.getElementById('startButton');
-
     loadingContainer.style.display = 'none';
-    startButton.style.display = 'block';
+    if (document.getElementById('other').style.display != 'none'){
+      startButton.style.display = 'block';
+    }
+
   }
 }
 
@@ -314,15 +316,13 @@ function preloadAll() {
     Promise.all([preloadImages(allImages), preloadSounds(allSounds)]).then(() => {
     // 当所有素材加载完成后，更新进度条状态
     updateLoadingProgress(allImages.length + allSounds.length, allImages.length + allSounds.length);
-    document.getElementById('startButton').style.display = 'block'; // 显示"开始游戏"按钮
-    document.getElementById('replayButton').style.display = 'none'; // 隐藏"重复播放"按钮
   }).catch(() => {
     console.error('预加载失败！');
   });
 }
 
 // 初始化游戏
-function initGame() {// 
+function initGame() {//
       // 显示加载状态信息和进度条
   const loadingContainer = document.getElementById('loadingContainer');
   loadingContainer.style.display = 'block';
