@@ -40,7 +40,7 @@ const creatures = [
   { id: 20, image: 'vania/image/creature20.png', sound: 'vania/sound/sound20.mp3' },
   { id: 21, image: 'vania/image/creature21.png', sound: 'vania/sound/sound21.mp3' },
   { id: 22, image: 'vania/image/creature22.png', sound: 'vania/sound/sound22.mp3' },
-  { id: 23, image: 'vania/image/creature13.png', sound: 'vania/sound/sound23.mp3' },
+  { id: 23, image: 'vania/image/creature23.png', sound: 'vania/sound/sound23.mp3' },
 ];
 
 // 创造物进化后的数据（示例数据）
