@@ -3,28 +3,54 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultDiv = document.getElementById("result");
 
     fetchButton.addEventListener("click", function () {
-        // 使用XMLHttpRequest来读取本地文件
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'portalcraft.json');
-
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const data = JSON.parse(xhr.responseText);
+        // Using fetch API to read local file
+        fetch("portalcraft.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("读取本地文件失败");
+                }
+                return response.json();
+            })
+            .then(data => {
                 const cards = data.data.cards;
                 const cardInfo = extractCardInfo(cards);
                 displayData(cardInfo);
-            } else {
-                resultDiv.innerHTML = `<p>读取本地文件失败</p>`;
-            }
-        };
-
-        xhr.onerror = function () {
-            resultDiv.innerHTML = `<p>读取本地文件失败</p>`;
-        };
-
-        xhr.send();
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `<p>${error.message}</p>`;
+            });
     });
 
-    // extractCardInfo 和 displayData 函数不变，不需要修改
+    function extractCardInfo(cards) {
+        const cardInfo = [];
+        const limit = Math.min(100, cards.length);
+        for (let i = 0; i < limit; i++) {
+            const card = cards[i];
+            const info = {
+                card_id: card.card_id,
+                card_name: card.card_name,
+                char_type: card.char_type,
+                clan: card.clan,
+                cost: card.cost,
+            };
 
+            if (card.char_type === 1) {
+                info.atk = card.atk;
+                info.life = card.life;
+                info.evo_atk = card.evo_atk;
+                info.evo_life = card.evo_life;
+            }
+
+            cardInfo.push(info);
+        }
+
+        return cardInfo;
+    }
+
+    function displayData(cardInfo) {
+        const cardListHTML = cardInfo
+            .map((card) => `<li>${JSON.stringify(card)}</li>`)
+            .join("");
+        resultDiv.innerHTML = `<ul>${cardListHTML}</ul>`;
+    }
 });
