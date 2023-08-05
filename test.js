@@ -3,28 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultDiv = document.getElementById("result");
 
     fetchButton.addEventListener("click", function () {
-        // Using fetch API to read local file
-        fetch("portalcraft.json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("读取本地文件失败");
-                }
-                return response.json();
-            })
-            .then(data => {
-                const cards = data.data.cards;
-                const cardInfo = extractCardInfo(cards);
-                displayData(cardInfo);
-            })
-            .catch(error => {
-                resultDiv.innerHTML = `<p>${error.message}</p>`;
-            });
+        const cardInfo = extractCardInfo(portal.data.cards);
+        displayData(cardInfo);
     });
 
     function extractCardInfo(cards) {
         const cardInfo = [];
-        const limit = Math.min(100, cards.length);
-        for (let i = 0; i < limit; i++) {
+        for (let i = 0; i < cards.length; i++) {
             const card = cards[i];
             const info = {
                 card_id: card.card_id,

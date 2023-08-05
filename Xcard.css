@@ -1,57 +1,78 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#loading, #game {
+    display: none;
+    padding: 20px;
 }
 
 h1 {
     font-size: 24px;
+    margin-bottom: 10px;
 }
 
-p {
-    font-size: 16px;
+#rules {
+    margin-bottom: 20px;
 }
 
-#game-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#score, #timer {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-#card-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 80%;
-    margin: 20px auto;
-}
-
-.card {
-    width: 108px;
-    height: 120px;
-    border: 1px solid #000;
-    display: inline-block;
-    margin: 5px;
-    background-color: #f0f0f0; /* 设置一个背景颜色用于卡牌区分 */
-    cursor: pointer;
-}
-
-.card img {
+#loading progress {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* 图片等比例缩放并填满容器 */
 }
 
-#question-container {
-    margin: 20px;
+#game-content {
+    display: none;
+    margin: 20px 0;
 }
 
-.option-btn {
-    margin: 5px;
+img {
+    width: 150px;
+    height: 180px;
+    margin: 10px;
+    border: 2px solid black;
+}
+
+#question {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#choices {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
 }
 
-#score-container {
+#game-over {
+    display: none;
     margin-top: 30px;
+}
+
+#restart-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#restart-btn:hover {
+    background-color: #ff754f;
 }

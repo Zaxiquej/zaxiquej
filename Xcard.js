@@ -1,164 +1,175 @@
-// 获取页面元素
-const startBtn = document.getElementById('start-btn');
-const gameField = document.getElementById('game-field');
-const cardContainer = document.getElementById('card-container');
-const questionText = document.getElementById('question-text');
-const optionsContainer = document.getElementById('options-container');
-const scoreContainer = document.getElementById('score-container');
-const scoreDisplay = document.getElementById('score');
-const restartBtn = document.getElementById('restart-btn');
+// Xcardinfo.js should be loaded before this script
 
-// 添加点击事件监听器来触发游戏的开始
-startBtn.addEventListener('click', startGame);
-// 初始化游戏
+const loadingScreen = document.getElementById('loading');
+const gameScreen = document.getElementById('game');
+const startBtn = document.getElementById('start-btn');
+const leftCard = document.getElementById('left-card');
+const rightCard = document.getElementById('right-card');
+const questionText = document.getElementById('question');
+const leftBtn = document.getElementById('left-btn');
+const equalBtn = document.getElementById('equal-btn');
+const rightBtn = document.getElementById('right-btn');
+const scoreText = document.getElementById('score');
+const timerText = document.getElementById('timer');
+const gameOverScreen = document.getElementById('game-over');
+const restartBtn = document.getElementById('restart-btn');
+const correctAnswerText = document.getElementById('correct-answer');
+let randomCard1 = 0;
+let randomCard2 = 0;
+
 let score = 0;
-let round = 1;
-let timer;
-let timeLimit = 35;
-let cards = Xcardinfo; // 直接导入Xcardinfo.js的内容并赋值给cards数组
+let timer = 60;
+let currentAttribute = '攻击'; // Start with '攻击' attribute
+let isGameOver = false;
+
+const gameContent = document.getElementById('game-content');
+
+// Function to show the loading screen while images are being loaded
+function showLoadingScreen() {
+    loadingScreen.style.display = 'block';
+    gameScreen.style.display = 'none';
+}
+
+// Function to hide the loading screen and show the game screen
+function hideLoadingScreen() {
+    loadingScreen.style.display = 'none';
+    gameScreen.style.display = 'block';
+}
+
+// 随机选择两张卡片并显示问题
+function showNextQuestion() {
+  // 随机选择第一张卡片
+  let randomIndex1 = Math.floor(Math.random() * Xcardinfo.length);
+  randomCard1 = Xcardinfo[randomIndex1];
+
+  // 随机选择第二张卡片，保证两张卡片不同
+  let randomIndex2 = Math.floor(Math.random() * Xcardinfo.length);
+  while (randomIndex2 === randomIndex1) {
+      randomIndex2 = Math.floor(Math.random() * Xcardinfo.length);
+  }
+  randomCard2 = Xcardinfo[randomIndex2];
+    leftCard.src = `Xcardimage/${randomCard1.imgSrc}`;
+    rightCard.src = `Xcardimage/${randomCard2.imgSrc}`;
+
+    // 随机选择一个属性进行比较
+    const attributes = ['费用', '攻击', '生命'];
+    currentAttribute = attributes[Math.floor(Math.random() * attributes.length)];
+
+    questionText.textContent = `哪张卡有更高的${currentAttribute}？`;
+}
+
+// 处理玩家的选择并检查答案
+function chooseCard(e) {
+    if (isGameOver) return;
+
+    const playerChoice = e.target.id;
+
+    // 比较两张卡片对应属性的值
+    const card1Value = randomCard1[currentAttribute];
+    const card2Value = randomCard2[currentAttribute];
+    const isCard1Higher = card1Value > card2Value;
+    const isCard2Higher = card1Value < card2Value;
+
+    // 检查玩家的选择是否正确并更新分数
+    if (
+        (playerChoice === 'left-btn' && isCard1Higher) ||
+        (playerChoice === 'equal-btn' && card1Value === card2Value) ||
+        (playerChoice === 'right-btn' && isCard2Higher)
+    ) {
+        score++;
+        updateScoreText();
+    } else {
+        // 答案错误，游戏失败
+        gameOver();
+        return;
+    }
+
+    // 显示下一个问题
+    showNextQuestion();
+}
+
+// 处理游戏结束状态
+function gameOver() {
+    isGameOver = true;
+    leftBtn.style.display = 'none';
+    equalBtn.style.display = 'none';
+    rightBtn.style.display = 'none';
+    gameContent.style.display = 'block';
+    gameOverScreen.style.display = 'block';
+
+    // Compare the corresponding attribute of the two cards
+    const card1Value = randomCard1[currentAttribute];
+    const card2Value = randomCard2[currentAttribute];
+
+    // 如果两张卡片的属性值相同，则答案为 "一样"
+    if (card1Value === card2Value) {
+        correctAnswerText.textContent = '一样';
+    } else {
+        // 否则，答案为较大属性值的卡片
+        correctAnswerText.textContent = card1Value > card2Value ? '左' : '右';
+    }
+
+    clearInterval(timer); // 清除计时器
+}
+
+// 更新分数文本
+function updateScoreText() {
+    scoreText.textContent = `得分: ${score}`;
+}
+
+// 更新倒计时文本
+function updateTimerText() {
+    timerText.textContent = `倒计时: ${timer}`;
+}
 
 // 开始游戏
 function startGame() {
-    // 隐藏开始按钮和得分容器
-    startBtn.style.display = 'none';
-    scoreContainer.style.display = 'none';
-
-    // 显示游戏场地和重置游戏数据
-    gameField.style.display = 'flex';
     score = 0;
-    round = 1;
-    timeLimit = 35;
-    scoreDisplay.textContent = score;
-    updateRound();
-    showNextRound();
+    timer = 60;
+    currentAttribute = '攻击';
+    isGameOver = false;
+    updateScoreText();
+    updateTimerText();
+    startBtn.style.display = 'none';
+    gameContent.style.display = 'block';
+    gameOverScreen.style.display = 'none';
+    startTimer();
+    showNextQuestion();
 }
 
-// 更新游戏回合信息
-function updateRound() {
-    questionText.textContent = `Round ${round}`;
-    round++;
-}
-
-// 找到缺少的数字
-function findMissingNumber(numbers) {
-    numbers.sort((a, b) => a - b);
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] !== i) {
-            return i;
+// 开始倒计时
+function startTimer() {
+    const interval = setInterval(() => {
+        timer--;
+        updateTimerText();
+        if (timer <= 0) {
+            clearInterval(interval);
+            gameOver();
         }
-    }
-    return numbers.length; // 如果没有缺少数字，则返回数组长度
+    }, 1000);
+}
+
+// 处理重新开始游戏
+function restartGame() {
+    leftBtn.style.display = 'block';
+    equalBtn.style.display = 'block';
+    rightBtn.style.display = 'block';
+    gameOverScreen.style.display = 'none';
+    startGame();
 }
 
 
-// 显示下一回合的卡牌
-function showNextRound() {
-    // ...（之前的代码保持不变）
+// 事件监听器
+startBtn.addEventListener('click', startGame);
+leftBtn.addEventListener('click', chooseCard);
+equalBtn.addEventListener('click', chooseCard);
+rightBtn.addEventListener('click', chooseCard);
+restartBtn.addEventListener('click', restartGame);
 
-    // 随机选择一种验证方式：费用、攻击力或生命值
-    const attributes = ['费用', '攻击力', '生命值'];
-    const selectedAttribute = attributes[Math.floor(Math.random() * attributes.length)];
+// 初始设置
+showLoadingScreen();
 
-    // 根据验证方式生成问题
-    questionText.textContent = `这些卡中，没有哪个${selectedAttribute}？`;
-
-    // 获取选项数组
-    const options = selectedCards.map(card => card[selectedAttribute]);
-
-    // 找到缺少的数字，并将其插入到选项数组中
-    const missingNumber = findMissingNumber(options);
-    options.push(missingNumber);
-
-    // 将选项数组按大小排序
-    options.sort((a, b) => a - b);
-
-    // 生成选项并添加点击事件监听器
-    options.forEach(option => {
-        const optionBtn = document.createElement('button');
-        optionBtn.textContent = option;
-        optionBtn.classList.add('option-btn');
-        optionBtn.addEventListener('click', () => checkAnswer(option, missingNumber));
-        optionsContainer.appendChild(optionBtn);
-    });
-    // 显示倒计时
-    clearInterval(timer);
-    timer = setInterval(updateTimer, 1000);
-}
-// 检查答案是否正确
-function checkAnswer(chosenValue, correctValue) {
-    if (chosenValue === correctValue) {
-        score++;
-    } else {
-        const correctOptionBtn = Array.from(optionsContainer.children).find(btn => btn.textContent == correctValue);
-        correctOptionBtn.style.backgroundColor = 'green';
-    }
-
-    // 停止倒计时并检查游戏状态
-    clearInterval(timer);
-    timeLimit = Math.max(5, timeLimit - 2); // 每回合倒计时缩短2秒，最短5秒
-    scoreDisplay.textContent = score;
-    if (round <= cards.length) {
-        setTimeout(() => showNextRound(), 1500);
-    } else {
-        endGame();
-    }
-}
-
-// 结束游戏
-function endGame() {
-    gameField.style.display = 'none';
-    scoreContainer.style.display = 'block';
-    scoreContainer.querySelector('p').textContent = `得分：${score}`;
-    restartBtn.style.display = 'block';
-}
-
-// 更新倒计时
-function updateTimer() {
-    timeLimit--;
-    if (timeLimit <= 0) {
-        clearInterval(timer);
-        endGame();
-    }
-}
-
-// 创建卡牌元素
-function createCardElement(card) {
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
-    cardDiv.innerHTML = `
-        <img src="Xcardimage/${card.imgSrc}" alt="卡牌图片">
-    `;
-    return cardDiv;
-}
-
-// 生成随机选项
-function getRandomOptions(correctValue, numOptions) {
-    const options = [correctValue];
-    while (options.length < numOptions) {
-        const randomValue = Math.floor(Math.random() * 10); // 生成0-9的随机整数作为选项
-        if (!options.includes(randomValue)) {
-            options.push(randomValue);
-        }
-    }
-    return options;
-}
-
-// 获取不重复的随机索引
-function getRandomIndices(numIndices, maxIndex) {
-    const indices = [];
-    while (indices.length < numIndices) {
-        const randomIndex = Math.floor(Math.random() * maxIndex);
-        if (!indices.includes(randomIndex)) {
-            indices.push(randomIndex);
-        }
-    }
-    return indices;
-}
-
-// 数组随机排序
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+// 模拟延迟加载图片，完成后隐藏加载屏幕并显示游戏界面
+setTimeout(() => {
+    hideLoadingScreen();
+}, 1500);
