@@ -1,30 +1,30 @@
-function generateSVG() {
-  const numberInput = document.getElementById('numberInput').value;
-  const svgdbURL = `https://svgdb.me/assets/fullart/${numberInput}.png`;
+document.addEventListener("DOMContentLoaded", function () {
+    const fetchButton = document.getElementById("fetchButton");
+    const resultDiv = document.getElementById("result");
 
-  // Create an image element and set the src attribute to the generated SVGDB URL
-  const imageElement = document.createElement('img');
+    fetchButton.addEventListener("click", function () {
+        // 使用XMLHttpRequest来读取本地文件
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'portalcraft.json');
 
-  // Add an event listener to check if the image loaded successfully
-  imageElement.addEventListener('load', function() {
-    // Clear the previous image (if any) and add the new image to the container
-    const imageContainer = document.getElementById('imageContainer');
-    imageContainer.innerHTML = '';
-    imageContainer.appendChild(imageElement);
-  });
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                const cards = data.data.cards;
+                const cardInfo = extractCardInfo(cards);
+                displayData(cardInfo);
+            } else {
+                resultDiv.innerHTML = `<p>读取本地文件失败</p>`;
+            }
+        };
 
-  // Add an event listener to check for errors while loading the image
-  imageElement.addEventListener('error', function() {
-    // Clear the previous image (if any)
-    const imageContainer = document.getElementById('imageContainer');
-    imageContainer.innerHTML = '';
+        xhr.onerror = function () {
+            resultDiv.innerHTML = `<p>读取本地文件失败</p>`;
+        };
 
-    // Display error message
-    const errorMessage = document.createElement('p');
-    errorMessage.textContent = '未找到对应图片，请输入正确的数字。';
-    imageContainer.appendChild(errorMessage);
-  });
+        xhr.send();
+    });
 
-  // Set the src attribute to the SVGDB URL
-  imageElement.src = svgdbURL;
-}
+    // extractCardInfo 和 displayData 函数不变，不需要修改
+
+});
