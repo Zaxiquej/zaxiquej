@@ -140,6 +140,7 @@ function calculateSkillScore(card1, card2) {
     let commonSkills = 0;
     for (let i = 0; i < skills1.length; i++){
       let skill = skills1[i];
+      let nb = 0;
       for (let j = 0; j < skills2.length; j++){
         if (skills2[j] == skill) {
             let base = 1;
@@ -147,16 +148,17 @@ function calculateSkillScore(card1, card2) {
             const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
             base *= ol;
             base *= cl;
-
-            commonSkills += base;
+            if (base > nb){
+              nb = base;
+            }
         }
       }
+      commonSkills += nb;
     }
 
     // Calculate the maximum possible similarity score based on the longer skill array
     const maxLength = Math.max(skills1.length, skills2.length);
     const similarity = (commonSkills / maxLength) * 100;
-
     return similarity;
 }
 
