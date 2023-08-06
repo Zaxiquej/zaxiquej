@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadowverse Card Guess</title>
+    <title>影之诗猜卡</title>
+    <style>
+  /* 其他样式保持不变 */
+  .highlight {
+    background-color: yellow;
+  }
+
+  /* 猜对时的文本样式 */
+  .congrats {
+    font-size: 24px;
+  }
+  /* 烟花特效 */
+  #fireworks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: explode 1s linear infinite;
+  }
+
+  @keyframes explode {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(20);
+      opacity: 0;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1>Shadowverse Card Guess</h1>
+    <h1>影之诗猜卡</h1>
     <button id="puzzleStartButton">解谜开始</button>
     <div id="sortingOptions">
         <label for="sortOption">排序选项：</label>
@@ -15,13 +58,55 @@
             <option value="similarity">根据相似度排序</option>
         </select>
         <button id="sortButton">确认排序</button>
+        <hr> <!-- 这是分割线 -->
     </div>
     <div id="playBox">
-    <div id="history"></div>
     <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
     <button id="guessButton">确认</button>
+    <div id="suggestions"></div>
+    <hr> <!-- 这是分割线 -->
+    <div id="history"></div>
     </div>
-    <script src="library/portalcraft.js"></script>
+    <div id="fireworks"></div>
+
+<hr> <!-- 这是分割线 -->
+    <div id="ruleBox">
+       <h2>规则说明</h2>
+       <p>1. 点击“开始解谜”按钮，系统会随机抽取一张卡牌作为解谜目标。</p>
+       <p>2. 在输入框中输入猜测的卡牌名称，并点击“猜测”按钮，系统会告诉你这次猜测的相似度和排名。</p>
+       <p>3. 相似度越高，排名越靠前，表示你的猜测与目标卡牌越相似。</p>
+       <p>4. 猜错了可以继续猜，直到猜对为止。试试你要几次才能猜到目标卡牌吧！</p>
+
+       <h2>常见问题解答</h2>
+       <details>
+           <summary>1. 系统会选择哪些卡牌作为解谜目标？</summary>
+           <p>系统会从已有的卡牌数据库中随机选择一张卡牌作为解谜目标。</p>
+           <p>目前数据库截止至：密斯塔尔希亚的英雄，DLC前</p>
+       </details>
+       <details>
+           <summary>2. 如果我找不到某个卡牌怎么办？</summary>
+           <p>如果找不到相应的卡牌，请检查输入的名称是否正确。数据库来自于shadowverseportal进行简化，因此可能有部分卡名称和国服采用的有出入。</p>
+       </details>
+       <details>
+           <summary>3. 具体而言，相似度是如何判定的?</summary>
+           <p>相似度的判定有三部分：</p>
+           <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前后的攻击与生命</li>
+           <li>技能分：卡牌具有的特殊能力</li>
+           <li>描述分：卡牌的描述文字</li>
+           <p>系统会对这三部分各打一个分，随后按照3:3:4的权重生成总分，满分为100。</p>
+       </details>
+       <details>
+           <summary>4. 卡牌的相似度我所想象的不太一样！</summary>
+           <p>嗯，这是可能发生的，这有几种可能性：</p>
+           <li>1、系统并不能探知卡牌的token，只会对卡牌本身的能力判断。比如，矮人技师不会被认为和人偶系的卡牌相似度接近，但是会被认为和抉择拿token的卡牌相似度接近。</li>
+           <li>2、名字相似甚至复刻角色并不代表卡牌相似度接近。比如邪龙‧林德沃姆相似度最近的是重装巨怪。</li>
+           <li>3、占字数多的描述会在描述分里有更多影响。比如游猎的罪人‧安媞马丽亚会与能制造低费自己的伟大的调停者‧佐伊和死骸金属巨星更接近，而不是具有穿墙疾走的邪龙·林德沃姆。</li>
+           <li>4、相似度的判定有三部分（见上），可能你选择的卡在其中一部分有较高的分数，但是就总分的考量偏低。</li>
+           <li>5、待补充</li>
+       </details>
+   </div>
+
+    <script src="library/database.js"></script>
     <script src="SimpTrad.js"></script>
     <script src="similarity.js"></script>
     <script src="guess.js"></script>
