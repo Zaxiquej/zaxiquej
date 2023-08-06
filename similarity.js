@@ -117,8 +117,10 @@ function calculateBasicScore(card1, card2) {
   }
 
 function calculateSkillScore(card1, card2) {
-    const skills1 = card1.skill ? card1.skill.split(",") : [];
-    const skills2 = card2.skill ? card2.skill.split(",") : [];
+    let cskill1 = card1.skill.replace("//",",");
+    let cskill2 = card2.skill.replace("//",",");
+    const skills1 = cskill1 ? cskill1.split(",") : [];
+    const skills2 = cskill2 ? cskill2.split(",") : [];
 
     if (skills1.length === 0 || skills2.length === 0) {
         return 0;
