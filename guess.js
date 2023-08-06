@@ -1,55 +1,5 @@
 // guess.js
-
-function getCorrectionSuggestion(guess) {
-  const maxSuggestions = 20;
-  const suggestions = [];
-
-  // 优先寻找和输入的错误卡名有最多相同字的卡
-  for (const card of cardData) {
-    if (card.card_name) {
-      const numCommonChars = getNumCommonChars(card.card_name, guess);
-      suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
-    }
-  }
-
-  // 按相同字数降序排序
-  suggestions.sort((a, b) => b.numCommonChars - a.numCommonChars);
-
-  // 如果找到的卡名和输入的错误卡名有相同字，则将它们作为建议
-  const correctionSuggestions = suggestions
-    .filter(suggestion => suggestion.numCommonChars > 0)
-    .slice(0, maxSuggestions)
-    .map(suggestion => suggestion.card_name);
-
-  // 如果建议不足 maxSuggestions 个，则继续使用 Levenshtein 距离来补充
-  if (correctionSuggestions.length < maxSuggestions) {
-    const remainingSuggestions = maxSuggestions - correctionSuggestions.length;
-    for (const card of cardData) {
-      if (card.card_name) {
-        const distance = calculateLevenshteinDistance(card.card_name, guess);
-        correctionSuggestions.push(card.card_name);
-        if (correctionSuggestions.length === maxSuggestions) {
-          break;
-        }
-      }
-    }
-  }
-
-  return correctionSuggestions;
-}
-
-function getNumCommonChars(str1, str2) {
-  let count = 0;
-  for (const char of str1) {
-    if (str2.includes(char)) {
-      count++;
-    }
-  }
-  return count;
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-    const puzzleStartButton = document.getElementById("puzzleStartButton");
     const guessButton = document.getElementById("guessButton");
     const guessInput = document.getElementById("guessInput");
     const suggestionsDiv = document.getElementById("suggestions");
@@ -68,16 +18,81 @@ document.addEventListener("DOMContentLoaded", function () {
     const sortButton = document.getElementById("sortButton");
 
     const seedInput = document.getElementById("seedInput");
-     const useSeedButton = document.getElementById("useSeedButton");
-     const randomSeedButton = document.getElementById("randomSeedButton");
+    const useSeedButton = document.getElementById("useSeedButton");
+    const randomSeedButton = document.getElementById("randomSeedButton");
 
      // ...
 
      let seed = ""; // 存储随机种子
 
-    // 显示/隐藏“解谜开始”按钮
-    playBox.style.display = "none";
-    sortOptions.style.display = "none";
+     // 点击随机种子按钮
+  randomSeedButton.addEventListener("click", function () {
+    seed = generateCurrentDateSeed(); // 生成随机种子
+    seedInput.value = seed; // 将种子显示在输入框中
+  });
+
+  // 点击使用种子按钮
+  useSeedButton.addEventListener("click", function () {
+    seed = seedInput.value.trim();
+    if (seed === "") {
+      alert("请输入种子或点击随机种子按钮获取随机种子！");
+      return;
+    }
+
+    startGameWithSeed(seed); // 使用种子开始游戏
+  });
+
+  // 生成随机种子
+  function generateRandomSeed() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < 8; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
+  // 使用种子开始游戏
+  function startGameWithSeed(seed) {
+    // 在这里使用种子初始化随机数生成器
+    Math.seedrandom(seed);
+
+    // 初始化游戏逻辑，例如随机抽取一张卡牌作为解谜目标等
+    const randomIndex = Math.floor(Math.random() * cardData.length);
+    puzzleCard = cardData[randomIndex];
+    // Display similarity of 10th, 100th, and 1000th ranked cards
+     const card10 = getCardByRank(10);
+     const card100 = getCardByRank(100);
+     const card1000 = getCardByRank(1000);
+
+     if (card10) {
+       document.getElementById("rank10Similarity").textContent = card10.similarity.toFixed(2);
+     }
+
+     if (card100) {
+       document.getElementById("rank100Similarity").textContent = card100.similarity.toFixed(2);
+     }
+
+     if (card1000) {
+       document.getElementById("rank1000Similarity").textContent = card1000.similarity.toFixed(2);
+     }
+
+     // Update the "currentSeed" element with the current seed value
+     document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
+
+    // 显示解谜开始信息
+    const puzzleStartMessage = document.createElement("p");
+    puzzleStartMessage.textContent = "解谜开始！系统已抽取一张卡牌，请猜测卡牌名称：";
+    historyDiv.appendChild(puzzleStartMessage);
+
+    // 显示游戏界面
+    randomSeedButton.style.display = "none";
+    seedInput.style.display = "none";
+    useSeedButton.style.display = "none";
+    document.getElementById("cSeed").style.display = "block";
+    playBox.style.display = "block";
+  }
+
     sortButton.addEventListener("click", sortHistory);
 
         // 重新开始按钮
@@ -93,30 +108,13 @@ document.addEventListener("DOMContentLoaded", function () {
         time = 0;
         highestScore = 0;
         historyDiv.innerHTML = "";
-        puzzleStartButton.style.display = "block";
+        randomSeedButton.style.display = "block";
+        seedInput.style.display = "block";
+        useSeedButton.style.display = "block";
         sortOptions.style.display = "none";
         playBox.style.display = "none";
+        document.getElementById("cSeed").style.display = "none";
     }
-
-    puzzleStartButton.addEventListener("click", function () {
-        // 随机抽取一张卡牌作为解谜目标
-        const randomIndex = Math.floor(Math.random() * cardData.length);
-        puzzleCard = cardData[randomIndex];
-
-        // 清空历史记录
-        historyDiv.innerHTML = "";
-        puzzleStartButton.style.display = "none";
-        sortOptions.style.display = "block";
-        playBox.style.display = "block";
-
-        // 显示解谜开始信息
-        const puzzleStartMessage = document.createElement("p");
-        puzzleStartMessage.textContent = "解谜开始！系统已抽取一张卡牌，请猜测卡牌名称：";
-        puzzleStartMessage.similarity = 9999;
-        puzzleStartMessage.order = 0;
-        historyDiv.appendChild(puzzleStartMessage);
-
-    });
 
     guessButton.addEventListener("click", function () {
         const guess = guessInput.value.trim();
@@ -291,6 +289,22 @@ document.addEventListener("DOMContentLoaded", function () {
         return cardData.find((card) => card.card_name === name);
     }
 
+    function getCardByRank(rank) {
+      const sortedCards = cardData
+        .map((card) => calculateSimilarityScore(puzzleCard, card))
+        .sort((a, b) => b - a);
+
+      if (rank <= 0 || rank > sortedCards.length) {
+        return null; // Invalid rank, return null
+      }
+
+      const similarity = sortedCards[rank - 1];
+      const cardIndex = sortedCards.indexOf(similarity);
+      const card = cardData[cardIndex];
+
+      return { similarity, card };
+    }
+
     function getHintCardOptions(minScore) {
         const options = cardData.filter((card) => calculateSimilarityScore(puzzleCard, card) >= minScore);
 
@@ -313,3 +327,74 @@ document.addEventListener("DOMContentLoaded", function () {
     // 将猜测卡牌名称函数暴露给全局，以便在 HTML 中调用
     window.guessCardName = guessCardName;
 });
+
+function getCorrectionSuggestion(guess) {
+  const maxSuggestions = 20;
+  const suggestions = [];
+
+  // 优先寻找和输入的错误卡名有最多相同字的卡
+  for (const card of cardData) {
+    if (card.card_name) {
+      const numCommonChars = getNumCommonChars(card.card_name, guess);
+      suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
+    }
+  }
+
+  // 按相同字数降序排序
+  suggestions.sort((a, b) => b.numCommonChars - a.numCommonChars);
+
+  // 如果找到的卡名和输入的错误卡名有相同字，则将它们作为建议
+  const correctionSuggestions = suggestions
+    .filter(suggestion => suggestion.numCommonChars > 0)
+    .slice(0, maxSuggestions)
+    .map(suggestion => suggestion.card_name);
+
+  // 如果建议不足 maxSuggestions 个，则继续使用 Levenshtein 距离来补充
+  if (correctionSuggestions.length < maxSuggestions) {
+    const remainingSuggestions = maxSuggestions - correctionSuggestions.length;
+    for (const card of cardData) {
+      if (card.card_name) {
+        const distance = calculateLevenshteinDistance(card.card_name, guess);
+        correctionSuggestions.push(card.card_name);
+        if (correctionSuggestions.length === maxSuggestions) {
+          break;
+        }
+      }
+    }
+  }
+
+  return correctionSuggestions;
+}
+
+function getNumCommonChars(str1, str2) {
+  let count = 0;
+  for (const char of str1) {
+    if (str2.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+function generateCurrentDateSeed() {
+  const now = new Date();
+  const year = now.getUTCFullYear().toString();
+  const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = now.getUTCDate().toString().padStart(2, '0');
+
+  // 组合日期
+  const dateSeed = year + month + day;
+
+  // 使用 dateSeed 作为种子生成随机数
+  Math.seedrandom(dateSeed);
+
+  // 生成8位英文字母种子
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let seed = '';
+  for (let i = 0; i < 8; i++) {
+    const randomIndex = Math.floor(Math.random() * letters.length);
+    seed += letters[randomIndex];
+  }
+
+  return seed;
+}

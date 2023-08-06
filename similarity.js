@@ -31,8 +31,8 @@ function calculateBasicScore(card1, card2) {
 
   function calculateDescriptionScore(card1, card2) {
       // Calculate description similarity
-      const description1 = card1.skill_disc || '';
-      const description2 = card2.skill_disc || '';
+      const description1 = card1.skill_disc + card1.evo_skill_disc || '';
+      const description2 = card2.skill_disc + card2.evo_skill_disc || '';
 
       if (description1.length === 0 && description2.length === 0) {
           return 100; // Both are empty descriptions, consider them as similar
@@ -43,7 +43,7 @@ function calculateBasicScore(card1, card2) {
       const descriptionScore = (1 - levenshteinDistance / maxDescriptionLength) * 100;
       return descriptionScore;
   }
-  
+
 function calculateSkillScore(card1, card2) {
     const skills1 = card1.skill ? card1.skill.split(",") : [];
     const skills2 = card2.skill ? card2.skill.split(",") : [];
@@ -101,7 +101,6 @@ function calculateSimilarityScore(card1, card2) {
     const basicScoreWeight = 0.3;
     const skillScoreWeight = 0.3;
     const descriptionScoreWeight = 0.4;
-
 
     // 计算综合相似度分数
     const totalScore = basicScore * basicScoreWeight + skillScore * skillScoreWeight + descriptionScore * descriptionScoreWeight;

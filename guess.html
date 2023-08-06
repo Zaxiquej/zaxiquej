@@ -46,20 +46,40 @@
       opacity: 0;
     }
   }
+  #playBox {
+    display: none;
+  }
+  #sortingOptions {
+    display: none;
+  }
+  #cSeed {
+    display: none;
+  }
 </style>
 </head>
 <body>
     <h1>影之诗猜卡</h1>
-    <button id="puzzleStartButton">解谜开始</button>
+    <div id="startBox">
+      <button id="randomSeedButton">今日谜题种子</button>
+      <input type="text" id="seedInput" placeholder="输入种子">
+      <button id="useSeedButton">开始游戏</button>
+    </div>
+    <!--<button id="puzzleStartButton">解谜开始</button> -->
     <div id="sortingOptions">
         <label for="sortOption">排序选项：</label>
         <select id="sortOption">
-            <option value="index">根据序号排序</option>
-            <option value="similarity">根据相似度排序</option>
+          <option value="similarity">根据相似度排序</option>
+          <option value="index">根据序号排序</option>
         </select>
         <button id="sortButton">确认排序</button>
         <hr> <!-- 这是分割线 -->
     </div>
+  <div id="cSeed">
+  <p id="currentSeed">当前种子：</p>
+  <p>第10名卡牌相似度：<span id="rank10Similarity">-</span></p>
+  <p>第100名卡牌相似度：<span id="rank100Similarity">-</span></p>
+  <p>第1000名卡牌相似度：<span id="rank1000Similarity">-</span></p>
+</div>
     <div id="playBox">
     <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
     <button id="guessButton">确认</button>
@@ -90,22 +110,40 @@
        <details>
            <summary>3. 具体而言，相似度是如何判定的?</summary>
            <p>相似度的判定有三部分：</p>
-           <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前后的攻击与生命</li>
-           <li>技能分：卡牌具有的特殊能力</li>
-           <li>描述分：卡牌的描述文字</li>
+           <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前后的攻击与生命。这部分只判断是否相同。</li>
+           <li>技能分：卡牌具有的特殊能力，会检查双方共享能力在双方总能力之中的占比。</li>
+           <li>描述分：卡牌的描述文字，会检查双方描述文字的Levenshtein距离。</li>
            <p>系统会对这三部分各打一个分，随后按照3:3:4的权重生成总分，满分为100。</p>
        </details>
        <details>
            <summary>4. 卡牌的相似度我所想象的不太一样！</summary>
            <p>嗯，这是可能发生的，这有几种可能性：</p>
            <li>1、系统并不能探知卡牌的token，只会对卡牌本身的能力判断。比如，矮人技师不会被认为和人偶系的卡牌相似度接近，但是会被认为和抉择拿token的卡牌相似度接近。</li>
-           <li>2、名字相似甚至复刻角色并不代表卡牌相似度接近。比如邪龙‧林德沃姆相似度最近的是重装巨怪。</li>
+           <li>2、名字相似甚至复刻角色并不代表卡牌相似度接近。比如邪龙‧林德沃姆相似度最近的是重装巨怪。而风之军神‧格里姆尼尔和飓风军神‧格里姆尼尔很接近，却和另外两个风军不太接近。</li>
            <li>3、占字数多的描述会在描述分里有更多影响。比如游猎的罪人‧安媞马丽亚会与能制造低费自己的伟大的调停者‧佐伊和死骸金属巨星更接近，而不是具有穿墙疾走的邪龙·林德沃姆。</li>
            <li>4、相似度的判定有三部分（见上），可能你选择的卡在其中一部分有较高的分数，但是就总分的考量偏低。</li>
            <li>5、待补充</li>
        </details>
+       <details>
+           <summary>5. 关于瞬念召唤</summary>
+           <p>瞬念召唤在技能上被算为“召唤卡牌”，会和其他召唤卡牌的卡有同一个技能，但是在描述上两者具有差别。</p>
+       </details>
+       <details>
+           <summary>6. 关于相似度算法</summary>
+           <p>相似度算法还在优化中，但是你可以先体验一下游戏（指被拉血压）。</p>
+       </details>
+       <details>
+           <summary>7. 每天生成的种子是固定的吗？</summary>
+           <p>是的。如果你想要玩别的，你可以输入之前的种子。</p>
+           <p>这么做的理由：</p>
+           <li>1、其他猜词游戏也是这么做的（</li>
+           <li>2、可以让你和狱友讨论今日卡牌，当然要小心被剧透</li>
+           <li>3、如果你暂时卡关了，可以暂停片刻，之后回来继续！</li>
+           <p>当然，如果你想玩更多，你可以随便输入一些东西作为种子！你还可以把你脸滚键盘生成的种子分享给群友（</p>
+       </details>
    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     <script src="library/database.js"></script>
     <script src="SimpTrad.js"></script>
     <script src="similarity.js"></script>
