@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadowverse Card Guess</title>
+</head>
+<body>
+    <h1>Shadowverse Card Guess</h1>
+    <button id="puzzleStartButton">解谜开始</button>
+    <div id="sortingOptions">
+        <label for="sortOption">排序选项：</label>
+        <select id="sortOption">
+            <option value="index">根据序号排序</option>
+            <option value="similarity">根据相似度排序</option>
+        </select>
+        <button id="sortButton">确认排序</button>
+    </div>
+    <div id="playBox">
+    <div id="history"></div>
+    <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
+    <button id="guessButton">确认</button>
+    </div>
+    <script src="library/portalcraft.js"></script>
+    <script src="SimpTrad.js"></script>
+    <script src="similarity.js"></script>
+    <script src="guess.js"></script>
+</body>
+</html>

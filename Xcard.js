@@ -18,7 +18,7 @@ let randomCard1 = 0;
 let randomCard2 = 0;
 
 let score = 0;
-let timer = 60;
+let timer = 10;
 let currentAttribute = '攻击'; // Start with '攻击' attribute
 let isGameOver = false;
 
@@ -56,6 +56,8 @@ function showNextQuestion() {
     currentAttribute = attributes[Math.floor(Math.random() * attributes.length)];
 
     questionText.textContent = `哪张卡有更高的${currentAttribute}？`;
+
+    timer = 10;
 }
 
 // 处理玩家的选择并检查答案
@@ -90,6 +92,7 @@ function chooseCard(e) {
 
 // 处理游戏结束状态
 function gameOver() {
+  clearInterval(timer); // 清除计时器
     isGameOver = true;
     leftBtn.style.display = 'none';
     equalBtn.style.display = 'none';
@@ -108,8 +111,6 @@ function gameOver() {
         // 否则，答案为较大属性值的卡片
         correctAnswerText.textContent = card1Value > card2Value ? '左' : '右';
     }
-
-    clearInterval(timer); // 清除计时器
 }
 
 // 更新分数文本
@@ -125,7 +126,7 @@ function updateTimerText() {
 // 开始游戏
 function startGame() {
     score = 0;
-    timer = 60;
+    timer = 10;
     currentAttribute = '攻击';
     isGameOver = false;
     updateScoreText();
