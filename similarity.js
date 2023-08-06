@@ -122,6 +122,11 @@ function calculateSkillScore(card1, card2) {
     const skills1 = cskill1 ? cskill1.split(",") : [];
     const skills2 = cskill2 ? cskill2.split(",") : [];
 
+  //  let cskillo1 = card1.skill_option.replace("//",",");
+  //  let cskillo2 = card2.skill_option.replace("//",",");
+  //  const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+  //  const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+
     if (skills1.length === 0 || skills2.length === 0) {
         return 0;
     }

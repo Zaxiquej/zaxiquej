@@ -109,13 +109,14 @@ function createNewDataBase(allcards) {
         'tribe_name'
     ];
 
+    const removal = ["灵魂嚮导‧艾米","黑天月兔妖‧菈米娜","初音未来","暗魔女将‧艾瑟菈","夜空吸血鬼‧卡媞亚"];
     // 用于存储最终的卡片数据
     const uniqueCardsMap = new Map();
 
     // 遍历所有卡片数据
     allcards.cards.forEach(card => {
         // 如果卡片名称不为空且card_set_id在70000和80000之间
-        if (card.card_name !== null && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
+        if (card.card_name !== null && !removal.includes(card.card_name) && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
             // 如果已经存在相同名称的卡片
             if (uniqueCardsMap.has(card.card_name)) {
                 const existingCard = uniqueCardsMap.get(card.card_name);
