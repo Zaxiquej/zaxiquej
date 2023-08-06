@@ -223,7 +223,7 @@ let cardData = [
     "rarity": 4,
     "skill": "trigger,lose,banish,banish,banish,update_deck,shortage_deck_win,clear_destroyed_card_list,attach_skill",
     "skill_condition": "character=me,character=me,character=me,character=me,character=me,character=me,character=me&shortage_deck_win=false,character=me,character=me",
-    "skill_disc": "使双方的从者全体失去所有能力（攻击力/生命值的效果不受影响）。使双方战场上的卡片全部消失。<br>使自己手牌中的卡片与牌堆中的卡片全部消失。<br>增加与「敌方在这场对战中，由最先使用的卡片开始依序算起至第10张卡片」同名的卡片各1张到自己的牌堆中。（《倒吊人》‧罗弗拉德与真伪逆转除外）<br>使自己牌堆底部的死神卡片变身为胜利的卡片。<br>失去所有「本次对战中自己已被破坏的卡片」。<br>下个敌方的回合结束时，增加与「敌方的手牌」同名的卡片各1张到自己的手牌中。（《倒吊人》‧罗弗拉德与真伪逆转除外）",
+    "skill_disc": "使双方的从者全体失去所有能力（攻击力/生命值的效果不受影响）。使双方战场上的卡片全部消失。<br>使自己手牌中的卡片与牌堆中的卡片全部消失。<br>增加与「敌方在这场对战中，由最先使用的卡片开始依序算起至第10张卡片」同名的卡片各1张到自己的牌堆中。（《倒吊人》·罗弗拉德与真伪逆转除外）<br>使自己牌堆底部的死神卡片变身为胜利的卡片。<br>失去所有「本次对战中自己已被破坏的卡片」。<br>下个敌方的回合结束时，增加与「敌方的手牌」同名的卡片各1张到自己的手牌中。（《倒吊人》·罗弗拉德与真伪逆转除外）",
     "skill_option": "none,none,none,none,none,type=add&limit_upper_count=10,none,none,skill=(skill:token_draw)(timing:op_turn_end)(condition:character=me)(target:character=op&target=hand&card_type=all&base_card_id!=117141010|900144070)(option:none)(preprocess:remove_after_action=(count=1))",
     "tribe_name": "-"
   },
@@ -242,7 +242,7 @@ let cardData = [
     "rarity": 4,
     "skill": "powerup,damage",
     "skill_condition": "{me.inplay.selectable.unit.base_card_id=121141030.count}>0&{op.inplay.selectable.unit.count}>0,{me.inplay.selectable.unit.base_card_id=121141030.count}>0&{op.inplay.selectable.unit.count}>0",
-    "skill_disc": "给予1个自己的深绿弓手‧亚里莎+1/+0效果。<br>给予1个敌方的从者1点伤害。<br>（有2个可指定的从者时才可使用）",
+    "skill_disc": "给予1个自己的深绿弓手·亚里莎+1/+0效果。<br>给予1个敌方的从者1点伤害。<br>（有2个可指定的从者时才可使用）",
     "skill_option": "add_offense=1,damage=1",
     "tribe_name": "-"
   },
@@ -268,7 +268,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900231030,
-    "card_name": "新人特务‧爱娃",
+    "card_name": "新人特务·爱娃",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -603,7 +603,7 @@ let cardData = [
     "rarity": 4,
     "skill": "select,powerup,damage,quick,damage",
     "skill_condition": "{me.inplay.unit.count}>0,character=me&target=selected_cards&card_type=unit,character=me&target=selected_cards&card_type=unit,character=me&target=selected_cards&card_type=unit&base_card_id=123441030,character=me&target=selected_cards&card_type=unit&base_card_id=123441030",
-    "skill_disc": "给予1个自己的从者+1/+1效果，并给予该从者1点伤害。<br>如果该从者为烈绝侮蔑‧嘉鲁蜜儿，则会额外再使其获得疾驰 效果。给予敌方的从者全体2点伤害。",
+    "skill_disc": "给予1个自己的从者+1/+1效果，并给予该从者1点伤害。<br>如果该从者为烈绝侮蔑·嘉鲁蜜儿，则会额外再使其获得疾驰 效果。给予敌方的从者全体2点伤害。",
     "skill_option": "none,add_offense=1&add_life=1,damage=1,none,damage=2",
     "tribe_name": "-"
   },
@@ -755,7 +755,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧魔眼蛇神‧梅杜莎<br>‧闇夜公主‧班比<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·魔眼蛇神·梅杜莎<br>·闇夜公主·班比<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=112641010:108641010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -812,7 +812,7 @@ let cardData = [
     "rarity": 4,
     "skill": "discard,discard,token_draw,damage",
     "skill_condition": "{me.game_play_cards_other_self.all.base_card_id=900644050.count}=0&{me.hand_other_self.count}>=4,{me.game_play_cards_other_self.all.base_card_id=900644050.count}=0&{me.hand_other_self.count}<=3,{me.game_play_cards_other_self.all.base_card_id=900644050.count}=0,{me.game_play_cards_other_self.all.base_card_id=900644050.count}>0",
-    "skill_disc": "如果自己手牌中的卡片张数为4张以上，则会捨弃3张手牌。如果为3张以下，则会捨弃全部的手牌。<br>增加1张梦魇时分与1张血腥利爪与1张悚惧气息卡片到手牌中。<br>自己在这场对战中如果已经使用其他的惊骇之夜卡片，则会由原本的「捨弃手牌并增加卡片」转变为给予双方的主战者与从者全体（终幕吸血鬼‧尤里亚斯除外）3点伤害。",
+    "skill_disc": "如果自己手牌中的卡片张数为4张以上，则会捨弃3张手牌。如果为3张以下，则会捨弃全部的手牌。<br>增加1张梦魇时分与1张血腥利爪与1张悚惧气息卡片到手牌中。<br>自己在这场对战中如果已经使用其他的惊骇之夜卡片，则会由原本的「捨弃手牌并增加卡片」转变为给予双方的主战者与从者全体（终幕吸血鬼·尤里亚斯除外）3点伤害。",
     "skill_option": "none,none,token_draw=900644060:900644070:900644080,damage=3",
     "tribe_name": "-"
   },
@@ -850,7 +850,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform,damage,draw",
     "skill_condition": "character=me&pp_count>=2,character=me&target=chosen_cards&card_type=all&pp_count>=2,character=me&card_type=chant_field,none",
-    "skill_disc": "‧暗夜袭击<br>‧狂气现形<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>入场曲 给予自己的主战者1点伤害。<br>谢幕曲 抽取1张卡片。",
+    "skill_disc": "·暗夜袭击<br>·狂气现形<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>入场曲 给予自己的主战者1点伤害。<br>谢幕曲 抽取1张卡片。",
     "skill_option": "card_id=900623010:900623020,repeat_count=1&summon_side=me,damage=1,none",
     "tribe_name": "-"
   },
@@ -888,7 +888,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token",
     "skill_condition": "character=me",
-    "skill_disc": "召唤1个森林参谋长‧喵鲁到战场上。",
+    "skill_disc": "召唤1个森林参谋长·喵鲁到战场上。",
     "skill_option": "summon_token=900711140",
     "tribe_name": "-"
   },
@@ -1028,7 +1028,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900841140,
-    "card_name": "破坏召来者‧薇姿雅",
+    "card_name": "破坏召来者·薇姿雅",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -1047,7 +1047,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900841150,
-    "card_name": "杀戮召来者‧依嘉露耶",
+    "card_name": "杀戮召来者·依嘉露耶",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -1066,7 +1066,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900841160,
-    "card_name": "绝望召来者‧吉欧媞德",
+    "card_name": "绝望召来者·吉欧媞德",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -1116,7 +1116,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,update_deck",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=unit",
-    "skill_disc": "‧解析的创造物<br>‧古老的创造物<br>‧神祕的创造物<br>‧绚烂的创造物<br>将2张命运抉择 所指定的卡片各增加2张到牌堆中。",
+    "skill_disc": "·解析的创造物<br>·古老的创造物<br>·神祕的创造物<br>·绚烂的创造物<br>将2张命运抉择 所指定的卡片各增加2张到牌堆中。",
     "skill_option": "card_id=900811030:900811010:900811020:900811040,type=add&repeat_count=2",
     "tribe_name": "-"
   },
@@ -1173,7 +1173,7 @@ let cardData = [
     "rarity": 1,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "增加1张改良型‧悬丝傀儡卡片到手牌中。",
+    "skill_disc": "增加1张改良型·悬丝傀儡卡片到手牌中。",
     "skill_option": "token_draw=900811110",
     "tribe_name": "-"
   },
@@ -1211,7 +1211,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,update_deck,pp_fixeduse,summon_token",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=unit&pp_count<7,pp_count>=7,character=me&target=chosen_cards&card_type=unit&pp_count>=7",
-    "skill_disc": "‧迅袭的创造物<br>‧锋锐的创造物<br>‧解析的创造物<br>‧古老的创造物<br>将2种命运抉择 所指定的卡片各2张增加到牌堆中。<br>爆能强化 7； 由原本的增加到牌堆中转变为召唤到战场上。",
+    "skill_disc": "·迅袭的创造物<br>·锋锐的创造物<br>·解析的创造物<br>·古老的创造物<br>将2种命运抉择 所指定的卡片各2张增加到牌堆中。<br>爆能强化 7； 由原本的增加到牌堆中转变为召唤到战场上。",
     "skill_option": "card_id=900811100:900811090:900811030:900811010,type=add&repeat_count=2,fixeduse=7,repeat_count=2&summon_side=me",
     "tribe_name": "-"
   },
@@ -1230,7 +1230,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧丝碧涅的创造物<br>‧神祕的遗物‧丝碧涅与璐契儿<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·丝碧涅的创造物<br>·神祕的遗物·丝碧涅与璐契儿<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900841010:900841190,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -1268,7 +1268,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "由杀戮女神‧提西福涅、灾乱女神‧阿莱克托、愤怒女神‧墨盖拉之中，随机增加1张卡片到手牌中。",
+    "skill_disc": "由杀戮女神·提西福涅、灾乱女神·阿莱克托、愤怒女神·墨盖拉之中，随机增加1张卡片到手牌中。",
     "skill_option": "token_draw=900841110:900841120:900841130:?1",
     "tribe_name": "-"
   },
@@ -1446,7 +1446,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126031010,
-    "card_name": "洁翼之狮‧嘉鲁艾尔",
+    "card_name": "洁翼之狮·嘉鲁艾尔",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 0,
@@ -1477,7 +1477,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧福音天使<br>‧伴奏天使<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·福音天使<br>·伴奏天使<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=121011010:120011010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -1724,7 +1724,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw,cost_change",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧黑暗天使‧奥莉薇<br>‧路西法<br>增加1张命运抉择 所指定的卡片到手牌中。使其消费转变为5。",
+    "skill_disc": "·黑暗天使·奥莉薇<br>·路西法<br>增加1张命运抉择 所指定的卡片到手牌中。使其消费转变为5。",
     "skill_option": "card_id=102041010:101041020,repeat_count=1&summon_side=me,set=5",
     "tribe_name": "-"
   },
@@ -2035,7 +2035,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 101111010,
-    "card_name": "精灵女孩‧小梅",
+    "card_name": "精灵女孩·小梅",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 1,
@@ -2092,7 +2092,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110141020,
-    "card_name": "冰晶皇族‧蒂亚",
+    "card_name": "冰晶皇族·蒂亚",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 1,
@@ -2104,14 +2104,14 @@ let cardData = [
     "rarity": 4,
     "skill": "token_draw,cost_change,cost_change,cost_change",
     "skill_condition": "{me.play_count}>=3,{me.play_count}=3,{me.play_count}=4,play_count>=5",
-    "skill_disc": "入场曲 本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会增加1张冰晶光芒‧伊芙卡片到手牌中，并使其消费转变为3。<br>如果已经使用的卡片数为4张以上，则会由原本的消费3转变为使该卡片消费为1。",
+    "skill_disc": "入场曲 本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会增加1张冰晶光芒·伊芙卡片到手牌中，并使其消费转变为3。<br>如果已经使用的卡片数为4张以上，则会由原本的消费3转变为使该卡片消费为1。",
     "skill_option": "token_draw=900141010,set=3,set=3,set=1",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 111111030,
-    "card_name": "树艺师‧莱拉",
+    "card_name": "树艺师·莱拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -2168,7 +2168,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113131030,
-    "card_name": "活泼的精灵‧小梅",
+    "card_name": "活泼的精灵·小梅",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 1,
@@ -2282,7 +2282,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 118141010,
-    "card_name": "优美的猫姊妹‧暹罗与暹玛",
+    "card_name": "优美的猫姊妹·暹罗与暹玛",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 1,
@@ -2301,7 +2301,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119121010,
-    "card_name": "森林游侠‧维尔达",
+    "card_name": "森林游侠·维尔达",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -2320,7 +2320,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 120141020,
-    "card_name": "宿命的狐火‧雪华",
+    "card_name": "宿命的狐火·雪华",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 1,
@@ -2472,7 +2472,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 127141030,
-    "card_name": "安逸女神‧璞薾美莉亚",
+    "card_name": "安逸女神·璞薾美莉亚",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 1,
@@ -2529,7 +2529,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 128141010,
-    "card_name": "嫩绿的新生‧卡诗黛儿",
+    "card_name": "嫩绿的新生·卡诗黛儿",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 1,
@@ -2567,7 +2567,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 129131010,
-    "card_name": "想望的少女‧珈诺",
+    "card_name": "想望的少女·珈诺",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 1,
@@ -3073,7 +3073,7 @@ let cardData = [
     "rarity": 4,
     "skill": "select,consume_ep_modifier,powerup,quick",
     "skill_condition": "character=me,character=me,{me.selected_cards.base_card_id}=120141020&{me.game_left_cards.unit.clan=elf.count}>=20,{me.selected_cards.base_card_id}=120141020&{me.game_left_cards.unit.clan=elf.count}>=20",
-    "skill_disc": "给予1个自己的精灵从者「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>如果该从者为宿命的狐火‧雪华，并且X为20以上，则会额外再获得+4/+4与疾驰 效果。X为「本次对战中自己已离场的精灵从者数」。",
+    "skill_disc": "给予1个自己的精灵从者「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>如果该从者为宿命的狐火·雪华，并且X为20以上，则会额外再获得+4/+4与疾驰 效果。X为「本次对战中自己已离场的精灵从者数」。",
     "skill_option": "none,none,add_offense=4&add_life=4,none",
     "tribe_name": "-"
   },
@@ -3187,7 +3187,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,transform,token_draw",
     "skill_condition": "{me.play_count}>=3&pp_count>=1,character=me&target=chosen_cards&card_type=all&play_count>=3&pp_count>=1,{me.inplay_self.count}>0",
-    "skill_disc": "‧妖精的大呵欠<br>‧妖精的甦醒<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且本回合中已经使用的卡片数为2张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，增加1张妖精卡片到手牌中。",
+    "skill_disc": "·妖精的大呵欠<br>·妖精的甦醒<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且本回合中已经使用的卡片数为2张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，增加1张妖精卡片到手牌中。",
     "skill_option": "card_id=900113010:900113020,repeat_count=1&summon_side=me,token_draw=900111010",
     "tribe_name": "-"
   },
@@ -3365,7 +3365,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109221020,
-    "card_name": "冷酷佣兵‧路西乌斯",
+    "card_name": "冷酷佣兵·路西乌斯",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -3403,7 +3403,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113211010,
-    "card_name": "雷维翁见习兵‧璐涅丝",
+    "card_name": "雷维翁见习兵·璐涅丝",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 2,
@@ -3422,7 +3422,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 115241010,
-    "card_name": "不败剑圣‧景光",
+    "card_name": "不败剑圣·景光",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 2,
@@ -3434,14 +3434,14 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,attach_skill,pp_fixeduse,powerup,rush//powerup",
     "skill_condition": "character=me&turn=self,character=me&turn=self,pp_count>=3,character=me&target=self&pp_count>=3,pp_count>=3//character=me&target=self&attacker=self",
-    "skill_disc": "谢幕曲 如果是自己的回合，则会给予自己的主战者「自己的回合开始时，召唤1个不败剑圣‧景光到战场上并使其进化，而后失去此能力」效果。<br>入场曲 爆能强化 3； 获得+2/+0与突进 效果。",
+    "skill_disc": "谢幕曲 如果是自己的回合，则会给予自己的主战者「自己的回合开始时，召唤1个不败剑圣·景光到战场上并使其进化，而后失去此能力」效果。<br>入场曲 爆能强化 3； 获得+2/+0与突进 效果。",
     "skill_option": "skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=115241010)(preprocess:remove_after_action=(count=1)),skill=(skill:evolve)(timing:self_turn_start)(condition:character=me)(target:character=me&target=last_target&card_type=unit)(option:none)(preprocess:remove_after_action=(count=1))(effect_path:btl_115241010_3)(se_path:se_btl_115241010_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single),fixeduse=3,add_offense=2,none//add_offense={me.evolved_card_list.count}&add_life={me.evolved_card_list.count}",
     "tribe_name": "士兵"
   },
   {
     "atk": 1,
     "card_id": 117221020,
-    "card_name": "武器商人‧艾尔涅丝塔",
+    "card_name": "武器商人·艾尔涅丝塔",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 2,
@@ -3669,7 +3669,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126231010,
-    "card_name": "锐枪骑士‧埃米罗斯",
+    "card_name": "锐枪骑士·埃米罗斯",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 2,
@@ -3683,7 +3683,7 @@ let cardData = [
     "skill_condition": "{me.inplay_other_self.unit.tribe=hero.count}>0,{me.inplay_other_self.unit.tribe=hero.count}>0//character=me,{me.inplay_other_self.unit.tribe=hero.count}>0",
     "skill_disc": "入场曲 如果自己的战场上有其他英雄从者，则会获得+1/+0与疾驰 效果。",
     "skill_option": "add_offense=1,none//damage=3,add_offense=1",
-    "tribe_name": "士兵‧英雄"
+    "tribe_name": "士兵·英雄"
   },
   {
     "atk": 1,
@@ -3702,12 +3702,12 @@ let cardData = [
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=looting,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}<7,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}>=7",
     "skill_disc": "当自己使用财宝卡时，抽取1张卡片。<br>入场曲 增加1张黄金之靴卡片到手牌中。如果自己在这场对战中融合 或已使用的财宝卡张数合计为7张以上，则会由原本的黄金之靴转变为增加战慄的海贼旗卡片到手牌中。",
     "skill_option": "none,token_draw=900214030,token_draw=900214060",
-    "tribe_name": "士兵‧八狱"
+    "tribe_name": "士兵·八狱"
   },
   {
     "atk": 1,
     "card_id": 127241030,
-    "card_name": "公主‧梅裴琉",
+    "card_name": "公主·梅裴琉",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 2,
@@ -3814,7 +3814,7 @@ let cardData = [
     "rarity": 2,
     "skill": "killer,guard,attach_skill",
     "skill_condition": "character=me,character=me,character=me",
-    "skill_disc": "必杀 <br>守护 <br>入场曲 随机给予1个自己的武器商人‧艾尔涅丝塔「谢幕曲 随机给予1个敌方的从者4点伤害」效果。",
+    "skill_disc": "必杀 <br>守护 <br>入场曲 随机给予1个自己的武器商人·艾尔涅丝塔「谢幕曲 随机给予1个敌方的从者4点伤害」效果。",
     "skill_option": "none,none,skill=(skill:damage)(timing:when_destroy)(condition:character=me)(target:character=op&target=inplay&card_type=unit&random_count=1)(option:damage=4)(preprocess:none)(effect_path:btl_fire_shot_1)(se_path:se_btl_fire_shot_1)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.4)(effect_target_type:single)",
     "tribe_name": "士兵"
   },
@@ -3840,7 +3840,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900241050,
-    "card_name": "黄昏之刃‧奈诺",
+    "card_name": "黄昏之刃·奈诺",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -3928,7 +3928,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw,pp_fixeduse,token_draw,pp_modifier",
     "skill_condition": "character=me&pp_count<6,character=me&target=chosen_cards&card_type=all&pp_count<6,pp_count>=6,pp_count>=6,pp_count>=6",
-    "skill_disc": "‧淨白之王‧伊梅拉<br>‧漆黑女王‧玛格娜丝<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 6； 由原本的命运抉择 转变为增加1张淨白之王‧伊梅拉与1张漆黑女王‧玛格娜丝卡片到手牌中，并回复自己的PP 6点。",
+    "skill_disc": "·淨白之王·伊梅拉<br>·漆黑女王·玛格娜丝<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 6； 由原本的命运抉择 转变为增加1张淨白之王·伊梅拉与1张漆黑女王·玛格娜丝卡片到手牌中，并回复自己的PP 6点。",
     "skill_option": "card_id=900231010:900231020,repeat_count=1&summon_side=me,fixeduse=6,token_draw=900231010:900231020,add_pp=6",
     "tribe_name": "-"
   },
@@ -3985,7 +3985,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw,pp_fixeduse,token_draw,pp_modifier",
     "skill_condition": "pp_count<7,character=me&target=chosen_cards&card_type=all&pp_count<7,pp_count>=7,pp_count>=7,pp_count>=7",
-    "skill_disc": "‧雷维翁副团长‧玛姆<br>‧雷维翁魔法师‧蜜姆<br>‧雷维翁武斗家‧梅姆<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 7； 由原本的命运抉择 转变为各增加1张卡片到手牌中，并回复自己的PP 6点。",
+    "skill_disc": "·雷维翁副团长·玛姆<br>·雷维翁魔法师·蜜姆<br>·雷维翁武斗家·梅姆<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 7； 由原本的命运抉择 转变为各增加1张卡片到手牌中，并回复自己的PP 6点。",
     "skill_option": "card_id=900231110:900231120:900231130,repeat_count=1&summon_side=me,fixeduse=7,token_draw=900231110:900231120:900231130,add_pp=6",
     "tribe_name": "雷维翁"
   },
@@ -4023,7 +4023,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw,damage",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "增加1张雷维翁公爵‧尤里乌斯卡片到手牌中。<br>随后，给予1个敌方的从者X点伤害。X为「自己手牌中的雷维翁卡张数」。",
+    "skill_disc": "增加1张雷维翁公爵·尤里乌斯卡片到手牌中。<br>随后，给予1个敌方的从者X点伤害。X为「自己手牌中的雷维翁卡张数」。",
     "skill_option": "token_draw=103611030,damage={me.hand.tribe=levin.count}",
     "tribe_name": "雷维翁"
   },
@@ -4042,7 +4042,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw,pp_fixeduse,token_draw,pp_modifier",
     "skill_condition": "character=me&pp_count<6,character=me&target=chosen_cards&card_type=all&pp_count<6,pp_count>=6,pp_count>=6,pp_count>=6",
-    "skill_disc": "‧黄金短剑<br>‧黄金之杯<br>‧黄金之靴<br>‧黄金首饰<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 6； 由原本的命运抉择 转变为各增加1张卡片到手牌中，并回复自己的PP 6点。",
+    "skill_disc": "·黄金短剑<br>·黄金之杯<br>·黄金之靴<br>·黄金首饰<br>增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 6； 由原本的命运抉择 转变为各增加1张卡片到手牌中，并回复自己的PP 6点。",
     "skill_option": "card_id=900214010:900214020:900214030:900214040,repeat_count=1&summon_side=me,fixeduse=6,token_draw=900214010:900214020:900214030:900214040,add_pp=6",
     "tribe_name": "-"
   },
@@ -4467,7 +4467,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113331010,
-    "card_name": "巫魔公主‧梅薇",
+    "card_name": "巫魔公主·梅薇",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 3,
@@ -4498,7 +4498,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw,guard",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧式神‧小纸人<br>‧式神‧暴鬼<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护 ",
+    "skill_disc": "·式神·小纸人<br>·式神·暴鬼<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护 ",
     "skill_option": "card_id=900311090:900311100,repeat_count=1&summon_side=me,none",
     "tribe_name": "-"
   },
@@ -4524,7 +4524,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 118341010,
-    "card_name": "疾速英雄‧麦哲",
+    "card_name": "疾速英雄·麦哲",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 3,
@@ -4543,7 +4543,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 119321020,
-    "card_name": "小小魔法师‧阿里斯特拉",
+    "card_name": "小小魔法师·阿里斯特拉",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -4562,7 +4562,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 121321010,
-    "card_name": "绽花魔术师‧玛莉",
+    "card_name": "绽花魔术师·玛莉",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 3,
@@ -4619,7 +4619,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 128341010,
-    "card_name": "童话公主‧阿玛丽丽丝",
+    "card_name": "童话公主·阿玛丽丽丝",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 3,
@@ -4695,7 +4695,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900311070,
-    "card_name": "马纳历亚魔兽‧尼克",
+    "card_name": "马纳历亚魔兽·尼克",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -4840,7 +4840,7 @@ let cardData = [
     "rarity": 3,
     "skill": "special_win,banish,banish,summon_token",
     "skill_condition": "{self.charge_count}>=50,{self.charge_count}>=5,{self.charge_count}>=10,{self.charge_count}>=20",
-    "skill_disc": "如果这张卡片的魔力增幅 次数为50次以上，则会赢得这场对战的胜利。<br>如果这张卡片的魔力增幅 次数为5次以上，则会随机使2张自己牌堆中的卡片消失。<br>如果为10次以上，则会再随机使1个敌方的从者消失。<br>如果为20次以上，则会再召唤2个究极‧泥尘巨像到战场上。",
+    "skill_disc": "如果这张卡片的魔力增幅 次数为50次以上，则会赢得这场对战的胜利。<br>如果这张卡片的魔力增幅 次数为5次以上，则会随机使2张自己牌堆中的卡片消失。<br>如果为10次以上，则会再随机使1个敌方的从者消失。<br>如果为20次以上，则会再召唤2个究极·泥尘巨像到战场上。",
     "skill_option": "none,none,none,summon_token=900341010:900341010",
     "tribe_name": "-"
   },
@@ -4992,9 +4992,9 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw,cost_change",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧马纳历亚见习教师‧帕丝卡尔<br>‧闇魔法教师‧海莱恩<br>‧光魔法教师‧米兰<br>增加1张命运抉择 所指定的卡片到手牌中。使其消费-1。",
+    "skill_disc": "·马纳历亚见习教师·帕丝卡尔<br>·闇魔法教师·海莱恩<br>·光魔法教师·米兰<br>增加1张命运抉择 所指定的卡片到手牌中。使其消费-1。",
     "skill_option": "card_id=111321020:105321020:109331010,repeat_count=1&summon_side=me,add=-1",
-    "tribe_name": "马纳历亚‧学园"
+    "tribe_name": "马纳历亚·学园"
   },
   {
     "atk": 0,
@@ -5032,7 +5032,7 @@ let cardData = [
     "skill_condition": "character=me,{me.game_play_cards_other_self.all.play_moment_tribe=manaria.count}>=10,{me.game_play_cards_other_self.all.play_moment_tribe=manaria.count}>=10",
     "skill_disc": "随机将1张马纳历亚从者卡，由自己的牌堆抽取到手牌中。<br>本次对战中如果自己已使用的马纳历亚卡张数为10张以上（不包含本卡片），则会给予自己的马纳历亚从者全体+1/+1与守护 效果。",
     "skill_option": "none,add_offense=1&add_life=1,none",
-    "tribe_name": "马纳历亚‧学园"
+    "tribe_name": "马纳历亚·学园"
   },
   {
     "atk": 0,
@@ -5239,7 +5239,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=5,character=me&target=chosen_cards&card_type=all&pp_count>=5",
-    "skill_disc": "‧紧急召唤<br>‧术式结界<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·紧急召唤<br>·术式结界<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900332010:900332020,repeat_count=1&summon_side=me",
     "tribe_name": "土之印"
   },
@@ -5303,7 +5303,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 110421020,
-    "card_name": "疗癒美人鱼‧吉赛儿",
+    "card_name": "疗癒美人鱼·吉赛儿",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 4,
@@ -5360,7 +5360,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 114431020,
-    "card_name": "华丽龙人‧玛利翁",
+    "card_name": "华丽龙人·玛利翁",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 4,
@@ -5372,7 +5372,7 @@ let cardData = [
     "rarity": 3,
     "skill": "draw,powerup",
     "skill_condition": "character=me&awake=true,character=me&awake=true",
-    "skill_disc": "入场曲 如果觉醒 状态已发动，则会随机将1张龙族从者卡（华丽龙人‧玛利翁除外），由自己的牌堆抽取到手牌中，并给予该从者卡+1/+0效果。",
+    "skill_disc": "入场曲 如果觉醒 状态已发动，则会随机将1张龙族从者卡（华丽龙人·玛利翁除外），由自己的牌堆抽取到手牌中，并给予该从者卡+1/+0效果。",
     "skill_option": "none,add_offense=1",
     "tribe_name": "-"
   },
@@ -6037,7 +6037,7 @@ let cardData = [
     "rarity": 4,
     "skill": "damage,consume_ep_modifier",
     "skill_condition": "character=op&target=inplay&card_type=unit,character=me&awake=true",
-    "skill_disc": "随机给予1个敌方的从者5点伤害。<br>如果觉醒 状态已发动，则会给予全部自己的独尊龙‧四龙「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "随机给予1个敌方的从者5点伤害。<br>如果觉醒 状态已发动，则会给予全部自己的独尊龙·四龙「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "damage=5,none",
     "tribe_name": "宴乐"
   },
@@ -6196,7 +6196,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113511010,
-    "card_name": "秀逸死神‧蜜诺",
+    "card_name": "秀逸死神·蜜诺",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -6234,7 +6234,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 115531010,
-    "card_name": "布丁幽灵‧宫子",
+    "card_name": "布丁幽灵·宫子",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 5,
@@ -6272,7 +6272,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119521010,
-    "card_name": "妖惑的药师‧宵",
+    "card_name": "妖惑的药师·宵",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -6291,7 +6291,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 121541030,
-    "card_name": "友魂少女‧露娜",
+    "card_name": "友魂少女·露娜",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 5,
@@ -6329,7 +6329,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123541030,
-    "card_name": "绝叫沉默‧鲁鲁纳伊",
+    "card_name": "绝叫沉默·鲁鲁纳伊",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 5,
@@ -6341,14 +6341,14 @@ let cardData = [
     "rarity": 4,
     "skill": "rush,powerup,damage,banish,banish,token_draw",
     "skill_condition": "character=me,character=me,{me.destroyed_card_list.base_card_id=123541030.count}>=10,{me.destroyed_card_list.base_card_id=123541030.count}>=10,{me.destroyed_card_list.base_card_id=123541030.count}>=10,character=me",
-    "skill_disc": "突进 <br>入场曲 获得+X/+0效果。X为「本次对战中自己已被破坏的绝叫沉默‧鲁鲁纳伊数」。如果X为10以上，则会给予敌方的主战者3点伤害。使随机1个敌方的从者与这个从者消失。<br>谢幕曲 增加1张绝叫的扩散卡片到手牌中。",
+    "skill_disc": "突进 <br>入场曲 获得+X/+0效果。X为「本次对战中自己已被破坏的绝叫沉默·鲁鲁纳伊数」。如果X为10以上，则会给予敌方的主战者3点伤害。使随机1个敌方的从者与这个从者消失。<br>谢幕曲 增加1张绝叫的扩散卡片到手牌中。",
     "skill_option": "none,add_offense={me.destroyed_card_list.base_card_id=123541030.count},damage=3,none,none,token_draw=900544100",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 125521010,
-    "card_name": "妄想死神‧蜜诺",
+    "card_name": "妄想死神·蜜诺",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 5,
@@ -6386,7 +6386,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126531010,
-    "card_name": "小鬼怪‧帕克鲁斯",
+    "card_name": "小鬼怪·帕克鲁斯",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 5,
@@ -6398,7 +6398,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,draw,token_draw",
     "skill_condition": "character=me,{me.inplay.unit.base_card_id=900531050.count}>0,character=me",
-    "skill_disc": "入场曲 召唤1个怨灵到战场上。如果自己的战场上有巨型狂灵，则会抽取1张卡片。<br>谢幕曲 增加1张消费为1，并且没有谢幕曲 效果的小鬼怪‧帕克鲁斯卡片到手牌中。",
+    "skill_disc": "入场曲 召唤1个怨灵到战场上。如果自己的战场上有巨型狂灵，则会抽取1张卡片。<br>谢幕曲 增加1张消费为1，并且没有谢幕曲 效果的小鬼怪·帕克鲁斯卡片到手牌中。",
     "skill_option": "summon_token=900511020,none,token_draw=900531060",
     "tribe_name": "-"
   },
@@ -6519,7 +6519,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900541040,
-    "card_name": "守卫犬的右腕‧米米",
+    "card_name": "守卫犬的右腕·米米",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6538,7 +6538,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900541050,
-    "card_name": "守卫犬的左腕‧可可",
+    "card_name": "守卫犬的左腕·可可",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6987,7 +6987,7 @@ let cardData = [
     "rarity": 4,
     "skill": "damage_cut,pp_fixeduse,summon_card",
     "skill_condition": "character=me,pp_count>=9,character=me&target=self&card_type=spell&pp_count>=9",
-    "skill_disc": "到下个自己的回合开始为止，自己的主战者所受到的伤害如果为6以上，则会转变为5。<br>爆能强化 9； 随机将4张名称各不相同的机械从者卡（丹紫抵御者‧安镍儿除外），由自己的牌堆召唤到战场上。",
+    "skill_disc": "到下个自己的回合开始为止，自己的主战者所受到的伤害如果为6以上，则会转变为5。<br>爆能强化 9； 随机将4张名称各不相同的机械从者卡（丹紫抵御者·安镍儿除外），由自己的牌堆召唤到战场上。",
     "skill_option": "cut_clipping=5,fixeduse=9,none",
     "tribe_name": "机械"
   },
@@ -7025,7 +7025,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "召唤X个消费为1，并且没有谢幕曲 效果的绝叫沉默‧鲁鲁纳伊到战场上。X为「本次对战中自己已被破坏的绝叫沉默‧鲁鲁纳伊数」。<br>死灵术 3； 增加1张绝叫沉默‧鲁鲁纳伊卡片到手牌中。",
+    "skill_disc": "召唤X个消费为1，并且没有谢幕曲 效果的绝叫沉默·鲁鲁纳伊到战场上。X为「本次对战中自己已被破坏的绝叫沉默·鲁鲁纳伊数」。<br>死灵术 3； 增加1张绝叫沉默·鲁鲁纳伊卡片到手牌中。",
     "skill_option": "summon_token=900541150&repeat_count={me.destroyed_card_list.base_card_id=123541030.count},token_draw=123541030",
     "tribe_name": "-"
   },
@@ -7044,7 +7044,7 @@ let cardData = [
     "rarity": 4,
     "skill": "select,rush,killer,attach_skill,attach_skill,attach_skill",
     "skill_condition": "{me.inplay.unit.count}>0,character=me&target=selected_cards&card_type=unit,character=me&target=selected_cards&card_type=unit,character=me&target=selected_cards&card_type=unit&base_card_id=124541010,character=me&target=selected_cards&card_type=unit&base_card_id=124541010,character=me&target=selected_cards&card_type=unit&base_card_id=124541010",
-    "skill_disc": "给予1个自己的从者突进 与必杀 效果。<br>如果该从者为因果的迷途之子‧安瑟乔，则会额外再使其获得「谢幕曲 死灵术 6； 召唤1个因果的迷途之子‧安瑟乔到战场上。给予该从者+2/+0与疾驰 效果」效果。",
+    "skill_disc": "给予1个自己的从者突进 与必杀 效果。<br>如果该从者为因果的迷途之子·安瑟乔，则会额外再使其获得「谢幕曲 死灵术 6； 召唤1个因果的迷途之子·安瑟乔到战场上。给予该从者+2/+0与疾驰 效果」效果。",
     "skill_option": "none,none,none,skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=124541010)(preprocess:necromance=6),skill=(skill:powerup)(timing:when_destroy)(condition:character=me)(target:character=me&target=skill_summoned_card&card_type=unit)(option:add_offense=2)(preprocess:<-)(effect_path:btl_900544110_4)(se_path:se_btl_900544110_4)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single),skill=(skill:attach_skill)(timing:when_destroy)(condition:character=me)(target:character=me&target=skill_summoned_card&card_type=unit)(option:skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me)(option:none)(preprocess:none))(preprocess:<-)",
     "tribe_name": "宴乐"
   },
@@ -7184,7 +7184,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 108621010,
-    "card_name": "血罪少女‧布菈",
+    "card_name": "血罪少女·布菈",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 6,
@@ -7196,7 +7196,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=5,character=me&target=chosen_cards&card_type=all&pp_count>=5",
-    "skill_disc": "‧圣洁少女‧布菈<br>‧闇黑少女‧布菈<br>如果这张卡片在手牌中，并且自己剩馀的PP为5点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·圣洁少女·布菈<br>·闇黑少女·布菈<br>如果这张卡片在手牌中，并且自己剩馀的PP为5点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900621010:900621020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -7222,7 +7222,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 115621030,
-    "card_name": "吸血鬼屠杀者‧路西乌斯",
+    "card_name": "吸血鬼屠杀者·路西乌斯",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 6,
@@ -7393,7 +7393,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 127641030,
-    "card_name": "封印的凶狼‧希古娜",
+    "card_name": "封印的凶狼·希古娜",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 6,
@@ -7431,7 +7431,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128621010,
-    "card_name": "神速跑腿‧玛萝",
+    "card_name": "神速跑腿·玛萝",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 6,
@@ -7880,7 +7880,7 @@ let cardData = [
     "rarity": 4,
     "skill": "select,guard,evolve,damage",
     "skill_condition": "character=me,character=me,{me.selected_cards.evolution=false.base_card_id=120641020.count}>0,{me.selected_cards.evolution=false.base_card_id=120641020.count}>0",
-    "skill_disc": "给予1个自己的吸血鬼从者守护 效果。<br>如果该从者为未进化的永劫的吸血鬼‧亚瑞札特，则会额外再使其进化。给予敌方的从者全体1点伤害。",
+    "skill_disc": "给予1个自己的吸血鬼从者守护 效果。<br>如果该从者为未进化的永劫的吸血鬼·亚瑞札特，则会额外再使其进化。给予敌方的从者全体1点伤害。",
     "skill_option": "none,none,none,damage=1",
     "tribe_name": "-"
   },
@@ -7899,7 +7899,7 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,damage,possess_ep_modifier",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=121641030.count}>0,{me.inplay_other_self.unit.base_card_id=121641030.count}>0",
-    "skill_disc": "这场对战中，给予自己的主战者「自己的回合开始时，抽取1张卡片」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼‧尤里亚斯，则会给予自己的主战者1点伤害。回复自己的EP 1点。",
+    "skill_disc": "这场对战中，给予自己的主战者「自己的回合开始时，抽取1张卡片」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼·尤里亚斯，则会给予自己的主战者1点伤害。回复自己的EP 1点。",
     "skill_option": "skill=(skill:draw)(timing:self_turn_start)(condition:character=me)(target:character=me&target=deck&card_type=all&random_count=1)(option:none)(preprocess:none)&duplicate_ban_id=9006440601,damage=1,add_ep=1",
     "tribe_name": "-"
   },
@@ -7918,7 +7918,7 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,damage,damage",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=121641030.count}>0,{me.inplay_other_self.unit.base_card_id=121641030.count}>0",
-    "skill_disc": "这场对战中，给予自己的主战者「自己的回合中，每当敌方的从者被破坏时，给予敌方的主战者1点伤害」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼‧尤里亚斯，则会给予自己的主战者1点伤害。随机给予1个敌方的从者3点伤害。",
+    "skill_disc": "这场对战中，给予自己的主战者「自己的回合中，每当敌方的从者被破坏时，给予敌方的主战者1点伤害」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼·尤里亚斯，则会给予自己的主战者1点伤害。随机给予1个敌方的从者3点伤害。",
     "skill_option": "skill=(skill:damage)(timing:when_destroy_other)(condition:character=op&target=destroyed_card&card_type=unit&turn=self)(target:character=op&target=inplay&card_type=class)(option:damage=1)(preprocess:none)(effect_path:btl_900644070_3)(se_path:se_btl_900644070_3)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=9006440701,damage=1,damage=3",
     "tribe_name": "-"
   },
@@ -7937,7 +7937,7 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,attach_skill,damage,damage",
     "skill_condition": "character=me,character=me,{me.inplay_other_self.unit.base_card_id=121641030.count}>0,{me.inplay_other_self.unit.base_card_id=121641030.count}>0",
-    "skill_disc": "这场对战中，给予自己的主战者「自己的回合中，受到的伤害皆转变为0」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼‧尤里亚斯，则会给予自己的主战者1点伤害。给予敌方的从者全体1点伤害。",
+    "skill_disc": "这场对战中，给予自己的主战者「自己的回合中，受到的伤害皆转变为0」效果。主战者无法重複叠加此效果。<br>如果自己的战场上有终幕吸血鬼·尤里亚斯，则会给予自己的主战者1点伤害。给予敌方的从者全体1点伤害。",
     "skill_option": "skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me&target=self&turn=self)(target:character=me&target=inplay&card_type=class)(option:type=all)(preprocess:turn_end_stop=me)&duplicate_ban_id=9006440801,skill=(skill:shield)(timing:self_turn_start)(condition:character=me&target=self&turn=self)(target:character=me&target=inplay&card_type=class)(option:type=all)(preprocess:turn_end_stop=me)&duplicate_ban_id=9006440802,damage=1,damage=1",
     "tribe_name": "-"
   },
@@ -8039,7 +8039,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109731020,
-    "card_name": "天象之风‧佩德菈",
+    "card_name": "天象之风·佩德菈",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -8070,7 +8070,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧咏唱：神圣祈愿<br>‧咏唱：圣兽之誓<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·咏唱：神圣祈愿<br>·咏唱：圣兽之誓<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=101713020:100713010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -8134,7 +8134,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 114721010,
-    "card_name": "警察神官‧帕茵",
+    "card_name": "警察神官·帕茵",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 7,
@@ -8172,7 +8172,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119721010,
-    "card_name": "爱好魔物的黑闇圣职者‧威尔",
+    "card_name": "爱好魔物的黑闇圣职者·威尔",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 7,
@@ -8210,7 +8210,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 121741020,
-    "card_name": "收穫的参谋长‧喵鲁",
+    "card_name": "收穫的参谋长·喵鲁",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 7,
@@ -8286,7 +8286,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126731010,
-    "card_name": "绚彩瑰石‧玟奇",
+    "card_name": "绚彩瑰石·玟奇",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 7,
@@ -8305,7 +8305,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 128731010,
-    "card_name": "优雅修练‧露",
+    "card_name": "优雅修练·露",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 7,
@@ -8393,7 +8393,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧神圣的开示<br>‧治癒祷告<br>‧破邪圣光<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·神圣的开示<br>·治癒祷告<br>·破邪圣光<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900713010:101714020:100714030,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -8716,7 +8716,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,transform,draw",
     "skill_condition": "character=me&pp_count>=2,character=me&target=chosen_cards&card_type=all&pp_count>=2,character=me&target=self&card_type=chant_field",
-    "skill_disc": "‧神圣的开示<br>‧畏忌的开示<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>谢幕曲 抽取1张卡片。",
+    "skill_disc": "·神圣的开示<br>·畏忌的开示<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>谢幕曲 抽取1张卡片。",
     "skill_option": "card_id=900713010:900713020,repeat_count=1&summon_side=me,none",
     "tribe_name": "-"
   },
@@ -8754,7 +8754,7 @@ let cardData = [
     "rarity": 1,
     "skill": "chant_count_change,summon_token",
     "skill_condition": "{me.inplay_other_self.field.base_card_id=900012010.count}>0,character=me&card_type=chant_field",
-    "skill_disc": "倒数 2<br>入场曲 如果自己的战场上有那塔拉的大树，则使这个护符减少1回合倒数 。<br>谢幕曲 召唤1个森林参谋长‧喵鲁到战场上。",
+    "skill_disc": "倒数 2<br>入场曲 如果自己的战场上有那塔拉的大树，则使这个护符减少1回合倒数 。<br>谢幕曲 召唤1个森林参谋长·喵鲁到战场上。",
     "skill_option": "gain_chant=1,summon_token=900711140",
     "tribe_name": "自然"
   },
@@ -8773,7 +8773,7 @@ let cardData = [
     "rarity": 3,
     "skill": "none,chant_count_change,token_draw,cost_change",
     "skill_condition": "{me.inplay_self.count}>0&{me.usable_ep}>{op.usable_ep}&character=me,{me.inplay_self.count}>0&{me.usable_ep}>{op.usable_ep}&character=me,character=me,character=me",
-    "skill_disc": "倒数 9<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 由撒旦、冰狱之王‧撒旦之中，随机增加1张卡片到手牌中，并使其消费转变为1。",
+    "skill_disc": "倒数 9<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 由撒旦、冰狱之王·撒旦之中，随机增加1张卡片到手牌中，并使其消费转变为1。",
     "skill_option": "none,gain_chant=1,token_draw=101041030:111041010:?1,set=1",
     "tribe_name": "-"
   },
@@ -8906,7 +8906,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,transform,heal,heal",
     "skill_condition": "character=me&pp_count>=2,character=me&pp_count>=2,character=me,character=me",
-    "skill_disc": "‧班布蒂的试场<br>‧麻姆的试场<br>‧蒲拉慕的试场<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>入场曲 谢幕曲 回复自己的主战者1点生命值。",
+    "skill_disc": "·班布蒂的试场<br>·麻姆的试场<br>·蒲拉慕的试场<br>如果这张卡片在手牌中，并且自己剩馀的PP为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>入场曲 谢幕曲 回复自己的主战者1点生命值。",
     "skill_option": "card_id=900733040:900733050:900733060,repeat_count=1&summon_side=me,healing=1,healing=1",
     "tribe_name": "学园"
   },
@@ -8982,7 +8982,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧优秀的发明<br>‧危险的发明<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·优秀的发明<br>·危险的发明<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900822010:900822020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -9103,19 +9103,19 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 118841010,
-    "card_name": "缥缈虚无‧依璐凯诺",
+    "card_name": "缥缈虚无·依璐凯诺",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 8,
     "cost": 1,
     "evo_atk": 2,
     "evo_life": 2,
-    "evo_skill_disc": "谢幕曲 增加1张缥缈虚无‧依璐凯诺卡片到手牌中，并给予+0/+X效果。X为「被破坏当前的生命值」。<br>进化时 给予敌方的从者全体-1/-1效果。（生命值最大值为0以下的从者将会被破坏）",
+    "evo_skill_disc": "谢幕曲 增加1张缥缈虚无·依璐凯诺卡片到手牌中，并给予+0/+X效果。X为「被破坏当前的生命值」。<br>进化时 给予敌方的从者全体-1/-1效果。（生命值最大值为0以下的从者将会被破坏）",
     "life": 1,
     "rarity": 4,
     "skill": "token_draw,powerup,token_draw,banish//token_draw,powerup,power_down",
     "skill_condition": "character=me,character=me,{self.life}>=4,{self.life}>=4//character=me,character=me,character=me",
-    "skill_disc": "谢幕曲 增加1张缥缈虚无‧依璐凯诺卡片到手牌中，并给予+0/+X效果。X为「被破坏当前的生命值」。<br>入场曲 如果这个从者的生命值为4以上，则会增加1张虚象具现卡片到手牌中，并使这个从者消失。",
+    "skill_disc": "谢幕曲 增加1张缥缈虚无·依璐凯诺卡片到手牌中，并给予+0/+X效果。X为「被破坏当前的生命值」。<br>入场曲 如果这个从者的生命值为4以上，则会增加1张虚象具现卡片到手牌中，并使这个从者消失。",
     "skill_option": "token_draw=118841010,add_life={self.last_life},token_draw=900844040,none//token_draw=118841010,add_life={self.last_life},gain_offense=1&gain_life=1",
     "tribe_name": "-"
   },
@@ -9210,7 +9210,7 @@ let cardData = [
     "rarity": 2,
     "skill": "heal,token_draw",
     "skill_condition": "{me.destroyed_card_list.unit.count}>=10,character=me",
-    "skill_disc": "入场曲 如果本次对战中自己已被破坏的从者数为10个以上，则会回复自己的主战者2点生命值。<br>谢幕曲 增加1张改良型‧悬丝傀儡卡片到手牌中。",
+    "skill_disc": "入场曲 如果本次对战中自己已被破坏的从者数为10个以上，则会回复自己的主战者2点生命值。<br>谢幕曲 增加1张改良型·悬丝傀儡卡片到手牌中。",
     "skill_option": "healing=2,token_draw=900811110",
     "tribe_name": "宴乐"
   },
@@ -9274,7 +9274,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 127841010,
-    "card_name": "机锋的罪人‧卡托司瑞德",
+    "card_name": "机锋的罪人·卡托司瑞德",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 8,
@@ -9388,7 +9388,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900811110,
-    "card_name": "改良型‧悬丝傀儡",
+    "card_name": "改良型·悬丝傀儡",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -9426,7 +9426,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900841050,
-    "card_name": "提线傀儡‧舞诺",
+    "card_name": "提线傀儡·舞诺",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -9590,7 +9590,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧解析的创造物<br>‧增殖的创造物<br>‧绚烂的创造物<br>‧典范转移<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·解析的创造物<br>·增殖的创造物<br>·绚烂的创造物<br>·典范转移<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900811030:900811070:900811040:900814010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -9742,7 +9742,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧悬丝傀儡<br>‧改良型‧悬丝傀儡<br>‧武装强化<br>增加2张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·悬丝傀儡<br>·改良型·悬丝傀儡<br>·武装强化<br>增加2张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900811050:900811110:100214020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -9818,7 +9818,7 @@ let cardData = [
     "rarity": 2,
     "skill": "damage,update_deck,attach_skill,summon_token",
     "skill_condition": "{me.game_play_cards_other_self.base_card_id=129824010.count}<5,{me.game_play_cards_other_self.base_card_id=129824010.count}<5,{me.game_play_cards_other_self.base_card_id=129824010.count}<5,{me.game_play_cards_other_self.base_card_id=129824010.count}>=5",
-    "skill_disc": "如果X为4以下，则会随机给予1个敌方的从者X点伤害。增加3张溷沌闇息卡片到牌堆中。本回合结束时，抽取1张卡片。<br>如果为5以上，则会召唤1个溷沌之闇‧辛恩到战场上。<br>X为「本次对战中自己已使用的溷沌闇息卡片张数（不包含本卡片）」。",
+    "skill_disc": "如果X为4以下，则会随机给予1个敌方的从者X点伤害。增加3张溷沌闇息卡片到牌堆中。本回合结束时，抽取1张卡片。<br>如果为5以上，则会召唤1个溷沌之闇·辛恩到战场上。<br>X为「本次对战中自己已使用的溷沌闇息卡片张数（不包含本卡片）」。",
     "skill_option": "damage={me.game_play_cards_other_self.base_card_id=129824010.count},token_draw=129824010:129824010:129824010&type=add,skill=(skill:draw)(timing:self_turn_end)(condition:character=me)(target:character=me&target=deck&card_type=all&random_count=1)(option:none)(preprocess:remove_after_action=(count=1)),summon_token=900831050",
     "tribe_name": "-"
   },
@@ -9894,7 +9894,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "将1张与「本回合中自己已使用的从者（妄想少女A‧璐娜露除外）」同名的从者卡加入自己的手牌中。（如果为複数，则会在其中随机选择）",
+    "skill_disc": "将1张与「本回合中自己已使用的从者（妄想少女A·璐娜露除外）」同名的从者卡加入自己的手牌中。（如果为複数，则会在其中随机选择）",
     "skill_option": "none",
     "tribe_name": "-"
   },
@@ -10027,7 +10027,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,transform,update_deck",
     "skill_condition": "character=me&target=self&resonance=true&pp_count>=1,character=me&target=self&resonance=true&pp_count>=1,{me.inplay_self.count}>0&character=me&target=self&card_type=field",
-    "skill_disc": "‧创造物兵团召集令<br>‧创造物的光辉<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，由神祕的创造物、绚烂的创造物、精奥的创造物之中，随机增加不同的2张卡片到牌堆中。",
+    "skill_disc": "·创造物兵团召集令<br>·创造物的光辉<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，由神祕的创造物、绚烂的创造物、精奥的创造物之中，随机增加不同的2张卡片到牌堆中。",
     "skill_option": "card_id=900813010:900813020,repeat_count=1&summon_side=me,token_draw=900811020:900811040:900811060:?2&type=add",
     "tribe_name": "-"
   },
@@ -10167,7 +10167,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102021020,
-    "card_name": "独角兽舞者‧独角子",
+    "card_name": "独角兽舞者·独角子",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 0,
@@ -10243,7 +10243,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103021030,
-    "card_name": "圣弓天使‧莉莉耶尔",
+    "card_name": "圣弓天使·莉莉耶尔",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 0,
@@ -10281,7 +10281,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104021030,
-    "card_name": "徬徨的诗人‧艾尔塔",
+    "card_name": "徬徨的诗人·艾尔塔",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 0,
@@ -10300,7 +10300,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105021010,
-    "card_name": "歌剧姬‧菲莉亚",
+    "card_name": "歌剧姬·菲莉亚",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 0,
@@ -10319,7 +10319,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106021010,
-    "card_name": "堕天使‧伊芙莉西亚",
+    "card_name": "堕天使·伊芙莉西亚",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 0,
@@ -10414,7 +10414,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109031010,
-    "card_name": "苍蓝少女‧露莉亚",
+    "card_name": "苍蓝少女·露莉亚",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 0,
@@ -10471,7 +10471,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111011030,
-    "card_name": "香料天使‧蕾兹",
+    "card_name": "香料天使·蕾兹",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 0,
@@ -10490,7 +10490,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111031010,
-    "card_name": "圣剑天使‧艾菲梅拉",
+    "card_name": "圣剑天使·艾菲梅拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 0,
@@ -10509,7 +10509,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112011020,
-    "card_name": "雷鸣军神‧福尼加尔",
+    "card_name": "雷鸣军神·福尼加尔",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -10566,7 +10566,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113021010,
-    "card_name": "独角兽巫女‧独角子",
+    "card_name": "独角兽巫女·独角子",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 0,
@@ -10725,14 +10725,14 @@ let cardData = [
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 5,
-    "evo_skill_disc": "‧生产器械<br>‧那塔拉的大树<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·生产器械<br>·那塔拉的大树<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 3,
     "rarity": 3,
     "skill": "trigger,damage,heal//choice,token_draw",
     "skill_condition": "{me.hand_other_self.all.tribe=machine.count}>=3,{op.inplay.unit.selectable.count}>0&{me.hand_other_self.all.tribe=machine.count}>=3,{me.hand_other_self.all.tribe=nature.count}>=3//character=me,character=me",
     "skill_disc": "入场曲 如果自己手牌中的其他机械卡张数为3张以上，则会给予1个敌方的从者2点伤害。如果自然卡张数为3张以上，则会回复自己的主战者2点生命值。",
     "skill_option": "none,damage=2,healing=2//card_id=900011080:900012010,repeat_count=1&summon_side=me",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 5,
@@ -10832,7 +10832,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119021020,
-    "card_name": "苍心的少女‧伊欧",
+    "card_name": "苍心的少女·伊欧",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 0,
@@ -10851,7 +10851,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119031010,
-    "card_name": "娇小的赤红之龙‧碧",
+    "card_name": "娇小的赤红之龙·碧",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 0,
@@ -10965,7 +10965,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 122031020,
-    "card_name": "导引之钟‧叮噹天使",
+    "card_name": "导引之钟·叮噹天使",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 0,
@@ -11022,7 +11022,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123041020,
-    "card_name": "涸绝飢饿‧吉鲁涅莉婕",
+    "card_name": "涸绝飢饿·吉鲁涅莉婕",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 0,
@@ -11072,7 +11072,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧天使之泉<br>‧天使的旋律<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·天使之泉<br>·天使的旋律<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=108013010:119014010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -11174,7 +11174,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 128031010,
-    "card_name": "煌奏学徒‧亨莉雅妲",
+    "card_name": "煌奏学徒·亨莉雅妲",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 0,
@@ -11231,7 +11231,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129011010,
-    "card_name": "正义的V手势‧菲娜",
+    "card_name": "正义的V手势·菲娜",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 0,
@@ -11991,7 +11991,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102131030,
-    "card_name": "精灵少女‧莉莎",
+    "card_name": "精灵少女·莉莎",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -12010,7 +12010,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103121030,
-    "card_name": "冰晶光芒‧莉莉",
+    "card_name": "冰晶光芒·莉莉",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 1,
@@ -12048,7 +12048,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104121020,
-    "card_name": "小小勇士‧斯库娜",
+    "card_name": "小小勇士·斯库娜",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 1,
@@ -12067,7 +12067,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105111020,
-    "card_name": "仙境双子‧迪与丹",
+    "card_name": "仙境双子·迪与丹",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 1,
@@ -12086,7 +12086,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105121010,
-    "card_name": "战斧少女‧艾比",
+    "card_name": "战斧少女·艾比",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 1,
@@ -12124,7 +12124,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106111010,
-    "card_name": "和善的精灵‧斐特",
+    "card_name": "和善的精灵·斐特",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 1,
@@ -12143,7 +12143,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 106121010,
-    "card_name": "精灵歌手‧柏尔嘉",
+    "card_name": "精灵歌手·柏尔嘉",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 1,
@@ -12200,7 +12200,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107131010,
-    "card_name": "精灵锻造师‧蕾妮",
+    "card_name": "精灵锻造师·蕾妮",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 1,
@@ -12257,7 +12257,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108131010,
-    "card_name": "爱之妖精‧宝菈",
+    "card_name": "爱之妖精·宝菈",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 1,
@@ -12269,7 +12269,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,transform",
     "skill_condition": "character=me&play_count>2&pp_count>=2,character=me&target=chosen_cards&card_type=all&play_count>2&pp_count>=2",
-    "skill_disc": "‧深绿真心‧宝菈<br>‧真红羁绊‧宝菈<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且本回合中已经使用的卡片数为2张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·深绿真心·宝菈<br>·真红羁绊·宝菈<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且本回合中已经使用的卡片数为2张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900131020:900131030,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -12352,7 +12352,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110131030,
-    "card_name": "水晶指挥家‧莉莉",
+    "card_name": "水晶指挥家·莉莉",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 1,
@@ -12390,7 +12390,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111121020,
-    "card_name": "读心少女‧米榭儿",
+    "card_name": "读心少女·米榭儿",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -12428,7 +12428,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112141020,
-    "card_name": "双剑斗士‧克里夫特",
+    "card_name": "双剑斗士·克里夫特",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 1,
@@ -12580,7 +12580,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115131020,
-    "card_name": "纯真弓箭手‧璃乃",
+    "card_name": "纯真弓箭手·璃乃",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 1,
@@ -12618,7 +12618,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 115141020,
-    "card_name": "导引巫女‧可可萝",
+    "card_name": "导引巫女·可可萝",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 1,
@@ -12713,7 +12713,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 118131020,
-    "card_name": "小槌勇士‧斯库娜",
+    "card_name": "小槌勇士·斯库娜",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 1,
@@ -12751,7 +12751,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119121020,
-    "card_name": "随性的笛奏者‧米莫尔梅梅尔",
+    "card_name": "随性的笛奏者·米莫尔梅梅尔",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -12770,7 +12770,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119131030,
-    "card_name": "岚爪的猫女‧千茵",
+    "card_name": "岚爪的猫女·千茵",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -12865,14 +12865,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121141030,
-    "card_name": "深绿弓手‧亚里莎",
+    "card_name": "深绿弓手·亚里莎",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 1,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "‧疾风箭击<br>‧暴风箭击<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>当这个从者的攻击力或生命值因能力而获得+效果时，给予敌方的从者全体1点伤害。",
+    "evo_skill_disc": "·疾风箭击<br>·暴风箭击<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>当这个从者的攻击力或生命值因能力而获得+效果时，给予敌方的从者全体1点伤害。",
     "life": 2,
     "rarity": 4,
     "skill": "damage,summon_token//choice,token_draw,damage",
@@ -12998,7 +12998,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123141010,
-    "card_name": "逆时剑师‧阿玛兹",
+    "card_name": "逆时剑师·阿玛兹",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 1,
@@ -13017,7 +13017,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 124111020,
-    "card_name": "园艺师‧嘉儿克丝",
+    "card_name": "园艺师·嘉儿克丝",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 1,
@@ -13112,7 +13112,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125141020,
-    "card_name": "神铁锻造师‧蕾妮",
+    "card_name": "神铁锻造师·蕾妮",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 1,
@@ -13188,7 +13188,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126131010,
-    "card_name": "花绽之狼‧史雷特",
+    "card_name": "花绽之狼·史雷特",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 1,
@@ -13200,14 +13200,14 @@ let cardData = [
     "rarity": 3,
     "skill": "cost_change//power_down,power_down",
     "skill_condition": "character=me&target=hand_other_self&card_type=unit&base_card_id!=126131010&clan=elf//{me.game_skill_return_card_count}<5,{me.game_skill_return_card_count}>=5",
-    "skill_disc": "入场曲 到回合结束为止，使1张自己手牌中的精灵从者卡（花绽之狼‧史雷特除外）消费-2。",
+    "skill_disc": "入场曲 到回合结束为止，使1张自己手牌中的精灵从者卡（花绽之狼·史雷特除外）消费-2。",
     "skill_option": "add=-2//set_offense=1,set_offense=1",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 126131030,
-    "card_name": "奋勉的公主‧梅莉奥妮",
+    "card_name": "奋勉的公主·梅莉奥妮",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 1,
@@ -13283,7 +13283,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 127141010,
-    "card_name": "剪枝的罪人‧玛伽绮耶",
+    "card_name": "剪枝的罪人·玛伽绮耶",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 1,
@@ -13397,7 +13397,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 129121010,
-    "card_name": "恩惠的祈愿‧琳茵",
+    "card_name": "恩惠的祈愿·琳茵",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 1,
@@ -13416,7 +13416,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129141010,
-    "card_name": "身负使命的妖精公主‧阿丽雅",
+    "card_name": "身负使命的妖精公主·阿丽雅",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 1,
@@ -13454,7 +13454,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900131020,
-    "card_name": "深绿真心‧宝菈",
+    "card_name": "深绿真心·宝菈",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -13473,7 +13473,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900131030,
-    "card_name": "真红羁绊‧宝菈",
+    "card_name": "真红羁绊·宝菈",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -13675,7 +13675,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,summon_token,damage",
     "skill_condition": "character=me&play_count<=2,character=me&play_count<=2,character=me&play_count<=2,play_count>2,play_count>2",
-    "skill_disc": "‧亚里莎的导引<br>‧拉缇卡的拥抱<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果本回合中已经使用的卡片数为2张以上（不包含本卡片），则会由原本的命运抉择 转变为召唤2个妖精到战场上。随机给予1个敌方的从者3点伤害。",
+    "skill_disc": "·亚里莎的导引<br>·拉缇卡的拥抱<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果本回合中已经使用的卡片数为2张以上（不包含本卡片），则会由原本的命运抉择 转变为召唤2个妖精到战场上。随机给予1个敌方的从者3点伤害。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900134040:900134050,repeat_count=1&summon_side=me,summon_token=900111010:900111010,damage=3",
     "tribe_name": "-"
   },
@@ -13772,7 +13772,7 @@ let cardData = [
     "skill_condition": "none,{me.self.fusion_ingrediented_card_list.count}=0,{me.self.fusion_ingrediented_card_list.count}>0,{me.self.fusion_ingrediented_card_list.count}>0",
     "skill_disc": "融合 ； 自然卡<br>---------- <br>抽取1张卡片。<br>如果已有卡片与这张卡片进行融合 ，则会由原本的抽取1张转变为抽取2张。回复自己的PP 1点。",
     "skill_option": "none,none,none,add_pp=1",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 0,
@@ -14309,7 +14309,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102221010,
-    "card_name": "女僕枪手‧赛莉亚",
+    "card_name": "女僕枪手·赛莉亚",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 2,
@@ -14347,7 +14347,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103221030,
-    "card_name": "骑士团副队长‧格尔德",
+    "card_name": "骑士团副队长·格尔德",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 2,
@@ -14366,7 +14366,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104211020,
-    "card_name": "海舰卫士‧希莫妮",
+    "card_name": "海舰卫士·希莫妮",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -14404,7 +14404,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105231010,
-    "card_name": "小红帽‧梅西",
+    "card_name": "小红帽·梅西",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 2,
@@ -14442,7 +14442,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 106231010,
-    "card_name": "太阳之枪‧璐",
+    "card_name": "太阳之枪·璐",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 2,
@@ -14537,7 +14537,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 108231010,
-    "card_name": "无邪公主‧普莉姆",
+    "card_name": "无邪公主·普莉姆",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 2,
@@ -14549,14 +14549,14 @@ let cardData = [
     "rarity": 3,
     "skill": "sneak,pp_fixeduse,powerup,token_draw,cost_change",
     "skill_condition": "character=me,pp_count>=8,character=me&target=self&pp_count>=8,character=me&target=self&pp_count>=8,pp_count>=8",
-    "skill_disc": "潜行 <br>入场曲 爆能强化 8； 获得+3/+3效果。增加1张沉默的女僕‧诺嘉卡片到手牌中，并使其消费转变为0。",
+    "skill_disc": "潜行 <br>入场曲 爆能强化 8； 获得+3/+3效果。增加1张沉默的女僕·诺嘉卡片到手牌中，并使其消费转变为0。",
     "skill_option": "none,fixeduse=8,add_offense=3&add_life=3,token_draw=108221010,set=0",
     "tribe_name": "指挥官"
   },
   {
     "atk": 2,
     "card_id": 108231020,
-    "card_name": "恶魔伯爵‧达利欧",
+    "card_name": "恶魔伯爵·达利欧",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 2,
@@ -14575,7 +14575,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108241010,
-    "card_name": "天空指挥官‧榭莉亚",
+    "card_name": "天空指挥官·榭莉亚",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 2,
@@ -14587,7 +14587,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=5,character=me&target=chosen_cards&card_type=all&pp_count>=5",
-    "skill_disc": "‧希望谋士‧榭莉亚<br>‧绝望使者‧榭莉亚<br>如果这张卡片在手牌中，并且自己剩馀的PP为5点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·希望谋士·榭莉亚<br>·绝望使者·榭莉亚<br>如果这张卡片在手牌中，并且自己剩馀的PP为5点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900241020:900241030,repeat_count=1&summon_side=me",
     "tribe_name": "指挥官"
   },
@@ -14632,7 +14632,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111211030,
-    "card_name": "魔法商贩‧艾尔涅丝塔",
+    "card_name": "魔法商贩·艾尔涅丝塔",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -14651,7 +14651,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 111231010,
-    "card_name": "夜月之刃‧里欧德",
+    "card_name": "夜月之刃·里欧德",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -14746,7 +14746,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113221020,
-    "card_name": "雷维翁勐者‧杰诺",
+    "card_name": "雷维翁勐者·杰诺",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 2,
@@ -14758,7 +14758,7 @@ let cardData = [
     "rarity": 2,
     "skill": "consume_ep_modifier",
     "skill_condition": "character=me&target=self",
-    "skill_disc": "只要这个从者在战场上，自己的雷维翁从者（雷维翁勐者‧杰诺除外）不消费EP即可进化。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "只要这个从者在战场上，自己的雷维翁从者（雷维翁勐者·杰诺除外）不消费EP即可进化。（1回合中依旧只能进化1张卡片）",
     "skill_option": "tribe=levin&base_card_id!=113221020",
     "tribe_name": "雷维翁"
   },
@@ -14784,7 +14784,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114221020,
-    "card_name": "神准狙击手‧瓦路兹",
+    "card_name": "神准狙击手·瓦路兹",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 2,
@@ -14874,7 +14874,7 @@ let cardData = [
     "skill_condition": "{me.hand_other_self.tribe=legion.count}>=3,{me.hand_other_self.tribe=legion.count}>=3,{me.hand_other_self.tribe=machine.count}>=3",
     "skill_disc": "入场曲 如果自己手牌中的其他士兵卡张数为3张以上，则会获得+2/+0与突进 效果。如果机械卡张数为3张以上，则会抽取1张卡片。",
     "skill_option": "add_offense=2,none,none",
-    "tribe_name": "士兵‧机械"
+    "tribe_name": "士兵·机械"
   },
   {
     "atk": 2,
@@ -14893,7 +14893,7 @@ let cardData = [
     "skill_condition": "pp_count<8,pp_count>=8,pp_count>=8,pp_count>=8",
     "skill_disc": "入场曲 回复自己的PP 1点。<br>爆能强化 8； 由原本的回复1点转变为回复7点。获得+3/+3效果。",
     "skill_option": "add_pp=1,fixeduse=8,add_pp=7,add_offense=3&add_life=3",
-    "tribe_name": "士兵‧自然"
+    "tribe_name": "士兵·自然"
   },
   {
     "atk": 2,
@@ -14955,7 +14955,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117231020,
-    "card_name": "动乱商人‧伊尔米斯娜",
+    "card_name": "动乱商人·伊尔米斯娜",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 2,
@@ -14993,14 +14993,14 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119221010,
-    "card_name": "沉睡的辉龙‧亚瑟",
+    "card_name": "沉睡的辉龙·亚瑟",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 5,
-    "evo_skill_disc": "自己的回合结束时，协作 10； 给予自己的主战者「使下一次受到的伤害转变为0」效果。<br>进化时 如果自己的战场上没有沉睡的狮子‧莫德雷德，则会召唤1个到战场上。",
+    "evo_skill_disc": "自己的回合结束时，协作 10； 给予自己的主战者「使下一次受到的伤害转变为0」效果。<br>进化时 如果自己的战场上没有沉睡的狮子·莫德雷德，则会召唤1个到战场上。",
     "life": 3,
     "rarity": 2,
     "skill": "attach_skill//attach_skill,summon_token",
@@ -15012,14 +15012,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119221020,
-    "card_name": "沉睡的狮子‧莫德雷德",
+    "card_name": "沉睡的狮子·莫德雷德",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 3,
-    "evo_skill_disc": "自己的回合结束时，协作 5； 给予敌方的从者全体1点伤害。<br>进化时 如果自己的战场上没有沉睡的辉龙‧亚瑟，则会召唤1个到战场上。",
+    "evo_skill_disc": "自己的回合结束时，协作 5； 给予敌方的从者全体1点伤害。<br>进化时 如果自己的战场上没有沉睡的辉龙·亚瑟，则会召唤1个到战场上。",
     "life": 1,
     "rarity": 2,
     "skill": "damage//damage,summon_token",
@@ -15031,7 +15031,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119231010,
-    "card_name": "武魂梦想家‧味琳",
+    "card_name": "武魂梦想家·味琳",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
@@ -15221,7 +15221,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123231020,
-    "card_name": "亚森‧罗苹",
+    "card_name": "亚森·罗苹",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 2,
@@ -15254,12 +15254,12 @@ let cardData = [
     "skill_condition": "character=me,{me.game_draw_cards.base_card_id=900214050.count}>=2,character=me",
     "skill_disc": "入场曲 增加1张闪耀的金币卡片到手牌中。随后，如果自己在这场对战中增加到手牌中的闪耀的金币卡片张数为3张以上，则会使这个从者进化。",
     "skill_option": "token_draw=900214050,none,none",
-    "tribe_name": "士兵‧宴乐"
+    "tribe_name": "士兵·宴乐"
   },
   {
     "atk": 2,
     "card_id": 124241010,
-    "card_name": "华之大将‧武祇",
+    "card_name": "华之大将·武祇",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 2,
@@ -15273,7 +15273,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay.class.rally_count}>=10//character=me",
     "skill_disc": "入场曲 增加1张炫目的崭露卡片到手牌中。协作 10； 回复自己的EP 1点。",
     "skill_option": "token_draw=900244060,add_ep=1//add=-2",
-    "tribe_name": "指挥官‧宴乐"
+    "tribe_name": "指挥官·宴乐"
   },
   {
     "atk": 2,
@@ -15297,7 +15297,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125211020,
-    "card_name": "鲁米那斯治疗师‧琍菈菈",
+    "card_name": "鲁米那斯治疗师·琍菈菈",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 2,
@@ -15387,7 +15387,7 @@ let cardData = [
     "skill_condition": "{me.damaged_card.unit.count}=0&{op.inplay.unit.selectable.count}>0,{me.damaged_card.unit.count}>0&{op.inplay.unit.selectable.count}>0,{me.damaged_card.unit.count}>0",
     "skill_disc": "入场曲 给予1个敌方的从者1点伤害。如果自己的战场上有已受到伤害的从者，则会由原本的1点伤害转变为2点伤害。给予敌方的主战者2点伤害。",
     "skill_option": "damage=1,damage=2,damage=2",
-    "tribe_name": "士兵‧英雄"
+    "tribe_name": "士兵·英雄"
   },
   {
     "atk": 2,
@@ -15463,12 +15463,12 @@ let cardData = [
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=looting,{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=looting,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}<7,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}>=7",
     "skill_disc": "当自己使用财宝卡时，给予随机1个敌方的从者与敌方的主战者各1点伤害。<br>入场曲 增加1张黄金之杯卡片到手牌中。如果自己在这场对战中融合 或已使用的财宝卡张数合计为7张以上，则会由原本的黄金之杯转变为增加战慄的海贼旗卡片到手牌中。",
     "skill_option": "damage=1,damage=1,token_draw=900214020,token_draw=900214060",
-    "tribe_name": "士兵‧八狱"
+    "tribe_name": "士兵·八狱"
   },
   {
     "atk": 1,
     "card_id": 128211020,
-    "card_name": "耿直的琢磨‧托尼",
+    "card_name": "耿直的琢磨·托尼",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 2,
@@ -15482,7 +15482,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay.class.rally_count}>=10",
     "skill_disc": "入场曲 随机将1张指挥官卡，由自己的牌堆抽取到手牌中。协作 10； 使这个从者进化。",
     "skill_option": "none,none",
-    "tribe_name": "士兵‧学园"
+    "tribe_name": "士兵·学园"
   },
   {
     "atk": 2,
@@ -15506,7 +15506,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128241030,
-    "card_name": "约定之荣耀‧高文",
+    "card_name": "约定之荣耀·高文",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 2,
@@ -15525,7 +15525,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129221020,
-    "card_name": "豪放的战士‧马尔克",
+    "card_name": "豪放的战士·马尔克",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 2,
@@ -15544,7 +15544,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 129241010,
-    "card_name": "时空提督‧莫妮卡",
+    "card_name": "时空提督·莫妮卡",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 2,
@@ -15556,7 +15556,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,attach_skill,attach_skill//powerup",
     "skill_condition": "character=me,character=me&{me.inplay.class.rally_count}>=10,character=me&{me.inplay.class.rally_count}>=10//character=me&target=attacker&attacker=self",
-    "skill_disc": "入场曲 召唤1个骑士到战场上。<br>谢幕曲 协作 10； 给予自己的主战者「下个自己的回合开始时，召唤1个时空提督‧莫妮卡到战场上，并使其进化。而后失去此能力」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "入场曲 召唤1个骑士到战场上。<br>谢幕曲 协作 10； 给予自己的主战者「下个自己的回合开始时，召唤1个时空提督·莫妮卡到战场上，并使其进化。而后失去此能力」效果。主战者无法重複叠加此效果。",
     "skill_option": "summon_token=900211010,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=129241010)(preprocess:remove_after_action=(count=1))&duplicate_ban_id=1292410101,skill=(skill:evolve)(timing:self_turn_start)(condition:character=me)(target:character=me&target=last_target&card_type=unit)(option:none)(preprocess:remove_after_action=(count=1))(effect_path:btl_129241010_3)(se_path:se_btl_129241010_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=1292410102//add_offense=1&add_life=1",
     "tribe_name": "指挥官"
   },
@@ -15639,7 +15639,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900231080,
-    "card_name": "魔雾管家‧利路耶",
+    "card_name": "魔雾管家·利路耶",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -15651,14 +15651,14 @@ let cardData = [
     "rarity": 3,
     "skill": "guard,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "守护 <br>谢幕曲 增加1张没有激奏 效果的魔雾公爵‧亚卓德卡片到手牌中。",
+    "skill_disc": "守护 <br>谢幕曲 增加1张没有激奏 效果的魔雾公爵·亚卓德卡片到手牌中。",
     "skill_option": "none,token_draw=900231100",
     "tribe_name": "士兵"
   },
   {
     "atk": 1,
     "card_id": 900231090,
-    "card_name": "魔雾女僕‧席娜",
+    "card_name": "魔雾女僕·席娜",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -15670,14 +15670,14 @@ let cardData = [
     "rarity": 3,
     "skill": "killer,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "必杀 <br>谢幕曲 增加1张没有激奏 效果的魔雾公爵‧亚卓德卡片到手牌中。",
+    "skill_disc": "必杀 <br>谢幕曲 增加1张没有激奏 效果的魔雾公爵·亚卓德卡片到手牌中。",
     "skill_option": "none,token_draw=900231100",
     "tribe_name": "士兵"
   },
   {
     "atk": 2,
     "card_id": 900231110,
-    "card_name": "雷维翁副团长‧玛姆",
+    "card_name": "雷维翁副团长·玛姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -16012,7 +16012,7 @@ let cardData = [
     "rarity": 2,
     "skill": "damage,pp_fixeduse,damage,token_draw,cost_change,pp_modifier",
     "skill_condition": "pp_count<9,pp_count>=9,pp_count>=9,character=me,character=me,pp_count>=9",
-    "skill_disc": "随机给予1个敌方的从者3点伤害。增加1张雷维翁剑士‧阿尔贝尔卡片到手牌中。使其消费转变为4。<br>爆能强化 9； 由原本的随机给予1个敌方的从者，转变为给予敌方的从者全体。回复自己的PP 9点。",
+    "skill_disc": "随机给予1个敌方的从者3点伤害。增加1张雷维翁剑士·阿尔贝尔卡片到手牌中。使其消费转变为4。<br>爆能强化 9； 由原本的随机给予1个敌方的从者，转变为给予敌方的从者全体。回复自己的PP 9点。",
     "skill_option": "damage=3,fixeduse=9,damage=3,token_draw=103241010,set=4,add_pp=9",
     "tribe_name": "-"
   },
@@ -16069,7 +16069,7 @@ let cardData = [
     "rarity": 3,
     "skill": "damage,damage,quick",
     "skill_condition": "character=me&{me.inplay_other_self.field.base_card_id=900012010.count}=0,character=me&{me.inplay_other_self.field.base_card_id=900012010.count}>0,character=me",
-    "skill_disc": "给予1个攻击力最高的敌方从者3点伤害。如果自己的战场上有那塔拉的大树，则会由原本的3点伤害转变为5点伤害。（如果为複数，则会在其中随机选择）<br>随机给予1个自己的森林公主‧米丝特莉娜 疾驰 效果。",
+    "skill_disc": "给予1个攻击力最高的敌方从者3点伤害。如果自己的战场上有那塔拉的大树，则会由原本的3点伤害转变为5点伤害。（如果为複数，则会在其中随机选择）<br>随机给予1个自己的森林公主·米丝特莉娜 疾驰 效果。",
     "skill_option": "damage=3,damage=5,none",
     "tribe_name": "自然"
   },
@@ -16088,7 +16088,7 @@ let cardData = [
     "rarity": 4,
     "skill": "damage,damage,attach_skill",
     "skill_condition": "character=me,{me.usable_ep}>=1,{me.usable_ep}>=1",
-    "skill_disc": "给予1个敌方的从者3点伤害。<br>如果自己剩馀的EP为1以上，则会消费EP 1点，并额外再随机给予1个敌方的从者3点伤害。下个自己的回合开始时，召唤1个魔导四轮车‧V到战场上。（若该回合尚未进化解禁，则剩馀EP为0）",
+    "skill_disc": "给予1个敌方的从者3点伤害。<br>如果自己剩馀的EP为1以上，则会消费EP 1点，并额外再随机给予1个敌方的从者3点伤害。下个自己的回合开始时，召唤1个魔导四轮车·V到战场上。（若该回合尚未进化解禁，则剩馀EP为0）",
     "skill_option": "damage=3,damage=3,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=900241080)(preprocess:remove_after_action=(count=1))",
     "tribe_name": "-"
   },
@@ -16164,7 +16164,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform,summon_token",
     "skill_condition": "{me.inplay.unit.clan=royal.count}>0&pp_count>=2,{me.inplay.unit.clan=royal.count}>0&pp_count>=2,{me.inplay_self.count}>0",
-    "skill_disc": "‧坚韧之盾<br>‧锐利之剑<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且自己的战场上有皇家护卫从者，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>敌方的回合结束时，召唤1个骑士到战场上。",
+    "skill_disc": "·坚韧之盾<br>·锐利之剑<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且自己的战场上有皇家护卫从者，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>敌方的回合结束时，召唤1个骑士到战场上。",
     "skill_option": "card_id=900223010:900223020,repeat_count=1&summon_side=me,summon_token=900211010",
     "tribe_name": "-"
   },
@@ -16209,7 +16209,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 100311010,
-    "card_name": "新星魔术师‧萨米",
+    "card_name": "新星魔术师·萨米",
     "card_set_id": 10000,
     "char_type": 1,
     "clan": 3,
@@ -16304,7 +16304,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102331010,
-    "card_name": "年迈的魔法师‧里维",
+    "card_name": "年迈的魔法师·里维",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 3,
@@ -16323,7 +16323,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103311030,
-    "card_name": "马纳历亚巫术师‧克雷格",
+    "card_name": "马纳历亚巫术师·克雷格",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -16361,7 +16361,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 104321020,
-    "card_name": "学院新生‧露",
+    "card_name": "学院新生·露",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 3,
@@ -16456,7 +16456,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106341010,
-    "card_name": "观星魔女‧丝特拉",
+    "card_name": "观星魔女·丝特拉",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 3,
@@ -16475,7 +16475,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107311020,
-    "card_name": "术式的教师‧吉尔",
+    "card_name": "术式的教师·吉尔",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 3,
@@ -16544,14 +16544,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=6,character=me&target=chosen_cards&card_type=all&pp_count>=6",
-    "skill_disc": "‧马纳历亚白龙<br>‧马纳历亚黑龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为6点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·马纳历亚白龙<br>·马纳历亚黑龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为6点以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900321010:900321020,repeat_count=1&summon_side=me",
     "tribe_name": "马纳历亚"
   },
   {
     "atk": 2,
     "card_id": 109311010,
-    "card_name": "黑魔女‧安娜",
+    "card_name": "黑魔女·安娜",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -16570,7 +16570,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110311010,
-    "card_name": "马纳历亚骑士‧欧文",
+    "card_name": "马纳历亚骑士·欧文",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
@@ -16582,7 +16582,7 @@ let cardData = [
     "rarity": 1,
     "skill": "draw",
     "skill_condition": "character=me",
-    "skill_disc": "入场曲 随机将1张马纳历亚从者卡（马纳历亚骑士‧欧文除外），由自己的牌堆抽取到手牌中。",
+    "skill_disc": "入场曲 随机将1张马纳历亚从者卡（马纳历亚骑士·欧文除外），由自己的牌堆抽取到手牌中。",
     "skill_option": "none",
     "tribe_name": "马纳历亚"
   },
@@ -16627,7 +16627,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 111341030,
-    "card_name": "巨锤术师‧吉奥斯",
+    "card_name": "巨锤术师·吉奥斯",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 3,
@@ -16646,7 +16646,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112311030,
-    "card_name": "马纳历亚富家子‧希勒迪",
+    "card_name": "马纳历亚富家子·希勒迪",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -16658,7 +16658,7 @@ let cardData = [
     "rarity": 1,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "入场曲 增加1张马纳历亚执事‧凯曼卡片到手牌中。",
+    "skill_disc": "入场曲 增加1张马纳历亚执事·凯曼卡片到手牌中。",
     "skill_option": "token_draw=900311080",
     "tribe_name": "马纳历亚"
   },
@@ -16684,7 +16684,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112341030,
-    "card_name": "魔法之王‧所罗门",
+    "card_name": "魔法之王·所罗门",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -16715,7 +16715,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧生产器械<br>‧修复模式<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·生产器械<br>·修复模式<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900011080:900014010,repeat_count=1&summon_side=me",
     "tribe_name": "机械"
   },
@@ -16874,7 +16874,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 116341030,
-    "card_name": "元素大魔法师‧亚连",
+    "card_name": "元素大魔法师·亚连",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 3,
@@ -16912,7 +16912,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117341010,
-    "card_name": "《愚者》‧琳库露",
+    "card_name": "《愚者》·琳库露",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 3,
@@ -16924,14 +16924,14 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw//pp_modifier",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all//character=me",
-    "skill_disc": "‧蒙昧的术式<br>‧剥落的镇压<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·蒙昧的术式<br>·剥落的镇压<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900344060:900344070,repeat_count=1&summon_side=me//add_pp=2",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 117341030,
-    "card_name": "决意预言者‧露妮",
+    "card_name": "决意预言者·露妮",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 3,
@@ -16943,7 +16943,7 @@ let cardData = [
     "rarity": 4,
     "skill": "spell_charge,draw,damage,damage,heal,token_draw",
     "skill_condition": "character=me,{self.charge_count}>=1,{self.charge_count}>=4,{self.charge_count}>=7,{self.charge_count}>=7,{self.charge_count}>=10",
-    "skill_disc": "入场曲 发动1次魔力增幅。<br>如果这张卡片的魔力增幅 次数为1次以上，则会抽取1张卡片。<br>如果为4次以上，则会再随机给予1个敌方的从者3点伤害。<br>如果为7次以上，则会再给予敌方的主战者3点伤害，并回复自己的主战者3点生命值。<br>如果为10次以上，则会额外再增加3张决意预言者‧露妮卡片到手牌中。",
+    "skill_disc": "入场曲 发动1次魔力增幅。<br>如果这张卡片的魔力增幅 次数为1次以上，则会抽取1张卡片。<br>如果为4次以上，则会再随机给予1个敌方的从者3点伤害。<br>如果为7次以上，则会再给予敌方的主战者3点伤害，并回复自己的主战者3点生命值。<br>如果为10次以上，则会额外再增加3张决意预言者·露妮卡片到手牌中。",
     "skill_option": "add_charge=1,none,damage=3,damage=3,healing=3,token_draw=117341030:117341030:117341030",
     "tribe_name": "-"
   },
@@ -16988,7 +16988,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119321010,
-    "card_name": "炎狱的葬送者‧艾尔蒙特",
+    "card_name": "炎狱的葬送者·艾尔蒙特",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -17045,7 +17045,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120341030,
-    "card_name": "神圣天体‧弥莉卡",
+    "card_name": "神圣天体·弥莉卡",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 3,
@@ -17057,7 +17057,7 @@ let cardData = [
     "rarity": 4,
     "skill": "token_draw,guard,banish,powerup",
     "skill_condition": "character=me&target=deck_self&turn=self,character=me,{me.deck.count}>20,{me.deck.count}<=20",
-    "skill_disc": "自己的回合中，如果这张卡片因能力而从牌堆中消失，则会增加1张神圣天体‧弥莉卡卡片到手牌中。<br>---------- <br>守护 <br>入场曲 如果自己牌堆中的卡片张数为21以上，则会随机使2张自己牌堆中的卡片消失。如果为20以下，则会获得+2/+2效果。",
+    "skill_disc": "自己的回合中，如果这张卡片因能力而从牌堆中消失，则会增加1张神圣天体·弥莉卡卡片到手牌中。<br>---------- <br>守护 <br>入场曲 如果自己牌堆中的卡片张数为21以上，则会随机使2张自己牌堆中的卡片消失。如果为20以下，则会获得+2/+2效果。",
     "skill_option": "token_draw=120341030,none,none,add_offense=2&add_life=2",
     "tribe_name": "-"
   },
@@ -17078,7 +17078,7 @@ let cardData = [
     "skill_condition": "character=me,pp_count>=6,pp_count>=6,pp_count>=6",
     "skill_disc": "谢幕曲 增加2张修复模式卡片到手牌中。<br>入场曲 爆能强化 6； 召唤1个生产器械到战场上。使该从者与这个从者进化。",
     "skill_option": "token_draw=900014010:900014010,fixeduse=6,summon_token=900011080,none",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 2,
@@ -17102,7 +17102,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121341020,
-    "card_name": "荣耀之花‧爱莲娜",
+    "card_name": "荣耀之花·爱莲娜",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 3,
@@ -17235,7 +17235,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 124341030,
-    "card_name": "精灵萨满‧莱莉",
+    "card_name": "精灵萨满·莱莉",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 3,
@@ -17273,7 +17273,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125321010,
-    "card_name": "遥不可及的睿智‧里维",
+    "card_name": "遥不可及的睿智·里维",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -17292,26 +17292,26 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 125321020,
-    "card_name": "马纳历亚女僕‧汉娜",
+    "card_name": "马纳历亚女僕·汉娜",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 5,
-    "evo_skill_disc": "‧马纳历亚魔弹<br>‧马纳历亚防御阵<br>‧马纳历亚秘术<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·马纳历亚魔弹<br>·马纳历亚防御阵<br>·马纳历亚秘术<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 3,
     "rarity": 2,
     "skill": "draw//choice,token_draw",
     "skill_condition": "character=me//character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "入场曲 随机将1张马纳历亚从者卡（马纳历亚女僕‧汉娜除外），由自己的牌堆抽取到手牌中。",
+    "skill_disc": "入场曲 随机将1张马纳历亚从者卡（马纳历亚女僕·汉娜除外），由自己的牌堆抽取到手牌中。",
     "skill_option": "none//card_id=900314040:900314050:900314060,repeat_count=1&summon_side=me",
     "tribe_name": "马纳历亚"
   },
   {
     "atk": 1,
     "card_id": 126331010,
-    "card_name": "神祕皇后‧梅迪",
+    "card_name": "神祕皇后·梅迪",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
@@ -17406,7 +17406,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128321020,
-    "card_name": "鲁纳尔的教会长‧葛芮妮",
+    "card_name": "鲁纳尔的教会长·葛芮妮",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 3,
@@ -17425,7 +17425,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128331010,
-    "card_name": "缔结之红莲‧古蕾娅",
+    "card_name": "缔结之红莲·古蕾娅",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 3,
@@ -17439,7 +17439,7 @@ let cardData = [
     "skill_condition": "character=me&target=self,character=me",
     "skill_disc": "只要这个从者在战场上，自己的马纳历亚从者不消费EP即可进化。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张古蕾娅的炎热之术卡片到手牌中。",
     "skill_option": "tribe=manaria,token_draw=900334050",
-    "tribe_name": "马纳历亚‧学园"
+    "tribe_name": "马纳历亚·学园"
   },
   {
     "atk": 2,
@@ -17501,7 +17501,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900311080,
-    "card_name": "马纳历亚执事‧凯曼",
+    "card_name": "马纳历亚执事·凯曼",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -17520,7 +17520,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900311090,
-    "card_name": "式神‧小纸人",
+    "card_name": "式神·小纸人",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -17779,7 +17779,7 @@ let cardData = [
     "rarity": 3,
     "skill": "metamorphose",
     "skill_condition": "character=op&target=inplay&card_type=unit_and_allfield",
-    "skill_disc": "使1个敌方的从者或1个敌方的护符变身为笑眯眯的奇术师‧萨米。",
+    "skill_disc": "使1个敌方的从者或1个敌方的护符变身为笑眯眯的奇术师·萨米。",
     "skill_option": "metamorphose=107321010",
     "tribe_name": "-"
   },
@@ -17836,7 +17836,7 @@ let cardData = [
     "rarity": 1,
     "skill": "summon_token,summon_token",
     "skill_condition": "{me.deck.count}>20,{me.deck.count}<=20",
-    "skill_disc": "召唤1个式神‧小纸人到战场上。<br>如果自己牌堆中的卡片张数为20以下，则会由原本的式神‧小纸人转变为召唤1个式神‧暴鬼到战场上。",
+    "skill_disc": "召唤1个式神·小纸人到战场上。<br>如果自己牌堆中的卡片张数为20以下，则会由原本的式神·小纸人转变为召唤1个式神·暴鬼到战场上。",
     "skill_option": "summon_token=900311090,summon_token=900311100",
     "tribe_name": "-"
   },
@@ -17855,7 +17855,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,draw,attach_skill",
     "skill_condition": "{self.charge_count}<5,{self.charge_count}<5,character=me&target=chosen_cards&card_type=all&{self.charge_count}<5,{self.charge_count}>=5,{self.charge_count}>=5",
-    "skill_disc": "‧伊莎贝尔的咏唱<br>‧坦忒菈的反叛<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果这张卡片的魔力增幅 次数为5次以上，则会由原本的命运抉择 转变为随机将1张巫师从者卡，由自己的牌堆抽取到手牌中。给予自己的主战者到回合结束为止「每当自己使用机械卡时，抽取1张卡片」效果。",
+    "skill_disc": "·伊莎贝尔的咏唱<br>·坦忒菈的反叛<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果这张卡片的魔力增幅 次数为5次以上，则会由原本的命运抉择 转变为随机将1张巫师从者卡，由自己的牌堆抽取到手牌中。给予自己的主战者到回合结束为止「每当自己使用机械卡时，抽取1张卡片」效果。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900334080:900334090,repeat_count=1&summon_side=me,none,skill=(skill:draw)(timing:when_play_other)(condition:{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=machine)(target:character=me&target=deck&card_type=all&random_count=1)(option:none)(preprocess:turn_end_stop=me&turn_end_remove=me)",
     "tribe_name": "-"
   },
@@ -18546,7 +18546,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103411060,
-    "card_name": "煌牙战士‧基德",
+    "card_name": "煌牙战士·基德",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 4,
@@ -18558,7 +18558,7 @@ let cardData = [
     "rarity": 1,
     "skill": "summon_token",
     "skill_condition": "character=me&target=self&card_type=unit",
-    "skill_disc": "如果这张卡片因其他卡片的能力被从手牌中捨弃，则会召唤1个煌牙战士‧基德到战场上。",
+    "skill_disc": "如果这张卡片因其他卡片的能力被从手牌中捨弃，则会召唤1个煌牙战士·基德到战场上。",
     "skill_option": "summon_token=103411060",
     "tribe_name": "-"
   },
@@ -18584,7 +18584,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104421030,
-    "card_name": "咏风少年‧杰鲁",
+    "card_name": "咏风少年·杰鲁",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 4,
@@ -18622,7 +18622,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 106411010,
-    "card_name": "育龙者‧玛蒂达",
+    "card_name": "育龙者·玛蒂达",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 4,
@@ -18641,7 +18641,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107421010,
-    "card_name": "豔丽龙人‧玛利翁",
+    "card_name": "豔丽龙人·玛利翁",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 4,
@@ -18660,7 +18660,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107431010,
-    "card_name": "龙剑少女‧艾拉",
+    "card_name": "龙剑少女·艾拉",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 4,
@@ -18717,7 +18717,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 108441030,
-    "card_name": "银冰龙人‧菲琳",
+    "card_name": "银冰龙人·菲琳",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -18767,7 +18767,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=7,character=me&target=chosen_cards&card_type=all&pp_count>=7",
-    "skill_disc": "‧白鳞之龙<br>‧黑鳞之龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为7以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·白鳞之龙<br>·黑鳞之龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为7以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900421010:900421020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -18793,7 +18793,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 110441030,
-    "card_name": "暴龙‧伊达政宗",
+    "card_name": "暴龙·伊达政宗",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 4,
@@ -18888,7 +18888,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112441020,
-    "card_name": "钢甲龙骑士‧拜伦",
+    "card_name": "钢甲龙骑士·拜伦",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 4,
@@ -18957,7 +18957,7 @@ let cardData = [
     "rarity": 2,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "入场曲 由疗癒美人鱼‧吉赛儿、机关美人鱼之中，随机增加1张卡片到手牌中。",
+    "skill_disc": "入场曲 由疗癒美人鱼·吉赛儿、机关美人鱼之中，随机增加1张卡片到手牌中。",
     "skill_option": "token_draw=110421020:113411010:?1",
     "tribe_name": "-"
   },
@@ -19002,7 +19002,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115431020,
-    "card_name": "懦弱的龙少女‧祈梨",
+    "card_name": "懦弱的龙少女·祈梨",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 4,
@@ -19021,7 +19021,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115441010,
-    "card_name": "霸业龙人‧卧龙",
+    "card_name": "霸业龙人·卧龙",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 4,
@@ -19033,7 +19033,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,choice,summon_token,pp_fixeduse,summon_token",
     "skill_condition": "character=me&pp_count>=5&pp_count<9,character=me&pp_count>=5&pp_count<9,character=me&target=chosen_cards&card_type=all&pp_count>=5&pp_count<9,character=me&pp_count>=9,character=me&pp_count>=9",
-    "skill_disc": "‧霸业之金龙<br>‧霸业之银龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会发动入场曲 爆能强化 5； 使1张命运抉择 所指定的卡片到战场上。<br>爆能强化 9； 由原本的命运抉择 转变为各召唤1隻到战场上。",
+    "skill_disc": "·霸业之金龙<br>·霸业之银龙<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会发动入场曲 爆能强化 5； 使1张命运抉择 所指定的卡片到战场上。<br>爆能强化 9； 由原本的命运抉择 转变为各召唤1隻到战场上。",
     "skill_option": "fixeduse=5,card_id=900441070:900441080,repeat_count=1&summon_side=me,fixeduse=9,summon_token=900441070:900441080",
     "tribe_name": "-"
   },
@@ -19078,7 +19078,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 116441010,
-    "card_name": "极炎龙骑士‧洛乐",
+    "card_name": "极炎龙骑士·洛乐",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 4,
@@ -19401,7 +19401,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 123441010,
-    "card_name": "冻雪冰心‧菲琳",
+    "card_name": "冻雪冰心·菲琳",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 4,
@@ -19515,7 +19515,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125441030,
-    "card_name": "独眼龙‧伊达政宗",
+    "card_name": "独眼龙·伊达政宗",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 4,
@@ -19553,7 +19553,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 126431010,
-    "card_name": "炽拳之龙‧多拉格尼尔",
+    "card_name": "炽拳之龙·多拉格尼尔",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 4,
@@ -19629,7 +19629,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128431020,
-    "card_name": "绯色贵公子‧迪翁",
+    "card_name": "绯色贵公子·迪翁",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 4,
@@ -19648,7 +19648,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128441010,
-    "card_name": "龙之魔女‧莉莉尤姆",
+    "card_name": "龙之魔女·莉莉尤姆",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 4,
@@ -20731,7 +20731,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109511020,
-    "card_name": "禁咒的恋人‧萨鲁南",
+    "card_name": "禁咒的恋人·萨鲁南",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
@@ -20750,7 +20750,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109521020,
-    "card_name": "心眼的双葬女‧灰淑女",
+    "card_name": "心眼的双葬女·灰淑女",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
@@ -20769,7 +20769,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109531020,
-    "card_name": "降魔的操纵者‧达涅雅",
+    "card_name": "降魔的操纵者·达涅雅",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
@@ -20788,7 +20788,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109541010,
-    "card_name": "幽想的少女‧菲莉",
+    "card_name": "幽想的少女·菲莉",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
@@ -20800,7 +20800,7 @@ let cardData = [
     "rarity": 4,
     "skill": "none,attack_count",
     "skill_condition": "character=me&burial_rite=true&{me.inplay.class.turn}>=10,character=me&burial_rite=true&{me.inplay.class.turn}>=10",
-    "skill_disc": "入场曲 如果为第10回合以上，则会发动2次葬送。如果葬送 已发动2次，则会到回合结束为止，给予自己的其他从者全体「1回合中可进行3次攻击」效果。<br>（在幽想的少女‧菲莉进入战场后，自己战场上的空位需有2个以上才可发动2次葬送）",
+    "skill_disc": "入场曲 如果为第10回合以上，则会发动2次葬送。如果葬送 已发动2次，则会到回合结束为止，给予自己的其他从者全体「1回合中可进行3次攻击」效果。<br>（在幽想的少女·菲莉进入战场后，自己战场上的空位需有2个以上才可发动2次葬送）",
     "skill_option": "none,attack_count=3",
     "tribe_name": "-"
   },
@@ -20857,14 +20857,14 @@ let cardData = [
     "rarity": 2,
     "skill": "pp_fixeduse,choice,summon_token",
     "skill_condition": "pp_count>=6,character=me&pp_count>=6,character=me&target=chosen_cards&card_type=all&pp_count>=6",
-    "skill_disc": "‧魔铠骑兵<br>‧骸骨骑兵<br>如果这张卡片在手牌中，并且自己剩馀的PP为6以上，则会发动入场曲 爆能强化 6； 使1张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "·魔铠骑兵<br>·骸骨骑兵<br>如果这张卡片在手牌中，并且自己剩馀的PP为6以上，则会发动入场曲 爆能强化 6； 使1张命运抉择 所指定的卡片进入战场。",
     "skill_option": "fixeduse=6,card_id=900531010:900531020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 111531010,
-    "card_name": "禁断之腕‧尼古拉",
+    "card_name": "禁断之腕·尼古拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -20876,7 +20876,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw,power_down,token_draw,powerup",
     "skill_condition": "character=me&{self.offense}>=4,character=me&{self.offense}>=4,character=me,character=me",
-    "skill_disc": "入场曲 如果这个从者的攻击力为4以上，则会增加1张禁断的一击卡片到手牌中，并使这个从者的攻击力转变为1。<br>谢幕曲 增加1张禁断之腕‧尼古拉卡片到手牌中，并给予+X/+0效果。X为「这个从者的攻击力值」。",
+    "skill_disc": "入场曲 如果这个从者的攻击力为4以上，则会增加1张禁断的一击卡片到手牌中，并使这个从者的攻击力转变为1。<br>谢幕曲 增加1张禁断之腕·尼古拉卡片到手牌中，并给予+X/+0效果。X为「这个从者的攻击力值」。",
     "skill_option": "token_draw=900534020,set_offense=1,token_draw=111531010,add_offense={self.offense}",
     "tribe_name": "机械"
   },
@@ -20978,7 +20978,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113531020,
-    "card_name": "魔拳法‧索拉",
+    "card_name": "魔拳法·索拉",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -21149,7 +21149,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 116541010,
-    "card_name": "预视死期者‧格莫瑞",
+    "card_name": "预视死期者·格莫瑞",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 5,
@@ -21282,7 +21282,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119541010,
-    "card_name": "细腻的奏魔者‧妮欧",
+    "card_name": "细腻的奏魔者·妮欧",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -21358,7 +21358,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120541020,
-    "card_name": "一刀幽鬼‧蜃景",
+    "card_name": "一刀幽鬼·蜃景",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 5,
@@ -21415,7 +21415,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 121541010,
-    "card_name": "永续的机械‧尼古拉",
+    "card_name": "永续的机械·尼古拉",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 5,
@@ -21624,7 +21624,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125541020,
-    "card_name": "冥焰地狱犬‧凯尔贝洛斯",
+    "card_name": "冥焰地狱犬·凯尔贝洛斯",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 5,
@@ -21636,7 +21636,7 @@ let cardData = [
     "rarity": 4,
     "skill": "none,token_draw,summon_token,rush,quick",
     "skill_condition": "character=me&burial_rite=true,burial_rite=true&{me.self.last_burial_rite_card_list.unit.count}>0&{me.destroyed_card_list.ability=when_destroy.count}<5,burial_rite=true&{me.self.last_burial_rite_card_list.unit.count}>0&{me.destroyed_card_list.ability=when_destroy.count}>=5,burial_rite=true&{me.self.last_burial_rite_card_list.unit.count}>0&{me.destroyed_card_list.ability=when_destroy.count}>=5&{me.destroyed_card_list.ability=when_destroy.count}<10,burial_rite=true&{me.self.last_burial_rite_card_list.unit.count}>0&{me.destroyed_card_list.ability=when_destroy.count}>=10",
-    "skill_disc": "入场曲 如果葬送 已发动，则会增加1张守卫犬的右腕‧米米与1张守卫犬的左腕‧可可卡片到手牌中。如果「这场对战中，被破坏时拥有谢幕曲 效果的自己的卡片」为5张以上，则会由原本的增加到手牌中转变为召唤到战场上。给予上述卡片与这个从者突进 效果。如果为10张以上，则会由原本的突进 转变为疾驰 效果。",
+    "skill_disc": "入场曲 如果葬送 已发动，则会增加1张守卫犬的右腕·米米与1张守卫犬的左腕·可可卡片到手牌中。如果「这场对战中，被破坏时拥有谢幕曲 效果的自己的卡片」为5张以上，则会由原本的增加到手牌中转变为召唤到战场上。给予上述卡片与这个从者突进 效果。如果为10张以上，则会由原本的突进 转变为疾驰 效果。",
     "skill_option": "none,token_draw=900541040:900541050,summon_token=900541040:900541050,none,none",
     "tribe_name": "-"
   },
@@ -21719,7 +21719,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 127541010,
-    "card_name": "敕令的罪人‧夷苏丹忒",
+    "card_name": "敕令的罪人·夷苏丹忒",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 5,
@@ -21757,7 +21757,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 128521010,
-    "card_name": "恋咒术师‧莉姿",
+    "card_name": "恋咒术师·莉姿",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 5,
@@ -21776,7 +21776,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128541020,
-    "card_name": "夜想教镰‧玫美丹特",
+    "card_name": "夜想教镰·玫美丹特",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 5,
@@ -21883,7 +21883,7 @@ let cardData = [
     "rarity": 4,
     "skill": "rush,guard,powerup",
     "skill_condition": "character=me,character=me,character=me",
-    "skill_disc": "突进 <br>守护 <br>谢幕曲 给予全部自己的巨大妖狐‧吟雪与全部自己的惊骇盛宴‧吟雪+2/+0效果。",
+    "skill_disc": "突进 <br>守护 <br>谢幕曲 给予全部自己的巨大妖狐·吟雪与全部自己的惊骇盛宴·吟雪+2/+0效果。",
     "skill_option": "none,none,add_offense=2",
     "tribe_name": "-"
   },
@@ -22301,7 +22301,7 @@ let cardData = [
     "rarity": 3,
     "skill": "lose,power_down,powerup",
     "skill_condition": "character=me,character=me,character=me",
-    "skill_disc": "使1个敌方的从者失去所有能力。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵‧宫子+3/+3效果。",
+    "skill_disc": "使1个敌方的从者失去所有能力。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵·宫子+3/+3效果。",
     "skill_option": "none,set_offense=0&set_life=1,add_offense=3&add_life=3",
     "tribe_name": "-"
   },
@@ -22415,7 +22415,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,transform,destroy,summon_token",
     "skill_condition": "character=me&pp_count>=5,character=me&target=chosen_cards&card_type=all&pp_count>=5,character=me&target=destroyed_card&card_type=unit&{me.inplay_self.count}>0,character=me",
-    "skill_disc": "‧禁忌的复生<br>‧被藏匿的财宝<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个殭尸到战场上。",
+    "skill_disc": "·禁忌的复生<br>·被藏匿的财宝<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个殭尸到战场上。",
     "skill_option": "card_id=900512010:900512020,repeat_count=1&summon_side=me,none,summon_token=900511030",
     "tribe_name": "-"
   },
@@ -22650,7 +22650,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102631030,
-    "card_name": "吸血鬼公主‧班比",
+    "card_name": "吸血鬼公主·班比",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 6,
@@ -22669,7 +22669,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 103611030,
-    "card_name": "雷维翁公爵‧尤里乌斯",
+    "card_name": "雷维翁公爵·尤里乌斯",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 6,
@@ -22726,7 +22726,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104631030,
-    "card_name": "爱之恶魔‧加列德",
+    "card_name": "爱之恶魔·加列德",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 6,
@@ -22878,7 +22878,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 108631020,
-    "card_name": "宵之吸血鬼‧瓦妮亚",
+    "card_name": "宵之吸血鬼·瓦妮亚",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 6,
@@ -22890,7 +22890,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,transform,summon_token",
     "skill_condition": "character=me&berserk=true&pp_count>=2,character=me&target=chosen_cards&card_type=all&berserk=true&pp_count>=2,character=me",
-    "skill_disc": "‧白夜吸血鬼‧瓦妮亚<br>‧午夜吸血鬼‧瓦妮亚<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且复仇 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 召唤1隻丛林蝙蝠到战场上。",
+    "skill_disc": "·白夜吸血鬼·瓦妮亚<br>·午夜吸血鬼·瓦妮亚<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且复仇 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 召唤1隻丛林蝙蝠到战场上。",
     "skill_option": "card_id=900631010:900631020,repeat_count=1&summon_side=me,summon_token=900611010",
     "tribe_name": "-"
   },
@@ -22928,14 +22928,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧苍炎的魔石<br>‧红炎的魔石<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·苍炎的魔石<br>·红炎的魔石<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900623030:900623040,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 109641010,
-    "card_name": "狂恋的华铠‧薇拉",
+    "card_name": "狂恋的华铠·薇拉",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 6,
@@ -23011,7 +23011,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111631010,
-    "card_name": "单翼恶魔‧圮尤菈",
+    "card_name": "单翼恶魔·圮尤菈",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 6,
@@ -23049,7 +23049,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112611010,
-    "card_name": "娇幼狼人‧莉贝尔缇",
+    "card_name": "娇幼狼人·莉贝尔缇",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 6,
@@ -23087,26 +23087,26 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112631020,
-    "card_name": "芭伦‧双生之念",
+    "card_name": "芭伦·双生之念",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 6,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "‧飢慾的猫头鹰<br>‧豹狮魔兽<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·飢慾的猫头鹰<br>·豹狮魔兽<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 2,
     "rarity": 3,
     "skill": "none,choice,token_draw//choice,token_draw",
     "skill_condition": "character=me&berserk=true,character=me&berserk=true,character=me&target=chosen_cards&card_type=all&berserk=true//character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧飢慾的猫头鹰<br>‧豹狮魔兽<br>如果这张卡片在手牌中，并且复仇 状态已发动，则会发动入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·飢慾的猫头鹰<br>·豹狮魔兽<br>如果这张卡片在手牌中，并且复仇 状态已发动，则会发动入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "none,card_id=900631040:900631050,repeat_count=1&summon_side=me//card_id=900631040:900631050,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 112641020,
-    "card_name": "绯红抗战者‧莫诺",
+    "card_name": "绯红抗战者·莫诺",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 6,
@@ -23163,7 +23163,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113621010,
-    "card_name": "破灭慾想‧梦魔",
+    "card_name": "破灭慾想·梦魔",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -23277,7 +23277,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115631020,
-    "card_name": "魅惑的教鞭‧伊绪",
+    "card_name": "魅惑的教鞭·伊绪",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 6,
@@ -23467,7 +23467,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119621020,
-    "card_name": "追逐自由的男子汉‧斯卡尔",
+    "card_name": "追逐自由的男子汉·斯卡尔",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 6,
@@ -23505,7 +23505,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120631010,
-    "card_name": "激狂狼人‧莉贝尔缇",
+    "card_name": "激狂狼人·莉贝尔缇",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 6,
@@ -23524,7 +23524,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120641020,
-    "card_name": "永劫的吸血鬼‧亚瑞札特",
+    "card_name": "永劫的吸血鬼·亚瑞札特",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 6,
@@ -23536,14 +23536,14 @@ let cardData = [
     "rarity": 4,
     "skill": "trigger,token_draw,attach_skill",
     "skill_condition": "{me.game_summon_cards.unit.base_card_id=120641020.count}>=2,character=me,character=me",
-    "skill_disc": "进入战场时，如果本次对战中已进入自己战场的永劫的吸血鬼‧亚瑞札特为3个以上（包含本卡片），则会增加1张血红獠牙卡片到手牌中。<br>谢幕曲 给予自己的主战者「下下个自己的回合开始时，召唤1个永劫的吸血鬼‧亚瑞札特到战场上，并失去此能力」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "进入战场时，如果本次对战中已进入自己战场的永劫的吸血鬼·亚瑞札特为3个以上（包含本卡片），则会增加1张血红獠牙卡片到手牌中。<br>谢幕曲 给予自己的主战者「下下个自己的回合开始时，召唤1个永劫的吸血鬼·亚瑞札特到战场上，并失去此能力」效果。主战者无法重複叠加此效果。",
     "skill_option": "none,token_draw=900644040,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=120641020)(preprocess:turn_start_skill=(me&me_turn_start_count=2)&remove_after_action=(count=1))&save_turn_skill_id=1206410201&duplicate_ban_id=1206410201",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 120641030,
-    "card_name": "红魔淑女‧萝洁露媞",
+    "card_name": "红魔淑女·萝洁露媞",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 6,
@@ -23600,7 +23600,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121641010,
-    "card_name": "悠久的绯红‧莫诺",
+    "card_name": "悠久的绯红·莫诺",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 6,
@@ -23676,7 +23676,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 123641030,
-    "card_name": "爱绝姦淫‧瓦娜蕾格",
+    "card_name": "爱绝姦淫·瓦娜蕾格",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 6,
@@ -23688,7 +23688,7 @@ let cardData = [
     "rarity": 4,
     "skill": "quick,token_draw,powerup,update_deck",
     "skill_condition": "character=me,character=me,character=me&wrath=true,character=me&wrath=true",
-    "skill_disc": "疾驰 <br>入场曲 增加1张爱绝的飞翔卡片到手牌中。如果狂乱 状态已发动，则会获得+2/+2效果。<br>谢幕曲 如果狂乱 状态已发动，则会增加7张没有谢幕曲 能力的爱绝姦淫‧瓦娜蕾格卡片到牌堆中。",
+    "skill_disc": "疾驰 <br>入场曲 增加1张爱绝的飞翔卡片到手牌中。如果狂乱 状态已发动，则会获得+2/+2效果。<br>谢幕曲 如果狂乱 状态已发动，则会增加7张没有谢幕曲 能力的爱绝姦淫·瓦娜蕾格卡片到牌堆中。",
     "skill_option": "none,token_draw=900644090,add_offense=2&add_life=2,token_draw=900641070:900641070:900641070:900641070:900641070:900641070:900641070&type=add",
     "tribe_name": "-"
   },
@@ -23733,7 +23733,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 124641010,
-    "card_name": "憧憬的飞跃‧壹剑",
+    "card_name": "憧憬的飞跃·壹剑",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 6,
@@ -23790,7 +23790,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125641020,
-    "card_name": "赤血女王‧班比",
+    "card_name": "赤血女王·班比",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 6,
@@ -23866,7 +23866,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126641020,
-    "card_name": "残酷的媚猫‧帷",
+    "card_name": "残酷的媚猫·帷",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 6,
@@ -23923,7 +23923,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128631010,
-    "card_name": "凶轮手‧亚琉嘉",
+    "card_name": "凶轮手·亚琉嘉",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 6,
@@ -23942,7 +23942,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128641020,
-    "card_name": "逢魔校长‧沃露嘉丝",
+    "card_name": "逢魔校长·沃露嘉丝",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 6,
@@ -23980,7 +23980,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 129631010,
-    "card_name": "飢慾之王‧葛帝尔",
+    "card_name": "飢慾之王·葛帝尔",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 6,
@@ -23999,7 +23999,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129641010,
-    "card_name": "芭伦‧完美之念",
+    "card_name": "芭伦·完美之念",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 6,
@@ -24011,7 +24011,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,cost_change,evolve//evolve",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me,{me.evolved_card_list.count}>=5//{me.inplay_self.count}>0&{character=me&target=summoned_card&card_type=unit&base_card_id=900631040|character=me&target=summoned_card&card_type=unit&base_card_id=900631050}",
-    "skill_disc": "‧飢慾的猫头鹰<br>‧豹狮魔兽<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。使其消费转变为1。<br>入场曲 如果「这场对战中，自己的从者进化的次数」为5次以上，则会使这个从者进化。",
+    "skill_disc": "·飢慾的猫头鹰<br>·豹狮魔兽<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。使其消费转变为1。<br>入场曲 如果「这场对战中，自己的从者进化的次数」为5次以上，则会使这个从者进化。",
     "skill_option": "card_id=900631040:900631050,repeat_count=1&summon_side=me,set=1,none//none",
     "tribe_name": "-"
   },
@@ -24037,7 +24037,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900631010,
-    "card_name": "白夜吸血鬼‧瓦妮亚",
+    "card_name": "白夜吸血鬼·瓦妮亚",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -24056,7 +24056,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900631020,
-    "card_name": "午夜吸血鬼‧瓦妮亚",
+    "card_name": "午夜吸血鬼·瓦妮亚",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -24075,7 +24075,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900631030,
-    "card_name": "朵莉露的女僕‧亚兹与伊兹",
+    "card_name": "朵莉露的女僕·亚兹与伊兹",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -24087,7 +24087,7 @@ let cardData = [
     "rarity": 3,
     "skill": "evolve,heal//heal",
     "skill_condition": "character=me&target=inplay&card_type=unit&base_card_id=110631030&evolution=false,character=me//character=me",
-    "skill_disc": "入场曲 使1个自己的恶魔偶像‧朵莉露进化。<br>谢幕曲 回复自己的主战者2点生命值。",
+    "skill_disc": "入场曲 使1个自己的恶魔偶像·朵莉露进化。<br>谢幕曲 回复自己的主战者2点生命值。",
     "skill_option": "none,healing=2//healing=2",
     "tribe_name": "-"
   },
@@ -24391,7 +24391,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,damage,possess_ep_modifier",
     "skill_condition": "berserk=false,berserk=false,character=me&target=chosen_cards&card_type=all&berserk=false,berserk=true,berserk=true",
-    "skill_disc": "‧尤里亚斯的斗争<br>‧莫诺的觉悟<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果复仇 状态已发动，则会由原本的命运抉择 转变为给予敌方的主战者3点伤害。回复自己的EP 1点。",
+    "skill_disc": "·尤里亚斯的斗争<br>·莫诺的觉悟<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果复仇 状态已发动，则会由原本的命运抉择 转变为给予敌方的主战者3点伤害。回复自己的EP 1点。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900634020:900634030,repeat_count=1&summon_side=me,damage=3,add_ep=1",
     "tribe_name": "-"
   },
@@ -24450,7 +24450,7 @@ let cardData = [
     "skill_condition": "{me.inplay.selectable.unit.count}>0&{op.inplay.selectable.unit.count}>0,{me.inplay.selectable.unit.count}>0&{op.inplay.selectable.unit.count}>0,{me.inplay.selectable.unit.count}>0&{op.inplay.selectable.unit.count}>0,{me.inplay.selectable.unit.count}>0&{op.inplay.selectable.unit.count}>0",
     "skill_disc": "指定1个自己的从者与1个敌方的从者。<br>给予前者+1/+0效果。<br>给予后者与「前者的攻击力」等量的伤害。<br>（有2个可指定的从者时才可使用）",
     "skill_option": "none,none,add_offense=1,damage={me.last_target.offense}",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 0,
@@ -24854,7 +24854,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103721030,
-    "card_name": "煌翼战士‧莉诺",
+    "card_name": "煌翼战士·莉诺",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 7,
@@ -24892,7 +24892,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104721030,
-    "card_name": "圣弓射手‧库鲁特",
+    "card_name": "圣弓射手·库鲁特",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 7,
@@ -24911,7 +24911,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105731020,
-    "card_name": "赤枝圣骑士‧诺榭",
+    "card_name": "赤枝圣骑士·诺榭",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 7,
@@ -25037,14 +25037,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧白璨鑽石<br>‧黑耀鑽石<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·白璨鑽石<br>·黑耀鑽石<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900733020:900733030,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 109711020,
-    "card_name": "风之僧侣‧海森",
+    "card_name": "风之僧侣·海森",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -25063,14 +25063,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109731010,
-    "card_name": "圣光牧师‧萝蕾娜",
+    "card_name": "圣光牧师·萝蕾娜",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "‧萝蕾娜的圣水<br>‧萝蕾娜的铁拳<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·萝蕾娜的圣水<br>·萝蕾娜的铁拳<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 2,
     "rarity": 3,
     "skill": "none//choice,token_draw",
@@ -25113,7 +25113,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧独角兽<br>‧独角兽之枪<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·独角兽<br>·独角兽之枪<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900721040:900724020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -25158,7 +25158,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111721020,
-    "card_name": "圣洁枪手‧珂蕾特",
+    "card_name": "圣洁枪手·珂蕾特",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 7,
@@ -25196,7 +25196,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 112721010,
-    "card_name": "异端女修士‧梅鲁柯特",
+    "card_name": "异端女修士·梅鲁柯特",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 7,
@@ -25272,7 +25272,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113731020,
-    "card_name": "调和的圣女‧雷莉亚",
+    "card_name": "调和的圣女·雷莉亚",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 7,
@@ -25291,7 +25291,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113741020,
-    "card_name": "清纯祈祷者‧耶菈",
+    "card_name": "清纯祈祷者·耶菈",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 7,
@@ -25538,7 +25538,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119741010,
-    "card_name": "开眼者‧乌诺",
+    "card_name": "开眼者·乌诺",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 7,
@@ -25557,7 +25557,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 120731010,
-    "card_name": "非法正义‧帕茵",
+    "card_name": "非法正义·帕茵",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 7,
@@ -25633,7 +25633,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122731020,
-    "card_name": "奇蹟的笑声‧加尔蜜亚",
+    "card_name": "奇蹟的笑声·加尔蜜亚",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 7,
@@ -25709,7 +25709,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123741010,
-    "card_name": "光灿圣骑士‧维尔伯特",
+    "card_name": "光灿圣骑士·维尔伯特",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 7,
@@ -25804,7 +25804,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 125721010,
-    "card_name": "圣心修女‧汀娜",
+    "card_name": "圣心修女·汀娜",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 7,
@@ -25994,7 +25994,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 128721010,
-    "card_name": "恆心少女‧琪蓝",
+    "card_name": "恆心少女·琪蓝",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 7,
@@ -26013,7 +26013,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128741010,
-    "card_name": "异端的指导者‧贝尔迪俪亚",
+    "card_name": "异端的指导者·贝尔迪俪亚",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 7,
@@ -26692,7 +26692,7 @@ let cardData = [
     "skill_condition": "character=me,character=me",
     "skill_disc": "倒数 1<br>入场曲 随机将1张消费为1的从者卡，由自己的牌堆抽取到手牌中。<br>谢幕曲 增加1张那塔拉的大树卡片到手牌中。",
     "skill_option": "none,token_draw=900012010",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 0,
@@ -26716,7 +26716,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 123723010,
-    "card_name": "背理盾‧倢诺",
+    "card_name": "背理盾·倢诺",
     "card_set_id": 10023,
     "char_type": 3,
     "clan": 7,
@@ -27153,7 +27153,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 107821010,
-    "card_name": "机动翼少女‧萝夏",
+    "card_name": "机动翼少女·萝夏",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -27210,7 +27210,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107821070,
-    "card_name": "机械工匠‧吉诺",
+    "card_name": "机械工匠·吉诺",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -27248,7 +27248,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108821010,
-    "card_name": "被赋生者‧米莉亚姆",
+    "card_name": "被赋生者·米莉亚姆",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 8,
@@ -27260,7 +27260,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform",
     "skill_condition": "character=me&resonance=true&pp_count>=2,character=me&target=chosen_cards&card_type=all&pp_count>=2",
-    "skill_disc": "‧文静少女‧米莉亚姆<br>‧淘气少女‧米莉亚姆<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·文静少女·米莉亚姆<br>·淘气少女·米莉亚姆<br>如果这张卡片在手牌中，自己剩馀的PP为2以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900821010:900821020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -27293,7 +27293,7 @@ let cardData = [
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "‧防御型巨像<br>‧攻击型巨像<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·防御型巨像<br>·攻击型巨像<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 2,
     "rarity": 3,
     "skill": "none//choice,token_draw",
@@ -27305,7 +27305,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109841020,
-    "card_name": "小小布偶师‧洛可可",
+    "card_name": "小小布偶师·洛可可",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -27362,7 +27362,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 110831020,
-    "card_name": "抗争领导者‧露琪娜",
+    "card_name": "抗争领导者·露琪娜",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 8,
@@ -27400,7 +27400,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112811010,
-    "card_name": "人偶天使‧蜜亚",
+    "card_name": "人偶天使·蜜亚",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 8,
@@ -27438,7 +27438,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112831010,
-    "card_name": "秩序之光‧辛恩",
+    "card_name": "秩序之光·辛恩",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 8,
@@ -27476,7 +27476,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113821010,
-    "card_name": "齿轮运行者‧里希特",
+    "card_name": "齿轮运行者·里希特",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
@@ -27495,7 +27495,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113831030,
-    "card_name": "人偶虐杀者‧菲亚",
+    "card_name": "人偶虐杀者·菲亚",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
@@ -27507,7 +27507,7 @@ let cardData = [
     "rarity": 3,
     "skill": "killer,metamorphose,metamorphose",
     "skill_condition": "character=me,{me.inplay_self.count}>0&{me.inplay.class.pp}>=2&character=me&target=summoned_card&card_type=unit&base_card_id=900811050,character=me",
-    "skill_disc": "必杀 <br>每当悬丝傀儡进入自己的战场时，如果自己剩馀的PP为2以上，则会消费自己的PP 2点，并使其变身为虐杀人偶。<br>谢幕曲 随机使1个自己的虐杀人偶变身为人偶虐杀者‧菲亚。",
+    "skill_disc": "必杀 <br>每当悬丝傀儡进入自己的战场时，如果自己剩馀的PP为2以上，则会消费自己的PP 2点，并使其变身为虐杀人偶。<br>谢幕曲 随机使1个自己的虐杀人偶变身为人偶虐杀者·菲亚。",
     "skill_option": "none,metamorphose=900831060,metamorphose=113831030",
     "tribe_name": "-"
   },
@@ -27552,7 +27552,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114831020,
-    "card_name": "淨化之辉‧慕妮耶",
+    "card_name": "淨化之辉·慕妮耶",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 8,
@@ -27609,7 +27609,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115831030,
-    "card_name": "梦境使者‧爱梅斯",
+    "card_name": "梦境使者·爱梅斯",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 8,
@@ -27647,7 +27647,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 116841010,
-    "card_name": "音速机械‧洛菈米亚",
+    "card_name": "音速机械·洛菈米亚",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 8,
@@ -27661,7 +27661,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit_and_allfield&tribe=artifact//{me.inplay.class.pp}>=6,{me.inplay.class.pp}>=6",
     "skill_disc": "突进 <br>当其他创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "none,none//none,add_offense={me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}&add_life={me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}",
-    "tribe_name": "机械‧创造物"
+    "tribe_name": "机械·创造物"
   },
   {
     "atk": 2,
@@ -27704,7 +27704,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117831020,
-    "card_name": "界门的人造体‧菈姿莉",
+    "card_name": "界门的人造体·菈姿莉",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 8,
@@ -27761,7 +27761,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119821010,
-    "card_name": "夜隐的桃烟‧凯萨琳",
+    "card_name": "夜隐的桃烟·凯萨琳",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -27773,14 +27773,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw,sneak",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧黄金之杯<br>‧黄金之靴<br>‧黄金首饰<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>潜行 ",
+    "skill_disc": "·黄金之杯<br>·黄金之靴<br>·黄金首饰<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>潜行 ",
     "skill_option": "card_id=900214020:900214030:900214040,repeat_count=1&summon_side=me,none",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 119821020,
-    "card_name": "迴旋的艺术家‧斯毕拿",
+    "card_name": "迴旋的艺术家·斯毕拿",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -27799,7 +27799,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119831010,
-    "card_name": "妄想少女A‧璐娜露",
+    "card_name": "妄想少女A·璐娜露",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -27818,7 +27818,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119841020,
-    "card_name": "闪耀双剑‧卡托鲁",
+    "card_name": "闪耀双剑·卡托鲁",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -27913,7 +27913,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 121841010,
-    "card_name": "肃清之器‧梅希亚",
+    "card_name": "肃清之器·梅希亚",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 8,
@@ -27932,7 +27932,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121841030,
-    "card_name": "凌驾次元者‧伊昂",
+    "card_name": "凌驾次元者·伊昂",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 8,
@@ -27958,12 +27958,12 @@ let cardData = [
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 4,
-    "evo_skill_disc": "进化时 增加1张悬丝傀儡与1张改良型‧悬丝傀儡卡片到手牌中。",
+    "evo_skill_disc": "进化时 增加1张悬丝傀儡与1张改良型·悬丝傀儡卡片到手牌中。",
     "life": 2,
     "rarity": 2,
     "skill": "token_draw//token_draw",
     "skill_condition": "character=me//character=me",
-    "skill_disc": "入场曲 增加1张改良型‧悬丝傀儡卡片到手牌中。",
+    "skill_disc": "入场曲 增加1张改良型·悬丝傀儡卡片到手牌中。",
     "skill_option": "token_draw=900811110//token_draw=900811050:900811110",
     "tribe_name": "-"
   },
@@ -28008,19 +28008,19 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122831020,
-    "card_name": "盘外指标‧可萝儿",
+    "card_name": "盘外指标·可萝儿",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 8,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "进化时 随机使1张自己手牌中的淨白之王‧伊梅拉与1张漆黑女王‧玛格娜丝卡片消费-2。",
+    "evo_skill_disc": "进化时 随机使1张自己手牌中的淨白之王·伊梅拉与1张漆黑女王·玛格娜丝卡片消费-2。",
     "life": 2,
     "rarity": 3,
     "skill": "choice,token_draw,cost_change//cost_change,cost_change",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.destroyed_card_list.unit.count}>=10//character=me,character=me",
-    "skill_disc": "‧淨白之王‧伊梅拉<br>‧漆黑女王‧玛格娜丝<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。如果本次对战中自己已被破坏的从者数为10个以上，则会使其消费-2。",
+    "skill_disc": "·淨白之王·伊梅拉<br>·漆黑女王·玛格娜丝<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。如果本次对战中自己已被破坏的从者数为10个以上，则会使其消费-2。",
     "skill_option": "card_id=900231010:900231020,repeat_count=1&summon_side=me,add=-2//add=-2,add=-2",
     "tribe_name": "-"
   },
@@ -28039,7 +28039,7 @@ let cardData = [
     "rarity": 1,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "谢幕曲 增加1张改良型‧悬丝傀儡卡片到手牌中。",
+    "skill_disc": "谢幕曲 增加1张改良型·悬丝傀儡卡片到手牌中。",
     "skill_option": "token_draw=900811110",
     "tribe_name": "-"
   },
@@ -28058,7 +28058,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧人偶手术<br>‧人偶房<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·人偶手术<br>·人偶房<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=114814010:107813020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -28091,7 +28091,7 @@ let cardData = [
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 3,
-    "evo_skill_disc": "每当自己的其他从者被破坏时，随机给予1个敌方的从者-1/-1效果。<br>进化时 召唤1个改良型‧悬丝傀儡到战场上。",
+    "evo_skill_disc": "每当自己的其他从者被破坏时，随机给予1个敌方的从者-1/-1效果。<br>进化时 召唤1个改良型·悬丝傀儡到战场上。",
     "life": 1,
     "rarity": 3,
     "skill": "power_down,token_draw//power_down,summon_token",
@@ -28103,7 +28103,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123841010,
-    "card_name": "宇宙之翼‧洛菈米亚",
+    "card_name": "宇宙之翼·洛菈米亚",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 8,
@@ -28117,7 +28117,7 @@ let cardData = [
     "skill_condition": "character=me,{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}>=6//character=me",
     "skill_disc": "突进 <br>入场曲 如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会给予敌方的从者全体4点伤害。",
     "skill_option": "none,damage=4//none",
-    "tribe_name": "机械‧创造物"
+    "tribe_name": "机械·创造物"
   },
   {
     "atk": 2,
@@ -28198,14 +28198,14 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 125821010,
-    "card_name": "解放的少女‧萝夏",
+    "card_name": "解放的少女·萝夏",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 6,
-    "evo_skill_disc": "每当自己的主战者由非共鸣 状态转变为共鸣 状态时，回复自己的主战者与自己的从者全体1点生命值。<br>进化时 如果自己的战场上没有勇敢的少年‧卡西姆，则会召唤1个到战场上。",
+    "evo_skill_disc": "每当自己的主战者由非共鸣 状态转变为共鸣 状态时，回复自己的主战者与自己的从者全体1点生命值。<br>进化时 如果自己的战场上没有勇敢的少年·卡西姆，则会召唤1个到战场上。",
     "life": 4,
     "rarity": 2,
     "skill": "heal,banish,update_deck,attach_skill//heal,summon_token",
@@ -28217,14 +28217,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125821020,
-    "card_name": "勇敢的少年‧卡西姆",
+    "card_name": "勇敢的少年·卡西姆",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "每当自己的主战者由非共鸣 状态转变为共鸣 状态时，给予敌方的主战者与敌方的从者全体1点伤害。<br>进化时 如果自己的战场上没有解放的少女‧萝夏，则会召唤1个到战场上。",
+    "evo_skill_disc": "每当自己的主战者由非共鸣 状态转变为共鸣 状态时，给予敌方的主战者与敌方的从者全体1点伤害。<br>进化时 如果自己的战场上没有解放的少女·萝夏，则会召唤1个到战场上。",
     "life": 2,
     "rarity": 2,
     "skill": "damage,banish,update_deck,attach_skill//damage,summon_token",
@@ -28236,14 +28236,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125831010,
-    "card_name": "次元观测者‧缇尔",
+    "card_name": "次元观测者·缇尔",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
     "cost": 2,
     "evo_atk": 4,
     "evo_life": 4,
-    "evo_skill_disc": "自己的回合结束时，如果共鸣 状态已发动，则会随机将1张「原始消费为1以下的复仇者从者卡」，由自己的牌堆召唤到战场上。<br>进化时 随机将1张「原始消费为2以下的复仇者从者卡（次元观测者‧缇尔除外）」，由自己的牌堆召唤到战场上。",
+    "evo_skill_disc": "自己的回合结束时，如果共鸣 状态已发动，则会随机将1张「原始消费为1以下的复仇者从者卡」，由自己的牌堆召唤到战场上。<br>进化时 随机将1张「原始消费为2以下的复仇者从者卡（次元观测者·缇尔除外）」，由自己的牌堆召唤到战场上。",
     "life": 2,
     "rarity": 3,
     "skill": "draw//summon_card,summon_card",
@@ -28274,7 +28274,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 127841030,
-    "card_name": "万物见证者‧洁蒂丝",
+    "card_name": "万物见证者·洁蒂丝",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 8,
@@ -28307,7 +28307,7 @@ let cardData = [
     "skill_condition": "character=me,{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10,{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10,character=me",
     "skill_disc": "守护 <br>入场曲 如果本次对战中自己已被破坏的「机械类型或学园类型的从者」为10个以上，则会获得+2/+2效果。回复自己的主战者2点生命值。<br>谢幕曲 增加1张生产器械卡片到手牌中。",
     "skill_option": "none,add_offense=2&add_life=2,healing=2,token_draw=900011080",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 1,
@@ -28326,12 +28326,12 @@ let cardData = [
     "skill_condition": "character=me,{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}<10,{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10,{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10",
     "skill_disc": "疾驰 <br>入场曲 增加1张生产器械卡片到手牌中。如果本次对战中自己已被破坏的「机械类型或学园类型的从者」为10个以上，则会由原本的生产器械转变为增加汞合金装甲龙卡片到手牌中。使其消费转变为1。",
     "skill_option": "none,token_draw=900011080,token_draw=116421010,set=1",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 1,
     "card_id": 128821020,
-    "card_name": "勤学工匠‧霍弗乐",
+    "card_name": "勤学工匠·霍弗乐",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 8,
@@ -28345,19 +28345,19 @@ let cardData = [
     "skill_condition": "character=me&{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=5,character=me",
     "skill_disc": "入场曲 如果本次对战中自己已被破坏的「机械类型或学园类型的从者」为5个以上，则会召唤1个机械生命体到战场上。<br>谢幕曲 召唤1个生产器械到战场上。",
     "skill_option": "summon_token=112321020,summon_token=900011080",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 1,
     "card_id": 128841010,
-    "card_name": "无谬偶像‧雷琉",
+    "card_name": "无谬偶像·雷琉",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 8,
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 5,
-    "evo_skill_disc": "进化时 召唤1个改良型‧悬丝傀儡到战场上。",
+    "evo_skill_disc": "进化时 召唤1个改良型·悬丝傀儡到战场上。",
     "life": 3,
     "rarity": 4,
     "skill": "banish,update_deck,token_draw//summon_token",
@@ -28388,7 +28388,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129821010,
-    "card_name": "虚伪双翼‧伊里娜",
+    "card_name": "虚伪双翼·伊里娜",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -28407,7 +28407,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129821020,
-    "card_name": "织繫丝线‧艾葳米亚",
+    "card_name": "织繫丝线·艾葳米亚",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -28426,7 +28426,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900821010,
-    "card_name": "文静少女‧米莉亚姆",
+    "card_name": "文静少女·米莉亚姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -28445,7 +28445,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900821020,
-    "card_name": "淘气少女‧米莉亚姆",
+    "card_name": "淘气少女·米莉亚姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -28502,7 +28502,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900831040,
-    "card_name": "枪砲火药调合师‧库姆悠",
+    "card_name": "枪砲火药调合师·库姆悠",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -28647,7 +28647,7 @@ let cardData = [
     "rarity": 4,
     "skill": "damage,pp_fixeduse,choice,token_draw",
     "skill_condition": "character=me&card_type=spell,pp_count>=9,pp_count>=9,character=me&target=chosen_cards&card_type=unit&pp_count>=9",
-    "skill_disc": "随机给予1个敌方的从者3点伤害。<br>---------- <br>‧破坏召来者‧薇姿雅<br>‧杀戮召来者‧依嘉露耶<br>‧绝望召来者‧吉欧媞德<br>爆能强化 9； 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "随机给予1个敌方的从者3点伤害。<br>---------- <br>·破坏召来者·薇姿雅<br>·杀戮召来者·依嘉露耶<br>·绝望召来者·吉欧媞德<br>爆能强化 9； 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "damage=3,fixeduse=9,card_id=900841140:900841150:900841160,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -28780,7 +28780,7 @@ let cardData = [
     "rarity": 2,
     "skill": "summon_token,pp_fixeduse,attach_skill,attach_skill",
     "skill_condition": "character=me,pp_count>=4,pp_count>=4,pp_count>=4",
-    "skill_disc": "召唤1个改良型‧悬丝傀儡与1个悬丝傀儡到战场上。<br>爆能强化 4； 给予前者「谢幕曲 召唤1个悬丝傀儡到战场上」效果。给予后者「谢幕曲 召唤1个改良型‧悬丝傀儡到战场上」效果。",
+    "skill_disc": "召唤1个改良型·悬丝傀儡与1个悬丝傀儡到战场上。<br>爆能强化 4； 给予前者「谢幕曲 召唤1个悬丝傀儡到战场上」效果。给予后者「谢幕曲 召唤1个改良型·悬丝傀儡到战场上」效果。",
     "skill_option": "summon_token=900811110:900811050,fixeduse=4,skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=900811050)(preprocess:none),skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=900811110)(preprocess:none)",
     "tribe_name": "-"
   },
@@ -28863,7 +28863,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 100031010,
-    "card_name": "被封印的双子‧烈焰",
+    "card_name": "被封印的双子·烈焰",
     "card_set_id": 10000,
     "char_type": 1,
     "clan": 0,
@@ -28875,14 +28875,14 @@ let cardData = [
     "rarity": 3,
     "skill": "damage,unite",
     "skill_condition": "character=me&target=attacker&attacker=self,{me.inplay_self.count}>0&{me.inplay.unit.base_card_id=100031010.count}>0&{me.inplay.unit.base_card_id=100031020.count}>0",
-    "skill_disc": "攻击时 给予敌方的主战者2点伤害。<br>自己的回合开始时，与自己战场上的1个被封印的双子‧琉璃合体成为烈焰‧琉璃。",
+    "skill_disc": "攻击时 给予敌方的主战者2点伤害。<br>自己的回合开始时，与自己战场上的1个被封印的双子·琉璃合体成为烈焰·琉璃。",
     "skill_option": "damage=2,type=combine&base_card_id=100031020&summon_token=(900041030)",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 100031020,
-    "card_name": "被封印的双子‧琉璃",
+    "card_name": "被封印的双子·琉璃",
     "card_set_id": 10000,
     "char_type": 1,
     "clan": 0,
@@ -28894,7 +28894,7 @@ let cardData = [
     "rarity": 3,
     "skill": "damage,unite",
     "skill_condition": "character=me&target=attacker&attacker=self,{me.inplay_self.count}>0&{me.inplay.unit.base_card_id=100031010.count}>0&{me.inplay.unit.base_card_id=100031020.count}>0",
-    "skill_disc": "攻击时 给予敌方的从者全体1点伤害。<br>自己的回合开始时，与自己战场上的1个被封印的双子‧烈焰合体成为烈焰‧琉璃。",
+    "skill_disc": "攻击时 给予敌方的从者全体1点伤害。<br>自己的回合开始时，与自己战场上的1个被封印的双子·烈焰合体成为烈焰·琉璃。",
     "skill_option": "damage=1,type=combine&base_card_id=100031010&summon_token=(900041030)",
     "tribe_name": "-"
   },
@@ -28996,7 +28996,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103021040,
-    "card_name": "霸食帝‧凯加",
+    "card_name": "霸食帝·凯加",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 0,
@@ -29034,7 +29034,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104031020,
-    "card_name": "风之军神‧格里姆尼尔",
+    "card_name": "风之军神·格里姆尼尔",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 0,
@@ -29148,7 +29148,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107011010,
-    "card_name": "迷宫探险家‧克萝伊",
+    "card_name": "迷宫探险家·克萝伊",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 0,
@@ -29262,7 +29262,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109011020,
-    "card_name": "时髦三人组‧罗艾因",
+    "card_name": "时髦三人组·罗艾因",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 0,
@@ -29274,21 +29274,21 @@ let cardData = [
     "rarity": 1,
     "skill": "token_draw",
     "skill_condition": "character=me",
-    "skill_disc": "入场曲 增加1张时髦三人组‧艾尔赛姆卡片到手牌中。",
+    "skill_disc": "入场曲 增加1张时髦三人组·艾尔赛姆卡片到手牌中。",
     "skill_option": "token_draw=900011050",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 109031020,
-    "card_name": "革命霸食帝‧凯加",
+    "card_name": "革命霸食帝·凯加",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 0,
     "cost": 3,
     "evo_atk": 3,
     "evo_life": 4,
-    "evo_skill_disc": "‧凯加的药膳料理<br>‧凯加的激辣料理<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
+    "evo_skill_disc": "·凯加的药膳料理<br>·凯加的激辣料理<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。",
     "life": 3,
     "rarity": 3,
     "skill": "none//choice,token_draw",
@@ -29319,7 +29319,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112021020,
-    "card_name": "火焰军神‧亚文哈尔",
+    "card_name": "火焰军神·亚文哈尔",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -29338,7 +29338,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112031020,
-    "card_name": "飓风军神‧格里姆尼尔",
+    "card_name": "飓风军神·格里姆尼尔",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -29357,7 +29357,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113031020,
-    "card_name": "圣鸟‧汉萨",
+    "card_name": "圣鸟·汉萨",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 0,
@@ -29452,7 +29452,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 116041010,
-    "card_name": "神谕的大天使‧加百列",
+    "card_name": "神谕的大天使·加百列",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 0,
@@ -29623,7 +29623,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125031020,
-    "card_name": "超可爱佣兵‧菲娜",
+    "card_name": "超可爱佣兵·菲娜",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 0,
@@ -29642,7 +29642,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125041030,
-    "card_name": "三相女神‧芭依波卡赫",
+    "card_name": "三相女神·芭依波卡赫",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 0,
@@ -29680,7 +29680,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 128021010,
-    "card_name": "青春物语‧剑斗士与骷髅士兵",
+    "card_name": "青春物语·剑斗士与骷髅士兵",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 0,
@@ -29699,7 +29699,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128041010,
-    "card_name": "传奇教师‧路西乌斯",
+    "card_name": "传奇教师·路西乌斯",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 0,
@@ -29718,7 +29718,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129031010,
-    "card_name": "希望的残片‧奇利烨",
+    "card_name": "希望的残片·奇利烨",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 0,
@@ -29794,7 +29794,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900011050,
-    "card_name": "时髦三人组‧艾尔赛姆",
+    "card_name": "时髦三人组·艾尔赛姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -29806,14 +29806,14 @@ let cardData = [
     "rarity": 1,
     "skill": "quick,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "疾驰 <br>入场曲 增加1张时髦三人组‧托摩伊卡片到手牌中。",
+    "skill_disc": "疾驰 <br>入场曲 增加1张时髦三人组·托摩伊卡片到手牌中。",
     "skill_option": "none,token_draw=900011060",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 900011060,
-    "card_name": "时髦三人组‧托摩伊",
+    "card_name": "时髦三人组·托摩伊",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -29825,7 +29825,7 @@ let cardData = [
     "rarity": 1,
     "skill": "rush,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "突进 <br>入场曲 增加1张K‧B‧S‧N卡片到手牌中。",
+    "skill_disc": "突进 <br>入场曲 增加1张K·B·S·N卡片到手牌中。",
     "skill_option": "none,token_draw=900011070",
     "tribe_name": "-"
   },
@@ -30015,7 +30015,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,choice,summon_token,powerup",
     "skill_condition": "pp_count>=7,character=me,character=me&target=chosen_cards&card_type=all,pp_count>=7",
-    "skill_disc": "‧天照<br>‧月读<br>使1张命运抉择 所指定的卡片进入战场。<br>爆能强化 7； 给予命运抉择 所指定的从者+3/+3效果。",
+    "skill_disc": "·天照<br>·月读<br>使1张命运抉择 所指定的卡片进入战场。<br>爆能强化 7； 给予命运抉择 所指定的从者+3/+3效果。",
     "skill_option": "fixeduse=7,card_id=900041040:900041050,repeat_count=1&summon_side=me,add_offense=3&add_life=3",
     "tribe_name": "-"
   },
@@ -30326,7 +30326,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 100111060,
-    "card_name": "黑暗精灵‧芙蕾",
+    "card_name": "黑暗精灵·芙蕾",
     "card_set_id": 10000,
     "char_type": 1,
     "clan": 1,
@@ -30554,7 +30554,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 105131010,
-    "card_name": "妖精大魔导士‧莉拉",
+    "card_name": "妖精大魔导士·莉拉",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 1,
@@ -30592,7 +30592,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106131020,
-    "card_name": "魔族少年‧翟恩",
+    "card_name": "魔族少年·翟恩",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 1,
@@ -30706,7 +30706,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109131010,
-    "card_name": "高贵的猫姊妹‧暹罗与暹玛",
+    "card_name": "高贵的猫姊妹·暹罗与暹玛",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 1,
@@ -30718,14 +30718,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧暹罗的恶作剧<br>‧暹玛的凝视<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·暹罗的恶作剧<br>·暹玛的凝视<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900134010:900134020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 1,
     "card_id": 110141030,
-    "card_name": "森之女王‧莉莎",
+    "card_name": "森之女王·莉莎",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 1,
@@ -30782,7 +30782,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112131020,
-    "card_name": "山岳少女‧米萝洛",
+    "card_name": "山岳少女·米萝洛",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 1,
@@ -30820,7 +30820,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113121020,
-    "card_name": "裂翅者‧梅里拉",
+    "card_name": "裂翅者·梅里拉",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 1,
@@ -30839,7 +30839,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113141020,
-    "card_name": "慈爱之翅‧媞丝塔",
+    "card_name": "慈爱之翅·媞丝塔",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 1,
@@ -30858,7 +30858,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 114131010,
-    "card_name": "丰饶斗士‧爱莉涅",
+    "card_name": "丰饶斗士·爱莉涅",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 1,
@@ -30877,7 +30877,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114141010,
-    "card_name": "妖精剑师‧阿玛兹",
+    "card_name": "妖精剑师·阿玛兹",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 1,
@@ -30934,7 +30934,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 116141030,
-    "card_name": "森林彩饰者‧精灵女王",
+    "card_name": "森林彩饰者·精灵女王",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 1,
@@ -30953,7 +30953,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 117141010,
-    "card_name": "《倒吊人》‧罗弗拉德",
+    "card_name": "《倒吊人》·罗弗拉德",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 1,
@@ -30972,7 +30972,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 117141030,
-    "card_name": "恆久的光辉‧艾琳",
+    "card_name": "恆久的光辉·艾琳",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 1,
@@ -31010,7 +31010,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119141030,
-    "card_name": "闪光精灵‧艾珥芭塔",
+    "card_name": "闪光精灵·艾珥芭塔",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -31022,7 +31022,7 @@ let cardData = [
     "rarity": 4,
     "skill": "quick,banish,attach_skill",
     "skill_condition": "character=me,character=me&target=inplay_self&attacker=self,{me.inplay_self.count}>0",
-    "skill_disc": "疾驰 <br>自己的回合中，如果这个从者进行攻击后仍未被破坏，则会使这个从者消失。<br>这个从者消失时，给予自己的主战者「当自己使用卡片时，如果该卡片为本回合中使用的第4张，则会召唤1个闪光精灵‧艾珥芭塔到战场上，并失去此能力」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "疾驰 <br>自己的回合中，如果这个从者进行攻击后仍未被破坏，则会使这个从者消失。<br>这个从者消失时，给予自己的主战者「当自己使用卡片时，如果该卡片为本回合中使用的第4张，则会召唤1个闪光精灵·艾珥芭塔到战场上，并失去此能力」效果。主战者无法重複叠加此效果。",
     "skill_option": "none,none,skill=(skill:summon_token)(timing:when_play_other)(condition:character=me&play_count=4)(target:none)(option:summon_token=119141030)(preprocess:remove_after_action=(count=1))&duplicate_ban_id=1191410301",
     "tribe_name": "-"
   },
@@ -31041,7 +31041,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw,play_count_change",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧缠绕树藤<br>‧蔓藤魔弹<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。使本回合中已使用的卡片张数+1。",
+    "skill_disc": "·缠绕树藤<br>·蔓藤魔弹<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。使本回合中已使用的卡片张数+1。",
     "skill_option": "card_id=103114020:104114010,repeat_count=1&summon_side=me,add_count=1",
     "tribe_name": "-"
   },
@@ -31067,7 +31067,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120131010,
-    "card_name": "危险时尚‧奈尔香",
+    "card_name": "危险时尚·奈尔香",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 1,
@@ -31079,7 +31079,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,pp_fixeduse,pp_modifier,token_draw,attach_skill",
     "skill_condition": "character=me&pp_count<5,pp_count>=5,character=me&pp_count>=5,character=me&pp_count>=5,character=me&pp_count>=5",
-    "skill_disc": "入场曲 回复自己的PP 2点。<br>爆能强化 5； 由原本的回复2点转变为回复4点。增加2张危险时尚‧奈尔香卡片到手牌中。给予上述卡片「自己的回合结束时，捨弃自己手牌中的这张卡片」效果。",
+    "skill_disc": "入场曲 回复自己的PP 2点。<br>爆能强化 5； 由原本的回复2点转变为回复4点。增加2张危险时尚·奈尔香卡片到手牌中。给予上述卡片「自己的回合结束时，捨弃自己手牌中的这张卡片」效果。",
     "skill_option": "add_pp=2,fixeduse=5,add_pp=4,token_draw=120131010:120131010,skill=(skill:discard)(timing:self_turn_end)(condition:{me.hand_self.all.count}>0)(target:character=me&target=hand_self&card_type=all)(option:none)(preprocess:none)",
     "tribe_name": "-"
   },
@@ -31181,7 +31181,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 123141030,
-    "card_name": "绝命不弑‧艾兹迪亚",
+    "card_name": "绝命不弑·艾兹迪亚",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 1,
@@ -31257,7 +31257,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 124141010,
-    "card_name": "狸惑的女将‧穗澄",
+    "card_name": "狸惑的女将·穗澄",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 1,
@@ -31269,7 +31269,7 @@ let cardData = [
     "rarity": 4,
     "skill": "banish,summon_card//metamorphose",
     "skill_condition": "play_count>4,play_count>4//character=me",
-    "skill_disc": "入场曲 本回合中如果已经使用的卡片数为4张以上（不包含本卡片），则会使自己的其他从者全部消失。随机将X张消费各不相同的精灵从者卡（狸惑的女将‧穗澄除外），由自己的牌堆召唤到战场上。X为「因这张卡片而消失的自己的从者数」。",
+    "skill_disc": "入场曲 本回合中如果已经使用的卡片数为4张以上（不包含本卡片），则会使自己的其他从者全部消失。随机将X张消费各不相同的精灵从者卡（狸惑的女将·穗澄除外），由自己的牌堆召唤到战场上。X为「因这张卡片而消失的自己的从者数」。",
     "skill_option": "none,effect=owner//metamorphose=900111010",
     "tribe_name": "宴乐"
   },
@@ -31314,7 +31314,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125131020,
-    "card_name": "妖精的骑士‧塔姆林",
+    "card_name": "妖精的骑士·塔姆林",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 1,
@@ -31497,7 +31497,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_fixeduse,summon_token,token_draw,cost_change",
     "skill_condition": "pp_count>=8,character=me&card_type=spell,character=me&card_type=spell&pp_count>=8,character=me&card_type=spell&pp_count>=8",
-    "skill_disc": "召唤1隻翱翔的猎鹰到战场上。<br>爆能强化 8； 随后，增加1张神箭手‧塞尔文卡片到手牌中，并使该卡片的消费转变为0。",
+    "skill_disc": "召唤1隻翱翔的猎鹰到战场上。<br>爆能强化 8； 随后，增加1张神箭手·塞尔文卡片到手牌中，并使该卡片的消费转变为0。",
     "skill_option": "fixeduse=8,summon_token=900131010,token_draw=102131020,set=0",
     "tribe_name": "-"
   },
@@ -31573,7 +31573,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,summon_token,pp_fixeduse,summon_token,powerup",
     "skill_condition": "pp_count<6,character=me&target=chosen_cards&card_type=all&pp_count<6,pp_count>=6,pp_count>=6,play_count>2",
-    "skill_disc": "‧心善的森之美女<br>‧愤怒的森之野兽<br>使1张命运抉择 所指定的卡片进入战场。<br>本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会使因这张卡片的能力而进入战场的从者获得+2/+2效果。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。",
+    "skill_disc": "·心善的森之美女<br>·愤怒的森之野兽<br>使1张命运抉择 所指定的卡片进入战场。<br>本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会使因这张卡片的能力而进入战场的从者获得+2/+2效果。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。",
     "skill_option": "card_id=900141020:900141030,repeat_count=1&summon_side=me,fixeduse=6,summon_token=900141020:900141030,add_offense=2&add_life=2",
     "tribe_name": "-"
   },
@@ -32036,7 +32036,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104231020,
-    "card_name": "船团长‧莉夏",
+    "card_name": "船团长·莉夏",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -32074,7 +32074,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105221010,
-    "card_name": "狩鬼少女‧小桃",
+    "card_name": "狩鬼少女·小桃",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 2,
@@ -32150,7 +32150,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106221020,
-    "card_name": "战地王女‧茱丽叶",
+    "card_name": "战地王女·茱丽叶",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 2,
@@ -32169,7 +32169,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106221030,
-    "card_name": "领主将军‧罗密欧",
+    "card_name": "领主将军·罗密欧",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 2,
@@ -32188,7 +32188,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106241010,
-    "card_name": "沉默的炎将‧玛尔斯",
+    "card_name": "沉默的炎将·玛尔斯",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 2,
@@ -32264,7 +32264,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108221010,
-    "card_name": "沉默的女僕‧诺嘉",
+    "card_name": "沉默的女僕·诺嘉",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 2,
@@ -32283,7 +32283,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108221030,
-    "card_name": "魔导狙击手‧瓦路兹",
+    "card_name": "魔导狙击手·瓦路兹",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 2,
@@ -32295,14 +32295,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧淨化之圣弹<br>‧必杀之魔弹<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·淨化之圣弹<br>·必杀之魔弹<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900224010:900224020,repeat_count=1&summon_side=me",
     "tribe_name": "士兵"
   },
   {
     "atk": 3,
     "card_id": 109211010,
-    "card_name": "暗影执法者‧塔妮亚",
+    "card_name": "暗影执法者·塔妮亚",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -32321,7 +32321,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109221010,
-    "card_name": "娇小的圣骑士‧夏绿蒂",
+    "card_name": "娇小的圣骑士·夏绿蒂",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -32397,7 +32397,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 110241010,
-    "card_name": "篡夺绝杰‧欧克托莉斯",
+    "card_name": "篡夺绝杰·欧克托莉斯",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 2,
@@ -32435,7 +32435,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111221020,
-    "card_name": "武器商贩‧伊尔米斯娜",
+    "card_name": "武器商贩·伊尔米斯娜",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -32454,7 +32454,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111241020,
-    "card_name": "白翼战神‧埃忒耳",
+    "card_name": "白翼战神·埃忒耳",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -32492,7 +32492,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112231020,
-    "card_name": "哈古贝尔格之雷锤‧特洛依雅",
+    "card_name": "哈古贝尔格之雷锤·特洛依雅",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 2,
@@ -32561,14 +32561,14 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧黄金之靴<br>‧黄金首饰<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·黄金之靴<br>·黄金首饰<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900214030:900214040,repeat_count=1&summon_side=me",
     "tribe_name": "士兵"
   },
   {
     "atk": 3,
     "card_id": 114241030,
-    "card_name": "妖刃之鬼‧椿",
+    "card_name": "妖刃之鬼·椿",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 2,
@@ -32606,7 +32606,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 115241020,
-    "card_name": "空腹公主‧贪吃佩可",
+    "card_name": "空腹公主·贪吃佩可",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 2,
@@ -32644,7 +32644,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 116221010,
-    "card_name": "勇悍骑士‧格尔德",
+    "card_name": "勇悍骑士·格尔德",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 2,
@@ -32701,7 +32701,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 117241010,
-    "card_name": "《战车》‧奥辂昂",
+    "card_name": "《战车》·奥辂昂",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 2,
@@ -32713,7 +32713,7 @@ let cardData = [
     "rarity": 4,
     "skill": "random_array,guard,summon_token,damage,pp_fixeduse,metamorphose",
     "skill_condition": "{me.inplay_self.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0,pp_count>=7,pp_count>=7",
-    "skill_disc": "自己的回合结束时，由「获得守护 效果」、「召唤1个骑士到战场上」、「给予敌方的主战者2点伤害」之中，随机发动1种能力。<br>入场曲 爆能强化 7； 变身为《暴走》战车‧奥辂昂。",
+    "skill_disc": "自己的回合结束时，由「获得守护 效果」、「召唤1个骑士到战场上」、「给予敌方的主战者2点伤害」之中，随机发动1种能力。<br>入场曲 爆能强化 7； 变身为《暴走》战车·奥辂昂。",
     "skill_option": "sum=1&random_range=3,none,summon_token=900211010,damage=2,fixeduse=7,metamorphose=900241070",
     "tribe_name": "指挥官"
   },
@@ -32751,7 +32751,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,summon_token",
     "skill_condition": "{me.inplay.class.rally_count}>=5,{me.inplay.class.rally_count}>=5",
-    "skill_disc": "‧机动二轮车<br>‧魔导装甲车<br>入场曲 协作 5； 召唤1张命运抉择 所指定的卡片到战场上。",
+    "skill_disc": "·机动二轮车<br>·魔导装甲车<br>入场曲 协作 5； 召唤1张命运抉择 所指定的卡片到战场上。",
     "skill_option": "card_id=900012030:900012040,repeat_count=1&summon_side=me",
     "tribe_name": "士兵"
   },
@@ -32796,7 +32796,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120241020,
-    "card_name": "曙光少女‧赛拉",
+    "card_name": "曙光少女·赛拉",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 2,
@@ -32834,7 +32834,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 121241020,
-    "card_name": "月光执行者‧里欧德",
+    "card_name": "月光执行者·里欧德",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 2,
@@ -32853,7 +32853,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121241030,
-    "card_name": "忠义剑士‧艾莉卡",
+    "card_name": "忠义剑士·艾莉卡",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 2,
@@ -32929,7 +32929,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123241010,
-    "card_name": "失落武士‧景光",
+    "card_name": "失落武士·景光",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 2,
@@ -32941,14 +32941,14 @@ let cardData = [
     "rarity": 4,
     "skill": "evolve,trigger,attach_skill//quick,damage,damage",
     "skill_condition": "character=me,{me.inplay.class.rally_count}>=10,character=me//character=me,{me.evolved_card_list.count}>=5&{me.evolved_card_list.count}<7,{me.evolved_card_list.count}>=7",
-    "skill_disc": "进入战场时，如果自己的协作 为10以上（不包含此从者），则会使这个从者进化。<br>谢幕曲 给予自己的主战者「下下个自己的回合开始时，召唤1个失落武士‧景光到战场上。而后失去此能力」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "进入战场时，如果自己的协作 为10以上（不包含此从者），则会使这个从者进化。<br>谢幕曲 给予自己的主战者「下下个自己的回合开始时，召唤1个失落武士·景光到战场上。而后失去此能力」效果。主战者无法重複叠加此效果。",
     "skill_option": "none,none,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=123241010)(preprocess:turn_start_skill=(me&me_turn_start_count=2)&remove_after_action=(count=1))&save_turn_skill_id=1232410101&duplicate_ban_id=1232410101//none,damage=2,damage=4",
     "tribe_name": "士兵"
   },
   {
     "atk": 3,
     "card_id": 123241020,
-    "card_name": "空绝篡夺‧欧克托莉斯",
+    "card_name": "空绝篡夺·欧克托莉斯",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 2,
@@ -32981,12 +32981,12 @@ let cardData = [
     "skill_condition": "character=me&target=played_card&card_type=spell&base_card_id=900214050&{me.inplay_self.count}>0,character=me,{me.game_draw_cards.base_card_id=900214050.count}>=2,character=me",
     "skill_disc": "当自己使用闪耀的金币卡片时，随机给予1个敌方的从者3点伤害。<br>入场曲 增加1张闪耀的金币卡片到手牌中。随后，如果自己在这场对战中增加到手牌中的闪耀的金币卡片张数为3张以上，则会获得疾驰 效果。",
     "skill_option": "damage=3,token_draw=900214050,none,none",
-    "tribe_name": "士兵‧宴乐"
+    "tribe_name": "士兵·宴乐"
   },
   {
     "atk": 2,
     "card_id": 124241030,
-    "card_name": "炙燃之炎‧玛尔斯",
+    "card_name": "炙燃之炎·玛尔斯",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 2,
@@ -33024,7 +33024,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 126231020,
-    "card_name": "正义盗贼‧卡婕",
+    "card_name": "正义盗贼·卡婕",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 2,
@@ -33055,7 +33055,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,cost_change,evolve//heal,draw,powerup",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.inplay.class.rally_count}>=10,character=me&target=played_card&card_type=spell&{me.inplay_self.count}>0//character=me&target=played_card&card_type=spell&{me.inplay_self.count}>0&{me.self.skill_activated_count}=1,character=me&target=played_card&card_type=spell&{me.inplay_self.count}>0&{me.self.skill_activated_count}=2,character=me&target=played_card&card_type=spell&{me.inplay_self.count}>0&{me.self.skill_activated_count}=3",
-    "skill_disc": "‧商人的鑑定<br>‧绚丽的美技<br>‧双剑之技<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。协作 10； 到回合结束为止，使其消费-3。<br>---------- <br>当自己使用法术卡时，使这个从者进化。",
+    "skill_disc": "·商人的鑑定<br>·绚丽的美技<br>·双剑之技<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。协作 10； 到回合结束为止，使其消费-3。<br>---------- <br>当自己使用法术卡时，使这个从者进化。",
     "skill_option": "card_id=116214010:118234010:112214010,repeat_count=1&summon_side=me,add=-3,none//healing=2,none,add_offense=1&add_life=1",
     "tribe_name": "指挥官"
   },
@@ -33095,7 +33095,7 @@ let cardData = [
     "skill_condition": "character=me,character=me",
     "skill_disc": "守护 <br>入场曲 获得「这个从者受到的伤害如果为2以上，则会转变为1」效果。",
     "skill_option": "none,cut_clipping=1",
-    "tribe_name": "士兵‧英雄"
+    "tribe_name": "士兵·英雄"
   },
   {
     "atk": 2,
@@ -33114,7 +33114,7 @@ let cardData = [
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=looting,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}<7,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}>=7//{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&tribe=looting,character=me",
     "skill_disc": "当自己使用财宝卡时，召唤1个巡洋突击兵到战场上。<br>入场曲 增加1张黄金首饰卡片到手牌中。如果自己在这场对战中融合 或已使用的财宝卡张数合计为7张以上，则会由原本的黄金首饰转变为增加战慄的海贼旗卡片到手牌中。",
     "skill_option": "summon_token=900211100,token_draw=900214040,token_draw=900214060//summon_token=900211090,add=-1",
-    "tribe_name": "士兵‧八狱"
+    "tribe_name": "士兵·八狱"
   },
   {
     "atk": 3,
@@ -33152,12 +33152,12 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay.class.rally_count}>=10&{op.inplay.unit.selectable.count}>0,{me.inplay.class.rally_count}>=10",
     "skill_disc": "守护 <br>入场曲 协作 10； 破坏1个敌方的从者。给予敌方的主战者3点伤害。",
     "skill_option": "none,none,damage=3",
-    "tribe_name": "士兵‧学园"
+    "tribe_name": "士兵·学园"
   },
   {
     "atk": 2,
     "card_id": 128241010,
-    "card_name": "校舍的黄昏‧莉夏与奈诺",
+    "card_name": "校舍的黄昏·莉夏与奈诺",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 2,
@@ -33171,7 +33171,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay.class.rally_count}>=15,{me.inplay.class.rally_count}>=15//character=me",
     "skill_disc": "必杀 <br>入场曲 协作 15； 增加1张暮光之刃卡片到手牌中。使其消费转变为1。",
     "skill_option": "none,token_draw=900244010,set=1//summon_token=104232010",
-    "tribe_name": "指挥官‧学园"
+    "tribe_name": "指挥官·学园"
   },
   {
     "atk": 2,
@@ -33252,7 +33252,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900231130,
-    "card_name": "雷维翁武斗家‧梅姆",
+    "card_name": "雷维翁武斗家·梅姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -33271,26 +33271,26 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900241090,
-    "card_name": "英勇之王‧伊梅拉",
+    "card_name": "英勇之王·伊梅拉",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
     "cost": 3,
     "evo_atk": 3,
     "evo_life": 6,
-    "evo_skill_disc": "守护 <br>交战时 召唤1个骑士到战场上。如果自己的战场上有高雅女王‧玛格娜丝，则会由原本的骑士转变为召唤铁甲骑士到战场上。<br>攻击时 获得+1/+1效果。",
+    "evo_skill_disc": "守护 <br>交战时 召唤1个骑士到战场上。如果自己的战场上有高雅女王·玛格娜丝，则会由原本的骑士转变为召唤铁甲骑士到战场上。<br>攻击时 获得+1/+1效果。",
     "life": 4,
     "rarity": 4,
     "skill": "guard,summon_token,summon_token//summon_token,summon_token,powerup",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=900241100.count}=0,{me.inplay_other_self.unit.base_card_id=900241100.count}>0//{me.inplay_other_self.unit.base_card_id=900241100.count}=0,{me.inplay_other_self.unit.base_card_id=900241100.count}>0,character=me&target=attacker&attacker=self",
-    "skill_disc": "守护 <br>交战时 召唤1个骑士到战场上。如果自己的战场上有高雅女王‧玛格娜丝，则会由原本的骑士转变为召唤铁甲骑士到战场上。",
+    "skill_disc": "守护 <br>交战时 召唤1个骑士到战场上。如果自己的战场上有高雅女王·玛格娜丝，则会由原本的骑士转变为召唤铁甲骑士到战场上。",
     "skill_option": "none,summon_token=900211010,summon_token=900211030//summon_token=900211010,summon_token=900211030,add_offense=1&add_life=1",
     "tribe_name": "指挥官"
   },
   {
     "atk": 3,
     "card_id": 900241100,
-    "card_name": "高雅女王‧玛格娜丝",
+    "card_name": "高雅女王·玛格娜丝",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -33530,7 +33530,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,pp_fixeduse,summon_token,damage,powerup",
     "skill_condition": "{me.inplay.class.pp}<=5,pp_count<=5,character=me&target=chosen_cards&card_type=all&pp_count<=5,pp_count>=6,pp_count>=6,pp_count>=6,pp_count>=6",
-    "skill_disc": "‧艾莉卡的战技<br>‧米丝特莉娜的剑刃<br>‧贝里昂的号令<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>爆能强化 6； 由原本的命运抉择 转变为召唤2个迅捷的剑士到战场上。随机给予1个敌方的从者5点伤害。给予自己的从者全体+1/+1效果。",
+    "skill_disc": "·艾莉卡的战技<br>·米丝特莉娜的剑刃<br>·贝里昂的号令<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>爆能强化 6； 由原本的命运抉择 转变为召唤2个迅捷的剑士到战场上。随机给予1个敌方的从者5点伤害。给予自己的从者全体+1/+1效果。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900234040:900234050:900234060,repeat_count=1&summon_side=me,fixeduse=6,summon_token=100211010:100211010,damage=5,add_offense=1&add_life=1",
     "tribe_name": "-"
   },
@@ -33606,7 +33606,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,summon_token,pp_fixeduse,summon_token,evolve",
     "skill_condition": "pp_count<6,character=me&target=chosen_cards&card_type=all&pp_count<6,pp_count>=6,pp_count>=6,pp_count>=6",
-    "skill_disc": "‧英勇之王‧伊梅拉<br>‧高雅女王‧玛格娜丝<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。使上述从者进化。",
+    "skill_disc": "·英勇之王·伊梅拉<br>·高雅女王·玛格娜丝<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。使上述从者进化。",
     "skill_option": "card_id=900241090:900241100,repeat_count=1&summon_side=me,fixeduse=6,summon_token=900241090:900241100,none",
     "tribe_name": "-"
   },
@@ -33784,7 +33784,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102311050,
-    "card_name": "幼年女巫‧爱蜜儿",
+    "card_name": "幼年女巫·爱蜜儿",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 3,
@@ -33803,7 +33803,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103321040,
-    "card_name": "神祕探求者‧克拉克",
+    "card_name": "神祕探求者·克拉克",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -33917,7 +33917,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106321030,
-    "card_name": "圣魔法教师‧费洛",
+    "card_name": "圣魔法教师·费洛",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 3,
@@ -33955,7 +33955,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107311010,
-    "card_name": "马纳历亚召唤师‧贝莉鲁",
+    "card_name": "马纳历亚召唤师·贝莉鲁",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 3,
@@ -33967,14 +33967,14 @@ let cardData = [
     "rarity": 1,
     "skill": "summon_token",
     "skill_condition": "{me.inplay_self.count}>0&{me.inplay.unit.base_card_id=900311070.count}=0&character=me&target=played_card&card_type=all&tribe=manaria",
-    "skill_disc": "每当自己使用其他马纳历亚卡时，如果自己的战场上没有马纳历亚魔兽‧尼克，则会召唤1隻马纳历亚魔兽‧尼克到战场上。",
+    "skill_disc": "每当自己使用其他马纳历亚卡时，如果自己的战场上没有马纳历亚魔兽·尼克，则会召唤1隻马纳历亚魔兽·尼克到战场上。",
     "skill_option": "summon_token=900311070",
     "tribe_name": "马纳历亚"
   },
   {
     "atk": 2,
     "card_id": 108321010,
-    "card_name": "天才魔法师‧艾尔莎",
+    "card_name": "天才魔法师·艾尔莎",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 3,
@@ -33993,7 +33993,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109321020,
-    "card_name": "未完的鍊金术师‧克拉莉丝",
+    "card_name": "未完的鍊金术师·克拉莉丝",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -34031,14 +34031,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 110331030,
-    "card_name": "马纳历亚龙人公主‧古蕾娅",
+    "card_name": "马纳历亚龙人公主·古蕾娅",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
     "cost": 3,
     "evo_atk": 4,
     "evo_life": 5,
-    "evo_skill_disc": "‧古蕾娅的炎热之术<br>‧古蕾娅的灼热之术<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护",
+    "evo_skill_disc": "·古蕾娅的炎热之术<br>·古蕾娅的灼热之术<br>进化时 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护",
     "life": 3,
     "rarity": 3,
     "skill": "guard//choice,token_draw",
@@ -34050,7 +34050,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111311030,
-    "card_name": "马纳历亚创作家‧琪可",
+    "card_name": "马纳历亚创作家·琪可",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 3,
@@ -34069,7 +34069,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111331010,
-    "card_name": "天外之花‧爱莲娜",
+    "card_name": "天外之花·爱莲娜",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 3,
@@ -34126,7 +34126,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112341010,
-    "card_name": "灭拳魔女‧玛姬纱",
+    "card_name": "灭拳魔女·玛姬纱",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -34145,7 +34145,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113321010,
-    "card_name": "笑颜魔女‧爱蜜儿",
+    "card_name": "笑颜魔女·爱蜜儿",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 3,
@@ -34214,14 +34214,14 @@ let cardData = [
     "rarity": 4,
     "skill": "token_draw,token_draw,token_draw",
     "skill_condition": "character=me&target=self&card_type=unit&{self.charge_count}<=5,character=me&target=self&card_type=unit&{self.charge_count}>=6&{self.charge_count}<=11,character=me&target=self&card_type=unit&{self.charge_count}>=12",
-    "skill_disc": "入场曲 如果这张卡片的魔力增幅 次数为5次以下，则会随机从下列卡片之中增加1张卡片到手牌中。<br>如果为6次以上、11次以下，则会随机增加不同的2张。<br>如果为12次以上，则会随机增加不同的3张。<br>卡西欧佩亚、自来也、亚得米勒、魔将‧赫克托、深渊的来访者、黑暗贞德、断罪者‧希尔薇娅",
+    "skill_disc": "入场曲 如果这张卡片的魔力增幅 次数为5次以下，则会随机从下列卡片之中增加1张卡片到手牌中。<br>如果为6次以上、11次以下，则会随机增加不同的2张。<br>如果为12次以上，则会随机增加不同的3张。<br>卡西欧佩亚、自来也、亚得米勒、魔将·赫克托、深渊的来访者、黑暗贞德、断罪者·希尔薇娅",
     "skill_option": "token_draw=106141010:110241020:109441020:104541020:105641020:104741010:111841020:?1,token_draw=106141010:110241020:109441020:104541020:105641020:104741010:111841020:?2,token_draw=106141010:110241020:109441020:104541020:105641020:104741010:111841020:?3",
     "tribe_name": "-"
   },
   {
     "atk": 3,
     "card_id": 115331010,
-    "card_name": "小小优等生‧镜华",
+    "card_name": "小小优等生·镜华",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 3,
@@ -34354,7 +34354,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119341010,
-    "card_name": "魔导的神子‧芬芙",
+    "card_name": "魔导的神子·芬芙",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -34373,7 +34373,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120331010,
-    "card_name": "雷格尼斯之主‧古蕾娅",
+    "card_name": "雷格尼斯之主·古蕾娅",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 3,
@@ -34411,7 +34411,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120341010,
-    "card_name": "马纳历亚女王‧安",
+    "card_name": "马纳历亚女王·安",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 3,
@@ -34468,7 +34468,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121341010,
-    "card_name": "清澄的苍蓝‧坦忒菈",
+    "card_name": "清澄的苍蓝·坦忒菈",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 3,
@@ -34487,7 +34487,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121341030,
-    "card_name": "深究的魔法师‧伊莎贝尔",
+    "card_name": "深究的魔法师·伊莎贝尔",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 3,
@@ -34582,7 +34582,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 124331020,
-    "card_name": "封禁之术‧芭赛特",
+    "card_name": "封禁之术·芭赛特",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 3,
@@ -34601,7 +34601,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125341020,
-    "card_name": "起始魔法‧马纳历亚",
+    "card_name": "起始魔法·马纳历亚",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -34639,14 +34639,14 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126341020,
-    "card_name": "万能的奇蹟‧梅露缇娜",
+    "card_name": "万能的奇蹟·梅露缇娜",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
     "cost": 3,
     "evo_atk": 3,
     "evo_life": 3,
-    "evo_skill_disc": "进化时 使1个敌方的从者消失。增加1张万能的奇蹟‧梅露缇娜卡片到手牌中。使其发动2次魔力增幅。使这个从者消失。",
+    "evo_skill_disc": "进化时 使1个敌方的从者消失。增加1张万能的奇蹟·梅露缇娜卡片到手牌中。使其发动2次魔力增幅。使这个从者消失。",
     "life": 1,
     "rarity": 4,
     "skill": "draw,spell_charge,damage,pp_modifier,possess_ep_modifier//banish,token_draw,spell_charge,banish",
@@ -34691,12 +34691,12 @@ let cardData = [
     "skill_condition": "character=me,character=me",
     "skill_disc": "入场曲 增加1张马纳历亚魔弹与1张马纳历亚防御阵卡片到手牌中。使上述卡片消费转变为1。",
     "skill_option": "token_draw=900314040:900314050,set=1",
-    "tribe_name": "马纳历亚‧学园"
+    "tribe_name": "马纳历亚·学园"
   },
   {
     "atk": 3,
     "card_id": 128341020,
-    "card_name": "光豔之魔导‧安",
+    "card_name": "光豔之魔导·安",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 3,
@@ -34710,7 +34710,7 @@ let cardData = [
     "skill_condition": "character=me,character=me,{me.game_play_cards_other_self.all.play_moment_tribe=manaria.count}>=10//character=me,character=me",
     "skill_disc": "守护 <br>入场曲 增加1张安的巨大英灵卡片到手牌中。本次对战中如果自己已使用的马纳历亚卡张数为10张以上（不包含本卡片），则会给予该从者吸血 效果。",
     "skill_option": "none,token_draw=900331040,skill=(skill:drain)(timing:when_change_inplay)(condition:character=me)(target:character=me)(option:none)(preprocess:none)//none,add_pp=1",
-    "tribe_name": "马纳历亚‧学园"
+    "tribe_name": "马纳历亚·学园"
   },
   {
     "atk": 1,
@@ -34734,7 +34734,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129341020,
-    "card_name": "灿烂巫女‧帕梅拉",
+    "card_name": "灿烂巫女·帕梅拉",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 3,
@@ -34772,7 +34772,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900311100,
-    "card_name": "式神‧暴鬼",
+    "card_name": "式神·暴鬼",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -34936,7 +34936,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_fixeduse,damage,summon_token",
     "skill_condition": "pp_count>=9,character=op&target=inplay&card_type=unit&pp_count<9,character=me&card_type=spell&pp_count>=9",
-    "skill_disc": "给予随机1个敌方的从者5点伤害。<br>爆能强化 9； 不会给予伤害，转变为召唤1个大召唤师‧伊拉斯莫斯到战场上。",
+    "skill_disc": "给予随机1个敌方的从者5点伤害。<br>爆能强化 9； 不会给予伤害，转变为召唤1个大召唤师·伊拉斯莫斯到战场上。",
     "skill_option": "fixeduse=9,damage=5,summon_token=101341030",
     "tribe_name": "-"
   },
@@ -35050,7 +35050,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,summon_token,summon_token",
     "skill_condition": "{self.charge_count}<=5,{self.charge_count}>=6&{self.charge_count}<=11,{self.charge_count}>=12",
-    "skill_disc": "如果这张卡片的魔力增幅 次数为5次以下，则会召唤1个泥尘巨像与1个废铁巨像到战场上。<br>如果为6次以上、11次以下，则会召唤1个守护者巨像与1个泥尘巨像到战场上。<br>如果为12次以上，则会召唤1个究极‧泥尘巨像与1个守护者巨像到战场上。",
+    "skill_disc": "如果这张卡片的魔力增幅 次数为5次以下，则会召唤1个泥尘巨像与1个废铁巨像到战场上。<br>如果为6次以上、11次以下，则会召唤1个守护者巨像与1个泥尘巨像到战场上。<br>如果为12次以上，则会召唤1个究极·泥尘巨像与1个守护者巨像到战场上。",
     "skill_option": "summon_token=900311020:900311040,summon_token=900311030:900311020,summon_token=900341010:900311030",
     "tribe_name": "-"
   },
@@ -35090,7 +35090,7 @@ let cardData = [
     "skill_condition": "none,character=me,{me.self.fusion_ingrediented_card_list.count}>=2,{me.self.fusion_ingrediented_card_list.count}>=2",
     "skill_disc": "融合 ； 机械卡<br>---------- <br>抽取2张卡片。<br>如果「与这张卡片融合 的张数」为2张以上，则会召唤1个生产器械到战场上，并使其进化。",
     "skill_option": "none,none,summon_token=900011080,none",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 0,
@@ -35183,7 +35183,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,summon_token,pp_fixeduse,summon_token,evolve,pp_fixeduse,quick",
     "skill_condition": "pp_count<5,character=me&target=chosen_cards&card_type=all&pp_count<5,pp_count>=5&pp_count<8,pp_count>=5,pp_count>=5,pp_count>=8,pp_count>=8",
-    "skill_disc": "‧马纳历亚公主‧安<br>‧马纳历亚龙人‧古蕾娅<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 5； 由原本的命运抉择 转变为各召唤1个到战场上。使上述从者进化。<br>爆能强化 8； 给予全部自己的马纳历亚从者疾驰 效果。",
+    "skill_disc": "·马纳历亚公主·安<br>·马纳历亚龙人·古蕾娅<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 5； 由原本的命运抉择 转变为各召唤1个到战场上。使上述从者进化。<br>爆能强化 8； 给予全部自己的马纳历亚从者疾驰 效果。",
     "skill_option": "card_id=103331020:103431020,repeat_count=1&summon_side=me&ignore_voice=true,fixeduse=5,summon_token=103331020:103431020&ignore_voice=true,none,fixeduse=8,none",
     "tribe_name": "马纳历亚"
   },
@@ -35361,7 +35361,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101411030,
-    "card_name": "龙骑士‧艾拉",
+    "card_name": "龙骑士·艾拉",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 4,
@@ -35456,7 +35456,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101421030,
-    "card_name": "天龙之女‧艾琪卡",
+    "card_name": "天龙之女·艾琪卡",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 4,
@@ -35551,7 +35551,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103421020,
-    "card_name": "翼龙骑士‧叶花",
+    "card_name": "翼龙骑士·叶花",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 4,
@@ -35779,7 +35779,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108431010,
-    "card_name": "斩龙剑士‧罗伊",
+    "card_name": "斩龙剑士·罗伊",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -35791,7 +35791,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧活龙剑<br>‧屠龙剑<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·活龙剑<br>·屠龙剑<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900434010:900434020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -35817,7 +35817,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109421010,
-    "card_name": "炎足的丽姬‧艾莉纱",
+    "card_name": "炎足的丽姬·艾莉纱",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 4,
@@ -35867,7 +35867,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧龙之翼击<br>‧龙之爪击<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·龙之翼击<br>·龙之爪击<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=101414010:900414010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -36121,7 +36121,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 117441030,
-    "card_name": "绝对零度‧菲琳",
+    "card_name": "绝对零度·菲琳",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 4,
@@ -36171,14 +36171,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw,cost_change,cost_change//damage",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me&awake=false,character=me&awake=true//character=me",
-    "skill_disc": "‧顺从的骏马<br>‧机动二轮车<br>‧魔导装甲车<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中，并使其消费-1。如果觉醒 状态已发动，则会由原本的-1转变为-3。",
+    "skill_disc": "·顺从的骏马<br>·机动二轮车<br>·魔导装甲车<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中，并使其消费-1。如果觉醒 状态已发动，则会由原本的-1转变为-3。",
     "skill_option": "card_id=900012020:900012030:900012040,repeat_count=1&summon_side=me,add=-1,add=-3//damage=4",
     "tribe_name": "-"
   },
   {
     "atk": 2,
     "card_id": 118441020,
-    "card_name": "烈霸工匠‧蕾吉",
+    "card_name": "烈霸工匠·蕾吉",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 4,
@@ -36273,7 +36273,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121431010,
-    "card_name": "奋勇的兽人‧吉娜",
+    "card_name": "奋勇的兽人·吉娜",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 4,
@@ -36292,7 +36292,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121441030,
-    "card_name": "龙枪战士‧罗文",
+    "card_name": "龙枪战士·罗文",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 4,
@@ -36368,7 +36368,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 124441010,
-    "card_name": "独尊龙‧四龙",
+    "card_name": "独尊龙·四龙",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 4,
@@ -36406,7 +36406,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125431020,
-    "card_name": "红炎龙爪‧艾琪卡",
+    "card_name": "红炎龙爪·艾琪卡",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 4,
@@ -36444,7 +36444,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 126431030,
-    "card_name": "银色清纯‧雅尔贞特",
+    "card_name": "银色清纯·雅尔贞特",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 4,
@@ -36684,7 +36684,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,pp_modifier,destroy",
     "skill_condition": "awake=false,awake=false,awake=false,awake=true,awake=true",
-    "skill_disc": "‧罗文的咆哮<br>‧拜迪的爪牙<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果使用这张卡片时觉醒 状态已发动，则会由原本的命运抉择 转变为使自己的PP最大值+1。随机破坏1个敌方的从者。",
+    "skill_disc": "·罗文的咆哮<br>·拜迪的爪牙<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果使用这张卡片时觉醒 状态已发动，则会由原本的命运抉择 转变为使自己的PP最大值+1。随机破坏1个敌方的从者。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900434050:900434060,repeat_count=1&summon_side=me,add_pptotal=1,none",
     "tribe_name": "-"
   },
@@ -36836,7 +36836,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform,pp_modifier",
     "skill_condition": "character=me&awake=true&pp_count>=3,character=me&target=chosen_cards&card_type=all&awake=true&pp_count>=3,character=me&target=self",
-    "skill_disc": "‧勐爪践踏<br>‧狂风袭捲<br>如果这张卡片在手牌中，自己剩馀的PP为3以上，并且觉醒 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>谢幕曲 使自己的PP最大值+1。",
+    "skill_disc": "·勐爪践踏<br>·狂风袭捲<br>如果这张卡片在手牌中，自己剩馀的PP为3以上，并且觉醒 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 1<br>谢幕曲 使自己的PP最大值+1。",
     "skill_option": "card_id=900423010:900423020,repeat_count=1&summon_side=me,add_pptotal=1",
     "tribe_name": "-"
   },
@@ -37223,7 +37223,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104541010,
-    "card_name": "灵魂守门人‧命忒",
+    "card_name": "灵魂守门人·命忒",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 5,
@@ -37242,7 +37242,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106521010,
-    "card_name": "恶魔拳法家‧索拉",
+    "card_name": "恶魔拳法家·索拉",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 5,
@@ -37318,7 +37318,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 109521010,
-    "card_name": "怪物少女‧芙兰",
+    "card_name": "怪物少女·芙兰",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
@@ -37330,7 +37330,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw,pp_fixeduse,token_draw",
     "skill_condition": "character=me&pp_count<7,character=me&target=chosen_cards&card_type=all&pp_count<7,pp_count>=7,pp_count>=7",
-    "skill_disc": "‧芙兰的侍从<br>‧芙兰的诅咒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 7； 由原本的命运抉择 转变为增加1张芙兰的侍从与1张芙兰的诅咒卡片到手牌中。",
+    "skill_disc": "·芙兰的侍从<br>·芙兰的诅咒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>爆能强化 7； 由原本的命运抉择 转变为增加1张芙兰的侍从与1张芙兰的诅咒卡片到手牌中。",
     "skill_option": "card_id=900521030:900524010,repeat_count=1&summon_side=me,fixeduse=7,token_draw=900521030:900524010",
     "tribe_name": "-"
   },
@@ -37375,7 +37375,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110541020,
-    "card_name": "沉默绝杰‧鲁鲁纳伊",
+    "card_name": "沉默绝杰·鲁鲁纳伊",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 5,
@@ -37394,7 +37394,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111521020,
-    "card_name": "南瓜头‧克里斯",
+    "card_name": "南瓜头·克里斯",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -37432,7 +37432,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113531010,
-    "card_name": "冥守继承者‧卡穆拉",
+    "card_name": "冥守继承者·卡穆拉",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -37470,7 +37470,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114531010,
-    "card_name": "不容侵犯之死灵‧黑利欧",
+    "card_name": "不容侵犯之死灵·黑利欧",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 5,
@@ -37736,7 +37736,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 120541010,
-    "card_name": "永闇新娘‧赛蕾丝",
+    "card_name": "永闇新娘·赛蕾丝",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 5,
@@ -37774,7 +37774,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121541020,
-    "card_name": "创造的丹紫‧安镍儿",
+    "card_name": "创造的丹紫·安镍儿",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 5,
@@ -37869,7 +37869,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 124541010,
-    "card_name": "因果的迷途之子‧安瑟乔",
+    "card_name": "因果的迷途之子·安瑟乔",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 5,
@@ -37926,7 +37926,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125531020,
-    "card_name": "冥域的烈牙‧欧特鲁斯",
+    "card_name": "冥域的烈牙·欧特鲁斯",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 5,
@@ -37938,7 +37938,7 @@ let cardData = [
     "rarity": 3,
     "skill": "none,draw,draw//damage",
     "skill_condition": "character=me&burial_rite=true,burial_rite=true&{me.self.last_burial_rite_card_list.unit.clan=necro.base_cost>=7.count}=0,burial_rite=true&{me.self.last_burial_rite_card_list.unit.clan=necro.base_cost>=7.count}>0//character=me&burial_rite=true",
-    "skill_disc": "入场曲 如果葬送 已发动，则会随机将1张死灵法师从者卡（冥域的烈牙‧欧特鲁斯除外），由自己的牌堆抽取到手牌中。如果葬送 的对象为「原始消费为7以上的死灵法师从者卡」，则会由原本的1张转变为2张。",
+    "skill_disc": "入场曲 如果葬送 已发动，则会随机将1张死灵法师从者卡（冥域的烈牙·欧特鲁斯除外），由自己的牌堆抽取到手牌中。如果葬送 的对象为「原始消费为7以上的死灵法师从者卡」，则会由原本的1张转变为2张。",
     "skill_option": "none,none,none//damage=2",
     "tribe_name": "-"
   },
@@ -38591,7 +38591,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101631020,
-    "card_name": "恶魔司令‧萝拉",
+    "card_name": "恶魔司令·萝拉",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 6,
@@ -38648,7 +38648,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103621020,
-    "card_name": "吸血贵公子‧拜特",
+    "card_name": "吸血贵公子·拜特",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 6,
@@ -38781,7 +38781,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 107631010,
-    "card_name": "迷人魅魔‧莉莉姆",
+    "card_name": "迷人魅魔·莉莉姆",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 6,
@@ -38819,7 +38819,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 108641030,
-    "card_name": "狼人之王‧华兹",
+    "card_name": "狼人之王·华兹",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 6,
@@ -38838,7 +38838,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109611020,
-    "card_name": "试验品‧泽赫克",
+    "card_name": "试验品·泽赫克",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 6,
@@ -38876,7 +38876,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110641010,
-    "card_name": "姦淫绝杰‧瓦娜蕾格",
+    "card_name": "姦淫绝杰·瓦娜蕾格",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -38933,7 +38933,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113611020,
-    "card_name": "恸哭魔人‧涅菲里欧",
+    "card_name": "恸哭魔人·涅菲里欧",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -38952,7 +38952,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113641020,
-    "card_name": "恶逆公爵‧尤里乌斯",
+    "card_name": "恶逆公爵·尤里乌斯",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -39066,7 +39066,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 115641020,
-    "card_name": "暗夜统御者‧伊莉亚",
+    "card_name": "暗夜统御者·伊莉亚",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 6,
@@ -39180,7 +39180,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 118641020,
-    "card_name": "无伤双翼‧圮尤菈",
+    "card_name": "无伤双翼·圮尤菈",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 6,
@@ -39199,7 +39199,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119621010,
-    "card_name": "坏天之灾‧哈勒婕娜",
+    "card_name": "坏天之灾·哈勒婕娜",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 6,
@@ -39218,7 +39218,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119631030,
-    "card_name": "灰白之豹‧艾路",
+    "card_name": "灰白之豹·艾路",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 6,
@@ -39294,7 +39294,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121641030,
-    "card_name": "终幕吸血鬼‧尤里亚斯",
+    "card_name": "终幕吸血鬼·尤里亚斯",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 6,
@@ -39370,14 +39370,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123641010,
-    "card_name": "血豔领主‧夕月",
+    "card_name": "血豔领主·夕月",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 6,
     "cost": 3,
     "evo_atk": 4,
     "evo_life": 5,
-    "evo_skill_disc": "进化时 召唤1个血豔领主‧夕月到战场上。给予该从者「自己的回合结束时，使这个从者消失」效果，并使其进化。",
+    "evo_skill_disc": "进化时 召唤1个血豔领主·夕月到战场上。给予该从者「自己的回合结束时，使这个从者消失」效果，并使其进化。",
     "life": 3,
     "rarity": 4,
     "skill": "destroy,draw,destroy,draw//summon_token,attach_skill,evolve",
@@ -39484,7 +39484,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126631010,
-    "card_name": "庞克恶魔‧戴莫尼亚",
+    "card_name": "庞克恶魔·戴莫尼亚",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 6,
@@ -39541,7 +39541,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128611010,
-    "card_name": "极徒会头目‧登南",
+    "card_name": "极徒会头目·登南",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 6,
@@ -39686,7 +39686,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,token_draw",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "召唤2隻毒蛇到战场上。<br>由毒牙公主‧梅杜莎、尤芮艾莉、斯忒诺之中，随机增加1张卡片到手牌中。",
+    "skill_disc": "召唤2隻毒蛇到战场上。<br>由毒牙公主·梅杜莎、尤芮艾莉、斯忒诺之中，随机增加1张卡片到手牌中。",
     "skill_option": "summon_token=900611020:900611020,token_draw=106641010:106621010:106631010:?1",
     "tribe_name": "-"
   },
@@ -39857,7 +39857,7 @@ let cardData = [
     "rarity": 3,
     "skill": "damage,damage",
     "skill_condition": "{me.inplay_other_self.unit.base_card_id=110631030.count}=0,{me.inplay_other_self.unit.base_card_id=110631030.count}>0",
-    "skill_disc": "给予敌方的从者全体2点伤害。<br>如果自己的战场上有恶魔偶像‧朵莉露，则会由原本的2点伤害转变为3点伤害。",
+    "skill_disc": "给予敌方的从者全体2点伤害。<br>如果自己的战场上有恶魔偶像·朵莉露，则会由原本的2点伤害转变为3点伤害。",
     "skill_option": "damage=2,damage=3",
     "tribe_name": "-"
   },
@@ -39990,7 +39990,7 @@ let cardData = [
     "rarity": 4,
     "skill": "heal,heal,summon_token",
     "skill_condition": "{me.inplay_self.count}>0&{me.usable_ep}<={op.usable_ep}&character=me,{me.inplay_self.count}>0&{me.usable_ep}>{op.usable_ep}&character=me,character=me",
-    "skill_disc": "倒数 5<br>自己的回合结束时，回复自己的主战者1点生命值。如果自己剩馀的EP多于敌方的EP，则会由原本的回复1点转变为回复2点。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个消费为4，攻击力4/生命值4并且没有激奏 效果的《节制》‧卢泽到战场上。",
+    "skill_disc": "倒数 5<br>自己的回合结束时，回复自己的主战者1点生命值。如果自己剩馀的EP多于敌方的EP，则会由原本的回复1点转变为回复2点。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个消费为4，攻击力4/生命值4并且没有激奏 效果的《节制》·卢泽到战场上。",
     "skill_option": "healing=1,healing=2,summon_token=900641060",
     "tribe_name": "-"
   },
@@ -40168,7 +40168,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103721040,
-    "card_name": "邪恶预言者‧达姆斯",
+    "card_name": "邪恶预言者·达姆斯",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 7,
@@ -40187,7 +40187,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 104731020,
-    "card_name": "黄金都市公主‧莉迪耶尔",
+    "card_name": "黄金都市公主·莉迪耶尔",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 7,
@@ -40263,7 +40263,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107741010,
-    "card_name": "希望引导者‧圣女贞德",
+    "card_name": "希望引导者·圣女贞德",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 7,
@@ -40320,7 +40320,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 109721020,
-    "card_name": "星迹的朝圣者‧苏菲雅",
+    "card_name": "星迹的朝圣者·苏菲雅",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -40358,7 +40358,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111731010,
-    "card_name": "均衡之光‧马龙",
+    "card_name": "均衡之光·马龙",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 7,
@@ -40415,7 +40415,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112741010,
-    "card_name": "希望女王‧莉迪耶尔",
+    "card_name": "希望女王·莉迪耶尔",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 7,
@@ -40472,7 +40472,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 115731020,
-    "card_name": "神圣守护者‧优花梨",
+    "card_name": "神圣守护者·优花梨",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 7,
@@ -40548,7 +40548,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117731020,
-    "card_name": "传教司祭‧萝蕾娜",
+    "card_name": "传教司祭·萝蕾娜",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 7,
@@ -40567,7 +40567,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117741020,
-    "card_name": "破闇煌辉‧萨莉沙",
+    "card_name": "破闇煌辉·萨莉沙",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 7,
@@ -40586,7 +40586,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119731010,
-    "card_name": "日轮的巫女‧萨哈梅莉娜",
+    "card_name": "日轮的巫女·萨哈梅莉娜",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 7,
@@ -40662,7 +40662,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120741010,
-    "card_name": "绝望的圣女‧贞德",
+    "card_name": "绝望的圣女·贞德",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 7,
@@ -40719,7 +40719,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121741010,
-    "card_name": "平稳制定者‧马龙",
+    "card_name": "平稳制定者·马龙",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 7,
@@ -40795,7 +40795,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125741020,
-    "card_name": "救赎的圣女‧贞德",
+    "card_name": "救赎的圣女·贞德",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 7,
@@ -40814,14 +40814,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 716741010,
-    "card_name": "绝望的救赎‧贞德",
+    "card_name": "绝望的救赎·贞德",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 7,
     "cost": 3,
     "evo_atk": 4,
     "evo_life": 5,
-    "evo_skill_disc": "守护 <br>进化时 给予敌方的从者全体2点伤害。回复自己的主战者2点生命值。<br><br>※此卡片与「救赎的圣女‧贞德」视为同一张卡片。",
+    "evo_skill_disc": "守护 <br>进化时 给予敌方的从者全体2点伤害。回复自己的主战者2点生命值。<br><br>※此卡片与「救赎的圣女·贞德」视为同一张卡片。",
     "life": 3,
     "rarity": 4,
     "skill": "guard,draw,pp_fixeduse,damage,heal,consume_ep_modifier//damage,heal",
@@ -40947,7 +40947,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900711140,
-    "card_name": "森林参谋长‧喵鲁",
+    "card_name": "森林参谋长·喵鲁",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -41073,7 +41073,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,draw,summon_token",
     "skill_condition": "{me.inplay_other_self.field.count}<2,{me.inplay_other_self.field.count}<2,character=me&target=chosen_cards&card_type=all&{me.inplay_other_self.field.count}<2,{me.inplay_other_self.field.count}>=2,{me.inplay_other_self.field.count}>=2",
-    "skill_disc": "‧伊莉丝的祈祷<br>‧喵鲁的跃动<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果自己战场上的护符数为2以上，则会由原本的命运抉择 转变为抽取2张卡片。召唤1个森林参谋长‧喵鲁到战场上。",
+    "skill_disc": "·伊莉丝的祈祷<br>·喵鲁的跃动<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果自己战场上的护符数为2以上，则会由原本的命运抉择 转变为抽取2张卡片。召唤1个森林参谋长·喵鲁到战场上。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900734040:900734050,repeat_count=1&summon_side=me,none,summon_token=900711140",
     "tribe_name": "-"
   },
@@ -41605,14 +41605,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧光之剑<br>‧闇之剑<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·光之剑<br>·闇之剑<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900834010:900834020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 3,
     "card_id": 109811010,
-    "card_name": "清新的铳士‧洁西卡",
+    "card_name": "清新的铳士·洁西卡",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -41631,7 +41631,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109831020,
-    "card_name": "清新的枪械设计师‧库库璐",
+    "card_name": "清新的枪械设计师·库库璐",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -41643,7 +41643,7 @@ let cardData = [
     "rarity": 3,
     "skill": "damage,pp_fixeduse,summon_token",
     "skill_condition": "character=op&target=be_attacked&attacker=self&card_type=unit,pp_count>=5,pp_count>=5",
-    "skill_disc": "攻击时 如果对从者进行攻击，（在计算伤害之前）给予目标从者2点伤害。<br>入场曲 爆能强化 5； 召唤1个枪砲火药调合师‧库姆悠到战场上。",
+    "skill_disc": "攻击时 如果对从者进行攻击，（在计算伤害之前）给予目标从者2点伤害。<br>入场曲 爆能强化 5； 召唤1个枪砲火药调合师·库姆悠到战场上。",
     "skill_option": "damage=2,fixeduse=5,summon_token=900831040",
     "tribe_name": "-"
   },
@@ -41688,7 +41688,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111811030,
-    "card_name": "人偶之主‧薇奥拉",
+    "card_name": "人偶之主·薇奥拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
@@ -41726,7 +41726,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111831030,
-    "card_name": "肃清的英雄‧梅希亚",
+    "card_name": "肃清的英雄·梅希亚",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
@@ -41783,7 +41783,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114821020,
-    "card_name": "暗云巫女‧叶涅司",
+    "card_name": "暗云巫女·叶涅司",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 8,
@@ -41840,7 +41840,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 115841010,
-    "card_name": "武艺至尊‧迦尔拉",
+    "card_name": "武艺至尊·迦尔拉",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 8,
@@ -41871,7 +41871,7 @@ let cardData = [
     "rarity": 1,
     "skill": "choice,summon_token",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧解析的创造物<br>‧古老的创造物<br>入场曲 使1张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "·解析的创造物<br>·古老的创造物<br>入场曲 使1张命运抉择 所指定的卡片进入战场。",
     "skill_option": "card_id=900811030:900811010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -41892,7 +41892,7 @@ let cardData = [
     "skill_condition": "character=me,character=me",
     "skill_disc": "守护 <br>谢幕曲 增加1张生产器械与1张修复模式卡片到手牌中。",
     "skill_option": "none,token_draw=900011080:900014010",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 1,
@@ -41916,7 +41916,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117841010,
-    "card_name": "《命运之轮》‧斯洛士",
+    "card_name": "《命运之轮》·斯洛士",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 8,
@@ -41992,7 +41992,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119841010,
-    "card_name": "魔弹射手‧艾席儿",
+    "card_name": "魔弹射手·艾席儿",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -42068,7 +42068,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122831010,
-    "card_name": "齿轮魔法师‧里希特",
+    "card_name": "齿轮魔法师·里希特",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 8,
@@ -42080,7 +42080,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw,powerup,attach_skill//heal",
     "skill_condition": "character=me,{me.destroyed_card_list.unit.count}>=20,{me.destroyed_card_list.unit.count}>=20//{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900811050",
-    "skill_disc": "入场曲 增加1张悬丝傀儡与1张改良型‧悬丝傀儡卡片到手牌中。如果本次对战中自己已被破坏的从者数为20个以上，则会给予全部自己手牌中的悬丝傀儡+1/+0与疾驰 效果。",
+    "skill_disc": "入场曲 增加1张悬丝傀儡与1张改良型·悬丝傀儡卡片到手牌中。如果本次对战中自己已被破坏的从者数为20个以上，则会给予全部自己手牌中的悬丝傀儡+1/+0与疾驰 效果。",
     "skill_option": "token_draw=900811050:900811110,add_offense=1,skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none)//healing=1",
     "tribe_name": "-"
   },
@@ -42163,7 +42163,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 126841010,
-    "card_name": "人造的代言者‧薇米蒂亚",
+    "card_name": "人造的代言者·薇米蒂亚",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 8,
@@ -42213,7 +42213,7 @@ let cardData = [
     "rarity": 1,
     "skill": "token_draw//drain",
     "skill_condition": "character=me//{me.inplay_self.count}>0&turn=self&character=me&target=summoned_card&card_type=unit&base_card_id=900811050",
-    "skill_disc": "入场曲 增加1张改良型‧悬丝傀儡卡片到手牌中。",
+    "skill_disc": "入场曲 增加1张改良型·悬丝傀儡卡片到手牌中。",
     "skill_option": "token_draw=900811110//none",
     "tribe_name": "-"
   },
@@ -42234,12 +42234,12 @@ let cardData = [
     "skill_condition": "{both.skill_summoned_card.include_self=true.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0",
     "skill_disc": "因能力进入战场时，随机破坏1个敌方的从者。<br>自己的回合结束时，回复自己的主战者1点生命值。抽取1张卡片。",
     "skill_option": "none,healing=1,none",
-    "tribe_name": "机械‧八狱"
+    "tribe_name": "机械·八狱"
   },
   {
     "atk": 3,
     "card_id": 129831010,
-    "card_name": "门扉解放者‧菈姿莉",
+    "card_name": "门扉解放者·菈姿莉",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -42258,7 +42258,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129841010,
-    "card_name": "溷沌的终幕‧辛恩",
+    "card_name": "溷沌的终幕·辛恩",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -42353,7 +42353,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900841190,
-    "card_name": "神祕的遗物‧丝碧涅与璐契儿",
+    "card_name": "神祕的遗物·丝碧涅与璐契儿",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -42517,7 +42517,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,summon_token,pp_fixeduse,summon_token,pp_fixeduse,summon_token",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,pp_count>=5,pp_count>=5,pp_count>=7,pp_count>=7",
-    "skill_disc": "‧审判之枪<br>‧罪恶之盾<br>‧永恆教义<br>使1个命运抉择 所指定的护符进入战场。<br>爆能强化 5； 额外再召唤1个神器的使者到战场上。<br>爆能强化 7； 额外再召唤1个神器的守卫到战场上。",
+    "skill_disc": "·审判之枪<br>·罪恶之盾<br>·永恆教义<br>使1个命运抉择 所指定的护符进入战场。<br>爆能强化 5； 额外再召唤1个神器的使者到战场上。<br>爆能强化 7； 额外再召唤1个神器的守卫到战场上。",
     "skill_option": "card_id=900843020:900843030:900843040,repeat_count=1&summon_side=me,fixeduse=5,summon_token=900841300,fixeduse=7,summon_token=900841310",
     "tribe_name": "-"
   },
@@ -42650,7 +42650,7 @@ let cardData = [
     "rarity": 2,
     "skill": "summon_token",
     "skill_condition": "character=me&card_type=chant_field",
-    "skill_disc": "倒数 3<br>谢幕曲 召唤1个甦醒的钢之战士‧机美到战场上。",
+    "skill_disc": "倒数 3<br>谢幕曲 召唤1个甦醒的钢之战士·机美到战场上。",
     "skill_option": "summon_token=900821030",
     "tribe_name": "-"
   },
@@ -42828,7 +42828,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103031020,
-    "card_name": "哥布林杀手‧汀娜",
+    "card_name": "哥布林杀手·汀娜",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 0,
@@ -42866,7 +42866,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 105011010,
-    "card_name": "懒散的天使‧艾菲梅拉",
+    "card_name": "懒散的天使·艾菲梅拉",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 0,
@@ -42885,7 +42885,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 105041010,
-    "card_name": "不可思议的探求者‧爱丽丝",
+    "card_name": "不可思议的探求者·爱丽丝",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 0,
@@ -42904,7 +42904,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 107031010,
-    "card_name": "闪耀之钟‧叮噹天使",
+    "card_name": "闪耀之钟·叮噹天使",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 0,
@@ -42935,14 +42935,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧慈爱水露<br>‧无情激流<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·慈爱水露<br>·无情激流<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900034010:900034020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 3,
     "card_id": 109011010,
-    "card_name": "苍穹领路人‧拉卡姆",
+    "card_name": "苍穹领路人·拉卡姆",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 0,
@@ -42961,7 +42961,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110031010,
-    "card_name": "爆烈佣兵‧菲娜",
+    "card_name": "爆烈佣兵·菲娜",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 0,
@@ -42980,7 +42980,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110031030,
-    "card_name": "神弓座天使‧莉莉耶尔",
+    "card_name": "神弓座天使·莉莉耶尔",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 0,
@@ -43018,7 +43018,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112011010,
-    "card_name": "辣妹天使‧阿尔蒂丝",
+    "card_name": "辣妹天使·阿尔蒂丝",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -43094,7 +43094,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 117041020,
-    "card_name": "天霸风神‧斐兰",
+    "card_name": "天霸风神·斐兰",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 0,
@@ -43113,7 +43113,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119021010,
-    "card_name": "苍烈的志士‧尤金",
+    "card_name": "苍烈的志士·尤金",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 0,
@@ -43151,7 +43151,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120031010,
-    "card_name": "虚无的嚎风‧格里姆尼尔",
+    "card_name": "虚无的嚎风·格里姆尼尔",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 0,
@@ -43208,7 +43208,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 122021010,
-    "card_name": "新锐烟火师‧玛薇菈",
+    "card_name": "新锐烟火师·玛薇菈",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 0,
@@ -43265,7 +43265,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 127041030,
-    "card_name": "奇幻之梦‧爱丽丝",
+    "card_name": "奇幻之梦·爱丽丝",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 0,
@@ -43284,7 +43284,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129041020,
-    "card_name": "飓风天枪‧格里姆尼尔",
+    "card_name": "飓风天枪·格里姆尼尔",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 0,
@@ -43429,7 +43429,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw,damage,pp_modifier",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.usable_ep}>{op.usable_ep}&character=me,{me.usable_ep}>{op.usable_ep}&character=me",
-    "skill_disc": "‧欲望缠身者<br>‧边狱的恶鬼<br>‧异端的冥兽<br>增加1张命运抉择 所指定的卡片到手牌中。<br>如果自己剩馀的EP多于敌方的EP，则会给予自己的主战者2点伤害。回复自己的PP 4点。（若该回合尚未进化解禁，则剩馀EP为0）",
+    "skill_disc": "·欲望缠身者<br>·边狱的恶鬼<br>·异端的冥兽<br>增加1张命运抉择 所指定的卡片到手牌中。<br>如果自己剩馀的EP多于敌方的EP，则会给予自己的主战者2点伤害。回复自己的PP 4点。（若该回合尚未进化解禁，则剩馀EP为0）",
     "skill_option": "card_id=900041070:900041120:900041090,repeat_count=1&summon_side=me,damage=2,add_pp=4",
     "tribe_name": "-"
   },
@@ -43645,7 +43645,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 102121010,
-    "card_name": "千年妖狐‧尤埃尔",
+    "card_name": "千年妖狐·尤埃尔",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -43683,7 +43683,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104121030,
-    "card_name": "精灵管家‧维斯特",
+    "card_name": "精灵管家·维斯特",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 1,
@@ -43759,7 +43759,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 106121020,
-    "card_name": "大自然的教师‧阿蕾雅",
+    "card_name": "大自然的教师·阿蕾雅",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 1,
@@ -43797,7 +43797,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107141010,
-    "card_name": "先导者妖精公主‧阿丽雅",
+    "card_name": "先导者妖精公主·阿丽雅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 1,
@@ -43835,7 +43835,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 108121010,
-    "card_name": "时尚女王‧奈尔香",
+    "card_name": "时尚女王·奈尔香",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 1,
@@ -43847,14 +43847,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧天使的盛装<br>‧恶魔的盛装<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·天使的盛装<br>·恶魔的盛装<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900124010:900124020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 109121010,
-    "card_name": "神箭的射手‧苏提拉",
+    "card_name": "神箭的射手·苏提拉",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 1,
@@ -43873,7 +43873,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109131020,
-    "card_name": "天赋的射手‧梅提拉",
+    "card_name": "天赋的射手·梅提拉",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 1,
@@ -43930,7 +43930,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 111131020,
-    "card_name": "勐毒公主‧莉柯瑞丝",
+    "card_name": "勐毒公主·莉柯瑞丝",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -43949,7 +43949,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111131030,
-    "card_name": "狐耳姊妹‧莉娜与茢娜",
+    "card_name": "狐耳姊妹·莉娜与茢娜",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -43968,7 +43968,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111141010,
-    "card_name": "永恆的辉石‧宝石兽",
+    "card_name": "永恆的辉石·宝石兽",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -44196,7 +44196,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119141010,
-    "card_name": "魔眼的猎手‧苏恩",
+    "card_name": "魔眼的猎手·苏恩",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -44215,7 +44215,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120141010,
-    "card_name": "身环瘴气的妖精公主‧阿丽雅",
+    "card_name": "身环瘴气的妖精公主·阿丽雅",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 1,
@@ -44272,7 +44272,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121141020,
-    "card_name": "万绿的回归‧拉缇卡",
+    "card_name": "万绿的回归·拉缇卡",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 1,
@@ -44348,7 +44348,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 123141020,
-    "card_name": "冻土女王‧皮雅希",
+    "card_name": "冻土女王·皮雅希",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 1,
@@ -44443,7 +44443,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 126141020,
-    "card_name": "黑百合女王‧诺瓦莉丝",
+    "card_name": "黑百合女王·诺瓦莉丝",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 1,
@@ -44500,7 +44500,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129131020,
-    "card_name": "勐悍战斧‧艾比",
+    "card_name": "勐悍战斧·艾比",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 1,
@@ -44531,14 +44531,14 @@ let cardData = [
     "rarity": 2,
     "skill": "rush,powerup",
     "skill_condition": "character=me,character=me&target=attacker&attacker=self",
-    "skill_disc": "突进 <br>攻击时 给予全部自己的随性的笛奏者‧米莫尔梅梅尔+0/+1效果。",
+    "skill_disc": "突进 <br>攻击时 给予全部自己的随性的笛奏者·米莫尔梅梅尔+0/+1效果。",
     "skill_option": "none,add_life=1",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 900141010,
-    "card_name": "冰晶光芒‧伊芙",
+    "card_name": "冰晶光芒·伊芙",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -44804,7 +44804,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 101231050,
-    "card_name": "无惧的先锋‧雷瑟姆",
+    "card_name": "无惧的先锋·雷瑟姆",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 2,
@@ -44842,7 +44842,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 103221040,
-    "card_name": "雷维翁斥侯‧杰诺",
+    "card_name": "雷维翁斥侯·杰诺",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 2,
@@ -44861,7 +44861,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103231020,
-    "card_name": "白银骑士‧艾蜜莉亚",
+    "card_name": "白银骑士·艾蜜莉亚",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 2,
@@ -44873,7 +44873,7 @@ let cardData = [
     "rarity": 3,
     "skill": "token_draw,cost_change",
     "skill_condition": "character=me,{op.inplay.unit.count}>=3",
-    "skill_disc": "入场曲 增加1张骑士团副队长‧格尔德卡片到手牌中。如果敌方战场上的从者数为3个以上，则使该卡片消费转变为0。",
+    "skill_disc": "入场曲 增加1张骑士团副队长·格尔德卡片到手牌中。如果敌方战场上的从者数为3个以上，则使该卡片消费转变为0。",
     "skill_option": "token_draw=103221030,set=0",
     "tribe_name": "指挥官"
   },
@@ -44899,7 +44899,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 104241020,
-    "card_name": "圆桌武士‧高文",
+    "card_name": "圆桌武士·高文",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -44937,7 +44937,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109211020,
-    "card_name": "华美公主‧汀娜",
+    "card_name": "华美公主·汀娜",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -44956,7 +44956,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109231010,
-    "card_name": "神祕特务‧蒂伊",
+    "card_name": "神祕特务·蒂伊",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -44968,7 +44968,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw,sneak",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧新人特务‧爱娃<br>‧潜入搜查<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>潜行 ",
+    "skill_disc": "·新人特务·爱娃<br>·潜入搜查<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>潜行 ",
     "skill_option": "card_id=900231030:900234010,repeat_count=1&summon_side=me,none",
     "tribe_name": "士兵"
   },
@@ -45006,7 +45006,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧炎击枪<br>‧冰击枪<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·炎击枪<br>·冰击枪<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900224030:900224040,repeat_count=1&summon_side=me",
     "tribe_name": "士兵"
   },
@@ -45070,14 +45070,14 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112241010,
-    "card_name": "苍空剑士‧莉夏",
+    "card_name": "苍空剑士·莉夏",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 2,
     "cost": 4,
     "evo_atk": 5,
     "evo_life": 5,
-    "evo_skill_disc": "攻击时 如果自己的战场上没有黄昏之刃‧奈诺，则会召唤1个黄昏之刃‧奈诺到战场上。<br>攻击时 如果为第10回合以上，则会增加1张暮光之刃卡片到手牌中。",
+    "evo_skill_disc": "攻击时 如果自己的战场上没有黄昏之刃·奈诺，则会召唤1个黄昏之刃·奈诺到战场上。<br>攻击时 如果为第10回合以上，则会增加1张暮光之刃卡片到手牌中。",
     "life": 3,
     "rarity": 4,
     "skill": "evolve//summon_token,token_draw",
@@ -45089,7 +45089,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114241020,
-    "card_name": "王者威光‧贝里昂",
+    "card_name": "王者威光·贝里昂",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 2,
@@ -45108,7 +45108,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 115231020,
-    "card_name": "姐姐剑士‧静流",
+    "card_name": "姐姐剑士·静流",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 2,
@@ -45146,7 +45146,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 117241030,
-    "card_name": "战争商人‧阿尔亚斯卡",
+    "card_name": "战争商人·阿尔亚斯卡",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 2,
@@ -45165,7 +45165,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 118241020,
-    "card_name": "咒箱女王‧娜哈特‧娜哈特",
+    "card_name": "咒箱女王·娜哈特·娜哈特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 2,
@@ -45184,14 +45184,14 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 118241030,
-    "card_name": "苍空总长‧瓦佛利特",
+    "card_name": "苍空总长·瓦佛利特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 2,
     "cost": 4,
     "evo_atk": 5,
     "evo_life": 5,
-    "evo_skill_disc": "进化时 如果自己牌堆中的从者卡（苍空总长‧瓦佛利特除外）皆为士兵从者卡，则会给予上述全部的士兵从者卡+2/+2效果。",
+    "evo_skill_disc": "进化时 如果自己牌堆中的从者卡（苍空总长·瓦佛利特除外）皆为士兵从者卡，则会给予上述全部的士兵从者卡+2/+2效果。",
     "life": 4,
     "rarity": 4,
     "skill": "consume_ep_modifier//powerup",
@@ -45222,7 +45222,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 119241020,
-    "card_name": "天星剑王‧席耶提",
+    "card_name": "天星剑王·席耶提",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
@@ -45260,7 +45260,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 120231010,
-    "card_name": "暴虐武人‧杰诺",
+    "card_name": "暴虐武人·杰诺",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 2,
@@ -45274,7 +45274,7 @@ let cardData = [
     "skill_condition": "{me.inplay_self.unit.count}>0&{me.destroyed_card.unit.count}>0,{me.inplay_self.unit.count}>0&{me.destroyed_card.unit.count}>0,character=me",
     "skill_disc": "每当自己的其他从者被破坏时，获得+1/+0与疾驰 效果。<br>入场曲 随机破坏1个战场上进化后的从者。",
     "skill_option": "add_offense=1,none,none",
-    "tribe_name": "士兵‧雷维翁"
+    "tribe_name": "士兵·雷维翁"
   },
   {
     "atk": 3,
@@ -45393,7 +45393,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 124241020,
-    "card_name": "天下大盗贼‧治右卫门",
+    "card_name": "天下大盗贼·治右卫门",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 2,
@@ -45407,12 +45407,12 @@ let cardData = [
     "skill_condition": "character=me,character=me,{me.game_draw_cards.base_card_id=900214050.count}>=2,character=me,character=me",
     "skill_disc": "入场曲 增加1张闪耀的金币卡片到手牌中。使其消费-1。随后，如果自己在这场对战中增加到手牌中的闪耀的金币卡片张数为3张以上，则会在这场对战中，给予自己的主战者「当自己使用闪耀的金币卡片时，给予敌方的从者全体2点伤害，并给予敌方的主战者1点伤害」效果。主战者无法重複叠加此效果。",
     "skill_option": "token_draw=900214050,add=-1,none,skill=(skill:damage)(timing:when_play_other)(condition:character=me&target=played_card&card_type=spell&base_card_id=900214050)(target:character=op&target=inplay&card_type=unit)(option:damage=2)(preprocess:none)(effect_path:btl_124241020_3)(se_path:se_btl_124241020_3)(effect_move_type:CENTER_TARGET_ALL)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:area_opponent)&duplicate_ban_id=1242410201,skill=(skill:damage)(timing:when_play_other)(condition:character=me&target=played_card&card_type=spell&base_card_id=900214050)(target:character=op&target=inplay&card_type=class)(option:damage=1)(preprocess:none)(effect_path:btl_124241020_4)(se_path:se_btl_124241020_4)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=1242410202",
-    "tribe_name": "指挥官‧宴乐"
+    "tribe_name": "指挥官·宴乐"
   },
   {
     "atk": 2,
     "card_id": 125241020,
-    "card_name": "荣光剑士‧奥蕾莉亚",
+    "card_name": "荣光剑士·奥蕾莉亚",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 2,
@@ -45445,7 +45445,7 @@ let cardData = [
     "skill_condition": "character=me,character=me&target=attacker&attacker=self&{me.damaged_card.unit.count}>0",
     "skill_disc": "疾驰 <br>攻击时 如果自己的战场上有已受到伤害的从者，则会回复自己的PP 2点。",
     "skill_option": "none,add_pp=2",
-    "tribe_name": "士兵‧英雄"
+    "tribe_name": "士兵·英雄"
   },
   {
     "atk": 3,
@@ -45464,12 +45464,12 @@ let cardData = [
     "skill_condition": "character=me,pp_count>=7,pp_count>=7,pp_count>=7//character=me,character=me",
     "skill_disc": "这个从者受到的伤害如果为4以上，则会转变为3。<br>入场曲 爆能强化 7； 抽取卡片至自己的手牌数为7张。到回合结束为止，使自己手牌中全部的英雄从者卡消费转变为0。",
     "skill_option": "cut_clipping=3,fixeduse=7,none,set=0//skill=(skill:powerup)(timing:when_summon_other)(condition:character=me&target=summoned_card&card_type=unit&tribe=hero)(target:character=me&target=summoned_card&card_type=unit&tribe=hero&is_inplay=true)(option:add_life=3)(preprocess:none)(effect_path:btl_126241010_3)(se_path:se_btl_126241010_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=1262410101,skill=(skill:rush)(timing:when_summon_other)(condition:character=me&target=summoned_card&card_type=unit&tribe=hero)(target:character=me&target=summoned_card&card_type=unit&tribe=hero&is_inplay=true)(option:none)(preprocess:none)&duplicate_ban_id=1262410102",
-    "tribe_name": "指挥官‧英雄"
+    "tribe_name": "指挥官·英雄"
   },
   {
     "atk": 5,
     "card_id": 127241010,
-    "card_name": "出航的罪人‧芭芭萝丝",
+    "card_name": "出航的罪人·芭芭萝丝",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 2,
@@ -45483,7 +45483,7 @@ let cardData = [
     "skill_condition": "none,none,character=me,{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}>=7,pp_count>=7,character=me&target=self&pp_count>=7//character=me",
     "skill_disc": "融合 ； 财宝卡<br>与这张卡片进行融合 时，获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>---------- <br>入场曲 增加1张战慄的海贼旗卡片到手牌中。如果自己在这场对战中融合 或已使用的财宝卡张数合计为7张以上，则会回复自己的PP 3点。<br>入场曲 爆能强化 7； 获得疾驰 效果。",
     "skill_option": "none,skill=(skill:consume_ep_modifier)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self)(option:none)(preprocess:none),token_draw=900214060,add_pp=3,fixeduse=7,none//none",
-    "tribe_name": "指挥官‧八狱"
+    "tribe_name": "指挥官·八狱"
   },
   {
     "atk": 5,
@@ -45502,7 +45502,7 @@ let cardData = [
     "skill_condition": "character=me,pp_count>=6,pp_count>=6",
     "skill_disc": "突进 <br>入场曲 爆能强化 6； 召唤1个奋勇格斗家到战场上。",
     "skill_option": "none,fixeduse=6,summon_token=128211010",
-    "tribe_name": "士兵‧学园"
+    "tribe_name": "士兵·学园"
   },
   {
     "atk": 3,
@@ -45521,12 +45521,12 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay_other_self.unit.tribe=school.count}>0,character=me&{me.inplay.class.rally_count}>=15,character=me&{me.inplay.class.rally_count}>=15",
     "skill_disc": "疾驰 <br>入场曲 如果自己的战场上有其他学园从者，则会获得+0/+2效果。<br>入场曲 协作 15； 获得「1回合中可进行2次攻击」效果。使这个从者进化。",
     "skill_option": "none,add_life=2,attack_count=2,none",
-    "tribe_name": "士兵‧学园"
+    "tribe_name": "士兵·学园"
   },
   {
     "atk": 4,
     "card_id": 128231020,
-    "card_name": "拣选的教员‧汎斯",
+    "card_name": "拣选的教员·汎斯",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 2,
@@ -45540,7 +45540,7 @@ let cardData = [
     "skill_condition": "none//{me.inplay_self.count}>0",
     "skill_disc": "",
     "skill_option": "none//none",
-    "tribe_name": "指挥官‧学园"
+    "tribe_name": "指挥官·学园"
   },
   {
     "atk": 3,
@@ -45583,7 +45583,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900231010,
-    "card_name": "淨白之王‧伊梅拉",
+    "card_name": "淨白之王·伊梅拉",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -45602,7 +45602,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900231020,
-    "card_name": "漆黑女王‧玛格娜丝",
+    "card_name": "漆黑女王·玛格娜丝",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -45621,7 +45621,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900231120,
-    "card_name": "雷维翁魔法师‧蜜姆",
+    "card_name": "雷维翁魔法师·蜜姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -45640,7 +45640,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 900241040,
-    "card_name": "不灭的群青‧贝雅特丽丝",
+    "card_name": "不灭的群青·贝雅特丽丝",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -45659,7 +45659,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 900241080,
-    "card_name": "魔导四轮车‧V",
+    "card_name": "魔导四轮车·V",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -45906,7 +45906,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 101321050,
-    "card_name": "女王‧梅芙",
+    "card_name": "女王·梅芙",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -45982,7 +45982,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 102321010,
-    "card_name": "双子女巫‧蕾米拉米",
+    "card_name": "双子女巫·蕾米拉米",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 3,
@@ -46077,7 +46077,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 106321010,
-    "card_name": "太阳舞者‧萝莉亚",
+    "card_name": "太阳舞者·萝莉亚",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 3,
@@ -46096,7 +46096,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107321010,
-    "card_name": "笑眯眯的奇术师‧萨米",
+    "card_name": "笑眯眯的奇术师·萨米",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 3,
@@ -46134,7 +46134,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 108341010,
-    "card_name": "宿命宣读者‧露妮",
+    "card_name": "宿命宣读者·露妮",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 3,
@@ -46146,14 +46146,14 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,spell_charge",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me&target=self&attacker=self",
-    "skill_disc": "‧引世箴言<br>‧覆灭预言<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>攻击时 发动魔力增幅。",
+    "skill_disc": "·引世箴言<br>·覆灭预言<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>攻击时 发动魔力增幅。",
     "skill_option": "card_id=900344010:900344020,repeat_count=1&summon_side=me,add_charge=1",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 109331020,
-    "card_name": "开闢的鍊金术师‧卡莉欧斯托萝",
+    "card_name": "开闢的鍊金术师·卡莉欧斯托萝",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -46172,7 +46172,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109341030,
-    "card_name": "杀戮魔女‧薇丝朋",
+    "card_name": "杀戮魔女·薇丝朋",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -46191,7 +46191,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111321020,
-    "card_name": "马纳历亚见习教师‧帕丝卡尔",
+    "card_name": "马纳历亚见习教师·帕丝卡尔",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 3,
@@ -46222,7 +46222,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token//damage",
     "skill_condition": "character=me//character=op&target=inplay&card_type=unit",
-    "skill_disc": "入场曲 召唤1隻奇幻魔兽‧摩拉到战场上。",
+    "skill_disc": "入场曲 召唤1隻奇幻魔兽·摩拉到战场上。",
     "skill_option": "summon_token=900331050//damage={me.inplay.unit.count}",
     "tribe_name": "-"
   },
@@ -46248,7 +46248,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112341020,
-    "card_name": "苍蓝反叛者‧坦忒菈",
+    "card_name": "苍蓝反叛者·坦忒菈",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -46267,7 +46267,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113331020,
-    "card_name": "睿智的魔法师‧里维",
+    "card_name": "睿智的魔法师·里维",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 3,
@@ -46343,7 +46343,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 118331020,
-    "card_name": "慾望观察者‧浮士德",
+    "card_name": "慾望观察者·浮士德",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 3,
@@ -46362,7 +46362,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 118341020,
-    "card_name": "和平维繫者‧宾森特",
+    "card_name": "和平维繫者·宾森特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 3,
@@ -46476,7 +46476,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 124341010,
-    "card_name": "真理大文豪‧幸岛",
+    "card_name": "真理大文豪·幸岛",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 3,
@@ -46495,7 +46495,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125331010,
-    "card_name": "工房鍊金术师‧诺诺",
+    "card_name": "工房鍊金术师·诺诺",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -46533,7 +46533,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126321020,
-    "card_name": "牌卡术师‧梦璃",
+    "card_name": "牌卡术师·梦璃",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
@@ -46545,7 +46545,7 @@ let cardData = [
     "rarity": 2,
     "skill": "cost_change,draw,spell_charge",
     "skill_condition": "character=me&target=self,character=me,none",
-    "skill_disc": "魔力增幅 消费-1<br>入场曲 随机将1张有魔力增幅 效果的卡片（牌卡术师‧梦璃除外），由自己的牌堆抽取到手牌中。<br>谢幕曲 发动1次魔力增幅。",
+    "skill_disc": "魔力增幅 消费-1<br>入场曲 随机将1张有魔力增幅 效果的卡片（牌卡术师·梦璃除外），由自己的牌堆抽取到手牌中。<br>谢幕曲 发动1次魔力增幅。",
     "skill_option": "add=ADD_CHARGE_COUNT*-1,none,add_charge=1",
     "tribe_name": "-"
   },
@@ -46590,7 +46590,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 129341010,
-    "card_name": "轮迴的大魔法师‧里维",
+    "card_name": "轮迴的大魔法师·里维",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 3,
@@ -46628,7 +46628,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 900341020,
-    "card_name": "式神‧天后",
+    "card_name": "式神·天后",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -46811,7 +46811,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,summon_token",
     "skill_condition": "{me.game_used_white_ritual_stack}<7,{me.game_used_white_ritual_stack}>=7",
-    "skill_disc": "召唤1个究极‧泥尘巨像到战场上。<br>如果本次对战中自己已消耗的蓄积 为7以上，则会由原本的究极‧泥尘巨像转变为召唤创世龙到战场上。",
+    "skill_disc": "召唤1个究极·泥尘巨像到战场上。<br>如果本次对战中自己已消耗的蓄积 为7以上，则会由原本的究极·泥尘巨像转变为召唤创世龙到战场上。",
     "skill_option": "summon_token=900341010,summon_token=101431020",
     "tribe_name": "-"
   },
@@ -47141,7 +47141,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107421020,
-    "card_name": "镇塔红龙‧艾特尔",
+    "card_name": "镇塔红龙·艾特尔",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 4,
@@ -47248,7 +47248,7 @@ let cardData = [
     "rarity": 3,
     "skill": "none,choice,token_draw",
     "skill_condition": "character=me&awake=true,character=me&awake=true,character=me&target=chosen_cards&card_type=all&awake=true",
-    "skill_disc": "‧白垩号令<br>‧白垩冥想<br>如果这张卡片在手牌中，并且觉醒 状态已发动，则会发动入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·白垩号令<br>·白垩冥想<br>如果这张卡片在手牌中，并且觉醒 状态已发动，则会发动入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "none,card_id=900434030:900434040,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -47331,7 +47331,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 113421010,
-    "card_name": "乘风者‧叶花",
+    "card_name": "乘风者·叶花",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 4,
@@ -47350,7 +47350,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113431020,
-    "card_name": "弑龙者‧尹安",
+    "card_name": "弑龙者·尹安",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 4,
@@ -47362,14 +47362,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,metamorphose,summon_token//damage",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all&base_card_id=900431020,character=me&target=chosen_cards&card_type=all&base_card_id=900431030//character=me",
-    "skill_disc": "‧新婚夫妇‧尹安＆艾特尔<br>‧妒火红龙‧艾特尔<br>入场曲 如果命运抉择 已发动，并且所指定的卡片为新婚夫妇‧尹安＆艾特尔，则使这张卡片变身为该从者。如果命运抉择 已发动，并且所指定的卡片为妒火红龙‧艾特尔，则使其进入敌方的战场。",
+    "skill_disc": "·新婚夫妇·尹安＆艾特尔<br>·妒火红龙·艾特尔<br>入场曲 如果命运抉择 已发动，并且所指定的卡片为新婚夫妇·尹安＆艾特尔，则使这张卡片变身为该从者。如果命运抉择 已发动，并且所指定的卡片为妒火红龙·艾特尔，则使其进入敌方的战场。",
     "skill_option": "card_id=900431020:900431030,metamorphose=900431020,repeat_count=1&summon_side=op//damage=3",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 114441020,
-    "card_name": "诅咒之影‧拜迪",
+    "card_name": "诅咒之影·拜迪",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 4,
@@ -47502,7 +47502,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119431010,
-    "card_name": "天穿的铳枪骑士‧拉丝提娜",
+    "card_name": "天穿的铳枪骑士·拉丝提娜",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -47521,7 +47521,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119441010,
-    "card_name": "怪力乱神‧萨拉莎",
+    "card_name": "怪力乱神·萨拉莎",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -47540,7 +47540,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119441030,
-    "card_name": "神异形‧迪亚马特",
+    "card_name": "神异形·迪亚马特",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -47597,7 +47597,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121441020,
-    "card_name": "崇高的雳雷‧罗玛洛尼雅",
+    "card_name": "崇高的雳雷·罗玛洛尼雅",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 4,
@@ -47749,7 +47749,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900431020,
-    "card_name": "新婚夫妇‧尹安＆艾特尔",
+    "card_name": "新婚夫妇·尹安＆艾特尔",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -47768,7 +47768,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900431030,
-    "card_name": "妒火红龙‧艾特尔",
+    "card_name": "妒火红龙·艾特尔",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -48357,7 +48357,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 106531010,
-    "card_name": "闇夜千金‧赛蕾丝",
+    "card_name": "闇夜千金·赛蕾丝",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 5,
@@ -48426,7 +48426,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,transform",
     "skill_condition": "character=me&pp_count>=8,character=me&target=chosen_cards&card_type=all&pp_count>=8",
-    "skill_disc": "‧骷髅巨人<br>‧地狱骷髅领主<br>如果这张卡片在手牌中，并且自己剩馀的PP为8以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·骷髅巨人<br>·地狱骷髅领主<br>如果这张卡片在手牌中，并且自己剩馀的PP为8以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900521010:900521020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -48471,7 +48471,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110521010,
-    "card_name": "冥界斗犬‧欧特鲁斯",
+    "card_name": "冥界斗犬·欧特鲁斯",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 5,
@@ -48547,7 +48547,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111541010,
-    "card_name": "地狱君主‧婕贝特",
+    "card_name": "地狱君主·婕贝特",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -48604,7 +48604,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112541020,
-    "card_name": "丹紫抵御者‧安镍儿",
+    "card_name": "丹紫抵御者·安镍儿",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 5,
@@ -48623,7 +48623,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113541020,
-    "card_name": "冥守之巅‧艾夏",
+    "card_name": "冥守之巅·艾夏",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -48642,7 +48642,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113541030,
-    "card_name": "狩魂者‧菈菈",
+    "card_name": "狩魂者·菈菈",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -48654,7 +48654,7 @@ let cardData = [
     "rarity": 4,
     "skill": "token_draw,cost_change,trigger,attach_skill",
     "skill_condition": "character=me,character=me,character=me,character=me",
-    "skill_disc": "入场曲 将1张与「本回合中自己已被破坏的从者（狩魂者‧菈菈除外）」同名的从者卡加入自己的手牌中。使其消费转变为0。使该卡片获得「自己的回合结束时，破坏这个从者」效果。（如果本回合中已被破坏的从者为複数时，则会在其中随机选择）",
+    "skill_disc": "入场曲 将1张与「本回合中自己已被破坏的从者（狩魂者·菈菈除外）」同名的从者卡加入自己的手牌中。使其消费转变为0。使该卡片获得「自己的回合结束时，破坏这个从者」效果。（如果本回合中已被破坏的从者为複数时，则会在其中随机选择）",
     "skill_option": "none,set=0,none,skill=(skill:destroy)(timing:self_turn_end)(condition:{me.inplay_self.count}>0)(target:character=me&target=self)(option:none)(preprocess:none)(icon:induction)(effect_path:btl_113541030_3)(se_path:se_btl_113541030_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)",
     "tribe_name": "-"
   },
@@ -48699,7 +48699,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115541020,
-    "card_name": "骷髅通灵师‧忍",
+    "card_name": "骷髅通灵师·忍",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 5,
@@ -48794,7 +48794,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119521020,
-    "card_name": "坏妄的狂战士‧沙萨",
+    "card_name": "坏妄的狂战士·沙萨",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -48813,7 +48813,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 120531010,
-    "card_name": "异族魔境‧克里斯托福",
+    "card_name": "异族魔境·克里斯托福",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 5,
@@ -48870,7 +48870,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122531020,
-    "card_name": "诅咒製造家‧丝姞",
+    "card_name": "诅咒製造家·丝姞",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 5,
@@ -49554,7 +49554,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103611040,
-    "card_name": "宝光恶魔‧摩里亚娜",
+    "card_name": "宝光恶魔·摩里亚娜",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 6,
@@ -49649,7 +49649,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 106641010,
-    "card_name": "毒牙公主‧梅杜莎",
+    "card_name": "毒牙公主·梅杜莎",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 6,
@@ -49687,7 +49687,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 108641010,
-    "card_name": "闇夜公主‧班比",
+    "card_name": "闇夜公主·班比",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 6,
@@ -49699,7 +49699,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,transform,damage,summon_token",
     "skill_condition": "character=me&berserk=true&pp_count>=4,character=me&target=chosen_cards&card_type=all&pp_count>=4,character=both&target=inplay&card_type=class,character=me&card_type=unit",
-    "skill_disc": "‧仁慈女王‧班比<br>‧血色女王‧班比<br>如果这张卡片在手牌中，自己剩馀的PP为4以上，并且复仇 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 给予双方的主战者各2点伤害。召唤1隻丛林蝙蝠到战场上。",
+    "skill_disc": "·仁慈女王·班比<br>·血色女王·班比<br>如果这张卡片在手牌中，自己剩馀的PP为4以上，并且复仇 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 给予双方的主战者各2点伤害。召唤1隻丛林蝙蝠到战场上。",
     "skill_option": "card_id=900641020:900641030,repeat_count=1&summon_side=me,damage=2,summon_token=900611010",
     "tribe_name": "-"
   },
@@ -49725,7 +49725,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109631020,
-    "card_name": "幻形的斩姬‧娜鲁梅亚",
+    "card_name": "幻形的斩姬·娜鲁梅亚",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 6,
@@ -49801,7 +49801,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110631030,
-    "card_name": "恶魔偶像‧朵莉露",
+    "card_name": "恶魔偶像·朵莉露",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -49813,7 +49813,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧朵莉露的女僕‧亚兹与伊兹<br>‧恶魔之歌<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·朵莉露的女僕·亚兹与伊兹<br>·恶魔之歌<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900631030:900634010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -49839,7 +49839,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111641010,
-    "card_name": "狄亚波罗斯‧究极",
+    "card_name": "狄亚波罗斯·究极",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 6,
@@ -49858,7 +49858,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111641030,
-    "card_name": "狂暴司令‧萝拉",
+    "card_name": "狂暴司令·萝拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 6,
@@ -49915,7 +49915,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113631010,
-    "card_name": "堕落的漆黑‧阿撒塞勒",
+    "card_name": "堕落的漆黑·阿撒塞勒",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -49934,7 +49934,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114621010,
-    "card_name": "吸血鬼探索者‧尤娜",
+    "card_name": "吸血鬼探索者·尤娜",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 6,
@@ -49953,7 +49953,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115641010,
-    "card_name": "狂狼战士‧阿拉加维",
+    "card_name": "狂狼战士·阿拉加维",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 6,
@@ -49991,7 +49991,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 116641020,
-    "card_name": "拂晓吸血鬼‧诺因",
+    "card_name": "拂晓吸血鬼·诺因",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 6,
@@ -50029,7 +50029,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 117641010,
-    "card_name": "《节制》‧卢泽",
+    "card_name": "《节制》·卢泽",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 6,
@@ -50048,7 +50048,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 117641020,
-    "card_name": "深渊之契‧达尔霍德",
+    "card_name": "深渊之契·达尔霍德",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 6,
@@ -50067,7 +50067,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 118631020,
-    "card_name": "魔剑骑士‧哈萨恩",
+    "card_name": "魔剑骑士·哈萨恩",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 6,
@@ -50162,7 +50162,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120641010,
-    "card_name": "赤红战争‧萝拉",
+    "card_name": "赤红战争·萝拉",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 6,
@@ -50257,7 +50257,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 124641020,
-    "card_name": "贪婪的大恶魔‧帕拉璱丽婕",
+    "card_name": "贪婪的大恶魔·帕拉璱丽婕",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 6,
@@ -50269,14 +50269,14 @@ let cardData = [
     "rarity": 4,
     "skill": "update_deck,summon_card,damage,heal,draw//discard,damage",
     "skill_condition": "character=me,character=me&target=deck_self&{me.hand_other_self.all.count}<1,character=me,character=me,character=me//character=me,character=me",
-    "skill_disc": "如果这张卡片因能力被从手牌中捨弃，则会增加2张贪婪的大恶魔‧帕拉璱丽婕卡片到牌堆中。<br>---------- <br>瞬念召唤 自己的回合开始时，如果自己手牌中的卡片张数为0，则会将1张此卡片由自己的牌堆召唤到战场上。<br>---------- <br>进入战场时，给予敌方的主战者2点伤害。回复自己的主战者2点生命值。抽取1张卡片。",
+    "skill_disc": "如果这张卡片因能力被从手牌中捨弃，则会增加2张贪婪的大恶魔·帕拉璱丽婕卡片到牌堆中。<br>---------- <br>瞬念召唤 自己的回合开始时，如果自己手牌中的卡片张数为0，则会将1张此卡片由自己的牌堆召唤到战场上。<br>---------- <br>进入战场时，给予敌方的主战者2点伤害。回复自己的主战者2点生命值。抽取1张卡片。",
     "skill_option": "token_draw=124641020:124641020&type=add,none,damage=2,healing=2,none//none,damage=5",
     "tribe_name": "宴乐"
   },
   {
     "atk": 2,
     "card_id": 125631010,
-    "card_name": "高贵的闇夜‧拜特",
+    "card_name": "高贵的闇夜·拜特",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 6,
@@ -50314,7 +50314,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 126631030,
-    "card_name": "狼人女王‧卢娜",
+    "card_name": "狼人女王·卢娜",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 6,
@@ -50326,14 +50326,14 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,pp_fixeduse,summon_token,evolve//damage,damage,damage,damage",
     "skill_condition": "character=me,pp_count>=7,pp_count>=7,pp_count>=7&character=me&wrath=true//character=me&target=self&attacker=self,character=me&target=self&attacker=self,character=me&target=self&attacker=self,character=me&target=self&attacker=self",
-    "skill_disc": "入场曲 召唤1个娇幼狼人‧莉贝尔缇到战场上。<br>爆能强化 7； 召唤1隻残暴魔狼到战场上。如果狂乱 状态已发动，则会使自己未进化的从者全部进化。（进化时的能力将无法发动）",
+    "skill_disc": "入场曲 召唤1个娇幼狼人·莉贝尔缇到战场上。<br>爆能强化 7； 召唤1隻残暴魔狼到战场上。如果狂乱 状态已发动，则会使自己未进化的从者全部进化。（进化时的能力将无法发动）",
     "skill_option": "summon_token=112611010,fixeduse=7,summon_token=107611020,none//damage=1,damage=1,damage=1,damage=1",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 127641010,
-    "card_name": "罗刹的罪人‧葛洛达特",
+    "card_name": "罗刹的罪人·葛洛达特",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 6,
@@ -50371,7 +50371,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 128641010,
-    "card_name": "帝拳‧荷洛穆",
+    "card_name": "帝拳·荷洛穆",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 6,
@@ -50409,7 +50409,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900641020,
-    "card_name": "仁慈女王‧班比",
+    "card_name": "仁慈女王·班比",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -50428,7 +50428,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900641030,
-    "card_name": "血色女王‧班比",
+    "card_name": "血色女王·班比",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -50656,7 +50656,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 102711030,
-    "card_name": "圣光狐‧格里莫",
+    "card_name": "圣光狐·格里莫",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 7,
@@ -50827,7 +50827,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110741020,
-    "card_name": "安息绝杰‧玛文",
+    "card_name": "安息绝杰·玛文",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 7,
@@ -50884,7 +50884,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112731020,
-    "card_name": "希望守护者‧索妮亚",
+    "card_name": "希望守护者·索妮亚",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 7,
@@ -50903,7 +50903,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112741020,
-    "card_name": "残缺的圣女‧莉莫涅姆",
+    "card_name": "残缺的圣女·莉莫涅姆",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 7,
@@ -50922,7 +50922,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113731010,
-    "card_name": "圣弓使役者‧库鲁特",
+    "card_name": "圣弓使役者·库鲁特",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 7,
@@ -50941,7 +50941,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113741010,
-    "card_name": "咏讚的狂魔像‧壹米纳",
+    "card_name": "咏讚的狂魔像·壹米纳",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 7,
@@ -50953,14 +50953,14 @@ let cardData = [
     "rarity": 4,
     "skill": "power_down,metamorphose//power_down,chant_count_change",
     "skill_condition": "{op.inplay.field.base_card_id=900743040.count}>0,{op.inplay.field.base_card_id=900743040.count}=0&{op.inplay.unit.selectable.base_card_id!=113741010.count}>0//{op.inplay.field.base_card_id=900743040.count}>0,{me.inplay_self.count}>0&character=me&target=played_card&card_type=chant_field",
-    "skill_disc": "交战时 如果敌方的战场上有疯狂的咒器，则会给予与这个从者交战的敌方从者到敌方的回合结束为止-4/-0效果。<br>入场曲 如果敌方的战场上没有疯狂的咒器，则会使1个敌方的从者（咏讚的狂魔像‧壹米纳除外）变身为疯狂的咒器。",
+    "skill_disc": "交战时 如果敌方的战场上有疯狂的咒器，则会给予与这个从者交战的敌方从者到敌方的回合结束为止-4/-0效果。<br>入场曲 如果敌方的战场上没有疯狂的咒器，则会使1个敌方的从者（咏讚的狂魔像·壹米纳除外）变身为疯狂的咒器。",
     "skill_option": "gain_offense=4&gain_life=-0,metamorphose=900743040//gain_offense=4&gain_life=-0,gain_chant=4",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 114741010,
-    "card_name": "灵鼠族公主‧蜜尔菲",
+    "card_name": "灵鼠族公主·蜜尔菲",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 7,
@@ -50998,7 +50998,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 115741020,
-    "card_name": "育幼院之主‧笑恋",
+    "card_name": "育幼院之主·笑恋",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 7,
@@ -51074,7 +51074,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 118741010,
-    "card_name": "炽熔霜糖‧圣里奈",
+    "card_name": "炽熔霜糖·圣里奈",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 7,
@@ -51131,7 +51131,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121741030,
-    "card_name": "赎罪司祭‧伊莉丝",
+    "card_name": "赎罪司祭·伊莉丝",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 7,
@@ -51188,7 +51188,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 123741030,
-    "card_name": "绝望安息‧玛文",
+    "card_name": "绝望安息·玛文",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 7,
@@ -51226,7 +51226,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125721020,
-    "card_name": "神圣骑士‧路西乌斯",
+    "card_name": "神圣骑士·路西乌斯",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 7,
@@ -51264,7 +51264,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128741020,
-    "card_name": "华丽淑女‧耶伦毕菈",
+    "card_name": "华丽淑女·耶伦毕菈",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 7,
@@ -51302,7 +51302,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 129741010,
-    "card_name": "白翼的慈爱‧埃忒耳",
+    "card_name": "白翼的慈爱·埃忒耳",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 7,
@@ -51314,7 +51314,7 @@ let cardData = [
     "rarity": 4,
     "skill": "guard,summon_card,invoke_skill",
     "skill_condition": "character=me,{me.inplay.unit_and_allfield.count}<5,{me.inplay.unit_and_allfield.count}<5&{me.evolved_card_list.count}>=5",
-    "skill_disc": "守护 <br>入场曲 于消费低于「自己的PP最大值」的主教从者卡中，随机将消费最高的1张（白翼的慈爱‧埃忒耳除外），由自己的牌堆召唤到战场上。如果「这场对战中，自己的从者进化的次数」为5次以上，且该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。",
+    "skill_disc": "守护 <br>入场曲 于消费低于「自己的PP最大值」的主教从者卡中，随机将消费最高的1张（白翼的慈爱·埃忒耳除外），由自己的牌堆召唤到战场上。如果「这场对战中，自己的从者进化的次数」为5次以上，且该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。",
     "skill_option": "none,none,invoke_type=when_play",
     "tribe_name": "-"
   },
@@ -51656,7 +51656,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,summon_token,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.hand_other_self.count}<=3",
-    "skill_disc": "‧纯白圣鸟<br>‧漆黑魔鸟<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>---------- <br>倒数 2<br>谢幕曲 如果自己手牌中的卡片张数为3以下，则会增加1张相剋的双翼像卡片到手牌中。",
+    "skill_disc": "·纯白圣鸟<br>·漆黑魔鸟<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>---------- <br>倒数 2<br>谢幕曲 如果自己手牌中的卡片张数为3以下，则会增加1张相剋的双翼像卡片到手牌中。",
     "skill_option": "card_id=900721010:900721020,repeat_count=1&summon_side=me,token_draw=108723010",
     "tribe_name": "-"
   },
@@ -51789,7 +51789,7 @@ let cardData = [
     "rarity": 4,
     "skill": "metamorphose",
     "skill_condition": "{op.inplay.field.base_card_id=900743040.count}=0",
-    "skill_disc": "倒数 2<br>谢幕曲 如果敌方的战场上没有疯狂的咒器，则会随机使1个敌方的从者（咏讚的狂魔像‧壹米纳除外）变身为疯狂的咒器。",
+    "skill_disc": "倒数 2<br>谢幕曲 如果敌方的战场上没有疯狂的咒器，则会随机使1个敌方的从者（咏讚的狂魔像·壹米纳除外）变身为疯狂的咒器。",
     "skill_option": "metamorphose=900743040",
     "tribe_name": "-"
   },
@@ -51815,7 +51815,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 100821020,
-    "card_name": "白黑双翼‧涅克丝",
+    "card_name": "白黑双翼·涅克丝",
     "card_set_id": 10000,
     "char_type": 1,
     "clan": 8,
@@ -51891,7 +51891,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107831050,
-    "card_name": "心神统治者‧莫顿",
+    "card_name": "心神统治者·莫顿",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -51929,7 +51929,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109821020,
-    "card_name": "坚立的钢之战士‧四郎",
+    "card_name": "坚立的钢之战士·四郎",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -51967,7 +51967,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110841010,
-    "card_name": "破坏绝杰‧里榭娜",
+    "card_name": "破坏绝杰·里榭娜",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 8,
@@ -52005,14 +52005,14 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111831010,
-    "card_name": "人偶支配者‧历亚姆",
+    "card_name": "人偶支配者·历亚姆",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
     "cost": 4,
     "evo_atk": 5,
     "evo_life": 6,
-    "evo_skill_disc": "进化时 增加1张杀戮人偶‧枷薇卡片到手牌中，并使其消费-1。",
+    "evo_skill_disc": "进化时 增加1张杀戮人偶·枷薇卡片到手牌中，并使其消费-1。",
     "life": 4,
     "rarity": 3,
     "skill": "token_draw//token_draw,cost_change",
@@ -52043,7 +52043,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113811020,
-    "card_name": "魔笛奏者‧汉姆林",
+    "card_name": "魔笛奏者·汉姆林",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
@@ -52119,7 +52119,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 114841020,
-    "card_name": "绝高无上‧谦恭",
+    "card_name": "绝高无上·谦恭",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 8,
@@ -52233,7 +52233,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 118831010,
-    "card_name": "暗狱使者‧贾丝珀",
+    "card_name": "暗狱使者·贾丝珀",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 8,
@@ -52252,7 +52252,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 118841030,
-    "card_name": "均衡之刃‧希尔薇娅",
+    "card_name": "均衡之刃·希尔薇娅",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 8,
@@ -52366,7 +52366,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123841030,
-    "card_name": "奏绝破坏‧里榭娜",
+    "card_name": "奏绝破坏·里榭娜",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 8,
@@ -52378,7 +52378,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,token_draw,indestructible//summon_token,summon_token,summon_token",
     "skill_condition": "character=me&{me.destroyed_card_list.unit.count}<10,character=me&target=chosen_cards&card_type=all&{me.destroyed_card_list.unit.count}<10,character=me&{me.destroyed_card_list.unit.count}>=10,character=me//character=me&{me.destroyed_card_list.unit.base_cost<=0.count}>0,character=me&{me.destroyed_card_list.unit.base_cost<=1.count}>0,character=me&{me.destroyed_card_list.unit.base_cost<=2.count}>0",
-    "skill_disc": "‧新约‧白之章<br>‧新约‧黑之章<br>‧奏绝的独唱<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。如果本次对战中自己已被破坏的从者数为10个以上，则会由原本的命运抉择 转变为各增加1张卡片到手牌中。<br>---------- <br>无法被能力破坏。",
+    "skill_disc": "·新约·白之章<br>·新约·黑之章<br>·奏绝的独唱<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。如果本次对战中自己已被破坏的从者数为10个以上，则会由原本的命运抉择 转变为各增加1张卡片到手牌中。<br>---------- <br>无法被能力破坏。",
     "skill_option": "card_id=900842030:900842040:900844060,repeat_count=1&summon_side=me,token_draw=900842030:900842040:900844060,none//effect=owner,effect=owner,effect=owner",
     "tribe_name": "-"
   },
@@ -52475,12 +52475,12 @@ let cardData = [
     "skill_condition": "character=me//character=me",
     "skill_disc": "入场曲 这场对战中，给予自己的主战者「自己的回合中，当机械从者进入自己的战场时，给予该从者突进 效果」效果。主战者无法重複叠加此效果。",
     "skill_option": "skill=(skill:rush)(timing:when_summon_other)(condition:{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&tribe=machine&turn=self)(target:character=me&target=summoned_card&card_type=unit&tribe=machine&is_inplay=true)(option:none)(preprocess:none)(effect_path:btl_other_up)(se_path:se_btl_other_up)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0)(effect_target_type:single)&duplicate_ban_id=128831010//summon_token=900011080:900011080:900011080",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 3,
     "card_id": 900841060,
-    "card_name": "提线傀儡‧朵叶",
+    "card_name": "提线傀儡·朵叶",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -52492,7 +52492,7 @@ let cardData = [
     "rarity": 4,
     "skill": "quick,unite",
     "skill_condition": "character=me,{me.inplay.unit.base_card_id=900841050.count}>0&{me.inplay_self.count}>0",
-    "skill_disc": "疾驰 <br>自己的回合开始时，与自己战场上的1个提线傀儡‧舞诺合体成为提线傀儡‧托蕾。",
+    "skill_disc": "疾驰 <br>自己的回合开始时，与自己战场上的1个提线傀儡·舞诺合体成为提线傀儡·托蕾。",
     "skill_option": "none,type=combine&base_card_id=900841050&summon_token=(900841070)",
     "tribe_name": "-"
   },
@@ -52682,7 +52682,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,summon_token,token_draw",
     "skill_condition": "resonance=false,resonance=false,character=me&target=chosen_cards&card_type=all&resonance=false,resonance=true,resonance=true",
-    "skill_disc": "‧伊昂的愤怒<br>‧贝尔弗特的镇压<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果共鸣 状态已发动，则会由原本的命运抉择 转变为召唤1个神祕的创造物与1个古老的创造物到战场上。由杀戮女神‧提西福涅、灾乱女神‧阿莱克托、愤怒女神‧墨盖拉之中，随机增加1张卡片到手牌中。",
+    "skill_disc": "·伊昂的愤怒<br>·贝尔弗特的镇压<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果共鸣 状态已发动，则会由原本的命运抉择 转变为召唤1个神祕的创造物与1个古老的创造物到战场上。由杀戮女神·提西福涅、灾乱女神·阿莱克托、愤怒女神·墨盖拉之中，随机增加1张卡片到手牌中。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900834050:900834060,repeat_count=1&summon_side=me,summon_token=900811020:900811010,token_draw=900841110:900841120:900841130:?1",
     "tribe_name": "-"
   },
@@ -52701,7 +52701,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,summon_token,pp_fixeduse,summon_token",
     "skill_condition": "pp_count<6,character=me&target=chosen_cards&card_type=all&pp_count<6,pp_count>=6,pp_count>=6",
-    "skill_disc": "‧迅袭的创造物<br>‧守御的创造物<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。",
+    "skill_disc": "·迅袭的创造物<br>·守御的创造物<br>使1个命运抉择 所指定的从者进入战场。<br>爆能强化 6； 由原本的命运抉择 转变为各召唤1个到战场上。",
     "skill_option": "card_id=900811100:900811080,repeat_count=1&summon_side=me,fixeduse=6,summon_token=900811100:900811080",
     "tribe_name": "-"
   },
@@ -52739,7 +52739,7 @@ let cardData = [
     "rarity": 3,
     "skill": "powerup,metamorphose",
     "skill_condition": "character=me&target=inplay&card_type=unit,character=me&target=last_target&card_type=unit&base_card_id=112831010",
-    "skill_disc": "给予1个自己的从者+4/+4效果。<br>如果该从者为秩序之光‧辛恩，则使其变身为溷沌之闇‧辛恩。",
+    "skill_disc": "给予1个自己的从者+4/+4效果。<br>如果该从者为秩序之光·辛恩，则使其变身为溷沌之闇·辛恩。",
     "skill_option": "add_offense=4&add_life=4,metamorphose=900831050",
     "tribe_name": "-"
   },
@@ -52841,7 +52841,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 103021020,
-    "card_name": "历战佣兵‧菲娜",
+    "card_name": "历战佣兵·菲娜",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 0,
@@ -52860,7 +52860,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103031030,
-    "card_name": "哥布林屠杀者‧路西乌斯",
+    "card_name": "哥布林屠杀者·路西乌斯",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 0,
@@ -52917,7 +52917,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 105031020,
-    "card_name": "白猫贤者‧丝诺",
+    "card_name": "白猫贤者·丝诺",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 0,
@@ -53012,7 +53012,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 107021010,
-    "card_name": "圣光天使‧阿尔缇雅",
+    "card_name": "圣光天使·阿尔缇雅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 0,
@@ -53050,7 +53050,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110041010,
-    "card_name": "唯我绝杰‧马塞班恩",
+    "card_name": "唯我绝杰·马塞班恩",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 0,
@@ -53062,7 +53062,7 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,attach_skill,attach_skill",
     "skill_condition": "{me.deck.base_card_id!=110041010.unique_base_card_id_card.count}={me.deck.base_card_id!=110041010.count},{me.deck.base_card_id!=110041010.unique_base_card_id_card.count}={me.deck.base_card_id!=110041010.count},{me.deck.base_card_id!=110041010.unique_base_card_id_card.count}={me.deck.base_card_id!=110041010.count}",
-    "skill_disc": "入场曲 如果自己的牌堆中没有重複的卡片（唯我绝杰‧马塞班恩除外），则会在这场对战中，给予自己的主战者「自己的回合结束时，如果自己战场上的从者数为1个，则会随机给予1个自己的从者+2/+2效果。随后，随机给予1个敌方的从者2点伤害，并给予敌方的主战者2点伤害」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "入场曲 如果自己的牌堆中没有重複的卡片（唯我绝杰·马塞班恩除外），则会在这场对战中，给予自己的主战者「自己的回合结束时，如果自己战场上的从者数为1个，则会随机给予1个自己的从者+2/+2效果。随后，随机给予1个敌方的从者2点伤害，并给予敌方的主战者2点伤害」效果。主战者无法重複叠加此效果。",
     "skill_option": "skill=(skill:powerup)(timing:self_turn_end)(condition:{me.inplay.unit.count}=1)(target:character=me&target=inplay&card_type=unit&random_count=1)(option:add_offense=2&add_life=2)(preprocess:none)(effect_path:btl_unique_mjerrabaine_3)(se_path:se_btl_unique_mjerrabaine_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=1100410101,skill=(skill:damage)(timing:self_turn_end)(condition:{me.inplay.unit.count}=1)(target:character=op&target=inplay&card_type=unit&random_count=1)(option:damage=2)(preprocess:none)(effect_path:btl_unique_mjerrabaine_4)(se_path:se_btl_unique_mjerrabaine_4)(effect_move_type:DIRECT_LOOK)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=1100410102,skill=(skill:damage)(timing:self_turn_end)(condition:{me.inplay.unit.count}=1)(target:character=op&target=inplay&card_type=class)(option:damage=2)(preprocess:none)(effect_path:btl_unique_mjerrabaine_4)(se_path:se_btl_unique_mjerrabaine_4)(effect_move_type:DIRECT_LOOK)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=1100410103",
     "tribe_name": "-"
   },
@@ -53088,7 +53088,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115021010,
-    "card_name": "斗技场主持人‧恰特",
+    "card_name": "斗技场主持人·恰特",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 0,
@@ -53145,7 +53145,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 117041010,
-    "card_name": "《世界》‧捷尔加内亚",
+    "card_name": "《世界》·捷尔加内亚",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 0,
@@ -53202,7 +53202,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 122031010,
-    "card_name": "传统烟火师‧弗德",
+    "card_name": "传统烟火师·弗德",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 0,
@@ -53278,7 +53278,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 126041020,
-    "card_name": "庭园追忆‧奥莉薇与希尔薇娅",
+    "card_name": "庭园追忆·奥莉薇与希尔薇娅",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 0,
@@ -53316,7 +53316,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129021010,
-    "card_name": "女武神‧布兰",
+    "card_name": "女武神·布兰",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 0,
@@ -53392,7 +53392,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900041140,
-    "card_name": "十天众统御者‧葛兰与吉塔",
+    "card_name": "十天众统御者·葛兰与吉塔",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -53575,7 +53575,7 @@ let cardData = [
     "rarity": 4,
     "skill": "change_super_skybound_art_count,pp_modifier,choice,transform,summon_token",
     "skill_condition": "turn=self&{me.hand_self.spell.count}>0&character=me&target=evolution_card&card_type=unit,{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}<={me.inplay.class.turn}",
-    "skill_disc": "‧葛兰的觉悟<br>‧吉塔的决心<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>解放奥义 15； 由原本的命运抉择 转变为召唤1个十天众统御者‧葛兰与吉塔到战场上。",
+    "skill_disc": "·葛兰的觉悟<br>·吉塔的决心<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>解放奥义 15； 由原本的命运抉择 转变为召唤1个十天众统御者·葛兰与吉塔到战场上。",
     "skill_option": "gain_super_skybound_art_count=1*{me.evolution_card.unit.count},gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900044080:900044090,repeat_count=1&summon_side=me,summon_token=900041140&ignore_voice=true",
     "tribe_name": "-"
   },
@@ -53772,7 +53772,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 102141010,
-    "card_name": "冰晶公主‧蒂亚",
+    "card_name": "冰晶公主·蒂亚",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -53784,7 +53784,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,evolve,guard",
     "skill_condition": "character=me,character=me&target=self&play_count>2,character=me&target=self&play_count>2",
-    "skill_disc": "入场曲 召唤1个冰晶光芒‧伊芙到战场上。<br>本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会使该冰晶光芒‧伊芙进化，并给予守护 效果。",
+    "skill_disc": "入场曲 召唤1个冰晶光芒·伊芙到战场上。<br>本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会使该冰晶光芒·伊芙进化，并给予守护 效果。",
     "skill_option": "summon_token=900141010,none,none",
     "tribe_name": "-"
   },
@@ -53810,7 +53810,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103121040,
-    "card_name": "精灵王子‧莱昂内尔",
+    "card_name": "精灵王子·莱昂内尔",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 1,
@@ -53943,7 +53943,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 109141010,
-    "card_name": "绚丽的纺织者‧歌露瓦",
+    "card_name": "绚丽的纺织者·歌露瓦",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 1,
@@ -53962,7 +53962,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109141020,
-    "card_name": "弑神猎人‧塞尔文",
+    "card_name": "弑神猎人·塞尔文",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 1,
@@ -53993,7 +53993,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw,token_draw",
     "skill_condition": "play_count<=2,character=me&target=chosen_cards&card_type=all&play_count<=2,character=me&target=self&play_count>2",
-    "skill_disc": "‧胡蜂勇士<br>‧蜂之毒针<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会由原本的命运抉择 转变为增加1张胡蜂勇士与1张蜂之毒针卡片到手牌中。",
+    "skill_disc": "·胡蜂勇士<br>·蜂之毒针<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会由原本的命运抉择 转变为增加1张胡蜂勇士与1张蜂之毒针卡片到手牌中。",
     "skill_option": "card_id=900121010:900124030,repeat_count=1&summon_side=me,token_draw=900121010:900124030",
     "tribe_name": "-"
   },
@@ -54038,7 +54038,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111131010,
-    "card_name": "兽人战士‧赛德斯",
+    "card_name": "兽人战士·赛德斯",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -54095,7 +54095,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114141020,
-    "card_name": "回归的拥抱‧拉缇卡",
+    "card_name": "回归的拥抱·拉缇卡",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 1,
@@ -54171,7 +54171,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118121010,
-    "card_name": "嬉笑的破坏者‧卡嫚茵",
+    "card_name": "嬉笑的破坏者·卡嫚茵",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 1,
@@ -54190,7 +54190,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118141020,
-    "card_name": "套索的拓荒者‧洛奇萨斯",
+    "card_name": "套索的拓荒者·洛奇萨斯",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 1,
@@ -54209,7 +54209,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118141030,
-    "card_name": "天香剑士‧卢梵",
+    "card_name": "天香剑士·卢梵",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 1,
@@ -54221,7 +54221,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,destroy,damage",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost}&{op.inplay.unit.selectable.count}>0,{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "结晶 1； 倒数 3<br>入场曲 破坏1个生命值为2以下的敌方从者。<br>谢幕曲 增加1张天香剑士‧卢梵卡片到手牌中。<br>---------- <br>入场曲 破坏1个敌方的从者。随后，如果本次对战中自己的天香剑士‧卢梵或结晶：天香剑士‧卢梵之入场曲 能力所破坏的敌方从者数为4个以上，则会给予敌方的主战者5点伤害。",
+    "skill_disc": "结晶 1； 倒数 3<br>入场曲 破坏1个生命值为2以下的敌方从者。<br>谢幕曲 增加1张天香剑士·卢梵卡片到手牌中。<br>---------- <br>入场曲 破坏1个敌方的从者。随后，如果本次对战中自己的天香剑士·卢梵或结晶：天香剑士·卢梵之入场曲 能力所破坏的敌方从者数为4个以上，则会给予敌方的主战者5点伤害。",
     "skill_option": "fixeduse=1,card_id=800143010,none,damage=5",
     "tribe_name": "-"
   },
@@ -54323,7 +54323,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 125121030,
-    "card_name": "驭音的黑暗精灵‧亚卢巴",
+    "card_name": "驭音的黑暗精灵·亚卢巴",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 1,
@@ -54399,7 +54399,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128141020,
-    "card_name": "幻想使役者‧霏璃",
+    "card_name": "幻想使役者·霏璃",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 1,
@@ -54589,7 +54589,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101241020,
-    "card_name": "皇家剑士‧奥蕾莉亚",
+    "card_name": "皇家剑士·奥蕾莉亚",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 2,
@@ -54646,7 +54646,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 103221020,
-    "card_name": "苍穹提督‧莫妮卡",
+    "card_name": "苍穹提督·莫妮卡",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 2,
@@ -54665,7 +54665,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103241010,
-    "card_name": "雷维翁剑士‧阿尔贝尔",
+    "card_name": "雷维翁剑士·阿尔贝尔",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 2,
@@ -54684,7 +54684,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 104211030,
-    "card_name": "圆桌武士‧崔斯坦",
+    "card_name": "圆桌武士·崔斯坦",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -54696,7 +54696,7 @@ let cardData = [
     "rarity": 1,
     "skill": "attach_skill,trigger",
     "skill_condition": "{me.inplay.unit.tribe=lord.count}>0,{me.hand_self.unit.tribe=lord.count}>0",
-    "skill_disc": "入场曲 如果自己的战场上有指挥官从者，则会获得「谢幕曲 召唤1个圆桌武士‧崔斯坦 到战场上 」效果。",
+    "skill_disc": "入场曲 如果自己的战场上有指挥官从者，则会获得「谢幕曲 召唤1个圆桌武士·崔斯坦 到战场上 」效果。",
     "skill_option": "skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=104211030)(preprocess:none),none",
     "tribe_name": "士兵"
   },
@@ -54874,7 +54874,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110241030,
-    "card_name": "战地歌姬‧玛格诺莉雅",
+    "card_name": "战地歌姬·玛格诺莉雅",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 2,
@@ -54912,7 +54912,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113241020,
-    "card_name": "雷维翁英雄‧阿尔贝尔",
+    "card_name": "雷维翁英雄·阿尔贝尔",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 2,
@@ -54924,7 +54924,7 @@ let cardData = [
     "rarity": 4,
     "skill": "quick,powerup,pp_fixeduse,summon_card",
     "skill_condition": "character=me,character=me&target=self&attacker=self&{me.inplay_other_self.unit_and_allfield.tribe=levin.count}>0,pp_count>=9,{me.inplay.unit_and_allfield.count}<5&pp_count>=9",
-    "skill_disc": "疾驰 <br>攻击时 如果自己的战场上有其他雷维翁卡，则会获得+1/+0效果。<br>入场曲 爆能强化 9； 随机将名称各不相同的雷维翁从者卡各1张（雷维翁英雄‧阿尔贝尔除外），由自己的牌堆召唤到战场上直至上限。",
+    "skill_disc": "疾驰 <br>攻击时 如果自己的战场上有其他雷维翁卡，则会获得+1/+0效果。<br>入场曲 爆能强化 9； 随机将名称各不相同的雷维翁从者卡各1张（雷维翁英雄·阿尔贝尔除外），由自己的牌堆召唤到战场上直至上限。",
     "skill_option": "none,add_offense=1,fixeduse=9,none",
     "tribe_name": "雷维翁"
   },
@@ -54988,7 +54988,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115241030,
-    "card_name": "煌剑战士‧亨莉雅妲",
+    "card_name": "煌剑战士·亨莉雅妲",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 2,
@@ -55007,7 +55007,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 116241020,
-    "card_name": "迅勐驭剑士‧葛雷森",
+    "card_name": "迅勐驭剑士·葛雷森",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 2,
@@ -55021,12 +55021,12 @@ let cardData = [
     "skill_condition": "character=me&turn=self&{me.token_draw_card.include_self=true.count}=0,character=me&turn=self&{me.token_draw_card.include_self=true.count}=0,character=me,character=me",
     "skill_disc": "自己的回合中，当这张卡片由自己的牌堆抽取到手牌中时，则会公开该卡片，并给予自己的主战者到回合结束为止「每当机械从者进入自己的战场时，给予该从者+1/+0与突进 效果」效果。<br>---------- <br>突进 <br>入场曲 这场对战中，给予自己的主战者「自己的回合中，当自己的机械从者对敌方的从者进行攻击时，给予敌方的主战者1点伤害」效果。主战者无法重複叠加此效果。",
     "skill_option": "skill=(skill:powerup)(timing:when_summon_other)(condition:character=me&target=summoned_card&card_type=unit&tribe=machine)(target:character=me&target=summoned_card&card_type=unit&tribe=machine&is_inplay=true)(option:add_offense=1)(preprocess:none)(effect_path:btl_116241020_2)(se_path:se_btl_116241020_2)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single),skill=(skill:rush)(timing:when_summon_other)(condition:character=me&target=summoned_card&card_type=unit&tribe=machine)(target:character=me&target=summoned_card&card_type=unit&tribe=machine&is_inplay=true)(option:none)(preprocess:none),none,skill=(skill:damage)(timing:when_attack_self_and_other)(condition:character=op&target=be_attacked&card_type=unit&turn=self&{me.attacker.unit.tribe=machine.count}>0)(target:character=op&target=inplay&card_type=class)(option:damage=1)(preprocess:none)(effect_path:btl_116241020_4)(se_path:se_btl_116241020_4)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=1162410201",
-    "tribe_name": "指挥官‧机械"
+    "tribe_name": "指挥官·机械"
   },
   {
     "atk": 4,
     "card_id": 116241030,
-    "card_name": "白银的耀闪‧艾蜜莉亚",
+    "card_name": "白银的耀闪·艾蜜莉亚",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 2,
@@ -55083,7 +55083,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118231010,
-    "card_name": "改革者‧莱恩哈尔特",
+    "card_name": "改革者·莱恩哈尔特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 2,
@@ -55102,7 +55102,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118241010,
-    "card_name": "幻影拍档‧峇妮与峇侬",
+    "card_name": "幻影拍档·峇妮与峇侬",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 2,
@@ -55114,7 +55114,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,rush,destroy,attach_skill",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=op&target=be_attacked&attacker=self&card_type=unit,character=me",
-    "skill_disc": "激奏 1； 增加1张亡命者的枪击卡片到手牌中。<br>---------- <br>突进 <br>攻击时 如果对从者进行攻击，则会在计算伤害之前破坏该从者。<br>谢幕曲 下个自己的回合开始时，召唤1个魔导四轮车‧V到战场上。",
+    "skill_disc": "激奏 1； 增加1张亡命者的枪击卡片到手牌中。<br>---------- <br>突进 <br>攻击时 如果对从者进行攻击，则会在计算伤害之前破坏该从者。<br>谢幕曲 下个自己的回合开始时，召唤1个魔导四轮车·V到战场上。",
     "skill_option": "fixeduse=1,card_id=800244090,none,none,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me)(target:none)(option:summon_token=900241080)(preprocess:inplay_period_of_time=1:0)",
     "tribe_name": "士兵"
   },
@@ -55159,7 +55159,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 120241010,
-    "card_name": "雷灭卿‧阿尔贝尔",
+    "card_name": "雷灭卿·阿尔贝尔",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 2,
@@ -55173,7 +55173,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay_other_self.unit.count}>0,character=me&target=inplay_other_self&card_type=unit&pp_count<9,character=me&pp_count>=9,character=me&pp_count>=9,character=me&pp_count>=9",
     "skill_disc": "疾驰 <br>入场曲 如果自己的战场上有其他从者，则会获得+2/+0效果。<br>入场曲 破坏1个自己的其他从者。<br>爆能强化 9； 由原本的1个自己的其他从者，转变为其他的从者全体。获得「1回合中可进行2次攻击」效果。",
     "skill_option": "none,add_offense=2,none,fixeduse=9,none,attack_count=2",
-    "tribe_name": "指挥官‧雷维翁"
+    "tribe_name": "指挥官·雷维翁"
   },
   {
     "atk": 4,
@@ -55249,7 +55249,7 @@ let cardData = [
     "skill_condition": "character=me,character=me&target=attacker&attacker=self,character=me&target=attacker&attacker=self,character=me&target=inplay_other_self&card_type=unit&tribe=hero",
     "skill_disc": "突进 <br>攻击时 回复自己的主战者2点生命值。随机将1张英雄从者卡，由自己的牌堆抽取到手牌中。<br>入场曲 给予1个自己的其他英雄从者「1回合中可进行2次攻击」效果。",
     "skill_option": "none,healing=2,none,attack_count=2",
-    "tribe_name": "士兵‧英雄"
+    "tribe_name": "士兵·英雄"
   },
   {
     "atk": 1,
@@ -55273,7 +55273,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900231040,
-    "card_name": "不屈不挠的骑士‧范恩",
+    "card_name": "不屈不挠的骑士·范恩",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55292,7 +55292,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900231050,
-    "card_name": "屠龙的骑士‧齐格菲",
+    "card_name": "屠龙的骑士·齐格菲",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55311,7 +55311,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900231060,
-    "card_name": "杰出的双剑士‧兰斯洛特",
+    "card_name": "杰出的双剑士·兰斯洛特",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55323,14 +55323,14 @@ let cardData = [
     "rarity": 3,
     "skill": "quick,powerup",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=900231040.count}>0&character=me&target=attacker&attacker=self",
-    "skill_disc": "疾驰 <br>攻击时 如果自己的战场上有不屈不挠的骑士‧范恩，则会获得+1/+1效果。",
+    "skill_disc": "疾驰 <br>攻击时 如果自己的战场上有不屈不挠的骑士·范恩，则会获得+1/+1效果。",
     "skill_option": "none,add_offense=1&add_life=1",
     "tribe_name": "指挥官"
   },
   {
     "atk": 5,
     "card_id": 900231070,
-    "card_name": "炎帝‧帕西瓦尔",
+    "card_name": "炎帝·帕西瓦尔",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55342,14 +55342,14 @@ let cardData = [
     "rarity": 3,
     "skill": "rush,powerup",
     "skill_condition": "{me.inplay_other_self.unit.base_card_id=900231050.count}>0,character=me&target=attacker&attacker=self",
-    "skill_disc": "只要自己的战场上有屠龙的骑士‧齐格菲，则这个从者将发动突进 效果。<br>攻击时 依「自己的其他从者数」获得+1/+0效果。",
+    "skill_disc": "只要自己的战场上有屠龙的骑士·齐格菲，则这个从者将发动突进 效果。<br>攻击时 依「自己的其他从者数」获得+1/+0效果。",
     "skill_option": "none,add_offense={me.inplay_other_self.unit.count}",
     "tribe_name": "指挥官"
   },
   {
     "atk": 2,
     "card_id": 900241020,
-    "card_name": "希望谋士‧榭莉亚",
+    "card_name": "希望谋士·榭莉亚",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55368,7 +55368,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900241030,
-    "card_name": "绝望使者‧榭莉亚",
+    "card_name": "绝望使者·榭莉亚",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -55494,7 +55494,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,summon_token,pp_fixeduse,choice,summon_token",
     "skill_condition": "character=me&pp_count<8,character=me&target=chosen_cards&card_type=unit&pp_count<8,pp_count>=8,character=me&pp_count>=8,character=me&target=chosen_cards&card_type=unit&pp_count>=8",
-    "skill_disc": "‧不屈不挠的骑士‧范恩<br>‧屠龙的骑士‧齐格菲<br>‧杰出的双剑士‧兰斯洛特<br>‧炎帝‧帕西瓦尔<br>使1张命运抉择 所指定的卡片进入战场。<br>爆能强化 8； 由原本的1张转变为使2张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "·不屈不挠的骑士·范恩<br>·屠龙的骑士·齐格菲<br>·杰出的双剑士·兰斯洛特<br>·炎帝·帕西瓦尔<br>使1张命运抉择 所指定的卡片进入战场。<br>爆能强化 8； 由原本的1张转变为使2张命运抉择 所指定的卡片进入战场。",
     "skill_option": "card_id=900231040:900231050:900231060:900231070,repeat_count=1&summon_side=me&random_voice=true,fixeduse=8,card_id=900231040:900231050:900231060:900231070,repeat_count=1&summon_side=me&random_voice=true",
     "tribe_name": "-"
   },
@@ -55570,7 +55570,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,summon_token,pp_fixeduse,summon_token,evolve",
     "skill_condition": "character=me&pp_count<8,character=me&target=chosen_cards&card_type=unit&pp_count<8,pp_count>=8,pp_count>=8,pp_count>=8&{me.usable_ep}>=2",
-    "skill_disc": "‧阿拉密斯<br>‧波尔多斯<br>‧阿多斯<br>‧达太安<br>使2个命运抉择 所指定的从者进入战场。<br>爆能强化 8； 由原本的命运抉择 转变为各召唤1个到战场上。如果自己剩馀的EP为2以上，则会使其全数进化。",
+    "skill_disc": "·阿拉密斯<br>·波尔多斯<br>·阿多斯<br>·达太安<br>使2个命运抉择 所指定的从者进入战场。<br>爆能强化 8； 由原本的命运抉择 转变为各召唤1个到战场上。如果自己剩馀的EP为2以上，则会使其全数进化。",
     "skill_option": "card_id=900241110:900241120:900241130:900241140,repeat_count=1&summon_side=me&random_voice=true,fixeduse=8,summon_token=900241110:900241120:900241130:900241140,none",
     "tribe_name": "-"
   },
@@ -55608,7 +55608,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,draw,summon_token",
     "skill_condition": "character=me,character=me,{me.inplay.class.rally_count}>=10",
-    "skill_disc": "召唤1个白银的耀闪‧艾蜜莉亚到战场上。随机将2种士兵从者卡各1张，由自己的牌堆抽取到手牌中。<br>协作 10； 召唤1个苍空剑士‧莉夏到战场上。",
+    "skill_disc": "召唤1个白银的耀闪·艾蜜莉亚到战场上。随机将2种士兵从者卡各1张，由自己的牌堆抽取到手牌中。<br>协作 10； 召唤1个苍空剑士·莉夏到战场上。",
     "skill_option": "summon_token=116241030&ignore_voice=true,none,summon_token=112241010&ignore_voice=true",
     "tribe_name": "-"
   },
@@ -55805,7 +55805,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 102341010,
-    "card_name": "太阳巫女‧帕梅拉",
+    "card_name": "太阳巫女·帕梅拉",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 3,
@@ -55843,7 +55843,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104331020,
-    "card_name": "魔导少女‧梅薇",
+    "card_name": "魔导少女·梅薇",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 3,
@@ -55881,7 +55881,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 105331010,
-    "card_name": "鲁纳尔的魔法师‧普丽丝",
+    "card_name": "鲁纳尔的魔法师·普丽丝",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 3,
@@ -55938,7 +55938,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 107331010,
-    "card_name": "马纳历亚学生会长‧汉娜",
+    "card_name": "马纳历亚学生会长·汉娜",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 3,
@@ -55957,7 +55957,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 107341010,
-    "card_name": "魔法始祖‧马纳历亚",
+    "card_name": "魔法始祖·马纳历亚",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 3,
@@ -55976,7 +55976,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 108341030,
-    "card_name": "真实考究者‧浮士德",
+    "card_name": "真实考究者·浮士德",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 3,
@@ -56052,7 +56052,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112321010,
-    "card_name": "马纳历亚领导者‧汉娜",
+    "card_name": "马纳历亚领导者·汉娜",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -56109,7 +56109,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114341030,
-    "card_name": "秘仪魔女‧梅蒂亚",
+    "card_name": "秘仪魔女·梅蒂亚",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 3,
@@ -56135,12 +56135,12 @@ let cardData = [
     "cost": 5,
     "evo_atk": 3,
     "evo_life": 3,
-    "evo_skill_disc": "进化时 召唤1个式神‧小纸人到战场上。",
+    "evo_skill_disc": "进化时 召唤1个式神·小纸人到战场上。",
     "life": 1,
     "rarity": 3,
     "skill": "summon_token,draw//summon_token",
     "skill_condition": "character=me,character=me&target=self//none",
-    "skill_disc": "入场曲 召唤1个式神‧暴鬼到战场上。随机将2张名称不同并有「魔力增幅 效果」的从者卡，由自己的牌堆抽取到手牌中。",
+    "skill_disc": "入场曲 召唤1个式神·暴鬼到战场上。随机将2张名称不同并有「魔力增幅 效果」的从者卡，由自己的牌堆抽取到手牌中。",
     "skill_option": "summon_token=900311100,none//summon_token=900311090",
     "tribe_name": "-"
   },
@@ -56223,7 +56223,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119341030,
-    "card_name": "银灰之星‧阿莱斯特",
+    "card_name": "银灰之星·阿莱斯特",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -56261,7 +56261,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 120341020,
-    "card_name": "稜镜虹辉‧济欧司",
+    "card_name": "稜镜虹辉·济欧司",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 3,
@@ -56273,7 +56273,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,summon_token,summon_token,summon_token,evolve,banish//guard,indestructible",
     "skill_condition": "{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=5,{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=10,{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=15,{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=20,{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=20,{me.hand_self.unit.count}>0&{me.hand.unit.base_card_id=120341020.count}<=3&{self.charge_count}>=20//character=me,character=me",
-    "skill_disc": "自己的回合结束时，如果自己手牌中的这张卡片的魔力增幅次数为5次以上，则会公开该卡片，并召唤1隻猫头鹰到战场上后，失去此能力。<br>如果为10次以上，则会公开该卡片，并召唤1隻迷雾巨龙到战场上后，失去此能力。<br>如果为15次以上，则会公开该卡片，并召唤1隻神圣光明龙到战场上后，失去此能力。<br>如果为20次以上，则会公开该卡片，并召唤1个稜镜虹辉‧济欧司到战场上后使其进化。使这张卡片消失。<br>上述能力在自己手牌中的稜镜虹辉‧济欧司卡片张数为3张以下时才会发动。",
+    "skill_disc": "自己的回合结束时，如果自己手牌中的这张卡片的魔力增幅次数为5次以上，则会公开该卡片，并召唤1隻猫头鹰到战场上后，失去此能力。<br>如果为10次以上，则会公开该卡片，并召唤1隻迷雾巨龙到战场上后，失去此能力。<br>如果为15次以上，则会公开该卡片，并召唤1隻神圣光明龙到战场上后，失去此能力。<br>如果为20次以上，则会公开该卡片，并召唤1个稜镜虹辉·济欧司到战场上后使其进化。使这张卡片消失。<br>上述能力在自己手牌中的稜镜虹辉·济欧司卡片张数为3张以下时才会发动。",
     "skill_option": "summon_token=104011040,summon_token=101421100,summon_token=101731010,summon_token=120341020,none,none//none,none",
     "tribe_name": "-"
   },
@@ -56337,19 +56337,19 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 123341010,
-    "card_name": "五行宗师‧久苑",
+    "card_name": "五行宗师·久苑",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 3,
     "cost": 5,
     "evo_atk": 6,
     "evo_life": 6,
-    "evo_skill_disc": "进化时 给予全部自己的式神‧小纸人、式神‧暴鬼、式神‧天后、式神‧贵人 突进 效果。",
+    "evo_skill_disc": "进化时 给予全部自己的式神·小纸人、式神·暴鬼、式神·天后、式神·贵人 突进 效果。",
     "life": 4,
     "rarity": 4,
     "skill": "pp_modifier,summon_token,pp_modifier,summon_token,summon_token//rush",
     "skill_condition": "{self.charge_count}>=5&{self.charge_count}<10,{self.charge_count}>=5&{self.charge_count}<10,{self.charge_count}>=10,{self.charge_count}>=10&{self.charge_count}<15,{self.charge_count}>=15//character=me",
-    "skill_disc": "入场曲 如果这张卡片的魔力增幅 次数为5次以上，则会回复自己的PP 2点。召唤1个式神‧暴鬼与1个式神‧小纸人到战场上。<br>如果为10次以上，则会由原本的回复2点转变为回复4点。由原本的式神‧小纸人转变为召唤式神‧天后到战场上。<br>如果为15次以上，则会由原本的式神‧暴鬼转变为召唤式神‧贵人到战场上。",
+    "skill_disc": "入场曲 如果这张卡片的魔力增幅 次数为5次以上，则会回复自己的PP 2点。召唤1个式神·暴鬼与1个式神·小纸人到战场上。<br>如果为10次以上，则会由原本的回复2点转变为回复4点。由原本的式神·小纸人转变为召唤式神·天后到战场上。<br>如果为15次以上，则会由原本的式神·暴鬼转变为召唤式神·贵人到战场上。",
     "skill_option": "add_pp=2,summon_token=900311100:900311090,add_pp=4,summon_token=900311100:900341020,summon_token=900341030:900341020//none",
     "tribe_name": "-"
   },
@@ -56413,7 +56413,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 125341030,
-    "card_name": "马纳历亚双姬‧安与古蕾娅",
+    "card_name": "马纳历亚双姬·安与古蕾娅",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -56451,7 +56451,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 127341010,
-    "card_name": "耽溺的罪人‧瑟霏",
+    "card_name": "耽溺的罪人·瑟霏",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 3,
@@ -57040,7 +57040,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 108421020,
-    "card_name": "异相之息‧迦鲁亚",
+    "card_name": "异相之息·迦鲁亚",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -57052,14 +57052,14 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧圣白龙息<br>‧暗黑龙息<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·圣白龙息<br>·暗黑龙息<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900424020:900424030,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 109431010,
-    "card_name": "护国真龙‧斯卡塔赫",
+    "card_name": "护国真龙·斯卡塔赫",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 4,
@@ -57078,7 +57078,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 110441010,
-    "card_name": "侮蔑绝杰‧嘉鲁蜜儿",
+    "card_name": "侮蔑绝杰·嘉鲁蜜儿",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 4,
@@ -57135,7 +57135,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 113411020,
-    "card_name": "知风者‧杰鲁",
+    "card_name": "知风者·杰鲁",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 4,
@@ -57249,7 +57249,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 120431010,
-    "card_name": "屠龙骑士‧罗伊",
+    "card_name": "屠龙骑士·罗伊",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 4,
@@ -57287,7 +57287,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 123441030,
-    "card_name": "烈绝侮蔑‧嘉鲁蜜儿",
+    "card_name": "烈绝侮蔑·嘉鲁蜜儿",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 4,
@@ -57306,7 +57306,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 124441030,
-    "card_name": "黑白乱舞‧诺尔与卜朗",
+    "card_name": "黑白乱舞·诺尔与卜朗",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 4,
@@ -57318,7 +57318,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token,cant_evolution,quick,evolve//guard,shield,indestructible",
     "skill_condition": "character=me,character=me,character=me,{me.inplay_self.count}>0&{me.inplay.class.max_pp}=10//character=me,character=me,character=me",
-    "skill_disc": "如果这张卡片因能力被从手牌中捨弃，则会召唤1个进化前为攻击力1/生命值1的黑白乱舞‧诺尔与卜朗到战场上。<br>---------- <br>无法使用EP进化。（能力可以使这个从者进化）<br>疾驰 <br>自己的回合结束时，如果自己的PP最大值为10，则会使这个从者进化。",
+    "skill_disc": "如果这张卡片因能力被从手牌中捨弃，则会召唤1个进化前为攻击力1/生命值1的黑白乱舞·诺尔与卜朗到战场上。<br>---------- <br>无法使用EP进化。（能力可以使这个从者进化）<br>疾驰 <br>自己的回合结束时，如果自己的PP最大值为10，则会使这个从者进化。",
     "skill_option": "summon_token=900441110,type=ep_use,none,none//none,type=skill,none",
     "tribe_name": "-"
   },
@@ -57337,14 +57337,14 @@ let cardData = [
     "rarity": 4,
     "skill": "discard,consume_ep_modifier//choice,evolve_to_other,damage,token_draw",
     "skill_condition": "{me.hand_other_self.field.base_card_id=900422010.count}>0,{me.hand_other_self.field.base_card_id=900422010.count}>0//{me.game_left_cards.unit.tribe=armed.count}>=4,{me.game_left_cards.unit.tribe=armed.count}>=4,{me.game_left_cards.unit.tribe=armed.count}<4,{me.game_left_cards.unit.tribe=armed.count}<4",
-    "skill_disc": "‧灭剑燄龙‧进攻模式<br>‧灭剑燄龙‧防御模式<br>‧灭剑燄龙‧爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "·灭剑燄龙·进攻模式<br>·灭剑燄龙·防御模式<br>·灭剑燄龙·爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "none,none//card_id=910441010:910441020:910441030,none,damage=5,token_draw=900422010",
     "tribe_name": "武装"
   },
   {
     "atk": 5,
     "card_id": 910441010,
-    "card_name": "灭剑燄龙‧进攻模式",
+    "card_name": "灭剑燄龙·进攻模式",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -57356,14 +57356,14 @@ let cardData = [
     "rarity": 4,
     "skill": "none//powerup,damage,token_draw",
     "skill_condition": "none//character=me&target=attacker&attacker=other&tribe=armed&{me.inplay_self.count}>0,character=me,character=me",
-    "skill_disc": "‧灭剑燄龙‧进攻模式<br>‧灭剑燄龙‧防御模式<br>‧灭剑燄龙‧爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "·灭剑燄龙·进攻模式<br>·灭剑燄龙·防御模式<br>·灭剑燄龙·爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "none//add_offense=2&add_life=2,damage=5,token_draw=900422010",
     "tribe_name": "武装"
   },
   {
     "atk": 5,
     "card_id": 910441020,
-    "card_name": "灭剑燄龙‧防御模式",
+    "card_name": "灭剑燄龙·防御模式",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -57375,14 +57375,14 @@ let cardData = [
     "rarity": 4,
     "skill": "none//guard,damage_cut,damage_cut,heal,draw",
     "skill_condition": "none//character=me,character=me,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit,{me.inplay_self.count}>0,character=me",
-    "skill_disc": "‧灭剑燄龙‧进攻模式<br>‧灭剑燄龙‧防御模式<br>‧灭剑燄龙‧爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "·灭剑燄龙·进攻模式<br>·灭剑燄龙·防御模式<br>·灭剑燄龙·爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "none//none,cut_amount=2&duplicate_ban=self_skill:skill_num_1,cut_amount=2&duplicate_ban=self_skill:skill_num_1,healing=3,none",
     "tribe_name": "武装"
   },
   {
     "atk": 5,
     "card_id": 910441030,
-    "card_name": "灭剑燄龙‧爆破模式",
+    "card_name": "灭剑燄龙·爆破模式",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -57394,14 +57394,14 @@ let cardData = [
     "rarity": 4,
     "skill": "none//rush,damage,pp_modifier",
     "skill_condition": "none//{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit,{me.inplay_self.count}>0,character=me",
-    "skill_disc": "‧灭剑燄龙‧进攻模式<br>‧灭剑燄龙‧防御模式<br>‧灭剑燄龙‧爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_disc": "·灭剑燄龙·进攻模式<br>·灭剑燄龙·防御模式<br>·灭剑燄龙·爆破模式<br>这个从者进化时，如果本次对战中自己已离场的武装从者数为4个以上，则会进化为命运抉择 所指定的从者。（因能力而进化除外）<br>---------- <br>入场曲 如果自己的手牌中有龙武装甲，则会随机捨弃1张该卡片，并获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
     "skill_option": "none//none,damage={me.inplay_self.unit.offense},add_pp=2",
     "tribe_name": "武装"
   },
   {
     "atk": 3,
     "card_id": 126441020,
-    "card_name": "船长‧达拉伍德",
+    "card_name": "船长·达拉伍德",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 4,
@@ -57439,7 +57439,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 127441010,
-    "card_name": "游猎的罪人‧安媞马丽亚",
+    "card_name": "游猎的罪人·安媞马丽亚",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 4,
@@ -57451,14 +57451,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,rush,ignore_guard,quick,drain",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me,{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}>0&{me.inplay.class.pp}>={me.hand_self.cost},{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}>0&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "激奏 1； 随机给予1个敌方的从者3点伤害。增加1张消费为5，攻击力5/生命值2并且没有激奏 效果的游猎的罪人‧安媞马丽亚卡片到手牌中。<br>---------- <br>突进 <br>可无视守护 效果进行攻击。<br>入场曲 如果上个自己的回合中已经使用八狱卡，则会获得疾驰 与吸血 效果。",
+    "skill_disc": "激奏 1； 随机给予1个敌方的从者3点伤害。增加1张消费为5，攻击力5/生命值2并且没有激奏 效果的游猎的罪人·安媞马丽亚卡片到手牌中。<br>---------- <br>突进 <br>可无视守护 效果进行攻击。<br>入场曲 如果上个自己的回合中已经使用八狱卡，则会获得疾驰 与吸血 效果。",
     "skill_option": "fixeduse=1,card_id=800444110,none,none,none,none",
     "tribe_name": "八狱"
   },
   {
     "atk": 5,
     "card_id": 128441020,
-    "card_name": "热血龙教师‧乔",
+    "card_name": "热血龙教师·乔",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 4,
@@ -57470,7 +57470,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,none,damage//damage",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost}&{me.inplay.unit.life.sum.or=0}+{me.hand_self.unit.life}>=20,character=me&{me.inplay.class.pp}>={me.hand_self.cost}&{me.inplay.unit.life.sum.or=0}>=20//character=me&target=self&status_life>=11",
-    "skill_disc": "结晶 1； 倒数 1<br>入场曲 使1张自己的手牌消失。增加1张与之同名的卡片及1张热血龙教师‧乔卡片到牌堆中。给予自己牌堆中全部的龙族从者卡+0/+1效果。如果消失的卡片为学园卡，则会获得「谢幕曲 抽取2张卡片」效果。<br>---------- <br>守护 <br>入场曲 如果自己从者的合计生命值为20以上（包含本卡片），则会给予敌方的主战者与敌方的从者全体5点伤害。",
+    "skill_disc": "结晶 1； 倒数 1<br>入场曲 使1张自己的手牌消失。增加1张与之同名的卡片及1张热血龙教师·乔卡片到牌堆中。给予自己牌堆中全部的龙族从者卡+0/+1效果。如果消失的卡片为学园卡，则会获得「谢幕曲 抽取2张卡片」效果。<br>---------- <br>守护 <br>入场曲 如果自己从者的合计生命值为20以上（包含本卡片），则会给予敌方的主战者与敌方的从者全体5点伤害。",
     "skill_option": "fixeduse=1,card_id=800443030,none,none,damage=5//damage=7",
     "tribe_name": "学园"
   },
@@ -57527,7 +57527,7 @@ let cardData = [
     "rarity": 4,
     "skill": "guard,heal,powerup",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=115441010.count}>0&{me.inplay_self.count}>0,{me.inplay_other_self.unit.base_card_id=900441080.count}>0&{me.inplay_self.count}>0",
-    "skill_disc": "守护 <br>自己的回合结束时，如果自己的战场上有霸业龙人‧卧龙，则会回复自己的主战者2点生命值。如果战场上有霸业之银龙，则会获得+2/+2效果。",
+    "skill_disc": "守护 <br>自己的回合结束时，如果自己的战场上有霸业龙人·卧龙，则会回复自己的主战者2点生命值。如果战场上有霸业之银龙，则会获得+2/+2效果。",
     "skill_option": "none,healing=2,add_offense=2&add_life=2",
     "tribe_name": "-"
   },
@@ -57546,7 +57546,7 @@ let cardData = [
     "rarity": 4,
     "skill": "rush,damage,damage",
     "skill_condition": "character=me,{me.inplay_other_self.unit.base_card_id=115441010.count}>0&{me.inplay_self.count}>0&target=attacker&attacker=self,{me.inplay_other_self.unit.base_card_id=900441070.count}>0&{me.inplay_self.count}>0&character=op&target=be_attacked&attacker=self&card_type=unit",
-    "skill_disc": "突进 <br>攻击时 如果自己的战场上有霸业龙人‧卧龙，则会给予敌方的主战者2点伤害。当战场上有霸业之金龙时，如果对从者进行攻击，（在计算伤害之前）将给予目标从者与「这个从者的攻击力」等量的伤害。",
+    "skill_disc": "突进 <br>攻击时 如果自己的战场上有霸业龙人·卧龙，则会给予敌方的主战者2点伤害。当战场上有霸业之金龙时，如果对从者进行攻击，（在计算伤害之前）将给予目标从者与「这个从者的攻击力」等量的伤害。",
     "skill_option": "none,damage=2,damage={me.inplay_self.unit.offense}",
     "tribe_name": "-"
   },
@@ -57914,7 +57914,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 105531020,
-    "card_name": "捷特‧马洛斯",
+    "card_name": "捷特·马洛斯",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 5,
@@ -57971,7 +57971,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 107541010,
-    "card_name": "冥守族长‧艾夏",
+    "card_name": "冥守族长·艾夏",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 5,
@@ -58059,14 +58059,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "‧奈落之冠<br>‧凶暴化<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·奈落之冠<br>·凶暴化<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900533010:900534010,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 3,
     "card_id": 110541010,
-    "card_name": "冥界守卫犬‧凯尔贝洛斯",
+    "card_name": "冥界守卫犬·凯尔贝洛斯",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 5,
@@ -58078,14 +58078,14 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token//attach_skill",
     "skill_condition": "character=me//character=me&target=inplay_other_self&card_type=unit",
-    "skill_disc": "入场曲 召唤1隻守卫犬的右腕‧米米与1隻守卫犬的左腕‧可可到战场上。",
+    "skill_disc": "入场曲 召唤1隻守卫犬的右腕·米米与1隻守卫犬的左腕·可可到战场上。",
     "skill_option": "summon_token=900541040:900541050//skill=(skill:damage)(timing:when_destroy)(condition:character=me&card_type=unit)(target:character=op&target=inplay&card_type=unit&random_count=1)(option:damage=1)(preprocess:none)(effect_path:btl_unique_mimi_2)(se_path:se_btl_unique_mimi_2)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 111511030,
-    "card_name": "木乃伊‧梅里安",
+    "card_name": "木乃伊·梅里安",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -58123,7 +58123,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 112541010,
-    "card_name": "永恆新娘‧赛蕾丝",
+    "card_name": "永恆新娘·赛蕾丝",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 5,
@@ -58180,7 +58180,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 114541010,
-    "card_name": "死灵聚集体‧鲁蓓露",
+    "card_name": "死灵聚集体·鲁蓓露",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 5,
@@ -58256,7 +58256,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 117541010,
-    "card_name": "《恋人》‧米路缇欧",
+    "card_name": "《恋人》·米路缇欧",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 5,
@@ -58313,7 +58313,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 123541010,
-    "card_name": "惊骇盛宴‧吟雪",
+    "card_name": "惊骇盛宴·吟雪",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 5,
@@ -58351,7 +58351,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 126541020,
-    "card_name": "高贵的灵使‧忒露雪菈",
+    "card_name": "高贵的灵使·忒露雪菈",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 5,
@@ -58389,7 +58389,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129541010,
-    "card_name": "冥境咆哮犬‧凯尔贝洛斯",
+    "card_name": "冥境咆哮犬·凯尔贝洛斯",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 5,
@@ -58401,7 +58401,7 @@ let cardData = [
     "rarity": 4,
     "skill": "damage,heal,token_draw,cost_change,token_draw,cost_change",
     "skill_condition": "{me.inplay_self.count}>0&turn=self,{me.inplay_self.count}>0&turn=self,{me.turn_evolve_count=me:1}=0,{me.turn_evolve_count=me:1}=0,{me.turn_evolve_count=me:1}>0,{me.turn_evolve_count=me:1}>0",
-    "skill_disc": "自己的回合中，当自己发动死灵术 时，给予敌方的主战者1点伤害。回复自己的主战者1点生命值。<br>入场曲 增加1张冥界斗犬‧欧特鲁斯卡片到手牌中。使其消费转变为0。上个自己的回合中如果自己的从者已进化，则会由原本的冥界斗犬‧欧特鲁斯转变为增加冥河引渡者‧凯伦卡片到手牌中。",
+    "skill_disc": "自己的回合中，当自己发动死灵术 时，给予敌方的主战者1点伤害。回复自己的主战者1点生命值。<br>入场曲 增加1张冥界斗犬·欧特鲁斯卡片到手牌中。使其消费转变为0。上个自己的回合中如果自己的从者已进化，则会由原本的冥界斗犬·欧特鲁斯转变为增加冥河引渡者·凯伦卡片到手牌中。",
     "skill_option": "damage=1,healing=1,token_draw=110521010,set=0,token_draw=110531010,set=0",
     "tribe_name": "-"
   },
@@ -58458,7 +58458,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_modifier,choice,transform,summon_token,summon_token,summon_token,heal,token_draw",
     "skill_condition": "{me.cemetery.count}<4,{me.cemetery.count}<4,{me.cemetery.count}<4&character=me&target=chosen_cards&card_type=spell,{me.cemetery.count}>=4,{me.cemetery.count}>=4,{me.cemetery.count}>=4,{me.cemetery.count}>=4,{me.cemetery.count}>=4",
-    "skill_disc": "‧露娜的本领<br>‧安镍儿的献身<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>死灵术 4； 由原本的命运抉择 转变为发动亡者召还 4、亡者召还 2、亡者召还 1，并回复自己的主战者4点生命值。增加1张瞬逝的幸福卡片到手牌中。",
+    "skill_disc": "·露娜的本领<br>·安镍儿的献身<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>死灵术 4； 由原本的命运抉择 转变为发动亡者召还 4、亡者召还 2、亡者召还 1，并回复自己的主战者4点生命值。增加1张瞬逝的幸福卡片到手牌中。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900534040:900534050,repeat_count=1&summon_side=me,none,none,none,healing=4,token_draw=900544060",
     "tribe_name": "-"
   },
@@ -58769,7 +58769,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104621030,
-    "card_name": "弗拉德‧德古拉",
+    "card_name": "弗拉德·德古拉",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 6,
@@ -58997,7 +58997,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110641030,
-    "card_name": "闇黑恶魔‧米尔兰特",
+    "card_name": "闇黑恶魔·米尔兰特",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -59054,7 +59054,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112641010,
-    "card_name": "魔眼蛇神‧梅杜莎",
+    "card_name": "魔眼蛇神·梅杜莎",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 6,
@@ -59073,7 +59073,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114631010,
-    "card_name": "蒙面斗士‧莎兰婕亚",
+    "card_name": "蒙面斗士·莎兰婕亚",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 6,
@@ -59092,7 +59092,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 114631030,
-    "card_name": "恶怨保镳‧巴尔特",
+    "card_name": "恶怨保镳·巴尔特",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 6,
@@ -59301,7 +59301,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129641020,
-    "card_name": "终焉魔狼‧芬里尔",
+    "card_name": "终焉魔狼·芬里尔",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 6,
@@ -59320,7 +59320,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900621010,
-    "card_name": "圣洁少女‧布菈",
+    "card_name": "圣洁少女·布菈",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -59339,7 +59339,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 900621020,
-    "card_name": "闇黑少女‧布菈",
+    "card_name": "闇黑少女·布菈",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -59427,7 +59427,7 @@ let cardData = [
     "rarity": 2,
     "skill": "token_draw,cost_change",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "增加1张恶魔偶像‧朵莉露与1张恶魔歌姬卡片到手牌中。使上述卡片消费转变为0。",
+    "skill_disc": "增加1张恶魔偶像·朵莉露与1张恶魔歌姬卡片到手牌中。使上述卡片消费转变为0。",
     "skill_option": "token_draw=110631030:121631010,set=0",
     "tribe_name": "-"
   },
@@ -59624,7 +59624,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 104721020,
-    "card_name": "黄金都市守墓人‧索妮亚",
+    "card_name": "黄金都市守墓人·索妮亚",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 7,
@@ -59712,7 +59712,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,transform,draw",
     "skill_condition": "character=me&{me.inplay_other_self.field.count}>=2&pp_count>=5,character=me&target=chosen_cards&card_type=all&{me.inplay_other_self.field.count}>=2&pp_count>=5,character=me&target=attacker&attacker=self",
-    "skill_disc": "‧黎明神鹿‧刻律涅<br>‧夜幕神鹿‧刻律涅<br>如果这张卡片在手牌中，自己剩馀的PP为5以上，并且自己战场上的护符数为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>攻击时 随机将1张护符卡，由自己的牌堆抽取到手牌中。",
+    "skill_disc": "·黎明神鹿·刻律涅<br>·夜幕神鹿·刻律涅<br>如果这张卡片在手牌中，自己剩馀的PP为5以上，并且自己战场上的护符数为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>攻击时 随机将1张护符卡，由自己的牌堆抽取到手牌中。",
     "skill_option": "card_id=900741010:900741020,repeat_count=1&summon_side=me,none",
     "tribe_name": "-"
   },
@@ -59890,7 +59890,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 116741010,
-    "card_name": "圣拳月兔妖‧洁思缇",
+    "card_name": "圣拳月兔妖·洁思缇",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 7,
@@ -59909,7 +59909,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 116741030,
-    "card_name": "乐园双翼‧迦楼罗",
+    "card_name": "乐园双翼·迦楼罗",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 7,
@@ -59921,7 +59921,7 @@ let cardData = [
     "rarity": 4,
     "skill": "generic_value_modifier,summon_card,invoke_skill,summon_card,invoke_skill",
     "skill_condition": "{me.inplay_other_self.unit_and_allfield.count}<4,{me.inplay_other_self.unit_and_allfield.count}<4,character=me,{me.inplay_other_self.unit_and_allfield.count}<4,character=me",
-    "skill_disc": "入场曲 于消费为X以下的护符卡中，随机将消费最高的1张，由自己的牌堆召唤到战场上。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。于消费为X以下的从者卡中，随机将消费最高的1张（乐园双翼‧迦楼罗除外），由自己的牌堆召唤到战场上。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。X为「本次对战中自己已被破坏的护符数」。",
+    "skill_disc": "入场曲 于消费为X以下的护符卡中，随机将消费最高的1张，由自己的牌堆召唤到战场上。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。于消费为X以下的从者卡中，随机将消费最高的1张（乐园双翼·迦楼罗除外），由自己的牌堆召唤到战场上。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。X为「本次对战中自己已被破坏的护符数」。",
     "skill_option": "set={me.destroyed_card_list.field.count},none,invoke_type=when_play,none,invoke_type=when_play",
     "tribe_name": "-"
   },
@@ -59947,7 +59947,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 117741010,
-    "card_name": "《力量》‧索菲娜",
+    "card_name": "《力量》·索菲娜",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 7,
@@ -59966,7 +59966,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 117741030,
-    "card_name": "光辉显世‧拉",
+    "card_name": "光辉显世·拉",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 7,
@@ -60061,7 +60061,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119741020,
-    "card_name": "异幻‧沃芙玛纳芙",
+    "card_name": "异幻·沃芙玛纳芙",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 7,
@@ -60073,7 +60073,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,consume_ep_modifier,heal,not_be_attacked",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me&target=self,{me.inplay_self.count}>0,character=me",
-    "skill_disc": "结晶 3； 倒数 4<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻‧沃芙玛纳芙到战场上。<br>---------- <br>不消费EP即可进化。（1回合中依旧只能进化1张卡片）<br>自己的回合结束时，回复这个从者4点生命值。<br>如果这个从者受到伤害后仍未被破坏，则到敌方的回合结束为止获得「无法被攻击」效果。",
+    "skill_disc": "结晶 3； 倒数 4<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻·沃芙玛纳芙到战场上。<br>---------- <br>不消费EP即可进化。（1回合中依旧只能进化1张卡片）<br>自己的回合结束时，回复这个从者4点生命值。<br>如果这个从者受到伤害后仍未被破坏，则到敌方的回合结束为止获得「无法被攻击」效果。",
     "skill_option": "fixeduse=3,card_id=800743030,none,healing=4,none",
     "tribe_name": "-"
   },
@@ -60346,7 +60346,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900741010,
-    "card_name": "黎明神鹿‧刻律涅",
+    "card_name": "黎明神鹿·刻律涅",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -60365,7 +60365,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900741020,
-    "card_name": "夜幕神鹿‧刻律涅",
+    "card_name": "夜幕神鹿·刻律涅",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -60650,7 +60650,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107841020,
-    "card_name": "神祕守门人‧丝碧涅",
+    "card_name": "神祕守门人·丝碧涅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -60688,7 +60688,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108821020,
-    "card_name": "豪腕斗士‧迪尔克",
+    "card_name": "豪腕斗士·迪尔克",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 8,
@@ -60745,7 +60745,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111841010,
-    "card_name": "远古双剑士‧戴恩",
+    "card_name": "远古双剑士·戴恩",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
@@ -60764,7 +60764,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113841020,
-    "card_name": "迴响之心‧枷薇",
+    "card_name": "迴响之心·枷薇",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
@@ -60797,7 +60797,7 @@ let cardData = [
     "skill_condition": "{me.inplay_other_self.unit_and_allfield.count}<4&{{me.hand_other_self.unit.tribe=machine.selectable.count}>0|{me.hand_other_self.unit.tribe=nature.selectable.count}>0},{me.inplay_other_self.unit_and_allfield.count}<4,{me.inplay_other_self.unit_and_allfield.count}<4",
     "skill_disc": "入场曲 使1张自己手牌中的机械从者卡或自然从者卡进入战场。给予该从者突进 与「自己的回合结束时返回手牌中」效果。",
     "skill_option": "none,none,skill=(skill:return_card)(timing:self_turn_end)(condition:character=me&target=self&card_type=unit)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none)(icon:induction)",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 4,
@@ -60821,7 +60821,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 117841030,
-    "card_name": "遗物守门人‧璐契儿",
+    "card_name": "遗物守门人·璐契儿",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 8,
@@ -60833,7 +60833,7 @@ let cardData = [
     "rarity": 4,
     "skill": "consume_ep_modifier,update_deck//summon_token",
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit_and_allfield&tribe=artifact,character=me&target=self&card_type=unit//character=me",
-    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神祕的遗物‧丝碧涅与璐契儿卡片到牌堆中。",
+    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神祕的遗物·丝碧涅与璐契儿卡片到牌堆中。",
     "skill_option": "none,token_draw=900841190&type=add//summon_token=900811040",
     "tribe_name": "-"
   },
@@ -60949,12 +60949,12 @@ let cardData = [
     "skill_condition": "{me.inplay_self.geton_card.count}=0,{me.inplay_self.count}>0&{{me.summoned_card.unit.tribe=machine.base_cost<=4.count}>0|{me.summoned_card.unit.tribe=banquet.base_cost<=4.count}>0},character=me,character=me,{me.self.geton_card.count}>0,{me.self.geton_card.count}>0",
     "skill_disc": "操纵 ； 原始消费为4以下的「机械从者或宴乐从者」<br>操纵时 给予敌方的从者全体6点伤害，并给予敌方的主战者3点伤害。<br>当所操纵 的从者脱离被操纵 状态时，使其变身为神伟的剑士。",
     "skill_option": "cant_attack=all,none,damage=6,damage=3,none,metamorphose=124841010",
-    "tribe_name": "机械‧宴乐"
+    "tribe_name": "机械·宴乐"
   },
   {
     "atk": 4,
     "card_id": 125831020,
-    "card_name": "外界审判者‧诺伦",
+    "card_name": "外界审判者·诺伦",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
@@ -61044,7 +61044,7 @@ let cardData = [
     "skill_condition": "evolvable_turn=true,none,none,none,character=me,character=me,character=me,character=me",
     "skill_disc": "如果为已进化解禁的回合，则可发动融合 效果。<br>融合 ； 复仇者从者卡<br>与这张卡片进行融合 时，增加1张生产器械卡片到手牌中。给予该卡片「入场曲 使这个从者进化」与「自己的回合结束时，破坏自己战场上的这个从者」效果。<br>---------- <br>突进 <br>守护 <br>入场曲 召唤1个双机臂救援者到战场上。<br>谢幕曲 回复自己的主战者2点生命值。",
     "skill_option": "none,token_draw=900011080,skill=(skill:evolve)(timing:when_play)(condition:character=me)(target:character=me&target=self)(option:none)(preprocess:none),skill=(skill:destroy)(timing:self_turn_end)(condition:{me.inplay_self.count}>0)(target:character=me&target=self)(option:none)(preprocess:none)(icon:induction),none,none,summon_token=128831020,healing=2",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 4,
@@ -61125,7 +61125,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900821030,
-    "card_name": "甦醒的钢之战士‧机美",
+    "card_name": "甦醒的钢之战士·机美",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -61232,7 +61232,7 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,summon_token,token_draw,pp_fixeduse,powerup,killer",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=unit,character=me,pp_count>=7,pp_count>=7,pp_count>=7",
-    "skill_disc": "‧洛伊德<br>‧维多利亚<br>使1张命运抉择 所指定的卡片进入战场。增加1张悬丝傀儡卡片到手牌中。<br>爆能强化 7； 给予命运抉择 所指定的从者+0/+3与必杀 效果。",
+    "skill_disc": "·洛伊德<br>·维多利亚<br>使1张命运抉择 所指定的卡片进入战场。增加1张悬丝傀儡卡片到手牌中。<br>爆能强化 7； 给予命运抉择 所指定的从者+0/+3与必杀 效果。",
     "skill_option": "card_id=900841040:900831010,repeat_count=1&summon_side=me,token_draw=900811050,fixeduse=7,add_life=3,none",
     "tribe_name": "-"
   },
@@ -61410,7 +61410,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109021010,
-    "card_name": "苍天守护骑士‧卡塔莉娜",
+    "card_name": "苍天守护骑士·卡塔莉娜",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 0,
@@ -61448,7 +61448,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112021010,
-    "card_name": "美食天使‧叶卡莉奴",
+    "card_name": "美食天使·叶卡莉奴",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -61467,7 +61467,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113031010,
-    "card_name": "再临的女神‧乌尔德",
+    "card_name": "再临的女神·乌尔德",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 0,
@@ -61524,7 +61524,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 115031010,
-    "card_name": "晨曦女神‧宓特菈",
+    "card_name": "晨曦女神·宓特菈",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 0,
@@ -61543,7 +61543,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121041010,
-    "card_name": "黄昏的神枪‧奥丁",
+    "card_name": "黄昏的神枪·奥丁",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 0,
@@ -61581,7 +61581,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 123041010,
-    "card_name": "绝大唯我‧马塞班恩",
+    "card_name": "绝大唯我·马塞班恩",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 0,
@@ -61961,7 +61961,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 102131010,
-    "card_name": "精灵骑士‧辛西亚",
+    "card_name": "精灵骑士·辛西亚",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -61980,7 +61980,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 102131020,
-    "card_name": "神箭手‧塞尔文",
+    "card_name": "神箭手·塞尔文",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -62018,7 +62018,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104131020,
-    "card_name": "冰晶光芒‧艾琳",
+    "card_name": "冰晶光芒·艾琳",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 1,
@@ -62144,7 +62144,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,drain",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧万象的加护<br>‧森罗的愤怒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>吸血 ",
+    "skill_disc": "·万象的加护<br>·森罗的愤怒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>吸血 ",
     "skill_option": "card_id=900144020:900144030,repeat_count=1&summon_side=me,none",
     "tribe_name": "-"
   },
@@ -62189,7 +62189,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111141020,
-    "card_name": "森之巫女‧帕梅拉",
+    "card_name": "森之巫女·帕梅拉",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -62208,7 +62208,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 112141010,
-    "card_name": "女王之剑‧辛西亚",
+    "card_name": "女王之剑·辛西亚",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 1,
@@ -62265,7 +62265,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 116141020,
-    "card_name": "螺旋铁腕‧达米安",
+    "card_name": "螺旋铁腕·达米安",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 1,
@@ -62322,7 +62322,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 119141020,
-    "card_name": "异幻‧天宫人马",
+    "card_name": "异幻·天宫人马",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 1,
@@ -62398,14 +62398,14 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121141010,
-    "card_name": "太阳勇士‧赛德斯",
+    "card_name": "太阳勇士·赛德斯",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 1,
     "cost": 6,
     "evo_atk": 5,
     "evo_life": 8,
-    "evo_skill_disc": "守护 <br>谢幕曲 召唤1个太阳勇士‧赛德斯到战场上。<br>进化时 回复自己的主战者2点生命值。回复自己的PP 2点。",
+    "evo_skill_disc": "守护 <br>谢幕曲 召唤1个太阳勇士·赛德斯到战场上。<br>进化时 回复自己的主战者2点生命值。回复自己的PP 2点。",
     "life": 6,
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,consume_ep_modifier//summon_token,heal,pp_modifier",
@@ -62569,7 +62569,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 101241010,
-    "card_name": "海底都市霸主‧乙姬",
+    "card_name": "海底都市霸主·乙姬",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 2,
@@ -62626,7 +62626,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 104221030,
-    "card_name": "乔利‧罗杰",
+    "card_name": "乔利·罗杰",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -62664,7 +62664,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 107241010,
-    "card_name": "黑暗剑士‧梅丽莎",
+    "card_name": "黑暗剑士·梅丽莎",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 2,
@@ -62702,7 +62702,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 109241010,
-    "card_name": "鲜红的穿光‧瑟塔",
+    "card_name": "鲜红的穿光·瑟塔",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -62714,7 +62714,7 @@ let cardData = [
     "rarity": 4,
     "skill": "rush,token_draw",
     "skill_condition": "character=me,character=me&target=self&attacker=self&{me.inplay.unit.base_card_id=900241040.count}=0&{me.hand.unit.base_card_id=900241040.count}=0",
-    "skill_disc": "突进 <br>攻击时 如果自己的战场上与手牌中没有不灭的群青‧贝雅特丽丝，则会增加1张不灭的群青‧贝雅特丽丝卡片到手牌中。",
+    "skill_disc": "突进 <br>攻击时 如果自己的战场上与手牌中没有不灭的群青·贝雅特丽丝，则会增加1张不灭的群青·贝雅特丽丝卡片到手牌中。",
     "skill_option": "none,token_draw=900241040",
     "tribe_name": "士兵"
   },
@@ -62740,7 +62740,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114231010,
-    "card_name": "森林公主‧米丝特莉娜",
+    "card_name": "森林公主·米丝特莉娜",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 2,
@@ -62816,7 +62816,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 121241010,
-    "card_name": "光耀导引‧米丝特莉娜与贝里昂",
+    "card_name": "光耀导引·米丝特莉娜与贝里昂",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 2,
@@ -62830,7 +62830,7 @@ let cardData = [
     "skill_condition": "character=me,character=me,character=me,{me.hand_other_self.field.count}>0,{me.last_target.all.count}>0,{me.last_target.all.base_card_id=900012010.count}>0",
     "skill_disc": "疾驰 <br>守护 <br>入场曲 随机给予1个敌方的从者5点伤害。如果自己的手牌中有护符卡，则会捨弃1张，并获得+2/+1效果。如果捨弃的卡片为那塔拉的大树，则会回复自己的PP 3点。",
     "skill_option": "none,none,damage=5,save_target,add_offense=2&add_life=1,add_pp=3",
-    "tribe_name": "指挥官‧自然"
+    "tribe_name": "指挥官·自然"
   },
   {
     "atk": 5,
@@ -62925,7 +62925,7 @@ let cardData = [
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost}",
     "skill_disc": "结晶 1； 倒数 1<br>入场曲 使自己的协作 +1。<br>谢幕曲 抽取1张卡片。<br>---------- <br>守护 <br>入场曲 召唤1个尽忠看守到战场上。使自己未进化的尽忠看守全部进化。",
     "skill_option": "fixeduse=1,card_id=800233010,none,summon_token=127231020,none",
-    "tribe_name": "指挥官‧八狱"
+    "tribe_name": "指挥官·八狱"
   },
   {
     "atk": 6,
@@ -62944,7 +62944,7 @@ let cardData = [
     "skill_condition": "character=me//character=me,character=me",
     "skill_disc": "入场曲 召唤2个神盾卫士到战场上。",
     "skill_option": "summon_token=900211060:900211060//token_draw=101234010,set=0",
-    "tribe_name": "指挥官‧学园"
+    "tribe_name": "指挥官·学园"
   },
   {
     "atk": 0,
@@ -63025,7 +63025,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 101321030,
-    "card_name": "创造的魔女‧玛姬纱",
+    "card_name": "创造的魔女·玛姬纱",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -63139,7 +63139,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 105321020,
-    "card_name": "闇魔法教师‧海莱恩",
+    "card_name": "闇魔法教师·海莱恩",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 3,
@@ -63158,7 +63158,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 105331020,
-    "card_name": "伟大的魔法师‧里维",
+    "card_name": "伟大的魔法师·里维",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 3,
@@ -63196,7 +63196,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109331010,
-    "card_name": "光魔法教师‧米兰",
+    "card_name": "光魔法教师·米兰",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -63215,7 +63215,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 109341010,
-    "card_name": "神託的妖童‧阿鲁鲁麦雅",
+    "card_name": "神託的妖童·阿鲁鲁麦雅",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -63272,7 +63272,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113341020,
-    "card_name": "老练的大魔法师‧伊拉斯莫斯",
+    "card_name": "老练的大魔法师·伊拉斯莫斯",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 3,
@@ -63291,7 +63291,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115341020,
-    "card_name": "猫耳魔法使‧凯留",
+    "card_name": "猫耳魔法使·凯留",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 3,
@@ -63329,7 +63329,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 119341020,
-    "card_name": "异幻‧伊弗利特",
+    "card_name": "异幻·伊弗利特",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -63341,7 +63341,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,damage",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me",
-    "skill_disc": "结晶 3； 倒数 5<br>当自己使用从者卡时，给予该从者卡+1/+0效果。（每个自己的回合仅限发动1次）<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻‧伊弗利特到战场上。<br>---------- <br>进入战场时，给予敌方的主战者与敌方的从者全体3点伤害。",
+    "skill_disc": "结晶 3； 倒数 5<br>当自己使用从者卡时，给予该从者卡+1/+0效果。（每个自己的回合仅限发动1次）<br>自己的回合开始时，如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻·伊弗利特到战场上。<br>---------- <br>进入战场时，给予敌方的主战者与敌方的从者全体3点伤害。",
     "skill_option": "fixeduse=3,card_id=800343010,damage=3",
     "tribe_name": "-"
   },
@@ -63785,7 +63785,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 101441020,
-    "card_name": "黑龙骑士‧法露特",
+    "card_name": "黑龙骑士·法露特",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 4,
@@ -63842,7 +63842,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 104431020,
-    "card_name": "不死鸟骑手‧爱娜",
+    "card_name": "不死鸟骑手·爱娜",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 4,
@@ -63880,7 +63880,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108411010,
-    "card_name": "闇影龙骑士‧克妲",
+    "card_name": "闇影龙骑士·克妲",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -63918,7 +63918,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113441030,
-    "card_name": "羁绊龙剑士‧艾拉",
+    "card_name": "羁绊龙剑士·艾拉",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 4,
@@ -64013,7 +64013,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 116441030,
-    "card_name": "造极霸龙‧吉尔沃",
+    "card_name": "造极霸龙·吉尔沃",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 4,
@@ -64025,14 +64025,14 @@ let cardData = [
     "rarity": 4,
     "skill": "guard,attach_skill,attach_skill//damage",
     "skill_condition": "character=me,character=me,character=me//character=me",
-    "skill_disc": "守护 <br>入场曲 这场对战中，给予自己的主战者「如果自己的战场上没有造极霸龙‧吉尔沃之外的卡片，自己的回合结束时，若敌方的战场上有从者，则会随机给予1个敌方的从者5点伤害。若敌方的战场上没有从者，则会将该伤害给予敌方的主战者」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "守护 <br>入场曲 这场对战中，给予自己的主战者「如果自己的战场上没有造极霸龙·吉尔沃之外的卡片，自己的回合结束时，若敌方的战场上有从者，则会随机给予1个敌方的从者5点伤害。若敌方的战场上没有从者，则会将该伤害给予敌方的主战者」效果。主战者无法重複叠加此效果。",
     "skill_option": "none,skill=(skill:damage)(timing:self_turn_end)(condition:{me.inplay.unit_and_allfield.base_card_id!=116441030.count}=0&{op.inplay.unit.count}>0)(target:character=op&target=inplay_other_self&card_type=unit&random_count=1)(option:damage=5)(preprocess:none)(effect_path:btl_116441030_4)(se_path:se_btl_116441030_4)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&duplicate_ban_id=1164410301,skill=(skill:damage)(timing:self_turn_end)(condition:{me.inplay.unit_and_allfield.base_card_id!=116441030.count}=0&{op.inplay.unit.count}=0)(target:character=op&target=inplay&card_type=class)(option:damage=5)(preprocess:none)(effect_path:btl_116441030_5)(se_path:se_btl_116441030_5)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&duplicate_ban_id=1164410302//damage=2",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 119421010,
-    "card_name": "爱的大殿堂‧法斯堤巴",
+    "card_name": "爱的大殿堂·法斯堤巴",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -64089,7 +64089,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 120441020,
-    "card_name": "焦热龙翼‧德莱克",
+    "card_name": "焦热龙翼·德莱克",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 4,
@@ -64101,7 +64101,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,rush,damage,damage",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&target=attacker&attacker=self,character=me&target=attacker&attacker=self&{me.inplay_self.unit.life}>=7",
-    "skill_disc": "激奏 1； 增加1张焦热龙翼‧德莱克卡片到牌堆中。给予自己牌堆中全部的龙族从者卡+0/+1效果。增加1张爆炎的咆哮卡片到手牌中。<br>---------- <br>突进 <br>攻击时 给予敌方的从者全体X点伤害。X为「这个从者的生命值」。如果X为7以上，则会额外再给予敌方的主战者5点伤害。",
+    "skill_disc": "激奏 1； 增加1张焦热龙翼·德莱克卡片到牌堆中。给予自己牌堆中全部的龙族从者卡+0/+1效果。增加1张爆炎的咆哮卡片到手牌中。<br>---------- <br>突进 <br>攻击时 给予敌方的从者全体X点伤害。X为「这个从者的生命值」。如果X为7以上，则会额外再给予敌方的主战者5点伤害。",
     "skill_option": "fixeduse=1,card_id=800444080,none,damage={me.inplay_self.unit.life},damage=5",
     "tribe_name": "-"
   },
@@ -64127,7 +64127,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 121441010,
-    "card_name": "森林之影‧拜迪",
+    "card_name": "森林之影·拜迪",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 4,
@@ -64184,7 +64184,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 125441020,
-    "card_name": "黑翼霸主‧法露特",
+    "card_name": "黑翼霸主·法露特",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 4,
@@ -64203,7 +64203,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 127441030,
-    "card_name": "海洋之星‧吉赛儿",
+    "card_name": "海洋之星·吉赛儿",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 4,
@@ -64222,14 +64222,14 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 128421020,
-    "card_name": "威严的龙人‧刚培恩",
+    "card_name": "威严的龙人·刚培恩",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 4,
     "cost": 6,
     "evo_atk": 7,
     "evo_life": 7,
-    "evo_skill_disc": "守护 <br>谢幕曲 召唤1个威严的龙人‧刚培恩到战场上。",
+    "evo_skill_disc": "守护 <br>谢幕曲 召唤1个威严的龙人·刚培恩到战场上。",
     "life": 5,
     "rarity": 2,
     "skill": "pp_fixeduse,transform,guard,powerup,evolve//summon_token",
@@ -64241,7 +64241,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 129441010,
-    "card_name": "黑苍之绊‧法露特与米莉亚姆",
+    "card_name": "黑苍之绊·法露特与米莉亚姆",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 4,
@@ -64291,7 +64291,7 @@ let cardData = [
     "rarity": 4,
     "skill": "killer,guard",
     "skill_condition": "{me.inplay_other_self.unit.base_card_id=113441030.count}>0,{me.inplay_other_self.unit.base_card_id=113441030.count}>0",
-    "skill_disc": "只要自己的战场上有羁绊龙剑士‧艾拉，则这个从者将发动必杀 与守护 效果。",
+    "skill_disc": "只要自己的战场上有羁绊龙剑士·艾拉，则这个从者将发动必杀 与守护 效果。",
     "skill_option": "none,none",
     "tribe_name": "-"
   },
@@ -64469,7 +64469,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 105531010,
-    "card_name": "黑天鹅‧奥黛儿",
+    "card_name": "黑天鹅·奥黛儿",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 5,
@@ -64481,7 +64481,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,evolve//summon_token,damage",
     "skill_condition": "character=me,character=me&target=self//character=me,{me.inplay_self.count}>0",
-    "skill_disc": "入场曲 召唤1个白天鹅‧奥德蒂到敌方的战场上。随后，使这个从者进化。",
+    "skill_disc": "入场曲 召唤1个白天鹅·奥德蒂到敌方的战场上。随后，使这个从者进化。",
     "skill_option": "summon_token=105731010&summon_side=op,none//summon_token=105731010&summon_side=op,damage=2",
     "tribe_name": "-"
   },
@@ -64507,7 +64507,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 108541010,
-    "card_name": "永劫欲求者‧关德温",
+    "card_name": "永劫欲求者·关德温",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 5,
@@ -64519,14 +64519,14 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,token_draw,pp_modifier",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.inplay_self.count}>0&character=me&target=attacker&attacker=self",
-    "skill_disc": "‧永恆的秘药<br>‧刹那的剧毒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>攻击时 回复自己的PP 1点。",
+    "skill_disc": "·永恆的秘药<br>·刹那的剧毒<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>攻击时 回复自己的PP 1点。",
     "skill_option": "card_id=900544030:900544040,repeat_count=1&summon_side=me,add_pp=1",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 110531010,
-    "card_name": "冥河引渡者‧凯伦",
+    "card_name": "冥河引渡者·凯伦",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 5,
@@ -64564,7 +64564,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 117541030,
-    "card_name": "冥府的女主宰‧奈芙蒂斯",
+    "card_name": "冥府的女主宰·奈芙蒂斯",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 5,
@@ -64576,7 +64576,7 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_card,destroy,pp_fixeduse,trigger,special_win",
     "skill_condition": "{me.inplay.unit_and_allfield.count}<5,{me.inplay.unit_and_allfield.count}<5,pp_count>=10,pp_count>=10,pp_count>=10",
-    "skill_disc": "入场曲 随机将2张消费各不相同的从者卡（冥府的女主宰‧奈芙蒂斯除外），由自己的牌堆召唤到战场上，并将其全数破坏。<br>爆能强化 10； 随后，如果这场对战中自己已有「原始消费为1、2、3、4、5、6、7、8、9、10的从者」被破坏，则会赢得这场对战的胜利。",
+    "skill_disc": "入场曲 随机将2张消费各不相同的从者卡（冥府的女主宰·奈芙蒂斯除外），由自己的牌堆召唤到战场上，并将其全数破坏。<br>爆能强化 10； 随后，如果这场对战中自己已有「原始消费为1、2、3、4、5、6、7、8、9、10的从者」被破坏，则会赢得这场对战的胜利。",
     "skill_option": "none,none,fixeduse=10,none,none",
     "tribe_name": "-"
   },
@@ -64640,7 +64640,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119541030,
-    "card_name": "神异形‧赛勒斯特号",
+    "card_name": "神异形·赛勒斯特号",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -64652,7 +64652,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,attach_skill,attach_skill,summon_token",
     "skill_condition": "{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me",
-    "skill_disc": "结晶 2； 倒数 2<br>入场曲 到敌方的回合结束为止，给予敌方的主战者「使自己主战者回复生命值时的数值转变为1」效果。<br>谢幕曲 召唤1个神异形‧赛勒斯特号到战场上。<br>---------- <br>入场曲 到敌方的回合结束为止，给予敌方的主战者「无法使用手牌中的法术卡与护符卡」效果。<br>谢幕曲 亡者召还 2",
+    "skill_disc": "结晶 2； 倒数 2<br>入场曲 到敌方的回合结束为止，给予敌方的主战者「使自己主战者回复生命值时的数值转变为1」效果。<br>谢幕曲 召唤1个神异形·赛勒斯特号到战场上。<br>---------- <br>入场曲 到敌方的回合结束为止，给予敌方的主战者「无法使用手牌中的法术卡与护符卡」效果。<br>谢幕曲 亡者召还 2",
     "skill_option": "fixeduse=2,card_id=800543020,skill=(skill:cant_play)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:card_type=spell)(preprocess:turn_end_stop=me),skill=(skill:cant_play)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:card_type=field)(preprocess:turn_end_stop=me),none",
     "tribe_name": "-"
   },
@@ -64671,7 +64671,7 @@ let cardData = [
     "rarity": 1,
     "skill": "guard,summon_token",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "守护 <br>入场曲 召唤1个木乃伊‧梅里安到战场上。",
+    "skill_disc": "守护 <br>入场曲 召唤1个木乃伊·梅里安到战场上。",
     "skill_option": "none,summon_token=111511030",
     "tribe_name": "-"
   },
@@ -64792,7 +64792,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 125531010,
-    "card_name": "冥河的流葬‧凯伦",
+    "card_name": "冥河的流葬·凯伦",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 5,
@@ -64811,7 +64811,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 127541020,
-    "card_name": "灭尸执行者‧米罗尔",
+    "card_name": "灭尸执行者·米罗尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 5,
@@ -65077,7 +65077,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 105641010,
-    "card_name": "邪恶妖精‧卡拉波斯",
+    "card_name": "邪恶妖精·卡拉波斯",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 6,
@@ -65115,7 +65115,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109621020,
-    "card_name": "魔晶上尉‧伯梅伦",
+    "card_name": "魔晶上尉·伯梅伦",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 6,
@@ -65153,7 +65153,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 112641030,
-    "card_name": "钢之吸血鬼‧诗雷",
+    "card_name": "钢之吸血鬼·诗雷",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 6,
@@ -65191,7 +65191,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113631030,
-    "card_name": "闇影恶魔‧摩里亚娜",
+    "card_name": "闇影恶魔·摩里亚娜",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -65229,7 +65229,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114641010,
-    "card_name": "仁义恶魔‧夕月",
+    "card_name": "仁义恶魔·夕月",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 6,
@@ -65267,7 +65267,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 116641010,
-    "card_name": "魔兽女帝‧涅蕾雅",
+    "card_name": "魔兽女帝·涅蕾雅",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 6,
@@ -65305,7 +65305,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119641010,
-    "card_name": "神狼‧希斯",
+    "card_name": "神狼·希斯",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 6,
@@ -65317,7 +65317,7 @@ let cardData = [
     "rarity": 4,
     "skill": "rush,attack_count,attach_skill,attach_skill,change_skybound_art_count,summon_token,change_super_skybound_art_count,summon_token",
     "skill_condition": "character=me,character=me,character=me&target=attacker&attacker=self,character=me&target=attacker&attacker=self,turn=self&{me.hand_self.unit.count}>0&character=me&target=evolution_card&card_type=unit,{self.skybound_art_count}<={me.inplay.class.turn}&{self.super_skybound_art_count}>{me.inplay.class.turn},turn=self&{me.hand_self.unit.count}>0&character=me&target=evolution_card&card_type=unit,{self.super_skybound_art_count}<={me.inplay.class.turn}",
-    "skill_disc": "突进 <br>1回合中可进行2次攻击。<br>攻击时 获得疾驰 与「使下一次受到的伤害转变为0」效果。失去此攻击时 能力。<br>入场曲 奥义 10； 召唤1个神狼‧希斯到战场上。<br>解放奥义 15； 由原本的1个转变为2个。",
+    "skill_disc": "突进 <br>1回合中可进行2次攻击。<br>攻击时 获得疾驰 与「使下一次受到的伤害转变为0」效果。失去此攻击时 能力。<br>入场曲 奥义 10； 召唤1个神狼·希斯到战场上。<br>解放奥义 15； 由原本的1个转变为2个。",
     "skill_option": "none,attack_count=2,skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none),skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:damage_after_stop),gain_skybound_art_count=1*{me.evolution_card.unit.count},summon_token=119641010&effect=owner&ignore_voice=true,gain_super_skybound_art_count=1*{me.evolution_card.unit.count},summon_token=119641010:119641010&effect=owner&ignore_voice=true",
     "tribe_name": "-"
   },
@@ -65457,7 +65457,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125641030,
-    "card_name": "月下狼王‧华兹",
+    "card_name": "月下狼王·华兹",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 6,
@@ -65495,7 +65495,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 126641030,
-    "card_name": "剧毒的魔风‧帕祖祖",
+    "card_name": "剧毒的魔风·帕祖祖",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 6,
@@ -65533,7 +65533,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 127641020,
-    "card_name": "蛇殿执行者‧盖诺姆尔",
+    "card_name": "蛇殿执行者·盖诺姆尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 6,
@@ -65685,7 +65685,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101731020,
-    "card_name": "大主教‧雷莉亚",
+    "card_name": "大主教·雷莉亚",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 7,
@@ -65742,7 +65742,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 102731030,
-    "card_name": "天空守护者‧迦楼罗",
+    "card_name": "天空守护者·迦楼罗",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 7,
@@ -65894,7 +65894,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 105731010,
-    "card_name": "白天鹅‧奥德蒂",
+    "card_name": "白天鹅·奥德蒂",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 7,
@@ -65906,7 +65906,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,evolve//summon_token,heal",
     "skill_condition": "character=me,character=me&target=self//character=me,{me.inplay_self.count}>0",
-    "skill_disc": "入场曲 召唤1个黑天鹅‧奥黛儿到敌方的战场上。随后，使这个从者进化。",
+    "skill_disc": "入场曲 召唤1个黑天鹅·奥黛儿到敌方的战场上。随后，使这个从者进化。",
     "skill_option": "summon_token=105531010&summon_side=op,none//summon_token=105531010&summon_side=op,healing=2",
     "tribe_name": "-"
   },
@@ -65932,7 +65932,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 106741010,
-    "card_name": "白翼守护神‧埃忒耳",
+    "card_name": "白翼守护神·埃忒耳",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 7,
@@ -65944,14 +65944,14 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_card,powerup",
     "skill_condition": "{me.inplay.unit_and_allfield.count}<5,character=me&target=inplay&card_type=unit",
-    "skill_disc": "入场曲 于消费低于「自己的PP最大值」的主教从者卡中，随机将消费最高的1张（白翼守护神‧埃忒耳除外），由自己的牌堆召唤到战场上。给予全部自己的其他从者+0/+1效果。",
+    "skill_disc": "入场曲 于消费低于「自己的PP最大值」的主教从者卡中，随机将消费最高的1张（白翼守护神·埃忒耳除外），由自己的牌堆召唤到战场上。给予全部自己的其他从者+0/+1效果。",
     "skill_option": "none,add_life=1",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 107721010,
-    "card_name": "大主教‧嘉德丽雅",
+    "card_name": "大主教·嘉德丽雅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 7,
@@ -65989,7 +65989,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109741010,
-    "card_name": "七宝石公主‧蕾菲尔",
+    "card_name": "七宝石公主·蕾菲尔",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -66008,7 +66008,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111741010,
-    "card_name": "审判的圣女‧莱娜",
+    "card_name": "审判的圣女·莱娜",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 7,
@@ -66039,7 +66039,7 @@ let cardData = [
     "rarity": 2,
     "skill": "choice,token_draw,cost_change",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,character=me",
-    "skill_disc": "‧畏忌的开示<br>‧炎熔铁靴<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中，并使其消费转变为0。",
+    "skill_disc": "·畏忌的开示<br>·炎熔铁靴<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中，并使其消费转变为0。",
     "skill_option": "card_id=900713020:106713010,repeat_count=1&summon_side=me,set=0",
     "tribe_name": "-"
   },
@@ -66065,7 +66065,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115741010,
-    "card_name": "尊荣骑士‧维尔伯特",
+    "card_name": "尊荣骑士·维尔伯特",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 7,
@@ -66103,7 +66103,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 116741020,
-    "card_name": "机指狂人‧伊维尔",
+    "card_name": "机指狂人·伊维尔",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 7,
@@ -66350,7 +66350,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 127741010,
-    "card_name": "结盟的罪人‧艾路拉戴",
+    "card_name": "结盟的罪人·艾路拉戴",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 7,
@@ -66369,7 +66369,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 128741030,
-    "card_name": "拥翼光辉‧迦楼罗",
+    "card_name": "拥翼光辉·迦楼罗",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 7,
@@ -66578,7 +66578,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 107811080,
-    "card_name": "船长‧梅帝欧",
+    "card_name": "船长·梅帝欧",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -66597,7 +66597,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 107831010,
-    "card_name": "被赋生的兽人‧纱妃拉",
+    "card_name": "被赋生的兽人·纱妃拉",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -66616,7 +66616,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 109821010,
-    "card_name": "异界入侵者‧巴吉里斯",
+    "card_name": "异界入侵者·巴吉里斯",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -66654,7 +66654,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 112841030,
-    "card_name": "埃亚隆支配者‧贝尔弗特",
+    "card_name": "埃亚隆支配者·贝尔弗特",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 8,
@@ -66666,7 +66666,7 @@ let cardData = [
     "rarity": 4,
     "skill": "banish,random_array,update_deck//draw",
     "skill_condition": "character=me,character=me,character=me&target=self&card_type=unit//character=me",
-    "skill_disc": "入场曲 使自己牌堆中的机械卡全部消失。增加X张杀戮女神‧提西福涅、Y张灾乱女神‧阿莱克托与Z张愤怒女神‧墨盖拉卡片到牌堆中。X、Y、Z的数值为随机指定，三者相加的总合计数值为「消失的机械卡张数」。",
+    "skill_disc": "入场曲 使自己牌堆中的机械卡全部消失。增加X张杀戮女神·提西福涅、Y张灾乱女神·阿莱克托与Z张愤怒女神·墨盖拉卡片到牌堆中。X、Y、Z的数值为随机指定，三者相加的总合计数值为「消失的机械卡张数」。",
     "skill_option": "none,sum={me.last_target.all.tribe=machine.count}&random_range=3&show_battle_log=true,option=(token_draw=900841110&type=add&repeat_count={self.random_index=0})(token_draw=900841120&type=add&repeat_count={self.random_index=1})(token_draw=900841130&type=add&repeat_count={self.random_index=2})//none",
     "tribe_name": "机械"
   },
@@ -66692,19 +66692,19 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113841030,
-    "card_name": "连结之心‧奥契丝",
+    "card_name": "连结之心·奥契丝",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
     "cost": 6,
     "evo_atk": 7,
     "evo_life": 7,
-    "evo_skill_disc": "每当洛伊德进入自己的战场时，给予该从者+2/+2效果。<br>每当提线傀儡‧舞诺进入自己的战场时，召唤1个提线傀儡‧朵叶到战场上。<br>进化时 使手牌中的1张悬丝傀儡卡片，变身为提线傀儡‧托蕾。",
+    "evo_skill_disc": "每当洛伊德进入自己的战场时，给予该从者+2/+2效果。<br>每当提线傀儡·舞诺进入自己的战场时，召唤1个提线傀儡·朵叶到战场上。<br>进化时 使手牌中的1张悬丝傀儡卡片，变身为提线傀儡·托蕾。",
     "life": 5,
     "rarity": 4,
     "skill": "choice,summon_token,powerup,summon_token//powerup,summon_token,metamorphose",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900841040,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900841050//{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900841040,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900841050,character=me&target=self",
-    "skill_disc": "‧洛伊德<br>‧提线傀儡‧舞诺<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>---------- <br>每当洛伊德进入自己的战场时，给予该从者+2/+2效果。<br>每当提线傀儡‧舞诺进入自己的战场时，召唤1个提线傀儡‧朵叶到战场上。",
+    "skill_disc": "·洛伊德<br>·提线傀儡·舞诺<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>---------- <br>每当洛伊德进入自己的战场时，给予该从者+2/+2效果。<br>每当提线傀儡·舞诺进入自己的战场时，召唤1个提线傀儡·朵叶到战场上。",
     "skill_option": "card_id=900841040:900841050,repeat_count=1&summon_side=me,add_offense=2&add_life=2,summon_token=900841060//add_offense=2&add_life=2,summon_token=900841060,metamorphose=900841070",
     "tribe_name": "-"
   },
@@ -66744,7 +66744,7 @@ let cardData = [
     "skill_condition": "character=me,{{me.inplay.attacker.unit.tribe=machine.count}>0|{me.inplay.attacker.unit.tribe=nature.count}>0}&{me.inplay_self.count}>0,{me.inplay_self.count}>0&{me.inplay.class.pp}>=1,{me.inplay_self.count}>0&{me.inplay.class.pp}>=3",
     "skill_disc": "突进 <br>自己的机械从者或自然从者进行攻击时，回复自己的PP 1点。<br>自己的回合结束时，如果自己剩馀的PP为1以上，则会随机给予1个敌方的从者5点伤害。如果为3以上，则会额外再给予敌方的主战者与敌方的从者全体3点伤害。",
     "skill_option": "none,add_pp=1,damage=5,damage=3",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 2,
@@ -66768,7 +66768,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 120831010,
-    "card_name": "反逆之命‧米莉亚姆",
+    "card_name": "反逆之命·米莉亚姆",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 8,
@@ -66787,7 +66787,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120841010,
-    "card_name": "终末守门人‧丝碧涅",
+    "card_name": "终末守门人·丝碧涅",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 8,
@@ -66799,14 +66799,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,choice,summon_token,summon_token",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost}&{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}<6,{me.inplay.class.pp}>={me.hand_self.cost}&target=chosen_cards&card_type=all&{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}<6,{me.inplay.class.pp}>={me.hand_self.cost}&{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}>=6",
-    "skill_disc": "激奏 1； 召唤1个丝碧涅的创造物到战场上。<br>---------- <br>‧迅袭的创造物<br>‧锋锐的创造物<br>‧守御的创造物<br>入场曲 将2张命运抉择 所指定的卡片各召唤1张到战场上。如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会由原本的命运抉择 转变为召唤全部。",
+    "skill_disc": "激奏 1； 召唤1个丝碧涅的创造物到战场上。<br>---------- <br>·迅袭的创造物<br>·锋锐的创造物<br>·守御的创造物<br>入场曲 将2张命运抉择 所指定的卡片各召唤1张到战场上。如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会由原本的命运抉择 转变为召唤全部。",
     "skill_option": "fixeduse=1,card_id=800844080,card_id=900811100:900811090:900811080,repeat_count=1&summon_side=me,summon_token=900811100:900811090:900811080",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 124841030,
-    "card_name": "永久之盾‧席翁",
+    "card_name": "永久之盾·席翁",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 8,
@@ -66825,7 +66825,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 125841010,
-    "card_name": "无限世界‧奥契丝",
+    "card_name": "无限世界·奥契丝",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
@@ -66837,14 +66837,14 @@ let cardData = [
     "rarity": 4,
     "skill": "fusion,summon_token,powerup,summon_token,evolve//quick",
     "skill_condition": "none,character=me,character=me,{me.self.fusion_ingrediented_card_list.count}>=1,{me.self.fusion_ingrediented_card_list.count}>=3//{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900811050",
-    "skill_disc": "融合 ； 悬丝傀儡<br>与这张卡片进行融合 时，召唤1个悬丝傀儡到战场上。给予该从者+1/+0效果。<br>---------- <br>入场曲 如果「与这张卡片融合 的张数」为1张以上，则会召唤1个奥契丝的人偶‧洛伊德到战场上。如果为3张以上，则会使该从者与这个从者进化。",
+    "skill_disc": "融合 ； 悬丝傀儡<br>与这张卡片进行融合 时，召唤1个悬丝傀儡到战场上。给予该从者+1/+0效果。<br>---------- <br>入场曲 如果「与这张卡片融合 的张数」为1张以上，则会召唤1个奥契丝的人偶·洛伊德到战场上。如果为3张以上，则会使该从者与这个从者进化。",
     "skill_option": "none,summon_token=900811050,add_offense=1,summon_token=900841320,none//none",
     "tribe_name": "-"
   },
   {
     "atk": 3,
     "card_id": 126831010,
-    "card_name": "器械支配者‧吉尔克",
+    "card_name": "器械支配者·吉尔克",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 8,
@@ -66901,7 +66901,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 128841020,
-    "card_name": "驱动领域‧格蕾缇娜",
+    "card_name": "驱动领域·格蕾缇娜",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 8,
@@ -66915,12 +66915,12 @@ let cardData = [
     "skill_condition": "character=me&target=deck_self&{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10,character=me,character=me&target=attacker&attacker=self&{me.destroyed_card_list.unit.tribe=machine.count}+{me.destroyed_card_list.unit.tribe=school.count}-{me.destroyed_card_list.unit.tribe=school.tribe=machine.count}>=10",
     "skill_disc": "瞬念召唤 自己的回合开始时，如果本次对战中自己已被破坏的「机械类型或学园类型的从者」为10个以上，则会将1张此卡片由自己的牌堆召唤到战场上。<br>---------- <br>疾驰 <br>攻击时 如果本次对战中自己已被破坏的「机械类型或学园类型的从者」为10个以上，则会给予敌方的主战者与敌方的从者全体3点伤害。",
     "skill_option": "none,none,damage=3",
-    "tribe_name": "机械‧学园"
+    "tribe_name": "机械·学园"
   },
   {
     "atk": 3,
     "card_id": 900841070,
-    "card_name": "提线傀儡‧托蕾",
+    "card_name": "提线傀儡·托蕾",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -66932,14 +66932,14 @@ let cardData = [
     "rarity": 4,
     "skill": "quick,attack_count,summon_token",
     "skill_condition": "character=me,character=me,character=me",
-    "skill_disc": "疾驰 <br>这个从者在1回合中可进行2次攻击。<br>谢幕曲 召唤1个提线傀儡‧舞诺与1个提线傀儡‧朵叶到战场上。",
+    "skill_disc": "疾驰 <br>这个从者在1回合中可进行2次攻击。<br>谢幕曲 召唤1个提线傀儡·舞诺与1个提线傀儡·朵叶到战场上。",
     "skill_option": "none,attack_count=2,summon_token=900841050:900841060",
     "tribe_name": "-"
   },
   {
     "atk": 4,
     "card_id": 900841320,
-    "card_name": "奥契丝的人偶‧洛伊德",
+    "card_name": "奥契丝的人偶·洛伊德",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -67015,7 +67015,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 102041010,
-    "card_name": "黑暗天使‧奥莉薇",
+    "card_name": "黑暗天使·奥莉薇",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 0,
@@ -67053,7 +67053,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104031010,
-    "card_name": "癒音奏者‧亨莉雅妲",
+    "card_name": "癒音奏者·亨莉雅妲",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 0,
@@ -67148,7 +67148,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110041020,
-    "card_name": "飢饿绝杰‧吉鲁涅莉婕",
+    "card_name": "飢饿绝杰·吉鲁涅莉婕",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 0,
@@ -67167,7 +67167,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 111021010,
-    "card_name": "进化引导者‧蕾娜",
+    "card_name": "进化引导者·蕾娜",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 0,
@@ -67224,7 +67224,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112041020,
-    "card_name": "至高战神‧奥丁",
+    "card_name": "至高战神·奥丁",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 0,
@@ -67243,7 +67243,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 115041010,
-    "card_name": "埃癸斯之盾‧雅典娜",
+    "card_name": "埃癸斯之盾·雅典娜",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 0,
@@ -67295,7 +67295,7 @@ let cardData = [
     "skill_condition": "none,{op.inplay.unit.selectable.count}>0,character=me,{me.self.fusion_ingrediented_card_list.tribe=machine.count}>0&{me.self.fusion_ingrediented_card_list.tribe=nature.count}>0",
     "skill_disc": "融合 ； 机械卡或自然卡<br>---------- <br>入场曲 给予1个敌方的从者X点伤害。随机将X张机械卡或自然卡，由自己的牌堆抽取到手牌中。X为「与这张卡片融合 的张数」。如果这张卡片与机械卡及自然卡进行融合 ，则使上述抽取到手牌中的卡片消费-3。",
     "skill_option": "none,damage={me.self.fusion_ingrediented_card_list.count},none,add=-3",
-    "tribe_name": "机械‧自然"
+    "tribe_name": "机械·自然"
   },
   {
     "atk": 6,
@@ -67376,7 +67376,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 129041010,
-    "card_name": "诸神黄昏之揭幕‧奥丁",
+    "card_name": "诸神黄昏之揭幕·奥丁",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 0,
@@ -67388,14 +67388,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,quick,banish",
     "skill_condition": "{me.inplay.class.pp}>=4&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=4&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost}&{op.inplay.unit_and_allfield.selectable.count}>0",
-    "skill_disc": "激奏 4； 随机使2个敌方的从者与自己的全体从者消失。<br>增加1张没有激奏 效果的诸神黄昏之揭幕‧奥丁卡片到手牌中。使其消费-X。X为「因这张卡片而消失的从者数」。<br>---------- <br>疾驰 <br>入场曲 使1张敌方战场上的卡片消失。",
+    "skill_disc": "激奏 4； 随机使2个敌方的从者与自己的全体从者消失。<br>增加1张没有激奏 效果的诸神黄昏之揭幕·奥丁卡片到手牌中。使其消费-X。X为「因这张卡片而消失的从者数」。<br>---------- <br>疾驰 <br>入场曲 使1张敌方战场上的卡片消失。",
     "skill_option": "fixeduse=4,card_id=800044060,none,none",
     "tribe_name": "-"
   },
   {
     "atk": 7,
     "card_id": 900041030,
-    "card_name": "烈焰‧琉璃",
+    "card_name": "烈焰·琉璃",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -67509,7 +67509,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 102121040,
-    "card_name": "精灵王‧沃尔特",
+    "card_name": "精灵王·沃尔特",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -67585,7 +67585,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110131010,
-    "card_name": "煌刃战士‧贝鲁",
+    "card_name": "煌刃战士·贝鲁",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 1,
@@ -67623,7 +67623,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113141010,
-    "card_name": "始祖的巨狼‧奥姆尼斯",
+    "card_name": "始祖的巨狼·奥姆尼斯",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 1,
@@ -67642,7 +67642,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 115141010,
-    "card_name": "森林精锐‧丽梅格",
+    "card_name": "森林精锐·丽梅格",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 1,
@@ -67654,7 +67654,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,summon_card,quick",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me&target=deck_self&{me.game_play_cards_other_self.base_card_id=115111010.count}>=6,character=me",
-    "skill_disc": "激奏 1； 增加1张密林守卫者卡片到手牌中。增加1张消费为7，并且没有激奏 效果的森林精锐‧丽梅格卡片到牌堆中。<br>---------- <br>瞬念召唤 自己的回合开始时，如果自己在这场对战中已使用的密林守卫者卡片张数为6张以上，则会将1张此卡片由自己的牌堆召唤到战场上。<br>疾驰 ",
+    "skill_disc": "激奏 1； 增加1张密林守卫者卡片到手牌中。增加1张消费为7，并且没有激奏 效果的森林精锐·丽梅格卡片到牌堆中。<br>---------- <br>瞬念召唤 自己的回合开始时，如果自己在这场对战中已使用的密林守卫者卡片张数为6张以上，则会将1张此卡片由自己的牌堆召唤到战场上。<br>疾驰 ",
     "skill_option": "fixeduse=1,card_id=800144040,none,none",
     "tribe_name": "-"
   },
@@ -67680,7 +67680,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 117131020,
-    "card_name": "森之闇念‧莱昂内尔",
+    "card_name": "森之闇念·莱昂内尔",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 1,
@@ -67718,7 +67718,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125141030,
-    "card_name": "圣绿的光辉‧宝石兽",
+    "card_name": "圣绿的光辉·宝石兽",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 1,
@@ -67794,7 +67794,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104241010,
-    "card_name": "不灭英杰‧罗兰",
+    "card_name": "不灭英杰·罗兰",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -67806,14 +67806,14 @@ let cardData = [
     "rarity": 4,
     "skill": "guard,summon_token",
     "skill_condition": "character=me,{me.inplay.field.base_card_id=900242010.count}=0",
-    "skill_disc": "守护 <br>入场曲 如果自己的战场上没有不灭圣剑‧杜兰朵，则会召唤1把不灭圣剑‧杜兰朵到战场上。",
+    "skill_disc": "守护 <br>入场曲 如果自己的战场上没有不灭圣剑·杜兰朵，则会召唤1把不灭圣剑·杜兰朵到战场上。",
     "skill_option": "none,summon_token=900242010",
     "tribe_name": "指挥官"
   },
   {
     "atk": 2,
     "card_id": 107241020,
-    "card_name": "骑士王‧亚瑟",
+    "card_name": "骑士王·亚瑟",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 2,
@@ -67851,7 +67851,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 111231020,
-    "card_name": "首席商贩‧阿尔亚斯卡",
+    "card_name": "首席商贩·阿尔亚斯卡",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -67889,7 +67889,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 112231030,
-    "card_name": "魔雾公爵‧亚卓德",
+    "card_name": "魔雾公爵·亚卓德",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 2,
@@ -67901,14 +67901,14 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_fixeduse,transform,damage",
     "skill_condition": "{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},character=op&target=inplay&card_type=unit&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "激奏 2； 由魔雾管家‧利路耶、魔雾女僕‧席娜之中，随机召唤1个到战场上。<br>---------- <br>入场曲 给予敌方的从者全体2点伤害。",
+    "skill_disc": "激奏 2； 由魔雾管家·利路耶、魔雾女僕·席娜之中，随机召唤1个到战场上。<br>---------- <br>入场曲 给予敌方的从者全体2点伤害。",
     "skill_option": "fixeduse=2,card_id=800234010,damage=2",
     "tribe_name": "指挥官"
   },
   {
     "atk": 5,
     "card_id": 112241020,
-    "card_name": "纯铁英雄‧约翰",
+    "card_name": "纯铁英雄·约翰",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 2,
@@ -67946,7 +67946,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113241010,
-    "card_name": "海贼女王‧亚尔丽妲",
+    "card_name": "海贼女王·亚尔丽妲",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 2,
@@ -67984,7 +67984,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 116241010,
-    "card_name": "战犀骑士‧帕特里克",
+    "card_name": "战犀骑士·帕特里克",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 2,
@@ -67998,7 +67998,7 @@ let cardData = [
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost}&{me.inplay_other_self.unit.count}=0",
     "skill_disc": "结晶 1； 倒数 1<br>入场曲 增加1张那塔拉的大树卡片到手牌中。<br>谢幕曲 如果本回合是自己的回合，则会于消费为X以下的自然卡中，随机将消费最高的1张，由自己的牌堆抽取到手牌中。X为「自己剩馀的PP值」。<br>---------- <br>守护 <br>入场曲 如果自己的战场上没有其他从者，则会回复自己的PP 6点。",
     "skill_option": "fixeduse=1,card_id=800243010,none,add_pp=6",
-    "tribe_name": "士兵‧自然"
+    "tribe_name": "士兵·自然"
   },
   {
     "atk": 2,
@@ -68022,7 +68022,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 119241030,
-    "card_name": "神异形‧舒瓦莉",
+    "card_name": "神异形·舒瓦莉",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
@@ -68117,7 +68117,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 127241020,
-    "card_name": "武皇执行者‧雷帝尔",
+    "card_name": "武皇执行者·雷帝尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 2,
@@ -68131,12 +68131,12 @@ let cardData = [
     "skill_condition": "character=me,character=me,character=me,{me.inplay.class.rally_count}>=20,character=me&{me.evolved_card_list.count}<7&{op.inplay.unit.selectable.count}>0,character=me&{me.evolved_card_list.count}>=7",
     "skill_disc": "疾驰 <br>守护 <br>敌方的能力无法指定此卡片。<br>入场曲 协作 20； 获得「1回合中可进行3次攻击」效果。<br>入场曲 使1个敌方的从者消失。如果「这场对战中，自己的从者进化的次数」为7次以上，则会由原本的1个，转变为全部。",
     "skill_option": "none,none,none,attack_count=3,none,none",
-    "tribe_name": "指挥官‧八狱"
+    "tribe_name": "指挥官·八狱"
   },
   {
     "atk": 6,
     "card_id": 128241020,
-    "card_name": "英杰学园长‧盖尔德鲁",
+    "card_name": "英杰学园长·盖尔德鲁",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 2,
@@ -68150,7 +68150,7 @@ let cardData = [
     "skill_condition": "character=me,character=me,character=me,character=me",
     "skill_disc": "守护 <br>入场曲 召唤1个神准训练生与1个奋勇格斗家到战场上。给予自己的从者全体「受到的伤害-2」效果。到敌方的回合结束为止，给予自己的主战者「受到的伤害-2」效果。",
     "skill_option": "none,summon_token=128221010:128211010&effect=owner,cut_amount=2,cut_amount=2",
-    "tribe_name": "指挥官‧学园"
+    "tribe_name": "指挥官·学园"
   },
   {
     "atk": 7,
@@ -68174,7 +68174,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 900241070,
-    "card_name": "《暴走》战车‧奥辂昂",
+    "card_name": "《暴走》战车·奥辂昂",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -68212,7 +68212,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 900242010,
-    "card_name": "不灭圣剑‧杜兰朵",
+    "card_name": "不灭圣剑·杜兰朵",
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 2,
@@ -68262,14 +68262,14 @@ let cardData = [
     "rarity": 3,
     "skill": "choice,summon_token",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=unit",
-    "skill_disc": "‧雪人骑士<br>‧雪人狂战士<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>魔力增幅 +1张",
+    "skill_disc": "·雪人骑士<br>·雪人狂战士<br>入场曲 使1张命运抉择 所指定的卡片到战场上。<br>魔力增幅 +1张",
     "skill_option": "card_id=900331010:900331020,repeat_count=CHARGE_COUNT+1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 108331020,
-    "card_name": "洋葱军团长‧芭赛特",
+    "card_name": "洋葱军团长·芭赛特",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 3,
@@ -68300,7 +68300,7 @@ let cardData = [
     "rarity": 2,
     "skill": "none,choice,summon_token",
     "skill_condition": "{me.deck.count}<=20,{me.deck.count}<=20,{me.deck.count}<=20&character=me&target=chosen_cards&card_type=unit",
-    "skill_disc": "‧暗黑奇美拉<br>‧暗黑恶魔<br>如果这张卡片在手牌中，并且自己牌堆中的卡片张数为20以下，则会发动入场曲 使1张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "·暗黑奇美拉<br>·暗黑恶魔<br>如果这张卡片在手牌中，并且自己牌堆中的卡片张数为20以下，则会发动入场曲 使1张命运抉择 所指定的卡片进入战场。",
     "skill_option": "card_id=900321030:900321040,card_id=900321030:900321040,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -68326,7 +68326,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 110341020,
-    "card_name": "真实绝杰‧莱欧",
+    "card_name": "真实绝杰·莱欧",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
@@ -68376,7 +68376,7 @@ let cardData = [
     "rarity": 2,
     "skill": "cost_change,guard,guard,summon_token",
     "skill_condition": "character=me&target=self,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311090,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311100,character=me",
-    "skill_disc": "魔力增幅 消费-1<br>每当式神‧小纸人或式神‧暴鬼进入自己的战场时，给予该从者守护 效果。<br>入场曲 召唤1个式神‧小纸人到战场上。",
+    "skill_disc": "魔力增幅 消费-1<br>每当式神·小纸人或式神·暴鬼进入自己的战场时，给予该从者守护 效果。<br>入场曲 召唤1个式神·小纸人到战场上。",
     "skill_option": "add=ADD_CHARGE_COUNT*-1,none,none,summon_token=900311090",
     "tribe_name": "-"
   },
@@ -68421,7 +68421,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119331010,
-    "card_name": "逍遥隐居的前国王‧芙莉亚",
+    "card_name": "逍遥隐居的前国王·芙莉亚",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 3,
@@ -68535,7 +68535,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900331050,
-    "card_name": "奇幻魔兽‧摩拉",
+    "card_name": "奇幻魔兽·摩拉",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -68547,7 +68547,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_fixeduse,transform,summon_token,possess_ep_modifier,attach_skill",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me",
-    "skill_disc": "激奏 3； 回复自己的EP 1点。<br>---------- <br>入场曲 召唤1个小可爱★莫妮卡到战场上。回复自己的EP 1点。<br>谢幕曲 下个自己的回合开始时，增加1张奇幻魔兽‧摩拉卡片到手牌中。",
+    "skill_disc": "激奏 3； 回复自己的EP 1点。<br>---------- <br>入场曲 召唤1个小可爱★莫妮卡到战场上。回复自己的EP 1点。<br>谢幕曲 下个自己的回合开始时，增加1张奇幻魔兽·摩拉卡片到手牌中。",
     "skill_option": "fixeduse=3,card_id=800334010,summon_token=111331020,add_ep=1,skill=(skill:token_draw)(timing:self_turn_start)(condition:character=me&target=inplay&card_type=class)(target:none)(option:token_draw=(900331050))(preprocess:remove_after_action=(count=1))",
     "tribe_name": "-"
   },
@@ -68566,21 +68566,21 @@ let cardData = [
     "rarity": 3,
     "skill": "rush,guard,attach_skill",
     "skill_condition": "character=me,character=me,{me.inplay_self.count}>0",
-    "skill_disc": "突进 <br>守护 <br>自己的回合结束时，给予全部自己的逍遥隐居的前国王‧芙莉亚「使下一次受到的伤害转变为0」效果。",
+    "skill_disc": "突进 <br>守护 <br>自己的回合结束时，给予全部自己的逍遥隐居的前国王·芙莉亚「使下一次受到的伤害转变为0」效果。",
     "skill_option": "none,none,skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:damage_after_stop)",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 900341010,
-    "card_name": "究极‧泥尘巨像",
+    "card_name": "究极·泥尘巨像",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
     "cost": 7,
     "evo_atk": 7,
     "evo_life": 7,
-    "evo_skill_disc": "进化时 这场对战中，给予自己的主战者「自己的回合中，每当泥尘巨像进入自己的战场时，使其变身为究极‧泥尘巨像」效果。主战者无法重複叠加此效果。",
+    "evo_skill_disc": "进化时 这场对战中，给予自己的主战者「自己的回合中，每当泥尘巨像进入自己的战场时，使其变身为究极·泥尘巨像」效果。主战者无法重複叠加此效果。",
     "life": 5,
     "rarity": 4,
     "skill": "consume_ep_modifier//attach_skill",
@@ -68934,7 +68934,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107441010,
-    "card_name": "龙之炎‧吉尔尼特拉",
+    "card_name": "龙之炎·吉尔尼特拉",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 4,
@@ -68991,7 +68991,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 110441020,
-    "card_name": "恶梦之龙‧贾巴沃克",
+    "card_name": "恶梦之龙·贾巴沃克",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 4,
@@ -69010,7 +69010,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111441020,
-    "card_name": "愤怒的龙帝‧乙姬",
+    "card_name": "愤怒的龙帝·乙姬",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 4,
@@ -69048,7 +69048,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 112441010,
-    "card_name": "天空的霸主‧法露特",
+    "card_name": "天空的霸主·法露特",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 4,
@@ -69105,7 +69105,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 115441020,
-    "card_name": "挑衅少女‧嘉夜",
+    "card_name": "挑衅少女·嘉夜",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 4,
@@ -69238,7 +69238,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 127441020,
-    "card_name": "禁牙执行者‧朵列孜尔",
+    "card_name": "禁牙执行者·朵列孜尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 4,
@@ -69485,7 +69485,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 103521040,
-    "card_name": "冥守战士‧卡穆拉",
+    "card_name": "冥守战士·卡穆拉",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 5,
@@ -69523,7 +69523,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 104541020,
-    "card_name": "魔将‧赫克托",
+    "card_name": "魔将·赫克托",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 5,
@@ -69630,7 +69630,7 @@ let cardData = [
     "rarity": 3,
     "skill": "none,choice,summon_token//evolve",
     "skill_condition": "{me.cemetery.count}>=6,{me.cemetery.count}>=6,{me.cemetery.count}>=6&character=me&target=chosen_cards&card_type=unit//character=me",
-    "skill_disc": "‧魔铠骑兵<br>‧骸骨骑兵<br>如果这张卡片在手牌中，并且自己的墓场内卡片张数为6以上，则会发动入场曲 死灵术 6； 使1张命运抉择 所指定的卡片到战场上。",
+    "skill_disc": "·魔铠骑兵<br>·骸骨骑兵<br>如果这张卡片在手牌中，并且自己的墓场内卡片张数为6以上，则会发动入场曲 死灵术 6； 使1张命运抉择 所指定的卡片到战场上。",
     "skill_option": "none,card_id=900531010:900531020,repeat_count=1&summon_side=me//none",
     "tribe_name": "-"
   },
@@ -69656,7 +69656,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 108541030,
-    "card_name": "幽灵支配者‧阿卡斯",
+    "card_name": "幽灵支配者·阿卡斯",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 5,
@@ -69713,7 +69713,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113521010,
-    "card_name": "冥守祈祷师‧媞媞",
+    "card_name": "冥守祈祷师·媞媞",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -69732,7 +69732,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 113541010,
-    "card_name": "冥界之神‧黑帝斯",
+    "card_name": "冥界之神·黑帝斯",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 5,
@@ -69744,14 +69744,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,summon_token,change_cemetery",
     "skill_condition": "{me.inplay.class.pp}>=6&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=6&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me",
-    "skill_disc": "激奏 6； 给予双方的从者全体3点伤害。召唤1个冥府之路到战场上。增加1张消费为7，并且没有激奏 效果的冥界之神‧黑帝斯卡片到牌堆中。<br>---------- <br>谢幕曲 召唤1个冥府之路到战场上，并使自己的墓场+6。",
+    "skill_disc": "激奏 6； 给予双方的从者全体3点伤害。召唤1个冥府之路到战场上。增加1张消费为7，并且没有激奏 效果的冥界之神·黑帝斯卡片到牌堆中。<br>---------- <br>谢幕曲 召唤1个冥府之路到战场上，并使自己的墓场+6。",
     "skill_option": "fixeduse=6,card_id=800544020,summon_token=101032010,add_count=6",
     "tribe_name": "-"
   },
   {
     "atk": 6,
     "card_id": 115541030,
-    "card_name": "驭魂甦生者‧阿卡斯",
+    "card_name": "驭魂甦生者·阿卡斯",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 5,
@@ -69763,7 +69763,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,indestructible,remove_by_destroy,power_down",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me,{me.inplay_self.count}>0",
-    "skill_disc": "结晶 3； 倒数 10<br>能力无法破坏或使这个护符消失。（倒数 效果可以破坏这个护符）<br>每当自己的从者进化时，召唤1个怨灵到战场上，并使这个护符减少2回合倒数 。<br>谢幕曲 召唤1个驭魂甦生者‧阿卡斯到战场上。<br>---------- <br>能力无法破坏或使这个从者消失。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）<br>自己的回合结束时，使这个从者的攻击力/生命值转变为X/X。X为「自己的本回合数」。",
+    "skill_disc": "结晶 3； 倒数 10<br>能力无法破坏或使这个护符消失。（倒数 效果可以破坏这个护符）<br>每当自己的从者进化时，召唤1个怨灵到战场上，并使这个护符减少2回合倒数 。<br>谢幕曲 召唤1个驭魂甦生者·阿卡斯到战场上。<br>---------- <br>能力无法破坏或使这个从者消失。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）<br>自己的回合结束时，使这个从者的攻击力/生命值转变为X/X。X为「自己的本回合数」。",
     "skill_option": "fixeduse=3,card_id=800543010,none,none,set_offense={me.inplay.class.turn}&set_life={me.inplay.class.turn}",
     "tribe_name": "-"
   },
@@ -69789,7 +69789,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 119531010,
-    "card_name": "冥闇的钢刃‧巴萨拉加",
+    "card_name": "冥闇的钢刃·巴萨拉加",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -69801,7 +69801,7 @@ let cardData = [
     "rarity": 3,
     "skill": "untouchable,summon_token",
     "skill_condition": "character=me,character=me",
-    "skill_disc": "敌方的能力无法指定此卡片。<br>谢幕曲 召唤1个冥闇的钢刃‧巴萨拉加到战场上。",
+    "skill_disc": "敌方的能力无法指定此卡片。<br>谢幕曲 召唤1个冥闇的钢刃·巴萨拉加到战场上。",
     "skill_option": "none,summon_token=119531010",
     "tribe_name": "-"
   },
@@ -69827,7 +69827,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 124541020,
-    "card_name": "幽魂的歧路‧拉卡德勒",
+    "card_name": "幽魂的歧路·拉卡德勒",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 5,
@@ -69865,7 +69865,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 127541030,
-    "card_name": "双魂的永恆‧关德温",
+    "card_name": "双魂的永恆·关德温",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 5,
@@ -69877,7 +69877,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,summon_token,invoke_skill",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "结晶 1； 倒数 8<br>每当自己发动葬送 时，使这个护符减少1回合倒数。<br>入场曲 如果葬送 已发动，则会随机给予1个敌方的从者2点伤害。抽取1张卡片。<br>谢幕曲 发动亡者召还 4。<br>---------- <br>守护 <br>入场曲 发动亡者召还 10（双魂的永恆‧关德温除外）。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。",
+    "skill_disc": "结晶 1； 倒数 8<br>每当自己发动葬送 时，使这个护符减少1回合倒数。<br>入场曲 如果葬送 已发动，则会随机给予1个敌方的从者2点伤害。抽取1张卡片。<br>谢幕曲 发动亡者召还 4。<br>---------- <br>守护 <br>入场曲 发动亡者召还 10（双魂的永恆·关德温除外）。如果该卡片拥有入场曲 能力（命运抉择 与指定对象的能力除外），则使其发动1次。",
     "skill_option": "fixeduse=1,card_id=800543040,none,none,invoke_type=when_play",
     "tribe_name": "-"
   },
@@ -69903,7 +69903,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 128541010,
-    "card_name": "尸术王‧科里内路司",
+    "card_name": "尸术王·科里内路司",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 5,
@@ -70131,7 +70131,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 105631010,
-    "card_name": "恶魔巡查官‧亚梅拉达",
+    "card_name": "恶魔巡查官·亚梅拉达",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 6,
@@ -70264,7 +70264,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118641010,
-    "card_name": "享乐的经营者‧波耳特欧",
+    "card_name": "享乐的经营者·波耳特欧",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 6,
@@ -70276,14 +70276,14 @@ let cardData = [
     "rarity": 4,
     "skill": "damage,attach_skill,attach_skill,attach_skill,attach_skill",
     "skill_condition": "{me.deck.base_card_id!=118641010.unique_base_card_id_card.count}={me.deck.base_card_id!=118641010.count},{me.deck.base_card_id!=118641010.unique_base_card_id_card.count}={me.deck.base_card_id!=118641010.count},{me.deck.base_card_id!=118641010.unique_base_card_id_card.count}={me.deck.base_card_id!=118641010.count},{me.deck.base_card_id!=118641010.unique_base_card_id_card.count}={me.deck.base_card_id!=118641010.count},{me.deck.base_card_id!=118641010.unique_base_card_id_card.count}={me.deck.base_card_id!=118641010.count}",
-    "skill_disc": "入场曲 如果自己的牌堆中没有重複的卡片（享乐的经营者‧波耳特欧除外），则会给予其他从者全体5点伤害，并在这场对战中，给予自己的主战者「自己的回合结束时，召唤1个魔导装甲车到战场上，并随机将1张从者卡（享乐的经营者‧波耳特欧除外），由自己的牌堆召唤到战场上。此行动将进行2次」效果。主战者无法重複叠加此效果。",
+    "skill_disc": "入场曲 如果自己的牌堆中没有重複的卡片（享乐的经营者·波耳特欧除外），则会给予其他从者全体5点伤害，并在这场对战中，给予自己的主战者「自己的回合结束时，召唤1个魔导装甲车到战场上，并随机将1张从者卡（享乐的经营者·波耳特欧除外），由自己的牌堆召唤到战场上。此行动将进行2次」效果。主战者无法重複叠加此效果。",
     "skill_option": "damage=5,skill=(skill:summon_token)(timing:self_turn_end)(condition:character=me)(target:none)(option:summon_token=900012040)(preprocess:none)&duplicate_ban_id=1186410101,skill=(skill:summon_card)(timing:self_turn_end)(condition:character=me)(target:character=me&target=deck&card_type=unit&base_card_id!=118641010&random_count=1)(option:none)(preprocess:none)(effect_path:btl_118641010_2)(se_path:se_btl_118641010_2)(effect_move_type:LINEAR_FROM_DECK)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&duplicate_ban_id=1186410102,skill=(skill:summon_token)(timing:self_turn_end)(condition:character=me)(target:none)(option:summon_token=900012040)(preprocess:none)&duplicate_ban_id=1186410103,skill=(skill:summon_card)(timing:self_turn_end)(condition:character=me)(target:character=me&target=deck&card_type=unit&base_card_id!=118641010&random_count=1)(option:none)(preprocess:none)(effect_path:btl_118641010_2)(se_path:se_btl_118641010_2)(effect_move_type:LINEAR_FROM_DECK)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&duplicate_ban_id=1186410104",
     "tribe_name": "-"
   },
   {
     "atk": 10,
     "card_id": 119641020,
-    "card_name": "异幻‧迪亚波罗斯",
+    "card_name": "异幻·迪亚波罗斯",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 6,
@@ -70295,7 +70295,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,damage,trigger,damage,trigger,damage",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me&berserk=true,{character=me&berserk=true&avarice=true|character=me&berserk=true&wrath=true},character=me&avarice=true,character=me&avarice=true&wrath=true,character=me&wrath=true",
-    "skill_disc": "结晶 3； 倒数 7<br>自己的回合开始时，回复自己的主战者1点生命值。如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻‧迪亚波罗斯到战场上。<br>---------- <br>谢幕曲 如果复仇 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。如果渴望 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。如果狂乱 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。",
+    "skill_disc": "结晶 3； 倒数 7<br>自己的回合开始时，回复自己的主战者1点生命值。如果自己剩馀的EP多于敌方的EP，则会使这个护符减少1回合倒数。（若该回合尚未进化解禁，则剩馀EP为0）<br>谢幕曲 召唤1个异幻·迪亚波罗斯到战场上。<br>---------- <br>谢幕曲 如果复仇 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。如果渴望 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。如果狂乱 状态已发动，则会给予敌方的主战者与敌方的从者全体4点伤害。",
     "skill_option": "fixeduse=3,card_id=800643030,damage=4,none,damage=4,none,damage=4",
     "tribe_name": "-"
   },
@@ -70511,7 +70511,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 103731020,
-    "card_name": "煌角战士‧萨莉沙",
+    "card_name": "煌角战士·萨莉沙",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 7,
@@ -70587,7 +70587,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108741010,
-    "card_name": "神之盾‧布罗蒂雅",
+    "card_name": "神之盾·布罗蒂雅",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 7,
@@ -70625,7 +70625,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 111741020,
-    "card_name": "圣骑士‧赫克托",
+    "card_name": "圣骑士·赫克托",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 7,
@@ -70663,7 +70663,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 114741030,
-    "card_name": "炎冰司祭‧卡拉特",
+    "card_name": "炎冰司祭·卡拉特",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 7,
@@ -70701,7 +70701,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118741020,
-    "card_name": "双砲神罚‧安维特",
+    "card_name": "双砲神罚·安维特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 7,
@@ -70713,7 +70713,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,damage,damage",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "结晶 1； 倒数 10<br>自己的回合结束时，使这个护符的倒数 减少与「自己战场上有守护 效果的从者数」等量的回合数。<br>谢幕曲 召唤1个双砲神罚‧安维特到战场上。<br>---------- <br>守护 <br>进入战场时，给予敌方的从者全体4点伤害，并给予敌方的主战者2点伤害。",
+    "skill_disc": "结晶 1； 倒数 10<br>自己的回合结束时，使这个护符的倒数 减少与「自己战场上有守护 效果的从者数」等量的回合数。<br>谢幕曲 召唤1个双砲神罚·安维特到战场上。<br>---------- <br>守护 <br>进入战场时，给予敌方的从者全体4点伤害，并给予敌方的主战者2点伤害。",
     "skill_option": "fixeduse=1,card_id=800743020,none,damage=4,damage=2",
     "tribe_name": "-"
   },
@@ -70739,7 +70739,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 119721020,
-    "card_name": "星界的艇人‧诺亚",
+    "card_name": "星界的艇人·诺亚",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 7,
@@ -70751,14 +70751,14 @@ let cardData = [
     "rarity": 2,
     "skill": "pp_fixeduse,transform,powerup,evolve,trigger,lose,power_down",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me,{me.inplay.class.rally_count}>=10,{me.inplay.class.pp}>={me.hand_self.cost}&{op.inplay.unit.selectable.count}>0,{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "结晶 1； 倒数 4<br>谢幕曲 召唤1个星界的艇人‧诺亚到战场上。<br>---------- <br>进入战场时，获得+X/+X效果。X为「自己的协作 数（不包含此从者）」。如果X为10以上，则会使这个从者进化。<br>入场曲 使1个敌方的从者失去所有能力（攻击力/生命值的效果不受影响）。给予该从者-0/-5效果。（生命值最大值为0以下的从者将会被破坏）",
+    "skill_disc": "结晶 1； 倒数 4<br>谢幕曲 召唤1个星界的艇人·诺亚到战场上。<br>---------- <br>进入战场时，获得+X/+X效果。X为「自己的协作 数（不包含此从者）」。如果X为10以上，则会使这个从者进化。<br>入场曲 使1个敌方的从者失去所有能力（攻击力/生命值的效果不受影响）。给予该从者-0/-5效果。（生命值最大值为0以下的从者将会被破坏）",
     "skill_option": "fixeduse=1,card_id=800723020,add_offense={me.inplay.class.rally_count}-1&add_life={me.inplay.class.rally_count}-1,none,none,none,gain_offense=-0&gain_life=5",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 120741020,
-    "card_name": "荣华加护神‧亚忒朗图",
+    "card_name": "荣华加护神·亚忒朗图",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 7,
@@ -70872,7 +70872,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 127741020,
-    "card_name": "翼天执行者‧乌努尔",
+    "card_name": "翼天执行者·乌努尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 7,
@@ -70891,7 +70891,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 129741020,
-    "card_name": "神谕的启程‧贞德",
+    "card_name": "神谕的启程·贞德",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 7,
@@ -70986,7 +70986,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 108831010,
-    "card_name": "杀戮人偶‧枷薇",
+    "card_name": "杀戮人偶·枷薇",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 8,
@@ -71043,7 +71043,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 109841010,
-    "card_name": "奋勉的俊秀‧席尔瓦",
+    "card_name": "奋勉的俊秀·席尔瓦",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 8,
@@ -71081,7 +71081,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 112841010,
-    "card_name": "百机之王‧格莱亚斯",
+    "card_name": "百机之王·格莱亚斯",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 8,
@@ -71157,7 +71157,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 118841020,
-    "card_name": "溷沌支配者‧艾希连德凛克",
+    "card_name": "溷沌支配者·艾希连德凛克",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 8,
@@ -71176,7 +71176,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 119841030,
-    "card_name": "神异形‧克罗萨斯",
+    "card_name": "神异形·克罗萨斯",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 8,
@@ -71188,7 +71188,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,damage,damage//cant_attack,damage,damage,power_down",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost}//character=me,{me.inplay_self.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0",
-    "skill_disc": "结晶 3； 倒数 3<br>入场曲 给予1个敌方的从者3点伤害。如果共鸣 状态已发动，则会由原本的3点伤害转变为5点伤害。<br>谢幕曲 召唤1个神异形‧克罗萨斯到战场上，并使其进化。<br>---------- <br>守护 <br>入场曲 给予随机1个敌方的从者与敌方的主战者各5点伤害。",
+    "skill_disc": "结晶 3； 倒数 3<br>入场曲 给予1个敌方的从者3点伤害。如果共鸣 状态已发动，则会由原本的3点伤害转变为5点伤害。<br>谢幕曲 召唤1个神异形·克罗萨斯到战场上，并使其进化。<br>---------- <br>守护 <br>入场曲 给予随机1个敌方的从者与敌方的主战者各5点伤害。",
     "skill_option": "fixeduse=3,card_id=800843020,none,damage=5,damage=5//cant_attack=all,damage=3,damage=3,set_life=1",
     "tribe_name": "-"
   },
@@ -71252,7 +71252,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 125841020,
-    "card_name": "百兽狮王‧格莱亚斯",
+    "card_name": "百兽狮王·格莱亚斯",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 8,
@@ -71264,7 +71264,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,quick,summon_token",
     "skill_condition": "{me.inplay.class.pp}>=0&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=0&{me.inplay.class.pp}<{me.hand_self.cost},character=me,{me.inplay.class.pp}>={me.hand_self.cost}&{me.inplay.unit_and_allfield.count}<5",
-    "skill_disc": "激奏 0<br>‧格莱亚斯的咆哮<br>‧格莱亚斯的威光<br>增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>疾驰 <br>入场曲 随机将名称各不相同并与「本次对战中自己已被破坏的机械从者（百兽狮王‧格莱亚斯除外）」同名的从者卡各1张，召唤到战场上直至上限。",
+    "skill_disc": "激奏 0<br>·格莱亚斯的咆哮<br>·格莱亚斯的威光<br>增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>疾驰 <br>入场曲 随机将名称各不相同并与「本次对战中自己已被破坏的机械从者（百兽狮王·格莱亚斯除外）」同名的从者卡各1张，召唤到战场上直至上限。",
     "skill_option": "fixeduse=0,card_id=800844100,none,effect=owner",
     "tribe_name": "机械"
   },
@@ -71283,14 +71283,14 @@ let cardData = [
     "rarity": 1,
     "skill": "damage,summon_token",
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900811050,character=me",
-    "skill_disc": "每当悬丝傀儡进入自己的战场时，给予敌方的主战者与「该从者的攻击力」等量的伤害。<br>入场曲 召唤1个改良型‧悬丝傀儡与1个悬丝傀儡到战场上。",
+    "skill_disc": "每当悬丝傀儡进入自己的战场时，给予敌方的主战者与「该从者的攻击力」等量的伤害。<br>入场曲 召唤1个改良型·悬丝傀儡与1个悬丝傀儡到战场上。",
     "skill_option": "damage={me.summoned_card.base_card_id=900811050.offense},summon_token=900811110:900811050",
     "tribe_name": "-"
   },
   {
     "atk": 5,
     "card_id": 127841020,
-    "card_name": "弹哭执行者‧克里萨尔",
+    "card_name": "弹哭执行者·克里萨尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 8,
@@ -71304,7 +71304,7 @@ let cardData = [
     "skill_condition": "character=me,{me.inplay_self.count}>0,{me.inplay_self.count}>0,character=me",
     "skill_disc": "疾驰 <br>自己的回合结束时，给予自己的其他机械从者全体+2/+2与守护 效果。<br>入场曲 召唤2个击针看守到战场上。",
     "skill_option": "none,add_offense=2&add_life=2,none,summon_token=127831020:127831020",
-    "tribe_name": "机械‧八狱"
+    "tribe_name": "机械·八狱"
   },
   {
     "atk": 5,
@@ -71378,7 +71378,7 @@ let cardData = [
     "rarity": 1,
     "skill": "cost_change,choice,summon_token",
     "skill_condition": "{me.hand_self.spell.count}>0&{me.destroyed_card.unit.tribe=artifact.count}>0,character=me,character=me&target=chosen_cards&card_type=unit",
-    "skill_disc": "每当自己的创造物从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>‧守御的创造物<br>‧锋锐的创造物<br>‧迅袭的创造物<br>使1张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "每当自己的创造物从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>·守御的创造物<br>·锋锐的创造物<br>·迅袭的创造物<br>使1张命运抉择 所指定的卡片进入战场。",
     "skill_option": "add={me.destroyed_card.unit.tribe=artifact.count}*-1,card_id=900811080:900811090:900811100,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
@@ -71397,7 +71397,7 @@ let cardData = [
     "rarity": 3,
     "skill": "select,powerup,powerup,quick",
     "skill_condition": "character=me&target=inplay&card_type=unit&clan=nemesis,{me.last_target.unit.base_card_id=111831030.count}=0,{me.last_target.unit.base_card_id=111831030.count}>0,character=me",
-    "skill_disc": "指定1个自己的复仇者从者，并给予该从者+4/+0与疾驰 效果。<br>如果指定的从者为肃清的英雄‧梅希亚，则会由原本的+4/+0转变为+X/+0。X为「本次对战中自己已被破坏的从者数」。",
+    "skill_disc": "指定1个自己的复仇者从者，并给予该从者+4/+0与疾驰 效果。<br>如果指定的从者为肃清的英雄·梅希亚，则会由原本的+4/+0转变为+X/+0。X为「本次对战中自己已被破坏的从者数」。",
     "skill_option": "none,add_offense=4,add_offense={me.destroyed_card_list.unit.count},none",
     "tribe_name": "-"
   },
@@ -71442,7 +71442,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 102031020,
-    "card_name": "大天使‧蕾娜",
+    "card_name": "大天使·蕾娜",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 0,
@@ -71575,7 +71575,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113041010,
-    "card_name": "闇之翼‧奥莉薇",
+    "card_name": "闇之翼·奥莉薇",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 0,
@@ -71632,7 +71632,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 124041010,
-    "card_name": "双极的生命之烈焰‧琉璃",
+    "card_name": "双极的生命之烈焰·琉璃",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 0,
@@ -71644,7 +71644,7 @@ let cardData = [
     "rarity": 4,
     "skill": "fusion,quick,destroy,pp_modifier",
     "skill_condition": "none,character=me,{me.self.fusion_ingrediented_card_list.count}>=1,{me.self.fusion_ingrediented_card_list.unique_base_card_id_card.count}=2",
-    "skill_disc": "融合 ； 被封印的双子‧烈焰或被封印的双子‧琉璃<br>---------- <br>疾驰 <br>入场曲 如果已有卡片与这张卡片进行融合，则会破坏敌方战场上的全部卡片。如果融合 的种类为2种，则会回复自己的PP 6点。",
+    "skill_disc": "融合 ； 被封印的双子·烈焰或被封印的双子·琉璃<br>---------- <br>疾驰 <br>入场曲 如果已有卡片与这张卡片进行融合，则会破坏敌方战场上的全部卡片。如果融合 的种类为2种，则会回复自己的PP 6点。",
     "skill_option": "none,none,none,add_pp=6",
     "tribe_name": "-"
   },
@@ -71670,7 +71670,7 @@ let cardData = [
   {
     "atk": 9,
     "card_id": 127041010,
-    "card_name": "轮迴统治者‧泽勒尔",
+    "card_name": "轮迴统治者·泽勒尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 0,
@@ -71682,7 +71682,7 @@ let cardData = [
     "rarity": 4,
     "skill": "attach_skill,summon_card,banish,independent",
     "skill_condition": "character=me&target=deck_self&{me.game_play_cards_other_self.all.base_cost=1.count}>0&{me.game_play_cards_other_self.all.base_cost=2.count}>0&{me.game_play_cards_other_self.all.base_cost=3.count}>0&{me.game_play_cards_other_self.all.base_cost=4.count}>0&{me.game_play_cards_other_self.all.base_cost=5.count}>0&{me.game_play_cards_other_self.all.base_cost=6.count}>0&{me.game_play_cards_other_self.all.base_cost=7.count}>0&{me.game_play_cards_other_self.all.base_cost=8.count}>0,character=me&target=deck_self&{me.game_play_cards_other_self.all.base_cost=1.count}>0&{me.game_play_cards_other_self.all.base_cost=2.count}>0&{me.game_play_cards_other_self.all.base_cost=3.count}>0&{me.game_play_cards_other_self.all.base_cost=4.count}>0&{me.game_play_cards_other_self.all.base_cost=5.count}>0&{me.game_play_cards_other_self.all.base_cost=6.count}>0&{me.game_play_cards_other_self.all.base_cost=7.count}>0&{me.game_play_cards_other_self.all.base_cost=8.count}>0,{me.inplay_self.count}>0&character=me&target=self&deck_summoned_card=self,character=me",
-    "skill_disc": "瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8的卡片，则会使1张自己牌堆中的此卡片获得「使受到的伤害转变为0」效果，并将其召唤到战场上。随后，使自己牌堆中的轮迴统治者‧泽勒尔全部消失。<br>---------- <br>不会受到其他卡片能力影响（改变攻击力/生命值的能力除外）。（例如：「破坏」能力及「消失」能力等皆对这个从者无效）",
+    "skill_disc": "瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8的卡片，则会使1张自己牌堆中的此卡片获得「使受到的伤害转变为0」效果，并将其召唤到战场上。随后，使自己牌堆中的轮迴统治者·泽勒尔全部消失。<br>---------- <br>不会受到其他卡片能力影响（改变攻击力/生命值的能力除外）。（例如：「破坏」能力及「消失」能力等皆对这个从者无效）",
     "skill_option": "skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self)(option:none)(preprocess:none),none,none,none",
     "tribe_name": "八狱"
   },
@@ -71822,7 +71822,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 111141030,
-    "card_name": "胡蜂女王‧芭比",
+    "card_name": "胡蜂女王·芭比",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 1,
@@ -71879,7 +71879,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 127141020,
-    "card_name": "香风执行者‧威默尔",
+    "card_name": "香风执行者·威默尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 1,
@@ -71891,7 +71891,7 @@ let cardData = [
     "rarity": 4,
     "skill": "cost_change,summon_token",
     "skill_condition": "{both.return_card.returned_by=self_ability.count}>0&turn=self,character=me",
-    "skill_disc": "自己的回合中，当自己的「使战场上的卡片返回手牌中」能力发动时，使自己手牌中的这张卡片消费-X。X为「因该能力而离开战场的张数」。<br>---------- <br>离场时，召唤1个香风执行者‧威默尔到战场上。（变身除外）",
+    "skill_disc": "自己的回合中，当自己的「使战场上的卡片返回手牌中」能力发动时，使自己手牌中的这张卡片消费-X。X为「因该能力而离开战场的张数」。<br>---------- <br>离场时，召唤1个香风执行者·威默尔到战场上。（变身除外）",
     "skill_option": "add=0-{both.return_card.count},summon_token=127141020&effect=owner",
     "tribe_name": "八狱"
   },
@@ -71917,7 +71917,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 101231020,
-    "card_name": "龙人少女‧夏洛特",
+    "card_name": "龙人少女·夏洛特",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 2,
@@ -71974,7 +71974,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 104231030,
-    "card_name": "骑空团总长‧瓦佛利特",
+    "card_name": "骑空团总长·瓦佛利特",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 2,
@@ -72050,7 +72050,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 109241020,
-    "card_name": "高洁的骑士‧雷瑟姆",
+    "card_name": "高洁的骑士·雷瑟姆",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -72107,7 +72107,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 119241010,
-    "card_name": "刀神‧欧克托",
+    "card_name": "刀神·欧克托",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
@@ -72126,7 +72126,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 120241030,
-    "card_name": "终击铁腕‧加尔瓦",
+    "card_name": "终击铁腕·加尔瓦",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 2,
@@ -72202,7 +72202,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 101341030,
-    "card_name": "大召唤师‧伊拉斯莫斯",
+    "card_name": "大召唤师·伊拉斯莫斯",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -72221,7 +72221,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103331020,
-    "card_name": "马纳历亚公主‧安",
+    "card_name": "马纳历亚公主·安",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -72233,7 +72233,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,evolve//damage",
     "skill_condition": "character=me,character=me//character=me&target=attacker&attacker=self",
-    "skill_disc": "入场曲 召唤1个马纳历亚龙人‧古蕾娅到战场上，并使其进化。",
+    "skill_disc": "入场曲 召唤1个马纳历亚龙人·古蕾娅到战场上，并使其进化。",
     "skill_option": "summon_token=103431020,none//damage=1",
     "tribe_name": "马纳历亚"
   },
@@ -72328,7 +72328,7 @@ let cardData = [
     "rarity": 2,
     "skill": "cost_change,powerup,rush,powerup,rush,summon_token",
     "skill_condition": "character=me&target=self,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311090,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311090,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311100,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311100,character=me",
-    "skill_disc": "魔力增幅 消费-1<br>每当式神‧小纸人或式神‧暴鬼进入自己的战场时，给予该从者+1/+0与突进 效果。<br>入场曲 召唤1个式神‧暴鬼到战场上。",
+    "skill_disc": "魔力增幅 消费-1<br>每当式神·小纸人或式神·暴鬼进入自己的战场时，给予该从者+1/+0与突进 效果。<br>入场曲 召唤1个式神·暴鬼到战场上。",
     "skill_option": "add=ADD_CHARGE_COUNT*-1,add_offense=1,none,add_offense=1,none,summon_token=900311100",
     "tribe_name": "-"
   },
@@ -72354,7 +72354,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 116341010,
-    "card_name": "无尽巫师‧桃乐丝",
+    "card_name": "无尽巫师·桃乐丝",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 3,
@@ -72487,7 +72487,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 103431020,
-    "card_name": "马纳历亚龙人‧古蕾娅",
+    "card_name": "马纳历亚龙人·古蕾娅",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 4,
@@ -72499,7 +72499,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token,evolve//attack_count",
     "skill_condition": "character=me,character=me//character=me",
-    "skill_disc": "入场曲 召唤1个马纳历亚公主‧安到战场上，并使其进化。",
+    "skill_disc": "入场曲 召唤1个马纳历亚公主·安到战场上，并使其进化。",
     "skill_option": "summon_token=103331020,none//attack_count=2",
     "tribe_name": "马纳历亚"
   },
@@ -72601,7 +72601,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111421020,
-    "card_name": "帝王龙骑士‧艾里欧斯",
+    "card_name": "帝王龙骑士·艾里欧斯",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 4,
@@ -72677,7 +72677,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 114441010,
-    "card_name": "苍海霸主‧尼普顿",
+    "card_name": "苍海霸主·尼普顿",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 4,
@@ -72753,7 +72753,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 126441030,
-    "card_name": "金色威信‧璐米欧儿",
+    "card_name": "金色威信·璐米欧儿",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 4,
@@ -72810,7 +72810,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 129441020,
-    "card_name": "邪智之龙‧法夫纳",
+    "card_name": "邪智之龙·法夫纳",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 4,
@@ -72867,7 +72867,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 101531050,
-    "card_name": "不死斗士‧莫迪凯",
+    "card_name": "不死斗士·莫迪凯",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 5,
@@ -72879,7 +72879,7 @@ let cardData = [
     "rarity": 3,
     "skill": "summon_token",
     "skill_condition": "character=me",
-    "skill_disc": "谢幕曲 召唤1个不死斗士‧莫迪凯到战场上。",
+    "skill_disc": "谢幕曲 召唤1个不死斗士·莫迪凯到战场上。",
     "skill_option": "summon_token=101531050",
     "tribe_name": "-"
   },
@@ -72924,7 +72924,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 106521020,
-    "card_name": "鲁纳尔的死灵术师‧琉特",
+    "card_name": "鲁纳尔的死灵术师·琉特",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 5,
@@ -73019,7 +73019,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 114521010,
-    "card_name": "生存之刃‧吉尔特",
+    "card_name": "生存之刃·吉尔特",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 5,
@@ -73475,7 +73475,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 110741010,
-    "card_name": "璀璨的炽天使‧勒碧丝",
+    "card_name": "璀璨的炽天使·勒碧丝",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 7,
@@ -73494,7 +73494,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 114731020,
-    "card_name": "复仇的白刃‧阿尼耶丝",
+    "card_name": "复仇的白刃·阿尼耶丝",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 7,
@@ -73551,7 +73551,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 123731010,
-    "card_name": "受诅咒的双翼‧希萝",
+    "card_name": "受诅咒的双翼·希萝",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 7,
@@ -73570,7 +73570,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 126741030,
-    "card_name": "月晖圣骑士‧阿斯托尔福",
+    "card_name": "月晖圣骑士·阿斯托尔福",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 7,
@@ -73677,14 +73677,14 @@ let cardData = [
     "rarity": 4,
     "skill": "summon_token",
     "skill_condition": "character=me&card_type=chant_field",
-    "skill_disc": "倒数 1<br>谢幕曲 召唤1个光耀的炽天使‧勒碧丝到战场上。",
+    "skill_disc": "倒数 1<br>谢幕曲 召唤1个光耀的炽天使·勒碧丝到战场上。",
     "skill_option": "summon_token=900743030",
     "tribe_name": "-"
   },
   {
     "atk": 0,
     "card_id": 900743030,
-    "card_name": "光耀的炽天使‧勒碧丝",
+    "card_name": "光耀的炽天使·勒碧丝",
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -73760,7 +73760,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108841010,
-    "card_name": "人偶少女‧奥契丝",
+    "card_name": "人偶少女·奥契丝",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 8,
@@ -73772,7 +73772,7 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,transform,token_draw",
     "skill_condition": "character=me&{me.hand_other_self.unit.base_card_id=900811050.count}>=2&pp_count>=8,character=me&target=chosen_cards&card_type=all&pp_count>=8,character=me",
-    "skill_disc": "‧坚毅的人偶‧奥契丝<br>‧复仇的人偶‧奥契丝<br>如果这张卡片在手牌中，自己剩馀的PP为8以上，并且自己的手牌中悬丝傀儡卡片张数为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 增加3张悬丝傀儡卡片到手牌中。",
+    "skill_disc": "·坚毅的人偶·奥契丝<br>·复仇的人偶·奥契丝<br>如果这张卡片在手牌中，自己剩馀的PP为8以上，并且自己的手牌中悬丝傀儡卡片张数为2以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>入场曲 增加3张悬丝傀儡卡片到手牌中。",
     "skill_option": "card_id=900841020:900841030,repeat_count=1&summon_side=me,token_draw=900811050:900811050:900811050",
     "tribe_name": "-"
   },
@@ -73798,7 +73798,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 112841020,
-    "card_name": "水银圣盾‧席翁",
+    "card_name": "水银圣盾·席翁",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 8,
@@ -73848,14 +73848,14 @@ let cardData = [
     "rarity": 2,
     "skill": "pp_fixeduse,transform,choice,summon_token",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost}&{op.inplay.unit.selectable.count}>0,{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost}&{op.inplay.unit.selectable.count}>0,{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost}&target=chosen_cards&card_type=all",
-    "skill_disc": "激奏 3； 给予1个敌方的从者3点伤害。增加1张典范转移卡片到手牌中。<br>---------- <br>‧绚烂的创造物<br>‧精奥的创造物<br>入场曲 使1张命运抉择 所指定的卡片进入战场。",
+    "skill_disc": "激奏 3； 给予1个敌方的从者3点伤害。增加1张典范转移卡片到手牌中。<br>---------- <br>·绚烂的创造物<br>·精奥的创造物<br>入场曲 使1张命运抉择 所指定的卡片进入战场。",
     "skill_option": "fixeduse=3,card_id=800824010,card_id=900811040:900811060,repeat_count=1&summon_side=me",
     "tribe_name": "机械"
   },
   {
     "atk": 6,
     "card_id": 116841020,
-    "card_name": "天地侵略者‧贝尔弗特",
+    "card_name": "天地侵略者·贝尔弗特",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 8,
@@ -73931,7 +73931,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 128841030,
-    "card_name": "灾厄之匣‧潘朵拉",
+    "card_name": "灾厄之匣·潘朵拉",
     "card_set_id": 10028,
     "char_type": 1,
     "clan": 8,
@@ -73950,7 +73950,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900841020,
-    "card_name": "坚毅的人偶‧奥契丝",
+    "card_name": "坚毅的人偶·奥契丝",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -73969,7 +73969,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 900841030,
-    "card_name": "复仇的人偶‧奥契丝",
+    "card_name": "复仇的人偶·奥契丝",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -73981,7 +73981,7 @@ let cardData = [
     "rarity": 4,
     "skill": "metamorphose,metamorphose",
     "skill_condition": "{me.inplay_self.count}>0&{me.inplay_other_self.unit.base_card_id=900841050.count}=0&character=me&target=summoned_card&card_type=unit&card_type=unit&base_card_id=900811050,{me.inplay_self.count}>0&{me.inplay_other_self.unit.base_card_id=900841050.count}>0&character=me&target=summoned_card&card_type=unit&card_type=unit&base_card_id=900811050",
-    "skill_disc": "每当悬丝傀儡进入自己的战场时，如果自己的战场上没有提线傀儡‧舞诺，则会使之变身为提线傀儡‧舞诺。如果战场上有提线傀儡‧舞诺，则会使之变身为提线傀儡‧朵叶。",
+    "skill_disc": "每当悬丝傀儡进入自己的战场时，如果自己的战场上没有提线傀儡·舞诺，则会使之变身为提线傀儡·舞诺。如果战场上有提线傀儡·舞诺，则会使之变身为提线傀儡·朵叶。",
     "skill_option": "metamorphose=900841050,metamorphose=900841060",
     "tribe_name": "-"
   },
@@ -74007,7 +74007,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 900841110,
-    "card_name": "杀戮女神‧提西福涅",
+    "card_name": "杀戮女神·提西福涅",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -74026,7 +74026,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 900841120,
-    "card_name": "灾乱女神‧阿莱克托",
+    "card_name": "灾乱女神·阿莱克托",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -74045,7 +74045,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900841130,
-    "card_name": "愤怒女神‧墨盖拉",
+    "card_name": "愤怒女神·墨盖拉",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -74076,7 +74076,7 @@ let cardData = [
     "rarity": 4,
     "skill": "cant_attack,geton,banish,getoff",
     "skill_condition": "{me.inplay_self.geton_card.count}=0,{me.inplay_self.count}>0&{me.summoned_card.unit.base_cost>=5.count}>0,character=me,{me.self.geton_card.count}>0",
-    "skill_disc": "操纵 ； 原始消费为5以上的从者<br>操纵时 使其他从者（溷沌支配者‧艾希连德凛克除外）全部消失。",
+    "skill_disc": "操纵 ； 原始消费为5以上的从者<br>操纵时 使其他从者（溷沌支配者·艾希连德凛克除外）全部消失。",
     "skill_option": "cant_attack=all,none,none,none",
     "tribe_name": "-"
   },
@@ -74102,7 +74102,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 900842030,
-    "card_name": "新约‧白之章",
+    "card_name": "新约·白之章",
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 8,
@@ -74114,14 +74114,14 @@ let cardData = [
     "rarity": 4,
     "skill": "cost_change,indestructible,heal,heal,heal",
     "skill_condition": "{me.hand_self.field.count}>0&character=me&target=destroyed_card&card_type=unit,character=me,{me.inplay_self.count}>0&{me.inplay.field.base_card_id=900842040.count}=0,{me.inplay_self.count}>0&{me.inplay.field.base_card_id=900842040.count}>0,character=me",
-    "skill_disc": "每当自己的从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>无法被能力破坏。<br>自己的回合开始时，回复自己的主战者2点生命值。如果自己的战场上有新约‧黑之章，则会由原本的回复2点转变为回复4点。<br>入场曲 回复自己的主战者4点生命值。",
+    "skill_disc": "每当自己的从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>无法被能力破坏。<br>自己的回合开始时，回复自己的主战者2点生命值。如果自己的战场上有新约·黑之章，则会由原本的回复2点转变为回复4点。<br>入场曲 回复自己的主战者4点生命值。",
     "skill_option": "add=-1,none,healing=2,healing=4,healing=4",
     "tribe_name": "创造物"
   },
   {
     "atk": 0,
     "card_id": 900842040,
-    "card_name": "新约‧黑之章",
+    "card_name": "新约·黑之章",
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 8,
@@ -74133,7 +74133,7 @@ let cardData = [
     "rarity": 4,
     "skill": "cost_change,indestructible,damage,damage,damage",
     "skill_condition": "{me.hand_self.field.count}>0&character=me&target=destroyed_card&card_type=unit,character=me,{me.inplay_self.count}>0&{me.inplay.field.base_card_id=900842030.count}=0,{me.inplay_self.count}>0&{me.inplay.field.base_card_id=900842030.count}>0,character=me",
-    "skill_disc": "每当自己的从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>无法被能力破坏。<br>自己的回合开始时，给予敌方的主战者2点伤害。如果自己的战场上有新约‧白之章，则会由原本的2点伤害转变为4点伤害。<br>入场曲 给予敌方的主战者4点伤害。",
+    "skill_disc": "每当自己的从者被破坏时，使自己手牌中的这张卡片消费-1。<br>---------- <br>无法被能力破坏。<br>自己的回合开始时，给予敌方的主战者2点伤害。如果自己的战场上有新约·白之章，则会由原本的2点伤害转变为4点伤害。<br>入场曲 给予敌方的主战者4点伤害。",
     "skill_option": "add=-1,none,damage=2,damage=4,damage=4",
     "tribe_name": "创造物"
   },
@@ -74178,7 +74178,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 111041010,
-    "card_name": "冰狱之王‧撒旦",
+    "card_name": "冰狱之王·撒旦",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 0,
@@ -74235,7 +74235,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900011070,
-    "card_name": "K‧B‧S‧N",
+    "card_name": "K·B·S·N",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -74482,7 +74482,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 103341010,
-    "card_name": "次元魔女‧桃乐丝",
+    "card_name": "次元魔女·桃乐丝",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -74520,7 +74520,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 104341010,
-    "card_name": "言灵使者‧洋荷",
+    "card_name": "言灵使者·洋荷",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 3,
@@ -74577,7 +74577,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110331010,
-    "card_name": "马纳历亚魔导公主‧安",
+    "card_name": "马纳历亚魔导公主·安",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
@@ -74589,7 +74589,7 @@ let cardData = [
     "rarity": 3,
     "skill": "cost_change,choice,token_draw",
     "skill_condition": "{me.hand_self.unit.count}>0&character=me&target=played_card&card_type=all&tribe=manaria,character=me,character=me&target=chosen_cards&card_type=all",
-    "skill_disc": "每当自己使用马纳历亚卡时，使自己手牌中的这张卡片消费-1。<br>---------- <br>‧安的巨大英灵<br>‧安的宏大魔法<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "每当自己使用马纳历亚卡时，使自己手牌中的这张卡片消费-1。<br>---------- <br>·安的巨大英灵<br>·安的宏大魔法<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "add=-1,card_id=900331040:900334040,repeat_count=1&summon_side=me",
     "tribe_name": "马纳历亚"
   },
@@ -74615,7 +74615,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113341010,
-    "card_name": "厄咒言灵‧洋荷",
+    "card_name": "厄咒言灵·洋荷",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 3,
@@ -74634,7 +74634,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 114331010,
-    "card_name": "元素萨满‧莱莉",
+    "card_name": "元素萨满·莱莉",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 3,
@@ -74710,7 +74710,7 @@ let cardData = [
   {
     "atk": 9,
     "card_id": 123341030,
-    "card_name": "绝尽真实‧莱欧",
+    "card_name": "绝尽真实·莱欧",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 3,
@@ -74843,7 +74843,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 704441010,
-    "card_name": "帝国龙骑士‧亚尔多斯",
+    "card_name": "帝国龙骑士·亚尔多斯",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 4,
@@ -74938,7 +74938,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108441010,
-    "card_name": "龙魂战将‧吉尔沃",
+    "card_name": "龙魂战将·吉尔沃",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -74976,7 +74976,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 119421020,
-    "card_name": "独步古今的大拳豪‧刚特克泽",
+    "card_name": "独步古今的大拳豪·刚特克泽",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -74995,7 +74995,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 120441010,
-    "card_name": "霸道君临者‧法露特",
+    "card_name": "霸道君临者·法露特",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 4,
@@ -75007,7 +75007,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,guard,destroy",
     "skill_condition": "{me.inplay.class.pp}>=7&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=7&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me",
-    "skill_disc": "结晶 7； 倒数 2<br>入场曲 与自己的回合开始时，召唤1隻飞龙到战场上，并给予该从者突进 守护 吸血 中的随机1种效果。<br>谢幕曲 召唤1个霸道君临者‧法露特到战场上。<br>---------- <br>守护 <br>谢幕曲 随机破坏1个敌方的从者。",
+    "skill_disc": "结晶 7； 倒数 2<br>入场曲 与自己的回合开始时，召唤1隻飞龙到战场上，并给予该从者突进 守护 吸血 中的随机1种效果。<br>谢幕曲 召唤1个霸道君临者·法露特到战场上。<br>---------- <br>守护 <br>谢幕曲 随机破坏1个敌方的从者。",
     "skill_option": "fixeduse=7,card_id=800443020,none,none",
     "tribe_name": "-"
   },
@@ -75109,7 +75109,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 111541020,
-    "card_name": "尸龙‧法夫纳",
+    "card_name": "尸龙·法夫纳",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -75128,7 +75128,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 115541010,
-    "card_name": "巨大妖狐‧吟雪",
+    "card_name": "巨大妖狐·吟雪",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 5,
@@ -75261,7 +75261,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 107641020,
-    "card_name": "狄亚波罗斯‧伪语",
+    "card_name": "狄亚波罗斯·伪语",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 6,
@@ -75394,7 +75394,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 109741020,
-    "card_name": "烈风翼神‧迦楼罗",
+    "card_name": "烈风翼神·迦楼罗",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -75413,7 +75413,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 109741030,
-    "card_name": "破灭之神‧切契巴瓦",
+    "card_name": "破灭之神·切契巴瓦",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 7,
@@ -75489,7 +75489,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107821060,
-    "card_name": "复仇的人偶师‧诺亚",
+    "card_name": "复仇的人偶师·诺亚",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -75527,7 +75527,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 111831020,
-    "card_name": "世界之扉‧缇尔",
+    "card_name": "世界之扉·缇尔",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
@@ -75546,7 +75546,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111841020,
-    "card_name": "断罪者‧希尔薇娅",
+    "card_name": "断罪者·希尔薇娅",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 8,
@@ -75584,7 +75584,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 121841020,
-    "card_name": "极致的创造主‧贝尔弗特",
+    "card_name": "极致的创造主·贝尔弗特",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 8,
@@ -75596,7 +75596,7 @@ let cardData = [
     "rarity": 4,
     "skill": "fusion,summon_token,summon_token,summon_token,summon_token,summon_token",
     "skill_condition": "none,{{self.fusion_count}=2|{self.fusion_count}=4}&{me.inplay.class.pp}>=3,{{self.fusion_count}=3|{self.fusion_count}=5}&{me.inplay.class.pp}>=3,character=me,{me.self.fusion_ingrediented_card_list.count}>=1,{me.self.fusion_ingrediented_card_list.count}>=2",
-    "skill_disc": "融合 ； 机械卡<br>与这张卡片进行融合 时，如果为这场对战中的第2、第4次，并且自己剩馀的PP为3以上，则会消费自己的PP3点，召唤1个阻断的触手到战场上。如果为第3、第5次，并且自己剩馀的PP为3以上，则会消费自己的PP3点，召唤1个蹂躏的触手到战场上。<br>---------- <br>入场曲 召唤1个再生的杀戮‧提西福涅到战场上。如果「与这张卡片融合 的张数」为1张以上，则会额外再召唤1个再诞的灾乱‧阿莱克托到战场上。如果为2张以上，则会额外再召唤1个再燃的愤怒‧墨盖拉到战场上。",
+    "skill_disc": "融合 ； 机械卡<br>与这张卡片进行融合 时，如果为这场对战中的第2、第4次，并且自己剩馀的PP为3以上，则会消费自己的PP3点，召唤1个阻断的触手到战场上。如果为第3、第5次，并且自己剩馀的PP为3以上，则会消费自己的PP3点，召唤1个蹂躏的触手到战场上。<br>---------- <br>入场曲 召唤1个再生的杀戮·提西福涅到战场上。如果「与这张卡片融合 的张数」为1张以上，则会额外再召唤1个再诞的灾乱·阿莱克托到战场上。如果为2张以上，则会额外再召唤1个再燃的愤怒·墨盖拉到战场上。",
     "skill_option": "none,summon_token=900841170,summon_token=900841180,summon_token=900841210&effect=owner,summon_token=900841220&effect=owner,summon_token=900841230&effect=owner",
     "tribe_name": "机械"
   },
@@ -75622,7 +75622,7 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 129841020,
-    "card_name": "天降曙光‧蕾德拉菲雅",
+    "card_name": "天降曙光·蕾德拉菲雅",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -75634,14 +75634,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,rush,guard,damage",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay_self.count}>0&turn=self&character=me&target=summoned_card&card_type=unit&tribe=artifact,{me.inplay_self.count}>0&turn=self&character=me&target=summoned_card&card_type=unit&tribe=artifact,character=me&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "结晶 1； 倒数 10<br>自己的回合中，每当创造物从者进入自己的战场时，给予该从者突进 效果。使这个护符减少1回合倒数。<br>谢幕曲 召唤1个天降曙光‧蕾德拉菲雅到战场上。<br>---------- <br>自己的回合中，每当创造物从者进入自己的战场时，给予该从者突进 与守护 效果。<br>入场曲 给予敌方的主战者及敌方的从者全体与「本次对战中自己已被破坏的创造物卡名称之种类」等量的伤害。",
+    "skill_disc": "结晶 1； 倒数 10<br>自己的回合中，每当创造物从者进入自己的战场时，给予该从者突进 效果。使这个护符减少1回合倒数。<br>谢幕曲 召唤1个天降曙光·蕾德拉菲雅到战场上。<br>---------- <br>自己的回合中，每当创造物从者进入自己的战场时，给予该从者突进 与守护 效果。<br>入场曲 给予敌方的主战者及敌方的从者全体与「本次对战中自己已被破坏的创造物卡名称之种类」等量的伤害。",
     "skill_option": "fixeduse=1,card_id=800843030,none,none,damage={me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}",
     "tribe_name": "-"
   },
   {
     "atk": 7,
     "card_id": 900841210,
-    "card_name": "再生的杀戮‧提西福涅",
+    "card_name": "再生的杀戮·提西福涅",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -75660,7 +75660,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 900841220,
-    "card_name": "再诞的灾乱‧阿莱克托",
+    "card_name": "再诞的灾乱·阿莱克托",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -75679,7 +75679,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900841230,
-    "card_name": "再燃的愤怒‧墨盖拉",
+    "card_name": "再燃的愤怒·墨盖拉",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -75774,7 +75774,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113041020,
-    "card_name": "至高之神‧宙斯",
+    "card_name": "至高之神·宙斯",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 0,
@@ -75793,7 +75793,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 118041010,
-    "card_name": "虚无的堕天使‧路西法",
+    "card_name": "虚无的堕天使·路西法",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 0,
@@ -75812,7 +75812,7 @@ let cardData = [
   {
     "atk": 12,
     "card_id": 119041010,
-    "card_name": "原始之龙‧巴哈姆特",
+    "card_name": "原始之龙·巴哈姆特",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 0,
@@ -75843,7 +75843,7 @@ let cardData = [
     "rarity": 3,
     "skill": "pp_fixeduse,transform,guard,heal",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay_self.count}>0",
-    "skill_disc": "激奏 1<br>‧极光天使<br>‧炽天使之剑<br>增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护 <br>自己的回合结束时，回复自己的主战者7点生命值。",
+    "skill_disc": "激奏 1<br>·极光天使<br>·炽天使之剑<br>增加1张命运抉择 所指定的卡片到手牌中。<br>---------- <br>守护 <br>自己的回合结束时，回复自己的主战者7点生命值。",
     "skill_option": "fixeduse=1,card_id=800034040,none,healing=7",
     "tribe_name": "-"
   },
@@ -75888,7 +75888,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 110141010,
-    "card_name": "不弑绝杰‧艾兹迪亚",
+    "card_name": "不弑绝杰·艾兹迪亚",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 1,
@@ -75926,7 +75926,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 111241030,
-    "card_name": "狂舞之刃‧蒂欧涅",
+    "card_name": "狂舞之刃·蒂欧涅",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 2,
@@ -75964,7 +75964,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112331020,
-    "card_name": "未知探求者‧克拉克",
+    "card_name": "未知探求者·克拉克",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 3,
@@ -76002,7 +76002,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125331020,
-    "card_name": "马纳历亚咏唱者‧克雷格",
+    "card_name": "马纳历亚咏唱者·克雷格",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -76021,7 +76021,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900341030,
-    "card_name": "式神‧贵人",
+    "card_name": "式神·贵人",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -76097,7 +76097,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 107441020,
-    "card_name": "阿吉‧塔哈卡",
+    "card_name": "阿吉·塔哈卡",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 4,
@@ -76128,14 +76128,14 @@ let cardData = [
     "rarity": 4,
     "skill": "choice,transform",
     "skill_condition": "character=me&{me.game_play_cards_other_self.spell_and_field.count}>=10&pp_count=10,character=me&target=chosen_cards&card_type=all&{me.game_play_cards_other_self.spell_and_field.count}>=10&pp_count=10",
-    "skill_disc": "‧圣龙‧林德沃姆<br>‧邪龙‧林德沃姆<br>如果这张卡片在手牌中，自己剩馀的PP值为10，并且自己在这场对战中已使用的非从者卡为10张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
+    "skill_disc": "·圣龙·林德沃姆<br>·邪龙·林德沃姆<br>如果这张卡片在手牌中，自己剩馀的PP值为10，并且自己在这场对战中已使用的非从者卡为10张以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。",
     "skill_option": "card_id=900441010:900441020,repeat_count=1&summon_side=me",
     "tribe_name": "-"
   },
   {
     "atk": 7,
     "card_id": 109441010,
-    "card_name": "伟大的调停者‧佐伊",
+    "card_name": "伟大的调停者·佐伊",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 4,
@@ -76147,14 +76147,14 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,quick,damage,shield",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&target=inplay&card_type=class&{me.inplay.class.pp}>={me.hand_self.cost},character=me&target=inplay&card_type=class&{me.inplay.class.pp}>={me.hand_self.cost}",
-    "skill_disc": "激奏 1； 抽取1张卡片。增加1张消费为10，攻击力6/生命值5并且没有激奏 效果的伟大的调停者‧佐伊卡片到牌堆中。<br>---------- <br>疾驰 <br>入场曲 给予自己的主战者伤害使其生命值转变为1。到下个自己的回合开始为止，给予自己的主战者「自己的主战者受到的伤害皆转变为0」效果。",
+    "skill_disc": "激奏 1； 抽取1张卡片。增加1张消费为10，攻击力6/生命值5并且没有激奏 效果的伟大的调停者·佐伊卡片到牌堆中。<br>---------- <br>疾驰 <br>入场曲 给予自己的主战者伤害使其生命值转变为1。到下个自己的回合开始为止，给予自己的主战者「自己的主战者受到的伤害皆转变为0」效果。",
     "skill_option": "fixeduse=1,card_id=800444010,none,damage={me.inplay.class.life}-1,type=all",
     "tribe_name": "-"
   },
   {
     "atk": 10,
     "card_id": 112441030,
-    "card_name": "深海霸王‧达贡",
+    "card_name": "深海霸王·达贡",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 4,
@@ -76192,7 +76192,7 @@ let cardData = [
   {
     "atk": 11,
     "card_id": 117441010,
-    "card_name": "《正义》‧伊兰翠",
+    "card_name": "《正义》·伊兰翠",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 4,
@@ -76268,7 +76268,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900441010,
-    "card_name": "圣龙‧林德沃姆",
+    "card_name": "圣龙·林德沃姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -76287,7 +76287,7 @@ let cardData = [
   {
     "atk": 10,
     "card_id": 900441020,
-    "card_name": "邪龙‧林德沃姆",
+    "card_name": "邪龙·林德沃姆",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -76325,14 +76325,14 @@ let cardData = [
   {
     "atk": 7,
     "card_id": 109541020,
-    "card_name": "永远的决斗者‧莫迪凯",
+    "card_name": "永远的决斗者·莫迪凯",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 5,
     "cost": 10,
     "evo_atk": 7,
     "evo_life": 7,
-    "evo_skill_disc": "谢幕曲 召唤1个永远的决斗者‧莫迪凯（进化前）到战场上。",
+    "evo_skill_disc": "谢幕曲 召唤1个永远的决斗者·莫迪凯（进化前）到战场上。",
     "life": 7,
     "rarity": 4,
     "skill": "evolve,evolve//summon_token",
@@ -76382,19 +76382,19 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 125541030,
-    "card_name": "永劫的决斗‧莫迪凯",
+    "card_name": "永劫的决斗·莫迪凯",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 5,
     "cost": 10,
     "evo_atk": 7,
     "evo_life": 7,
-    "evo_skill_disc": "敌方的能力无法指定此卡片。<br>只要这个从者在战场上，给予自己的主战者「受到的伤害皆转变为0」效果。<br>当自己的主战者受到伤害时，给予这个从者X点伤害。X为「至0为止所减轻的伤害值」。<br>谢幕曲 给予自己的主战者「下个敌方的回合开始时，召唤1个永劫的决斗‧莫迪凯到战场上。而后失去此能力」效果。主战者无法重複叠加此效果。",
+    "evo_skill_disc": "敌方的能力无法指定此卡片。<br>只要这个从者在战场上，给予自己的主战者「受到的伤害皆转变为0」效果。<br>当自己的主战者受到伤害时，给予这个从者X点伤害。X为「至0为止所减轻的伤害值」。<br>谢幕曲 给予自己的主战者「下个敌方的回合开始时，召唤1个永劫的决斗·莫迪凯到战场上。而后失去此能力」效果。主战者无法重複叠加此效果。",
     "life": 5,
     "rarity": 4,
     "skill": "cant_evolution,untouchable,trigger,evolve//shield,damage,attach_skill",
     "skill_condition": "character=me,character=me,{me.game_summon_cards.unit.base_card_id=125541030.count}>=3,character=me//character=me,{me.inplay_self.count}>0&{me.inplay_self.damage}>=0&{me.received_damage_card.class.count}>0,character=me",
-    "skill_disc": "无法使用EP进化。（能力可以使这个从者进化）<br>敌方的能力无法指定此卡片。<br>进入战场时，如果本次对战中已进入自己战场的永劫的决斗‧莫迪凯为4个以上（包含本卡片），则会使这个从者进化。",
+    "skill_disc": "无法使用EP进化。（能力可以使这个从者进化）<br>敌方的能力无法指定此卡片。<br>进入战场时，如果本次对战中已进入自己战场的永劫的决斗·莫迪凯为4个以上（包含本卡片），则会使这个从者进化。",
     "skill_option": "type=ep_use,none,none,none//type=all,damage={me.inplay_self.damage},skill=(skill:summon_token)(timing:op_turn_start)(condition:character=me)(target:none)(option:summon_token=125541030)(preprocess:remove_after_action=(count=1))&duplicate_ban_id=1255410301",
     "tribe_name": "-"
   },
@@ -76553,7 +76553,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 900831050,
-    "card_name": "溷沌之闇‧辛恩",
+    "card_name": "溷沌之闇·辛恩",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -76648,7 +76648,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 127341020,
-    "card_name": "破式执行者‧沙摩尔",
+    "card_name": "破式执行者·沙摩尔",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 3,
@@ -76667,7 +76667,7 @@ let cardData = [
   {
     "atk": 8,
     "card_id": 111541030,
-    "card_name": "幽暗浑浊者‧塔尔塔洛斯",
+    "card_name": "幽暗浑浊者·塔尔塔洛斯",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 5,
@@ -76679,7 +76679,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,sneak,destroy",
     "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&target=attacker&attacker=self&ability=sneak",
-    "skill_disc": "激奏 1； 召唤1个幽暗浑浊者‧塔尔塔洛斯到战场上，并将其破坏。增加1张呼唤黑闇者卡片到手牌中。<br>---------- <br>潜行 <br>攻击时 如果于潜行 状态下进行攻击，则会破坏全部生命值为5以下的敌方从者。",
+    "skill_disc": "激奏 1； 召唤1个幽暗浑浊者·塔尔塔洛斯到战场上，并将其破坏。增加1张呼唤黑闇者卡片到手牌中。<br>---------- <br>潜行 <br>攻击时 如果于潜行 状态下进行攻击，则会破坏全部生命值为5以下的敌方从者。",
     "skill_option": "fixeduse=1,card_id=800544010,none,none",
     "tribe_name": "-"
   },
@@ -76724,7 +76724,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 126841020,
-    "card_name": "绝高无上‧纯洁",
+    "card_name": "绝高无上·纯洁",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 8,
@@ -76743,7 +76743,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 115341010,
-    "card_name": "阴阳祖师‧久苑",
+    "card_name": "阴阳祖师·久苑",
     "card_set_id": 10015,
     "char_type": 1,
     "clan": 3,
@@ -76755,7 +76755,7 @@ let cardData = [
     "rarity": 4,
     "skill": "cost_change,quick,quick,summon_token",
     "skill_condition": "character=me&target=self,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311100,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit&base_card_id=900311090,character=me",
-    "skill_disc": "魔力增幅 消费-1<br>每当式神‧小纸人或式神‧暴鬼进入自己的战场时，给予该从者疾驰 效果。<br>入场曲 召唤1个式神‧天后、1个式神‧暴鬼与1个式神‧小纸人到战场上。",
+    "skill_disc": "魔力增幅 消费-1<br>每当式神·小纸人或式神·暴鬼进入自己的战场时，给予该从者疾驰 效果。<br>入场曲 召唤1个式神·天后、1个式神·暴鬼与1个式神·小纸人到战场上。",
     "skill_option": "add=ADD_CHARGE_COUNT*-1,none,none,summon_token=900341020:900311100:900311090",
     "tribe_name": "-"
   },
@@ -76781,7 +76781,7 @@ let cardData = [
   {
     "atk": 13,
     "card_id": 119441020,
-    "card_name": "神鱼‧迪兹列斯坦",
+    "card_name": "神鱼·迪兹列斯坦",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 4,
@@ -76800,7 +76800,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 116341020,
-    "card_name": "钢铁魔兽‧莱柯罗埃",
+    "card_name": "钢铁魔兽·莱柯罗埃",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 3,
@@ -76812,7 +76812,7 @@ let cardData = [
     "rarity": 4,
     "skill": "fusion,cost_change,guard,return_card,summon_token,rush,powerup",
     "skill_condition": "none,none,character=me,character=me,character=me,character=me,character=me",
-    "skill_disc": "融合 ； 机械卡<br>与这张卡片进行融合 时，使这张卡片的消费依「融合 张数」-2。<br>---------- <br>守护 <br>入场曲 使自己的机械从者（钢铁魔兽‧莱柯罗埃除外）全部返回手牌中。召唤与「因该能力而离开战场的卡片张数」等量的生产器械到战场上。给予自己的生产器械全体突进 与+X/+X效果。X为「与这张卡片融合 之张数的一半（小数点后无条件进位）」。",
+    "skill_disc": "融合 ； 机械卡<br>与这张卡片进行融合 时，使这张卡片的消费依「融合 张数」-2。<br>---------- <br>守护 <br>入场曲 使自己的机械从者（钢铁魔兽·莱柯罗埃除外）全部返回手牌中。召唤与「因该能力而离开战场的卡片张数」等量的生产器械到战场上。给予自己的生产器械全体突进 与+X/+X效果。X为「与这张卡片融合 之张数的一半（小数点后无条件进位）」。",
     "skill_option": "none,add=-2*{me.hand_self.fusion_ingrediented_card.tribe=machine.count},none,none,summon_token=900011080&repeat_count={me.return_card.all.count},none,add_offense={me.inplay_self.fusion_ingrediented_card_list.count.half_round_up}&add_life={me.inplay_self.fusion_ingrediented_card_list.count.half_round_up}",
     "tribe_name": "机械"
   },
@@ -76838,7 +76838,7 @@ let cardData = [
   {
     "atk": 20,
     "card_id": 711341010,
-    "card_name": "开闢的预言者‧媞欧",
+    "card_name": "开闢的预言者·媞欧",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
@@ -76850,7 +76850,7 @@ let cardData = [
     "rarity": 4,
     "skill": "pp_fixeduse,transform,summon_card,untouchable,indestructible",
     "skill_condition": "{me.inplay.class.pp}>=10&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=10&{me.inplay.class.pp}<{me.hand_self.cost},character=me&target=deck_self&{me.game_play_cards_other_self.all.base_cost=1.count}>0&{me.game_play_cards_other_self.all.base_cost=2.count}>0&{me.game_play_cards_other_self.all.base_cost=3.count}>0&{me.game_play_cards_other_self.all.base_cost=4.count}>0&{me.game_play_cards_other_self.all.base_cost=5.count}>0&{me.game_play_cards_other_self.all.base_cost=6.count}>0&{me.game_play_cards_other_self.all.base_cost=7.count}>0&{me.game_play_cards_other_self.all.base_cost=8.count}>0&{me.game_play_cards_other_self.all.base_cost=9.count}>0&{me.game_play_cards_other_self.all.base_cost=10.count}>0,character=me,character=me",
-    "skill_disc": "激奏 10； 抽取1张卡片。增加1张开闢的预言者‧媞欧卡片到牌堆中。回复自己的PP 9点。<br>---------- <br>瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8、9、10的卡片，则会将1张此卡片由自己的牌堆召唤到战场上。<br>敌方的能力无法指定这个从者，并且卡片的能力无法破坏这个从者。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）",
+    "skill_disc": "激奏 10； 抽取1张卡片。增加1张开闢的预言者·媞欧卡片到牌堆中。回复自己的PP 9点。<br>---------- <br>瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8、9、10的卡片，则会将1张此卡片由自己的牌堆召唤到战场上。<br>敌方的能力无法指定这个从者，并且卡片的能力无法破坏这个从者。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）",
     "skill_option": "fixeduse=10,card_id=800344060,none,none,none",
     "tribe_name": "-"
   },
@@ -76895,7 +76895,7 @@ let cardData = [
   {
     "atk": 9,
     "card_id": 120841030,
-    "card_name": "绝高无上‧宽容",
+    "card_name": "绝高无上·宽容",
     "card_set_id": 10020,
     "char_type": 1,
     "clan": 8,

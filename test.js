@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const foundCard = findCardByName(searchTerm);
         if (!foundCard) {
             // 如果找不到，尝试使用繁体中文搜索
-            const tradChineseSearchTerm = traditionalized(searchTerm);
+            const tradChineseSearchTerm = searchTerm.replaceAll("·","‧")//traditionalized(searchTerm);
             const foundTradCard = findCardByName(tradChineseSearchTerm);
             if (foundTradCard) {
                 sortAndDisplayCards(foundTradCard);
