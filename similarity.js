@@ -26,13 +26,21 @@ function calculateBasicScore(card1, card2) {
         }
     }
 
-    return Math.pow(basicScore,2);
+    return basicScore*10;
   }
 
   function calculateDescriptionScore(card1, card2) {
       // Calculate description similarity
-      const description1 = card1.skill_disc + card1.evo_skill_disc || '';
-      const description2 = card2.skill_disc + card2.evo_skill_disc || '';
+      let description1 = card1.skill_disc || '';
+      let description2 = card2.skill_disc || '';
+
+      let misc = ["与进化前能力相同。（入场曲 能力除外）", "与进化前能力相同。",""];
+      if (!misc.includes(card1.evo_skill_disc)){
+        description1 += card1.evo_skill_disc;
+      }
+      if (!misc.includes(card2.evo_skill_disc)){
+        description2 += card2.evo_skill_disc;
+      }
 
       if (description1.length === 0 && description2.length === 0) {
           return 100; // Both are empty descriptions, consider them as similar
@@ -42,6 +50,32 @@ function calculateBasicScore(card1, card2) {
       const maxDescriptionLength = Math.max(description1.length, description2.length);
       const descriptionScore = (1 - levenshteinDistance / maxDescriptionLength) * 100;
       return descriptionScore;
+  }
+
+  function calculateLevenshteinDistance(s1, s2) {
+      const m = s1.length;
+      const n = s2.length;
+      const dp = new Array(m + 1).fill(null).map(() => new Array(n + 1).fill(0));
+
+      for (let i = 0; i <= m; i++) {
+          dp[i][0] = i;
+      }
+
+      for (let j = 0; j <= n; j++) {
+          dp[0][j] = j;
+      }
+
+      for (let i = 1; i <= m; i++) {
+          for (let j = 1; j <= n; j++) {
+              if (s1[i - 1] === s2[j - 1]) {
+                  dp[i][j] = dp[i - 1][j - 1];
+              } else {
+                  dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
+              }
+          }
+      }
+
+      return dp[m][n];
   }
 
 function calculateSkillScore(card1, card2) {
@@ -65,31 +99,6 @@ function calculateSkillScore(card1, card2) {
     const similarity = (commonSkills / maxLength) * 100;
 
     return similarity;
-}
-function calculateLevenshteinDistance(s1, s2) {
-    const m = s1.length;
-    const n = s2.length;
-    const dp = new Array(m + 1).fill(null).map(() => new Array(n + 1).fill(0));
-
-    for (let i = 0; i <= m; i++) {
-        dp[i][0] = i;
-    }
-
-    for (let j = 0; j <= n; j++) {
-        dp[0][j] = j;
-    }
-
-    for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= n; j++) {
-            if (s1[i - 1] === s2[j - 1]) {
-                dp[i][j] = dp[i - 1][j - 1];
-            } else {
-                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;
-            }
-        }
-    }
-
-    return dp[m][n];
 }
 
 function calculateSimilarityScore(card1, card2) {
