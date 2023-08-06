@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const suggestionsDiv = document.getElementById("suggestions");
     const historyDiv = document.getElementById("history");
     const playBox = document.getElementById("playBox");
+    const guessBox = document.getElementById("guessBox");
+    const startBox = document.getElementById("startBox");
+    const restartButton = document.getElementById("restartButton");
+    const hintButton = document.getElementById("hintButton");
     let puzzleCard = null; // 存储解谜时随机抽取的卡牌
     let previousGuess = null;
 
@@ -55,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 使用种子开始游戏
   function startGameWithSeed(seed) {
     // 在这里使用种子初始化随机数生成器
+    resetGame();
     Math.seedrandom(seed);
 
     // 初始化游戏逻辑，例如随机抽取一张卡牌作为解谜目标等
@@ -86,33 +91,35 @@ document.addEventListener("DOMContentLoaded", function () {
     historyDiv.appendChild(puzzleStartMessage);
 
     // 显示游戏界面
-    randomSeedButton.style.display = "none";
-    seedInput.style.display = "none";
-    useSeedButton.style.display = "none";
+    hintButton.style.display = "block";
+    startBox.style.display = "none";
     document.getElementById("cSeed").style.display = "block";
     playBox.style.display = "block";
   }
 
     sortButton.addEventListener("click", sortHistory);
-
         // 重新开始按钮
-    const restartButton = document.createElement("button");
-    restartButton.textContent = "重新开始";
     restartButton.addEventListener("click", restartGame);
-    restartButton.style.display = "none";
-    playBox.appendChild(restartButton);
+
+    function resetGame() {
+      gameStarted = false;
+      sortOptions.style.display = "none";
+      playBox.style.display = "none";
+      historyDiv.innerHTML = "";
+      restartButton.style.display = "none";
+      hintButton.style.display = "none";
+    }
 
     function restartGame() {
         gameStarted = false;
         puzzleCard = null;
         time = 0;
         highestScore = 0;
-        historyDiv.innerHTML = "";
-        randomSeedButton.style.display = "block";
-        seedInput.style.display = "block";
-        useSeedButton.style.display = "block";
-        sortOptions.style.display = "none";
-        playBox.style.display = "none";
+        resetGame();
+
+        startBox.style.display = "block";
+        guessBox.style.display = "block";
+
         document.getElementById("cSeed").style.display = "none";
     }
 
@@ -127,8 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 提示按钮
-    const hintButton = document.createElement("button");
-    hintButton.textContent = "提示";
+
     hintButton.addEventListener("click", function () {
         if (!puzzleCard) {
             alert("请先点击“解谜开始”按钮开始解谜！");
@@ -164,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
             sortHistory();
         }
     });
-    playBox.appendChild(hintButton);
 
     function guessCardName(guess) {
         if (!puzzleCard) {
@@ -227,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
             historyDiv.appendChild(congratsMessage);
             restartButton.style.display = "block"; // 显示重新开始按钮
             hintButton.style.display = "none"; // 显示重新开始按钮
+            guessBox.style.display = "none";
             gameStarted = false;
         }
     }

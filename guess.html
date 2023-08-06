@@ -81,12 +81,17 @@
   <p>第1000名卡牌相似度：<span id="rank1000Similarity">-</span></p>
 </div>
     <div id="playBox">
+    <div id="guessBox">
     <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
     <button id="guessButton">确认</button>
+    </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
     <div id="history"></div>
+    <button id="hintButton">提示</button>
+    <button id="restartButton">重新开始</button>
     </div>
+
     <div id="fireworks"></div>
 
 <hr> <!-- 这是分割线 -->
@@ -96,6 +101,7 @@
        <p>2. 在输入框中输入猜测的卡牌名称，并点击“猜测”按钮，系统会告诉你这次猜测的相似度和排名。</p>
        <p>3. 相似度越高，排名越靠前，表示你的猜测与目标卡牌越相似。</p>
        <p>4. 猜错了可以继续猜，直到猜对为止。试试你要几次才能猜到目标卡牌吧！</p>
+       <p>5. 由于需要搜索数据库，开始游戏和提示时有卡顿是正常现象。</p>
 
        <h2>常见问题解答</h2>
        <details>
