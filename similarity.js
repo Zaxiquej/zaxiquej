@@ -144,6 +144,10 @@ function calculateSkillScore(card1, card2) {
       for (let j = 0; j < skills2.length; j++){
         if (skills2[j] == skill) {
             let base = 1;
+            if (!skillso2[j]){skillso2[j] = ""};
+            if (!skillsc2[j]){skillsc2[j] = ""};
+            if (!skillso1[i]){skillso1[i] = ""};
+            if (!skillsc1[i]){skillsc1[i] = ""};
             const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
             const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
             base *= ol;

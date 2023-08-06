@@ -67218,7 +67218,7 @@ let cardData = [
     "skill": "token_draw,cost_change",
     "skill_condition": "character=me,character=me",
     "skill_disc": "入场曲 由敌方主战者职业的基本卡之中，随机增加不同的2张卡片到手牌中，并使其消费-3。",
-    "skill_option": "add=-3",
+    "skill_option": "none,add=-3",
     "tribe_name": "-"
   },
   {
