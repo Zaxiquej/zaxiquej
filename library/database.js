@@ -40812,25 +40812,6 @@ let cardData = [
     "tribe_name": "-"
   },
   {
-    "atk": 2,
-    "card_id": 716741010,
-    "card_name": "绝望的救赎·贞德",
-    "card_set_id": 10025,
-    "char_type": 1,
-    "clan": 7,
-    "cost": 3,
-    "evo_atk": 4,
-    "evo_life": 5,
-    "evo_skill_disc": "守护 <br>进化时 给予敌方的从者全体2点伤害。回复自己的主战者2点生命值。<br><br>※此卡片与「救赎的圣女·贞德」视为同一张卡片。",
-    "life": 3,
-    "rarity": 4,
-    "skill": "guard,draw,pp_fixeduse,damage,heal,consume_ep_modifier//damage,heal",
-    "skill_condition": "character=me,character=me,pp_count>=6,pp_count>=6,pp_count>=6,pp_count>=6//character=me,character=me",
-    "skill_disc": "守护 <br>入场曲 抽取1张卡片。<br>爆能强化 6； 给予敌方的从者全体2点伤害。回复自己的主战者2点生命值。获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
-    "skill_option": "none,none,fixeduse=6,damage=2,healing=2,none//damage=2,healing=2",
-    "tribe_name": "-"
-  },
-  {
     "atk": 3,
     "card_id": 127731020,
     "card_name": "飞翔看守",
