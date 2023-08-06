@@ -122,10 +122,15 @@ function calculateSkillScore(card1, card2) {
     const skills1 = cskill1 ? cskill1.split(",") : [];
     const skills2 = cskill2 ? cskill2.split(",") : [];
 
-  //  let cskillo1 = card1.skill_option.replace("//",",");
-  //  let cskillo2 = card2.skill_option.replace("//",",");
-  //  const skillso1 = cskillo1 ? cskillo1.split(",") : [];
-  //  const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+    let cskillo1 = card1.skill_option.replace("//",",");
+    let cskillo2 = card2.skill_option.replace("//",",");
+    const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+    const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+
+    let cskillc1 = card1.skill_condition.replace("//",",");
+    let cskillc2 = card2.skill_condition.replace("//",",");
+    const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
+    const skillsc2 = cskillc2 ? cskillc2.split(",") : [];
 
     if (skills1.length === 0 || skills2.length === 0) {
         return 0;
@@ -133,10 +138,19 @@ function calculateSkillScore(card1, card2) {
 
     // Calculate the number of common skills
     let commonSkills = 0;
-    for (const skill of skills1) {
-        if (skills2.includes(skill)) {
-            commonSkills++;
+    for (let i = 0; i < skills1.length; i++){
+      let skill = skills1[i];
+      for (let j = 0; j < skills2.length; j++){
+        if (skills2[j] == skill) {
+            let base = 1;
+            const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
+            const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
+            base *= ol;
+            base *= cl;
+
+            commonSkills += base;
         }
+      }
     }
 
     // Calculate the maximum possible similarity score based on the longer skill array
@@ -152,8 +166,8 @@ function calculateSimilarityScore(card1, card2) {
     const descriptionScore = calculateDescriptionScore(card1, card2);
 
     // 设置基础分和描述分占比
-    const basicScoreWeight = 0.3;
-    const skillScoreWeight = 0.3;
+    const basicScoreWeight = 0.2;
+    const skillScoreWeight = 0.4;
     const descriptionScoreWeight = 0.4;
 
     // 计算综合相似度分数

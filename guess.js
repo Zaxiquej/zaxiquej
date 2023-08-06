@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getHintCardOptions(minScore) {
-        const options = cardData.filter((card) => calculateSimilarityScore(puzzleCard, card) >= minScore);
+        const options = cardData.filter((card) => calculateSimilarityScore(puzzleCard, card) > minScore && calculateSimilarityScore(puzzleCard, card) < 100);
 
         // 将符合条件的卡牌按相似度从高到低排序
         options.sort((a, b) => {
