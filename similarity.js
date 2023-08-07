@@ -99,7 +99,7 @@
       const minDescriptionLength = Math.min(description1.length, description2.length);
       const maxDescriptionLength = Math.max(description1.length, description2.length);
       const fixingRate = (longestCommonSubstring.length+1)/(minDescriptionLength+1);
-      const fixingConst = 0.5; //根据公共子串占比，最多抬高50%的描述分(50分)
+      const fixingConst = 0.3; //根据公共子串占比，最多抬高50%的描述分(50分)
       const descriptionScore = (1 - levenshteinDistance / maxDescriptionLength) * 100;
       const descriptionScoreFixed = (1-fixingConst)*descriptionScore + fixingConst*(fixingRate*100 + (1-fixingRate)*descriptionScore)
       return descriptionScoreFixed;
