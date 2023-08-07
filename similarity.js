@@ -711,60 +711,75 @@
       }
 
       if (transSub1.length > 0 || transSub2.length > 0){
-                transSub1.push(card1.card_id);
-                transSub2.push(card2.card_id);
-                let occupied = [];
-                let scores = [];
-                let switched = false;
-                if (transSub1.length > transSub2.length){
-                  switched = true;
-                  swapArrays(transSub1,transSub2);
-                }
-                for (let i = 0; i < transSub1.length; i++){
-                  cid1 = transSub1[i];
-                  let max = 0;
-                  let maxId = -1;
-                  let maxArr = [];
-                  for (let j = 0; j < transSub2.length; j++){
-                    if (!occupied.includes(j)){
-                      cid2 = transSub2[j];
-                      const strNumber1 = cid1.toString();
-                      const strNumber2 = cid2.toString();
-                      let nCard1;
-                      let nCard2;
-                      nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
-                      nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
-                      let newBasicScore = calculateBasicScore(nCard1, nCard2);
-                      let newSkillScore = calculateSkillScore(nCard1, nCard2);
-                      if (newBasicScore*basicScoreWeight + newSkillScore*skillScoreWeight > max){
-                        max = newBasicScore*basicScoreWeight + newSkillScore*skillScoreWeight;
-                        maxId = j;
-                        maxArr = [newBasicScore,newSkillScore];
-                      }
-                    }
-                  }
-                  occupied[i] = maxId;
-                  scores[i] = maxArr;
-                }
-                basicScore = 0;
-                skillScore = 0;
-                let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*2;
-                let selfBonus = 1;
-                for (let i = 0; i < transSub1.length; i++){
-                  if (scores[i].length >= 1){
-                    if (i == transSub1.length - 1 && occupied[i] == transSub2.length - 1){ //本体对上加成
-                      selfBonus = 4;
-                      basicScore += scores[i][0]*selfBonus;
-                      skillScore += scores[i][1]*selfBonus;
-                    } else {
-                      basicScore += scores[i][0];
-                      skillScore += scores[i][1];
-                    }
-                  }
-                }
-                basicScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
-                skillScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
+          transSub1.push(card1.card_id);
+          transSub2.push(card2.card_id);
+          let occupied = [];
+          let scores = [];
+          let switched = false;
+          if (transSub1.length > transSub2.length){
+            switched = true;
+            swapArrays(transSub1,transSub2);
+          }
+
+          basicScore = 0;
+          for (let i = 0; i < transSub1.length; i++){
+            cid1 = transSub1[i];
+            for (let j = 0; j < transSub2.length; j++){
+              cid2 = transSub2[j];
+              const strNumber1 = cid1.toString();
+              const strNumber2 = cid2.toString();
+              let nCard1;
+              let nCard2;
+              nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
+              nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
+              let newBasicScore = calculateBasicScore(nCard1, nCard2);
+              if (newBasicScore > basicScore){
+                basicScore = newBasicScore;
+              }
             }
+          }
+
+          for (let i = 0; i < transSub1.length; i++){
+            cid1 = transSub1[i];
+            let max = 0;
+            let maxId = -1;
+            let maxArr = [];
+            for (let j = 0; j < transSub2.length; j++){
+              if (!occupied.includes(j)){
+                cid2 = transSub2[j];
+                const strNumber1 = cid1.toString();
+                const strNumber2 = cid2.toString();
+                let nCard1;
+                let nCard2;
+                nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
+                nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
+                let newSkillScore = calculateSkillScore(nCard1, nCard2);
+                if (skillScoreWeight > max){
+                  max = skillScoreWeight;
+                  maxId = j;
+                  maxArr = newSkillScore;
+                }
+              }
+            }
+            occupied[i] = maxId;
+            scores[i] = maxArr;
+          }
+          skillScore = 0;
+          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*2;
+          let selfBonus = 1;
+          for (let i = 0; i < transSub1.length; i++){
+            if (scores[i]!=undefined){
+              if (i == transSub1.length - 1 && occupied[i] == transSub2.length - 1){ //本体对上加成
+                selfBonus = 4;
+                skillScore += scores[i]*selfBonus;
+              } else {
+                skillScore += scores[i];
+              }
+            }
+          }
+          //basicScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
+          skillScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
+      }
 
       if (midR == 1){
         return basicScore;
