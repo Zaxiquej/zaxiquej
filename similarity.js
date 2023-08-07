@@ -126,6 +126,166 @@ function calculateBasicScore(card1, card2) {
       return dp[m][n];
   }
 
+  function parseItem(item) {
+    const matches = item.match(/(.+)([><=]+)(.+)/);
+    if (matches && matches.length === 4) {
+      const [_, A, sign, B] = matches;
+      const parsedB = parseValue(B);
+      return [A, sign, parsedB];
+    } else if (item === "none") {
+      return ["none", "none", 0];
+    }
+    throw new Error(`Invalid format for item: ${item}`);
+  }
+
+  function parseValue(value) {
+    const numbers = value.split(":").map(parseFloat);
+    if (numbers.length === 2 && numbers.every((num) => !isNaN(num))) {
+      return numbers;
+    } else if (!isNaN(parseFloat(value)) && parseFloat(value) >= 100000000) {
+      return [parseFloat(value)];
+    } else {
+      return value;
+    }
+  }
+
+  function mapNumbersToLetters(numbers, cardId, sharedMap) {
+    let nextLetterCode = 65; // ASCII code for 'A'
+    const map = sharedMap || new Map();
+
+    return numbers.map((num) => {
+      if (num === cardId) {
+        return "X";
+      } else if (map.has(num)) {
+        return map.get(num);
+      } else {
+        const letter = String.fromCharCode(nextLetterCode);
+        map.set(num, letter);
+        nextLetterCode++;
+        return letter;
+      }
+    });
+  }
+
+  function extractLargeNumbersFromString(inputString) {
+    const regex = /\b(?:100000000|[1-9]\d{8,})\b/g;
+    const largeNumbers = inputString.match(regex) || [];
+    return largeNumbers.map(Number);
+  }
+
+  function calculateConditionScore(card1,card2,array1, array2) {
+    let weirdKeys = ["none","save_target","burial_rite","save_burial_rite_target"];
+    function findClosestMatchingIndex(index, targetArray, excludeIndices) {
+      let closestIndex = -1;
+      let minDifference = Number.MAX_VALUE;
+
+      for (let i = 0; i < targetArray.length; i++) {
+        if (excludeIndices.includes(i)) continue;
+
+        const targetItem = targetArray[i];
+        const [targetA, targetSign, targetB] = parseItem(targetItem);
+        const [currentA, currentSign, currentB] = parseItem(array1[index]);
+
+        if (targetA === currentA) {
+          if (targetSign === currentSign) {
+            let difference;
+            if (typeof targetB === "number" && typeof currentB === "number") {
+              difference = Math.abs(targetB - currentB);
+            } else if (typeof targetB === "string" && typeof currentB === "string") {
+              difference = calculateLevenshteinDistance(targetB, currentB);
+            } else {
+              continue;
+            }
+
+            if (difference < minDifference) {
+              minDifference = difference;
+              closestIndex = i;
+            }
+          } else {
+            let difference;
+            if (typeof targetB === "number" && typeof currentB === "number") {
+              difference = Math.abs(targetB - currentB);
+            } else if (typeof targetB === "string" && typeof currentB === "string") {
+              difference = calculateLevenshteinDistance(targetB, currentB);
+            } else {
+              continue;
+            }
+
+            if (difference < minDifference) {
+              minDifference = difference;
+              closestIndex = i;
+            }
+          }
+        }
+      }
+
+      return closestIndex;
+    }
+
+    function parseItem(item) {
+      const matches = item.match(/(.+)([><=]+)(.+)/);
+      if (matches && matches.length === 4) {
+        const [_, A, sign, B] = matches;
+        return [A, sign, isNaN(B) ? B : parseFloat(B)];;
+      }
+      for (let key of weirdKeys){
+        if (item === key) {
+          return [key,key,0];
+        };
+      }
+      throw new Error(`Invalid format for item: ${item}`);
+    }
+
+    let totalScore = 0;
+    const visitedIndices = new Set();
+
+    for (let i = 0; i < array1.length; i++) {
+      const closestIndex = findClosestMatchingIndex(i, array2, Array.from(visitedIndices));
+      if (closestIndex !== -1) {
+        visitedIndices.add(closestIndex);
+
+        const [A1, sign1, B1] = parseItem(array1[i]);
+        const [A2, sign2, B2] = parseItem(array2[closestIndex]);
+
+        let score = 0;
+        if (A1 === A2 && weirdKeys.includes(A1)) {
+          score = 1;
+        } else if (A1 === A2) {
+          if (sign1 === sign2) {
+            if (typeof B1 === "array" && typeof B2 === "array"){
+              const sharedMap = new Map();
+              const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
+              const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
+              score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
+            }
+            if (typeof B1 === "number" && typeof B2 === "number") {
+              score = 1 / (Math.abs(B2 - B1) + 1);
+            } else if (typeof B1 === "string" && typeof B2 === "string") {
+              score = 1 / (calculateLevenshteinDistance(B2, B1) + 1);
+            }
+          } else {
+            if (typeof B1 === "number" && typeof B2 === "number") {
+              score = 1 / (2 * (Math.abs(B2 - B1)/50000000 + 1));
+            } else if (typeof B1 === "string" && typeof B2 === "string") {
+              score = 1 / (2 * (calculateLevenshteinDistance(B2, B1) + 1));
+            }
+          }
+        } else if (typeof B1 === "array" && typeof B2 === "array"){
+          const sharedMap = new Map();
+          const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
+          const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
+          score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1) * (3/4);
+        }
+
+        totalScore += score;
+      }
+    }
+
+    const maxArrayLength = Math.max(array1.length, array2.length);
+    const finalScore = (totalScore+1) / (maxArrayLength+1);
+    return finalScore;
+  }
+
 function calculateSkillScore(card1, card2) {
     let cskill1 = card1.skill.replace("//",",");
     let cskill2 = card2.skill.replace("//",",");
@@ -157,14 +317,24 @@ function calculateSkillScore(card1, card2) {
         if (chosen.includes(j)){
           continue;
         }
-        if (skills2[j] == skill) {
+        if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
             let base = 1;
             if (!skillso2[j]){skillso2[j] = ""};
             if (!skillsc2[j]){skillsc2[j] = ""};
             if (!skillso1[i]){skillso1[i] = ""};
             if (!skillsc1[i]){skillsc1[i] = ""};
-            const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
-            const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
+
+            let skillsoArr1 = skillso1[i].split("&");
+            let skillsoArr2 = skillso2[j].split("&");
+            const ol = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+
+            //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
+
+            let skillscArr1 = skillsc1[i].split("&");
+            let skillscArr2 = skillsc2[j].split("&");
+            const cl = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+
+            //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
             base *= ol;
             base *= cl;
             if (base > nb){
@@ -181,8 +351,21 @@ function calculateSkillScore(card1, card2) {
 
     // Calculate the maximum possible similarity score based on the longer skill array
     const maxLength = Math.max(skills1.length, skills2.length);
-    const similarity = (commonSkills / maxLength) * 100;
+    let similarity = (commonSkills / maxLength) * 100;
     return similarity;
+}
+
+function calculateTokenRate(card1,card2,similarity){
+  const sharedMap = new Map();
+  const mappedB1 = mapNumbersToLetters(extractLargeNumbersFromString(card1.skill_option), card1.card_id, sharedMap);
+  const mappedB2 = mapNumbersToLetters(extractLargeNumbersFromString(card2.skill_option), card2.card_id, sharedMap);
+
+  if (mappedB1.length > 0 && mappedB2.length > 0){
+    let rate = 1 / Math.max(mappedB1.length,mappedB2.length)
+    let tokenscore = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
+    return rate*similarity + (1-rate) *(1 - (1-similarity)*(1-tokenscore));
+  }
+  return similarity;
 }
 
 function calculateSimilarityScore(card1, card2) {

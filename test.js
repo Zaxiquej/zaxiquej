@@ -109,7 +109,7 @@ function createNewDataBase(allcards) {
         'tribe_name'
     ];
 
-    const removal = ["灵魂嚮导‧艾米","黑天月兔妖‧菈米娜","初音未来","暗魔女将‧艾瑟菈","夜空吸血鬼‧卡媞亚"];
+    const removal = ["灵魂嚮导‧艾米","黑天月兔妖‧菈米娜","初音未来","暗魔女将‧艾瑟菈","夜空吸血鬼‧卡媞亚","绝望的救赎·贞德"];
     // 用于存储最终的卡片数据
     const uniqueCardsMap = new Map();
 
