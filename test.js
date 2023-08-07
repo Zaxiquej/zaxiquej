@@ -123,7 +123,7 @@ function createNewDataBase(allcards, subToken) {
             uniqueCardsMap.set(card.card_id, card);
           }
         } else {
-          if (card.card_name !== null && card.base_card_id == card.card_id && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
+          if (card.card_name !== null && (card.base_card_id == card.card_id || card.base_card_id == 900811050) && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
               if (uniqueCardsMap.has(card.card_name)) {
                   const existingCard = uniqueCardsMap.get(card.card_name);
                   // 保留card_id较小的卡片

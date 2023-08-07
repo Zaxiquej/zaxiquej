@@ -2,7 +2,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 900044080,
-    "card_name": "古兰的觉悟",
+    "card_name": "葛兰的觉悟",
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -1113,6 +1113,27 @@ let cardData = [
     "tribe_name": "-"
   },
   {
+    "atk": 2,
+    "card_id": 900841330,
+    "card_name": "雷琉的人偶",
+    "card_set_id": 90000,
+    "char_type": 1,
+    "clan": 8,
+    "cost": 0,
+    "evo_atk": 4,
+    "evo_life": 5,
+    "evo_skill_disc": "与进化前能力相同。",
+    "life": 3,
+    "rarity": 4,
+    "skill": "quick,guard,destroy",
+    "skill_condition": "character=me,character=me,{me.inplay_self.count}>0",
+    "skill_preprocess": "none,none,none",
+    "skill_disc": "疾驰 <br>守护 <br>敌方的回合结束时，破坏这个从者。<br>※此卡片与「悬丝傀儡」视为同一张卡片。",
+    "skill_option": "none,none,none",
+    "skill_target": "character=me,character=me,character=me&target=self",
+    "tribe_name": "学园"
+  },
+  {
     "atk": 10,
     "card_id": 900841140,
     "card_name": "破坏召来者·薇姿雅",
@@ -1212,7 +1233,7 @@ let cardData = [
     "skill": "choice,update_deck",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=unit",
     "skill_preprocess": "none,none",
-    "skill_disc": "·解析的创造物<br>·古老的创造物<br>·神秘的创造物<br>·绚烂的创造物<br>将2张命运抉择 所指定的卡片各增加2张到牌堆中。",
+    "skill_disc": "·解析的创造物<br>·古老的创造物<br>·神祕的创造物<br>·绚烂的创造物<br>将2张命运抉择 所指定的卡片各增加2张到牌堆中。",
     "skill_option": "card_id=900811030:900811010:900811020:900811040,type=add&repeat_count=2",
     "skill_target": "choice_count=2,target=chosen_cards&card_type=unit",
     "tribe_name": "-"
@@ -1338,7 +1359,7 @@ let cardData = [
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
     "skill_preprocess": "none,none",
-    "skill_disc": "·丝碧涅的创造物<br>·神秘的遗物·丝碧涅与璐契儿<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·丝碧涅的创造物<br>·神祕的遗物·丝碧涅与璐契儿<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900841010:900841190,repeat_count=1&summon_side=me",
     "skill_target": "none,target=chosen_cards&card_type=all",
     "tribe_name": "-"
@@ -1359,7 +1380,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "none",
-    "skill_disc": "召唤1个神秘的创造物与1个古老的创造物到战场上。",
+    "skill_disc": "召唤1个神祕的创造物与1个古老的创造物到战场上。",
     "skill_option": "summon_token=900811020:900811010",
     "skill_target": "none",
     "tribe_name": "-"
@@ -1682,7 +1703,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 900031030,
-    "card_name": "暗影士兵",
+    "card_name": "闇影士兵",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -2157,7 +2178,7 @@ let cardData = [
     "skill": "summon_token,summon_token",
     "skill_condition": "character=me&target=destroyed_card&card_type=unit&{me.inplay_self.count}>0&turn=self,character=me&target=destroyed_card&card_type=unit&{me.inplay_self.count}>0&turn=self",
     "skill_preprocess": "per_turn=1:skill_num_1&preprocess_condition=({me.destroyed_card_list.unit.count}<15),per_turn=1:skill_num_1&preprocess_condition=({me.destroyed_card_list.unit.count}>=15)",
-    "skill_disc": "倒数 3<br>当自己的从者被破坏时，召唤1个暗影士兵到战场上，此效果每个自己的回合仅限发动1次。如果本次对战中自己已被破坏的从者数为15个以上（包含该从者），则会由原本的暗影士兵转变为召唤暗影指挥官到战场上。",
+    "skill_disc": "倒数 3<br>当自己的从者被破坏时，召唤1个闇影士兵到战场上，此效果每个自己的回合仅限发动1次。如果本次对战中自己已被破坏的从者数为15个以上（包含该从者），则会由原本的闇影士兵转变为召唤闇影指挥官到战场上。",
     "skill_option": "summon_token=900031030,summon_token=900041160",
     "skill_target": "none,none",
     "tribe_name": "-"
@@ -6953,7 +6974,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126521010,
-    "card_name": "调皮的僵尸",
+    "card_name": "调皮的殭尸",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 5,
@@ -7197,7 +7218,7 @@ let cardData = [
     "skill": "destroy,summon_token",
     "skill_condition": "character=me&target=inplay&card_type=unit,character=me&card_type=spell",
     "skill_preprocess": "none,none",
-    "skill_disc": "破坏1个自己的从者。<br>召唤1个僵尸到战场上。",
+    "skill_disc": "破坏1个自己的从者。<br>召唤1个殭尸到战场上。",
     "skill_option": "none,summon_token=900511030",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,none",
     "tribe_name": "-"
@@ -7856,7 +7877,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110621020,
-    "card_name": "狂欲的信徒",
+    "card_name": "姦淫的信徒",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -8255,7 +8276,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 111624010,
-    "card_name": "狂欲之吻",
+    "card_name": "姦淫之吻",
     "card_set_id": 10011,
     "char_type": 4,
     "clan": 6,
@@ -8843,7 +8864,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 113711010,
-    "card_name": "温情的兔耳治愈师",
+    "card_name": "温情的兔耳治癒师",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 7,
@@ -9171,7 +9192,7 @@ let cardData = [
     "skill": "choice,token_draw",
     "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all",
     "skill_preprocess": "none,none",
-    "skill_disc": "·神圣的开示<br>·治愈祷告<br>·破邪圣光<br>增加1张命运抉择 所指定的卡片到手牌中。",
+    "skill_disc": "·神圣的开示<br>·治癒祷告<br>·破邪圣光<br>增加1张命运抉择 所指定的卡片到手牌中。",
     "skill_option": "card_id=900713010:101714020:100714030,repeat_count=1&summon_side=me",
     "skill_target": "none,target=chosen_cards&card_type=all",
     "tribe_name": "-"
@@ -10116,7 +10137,7 @@ let cardData = [
     "skill": "token_draw",
     "skill_condition": "character=me",
     "skill_preprocess": "none",
-    "skill_disc": "入场曲 增加1张神秘的创造物卡片到手牌中。",
+    "skill_disc": "入场曲 增加1张神祕的创造物卡片到手牌中。",
     "skill_option": "token_draw=900811020",
     "skill_target": "none",
     "tribe_name": "-"
@@ -10267,6 +10288,27 @@ let cardData = [
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
     "tribe_name": "创造物"
+  },
+  {
+    "atk": 3,
+    "card_id": 900811110,
+    "card_name": "改良型·悬丝傀儡",
+    "card_set_id": 90000,
+    "char_type": 1,
+    "clan": 8,
+    "cost": 1,
+    "evo_atk": 5,
+    "evo_life": 5,
+    "evo_skill_disc": "与进化前能力相同。",
+    "life": 3,
+    "rarity": 1,
+    "skill": "rush,destroy",
+    "skill_condition": "character=me,{me.inplay_self.count}>0",
+    "skill_preprocess": "none,none",
+    "skill_disc": "突进 <br>敌方的回合结束时，破坏这个从者。<br>※此卡片与「悬丝傀儡」视为同一张卡片。",
+    "skill_option": "none,none",
+    "skill_target": "character=me,character=me&target=self",
+    "tribe_name": "-"
   },
   {
     "atk": 1,
@@ -10914,7 +10956,7 @@ let cardData = [
     "skill": "update_deck",
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=self&card_type=field",
     "skill_preprocess": "none",
-    "skill_disc": "倒数 3<br>自己的回合结束时，由解析的创造物、古老的创造物、神秘的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
+    "skill_disc": "倒数 3<br>自己的回合结束时，由解析的创造物、古老的创造物、神祕的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
     "skill_option": "token_draw=900811040:900811010:900811020:900811030:?2&type=add",
     "skill_target": "none",
     "tribe_name": "-"
@@ -10956,7 +10998,7 @@ let cardData = [
     "skill": "choice,transform,update_deck",
     "skill_condition": "character=me&target=self&resonance=true&pp_count>=1,character=me&target=self&resonance=true&pp_count>=1,{me.inplay_self.count}>0&character=me&target=self&card_type=field",
     "skill_preprocess": "none,none,none",
-    "skill_disc": "·创造物兵团召集令<br>·创造物的光辉<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，由神秘的创造物、绚烂的创造物、精奥的创造物之中，随机增加不同的2张卡片到牌堆中。",
+    "skill_disc": "·创造物兵团召集令<br>·创造物的光辉<br>如果这张卡片在手牌中，自己剩馀的PP为1以上，并且共鸣 状态已发动，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>倒数 2<br>自己的回合结束时，由神祕的创造物、绚烂的创造物、精奥的创造物之中，随机增加不同的2张卡片到牌堆中。",
     "skill_option": "card_id=900813010:900813020,repeat_count=1&summon_side=me,token_draw=900811020:900811040:900811060:?2&type=add",
     "skill_target": "none,target=chosen_cards&card_type=all,none",
     "tribe_name": "-"
@@ -14051,7 +14093,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 121111010,
-    "card_name": "治愈妖精",
+    "card_name": "治癒妖精",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 1,
@@ -14996,7 +15038,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 117124010,
-    "card_name": "治愈的波动",
+    "card_name": "治癒的波动",
     "card_set_id": 10017,
     "char_type": 4,
     "clan": 1,
@@ -15815,7 +15857,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 106221010,
-    "card_name": "库丘林",
+    "card_name": "库胡林",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 2,
@@ -16487,7 +16529,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 119231010,
-    "card_name": "武魂梦想家·米琳",
+    "card_name": "武魂梦想家·味琳",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 2,
@@ -19007,7 +19049,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126331010,
-    "card_name": "神秘皇后·梅迪",
+    "card_name": "神祕皇后·梅迪",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
@@ -20133,7 +20175,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "none",
-    "skill_disc": "入场曲 由泥尘巨像、僵尸之中，随机召唤1个到战场上。",
+    "skill_disc": "入场曲 由泥尘巨像、殭尸之中，随机召唤1个到战场上。",
     "skill_option": "random_count=1&summon_token=900311020:900511030",
     "skill_target": "none",
     "tribe_name": "土之印"
@@ -22577,7 +22619,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 103531030,
-    "card_name": "暗影收割者",
+    "card_name": "闇影收割者",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 5,
@@ -22724,7 +22766,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107511010,
-    "card_name": "阴郁的死灵术师",
+    "card_name": "阴鬱的死灵术师",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 5,
@@ -22794,7 +22836,7 @@ let cardData = [
     "cost": 2,
     "evo_atk": 3,
     "evo_life": 5,
-    "evo_skill_disc": "谢幕曲 随机给予1个自己的从者「谢幕曲 召唤1个僵尸到战场上」效果。",
+    "evo_skill_disc": "谢幕曲 随机给予1个自己的从者「谢幕曲 召唤1个殭尸到战场上」效果。",
     "life": 3,
     "rarity": 3,
     "skill": "attach_skill//attach_skill",
@@ -23375,7 +23417,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119511030,
-    "card_name": "骨翼僵尸",
+    "card_name": "骨翼殭尸",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -23396,7 +23438,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119511040,
-    "card_name": "灵魂向导",
+    "card_name": "灵魂嚮导",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -24068,7 +24110,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900511030,
-    "card_name": "僵尸",
+    "card_name": "殭尸",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -24215,7 +24257,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 104514010,
-    "card_name": "僵尸派对",
+    "card_name": "殭尸派对",
     "card_set_id": 10004,
     "char_type": 4,
     "clan": 5,
@@ -24228,7 +24270,7 @@ let cardData = [
     "skill": "pp_fixeduse,damage,summon_token",
     "skill_condition": "pp_count>=7,character=op&target=inplay&card_type=unit,character=op&target=inplay&card_type=unit&pp_count>=7",
     "skill_preprocess": "none,none,none",
-    "skill_disc": "给予1个敌方的从者3点伤害。<br>爆能强化 7； 随后召唤3个僵尸到战场上。",
+    "skill_disc": "给予1个敌方的从者3点伤害。<br>爆能强化 7； 随后召唤3个殭尸到战场上。",
     "skill_option": "fixeduse=7,damage=3,summon_token=900511030:900511030:900511030",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,none",
     "tribe_name": "-"
@@ -24522,7 +24564,7 @@ let cardData = [
     "skill": "summon_token,pp_fixeduse,summon_token,summon_token",
     "skill_condition": "pp_count<6,pp_count>=6,pp_count>=6,pp_count>=6",
     "skill_preprocess": "none,none,none,none",
-    "skill_disc": "召唤1个僵尸与1个怨灵到战场上。<br>爆能强化 6； 由原本的召唤僵尸到战场上转变为发动亡者召还 5",
+    "skill_disc": "召唤1个殭尸与1个怨灵到战场上。<br>爆能强化 6； 由原本的召唤殭尸到战场上转变为发动亡者召还 5",
     "skill_option": "summon_token=900511030:900511020,fixeduse=6,none,summon_token=900511020",
     "skill_target": "none,none,character=me&target=destroyed_card_list&card_type=unit&status_cost<:=5&random_count=1,none",
     "tribe_name": "-"
@@ -24627,7 +24669,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "{me.inplay_self.count}>0",
     "skill_preprocess": "necromance=4",
-    "skill_disc": "敌方的回合结束时，死灵术 4；召唤1个僵尸到战场上。",
+    "skill_disc": "敌方的回合结束时，死灵术 4；召唤1个殭尸到战场上。",
     "skill_option": "summon_token=900511030",
     "skill_target": "none",
     "tribe_name": "-"
@@ -24690,7 +24732,7 @@ let cardData = [
     "skill": "choice,transform,destroy,summon_token",
     "skill_condition": "character=me&pp_count>=5,character=me&target=chosen_cards&card_type=all&pp_count>=5,character=me&target=destroyed_card&card_type=unit&{me.inplay_self.count}>0,character=me",
     "skill_preprocess": "none,none,none,none",
-    "skill_disc": "·禁忌的复生<br>·被藏匿的财宝<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个僵尸到战场上。",
+    "skill_disc": "·禁忌的复生<br>·被藏匿的财宝<br>如果这张卡片在手牌中，并且自己剩馀的PP为5以上，则会在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>---------- <br>当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个殭尸到战场上。",
     "skill_option": "card_id=900512010:900512020,repeat_count=1&summon_side=me,none,summon_token=900511030",
     "skill_target": "none,target=chosen_cards&card_type=all,character=me&target=inplay_self&card_type=field,none",
     "tribe_name": "-"
@@ -24950,7 +24992,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 102631030,
-    "card_name": "暗夜族公主·班比",
+    "card_name": "吸血鬼公主·班比",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 6,
@@ -25307,7 +25349,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 110611030,
-    "card_name": "狂欲的随从",
+    "card_name": "姦淫的随从",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -26042,7 +26084,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 123611010,
-    "card_name": "狂欲的隐者",
+    "card_name": "姦淫的隐者",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 6,
@@ -26084,7 +26126,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 123641030,
-    "card_name": "爱绝狂欲·瓦娜蕾格",
+    "card_name": "爱绝姦淫·瓦娜蕾格",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 6,
@@ -26097,7 +26139,7 @@ let cardData = [
     "skill": "quick,token_draw,powerup,update_deck",
     "skill_condition": "character=me,character=me,character=me&wrath=true,character=me&wrath=true",
     "skill_preprocess": "none,none,none,none",
-    "skill_disc": "疾驰 <br>入场曲 增加1张爱绝的飞翔卡片到手牌中。如果狂乱 状态已发动，则会获得+2/+2效果。<br>谢幕曲 如果狂乱 状态已发动，则会增加7张没有谢幕曲 能力的爱绝狂欲·瓦娜蕾格卡片到牌堆中。",
+    "skill_disc": "疾驰 <br>入场曲 增加1张爱绝的飞翔卡片到手牌中。如果狂乱 状态已发动，则会获得+2/+2效果。<br>谢幕曲 如果狂乱 状态已发动，则会增加7张没有谢幕曲 能力的爱绝姦淫·瓦娜蕾格卡片到牌堆中。",
     "skill_option": "none,token_draw=900644090,add_offense=2&add_life=2,token_draw=900641070:900641070:900641070:900641070:900641070:900641070:900641070&type=add",
     "skill_target": "character=me&target=self,none,character=me&target=self,none",
     "tribe_name": "-"
@@ -26777,7 +26819,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 110624010,
-    "card_name": "狂欲的羽翼",
+    "card_name": "姦淫的羽翼",
     "card_set_id": 10010,
     "char_type": 4,
     "clan": 6,
@@ -27260,7 +27302,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101711010,
-    "card_name": "兔耳治愈师",
+    "card_name": "兔耳治癒师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 7,
@@ -28289,7 +28331,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 123711020,
-    "card_name": "神殿的治愈师",
+    "card_name": "神殿的治癒师",
     "card_set_id": 10023,
     "char_type": 1,
     "clan": 7,
@@ -29898,7 +29940,7 @@ let cardData = [
     "skill": "update_deck",
     "skill_condition": "character=me&target=self&card_type=unit",
     "skill_preprocess": "none",
-    "skill_disc": "入场曲 由解析的创造物、古老的创造物、神秘的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
+    "skill_disc": "入场曲 由解析的创造物、古老的创造物、神祕的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
     "skill_option": "token_draw=900811040:900811010:900811020:900811030:?2&type=add",
     "skill_target": "none",
     "tribe_name": "-"
@@ -31284,7 +31326,7 @@ let cardData = [
     "skill": "guard,update_deck,cost_change",
     "skill_condition": "character=me,character=me,character=me",
     "skill_preprocess": "none,none,none",
-    "skill_disc": "守护 <br>入场曲 增加4张神秘的创造物卡片到牌堆中。使上述卡片消费转变为1。",
+    "skill_disc": "守护 <br>入场曲 增加4张神祕的创造物卡片到牌堆中。使上述卡片消费转变为1。",
     "skill_option": "none,token_draw=900811020:900811020:900811020:900811020&type=add,set=1",
     "skill_target": "character=me&target=self,none,character=me&target=last_target&card_type=unit",
     "tribe_name": "-"
@@ -31326,7 +31368,7 @@ let cardData = [
     "skill": "update_deck,cost_change,evolve//guard,attach_skill",
     "skill_condition": "character=me,character=me,{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}>=6//character=me,character=me",
     "skill_preprocess": "none,none,none//none,none",
-    "skill_disc": "入场曲 增加2张神秘的创造物卡片到牌堆中。使上述卡片消费转变为1。如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会使这个从者进化。",
+    "skill_disc": "入场曲 增加2张神祕的创造物卡片到牌堆中。使上述卡片消费转变为1。如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会使这个从者进化。",
     "skill_option": "token_draw=900811020:900811020&type=add,set=1,none//none,skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self&card_type=class)(option:type=all)(preprocess:damage_after_stop)",
     "skill_target": "none,character=me&target=last_target&card_type=unit,character=me&target=self//character=me,character=me&target=inplay&card_type=class",
     "tribe_name": "创造物"
@@ -31880,7 +31922,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101011040,
-    "card_name": "治愈天使",
+    "card_name": "治癒天使",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 0,
@@ -33195,7 +33237,7 @@ let cardData = [
     "skill": "destroy,summon_token,summon_token,possess_ep_modifier",
     "skill_condition": "character=me,{me.destroyed_card_list.unit.count}>=10,{me.destroyed_card_list.unit.count}>=20,{me.destroyed_card_list.unit.count}>=20",
     "skill_preprocess": "none,none,none,none",
-    "skill_disc": "破坏1个敌方的从者或1个敌方的护符。<br>如果本次对战中自己已被破坏的从者数为10个以上，则会召唤1个暗影突击者到战场上。如果为20个以上，则会额外再召唤1个暗影上将到战场上。回复自己的EP 1点。",
+    "skill_disc": "破坏1个敌方的从者或1个敌方的护符。<br>如果本次对战中自己已被破坏的从者数为10个以上，则会召唤1个闇影突击者到战场上。如果为20个以上，则会额外再召唤1个闇影上将到战场上。回复自己的EP 1点。",
     "skill_option": "none,summon_token=900041170,summon_token=900041180,add_ep=1",
     "skill_target": "character=op&target=inplay&card_type=unit_and_allfield&select_count=1,none,none,character=me&target=inplay&card_type=class",
     "tribe_name": "-"
@@ -33581,7 +33623,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 102111030,
-    "card_name": "治愈精灵",
+    "card_name": "治癒精灵",
     "card_set_id": 10002,
     "char_type": 1,
     "clan": 1,
@@ -34505,7 +34547,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 125121020,
-    "card_name": "鲜艳的夜鹰人",
+    "card_name": "鲜豔的夜鹰人",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 1,
@@ -37277,7 +37319,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103321040,
-    "card_name": "神秘探求者·克拉克",
+    "card_name": "神祕探求者·克拉克",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -39860,7 +39902,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 118411010,
-    "card_name": "美人鱼向导",
+    "card_name": "美人鱼嚮导",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 4,
@@ -40734,7 +40776,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "necromance=4",
-    "skill_disc": "入场曲 死灵术 4； 召唤1个僵尸到战场上。",
+    "skill_disc": "入场曲 死灵术 4； 召唤1个殭尸到战场上。",
     "skill_option": "summon_token=900511030",
     "skill_target": "none",
     "tribe_name": "-"
@@ -40994,7 +41036,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103511060,
-    "card_name": "海盗僵尸",
+    "card_name": "海盗殭尸",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 5,
@@ -41007,7 +41049,7 @@ let cardData = [
     "skill": "attach_skill",
     "skill_condition": "character=me&target=self",
     "skill_preprocess": "necromance=2",
-    "skill_disc": "入场曲 死灵术 2； 获得「谢幕曲 召唤1个僵尸到战场上」效果。",
+    "skill_disc": "入场曲 死灵术 2； 获得「谢幕曲 召唤1个殭尸到战场上」效果。",
     "skill_option": "skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=900511030)(preprocess:none)",
     "skill_target": "character=me&target=self&card_type=unit",
     "tribe_name": "-"
@@ -41015,7 +41057,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 104511040,
-    "card_name": "哥布林僵尸",
+    "card_name": "哥布林殭尸",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 5,
@@ -41343,7 +41385,7 @@ let cardData = [
     "skill": "attach_skill,pp_fixeduse,evolve//attach_skill",
     "skill_condition": "character=me,pp_count>=7,pp_count>=7//character=me",
     "skill_preprocess": "none,none,none//none",
-    "skill_disc": "谢幕曲 给予自己的主战者「敌方的回合结束时，召唤1个僵尸到战场上，并失去此能力」效果。<br>入场曲 爆能强化 7； 使这个从者进化。",
+    "skill_disc": "谢幕曲 给予自己的主战者「敌方的回合结束时，召唤1个殭尸到战场上，并失去此能力」效果。<br>入场曲 爆能强化 7； 使这个从者进化。",
     "skill_option": "skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token=900511030)(preprocess:remove_after_action=(count=1)),fixeduse=7,none//skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token=900511040)(preprocess:remove_after_action=(count=1))",
     "skill_target": "character=me&target=inplay&card_type=class,none,character=me//character=me&target=inplay&card_type=class",
     "tribe_name": "-"
@@ -41351,7 +41393,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 114531030,
-    "card_name": "热战的僵尸少女",
+    "card_name": "热战的殭尸少女",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 5,
@@ -42225,7 +42267,7 @@ let cardData = [
     "skill": "summon_token,summon_token,quick",
     "skill_condition": "character=me&cemetery_count<6,character=me,character=me",
     "skill_preprocess": "none,necromance=6,none",
-    "skill_disc": "召唤1个僵尸到战场上。给予该从者疾驰 效果。<br>死灵术 6； 由原本的1个转变为2个。",
+    "skill_disc": "召唤1个殭尸到战场上。给予该从者疾驰 效果。<br>死灵术 6； 由原本的1个转变为2个。",
     "skill_option": "summon_token=900511030,summon_token=900511030:900511030,none",
     "skill_target": "none,none,character=me&target=skill_summoned_card&card_type=unit",
     "tribe_name": "-"
@@ -42905,7 +42947,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 110641010,
-    "card_name": "狂欲绝杰·瓦娜蕾格",
+    "card_name": "姦淫绝杰·瓦娜蕾格",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -45215,7 +45257,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101714020,
-    "card_name": "治愈祷告",
+    "card_name": "治癒祷告",
     "card_set_id": 10001,
     "char_type": 4,
     "clan": 7,
@@ -45816,7 +45858,7 @@ let cardData = [
     "skill": "guard,update_deck",
     "skill_condition": "character=me,character=me&target=self&card_type=unit",
     "skill_preprocess": "none,none",
-    "skill_disc": "守护 <br>入场曲 增加2张神秘的创造物卡片到牌堆中。",
+    "skill_disc": "守护 <br>入场曲 增加2张神祕的创造物卡片到牌堆中。",
     "skill_option": "none,token_draw=900811020:900811020&type=add",
     "skill_target": "character=me&target=self&card_type=unit,none",
     "tribe_name": "-"
@@ -46131,7 +46173,7 @@ let cardData = [
     "skill": "summon_token,summon_token",
     "skill_condition": "{me.inplay_self.count}>0&{me.inplay.class.pp}>=1,{me.inplay_self.count}>0&{me.inplay.class.pp}>=3",
     "skill_preprocess": "none,none",
-    "skill_disc": "自己的回合结束时，如果自己剩馀的PP为1以上，则会召唤1个解析的创造物到战场上。如果为3以上，则会额外再召唤1个神秘的创造物到战场上。",
+    "skill_disc": "自己的回合结束时，如果自己剩馀的PP为1以上，则会召唤1个解析的创造物到战场上。如果为3以上，则会额外再召唤1个神祕的创造物到战场上。",
     "skill_option": "summon_token=900811030,summon_token=900811020",
     "skill_target": "none,none",
     "tribe_name": "-"
@@ -46643,7 +46685,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900811020,
-    "card_name": "神秘的创造物",
+    "card_name": "神祕的创造物",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -46727,7 +46769,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 900841190,
-    "card_name": "神秘的遗物·丝碧涅与璐契儿",
+    "card_name": "神祕的遗物·丝碧涅与璐契儿",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -46887,7 +46929,7 @@ let cardData = [
     "skill": "summon_token,summon_token",
     "skill_condition": "character=me,{me.usable_ep}>{op.usable_ep}",
     "skill_preprocess": "none,none",
-    "skill_disc": "召唤1个古老的创造物与1个解析的创造物到战场上。<br>如果自己剩馀的EP多于敌方的EP，则会额外再召唤1个神秘的创造物到战场上。（若该回合尚未进化解禁，则剩馀EP为0）",
+    "skill_disc": "召唤1个古老的创造物与1个解析的创造物到战场上。<br>如果自己剩馀的EP多于敌方的EP，则会额外再召唤1个神祕的创造物到战场上。（若该回合尚未进化解禁，则剩馀EP为0）",
     "skill_option": "summon_token=900811010:900811030,summon_token=900811020",
     "skill_target": "none,none",
     "tribe_name": "-"
@@ -49352,7 +49394,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101211070,
-    "card_name": "勇猛的骑士",
+    "card_name": "勇勐的骑士",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 2,
@@ -49604,7 +49646,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 109231010,
-    "card_name": "神秘特务·蒂伊",
+    "card_name": "神祕特务·蒂伊",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 2,
@@ -52313,7 +52355,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 116411010,
-    "card_name": "治愈的龙骑士",
+    "card_name": "治癒的龙骑士",
     "card_set_id": 10016,
     "char_type": 1,
     "clan": 4,
@@ -53712,7 +53754,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "necromance=3",
-    "skill_disc": "入场曲 死灵术 3； 召唤1个僵尸到战场上。",
+    "skill_disc": "入场曲 死灵术 3； 召唤1个殭尸到战场上。",
     "skill_option": "summon_token=900511030",
     "skill_target": "none",
     "tribe_name": "-"
@@ -53909,7 +53951,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 121521020,
-    "card_name": "火焰僵尸",
+    "card_name": "火焰殭尸",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 5,
@@ -54363,7 +54405,7 @@ let cardData = [
     "skill": "powerup,attach_skill",
     "skill_condition": "character=me&target=inplay&card_type=unit,character=me&target=inplay&card_type=unit",
     "skill_preprocess": "none,none",
-    "skill_disc": "给予1个自己的从者+2/+0与「谢幕曲 召唤1个僵尸到战场上」效果。",
+    "skill_disc": "给予1个自己的从者+2/+0与「谢幕曲 召唤1个殭尸到战场上」效果。",
     "skill_option": "add_offense=2,skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=900511030)(preprocess:none)",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=last_target&card_type=unit",
     "tribe_name": "-"
@@ -54980,7 +55022,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 111611020,
-    "card_name": "狂欲的狂信者",
+    "card_name": "姦淫的狂信者",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 6,
@@ -57219,7 +57261,7 @@ let cardData = [
     "skill": "update_deck//draw",
     "skill_condition": "character=me&target=self&card_type=unit//character=me&target=self&card_type=unit",
     "skill_preprocess": "none//none",
-    "skill_disc": "入场曲 由解析的创造物、古老的创造物、神秘的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
+    "skill_disc": "入场曲 由解析的创造物、古老的创造物、神祕的创造物、绚烂的创造物之中，随机增加不同的2张卡片到牌堆中。",
     "skill_option": "token_draw=900811040:900811010:900811020:900811030:?2&type=add//none",
     "skill_target": "none//character=me&target=deck&card_type=all&tribe=artifact&random_count=1",
     "tribe_name": "-"
@@ -58122,7 +58164,7 @@ let cardData = [
     "skill": "pp_modifier,choice,transform,summon_token,token_draw",
     "skill_condition": "resonance=false,resonance=false,character=me&target=chosen_cards&card_type=all&resonance=false,resonance=true,resonance=true",
     "skill_preprocess": "none,none,none,none,none",
-    "skill_disc": "·伊昂的愤怒<br>·贝尔弗特的镇压<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果共鸣 状态已发动，则会由原本的命运抉择 转变为召唤1个神秘的创造物与1个古老的创造物到战场上。由杀戮女神·提西福涅、灾乱女神·阿莱克托、愤怒女神·墨盖拉之中，随机增加1张卡片到手牌中。",
+    "skill_disc": "·伊昂的愤怒<br>·贝尔弗特的镇压<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>如果共鸣 状态已发动，则会由原本的命运抉择 转变为召唤1个神祕的创造物与1个古老的创造物到战场上。由杀戮女神·提西福涅、灾乱女神·阿莱克托、愤怒女神·墨盖拉之中，随机增加1张卡片到手牌中。",
     "skill_option": "gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900834050:900834060,repeat_count=1&summon_side=me,summon_token=900811020:900811010,token_draw=900841110:900841120:900841130:?1",
     "skill_target": "character=me&target=inplay&card_type=class,none,target=chosen_cards&card_type=all,none,none",
     "tribe_name": "-"
@@ -58928,7 +58970,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 900041160,
-    "card_name": "暗影指挥官",
+    "card_name": "闇影指挥官",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -58941,7 +58983,7 @@ let cardData = [
     "skill": "rush,powerup,destroy,summon_token",
     "skill_condition": "character=me,character=op&target=be_attacked&attacker=self&card_type=unit,character=op&target=be_attacked&attacker=self&card_type=unit,character=me",
     "skill_preprocess": "none,none,none,none",
-    "skill_disc": "突进 <br>攻击时 如果对从者进行攻击，则会获得+X/+0效果，并在计算伤害之前破坏该从者。X为「该从者的攻击力」。<br>离场时，召唤1个暗影士兵到战场上。（变身除外）",
+    "skill_disc": "突进 <br>攻击时 如果对从者进行攻击，则会获得+X/+0效果，并在计算伤害之前破坏该从者。X为「该从者的攻击力」。<br>离场时，召唤1个闇影士兵到战场上。（变身除外）",
     "skill_option": "none,add_offense={op.be_attacked.unit.offense},none,summon_token=900031030",
     "skill_target": "character=me&target=self,character=me&target=self&card_type=unit,character=op&target=be_attacked&card_type=unit,none",
     "tribe_name": "-"
@@ -58949,7 +58991,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 900041170,
-    "card_name": "暗影突击者",
+    "card_name": "闇影突击者",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -58962,7 +59004,7 @@ let cardData = [
     "skill": "ignore_guard,summon_token",
     "skill_condition": "character=me,character=me",
     "skill_preprocess": "none,none",
-    "skill_disc": "可无视守护 效果进行攻击。<br>离场时，召唤1个暗影士兵到战场上。（变身除外）",
+    "skill_disc": "可无视守护 效果进行攻击。<br>离场时，召唤1个闇影士兵到战场上。（变身除外）",
     "skill_option": "none,summon_token=900031030",
     "skill_target": "character=me&target=self,none",
     "tribe_name": "-"
@@ -58970,14 +59012,14 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 900041180,
-    "card_name": "暗影上将",
+    "card_name": "闇影上将",
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
     "cost": 5,
     "evo_atk": 2,
     "evo_life": 10,
-    "evo_skill_disc": "必杀 <br>守护 <br>进化时 召唤1个暗影指挥官到战场上。给予该从者「1回合中可进行2次攻击」效果。",
+    "evo_skill_disc": "必杀 <br>守护 <br>进化时 召唤1个闇影指挥官到战场上。给予该从者「1回合中可进行2次攻击」效果。",
     "life": 10,
     "rarity": 4,
     "skill": "killer,guard//summon_token,attack_count",
@@ -59109,7 +59151,7 @@ let cardData = [
     "skill": "change_super_skybound_art_count,pp_modifier,choice,transform,summon_token",
     "skill_condition": "turn=self&{me.hand_self.spell.count}>0&character=me&target=evolution_card&card_type=unit,{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}>{me.inplay.class.turn},{self.super_skybound_art_count}<={me.inplay.class.turn}",
     "skill_preprocess": "none,none,none,none,none",
-    "skill_disc": "·古兰的觉悟<br>·吉塔的决心<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>解放奥义 15； 由原本的命运抉择 转变为召唤1个十天众统御者·葛兰与吉塔到战场上。",
+    "skill_disc": "·葛兰的觉悟<br>·吉塔的决心<br>使自己的PP消耗与这张卡片等量的消费值，在使用这张卡片时将其转变为命运抉择 所指定的卡片。<br>解放奥义 15； 由原本的命运抉择 转变为召唤1个十天众统御者·葛兰与吉塔到战场上。",
     "skill_option": "gain_super_skybound_art_count=1*{me.evolution_card.unit.count},gain_pp={me.self.cost}&is_before_choice_transform=true,card_id=900044080:900044090,repeat_count=1&summon_side=me,summon_token=900041140&ignore_voice=true",
     "skill_target": "character=me&target=self&card_type=spell,character=me&target=inplay&card_type=class,none,target=chosen_cards&card_type=all,none",
     "tribe_name": "-"
@@ -63624,7 +63666,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "none",
-    "skill_disc": "谢幕曲 召唤1个僵尸到战场上。",
+    "skill_disc": "谢幕曲 召唤1个殭尸到战场上。",
     "skill_option": "summon_token=900511030",
     "skill_target": "none",
     "tribe_name": "-"
@@ -64031,7 +64073,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 112521020,
-    "card_name": "机甲僵尸",
+    "card_name": "机甲殭尸",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 5,
@@ -64569,7 +64611,7 @@ let cardData = [
     "skill": "destroy,summon_token",
     "skill_condition": "character=me&target=destroyed_card&card_type=unit&{me.inplay_self.count}>0,character=me",
     "skill_preprocess": "none,none",
-    "skill_disc": "当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个巫妖与1个僵尸到战场上。",
+    "skill_disc": "当自己的从者被破坏时，则会破坏这个护符。<br>谢幕曲 召唤1个巫妖与1个殭尸到战场上。",
     "skill_option": "none,summon_token=900511040:900511030",
     "skill_target": "character=me&target=inplay_self&card_type=field,none",
     "tribe_name": "-"
@@ -64997,7 +65039,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 110631010,
-    "card_name": "狂欲的使徒",
+    "card_name": "姦淫的使徒",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 6,
@@ -65564,7 +65606,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 101711060,
-    "card_name": "光之治愈牧师",
+    "card_name": "光之治癒牧师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 7,
@@ -66845,7 +66887,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 107841020,
-    "card_name": "神秘守门人·丝碧涅",
+    "card_name": "神祕守门人·丝碧涅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -67047,7 +67089,7 @@ let cardData = [
     "skill": "consume_ep_modifier,update_deck//summon_token",
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit_and_allfield&tribe=artifact,character=me&target=self&card_type=unit//character=me",
     "skill_preprocess": "none,none//none",
-    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神秘的遗物·丝碧涅与璐契儿卡片到牌堆中。",
+    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神祕的遗物·丝碧涅与璐契儿卡片到牌堆中。",
     "skill_option": "none,token_draw=900841190&type=add//summon_token=900811040",
     "skill_target": "character=me&target=self&card_type=unit,none//none",
     "tribe_name": "-"
@@ -69567,7 +69609,7 @@ let cardData = [
     "skill": "summon_token,destroy",
     "skill_condition": "character=op&target=destroyed_card&card_type=unit&turn=self&{me.inplay_self.count}>0,{me.inplay_self.count}>0&character=me&target=self",
     "skill_preprocess": "none,destroy_tribe=white_ritual",
-    "skill_disc": "自己的回合中，每当敌方的从者被破坏时，召唤1个僵尸到自己的战场上。<br>自己的回合结束时，发动土之秘术 随机破坏1个敌方的从者。",
+    "skill_disc": "自己的回合中，每当敌方的从者被破坏时，召唤1个殭尸到自己的战场上。<br>自己的回合结束时，发动土之秘术 随机破坏1个敌方的从者。",
     "skill_option": "summon_token=900511030,none",
     "skill_target": "none,character=op&target=inplay&card_type=unit&random_count=1",
     "tribe_name": "-"
@@ -69638,7 +69680,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 106311020,
-    "card_name": "神秘占星者",
+    "card_name": "神祕占星者",
     "card_set_id": 10006,
     "char_type": 1,
     "clan": 3,
@@ -70016,7 +70058,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101334010,
-    "card_name": "神秘的礼物",
+    "card_name": "神祕的礼物",
     "card_set_id": 10001,
     "char_type": 4,
     "clan": 3,
@@ -70415,7 +70457,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 108411010,
-    "card_name": "暗影龙骑士·克妲",
+    "card_name": "闇影龙骑士·克妲",
     "card_set_id": 10008,
     "char_type": 1,
     "clan": 4,
@@ -71541,7 +71583,7 @@ let cardData = [
     "skill": "summon_token,powerup,guard",
     "skill_condition": "character=me&card_type=spell,character=me&card_type=spell,character=me&card_type=spell",
     "skill_preprocess": "none,necromance=6,<-",
-    "skill_disc": "召唤3个僵尸到战场上。<br>死灵术 6； 给予自己的僵尸全体+0/+1与守护 效果。",
+    "skill_disc": "召唤3个殭尸到战场上。<br>死灵术 6； 给予自己的殭尸全体+0/+1与守护 效果。",
     "skill_option": "summon_token=900511030:900511030:900511030,add_life=1,none",
     "skill_target": "none,character=me&target=inplay&card_type=unit&base_card_id=900511030,character=me&target=inplay&card_type=unit&base_card_id=900511030",
     "tribe_name": "-"
@@ -71885,7 +71927,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 113631030,
-    "card_name": "暗影恶魔·摩里亚娜",
+    "card_name": "闇影恶魔·摩里亚娜",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 6,
@@ -73494,7 +73536,7 @@ let cardData = [
     "skill": "banish,update_deck",
     "skill_condition": "character=me,character=me&target=self&card_type=unit",
     "skill_preprocess": "none,none",
-    "skill_disc": "入场曲 使自己牌堆中的卡片全部消失。增加10张神秘的创造物、10张绚烂的创造物与10张精奥的创造物卡片到牌堆中。",
+    "skill_disc": "入场曲 使自己牌堆中的卡片全部消失。增加10张神祕的创造物、10张绚烂的创造物与10张精奥的创造物卡片到牌堆中。",
     "skill_option": "none,token_draw=900811020:900811020:900811020:900811020:900811020:900811020:900811020:900811020:900811020:900811020:900811040:900811040:900811040:900811040:900811040:900811040:900811040:900811040:900811040:900811040:900811060:900811060:900811060:900811060:900811060:900811060:900811060:900811060:900811060:900811060&type=add",
     "skill_target": "character=me&target=deck&card_type=all,none",
     "tribe_name": "-"
@@ -74489,7 +74531,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 104121040,
-    "card_name": "勇猛的矮人",
+    "card_name": "勇勐的矮人",
     "card_set_id": 10004,
     "char_type": 1,
     "clan": 1,
@@ -76560,7 +76602,7 @@ let cardData = [
     "skill": "summon_token",
     "skill_condition": "character=me",
     "skill_preprocess": "none",
-    "skill_disc": "谢幕曲 召唤2个僵尸到战场上。",
+    "skill_disc": "谢幕曲 召唤2个殭尸到战场上。",
     "skill_option": "summon_token=900511030:900511030",
     "skill_target": "none",
     "tribe_name": "-"
@@ -76665,7 +76707,7 @@ let cardData = [
     "skill": "summon_token@6-{me.inplay.count},powerup,rush",
     "skill_condition": "{me.inplay_other_self.unit_and_allfield.count}<4,character=me,character=me",
     "skill_preprocess": "necromance=3,turn_end_stop=me,turn_end_stop=me",
-    "skill_disc": "入场曲 发动「死灵术 3；召唤1个僵尸到战场上」重複此动作直至从者数上限。随后，到回合结束为止，给予自己的其他从者全体+2/+0与突进 效果。",
+    "skill_disc": "入场曲 发动「死灵术 3；召唤1个殭尸到战场上」重複此动作直至从者数上限。随后，到回合结束为止，给予自己的其他从者全体+2/+0与突进 效果。",
     "skill_option": "summon_token=900511030,add_offense=2,none",
     "skill_target": "none,character=me&target=inplay_other_self&card_type=unit,character=me&target=inplay_other_self&card_type=unit",
     "tribe_name": "-"
@@ -77079,13 +77121,13 @@ let cardData = [
     "cost": 7,
     "evo_atk": 4,
     "evo_life": 6,
-    "evo_skill_disc": "当僵尸或海盗僵尸进入自己的战场时，给予该从者疾驰 效果。<br>进化时 召唤1个海盗僵尸到战场上。使其入场曲 能力发动1次。<br>谢幕曲 召唤1个不灭海盗到战场上。",
+    "evo_skill_disc": "当殭尸或海盗殭尸进入自己的战场时，给予该从者疾驰 效果。<br>进化时 召唤1个海盗殭尸到战场上。使其入场曲 能力发动1次。<br>谢幕曲 召唤1个不灭海盗到战场上。",
     "life": 4,
     "rarity": 4,
     "skill": "quick,summon_token,invoke_skill,summon_token//quick,summon_token,invoke_skill,summon_token",
     "skill_condition": "{me.inplay_self.count}>0&{{me.summoned_card.unit.base_card_id=103511060.count}>0|{me.summoned_card.unit.base_card_id=900511030.count}>0},character=me,character=me,character=me//{me.inplay_self.count}>0&{{me.summoned_card.unit.base_card_id=103511060.count}>0|{me.summoned_card.unit.base_card_id=900511030.count}>0},character=me,character=me,character=me",
     "skill_preprocess": "none,none,none,none//none,none,none,none",
-    "skill_disc": "当僵尸或海盗僵尸进入自己的战场时，给予该从者疾驰 效果。<br>入场曲 召唤1个僵尸与1个海盗僵尸到战场上。使该海盗僵尸的入场曲 能力发动1次。<br>谢幕曲 召唤1个不灭海盗到战场上。",
+    "skill_disc": "当殭尸或海盗殭尸进入自己的战场时，给予该从者疾驰 效果。<br>入场曲 召唤1个殭尸与1个海盗殭尸到战场上。使该海盗殭尸的入场曲 能力发动1次。<br>谢幕曲 召唤1个不灭海盗到战场上。",
     "skill_option": "none,summon_token=900511030:103511060,invoke_type=when_play,summon_token=129541020&effect=owner//none,summon_token=103511060,invoke_type=when_play,summon_token=129541020&effect=owner",
     "skill_target": "{me.summoned_card.unit.base_card_id=103511060.is_inplay=true}&{me.summoned_card.unit.base_card_id=900511030.is_inplay=true},none,character=me&target=skill_summoned_card&card_type=unit&base_card_id=103511060,none//{me.summoned_card.unit.base_card_id=103511060.is_inplay=true}&{me.summoned_card.unit.base_card_id=900511030.is_inplay=true},none,character=me&target=skill_summoned_card&card_type=unit,none",
     "tribe_name": "-"
@@ -77127,7 +77169,7 @@ let cardData = [
     "skill": "attach_skill,pp_fixeduse,summon_card,trigger,destroy",
     "skill_condition": "character=me,pp_count>=9,pp_count>=9&{me.inplay.unit_and_allfield.count}<5,pp_count>=9&{me.inplay.unit_and_allfield.count}<5,pp_count>=9&{me.inplay.unit_and_allfield.count}<5",
     "skill_preprocess": "none,none,none,turn_end_stop=me,none",
-    "skill_disc": "给予自己的主战者「本回合结束时，召唤僵尸到战场上直至上限」效果。<br>爆能强化 9； 随机将名称各不相同的死灵法师从者卡各1张，由自己的牌堆召唤到战场上直至上限，并且将其全数破坏。",
+    "skill_disc": "给予自己的主战者「本回合结束时，召唤殭尸到战场上直至上限」效果。<br>爆能强化 9； 随机将名称各不相同的死灵法师从者卡各1张，由自己的牌堆召唤到战场上直至上限，并且将其全数破坏。",
     "skill_option": "skill=(skill:summon_token)(timing:self_turn_end)(condition:character=me&target=inplay_self&card_type=class)(target:none)(option:summon_token=900511030:900511030:900511030:900511030:900511030)(preprocess:remove_after_action=(count=1)),fixeduse=9,none,none,none",
     "skill_target": "character=me&target=inplay&card_type=class,none,character=me&target=deck&card_type=unit&clan=necro&id_no_duplication_random_count=5-{me.inplay.unit_and_allfield.count},character=me,character=me&target=skill_summoned_card&card_type=unit&clan=necro",
     "tribe_name": "-"
@@ -77148,7 +77190,7 @@ let cardData = [
     "skill": "metamorphose,metamorphose",
     "skill_condition": "{me.inplay_self.count}>0&character=both&target=summoned_card&card_type=unit&base_card_id!=900511030,character=both&target=inplay&card_type=unit",
     "skill_preprocess": "none,none",
-    "skill_disc": "倒数 2<br>每当有从者（僵尸除外）进入任一方战场时，使该从者变身为僵尸。<br>入场曲 使双方的从者全体变身为僵尸。",
+    "skill_disc": "倒数 2<br>每当有从者（殭尸除外）进入任一方战场时，使该从者变身为殭尸。<br>入场曲 使双方的从者全体变身为殭尸。",
     "skill_option": "metamorphose=900511030,metamorphose=900511030",
     "skill_target": "character=both&target=summoned_card&card_type=unit&base_card_id!=900511030&is_inplay=true,character=both&target=inplay&card_type=unit",
     "tribe_name": "-"
@@ -81516,7 +81558,7 @@ let cardData = [
     "skill": "pp_fixeduse,transform,guard,summon_token,token_draw",
     "skill_condition": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost}",
     "skill_preprocess": "none,none,none,none,none",
-    "skill_disc": "激奏 3； 召唤1个神秘的创造物到战场上。增加1张典范转移卡片到手牌中。<br>---------- <br>守护 <br>入场曲 召唤2个绚烂的创造物到战场上。增加1张典范转移卡片到手牌中。",
+    "skill_disc": "激奏 3； 召唤1个神祕的创造物到战场上。增加1张典范转移卡片到手牌中。<br>---------- <br>守护 <br>入场曲 召唤2个绚烂的创造物到战场上。增加1张典范转移卡片到手牌中。",
     "skill_option": "fixeduse=3,card_id=800834050,none,summon_token=900811040:900811040,token_draw=900814010",
     "skill_target": "none,none,character=me,none,none",
     "tribe_name": "-"
@@ -84632,7 +84674,7 @@ let cardData = [
   {
     "atk": 13,
     "card_id": 126341010,
-    "card_name": "神秘国王",
+    "card_name": "神祕国王",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
