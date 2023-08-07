@@ -349,31 +349,57 @@
 
       const skillp1 = cskillp1 ? cskillp1.split(",") : [];
       const skillp2 = cskillp2 ? cskillp2.split(",") : [];
-      let keyPros = ["ritual","burial_rite","necromance","per_turn","use_pp","open_card","evolution_end_stop"];
+      let keyPros = ["ritual","burial_rite","necromance","per_turn","use_pp","open_card","evolution_end_stop","only_random_index","per_turn"];
+      let lkeyPros = ["turn_end_stop","turn_start_stop","turn_end_period_of_stop_time","turn_start_skill_after_stop"]; //后面跟的一定是字母的
       for (let item of skillp1){
         let name = item.split("=")[0];
-        if (!keyPros.includes(name)){
+        if (keyPros.includes(name)){
+          let cost = item.split("=")[1];
+          if (!is_numeric(cost)){
+            cost = 'X';
+          }
+          skills1.push(name);
+          skillso1.push("value="+cost)
+          skillsc1.push('none');
+        } else if (lkeyPros.includes(name)){
+          let cost = item.split("=")[1];
+          skills1.push(name);
+          skillso1.push("value="+cost)
+          skillsc1.push('none');
+        } else {
           continue;
         }
-        let cost = item.split("=")[1];
-        if (!is_numeric(cost)){
-          cost = 'X';
-        }
-        skills1.push(name);
-        skillso1.push("value="+cost)
-        skillsc1.push('none');
       }
       for (let item of skillp2){
         let name = item.split("=")[0];
-        if (!keyPros.includes(name)){
+        if (keyPros.includes(name)){
+          let cost = item.split("=")[1];
+          if (!is_numeric(cost)){
+            cost = 'X';
+          }
+          skills2.push(name);
+          skillso2.push("value="+cost)
+          skillsc2.push('none');
+        } else if (lkeyPros.includes(name)){
+          let cost = item.split("=")[1];
+          skills2.push(name);
+          skillso2.push("value="+cost)
+          skillsc2.push('none');
+        } else {
           continue;
         }
-        let cost = item.split("=")[1];
-        if (!is_numeric(cost)){
-          cost = 'X';
-        }
-        skills2.push(name);
-        skillso2.push("value="+cost)
+      }
+
+      //光环处理
+      if (skillp1.includes("remove_from_inplay_stop")){
+        skills1.push("remove_from_inplay_stop");
+        skillso1.push('none');
+        skillsc1.push('none');
+      }
+
+      if (skillp2.includes("remove_from_inplay_stop")){
+        skills2.push("remove_from_inplay_stop");
+        skillso2.push('none');
         skillsc2.push('none');
       }
 
