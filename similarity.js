@@ -419,8 +419,8 @@
 
       // 设置基础分和描述分占比
       const basicScoreWeight = 0.2;
-      const skillScoreWeight = 0.35;
-      const descriptionScoreWeight = 0.45;
+      const skillScoreWeight = 0.4;
+      const descriptionScoreWeight = 0.4;
 
       // 计算综合相似度分数
       const totalScore = basicScore * basicScoreWeight + skillScore * skillScoreWeight + descriptionScore * descriptionScoreWeight;
