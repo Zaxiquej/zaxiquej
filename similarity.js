@@ -99,7 +99,7 @@
       const minDescriptionLength = Math.min(description1.length, description2.length);
       const maxDescriptionLength = Math.max(description1.length, description2.length);
       const fixingRate = (longestCommonSubstring.length+1)/(minDescriptionLength+1);
-      const fixingConst = 0.3; //根据公共子串占比，最多抬高50%的描述分(50分)
+      const fixingConst = 0.5; //根据公共子串占比，最多抬高50%的描述分(50分)
       const descriptionScore = (1 - levenshteinDistance / maxDescriptionLength) * 100;
       const descriptionScoreFixed = (1-fixingConst)*descriptionScore + fixingConst*(fixingRate*100 + (1-fixingRate)*descriptionScore)
       return descriptionScoreFixed;
@@ -293,25 +293,25 @@
               const sharedMap = new Map();
               const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
               const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
-              score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
+              score = 1 / Math.sqrt(calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
             }
             if (typeof B1 === "number" && typeof B2 === "number") {
-              score = 1 / (Math.abs(B2 - B1) + 1);
+              score = 1 / Math.sqrt(Math.abs(B2 - B1) + 1);
             } else if (typeof B1 === "string" && typeof B2 === "string") {
-              score = 1 / (calculateLevenshteinDistance(B2, B1) + 1);
+              score = 1 / Math.sqrt(calculateLevenshteinDistance(B2, B1) + 1);
             }
           } else {
             if (typeof B1 === "number" && typeof B2 === "number") {
-              score = 1 / (2 * (Math.abs(B2 - B1)/50000000 + 1));
+              score = 1 / Math.sqrt(2 * (Math.abs(B2 - B1)/50000000 + 1));
             } else if (typeof B1 === "string" && typeof B2 === "string") {
-              score = 1 / (2 * (calculateLevenshteinDistance(B2, B1) + 1));
+              score = 1 / Math.sqrt(2 * (calculateLevenshteinDistance(B2, B1) + 1));
             }
           }
         } else if (typeof B1 === "array" && typeof B2 === "array"){
           const sharedMap = new Map();
           const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
           const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
-          score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1) * (3/4);
+          score = 1 / Math.sqrt(calculateLevenshteinDistance(mappedB2, mappedB1) + 1) * (3/4);
         }
 
         totalScore += score;
@@ -319,7 +319,7 @@
     }
 
     const maxArrayLength = Math.max(array1.length, array2.length);
-    const finalScore = (totalScore+1) / (maxArrayLength+1);
+    const finalScore = Math.sqrt((totalScore+1) / (maxArrayLength+1));
     return finalScore;
   }
 
@@ -366,7 +366,7 @@
               let skillsoArr2 = skillso2[j].split("&");
               skillso1[i] = skillso1[i].replaceAll("占","&&")
               skillso2[j] = skillso2[j].replaceAll("占","&&")
-              const ol = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+              const ol = (1 - 0.3 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
 
               //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
 
@@ -395,7 +395,7 @@
 
       // Calculate the maximum possible similarity score based on the longer skill array
       const maxLength = Math.max(skills1.length, skills2.length);
-      let similarity = (commonSkills / maxLength) * 100;
+      let similarity = Math.pow((commonSkills / maxLength),2/3) * 100;
       return similarity;
   }
 
@@ -419,8 +419,8 @@
 
       // 设置基础分和描述分占比
       const basicScoreWeight = 0.2;
-      const skillScoreWeight = 0.4;
-      const descriptionScoreWeight = 0.4;
+      const skillScoreWeight = 0.35;
+      const descriptionScoreWeight = 0.45;
 
       // 计算综合相似度分数
       const totalScore = basicScore * basicScoreWeight + skillScore * skillScoreWeight + descriptionScore * descriptionScoreWeight;
