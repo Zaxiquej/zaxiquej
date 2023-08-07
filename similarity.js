@@ -669,8 +669,8 @@
 
       // 设置基础分和描述分占比
       const basicScoreWeight = 0.2;
-      const skillScoreWeight = 0.4;
-      const descriptionScoreWeight = 0.4;
+      const skillScoreWeight = 0.5;
+      const descriptionScoreWeight = 0.3;
       //处理卡牌变形（结晶、激奏、抉择）
 
       let cskill1 = card1.skill.replace("//",",");
