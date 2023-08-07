@@ -104,8 +104,10 @@ function createNewDataBase(allcards) {
         'rarity',
         'skill',
         'skill_condition',
+        'skill_preprocess',
         'skill_disc',
         'skill_option',
+        'skill_target',
         'tribe_name'
     ];
 
@@ -116,7 +118,7 @@ function createNewDataBase(allcards) {
     // 遍历所有卡片数据
     allcards.cards.forEach(card => {
         // 如果卡片名称不为空且card_set_id在70000和80000之间
-        if (card.card_name !== null && !removal.includes(card.card_name) && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
+        if (card.card_name !== null && card.card_id == card.base_card_id && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
             // 如果已经存在相同名称的卡片
             if (uniqueCardsMap.has(card.card_name)) {
                 const existingCard = uniqueCardsMap.get(card.card_name);
