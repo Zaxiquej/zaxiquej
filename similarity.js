@@ -349,27 +349,32 @@
 
       const skillp1 = cskillp1 ? cskillp1.split(",") : [];
       const skillp2 = cskillp2 ? cskillp2.split(",") : [];
-      for (let key of ["ritual","burial_rite","necromance","per_turn","use_pp","open_card","evolution_end_stop"]){
-        for (let item of skillp1){
-          let name = item.split("=")[0];
-          let cost = item.split("=")[1];
-          if (!is_numeric(cost)){
-            cost = 'X';
-          }
-          skills1.push(name);
-          skillso1.push("value="+cost)
-          skillsc1.push('none');
+      let keyPros = ["ritual","burial_rite","necromance","per_turn","use_pp","open_card","evolution_end_stop"];
+      for (let item of skillp1){
+        let name = item.split("=")[0];
+        if (!keyPros.includes(name)){
+          continue;
         }
-        for (let item of skillp2){
-          let name = item.split("=")[0];
-          let cost = item.split("=")[1];
-          if (!is_numeric(cost)){
-            cost = 'X';
-          }
-          skills2.push(name);
-          skillso2.push("value="+cost)
-          skillsc2.push('none');
+        let cost = item.split("=")[1];
+        if (!is_numeric(cost)){
+          cost = 'X';
         }
+        skills1.push(name);
+        skillso1.push("value="+cost)
+        skillsc1.push('none');
+      }
+      for (let item of skillp2){
+        let name = item.split("=")[0];
+        if (!keyPros.includes(name)){
+          continue;
+        }
+        let cost = item.split("=")[1];
+        if (!is_numeric(cost)){
+          cost = 'X';
+        }
+        skills2.push(name);
+        skillso2.push("value="+cost)
+        skillsc2.push('none');
       }
 
       if (skills1.length === 0 || skills2.length === 0) {
