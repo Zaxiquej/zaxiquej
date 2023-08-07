@@ -1,10 +1,11 @@
 function calculateBasicScore(card1, card2) {
     const weights = {
-        cost: 2,
         clan: 2,
         tribe_name: 1,
         char_type: 4,
     };
+
+    const costweight = 2;
 
     const attributeWeights = {
         atk: 0.8,
@@ -44,6 +45,15 @@ function calculateBasicScore(card1, card2) {
         if (rarity1 in rarityWeights && rarity2 in rarityWeights) {
             const rarityScore = Math.abs(rarityWeights[rarity1] - rarityWeights[rarity2]);
             basicScore += 1/(rarityScore+1);
+        }
+    }
+
+    // 计算费用的相似分数
+    if ("cost" in card1 && "cost" in card2) {
+        const cost1 = card1["cost"];
+        const cost2 = card2["cost"];
+        if (cost1 && cost2) {
+            basicScore += costweight/(1 + Math.abs(cost1 - cost2));
         }
     }
 
