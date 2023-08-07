@@ -138,10 +138,15 @@ function calculateSkillScore(card1, card2) {
 
     // Calculate the number of common skills
     let commonSkills = 0;
+    let chosen = [];
     for (let i = 0; i < skills1.length; i++){
       let skill = skills1[i];
       let nb = 0;
+      let id = -1;
       for (let j = 0; j < skills2.length; j++){
+        if (chosen.includes(j)){
+          continue;
+        }
         if (skills2[j] == skill) {
             let base = 1;
             if (!skillso2[j]){skillso2[j] = ""};
@@ -154,10 +159,14 @@ function calculateSkillScore(card1, card2) {
             base *= cl;
             if (base > nb){
               nb = base;
+              id = j;
             }
         }
       }
       commonSkills += nb;
+      if (id != -1){
+        chosen.push(id);
+      }
     }
 
     // Calculate the maximum possible similarity score based on the longer skill array
