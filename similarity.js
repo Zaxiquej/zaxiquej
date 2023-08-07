@@ -350,7 +350,7 @@
       const skillp1 = cskillp1 ? cskillp1.split(",") : [];
       const skillp2 = cskillp2 ? cskillp2.split(",") : [];
       let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
-      let lkeyPros = ["turn_end_stop","turn_start_stop","turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
+      let lkeyPros = ["turn_end_stop","turn_start_stop","turn_end_remove","turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
       let repPros = ["only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
       let hasRep = [];
       for (let item of skillp1){
@@ -468,6 +468,104 @@
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && skillst2[i] == 'character=me&target=inplay&card_type=class' ){
           skills2[i] = "selfDamage";
+        }
+      }
+
+      //亡召特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
+          skills1[i] = "revive";
+          if (skillso1[i] == 'none'){
+            skillso1[i] = "thisTurn=1";
+          } else {
+            skillso1[i] += "&thisTurn=1";
+          }
+        }
+        if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
+          skills1[i] = "revive";
+          let arr = skillst1[i].split("&");
+          let str = "";
+          for (let k of arr){
+            if (k.includes("status_cost<:=")){
+              if (str != ""){str += '&'}
+              str += "cost<=" + k.split("status_cost<:=")[1];
+            }
+            if (k.includes("status_cost<:=")){
+              if (str != ""){str += '&'}
+              let cost = k.split("status_cost<:=")[1];
+              if (is_numeric(cost)){
+                str += "cost<=" + cost;
+              } else {
+                str += "cost<=X";
+              }
+            }
+            if (k.includes("status_cost=")){
+              if (str != ""){str += '&'}
+              str += "cost<=X";
+            }
+            if (k.includes("tribe=")){
+              if (str != ""){str += '&'}
+              str += k;
+            }
+            if (k.includes("id_no_duplication_random_count=")){
+              if (str != ""){str += '&'}
+              str += k;
+            }
+            if (k.includes("clan!=")){
+              if (str != ""){str += '&'}
+              let cost = k.split("clan!=")[1];
+              str += "Nclan"+cost;
+            }
+            skillso1[i] += str;
+          }
+        }
+      }
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'summon_token' && skillst2[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
+          skills2[i] = "revive";
+          if (skillso2[i] == 'none'){
+            skillso2[i] = "thisTurn=1";
+          } else {
+            skillso2[i] += "&thisTurn=1";
+          }
+        }
+        if (skills2[i] == 'summon_token' && skillst2[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
+          skills2[i] = "revive";
+          let arr = skillst2[i].split("&");
+          let str = "";
+          for (let k of arr){
+            if (k.includes("status_cost<:=")){
+              if (str != ""){str += '&'}
+              str += "cost<=" + k.split("status_cost<:=")[1];
+            }
+            if (k.includes("status_cost<:=")){
+              if (str != ""){str += '&'}
+              let cost = k.split("status_cost<:=")[1];
+              if (is_numeric(cost)){
+                str += "cost<=" + cost;
+              } else {
+                str += "cost<=X";
+              }
+            }
+            if (k.includes("status_cost=")){
+              if (str != ""){str += '&'}
+              str += "cost<=X";
+            }
+            if (k.includes("tribe=")){
+              if (str != ""){str += '&'}
+              str += k;
+            }
+            if (k.includes("id_no_duplication_random_count=")){
+              if (str != ""){str += '&'}
+              str += k;
+            }
+            if (k.includes("clan!=")){
+              if (str != ""){str += '&'}
+              let cost = k.split("clan!=")[1];
+              str += "Nclan"+cost;
+            }
+            skillso2[i] += str;
+          }
         }
       }
 
