@@ -471,6 +471,24 @@
         }
       }
 
+      //移除变身
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'transform'){
+          skills1.splice(i,1);
+          skillso1.splice(i,1);
+          skillst1.splice(i,1);
+          i--;
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'transform'){
+          skills2.splice(i,1);
+          skillso2.splice(i,1);
+          skillst2.splice(i,1);
+          i--;
+        }
+      }
       //亡召特殊判断
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
@@ -646,10 +664,77 @@
     return similarity;
   }
 
-  function calculateSimilarityScore(card1, card2) {
-      const basicScore = calculateBasicScore(card1, card2);
-      const skillScore = calculateSkillScore(card1, card2);
+  function calculateSimilarityScore(card1, card2, midR) {
+      let basicScore = calculateBasicScore(card1, card2);
+      let skillScore = calculateSkillScore(card1, card2);
       const descriptionScore = calculateDescriptionScore(card1, card2);
+
+      //处理卡牌变形（结晶、激奏、抉择）
+
+      let cskill1 = card1.skill.replace("//",",");
+      let cskill2 = card2.skill.replace("//",",");
+      const skills1 = cskill1 ? cskill1.split(",") : [];
+      const skills2 = cskill2 ? cskill2.split(",") : [];
+      let cskillo1 = card1.skill_option.replace("//",",");
+      let cskillo2 = card2.skill_option.replace("//",",");
+      const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+      const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+
+      let transSub1 = [];
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'transform' && skillso1[i].includes('card_id=') ){
+          transSub1.push(parseInt(skillso1[i].split('card_id=')[1]));
+        }
+        if (i >= 1 && skills1[i] == 'transform' && skillso1[i].includes('repeat_count=1&summon_side=me') && skills1[i-1] == 'choice' && skillso1[i-1].includes('card_id=')){
+          let sub = skillso1[i-1].split('card_id=')[1].split(":");
+          for (let cardId of sub){
+            transSub1.push(parseInt(cardId));
+          }
+        }
+      }
+
+      let transSub2 = [];
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'transform' && skillso2[i].includes('card_id=') ){
+          transSub2.push(parseInt(skillso2[i].split('card_id=')[1]));
+        }
+        if (i >= 1 && skills2[i] == 'transform' && skillso2[i].includes('repeat_count=1&summon_side=me') && skills2[i-1] == 'choice' && skillso2[i-1].includes('card_id=')){
+          let sub = skillso2[i-1].split('card_id=')[1].split(":");
+          for (let cardId of sub){
+            transSub2.push(parseInt(cardId));
+          }
+        }
+      }
+
+      if (transSub1.length > 0 || transSub2.length > 0){
+        transSub1.push(card1.card_id);
+        transSub2.push(card2.card_id);
+        for (let cid1 of transSub1){
+          for (let cid2 of transSub2){
+            if (!(cid1 == card1.card_id && cid2 == card2.card_id)){
+              const strNumber1 = cid1.toString();
+              const strNumber2 = cid2.toString();
+              let nCard1;
+              let nCard2;
+              nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
+              nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
+              let newBasicScore = calculateBasicScore(nCard1, nCard2);
+              let newSkillScore = calculateSkillScore(nCard1, nCard2);
+              basicScore = Math.max(basicScore,newBasicScore);
+              skillScore = Math.max(skillScore,newSkillScore);
+            }
+          }
+        }
+      }
+
+      if (midR == 1){
+        return basicScore;
+      }
+      if (midR == 2){
+        return skillScore;
+      }
 
       // 设置基础分和描述分占比
       const basicScoreWeight = 0.2;
@@ -664,3 +749,12 @@
 
       return similarityScore;
   }
+
+
+      function findCardById(id,isSub) {
+        if (isSub){
+          return subCardData.find((card) => card.card_id === id);
+        } else {
+          return cardData.find((card) => card.card_id === id);
+        }
+      }

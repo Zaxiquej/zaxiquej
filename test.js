@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const similarity = calculateSimilarityScore(baseCard, card);
                 return {
                     card_name: card.card_name,
-                    basicScore: calculateBasicScore(baseCard, card),
-                    skillScore: calculateSkillScore(baseCard, card),
+                    basicScore: calculateSimilarityScore(baseCard, card,1),
+                    skillScore: calculateSimilarityScore(baseCard, card,2),
                     descriptionScore: calculateDescriptionScore(baseCard, card),
                     similarity: similarity,
                 };
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-function createNewDataBase(allcards) {
+function createNewDataBase(allcards, subToken) {
     // 假设 allcards 是一个包含所有卡片数据的变量
 
     // 要保留的信息字段
@@ -118,38 +118,25 @@ function createNewDataBase(allcards) {
     // 遍历所有卡片数据
     allcards.cards.forEach(card => {
         // 如果卡片名称不为空且card_set_id在70000和80000之间
-        if (card.card_name !== null && card.card_id == card.base_card_id && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
-            // 如果已经存在相同名称的卡片
-            if (uniqueCardsMap.has(card.card_name)) {
-                const existingCard = uniqueCardsMap.get(card.card_name);
-                // 保留card_id较小的卡片
-                if (card.card_id < existingCard.card_id) {
-                    uniqueCardsMap.set(card.card_name, card);
-                }
-            } else {
-                // 否则将卡片添加到uniqueCardsMap
-                uniqueCardsMap.set(card.card_name, card);
-            }
+        if (subToken == 1){
+          if (card.card_name == null) {
+            uniqueCardsMap.set(card.card_id, card);
+          }
+        } else {
+          if (card.card_name !== null && card.base_card_id == card.card_id && (card.card_set_id < 70000 || card.card_set_id > 80000)) {
+              if (uniqueCardsMap.has(card.card_name)) {
+                  const existingCard = uniqueCardsMap.get(card.card_name);
+                  // 保留card_id较小的卡片
+                  if (card.card_id < existingCard.card_id) {
+                      uniqueCardsMap.set(card.card_name, card);
+                  }
+              } else {
+                  uniqueCardsMap.set(card.card_name, card);
+              }
+          }
         }
+
     });
-
-    const replaceMap = {
-	    葛兰的觉悟: "古兰的觉悟",
-      神祕: "神秘",
-      库胡林: "库丘林",
-      鲜豔: "鲜艳",
-      姦淫: "狂欲",
-      殭尸: "僵尸",
-      勇勐: "勇猛",
-      阴鬱: "阴郁",
-      治癒: "治愈",
-      嚮导: "向导",
-      味琳: "米琳",
-      吸血鬼公主: "暗夜族公主",
-      闇影: "暗影",
-
-      // 添加其他的映射关系
-    };
 
     // 将新的数据库转换为JSON格式
     const newDatabase = Array.from(uniqueCardsMap.values())
@@ -159,11 +146,14 @@ function createNewDataBase(allcards) {
                 if (typeof card[field] == 'number'){
                   newCard[field] = card[field];
                 } else {
-                  let newField = simplized(card[field]);
-                  for (const keyword in replaceMap) {
-                    newField = newField.replaceAll(keyword, replaceMap[keyword]);
+                  if (subToken == 1){
+                    let newField = card[field];
+                    newCard[field] = newField;
+                  } else{
+                    let newField = simplized(card[field]);
+                    newCard[field] = newField;
                   }
-                  newCard[field] = newField;
+
                 }
             });
             return newCard;
