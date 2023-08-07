@@ -1,4 +1,4 @@
-function calculateBasicScore(card1, card2) {
+  function calculateBasicScore(card1, card2) {
     const weights = {
         clan: 2,
         tribe_name: 1,
@@ -95,9 +95,46 @@ function calculateBasicScore(card1, card2) {
       }
 
       const levenshteinDistance = calculateLevenshteinDistance(description1, description2);
+      const longestCommonSubstring = findLongestCommonSubstring(description1, description2);
+      const minDescriptionLength = Math.min(description1.length, description2.length);
       const maxDescriptionLength = Math.max(description1.length, description2.length);
+      const fixingRate = (longestCommonSubstring.length+1)/(minDescriptionLength+1);
+      const fixingConst = 0.3; //根据公共子串占比，最多抬高50%的描述分(50分)
       const descriptionScore = (1 - levenshteinDistance / maxDescriptionLength) * 100;
-      return descriptionScore;
+      const descriptionScoreFixed = (1-fixingConst)*descriptionScore + fixingConst*(fixingRate*100 + (1-fixingRate)*descriptionScore)
+      return descriptionScoreFixed;
+  }
+
+  function findLongestCommonSubstring(str1, str2) {
+    const len1 = str1.length;
+    const len2 = str2.length;
+
+    // 创建一个二维数组用于记录子问题的解
+    const dp = new Array(len1 + 1).fill(0).map(() => new Array(len2 + 1).fill(0));
+
+    let maxLength = 0; // 记录最长公共子串的长度
+    let endIndex = 0; // 记录最长公共子串的结束索引
+
+    // 填充 dp 数组
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        if (str1[i - 1] === str2[j - 1]) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+
+          if (dp[i][j] > maxLength) {
+            maxLength = dp[i][j];
+            endIndex = i - 1;
+          }
+        } else {
+          dp[i][j] = 0;
+        }
+      }
+    }
+
+    // 提取最长公共子串
+    const longestCommonSubstring = str1.slice(endIndex - maxLength + 1, endIndex + 1);
+
+    return longestCommonSubstring;
   }
 
   function calculateLevenshteinDistance(s1, s2) {
@@ -286,103 +323,110 @@ function calculateBasicScore(card1, card2) {
     return finalScore;
   }
 
-function calculateSkillScore(card1, card2) {
-    let cskill1 = card1.skill.replace("//",",");
-    let cskill2 = card2.skill.replace("//",",");
-    const skills1 = cskill1 ? cskill1.split(",") : [];
-    const skills2 = cskill2 ? cskill2.split(",") : [];
+  function calculateSkillScore(card1, card2) {
+      let cskill1 = card1.skill.replace("//",",");
+      let cskill2 = card2.skill.replace("//",",");
+      const skills1 = cskill1 ? cskill1.split(",") : [];
+      const skills2 = cskill2 ? cskill2.split(",") : [];
 
-    let cskillo1 = card1.skill_option.replace("//",",");
-    let cskillo2 = card2.skill_option.replace("//",",");
-    const skillso1 = cskillo1 ? cskillo1.split(",") : [];
-    const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+      let cskillo1 = card1.skill_option.replace("//",",");
+      let cskillo2 = card2.skill_option.replace("//",",");
+      const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+      const skillso2 = cskillo2 ? cskillo2.split(",") : [];
 
-    let cskillc1 = card1.skill_condition.replace("//",",");
-    let cskillc2 = card2.skill_condition.replace("//",",");
-    const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
-    const skillsc2 = cskillc2 ? cskillc2.split(",") : [];
+      let cskillc1 = card1.skill_condition.replace("//",",");
+      let cskillc2 = card2.skill_condition.replace("//",",");
+      const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
+      const skillsc2 = cskillc2 ? cskillc2.split(",") : [];
 
-    if (skills1.length === 0 || skills2.length === 0) {
-        return 0;
-    }
+      if (skills1.length === 0 || skills2.length === 0) {
+          return 0;
+      }
 
-    // Calculate the number of common skills
-    let commonSkills = 0;
-    let chosen = [];
-    for (let i = 0; i < skills1.length; i++){
-      let skill = skills1[i];
-      let nb = 0;
-      let id = -1;
-      for (let j = 0; j < skills2.length; j++){
-        if (chosen.includes(j)){
-          continue;
+      // Calculate the number of common skills
+      let commonSkills = 0;
+      let chosen = [];
+      for (let i = 0; i < skills1.length; i++){
+        let skill = skills1[i];
+        let nb = 0;
+        let id = -1;
+        for (let j = 0; j < skills2.length; j++){
+          if (chosen.includes(j)){
+            continue;
+          }
+          if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
+              let base = 1;
+              if (!skillso2[j]){skillso2[j] = ""};
+              if (!skillsc2[j]){skillsc2[j] = ""};
+              if (!skillso1[i]){skillso1[i] = ""};
+              if (!skillsc1[i]){skillsc1[i] = ""};
+              skillso1[i] = skillso1[i].replaceAll("&&","占")
+              skillso2[j] = skillso2[j].replaceAll("&&","占")
+              let skillsoArr1 = skillso1[i].split("&");
+              let skillsoArr2 = skillso2[j].split("&");
+              skillso1[i] = skillso1[i].replaceAll("占","&&")
+              skillso2[j] = skillso2[j].replaceAll("占","&&")
+              const ol = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+
+              //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
+
+              skillsc1[i] = skillsc1[i].replaceAll("&&","占")
+              skillsc2[j] = skillsc2[j].replaceAll("&&","占")
+              let skillscArr1 = skillsc1[i].split("&");
+              let skillscArr2 = skillsc2[j].split("&");
+              skillsc1[i] = skillsc1[i].replaceAll("占","&&")
+              skillsc2[j] = skillsc2[j].replaceAll("占","&&")
+              const cl = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+
+              //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
+              base *= ol;
+              base *= cl;
+              if (base > nb){
+                nb = base;
+                id = j;
+              }
+          }
         }
-        if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
-            let base = 1;
-            if (!skillso2[j]){skillso2[j] = ""};
-            if (!skillsc2[j]){skillsc2[j] = ""};
-            if (!skillso1[i]){skillso1[i] = ""};
-            if (!skillsc1[i]){skillsc1[i] = ""};
-
-            let skillsoArr1 = skillso1[i].split("&");
-            let skillsoArr2 = skillso2[j].split("&");
-            const ol = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
-
-            //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
-
-            let skillscArr1 = skillsc1[i].split("&");
-            let skillscArr2 = skillsc2[j].split("&");
-            const cl = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
-
-            //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
-            base *= ol;
-            base *= cl;
-            if (base > nb){
-              nb = base;
-              id = j;
-            }
+        commonSkills += nb;
+        if (id != -1){
+          chosen.push(id);
         }
       }
-      commonSkills += nb;
-      if (id != -1){
-        chosen.push(id);
-      }
-    }
 
-    // Calculate the maximum possible similarity score based on the longer skill array
-    const maxLength = Math.max(skills1.length, skills2.length);
-    let similarity = (commonSkills / maxLength) * 100;
-    return similarity;
-}
-
-function calculateTokenRate(card1,card2,similarity){
-  const sharedMap = new Map();
-  const mappedB1 = mapNumbersToLetters(extractLargeNumbersFromString(card1.skill_option), card1.card_id, sharedMap);
-  const mappedB2 = mapNumbersToLetters(extractLargeNumbersFromString(card2.skill_option), card2.card_id, sharedMap);
-
-  if (mappedB1.length > 0 && mappedB2.length > 0){
-    let rate = 1 / Math.max(mappedB1.length,mappedB2.length)
-    let tokenscore = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
-    return rate*similarity + (1-rate) *(1 - (1-similarity)*(1-tokenscore));
+      // Calculate the maximum possible similarity score based on the longer skill array
+      const maxLength = Math.max(skills1.length, skills2.length);
+      let similarity = (commonSkills / maxLength) * 100;
+      return similarity;
   }
-  return similarity;
-}
 
-function calculateSimilarityScore(card1, card2) {
-    const basicScore = calculateBasicScore(card1, card2);
-    const skillScore = calculateSkillScore(card1, card2);
-    const descriptionScore = calculateDescriptionScore(card1, card2);
+  function calculateTokenRate(card1,card2,similarity){
+    const sharedMap = new Map();
+    const mappedB1 = mapNumbersToLetters(extractLargeNumbersFromString(card1.skill_option), card1.card_id, sharedMap);
+    const mappedB2 = mapNumbersToLetters(extractLargeNumbersFromString(card2.skill_option), card2.card_id, sharedMap);
 
-    // 设置基础分和描述分占比
-    const basicScoreWeight = 0.2;
-    const skillScoreWeight = 0.4;
-    const descriptionScoreWeight = 0.4;
+    if (mappedB1.length > 0 && mappedB2.length > 0){
+      let rate = 1 / Math.max(mappedB1.length,mappedB2.length)
+      let tokenscore = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
+      return rate*similarity + (1-rate) *(1 - (1-similarity)*(1-tokenscore));
+    }
+    return similarity;
+  }
 
-    // 计算综合相似度分数
-    const totalScore = basicScore * basicScoreWeight + skillScore * skillScoreWeight + descriptionScore * descriptionScoreWeight;
+  function calculateSimilarityScore(card1, card2) {
+      const basicScore = calculateBasicScore(card1, card2);
+      const skillScore = calculateSkillScore(card1, card2);
+      const descriptionScore = calculateDescriptionScore(card1, card2);
 
-    // 对相似度分数进行百分比压缩，使得与自身的相似度为100
-    const similarityScore = (totalScore / (basicScoreWeight + skillScoreWeight + descriptionScoreWeight));
+      // 设置基础分和描述分占比
+      const basicScoreWeight = 0.2;
+      const skillScoreWeight = 0.4;
+      const descriptionScoreWeight = 0.4;
 
-    return similarityScore;
-}
+      // 计算综合相似度分数
+      const totalScore = basicScore * basicScoreWeight + skillScore * skillScoreWeight + descriptionScore * descriptionScoreWeight;
+
+      // 对相似度分数进行百分比压缩，使得与自身的相似度为100
+      const similarityScore = (totalScore / (basicScoreWeight + skillScoreWeight + descriptionScoreWeight));
+
+      return similarityScore;
+  }
