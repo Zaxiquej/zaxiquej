@@ -377,6 +377,24 @@
         skillsc2.push('none');
       }
 
+      let cskillt1 = card1.skill_target.replace("//",",");
+      let cskillt2 = card2.skill_target.replace("//",",");
+      const skillst1 = cskillt1 ? cskillt1.split(",") : [];
+      const skillst2 = cskillt2 ? cskillt2.split(",") : [];
+
+      //自残特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'damage' && skillst1[i] == 'character=me&target=inplay&card_type=class' ){
+          skills1[i] = "selfDamage";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'damage' && skillst2[i] == 'character=me&target=inplay&card_type=class' ){
+          skills2[i] = "selfDamage";
+        }
+      }
+
       if (skills1.length === 0 || skills2.length === 0) {
           return 0;
       }
