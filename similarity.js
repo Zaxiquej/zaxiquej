@@ -161,7 +161,7 @@
       return dp[m][n];
   }
 
-  let weirdKeys = ["none","save_target","burial_rite","save_burial_rite_target","fromAttach"];
+  let weirdKeys = ["none","save_target","burial_rite","save_burial_rite_target","fromAttach","not_unique_base_card_id_card"];
   function parseItem(item) {
     const matches = item.match(/(.+?)([<>]?=|<|>)(.+)/);
     if (matches && matches.length === 4) {
@@ -357,7 +357,6 @@
       const skillst1 = cskillt1 ? cskillt1.split(",") : [];
       const skillst2 = cskillt2 ? cskillt2.split(",") : [];
 
-      //处理attach
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'attach_skill' && skillso1[i].includes("skill=")){
           let skillObject = parseAttachSkillString(skillso1[i]);
@@ -367,8 +366,8 @@
           } else {
             skillso1.push('fromAttach');
           }
-          if (skillObject.condition = 'me'){
-            skillObject.condition = 'condition=me'
+          if (!skillObject.condition.includes("=")){
+            skillObject.condition = 'character=' + skillObject.condition
           }
           skillsc1.push(skillObject.condition);
           if (skillObject.preprocess && skillObject.option!='none'){
@@ -376,8 +375,7 @@
           } else {
             skillp1.push('none')
           }
-
-          skillst1.push(skillObject.target)
+          skillst1.push(skillObject.target);
           skillso1[i] = 'none';
         }
       }
@@ -391,8 +389,8 @@
           } else {
             skillso2.push('fromAttach');
           }
-          if (skillObject.condition = 'me'){
-            skillObject.condition = 'condition=me'
+          if (!skillObject.condition.includes("=")){
+            skillObject.condition = 'character=' + skillObject.condition
           }
           skillsc2.push(skillObject.condition);
           if (skillObject.preprocess){
@@ -400,7 +398,7 @@
           } else {
             skillp2.push('none')
           }
-          skillst2.push(skillObject.target)
+          skillst2.push(skillObject.target);
           skillso2[i] = 'none';
         }
       }
@@ -424,6 +422,7 @@
             skillso1.push("value="+cost)
           }
           skillsc1.push('none');
+          skillst1.push('none');
         } else if (lkeyPros.includes(name)){
           let cost = item.split(":")[0];
           skills1.push(name);
@@ -433,6 +432,7 @@
             skillso1.push("value="+cost)
           }
           skillsc1.push('none');
+          skillst1.push('none');
         } else if (repPros.includes(name) && !hasRep.includes(name)){
           hasRep.push(name)
           let cost = item.split(":")[0];
@@ -443,6 +443,7 @@
             skillso1.push("value="+cost)
           }
           skillsc1.push('none');
+          skillst1.push('none');
         } else {
           continue;
         }
@@ -462,6 +463,7 @@
             skillso2.push("value="+cost)
           }
           skillsc2.push('none');
+          skillst2.push('none');
         } else if (lkeyPros.includes(name)){
           let cost = item.split(":")[0];
           skills2.push(name);
@@ -471,6 +473,7 @@
             skillso2.push("value="+cost)
           }
           skillsc2.push('none');
+          skillst2.push('none');
         } else if (repPros.includes(name) && !hasRep.includes(name)){
           hasRep.push(name)
           let cost = item.split(":")[0];
@@ -481,6 +484,7 @@
             skillso2.push("value="+cost)
           }
           skillsc2.push('none');
+          skillst2.push('none');
         } else {
           continue;
         }
@@ -491,12 +495,14 @@
         skills1.push("remove_from_inplay_stop");
         skillso1.push('none');
         skillsc1.push('none');
+        skillst1.push('none');
       }
 
       if (skillp2.includes("remove_from_inplay_stop")){
         skills2.push("remove_from_inplay_stop");
         skillso2.push('none');
         skillsc2.push('none');
+        skillst2.push('none');
       }
 
       //特殊判断消除
@@ -520,6 +526,27 @@
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && skillst2[i] == 'character=me&target=inplay&card_type=class' ){
           skills2[i] = "selfDamage";
+        }
+      }
+
+      //宇宙词条
+      for (let i = 0; i < skills1.length; i++){
+        if (containsCosmos(skillso1[i]) || containsCosmos(skillsc1[i])){
+          skills1.push("cosmos");
+          skillso1.push('none');
+          skillsc1.push('none');
+          skillst1.push('none');
+          break;
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (containsCosmos(skillso2[i]) || containsCosmos(skillsc2[i])){
+          skills2.push("cosmos");
+          skillso2.push('none');
+          skillsc2.push('none');
+          skillst2.push('none');
+          break;
         }
       }
 
@@ -589,7 +616,7 @@
         }
         if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
           skills1[i] = "revive";
-          let arr = skillst1[i].split("&");
+          let arr = customSplit(skillst1[i],"&");
           let str = "";
           for (let k of arr){
             if (k.includes("status_cost<:=")){
@@ -637,7 +664,7 @@
         }
         if (skills2[i] == 'summon_token' && skillst2[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
           skills2[i] = "revive";
-          let arr = skillst2[i].split("&");
+          let arr = customSplit(skillst2[i],"&");
           let str = "";
           for (let k of arr){
             if (k.includes("status_cost<:=")){
@@ -687,32 +714,34 @@
         let skill = skills1[i];
         let nb = 0;
         let id = -1;
-        let exs = [];
+        let r = 1;
         for (let j = 0; j < skills2.length; j++){
           if (chosen.includes(j)){
             continue;
           }
           if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
               let base = 1;
+              let ratio = 1;
+              
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
-                base += 6;
-                exs[j] = 6;
+                ratio = 6;
               } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
-                base += 2;
-                exs[j] = 2;
+                ratio = 2;
               }
-              let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1)
-              let cRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1)
+              let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1);
+              let cRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
+              let tRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
+
               if (!skillso2[j]){skillso2[j] = ""};
               if (!skillsc2[j]){skillsc2[j] = ""};
               if (!skillso1[i]){skillso1[i] = ""};
               if (!skillsc1[i]){skillsc1[i] = ""};
               skillso1[i] = skillso1[i].replaceAll("&&","占")
               skillso2[j] = skillso2[j].replaceAll("&&","占")
-              let skillsoArr1 = skillso1[i].split("&");
-              let skillsoArr2 = skillso2[j].split("&");
+              let skillsoArr1 = customSplit(skillso1[i],"&");
+              let skillsoArr2 = customSplit(skillso2[j],"&");
               skillso1[i] = skillso1[i].replaceAll("占","&&")
               skillso2[j] = skillso2[j].replaceAll("占","&&")
               const ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
@@ -721,25 +750,36 @@
 
               skillsc1[i] = skillsc1[i].replaceAll("&&","占")
               skillsc2[j] = skillsc2[j].replaceAll("&&","占")
-              let skillscArr1 = skillsc1[i].split("&");
-              let skillscArr2 = skillsc2[j].split("&");
+              let skillscArr1 = customSplit(skillsc1[i],"&");
+              let skillscArr2 = customSplit(skillsc2[j],"&");;
               skillsc1[i] = skillsc1[i].replaceAll("占","&&")
               skillsc2[j] = skillsc2[j].replaceAll("占","&&")
               const cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
 
+              skillst1[i] = skillst1[i].replace(/\{([^}]+)\}/g, 'character=$1');
+              skillst2[j] = skillst2[j].replace(/\{([^}]+)\}/g, 'character=$1');
+
+              skillst1[i] = skillst1[i].replaceAll("&&","占")
+              skillst2[j] = skillst2[j].replaceAll("&&","占")
+              let skillstArr1 = customSplit(skillst1[i],"&");
+              let skillstArr2 = customSplit(skillst2[j],"&");
+              skillst1[i] = skillst1[i].replaceAll("占","&&")
+              skillst2[j] = skillst2[j].replaceAll("占","&&")
+
+              const tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
               base *= ol;
               base *= cl;
+              base *= tl;
               //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
               if (base > nb){
                 nb = base;
                 id = j;
+                r = ratio;
               }
           }
         }
-        commonSkills += nb;
-        if (exs[id]){
-          ex += exs[id];
-        }
+        commonSkills += nb*r;
+        ex += r-1;
         if (id != -1){
           chosen.push(id);
         }
@@ -920,6 +960,38 @@
 
     return skillObject;
   }
+
+function customSplit(input,token) {
+  if (!input){
+    return [];
+  }
+  const parts = [];
+  let currentPart = '';
+  let openBrackets = 0;
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+
+    if (char === token && openBrackets === 0) {
+      parts.push(currentPart);
+      currentPart = '';
+    } else {
+      currentPart += char;
+      if (char === '(' || char === '[' || char === '{') {
+        openBrackets++;
+      } else if (char === ')' || char === ']' || char === '}') {
+        openBrackets = Math.max(openBrackets - 1, 0);
+      }
+    }
+  }
+
+  if (currentPart !== '') {
+    parts.push(currentPart);
+  }
+
+  return parts;
+}
+
   function findCardById(id,isSub) {
     if (isSub){
       return subCardData.find((card) => card.card_id === id);
@@ -934,4 +1006,9 @@
     arr1.push(...arr2); // 将 arr2 中的元素复制到 arr1
     arr2.length = 0; // 清空 arr2
     arr2.push(...tempArray); // 将 tempArray 中的元素复制到 arr2
+  }
+
+  function containsCosmos(input) {
+    const regex = /me\.deck\.(?:base_card_id!=\d{9}\.)?unique_base_card_id_card\.count/;
+    return regex.test(input);
   }
