@@ -18,7 +18,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=Gleaming_Gem_1?2&is_open=false,token_draw=Gleaming_Gem_2?2&is_open=false,token_draw=Gleaming_Gem_3?2&is_open=false,token_draw=Gleaming_Gem_4?2&is_open=false,token_draw=Gleaming_Gem_5?2&is_open=false,token_draw=Gleaming_Gem_6?2&is_open=false,token_draw=Gleaming_Gem_7?2&is_open=false,token_draw=Gleaming_Gem_8?2&is_open=false",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,none,none,none,none,none,none,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -39,7 +40,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=Radiant_Crystal_1?2&is_open=false,token_draw=Radiant_Crystal_2?2&is_open=false,token_draw=Radiant_Crystal_3?2&is_open=false,token_draw=Radiant_Crystal_4?2&is_open=false,token_draw=Radiant_Crystal_5?2&is_open=false,token_draw=Radiant_Crystal_6?2&is_open=false,token_draw=Radiant_Crystal_7?2&is_open=false,token_draw=Radiant_Crystal_8?2&is_open=false",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,none,none,none,none,none,none,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -60,7 +62,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=1&gain_life=1,skill=(skill:damage_cut)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:cut_amount=1)(preprocess:damage_after_stop),skill=(skill:token_draw)(timing:when_play_other)(condition:character=me&target=played_card&card_type=unit)(target:none)(option:token_draw=820044010)(preprocess:none)&duplicate_ban_id=8200440101",
     "skill_target": "character=me&target=inplay&card_type=unit&status_life>=2&select_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 1,
@@ -81,7 +84,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "type=all,none,ability=guard,none,add_life=1,healing={me.play_count}-1",
     "skill_target": "character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self,character=me&target=inplay_other_self&card_type=unit&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,op_turn_start,when_play_other,when_play,when_play"
   },
   {
     "atk": 0,
@@ -102,7 +106,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=820441030:820541020,card_id=820141020:820541020,card_id=820141020:820441030,card_id=820141020:820441030:820541020,repeat_count=1&summon_side=me,summon_token=820441030:820541020,summon_token=820141020:820541020,summon_token=820141020:820441030,summon_token=820141020:820441030:820541020,none,none",
     "skill_target": "none,none,none,none,target=chosen_cards&card_type=all,none,none,none,none,character=me&target=inplay&card_type=unit&evolution=false,character=me&target=inplay&card_type=unit&evolution=false",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_choice_play,when_choice_play,when_choice_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -123,7 +128,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=820741010:820841010,card_id=820341020:820841010,card_id=820341020:820741010,card_id=820341020:820741010:820841010,repeat_count=1&summon_side=me,summon_token=820741010:820841010,summon_token=820341020:820841010,summon_token=820341020:820741010,summon_token=820341020:820741010:820841010,none,none",
     "skill_target": "none,none,none,none,target=chosen_cards&card_type=all,none,none,none,none,character=me&target=inplay&card_type=unit&evolution=false,character=me&target=inplay&card_type=unit&evolution=false",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_choice_play,when_choice_play,when_choice_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -144,7 +150,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,token_draw=900422010",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,none",
-    "tribe_name": "武裝"
+    "tribe_name": "武裝",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -165,7 +172,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900643010,token_draw=900644030",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -186,7 +194,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,add_life={me.discarded_card.base_cost},none,none,none,attack_count=4,skill=(skill:power_down)(timing:when_attack_after)(condition:character=me&target=inplay_self&attacker=self&be_attacked=destroy)(target:character=op&target=inplay&card_type=class)(option:gain_max_life=3)(preprocess:none)(effect_path:btl_820644040_3)(se_path:se_btl_820644040_3)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)(icon:induction)",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=inplay&card_type=unit&limit_upper_count_from_oldest=1,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -207,7 +216,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -228,7 +238,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=717731010&summon_side=op,sum=1&random_range=6,set=1,summon_token=717731010,none,none,none,none,damage=564,token_draw=107024010,none,summon_token=104013010,none,summon_token=100011010",
     "skill_target": "none,character=me&target=self&card_type=spell,character=me&target=hand_other_self&card_type=all&random_count=1,none,character=me&target=deck&card_type=all&random_count=5-{me.hand_other_self.count},character=me&target=hand&card_type=all&base_cost={me.hand.base_cost.max}&random_count=1,character=me&target=hand&card_type=all&random_count=2,character=me&target=deck&card_type=all&random_count=3,character=both&target=inplay&card_type=unit,none,character=both&target=inplay&card_type=unit&evolution=false&random_count=1,none,character=me&target=destroyed_card_list&card_type=unit&status_cost<:=10&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -249,7 +260,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=900713010:900713020,repeat_count=1&summon_side=me,none",
     "skill_target": "none,target=chosen_cards&card_type=all,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_choice_play,when_destroy"
   },
   {
     "atk": 0,
@@ -270,7 +282,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=900844020:900844010,repeat_count=1&summon_side=me",
     "skill_target": "none,target=chosen_cards&card_type=all",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_choice_play,when_play"
   },
   {
     "atk": 0,
@@ -291,7 +304,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,set=0",
     "skill_target": "character=me&target=destroyed_card_list&card_type=unit&tribe=artifact&id_no_duplication_random_count=2,character=me&target=skill_drew_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -312,7 +326,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=2&add_life=2,skill=(skill:damage)(timing:when_destroy)(condition:character=me)(target:character=both&target=inplay&card_type=unit)(option:damage=2)(preprocess:none)(effect_path:btl_820844030_2)(se_path:se_btl_820844030_2)(effect_move_type:NONE)(engine_type:SHURIKEN)(effect_time:0.4)(effect_target_type:area_all)",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=last_target&card_type=unit",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -333,7 +348,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,damage={me.hand_other_self.base_card_id=820844040.count},damage={me.hand_other_self.base_card_id=820844040.count}+2",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play,self_turn_end,self_turn_end"
   },
   {
     "atk": 0,
@@ -354,7 +370,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=15&type=oldest,token_draw=820843010",
     "skill_target": "character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=op&target=inplay&card_type=unit_and_class,none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_change_inplay_immediate,when_destroy,when_destroy"
   },
   {
     "atk": 1,
@@ -375,7 +392,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add=-2,none,skill=(skill:destroy)(timing:self_turn_end)(condition:{me.inplay_self.count}>0)(target:character=me&target=self)(option:none)(preprocess:none)(icon:induction)//skill=(skill:indestructible)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self)(option:none)(preprocess:none)",
     "skill_target": "character=me&target=hand_other_self&card_type=unit&clan=all&base_card_id!=810031030&select_count=1,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all//character=me&target=inplay_other_self&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play//when_evolve"
   },
   {
     "atk": 0,
@@ -396,7 +414,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=114031020:109034010,repeat_count=1&summon_side=me",
     "skill_target": "none,target=chosen_cards&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_play"
   },
   {
     "atk": 0,
@@ -417,7 +436,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -438,7 +458,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "fixeduse=5,gain_chant=7,gain_chant=1,skill=(skill:draw)(timing:self_turn_start)(condition:character=me&target=deck&card_type=unit)(target:character=me&target=deck&card_type=unit&random_count=3)(option:none)(preprocess:turn_start_skill_after_stop=(me&me_or_op_turn_end_count=1))",
     "skill_target": "none,character=me&character=me&target=self&card_type=chant_field,character=me&target=inplay_self&card_type=chant_field,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_destroy_other,when_destroy"
   },
   {
     "atk": 0,
@@ -459,7 +480,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=5&add_life=5,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=inplay_self&card_type=field",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other"
   },
   {
     "atk": 0,
@@ -480,7 +502,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -501,7 +524,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -522,7 +546,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900111020",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -543,7 +568,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=both&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -564,7 +590,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,character=me&target=deck&card_type=unit&clan=elf&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -585,7 +612,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,character=me&target=deck&card_type=unit&clan=elf&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -606,7 +634,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=spell&status_cost=1&clan=elf&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -627,7 +656,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=100011020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -648,7 +678,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=5",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -669,7 +700,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900012020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -690,7 +722,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=3",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -711,7 +744,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=4",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -732,7 +766,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=115111010,token_draw=900141040&type=add",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -753,7 +788,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900111010:900111010,add_offense=1",
     "skill_target": "none,character=me&target=skill_drew_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -774,7 +810,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900134030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -795,7 +832,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=122141030&type=add",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -816,7 +854,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900144050",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -837,7 +876,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=3",
     "skill_target": "character=me&target=inplay&card_type=unit_and_allfield&select_count=1,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -858,7 +898,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_count=1,skill=(skill:draw)(timing:self_turn_end)(condition:{me.play_count}>=4&{me.play_count}<8)(target:character=me&target=deck&card_type=all&random_count=1)(option:none)(preprocess:none),skill=(skill:powerup)(timing:self_turn_end)(condition:{me.play_count}>=4&{me.play_count}<8)(target:character=me&target=inplay&card_type=unit)(option:add_offense=1&add_life=1)(preprocess:none)(effect_path:btl_other_up)(se_path:se_btl_other_up)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.0)(effect_target_type:single),skill=(skill:draw)(timing:self_turn_end)(condition:{me.play_count}>=8)(target:character=me&target=deck&card_type=all&random_count=2)(option:none)(preprocess:none),skill=(skill:powerup)(timing:self_turn_end)(condition:{me.play_count}>=8)(target:character=me&target=inplay&card_type=unit)(option:add_offense=2&add_life=2)(preprocess:none)(effect_path:btl_other_up)(se_path:se_btl_other_up)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.0)(effect_target_type:single),skill=(skill:guard)(timing:self_turn_end)(condition:{me.play_count}>=8)(target:character=me&target=inplay&card_type=unit)(option:none)(preprocess:none)",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -879,7 +920,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900111010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 0,
@@ -900,7 +942,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900111010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 0,
@@ -921,7 +964,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_destroy,when_return"
   },
   {
     "atk": 0,
@@ -942,7 +986,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=118141030",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=2&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -963,7 +1008,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy,when_return"
   },
   {
     "atk": 0,
@@ -984,7 +1030,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900234030",
     "skill_target": "none",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1005,7 +1052,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900244040",
     "skill_target": "none",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1026,7 +1074,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1047,7 +1096,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_rally_count=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "指揮官‧八獄"
+    "tribe_name": "指揮官‧八獄",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -1068,7 +1118,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900012010,none",
     "skill_target": "none,character=me&target=deck&card_type=all&tribe=nature&random_count=1&status_cost<:={me.inplay.class.pp}",
-    "tribe_name": "士兵‧自然"
+    "tribe_name": "士兵‧自然",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -1089,7 +1140,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -1110,7 +1162,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900312010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1131,7 +1184,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900311030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1152,7 +1206,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,summon_token=900312020",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1173,7 +1228,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=1",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1194,7 +1250,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900012020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1215,7 +1272,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=2,damage=3",
     "skill_target": "character=me&target=inplay&card_type=field,character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=field&select_index=0,character=op&target=inplay&card_type=unit&select_index=1,character=op&target=inplay&card_type=unit&select_index=1",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1236,7 +1294,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1257,7 +1316,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1278,7 +1338,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900311020,skill=(skill:token_draw)(timing:self_turn_end)(condition:character=me)(target:none)(option:token_draw=128341030)(preprocess:remove_after_action=(count=1))",
     "skill_target": "none,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1299,7 +1360,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,token_draw=810344020",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count={me.game_play_cards_other_self.spell.unique_base_card_id_card.count},none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1320,7 +1382,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "white_ritual_stack=1,none,none,none",
     "skill_target": "none,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "character=me,character=me,character=me,character=me"
   },
   {
     "atk": 0,
@@ -1341,7 +1404,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "white_ritual_stack=1,none,none,none",
     "skill_target": "none,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "character=me,character=me,character=me,character=me"
   },
   {
     "atk": 0,
@@ -1362,7 +1426,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "white_ritual_stack=1,none,none,none",
     "skill_target": "none,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "character=me,character=me,character=me,character=me"
   },
   {
     "atk": 0,
@@ -1383,7 +1448,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=1",
     "skill_target": "character=me&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 0,
@@ -1404,7 +1470,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "cut_clipping=4,none,healing=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,none",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "{me.inplay_self.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0,{me.inplay_self.count}>0"
   },
   {
     "atk": 1,
@@ -1425,7 +1492,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=2&add_life=2,none,token_draw=810434010",
     "skill_target": "character=me&target=self,character=me&target=self,none",
-    "tribe_name": "武裝"
+    "tribe_name": "武裝",
+    "timing": "when_play,when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -1446,7 +1514,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1467,7 +1536,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1488,7 +1558,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,damage=5,none,add_pptotal=-1",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1509,7 +1580,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none",
     "skill_target": "character=op&target=inplay&card_type=class,character=me&target=deck&card_type=unit&clan=dragon&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1530,7 +1602,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_life=1,damage=2",
     "skill_target": "character=me&target=deck&card_type=unit&clan=dragon,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "學園"
+    "tribe_name": "學園",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1551,7 +1624,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_pptotal=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1572,7 +1646,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900441030&type=add",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1593,7 +1668,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,summon_token=900411030",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1614,7 +1690,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=120441020&type=add,add_life=1,token_draw=900444030",
     "skill_target": "none,character=me&target=deck&card_type=unit&clan=dragon,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1635,7 +1712,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,token_draw=900441140",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,none",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1656,7 +1734,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1677,7 +1756,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=5,none",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=me&target=inplay&card_type=unit&base_card_id=810441040",
-    "tribe_name": "宴樂"
+    "tribe_name": "宴樂",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1698,7 +1778,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,token_draw=900414010,set=1",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class&select_count=1,none,character=me&target=skill_drew_card&card_type=spell",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1719,7 +1800,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,none,healing=2",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1740,7 +1822,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me),damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me),damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me)",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1761,7 +1844,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me),damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me),damage=1,add=-1,healing=1,none,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me),skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_healing=1)(preprocess:turn_end_stop=me&turn_end_remove=me)",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=unit_and_class,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1782,7 +1866,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900011080",
     "skill_target": "none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "self_turn_end"
   },
   {
     "atk": 0,
@@ -1803,7 +1888,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1&add_life=1",
     "skill_target": "character=me&target=inplay_other_self&card_type=unit&select_count=1,character=me&target=inplay_other_self&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -1824,7 +1910,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,type=add,token_draw=128441020&type=add,add_life=1,skill=(skill:draw)(timing:when_destroy)(condition:character=me&target=self&card_type=chant_field)(target:character=me&target=deck&card_type=all&random_count=2)(option:none)(preprocess:none)",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=last_target&card_type=all,none,character=me&target=deck&card_type=unit&clan=dragon,character=me&target=self&card_type=field",
-    "tribe_name": "學園"
+    "tribe_name": "學園",
+    "timing": "when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1845,7 +1932,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900511020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -1866,7 +1954,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=1,add_count=2",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=1,character=op&target=inplay&card_type=class,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1887,7 +1976,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1908,7 +1998,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=destroyed_card_list&card_type=unit&status_cost<:=3&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1929,7 +2020,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,healing=2",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -1950,7 +2042,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none",
     "skill_target": "character=me&target=deck&card_type=unit&clan=necro&status_cost={me.deck.unit.clan=necro.cost.max}&random_count=1,character=me&target=last_target&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1971,7 +2064,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none",
     "skill_target": "character=me&target=deck&card_type=unit&clan=necro&status_cost={me.deck.unit.clan=necro.cost.max}&random_count=1,character=me&target=last_target&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -1992,7 +2086,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=111541030&ignore_voice=true,none,token_draw=900541060",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2013,7 +2108,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=123541020&ignore_voice=true&effect=owner,none",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2034,7 +2130,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,effect=owner,effect=owner,add_offense=3,none,none",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,character=me&target=destroyed_card_list&card_type=unit&ability=when_destroy&status_cost<=2&random_count=1,character=me&target=destroyed_card_list&card_type=unit&ability=when_destroy&status_cost<=2&random_count=2,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2055,7 +2152,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,skill=(skill:damage)(timing:when_destroy)(condition:none)(target:character=op&target=inplay&card_type=class)(option:damage={self.offense})(preprocess:none)(effect_path:btl_120541010_2)(se_path:se_btl_120541010_2)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&divergence_id=8105440101,skill=(skill:heal)(timing:when_destroy)(condition:none)(target:character=me&target=inplay&card_type=class)(option:healing={self.last_life})(preprocess:none)(effect_path:btl_900544070_4)(se_path:se_btl_900544070_4)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&divergence_id=8105440102",
     "skill_target": "character=me&target=hand&card_type=unit&clan=necro,character=me&target=hand&card_type=unit&clan=necro&exclution={me.selected_cards},character=me&target=hand&card_type=all&select_index=0,character=me&target=hand&card_type=all&select_index=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2076,7 +2174,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "skill=(skill:sneak)(timing:self_turn_end)(condition:{me.inplay_self.count}>0&{me.inplay_self.ability!=sneak.count}>0)(target:character=me&target=self)(option:none)(preprocess:necromance=2)(icon:induction)(effect_path:btl_820544020_2)(se_path:se_btl_820544020_2)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2097,7 +2196,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "save_target_card_id=8205440301:is_individual,none,skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token={self.load_target_card_id=8205440301:is_individual})(preprocess:remove_after_action=(count=1))",
     "skill_target": "character=me&target=hand&card_type=unit&status_cost<={me.cemetery.count}&select_count=1,character=me&target=deck&card_type=unit&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2118,7 +2218,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "save_target_card_id=8205440301:is_individual,none,skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token={self.load_target_card_id=8205440301:is_individual})(preprocess:remove_after_action=(count=1))",
     "skill_target": "character=me&target=hand&card_type=unit&status_cost<={me.cemetery.count}&select_count=1,character=me&target=deck&card_type=unit&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2139,7 +2240,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "save_target_card_id=8205440501:is_individual,none,skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token={self.load_target_card_id=8205440501:is_individual})(preprocess:remove_after_action=(count=1)),skill=(skill:invoke_skill)(timing:op_turn_end)(condition:character=me)(target:character=me&target=inplay_last_target&card_type=unit)(option:invoke_type=when_destroy)(preprocess:remove_after_action=(count=1))",
     "skill_target": "character=me&target=hand&card_type=unit&status_cost<={me.cemetery.count}&select_count=1,character=me&target=deck&card_type=unit&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2160,7 +2262,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "save_target_card_id=8205440501:is_individual,none,skill=(skill:summon_token)(timing:op_turn_end)(condition:character=me)(target:none)(option:summon_token={self.load_target_card_id=8205440501:is_individual})(preprocess:remove_after_action=(count=1)),skill=(skill:invoke_skill)(timing:op_turn_end)(condition:character=me)(target:character=me&target=inplay_last_target&card_type=unit)(option:invoke_type=when_destroy)(preprocess:remove_after_action=(count=1))",
     "skill_target": "character=me&target=hand&card_type=unit&status_cost<={me.cemetery.count}&select_count=1,character=me&target=deck&card_type=unit&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2181,7 +2284,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_count=4",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2202,7 +2306,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=reanimated_card&card_type=unit&is_inplay=true",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other"
   },
   {
     "atk": 0,
@@ -2223,7 +2328,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,damage=2,none,none",
     "skill_target": "character=me&target=self&card_type=chant_field,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=deck&card_type=all&random_count=1,character=me&target=destroyed_card_list&card_type=unit&status_cost<:=4&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_burial_rite_other,when_play,when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -2244,7 +2350,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2265,7 +2372,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,damage=3",
     "skill_target": "character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2286,7 +2394,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,summon_token=900611010",
     "skill_target": "character=me&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2307,7 +2416,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,summon_token=122621020",
     "skill_target": "character=me&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2328,7 +2438,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=4,damage=2",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "宴樂"
+    "tribe_name": "宴樂",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2349,7 +2460,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage={me.inplay.class.damage_count=self}",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2370,7 +2482,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,damage=2",
     "skill_target": "character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2391,7 +2504,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=123631020&type=add,none",
     "skill_target": "none,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2412,7 +2526,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=118641030&type=add",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2433,7 +2548,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=110631020&type=add,damage=3,damage=1",
     "skill_target": "none,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2454,7 +2570,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=2,none",
     "skill_target": "character=me&target=inplay_other_self&card_type=unit&evolution=false&select_count=1,character=me&target=selected_cards&card_type=unit,character=me&target=selected_cards&card_type=unit,character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=unit&evolution=false",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2475,7 +2592,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=3",
     "skill_target": "character=me&target=inplay&card_type=unit&random_count=1,character=me&target=hand_other_self&card_type=all&select_count=1,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_discard,when_play,when_play"
   },
   {
     "atk": 0,
@@ -2496,7 +2614,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&tribe=nature&random_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_destroy,when_destroy"
   },
   {
     "atk": 0,
@@ -2517,7 +2636,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=121631020",
     "skill_target": "character=me&target=inplay_self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_attack_self_and_other,when_destroy"
   },
   {
     "atk": 0,
@@ -2538,7 +2658,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2559,7 +2680,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=3",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2580,7 +2702,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=3",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2601,7 +2724,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900311060",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2622,7 +2746,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_max_life=1,healing=1",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2643,7 +2768,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1",
     "skill_target": "character=me&target=inplay&card_type=chant_field&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2664,7 +2790,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=108714010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -2685,7 +2812,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,token_draw=125741030",
     "skill_target": "character=me&target=inplay&card_type=chant_field&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2706,7 +2834,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -2727,7 +2856,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=115711020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2748,7 +2878,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant={me.inplay.unit.ability=guard.count},summon_token=120711030",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end,when_destroy"
   },
   {
     "atk": 0,
@@ -2769,7 +2900,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=122711020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2790,7 +2922,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2811,7 +2944,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=126711020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2832,7 +2966,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2853,7 +2988,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=119721020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2874,7 +3010,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=played_card&card_type=unit&status_offense<=2&is_inplay=true",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play_other"
   },
   {
     "atk": 0,
@@ -2895,7 +3032,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=129721020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -2916,7 +3054,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant={me.inplay.unit.ability=guard.count},summon_token=118741020",
     "skill_target": "character=me&target=inplay_self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end,when_destroy"
   },
   {
     "atk": 0,
@@ -2937,7 +3076,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=122741010",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play_other,when_destroy"
   },
   {
     "atk": 0,
@@ -2958,7 +3098,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,token_draw=126741020",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy,when_destroy"
   },
   {
     "atk": 0,
@@ -2979,7 +3120,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 1,
@@ -3000,7 +3142,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=810841010,add_life={self.last_life},token_draw=810844010,none//token_draw=810841010,add_life={self.last_life},gain_offense=1&gain_life=1",
     "skill_target": "none,character=me&target=skill_drew_card&card_type=unit,none,character=me&target=self//none,character=me&target=skill_drew_card&card_type=unit,character=op&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy,when_destroy,when_play,when_play//when_destroy,when_destroy,when_evolve"
   },
   {
     "atk": 0,
@@ -3021,7 +3164,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3042,7 +3186,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay&card_type=unit&evolution=false&base_card_id=900811050&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3063,7 +3208,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900814010",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3084,7 +3230,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=unit&tribe=artifact&base_card_id!=124831020&random_count=1,character=me&target=deck&card_type=unit&tribe=artifact&base_card_id!=124831020&id_no_duplication_random_count=2",
-    "tribe_name": "創造物"
+    "tribe_name": "創造物",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3105,7 +3252,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=all&tribe=artifact&select_count=1,character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -3126,7 +3274,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&tribe=machine&base_card_id!=113841010&random_count=1",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3147,7 +3296,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage={me.deck.all.tribe=artifact.count}",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3168,7 +3318,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,none",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&card_type=all&target=hand_other_self&exclution={me.selected_cards.all},character=me&target=deck&card_type=all&random_count={me.last_target.all.count},character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -3189,7 +3340,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900841010&effect=owner",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3210,7 +3362,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900844070",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3231,7 +3384,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900844070",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3252,7 +3406,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900811030:900811010&type=add",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 0,
@@ -3273,7 +3428,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,gain_chant=1,summon_token=129841020",
     "skill_target": "character=me&target=summoned_card&card_type=unit&tribe=artifact&is_inplay=true,character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_destroy"
   },
   {
     "atk": 0,
@@ -3294,7 +3450,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3315,7 +3472,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900011080:900011080&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3336,7 +3494,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900011080:900011080&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3357,7 +3516,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1",
     "skill_target": "character=op&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3378,7 +3538,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=107011030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3399,7 +3560,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=4,none,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=inplay_self&card_type=field",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_summon_other"
   },
   {
     "atk": 1,
@@ -3420,7 +3582,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,skill=(skill:quick)(timing:when_summon_other)(condition:character=me&target=summoned_card&card_type=unit&base_card_id=900111010&turn=self&evolvable_turn=true)(target:character=me&target=summoned_card&card_type=unit&base_card_id=900111010&is_inplay=true)(option:none)(preprocess:per_turn=1)(effect_path:btl_127141030_3)(se_path:se_btl_127141030_3)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=1271410301,none",
     "skill_target": "character=me&target=self,character=me&target=inplay&card_type=class,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play"
   },
   {
     "atk": 2,
@@ -3441,7 +3604,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_ep=1,add_offense=4&add_life=4,none,none",
     "skill_target": "character=me&target=self,character=me&target=inplay&card_type=class,character=me&target=self,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack,when_attack,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -3462,7 +3626,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3483,7 +3648,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900144050&type=add",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3504,7 +3670,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=4,damage=4,none,token_draw=820444010",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -3525,7 +3692,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 2,
@@ -3546,7 +3714,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900214030",
     "skill_target": "character=me,none",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 2,
@@ -3567,7 +3736,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,summon_token=820241020,type=all,none,ability=guard",
     "skill_target": "character=op&target=be_attacked&card_type=unit,none,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_attack,when_attack,when_change_inplay_immediate,when_change_inplay_immediate,op_turn_start"
   },
   {
     "atk": 0,
@@ -3588,7 +3758,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3609,7 +3780,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=111211010:111211010",
     "skill_target": "none",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3630,7 +3802,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=111211010:111211010",
     "skill_target": "none",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3651,7 +3824,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "random_count=1&summon_token=900231080:900231090",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "none"
   },
   {
     "atk": 0,
@@ -3672,7 +3846,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211030,token_draw=900214050",
     "skill_target": "none,none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me,character=me"
   },
   {
     "atk": 0,
@@ -3693,7 +3868,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211010:900211010&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 0,
@@ -3714,7 +3890,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "set_offense=1&set_life=1",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3735,7 +3912,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3756,7 +3934,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3777,7 +3956,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211020:900211010&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 2,
@@ -3798,7 +3978,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900012030,set=0,damage=2,none,none",
     "skill_target": "character=me&target=self,none,character=me&target=last_target&card_type=field,character=op&target=inplay&card_type=class,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack,when_attack,when_play_other,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -3819,7 +4000,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3840,7 +4022,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -3861,7 +4044,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=116322010,none",
     "skill_target": "none,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3882,7 +4066,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3903,7 +4088,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900312010,token_draw=900314030",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3924,7 +4110,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900312010,token_draw=900331060,add={me.inplay.white_ritual_stack.sum}*-1",
     "skill_target": "none,none,character=me&target=skill_drew_card&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -3945,7 +4132,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,summon_token=105312010",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -3966,7 +4154,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "sum={me.last_inplay_white_ritual_stack.sum}&random_range=3,summon_token=900311020&repeat_count={self.random_index=0},token_draw=900314030&repeat_count={self.random_index=1},damage=2",
     "skill_target": "character=me&target=self&card_type=all,none,none,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -3987,7 +4176,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=2&select_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4008,7 +4198,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "{op.inplay.unit.selectable.count}>0"
   },
   {
     "atk": 0,
@@ -4029,7 +4220,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900311030",
     "skill_target": "none",
-    "tribe_name": "土之印"
+    "tribe_name": "土之印",
+    "timing": "character=me"
   },
   {
     "atk": 2,
@@ -4050,7 +4242,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none//none",
     "skill_target": "none//character=me&target=inplay_other_self&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none//when_evolve"
   },
   {
     "atk": 3,
@@ -4071,7 +4264,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_life=1,attack_count=2,none,none",
     "skill_target": "character=me&target=self,character=me&target=hand&card_type=unit,character=me&target=self,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack,when_attack,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -4092,7 +4286,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4113,7 +4308,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900431010&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4134,7 +4330,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_life=2,none",
     "skill_target": "character=me&target=hand_other_self&card_type=unit&clan=dragon&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4155,7 +4352,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900441050",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4176,7 +4374,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,token_draw=900012010",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,none",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4197,7 +4396,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=3,healing=3,add_pptotal=1",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=2,character=me&target=hand_other_self&card_type=all,character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=unit_and_class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -4218,7 +4418,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,healing=3,add_pptotal=3,skill=(skill:pp_modifier)(timing:self_turn_start)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_pptotal=-3)(preprocess:remove_after_action=(count=1))&duplicate_ban_id=820444040",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=unit_and_class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -4239,7 +4440,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,healing=3,add_pptotal=3,skill=(skill:pp_modifier)(timing:self_turn_start)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:add_pptotal=-3)(preprocess:remove_after_action=(count=1))&duplicate_ban_id=820444040",
     "skill_target": "character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=unit_and_class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 1,
@@ -4260,7 +4462,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1&add_life=1",
     "skill_target": "character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy_other"
   },
   {
     "atk": 2,
@@ -4281,7 +4484,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=op&target=inplay&card_type=unit&evolution=true&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 2,
@@ -4302,7 +4506,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1&add_life=1,none",
     "skill_target": "{op.inplay.unit.cost>=5}&{op.inplay.unit.evolution=true}&select_count=1,character=me&target=self,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -4323,7 +4528,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,add_offense=4,none,none",
     "skill_target": "character=me&target=self,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=self,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack,when_attack,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -4344,7 +4550,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900511010:900511010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4365,7 +4572,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4386,7 +4594,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=destroyed_card_list&card_type=unit&status_cost<:=3&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4407,7 +4616,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900541120",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4428,7 +4638,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900541120",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4449,7 +4660,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=117521010",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_burial_rite_other,when_destroy"
   },
   {
     "atk": 0,
@@ -4470,7 +4682,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=810521020",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_burial_rite_other,when_destroy"
   },
   {
     "atk": 0,
@@ -4491,7 +4704,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "metamorphose=900511010,metamorphose=900511010",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -4512,7 +4726,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,add_count=1,summon_token=123531020",
     "skill_target": "character=me&target=self&card_type=chant_field,character=me,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_necromance,self_turn_end,when_destroy"
   },
   {
     "atk": 0,
@@ -4533,7 +4748,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=127531010",
     "skill_target": "none",
-    "tribe_name": "八獄"
+    "tribe_name": "八獄",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -4554,7 +4770,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "skill=(skill:heal_modifier)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self&card_type=class)(option:type=be_healed&set_healing=1)(preprocess:turn_end_stop=me),summon_token=119541030",
     "skill_target": "character=op&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -4575,7 +4792,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=103521030:100521020",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_destroy"
   },
   {
     "atk": 3,
@@ -4596,7 +4814,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "cant_attack=all,none",
     "skill_target": "character=me&target=self,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_summon_other"
   },
   {
     "atk": 2,
@@ -4617,7 +4836,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,fixeduse=5,add=-3",
     "skill_target": "character=me&target=deck&clan=vampire&status_offense>=5&random_count=1,none,character=me&target=skill_drew_card&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -4638,7 +4858,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add=-1",
     "skill_target": "none,character=me&target=hand_other_self&card_type=all&clan=vampire&base_card_id!=810631020&select_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_play"
   },
   {
     "atk": 1,
@@ -4659,7 +4880,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense={me.game_summon_cards.unit.base_card_id=820641010.count}&add_life={me.game_summon_cards.unit.base_card_id=820641010.count},skill=(skill:token_draw)(timing:self_turn_start)(condition:{me.hand.spell.base_card_id=820644010.count}=0)(target:none)(option:token_draw=820644010)(preprocess:none)&duplicate_ban_id=8206410101,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me&target=self&{me.inplay.unit.base_card_id=820641010.count}=0&{me.hand.unit.base_card_id=820641010.count}=0)(target:none)(option:summon_token=820641010)(preprocess:none)&duplicate_ban_id=8206410102",
     "skill_target": "character=me&target=self&card_type=unit,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon,when_summon,when_destroy"
   },
   {
     "atk": 0,
@@ -4680,7 +4902,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900611020:900611020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4701,7 +4924,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4722,7 +4946,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=3,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4743,7 +4968,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,summon_token=900611030",
     "skill_target": "character=me&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4764,7 +4990,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=127621020,damage=1,summon_token=127621020,damage=1",
     "skill_target": "none,character=me&target=inplay&card_type=class,none,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -4785,7 +5012,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1,damage=3",
     "skill_target": "character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4806,7 +5034,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4827,7 +5056,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900641040",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -4848,7 +5078,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=1",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=4&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4869,7 +5100,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=1",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=4&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4890,7 +5122,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,skill=(skill:draw)(timing:self_turn_start)(condition:character=me)(target:character=me&target=deck&card_type=all&random_count=1)(option:none)(preprocess:remove_after_action=(count=1)) ",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -4911,7 +5144,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900611030:900611010:900611010,none,skill=(skill:damage)(timing:when_destroy)(condition:character=me)(target:character=op&target=inplay&card_type=class)(option:damage=2)(preprocess:none)",
     "skill_target": "none,character=me&target=inplay&card_type=unit&base_card_id=900611010&evolution=false,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -4932,7 +5166,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=123611030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -4953,7 +5188,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=2",
     "skill_target": "character=me&target=deck&card_type=all&random_count=2,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -4974,7 +5210,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=116641030",
     "skill_target": "character=me&target=inplay_self&card_type=chant_field,none",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_summon_other,when_destroy"
   },
   {
     "atk": 1,
@@ -4995,7 +5232,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me,character=me&target=deck&card_type=all&random_count={me.inplay.unit.ability=guard.count}",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play"
   },
   {
     "atk": 2,
@@ -5016,7 +5254,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage={me.destroyed_card_list.field.count.half_round_up},damage={me.destroyed_card_list.field.count.half_round_up}//none",
     "skill_target": "character=me,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=class//character=op&target=inplay&card_type=unit&status_life<=3&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play//when_evolve"
   },
   {
     "atk": 1,
@@ -5037,7 +5276,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=810741010,none,none,none",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy,when_destroy,when_destroy,when_destroy"
   },
   {
     "atk": 2,
@@ -5058,7 +5298,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none//summon_token=102732020",
     "skill_target": "character=me//none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay//when_evolve"
   },
   {
     "atk": 2,
@@ -5079,7 +5320,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,healing=4,none,add_offense=1&add_life=1,none,none",
     "skill_target": "character=me&target=self,character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2,character=me&target=inplay&card_type=unit,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack,when_attack,when_attack,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -5100,7 +5342,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900743050",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5121,7 +5364,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_max_life=5,healing=5,none,none,add_pp=1,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=unit_and_class,character=me&target=inplay&card_type=unit,character=me&target=deck&card_type=all&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=unit&evolution=false",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -5142,7 +5386,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5163,7 +5408,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=116711020",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -5184,7 +5430,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=123711030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5205,7 +5452,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_destroy"
   },
   {
     "atk": 0,
@@ -5226,7 +5474,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -5247,7 +5496,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=124721020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5268,7 +5518,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=717721010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5289,7 +5540,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=114731010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5310,7 +5562,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=2,summon_token=124731020",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -5331,7 +5584,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=129731010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -5352,7 +5606,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -5373,7 +5628,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,none",
     "skill_target": "character=me&target=played_card&card_type=chant_field,character=me&target=deck_self&card_type=field",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play_other,self_turn_end"
   },
   {
     "atk": 2,
@@ -5394,7 +5650,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense={me.destroyed_card_list.unit.count.half_round_up}&add_life={me.destroyed_card_list.unit.count.half_round_up},none,gain_offense=1&gain_life=1,none,none",
     "skill_target": "character=me&target=self,character=me&target=self,character=op&target=inplay&card_type=unit,character=me,character=me",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon,when_change_inplay,when_attack,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -5415,7 +5672,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900811070:900814010",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5436,7 +5694,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900831020:900831030&type=add",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=2&select_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -5457,7 +5716,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900811050:900811050&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5478,7 +5738,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "is_random_distinct=true&token_draw=900831020:900831030:?1",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 2,
@@ -5499,7 +5760,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=unit&status_cost=2&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 1,
@@ -5520,7 +5782,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=100011010&summon_side=me",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end"
   },
   {
     "atk": 2,
@@ -5541,7 +5804,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,fixeduse=10,damage=1",
     "skill_target": "character=me,none,character=op&target=inplay&card_type=unit_and_class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play"
   },
   {
     "atk": 0,
@@ -5562,7 +5826,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=2&add_life=2",
     "skill_target": "character=me&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5583,7 +5848,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=op&target=inplay&card_type=field&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5604,7 +5870,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900041120:900041070:900041130:900041080:900041100:900041090:900041110:900041060:900044040:900044050:900044060:900044070:900044020:?4&type=add",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5625,7 +5892,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5646,7 +5914,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=2&add_life=6,none,none,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=inplay_self&card_type=field",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_summon_other,when_summon_other"
   },
   {
     "atk": 0,
@@ -5667,7 +5936,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=129141020&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 2,
@@ -5688,7 +5958,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,type=all,none,add_pp={me.inplay_other_self.unit.count}",
     "skill_target": "character=me,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=inplay&card_type=class",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate,when_attack"
   },
   {
     "atk": 3,
@@ -5709,7 +5980,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=820344020,add_pp=3//damage=15,damage=15",
     "skill_target": "character=me&target=hand_other_self&card_type=all&select_count=1,none,character=me&target=inplay&card_type=class//character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play//when_evolve,when_evolve"
   },
   {
     "atk": 0,
@@ -5730,7 +6002,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=6",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5751,7 +6024,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211030:900211020&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 0,
@@ -5772,7 +6046,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211070:900211070:900211070&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 0,
@@ -5793,7 +6068,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,add_offense=1,none,add_offense=2&add_life=2,token_draw=820243010",
     "skill_target": "character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=inplay&card_type=unit,none",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_change_inplay_immediate,when_summon_other,when_summon_other,when_destroy,when_destroy"
   },
   {
     "atk": 0,
@@ -5814,7 +6090,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1&add_life=1",
     "skill_target": "character=me,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play_other"
   },
   {
     "atk": 3,
@@ -5835,7 +6112,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=810344010,token_draw=100314010,token_draw=900314020//token_draw=101314020,add_charge=1,add_pp=1",
     "skill_target": "character=me&target=hand_other_self&clan=witch&card_type=unit&select_count=8,none,none,none//none,character=me&target=hand&card_type=all,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_fusion,when_fusion,when_fusion//when_evolve,when_evolve,when_evolve"
   },
   {
     "atk": 2,
@@ -5856,7 +6134,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,type=all,none,token_draw=101324050:100314060:108314010:?1,set=0",
     "skill_target": "character=me,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,none,character=me&target=skill_drew_card&card_type=spell",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate,self_turn_end,self_turn_end"
   },
   {
     "atk": 2,
@@ -5877,7 +6156,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,type=all,none,token_draw=900344030",
     "skill_target": "character=me,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate,self_turn_start"
   },
   {
     "atk": 0,
@@ -5898,7 +6178,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_ep=1",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -5919,7 +6200,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=820144010:820241030:820344020:820444010:820544010:820644020:820744010:?1,none,add_pp=2,damage=5,damage=5",
     "skill_target": "{me.hand_other_self.unit}&{me.hand_other_self.spell}&select_count=8,none,character=me&target=deck&card_type=all&random_count=2,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_fusion,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -5940,7 +6222,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=1,gain_chant=1,summon_token=119341020",
     "skill_target": "character=me&target=played_card&card_type=unit&is_inplay=true,character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play_other,self_turn_start,when_destroy"
   },
   {
     "atk": 3,
@@ -5961,7 +6244,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,summon_token=810421030,fixeduse=6,add_offense=3&add_life=3",
     "skill_target": "character=me,none,none,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_buff,when_play,when_play"
   },
   {
     "atk": 1,
@@ -5982,7 +6266,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=2,damage=1",
     "skill_target": "character=me,character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_pptotal,when_summon_other,when_summon_other"
   },
   {
     "atk": 3,
@@ -6003,7 +6288,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,cant_attack=class,type=all,none,none//attack_count=2,none,none",
     "skill_target": "character=me,character=me&target=self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=op&target=be_attacked&card_type=unit//character=me,character=me&target=inplay_self&card_type=unit,character=op&target=be_attacked&card_type=unit",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate,when_change_inplay_immediate,when_attack//when_change_inplay_immediate,when_change_inplay_immediate,when_attack"
   },
   {
     "atk": 3,
@@ -6024,7 +6310,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "type=all,none,none,add=-1,damage=7,set_life=3",
     "skill_target": "character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=deck&card_type=all&random_count=1,character=me&target=hand&card_type=all&random_count=3,character=op&target=inplay&card_type=unit_and_class,character=me&target=inplay_self&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_attack,when_attack,when_attack,when_attack"
   },
   {
     "atk": 0,
@@ -6045,7 +6332,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6066,7 +6354,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=deck&card_type=all&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -6087,7 +6376,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900411030,none",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6108,7 +6398,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_pptotal=1",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -6129,7 +6420,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_pptotal=1",
     "skill_target": "character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 1,
@@ -6150,7 +6442,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=(900511010))(preprocess:none)",
     "skill_target": "character=me&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 1,
@@ -6171,7 +6464,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=1//damage=3,token_draw=810544010",
     "skill_target": "character=me&target=self,character=op&target=inplay&card_type=unit&random_count=1//character=op&target=inplay&card_type=unit&random_count=1,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_destroy//when_destroy,when_evolve"
   },
   {
     "atk": 1,
@@ -6192,7 +6486,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,type=all,none,none",
     "skill_target": "character=me,character=me&target=inplay_self&card_type=unit,character=me&target=inplay_self&card_type=unit,character=me&target=deck&card_type=unit&status_cost<:{me.inplay.class.turn}&random_count=1",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate,self_turn_end"
   },
   {
     "atk": 0,
@@ -6213,7 +6508,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=5,damage=5,none",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -6234,7 +6530,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900011080:900011080:900011080,token_draw=900541140&type=add",
     "skill_target": "none,none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6255,7 +6552,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=destroyed_card_list&card_type=unit&status_cost<:=3&random_count=1,character=me&target=destroyed_card_list&card_type=unit&status_cost<:=5&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6276,7 +6574,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900511030:900511030,none,none",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -6297,7 +6596,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,repeat_count={me.evolution_card.unit.count}&summon_token=900511020,gain_chant={me.evolution_card.unit.count}*2,summon_token=115541030",
     "skill_target": "character=me&target=inplay_self&card_type=chant_field,character=me&target=inplay_self&card_type=chant_field,none,character=me&target=inplay_self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_evolve_other,when_evolve_other,when_destroy"
   },
   {
     "atk": 1,
@@ -6318,7 +6618,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=1,summon_token=900611010:900611010,token_draw=108641020,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=inplay&card_type=class,none,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_summon_other,when_summon_other,when_play,when_play,when_play"
   },
   {
     "atk": 1,
@@ -6339,7 +6640,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=1,summon_token=900611010:900611010,token_draw=108641020,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=summoned_card&card_type=unit&base_card_id=900611010&is_inplay=true,character=me&target=inplay&card_type=class,none,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_summon_other,when_summon_other,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -6360,7 +6662,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=1",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -6381,7 +6684,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900012040,summon_token=118611030",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -6402,7 +6706,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=126621030",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_destroy"
   },
   {
     "atk": 0,
@@ -6423,7 +6728,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=1,gain_chant=1,summon_token=119641020",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,self_turn_start,when_destroy"
   },
   {
     "atk": 2,
@@ -6444,7 +6750,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage={me.destroyed_card_list.field.count.half_round_up},damage={me.destroyed_card_list.field.count.half_round_up}//none",
     "skill_target": "character=me,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=class//character=op&target=inplay&card_type=unit&status_life<=3&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play//when_evolve"
   },
   {
     "atk": 0,
@@ -6465,7 +6772,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900741030:900741030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -6486,7 +6794,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900012030,summon_token=900711060",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -6507,7 +6816,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=105711030:900711020",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -6528,7 +6838,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=108741030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -6549,7 +6860,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "gain_chant=1,summon_token=119741020",
     "skill_target": "character=me&target=self&card_type=chant_field,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_destroy"
   },
   {
     "atk": 0,
@@ -6570,7 +6882,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,token_draw=900814010",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6591,7 +6904,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900012030,token_draw=900811050",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6612,7 +6926,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900811020,token_draw=900814010",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6633,7 +6948,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "ignore_voice=true,none,skill=(skill:damage)(timing:when_attack_self_and_other)(condition:character=me&target=attacker&attacker=other&card_type=unit)(target:character=op&target=inplay&card_type=class)(option:damage=1)(preprocess:per_turn=1)(effect_path:btl_unique_silva_3)(se_path:se_btl_unique_silva_3)(effect_move_type:DIRECT_LOOK)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)",
     "skill_target": "character=me&target=hand_other_self&card_type=unit&base_cost<=3&select_count=1,character=me&target=skill_summoned_card&card_type=unit,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -6654,7 +6970,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6675,7 +6992,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=1&add_life=1,add_offense=2&add_life=2",
     "skill_target": "character=me&target=inplay&card_type=unit&tribe!=artifact,character=me&target=inplay&card_type=unit&tribe=artifact",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6696,7 +7014,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=900843020:900843030:810843010,repeat_count=1&summon_side=me,fixeduse=5,summon_token=810841040,fixeduse=7,summon_token=900841310",
     "skill_target": "none,target=chosen_cards&card_type=all,none,none,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -6717,7 +7036,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "card_id=900843020:900843030:810843010,repeat_count=1&summon_side=me",
     "skill_target": "none,target=chosen_cards&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_choice_play,when_play"
   },
   {
     "atk": 0,
@@ -6738,7 +7058,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,none,damage=5,summon_token=119841030,none",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,none,character=op&target=inplay&card_type=unit&select_count=1,none,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,none,when_play,when_destroy,when_destroy"
   },
   {
     "atk": 0,
@@ -6759,7 +7080,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=2,none",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_end,self_turn_end"
   },
   {
     "atk": 0,
@@ -6780,7 +7102,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=1,none,damage=3,damage=4,none,damage=6,add_pptotal=-10,token_draw=820843020",
     "skill_target": "character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=op&target=inplay&card_type=unit,character=op&target=inplay&card_type=unit&status_life>=2,character=op&target=inplay&card_type=unit,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&status_cost<=5,character=op&target=inplay&card_type=unit&evolution=false,character=me&target=inplay&card_type=class,none",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_change_inplay_immediate,op_turn_end,op_turn_end,op_turn_end,op_turn_end,op_turn_end,op_turn_end,op_turn_end,when_destroy"
   },
   {
     "atk": 0,
@@ -6801,7 +7124,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,summon_token=900011080,random_count=1&summon_token=900841170:900841180,damage=1",
     "skill_target": "character=me&target=self&card_type=field,character=me&target=self&card_type=field,character=me&target=self&card_type=field,none,none,character=op&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay_immediate,when_change_inplay_immediate,when_change_inplay_immediate,when_fusion_other,when_fusion_other,when_fusion_other"
   },
   {
     "atk": 1,
@@ -6822,7 +7146,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1",
     "skill_target": "character=me,character=me&target=attacker",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack_self_and_other"
   },
   {
     "atk": 3,
@@ -6843,7 +7168,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,damage=2",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class&random_count=1,character=op&target=inplay&card_type=unit_and_class&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 3,
@@ -6864,7 +7190,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_offense=1&add_life=1,add_offense=1&add_life=1",
     "skill_target": "character=me&target=inplay_other_self&card_type=unit&clan=all,character=me&target=hand_other_self&card_type=unit&clan=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -6885,7 +7212,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=101011010:101011010&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -6906,7 +7234,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,token_draw=900041190,add={me.banished_last_target_1.unit.count}*-1+{op.banished_last_target_2.unit.count}*-1",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=2,character=me&target=inplay&card_type=unit,none,character=me&target=skill_drew_card&card_type=all",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 5,
@@ -6927,7 +7256,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add=-1//none,add=-1",
     "skill_target": "character=me&target=deck&card_type=all&tribe=machine&base_card_id!=810131010&random_count=1,character=me&target=skill_drew_card&card_type=all//character=me&target=deck&card_type=all&tribe=machine&base_card_id!=810131010&random_count=1,character=me&target=skill_drew_card&card_type=all",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_play,when_play//when_evolve,when_evolve"
   },
   {
     "atk": 4,
@@ -6948,7 +7278,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=2,damage=3,healing=4,none,summon_token=820241010",
     "skill_target": "character=me&target=self,character=me&target=deck&card_type=all&random_count=1,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=inplay&card_type=class,character=me&target=inplay_other_self&card_type=unit&base_card_id=820241010,none",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_change_inplay,when_attack,when_attack,when_attack,when_attack,when_summon,when_leave"
   },
   {
     "atk": 0,
@@ -6969,7 +7300,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "is_random_distinct=true&random_count=2&summon_token=900211080:900211090:900211100",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 0,
@@ -6990,7 +7322,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900211030:900211020:900211010&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me&card_type=spell"
   },
   {
     "atk": 0,
@@ -7011,7 +7344,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "set=1,damage=2,damage=2",
     "skill_target": "character=me&target=self&card_type=spell,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_evolve_other,when_play,when_play"
   },
   {
     "atk": 3,
@@ -7032,7 +7366,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=3,token_draw=810444010//add_pptotal=1",
     "skill_target": "character=me&target=inplay&card_type=class,none//character=me&target=inplay&card_type=class",
-    "tribe_name": "宴樂"
+    "tribe_name": "宴樂",
+    "timing": "when_play,when_play//when_evolve"
   },
   {
     "atk": 0,
@@ -7053,7 +7388,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900411050:900411050&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -7074,7 +7410,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=2",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -7095,7 +7432,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_life=1,summon_token=900411030:900411030",
     "skill_target": "character=me&target=deck&card_type=unit&clan=dragon,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -7116,7 +7454,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add_pptotal=1,damage=3",
     "skill_target": "character=me&target=inplay&card_type=class,character=both&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 1,
@@ -7137,7 +7476,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me&target=self&{me.inplay.unit.base_card_id=820531010.count}=0&{me.hand.unit.base_card_id=820531010.count}=0&{me.inplay.unit.base_card_id=820531020.count}=0&{me.hand.unit.base_card_id=820531020.count}=0)(target:none)(option:summon_token=820531020)(preprocess:none)&duplicate_ban_id=8205310101//add_offense={me.destroyed_card_list.unit.count}",
     "skill_target": "character=me,character=me&target=self&card_type=unit,character=me&target=inplay&card_type=class//character=me&target=self",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay,when_change_inplay,when_change_inplay//when_evolve"
   },
   {
     "atk": 1,
@@ -7158,7 +7498,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,skill=(skill:summon_token)(timing:self_turn_start)(condition:character=me&target=self&{me.inplay.unit.base_card_id=820531010.count}=0&{me.hand.unit.base_card_id=820531010.count}=0&{me.inplay.unit.base_card_id=820531020.count}=0&{me.hand.unit.base_card_id=820531020.count}=0)(target:none)(option:summon_token=820531020)(preprocess:none)&duplicate_ban_id=8205310101//add_offense={me.destroyed_card_list.unit.count}",
     "skill_target": "character=me&target=self&card_type=unit,character=me&target=inplay&card_type=class//character=me&target=self",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_change_inplay,when_change_inplay//when_evolve"
   },
   {
     "atk": 3,
@@ -7179,7 +7520,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=2",
     "skill_target": "character=op&target=inplay&card_type=unit&status_life<=3&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 5,
@@ -7200,7 +7542,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,healing=3//healing=5",
     "skill_target": "character=me&target=deck_self,character=me&target=inplay&card_type=class//character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_damage_self_and_other,when_destroy//when_destroy"
   },
   {
     "atk": 0,
@@ -7221,7 +7564,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=4,damage=4",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=unit_and_class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -7242,7 +7586,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=121711030",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy"
   },
   {
     "atk": 0,
@@ -7263,7 +7608,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=2,damage=2",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_healing_self_and_other,when_healing_self_and_other"
   },
   {
     "atk": 4,
@@ -7284,7 +7630,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900823010,fixeduse=8,gain_chant=3",
     "skill_target": "none,none,character=me&target=inplay&card_type=field&base_card_id=900823010",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -7305,7 +7652,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "token_draw=900841240:900841240//summon_token=900841250:900841260",
     "skill_target": "none//none",
-    "tribe_name": "創造物"
+    "tribe_name": "創造物",
+    "timing": "when_play//when_evolve"
   },
   {
     "atk": 0,
@@ -7326,7 +7674,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=118811030:118811030:118811030,none",
     "skill_target": "none,character=me&target=skill_summoned_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -7347,7 +7696,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=4",
     "skill_target": "character=op&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 4,
@@ -7368,7 +7718,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none//token_draw=810011010,set=0",
     "skill_target": "none//none,character=me&target=skill_drew_card&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none//when_evolve,when_evolve"
   },
   {
     "atk": 5,
@@ -7389,7 +7740,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,type=ep_use,healing=5,none,none//skill=(skill:damage)(timing:self_turn_end)(condition:character=me)(target:character=both&target=inplay&card_type=unit_and_class)(option:damage=4)(preprocess:none)(effect_path:btl_810041030_6)(se_path:se_btl_810041030_6)(effect_move_type:CENTER)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:area_all)&duplicate_ban_id=8100410301",
     "skill_target": "character=me&target=deck_self,character=me&target=inplay_self,character=me&target=self,character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2,character=op&target=inplay&status_offense={op.inplay.unit.offense.max}&random_count=1//character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_summon,when_change_inplay,when_play,when_play,when_play//when_attack"
   },
   {
     "atk": 0,
@@ -7410,7 +7762,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=4,skill=(skill:damage_modifier)(timing:when_change_inplay_immediate)(condition:character=me&target=inplay&card_type=class)(target:character=me&target=inplay&card_type=class)(option:add_damage=1)(preprocess:turn_end_stop=me&turn_end_remove=me)",
     "skill_target": "character=both&target=inplay&card_type=unit,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -7431,7 +7784,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,token_draw=125041010&type=add,add_pp=4",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,none,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -7452,7 +7806,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,skill=(skill:return_card)(timing:self_turn_end)(condition:character=me&target=self&card_type=unit)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none)(icon:induction),summon_token=120041010",
     "skill_target": "character=me&target=hand_other_self&card_type=unit&clan=all&select_count=1,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -7473,7 +7828,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=both&target=inplay&card_type=unit",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 2,
@@ -7494,7 +7850,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none//attack_count=2,healing={me.inplay.unit.max.life.max_life},add_pp=1",
     "skill_target": "character=me,character=me,character=me//character=me,character=me,character=me&target=inplay&card_type=class",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "character=me,character=me,{me.inplay.class.rally_count}>=7//character=me,character=me&target=attacker&attacker=self,character=me&target=attacker&attacker=self"
   },
   {
     "atk": 0,
@@ -7515,7 +7872,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900011020:900011030:900011040&summon_side=me&ignore_voice=true",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -7536,7 +7894,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&base_cost=1&is_inplay=true",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "{me.inplay_self.count}>0&{me.summoned_card.unit.base_cost=1.count}>0"
   },
   {
     "atk": 0,
@@ -7557,7 +7916,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=10,healing=10,skill=(skill:power_down)(timing:when_shortage_deck)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:gain_max_life=5)(preprocess:none)(effect_path:btl_900344130_5)(se_path:se_btl_900344130_5)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=8103440201",
     "skill_target": "character=op&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 4,
@@ -7578,7 +7938,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=810441060,type=ep_use,none,none//none,type=skill,none",
     "skill_target": "none,character=me&target=self,character=me,character=me&target=self//character=me,character=me&target=self,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_discard,when_change_inplay,when_change_inplay,self_turn_end//when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate"
   },
   {
     "atk": 1,
@@ -7599,7 +7960,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=810441060,type=ep_use,none,none//none,type=skill,none",
     "skill_target": "none,character=me&target=self,character=me,character=me&target=self//character=me,character=me&target=self,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_discard,when_change_inplay,when_change_inplay,self_turn_end//when_change_inplay,when_change_inplay_immediate,when_change_inplay_immediate"
   },
   {
     "atk": 0,
@@ -7620,7 +7982,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900411010,summon_token=900411010",
     "skill_target": "none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy"
   },
   {
     "atk": 0,
@@ -7641,7 +8004,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900541120:900541120:900541120",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -7662,7 +8026,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900541120:900541120:900541120",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 2,
@@ -7683,7 +8048,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=2,healing=2",
     "skill_target": "character=me&target=self,character=op&target=inplay&card_type=unit_and_class&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play"
   },
   {
     "atk": 0,
@@ -7704,7 +8070,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=124641030:124641030&ignore_voice=true&effect=owner",
     "skill_target": "none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -7725,7 +8092,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none",
     "skill_target": "character=op&target=inplay&card_type=unit_and_allfield&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 5,
@@ -7746,7 +8114,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,token_draw=810844030",
     "skill_target": "character=me&target=self,character=me&target=self,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_change_inplay,when_destroy"
   },
   {
     "atk": 0,
@@ -7767,7 +8136,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=5,skill=(skill:token_draw)(timing:self_turn_start)(condition:character=me&target=self&{me.hand.spell.base_card_id=820844020.count}=0&{me.inplay.class.turn}>=10)(target:none)(option:token_draw=820844020)(preprocess:none)&duplicate_ban_id=8208440201",
     "skill_target": "character=op&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 0,
@@ -7788,7 +8158,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_pp=1,none",
     "skill_target": "character=me&target=summoned_card&card_type=unit&tribe=artifact&is_inplay=true,character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_summon_other,when_summon_other,when_summon_other"
   },
   {
     "atk": 5,
@@ -7809,7 +8180,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,type=ep_use,healing=5,none,none//skill=(skill:damage)(timing:self_turn_end)(condition:character=me)(target:character=both&target=inplay&card_type=unit_and_class)(option:damage=4)(preprocess:none)(effect_path:btl_810041050_6)(se_path:se_btl_810041050_6)(effect_move_type:CENTER)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:area_all)&duplicate_ban_id=8100410501",
     "skill_target": "character=me&target=deck_self,character=me&target=inplay_self,character=me&target=self,character=me&target=inplay&card_type=class,character=me&target=deck&card_type=all&random_count=2,character=op&target=inplay&status_offense={op.inplay.unit.offense.max}&random_count=1//character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_summon,when_change_inplay,when_play,when_play,when_play//when_attack"
   },
   {
     "atk": 4,
@@ -7830,7 +8202,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage={me.inplay.unit.tribe=machine.unit.count},none",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class,character=me",
-    "tribe_name": "機械"
+    "tribe_name": "機械",
+    "timing": "when_attack,when_play"
   },
   {
     "atk": 4,
@@ -7851,7 +8224,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=2,none,none,none",
     "skill_target": "character=me&target=hand_other_self&clan=elf&card_type=unit&base_cost>=2&select_count=8,character=me&target=self,character=me&target=deck&card_type=all&random_count=1,character=me&target=self,character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_fusion,when_fusion,when_play,when_play"
   },
   {
     "atk": 4,
@@ -7872,7 +8246,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=5,save_target,add_offense=2&add_life=1,add_pp=3",
     "skill_target": "character=me,character=me,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=hand_other_self&card_type=field&select_count=1,character=me&target=self,character=me&target=inplay&card_type=class",
-    "tribe_name": "指揮官‧自然"
+    "tribe_name": "指揮官‧自然",
+    "timing": "when_change_inplay,when_change_inplay,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -7893,7 +8268,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,add_offense=1",
     "skill_target": "character=me,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_attack_self_and_other"
   },
   {
     "atk": 5,
@@ -7914,7 +8290,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "skill=(skill:damage)(timing:when_discard_other)(condition:{me.discard.all.count}>0)(target:character=op&target=inplay_other_self&card_type=unit&random_count=1)(option:damage=2)(preprocess:none)(effect_path:btl_810441030_4)(se_path:se_btl_810441030_4)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=8104410301,skill=(skill:damage)(timing:when_discard_other)(condition:{me.discard.all.count}>0)(target:character=op&target=inplay&card_type=class)(option:damage=2)(preprocess:none)(effect_path:btl_810441030_5)(se_path:se_btl_810441030_5)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=8104410302,none//none,none,healing=2",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=self&card_type=unit//character=me&target=hand_other_self&card_type=all&select_count=1,character=me&target=deck&card_type=all&random_count=2,character=me&target=inplay&card_type=class",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_play,when_play,when_play//when_evolve,when_evolve,when_evolve"
   },
   {
     "atk": 0,
@@ -7935,7 +8312,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "fixeduse=10,none,none",
     "skill_target": "none,character=op&target=inplay&card_type=unit_and_allfield&select_count=1,character=op&target=inplay&card_type=unit_and_allfield",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 5,
@@ -7956,7 +8334,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "fixeduse=2,card_id=800523020,none//none,healing=3",
     "skill_target": "none,none,character=me//character=op&target=inplay&card_type=unit&status_offense={op.inplay.unit.offense.max}&random_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_crystallize,when_crystallize,when_change_inplay//when_evolve,when_evolve"
   },
   {
     "atk": 0,
@@ -7977,7 +8356,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,summon_token=101032010,token_draw=900541100&type=add",
     "skill_target": "character=both&target=inplay&card_type=unit,none,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 7,
@@ -7998,7 +8378,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,add_pp=6",
     "skill_target": "{me.hand_other_self.unit.base_card_id=100031010}&{me.hand_other_self.unit.base_card_id=100031020}&select_count=8,character=me&target=self,character=op&target=inplay&card_type=unit_and_allfield,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_change_inplay,when_play,when_play"
   },
   {
     "atk": 0,
@@ -8019,7 +8400,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,damage=1",
     "skill_target": "character=both&target=inplay&card_type=unit,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 5,
@@ -8040,7 +8422,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "fixeduse=3,card_id=800234030,none,none,none,none",
     "skill_target": "none,none,character=me&target=deck_self,character=me,character=op&target=inplay&card_type=unit_and_allfield&random_count=3,character=op&target=inplay&card_type=unit_and_allfield&random_count=5",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=3&{me.inplay.class.pp}<{me.hand_self.cost},character=me&target=deck_self&{me.inplay.class.rally_count}>=15,character=me&{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.rally_count}<20&{me.inplay.class.rally_count}>=10&{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.rally_count}>=20&{me.inplay.class.pp}>={me.hand_self.cost}"
   },
   {
     "atk": 4,
@@ -8061,7 +8444,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "fixeduse=4,card_id=800244110,none,add_offense=2&add_life=2,none",
     "skill_target": "none,none,character=me,character=me&target=inplay_other_self&card_type=unit&select_count=1,character=me&target=selected_cards&card_type=unit",
-    "tribe_name": "指揮官"
+    "tribe_name": "指揮官",
+    "timing": "{me.inplay.class.pp}>=4&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=4&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me&target=inplay_other_self&card_type=unit&{me.destroyed_card_list.unit.count}>=10&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.destroyed_card_list.unit.count}>=10&{me.inplay.class.pp}>={me.hand_self.cost}"
   },
   {
     "atk": 0,
@@ -8082,7 +8466,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -8103,7 +8488,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3",
     "skill_target": "character=op&target=inplay&card_type=unit",
-    "tribe_name": "士兵"
+    "tribe_name": "士兵",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -8124,7 +8510,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "summon_token=900411010,sum=1&random_range=3,none,none,none,summon_token=900411010,sum=1&random_range=3,none,none,none,summon_token=120441010",
     "skill_target": "none,character=me&target=inplay&card_type=all,character=me&target=skill_summoned_card&card_type=unit&id=900411010,character=me&target=skill_summoned_card&card_type=unit&id=900411010,character=me&target=skill_summoned_card&card_type=unit&id=900411010,none,character=me&target=inplay&card_type=all,character=me&target=skill_summoned_card&card_type=unit&id=900411010,character=me&target=skill_summoned_card&card_type=unit&id=900411010,character=me&target=skill_summoned_card&card_type=unit&id=900411010,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,self_turn_start,self_turn_start,self_turn_start,self_turn_start,self_turn_start,when_destroy"
   },
   {
     "atk": 6,
@@ -8145,7 +8532,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,damage=3,summon_token=810541010,none",
     "skill_target": "character=me&target=self,character=me&target=self,character=me&target=self,character=op&target=inplay&card_type=class,none,character=op&target=inplay&card_type=unit&random_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_change_inplay,when_change_inplay,self_turn_end,when_play,when_destroy"
   },
   {
     "atk": 5,
@@ -8166,7 +8554,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage={me.inplay.class.damage_count=self}",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play"
   },
   {
     "atk": 0,
@@ -8187,7 +8576,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "healing=7,summon_token=123631020:123631020",
     "skill_target": "character=me&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 5,
@@ -8208,7 +8598,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,add={me.summoned_card.clan=all.count}*-1",
     "skill_target": "character=me&target=hand&card_type=field&status_cost<=5&select_count=1,character=me&target=skill_summoned_card&card_type=field,character=me&target=hand_self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_summon_other"
   },
   {
     "atk": 5,
@@ -8229,7 +8620,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,none,none,none,damage=3,damage=6,damage=9,damage=12,damage=15,healing=3,healing=6,healing=9,healing=12,healing=15,effect=owner,effect=owner,effect=owner,effect=owner",
     "skill_target": "character=op&target=inplay&card_type=unit&random_count=1,character=op&target=inplay&card_type=unit&random_count=2,character=op&target=inplay&card_type=unit&random_count=3,character=op&target=inplay&card_type=unit&random_count=4,character=op&target=inplay&card_type=unit&random_count=5,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=destroyed_card_list&card_type=unit&clan=bishop&random_count=1,character=me&target=destroyed_card_list&card_type=unit&clan=bishop&random_count=2,character=me&target=destroyed_card_list&card_type=unit&clan=bishop&random_count=3,character=me&target=destroyed_card_list&card_type=unit&clan=bishop&random_count=4",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 8,
@@ -8250,7 +8642,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "damage=3,healing=3,token_draw=810441010",
     "skill_target": "character=op&target=inplay&card_type=unit_and_class&select_count=1,character=me&target=inplay&card_type=class,none",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_destroy,when_destroy"
   },
   {
     "atk": 6,
@@ -8271,7 +8664,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,damage=6,damage=6//damage=8,damage=8",
     "skill_target": "character=me,character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class//character=op&target=inplay&card_type=class,character=op&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_destroy,when_attack//when_destroy,when_attack"
   },
   {
     "atk": 4,
@@ -8292,7 +8686,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none,damage=4,healing=4",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=self&card_type=unit,character=op&target=inplay&card_type=unit_and_class&select_count=1,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_draw,when_draw,when_play,when_play"
   },
   {
     "atk": 0,
@@ -8313,7 +8708,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,none",
     "skill_target": "character=me&target=inplay_other_self&card_type=unit_and_allfield,character=me&target=deck&card_type=unit&custom_select=over_cost_from_last_target",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play"
   },
   {
     "atk": 4,
@@ -8334,7 +8730,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add=-1,add=-1,none",
     "skill_target": "character=me&target=hand_self,character=me&target=hand_self,character=me",
-    "tribe_name": "自然"
+    "tribe_name": "自然",
+    "timing": "when_destroy_other,when_destroy_other,when_change_inplay"
   },
   {
     "atk": 6,
@@ -8355,7 +8752,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,set=6,none,damage={me.inplay.class.life},damage={me.inplay.class.life}-1//type=all",
     "skill_target": "character=me&target=hand_other_self&clan=vampire&card_type=all&select_count=8,character=me&target=hand_self,character=me,character=both&target=inplay_other_self&card_type=unit,character=me&target=inplay&card_type=class//character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "none,when_fusion,when_change_inplay,when_play,when_play//when_evolve"
   },
   {
     "atk": 3,
@@ -8376,7 +8774,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=900811050,add_offense=1,skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none)",
     "skill_target": "character=me,none,character=me&target=hand&card_type=unit&base_card_id=900811050,character=me&target=hand&card_type=unit&base_card_id=900811050",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_play,when_play,when_play"
   },
   {
     "atk": 13,
@@ -8397,7 +8796,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,cant_attack=class",
     "skill_target": "character=both&target=inplay_other_self&card_type=unit_and_allfield,character=me&target=self",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_change_inplay"
   },
   {
     "atk": 0,
@@ -8418,7 +8818,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=110341010&type=add,add_pp=9",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 0,
@@ -8439,7 +8840,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "none,token_draw=711341010&type=add,add_pp=9",
     "skill_target": "character=me&target=deck&card_type=all&random_count=1,none,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 5,
@@ -8460,7 +8862,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add=-1,none,none//none",
     "skill_target": "character=me&target=hand_self,character=me,character=op&target=inplay&card_type=unit&select_count=1//character=me&target=deck&card_type=all&random_count=7-{me.hand.count}",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_destroy_other,when_change_inplay,when_play//when_evolve"
   },
   {
     "atk": 0,
@@ -8481,7 +8884,8 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add=ADD_CHARGE_COUNT*-1,add=1",
     "skill_target": "character=me&target=self&card_type=spell,character=me&target=inplay&card_type=class",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "when_spell_charge,when_play"
   },
   {
     "atk": 9,
@@ -8502,6 +8906,7 @@ let subCardData = [
     "skill_disc": "",
     "skill_option": "add=0-{me.inplay.class.turn_caused_damage_from_unit=me:0.sum},none,none",
     "skill_target": "character=me&target=hand_self,character=me,character=op&target=inplay&card_type=unit&select_count=1",
-    "tribe_name": "-"
+    "tribe_name": "-",
+    "timing": "op_turn_start,when_change_inplay,when_play"
   }
 ]

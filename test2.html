@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Reader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script> <!-- Online Papaparse library -->
+</head>
+<body>
+    <input type="file" id="csvFileInput" accept=".csv">
+    <div id="output"></div>
+    <a id="downloadLink" style="display: none">Download Data</a>
+
+    <script>
+        document.getElementById('csvFileInput').addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                Papa.parse(file, {
+                    complete: function(results) {
+                        const data = results.data;
+                        const dataArray = [];
+
+                        for (const row of data) {
+                            if (row.length >= 19) { // Ensure at least 19 columns (A and S are column 0 and 18)
+                                const id = row[0];
+                                const timing = row[18];
+                                dataArray.push({ id, timing });
+                            }
+                        }
+
+                        displayData(dataArray);
+                    }
+                });
+            }
+        }
+
+        function displayData(dataArray) {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<h2>CSV Data:</h2>';
+
+            for (const entry of dataArray) {
+                const row = document.createElement('p');
+                row.textContent = JSON.stringify(entry);
+                outputDiv.appendChild(row);
+            }
+
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataArray));
+            downloadLink.download = 'data.json';
+            downloadLink.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

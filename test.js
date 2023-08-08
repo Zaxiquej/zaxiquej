@@ -66,10 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 evo_atk: card.evo_atk,
                 evo_life: card.evo_life
             }
-            if (info.card_name == "森罗万象的爱"){
+            if (info.card_id == 900144120){
               info.skill = "attach_skill,attach_skill,attach_skill";
             }
-            if (info.card_name == "异界统领者"){
+            if (info.card_id == 111041020){
               info.skill_option = "none,add=-3";
             }
 
@@ -156,7 +156,7 @@ function createNewDataBase(allcards, subToken) {
                     let newField = card[field];
                     newCard[field] = newField;
                   } else{
-                    let newField = simplized(card[field]);
+                    let newField = japToSimplized(simplized(card[field]));
                     newCard[field] = newField;
                   }
 
@@ -176,6 +176,27 @@ function createNewDataBase(allcards, subToken) {
     const downloadLink = document.createElement('a');
     downloadLink.href = url;
     downloadLink.download = 'new_database.json'; // 下载文件的名称
+    downloadLink.textContent = '点击此处下载新的数据库文件';
+    document.body.appendChild(downloadLink);
+}
+
+function combineTiming(aData) {
+    // 更新allcards中的数据
+    for (const card of aData) {
+        const csvEntry = timingData.find(entry => parseInt(entry.id) === card.card_id);
+        if (csvEntry) {
+            card.timing = csvEntry.timing;
+        }
+    }
+    console.log(aData);
+
+    // 创建Blob对象并下载
+    const jsonData = JSON.stringify(aData, null, 2);
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = 'new_database.json';
     downloadLink.textContent = '点击此处下载新的数据库文件';
     document.body.appendChild(downloadLink);
 }
