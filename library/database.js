@@ -285,7 +285,7 @@ let cardData = [
     "evo_skill_disc": "",
     "life": 0,
     "rarity": 4,
-    "skill": "attach_skill,attach_skill,attach_skill  ",
+    "skill": "attach_skill,attach_skill,attach_skill",
     "skill_condition": "character=me,character=me,character=me",
     "skill_preprocess": "none,none,none",
     "skill_disc": "给予自己的主战者下列能力。主战者无法重複叠加此能力，并且此能力会在发动3次后失效。<br>---------- <br>（1）随机给予1个自己的从者+1/+1效果。<br>（2）抽取2张卡片。<br>（3）回复自己的主战者3点生命值。<br>自己的回合结束时，依序发动上述1种能力。",

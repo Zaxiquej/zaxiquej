@@ -66,6 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 evo_atk: card.evo_atk,
                 evo_life: card.evo_life
             }
+            if (info.card_name == "森罗万象的爱"){
+              info.skill = "attach_skill,attach_skill,attach_skill";
+            }
+            if (info.card_name == "异界统领者"){
+              info.skill_option = "none,add=-3";
+            }
 
             cardInfo.push(info);
         }
@@ -172,4 +178,25 @@ function createNewDataBase(allcards, subToken) {
     downloadLink.download = 'new_database.json'; // 下载文件的名称
     downloadLink.textContent = '点击此处下载新的数据库文件';
     document.body.appendChild(downloadLink);
+}
+
+function checkKeyNameStats(){
+  // 将对象的属性名和值存储为 [key, value] 数组
+  const vectorEntries = Object.entries(keyNameStats());
+
+  // 按照属性值的大小进行排序
+  vectorEntries.sort((a, b) => a[1] - b[1]);
+
+  // 创建一个<ul>元素来显示排序后的属性
+  const ulElement = document.createElement('ul');
+
+  // 循环遍历排序后的属性，创建<li>元素并添加到<ul>中
+  for (const entry of vectorEntries) {
+    const liElement = document.createElement('li');
+    liElement.textContent = `${entry[0]}: ${entry[1]}`;
+    ulElement.appendChild(liElement);
+  }
+
+  // 将<ul>元素添加到页面
+  document.body.appendChild(ulElement);
 }

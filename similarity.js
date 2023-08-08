@@ -1,3 +1,6 @@
+let skillRates = keyNameStats();
+let skillMaxNum = Math.max(...Object.values(skillRates));
+
   function calculateBasicScore(card1, card2) {
     const weights = {
         clan: 2,
@@ -393,7 +396,7 @@
             skillObject.condition = 'character=' + skillObject.condition
           }
           skillsc2.push(skillObject.condition);
-          if (skillObject.preprocess){
+          if (skillObject.preprocess && skillObject.option!='none'){
             skillp2.push(skillObject.preprocess)
           } else {
             skillp2.push('none')
@@ -404,105 +407,94 @@
       }
 
       let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
-      let lkeyPros = ["turn_end_stop","turn_start_stop","turn_end_remove","turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
-      let repPros = ["only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
+      let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
+      let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
       let hasRep = [];
 
-      for (let item of skillp1){
-        let name = item.split("=")[0];
-        if (keyPros.includes(name)){
-          let cost = item.split(":")[0];
-          if (!is_numeric(cost)){
-            cost = 'X';
-          }
-          skills1.push(name);
-          if (!cost){
-            skillso1.push('none')
+      for (let highItem of skillp1){
+        for (let item of customSplit(highItem,'&')){
+          let name = item.split("=")[0];
+          if (keyPros.includes(name)){
+            let cost = item.split(":")[0];
+            if (!is_numeric(cost)){
+              cost = 'X';
+            }
+            skills1.push(name);
+            if (!cost){
+              skillso1.push('none')
+            } else {
+              skillso1.push("value="+cost)
+            }
+            skillsc1.push('none');
+            skillst1.push('none');
+          } else if (lkeyPros.includes(name)){
+            let cost = item.split(":")[0];
+            skills1.push(name);
+            if (!cost){
+              skillso1.push('none')
+            } else {
+              skillso1.push("value="+cost)
+            }
+            skillsc1.push('none');
+            skillst1.push('none');
+          } else if (repPros.includes(name) && !hasRep.includes(name)){
+            hasRep.push(name)
+            let cost = item.split(":")[0];
+            skills1.push(name);
+            if (!cost){
+              skillso1.push('none')
+            } else {
+              skillso1.push("value="+cost)
+            }
+            skillsc1.push('none');
+            skillst1.push('none');
           } else {
-            skillso1.push("value="+cost)
+            continue;
           }
-          skillsc1.push('none');
-          skillst1.push('none');
-        } else if (lkeyPros.includes(name)){
-          let cost = item.split(":")[0];
-          skills1.push(name);
-          if (!cost){
-            skillso1.push('none')
-          } else {
-            skillso1.push("value="+cost)
-          }
-          skillsc1.push('none');
-          skillst1.push('none');
-        } else if (repPros.includes(name) && !hasRep.includes(name)){
-          hasRep.push(name)
-          let cost = item.split(":")[0];
-          skills1.push(name);
-          if (!cost){
-            skillso1.push('none')
-          } else {
-            skillso1.push("value="+cost)
-          }
-          skillsc1.push('none');
-          skillst1.push('none');
-        } else {
-          continue;
         }
       }
       hasRep = [];
-      for (let item of skillp2){
-        let name = item.split("=")[0];
-        if (keyPros.includes(name)){
-          let cost = item.split(":")[0];
-          if (!is_numeric(cost)){
-            cost = 'X';
-          }
-          skills2.push(name);
-          if (!cost){
-            skillso2.push('none')
+      for (let highItem of skillp2){
+        for (let item of customSplit(highItem,'&')){
+          let name = item.split("=")[0];
+          if (keyPros.includes(name)){
+            let cost = item.split(":")[0];
+            if (!is_numeric(cost)){
+              cost = 'X';
+            }
+            skills2.push(name);
+            if (!cost){
+              skillso2.push('none')
+            } else {
+              skillso2.push("value="+cost)
+            }
+            skillsc2.push('none');
+            skillst2.push('none');
+          } else if (lkeyPros.includes(name)){
+            let cost = item.split(":")[0];
+            skills2.push(name);
+            if (!cost){
+              skillso2.push('none')
+            } else {
+              skillso2.push("value="+cost)
+            }
+            skillsc2.push('none');
+            skillst2.push('none');
+          } else if (repPros.includes(name) && !hasRep.includes(name)){
+            hasRep.push(name)
+            let cost = item.split(":")[0];
+            skills2.push(name);
+            if (!cost){
+              skillso2.push('none')
+            } else {
+              skillso2.push("value="+cost)
+            }
+            skillsc2.push('none');
+            skillst2.push('none');
           } else {
-            skillso2.push("value="+cost)
+            continue;
           }
-          skillsc2.push('none');
-          skillst2.push('none');
-        } else if (lkeyPros.includes(name)){
-          let cost = item.split(":")[0];
-          skills2.push(name);
-          if (!cost){
-            skillso2.push('none')
-          } else {
-            skillso2.push("value="+cost)
-          }
-          skillsc2.push('none');
-          skillst2.push('none');
-        } else if (repPros.includes(name) && !hasRep.includes(name)){
-          hasRep.push(name)
-          let cost = item.split(":")[0];
-          skills2.push(name);
-          if (!cost){
-            skillso2.push('none')
-          } else {
-            skillso2.push("value="+cost)
-          }
-          skillsc2.push('none');
-          skillst2.push('none');
-        } else {
-          continue;
         }
-      }
-
-      //光环处理
-      if (skillp1.includes("remove_from_inplay_stop")){
-        skills1.push("remove_from_inplay_stop");
-        skillso1.push('none');
-        skillsc1.push('none');
-        skillst1.push('none');
-      }
-
-      if (skillp2.includes("remove_from_inplay_stop")){
-        skills2.push("remove_from_inplay_stop");
-        skillso2.push('none');
-        skillsc2.push('none');
-        skillst2.push('none');
       }
 
       //特殊判断消除
@@ -722,7 +714,7 @@
           if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
               let base = 1;
               let ratio = 1;
-              
+
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
                 ratio = 6;
@@ -730,6 +722,8 @@
                 //主战者能力对上有增权
                 ratio = 2;
               }
+              ratio *= Math.log(skillMaxNum / skillRates[skill] + 4, 5);
+
               let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1);
               let cRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
               let tRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
@@ -767,9 +761,11 @@
               skillst2[j] = skillst2[j].replaceAll("占","&&")
 
               const tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
+
               base *= ol;
               base *= cl;
               base *= tl;
+
               //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
               if (base > nb){
                 nb = base;
@@ -889,7 +885,6 @@
             cid1 = transSub1[i];
             let max = 0;
             let maxId = -1;
-            let maxArr = [];
             for (let j = 0; j < transSub2.length; j++){
               if (!occupied.includes(j)){
                 cid2 = transSub2[j];
@@ -900,18 +895,17 @@
                 nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
                 nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
                 let newSkillScore = calculateSkillScore(nCard1, nCard2);
-                if (skillScoreWeight > max){
-                  max = skillScoreWeight;
+                if (newSkillScore > max){
+                  max = newSkillScore;
                   maxId = j;
-                  maxArr = newSkillScore;
                 }
               }
             }
             occupied[i] = maxId;
-            scores[i] = maxArr;
+            scores[i] = max;
           }
           skillScore = 0;
-          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*2;
+          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*3;
           let selfBonus = 1;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
@@ -1011,4 +1005,234 @@ function customSplit(input,token) {
   function containsCosmos(input) {
     const regex = /me\.deck\.(?:base_card_id!=\d{9}\.)?unique_base_card_id_card\.count/;
     return regex.test(input);
+  }
+
+  function keyNameStats(){
+    let keyStats = {};
+    for (let card1 of cardData){
+      let skills1 = generateSkills(card1)
+      for (let sk of skills1){
+        if (!keyStats[sk]){
+          keyStats[sk] = 0;
+        }
+        keyStats[sk]++;
+      }
+    }
+    return keyStats;
+  }
+
+
+  function generateSkills(card1){
+    let cskill1 = card1.skill.replace("//",",");
+    let skills1 = cskill1 ? cskill1.split(",") : [];
+
+    let cskillo1 = card1.skill_option.replace("//",",");
+    const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+
+    let cskillc1 = card1.skill_condition.replace("//",",");
+    const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
+
+    //将部分cost加入skill
+    let cskillp1 = card1.skill_preprocess.replace("//",",").replaceAll("&",",");
+
+    cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual:","ritual=");
+    cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual_all","ritual=X")
+    cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual","ritual=1");
+
+    let transSub1 = [];
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'transform' && skillso1[i].includes('card_id=') ){
+        transSub1.push(parseInt(skillso1[i].split('card_id=')[1]));
+      }
+      if (i >= 1 && skills1[i] == 'transform' && skillso1[i].includes('repeat_count=1&summon_side=me') && skills1[i-1] == 'choice' && skillso1[i-1].includes('card_id=')){
+        let sub = skillso1[i-1].split('card_id=')[1].split(":");
+        for (let cardId of sub){
+          transSub1.push(parseInt(cardId));
+        }
+      }
+    }
+
+    const skillp1 = cskillp1 ? cskillp1.split(",") : [];
+
+    let cskillt1 = card1.skill_target.replace("//",",");
+    const skillst1 = cskillt1 ? cskillt1.split(",") : [];
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'attach_skill' && skillso1[i].includes("skill=")){
+        let skillObject = parseAttachSkillString(skillso1[i]);
+        skills1.push(skillObject.skill);
+        if (skillObject.option && skillObject.option!='none'){
+          skillso1.push(skillObject.option+'&fromAttach');
+        } else {
+          skillso1.push('fromAttach');
+        }
+        if (!skillObject.condition.includes("=")){
+          skillObject.condition = 'character=' + skillObject.condition;
+        }
+        skillsc1.push(skillObject.condition);
+        if (skillObject.preprocess && skillObject.option!='none'){
+          skillp1.push(skillObject.preprocess)
+        } else {
+          skillp1.push('none')
+        }
+        skillst1.push(skillObject.target);
+        skillso1[i] = 'none';
+      }
+    }
+    let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
+    let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
+    let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
+    let hasRep = [];
+
+    for (let highItem of skillp1){
+      for (let item of customSplit(highItem,'&')){
+        let name = item.split("=")[0];
+        if (keyPros.includes(name)){
+          let cost = item.split(":")[0];
+          if (!is_numeric(cost)){
+            cost = 'X';
+          }
+          skills1.push(name);
+          if (!cost){
+            skillso1.push('none')
+          } else {
+            skillso1.push("value="+cost)
+          }
+          skillsc1.push('none');
+          skillst1.push('none');
+        } else if (lkeyPros.includes(name)){
+          let cost = item.split(":")[0];
+          skills1.push(name);
+          if (!cost){
+            skillso1.push('none')
+          } else {
+            skillso1.push("value="+cost)
+          }
+          skillsc1.push('none');
+          skillst1.push('none');
+        } else if (repPros.includes(name) && !hasRep.includes(name)){
+          hasRep.push(name)
+          let cost = item.split(":")[0];
+          skills1.push(name);
+          if (!cost){
+            skillso1.push('none')
+          } else {
+            skillso1.push("value="+cost)
+          }
+          skillsc1.push('none');
+          skillst1.push('none');
+        } else {
+          continue;
+        }
+      }
+    }
+    //特殊判断消除
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i].includes('@')){
+        skills1[i] = skills1[i].split('@')[0];
+      }
+    }
+    //自残特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'damage' && skillst1[i] == 'character=me&target=inplay&card_type=class' ){
+        skills1[i] = "selfDamage";
+      }
+    }
+    //宇宙词条
+    for (let i = 0; i < skills1.length; i++){
+      if (containsCosmos(skillso1[i]) || containsCosmos(skillsc1[i])){
+        skills1.push("cosmos");
+        skillso1.push('none');
+        skillsc1.push('none');
+        skillst1.push('none');
+        break;
+      }
+    }
+    //套娃特殊词条
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'summon_token' || skills1[i] == 'draw_token'){
+        if (!skillso1[i].includes(skills1[i])){
+          continue;
+        }
+        let p = skillso1[i].split(skills1[i]+"=")[1].split(":");
+        if (p.length == 1 && p[0] == card1.card_id){
+          if (skills1[i] == 'summon_token'){
+            skillso1[i] == "type=0"
+          } else {
+            skillso1[i] == "type=1"
+          }
+          skills1[i] = 'obtain_self'
+        }
+      }
+    }
+    //移除变身
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'transform'){
+        skills1.splice(i,1);
+        skillso1.splice(i,1);
+        skillst1.splice(i,1);
+        i--;
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
+        skills1[i] = "revive";
+        if (skillso1[i] == 'none'){
+          skillso1[i] = "thisTurn=1";
+        } else {
+          skillso1[i] += "&thisTurn=1";
+        }
+      }
+      if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
+        skills1[i] = "revive";
+        let arr = customSplit(skillst1[i],"&");
+        let str = "";
+        for (let k of arr){
+          if (k.includes("status_cost<:=")){
+            if (str != ""){str += '&'}
+            str += "cost<=" + k.split("status_cost<:=")[1];
+          }
+          if (k.includes("status_cost<:=")){
+            if (str != ""){str += '&'}
+            let cost = k.split("status_cost<:=")[1];
+            if (is_numeric(cost)){
+              str += "cost<=" + cost;
+            } else {
+              str += "cost<=X";
+            }
+          }
+          if (k.includes("status_cost=")){
+            if (str != ""){str += '&'}
+            str += "cost<=X";
+          }
+          if (k.includes("tribe=")){
+            if (str != ""){str += '&'}
+            str += k;
+          }
+          if (k.includes("id_no_duplication_random_count=")){
+            if (str != ""){str += '&'}
+            str += k;
+          }
+          if (k.includes("clan!=")){
+            if (str != ""){str += '&'}
+            let cost = k.split("clan!=")[1];
+            str += "Nclan"+cost;
+          }
+          skillso1[i] += str;
+        }
+      }
+    }
+
+    //额外录入激奏
+    for (let i = 0; i < transSub1.length; i++){
+      cid1 = transSub1[i];
+      const strNumber1 = cid1.toString();
+      if (strNumber1.charAt(0) === "8"){
+        let nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
+        skills1 = skills1.concat(generateSkills(nCard1));
+      }
+    }
+    return skills1;
   }
