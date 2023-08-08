@@ -161,14 +161,18 @@
       return dp[m][n];
   }
 
+  let weirdKeys = ["none","save_target","burial_rite","save_burial_rite_target","fromAttach"];
   function parseItem(item) {
-    const matches = item.match(/(.+)([<>]?=+)(.+)/);
+    const matches = item.match(/(.+?)([<>]?=|<|>)(.+)/);
     if (matches && matches.length === 4) {
       const [_, A, sign, B] = matches;
       const parsedB = parseValue(B);
       return [A, sign, parsedB];
-    } else if (item === "none") {
-      return ["none", "none", 0];
+    }
+    for (let key of weirdKeys){
+      if (item === key) {
+        return [key,key,0];
+      };
     }
     throw new Error(`Invalid format for item: ${item}`);
   }
@@ -209,7 +213,6 @@
   }
 
   function calculateConditionScore(card1,card2,array1, array2) {
-    let weirdKeys = ["none","save_target","burial_rite","save_burial_rite_target"];
     function findClosestMatchingIndex(index, targetArray, excludeIndices) {
       let closestIndex = -1;
       let minDifference = Number.MAX_VALUE;
@@ -224,7 +227,13 @@
         if (targetA === currentA) {
           if (targetSign === currentSign) {
             let difference;
-            if (typeof targetB === "number" && typeof currentB === "number") {
+            if (Array.isArray(targetB) && Array.isArray(currentB)){
+              const sharedMap = new Map();
+              const mappedB1 = mapNumbersToLetters(targetB, card1.card_id, sharedMap);
+              const mappedB2 = mapNumbersToLetters(currentB, card2.card_id, sharedMap);
+              difference = calculateLevenshteinDistance(mappedB2, mappedB1);
+            }
+            else if (typeof targetB === "number" && typeof currentB === "number") {
               difference = Math.abs(targetB - currentB);
             } else if (typeof targetB === "string" && typeof currentB === "string") {
               difference = calculateLevenshteinDistance(targetB, currentB);
@@ -238,7 +247,13 @@
             }
           } else {
             let difference;
-            if (typeof targetB === "number" && typeof currentB === "number") {
+            if (Array.isArray(targetB) && Array.isArray(currentB)){
+              const sharedMap = new Map();
+              const mappedB1 = mapNumbersToLetters(targetB, card1.card_id, sharedMap);
+              const mappedB2 = mapNumbersToLetters(currentB, card2.card_id, sharedMap);
+              difference = calculateLevenshteinDistance(mappedB2, mappedB1);
+            }
+            else if (typeof targetB === "number" && typeof currentB === "number") {
               difference = Math.abs(targetB - currentB);
             } else if (typeof targetB === "string" && typeof currentB === "string") {
               difference = calculateLevenshteinDistance(targetB, currentB);
@@ -257,20 +272,6 @@
       return closestIndex;
     }
 
-    function parseItem(item) {
-      const matches = item.match(/(.+)([><=]+)(.+)/);
-      if (matches && matches.length === 4) {
-        const [_, A, sign, B] = matches;
-        return [A, sign, isNaN(B) ? B : parseFloat(B)];;
-      }
-      for (let key of weirdKeys){
-        if (item === key) {
-          return [key,key,0];
-        };
-      }
-      throw new Error(`Invalid format for item: ${item}`);
-    }
-
     let totalScore = 0;
     const visitedIndices = new Set();
 
@@ -287,11 +288,11 @@
           score = 1;
         } else if (A1 === A2) {
           if (sign1 === sign2) {
-            if (typeof B1 === "array" && typeof B2 === "array"){
+            if (Array.isArray(B1) && Array.isArray(B2)){
               const sharedMap = new Map();
-              const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
-              const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
-              score = 1 / Math.sqrt(calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
+              const mappedB1 = mapNumbersToLetters(B1, card1.card_id, sharedMap);
+              const mappedB2 = mapNumbersToLetters(B2, card2.card_id, sharedMap);
+              score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1)*2 + 1);
             }
             if (typeof B1 === "number" && typeof B2 === "number") {
               score = 1 / Math.sqrt(Math.abs(B2 - B1) + 1);
@@ -300,18 +301,17 @@
             }
           } else {
             if (typeof B1 === "number" && typeof B2 === "number") {
-              score = 1 / Math.sqrt(2 * (Math.abs(B2 - B1)/50000000 + 1));
+              score = 1 / Math.sqrt(2 * (Math.abs(B2 - B1) + 1));
             } else if (typeof B1 === "string" && typeof B2 === "string") {
               score = 1 / Math.sqrt(2 * (calculateLevenshteinDistance(B2, B1) + 1));
             }
           }
-        } else if (typeof B1 === "array" && typeof B2 === "array"){
+        } else if (Array.isArray(B1) && Array.isArray(B2)){
           const sharedMap = new Map();
-          const mappedB1 = mapNumbersToLetters(array1[2], card1.card_id, sharedMap);
-          const mappedB2 = mapNumbersToLetters(array2[2], card2.card_id, sharedMap);
-          score = 1 / Math.sqrt(calculateLevenshteinDistance(mappedB2, mappedB1) + 1) * (3/4);
+          const mappedB1 = mapNumbersToLetters(B1, card1.card_id, sharedMap);
+          const mappedB2 = mapNumbersToLetters(B2, card2.card_id, sharedMap);
+          score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1)*2 + 1) * (1/2);
         }
-
         totalScore += score;
       }
     }
@@ -341,16 +341,75 @@
       let cskillp1 = card1.skill_preprocess.replace("//",",").replaceAll("&",",");
       let cskillp2 = card2.skill_preprocess.replace("//",",").replaceAll("&",",");
 
-      cskillp1.replaceAll("destroy_tribe=white_ritual:","ritual=");
-      cskillp1.replaceAll("destroy_tribe=white_ritual_all","ritual=X")
-      cskillp1.replaceAll("destroy_tribe=white_ritual","ritual=1");
+      cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual:","ritual=");
+      cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual_all","ritual=X")
+      cskillp1 = cskillp1.replaceAll("destroy_tribe=white_ritual","ritual=1");
+
+      cskillp2 = cskillp2.replaceAll("destroy_tribe=white_ritual:","ritual=");
+      cskillp2 = cskillp2.replaceAll("destroy_tribe=white_ritual_all","ritual=X")
+      cskillp2 = cskillp2.replaceAll("destroy_tribe=white_ritual","ritual=1");
 
       const skillp1 = cskillp1 ? cskillp1.split(",") : [];
       const skillp2 = cskillp2 ? cskillp2.split(",") : [];
+
+      let cskillt1 = card1.skill_target.replace("//",",");
+      let cskillt2 = card2.skill_target.replace("//",",");
+      const skillst1 = cskillt1 ? cskillt1.split(",") : [];
+      const skillst2 = cskillt2 ? cskillt2.split(",") : [];
+
+      //处理attach
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'attach_skill' && skillso1[i].includes("skill=")){
+          let skillObject = parseAttachSkillString(skillso1[i]);
+          skills1.push(skillObject.skill);
+          if (skillObject.option && skillObject.option!='none'){
+            skillso1.push(skillObject.option+'&fromAttach');
+          } else {
+            skillso1.push('fromAttach');
+          }
+          if (skillObject.condition = 'me'){
+            skillObject.condition = 'condition=me'
+          }
+          skillsc1.push(skillObject.condition);
+          if (skillObject.preprocess && skillObject.option!='none'){
+            skillp1.push(skillObject.preprocess)
+          } else {
+            skillp1.push('none')
+          }
+
+          skillst1.push(skillObject.target)
+          skillso1[i] = 'none';
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'attach_skill' && skillso2[i].includes("skill=")){
+          let skillObject = parseAttachSkillString(skillso2[i]);
+          skills2.push(skillObject.skill);
+          if (skillObject.option && skillObject.option!='none'){
+            skillso2.push(skillObject.option+'&fromAttach');
+          } else {
+            skillso2.push('fromAttach');
+          }
+          if (skillObject.condition = 'me'){
+            skillObject.condition = 'condition=me'
+          }
+          skillsc2.push(skillObject.condition);
+          if (skillObject.preprocess){
+            skillp2.push(skillObject.preprocess)
+          } else {
+            skillp2.push('none')
+          }
+          skillst2.push(skillObject.target)
+          skillso2[i] = 'none';
+        }
+      }
+
       let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
       let lkeyPros = ["turn_end_stop","turn_start_stop","turn_end_remove","turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
       let repPros = ["only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
       let hasRep = [];
+
       for (let item of skillp1){
         let name = item.split("=")[0];
         if (keyPros.includes(name)){
@@ -440,11 +499,6 @@
         skillsc2.push('none');
       }
 
-      let cskillt1 = card1.skill_target.replace("//",",");
-      let cskillt2 = card2.skill_target.replace("//",",");
-      const skillst1 = cskillt1 ? cskillt1.split(",") : [];
-      const skillst2 = cskillt2 ? cskillt2.split(",") : [];
-
       //特殊判断消除
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i].includes('@')){
@@ -469,6 +523,41 @@
         }
       }
 
+      //套娃特殊词条
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'summon_token' || skills1[i] == 'draw_token'){
+          if (!skillso1[i].includes(skills1[i])){
+            continue;
+          }
+          let p = skillso1[i].split(skills1[i]+"=")[1].split(":");
+          if (p.length == 1 && p[0] == card1.card_id){
+            if (skills1[i] == 'summon_token'){
+              skillso1[i] == "type=0"
+            } else {
+              skillso1[i] == "type=1"
+            }
+            skills1[i] = 'obtain_self'
+          }
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'summon_token' || skills2[i] == 'draw_token'){
+          if (!skillso2[i].includes(skills2[i])){
+            continue;
+          }
+          let p = skillso2[i].split(skills2[i]+"=")[1].split(":");
+          if (p.length == 1 && p[0] == card2.card_id){
+            if (skills2[i] == 'summon_token'){
+              skillso2[i] == "type=0"
+            } else {
+              skillso2[i] == "type=1"
+            }
+            skills2[i] = 'obtain_self'
+          }
+        }
+      }
+
       //移除变身
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'transform'){
@@ -487,6 +576,7 @@
           i--;
         }
       }
+
       //亡召特殊判断
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
@@ -592,16 +682,29 @@
       // Calculate the number of common skills
       let commonSkills = 0;
       let chosen = [];
+      let ex = 0;
       for (let i = 0; i < skills1.length; i++){
         let skill = skills1[i];
         let nb = 0;
         let id = -1;
+        let exs = [];
         for (let j = 0; j < skills2.length; j++){
           if (chosen.includes(j)){
             continue;
           }
           if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
               let base = 1;
+              if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
+                //主战者能力对上有增权
+                base += 6;
+                exs[j] = 6;
+              } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
+                //主战者能力对上有增权
+                base += 2;
+                exs[j] = 2;
+              }
+              let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1)
+              let cRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1)
               if (!skillso2[j]){skillso2[j] = ""};
               if (!skillsc2[j]){skillsc2[j] = ""};
               if (!skillso1[i]){skillso1[i] = ""};
@@ -612,7 +715,7 @@
               let skillsoArr2 = skillso2[j].split("&");
               skillso1[i] = skillso1[i].replaceAll("占","&&")
               skillso2[j] = skillso2[j].replaceAll("占","&&")
-              const ol = (1 - 0.3 * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+              const ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
 
               //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
 
@@ -622,11 +725,11 @@
               let skillscArr2 = skillsc2[j].split("&");
               skillsc1[i] = skillsc1[i].replaceAll("占","&&")
               skillsc2[j] = skillsc2[j].replaceAll("占","&&")
-              const cl = (1 - 0.5 * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+              const cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
 
-              //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
               base *= ol;
               base *= cl;
+              //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
               if (base > nb){
                 nb = base;
                 id = j;
@@ -634,13 +737,16 @@
           }
         }
         commonSkills += nb;
+        if (exs[id]){
+          ex += exs[id];
+        }
         if (id != -1){
           chosen.push(id);
         }
       }
 
       // Calculate the maximum possible similarity score based on the longer skill array
-      const maxLength = Math.max(skills1.length, skills2.length);
+      const maxLength = Math.max(skills1.length, skills2.length) + ex;
       let similarity = Math.pow((commonSkills / maxLength),2/3) * 100;
       return similarity;
   }
@@ -769,7 +875,7 @@
           let selfBonus = 1;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
-              if (i == transSub1.length - 1 && occupied[i] == transSub2.length - 1){ //本体对上加成
+              if (transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id){ //本体对上加成
                 selfBonus = 4;
                 skillScore += scores[i]*selfBonus;
               } else {
@@ -797,6 +903,23 @@
       return similarityScore;
   }
 
+  function parseAttachSkillString(skillString) {
+    const matches = skillString.match(/\(([^:]+):([^)]+)\)/g);
+    const skillObject = {};
+
+    if (matches) {
+      for (let match of matches) {
+        const parts = match.match(/\(([^:]+):([^)]+)\)/);
+        if (parts && parts.length === 3) {
+          const key = parts[1];
+          const value = parts[2];
+          skillObject[key] = value;
+        }
+      }
+    }
+
+    return skillObject;
+  }
   function findCardById(id,isSub) {
     if (isSub){
       return subCardData.find((card) => card.card_id === id);
