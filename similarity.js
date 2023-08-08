@@ -571,39 +571,97 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //套娃特殊词条
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'summon_token' || skills1[i] == 'draw_token'){
-          if (!skillso1[i].includes(skills1[i])){
-            continue;
-          }
-          let p = skillso1[i].split(skills1[i]+"=")[1].split(":");
-          if (p.length == 1 && p[0] == card1.card_id){
-            if (skills1[i] == 'summon_token'){
-              skillso1[i] == "type=0"
+        if (skills1[i] == 'summon_token' || skills1[i] == 'token_draw'){
+          if (!skillso1[i].includes(skills1[i]) && !skillso1[i].includes('repeat_count')){
+            if (skillso1[i] == 'none'){
+              if (skills1[i] == 'summon_token'){
+                skillso1[i] = "type=0"
+              } else {
+                skillso1[i] = "type=1"
+              }
             } else {
-              skillso1[i] == "type=1"
+              if (skills1[i] == 'summon_token'){
+                skillso1[i] += "&type=0"
+              } else {
+                skillso1[i] += "&type=1"
+              }
             }
-            skills1[i] = 'obtain_self'
+
+            skills1[i] = 'recycle';
+          }
+          let arr = skillso1[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split(skills1[i]+"=")[1]){
+              continue;
+            }
+            let p = s.split(skills1[i]+"=")[1].split(":");
+            if (p.length == 1 && p[0] == card1.card_id){
+              change = true;
+              skills1[i] = 'obtain_self';
+              if (skills1[i] == 'summon_token'){
+                newStr.push("type=0")
+              } else {
+                newStr.push("type=1")
+              }
+            } else {
+              newStr.push(s)
+            }
+          }
+          if (change){
+            skillso1[i] = newStr.join('&');
           }
         }
       }
-
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'summon_token' || skills2[i] == 'draw_token'){
-          if (!skillso2[i].includes(skills2[i])){
-            continue;
-          }
-          let p = skillso2[i].split(skills2[i]+"=")[1].split(":");
-          if (p.length == 1 && p[0] == card2.card_id){
-            if (skills2[i] == 'summon_token'){
-              skillso2[i] == "type=0"
+        if (skills2[i] == 'summon_token' || skills2[i] == 'token_draw'){
+          if (!skillso2[i].includes(skills2[i]) && !skillso2[i].includes('repeat_count')){
+            if (skillso2[i] == 'none'){
+              if (skills2[i] == 'summon_token'){
+                skillso2[i] = "type=0"
+              } else {
+                skillso2[i] = "type=1"
+              }
             } else {
-              skillso2[i] == "type=1"
+              if (skills2[i] == 'summon_token'){
+                skillso2[i] += "&type=0"
+              } else {
+                skillso2[i] += "&type=1"
+              }
             }
-            skills2[i] = 'obtain_self'
+            skills2[i] = 'recycle';
+          }
+          let arr = skillso2[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split(skills2[i]+"=")[1]){
+              continue;
+            }
+            let p = s.split(skills2[i]+"=")[1].split(":");
+            if (p.length == 1 && p[0] == card2.card_id){
+              change = true;
+              skills2[i] = 'obtain_self';
+              if (skills2[i] == 'summon_token'){
+                newStr.push("type=0")
+              } else {
+                newStr.push("type=1")
+              }
+            } else {
+              newStr.push(s)
+            }
+          }
+          if (change){
+            skillso2[i] = newStr.join('&');
           }
         }
       }
 
+    //  if (card2.card_name == card1.card_name){
+    //    console.log(skills1,skillsc1,skillst1,skillsT1,skillso1)
+    //    console.log(skills2,skillsc2,skillst2,skillsT2,skillso2)
+    //  }
       //移除变身
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'transform'){
@@ -753,10 +811,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 //主战者能力对上有增权
                 ratio = 2;
               }
-              ratio *= Math.log(skillMaxNum / skillRates[skill] + 4, 5);
+              ratio *= Math.log(skillMaxNum / skillRates[skill] + 5, 6);
 
               let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1);
-              if (["summon_token","draw_token"].includes(skill)){
+              if (["summon_token","token_draw"].includes(skill)){
                 oRate = 1 - (1-oRate)/2;
               }
               let cRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
@@ -812,7 +870,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               base *= ol;
               base *= cl;
               base *= tl;
-              base *= timingl
+              base *= timingl;
 
               //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
               if (base > nb){
@@ -1197,23 +1255,53 @@ function customSplit(input,token) {
         break;
       }
     }
+
     //套娃特殊词条
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'summon_token' || skills1[i] == 'draw_token'){
-        if (!skillso1[i].includes(skills1[i])){
-          continue;
-        }
-        let p = skillso1[i].split(skills1[i]+"=")[1].split(":");
-        if (p.length == 1 && p[0] == card1.card_id){
-          if (skills1[i] == 'summon_token'){
-            skillso1[i] == "type=0"
+      if (skills1[i] == 'summon_token' || skills1[i] == 'token_draw'){
+        if (!skillso1[i].includes(skills1[i]) && !skillso1[i].includes('repeat_count')){
+          if (skillso1[i] == 'none'){
+            if (skills1[i] == 'summon_token'){
+              skillso1[i] = "type=0"
+            } else {
+              skillso1[i] = "type=1"
+            }
           } else {
-            skillso1[i] == "type=1"
+            if (skills1[i] == 'summon_token'){
+              skillso1[i] += "&type=0"
+            } else {
+              skillso1[i] += "&type=1"
+            }
           }
-          skills1[i] = 'obtain_self'
+
+          skills1[i] = 'recycle';
+        }
+        let arr = skillso1[i].split('&');
+        let newStr = [];
+        let change = false;
+        for (let s of arr){
+          if (!s.split(skills1[i]+"=")[1]){
+            continue;
+          }
+          let p = s.split(skills1[i]+"=")[1].split(":");
+          if (p.length == 1 && p[0] == card1.card_id){
+            change = true;
+            skills1[i] = 'obtain_self';
+            if (skills1[i] == 'summon_token'){
+              newStr.push("type=0")
+            } else {
+              newStr.push("type=1")
+            }
+          } else {
+            newStr.push(s)
+          }
+        }
+        if (change){
+          skillso1[i] = newStr.join('&');
         }
       }
     }
+
     //移除变身
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'transform'){
