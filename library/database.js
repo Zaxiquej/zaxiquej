@@ -3148,7 +3148,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 114134010,
-    "card_name": "神铁炼製术",
+    "card_name": "神铁炼制术",
     "card_set_id": 10014,
     "char_type": 4,
     "clan": 1,
@@ -20704,7 +20704,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 120314010,
-    "card_name": "源于魔力的复製",
+    "card_name": "源于魔力的复制",
     "card_set_id": 10020,
     "char_type": 4,
     "clan": 3,
@@ -43914,7 +43914,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 126511010,
-    "card_name": "冥火的披萨烤製人",
+    "card_name": "冥火的披萨烤制人",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 5,
@@ -56542,7 +56542,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122531020,
-    "card_name": "诅咒製造家·丝姞",
+    "card_name": "诅咒制造家·丝姞",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 5,
@@ -82150,7 +82150,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 113831010,
-    "card_name": "创造物再製者",
+    "card_name": "创造物再制者",
     "card_set_id": 10013,
     "char_type": 1,
     "clan": 8,
