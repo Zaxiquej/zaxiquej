@@ -382,13 +382,17 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillObject.condition = 'character=' + skillObject.condition
           }
           skillsc1.push(skillObject.condition);
-          if (skillObject.preprocess && skillObject.option!='none'){
+          if (skillObject.preprocess){
             skillp1.push(skillObject.preprocess)
           } else {
             skillp1.push('none')
           }
           skillst1.push(skillObject.target);
-          skillsT1.push(skillObject.timing);
+          if (skillObject.timing){
+            skillsT1.push(skillObject.timing)
+          } else {
+            skillsT1.push('none')
+          }
           skillso1[i] = 'none';
         }
       }
@@ -403,16 +407,20 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillso2.push('fromAttach');
           }
           if (!skillObject.condition.includes("=")){
-            skillObject.condition = 'character=' + skillObject.condition
+            skillObject.condition = 'character=' + skillObject.condition;
           }
           skillsc2.push(skillObject.condition);
-          if (skillObject.preprocess && skillObject.option!='none'){
+          if (skillObject.preprocess){
             skillp2.push(skillObject.preprocess)
           } else {
             skillp2.push('none')
           }
           skillst2.push(skillObject.target);
-          skillsT2.push(skillObject.timing);
+          if (skillObject.timing){
+            skillsT2.push(skillObject.timing)
+          } else {
+            skillsT2.push('none')
+          }
           skillso2[i] = 'none';
         }
       }
@@ -449,6 +457,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             }
             skillsc1.push('none');
             skillst1.push('none');
+            skillsT1.push('none');
           } else if (repPros.includes(name) && !hasRep.includes(name)){
             hasRep.push(name)
             let cost = item.split(":")[0];
@@ -601,6 +610,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skills1.splice(i,1);
           skillso1.splice(i,1);
           skillst1.splice(i,1);
+          skillsc1.splice(i,1);
           skillsT1.splice(i,1);
           i--;
         }
@@ -611,6 +621,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skills2.splice(i,1);
           skillso2.splice(i,1);
           skillst2.splice(i,1);
+          skillsc2.splice(i,1);
           skillsT2.splice(i,1);
           i--;
         }
@@ -796,7 +807,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             //  let skillsTArr2 = customSplit(skillsT2[j],"&");
             //  skillsT1[i] = skillsT1[i].replaceAll("占","&&")
             //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
-
               const timingl = (1 - timingRate * Math.sqrt(calculateLevenshteinDistance(skillsT1[i], skillsT2[j])) / Math.max(skillsT1[i].length, skillsT2[j].length));
 
               base *= ol;
@@ -1109,7 +1119,7 @@ function customSplit(input,token) {
           skillObject.condition = 'character=' + skillObject.condition;
         }
         skillsc1.push(skillObject.condition);
-        if (skillObject.preprocess && skillObject.option!='none'){
+        if (skillObject.preprocess){
           skillp1.push(skillObject.preprocess)
         } else {
           skillp1.push('none')
