@@ -1113,8 +1113,9 @@ function customSplit(input,token) {
   }
 
   function containsCosmos(input) {
-    const regex = /me\.deck\.(?:base_card_id!=\d{9}\.)?unique_base_card_id_card\.count/;
-    return regex.test(input);
+    const regex1 = /me\.deck\.(?:base_card_id!=\d{9}\.)?unique_base_card_id_card\.count/;
+    const regex2 = /me\.deck\.tribe!=(\w+)\.unique_base_card_id_card\.count={me\.deck\.tribe!=(\w+)\.count}/
+    return regex1.test(input) || regex2.test(input);
   }
 
   function keyNameStats(){

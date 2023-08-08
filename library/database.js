@@ -3258,7 +3258,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 122134010,
-    "card_name": "奇蹟的结实",
+    "card_name": "奇迹的结实",
     "card_set_id": 10022,
     "char_type": 4,
     "clan": 1,
@@ -24554,7 +24554,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 119511040,
-    "card_name": "灵魂嚮导",
+    "card_name": "灵魂向导",
     "card_set_id": 10019,
     "char_type": 1,
     "clan": 5,
@@ -29636,7 +29636,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 122731020,
-    "card_name": "奇蹟的笑声·加尔蜜亚",
+    "card_name": "奇迹的笑声·加尔蜜亚",
     "card_set_id": 10022,
     "char_type": 1,
     "clan": 7,
@@ -36500,7 +36500,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 113144010,
-    "card_name": "爱之奇蹟",
+    "card_name": "爱之奇迹",
     "card_set_id": 10013,
     "char_type": 4,
     "clan": 1,
@@ -40064,14 +40064,14 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 126341020,
-    "card_name": "万能的奇蹟·梅露缇娜",
+    "card_name": "万能的奇迹·梅露缇娜",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 3,
     "cost": 3,
     "evo_atk": 3,
     "evo_life": 3,
-    "evo_skill_disc": "进化时 使1个敌方的从者消失。增加1张万能的奇蹟·梅露缇娜卡片到手牌中。使其发动2次魔力增幅。使这个从者消失。",
+    "evo_skill_disc": "进化时 使1个敌方的从者消失。增加1张万能的奇迹·梅露缇娜卡片到手牌中。使其发动2次魔力增幅。使这个从者消失。",
     "life": 1,
     "rarity": 4,
     "skill": "draw,spell_charge,damage,pp_modifier,possess_ep_modifier//banish,token_draw,spell_charge,banish",
@@ -41802,7 +41802,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 118411010,
-    "card_name": "美人鱼嚮导",
+    "card_name": "美人鱼向导",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 4,
@@ -47896,7 +47896,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 127713020,
-    "card_name": "咏唱：圣兽的古蹟",
+    "card_name": "咏唱：圣兽的古迹",
     "card_set_id": 10027,
     "char_type": 3,
     "clan": 7,
