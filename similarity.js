@@ -818,7 +818,11 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 oRate = 1 - (1-oRate)/2;
               }
               let cRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
+
               let tRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
+              if (["powerup","damage","power_down"].includes(skill)){
+                tRate = 1 - (1-tRate)*0.9;
+              }
 
               let timingRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/2;
 
