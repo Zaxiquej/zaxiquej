@@ -32848,7 +32848,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 129821020,
-    "card_name": "织繫丝线·艾葳米亚",
+    "card_name": "织系丝线·艾葳米亚",
     "card_set_id": 10029,
     "char_type": 1,
     "clan": 8,
@@ -44772,7 +44772,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 105611010,
-    "card_name": "彆扭的恶魔",
+    "card_name": "别扭的恶魔",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 6,
@@ -53638,7 +53638,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 118341020,
-    "card_name": "和平维繫者·宾森特",
+    "card_name": "和平维系者·宾森特",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 3,
@@ -57400,7 +57400,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 105611020,
-    "card_name": "豪拳保镳",
+    "card_name": "豪拳保镖",
     "card_set_id": 10005,
     "char_type": 1,
     "clan": 6,
@@ -60612,7 +60612,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 127821010,
-    "card_name": "精炼保镳",
+    "card_name": "精炼保镖",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 8,
@@ -63736,7 +63736,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 118241010,
-    "card_name": "幻影拍档·峇妮与峇侬",
+    "card_name": "幻影拍档·巴妮与巴侬",
     "card_set_id": 10018,
     "char_type": 1,
     "clan": 2,
@@ -68268,7 +68268,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 114631030,
-    "card_name": "恶怨保镳·巴尔特",
+    "card_name": "恶怨保镖·巴尔特",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 6,
@@ -75616,7 +75616,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 124631020,
-    "card_name": "恶魔保镳",
+    "card_name": "恶魔保镖",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 6,
