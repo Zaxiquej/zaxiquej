@@ -953,12 +953,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             scores[i] = max;
           }
           skillScore = 0;
-          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*3;
+          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*2.5;
           let selfBonus = 1;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
-              if (transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id){ //本体对上加成
-                selfBonus = 4;
+              if ((transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id) || (transSub1[i] == card2.card_id && transSub2[occupied[i]] == card1.card_id && switched)){ //本体对上加成
+                selfBonus = 5;
                 skillScore += scores[i]*selfBonus;
               } else {
                 skillScore += scores[i];
