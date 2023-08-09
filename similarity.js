@@ -647,6 +647,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //区分炸牌库
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'banish' && skillst1[i].includes('target=deck') ){
+          skills1[i] = "banish_deck";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'banish' && skillst2[i].includes('target=deck') ){
+          skills2[i] = "banish_deck";
+        }
+      }
+
 
       //宇宙词条
       for (let i = 0; i < skills1.length; i++){
@@ -947,6 +960,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 aRatio = 2;
               }
 
+              aRatio *= Math.pow(ratioTable[skill],0.2);
+
               let oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7);
               let cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
               let tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
@@ -1023,7 +1038,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
         commonSkills += nb*sr + ar*(r-1);
-        ex += (ar-1)*(r-1);
+        ex += (ar-1)*(r-1) + sr - 1;
         if (id != -1){
           chosen.push(id);
         }
@@ -1461,6 +1476,13 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'damage_modifier' && skillso1[i].includes('set_damage=') ){
         skills1[i] = "damage_zero";
+      }
+    }
+
+    //区分炸牌库
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'banish' && skillst1[i].includes('target=deck') ){
+        skills1[i] = "banish_deck";
       }
     }
 

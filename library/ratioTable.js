@@ -31,7 +31,8 @@ let ratioTable = {
   "lose": 4, //沉默
   "update_deck": 1.5, //洗牌
   "shortage_deck_win": 20, //天使
-  "clear_destroyed_card_list": 20, //彻底炸牌库（倒吊）
+  "banish_deck": 6, //消失牌库
+  "clear_destroyed_card_list": 8, //彻底炸牌库（倒吊）
   "leader_attach_skill": 1.1, //主战者贴效果
   "recycle": 1.4, //回收/复制
   "none": 1.1, //白板
@@ -109,27 +110,27 @@ let ratioTable = {
   "force_skill_target": 8, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
   "change_skybound_art_count": 4, //奥义
   "change_super_skybound_art_count": 3, //解放奥义（呃重复了）
-  "use_ep": 15, //消耗豆子
+  "use_ep": 14, //消耗豆子
   "generic_value_modifier": 6,
   "accelerate": 1.1, //激奏
   "remove_by_destroy": 6, //能力无法破坏或使这个从者消失
-  "special_lose": 20, //特殊失败
+  "special_lose": 15, //特殊失败
   "force_berserk": 8, //狼王
   "turn_end_period_of_stop_time": 0.4, //到下个自己回合结束
   "heal_modifier": 12, //主战者回复生命值时的数值转变为1
   "unite": 10, //合体
   "geton": 10, //操纵
   "getoff": 1, //有上面那个啦
-  "rob_skill": 20, //偷
-  "copy_skill": 10, //复制
+  "rob_skill": 15, //偷
+  "copy_skill": 8, //复制
   "crystallize": 1.2, //结晶
   "not_decrease_pp": 15, //乔老师
   "repeat_skill": 10, //复读（暮光）
-  "force_avarice": 10, //碑文
-  "force_wrath": 10, //碑文
-  "evolve_to_other": 15, //其他进化（莱瓦丁）
-  "reflection": 15, //玛丽反伤
-  "loop_skill": 10, //复读技能（旋镖修女）
+  "force_avarice": 4, //碑文
+  "force_wrath": 4, //碑文
+  "evolve_to_other": 10, //其他进化（莱瓦丁）
+  "reflection": 10, //玛丽反伤
+  "loop_skill": 8, //复读技能（旋镖修女）
   "turn_start_fixed_pp": 10, //卡波
   "extra_turn": 10 //开门！
 }
