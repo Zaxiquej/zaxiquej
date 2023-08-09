@@ -602,12 +602,28 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skills1[i] = "selfDamage";
         }
       }
-
+      
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && skillst2[i] == 'character=me&target=inplay&card_type=class' ){
           skills2[i] = "selfDamage";
         }
       }
+
+      //自杀特殊判断
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'destroy' && skillst1[i].includes('character=me&target=inplay&card_type=unit')){
+          skills1[i] = "selfDestroy";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'destroy' && skillst2[i].includes('character=me&target=inplay&card_type=unit')){
+          skills2[i] = "selfDestroy";
+        }
+      }
+
+
       //跳/扣特殊判断
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'pp_modifier' && skillso1[i].includes("add_pptotal=")){
@@ -1172,8 +1188,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
           skillScore = 0;
 
-          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length);
-          let selfBonus = 3;
+          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)/2.5;
+          let selfBonus = 1.5;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
               if ((transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id) || (transSub1[i] == card2.card_id && transSub2[occupied[i]] == card1.card_id && switched)){ //本体对上加成
@@ -1449,6 +1465,13 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'damage' && skillst1[i] == 'character=me&target=inplay&card_type=class' ){
         skills1[i] = "selfDamage";
+      }
+    }
+
+    //自杀特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'destroy' && skillst1[i].includes('character=me&target=inplay&card_type=unit')){
+        skills1[i] = "selfDestroy";
       }
     }
 

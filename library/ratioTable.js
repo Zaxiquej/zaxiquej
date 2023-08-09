@@ -49,6 +49,7 @@ let ratioTable = {
   "necromance": 1.5, //死灵术
   "choice": 1.5, //抉择
   "selfDamage": 1.5, //自残
+  "selfDestroy": 2, //自杀
   "evolve": 1.2, //进化
   "shield": 1.6, //圣盾
   "independent": 10, //天盾
