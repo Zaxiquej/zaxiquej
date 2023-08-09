@@ -585,6 +585,32 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+
+      let wholeKeyProsT = ["character=both"];
+
+      for (let highItem of skillst1){
+        for (let item of customSplit(highItem,'&')){
+          if (wholeKeyProsT.includes(item)){
+            skills1.push(item);
+            skillso1.push('none')
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
+        }
+      }
+
+      for (let highItem of skillst2){
+        for (let item of customSplit(highItem,'&')){
+          if (wholeKeyProsT.includes(item)){
+            skills2.push(item);
+            skillso2.push('none')
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+          }
+        }
+      }
       //特殊判断消除
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i].includes('@')){
@@ -598,13 +624,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
       //自残特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'damage' && skillst1[i] == 'character=me&target=inplay&card_type=class' ){
+        if (skills1[i] == 'damage' && (skillst1[i] == 'character=me&target=inplay&card_type=class' || skillst1[i] == 'character=both&target=inplay&card_type=class') ){
           skills1[i] = "selfDamage";
         }
       }
-      
+
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'damage' && skillst2[i] == 'character=me&target=inplay&card_type=class' ){
+        if (skills2[i] == 'damage' && (skillst2[i] == 'character=me&target=inplay&card_type=class' || skillst2[i] == 'character=both&target=inplay&card_type=class') ){
           skills2[i] = "selfDamage";
         }
       }
@@ -1455,6 +1481,20 @@ function customSplit(input,token) {
       }
     }
 
+    let wholeKeyProsT = ["character=both"];
+
+    for (let highItem of skillst1){
+      for (let item of customSplit(highItem,'&')){
+        if (wholeKeyProsT.includes(item)){
+          skills1.push(item);
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+    }
+
     //特殊判断消除
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i].includes('@')){
@@ -1463,7 +1503,7 @@ function customSplit(input,token) {
     }
     //自残特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'damage' && skillst1[i] == 'character=me&target=inplay&card_type=class' ){
+      if (skills1[i] == 'damage' && (skillst1[i] == 'character=me&target=inplay&card_type=class' || skillst1[i] == 'character=both&target=inplay&card_type=class') ){
         skills1[i] = "selfDamage";
       }
     }

@@ -12,6 +12,7 @@ let ratioTable = {
   "damage": 1,
   "draw": 1,
   "possess_ep_modifier": 3, //回豆
+  "character=both": 1.5,//敌我不分
   "pp_modifier": 1.3, //回/扣费
   "destroy": 1,
   "heal": 1,
