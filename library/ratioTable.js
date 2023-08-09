@@ -89,11 +89,11 @@ let ratioTable = {
   "{me.inplay.class.max_pp}": 3.5, //最大X PP
   "metamorphose": 2.8, //变形
   "change_cemetery": 2.7, //改变墓地
-  "change_union_burst_count": 4, //UB
+  "change_union_burst_count": 1.2, //UB
   "remove_by_banish": 8, //离场时消失
   "burial_rite": 2, //送葬
   "invoke_skill": 6, //触发入场曲
-  "damage_cut": 4, //减伤、限伤
+  "damage_cut": 2.5, //减伤、限伤
   "berserk": 1.3, //复仇
   "wrath": 1.5, //狂乱
   "avarice": 1.8, //渴望
@@ -107,24 +107,24 @@ let ratioTable = {
   "cant_summon": 15, //闪耀
   "cosmos": 12, //宇宙
   "cant_play": 12, //无法使用XX卡
-  "force_skill_target": 8, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
-  "change_skybound_art_count": 4, //奥义
-  "change_super_skybound_art_count": 3, //解放奥义（呃重复了）
+  "force_skill_target": 7, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
+  "change_skybound_art_count": 1.2, //奥义
+  "change_super_skybound_art_count": 0.3, //解放奥义（呃重复了）
   "use_ep": 14, //消耗豆子
   "generic_value_modifier": 6,
   "accelerate": 1.1, //激奏
   "remove_by_destroy": 6, //能力无法破坏或使这个从者消失
-  "special_lose": 15, //特殊失败
+  "special_lose": 12, //特殊失败
   "force_berserk": 8, //狼王
   "turn_end_period_of_stop_time": 0.4, //到下个自己回合结束
-  "heal_modifier": 12, //主战者回复生命值时的数值转变为1
+  "heal_modifier": 11, //主战者回复生命值时的数值转变为1
   "unite": 10, //合体
   "geton": 10, //操纵
   "getoff": 1, //有上面那个啦
-  "rob_skill": 15, //偷
+  "rob_skill": 14, //偷
   "copy_skill": 8, //复制
   "crystallize": 1.2, //结晶
-  "not_decrease_pp": 15, //乔老师
+  "not_decrease_pp": 14, //乔老师
   "repeat_skill": 10, //复读（暮光）
   "force_avarice": 4, //碑文
   "force_wrath": 4, //碑文
