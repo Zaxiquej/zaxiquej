@@ -802,20 +802,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //激奏结晶
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_accelerate'){
-          skills1[i] = 'accelerate';
-        }
-        if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_crystallize'){
-          skills1[i] = 'crystallize';
+        if (skills1[i] == 'pp_fixeduse' && (skillsT1[i] == 'when_accelerate' || skillsT1[i] == 'when_crystallize')){
+          skills1[i] = 'accelerateORcrystallize';
         }
       }
 
-      for (let i = 0; i < skills1.length; i++){
-        if (skills2[i] == 'pp_fixeduse' && skillsT2[i] == 'when_accelerate'){
-          skills2[i] = 'accelerate';
-        }
-        if (skills1[i] == 'pp_fixeduse' && skillsT2[i] == 'when_crystallize'){
-          skills2[i] = 'crystallize';
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'pp_fixeduse' && (skillsT2[i] == 'when_accelerate' || skillsT2[i] == 'when_crystallize')){
+          skills2[i] = 'accelerateORcrystallize';
         }
       }
 
@@ -943,11 +937,11 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               let aRatio = 1;
 
               if (['leader_attach_skill'].includes(skill)){
-                sRatio *= 0.3;
+                sRatio *= 0.4;
               }
 
-              if (['accelerate','crystallize'].includes(skill)){
-                sRatio *= 0.2;
+              if (['accelerateORcrystallize'].includes(skill)){
+                sRatio *= 0.8;
               }
 
               ratio = Math.sqrt(ratioTable[skill]);
@@ -1177,12 +1171,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             scores[i] = max;
           }
           skillScore = 0;
-          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)*2.5;
-          let selfBonus = 1;
+
+          let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length);
+          let selfBonus = 3;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
               if ((transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id) || (transSub1[i] == card2.card_id && transSub2[occupied[i]] == card1.card_id && switched)){ //本体对上加成
-                selfBonus = 5;
                 skillScore += scores[i]*selfBonus;
               } else {
                 skillScore += scores[i];
@@ -1557,11 +1551,8 @@ function customSplit(input,token) {
 
     //激奏结晶
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_accelerate'){
-        skills1[i] = 'accelerate';
-      }
-      if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_crystallize'){
-        skills1[i] = 'crystallize';
+      if (skills1[i] == 'pp_fixeduse' && (skillsT1[i] == 'when_accelerate' || skillsT1[i] == 'when_crystallize')){
+        skills1[i] = 'accelerateORcrystallize';
       }
     }
 
