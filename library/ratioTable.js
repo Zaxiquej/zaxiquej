@@ -12,6 +12,7 @@ let ratioTable = {
   "damage": 1,
   "draw": 1,
   "possess_ep_modifier": 3, //回豆
+  "cemetery_count": 3,//墓冥府
   "character=both": 1.5,//敌我不分
   "pp_modifier": 1.3, //回/扣费
   "destroy": 1,
@@ -37,6 +38,7 @@ let ratioTable = {
   "leader_attach_skill": 1.1, //主战者贴效果
   "recycle": 1.4, //回收/复制
   "none": 1.1, //白板
+  "long_token_draw": 4, //长随机
   "token_draw": 1,
   "select": 1.2,//选择目标
   "summon_card": 1.5,//拉东西

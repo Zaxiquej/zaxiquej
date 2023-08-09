@@ -530,7 +530,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -539,6 +539,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (matches){
             let name = matches[1];
             if (keyProsC.includes(name)){
+              if (name == "cemetery_count" && matches[2] != ">="){
+                continue;
+              }
               let cost = matches[3];
               if (!is_numeric(cost)){
                 cost = 'X';
@@ -566,6 +569,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (matches){
             let name = matches[1];
             if (keyProsC.includes(name)){
+              if (name == "cemetery_count" && matches[2] != ">="){
+                continue;
+              }
               let cost = matches[3];
               if (!is_numeric(cost)){
                 cost = 'X';
@@ -812,6 +818,37 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (change){
             skillso2[i] = newStr.join('&');
           }
+        }
+      }
+
+      //长随机token
+      for (let i = 0; i < skillso1.length; i++){
+        if (skillso1[i].includes('token_draw=') && skillso1[i].split(":").length>=4){
+          skills1.push("long_token_draw");
+          if (skillso1[i].includes("?")){
+            skillso1.push('random=2');
+          } else {
+            skillso1.push('random=0');
+          }
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+          break;
+        }
+      }
+
+      for (let i = 0; i < skillso2.length; i++){
+        if (skillso2[i].includes('token_draw=') && skillso2[i].split(":").length>=4){
+          skills2.push("long_token_draw");
+          if (skillso2[i].includes("?")){
+            skillso2.push('random=2');
+          } else {
+            skillso2.push('random=0');
+          }
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+          break;
         }
       }
 
@@ -1452,7 +1489,7 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -1461,6 +1498,9 @@ function customSplit(input,token) {
         if (matches){
           let name = matches[1];
           if (keyProsC.includes(name)){
+            if (name == "cemetery_count" && matches[2] != ">="){
+              continue;
+            }
             let cost = matches[3];
             if (!is_numeric(cost)){
               cost = 'X';
@@ -1598,6 +1638,22 @@ function customSplit(input,token) {
         if (change){
           skillso1[i] = newStr.join('&');
         }
+      }
+    }
+
+    //长随机token
+    for (let i = 0; i < skillso1.length; i++){
+      if (skillso1[i].includes('token_draw=') && skillso1[i].split(":").length>=4){
+        skills1.push("long_token_draw");
+        if (skillso1[i].includes("?")){
+          skillso1.push('random=2');
+        } else {
+          skillso1.push('random=0');
+        }
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+        break;
       }
     }
 
