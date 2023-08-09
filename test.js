@@ -236,3 +236,32 @@ function checkKeyNameStats(){
   // 将<ul>元素添加到页面
   document.body.appendChild(ulElement);
 }
+
+function getCardByRank(puzzleCard,rank) {
+  const sortedCards = cardData
+    .map((card) => calculateSimilarityScore(puzzleCard, card))
+    .sort((a, b) => b - a);
+
+  if (rank <= 0 || rank > sortedCards.length) {
+    return null; // Invalid rank, return null
+  }
+
+  const similarity = sortedCards[rank - 1];
+  const cardIndex = sortedCards.indexOf(similarity);
+  const card = cardData[cardIndex];
+
+  return { similarity, card };
+}
+
+
+function getAllCardsLowRate(){
+  for (let card of cardData){
+    let cardGet = getCardByRank(card,2);
+    let sim = cardGet.similarity;
+    let card2 = cardGet.card;
+
+    if (sim < 40){
+      console.log(card.card_name, card2.card_name, sim);
+    }
+  }
+}

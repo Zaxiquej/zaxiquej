@@ -536,8 +536,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["{me.inplay.class.pp}"];
+      let keyProsC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let repProsC = ["{me.inplay.class.pp}"]; //不计重复
+      let onlyGreaterC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
 
       for (let highItem of skillsc1){
@@ -550,7 +551,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (name == "cemetery_count" && matches[2] != ">="){
+              if (onlyGreaterC.includes(name) && matches[2] != ">="){
                 continue;
               }
               let cost = matches[3];
@@ -591,6 +592,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //计数器类，和之前并算
+
       hasRepC = [];
       for (let highItem of skillsc2){
         for (let item of customSplit(highItem,'&')){
@@ -602,7 +605,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (name == "cemetery_count" && matches[2] != ">="){
+              if (onlyGreaterC.includes(name) && matches[2] != ">="){
                 continue;
               }
               let cost = matches[3];
@@ -660,6 +663,32 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let highItem of skillst2){
         for (let item of customSplit(highItem,'&')){
           if (wholeKeyProsT.includes(item)){
+            skills2.push(item);
+            skillso2.push('none')
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+          }
+        }
+      }
+
+      let wholeKeyProsTiming = ["when_resonance_start"];
+
+      for (let highItem of skillsT1){
+        for (let item of customSplit(highItem,'&')){
+          if (wholeKeyProsTiming.includes(item)){
+            skills1.push(item);
+            skillso1.push('none')
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
+        }
+      }
+
+      for (let highItem of skillsT2){
+        for (let item of customSplit(highItem,'&')){
+          if (wholeKeyProsTiming.includes(item)){
             skills2.push(item);
             skillso2.push('none')
             skillsc2.push('none');
@@ -1647,8 +1676,9 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let keyProsC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["{me.inplay.class.pp}"];
+    let onlyGreaterC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
 
     for (let highItem of skillsc1){
@@ -1661,8 +1691,8 @@ function customSplit(input,token) {
             name = "{me.inplay.class.pp}"
           }
           if (keyProsC.includes(name)){
-            if (name == "cemetery_count" && matches[2] != ">="){
-              continue;
+            if (onlyGreaterC.includes(name) && matches[2] != ">="){
+               continue;
             }
             let cost = matches[3];
             if (!is_numeric(cost)){
@@ -1707,6 +1737,20 @@ function customSplit(input,token) {
     for (let highItem of skillst1){
       for (let item of customSplit(highItem,'&')){
         if (wholeKeyProsT.includes(item)){
+          skills1.push(item);
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+    }
+
+    let wholeKeyProsTiming = ["when_resonance_start"];
+
+    for (let highItem of skillsT1){
+      for (let item of customSplit(highItem,'&')){
+        if (wholeKeyProsTiming.includes(item)){
           skills1.push(item);
           skillso1.push('none')
           skillsc1.push('none');
