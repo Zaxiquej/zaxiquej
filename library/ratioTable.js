@@ -36,8 +36,8 @@ let ratioTable = {
   "shortage_deck_win": 20, //天使
   "banish_deck": 6, //消失牌库
   "clear_destroyed_card_list": 8, //彻底炸牌库（倒吊）
-  "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": 2, //造物种类
-  "{me.inplay.class.rally_count}": 1.6, //连协
+  "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": 1.9, //造物种类
+  "{me.inplay.class.rally_count}": 1.4, //连协
   "{me.destroyed_card_list.unit.count}": 1.8, //被破坏的随从
   "when_resonance_start": 2,//切共鸣
   "leader_attach_skill": 1.1, //主战者贴效果
