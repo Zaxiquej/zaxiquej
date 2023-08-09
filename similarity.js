@@ -305,13 +305,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1)*4 + 1); //待改
             }
             if (typeof B1 === "number" && typeof B2 === "number") {
-              score = 1 / Math.sqrt(Math.abs(B2 - B1) + 1);
+              score = 1 / (Math.abs(B2 - B1) + 1);
             } else if (typeof B1 === "string" && typeof B2 === "string") {
               score = 1 - calculateLevenshteinDistance(B2, B1) / Math.max(B1.length,B2.length);
             }
           } else {
             if (typeof B1 === "number" && typeof B2 === "number") {
-              score = 1 / Math.sqrt(2 * (Math.abs(B2 - B1) + 1));
+              score = 1 / (2 * (Math.abs(B2 - B1) + 1));
             } else if (typeof B1 === "string" && typeof B2 === "string") {
               score = (1 - calculateLevenshteinDistance(B2, B1) / Math.max(B1.length,B2.length))/2;
             }

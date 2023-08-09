@@ -1740,7 +1740,7 @@ let subCardData = [
   {
     "atk": 0,
     "card_id": 715324010,
-    "card_name": "阴阳祕法",
+    "card_name": "阴阳秘法",
     "card_set_id": 10023,
     "char_type": 4,
     "clan": 3,
@@ -13136,7 +13136,7 @@ let subCardData = [
   {
     "atk": 2,
     "card_id": 704841010,
-    "card_name": "神祕守门人·丝碧涅",
+    "card_name": "神秘守门人·丝碧涅",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 8,
@@ -13171,7 +13171,7 @@ let subCardData = [
     "skill": "consume_ep_modifier,update_deck//summon_token",
     "skill_condition": "{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit_and_allfield&tribe=artifact,character=me&target=self&card_type=unit//character=me",
     "skill_preprocess": "none,none//none",
-    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神祕的遗物·丝碧涅与璐契儿卡片到牌堆中。",
+    "skill_disc": "当创造物卡进入自己的战场时，使这个从者获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）<br>入场曲 增加1张神秘的遗物·丝碧涅与璐契儿卡片到牌堆中。",
     "skill_option": "none,token_draw=900841190&type=add//summon_token=900811040",
     "skill_target": "character=me&target=self&card_type=unit,none//none",
     "tribe_name": "-",
