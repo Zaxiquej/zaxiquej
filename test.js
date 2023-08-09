@@ -201,9 +201,21 @@ function combineTiming(aData) {
     document.body.appendChild(downloadLink);
 }
 
+let aEntries;
 function checkKeyNameStats(){
   // 将对象的属性名和值存储为 [key, value] 数组
-  const vectorEntries = Object.entries(keyNameStats());
+  aEntries = keyNameStats();
+  let vectorEntries = Object.entries(keyNameStats());
+
+  // 创建Blob对象并下载
+  const jsonData = JSON.stringify(aEntries, null, 2);
+  const blob = new Blob([jsonData], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const downloadLink = document.createElement('a');
+  downloadLink.href = url;
+  downloadLink.download = 'new_database.json';
+  downloadLink.textContent = '点击此处下载新的数据库文件';
+  document.body.appendChild(downloadLink);
 
   // 按照属性值的大小进行排序
   vectorEntries.sort((a, b) => a[1] - b[1]);

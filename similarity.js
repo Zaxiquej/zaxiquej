@@ -394,6 +394,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillsT1.push('none')
           }
           skillso1[i] = 'none';
+          if (skillst1[i] == "character=me&target=inplay&card_type=class"){
+            //贴主战者
+            skills1[i] = 'leader_attach_skill'
+          }
         }
       }
 
@@ -422,10 +426,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillsT2.push('none')
           }
           skillso2[i] = 'none';
+          if (skillst2[i] == "character=me&target=inplay&card_type=class"){
+            //贴主战者
+            skills2[i] = 'leader_attach_skill'
+          }
         }
       }
 
-      let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
+      let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn"];
       let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
       let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
       let hasRep = [];
@@ -522,6 +530,61 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      let keyProsC = ["play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+
+      for (let highItem of skillsc1){
+        for (let item of customSplit(highItem,'&')){
+          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let matches = item.match(pattern);
+          if (matches){
+            let name = matches[1];
+            if (keyProsC.includes(name)){
+              let cost = matches[3];
+              if (!is_numeric(cost)){
+                cost = 'X';
+              }
+              skills1.push(name);
+              if (!cost){
+                skillso1.push('none')
+              } else {
+                skillso1.push("value="+cost)
+              }
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else {
+              continue;
+            }
+          }
+        }
+      }
+
+      for (let highItem of skillsc2){
+        for (let item of customSplit(highItem,'&')){
+          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let matches = item.match(pattern);
+          if (matches){
+            let name = matches[1];
+            if (keyProsC.includes(name)){
+              let cost = matches[3];
+              if (!is_numeric(cost)){
+                cost = 'X';
+              }
+              skills2.push(name);
+              if (!cost){
+                skillso2.push('none')
+              } else {
+                skillso2.push("value="+cost)
+              }
+              skillsc2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
+            } else {
+              continue;
+            }
+          }
+        }
+      }
       //特殊判断消除
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i].includes('@')){
@@ -545,6 +608,45 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skills2[i] = "selfDamage";
         }
       }
+      //跳/扣特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'pp_modifier' && skillso1[i].includes("add_pptotal=")){
+          skills1[i] = "ramp";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'pp_modifier' && skillso2[i].includes("add_pptotal=")){
+          skills2[i] = "ramp";
+        }
+      }
+
+      //瞬念特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'summon_card' && skillst1[i].includes('character=me&target=deck_self') ){
+          skills1[i] = "invocation";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'summon_card' && skillst2[i].includes('character=me&target=deck_self') ){
+          skills2[i] = "invocation";
+        }
+      }
+
+      //区分伟大的意志和项链
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'damage_modifier' && skillso1[i].includes('set_damage=') ){
+          skills1[i] = "damage_zero";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'damage_modifier' && skillso2[i].includes('set_damage=') ){
+          skills2[i] = "damage_zero";
+        }
+      }
+
 
       //宇宙词条
       for (let i = 0; i < skills1.length; i++){
@@ -685,6 +787,25 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //激奏结晶
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_accelerate'){
+          skills1[i] = 'accelerate';
+        }
+        if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_crystallize'){
+          skills1[i] = 'crystallize';
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills2[i] == 'pp_fixeduse' && skillsT2[i] == 'when_accelerate'){
+          skills2[i] = 'accelerate';
+        }
+        if (skills1[i] == 'pp_fixeduse' && skillsT2[i] == 'when_crystallize'){
+          skills2[i] = 'crystallize';
+        }
+      }
+
       //亡召特殊判断
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
@@ -796,6 +917,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         let nb = 0;
         let id = -1;
         let r = 1;
+        let sr = 1;
+        let ar = 1;
         for (let j = 0; j < skills2.length; j++){
           if (chosen.includes(j)){
             continue;
@@ -803,28 +926,41 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
               let base = 1;
               let ratio = 1;
+              let sRatio = 1;
+              let aRatio = 1;
+
+              if (['leader_attach_skill'].includes(skill)){
+                sRatio *= 0.3;
+              }
+
+              if (['accelerate','crystallize'].includes(skill)){
+                sRatio *= 0.2;
+              }
+
+              ratio = Math.sqrt(ratioTable[skill]);
 
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
-                ratio = 6;
+                aRatio = 6;
               } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
-                ratio = 2;
+                aRatio = 2;
               }
-              ratio *= Math.log(skillMaxNum / skillRates[skill] + 5, 6);
 
-              let oRate = 1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1);
+              let oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7);
+              let cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
+              let tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
+              let timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/2;
+
               if (["summon_token","token_draw"].includes(skill)){
                 oRate = 1 - (1-oRate)/2;
               }
-              let cRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
 
-              let tRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/1.5;
               if (["powerup","damage","power_down"].includes(skill)){
                 tRate = 1 - (1-tRate)*0.9;
               }
 
-              let timingRate = (1/Math.sqrt(Math.min(skills1.length, skills2.length) + 1))/2;
+
 
               if (!skillso2[j]){skillso2[j] = ""};
               if (!skillsc2[j]){skillsc2[j] = ""};
@@ -881,18 +1017,29 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 nb = base;
                 id = j;
                 r = ratio;
+                sr = sRatio;
+                ar = aRatio;
               }
           }
         }
-        commonSkills += nb*r;
-        ex += r-1;
+        commonSkills += nb*sr + ar*(r-1);
+        ex += (ar-1)*(r-1);
         if (id != -1){
           chosen.push(id);
         }
       }
 
       // Calculate the maximum possible similarity score based on the longer skill array
-      const maxLength = Math.max(skills1.length, skills2.length) + ex;
+      let skills1Sum = 0;
+      for (let skill of skills1){
+        skills1Sum += Math.sqrt(ratioTable[skill]);
+      }
+      let skills2Sum = 0;
+      for (let skill of skills2){
+        skills2Sum += Math.sqrt(ratioTable[skill]);
+      }
+
+      const maxLength = Math.max(skills1Sum,skills2Sum) + ex;
       let similarity = Math.pow((commonSkills / maxLength),2/3) * 100;
       return similarity;
   }
@@ -1143,6 +1290,9 @@ function customSplit(input,token) {
     let cskillc1 = card1.skill_condition.replace("//",",");
     const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
 
+    let cskillT1 = card1.timing.replace("//",",");
+    const skillsT1 = cskillT1 ? cskillT1.split(",") : [];
+
     //将部分cost加入skill
     let cskillp1 = card1.skill_preprocess.replace("//",",").replaceAll("&",",");
 
@@ -1189,9 +1339,18 @@ function customSplit(input,token) {
         }
         skillst1.push(skillObject.target);
         skillso1[i] = 'none';
+        if (skillst1[i] == "character=me&target=inplay&card_type=class"){
+          //贴主战者
+          skills1[i] = 'leader_attach_skill'
+        }
+        if (skillObject.timing){
+          skillsT1.push(skillObject.timing)
+        } else {
+          skillsT1.push('none')
+        }
       }
     }
-    let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn","damage_after_stop"];
+    let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn"];
     let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
     let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
     let hasRep = [];
@@ -1212,6 +1371,7 @@ function customSplit(input,token) {
           }
           skillsc1.push('none');
           skillst1.push('none');
+          skillsT1.push('none');
         } else if (lkeyPros.includes(name)){
           let cost = item.split(":")[0];
           skills1.push(name);
@@ -1222,6 +1382,7 @@ function customSplit(input,token) {
           }
           skillsc1.push('none');
           skillst1.push('none');
+          skillsT1.push('none');
         } else if (repPros.includes(name) && !hasRep.includes(name)){
           hasRep.push(name)
           let cost = item.split(":")[0];
@@ -1233,11 +1394,42 @@ function customSplit(input,token) {
           }
           skillsc1.push('none');
           skillst1.push('none');
+          skillsT1.push('none');
         } else {
           continue;
         }
       }
     }
+
+    let keyProsC = ["play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+
+    for (let highItem of skillsc1){
+      for (let item of customSplit(highItem,'&')){
+        let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+        let matches = item.match(pattern);
+        if (matches){
+          let name = matches[1];
+          if (keyProsC.includes(name)){
+            let cost = matches[3];
+            if (!is_numeric(cost)){
+              cost = 'X';
+            }
+            skills1.push(name);
+            if (!cost){
+              skillso1.push('none')
+            } else {
+              skillso1.push("value="+cost)
+            }
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          } else {
+            continue;
+          }
+        }
+      }
+    }
+
     //特殊判断消除
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i].includes('@')){
@@ -1250,6 +1442,28 @@ function customSplit(input,token) {
         skills1[i] = "selfDamage";
       }
     }
+
+    //跳/扣特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'pp_modifier' && skillso1[i].includes("add_pptotal=")){
+        skills1[i] = "ramp";
+      }
+    }
+
+    //瞬念特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'summon_card' && skillst1[i].includes('character=me&target=deck_self') ){
+        skills1[i] = "invocation";
+      }
+    }
+
+    //区分伟大的意志和项链
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'damage_modifier' && skillso1[i].includes('set_damage=') ){
+        skills1[i] = "damage_zero";
+      }
+    }
+
     //宇宙词条
     for (let i = 0; i < skills1.length; i++){
       if (containsCosmos(skillso1[i]) || containsCosmos(skillsc1[i])){
@@ -1257,6 +1471,7 @@ function customSplit(input,token) {
         skillso1.push('none');
         skillsc1.push('none');
         skillst1.push('none');
+        skillsT1.push('none');
         break;
       }
     }
@@ -1313,7 +1528,18 @@ function customSplit(input,token) {
         skills1.splice(i,1);
         skillso1.splice(i,1);
         skillst1.splice(i,1);
+        skillsT1.splice(i,1);
         i--;
+      }
+    }
+
+    //激奏结晶
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_accelerate'){
+        skills1[i] = 'accelerate';
+      }
+      if (skills1[i] == 'pp_fixeduse' && skillsT1[i] == 'when_crystallize'){
+        skills1[i] = 'crystallize';
       }
     }
 

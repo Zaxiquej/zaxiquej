@@ -140,16 +140,11 @@
            <p>例：狂舞之刃·蒂欧涅对暴狂士兵时，会激奏2对激奏2，本体对本体；蒂欧涅的激奏7对不上。最终基本分+技能分为激奏2对比分+减权的激奏7得分+加权的本体得分
        </details>
        <details>
-           <summary>6. 关于一些技能</summary>
-           <p>瞬念召唤在技能上被算为“召唤卡牌”，会和其他召唤卡牌的卡有同一个技能，但是在描述上两者具有差别。</p>
-           <p>回费和跳费也是一个系统的，不过具体系数有分开就是</p>
-       </details>
-       <details>
-           <summary>7. 关于相似度算法</summary>
+           <summary>6. 关于相似度算法</summary>
            <p>相似度算法还在优化中，但是你可以先体验一下游戏（指被拉血压）。</p>
        </details>
        <details>
-           <summary>8. 每天生成的种子是固定的吗？</summary>
+           <summary>7. 每天生成的种子是固定的吗？</summary>
            <p>是的。如果你想要玩别的，你可以输入之前的种子。</p>
            <p>这么做的理由：</p>
            <li>1、其他猜词游戏也是这么做的（</li>
@@ -158,15 +153,21 @@
            <p>当然，如果你想玩更多，你可以随便输入一些东西作为种子（种子可以是任何语言，包括中文）！你还可以把你脸滚键盘生成的种子分享给群友（</p>
        </details>
        <details>
-           <summary>9. 过去的谜题</summary>
-           <li>2023/08/09-WFXRB5fj</li>           
+           <summary>8. 过去的谜题</summary>
+           <li>2023/08/09-WFXRB5fj</li>
            <li>2023/08/08-0ElHftw2</li>
            <li>2023/08/07-e5qHb1IB</li>
            <li>2023/08/06-Vrut4aWV</li>
        </details>
        <details>
-         <summary>10. 更新记录</summary>
+         <summary>9. 更新记录</summary>
          <ul style="list-style-type: none; padding: 0;">
+           <li style="margin-left: 20px;">
+             <span style="display: inline-block; width: 140px;">2023/08/08</span>优化了技能稀有度补正；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了连击、觉醒等词条的判定；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>对部分词条进行了额外区分；现在回费和跳费、瞬念和拉人之类的会分开了。<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许优化数据库文字。
+           </li>
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/08</span>增加了技能稀有度补正；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了贴主战者/随从效果时，具体效果的判断；<br>
@@ -191,6 +192,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
     <script src="library/database.js"></script>
     <script src="library/subDatabase.js"></script>
+    <script src="library/ratioTable.js"></script>
     <script src="SimpTrad.js"></script>
     <script src="similarity.js"></script>
     <script src="guess.js"></script>

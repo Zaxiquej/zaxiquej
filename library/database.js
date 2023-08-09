@@ -2862,7 +2862,7 @@ let cardData = [
   {
     "atk": 1,
     "card_id": 127141030,
-    "card_name": "安逸女神·璞薾美莉亚",
+    "card_name": "安逸女神·璞尔美莉亚",
     "card_set_id": 10027,
     "char_type": 1,
     "clan": 1,
@@ -18086,7 +18086,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101224010,
-    "card_name": "徵兵",
+    "card_name": "征兵",
     "card_set_id": 10001,
     "char_type": 4,
     "clan": 2,
@@ -70446,7 +70446,7 @@ let cardData = [
   {
     "atk": 6,
     "card_id": 126811030,
-    "card_name": "伤鏽巨兵",
+    "card_name": "伤锈巨兵",
     "card_set_id": 10026,
     "char_type": 1,
     "clan": 8,
