@@ -53396,7 +53396,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109331020,
-    "card_name": "开闢的炼金术师·卡莉欧斯托萝",
+    "card_name": "开辟的炼金术师·卡莉欧斯托萝",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -88838,7 +88838,7 @@ let cardData = [
   {
     "atk": 20,
     "card_id": 110341010,
-    "card_name": "开闢的预言者",
+    "card_name": "开辟的预言者",
     "card_set_id": 10010,
     "char_type": 1,
     "clan": 3,
@@ -88851,7 +88851,7 @@ let cardData = [
     "skill": "pp_fixeduse,transform,summon_card,untouchable,indestructible",
     "skill_condition": "{me.inplay.class.pp}>=10&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=10&{me.inplay.class.pp}<{me.hand_self.cost},character=me&target=deck_self&{me.game_play_cards_other_self.all.base_cost=1.count}>0&{me.game_play_cards_other_self.all.base_cost=2.count}>0&{me.game_play_cards_other_self.all.base_cost=3.count}>0&{me.game_play_cards_other_self.all.base_cost=4.count}>0&{me.game_play_cards_other_self.all.base_cost=5.count}>0&{me.game_play_cards_other_self.all.base_cost=6.count}>0&{me.game_play_cards_other_self.all.base_cost=7.count}>0&{me.game_play_cards_other_self.all.base_cost=8.count}>0&{me.game_play_cards_other_self.all.base_cost=9.count}>0&{me.game_play_cards_other_self.all.base_cost=10.count}>0,character=me,character=me",
     "skill_preprocess": "none,none,none,none,none",
-    "skill_disc": "激奏 10； 抽取1张卡片。增加1张开闢的预言者卡片到牌堆中。回复自己的PP 9点。<br>---------- <br>瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8、9、10的卡片，则会将1张此卡片由自己的牌堆召唤到战场上。<br>敌方的能力无法指定这个从者，并且卡片的能力无法破坏这个从者。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）",
+    "skill_disc": "激奏 10； 抽取1张卡片。增加1张开辟的预言者卡片到牌堆中。回复自己的PP 9点。<br>---------- <br>瞬念召唤 自己的回合结束时，在这场对战中，如果自己已使用原始消费为1、2、3、4、5、6、7、8、9、10的卡片，则会将1张此卡片由自己的牌堆召唤到战场上。<br>敌方的能力无法指定这个从者，并且卡片的能力无法破坏这个从者。（攻击所给予的伤害与能力所给予的伤害可以破坏这个从者）",
     "skill_option": "fixeduse=10,card_id=800344020,none,none,none",
     "skill_target": "none,none,character=me&target=deck_self,character=me,character=me&target=self&card_type=unit",
     "tribe_name": "-",

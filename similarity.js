@@ -184,8 +184,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     const numbers = value.split(":").map(parseFloat);
     if (numbers.length === 2 && numbers.every((num) => !isNaN(num))) {
       return numbers;
-    } else if (!isNaN(parseFloat(value)) && parseFloat(value) >= 100000000) {
-      return [parseFloat(value)];
+    } else if (!isNaN(parseFloat(value))) {
+      if (parseFloat(value) >= 100000000){
+        return [parseFloat(value)];
+      } else {
+        return parseFloat(value);
+      }
     } else {
       return value;
     }
@@ -258,12 +262,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               const sharedMap = new Map();
               const mappedB1 = mapNumbersToLetters(targetB, card1.card_id, sharedMap);
               const mappedB2 = mapNumbersToLetters(currentB, card2.card_id, sharedMap);
-              difference = calculateLevenshteinDistance(mappedB2, mappedB1);
+              difference = calculateLevenshteinDistance(targetB, currentB) / Math.max(targetB.length,currentB.length);
             }
             else if (typeof targetB === "number" && typeof currentB === "number") {
               difference = Math.abs(targetB - currentB);
             } else if (typeof targetB === "string" && typeof currentB === "string") {
-              difference = calculateLevenshteinDistance(targetB, currentB);
+              difference = calculateLevenshteinDistance(targetB, currentB) / Math.max(targetB.length,currentB.length);
             } else {
               continue;
             }
@@ -289,7 +293,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
         const [A1, sign1, B1] = parseItem(array1[i]);
         const [A2, sign2, B2] = parseItem(array2[closestIndex]);
-
         let score = 0;
         if (A1 === A2 && weirdKeys.includes(A1)) {
           score = 1;
@@ -304,13 +307,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             if (typeof B1 === "number" && typeof B2 === "number") {
               score = 1 / Math.sqrt(Math.abs(B2 - B1) + 1);
             } else if (typeof B1 === "string" && typeof B2 === "string") {
-              score = 1 / Math.sqrt(calculateLevenshteinDistance(B2, B1) + 1);
+              score = 1 - calculateLevenshteinDistance(B2, B1) / Math.max(B1.length,B2.length);
             }
           } else {
             if (typeof B1 === "number" && typeof B2 === "number") {
               score = 1 / Math.sqrt(2 * (Math.abs(B2 - B1) + 1));
             } else if (typeof B1 === "string" && typeof B2 === "string") {
-              score = 1 / Math.sqrt(calculateLevenshteinDistance(B2, B1) + 1);
+              score = (1 - calculateLevenshteinDistance(B2, B1) / Math.max(B1.length,B2.length))/2;
             }
           }
         } else if (Array.isArray(B1) && Array.isArray(B2)){
@@ -324,7 +327,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     }
 
     const maxArrayLength = Math.max(array1.length, array2.length);
-    const finalScore = Math.sqrt((totalScore+1) / (maxArrayLength+1));
+    if (maxArrayLength == 0){
+      return 1;
+    }
+    const finalScore = (totalScore) / (maxArrayLength);
     return finalScore;
   }
 
@@ -531,6 +537,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let repProsC = ["{me.inplay.class.pp}"];
+      let hasRepC = [];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -538,10 +546,31 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           let matches = item.match(pattern);
           if (matches){
             let name = matches[1];
+            if (name == "pp_count"){
+              name = "{me.inplay.class.pp}"
+            }
             if (keyProsC.includes(name)){
               if (name == "cemetery_count" && matches[2] != ">="){
                 continue;
               }
+              let cost = matches[3];
+              if (!is_numeric(cost)){
+                cost = 'X';
+              }
+              skills1.push(name);
+              if (!cost){
+                skillso1.push('none')
+              } else {
+                skillso1.push("value="+cost)
+              }
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+              if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+                continue;
+              }
+              hasRepC.push(name)
               let cost = matches[3];
               if (!is_numeric(cost)){
                 cost = 'X';
@@ -562,16 +591,38 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      hasRepC = [];
       for (let highItem of skillsc2){
         for (let item of customSplit(highItem,'&')){
           let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
           let matches = item.match(pattern);
           if (matches){
             let name = matches[1];
+            if (name == "pp_count"){
+              name = "{me.inplay.class.pp}"
+            }
             if (keyProsC.includes(name)){
               if (name == "cemetery_count" && matches[2] != ">="){
                 continue;
               }
+              let cost = matches[3];
+              if (!is_numeric(cost)){
+                cost = 'X';
+              }
+              skills2.push(name);
+              if (!cost){
+                skillso2.push('none')
+              } else {
+                skillso2.push("value="+cost)
+              }
+              skillsc2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
+            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+              if (name == "{me.inplay.class.pp}" && skillsT2[skillsc2.indexOf(highItem)] != "self_turn_end"){
+                continue;
+              }
+              hasRepC.push(name)
               let cost = matches[3];
               if (!is_numeric(cost)){
                 cost = 'X';
@@ -732,166 +783,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      //套娃特殊词条
-      for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'summon_token' || skills1[i] == 'token_draw'){
-          if (!skillso1[i].includes(skills1[i]) && !skillso1[i].includes('repeat_count')){
-            if (skillso1[i] == 'none'){
-              if (skills1[i] == 'summon_token'){
-                skillso1[i] = "type=0"
-              } else {
-                skillso1[i] = "type=1"
-              }
-            } else {
-              if (skills1[i] == 'summon_token'){
-                skillso1[i] += "&type=0"
-              } else {
-                skillso1[i] += "&type=1"
-              }
-            }
-
-            skills1[i] = 'recycle';
-          }
-          let arr = skillso1[i].split('&');
-          let newStr = [];
-          let change = false;
-          for (let s of arr){
-            if (!s.split(skills1[i]+"=")[1]){
-              continue;
-            }
-            let p = s.split(skills1[i]+"=")[1].split(":");
-            if (p.length == 1 && p[0] == card1.card_id){
-              change = true;
-              skills1[i] = 'obtain_self';
-              if (skills1[i] == 'summon_token'){
-                newStr.push("type=0")
-              } else {
-                newStr.push("type=1")
-              }
-            } else {
-              newStr.push(s)
-            }
-          }
-          if (change){
-            skillso1[i] = newStr.join('&');
-          }
-        }
-      }
-      for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'summon_token' || skills2[i] == 'token_draw'){
-          if (!skillso2[i].includes(skills2[i]) && !skillso2[i].includes('repeat_count')){
-            if (skillso2[i] == 'none'){
-              if (skills2[i] == 'summon_token'){
-                skillso2[i] = "type=0"
-              } else {
-                skillso2[i] = "type=1"
-              }
-            } else {
-              if (skills2[i] == 'summon_token'){
-                skillso2[i] += "&type=0"
-              } else {
-                skillso2[i] += "&type=1"
-              }
-            }
-            skills2[i] = 'recycle';
-          }
-          let arr = skillso2[i].split('&');
-          let newStr = [];
-          let change = false;
-          for (let s of arr){
-            if (!s.split(skills2[i]+"=")[1]){
-              continue;
-            }
-            let p = s.split(skills2[i]+"=")[1].split(":");
-            if (p.length == 1 && p[0] == card2.card_id){
-              change = true;
-              skills2[i] = 'obtain_self';
-              if (skills2[i] == 'summon_token'){
-                newStr.push("type=0")
-              } else {
-                newStr.push("type=1")
-              }
-            } else {
-              newStr.push(s)
-            }
-          }
-          if (change){
-            skillso2[i] = newStr.join('&');
-          }
-        }
-      }
-
-      //长随机token
-      for (let i = 0; i < skillso1.length; i++){
-        if (skillso1[i].includes('token_draw=') && skillso1[i].split(":").length>=4){
-          skills1.push("long_token_draw");
-          if (skillso1[i].includes("?")){
-            skillso1.push('random=2');
-          } else {
-            skillso1.push('random=0');
-          }
-          skillsc1.push('none');
-          skillst1.push('none');
-          skillsT1.push('none');
-          break;
-        }
-      }
-
-      for (let i = 0; i < skillso2.length; i++){
-        if (skillso2[i].includes('token_draw=') && skillso2[i].split(":").length>=4){
-          skills2.push("long_token_draw");
-          if (skillso2[i].includes("?")){
-            skillso2.push('random=2');
-          } else {
-            skillso2.push('random=0');
-          }
-          skillsc2.push('none');
-          skillst2.push('none');
-          skillsT2.push('none');
-          break;
-        }
-      }
-
-    //  if (card2.card_name == card1.card_name){
-    //    console.log(skills1,skillsc1,skillst1,skillsT1,skillso1)
-    //    console.log(skills2,skillsc2,skillst2,skillsT2,skillso2)
-    //  }
-      //移除变身
-      for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'transform'){
-          skills1.splice(i,1);
-          skillso1.splice(i,1);
-          skillst1.splice(i,1);
-          skillsc1.splice(i,1);
-          skillsT1.splice(i,1);
-          i--;
-        }
-      }
-
-      for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'transform'){
-          skills2.splice(i,1);
-          skillso2.splice(i,1);
-          skillst2.splice(i,1);
-          skillsc2.splice(i,1);
-          skillsT2.splice(i,1);
-          i--;
-        }
-      }
-
-      //激奏结晶
-      for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'pp_fixeduse' && (skillsT1[i] == 'when_accelerate' || skillsT1[i] == 'when_crystallize')){
-          skills1[i] = 'accelerateORcrystallize';
-        }
-      }
-
-      for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'pp_fixeduse' && (skillsT2[i] == 'when_accelerate' || skillsT2[i] == 'when_crystallize')){
-          skills2[i] = 'accelerateORcrystallize';
-        }
-      }
-
       //亡召特殊判断
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
@@ -990,6 +881,269 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //套娃特殊词条
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'summon_token' || skills1[i] == 'token_draw'){
+          if (!skillso1[i].includes(skills1[i]) && !skillso1[i].includes('repeat_count')){
+            if (skillso1[i] == 'none'){
+              if (skills1[i] == 'summon_token'){
+                skillso1[i] = "type=summ"
+              } else {
+                skillso1[i] = "type=draw"
+              }
+            } else {
+              if (skills1[i] == 'summon_token'){
+                skillso1[i] += "&type=summ"
+              } else {
+                skillso1[i] += "&type=draw"
+              }
+            }
+
+            skills1[i] = 'recycle';
+          }
+          let arr = skillso1[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split(skills1[i]+"=")[1]){
+              continue;
+            }
+            let p = s.split(skills1[i]+"=")[1].split(":");
+            if (p.length == 1 && p[0] == card1.card_id){
+              change = true;
+              if (skills1[i] == 'summon_token'){
+                newStr.push("type=summ")
+              } else {
+                newStr.push("type=draw")
+              }
+              skills1[i] = 'obtain_self';
+            } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
+              let cName = findCardById(parseInt(p[0]),true).card_name;
+              if (cName == card1.card_name){
+                change = true;
+                if (skills1[i] == 'summon_token'){
+                  newStr.push("type=summXX")
+                } else {
+                  newStr.push("type=drawXX")
+                }
+                skills1[i] = 'obtain_self';
+              } else if (card1.card_parentName && cName == card1.card_parentName){
+                change = true;
+                if (skills1[i] == 'summon_token'){
+                  newStr.push("type=summXX")
+                } else {
+                  newStr.push("type=drawXX")
+                }
+                skills1[i] = 'obtain_self_diff';
+              }
+            } else {
+              newStr.push(s)
+            }
+          }
+          if (change){
+            skillso1[i] = newStr.join('&');
+          }
+        }
+      }
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'summon_token' || skills2[i] == 'token_draw'){
+          if (!skillso2[i].includes(skills2[i]) && !skillso2[i].includes('repeat_count')){
+            if (skillso2[i] == 'none'){
+              if (skills2[i] == 'summon_token'){
+                skillso2[i] = "type=summ"
+              } else {
+                skillso2[i] = "type=draw"
+              }
+            } else {
+              if (skills2[i] == 'summon_token'){
+                skillso2[i] += "&type=summ"
+              } else {
+                skillso2[i] += "&type=draw"
+              }
+            }
+            skills2[i] = 'recycle';
+          }
+          let arr = skillso2[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split(skills2[i]+"=")[1]){
+              continue;
+            }
+            let p = s.split(skills2[i]+"=")[1].split(":");
+            if (p.length == 1 && p[0] == card2.card_id){
+              change = true;
+              if (skills2[i] == 'summon_token'){
+                newStr.push("type=summ")
+              } else {
+                newStr.push("type=draw")
+              }
+              skills2[i] = 'obtain_self';
+            } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
+              let cName = findCardById(parseInt(p[0]),true).card_name;
+              if (cName == card2.card_name){
+                change = true;
+                if (skills2[i] == 'summon_token'){
+                  newStr.push("type=summXX")
+                } else {
+                  newStr.push("type=drawXX")
+                }
+                skills2[i] = 'obtain_self';
+              } else if (card2.card_parentName && cName == card2.card_parentName){
+                change = true;
+                if (skills2[i] == 'summon_token'){
+                  newStr.push("type=summXX")
+                } else {
+                  newStr.push("type=drawXX")
+                }
+                skills2[i] = 'obtain_self_diff';
+              }
+            } else {
+              newStr.push(s)
+            }
+          }
+          if (change){
+            skillso2[i] = newStr.join('&');
+          }
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'update_deck'){
+          let arr = skillso1[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split("token_draw=")[1]){
+              continue;
+            }
+            let p = s.split("token_draw=")[1].split(":");
+            if (p[0] == card1.card_id){
+              change = true;
+              newStr.push("type=deck")
+              skills1[i] = 'obtain_self';
+            } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
+              let cName = findCardById(parseInt(p[0]),true).card_name;
+              if (cName == card1.card_name){
+                change = true;
+                newStr.push("type=deckXX");
+                skills1[i] = 'obtain_self';
+              } else if (card1.card_parentName && cName == card1.card_parentName){
+                change = true;
+                newStr.push("type=deckXX");
+                skills1[i] = 'obtain_self_diff';
+              }
+          }
+          if (change){
+            skillso1[i] = newStr.join('&');
+          }
+        }
+      }
+      }
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'update_deck'){
+          let arr = skillso2[i].split('&');
+          let newStr = [];
+          let change = false;
+          for (let s of arr){
+            if (!s.split("token_draw=")[1]){
+              continue;
+            }
+            let p = s.split("token_draw=")[1].split(":");
+            if (p[0] == card2.card_id){
+              change = true;
+              newStr.push("type=deck")
+              skills2[i] = 'obtain_self';
+            } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
+              let cName = findCardById(parseInt(p[0]),true).card_name;
+              if (cName == card2.card_name){
+                change = true;
+                newStr.push("type=deckXX");
+                skills2[i] = 'obtain_self';
+              } else if (card2.card_parentName && cName == card2.card_parentName){
+                change = true;
+                newStr.push("type=deckXX");
+                skills2[i] = 'obtain_self_diff';
+              }
+          }
+          if (change){
+            skillso2[i] = newStr.join('&');
+          }
+        }
+      }
+      }
+
+      //长随机token
+      for (let i = 0; i < skillso1.length; i++){
+        if (skillso1[i].includes('token_draw=') && skillso1[i].split(":").length>=4){
+          skills1.push("long_token_draw");
+          if (skillso1[i].includes("?")){
+            skillso1.push('random=2');
+          } else {
+            skillso1.push('random=0');
+          }
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+          break;
+        }
+      }
+
+      for (let i = 0; i < skillso2.length; i++){
+        if (skillso2[i].includes('token_draw=') && skillso2[i].split(":").length>=4){
+          skills2.push("long_token_draw");
+          if (skillso2[i].includes("?")){
+            skillso2.push('random=2');
+          } else {
+            skillso2.push('random=0');
+          }
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+          break;
+        }
+      }
+
+    //  if (card2.card_name == card1.card_name){
+    //    console.log(skills1,skillsc1,skillst1,skillsT1,skillso1)
+    //    console.log(skills2,skillsc2,skillst2,skillsT2,skillso2)
+    //  }
+      //移除变身
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'transform'){
+          skills1.splice(i,1);
+          skillso1.splice(i,1);
+          skillst1.splice(i,1);
+          skillsc1.splice(i,1);
+          skillsT1.splice(i,1);
+          i--;
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'transform'){
+          skills2.splice(i,1);
+          skillso2.splice(i,1);
+          skillst2.splice(i,1);
+          skillsc2.splice(i,1);
+          skillsT2.splice(i,1);
+          i--;
+        }
+      }
+
+      //激奏结晶
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'pp_fixeduse' && (skillsT1[i] == 'when_accelerate' || skillsT1[i] == 'when_crystallize')){
+          skills1[i] = 'accelerateORcrystallize';
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'pp_fixeduse' && (skillsT2[i] == 'when_accelerate' || skillsT2[i] == 'when_crystallize')){
+          skills2[i] = 'accelerateORcrystallize';
+        }
+      }
+
       if (skills1.length === 0 || skills2.length === 0) {
           return 0;
       }
@@ -1033,12 +1187,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 aRatio = 2;
               }
 
-              aRatio *= Math.pow(ratioTable[skill],0.2);
+              aRatio *= Math.pow(ratioTable[skill],0.25);
 
               let oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7);
-              let cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
-              let tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.5;
-              let timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/2;
+              let cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.25;
+              let tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.25;
+              let timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.1;
 
               if (["summon_token","token_draw"].includes(skill)){
                 oRate = 1 - (1-oRate)/2;
@@ -1047,8 +1201,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               if (["powerup","damage","power_down"].includes(skill)){
                 tRate = 1 - (1-tRate)*0.9;
               }
-
-
 
               if (!skillso2[j]){skillso2[j] = ""};
               if (!skillsc2[j]){skillsc2[j] = ""};
@@ -1093,7 +1245,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             //  let skillsTArr2 = customSplit(skillsT2[j],"&");
             //  skillsT1[i] = skillsT1[i].replaceAll("占","&&")
             //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
-              const timingl = (1 - timingRate * Math.sqrt(calculateLevenshteinDistance(skillsT1[i], skillsT2[j])) / Math.max(skillsT1[i].length, skillsT2[j].length));
+              const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
 
               base *= ol;
               base *= cl;
@@ -1239,6 +1391,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 let nCard2;
                 nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
                 nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
+                if (transSub1[i] != card1.card_id){
+                  nCard1.card_parentName = card1.card_name;
+                }
+                if (transSub2[j] != card2.card_id){
+                  nCard2.card_parentName = card2.card_name;
+                }
                 let newSkillScore = calculateSkillScore(nCard1, nCard2);
                 if (newSkillScore > max){
                   max = newSkillScore;
@@ -1490,6 +1648,8 @@ function customSplit(input,token) {
     }
 
     let keyProsC = ["cemetery_count","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let repProsC = ["{me.inplay.class.pp}"];
+    let hasRepC = [];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -1497,10 +1657,31 @@ function customSplit(input,token) {
         let matches = item.match(pattern);
         if (matches){
           let name = matches[1];
+          if (name == "pp_count"){
+            name = "{me.inplay.class.pp}"
+          }
           if (keyProsC.includes(name)){
             if (name == "cemetery_count" && matches[2] != ">="){
               continue;
             }
+            let cost = matches[3];
+            if (!is_numeric(cost)){
+              cost = 'X';
+            }
+            skills1.push(name);
+            if (!cost){
+              skillso1.push('none')
+            } else {
+              skillso1.push("value="+cost)
+            }
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+            if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+              continue;
+            }
+            hasRepC.push(name)
             let cost = matches[3];
             if (!is_numeric(cost)){
               cost = 'X';
@@ -1595,21 +1776,73 @@ function customSplit(input,token) {
       }
     }
 
+
+        //亡召
+
+        for (let i = 0; i < skills1.length; i++){
+          if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
+            skills1[i] = "revive";
+            if (skillso1[i] == 'none'){
+              skillso1[i] = "thisTurn=1";
+            } else {
+              skillso1[i] += "&thisTurn=1";
+            }
+          }
+          if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
+            skills1[i] = "revive";
+            let arr = customSplit(skillst1[i],"&");
+            let str = "";
+            for (let k of arr){
+              if (k.includes("status_cost<:=")){
+                if (str != ""){str += '&'}
+                str += "cost<=" + k.split("status_cost<:=")[1];
+              }
+              if (k.includes("status_cost<:=")){
+                if (str != ""){str += '&'}
+                let cost = k.split("status_cost<:=")[1];
+                if (is_numeric(cost)){
+                  str += "cost<=" + cost;
+                } else {
+                  str += "cost<=X";
+                }
+              }
+              if (k.includes("status_cost=")){
+                if (str != ""){str += '&'}
+                str += "cost<=X";
+              }
+              if (k.includes("tribe=")){
+                if (str != ""){str += '&'}
+                str += k;
+              }
+              if (k.includes("id_no_duplication_random_count=")){
+                if (str != ""){str += '&'}
+                str += k;
+              }
+              if (k.includes("clan!=")){
+                if (str != ""){str += '&'}
+                let cost = k.split("clan!=")[1];
+                str += "Nclan"+cost;
+              }
+              skillso1[i] += str;
+            }
+          }
+        }
+
     //套娃特殊词条
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'summon_token' || skills1[i] == 'token_draw'){
         if (!skillso1[i].includes(skills1[i]) && !skillso1[i].includes('repeat_count')){
           if (skillso1[i] == 'none'){
             if (skills1[i] == 'summon_token'){
-              skillso1[i] = "type=0"
+              skillso1[i] = "type=summ"
             } else {
-              skillso1[i] = "type=1"
+              skillso1[i] = "type=draw"
             }
           } else {
             if (skills1[i] == 'summon_token'){
-              skillso1[i] += "&type=0"
+              skillso1[i] += "&type=summ"
             } else {
-              skillso1[i] += "&type=1"
+              skillso1[i] += "&type=draw"
             }
           }
 
@@ -1625,12 +1858,48 @@ function customSplit(input,token) {
           let p = s.split(skills1[i]+"=")[1].split(":");
           if (p.length == 1 && p[0] == card1.card_id){
             change = true;
-            skills1[i] = 'obtain_self';
             if (skills1[i] == 'summon_token'){
-              newStr.push("type=0")
+              newStr.push("type=summ")
             } else {
-              newStr.push("type=1")
+              newStr.push("type=draw")
             }
+            skills1[i] = 'obtain_self';
+          } else if (findCardById(parseInt(p[0]),true) && findCardById(parseInt(p[0]),true).card_name == card1.card_name){ //假面，三头犬
+            change = true;
+            if (skills1[i] == 'summon_token'){
+              newStr.push("type=summXX")
+            } else {
+              newStr.push("type=drawXX")
+            }
+            skills1[i] = 'obtain_self';
+          } else {
+            newStr.push(s)
+          }
+        }
+        if (change){
+          skillso1[i] = newStr.join('&');
+        }
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'update_deck'){
+        let arr = skillso1[i].split('&');
+        let newStr = [];
+        let change = false;
+        for (let s of arr){
+          if (!s.split("token_draw=")[1]){
+            continue;
+          }
+          let p = s.split("token_draw=")[1].split(":");
+          if (p[0] == card1.card_id){
+            change = true;
+            newStr.push("type=deck")
+            skills1[i] = 'obtain_self';
+          } else if (findCardById(parseInt(p[0]),true) && findCardById(parseInt(p[0]),true).card_name == card1.card_name){ //假面，三头犬
+            change = true;
+            newStr.push("type=deckXX")
+            skills1[i] = 'obtain_self';
           } else {
             newStr.push(s)
           }
@@ -1672,55 +1941,6 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'pp_fixeduse' && (skillsT1[i] == 'when_accelerate' || skillsT1[i] == 'when_crystallize')){
         skills1[i] = 'accelerateORcrystallize';
-      }
-    }
-
-    for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_this_turn_card_list&card_type=unit') ){
-        skills1[i] = "revive";
-        if (skillso1[i] == 'none'){
-          skillso1[i] = "thisTurn=1";
-        } else {
-          skillso1[i] += "&thisTurn=1";
-        }
-      }
-      if (skills1[i] == 'summon_token' && skillst1[i].includes('character=me&target=destroyed_card_list&card_type=unit') ){
-        skills1[i] = "revive";
-        let arr = customSplit(skillst1[i],"&");
-        let str = "";
-        for (let k of arr){
-          if (k.includes("status_cost<:=")){
-            if (str != ""){str += '&'}
-            str += "cost<=" + k.split("status_cost<:=")[1];
-          }
-          if (k.includes("status_cost<:=")){
-            if (str != ""){str += '&'}
-            let cost = k.split("status_cost<:=")[1];
-            if (is_numeric(cost)){
-              str += "cost<=" + cost;
-            } else {
-              str += "cost<=X";
-            }
-          }
-          if (k.includes("status_cost=")){
-            if (str != ""){str += '&'}
-            str += "cost<=X";
-          }
-          if (k.includes("tribe=")){
-            if (str != ""){str += '&'}
-            str += k;
-          }
-          if (k.includes("id_no_duplication_random_count=")){
-            if (str != ""){str += '&'}
-            str += k;
-          }
-          if (k.includes("clan!=")){
-            if (str != ""){str += '&'}
-            let cost = k.split("clan!=")[1];
-            str += "Nclan"+cost;
-          }
-          skillso1[i] += str;
-        }
       }
     }
 

@@ -31,6 +31,7 @@ let ratioTable = {
   "quick": 1, //疾驰
   "trigger": 1.3,
   "lose": 4, //沉默
+  "{me.inplay.class.pp}": 3, //余费
   "update_deck": 1.5, //洗牌
   "shortage_deck_win": 20, //天使
   "banish_deck": 6, //消失牌库
@@ -63,6 +64,7 @@ let ratioTable = {
   "indestructible": 3, //金膜
   "{op.inplay.unit.count}": 1.5, //敌方战场上的从者数
   "sneak": 1.5,
+  "revive": 1.8, // 亡召/复活
   "ignore_guard": 2.1, //穿墙
   "turn_start_stop": 0.4, //直到回合开始
   "chant_count_change": 1.55, //改变吟唱
@@ -70,6 +72,7 @@ let ratioTable = {
   "invocation": 2.25, //瞬念
   "cant_attack": 2.4, //无法攻击
   "obtain_self": 3, //套娃
+  "obtain_self_diff": 5, //变异套娃
   "token_draw_modifier": 8, //获得token修正（花叶之狐）
   "killer": 1.1,
   "drain": 1.5,
@@ -123,7 +126,7 @@ let ratioTable = {
   "turn_end_period_of_stop_time": 0.4, //到下个自己回合结束
   "heal_modifier": 12, //主战者回复生命值时的数值转变为1
   "unite": 10, //合体
-  "geton": 10, //操纵
+  "geton": 7, //操纵
   "getoff": 1, //有上面那个啦
   "rob_skill": 14, //偷
   "copy_skill": 8, //复制

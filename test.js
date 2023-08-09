@@ -125,7 +125,7 @@ function createNewDataBase(allcards, subToken) {
     allcards.cards.forEach(card => {
         // 如果卡片名称不为空且card_set_id在70000和80000之间
         if (subToken == 1){
-          if (card.card_name == null) {
+          if (card.card_name == null || (card.base_card_id != card.card_id && card.base_card_id != 900811050)) {
             uniqueCardsMap.set(card.card_id, card);
           }
         } else {
@@ -154,6 +154,9 @@ function createNewDataBase(allcards, subToken) {
                 } else {
                   if (subToken == 1){
                     let newField = card[field];
+                    if (card[field] != null){
+                      newField = japToSimplized(simplized(card[field]));
+                    }
                     newCard[field] = newField;
                   } else{
                     let newField = japToSimplized(simplized(card[field]));
