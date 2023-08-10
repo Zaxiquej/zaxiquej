@@ -536,6 +536,37 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+      let wholeKeyProsC = ["target=damaged_card"];
+
+      for (let highItem of skillsc1){
+        for (let item of customSplit(highItem,'&')){
+          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
+            item = "target=damaged_card";
+          }
+          if (wholeKeyProsC.includes(item)){
+            skills1.push(item);
+            skillso1.push('none')
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
+        }
+      }
+
+      for (let highItem of skillsc2){
+        for (let item of customSplit(highItem,'&')){
+          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
+            item = "target=damaged_card";
+          }
+          if (wholeKeyProsC.includes(item)){
+            skills2.push(item);
+            skillso2.push('none')
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+          }
+        }
+      }
 
       let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
@@ -2177,6 +2208,23 @@ function customSplit(input,token) {
       }
     }
 
+    let wholeKeyProsC = ["target=damaged_card"];
+
+    for (let highItem of skillsc1){
+      for (let item of customSplit(highItem,'&')){
+        if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
+          item = "target=damaged_card";
+        }
+        if (wholeKeyProsC.includes(item)){
+          skills1.push(item);
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+    }
+
     let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
@@ -2196,7 +2244,7 @@ function customSplit(input,token) {
                  ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
                  ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
-                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other.all(.*?)count\}/,"."]];
+                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."]];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){

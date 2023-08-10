@@ -101,7 +101,7 @@ let ratioTable = {
   "{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}": 2, //鲅鱼链
   "{me.game_skill_return_card_count}": 3, //回手任务
   "{op.inplay.unit.count}": 1.5, //敌方战场上的从者数
-  "{op.last_target.unit.max_life}-{op.last_target.unit.life}":2.5, //敌方受伤
+  "target=damaged_card":2.5, //敌方受伤
   "{me.damaged_card.unit.count}":2.5, //己方有受伤
   "sneak": 1.5,
   "revive": 1.8, // 亡召/复活
