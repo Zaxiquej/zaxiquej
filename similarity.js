@@ -537,17 +537,22 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let onlyGreaterC = ["{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                    ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
+                   ["selfCrystalCount",/\{me\.game_crystallized_cards(.*?)count\}/,"."],
                    ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
                    ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
                    ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
                    ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
+                   ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
                    ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
+                   ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
+                   ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
+                   ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
                    ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
                    ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."]];
 
@@ -769,11 +774,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i].includes('@')){
           skills1[i] = skills1[i].split('@')[0];
+          skillso1[i] += "repeat=" + skills1[i].split('@')[1];
+          //let repeat = parseInt(skills1[i].split('@')[1]);
         }
       }
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i].includes('@')){
           skills2[i] = skills2[i].split('@')[0];
+          skillso2[i] += "repeat=" + skills2[i].split('@')[1];
         }
       }
 
@@ -889,6 +897,69 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'destroy' && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
           skills2[i] = "selfDestroy";
+        }
+      }
+
+      //拆符特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'destroy' && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+          skills1.push('destroyField');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills2[i] == 'destroy' && (skillst2[i].includes('character=op&target=inplay&card_type=field') || skillst2[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+          skills2.push('destroyField');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      //aoe特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count="))){
+          skills1.push('AOE');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count="))){
+          skills2.push('AOE');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+
+      for (let i = 0; i < skills1.length; i++){
+        if ((skills1[i] == 'powerup') && !(skillst1[i].includes("select_count="))){
+          skills1.push('AOEbuff');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if ((skills2[i] == 'powerup') && !(skillst2[i].includes("select_count="))){
+          skills2.push('AOEbuff');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
         }
       }
 
@@ -1942,7 +2013,7 @@ function customSplit(input,token) {
 
   function containsCosmos(input) {
     const regex1 = /me\.deck\.(?:base_card_id!=\d{9}\.)?unique_base_card_id_card\.count/;
-    const regex2 = /me\.deck\.tribe!=(\w+)\.unique_base_card_id_card\.count={me\.deck\.tribe!=(\w+)\.count}/
+    const regex2 = /{me\.deck\.tribe!=(\w+)\.unique_base_card_id_card\.count}={me\.deck\.tribe!=\1\.count}/
     return regex1.test(input) || regex2.test(input);
   }
 
@@ -2082,17 +2153,20 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["{me.inplay.class.pp}"]; //不计重复
-    let onlyGreaterC = ["selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+    let onlyGreaterC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                  ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
+                 ["selfCrystalCount",/\{me\.game_crystallized_cards(.*?)count\}/,"."],
                  ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
                  ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
                  ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
                  ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
-                 ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."]];
+                 ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
+                 ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
+                 ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."]];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2272,12 +2346,45 @@ function customSplit(input,token) {
       }
     }
 
+    //拆符特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'destroy' && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+        skills1.push('destroyField');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    //aoe特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count="))){
+        skills1.push('AOE');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if ((skills1[i] == 'powerup') && !(skillst1[i].includes("select_count="))){
+        skills1.push('AOEbuff');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
     //手牌变形
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'metamorphose' && (skillst1[i].includes('character=me&target=hand') || skillst1[i].includes('character=me&target=hand_other_self'))){
         skills1[i] = "handMetamorphose";
       }
     }
+
 
     //强制加词条
     if (card1.card_id == 120634010){
@@ -2395,6 +2502,7 @@ function customSplit(input,token) {
         skillsc1.push('none');
         skillst1.push('none');
         skillsT1.push('none');
+        //console.log(card1)
         break;
       }
     }

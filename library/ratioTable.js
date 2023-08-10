@@ -16,6 +16,7 @@ let ratioTable = {
   "character=both": 1.5,//敌我不分
   "pp_modifier": 1.3, //回/扣费
   "destroy": 1,
+  "destroyField": 3, //拆符
   "heal": 1,
   "attach_skill": 1.3, //获得能力
   "discard": 1.5,
@@ -48,6 +49,9 @@ let ratioTable = {
   "selfHandCount": 2, //牌库任务
   "status_life": 2, //屁股任务
   "selfInPlaySum": 2.2,//站场数
+  "selfInPlayCount": 2.2,//站场
+  "{me.game_play_count}": 1.5, //奥伯龙+深根的用牌任务
+  "{me.inplay.game_necromance_count}": 2, //墓地任务
   "{me.game_skill_discard_count}": 3, //弃牌任务
   "selfTurnPlayCount": 3, //一回合用牌
   "selfShield": 4.2, //脸无敌
@@ -89,7 +93,15 @@ let ratioTable = {
   "preprocess_condition": 1.7,
   "per_turn": 1.2, //一回合一次
   "indestructible": 3, //金膜
+  "selfCrystalCount": 3, //结晶任务
+  "{me.game_used_ep_count}": 3, //吃豆任务
+  "AOE": 2, //aoe
+  "AOEbuff": 2, //aoeBUff
+  "{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}": 2, //鲅鱼链
+  "{me.game_skill_return_card_count}": 3, //回手任务
   "{op.inplay.unit.count}": 1.5, //敌方战场上的从者数
+  "{op.last_target.unit.max_life}-{op.last_target.unit.life}":2.5, //敌方受伤
+  "{me.damaged_card.unit.count}":2.5, //己方有受伤
   "sneak": 1.5,
   "revive": 1.8, // 亡召/复活
   "ignore_guard": 2.1, //穿墙
