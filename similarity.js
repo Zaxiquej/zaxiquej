@@ -538,8 +538,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+      let onlyGreaterC = ["selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                    ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -554,7 +554,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
                    ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
                    ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
-                   ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."]];
+                   ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
+                   ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
+                   ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."]];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -616,18 +618,29 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                     if (item === "unit" || item === "all" || item === "field") {
                       return `type=${item}`;
                     }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card1.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
                     return item;
                   });
-                  skills1.push(regexArr[0]);
-                  if (newContent.length > 0){
-                    skillso1.push(newContent.join('&'));
-                  } else {
-                    skillso1.push('none');
+                  if (!hasRepC.includes(regexArr[0])){
+                    skills1.push(regexArr[0]);
+                    if (newContent.length > 0){
+                      skillso1.push(newContent.join('&'));
+                    } else {
+                      skillso1.push('none');
+                    }
+                    skillsc1.push('none');
+                    skillst1.push('none');
+                    skillsT1.push('none');
+                    hasRepC.push(regexArr[0]);
+                    break;
                   }
-                  skillsc1.push('none');
-                  skillst1.push('none');
-                  skillsT1.push('none');
-                  break;
                 }
               }
               continue;
@@ -699,18 +712,29 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                     if (item === "unit" || item === "all" || item === "field") {
                       return `type=${item}`;
                     }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card2.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
                     return item;
                   });
-                  skills2.push(regexArr[0]);
-                  if (newContent.length > 0){
-                    skillso2.push(newContent.join('&'));
-                  } else {
-                    skillso2.push('none');
+                  if (!hasRepC.includes(regexArr[0])){
+                    skills2.push(regexArr[0]);
+                    if (newContent.length > 0){
+                      skillso2.push(newContent.join('&'));
+                    } else {
+                      skillso2.push('none');
+                    }
+                    skillsc2.push('none');
+                    skillst2.push('none');
+                    skillsT2.push('none');
+                    hasRepC.push(regexArr[0]);
+                    break;
                   }
-                  skillsc2.push('none');
-                  skillst2.push('none');
-                  skillsT2.push('none');
-                  break;
                 }
               }
               continue;
@@ -2153,9 +2177,9 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-    let repProsC = ["{me.inplay.class.pp}"]; //不计重复
-    let onlyGreaterC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+    let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+    let onlyGreaterC = ["selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                  ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -2164,9 +2188,15 @@ function customSplit(input,token) {
                  ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
                  ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
                  ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
+                 ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
                  ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
+                 ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
+                 ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
+                 ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
                  ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
-                 ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."]];
+                 ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
+                 ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
+                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other.all(.*?)count\}/,"."]];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2228,18 +2258,37 @@ function customSplit(input,token) {
                   if (item === "unit" || item === "all" || item === "field") {
                     return `type=${item}`;
                   }
+                  if (item.includes("base_card_id=")){
+                    let temp = parseInt(item.split("=")[1]);
+                    if (temp == card1.card_id){
+                      item = "isSelf=10";
+                    } else {
+                      item = "isSelf=0";
+                    }
+                  }
+                  if (item.includes("base_card_id=")){
+                    let temp = parseInt(item.split("=")[1]);
+                    if (temp == card1.card_id){
+                      item = "isSelf=10";
+                    } else {
+                      item = "isSelf=0";
+                    }
+                  }
                   return item;
                 });
-                skills1.push(regexArr[0]);
-                if (newContent.length > 0){
-                  skillso1.push(newContent.join('&'));
-                } else {
-                  skillso1.push('none');
+                if (!hasRepC.includes(regexArr[0])){
+                  skills1.push(regexArr[0]);
+                  if (newContent.length > 0){
+                    skillso1.push(newContent.join('&'));
+                  } else {
+                    skillso1.push('none');
+                  }
+                  skillsc1.push('none');
+                  skillst1.push('none');
+                  skillsT1.push('none');
+                  hasRepC.push(regexArr[0]);
+                  break;
                 }
-                skillsc1.push('none');
-                skillst1.push('none');
-                skillsT1.push('none');
-                break;
               }
             }
             continue;

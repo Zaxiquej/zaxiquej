@@ -51,6 +51,7 @@ let ratioTable = {
   "selfInPlaySum": 2.2,//站场数
   "selfInPlayCount": 2.2,//站场
   "{me.game_play_count}": 1.5, //奥伯龙+深根的用牌任务
+  "selfPlaySpCardCount": 3, //使用过的XX次数
   "{me.inplay.game_necromance_count}": 2, //墓地任务
   "{me.game_skill_discard_count}": 3, //弃牌任务
   "selfTurnPlayCount": 3, //一回合用牌
