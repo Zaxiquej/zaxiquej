@@ -9176,7 +9176,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 122613010,
-    "card_name": "鲜血项鍊",
+    "card_name": "鲜血项链",
     "card_set_id": 10022,
     "char_type": 3,
     "clan": 6,
@@ -18746,7 +18746,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101311060,
-    "card_name": "见习鍊金术师",
+    "card_name": "见习炼金术师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -18834,7 +18834,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 103321030,
-    "card_name": "矮人鍊金术师",
+    "card_name": "矮人炼金术师",
     "card_set_id": 10003,
     "char_type": 1,
     "clan": 3,
@@ -20946,7 +20946,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 900334030,
-    "card_name": "魔创鍊金",
+    "card_name": "魔创炼金",
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -35400,7 +35400,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 107111010,
-    "card_name": "百鍊的弓箭手",
+    "card_name": "百炼的弓箭手",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 1,
@@ -39316,7 +39316,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 109321020,
-    "card_name": "未完的鍊金术师·克拉莉丝",
+    "card_name": "未完的炼金术师·克拉莉丝",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
@@ -39514,7 +39514,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 114311020,
-    "card_name": "激欲的鍊金术师",
+    "card_name": "激欲的炼金术师",
     "card_set_id": 10014,
     "char_type": 1,
     "clan": 3,
@@ -39822,7 +39822,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 121311010,
-    "card_name": "灵药鍊金术师",
+    "card_name": "灵药炼金术师",
     "card_set_id": 10021,
     "char_type": 1,
     "clan": 3,
@@ -40790,7 +40790,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101312030,
-    "card_name": "初级鍊金实验",
+    "card_name": "初级炼金实验",
     "card_set_id": 10001,
     "char_type": 2,
     "clan": 3,
@@ -40812,7 +40812,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101322010,
-    "card_name": "鍊金术的代价",
+    "card_name": "炼金术的代价",
     "card_set_id": 10001,
     "char_type": 2,
     "clan": 3,
@@ -53088,7 +53088,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101311100,
-    "card_name": "高阶鍊金术师",
+    "card_name": "高阶炼金术师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -53396,14 +53396,14 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 109331020,
-    "card_name": "开辟的鍊金术师·卡莉欧斯托萝",
+    "card_name": "开辟的炼金术师·卡莉欧斯托萝",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
     "cost": 4,
     "evo_atk": 5,
     "evo_life": 4,
-    "evo_skill_disc": "进化时 土之秘术 增加1张魔创鍊金卡片到手牌中，并回复自己的PP 2点。",
+    "evo_skill_disc": "进化时 土之秘术 增加1张魔创炼金卡片到手牌中，并回复自己的PP 2点。",
     "life": 3,
     "rarity": 3,
     "skill": "summon_token,pp_fixeduse,possess_ep_modifier//token_draw,pp_modifier",
@@ -53792,7 +53792,7 @@ let cardData = [
   {
     "atk": 3,
     "card_id": 125331010,
-    "card_name": "工房鍊金术师·诺诺",
+    "card_name": "工房炼金术师·诺诺",
     "card_set_id": 10025,
     "char_type": 1,
     "clan": 3,
@@ -54210,7 +54210,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101312020,
-    "card_name": "鍊金工房",
+    "card_name": "炼金工房",
     "card_set_id": 10001,
     "char_type": 2,
     "clan": 3,
@@ -64506,7 +64506,7 @@ let cardData = [
   {
     "atk": 2,
     "card_id": 101331010,
-    "card_name": "远古鍊金术师",
+    "card_name": "远古炼金术师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -65210,7 +65210,7 @@ let cardData = [
   {
     "atk": 4,
     "card_id": 124331010,
-    "card_name": "雷云鍊金术师",
+    "card_name": "雷云炼金术师",
     "card_set_id": 10024,
     "char_type": 1,
     "clan": 3,
@@ -66618,7 +66618,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 103412020,
-    "card_name": "龙爪项鍊",
+    "card_name": "龙爪项链",
     "card_set_id": 10003,
     "char_type": 2,
     "clan": 4,
@@ -72756,7 +72756,7 @@ let cardData = [
   {
     "atk": 5,
     "card_id": 101311070,
-    "card_name": "鍊金大师",
+    "card_name": "炼金大师",
     "card_set_id": 10001,
     "char_type": 1,
     "clan": 3,
@@ -79268,7 +79268,7 @@ let cardData = [
   {
     "atk": 0,
     "card_id": 101324020,
-    "card_name": "鍊金术的知识",
+    "card_name": "炼金术的知识",
     "card_set_id": 10001,
     "char_type": 4,
     "clan": 3,
