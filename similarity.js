@@ -540,7 +540,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
-          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
+          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1" || item == "{op.inplay.unit.selected_cards.max_life}-{op.inplay.unit.selected_cards.life}"){
             item = "target=damaged_card";
           }
           if (wholeKeyProsC.includes(item)){
@@ -774,7 +774,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsT = ["character=both"];
+      let wholeKeyProsT = ["character=both","target=damaged_card"];
 
       for (let highItem of skillst1){
         for (let item of customSplit(highItem,'&')){
