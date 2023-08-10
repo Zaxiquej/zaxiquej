@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cardInfo = [];
         for (let i = 0; i < cards.length; i++) {
             const card = cards[i];
-            const info = {
+            let info = {
                 card_id: card.card_id,
                 card_name: card.card_name,
                 char_type: card.char_type,
@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (info.card_id == 111041020){
               info.skill_option = "none,add=-3";
+            }
+            if (info.card_id == 900534030){
+              info.skill_disc = "使1个敌方的从者失去所有能力（攻击力/生命值的效果不受影响）。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵·宫子+3/+3效果。";
             }
 
             cardInfo.push(info);
@@ -188,10 +191,13 @@ function combineTiming(aData) {
     for (const card of aData) {
         const csvEntry = timingData.find(entry => parseInt(entry.id) === card.card_id);
         if (csvEntry) {
-            card.timing = csvEntry.timing;
+            if (!csvEntry.timing.includes(card.skill_condition) && !card.skill_condition.includes(csvEntry)){
+              card.timing = csvEntry.timing;
+            } else {
+              card.timing = csvEntry.timingSub;
+            }
         }
     }
-    console.log(aData);
 
     // 创建Blob对象并下载
     const jsonData = JSON.stringify(aData, null, 2);
@@ -237,31 +243,45 @@ function checkKeyNameStats(){
   document.body.appendChild(ulElement);
 }
 
-function getCardByRank(puzzleCard,rank) {
+function getCardByRank(puzzleCard, rank) {
   const sortedCards = cardData
-    .map((card) => calculateSimilarityScore(puzzleCard, card))
-    .sort((a, b) => b - a);
+    .map((card) => ({ similarity: calculateSimilarityScore(puzzleCard, card), card }))
+    .sort((a, b) => b.similarity - a.similarity);
 
   if (rank <= 0 || rank > sortedCards.length) {
     return null; // Invalid rank, return null
   }
 
-  const similarity = sortedCards[rank - 1];
-  const cardIndex = sortedCards.indexOf(similarity);
-  const card = cardData[cardIndex];
+  const cardInfo = sortedCards[rank - 1];
+  const cardName = cardInfo.card.card_name;
 
-  return { similarity, card };
+  return { similarity: cardInfo.similarity, card: cardName };
 }
 
 
 function getAllCardsLowRate(){
+  let forceStop = 100;
+  let p = 0;
   for (let card of cardData){
+    forceStop--;
     let cardGet = getCardByRank(card,2);
     let sim = cardGet.similarity;
     let card2 = cardGet.card;
-
-    if (sim < 40){
-      console.log(card.card_name, card2.card_name, sim);
+    if (sim < 55){
+        if (sim < 45){
+          if (sim < 35){
+            console.log("Extreme Warning:"+card.card_name, card2, sim);
+          } else {
+            console.log("Warning:"+card.card_name, card2, sim);
+          }
+        } else {
+          console.log("Notice:"+card.card_name, card2, sim);
+        }
+    }
+    if (forceStop == 0){
+      forceStop = 100;
+      p++;
+      console.log("Process:" + p*100 + " / " + cardData.length);
     }
   }
 }

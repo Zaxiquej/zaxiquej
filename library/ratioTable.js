@@ -23,22 +23,38 @@ let ratioTable = {
   "banish": 1.5,
   "play_count": 1.5, //连击
   "powerup": 1,
-  "open_card": 5,
+  "open_card": 4, //公开
   "pp_fixeduse": 1, //爆能
   "summon_token": 1,
   "play_count_change": 5, //增加连击
   "rush": 1,
   "quick": 1, //疾驰
   "trigger": 1.3,
-  "lose": 4, //沉默
+  "lose": 3, //沉默
   "{me.inplay.class.pp}": 3, //余费
   "update_deck": 1.5, //洗牌
-  "shortage_deck_win": 20, //天使
+  "shortage_deck_win": 14, //天使
   "banish_deck": 6, //消失牌库
-  "clear_destroyed_card_list": 8, //彻底炸牌库（倒吊）
+  "banish_hand": 4, //消失手牌
+  "give_guard": 7, //角力
+  "clear_destroyed_card_list": 5, //彻底炸牌库（倒吊）
   "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": 1.9, //造物种类
   "{me.inplay.class.rally_count}": 1.4, //连协
-  "{me.destroyed_card_list.unit.count}": 1.8, //被破坏的随从
+  "selfDestroyCount": 2, //各种破坏任务
+  "selfLeftCount": 2, //离场任务
+  "selfSummonCount": 2, //入场任务
+  "selfEvolveCount": 2, //进化任务
+  "selfDeckCount": 2, //牌库任务
+  "selfHandCount": 2, //牌库任务
+  "status_life": 2, //屁股任务
+  "selfInPlaySum": 2.2,//站场数
+  "{me.game_skill_discard_count}": 3, //弃牌任务
+  "selfTurnPlayCount": 3, //一回合用牌
+  "selfShield": 4.2, //脸无敌
+  "{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}": 3, //财宝任务
+  "when_buff": 2.5, //被BUFF发动
+  "when_discard": 4, //被弃发动
+  "when_discard_other": 4, //弃牌发动
   "when_resonance_start": 2,//切共鸣
   "leader_attach_skill": 1.1, //主战者贴效果
   "recycle": 1.4, //回收/复制
@@ -48,9 +64,13 @@ let ratioTable = {
   "select": 1.2,//选择目标
   "summon_card": 1.5,//拉东西
   "turn_end_stop": 0.3,//直到回合结束
-  "turn_end_remove": 0.5,//回合结束失去能力
+  "turn_end_remove": 0.4,//回合结束失去能力
   "cost_change": 1.3, //改变费用
   "power_down": 1.5, //减能力
+  "power_change": 2, //改能力
+  "self_power_change": 2.4, //改自己能力
+  "leaderPowerup": 8, //加血限
+  "leaderPowerdown": 8, //扣血限
   "guard": 1,
   "ramp": 2, //跳/扣费
   "change_affiliation": 7, //改变种族
@@ -60,7 +80,10 @@ let ratioTable = {
   "selfDestroy": 2, //自杀
   "evolve": 1.2, //进化
   "shield": 1.6, //圣盾
-  "independent": 10, //天盾
+  "lock": 3, //锁
+  "classCheck": 5, //锁
+  "permShield": 5, //天盾1
+  "independent": 5, //天盾2
   "consume_ep_modifier": 3, //不消费EP即可进化
   "special_win": 12, //特殊胜利
   "preprocess_condition": 1.7,
@@ -77,7 +100,7 @@ let ratioTable = {
   "cant_attack": 2.4, //无法攻击
   "obtain_self": 3, //套娃
   "obtain_self_diff": 5, //变异套娃
-  "token_draw_modifier": 8, //获得token修正（花叶之狐）
+  "token_draw_modifier": 6, //获得token修正（花叶之狐）
   "killer": 1.1,
   "drain": 1.5,
   "evolution_end_stop": 2, //进化前后关键词不同
@@ -98,7 +121,8 @@ let ratioTable = {
   "stack_white_ritual": 3, //积蓄
   "awake": 1.4, //觉醒
   "{me.inplay.class.max_pp}": 3, //最大X PP
-  "metamorphose": 2.8, //变形
+  "metamorphose": 3, //变形
+  "handMetamorphose": 6, //手牌变形
   "change_cemetery": 2.5, //改变墓地
   "change_union_burst_count": 1.2, //UB
   "remove_by_banish": 6, //离场时消失
@@ -115,7 +139,9 @@ let ratioTable = {
   "no_duplication_random_array": 6, //不重复的随机数
   "power_modifier": 5, //光剑饿姐的不平衡加减
   "cant_activate_fanfare": 12, //诗人
-  "cant_summon": 12, //闪耀
+  "cant_summon": 8, //闪耀
+  "weird_evolve": 1.5, //异形身材
+  "flush": 12, //20姐18弟
   "cosmos": 12, //宇宙
   "cant_play": 10, //无法使用XX卡
   "force_skill_target": 7, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
@@ -128,19 +154,19 @@ let ratioTable = {
   "special_lose": 12, //特殊失败
   "force_berserk": 8, //狼王
   "turn_end_period_of_stop_time": 0.4, //到下个自己回合结束
-  "heal_modifier": 12, //主战者回复生命值时的数值转变为1
+  "heal_modifier": 9, //主战者回复生命值时的数值转变为1
   "unite": 10, //合体
   "geton": 7, //操纵
   "getoff": 1, //有上面那个啦
-  "rob_skill": 14, //偷
+  "rob_skill": 7, //偷
   "copy_skill": 8, //复制
-  "not_decrease_pp": 14, //乔老师
-  "repeat_skill": 10, //复读（暮光）
-  "force_avarice": 4, //碑文
-  "force_wrath": 4, //碑文
-  "evolve_to_other": 10, //其他进化（莱瓦丁）
-  "reflection": 10, //玛丽反伤
-  "loop_skill": 8, //复读技能（旋镖修女）
-  "turn_start_fixed_pp": 10, //卡波
-  "extra_turn": 10 //开门！
+  "not_decrease_pp": 7, //乔老师
+  "repeat_skill": 6, //复读（暮光）
+  "force_avarice": 2, //碑文
+  "force_wrath": 2, //碑文
+  "evolve_to_other": 6, //其他进化（莱瓦丁）
+  "reflection": 6, //玛丽反伤
+  "loop_skill": 5, //复读技能（旋镖修女）
+  "turn_start_fixed_pp": 6, //卡波
+  "extra_turn": 6 //开门！
 }

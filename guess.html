@@ -117,7 +117,7 @@
        <details>
            <summary>3. 具体而言，相似度是如何判定的?</summary>
            <p>相似度的判定有三部分：</p>
-           <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前后的攻击与生命。其中基础分的40%在于两张卡是否是同类型；如果是随从这部分会允给身材。</li>
+           <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前的攻击与生命。其中基础分的40%在于两张卡是否是同类型；如果是随从这部分会允给身材。</li>
            <li>技能分：卡牌具有的特殊能力，会检查双方共享能力在双方总能力之中的占比，如果有同能力但数据不同会有相应的扣分。相同的能力如果比较稀有，会有相应的补正。</li>
            <li>描述分：卡牌的描述文字，会检查双方描述文字的Levenshtein距离。在此基础上，如果双方描述有公用部分，则有一个最高30%的补正。</li>
            <p>系统会对这三部分各打一个分，随后按照2:5:3的权重生成总分，满分为100。</p>
@@ -154,6 +154,7 @@
        </details>
        <details>
            <summary>8. 过去的谜题</summary>
+           <li>2023/08/10-gomsuRRv</li>
            <li>2023/08/09-WFXRB5fj</li>
            <li>2023/08/08-0ElHftw2</li>
            <li>2023/08/07-e5qHb1IB</li>
@@ -163,7 +164,15 @@
          <summary>9. 更新记录</summary>
          <ul style="list-style-type: none; padding: 0;">
            <li style="margin-left: 20px;">
-             <span style="display: inline-block; width: 140px;">2023/08/08</span>优化了技能稀有度补正；<br>
+             <span style="display: inline-block; width: 140px;">2023/08/10</span>少许放宽了正确技能错误条件的扣分；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了部分任务词条的判定；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了手牌变形、增减脸血上限、脸膜等的判定；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>给部分能力过于独特的卡提供了一些手动补正；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>基础分降低进化后身材的权重，且根据进化时增加的属性值，增加一个"异形身材"词条；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>区分了随从和脸圣盾。<br>
+           </li>
+           <li style="margin-left: 20px;">
+             <span style="display: inline-block; width: 140px;">2023/08/09</span>优化了技能稀有度补正；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了连击、觉醒、余费等词条的判定；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>对部分词条进行了额外区分；现在回费和跳费、瞬念和拉人、破坏和自杀之类的会分开了。<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了“敌我不分”与“大量衍生物（token>4）”词条。

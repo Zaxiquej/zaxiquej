@@ -11,10 +11,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     const costweight = 2;
 
     const attributeWeights = {
-        atk: 0.8,
-        life: 0.8,
-        evo_atk: 0.8,
-        evo_life: 0.8,
+        atk: 1,
+        life: 1,
+        evo_atk: 0.6,
+        evo_life: 0.6,
     };
 
     const rarityWeights = {
@@ -62,13 +62,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     if (card1.char_type == 1 && card2.char_type == 1){ //都是随从，额外考虑身材
       for (const attribute of attributes) {
           if (attribute in card1 && attribute in card2) {
-              const value1 = card1[attribute];
-              const value2 = card2[attribute];
+              let value1 = card1[attribute];
+              let value2 = card2[attribute];
               // 简单的对比方式，可以根据实际需求进行更复杂的对比
-              if (value1 && value2) {
-                  attributeScore -= attributeWeights[attribute]; //补正
-                  attributeScore += attributeWeights[attribute]/(1 + Math.abs(value1 - value2));
-              }
+                if (value1 && value2) {
+                    attributeScore -= attributeWeights[attribute]; //补正
+                    attributeScore += attributeWeights[attribute]* (Math.min(value1,value2)/Math.max(value1,value2));
+                }
           }
       }
     }
@@ -242,7 +242,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               const sharedMap = new Map();
               const mappedB1 = mapNumbersToLetters(targetB, card1.card_id, sharedMap);
               const mappedB2 = mapNumbersToLetters(currentB, card2.card_id, sharedMap);
-              difference = calculateLevenshteinDistance(mappedB2, mappedB1);
+              difference = calculateLevenshteinDistance(mappedB2, mappedB1) //+ Math.abs(mappedB1.length - mappedB2.length);
             }
             else if (typeof targetB === "number" && typeof currentB === "number") {
               difference = Math.abs(targetB - currentB);
@@ -302,7 +302,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               const sharedMap = new Map();
               const mappedB1 = mapNumbersToLetters(B1, card1.card_id, sharedMap);
               const mappedB2 = mapNumbersToLetters(B2, card2.card_id, sharedMap);
-              score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1)*4 + 1); //待改
+              score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1); //待改
             }
             if (typeof B1 === "number" && typeof B2 === "number") {
               score = 1 / (Math.abs(B2 - B1) + 1);
@@ -320,16 +320,17 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           const sharedMap = new Map();
           const mappedB1 = mapNumbersToLetters(B1, card1.card_id, sharedMap);
           const mappedB2 = mapNumbersToLetters(B2, card2.card_id, sharedMap);
-          score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1)*2 + 1) * (1/2);
+          score = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1) * (1/2);
         }
         totalScore += score;
       }
     }
 
-    const maxArrayLength = Math.max(array1.length, array2.length);
+    const maxArrayLength = Math.min(array1.length, array2.length) + 0.5 * Math.abs(array1.length - array2.length);
     if (maxArrayLength == 0){
       return 1;
     }
+
     const finalScore = (totalScore) / (maxArrayLength);
     return finalScore;
   }
@@ -536,10 +537,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let keyProsC = ["{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let onlyGreaterC = ["selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
+      let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
+                   ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
+                   ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                   ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
+                   ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
+                   ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
+                   ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
+                   ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
+                   ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."]];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -551,7 +561,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && matches[2] != ">="){
+              if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
                 continue;
               }
               let cost = matches[3];
@@ -586,6 +596,35 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst1.push('none');
               skillsT1.push('none');
             } else {
+              for (let regexArr of stEdC){
+                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                  continue;
+                }
+                let regex = regexArr[1];
+                const subMatch = name.match(regex);
+                if (subMatch) {
+                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                  let newContent = content.map(item => {
+                    if (item = "unit_and_allfield"){
+                      item = "all";
+                    }
+                    if (item === "unit" || item === "all" || item === "field") {
+                      return `type=${item}`;
+                    }
+                    return item;
+                  });
+                  skills1.push(regexArr[0]);
+                  if (newContent.length > 0){
+                    skillso1.push(newContent.join('&'));
+                  } else {
+                    skillso1.push('none');
+                  }
+                  skillsc1.push('none');
+                  skillst1.push('none');
+                  skillsT1.push('none');
+                  break;
+                }
+              }
               continue;
             }
           }
@@ -605,7 +644,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && matches[2] != ">="){
+              if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
                 continue;
               }
               let cost = matches[3];
@@ -640,6 +679,35 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst2.push('none');
               skillsT2.push('none');
             } else {
+              for (let regexArr of stEdC){
+                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                  continue;
+                }
+                let regex = regexArr[1];
+                const subMatch = name.match(regex);
+                if (subMatch) {
+                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                  let newContent = content.map(item => {
+                    if (item = "unit_and_allfield"){
+                      item = "all";
+                    }
+                    if (item === "unit" || item === "all" || item === "field") {
+                      return `type=${item}`;
+                    }
+                    return item;
+                  });
+                  skills2.push(regexArr[0]);
+                  if (newContent.length > 0){
+                    skillso2.push(newContent.join('&'));
+                  } else {
+                    skillso2.push('none');
+                  }
+                  skillsc2.push('none');
+                  skillst2.push('none');
+                  skillsT2.push('none');
+                  break;
+                }
+              }
               continue;
             }
           }
@@ -672,7 +740,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other"];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
@@ -708,33 +776,217 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skills2[i] = skills2[i].split('@')[0];
         }
       }
+
+      let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+      let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=op&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+
       //自残特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'damage' && (skillst1[i] == 'character=me&target=inplay&card_type=class' || skillst1[i] == 'character=both&target=inplay&card_type=class') ){
+        if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
           skills1[i] = "selfDamage";
         }
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'damage' && (skillst2[i] == 'character=me&target=inplay&card_type=class' || skillst2[i] == 'character=both&target=inplay&card_type=class') ){
+        if (skills2[i] == 'damage' && ownLeaderKey.includes(skillst2[i]) ){
           skills2[i] = "selfDamage";
         }
       }
 
-      //自杀特殊判断
+      //加/扣血限
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'powerup' && ownLeaderKey.includes(skillst1[i])){
+          skills1[i] = "leaderPowerup";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'powerup' && ownLeaderKey.includes(skillst2[i])){
+          skills2[i] = "leaderPowerup";
+        }
+      }
+
 
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'destroy' && skillst1[i].includes('character=me&target=inplay&card_type=unit')){
+        if (skills1[i] == 'power_down' && (ownLeaderKey.includes(skillst1[i]) || enemyLeaderKey.includes(skillst1[i]))){
+          skills1[i] = "leaderPowerdown";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'power_down' && (ownLeaderKey.includes(skillst2[i]) || enemyLeaderKey.includes(skillst2[i]))){
+          skills2[i] = "leaderPowerdown";
+        }
+      }
+
+      //锁特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'cant_attack' && !skillst1[i].includes("character=me") ){
+          skills1[i] = "lock";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'cant_attack' && !skillst2[i].includes("character=me") ){
+          skills2[i] = "lock";
+        }
+      }
+
+      //盾护脸特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'shield' && ownLeaderKey.includes(skillst1[i]) ){
+          skills1[i] = "selfShield";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'shield' && ownLeaderKey.includes(skillst2[i]) ){
+          skills2[i] = "selfShield";
+        }
+      }
+
+      //永久盾特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'shield' && skillp1[i] == 'none'){
+          skills1[i] = "permShield";
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills2[i] == 'shield' && skillp2[i] == 'none'){
+          skills2[i] = "permShield";
+        }
+      }
+
+      //变能力
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_defense="))){
+          if (skillst1[i].includes("character=me")){
+            skills1[i] = "self_power_change";
+          } else {
+            skills1[i] = "power_change";
+          }
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'power_down' && (skillso2[i].includes("set_offense=") || skillso2[i].includes("set_defense="))){
+          if (skillst2[i].includes("character=me")){
+            skills2[i] = "self_power_change";
+          } else {
+            skills2[i] = "power_change";
+          }
+        }
+      }
+
+      //自杀特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'destroy' && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
           skills1[i] = "selfDestroy";
         }
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'destroy' && skillst2[i].includes('character=me&target=inplay&card_type=unit')){
+        if (skills2[i] == 'destroy' && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
           skills2[i] = "selfDestroy";
         }
       }
 
+      //手牌变形
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'metamorphose' && (skillst1[i].includes('character=me&target=hand') || skillst1[i].includes('character=me&target=hand_other_self'))){
+          skills1[i] = "handMetamorphose";
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills2[i] == 'metamorphose' && (skillst2[i].includes('character=me&target=hand') || skillst2[i].includes('character=me&target=hand_other_self'))){
+          skills2[i] = "handMetamorphose";
+        }
+      }
+
+      //强制加词条
+      if (card1.card_id == 120634010){
+        skills1.push("handMetamorphose");
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('character=me&target=hand_other_self&clan=all&card_type=all');
+        skillsT1.push('none');
+      }
+
+      if (card2.card_id == 120634010){
+        skills2.push("handMetamorphose");
+        skillso2.push('none')
+        skillsc2.push('none');
+        skillst2.push('character=me&target=hand_other_self&clan=all&card_type=all');
+        skillsT2.push('none');
+      }
+
+      if ([111041020,128041010].includes(card1.card_id)){
+        skills1.push("classCheck");
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if ([111041020,128041010].includes(card2.card_id)){
+        skills2.push("classCheck");
+        skillso2.push('none')
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
+      if ([127041010].includes(card1.card_id)){
+        skills1.push("flush");
+        skillso1.push('end=8')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if ([127041010].includes(card2.card_id)){
+        skills2.push("flush");
+        skillso2.push('end=8')
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
+      if ([110341010].includes(card1.card_id)){
+        skills1.push("flush");
+        skillso1.push('end=10')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if ([110341010].includes(card2.card_id)){
+        skills2.push("flush");
+        skillso2.push('end=10')
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
+      if ([900242020].includes(card1.card_id)){
+        skills1.push("selfDestroy");
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1[0] = '{op.played_card.unit}';
+        skillst1.push('{me.inplay_self.field}');
+        skillsT1.push('when_play_other');
+      }
+
+      if ([900242020].includes(card2.card_id)){
+        skills2.push("selfDestroy");
+        skillso2.push('none')
+        skillsc2.push('none');
+        skillst2[0] = '{op.played_card.unit}';
+        skillst2.push('{me.inplay_self.field}');
+        skillsT2.push('when_play_other');
+      }
 
       //跳/扣特殊判断
       for (let i = 0; i < skills1.length; i++){
@@ -746,6 +998,64 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'pp_modifier' && skillso2[i].includes("add_pptotal=")){
           skills2[i] = "ramp";
+        }
+      }
+
+      //暮！光！女！皇！
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'repeat_skill'){
+          skills1[i] = "invoke_skill";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'repeat_skill'){
+          skills2[i] = "invoke_skill";
+        }
+      }
+
+      //天使系
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'shortage_deck_win'){
+          skills1[i] = "special_win";
+          skillso1[i] += "&shortage_deck_win=1"
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'shortage_deck_win'){
+          skills2[i] = "special_win";
+          skillso2[i] += "&shortage_deck_win=1"
+        }
+      }
+
+      //玛丽
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'reflection'){
+          skills1[i] = "selfShield";
+          skillso1[i] += "&reflection=1"
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'reflection'){
+          skills2[i] = "selfShield";
+          skillso2[i] += "&reflection=1"
+        }
+      }
+
+      //花叶
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'token_draw_modifier'){
+          skills1[i] = "token_draw";
+          skillso1[i] = skillso1[i].replace("multiply_count=2&card_id","token_draw");
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'token_draw_modifier'){
+          skills2[i] = "token_draw";
+          skillso2[i] = skillso2[i].replace("multiply_count=2&card_id","token_draw");
         }
       }
 
@@ -775,7 +1085,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      //区分炸牌库
+      //区分炸牌库/手牌
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'banish' && skillst1[i].includes('target=deck') ){
           skills1[i] = "banish_deck";
@@ -785,6 +1095,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'banish' && skillst2[i].includes('target=deck') ){
           skills2[i] = "banish_deck";
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'banish' && skillst1[i].includes('target=hand') ){
+          skills1[i] = "banish_hand";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'banish' && skillst2[i].includes('target=hand') ){
+          skills2[i] = "banish_hand";
         }
       }
 
@@ -809,6 +1131,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillst2.push('none');
           skillsT2.push('none');
           break;
+        }
+      }
+
+      //角力
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'guard' && skillsT1[i]=="when_summon_other" && !skillst1[i].includes("target=self")){
+          skills1[i] = "give_guard";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'guard' && skillsT2[i]=="when_summon_other" && !skillst2[i].includes("target=self")){
+          skills2[i] = "give_guard";
         }
       }
 
@@ -938,7 +1273,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               continue;
             }
             let p = s.split(skills1[i]+"=")[1].split(":");
-            if (p.length == 1 && p[0] == card1.card_id){
+            if (p[0] == card1.card_id){
               change = true;
               if (skills1[i] == 'summon_token'){
                 newStr.push("type=summ")
@@ -967,6 +1302,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               }
             } else {
               newStr.push(s)
+            }
+            if (change){
+              newStr.push("len="+p.length);
             }
           }
           if (change){
@@ -1000,7 +1338,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               continue;
             }
             let p = s.split(skills2[i]+"=")[1].split(":");
-            if (p.length == 1 && p[0] == card2.card_id){
+            if (p[0] == card2.card_id){
               change = true;
               if (skills2[i] == 'summon_token'){
                 newStr.push("type=summ")
@@ -1029,6 +1367,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               }
             } else {
               newStr.push(s)
+            }
+            if (change){
+              newStr.push("len="+p.length);
             }
           }
           if (change){
@@ -1062,7 +1403,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 newStr.push("type=deckXX");
                 skills1[i] = 'obtain_self_diff';
               }
-          }
+           } else {
+             newStr.push(s)
+           }
+           if (change){
+             newStr.push("len="+p.length);
+           }
           if (change){
             skillso1[i] = newStr.join('&');
           }
@@ -1093,6 +1439,11 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 change = true;
                 newStr.push("type=deckXX");
                 skills2[i] = 'obtain_self_diff';
+              } else {
+                newStr.push(s)
+              }
+              if (change){
+                newStr.push("len="+p.length);
               }
           }
           if (change){
@@ -1173,6 +1524,25 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //异形判定
+      if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2) || card1.evo_life - card1.life != 2){
+        skills1.push("weird_evolve");
+        let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
+        skillso1.push(str);
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if (card2.card_type == 1 && (card2.evo_atk - card2.atk != 2) || card2.evo_life - card2.life != 2){
+        skills2.push("weird_evolve");
+        let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
+        skillso2.push(str);
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
       if (skills1.length === 0 || skills2.length === 0) {
           return 0;
       }
@@ -1206,7 +1576,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 sRatio *= 0.8;
               }
 
-              ratio = Math.sqrt(ratioTable[skill]);
+              ratio = ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
 
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
@@ -1216,12 +1586,45 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 aRatio = 2;
               }
 
-              aRatio *= Math.pow(ratioTable[skill],0.25);
+              aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.2) : ratioTable[skill];
 
-              let oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7);
-              let cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.25;
-              let tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.25;
-              let timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.1;
+              if (ratioTable[skill] >= 4){
+                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.1) : ratioTable[skill];
+              }
+              if (ratioTable[skill] >= 8){
+                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.2) : ratioTable[skill];
+              }
+              if (ratioTable[skill] >= 12){
+                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.3) : ratioTable[skill];
+              }
+
+              if (card1.card_name == card2.card_name){
+                //console.log(ratioTable[skill],aRatio)
+              }
+
+              let oRate, cRate, tRate, timingRate;
+              if (ratioTable[skill] < 4){
+                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
+                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
+                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
+                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.66;
+              } else if (ratioTable < 8){
+                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6)/1.25;
+                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
+                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
+                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.33;
+              } else if (ratioTable < 12){
+                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7)/1.1;
+                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
+                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
+                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.2;
+              } else {
+                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8);
+                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
+                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
+                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.1;
+              }
+
 
               if (["summon_token","token_draw"].includes(skill)){
                 oRate = 1 - (1-oRate)/2;
@@ -1241,7 +1644,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               let skillsoArr2 = customSplit(skillso2[j],"&");
               skillso1[i] = skillso1[i].replaceAll("占","&&")
               skillso2[j] = skillso2[j].replaceAll("占","&&")
-              const ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+              let ol;
+              if (skillsoArr1.length <= skillsoArr2.length){
+                ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+              } else {
+                ol = (1 - oRate * (1 - calculateConditionScore(card2, card1, skillsoArr2,skillsoArr1)));
+              }
 
               //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
 
@@ -1254,7 +1662,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               //condition 里无cd和cd自己基本上等同
               skillscArr1 = skillscArr1.map(item => (item === "none" ? "character=me" : item));
               skillscArr2 = skillscArr2.map(item => (item === "none" ? "character=me" : item));
-              const cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+
+              let cl;
+              if (skillscArr1.length <= skillscArr2.length){
+                cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+              } else {
+                cl = (1 - cRate * (1 - calculateConditionScore(card2, card1, skillscArr2,skillscArr1)));
+              }
 
               skillst1[i] = skillst1[i].replace(/\{([^}]+)\}/g, 'character=$1');
               skillst2[j] = skillst2[j].replace(/\{([^}]+)\}/g, 'character=$1');
@@ -1266,7 +1680,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst1[i] = skillst1[i].replaceAll("占","&&")
               skillst2[j] = skillst2[j].replaceAll("占","&&")
 
-              const tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
+              let tl;
+              if (skillstArr1.length <= skillstArr2.length){
+                tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
+              } else {
+                tl = (1 - tRate * (1 - calculateConditionScore(card2, card1, skillstArr2,skillstArr1)));
+              }
 
             //  skillsT1[i] = skillsT1[i].replaceAll("&&","占")
             //  skillsT2[j] = skillsT2[j].replaceAll("&&","占")
@@ -1274,6 +1693,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             //  let skillsTArr2 = customSplit(skillsT2[j],"&");
             //  skillsT1[i] = skillsT1[i].replaceAll("占","&&")
             //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
+
               const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
 
               base *= ol;
@@ -1301,12 +1721,16 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       // Calculate the maximum possible similarity score based on the longer skill array
       let skills1Sum = 0;
       for (let skill of skills1){
-        skills1Sum += Math.sqrt(ratioTable[skill]);
+        skills1Sum += ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
       }
       let skills2Sum = 0;
       for (let skill of skills2){
-        skills2Sum += Math.sqrt(ratioTable[skill]);
+        skills2Sum += ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
       }
+
+    //  if (card1.card_name == card2.card_name){
+    //    console.log(skills1Sum,skills2Sum,ex)
+    //  }
 
       const maxLength = Math.max(skills1Sum,skills2Sum) + ex;
       let similarity = Math.pow((commonSkills / maxLength),2/3) * 100;
@@ -1387,24 +1811,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (transSub1.length > transSub2.length){
             switched = true;
             swapArrays(transSub1,transSub2);
-          }
-
-          basicScore = 0;
-          for (let i = 0; i < transSub1.length; i++){
-            cid1 = transSub1[i];
-            for (let j = 0; j < transSub2.length; j++){
-              cid2 = transSub2[j];
-              const strNumber1 = cid1.toString();
-              const strNumber2 = cid2.toString();
-              let nCard1;
-              let nCard2;
-              nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
-              nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
-              let newBasicScore = calculateBasicScore(nCard1, nCard2);
-              if (newBasicScore > basicScore){
-                basicScore = newBasicScore;
-              }
-            }
           }
 
           for (let i = 0; i < transSub1.length; i++){
@@ -1676,10 +2082,17 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-    let repProsC = ["{me.inplay.class.pp}"];
-    let onlyGreaterC = ["{me.destroyed_card_list.unit.count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+    let keyProsC = ["{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let repProsC = ["{me.inplay.class.pp}"]; //不计重复
+    let onlyGreaterC = ["selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
+    let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
+                 ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
+                 ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                 ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
+                 ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
+                 ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
+                 ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."]];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -1691,7 +2104,7 @@ function customSplit(input,token) {
             name = "{me.inplay.class.pp}"
           }
           if (keyProsC.includes(name)){
-            if (onlyGreaterC.includes(name) && matches[2] != ">="){
+            if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
                continue;
             }
             let cost = matches[3];
@@ -1726,6 +2139,35 @@ function customSplit(input,token) {
             skillst1.push('none');
             skillsT1.push('none');
           } else {
+            for (let regexArr of stEdC){
+              if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                continue;
+              }
+              let regex = regexArr[1];
+              const subMatch = name.match(regex);
+              if (subMatch) {
+                let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                let newContent = content.map(item => {
+                  if (item = "unit_and_allfield"){
+                    item = "all";
+                  }
+                  if (item === "unit" || item === "all" || item === "field") {
+                    return `type=${item}`;
+                  }
+                  return item;
+                });
+                skills1.push(regexArr[0]);
+                if (newContent.length > 0){
+                  skillso1.push(newContent.join('&'));
+                } else {
+                  skillso1.push('none');
+                }
+                skillsc1.push('none');
+                skillst1.push('none');
+                skillsT1.push('none');
+                break;
+              }
+            }
             continue;
           }
         }
@@ -1746,7 +2188,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start"];
+    let wholeKeyProsTiming = ["when_resonance_start","when_discard","when_buff","when_discard_other"];
 
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){
@@ -1766,18 +2208,117 @@ function customSplit(input,token) {
         skills1[i] = skills1[i].split('@')[0];
       }
     }
+
+    let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+    let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+
     //自残特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'damage' && (skillst1[i] == 'character=me&target=inplay&card_type=class' || skillst1[i] == 'character=both&target=inplay&card_type=class') ){
+      if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
         skills1[i] = "selfDamage";
+      }
+    }
+
+    //加/扣血限
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'powerup' && ownLeaderKey.includes(skillst1[i])){
+        skills1[i] = "leaderPowerup";
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'power_down' && (ownLeaderKey.includes(skillst1[i]) || enemyLeaderKey.includes(skillst1[i]))){
+        skills1[i] = "leaderPowerdown";
+      }
+    }
+
+    //锁特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'cant_attack' && !skillst1[i].includes("character=me") ){
+        skills1[i] = "lock";
+      }
+    }
+
+
+    //盾护脸特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'shield' && ownLeaderKey.includes(skillst1[i]) ){
+        skills1[i] = "selfShield";
+      }
+    }
+
+    //永久盾特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'shield' && skillp1[i] == 'none'){
+        skills1[i] = "permShield";
+      }
+    }
+
+    //变能力
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_defense="))){
+        if (skillst1[i].includes("character=me")){
+          skills1[i] = "self_power_change";
+        } else {
+          skills1[i] = "power_change";
+        }
       }
     }
 
     //自杀特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'destroy' && skillst1[i].includes('character=me&target=inplay&card_type=unit')){
+      if (skills1[i] == 'destroy' && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
         skills1[i] = "selfDestroy";
       }
+    }
+
+    //手牌变形
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'metamorphose' && (skillst1[i].includes('character=me&target=hand') || skillst1[i].includes('character=me&target=hand_other_self'))){
+        skills1[i] = "handMetamorphose";
+      }
+    }
+
+    //强制加词条
+    if (card1.card_id == 120634010){
+      skills1.push("handMetamorphose");
+      skillso1.push('none')
+      skillsc1.push('none');
+      skillst1.push('character=me&target=hand_other_self&clan=all&card_type=all');
+      skillsT1.push('none');
+    }
+
+    if ([111041020,128041010].includes(card1.card_id)){
+      skills1.push("classCheck");
+      skillso1.push('none')
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
+    }
+
+    if ([127041010].includes(card1.card_id)){
+      skills1.push("flush");
+      skillso1.push('end=8')
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
+    }
+
+    if ([110341010].includes(card1.card_id)){
+      skills1.push("flush");
+      skillso1.push('end=10')
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
+    }
+
+    if ([900242020].includes(card1.card_id)){
+      skills1.push("selfDestroy");
+      skillso1.push('none')
+      skillsc1.push('none');
+      skillst1[0] = '{op.played_card.unit}';
+      skillst1.push('{me.inplay_self.field}');
+      skillsT1.push('when_play_other');
     }
 
     //跳/扣特殊判断
@@ -1786,6 +2327,38 @@ function customSplit(input,token) {
         skills1[i] = "ramp";
       }
     }
+
+    //暮！光！女！皇！
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'repeat_skill'){
+        skills1[i] = "invoke_skill";
+      }
+    }
+
+    //天使系
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'shortage_deck_win'){
+        skills1[i] = "special_win";
+        skillso1[i] += "&shortage_deck_win=1"
+      }
+    }
+
+    //玛丽
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'reflection'){
+        skills1[i] = "selfShield";
+        skillso1[i] += "&reflection=1"
+      }
+    }
+
+    //花叶
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'token_draw_modifier'){
+        skills1[i] = "token_draw";
+        skillso1[i] = skillso1[i].replace("multiply_count=2&card_id","token_draw");
+      }
+    }
+
 
     //瞬念特殊判断
     for (let i = 0; i < skills1.length; i++){
@@ -1801,10 +2374,16 @@ function customSplit(input,token) {
       }
     }
 
-    //区分炸牌库
+    //区分炸牌库/手牌
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'banish' && skillst1[i].includes('target=deck') ){
         skills1[i] = "banish_deck";
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'banish' && skillst1[i].includes('target=hand') ){
+        skills1[i] = "banish_hand";
       }
     }
 
@@ -1820,6 +2399,12 @@ function customSplit(input,token) {
       }
     }
 
+    //角力
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'guard' && skillsT1[i]=="when_summon_other" && !skillst1[i].includes("target=self")){
+        skills1[i] = "give_guard";
+      }
+    }
 
         //亡召
 
@@ -1900,7 +2485,7 @@ function customSplit(input,token) {
             continue;
           }
           let p = s.split(skills1[i]+"=")[1].split(":");
-          if (p.length == 1 && p[0] == card1.card_id){
+          if (p[0] == card1.card_id){
             change = true;
             if (skills1[i] == 'summon_token'){
               newStr.push("type=summ")
@@ -1918,6 +2503,9 @@ function customSplit(input,token) {
             skills1[i] = 'obtain_self';
           } else {
             newStr.push(s)
+          }
+          if (change){
+            newStr.push("len="+p.length);
           }
         }
         if (change){
@@ -1946,6 +2534,9 @@ function customSplit(input,token) {
             skills1[i] = 'obtain_self';
           } else {
             newStr.push(s)
+          }
+          if (change){
+            newStr.push("len="+p.length);
           }
         }
         if (change){
@@ -1996,6 +2587,16 @@ function customSplit(input,token) {
         let nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
         skills1 = skills1.concat(generateSkills(nCard1));
       }
+    }
+
+    //异形判定
+    if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2) || card1.evo_life - card1.life != 2){
+      skills1.push("weird_evolve");
+      let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
+      skillso1.push(str);
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
     }
     return skills1;
   }

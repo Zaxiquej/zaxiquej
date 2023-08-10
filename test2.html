@@ -26,7 +26,8 @@
                             if (row.length >= 19) { // Ensure at least 19 columns (A and S are column 0 and 18)
                                 const id = row[0];
                                 const timing = row[18];
-                                dataArray.push({ id, timing });
+                                const timingSub = row[17];
+                                dataArray.push({ id, timing, timingSub });
                             }
                         }
 
