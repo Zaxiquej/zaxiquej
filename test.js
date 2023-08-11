@@ -88,11 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
             .join("");
         resultDiv.innerHTML = `<ul>${cardListHTML}</ul>`;
     }
-
-    function findCardByName(name) {
-        return cardData.find((card) => card.card_name === name);
-    }
 });
+
+function findCardByName(name) {
+    return cardData.find((card) => card.card_name === name);
+}
 
 function createNewDataBase(allcards, subToken) {
     // 假设 allcards 是一个包含所有卡片数据的变量

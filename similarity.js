@@ -570,7 +570,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                    ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -587,7 +587,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
                    ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
-                   ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."]];
+                   ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                   ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -1651,7 +1652,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       //异形判定
-      if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2) || card1.evo_life - card1.life != 2){
+      if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
         skills1.push("weird_evolve");
         let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
         skillso1.push(str);
@@ -1660,7 +1661,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         skillsT1.push('none');
       }
 
-      if (card2.card_type == 1 && (card2.evo_atk - card2.atk != 2) || card2.evo_life - card2.life != 2){
+      if (card2.card_type == 1 && (card2.evo_atk - card2.atk != 2 || card2.evo_life - card2.life != 2)){
         skills2.push("weird_evolve");
         let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
         skillso2.push(str);
@@ -1702,7 +1703,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 sRatio *= 0.8;
               }
 
-              ratio = ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
+              ratio = ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
+              if (ratioTable[skill].punish > 0){
+                aRatio *= Math.sqrt(ratioTable[skill].reward / ratioTable[skill].punish)
+              }
 
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
@@ -1712,34 +1716,35 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 aRatio = 2;
               }
 
-              aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.2) : ratioTable[skill];
 
-              if (ratioTable[skill] >= 4){
-                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.1) : ratioTable[skill];
+              aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.2) : ratioTable[skill].reward;
+
+              if (ratioTable[skill].reward >= 4){
+                aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.1) : ratioTable[skill].reward;
               }
-              if (ratioTable[skill] >= 8){
-                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.2) : ratioTable[skill];
+              if (ratioTable[skill].reward >= 8){
+                aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.2) : ratioTable[skill].reward;
               }
-              if (ratioTable[skill] >= 12){
-                aRatio *= ratioTable[skill] >= 1 ? Math.pow(ratioTable[skill],0.3) : ratioTable[skill];
+              if (ratioTable[skill].reward >= 12){
+                aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.3) : ratioTable[skill].reward;
               }
 
               if (card1.card_name == card2.card_name){
-                //console.log(ratioTable[skill],aRatio)
+                //console.log(ratioTable[skill].punish,aRatio)
               }
 
               let oRate, cRate, tRate, timingRate;
-              if (ratioTable[skill] < 4){
+              if (ratioTable[skill].reward < 4){
                 oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
                 cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
                 tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
                 timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.66;
-              } else if (ratioTable < 8){
+              } else if (ratioTable[skill].reward < 8){
                 oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6)/1.25;
                 cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
                 tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
                 timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.33;
-              } else if (ratioTable < 12){
+              } else if (ratioTable[skill].reward < 12){
                 oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7)/1.1;
                 cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
                 tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
@@ -1847,19 +1852,20 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       // Calculate the maximum possible similarity score based on the longer skill array
       let skills1Sum = 0;
       for (let skill of skills1){
-        skills1Sum += ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
+        skills1Sum += ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
       }
       let skills2Sum = 0;
       for (let skill of skills2){
-        skills2Sum += ratioTable[skill] >= 1 ? Math.sqrt(ratioTable[skill]) : ratioTable[skill];
+        skills2Sum += ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
       }
 
     //  if (card1.card_name == card2.card_name){
     //    console.log(skills1Sum,skills2Sum,ex)
     //  }
 
+
       const maxLength = Math.max(skills1Sum,skills2Sum) + ex;
-      let similarity = Math.pow((commonSkills / maxLength),2/3) * 100;
+      let similarity = Math.pow((Math.max(0,commonSkills) / maxLength),2/3) * 100;
       return similarity;
   }
 
@@ -2227,7 +2233,7 @@ function customSplit(input,token) {
 
     let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","berserk","wrath","avarice","awake","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
-    let onlyGreaterC = ["selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+    let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                  ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -2244,7 +2250,8 @@ function customSplit(input,token) {
                  ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
                  ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
-                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."]];
+                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                 ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2795,7 +2802,7 @@ function customSplit(input,token) {
     }
 
     //异形判定
-    if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2) || card1.evo_life - card1.life != 2){
+    if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
       skills1.push("weird_evolve");
       let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
       skillso1.push(str);
