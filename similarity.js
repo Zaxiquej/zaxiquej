@@ -945,32 +945,46 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //自杀特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'destroy' && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+        if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+          let org = skills1[i];
           skills1[i] = "selfDestroy";
+          if (skillso1[i] == "none"){
+            skillso1[i] = org;
+          } else {
+            skillso1[i] += "&" + org;
+          }
         }
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'destroy' && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+        if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+          let org = skills2[i];
           skills2[i] = "selfDestroy";
+          if (skillso2[i] == "none"){
+            skillso2[i] = org;
+          } else {
+            skillso2[i] += "&" + org;
+          }
         }
       }
 
       //拆符特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'destroy' && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+        if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+          let org = skills1[i];
           skills1.push('destroyField');
-          skillso1.push('none')
+          skillso1.push(org);
           skillsc1.push('none');
           skillst1.push('none');
           skillsT1.push('none');
         }
       }
 
-      for (let i = 0; i < skills1.length; i++){
-        if (skills2[i] == 'destroy' && (skillst2[i].includes('character=op&target=inplay&card_type=field') || skillst2[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+      for (let i = 0; i < skills2.length; i++){
+        if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=op&target=inplay&card_type=field') || skillst2[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+          let org = skills2[i];
           skills2.push('destroyField');
-          skillso2.push('none')
+          skillso2.push(org);
           skillsc2.push('none');
           skillst2.push('none');
           skillsT2.push('none');
@@ -1704,9 +1718,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               }
 
               ratio = ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
-              if (ratioTable[skill].punish > 0){
-                aRatio *= Math.sqrt(ratioTable[skill].reward / ratioTable[skill].punish)
-              }
 
               if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
@@ -1714,6 +1725,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
                 //主战者能力对上有增权
                 aRatio = 2;
+              }
+
+              if (ratioTable[skill].punish > 0){
+                aRatio += Math.sqrt(ratioTable[skill].reward) - ratio;
               }
 
 
@@ -2445,16 +2460,23 @@ function customSplit(input,token) {
 
     //自杀特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'destroy' && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+        let org = skills1[i];
         skills1[i] = "selfDestroy";
+        if (skillso1[i] == "none"){
+          skillso1[i] = org;
+        } else {
+          skillso1[i] += "&" + org;
+        }
       }
     }
 
     //拆符特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'destroy' && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+        let org = skills1[i];
         skills1.push('destroyField');
-        skillso1.push('none')
+        skillso1.push(org);
         skillsc1.push('none');
         skillst1.push('none');
         skillsT1.push('none');
