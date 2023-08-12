@@ -97,8 +97,11 @@ let ratioTable = {
   "indestructible": {reward:3, punish:3}, //金膜
   "selfCrystalCount": {reward:3, punish:1}, //结晶任务
   "{me.game_used_ep_count}": {reward:3, punish:1}, //吃豆任务
-  "AOE": {reward:2, punish:2}, //aoe
-  "AOEbuff": {reward:2, punish:2}, //aoeBUff
+  "AOE": {reward:1.2, punish:0.6}, //aoe
+  "AOEbuff": {reward:1.2, punish:0.6}, //aoeBUff
+  "selfBuff": {reward:1.2, punish:0.6}, //selfBUff
+  "deckBuff": {reward:1.2, punish:0.6}, //deckBUff
+  "handBuff": {reward:1.2, punish:0.6}, //handBUff
   "{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}": {reward:2, punish:2}, //鲅鱼链
   "{me.game_skill_return_card_count}": {reward:3, punish:1}, //回手任务
   "{op.inplay.unit.count}": {reward:1.5, punish:1.1}, //敌方战场上的从者数

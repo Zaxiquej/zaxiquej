@@ -589,9 +589,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
                    ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
+      let skipProcS = ['{me.hand_self.count}>0'];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
+          if (skipProcS.includes(item)){
+            continue;
+          }
           let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
           let matches = item.match(pattern);
           if (matches){
@@ -686,6 +690,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       hasRepC = [];
       for (let highItem of skillsc2){
         for (let item of customSplit(highItem,'&')){
+          if (skipProcS.includes(item)){
+            continue;
+          }
           let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
           let matches = item.match(pattern);
           if (matches){
@@ -993,7 +1000,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //aoe特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count="))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
           skills1.push('AOE');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1003,7 +1010,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count="))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count="))){
           skills2.push('AOE');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1012,9 +1019,39 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
+      for (let i = 0; i < skills1.length; i++){
+        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=self"))){
+          skills1.push('selfBuff');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((skills1[i] == 'powerup') && !(skillst1[i].includes("select_count="))){
+        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=deck"))){
+          skills1.push('deckBuff');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=hand"))){
+          skills1.push('handBuff');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if ((buffKeys.includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
           skills1.push('AOEbuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1024,7 +1061,37 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((skills2[i] == 'powerup') && !(skillst2[i].includes("select_count="))){
+        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=self"))){
+          skills2.push('selfBuff');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=deck"))){
+          skills2.push('deckBuff');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=hand"))){
+          skills2.push('handBuff');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if ((buffKeys.includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count="))){
           skills2.push('AOEbuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -2268,8 +2335,12 @@ function customSplit(input,token) {
                  ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
                  ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
 
+    let skipProcS = ['{me.hand_self.count}>0'];
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
+        if (skipProcS.includes(item)){
+          continue;
+        }
         let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
         let matches = item.match(pattern);
         if (matches){
@@ -2485,7 +2556,7 @@ function customSplit(input,token) {
 
     //aoe特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count="))){
+      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
         skills1.push('AOE');
         skillso1.push('none')
         skillsc1.push('none');
@@ -2494,8 +2565,39 @@ function customSplit(input,token) {
       }
     }
 
+    let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
     for (let i = 0; i < skills1.length; i++){
-      if ((skills1[i] == 'powerup') && !(skillst1[i].includes("select_count="))){
+      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=self"))){
+        skills1.push('selfBuff');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=deck"))){
+        skills1.push('deckBuff');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=hand"))){
+        skills1.push('handBuff');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if ((buffKeys.includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
         skills1.push('AOEbuff');
         skillso1.push('none')
         skillsc1.push('none');
