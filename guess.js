@@ -16,9 +16,64 @@ document.addEventListener("DOMContentLoaded", function () {
     const hintButton = document.getElementById("hintButton");
     const revealButton = document.getElementById("revealButton");
     const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
+    const viewTop100Button = document.getElementById("viewTop100Button");
+    const modal = document.getElementById("modal");
+    const closeBtn = document.querySelector(".close");
+    const top100Results = document.getElementById("top100Results");
+
+    // 点击按钮显示假窗体
+    viewTop100Button.addEventListener("click", function () {
+      modal.style.display = "block";
+      // 假设你有一个叫做 getTop100Results 的函数来获取前100名的结果
+      const results = getTop100Results(puzzleCard); // 获取前100名的结果
+      top100Results.innerHTML = results; // 显示在假窗体中
+    });
+
+    // 点击关闭按钮隐藏假窗体
+    closeBtn.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+
+    // 点击模态框外部隐藏假窗体
+    window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    function getCardLink(cardId) {
+        return `https://shadowverse-portal.com/card/${cardId}?lang=zh-tw`;
+    }
+
+    function getTop100Results(baseCard) {
+      const sortedCards = cardPool
+          .map((card) => {
+              const similarity = calculateSimilarityScore(baseCard, card);
+              return {
+                  card_id: card.card_id,
+                  card_name: card.card_name,
+                  similarity: similarity,
+                  basicScore: calculateSimilarityScore(baseCard, card, 1),
+                  skillScore: calculateSimilarityScore(baseCard, card, 2),
+                  descriptionScore: calculateDescriptionScore(baseCard, card),
+              };
+          })
+          .sort((a, b) => b.similarity - a.similarity)
+          .slice(0, 100); // 只保留前100名
+        // 格式化前100名结果
+        const top100Results = sortedCards
+            .map((card, index) => {
+                const cardNameWithLink = `<a href="${getCardLink(card.card_id)}" target = "_blank">${card.card_name}</a>`;
+
+                return `${index + 1}. ${cardNameWithLink} - 相似度：${card.similarity.toFixed(2)},<br><br>`; //- 相似度：${card.similarity.toFixed(2)}，基础分: ${card.basicScore.toFixed(2)}, 技能分: ${card.skillScore.toFixed(2)}, 描述分: ${card.descriptionScore.toFixed(2)}
+            })
+            .join("");
+
+        return top100Results;
+    }
+
     let puzzleCard = null; // 存储解谜时随机抽取的卡牌
     let previousGuess = null;
-
 
     let gameStarted = false;
     let time = 0;
@@ -62,10 +117,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const matchingCards = cardData.filter(card => card.card_set_id === cardSetId && !cardPool.includes(card));
 
       matchingCards.forEach(card => {
-        cardPool.push(card);
+        if (!cardPool.includes(card)) {
+          cardPool.push(card);
 
-        // 查找并加入符合条件的技能卡
-        addSkillOptionCards(card.skill_option);
+          // 查找并加入符合条件的技能卡
+          addSkillOptionCards(card.skill_option);
+        }
       });
     });
   }
@@ -216,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       historyDiv0.innerHTML = "";
       restartButton.style.display = "none";
+      viewTop100Button.style.display = "none";
       hintButton.style.display = "none";
       revealButton.style.display = "none";
     }
@@ -520,6 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       restartButton.style.display = "block"; // 显示重新开始按钮
+      viewTop100Button.style.display = "block";
       hintButton.style.display = "none"; // 显示重新开始按钮
       revealButton.style.display = "none"; // 显示重新开始按钮
       guessBox.style.display = "none";
