@@ -453,7 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var resultMessageRow = document.createElement("tr");
         var timeCell = document.createElement("td");
-        timeCell.textContent = `猜测${time}：`;
+        timeCell.textContent = `猜测${time}`;
         var cardCell = document.createElement("td");
         var cardLink = document.createElement("a");
         cardLink.href = `https://shadowverse-portal.com/card/${foundCard.card_id}?lang=zh-tw`;
