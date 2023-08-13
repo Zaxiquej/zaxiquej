@@ -1022,7 +1022,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
       for (let i = 0; i < skills1.length; i++){
-        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=self"))){
+        if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self"))){
           skills1.push('selfBuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1032,7 +1032,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=deck"))){
+        if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=deck"))){
           skills1.push('deckBuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1042,7 +1042,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if (buffKeys.includes(skills1) && (skillst1[i].includes("target=hand"))){
+        if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=hand"))){
           skills1.push('handBuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1062,7 +1062,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=self"))){
+        if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=self"))){
           skills2.push('selfBuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1072,7 +1072,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=deck"))){
+        if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=deck"))){
           skills2.push('deckBuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1082,7 +1082,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (buffKeys.includes(skills2) && (skillst2[i].includes("target=hand"))){
+        if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=hand"))){
           skills2.push('handBuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -2569,7 +2569,7 @@ function customSplit(input,token) {
 
     let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
     for (let i = 0; i < skills1.length; i++){
-      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=self"))){
+      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self"))){
         skills1.push('selfBuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -2579,7 +2579,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=deck"))){
+      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=deck"))){
         skills1.push('deckBuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -2589,7 +2589,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if (buffKeys.includes(skills1) && (skillst1[i].includes("target=hand"))){
+      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=hand"))){
         skills1.push('handBuff');
         skillso1.push('none')
         skillsc1.push('none');
