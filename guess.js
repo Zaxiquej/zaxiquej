@@ -384,8 +384,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!foundCard) {
           const correctionSuggestions = getCorrectionSuggestion(guess);
+
           if (correctionSuggestions) {
-            const suggestionHTML = correctionSuggestions.map(suggestion => `<button class="suggestionBtn">${suggestion}</button>`).join("");
+            const suggestionHTML = correctionSuggestions
+              .map(suggestion => `<button class="suggestionBtn">${suggestion}</button>`)
+              .join("");
+
             suggestionsDiv.innerHTML = suggestionHTML;
 
             const suggestionBtns = document.querySelectorAll(".suggestionBtn");
@@ -396,6 +400,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 guessCardName(guessInput.value); // 进行搜索
               });
             });
+
+            // 设置按钮组样式
+            const rows = Math.ceil(correctionSuggestions.length / 5); // 总共需要的行数
+            const cols = Math.min(5, correctionSuggestions.length); // 每行最多按钮数
+
+            suggestionsDiv.style.display = "grid";
+            suggestionsDiv.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+            suggestionsDiv.style.gridTemplateRows = `repeat(${rows}, auto)`;
+            suggestionsDiv.style.justifyItems = "center"; // 每个按钮水平居中
+            suggestionsDiv.style.alignItems = "center"; // 每个按钮垂直居中
+            suggestionsDiv.style.gap = "5px"; // 按钮之间的空隙
+
+            // 整体居中
+            suggestionsDiv.style.textAlign = "center";
           } else {
             suggestionsDiv.innerHTML = ""; // 清空建议
           }

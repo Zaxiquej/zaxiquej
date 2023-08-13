@@ -177,7 +177,7 @@ border-radius: 4px; /* 圆角边框 */
 
 #randomSeedButton,
 #useSeedButton {
-  width: 15%; /* 调整按钮的宽度 */
+  width: auto; /* 调整按钮的宽度 */
   padding: 8px; /* 调整内边距 */
   font-size: 14px; /* 调整字体大小 */
   margin: 0 5px; /* 调整按钮之间的外边距 */
@@ -292,4 +292,30 @@ border-radius: 4px; /* 圆角边框 */
 
 #ruleBox li {
   margin-left: 20px; /* 左边外边距 */
+}
+
+/* 设置按钮组样式 */
+#suggestionsDiv {
+  max-width: 300px; /* 设置最大宽度 */
+  margin: 0 auto; /* 水平居中 */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 水平居中 */
+  gap: 10px; /* 按钮之间的空隙 */
+  margin-bottom: 10px; /* 顶部间距 */
+  margin-top: 10px; /* 顶部间距 */
+}
+
+/* 按钮样式 */
+.suggestionBtn {
+  padding: 5px 10px; /* 按钮内边距 */
+  background-color: #f0f0f0; /* 按钮背景颜色 */
+  color: #333; /* 按钮文字颜色 */
+  border: none; /* 移除按钮边框 */
+  border-radius: 4px; /* 圆角按钮 */
+  cursor: pointer; /* 添加鼠标指针效果 */
+}
+
+.suggestionBtn:hover {
+  background-color: #ddd; /* 鼠标悬停时的背景颜色 */
 }
