@@ -17,8 +17,8 @@ let ratioTable = {
   "pp_modifier": {reward:1.3, punish:1.3}, //回/扣费
   "destroy": {reward:1, punish:1},
   "destroyField": {reward:3, punish:3}, //拆符
-  "heal": {reward:1, punish:1},
   "attach_skill": {reward:1.3, punish:1.3}, //获得能力
+  "heal": {reward:1, punish:1},
   "discard": {reward:1.5, punish:1.5},
   "turn_start_skill_after_stop": {reward:0.5, punish:0.5},
   "banish": {reward:1.5, punish:1.5},
@@ -107,7 +107,7 @@ let ratioTable = {
   "{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}": {reward:2, punish:2}, //鲅鱼链
   "{me.game_skill_return_card_count}": {reward:3, punish:1}, //回手任务
   "{op.inplay.unit.count}": {reward:1.5, punish:1.1}, //敌方战场上的从者数
-  "target=damaged_card":{reward:2.5, punish:1.5}, //敌方受伤
+  "target=damaged_card": {reward:2.5, punish:1.5}, //敌方受伤
   "{me.damaged_card.unit.count}":{reward:2.5, punish:1.5}, //己方有受伤
   "sneak": {reward:1.5, punish:1.5},
   "revive": {reward:1.8, punish:1.8}, // 亡召/复活
