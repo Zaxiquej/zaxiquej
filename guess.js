@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const guessInput = document.getElementById("guessInput");
     const suggestionsDiv = document.getElementById("suggestions");
     const historyDiv = document.getElementById("history");
+    var historyTable = document.getElementById("historyTable");
     const historyDiv0 = document.getElementById("history0");
     const playBox = document.getElementById("playBox");
     const guessBox = document.getElementById("guessBox");
@@ -155,7 +156,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
      // Update the "currentSeed" element with the current seed value
      if (specifiedModeCheckbox.checked) {
-       document.getElementById("currentSeed").textContent = `当前种子：${seed} （指定模式）`;
+       document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
+       var strongElement = document.createElement("strong");
+       strongElement.textContent = "（指定模式）";
+       document.getElementById("currentSeed").appendChild(strongElement);
      } else {
        document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
      }
@@ -183,6 +187,32 @@ document.addEventListener("DOMContentLoaded", function () {
       sortOptions.style.display = "none";
       playBox.style.display = "none";
       historyDiv.innerHTML = "";
+
+            // 创建表格元素和标题行
+      historyTable = document.createElement("table");
+      historyTable.id = "historyTable";
+      historyTable.classList.add("history-table"); // 添加自定义样式类
+
+      var thead = document.createElement("thead");
+      var headerRow = document.createElement("tr");
+      var headers = ["#", "卡牌", "相似度", "排名"];
+
+      headers.forEach(function(headerText) {
+        var th = document.createElement("th");
+        th.textContent = headerText;
+        headerRow.appendChild(th);
+      });
+
+      thead.appendChild(headerRow);
+
+      var tbody = document.createElement("tbody");
+
+      historyTable.appendChild(thead);
+      historyTable.appendChild(tbody);
+
+      // 将表格添加到历史记录容器
+      historyDiv.appendChild(historyTable);
+
       historyDiv0.innerHTML = "";
       restartButton.style.display = "none";
       hintButton.style.display = "none";
@@ -228,26 +258,57 @@ document.addEventListener("DOMContentLoaded", function () {
             const similarity = calculateSimilarityScore(puzzleCard, hintCard);
             const rank = getRank(similarity);
 
-            const hintMessage = document.createElement("p");
             time++;
-            hintMessage.card_id = hintCard.card_id;
-            hintMessage.innerHTML = `提示${time}：<a href="https://shadowverse-portal.com/card/${hintMessage.card_id}?lang=zh-tw" target="_blank">${hintCard.card_name}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
-            hintMessage.similarity = similarity;
-            hintMessage.order = time;
 
-            hintMessage.classList.add("highlight");
+            var hintMessageRow = document.createElement("tr");
+            var timeCell = document.createElement("td");
+            timeCell.textContent = `提示${time}`;
+            var cardCell = document.createElement("td");
+            var cardLink = document.createElement("a");
+            cardLink.href = `https://shadowverse-portal.com/card/${hintCard.card_id}?lang=zh-tw`;
+            cardLink.target = "_blank";
+            cardLink.textContent = hintCard.card_name;
+            cardCell.appendChild(cardLink);
+            var similarityCell = document.createElement("td");
+            similarityCell.textContent = similarity.toFixed(2);
+            var rankCell = document.createElement("td");
+            rankCell.textContent = rank;
+
+            hintMessageRow.appendChild(timeCell);
+            hintMessageRow.appendChild(cardCell);
+            hintMessageRow.appendChild(similarityCell);
+            hintMessageRow.appendChild(rankCell);
+
+            hintMessageRow.card_id = hintCard.card_id;
+            hintMessageRow.imilarity = similarity;
+            hintMessageRow.order = time;
+
+            // 添加到表格中
+            historyTable.querySelector("tbody").appendChild(hintMessageRow);
+
+            hintMessageRow.classList.add("highlight");
             // 如果之前有上一条猜测，移除其高亮样式
             if (previousGuess) {
               previousGuess.classList.remove("highlight");
             }
             // 更新上一条猜测为当前猜测
-            previousGuess = hintMessage;
+            previousGuess = hintMessageRow;
 
             if (similarity > highestScore){
               highestScore = similarity;
             }
-            historyDiv.appendChild(hintMessage);
+            historyTable.querySelector("tbody").appendChild(hintMessageRow);
+            //historyDiv.appendChild(hintMessage);
             sortHistory();
+
+            tipBox.style.display = "block";
+            setTimeout(() => {
+              tipBox.style.opacity = "0";
+            }, 1000);
+            setTimeout(() => {
+              tipBox.style.display = "none";
+              tipBox.style.opacity = "1";
+            }, 2000);
         }
     });
 
@@ -265,25 +326,46 @@ document.addEventListener("DOMContentLoaded", function () {
             const similarity = calculateSimilarityScore(puzzleCard, hintCard);
             const rank = getRank(similarity);
 
-            const hintMessage = document.createElement("p");
             time++;
-            hintMessage.card_id = hintCard.card_id;
-            hintMessage.innerHTML = `答案：<a href="https://shadowverse-portal.com/card/${hintMessage.card_id}?lang=zh-tw" target="_blank">${hintCard.card_name}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
-            hintMessage.similarity = similarity;
-            hintMessage.order = time;
 
-            hintMessage.classList.add("highlight");
+            var hintMessageRow = document.createElement("tr");
+            var timeCell = document.createElement("td");
+            timeCell.textContent = `答案：`;
+            var cardCell = document.createElement("td");
+            var cardLink = document.createElement("a");
+            cardLink.href = `https://shadowverse-portal.com/card/${hintCard.card_id}?lang=zh-tw`;
+            cardLink.target = "_blank";
+            cardLink.textContent = hintCard.card_name;
+            cardCell.appendChild(cardLink);
+            var similarityCell = document.createElement("td");
+            similarityCell.textContent = similarity.toFixed(2);
+            var rankCell = document.createElement("td");
+            rankCell.textContent = rank;
+
+            hintMessageRow.appendChild(timeCell);
+            hintMessageRow.appendChild(cardCell);
+            hintMessageRow.appendChild(similarityCell);
+            hintMessageRow.appendChild(rankCell);
+
+            hintMessageRow.card_id = hintCard.card_id;
+            hintMessageRow.imilarity = similarity;
+            hintMessageRow.order = time;
+
+            // 添加到表格中
+
+
+            hintMessageRow.classList.add("highlight");
             // 如果之前有上一条猜测，移除其高亮样式
             if (previousGuess) {
               previousGuess.classList.remove("highlight");
             }
             // 更新上一条猜测为当前猜测
-            previousGuess = hintMessage;
+            previousGuess = hintMessageRow;
 
             if (similarity > highestScore){
               highestScore = similarity;
             }
-            historyDiv.appendChild(hintMessage);
+            historyTable.querySelector("tbody").appendChild(hintMessageRow);
             sortHistory();
             gameEnd(false);
           }
@@ -327,27 +409,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const resultMessage = document.createElement("p");
         time++;
-        resultMessage.card_id = foundCard.card_id;
-        resultMessage.innerHTML = `猜测${time}：<a href="https://shadowverse-portal.com/card/${resultMessage.card_id}?lang=zh-tw" target="_blank">${guess}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
-        resultMessage.similarity = similarity;
-        resultMessage.order = time;
 
-        resultMessage.classList.add("highlight");
+        var resultMessageRow = document.createElement("tr");
+        var timeCell = document.createElement("td");
+        timeCell.textContent = `猜测${time}：`;
+        var cardCell = document.createElement("td");
+        var cardLink = document.createElement("a");
+        cardLink.href = `https://shadowverse-portal.com/card/${foundCard.card_id}?lang=zh-tw`;
+        cardLink.target = "_blank";
+        cardLink.textContent = foundCard.card_name;
+        cardCell.appendChild(cardLink);
+        var similarityCell = document.createElement("td");
+        similarityCell.textContent = similarity.toFixed(2);
+        var rankCell = document.createElement("td");
+        rankCell.textContent = rank;
+
+        resultMessageRow.appendChild(timeCell);
+        resultMessageRow.appendChild(cardCell);
+        resultMessageRow.appendChild(similarityCell);
+        resultMessageRow.appendChild(rankCell);
+
+        resultMessageRow.card_id = foundCard.card_id;
+        resultMessageRow.similarity = similarity;
+        resultMessageRow.order = time;
+
+        resultMessageRow.classList.add("highlight");
         // 如果之前有上一条猜测，移除其高亮样式
         if (previousGuess) {
           previousGuess.classList.remove("highlight");
         }
         // 更新上一条猜测为当前猜测
-        previousGuess = resultMessage;
+        previousGuess = resultMessageRow;
 
         if (similarity > highestScore){
           highestScore = similarity;
         }
-        historyDiv.appendChild(resultMessage);
+        historyTable.appendChild(resultMessageRow);
         sortHistory();
 
         guessInput.value = "";
-        if (similarity === 100) {
+        if (parseInt(similarity) === 100) {
             gameEnd(true);
         }
     }
@@ -386,34 +487,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 根据序号排序历史记录
     function sortHistoryByIndex() {
-      if (!historyDiv || historyDiv.children.length === 0) {
+      if (!historyTable || historyTable.children.length === 0) {
           return;
       }
 
-        const historyItems = Array.from(historyDiv.children);
+        const historyItems = Array.from(historyTable.children);
         historyItems.sort((a, b) => {
             const aIndex = a.order;
             const bIndex = b.order;
             return aIndex - bIndex;
         });
 
-        historyItems.forEach((item) => historyDiv.appendChild(item));
+        historyItems.forEach((item) => historyTable.appendChild(item));
     }
 
     // 根据相似度排序历史记录
     function sortHistoryBySimilarity() {
-        if (!historyDiv || historyDiv.children.length === 0) {
+        if (!historyTable || historyTable.children.length === 0) {
             return;
         }
 
-        const historyItems = Array.from(historyDiv.children);
+        const historyItems = Array.from(historyTable.children);
         historyItems.sort((a, b) => {
             const aSimilarity = a.similarity;
             const bSimilarity = b.similarity;
             return bSimilarity - aSimilarity;
         });
 
-        historyItems.forEach((item) => historyDiv.appendChild(item));
+        historyItems.forEach((item) => historyTable.appendChild(item));
     }
 
 

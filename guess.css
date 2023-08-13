@@ -1,0 +1,295 @@
+.highlight {
+  background-color: yellow;
+}
+
+/* 猜对时的文本样式 */
+.congrats {
+  font-size: 24px;
+}
+
+/* 提示框样式 */
+.tip-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4CAF50;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 0;
+  }
+}
+#playBox {
+  display: none;
+}
+#sortingOptions {
+  display: none;
+}
+#cSeed {
+  display: none;
+}
+.button-container {
+  display: flex;
+  justify-content: left; /* 将按钮水平居中 */
+  gap: 20px; /* 设置按钮之间的间隔 */
+}
+
+/* 添加一些默认样式，使表格更具可读性 */
+.history-table {
+  margin: 0 auto; /* 设置水平居中 */
+  width: 80%; /* 限制宽度为页面宽度的 80% */
+border-collapse: collapse;
+margin-bottom: 20px; /* 为表格底部添加一定间距 */
+}
+
+/* 调整表格单元格的宽度 */
+.history-table th:nth-child(1),
+.history-table td:nth-child(1) {
+width: 15%; /* 调整第一格的宽度 */
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+width: 45%; /* 调整第二格的宽度 */
+}
+
+.history-table th:nth-child(3),
+.history-table td:nth-child(3),
+.history-table th:nth-child(4),
+.history-table td:nth-child(4) {
+width: 20%; /* 调整第三和第四格的宽度 */
+}
+
+/* 对表格的th和td应用相同的样式，确保它们具有相同的宽度和对齐 */
+.history-table th,
+.history-table td {
+padding: 10px; /* 单元格内边距 */
+text-align: left; /* 左对齐文本 */
+border: 1px solid #ccc; /* 单元格边框 */
+}
+
+/* 调整输入框和按钮的宽度 */
+#guessInput {
+width: 100%; /* 调整输入框的宽度 */
+padding: 10px; /* 添加内边距以美化外观 */
+border: 1px solid #ccc; /* 添加边框 */
+border-radius: 4px; /* 圆角边框 */
+}
+
+#guessButton {
+width: 20%; /* 调整按钮的宽度 */
+padding: 10px; /* 添加内边距以美化外观 */
+background-color: #007bff; /* 按钮背景颜色 */
+color: #fff; /* 按钮文字颜色 */
+border: none; /* 移除按钮边框 */
+border-radius: 4px; /* 圆角按钮 */
+cursor: pointer; /* 添加鼠标指针效果 */
+}
+
+#guessButton:hover {
+background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+}
+
+/* 调整输入框和按钮容器的样式 */
+#guessContainer {
+display: flex; /* 使用 Flex 布局使输入框和按钮水平排列 */
+gap: 10px; /* 添加间距 */
+justify-content: center; /* 居中排列 */
+margin-bottom: 20px; /* 底部间距 */
+margin: 0 auto; /* 设置水平居中 */
+width: 80%; /* 限制宽度为页面宽度的 80% */
+}
+
+
+/* 美化链接样式 */
+a {
+  text-decoration: none; /* 移除下划线 */
+  color: #007bff; /* 链接颜色 */
+}
+
+a:hover {
+  text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
+
+/* 对按钮容器进行居中和限制宽度 */
+.button-container {
+  margin: 0 auto; /* 设置水平居中 */
+  width: 80%; /* 限制宽度为页面宽度的 80% */
+  display: flex; /* 使用 Flex 布局 */
+  flex-direction: column; /* 垂直排列按钮 */
+  align-items: center; /* 在交叉轴上居中 */
+  gap: 10px; /* 设置按钮之间的间距 */
+}
+
+/* 美化按钮样式 */
+.button-container button, .button-container a.link-button {
+  padding: 5px 10px; /* 调整内边距以缩短按钮长度 */
+  background-color: #007bff; /* 按钮背景颜色 */
+  color: #fff; /* 按钮文字颜色 */
+  border: none; /* 移除按钮边框 */
+  border-radius: 4px; /* 圆角按钮 */
+  cursor: pointer; /* 添加鼠标指针效果 */
+  text-decoration: none; /* 移除下划线 */
+  text-align: center; /* 居中文本 */
+  width: auto; /* 让按钮自适应内容长度 */
+}
+
+.button-container button:hover, .button-container a.link-button:hover {
+  background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+}
+
+/* 将按钮放在同一行 */
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* 调整输入框和按钮容器的样式 */
+#subStartBox {
+display: flex; /* 使用 Flex 布局使输入框和按钮水平排列 */
+gap: 10px; /* 添加间距 */
+justify-content: center; /* 居中排列 */
+margin-bottom: 20px; /* 底部间距 */
+margin: 0 auto; /* 设置水平居中 */
+width: 60%; /* 限制宽度为页面宽度的 80% */
+}
+
+/* 调整输入框和按钮的宽度 */
+#seedInput {
+width: 100%; /* 调整输入框的宽度 */
+padding: 10px; /* 添加内边距以美化外观 */
+border: 1px solid #ccc; /* 添加边框 */
+border-radius: 4px; /* 圆角边框 */
+}
+
+#randomSeedButton,
+#useSeedButton {
+  width: 15%; /* 调整按钮的宽度 */
+  padding: 8px; /* 调整内边距 */
+  font-size: 14px; /* 调整字体大小 */
+  margin: 0 5px; /* 调整按钮之间的外边距 */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#randomSeedButton:hover,
+#useSeedButton:hover {
+  background-color: #0056b3;
+}
+
+.input-container {
+  flex: 1;
+  position: relative;
+}
+
+.input-container input[type="text"] {
+  width: 60%; /* 调整输入框的宽度 */
+  padding: 10px; /* 添加内边距以美化外观 */
+  border: 1px solid #ccc; /* 添加边框 */
+  border-radius: 4px; /* 圆角边框 */
+}
+
+.mode-checkbox {
+  margin-top: 10px;
+}
+
+.mode-checkbox label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.mode-checkbox input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* 调整按钮与其他内容的间距 */
+}
+
+.title-container {
+  text-align: center; /* 居中对齐文本 */
+  margin-bottom: 20px; /* 底部间距 */
+}
+
+#cSeed {
+  text-align: center; /* 文本居中 */
+  margin: 20px 0; /* 上下外边距 */
+  padding: 15px; /* 内边距 */
+  background-color: #f5f5f5; /* 背景色 */
+  border-radius: 8px; /* 圆角边框 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+#cSeed p {
+  margin: 8px 0; /* 上下外边距 */
+  font-size: 16px; /* 字体大小 */
+}
+
+#cSeed span {
+  font-weight: bold; /* 加粗文本 */
+  color: #007bff; /* 文本颜色 */
+}
+
+#cSeed #currentSeed {
+  font-size: 18px; /* 标题字体大小 */
+  margin-bottom: 15px; /* 底部外边距 */
+}
+
+#ruleBox {
+  text-align: left; /* 让文本左对齐 */
+  margin: 20px auto; /* 上下外边距自动居中 */
+  padding: 20px; /* 内边距 */
+  background-color: #f5f5f5; /* 背景色 */
+  border-radius: 8px; /* 圆角边框 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+#ruleBox h2 {
+  font-size: 24px; /* 标题字体大小 */
+  margin-bottom: 10px; /* 底部外边距 */
+}
+
+#ruleBox p {
+  font-size: 16px; /* 段落字体大小 */
+  line-height: 1.5; /* 行高 */
+  margin-bottom: 15px; /* 底部外边距 */
+}
+
+#ruleBox details {
+  font-size: 16px; /* 细节字体大小 */
+  margin-bottom: 15px; /* 底部外边距 */
+}
+
+#ruleBox summary {
+  font-weight: bold; /* 加粗标题 */
+  cursor: pointer; /* 添加鼠标指针效果 */
+}
+
+#ruleBox ul {
+  list-style-type: none; /* 去除列表样式 */
+  padding: 0; /* 列表内边距 */
+}
+
+#ruleBox li {
+  margin-left: 20px; /* 左边外边距 */
+}

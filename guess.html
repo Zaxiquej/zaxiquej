@@ -4,76 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>影之诗猜卡（beta)</title>
-    <style>
-  /* 其他样式保持不变 */
-  .highlight {
-    background-color: yellow;
-  }
-
-  /* 猜对时的文本样式 */
-  .congrats {
-    font-size: 24px;
-  }
-  /* 烟花特效 */
-  #fireworks {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 100;
-  }
-
-  .firework {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f00;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: explode 1s linear infinite;
-  }
-
-  @keyframes explode {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(20);
-      opacity: 0;
-    }
-  }
-  #playBox {
-    display: none;
-  }
-  #sortingOptions {
-    display: none;
-  }
-  #cSeed {
-    display: none;
-  }
-  .button-container {
-    display: flex;
-    justify-content: left; /* 将按钮水平居中 */
-    gap: 20px; /* 设置按钮之间的间隔 */
-  }
-</style>
+    <link rel="stylesheet" type="text/css" href="guess.css">
 </head>
 <body>
-    <h1>影之诗猜卡</h1>
+  <div class="title-container">
+  <h1>影之诗猜卡（beta）</h1>
+  </div>
     <div id="startBox">
-      <button id="randomSeedButton">今日谜题种子</button>
-      <input type="text" id="seedInput" placeholder="输入种子">
-      <button id="useSeedButton">开始游戏</button>
+      <div id="subStartBox">
+        <button id="randomSeedButton">今日谜题种子</button>
+        <div class="input-container">
+          <input type="text" id="seedInput" placeholder="输入种子">
+        </div>
+        </div>
+      <div class="mode-checkbox">
+        <label>
+          <input type="checkbox" id="specifiedModeCheckbox" title="勾选此项以限制卡池仅限指定卡牌与指定卡牌可衍生的 token/无限制卡牌。">
+          指定模式
+        </label>
 
-      <label>
-        <input type="checkbox" id="specifiedModeCheckbox" title="勾选此项以限制卡池仅限指定卡牌与指定卡牌可衍生的token/无限制卡牌。">
-        指定模式
-      </label>
+        <div class="center-button">
+          <button id="useSeedButton">开始游戏</button>
+        </div>
     </div>
+    </div>
+
+
     <!--<button id="puzzleStartButton">解谜开始</button> -->
     <div id="sortingOptions">
         <label for="sortOption">排序选项：</label>
@@ -94,18 +50,37 @@
     <div id="guessBox">
       <hr> <!-- 这是分割线 -->
       <div id="history0"></div>
-    <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
-    <button id="guessButton">确认</button>
+      <div id="guessContainer">
+        <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
+        <button id="guessButton">确认</button>
+      </div>
     </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
-    <div id="history"></div>
+    <div id="history">
+      <table id="historyTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>卡牌</th>
+        <th>相似度</th>
+        <th>排名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 历史猜测行将在这里动态添加 -->
+    </tbody>
+  </table></div>
 
-    <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank">前往 Shadowverse Portal</a>
-    <div class="button-container">
-      <button id="hintButton">提示</button>
-      <button id="revealButton">揭晓答案</button>
-    </div>
+  <div class="button-container">
+    <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank" class="link-button">前往 Shadowverse Portal</a>
+
+    <div class="button-row">
+        <button id="hintButton">提示</button>
+        <button id="revealButton">揭晓答案</button>
+      </div>
+  </div>
+    <div class="tip-box" id="tipBox">你获得了一个提示</div>
     <button id="restartButton">重新开始</button>
     </div>
 
@@ -192,6 +167,8 @@
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了跳转portal的链接；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>猜测与提示的卡也可以前往portal进行确认了；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了指定模式，勾选后卡池仅有指定模式可能出现的卡牌；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了网页UI；<br>
+
            </li>
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/12</span>少许优化了buff类目标的扣分机制；<br>
@@ -208,8 +185,8 @@
              <span style="display: inline-block; width: 140px;">2023/08/09</span>优化了技能稀有度补正；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了连击、觉醒、余费等词条的判定；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>对部分词条进行了额外区分；现在回费和跳费、瞬念和拉人、破坏和自杀之类的会分开了。<br>
-             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了“敌我不分”与“大量衍生物（token>4）”词条。
-             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>改为手动设置技能稀有度补正
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了“敌我不分”与“大量衍生物（token>4）”词条。<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>改为手动设置技能稀有度补正；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许优化数据库文字。
            </li>
            <li style="margin-left: 20px;">
