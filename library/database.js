@@ -1,6 +1,7 @@
 let cardData = [
   {
     "atk": 0,
+    "base_card_id": 900044080,
     "card_id": 900044080,
     "card_name": "古兰的觉悟",
     "card_set_id": 90000,
@@ -23,6 +24,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044090,
     "card_id": 900044090,
     "card_name": "吉塔的决心",
     "card_set_id": 90000,
@@ -45,6 +47,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044100,
     "card_id": 900044100,
     "card_name": "绝大的证明",
     "card_set_id": 90000,
@@ -67,6 +70,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044110,
     "card_id": 900044110,
     "card_name": "涸绝的甘露",
     "card_set_id": 90000,
@@ -89,6 +93,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900111020,
     "card_id": 900111020,
     "card_name": "妖精萤火",
     "card_set_id": 90000,
@@ -111,6 +116,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900131040,
     "card_id": 900131040,
     "card_name": "年轻又自由的猫",
     "card_set_id": 90000,
@@ -133,6 +139,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110124010,
     "card_id": 110124010,
     "card_name": "不弑的刻印",
     "card_set_id": 10010,
@@ -155,6 +162,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900134040,
     "card_id": 900134040,
     "card_name": "亚里莎的导引",
     "card_set_id": 90000,
@@ -177,6 +185,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900134050,
     "card_id": 900134050,
     "card_name": "拉缇卡的拥抱",
     "card_set_id": 90000,
@@ -199,6 +208,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144020,
     "card_id": 900144020,
     "card_name": "万象的加护",
     "card_set_id": 90000,
@@ -221,6 +231,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144030,
     "card_id": 900144030,
     "card_name": "森罗的愤怒",
     "card_set_id": 90000,
@@ -243,6 +254,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144070,
     "card_id": 900144070,
     "card_name": "真伪逆转",
     "card_set_id": 90000,
@@ -265,6 +277,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144090,
     "card_id": 900144090,
     "card_name": "疾风箭击",
     "card_set_id": 90000,
@@ -287,6 +300,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144120,
     "card_id": 900144120,
     "card_name": "森罗万象的爱",
     "card_set_id": 90000,
@@ -298,7 +312,7 @@ let cardData = [
     "evo_skill_disc": "",
     "life": 0,
     "rarity": 4,
-    "skill": "attach_skill,attach_skill,attach_skill",
+    "skill": "attach_skill,attach_skill,attach_skill  ",
     "skill_condition": "character=me,character=me,character=me",
     "skill_preprocess": "none,none,none",
     "skill_disc": "给予自己的主战者下列能力。主战者无法重复叠加此能力，并且此能力会在发动3次后失效。<br>---------- <br>（1）随机给予1个自己的从者+1/+1效果。<br>（2）抽取2张卡片。<br>（3）回复自己的主战者3点生命值。<br>自己的回合结束时，依序发动上述1种能力。",
@@ -309,6 +323,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900231030,
     "card_id": 900231030,
     "card_name": "新人特务·爱娃",
     "card_set_id": 90000,
@@ -331,6 +346,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128234010,
     "card_id": 128234010,
     "card_name": "不屈的斗志",
     "card_set_id": 10028,
@@ -353,6 +369,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234020,
     "card_id": 900234020,
     "card_name": "隐伏天诛",
     "card_set_id": 90000,
@@ -375,6 +392,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234040,
     "card_id": 900234040,
     "card_name": "艾莉卡的战技",
     "card_set_id": 90000,
@@ -397,6 +415,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234050,
     "card_id": 900234050,
     "card_name": "米丝特莉娜的剑刃",
     "card_set_id": 90000,
@@ -419,6 +438,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234060,
     "card_id": 900234060,
     "card_name": "贝里昂的号令",
     "card_set_id": 90000,
@@ -441,6 +461,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244030,
     "card_id": 900244030,
     "card_name": "暴君谕令",
     "card_set_id": 90000,
@@ -463,6 +484,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113242010,
     "card_id": 113242010,
     "card_name": "不朽的王城",
     "card_set_id": 10013,
@@ -485,6 +507,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900242020,
     "card_id": 900242020,
     "card_name": "秘藏之技",
     "card_set_id": 90000,
@@ -507,6 +530,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334080,
     "card_id": 900334080,
     "card_name": "伊莎贝尔的咏唱",
     "card_set_id": 90000,
@@ -529,6 +553,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334090,
     "card_id": 900334090,
     "card_name": "坦忒菈的反叛",
     "card_set_id": 90000,
@@ -551,6 +576,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344050,
     "card_id": 900344050,
     "card_name": "洋荷的言灵之术",
     "card_set_id": 90000,
@@ -573,6 +599,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116322010,
     "card_id": 116322010,
     "card_name": "地壤之环",
     "card_set_id": 10016,
@@ -595,6 +622,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127431020,
     "card_id": 127431020,
     "card_name": "刚爪看守",
     "card_set_id": 10027,
@@ -617,6 +645,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900441120,
     "card_id": 900441120,
     "card_name": "莉莉尤姆的幼龙",
     "card_set_id": 90000,
@@ -639,6 +668,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434050,
     "card_id": 900434050,
     "card_name": "罗文的咆哮",
     "card_set_id": 90000,
@@ -661,6 +691,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434060,
     "card_id": 900434060,
     "card_name": "拜迪的爪牙",
     "card_set_id": 90000,
@@ -683,6 +714,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444050,
     "card_id": 900444050,
     "card_name": "烈绝的灭牙",
     "card_set_id": 90000,
@@ -705,6 +737,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900422010,
     "card_id": 900422010,
     "card_name": "龙武装甲",
     "card_set_id": 90000,
@@ -727,6 +760,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900521030,
     "card_id": 900521030,
     "card_name": "芙兰的侍从",
     "card_set_id": 90000,
@@ -749,6 +783,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900524010,
     "card_id": 900524010,
     "card_name": "芙兰的诅咒",
     "card_set_id": 90000,
@@ -771,6 +806,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900534040,
     "card_id": 900534040,
     "card_name": "露娜的本领",
     "card_set_id": 90000,
@@ -793,6 +829,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900534050,
     "card_id": 900534050,
     "card_name": "安镍儿的献身",
     "card_set_id": 90000,
@@ -815,6 +852,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544120,
     "card_id": 900544120,
     "card_name": "王者尸术",
     "card_set_id": 90000,
@@ -837,6 +875,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108634010,
     "card_id": 108634010,
     "card_name": "给仆从的礼物",
     "card_set_id": 10008,
@@ -859,6 +898,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129624010,
     "card_id": 129624010,
     "card_name": "公主们的遨游",
     "card_set_id": 10029,
@@ -881,6 +921,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900634020,
     "card_id": 900634020,
     "card_name": "尤里亚斯的斗争",
     "card_set_id": 90000,
@@ -903,6 +944,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900634030,
     "card_id": 900634030,
     "card_name": "莫诺的觉悟",
     "card_set_id": 90000,
@@ -925,6 +967,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644050,
     "card_id": 900644050,
     "card_name": "惊骇之夜",
     "card_set_id": 90000,
@@ -947,6 +990,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644090,
     "card_id": 900644090,
     "card_name": "爱绝的飞翔",
     "card_set_id": 90000,
@@ -969,6 +1013,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109623010,
     "card_id": 109623010,
     "card_name": "诡谲的幽暗街道",
     "card_set_id": 10009,
@@ -991,6 +1036,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900734040,
     "card_id": 900734040,
     "card_name": "伊莉丝的祈祷",
     "card_set_id": 90000,
@@ -1013,6 +1059,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900734050,
     "card_id": 900734050,
     "card_name": "喵鲁的跃动",
     "card_set_id": 90000,
@@ -1035,6 +1082,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744010,
     "card_id": 900744010,
     "card_name": "莉莫涅姆的救赎",
     "card_set_id": 90000,
@@ -1057,6 +1105,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744030,
     "card_id": 900744030,
     "card_name": "圣女的号令",
     "card_set_id": 90000,
@@ -1079,6 +1128,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744040,
     "card_id": 900744040,
     "card_name": "狮子的祝福",
     "card_set_id": 90000,
@@ -1101,6 +1151,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744060,
     "card_id": 900744060,
     "card_name": "久远的指引",
     "card_set_id": 90000,
@@ -1123,6 +1174,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118821010,
     "card_id": 118821010,
     "card_name": "密舱人造少女",
     "card_set_id": 10018,
@@ -1145,6 +1197,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900811050,
     "card_id": 900811050,
     "card_name": "悬丝傀儡",
     "card_set_id": 90000,
@@ -1167,6 +1220,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900811050,
     "card_id": 900841330,
     "card_name": "雷琉的人偶",
     "card_set_id": 90000,
@@ -1189,6 +1243,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900841140,
     "card_id": 900841140,
     "card_name": "破坏召来者·薇姿雅",
     "card_set_id": 90000,
@@ -1211,6 +1266,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900841150,
     "card_id": 900841150,
     "card_name": "杀戮召来者·依嘉露耶",
     "card_set_id": 90000,
@@ -1233,6 +1289,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900841160,
     "card_id": 900841160,
     "card_name": "绝望召来者·吉欧媞德",
     "card_set_id": 90000,
@@ -1255,6 +1312,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107834020,
     "card_id": 107834020,
     "card_name": "生命量产",
     "card_set_id": 10007,
@@ -1277,6 +1335,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110824010,
     "card_id": 110824010,
     "card_name": "自动化",
     "card_set_id": 10010,
@@ -1299,6 +1358,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115814010,
     "card_id": 115814010,
     "card_name": "全神贯注",
     "card_set_id": 10015,
@@ -1321,6 +1381,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118834010,
     "card_id": 118834010,
     "card_name": "境界线的生成",
     "card_set_id": 10018,
@@ -1343,6 +1404,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122814010,
     "card_id": 122814010,
     "card_name": "改良实验",
     "card_set_id": 10022,
@@ -1365,6 +1427,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123824010,
     "card_id": 123824010,
     "card_name": "突破音速",
     "card_set_id": 10023,
@@ -1387,6 +1450,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128834010,
     "card_id": 128834010,
     "card_name": "次元裂缝",
     "card_set_id": 10028,
@@ -1409,6 +1473,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129834010,
     "card_id": 129834010,
     "card_name": "遗物的同步",
     "card_set_id": 10029,
@@ -1431,6 +1496,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834050,
     "card_id": 900834050,
     "card_name": "伊昂的愤怒",
     "card_set_id": 90000,
@@ -1453,6 +1519,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834060,
     "card_id": 900834060,
     "card_name": "贝尔弗特的镇压",
     "card_set_id": 90000,
@@ -1475,6 +1542,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844020,
     "card_id": 900844020,
     "card_name": "格莱亚斯的咆哮",
     "card_set_id": 90000,
@@ -1497,6 +1565,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844050,
     "card_id": 900844050,
     "card_name": "灾祸的终结",
     "card_set_id": 90000,
@@ -1519,6 +1588,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844060,
     "card_id": 900844060,
     "card_name": "奏绝的独唱",
     "card_set_id": 90000,
@@ -1541,6 +1611,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100011010,
     "card_id": 100011010,
     "card_name": "哥布林",
     "card_set_id": 10000,
@@ -1563,6 +1634,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104011030,
     "card_id": 104011030,
     "card_name": "鱼人智者",
     "card_set_id": 10004,
@@ -1585,6 +1657,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110011020,
     "card_id": 110011020,
     "card_name": "刚毅的天使",
     "card_set_id": 10010,
@@ -1607,6 +1680,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118011010,
     "card_id": 118011010,
     "card_name": "勒比卢的恶徒",
     "card_set_id": 10018,
@@ -1629,6 +1703,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124021010,
     "card_id": 124021010,
     "card_name": "哥布林勇者",
     "card_set_id": 10024,
@@ -1651,6 +1726,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125011010,
     "card_id": 125011010,
     "card_name": "漫游的哥布林",
     "card_set_id": 10025,
@@ -1673,6 +1749,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126031010,
     "card_id": 126031010,
     "card_name": "洁翼之狮·嘉鲁艾尔",
     "card_set_id": 10026,
@@ -1695,6 +1772,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127011010,
     "card_id": 127011010,
     "card_name": "天球天使",
     "card_set_id": 10027,
@@ -1717,6 +1795,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127021020,
     "card_id": 127021020,
     "card_name": "猫头鹰少女",
     "card_set_id": 10027,
@@ -1739,6 +1818,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128011010,
     "card_id": 128011010,
     "card_name": "聪颖的哥布林",
     "card_set_id": 10028,
@@ -1761,6 +1841,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900011080,
     "card_id": 900011080,
     "card_name": "生产器械",
     "card_set_id": 90000,
@@ -1783,6 +1864,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900031030,
     "card_id": 900031030,
     "card_name": "暗影士兵",
     "card_set_id": 90000,
@@ -1805,6 +1887,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101024010,
     "card_id": 101024010,
     "card_name": "天使的圣箭",
     "card_set_id": 10001,
@@ -1827,6 +1910,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105024010,
     "card_id": 105024010,
     "card_name": "镜之世界",
     "card_set_id": 10005,
@@ -1849,6 +1933,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106024010,
     "card_id": 106024010,
     "card_name": "神秘的戒指",
     "card_set_id": 10006,
@@ -1871,6 +1956,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107024010,
     "card_id": 107024010,
     "card_name": "藏宝图",
     "card_set_id": 10007,
@@ -1893,6 +1979,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115024010,
     "card_id": 115024010,
     "card_name": "双雄激斗",
     "card_set_id": 10015,
@@ -1915,6 +2002,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120014010,
     "card_id": 120014010,
     "card_name": "记忆的轨迹",
     "card_set_id": 10020,
@@ -1937,6 +2025,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121034010,
     "card_id": 121034010,
     "card_name": "那塔拉的未来",
     "card_set_id": 10021,
@@ -1959,6 +2048,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122014010,
     "card_id": 122014010,
     "card_name": "天使的加护",
     "card_set_id": 10022,
@@ -1981,6 +2071,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129014020,
     "card_id": 129014020,
     "card_name": "堕天使的加护",
     "card_set_id": 10029,
@@ -2003,6 +2094,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129024010,
     "card_id": 129024010,
     "card_name": "庆典的飨宴",
     "card_set_id": 10029,
@@ -2025,6 +2117,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900014010,
     "card_id": 900014010,
     "card_name": "修复模式",
     "card_set_id": 90000,
@@ -2047,6 +2140,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900034010,
     "card_id": 900034010,
     "card_name": "慈爱水露",
     "card_set_id": 90000,
@@ -2069,6 +2163,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900034030,
     "card_id": 900034030,
     "card_name": "凯加的药膳料理",
     "card_set_id": 90000,
@@ -2091,6 +2186,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900034040,
     "card_id": 900034040,
     "card_name": "凯加的激辣料理",
     "card_set_id": 90000,
@@ -2113,6 +2209,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044040,
     "card_id": 900044040,
     "card_name": "撒旦的凝视",
     "card_set_id": 90000,
@@ -2135,6 +2232,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044050,
     "card_id": 900044050,
     "card_name": "撒旦的波动",
     "card_set_id": 90000,
@@ -2157,6 +2255,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106033010,
     "card_id": 106033010,
     "card_name": "天国的阶梯",
     "card_set_id": 10006,
@@ -2179,6 +2278,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108013010,
     "card_id": 108013010,
     "card_name": "天使之泉",
     "card_set_id": 10008,
@@ -2201,6 +2301,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115013010,
     "card_id": 115013010,
     "card_name": "压迫的关口",
     "card_set_id": 10015,
@@ -2223,6 +2324,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121023010,
     "card_id": 121023010,
     "card_name": "埃亚隆的残骸",
     "card_set_id": 10021,
@@ -2245,6 +2347,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122023010,
     "card_id": 122023010,
     "card_name": "传说的古书",
     "card_set_id": 10022,
@@ -2267,6 +2370,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122033010,
     "card_id": 122033010,
     "card_name": "灾祸的刻印",
     "card_set_id": 10022,
@@ -2289,6 +2393,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900012010,
     "card_id": 900012010,
     "card_name": "那塔拉的大树",
     "card_set_id": 90000,
@@ -2311,6 +2416,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900012020,
     "card_id": 900012020,
     "card_name": "顺从的骏马",
     "card_set_id": 90000,
@@ -2333,6 +2439,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100111010,
     "card_id": 100111010,
     "card_name": "水之妖精",
     "card_set_id": 10000,
@@ -2355,6 +2462,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101111010,
     "card_id": 101111010,
     "card_name": "精灵女孩·小梅",
     "card_set_id": 10001,
@@ -2377,6 +2485,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101111020,
     "card_id": 101111020,
     "card_name": "妖精勇者",
     "card_set_id": 10001,
@@ -2399,6 +2508,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103111050,
     "card_id": 103111050,
     "card_name": "猫人族少女",
     "card_set_id": 10003,
@@ -2421,6 +2531,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110141020,
     "card_id": 110141020,
     "card_name": "冰晶皇族·蒂亚",
     "card_set_id": 10010,
@@ -2443,6 +2554,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111111030,
     "card_id": 111111030,
     "card_name": "树艺师·莱拉",
     "card_set_id": 10011,
@@ -2465,6 +2577,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112111030,
     "card_id": 112111030,
     "card_name": "机械蓑衣虫",
     "card_set_id": 10012,
@@ -2487,6 +2600,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113131010,
     "card_id": 113131010,
     "card_name": "豪风破魔虫",
     "card_set_id": 10013,
@@ -2509,6 +2623,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113131030,
     "card_id": 113131030,
     "card_name": "活泼的精灵·小梅",
     "card_set_id": 10013,
@@ -2531,6 +2646,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115111020,
     "card_id": 115111020,
     "card_name": "十字弩狙击手",
     "card_set_id": 10015,
@@ -2553,6 +2669,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115141030,
     "card_id": 115141030,
     "card_name": "逸想妖精龙",
     "card_set_id": 10015,
@@ -2575,6 +2692,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116111030,
     "card_id": 116111030,
     "card_name": "铁甲独角仙",
     "card_set_id": 10016,
@@ -2597,6 +2715,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117121020,
     "card_id": 117121020,
     "card_name": "碎击巨虫",
     "card_set_id": 10017,
@@ -2619,6 +2738,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118111030,
     "card_id": 118111030,
     "card_name": "仙人掌牛仔",
     "card_set_id": 10018,
@@ -2641,6 +2761,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118141010,
     "card_id": 118141010,
     "card_name": "优美的猫姊妹·暹罗与暹玛",
     "card_set_id": 10018,
@@ -2663,6 +2784,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119121010,
     "card_id": 119121010,
     "card_name": "森林游侠·维尔达",
     "card_set_id": 10019,
@@ -2685,6 +2807,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120141020,
     "card_id": 120141020,
     "card_name": "宿命的狐火·雪华",
     "card_set_id": 10020,
@@ -2707,6 +2830,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122131010,
     "card_id": 122131010,
     "card_name": "花叶之狐",
     "card_set_id": 10022,
@@ -2729,6 +2853,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122131020,
     "card_id": 122131020,
     "card_name": "疾风妖精",
     "card_set_id": 10022,
@@ -2751,6 +2876,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125111010,
     "card_id": 125111010,
     "card_name": "红叶的小叶人",
     "card_set_id": 10025,
@@ -2773,6 +2899,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125121010,
     "card_id": 125121010,
     "card_name": "奋发的猫人族少女",
     "card_set_id": 10025,
@@ -2795,6 +2922,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125131010,
     "card_id": 125131010,
     "card_name": "绿水妖精",
     "card_set_id": 10025,
@@ -2817,6 +2945,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126131020,
     "card_id": 126131020,
     "card_name": "千日菊小熊",
     "card_set_id": 10026,
@@ -2839,6 +2968,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127111010,
     "card_id": 127111010,
     "card_name": "新芽组员",
     "card_set_id": 10027,
@@ -2861,6 +2991,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127141030,
     "card_id": 127141030,
     "card_name": "安逸女神·璞尔美莉亚",
     "card_set_id": 10027,
@@ -2883,6 +3014,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128111030,
     "card_id": 128111030,
     "card_name": "剑兔",
     "card_set_id": 10028,
@@ -2905,6 +3037,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128121010,
     "card_id": 128121010,
     "card_name": "自然驯服师",
     "card_set_id": 10028,
@@ -2927,6 +3060,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128141010,
     "card_id": 128141010,
     "card_name": "嫩绿的新生·卡诗黛儿",
     "card_set_id": 10028,
@@ -2949,6 +3083,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129121020,
     "card_id": 129121020,
     "card_name": "珍宝蜻蜓",
     "card_set_id": 10029,
@@ -2971,6 +3106,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129131010,
     "card_id": 129131010,
     "card_name": "想望的少女·珈诺",
     "card_set_id": 10029,
@@ -2993,6 +3129,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900111010,
     "card_id": 900111010,
     "card_name": "妖精",
     "card_set_id": 90000,
@@ -3015,6 +3152,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114010,
     "card_id": 101114010,
     "card_name": "大自然的导引",
     "card_set_id": 10001,
@@ -3037,6 +3175,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114050,
     "card_id": 101114050,
     "card_name": "妖精的呼朋引伴",
     "card_set_id": 10001,
@@ -3059,6 +3198,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103114020,
     "card_id": 103114020,
     "card_name": "缠绕树藤",
     "card_set_id": 10003,
@@ -3081,6 +3221,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106114010,
     "card_id": 106114010,
     "card_name": "对空射击",
     "card_set_id": 10006,
@@ -3103,6 +3244,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107134010,
     "card_id": 107134010,
     "card_name": "妖精的奔流",
     "card_set_id": 10007,
@@ -3125,6 +3267,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114124010,
     "card_id": 114124010,
     "card_name": "自然玛纳",
     "card_set_id": 10014,
@@ -3147,6 +3290,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114134010,
     "card_id": 114134010,
     "card_name": "神铁炼制术",
     "card_set_id": 10014,
@@ -3169,6 +3313,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115114010,
     "card_id": 115114010,
     "card_name": "交叉合击",
     "card_set_id": 10015,
@@ -3191,6 +3336,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115124010,
     "card_id": 115124010,
     "card_name": "灵之光耀",
     "card_set_id": 10015,
@@ -3213,6 +3359,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121114010,
     "card_id": 121114010,
     "card_name": "异端的孤独",
     "card_set_id": 10021,
@@ -3235,6 +3382,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121134010,
     "card_id": 121134010,
     "card_name": "英雄的觉悟",
     "card_set_id": 10021,
@@ -3257,6 +3405,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122134010,
     "card_id": 122134010,
     "card_name": "奇迹的结实",
     "card_set_id": 10022,
@@ -3279,6 +3428,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123124010,
     "card_id": 123124010,
     "card_name": "轮回重生",
     "card_set_id": 10023,
@@ -3301,6 +3451,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123134010,
     "card_id": 123134010,
     "card_name": "绝命的腐蚀",
     "card_set_id": 10023,
@@ -3323,6 +3474,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124124010,
     "card_id": 124124010,
     "card_name": "翠绿的加护",
     "card_set_id": 10024,
@@ -3345,6 +3497,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125134010,
     "card_id": 125134010,
     "card_name": "豪风袭击",
     "card_set_id": 10025,
@@ -3367,6 +3520,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126114010,
     "card_id": 126114010,
     "card_name": "花舞微风",
     "card_set_id": 10026,
@@ -3389,6 +3543,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127124010,
     "card_id": 127124010,
     "card_name": "野性的觉醒",
     "card_set_id": 10027,
@@ -3411,6 +3566,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127134010,
     "card_id": 127134010,
     "card_name": "朝向未来的指引",
     "card_set_id": 10027,
@@ -3433,6 +3589,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128114010,
     "card_id": 128114010,
     "card_name": "妖精的学习",
     "card_set_id": 10028,
@@ -3455,6 +3612,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900124010,
     "card_id": 900124010,
     "card_name": "天使的盛装",
     "card_set_id": 90000,
@@ -3477,6 +3635,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900124020,
     "card_id": 900124020,
     "card_name": "恶魔的盛装",
     "card_set_id": 90000,
@@ -3499,6 +3658,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144040,
     "card_id": 900144040,
     "card_name": "丝线",
     "card_set_id": 90000,
@@ -3521,6 +3681,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144050,
     "card_id": 900144050,
     "card_name": "宝石兽的辉煌",
     "card_set_id": 90000,
@@ -3543,6 +3704,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144080,
     "card_id": 900144080,
     "card_name": "九尾的决意",
     "card_set_id": 90000,
@@ -3565,6 +3727,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144110,
     "card_id": 900144110,
     "card_name": "绝命的痛击",
     "card_set_id": 90000,
@@ -3587,6 +3750,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144130,
     "card_id": 900144130,
     "card_name": "新绿的显现",
     "card_set_id": 90000,
@@ -3609,6 +3773,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101122020,
     "card_id": 101122020,
     "card_name": "森林圣域",
     "card_set_id": 10001,
@@ -3631,6 +3796,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106133010,
     "card_id": 106133010,
     "card_name": "新绿的加护",
     "card_set_id": 10006,
@@ -3653,6 +3819,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107113010,
     "card_id": 107113010,
     "card_name": "炎精之森",
     "card_set_id": 10007,
@@ -3675,6 +3842,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109113010,
     "card_id": 109113010,
     "card_name": "沉眠的妖精之森",
     "card_set_id": 10009,
@@ -3697,6 +3865,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900113010,
     "card_id": 900113010,
     "card_name": "妖精的大呵欠",
     "card_set_id": 90000,
@@ -3719,6 +3888,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900113020,
     "card_id": 900113020,
     "card_name": "妖精的苏醒",
     "card_set_id": 90000,
@@ -3741,6 +3911,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900143010,
     "card_id": 900143010,
     "card_name": "森林守卫之弓",
     "card_set_id": 90000,
@@ -3763,6 +3934,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100211010,
     "card_id": 100211010,
     "card_name": "迅捷的剑士",
     "card_set_id": 10000,
@@ -3785,6 +3957,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101211010,
     "card_id": 101211010,
     "card_name": "忍者学徒",
     "card_set_id": 10001,
@@ -3807,6 +3980,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101211120,
     "card_id": 101211120,
     "card_name": "斥候军团兵",
     "card_set_id": 10001,
@@ -3829,6 +4003,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106231020,
     "card_id": 106231020,
     "card_name": "帕尔修斯",
     "card_set_id": 10006,
@@ -3851,6 +4026,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107211030,
     "card_id": 107211030,
     "card_name": "狼牙剑士",
     "card_set_id": 10007,
@@ -3873,6 +4049,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108211010,
     "card_id": 108211010,
     "card_name": "巨斧公主",
     "card_set_id": 10008,
@@ -3895,6 +4072,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109221020,
     "card_id": 109221020,
     "card_name": "冷酷佣兵·路西乌斯",
     "card_set_id": 10009,
@@ -3917,6 +4095,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110231010,
     "card_id": 110231010,
     "card_name": "刺剑大师",
     "card_set_id": 10010,
@@ -3939,6 +4118,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113211010,
     "card_id": 113211010,
     "card_name": "雷维翁见习兵·璐涅丝",
     "card_set_id": 10013,
@@ -3961,6 +4141,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115241010,
     "card_id": 115241010,
     "card_name": "不败剑圣·景光",
     "card_set_id": 10015,
@@ -3983,6 +4164,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117221020,
     "card_id": 117221020,
     "card_name": "武器商人·艾尔涅丝塔",
     "card_set_id": 10017,
@@ -4005,6 +4187,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118211030,
     "card_id": 118211030,
     "card_name": "忍者狸猫",
     "card_set_id": 10018,
@@ -4027,6 +4210,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118231020,
     "card_id": 118231020,
     "card_name": "激进的神枪手",
     "card_set_id": 10018,
@@ -4049,6 +4233,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120221020,
     "card_id": 120221020,
     "card_name": "生还的突击兵",
     "card_set_id": 10020,
@@ -4071,6 +4256,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122231020,
     "card_id": 122231020,
     "card_name": "巨斧海盗",
     "card_set_id": 10022,
@@ -4093,6 +4279,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123211030,
     "card_id": 123211030,
     "card_name": "企鹅卫兵",
     "card_set_id": 10023,
@@ -4115,6 +4302,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123221030,
     "card_id": 123221030,
     "card_name": "空绝的崇拜者",
     "card_set_id": 10023,
@@ -4137,6 +4325,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124221020,
     "card_id": 124221020,
     "card_name": "边境的见习骑士",
     "card_set_id": 10024,
@@ -4159,6 +4348,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125211030,
     "card_id": 125211030,
     "card_name": "军士猫",
     "card_set_id": 10025,
@@ -4181,6 +4371,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125221010,
     "card_id": 125221010,
     "card_name": "英勇的斥候军团兵",
     "card_set_id": 10025,
@@ -4203,6 +4394,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126211030,
     "card_id": 126211030,
     "card_name": "战斗女仆",
     "card_set_id": 10026,
@@ -4225,6 +4417,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126221020,
     "card_id": 126221020,
     "card_name": "高雅的盗贼",
     "card_set_id": 10026,
@@ -4247,6 +4440,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126231010,
     "card_id": 126231010,
     "card_name": "锐枪骑士·埃米罗斯",
     "card_set_id": 10026,
@@ -4269,6 +4463,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127211010,
     "card_id": 127211010,
     "card_name": "大洋斥候",
     "card_set_id": 10027,
@@ -4291,6 +4486,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127241030,
     "card_id": 127241030,
     "card_name": "公主·梅裴琉",
     "card_set_id": 10027,
@@ -4313,6 +4509,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129211010,
     "card_id": 129211010,
     "card_name": "剑刃盗贼",
     "card_set_id": 10029,
@@ -4335,6 +4532,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900211010,
     "card_id": 900211010,
     "card_name": "骑士",
     "card_set_id": 90000,
@@ -4357,6 +4555,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900211020,
     "card_id": 900211020,
     "card_name": "重装骑士",
     "card_set_id": 90000,
@@ -4379,6 +4578,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900211070,
     "card_id": 900211070,
     "card_name": "战盾卫士",
     "card_set_id": 90000,
@@ -4401,6 +4601,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900221010,
     "card_id": 900221010,
     "card_name": "恐惧猎犬",
     "card_set_id": 90000,
@@ -4423,6 +4624,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900241010,
     "card_id": 900241010,
     "card_name": "乙姬近卫队",
     "card_set_id": 90000,
@@ -4445,6 +4647,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900241050,
     "card_id": 900241050,
     "card_name": "黄昏之刃·奈诺",
     "card_set_id": 90000,
@@ -4467,6 +4670,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100214010,
     "card_id": 100214010,
     "card_name": "疾风怒涛",
     "card_set_id": 10000,
@@ -4489,6 +4693,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102214040,
     "card_id": 102214040,
     "card_name": "师长的教诲",
     "card_set_id": 10002,
@@ -4511,6 +4716,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107224010,
     "card_id": 107224010,
     "card_name": "骑士的受封仪式",
     "card_set_id": 10007,
@@ -4533,6 +4739,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108234010,
     "card_id": 108234010,
     "card_name": "白与黑的激斗",
     "card_set_id": 10008,
@@ -4555,6 +4762,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109214010,
     "card_id": 109214010,
     "card_name": "出血大特卖",
     "card_set_id": 10009,
@@ -4577,6 +4785,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113224010,
     "card_id": 113224010,
     "card_name": "优雅的款待",
     "card_set_id": 10013,
@@ -4599,6 +4808,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113234010,
     "card_id": 113234010,
     "card_name": "雷维翁姊妺登场！",
     "card_set_id": 10013,
@@ -4621,6 +4831,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114224010,
     "card_id": 114224010,
     "card_name": "勇气玛纳",
     "card_set_id": 10014,
@@ -4643,6 +4854,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114234020,
     "card_id": 114234020,
     "card_name": "雷维翁的正义",
     "card_set_id": 10014,
@@ -4665,6 +4877,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115224010,
     "card_id": 115224010,
     "card_name": "绚烂的劫夺",
     "card_set_id": 10015,
@@ -4687,6 +4900,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117214010,
     "card_id": 117214010,
     "card_name": "任性的差遣",
     "card_set_id": 10017,
@@ -4709,6 +4923,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117234010,
     "card_id": 117234010,
     "card_name": "所向披靡",
     "card_set_id": 10017,
@@ -4731,6 +4946,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118224010,
     "card_id": 118224010,
     "card_name": "壮烈的撤退",
     "card_set_id": 10018,
@@ -4753,6 +4969,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121214010,
     "card_id": 121214010,
     "card_name": "勇武的团结",
     "card_set_id": 10021,
@@ -4775,6 +4992,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121234010,
     "card_id": 121234010,
     "card_name": "向阳的邂逅",
     "card_set_id": 10021,
@@ -4797,6 +5015,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122214010,
     "card_id": 122214010,
     "card_name": "战地传唤",
     "card_set_id": 10022,
@@ -4819,6 +5038,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123224010,
     "card_id": 123224010,
     "card_name": "斩刀战技",
     "card_set_id": 10023,
@@ -4841,6 +5061,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123234010,
     "card_id": 123234010,
     "card_name": "精炼的空绝",
     "card_set_id": 10023,
@@ -4863,6 +5084,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124224010,
     "card_id": 124224010,
     "card_name": "绝地生还",
     "card_set_id": 10024,
@@ -4885,6 +5107,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124234010,
     "card_id": 124234010,
     "card_name": "盗贼群起",
     "card_set_id": 10024,
@@ -4907,6 +5130,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128214010,
     "card_id": 128214010,
     "card_name": "战场纪录",
     "card_set_id": 10028,
@@ -4929,6 +5153,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129214010,
     "card_id": 129214010,
     "card_name": "投入兵力",
     "card_set_id": 10029,
@@ -4951,6 +5176,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214010,
     "card_id": 900214010,
     "card_name": "黄金短剑",
     "card_set_id": 90000,
@@ -4973,6 +5199,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214020,
     "card_id": 900214020,
     "card_name": "黄金之杯",
     "card_set_id": 90000,
@@ -4995,6 +5222,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214030,
     "card_id": 900214030,
     "card_name": "黄金之靴",
     "card_set_id": 90000,
@@ -5017,6 +5245,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214040,
     "card_id": 900214040,
     "card_name": "黄金首饰",
     "card_set_id": 90000,
@@ -5039,6 +5268,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214050,
     "card_id": 900214050,
     "card_name": "闪耀的金币",
     "card_set_id": 90000,
@@ -5061,6 +5291,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900214060,
     "card_id": 900214060,
     "card_name": "战栗的海贼旗",
     "card_set_id": 90000,
@@ -5083,6 +5314,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900224020,
     "card_id": 900224020,
     "card_name": "必杀之魔弹",
     "card_set_id": 90000,
@@ -5105,6 +5337,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244020,
     "card_id": 900244020,
     "card_name": "王之剑闪",
     "card_set_id": 90000,
@@ -5127,6 +5360,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101232020,
     "card_id": 101232020,
     "card_name": "战场最前线",
     "card_set_id": 10001,
@@ -5149,6 +5383,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104213010,
     "card_id": 104213010,
     "card_name": "大扫除",
     "card_set_id": 10004,
@@ -5171,6 +5406,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113331010,
     "card_id": 113331010,
     "card_name": "巫魔公主·梅薇",
     "card_set_id": 10013,
@@ -5193,6 +5429,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115311010,
     "card_id": 115311010,
     "card_name": "符术的门生",
     "card_set_id": 10015,
@@ -5215,6 +5452,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117321010,
     "card_id": 117321010,
     "card_name": "魔猫奇术师",
     "card_set_id": 10017,
@@ -5237,6 +5475,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118341010,
     "card_id": 118341010,
     "card_name": "疾速英雄·麦哲",
     "card_set_id": 10018,
@@ -5259,6 +5498,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119321020,
     "card_id": 119321020,
     "card_name": "小小魔法师·阿里斯特拉",
     "card_set_id": 10019,
@@ -5281,6 +5521,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121321010,
     "card_id": 121321010,
     "card_name": "绽花魔术师·玛莉",
     "card_set_id": 10021,
@@ -5303,6 +5544,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122341030,
     "card_id": 122341030,
     "card_name": "卓绝的契约者",
     "card_set_id": 10022,
@@ -5325,6 +5567,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126311020,
     "card_id": 126311020,
     "card_name": "预见的魔法师",
     "card_set_id": 10026,
@@ -5347,6 +5590,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128341010,
     "card_id": 128341010,
     "card_name": "童话公主·阿玛丽丽丝",
     "card_set_id": 10028,
@@ -5369,6 +5613,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311010,
     "card_id": 900311010,
     "card_name": "雪人",
     "card_set_id": 90000,
@@ -5391,6 +5636,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900311040,
     "card_id": 900311040,
     "card_name": "废铁巨像",
     "card_set_id": 90000,
@@ -5413,6 +5659,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311060,
     "card_id": 900311060,
     "card_name": "着火的老鼠",
     "card_set_id": 90000,
@@ -5435,6 +5682,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311070,
     "card_id": 900311070,
     "card_name": "马纳历亚魔兽·尼克",
     "card_set_id": 90000,
@@ -5457,6 +5705,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311110,
     "card_id": 900311110,
     "card_name": "奇幻士兵",
     "card_set_id": 90000,
@@ -5479,6 +5728,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314010,
     "card_id": 100314010,
     "card_name": "智慧之光",
     "card_set_id": 10000,
@@ -5501,6 +5751,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101324030,
     "card_id": 101324030,
     "card_name": "实验开始",
     "card_set_id": 10001,
@@ -5523,6 +5774,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107324010,
     "card_id": 107324010,
     "card_name": "马纳历亚的知识",
     "card_set_id": 10007,
@@ -5545,6 +5797,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114324010,
     "card_id": 114324010,
     "card_name": "元素玛纳",
     "card_set_id": 10014,
@@ -5567,6 +5820,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117314010,
     "card_id": 117314010,
     "card_name": "扩展的魔法",
     "card_set_id": 10017,
@@ -5589,6 +5843,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118334010,
     "card_id": 118334010,
     "card_name": "未知的考究",
     "card_set_id": 10018,
@@ -5611,6 +5866,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119314010,
     "card_id": 119314010,
     "card_name": "戏刀奇术",
     "card_set_id": 10019,
@@ -5633,6 +5889,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120324010,
     "card_id": 120324010,
     "card_name": "地表崩裂",
     "card_set_id": 10020,
@@ -5655,6 +5912,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121334010,
     "card_id": 121334010,
     "card_name": "公会会议",
     "card_set_id": 10021,
@@ -5677,6 +5935,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122314010,
     "card_id": 122314010,
     "card_name": "碎石魔弹",
     "card_set_id": 10022,
@@ -5699,6 +5958,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123324010,
     "card_id": 123324010,
     "card_name": "阴阳秘法",
     "card_set_id": 10023,
@@ -5721,6 +5981,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125314020,
     "card_id": 125314020,
     "card_name": "魅惑魔法",
     "card_set_id": 10025,
@@ -5743,6 +6004,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127314020,
     "card_id": 127314020,
     "card_name": "猫化魔法",
     "card_set_id": 10027,
@@ -5765,6 +6027,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128314010,
     "card_id": 128314010,
     "card_name": "魔法指导",
     "card_set_id": 10028,
@@ -5787,6 +6050,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128314020,
     "card_id": 128314020,
     "card_name": "超快棋",
     "card_set_id": 10028,
@@ -5809,6 +6073,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128334010,
     "card_id": 128334010,
     "card_name": "马纳历亚派对",
     "card_set_id": 10028,
@@ -5831,6 +6096,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129314020,
     "card_id": 129314020,
     "card_name": "与使魔的契约",
     "card_set_id": 10029,
@@ -5853,6 +6119,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314020,
     "card_id": 900314020,
     "card_name": "红莲的法术",
     "card_set_id": 90000,
@@ -5875,6 +6142,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334050,
     "card_id": 900334050,
     "card_name": "古蕾娅的炎热之术",
     "card_set_id": 90000,
@@ -5897,6 +6165,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334070,
     "card_id": 900334070,
     "card_name": "绚丽的术式",
     "card_set_id": 90000,
@@ -5919,6 +6188,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344030,
     "card_id": 900344030,
     "card_name": "苍奏之四",
     "card_set_id": 90000,
@@ -5941,6 +6211,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344080,
     "card_id": 900344080,
     "card_name": "迅枪连击",
     "card_set_id": 90000,
@@ -5963,6 +6234,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344090,
     "card_id": 900344090,
     "card_name": "宣判之词",
     "card_set_id": 90000,
@@ -5985,6 +6257,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102312040,
     "card_id": 102312040,
     "card_name": "废铁炼成术",
     "card_set_id": 10002,
@@ -6007,6 +6280,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105312010,
     "card_id": 105312010,
     "card_name": "魔女的大锅炉",
     "card_set_id": 10005,
@@ -6029,6 +6303,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106312010,
     "card_id": 106312010,
     "card_name": "观星望远镜",
     "card_set_id": 10006,
@@ -6051,6 +6326,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109332010,
     "card_id": 109332010,
     "card_name": "神秘的魔法阵",
     "card_set_id": 10009,
@@ -6073,6 +6349,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900312010,
     "card_id": 900312010,
     "card_name": "土之魔片",
     "card_set_id": 90000,
@@ -6095,6 +6372,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900312020,
     "card_id": 900312020,
     "card_name": "大地之魔片",
     "card_set_id": 90000,
@@ -6117,6 +6395,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101411010,
     "card_id": 101411010,
     "card_name": "银白幼龙",
     "card_set_id": 10001,
@@ -6139,6 +6418,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110421020,
     "card_id": 110421020,
     "card_name": "疗愈美人鱼·吉赛儿",
     "card_set_id": 10010,
@@ -6161,6 +6441,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110421030,
     "card_id": 110421030,
     "card_name": "侮蔑的信徒",
     "card_set_id": 10010,
@@ -6183,6 +6464,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112431010,
     "card_id": 112431010,
     "card_name": "翱翔的龙人",
     "card_set_id": 10012,
@@ -6205,6 +6487,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114431020,
     "card_id": 114431020,
     "card_name": "华丽龙人·玛利翁",
     "card_set_id": 10014,
@@ -6227,6 +6510,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117411020,
     "card_id": 117411020,
     "card_name": "龙装枪术士",
     "card_set_id": 10017,
@@ -6249,6 +6533,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118411020,
     "card_id": 118411020,
     "card_name": "龙炎设计师",
     "card_set_id": 10018,
@@ -6271,6 +6556,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122421010,
     "card_id": 122421010,
     "card_name": "海洋之灵",
     "card_set_id": 10022,
@@ -6293,6 +6579,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122431010,
     "card_id": 122431010,
     "card_name": "辉饰幼龙",
     "card_set_id": 10022,
@@ -6315,6 +6602,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123421030,
     "card_id": 123421030,
     "card_name": "烈绝的崇拜者",
     "card_set_id": 10023,
@@ -6337,6 +6625,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124411030,
     "card_id": 124411030,
     "card_name": "育龙员",
     "card_set_id": 10024,
@@ -6359,6 +6648,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126421020,
     "card_id": 126421020,
     "card_name": "人鱼歌唱家",
     "card_set_id": 10026,
@@ -6381,6 +6671,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126431020,
     "card_id": 126431020,
     "card_name": "战鎚龙人",
     "card_set_id": 10026,
@@ -6403,6 +6694,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127411010,
     "card_id": 127411010,
     "card_name": "裂隙的盗匪",
     "card_set_id": 10027,
@@ -6425,6 +6717,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128411010,
     "card_id": 128411010,
     "card_name": "龙人前锋",
     "card_set_id": 10028,
@@ -6447,6 +6740,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129431010,
     "card_id": 129431010,
     "card_name": "白金龙剑士",
     "card_set_id": 10029,
@@ -6469,6 +6763,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900411040,
     "card_id": 900411040,
     "card_name": "炽炎幼龙",
     "card_set_id": 90000,
@@ -6491,6 +6786,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100414020,
     "card_id": 100414020,
     "card_name": "炽热吐息",
     "card_set_id": 10000,
@@ -6513,6 +6809,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107414010,
     "card_id": 107414010,
     "card_name": "风暴之翼",
     "card_set_id": 10007,
@@ -6535,6 +6832,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107424010,
     "card_id": 107424010,
     "card_name": "龙群的集结",
     "card_set_id": 10007,
@@ -6557,6 +6855,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110434010,
     "card_id": 110434010,
     "card_name": "侮蔑的炎爪",
     "card_set_id": 10010,
@@ -6579,6 +6878,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114424010,
     "card_id": 114424010,
     "card_name": "野性玛纳",
     "card_set_id": 10014,
@@ -6601,6 +6901,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115414010,
     "card_id": 115414010,
     "card_name": "武力炎翔",
     "card_set_id": 10015,
@@ -6623,6 +6924,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116424010,
     "card_id": 116424010,
     "card_name": "蛇龙之契",
     "card_set_id": 10016,
@@ -6645,6 +6947,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119424010,
     "card_id": 119424010,
     "card_name": "龙之养成",
     "card_set_id": 10019,
@@ -6667,6 +6970,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120434010,
     "card_id": 120434010,
     "card_name": "元祖的炙热",
     "card_set_id": 10020,
@@ -6689,6 +6993,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121424010,
     "card_id": 121424010,
     "card_name": "与未知的相遇",
     "card_set_id": 10021,
@@ -6711,6 +7016,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122414010,
     "card_id": 122414010,
     "card_name": "龙之苏醒",
     "card_set_id": 10022,
@@ -6733,6 +7039,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123414010,
     "card_id": 123414010,
     "card_name": "猎龙砍击",
     "card_set_id": 10023,
@@ -6755,6 +7062,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123434010,
     "card_id": 123434010,
     "card_name": "炽火的烈绝",
     "card_set_id": 10023,
@@ -6777,6 +7085,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125414010,
     "card_id": 125414010,
     "card_name": "人鱼之歌",
     "card_set_id": 10025,
@@ -6799,6 +7108,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126424010,
     "card_id": 126424010,
     "card_name": "龙之武装",
     "card_set_id": 10026,
@@ -6821,6 +7131,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128414010,
     "card_id": 128414010,
     "card_name": "沙尘风暴",
     "card_set_id": 10028,
@@ -6843,6 +7154,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434030,
     "card_id": 900434030,
     "card_name": "白垩号令",
     "card_set_id": 90000,
@@ -6865,6 +7177,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434070,
     "card_id": 900434070,
     "card_name": "龙鎚碎击",
     "card_set_id": 90000,
@@ -6887,6 +7200,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444030,
     "card_id": 900444030,
     "card_name": "爆炎的咆哮",
     "card_set_id": 90000,
@@ -6909,6 +7223,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444040,
     "card_id": 900444040,
     "card_name": "黑龙的诅咒",
     "card_set_id": 90000,
@@ -6931,6 +7246,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444060,
     "card_id": 900444060,
     "card_name": "波涛的镇压",
     "card_set_id": 90000,
@@ -6953,6 +7269,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102442010,
     "card_id": 102442010,
     "card_name": "唤龙魔笛",
     "card_set_id": 10002,
@@ -6975,6 +7292,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104412010,
     "card_id": 104412010,
     "card_name": "龙之卵",
     "card_set_id": 10004,
@@ -6997,6 +7315,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113433010,
     "card_id": 113433010,
     "card_name": "龙之财宝",
     "card_set_id": 10013,
@@ -7019,6 +7338,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101511120,
     "card_id": 101511120,
     "card_name": "骸骨兽",
     "card_set_id": 10001,
@@ -7041,6 +7361,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101521010,
     "card_id": 101521010,
     "card_name": "骷髅战将",
     "card_set_id": 10001,
@@ -7063,6 +7384,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104511020,
     "card_id": 104511020,
     "card_name": "死月的使徒",
     "card_set_id": 10004,
@@ -7085,6 +7407,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108511030,
     "card_id": 108511030,
     "card_name": "恶趣之灵",
     "card_set_id": 10008,
@@ -7107,6 +7430,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109541030,
     "card_id": 109541030,
     "card_name": "格莫瑞",
     "card_set_id": 10009,
@@ -7129,6 +7453,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113511010,
     "card_id": 113511010,
     "card_name": "秀逸死神·蜜诺",
     "card_set_id": 10013,
@@ -7151,6 +7476,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114521020,
     "card_id": 114521020,
     "card_name": "死尸犬",
     "card_set_id": 10014,
@@ -7173,6 +7499,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115531010,
     "card_id": 115531010,
     "card_name": "布丁幽灵·宫子",
     "card_set_id": 10015,
@@ -7195,6 +7522,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118511020,
     "card_id": 118511020,
     "card_name": "白骨怪客",
     "card_set_id": 10018,
@@ -7217,6 +7545,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119521010,
     "card_id": 119521010,
     "card_name": "妖惑的药师·宵",
     "card_set_id": 10019,
@@ -7239,6 +7568,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121541030,
     "card_id": 121541030,
     "card_name": "友魂少女·露娜",
     "card_set_id": 10021,
@@ -7261,6 +7591,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123521020,
     "card_id": 123521020,
     "card_name": "骸骨狂热者",
     "card_set_id": 10023,
@@ -7283,6 +7614,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125521010,
     "card_id": 125521010,
     "card_name": "妄想死神·蜜诺",
     "card_set_id": 10025,
@@ -7305,6 +7637,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126521010,
     "card_id": 126521010,
     "card_name": "调皮的僵尸",
     "card_set_id": 10026,
@@ -7327,6 +7660,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126531030,
     "card_id": 126531030,
     "card_name": "奔放的盗墓者",
     "card_set_id": 10026,
@@ -7349,6 +7683,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127511030,
     "card_id": 127511030,
     "card_name": "忠犬幽魂",
     "card_set_id": 10027,
@@ -7371,6 +7706,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128511030,
     "card_id": 128511030,
     "card_name": "忠勇死尸犬",
     "card_set_id": 10028,
@@ -7393,6 +7729,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129511020,
     "card_id": 129511020,
     "card_name": "幽灵之友",
     "card_set_id": 10029,
@@ -7415,6 +7752,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900511010,
     "card_id": 900511010,
     "card_name": "骷髅士兵",
     "card_set_id": 90000,
@@ -7437,6 +7775,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900511020,
     "card_id": 900511020,
     "card_name": "怨灵",
     "card_set_id": 90000,
@@ -7459,6 +7798,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900541040,
     "card_id": 900541040,
     "card_name": "守卫犬的右腕·米米",
     "card_set_id": 90000,
@@ -7481,6 +7821,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900541050,
     "card_id": 900541050,
     "card_name": "守卫犬的左腕·可可",
     "card_set_id": 90000,
@@ -7503,6 +7844,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101514010,
     "card_id": 101514010,
     "card_name": "灵魂转移",
     "card_set_id": 10001,
@@ -7525,6 +7867,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103524010,
     "card_id": 103524010,
     "card_name": "死灵之手",
     "card_set_id": 10003,
@@ -7547,6 +7890,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107524010,
     "card_id": 107524010,
     "card_name": "墓场的劝诱",
     "card_set_id": 10007,
@@ -7569,6 +7913,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110514010,
     "card_id": 110514010,
     "card_name": "沉默的肃清",
     "card_set_id": 10010,
@@ -7591,6 +7936,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111534010,
     "card_id": 111534010,
     "card_name": "沉默之诗",
     "card_set_id": 10011,
@@ -7613,6 +7959,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112534010,
     "card_id": 112534010,
     "card_name": "驭尸之道",
     "card_set_id": 10012,
@@ -7635,6 +7982,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114524010,
     "card_id": 114524010,
     "card_name": "苏生玛纳",
     "card_set_id": 10014,
@@ -7657,6 +8005,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115514010,
     "card_id": 115514010,
     "card_name": "百鬼夜行",
     "card_set_id": 10015,
@@ -7679,6 +8028,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119524010,
     "card_id": 119524010,
     "card_name": "不死游行",
     "card_set_id": 10019,
@@ -7701,6 +8051,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121534010,
     "card_id": 121534010,
     "card_name": "钢铁的希望",
     "card_set_id": 10021,
@@ -7723,6 +8074,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123514010,
     "card_id": 123514010,
     "card_name": "灵体入侵",
     "card_set_id": 10023,
@@ -7745,6 +8097,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123534010,
     "card_id": 123534010,
     "card_name": "怨仇的绝叫",
     "card_set_id": 10023,
@@ -7767,6 +8120,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124514010,
     "card_id": 124514010,
     "card_name": "绷带缠绕",
     "card_set_id": 10024,
@@ -7789,6 +8143,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124534010,
     "card_id": 124534010,
     "card_name": "巨臂的裁决",
     "card_set_id": 10024,
@@ -7811,6 +8166,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127514010,
     "card_id": 127514010,
     "card_name": "骸骨复苏",
     "card_set_id": 10027,
@@ -7833,6 +8189,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128514010,
     "card_id": 128514010,
     "card_name": "枕边的邪气",
     "card_set_id": 10028,
@@ -7855,6 +8212,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128534010,
     "card_id": 128534010,
     "card_name": "灵地震脚",
     "card_set_id": 10028,
@@ -7877,6 +8235,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129534010,
     "card_id": 129534010,
     "card_name": "魔炎斩击",
     "card_set_id": 10029,
@@ -7899,6 +8258,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900534010,
     "card_id": 900534010,
     "card_name": "凶暴化",
     "card_set_id": 90000,
@@ -7921,6 +8281,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544010,
     "card_id": 900544010,
     "card_name": "米米",
     "card_set_id": 90000,
@@ -7943,6 +8304,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544020,
     "card_id": 900544020,
     "card_name": "可可",
     "card_set_id": 90000,
@@ -7965,6 +8327,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544040,
     "card_id": 900544040,
     "card_name": "刹那的剧毒",
     "card_set_id": 90000,
@@ -7987,6 +8350,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544060,
     "card_id": 900544060,
     "card_name": "瞬逝的幸福",
     "card_set_id": 90000,
@@ -8009,6 +8373,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544070,
     "card_id": 900544070,
     "card_name": "悖德的欲望",
     "card_set_id": 90000,
@@ -8031,6 +8396,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544100,
     "card_id": 900544100,
     "card_name": "绝叫的扩散",
     "card_set_id": 90000,
@@ -8053,6 +8419,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544110,
     "card_id": 900544110,
     "card_name": "不惑的意志",
     "card_set_id": 90000,
@@ -8075,6 +8442,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101522010,
     "card_id": 101522010,
     "card_name": "集体埋葬地",
     "card_set_id": 10001,
@@ -8097,6 +8465,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101532010,
     "card_id": 101532010,
     "card_name": "恶灵的飨宴",
     "card_set_id": 10001,
@@ -8119,6 +8488,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105513010,
     "card_id": 105513010,
     "card_name": "幽灵宅邸",
     "card_set_id": 10005,
@@ -8141,6 +8511,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118513010,
     "card_id": 118513010,
     "card_name": "诅咒的铜币",
     "card_set_id": 10018,
@@ -8163,6 +8534,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900543010,
     "card_id": 900543010,
     "card_name": "露娜的玩偶",
     "card_set_id": 90000,
@@ -8185,6 +8557,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101611040,
     "card_id": 101611040,
     "card_name": "影魔",
     "card_set_id": 10001,
@@ -8207,6 +8580,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101621060,
     "card_id": 101621060,
     "card_name": "诅咒魔剑的吸血鬼",
     "card_set_id": 10001,
@@ -8229,6 +8603,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108621010,
     "card_id": 108621010,
     "card_name": "血罪少女·布菈",
     "card_set_id": 10008,
@@ -8251,6 +8626,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110621020,
     "card_id": 110621020,
     "card_name": "奸淫的信徒",
     "card_set_id": 10010,
@@ -8273,6 +8649,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115621030,
     "card_id": 115621030,
     "card_name": "吸血鬼屠杀者·路西乌斯",
     "card_set_id": 10015,
@@ -8295,6 +8672,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117611020,
     "card_id": 117611020,
     "card_name": "银箭狩猎者",
     "card_set_id": 10017,
@@ -8317,6 +8695,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119611010,
     "card_id": 119611010,
     "card_name": "殷红吸血鬼",
     "card_set_id": 10019,
@@ -8339,6 +8718,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123621010,
     "card_id": 123621010,
     "card_name": "棘刺吸血鬼",
     "card_set_id": 10023,
@@ -8361,6 +8741,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123621030,
     "card_id": 123621030,
     "card_name": "爱绝的崇拜者",
     "card_set_id": 10023,
@@ -8383,6 +8764,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124621020,
     "card_id": 124621020,
     "card_name": "沼泽巨蝎",
     "card_set_id": 10024,
@@ -8405,6 +8787,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125631020,
     "card_id": 125631020,
     "card_name": "魔刃吸血鬼",
     "card_set_id": 10025,
@@ -8427,6 +8810,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127611010,
     "card_id": 127611010,
     "card_name": "威迫的防卫队长",
     "card_set_id": 10027,
@@ -8449,6 +8833,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127621030,
     "card_id": 127621030,
     "card_name": "恶魔吹笛手",
     "card_set_id": 10027,
@@ -8471,6 +8856,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127641030,
     "card_id": 127641030,
     "card_name": "封印的凶狼·希古娜",
     "card_set_id": 10027,
@@ -8493,6 +8879,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128611020,
     "card_id": 128611020,
     "card_name": "和弦狼人",
     "card_set_id": 10028,
@@ -8515,6 +8902,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128621010,
     "card_id": 128621010,
     "card_name": "神速跑腿·玛萝",
     "card_set_id": 10028,
@@ -8537,6 +8925,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900611010,
     "card_id": 900611010,
     "card_name": "丛林蝙蝠",
     "card_set_id": 90000,
@@ -8559,6 +8948,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900611020,
     "card_id": 900611020,
     "card_name": "毒蛇",
     "card_set_id": 90000,
@@ -8581,6 +8971,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102624030,
     "card_id": 102624030,
     "card_name": "高贵的血牙",
     "card_set_id": 10002,
@@ -8603,6 +8994,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103614010,
     "card_id": 103614010,
     "card_name": "处刑人的大斧",
     "card_set_id": 10003,
@@ -8625,6 +9017,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105624010,
     "card_id": 105624010,
     "card_name": "变装的狼牙",
     "card_set_id": 10005,
@@ -8647,6 +9040,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108624010,
     "card_id": 108624010,
     "card_name": "血源探索",
     "card_set_id": 10008,
@@ -8669,6 +9063,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111624010,
     "card_id": 111624010,
     "card_name": "奸淫之吻",
     "card_set_id": 10011,
@@ -8691,6 +9086,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114624010,
     "card_id": 114624010,
     "card_name": "狂乱玛纳",
     "card_set_id": 10014,
@@ -8713,6 +9109,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115634010,
     "card_id": 115634010,
     "card_name": "不祥的侵蚀",
     "card_set_id": 10015,
@@ -8735,6 +9132,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117634010,
     "card_id": 117634010,
     "card_name": "蝙蝠的鸣噪",
     "card_set_id": 10017,
@@ -8757,6 +9155,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118624010,
     "card_id": 118624010,
     "card_name": "血弹坠击",
     "card_set_id": 10018,
@@ -8779,6 +9178,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120614010,
     "card_id": 120614010,
     "card_name": "银箭散射",
     "card_set_id": 10020,
@@ -8801,6 +9201,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121634010,
     "card_id": 121634010,
     "card_name": "生命修复",
     "card_set_id": 10021,
@@ -8823,6 +9224,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123634010,
     "card_id": 123634010,
     "card_name": "憎恶的爱绝",
     "card_set_id": 10023,
@@ -8845,6 +9247,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124614010,
     "card_id": 124614010,
     "card_name": "涂抹杀意",
     "card_set_id": 10024,
@@ -8867,6 +9270,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124634010,
     "card_id": 124634010,
     "card_name": "无尽契约",
     "card_set_id": 10024,
@@ -8889,6 +9293,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125614010,
     "card_id": 125614010,
     "card_name": "悄然逼近的残酷",
     "card_set_id": 10025,
@@ -8911,6 +9316,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126614010,
     "card_id": 126614010,
     "card_name": "邪恶的指挥",
     "card_set_id": 10026,
@@ -8933,6 +9339,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127614010,
     "card_id": 127614010,
     "card_name": "凶猛嚎叫",
     "card_set_id": 10027,
@@ -8955,6 +9362,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128614010,
     "card_id": 128614010,
     "card_name": "剧变为恶",
     "card_set_id": 10028,
@@ -8977,6 +9385,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128634010,
     "card_id": 128634010,
     "card_name": "不良少女的校园生活",
     "card_set_id": 10028,
@@ -8999,6 +9408,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644030,
     "card_id": 900644030,
     "card_name": "无尽之渴望",
     "card_set_id": 90000,
@@ -9021,6 +9431,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644040,
     "card_id": 900644040,
     "card_name": "血红獠牙",
     "card_set_id": 90000,
@@ -9043,6 +9454,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644060,
     "card_id": 900644060,
     "card_name": "梦魇时分",
     "card_set_id": 90000,
@@ -9065,6 +9477,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644070,
     "card_id": 900644070,
     "card_name": "血腥利爪",
     "card_set_id": 90000,
@@ -9087,6 +9500,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644080,
     "card_id": 900644080,
     "card_name": "悚惧气息",
     "card_set_id": 90000,
@@ -9109,6 +9523,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644100,
     "card_id": 900644100,
     "card_name": "幼狼的奋战",
     "card_set_id": 90000,
@@ -9131,6 +9546,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101623010,
     "card_id": 101623010,
     "card_name": "鲜血花园",
     "card_set_id": 10001,
@@ -9153,6 +9569,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121613010,
     "card_id": 121613010,
     "card_name": "约定的花朵",
     "card_set_id": 10021,
@@ -9175,6 +9592,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122613010,
     "card_id": 122613010,
     "card_name": "鲜血项链",
     "card_set_id": 10022,
@@ -9197,6 +9615,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109721010,
     "card_id": 109721010,
     "card_name": "天谴神父",
     "card_set_id": 10009,
@@ -9219,6 +9638,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109731020,
     "card_id": 109731020,
     "card_name": "天象之风·佩德菈",
     "card_set_id": 10009,
@@ -9241,6 +9661,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111711010,
     "card_id": 111711010,
     "card_name": "神殿的风熊",
     "card_set_id": 10011,
@@ -9263,6 +9684,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111741030,
     "card_id": 111741030,
     "card_name": "乐园的圣兽",
     "card_set_id": 10011,
@@ -9285,6 +9707,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113711010,
     "card_id": 113711010,
     "card_name": "温情的兔耳治愈师",
     "card_set_id": 10013,
@@ -9307,6 +9730,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113741030,
     "card_id": 113741030,
     "card_name": "天命翼骑",
     "card_set_id": 10013,
@@ -9329,6 +9753,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114721010,
     "card_id": 114721010,
     "card_name": "警察神官·帕茵",
     "card_set_id": 10014,
@@ -9351,6 +9776,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118711010,
     "card_id": 118711010,
     "card_name": "圣石的使徒",
     "card_set_id": 10018,
@@ -9373,6 +9799,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119721010,
     "card_id": 119721010,
     "card_name": "爱好魔物的黑暗圣职者·威尔",
     "card_set_id": 10019,
@@ -9395,6 +9822,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121731020,
     "card_id": 121731020,
     "card_name": "神威独角兽",
     "card_set_id": 10021,
@@ -9417,6 +9845,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121741020,
     "card_id": 121741020,
     "card_name": "收获的参谋长·喵鲁",
     "card_set_id": 10021,
@@ -9439,6 +9868,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122731010,
     "card_id": 122731010,
     "card_name": "祸殃之女",
     "card_set_id": 10022,
@@ -9461,6 +9891,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124711010,
     "card_id": 124711010,
     "card_name": "招福狐",
     "card_set_id": 10024,
@@ -9483,6 +9914,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125711010,
     "card_id": 125711010,
     "card_name": "天谴司祭",
     "card_set_id": 10025,
@@ -9505,6 +9937,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126731010,
     "card_id": 126731010,
     "card_name": "绚彩瑰石·玟奇",
     "card_set_id": 10026,
@@ -9527,6 +9960,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128731010,
     "card_id": 128731010,
     "card_name": "优雅修练·露",
     "card_set_id": 10028,
@@ -9549,6 +9983,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128731020,
     "card_id": 128731020,
     "card_name": "石青圣女",
     "card_set_id": 10028,
@@ -9571,6 +10006,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129721010,
     "card_id": 129721010,
     "card_name": "神圣翼猫",
     "card_set_id": 10029,
@@ -9593,6 +10029,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900741040,
     "card_id": 900741040,
     "card_name": "灵鼠族小小骑士",
     "card_set_id": 90000,
@@ -9615,6 +10052,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113724010,
     "card_id": 113724010,
     "card_name": "话语的传承",
     "card_set_id": 10013,
@@ -9637,6 +10075,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114724010,
     "card_id": 114724010,
     "card_name": "正义玛纳",
     "card_set_id": 10014,
@@ -9659,6 +10098,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117724010,
     "card_id": 117724010,
     "card_name": "宝石的光辉",
     "card_set_id": 10017,
@@ -9681,6 +10121,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121714010,
     "card_id": 121714010,
     "card_name": "圣痕的执行",
     "card_set_id": 10021,
@@ -9703,6 +10144,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121724010,
     "card_id": 121724010,
     "card_name": "笨拙的信赖",
     "card_set_id": 10021,
@@ -9725,6 +10167,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124724010,
     "card_id": 124724010,
     "card_name": "信仰的一击",
     "card_set_id": 10024,
@@ -9747,6 +10190,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129724010,
     "card_id": 129724010,
     "card_name": "宝石光耀",
     "card_set_id": 10029,
@@ -9769,6 +10213,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900734010,
     "card_id": 900734010,
     "card_name": "萝蕾娜的圣水",
     "card_set_id": 90000,
@@ -9791,6 +10236,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900734030,
     "card_id": 900734030,
     "card_name": "纪律的圣痕",
     "card_set_id": 90000,
@@ -9813,6 +10259,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744050,
     "card_id": 900744050,
     "card_name": "绝望的奔流",
     "card_set_id": 90000,
@@ -9835,6 +10282,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100713020,
     "card_id": 100713020,
     "card_name": "咏唱：召唤天马",
     "card_set_id": 10000,
@@ -9857,6 +10305,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101713010,
     "card_id": 101713010,
     "card_name": "咏唱：银翼祷告",
     "card_set_id": 10001,
@@ -9879,6 +10328,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101713020,
     "card_id": 101713020,
     "card_name": "咏唱：神圣祈愿",
     "card_set_id": 10001,
@@ -9901,6 +10351,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101733010,
     "card_id": 101733010,
     "card_name": "咏唱：幻想白兔",
     "card_set_id": 10001,
@@ -9923,6 +10374,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106733010,
     "card_id": 106733010,
     "card_name": "星导天球仪",
     "card_set_id": 10006,
@@ -9945,6 +10397,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107713020,
     "card_id": 107713020,
     "card_name": "咏唱：真翼沙漏",
     "card_set_id": 10007,
@@ -9967,6 +10420,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107732010,
     "card_id": 107732010,
     "card_name": "峰顶的教会",
     "card_set_id": 10007,
@@ -9989,6 +10443,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109713010,
     "card_id": 109713010,
     "card_name": "被封印的法典",
     "card_set_id": 10009,
@@ -10011,6 +10466,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113733010,
     "card_id": 113733010,
     "card_name": "黄金之钟",
     "card_set_id": 10013,
@@ -10033,6 +10489,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114713010,
     "card_id": 114713010,
     "card_name": "喵鲁登场",
     "card_set_id": 10014,
@@ -10055,6 +10512,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117733010,
     "card_id": 117733010,
     "card_name": "邪教神殿",
     "card_set_id": 10017,
@@ -10077,6 +10535,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119713010,
     "card_id": 119713010,
     "card_name": "咏唱：独角兽祭坛",
     "card_set_id": 10019,
@@ -10099,6 +10558,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122733010,
     "card_id": 122733010,
     "card_name": "狮子的圣域",
     "card_set_id": 10022,
@@ -10121,6 +10581,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125713010,
     "card_id": 125713010,
     "card_name": "尊贵的避邪物",
     "card_set_id": 10025,
@@ -10143,6 +10604,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125723010,
     "card_id": 125723010,
     "card_name": "教皇的祭器",
     "card_set_id": 10025,
@@ -10165,6 +10627,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126732010,
     "card_id": 126732010,
     "card_name": "宝石圣堂",
     "card_set_id": 10026,
@@ -10187,6 +10650,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127713010,
     "card_id": 127713010,
     "card_name": "光辉的宝珠",
     "card_set_id": 10027,
@@ -10209,6 +10673,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128733010,
     "card_id": 128733010,
     "card_name": "奥琪朵的试场",
     "card_set_id": 10028,
@@ -10231,6 +10696,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129713020,
     "card_id": 129713020,
     "card_name": "洁净的喷泉",
     "card_set_id": 10029,
@@ -10253,6 +10719,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733020,
     "card_id": 900733020,
     "card_name": "白璨钻石",
     "card_set_id": 90000,
@@ -10275,6 +10742,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733030,
     "card_id": 900733030,
     "card_name": "黑耀钻石",
     "card_set_id": 90000,
@@ -10297,6 +10765,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110821010,
     "card_id": 110821010,
     "card_name": "唤来光明的发明家",
     "card_set_id": 10010,
@@ -10319,6 +10788,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112821010,
     "card_id": 112821010,
     "card_name": "机巧枪手",
     "card_set_id": 10012,
@@ -10341,6 +10811,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115811010,
     "card_id": 115811010,
     "card_name": "洞见枪士",
     "card_set_id": 10015,
@@ -10363,6 +10834,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115821010,
     "card_id": 115821010,
     "card_name": "连珠拳破坏者",
     "card_set_id": 10015,
@@ -10385,6 +10857,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116821020,
     "card_id": 116821020,
     "card_name": "器具调整师",
     "card_set_id": 10016,
@@ -10407,6 +10880,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117811020,
     "card_id": 117811020,
     "card_name": "机械技师",
     "card_set_id": 10017,
@@ -10429,6 +10903,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118811020,
     "card_id": 118811020,
     "card_name": "线偶大师",
     "card_set_id": 10018,
@@ -10451,6 +10926,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118841010,
     "card_id": 118841010,
     "card_name": "缥缈虚无·依璐凯诺",
     "card_set_id": 10018,
@@ -10473,6 +10949,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120811030,
     "card_id": 120811030,
     "card_name": "强袭的小型兵器",
     "card_set_id": 10020,
@@ -10495,6 +10972,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121811010,
     "card_id": 121811010,
     "card_name": "机装英雄",
     "card_set_id": 10021,
@@ -10517,6 +10995,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122811020,
     "card_id": 122811020,
     "card_name": "年幼的操线手",
     "card_set_id": 10022,
@@ -10539,6 +11018,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123841020,
     "card_id": 123841020,
     "card_name": "时空掌握者",
     "card_set_id": 10023,
@@ -10561,6 +11041,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124821010,
     "card_id": 124821010,
     "card_name": "发条销售员",
     "card_set_id": 10024,
@@ -10583,6 +11064,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125811030,
     "card_id": 125811030,
     "card_name": "机械犬",
     "card_set_id": 10025,
@@ -10605,6 +11087,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126811010,
     "card_id": 126811010,
     "card_name": "机动翼女仆",
     "card_set_id": 10026,
@@ -10627,6 +11110,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126821010,
     "card_id": 126821010,
     "card_name": "清扫人偶",
     "card_set_id": 10026,
@@ -10649,6 +11133,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127841010,
     "card_id": 127841010,
     "card_name": "机锋的罪人·卡托司瑞德",
     "card_set_id": 10027,
@@ -10671,6 +11156,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128811020,
     "card_id": 128811020,
     "card_name": "枪弹猎捕者",
     "card_set_id": 10028,
@@ -10693,6 +11179,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129811010,
     "card_id": 129811010,
     "card_name": "妖精傀儡",
     "card_set_id": 10029,
@@ -10715,6 +11202,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129811030,
     "card_id": 129811030,
     "card_name": "喷射旋棍手",
     "card_set_id": 10029,
@@ -10737,6 +11225,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900811010,
     "card_id": 900811010,
     "card_name": "古老的创造物",
     "card_set_id": 90000,
@@ -10759,6 +11248,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900811030,
     "card_id": 900811030,
     "card_name": "解析的创造物",
     "card_set_id": 90000,
@@ -10781,6 +11271,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900811050,
     "card_id": 900811110,
     "card_name": "改良型·悬丝傀儡",
     "card_set_id": 90000,
@@ -10803,6 +11294,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900841010,
     "card_id": 900841010,
     "card_name": "丝碧涅的创造物",
     "card_set_id": 90000,
@@ -10825,6 +11317,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900841050,
     "card_id": 900841050,
     "card_name": "提线傀儡·舞诺",
     "card_set_id": 90000,
@@ -10847,6 +11340,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900841240,
     "card_id": 900841240,
     "card_name": "加农炮的创造物",
     "card_set_id": 90000,
@@ -10869,6 +11363,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107824020,
     "card_id": 107824020,
     "card_name": "创造术",
     "card_set_id": 10007,
@@ -10891,6 +11386,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111814010,
     "card_id": 111814010,
     "card_name": "破坏的愉悦",
     "card_set_id": 10011,
@@ -10913,6 +11409,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112834010,
     "card_id": 112834010,
     "card_name": "机械的解放",
     "card_set_id": 10012,
@@ -10935,6 +11432,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113824010,
     "card_id": 113824010,
     "card_name": "构造的解析",
     "card_set_id": 10013,
@@ -10957,6 +11455,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114814010,
     "card_id": 114814010,
     "card_name": "人偶手术",
     "card_set_id": 10014,
@@ -10979,6 +11478,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114824010,
     "card_id": 114824010,
     "card_name": "科技玛纳",
     "card_set_id": 10014,
@@ -11001,6 +11501,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116814010,
     "card_id": 116814010,
     "card_name": "创造物的同步",
     "card_set_id": 10016,
@@ -11023,6 +11524,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117824010,
     "card_id": 117824010,
     "card_name": "创造物扫描",
     "card_set_id": 10017,
@@ -11045,6 +11547,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118814010,
     "card_id": 118814010,
     "card_name": "源于机器的设计",
     "card_set_id": 10018,
@@ -11067,6 +11570,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120824010,
     "card_id": 120824010,
     "card_name": "空间解锁",
     "card_set_id": 10020,
@@ -11089,6 +11593,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120834010,
     "card_id": 120834010,
     "card_name": "水银的阻断",
     "card_set_id": 10020,
@@ -11111,6 +11616,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121824010,
     "card_id": 121824010,
     "card_name": "宿愿的双剑",
     "card_set_id": 10021,
@@ -11133,6 +11639,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122844010,
     "card_id": 122844010,
     "card_name": "灾祸模式",
     "card_set_id": 10022,
@@ -11155,6 +11662,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123834010,
     "card_id": 123834010,
     "card_name": "重返的奏绝",
     "card_set_id": 10023,
@@ -11177,6 +11685,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124814010,
     "card_id": 124814010,
     "card_name": "工匠的闪念",
     "card_set_id": 10024,
@@ -11199,6 +11708,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125814010,
     "card_id": 125814010,
     "card_name": "生命的培养",
     "card_set_id": 10025,
@@ -11221,6 +11731,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125834010,
     "card_id": 125834010,
     "card_name": "转动的命运",
     "card_set_id": 10025,
@@ -11243,6 +11754,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127814010,
     "card_id": 127814010,
     "card_name": "傀儡特训",
     "card_set_id": 10027,
@@ -11265,6 +11777,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129824010,
     "card_id": 129824010,
     "card_name": "混沌暗息",
     "card_set_id": 10029,
@@ -11287,6 +11800,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900824010,
     "card_id": 900824010,
     "card_name": "虚伪的剑闪",
     "card_set_id": 90000,
@@ -11309,6 +11823,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834010,
     "card_id": 900834010,
     "card_name": "光之剑",
     "card_set_id": 90000,
@@ -11331,6 +11846,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834020,
     "card_id": 900834020,
     "card_name": "暗之剑",
     "card_set_id": 90000,
@@ -11353,6 +11869,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834070,
     "card_id": 900834070,
     "card_name": "临摹",
     "card_set_id": 90000,
@@ -11375,6 +11892,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844030,
     "card_id": 900844030,
     "card_name": "死之索偿",
     "card_set_id": 90000,
@@ -11397,6 +11915,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844070,
     "card_id": 900844070,
     "card_name": "水银的断绝",
     "card_set_id": 90000,
@@ -11419,6 +11938,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844090,
     "card_id": 900844090,
     "card_name": "不可视的技巧",
     "card_set_id": 90000,
@@ -11441,6 +11961,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107813030,
     "card_id": 107813030,
     "card_name": "加速装置",
     "card_set_id": 10007,
@@ -11463,6 +11984,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107823010,
     "card_id": 107823010,
     "card_name": "古代增幅器",
     "card_set_id": 10007,
@@ -11485,6 +12007,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107833010,
     "card_id": 107833010,
     "card_name": "虚数物体",
     "card_set_id": 10007,
@@ -11507,6 +12030,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109813010,
     "card_id": 109813010,
     "card_name": "古代自动机械",
     "card_set_id": 10009,
@@ -11529,6 +12053,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111843010,
     "card_id": 111843010,
     "card_name": "亵渎的球体",
     "card_set_id": 10011,
@@ -11551,6 +12076,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900813010,
     "card_id": 900813010,
     "card_name": "创造物兵团召集令",
     "card_set_id": 90000,
@@ -11573,6 +12099,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900813020,
     "card_id": 900813020,
     "card_name": "创造物的光辉",
     "card_set_id": 90000,
@@ -11595,6 +12122,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900822020,
     "card_id": 900822020,
     "card_name": "危险的发明",
     "card_set_id": 90000,
@@ -11617,6 +12145,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100011020,
     "card_id": 100011020,
     "card_name": "剑斗士",
     "card_set_id": 10000,
@@ -11639,6 +12168,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101011010,
     "card_id": 101011010,
     "card_name": "牛头人",
     "card_set_id": 10001,
@@ -11661,6 +12191,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101021010,
     "card_id": 101021010,
     "card_name": "叮咚天使",
     "card_set_id": 10001,
@@ -11683,6 +12214,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102021020,
     "card_id": 102021020,
     "card_name": "独角兽舞者·独角子",
     "card_set_id": 10002,
@@ -11705,6 +12237,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102031030,
     "card_id": 102031030,
     "card_name": "禁忌魔像",
     "card_set_id": 10002,
@@ -11727,6 +12260,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103011040,
     "card_id": 103011040,
     "card_name": "赛克杜尔",
     "card_set_id": 10003,
@@ -11749,6 +12283,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103011060,
     "card_id": 103011060,
     "card_name": "汉萨",
     "card_set_id": 10003,
@@ -11771,6 +12306,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103021030,
     "card_id": 103021030,
     "card_name": "圣弓天使·莉莉耶尔",
     "card_set_id": 10003,
@@ -11793,6 +12329,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104011040,
     "card_id": 104011040,
     "card_name": "猫头鹰",
     "card_set_id": 10004,
@@ -11815,6 +12352,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104021030,
     "card_id": 104021030,
     "card_name": "徬徨的诗人·艾尔塔",
     "card_set_id": 10004,
@@ -11837,6 +12375,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105021010,
     "card_id": 105021010,
     "card_name": "歌剧姬·菲莉亚",
     "card_set_id": 10005,
@@ -11859,6 +12398,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106021010,
     "card_id": 106021010,
     "card_name": "堕天使·伊芙莉西亚",
     "card_set_id": 10006,
@@ -11881,6 +12421,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107011030,
     "card_id": 107011030,
     "card_name": "快乐小猪",
     "card_set_id": 10007,
@@ -11903,6 +12444,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108011020,
     "card_id": 108011020,
     "card_name": "蛋塔人",
     "card_set_id": 10008,
@@ -11925,6 +12467,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108021010,
     "card_id": 108021010,
     "card_name": "秩序的女武神",
     "card_set_id": 10008,
@@ -11947,6 +12490,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108031020,
     "card_id": 108031020,
     "card_name": "天界的尖兵",
     "card_set_id": 10008,
@@ -11969,6 +12513,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109031010,
     "card_id": 109031010,
     "card_name": "苍蓝少女·露莉亚",
     "card_set_id": 10009,
@@ -11991,6 +12536,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109041020,
     "card_id": 109041020,
     "card_name": "传奇剑斗士",
     "card_set_id": 10009,
@@ -12013,6 +12559,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110011030,
     "card_id": 110011030,
     "card_name": "哥布林斗士",
     "card_set_id": 10010,
@@ -12035,6 +12582,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111011030,
     "card_id": 111011030,
     "card_name": "香料天使·蕾兹",
     "card_set_id": 10011,
@@ -12057,6 +12605,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111031010,
     "card_id": 111031010,
     "card_name": "圣剑天使·艾菲梅拉",
     "card_set_id": 10011,
@@ -12079,6 +12628,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112011020,
     "card_id": 112011020,
     "card_name": "雷鸣军神·福尼加尔",
     "card_set_id": 10012,
@@ -12101,6 +12651,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112011030,
     "card_id": 112011030,
     "card_name": "哥布林机兵",
     "card_set_id": 10012,
@@ -12123,6 +12674,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113011010,
     "card_id": 113011010,
     "card_name": "机板佣兵",
     "card_set_id": 10013,
@@ -12145,6 +12697,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113021010,
     "card_id": 113021010,
     "card_name": "独角兽巫女·独角子",
     "card_set_id": 10013,
@@ -12167,6 +12720,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113021020,
     "card_id": 113021020,
     "card_name": "阿波罗",
     "card_set_id": 10013,
@@ -12189,6 +12743,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114011020,
     "card_id": 114011020,
     "card_name": "甜品侦探",
     "card_set_id": 10014,
@@ -12211,6 +12766,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114021010,
     "card_id": 114021010,
     "card_name": "极品大萝卜",
     "card_set_id": 10014,
@@ -12233,6 +12789,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114031010,
     "card_id": 114031010,
     "card_name": "荒野领路人",
     "card_set_id": 10014,
@@ -12255,6 +12812,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114031020,
     "card_id": 114031020,
     "card_name": "极光天使",
     "card_set_id": 10014,
@@ -12277,6 +12835,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115011020,
     "card_id": 115011020,
     "card_name": "哥布林火箭筒大兵",
     "card_set_id": 10015,
@@ -12299,6 +12858,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116011020,
     "card_id": 116011020,
     "card_name": "恣意的画家",
     "card_set_id": 10016,
@@ -12321,6 +12881,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116031010,
     "card_id": 116031010,
     "card_name": "双翼天使",
     "card_set_id": 10016,
@@ -12343,6 +12904,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117021010,
     "card_id": 117021010,
     "card_name": "腾云巨灵",
     "card_set_id": 10017,
@@ -12365,6 +12927,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118011020,
     "card_id": 118011020,
     "card_name": "自由的冒险者",
     "card_set_id": 10018,
@@ -12387,6 +12950,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118031010,
     "card_id": 118031010,
     "card_name": "浪游厨人",
     "card_set_id": 10018,
@@ -12409,6 +12973,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118041020,
     "card_id": 118041020,
     "card_name": "蕾米尔",
     "card_set_id": 10018,
@@ -12431,6 +12996,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119011020,
     "card_id": 119011020,
     "card_name": "熟练的侦探",
     "card_set_id": 10019,
@@ -12453,6 +13019,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119021020,
     "card_id": 119021020,
     "card_name": "苍心的少女·伊欧",
     "card_set_id": 10019,
@@ -12475,6 +13042,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119031010,
     "card_id": 119031010,
     "card_name": "娇小的赤红之龙·碧",
     "card_set_id": 10019,
@@ -12497,6 +13065,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119031020,
     "card_id": 119031020,
     "card_name": "追忆的大天使",
     "card_set_id": 10019,
@@ -12519,6 +13088,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120011020,
     "card_id": 120011020,
     "card_name": "盾甲哥布林",
     "card_set_id": 10020,
@@ -12541,6 +13111,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121011020,
     "card_id": 121011020,
     "card_name": "迷宫牛头人",
     "card_set_id": 10021,
@@ -12563,6 +13134,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121031020,
     "card_id": 121031020,
     "card_name": "一流厨师",
     "card_set_id": 10021,
@@ -12585,6 +13157,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122011020,
     "card_id": 122011020,
     "card_name": "青蛙演奏家",
     "card_set_id": 10022,
@@ -12607,6 +13180,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122031020,
     "card_id": 122031020,
     "card_name": "导引之钟·叮咚天使",
     "card_set_id": 10022,
@@ -12629,6 +13203,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123011010,
     "card_id": 123011010,
     "card_name": "流浪指挥家",
     "card_set_id": 10023,
@@ -12651,6 +13226,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123031010,
     "card_id": 123031010,
     "card_name": "亚拉珥",
     "card_set_id": 10023,
@@ -12673,6 +13249,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123041020,
     "card_id": 123041020,
     "card_name": "涸绝饥饿·吉鲁涅莉婕",
     "card_set_id": 10023,
@@ -12695,6 +13272,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124031020,
     "card_id": 124031020,
     "card_name": "闪耀天使",
     "card_set_id": 10024,
@@ -12717,6 +13295,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125011020,
     "card_id": 125011020,
     "card_name": "佳音天使",
     "card_set_id": 10025,
@@ -12739,6 +13318,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125021010,
     "card_id": 125021010,
     "card_name": "宏愿之迷你哥布林法师",
     "card_set_id": 10025,
@@ -12761,6 +13341,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125041020,
     "card_id": 125041020,
     "card_name": "梅丹佐",
     "card_set_id": 10025,
@@ -12783,6 +13364,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126011010,
     "card_id": 126011010,
     "card_name": "宣告天使",
     "card_set_id": 10026,
@@ -12805,6 +13387,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126021010,
     "card_id": 126021010,
     "card_name": "自然派画家",
     "card_set_id": 10026,
@@ -12827,6 +13410,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126031020,
     "card_id": 126031020,
     "card_name": "弗蕾亚",
     "card_set_id": 10026,
@@ -12849,6 +13433,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128031010,
     "card_id": 128031010,
     "card_name": "煌奏学徒·亨莉雅妲",
     "card_set_id": 10028,
@@ -12871,6 +13456,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128031020,
     "card_id": 128031020,
     "card_name": "盛放舞者",
     "card_set_id": 10028,
@@ -12893,6 +13479,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128041020,
     "card_id": 128041020,
     "card_name": "米迦勒",
     "card_set_id": 10028,
@@ -12915,6 +13502,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129011010,
     "card_id": 129011010,
     "card_name": "正义的V手势·菲娜",
     "card_set_id": 10029,
@@ -12937,6 +13525,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900021010,
     "card_id": 900021010,
     "card_name": "绝世大萝卜",
     "card_set_id": 90000,
@@ -12959,6 +13548,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900041100,
     "card_id": 900041100,
     "card_name": "狂怒的冰魔",
     "card_set_id": 90000,
@@ -12981,6 +13571,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101014010,
     "card_id": 101014010,
     "card_name": "利刃附魔",
     "card_set_id": 10001,
@@ -13003,6 +13594,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101024040,
     "card_id": 101024040,
     "card_name": "光明之路",
     "card_set_id": 10001,
@@ -13025,6 +13617,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101034010,
     "card_id": 101034010,
     "card_name": "崭新的命运",
     "card_set_id": 10001,
@@ -13047,6 +13640,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109014010,
     "card_id": 109014010,
     "card_name": "侦探的调查",
     "card_set_id": 10009,
@@ -13069,6 +13663,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109034010,
     "card_id": 109034010,
     "card_name": "炽天使之剑",
     "card_set_id": 10009,
@@ -13091,6 +13686,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114014010,
     "card_id": 114014010,
     "card_name": "荒野中的憩息",
     "card_set_id": 10014,
@@ -13113,6 +13709,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117014010,
     "card_id": 117014010,
     "card_name": "突坠的落石",
     "card_set_id": 10017,
@@ -13135,6 +13732,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119014010,
     "card_id": 119014010,
     "card_name": "天使的旋律",
     "card_set_id": 10019,
@@ -13157,6 +13755,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120044010,
     "card_id": 120044010,
     "card_name": "世界殒灭",
     "card_set_id": 10020,
@@ -13179,6 +13778,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123014010,
     "card_id": 123014010,
     "card_name": "冒险的波折",
     "card_set_id": 10023,
@@ -13201,6 +13801,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123034010,
     "card_id": 123034010,
     "card_name": "再临的绝大",
     "card_set_id": 10023,
@@ -13223,6 +13824,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123034020,
     "card_id": 123034020,
     "card_name": "降诞的涸绝",
     "card_set_id": 10023,
@@ -13245,6 +13847,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124014010,
     "card_id": 124014010,
     "card_name": "毁坏撞击",
     "card_set_id": 10024,
@@ -13267,6 +13870,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124034010,
     "card_id": 124034010,
     "card_name": "造访乐园",
     "card_set_id": 10024,
@@ -13289,6 +13893,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125014010,
     "card_id": 125014010,
     "card_name": "冒险之梦",
     "card_set_id": 10025,
@@ -13311,6 +13916,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126034010,
     "card_id": 126034010,
     "card_name": "伟大的意志",
     "card_set_id": 10026,
@@ -13333,6 +13939,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127014010,
     "card_id": 127014010,
     "card_name": "天使灭击",
     "card_set_id": 10027,
@@ -13355,6 +13962,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127034010,
     "card_id": 127034010,
     "card_name": "反转之翼",
     "card_set_id": 10027,
@@ -13377,6 +13985,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044060,
     "card_id": 900044060,
     "card_name": "天握",
     "card_set_id": 90000,
@@ -13399,6 +14008,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100012010,
     "card_id": 100012010,
     "card_name": "命运之泉",
     "card_set_id": 10000,
@@ -13421,6 +14031,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103012020,
     "card_id": 103012020,
     "card_name": "战乙女之枪",
     "card_set_id": 10003,
@@ -13443,6 +14054,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109023010,
     "card_id": 109023010,
     "card_name": "传说揭幕",
     "card_set_id": 10009,
@@ -13465,6 +14077,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113013010,
     "card_id": 113013010,
     "card_name": "佣兵集会所",
     "card_set_id": 10013,
@@ -13487,6 +14100,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127033010,
     "card_id": 127033010,
     "card_name": "阿兹弗特",
     "card_set_id": 10027,
@@ -13509,6 +14123,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128032010,
     "card_id": 128032010,
     "card_name": "宏伟的校舍",
     "card_set_id": 10028,
@@ -13531,6 +14146,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900012030,
     "card_id": 900012030,
     "card_name": "机动二轮车",
     "card_set_id": 90000,
@@ -13553,6 +14169,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100111020,
     "card_id": 100111020,
     "card_name": "妖精语森林使者",
     "card_set_id": 10000,
@@ -13575,6 +14192,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100111040,
     "card_id": 100111040,
     "card_name": "精灵守卫",
     "card_set_id": 10000,
@@ -13597,6 +14215,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100121020,
     "card_id": 100121020,
     "card_name": "金属精灵法师",
     "card_set_id": 10000,
@@ -13619,6 +14238,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101111030,
     "card_id": 101111030,
     "card_name": "地城妖精",
     "card_set_id": 10001,
@@ -13641,6 +14261,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101111040,
     "card_id": 101111040,
     "card_name": "妖精引路人",
     "card_set_id": 10001,
@@ -13663,6 +14284,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101111070,
     "card_id": 101111070,
     "card_name": "神奇的精灵法师",
     "card_set_id": 10001,
@@ -13685,6 +14307,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101111090,
     "card_id": 101111090,
     "card_name": "流浪精灵",
     "card_set_id": 10001,
@@ -13707,6 +14330,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101121020,
     "card_id": 101121020,
     "card_name": "妖精舞蹈家",
     "card_set_id": 10001,
@@ -13729,6 +14353,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101131020,
     "card_id": 101131020,
     "card_name": "破魔虫",
     "card_set_id": 10001,
@@ -13751,6 +14376,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102111010,
     "card_id": 102111010,
     "card_name": "香水矮人",
     "card_set_id": 10002,
@@ -13773,6 +14399,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102111020,
     "card_id": 102111020,
     "card_name": "精灵吟游诗人",
     "card_set_id": 10002,
@@ -13795,6 +14422,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102131030,
     "card_id": 102131030,
     "card_name": "精灵少女·莉莎",
     "card_set_id": 10002,
@@ -13817,6 +14445,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103121030,
     "card_id": 103121030,
     "card_name": "冰晶光芒·莉莉",
     "card_set_id": 10003,
@@ -13839,6 +14468,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104111020,
     "card_id": 104111020,
     "card_name": "绿荫木灵",
     "card_set_id": 10004,
@@ -13861,6 +14491,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104121020,
     "card_id": 104121020,
     "card_name": "小小勇士·斯库娜",
     "card_set_id": 10004,
@@ -13883,6 +14514,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105111020,
     "card_id": 105111020,
     "card_name": "仙境双子·迪与丹",
     "card_set_id": 10005,
@@ -13905,6 +14537,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105121010,
     "card_id": 105121010,
     "card_name": "战斧少女·艾比",
     "card_set_id": 10005,
@@ -13927,6 +14560,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105141020,
     "card_id": 105141020,
     "card_name": "妖精龙",
     "card_set_id": 10005,
@@ -13949,6 +14583,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106111010,
     "card_id": 106111010,
     "card_name": "和善的精灵·斐特",
     "card_set_id": 10006,
@@ -13971,6 +14606,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106121010,
     "card_id": 106121010,
     "card_name": "精灵歌手·柏尔嘉",
     "card_set_id": 10006,
@@ -13993,6 +14629,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107111030,
     "card_id": 107111030,
     "card_name": "小叶人",
     "card_set_id": 10007,
@@ -14015,6 +14652,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107121020,
     "card_id": 107121020,
     "card_name": "愤怒的草人长老",
     "card_set_id": 10007,
@@ -14037,6 +14675,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107131010,
     "card_id": 107131010,
     "card_name": "精灵锻造师·蕾妮",
     "card_set_id": 10007,
@@ -14059,6 +14698,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107141020,
     "card_id": 107141020,
     "card_name": "昆虫王",
     "card_set_id": 10007,
@@ -14081,6 +14721,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108111020,
     "card_id": 108111020,
     "card_name": "魔界树的仆从",
     "card_set_id": 10008,
@@ -14103,6 +14744,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108131010,
     "card_id": 108131010,
     "card_name": "爱之妖精·宝菈",
     "card_set_id": 10008,
@@ -14125,6 +14767,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108131030,
     "card_id": 108131030,
     "card_name": "历战的驯鹰师",
     "card_set_id": 10008,
@@ -14147,6 +14790,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109111010,
     "card_id": 109111010,
     "card_name": "恶魔之花",
     "card_set_id": 10009,
@@ -14169,6 +14813,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109111020,
     "card_id": 109111020,
     "card_name": "香格里拉妖精",
     "card_set_id": 10009,
@@ -14191,6 +14836,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110111020,
     "card_id": 110111020,
     "card_name": "不弑的随从",
     "card_set_id": 10010,
@@ -14213,6 +14859,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110131030,
     "card_id": 110131030,
     "card_name": "水晶指挥家·莉莉",
     "card_set_id": 10010,
@@ -14235,6 +14882,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111111010,
     "card_id": 111111010,
     "card_name": "不弑的狂信者",
     "card_set_id": 10011,
@@ -14257,6 +14905,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111121020,
     "card_id": 111121020,
     "card_name": "读心少女·米榭儿",
     "card_set_id": 10011,
@@ -14279,6 +14928,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112111010,
     "card_id": 112111010,
     "card_name": "白花弓手",
     "card_set_id": 10012,
@@ -14301,6 +14951,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112141020,
     "card_id": 112141020,
     "card_name": "双剑斗士·克里夫特",
     "card_set_id": 10012,
@@ -14323,6 +14974,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113121010,
     "card_id": 113121010,
     "card_name": "清泉的魔法精灵公主",
     "card_set_id": 10013,
@@ -14345,6 +14997,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113131020,
     "card_id": 113131020,
     "card_name": "机械树守卫",
     "card_set_id": 10013,
@@ -14367,6 +15020,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114111030,
     "card_id": 114111030,
     "card_name": "骇世树精",
     "card_set_id": 10014,
@@ -14389,6 +15043,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114121020,
     "card_id": 114121020,
     "card_name": "花艳之魂",
     "card_set_id": 10014,
@@ -14411,6 +15066,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114131020,
     "card_id": 114131020,
     "card_name": "萌芽的化身",
     "card_set_id": 10014,
@@ -14433,6 +15089,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115111010,
     "card_id": 115111010,
     "card_name": "密林守卫者",
     "card_set_id": 10015,
@@ -14455,6 +15112,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115121010,
     "card_id": 115121010,
     "card_name": "森林歼灭者",
     "card_set_id": 10015,
@@ -14477,6 +15135,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115131020,
     "card_id": 115131020,
     "card_name": "纯真弓箭手·璃乃",
     "card_set_id": 10015,
@@ -14499,6 +15158,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115131030,
     "card_id": 115131030,
     "card_name": "植蔓精灵",
     "card_set_id": 10015,
@@ -14521,6 +15181,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115141020,
     "card_id": 115141020,
     "card_name": "导引巫女·可可萝",
     "card_set_id": 10015,
@@ -14543,6 +15204,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116111020,
     "card_id": 116111020,
     "card_name": "嫩叶精灵",
     "card_set_id": 10016,
@@ -14565,6 +15227,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116121010,
     "card_id": 116121010,
     "card_name": "回旋机镖精灵",
     "card_set_id": 10016,
@@ -14587,6 +15250,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117111020,
     "card_id": 117111020,
     "card_name": "花绽弓箭手",
     "card_set_id": 10017,
@@ -14609,6 +15273,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118111020,
     "card_id": 118111020,
     "card_name": "森林巡检者",
     "card_set_id": 10018,
@@ -14631,6 +15296,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118131020,
     "card_id": 118131020,
     "card_name": "小槌勇士·斯库娜",
     "card_set_id": 10018,
@@ -14653,6 +15319,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119111010,
     "card_id": 119111010,
     "card_name": "精灵咒术师",
     "card_set_id": 10019,
@@ -14675,6 +15342,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119121020,
     "card_id": 119121020,
     "card_name": "随性的笛奏者·米莫尔梅梅尔",
     "card_set_id": 10019,
@@ -14697,6 +15365,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119131030,
     "card_id": 119131030,
     "card_name": "岚爪的猫女·千茵",
     "card_set_id": 10019,
@@ -14719,6 +15388,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120111020,
     "card_id": 120111020,
     "card_name": "剑刃精灵",
     "card_set_id": 10020,
@@ -14741,6 +15411,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120121020,
     "card_id": 120121020,
     "card_name": "受妖精指引的弓箭手",
     "card_set_id": 10020,
@@ -14763,6 +15434,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121111010,
     "card_id": 121111010,
     "card_name": "治愈妖精",
     "card_set_id": 10021,
@@ -14785,6 +15457,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121121010,
     "card_id": 121121010,
     "card_name": "采集的兽人",
     "card_set_id": 10021,
@@ -14807,6 +15480,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121141030,
     "card_id": 121141030,
     "card_name": "深绿弓手·亚里莎",
     "card_set_id": 10021,
@@ -14829,6 +15503,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122111030,
     "card_id": 122111030,
     "card_name": "怠惰的树獭",
     "card_set_id": 10022,
@@ -14851,6 +15526,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122121030,
     "card_id": 122121030,
     "card_name": "妖花捕食者",
     "card_set_id": 10022,
@@ -14873,6 +15549,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122141020,
     "card_id": 122141020,
     "card_name": "死噬精灵",
     "card_set_id": 10022,
@@ -14895,6 +15572,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123111020,
     "card_id": 123111020,
     "card_name": "花束妖精",
     "card_set_id": 10023,
@@ -14917,6 +15595,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123121030,
     "card_id": 123121030,
     "card_name": "绝命的崇拜者",
     "card_set_id": 10023,
@@ -14939,6 +15618,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123131010,
     "card_id": 123131010,
     "card_name": "花绽的狐耳族民",
     "card_set_id": 10023,
@@ -14961,6 +15641,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123141010,
     "card_id": 123141010,
     "card_name": "逆时剑师·阿玛兹",
     "card_set_id": 10023,
@@ -14983,6 +15664,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124111020,
     "card_id": 124111020,
     "card_name": "园艺师·嘉儿克丝",
     "card_set_id": 10024,
@@ -15005,6 +15687,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124121010,
     "card_id": 124121010,
     "card_name": "精灵侍者",
     "card_set_id": 10024,
@@ -15027,6 +15710,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124131020,
     "card_id": 124131020,
     "card_name": "妖精贵公子",
     "card_set_id": 10024,
@@ -15049,6 +15733,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124141030,
     "card_id": 124141030,
     "card_name": "创始生命的世界树",
     "card_set_id": 10024,
@@ -15071,6 +15756,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125111020,
     "card_id": 125111020,
     "card_name": "砍刀精灵",
     "card_set_id": 10025,
@@ -15093,6 +15779,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125141020,
     "card_id": 125141020,
     "card_name": "神铁锻造师·蕾妮",
     "card_set_id": 10025,
@@ -15115,6 +15802,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126111010,
     "card_id": 126111010,
     "card_name": "追梦的精灵",
     "card_set_id": 10026,
@@ -15137,6 +15825,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126111030,
     "card_id": 126111030,
     "card_name": "栖木的飞鼠",
     "card_set_id": 10026,
@@ -15159,6 +15848,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126121030,
     "card_id": 126121030,
     "card_name": "森林商贩",
     "card_set_id": 10026,
@@ -15181,6 +15871,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126131010,
     "card_id": 126131010,
     "card_name": "花绽之狼·史雷特",
     "card_set_id": 10026,
@@ -15203,6 +15894,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126131030,
     "card_id": 126131030,
     "card_name": "奋勉的公主·梅莉奥妮",
     "card_set_id": 10026,
@@ -15225,6 +15917,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127121010,
     "card_id": 127121010,
     "card_name": "根际刺客",
     "card_set_id": 10027,
@@ -15247,6 +15940,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127121020,
     "card_id": 127121020,
     "card_name": "大地妖精",
     "card_set_id": 10027,
@@ -15269,6 +15963,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127131010,
     "card_id": 127131010,
     "card_name": "叶脉舍弟头",
     "card_set_id": 10027,
@@ -15291,6 +15986,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127141010,
     "card_id": 127141010,
     "card_name": "剪枝的罪人·玛伽绮耶",
     "card_set_id": 10027,
@@ -15313,6 +16009,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128111010,
     "card_id": 128111010,
     "card_name": "串红艳豹",
     "card_set_id": 10028,
@@ -15335,6 +16032,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128111020,
     "card_id": 128111020,
     "card_name": "银莲战虎",
     "card_set_id": 10028,
@@ -15357,6 +16055,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128131010,
     "card_id": 128131010,
     "card_name": "切剁猫女",
     "card_set_id": 10028,
@@ -15379,6 +16078,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129111010,
     "card_id": 129111010,
     "card_name": "救援精灵",
     "card_set_id": 10029,
@@ -15401,6 +16101,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129111030,
     "card_id": 129111030,
     "card_name": "冷酷的黑暗精灵",
     "card_set_id": 10029,
@@ -15423,6 +16124,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129121010,
     "card_id": 129121010,
     "card_name": "恩惠的祈愿·琳茵",
     "card_set_id": 10029,
@@ -15445,6 +16147,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129141010,
     "card_id": 129141010,
     "card_name": "身负使命的妖精公主·阿丽雅",
     "card_set_id": 10029,
@@ -15467,6 +16170,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900121010,
     "card_id": 900121010,
     "card_name": "胡蜂勇士",
     "card_set_id": 90000,
@@ -15489,6 +16193,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900131020,
     "card_id": 900131020,
     "card_name": "深绿真心·宝菈",
     "card_set_id": 90000,
@@ -15511,6 +16216,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900131030,
     "card_id": 900131030,
     "card_name": "真红羁绊·宝菈",
     "card_set_id": 90000,
@@ -15533,6 +16239,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100114010,
     "card_id": 100114010,
     "card_name": "森林的反扑",
     "card_set_id": 10000,
@@ -15555,6 +16262,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114020,
     "card_id": 101114020,
     "card_name": "妖精的恶作剧",
     "card_set_id": 10001,
@@ -15577,6 +16285,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114040,
     "card_id": 101114040,
     "card_name": "精灵的诅咒",
     "card_set_id": 10001,
@@ -15599,6 +16308,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102114050,
     "card_id": 102114050,
     "card_name": "羽翅的光辉",
     "card_set_id": 10002,
@@ -15621,6 +16331,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105134010,
     "card_id": 105134010,
     "card_name": "精灵的双击",
     "card_set_id": 10005,
@@ -15643,6 +16354,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106124010,
     "card_id": 106124010,
     "card_name": "妖精的旋律",
     "card_set_id": 10006,
@@ -15665,6 +16377,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111124010,
     "card_id": 111124010,
     "card_name": "强者的威严",
     "card_set_id": 10011,
@@ -15687,6 +16400,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112134010,
     "card_id": 112134010,
     "card_name": "阿丽雅的旋风",
     "card_set_id": 10012,
@@ -15709,6 +16423,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116114010,
     "card_id": 116114010,
     "card_name": "林内穿梭",
     "card_set_id": 10016,
@@ -15731,6 +16446,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116134010,
     "card_id": 116134010,
     "card_name": "交织的决心",
     "card_set_id": 10016,
@@ -15753,6 +16469,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117124010,
     "card_id": 117124010,
     "card_name": "治愈的波动",
     "card_set_id": 10017,
@@ -15775,6 +16492,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118124010,
     "card_id": 118124010,
     "card_name": "荆棘的侵蚀",
     "card_set_id": 10018,
@@ -15797,6 +16515,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118134010,
     "card_id": 118134010,
     "card_name": "妖精的眴焕",
     "card_set_id": 10018,
@@ -15819,6 +16538,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120134010,
     "card_id": 120134010,
     "card_name": "元素斩击",
     "card_set_id": 10020,
@@ -15841,6 +16561,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121124010,
     "card_id": 121124010,
     "card_name": "温暖的拥抱",
     "card_set_id": 10021,
@@ -15863,6 +16584,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123114010,
     "card_id": 123114010,
     "card_name": "种子射击",
     "card_set_id": 10023,
@@ -15885,6 +16607,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124114010,
     "card_id": 124114010,
     "card_name": "精灵技工",
     "card_set_id": 10024,
@@ -15907,6 +16630,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127114010,
     "card_id": 127114010,
     "card_name": "强风枪刺",
     "card_set_id": 10027,
@@ -15929,6 +16653,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128124010,
     "card_id": 128124010,
     "card_name": "粗枝藤鞭",
     "card_set_id": 10028,
@@ -15951,6 +16676,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129124010,
     "card_id": 129124010,
     "card_name": "女王的厚意",
     "card_set_id": 10029,
@@ -15973,6 +16699,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900134010,
     "card_id": 900134010,
     "card_name": "暹罗的恶作剧",
     "card_set_id": 90000,
@@ -15995,6 +16722,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900134020,
     "card_id": 900134020,
     "card_name": "暹玛的凝视",
     "card_set_id": 90000,
@@ -16017,6 +16745,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900134030,
     "card_id": 900134030,
     "card_name": "仁义的执行",
     "card_set_id": 90000,
@@ -16039,6 +16768,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144010,
     "card_id": 900144010,
     "card_name": "蔷薇的猛击",
     "card_set_id": 90000,
@@ -16061,6 +16791,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144100,
     "card_id": 900144100,
     "card_name": "暴风箭击",
     "card_set_id": 90000,
@@ -16083,6 +16814,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101113010,
     "card_id": 101113010,
     "card_name": "沉睡之森",
     "card_set_id": 10001,
@@ -16105,6 +16837,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101122010,
     "card_id": 101122010,
     "card_name": "丰年祭",
     "card_set_id": 10001,
@@ -16127,6 +16860,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105123010,
     "card_id": 105123010,
     "card_name": "荆棘之森",
     "card_set_id": 10005,
@@ -16149,6 +16883,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108113010,
     "card_id": 108113010,
     "card_name": "妖精之花",
     "card_set_id": 10008,
@@ -16171,6 +16906,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110113010,
     "card_id": 110113010,
     "card_name": "呢喃之森",
     "card_set_id": 10010,
@@ -16193,6 +16929,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120123010,
     "card_id": 120123010,
     "card_name": "奇幻树",
     "card_set_id": 10020,
@@ -16215,6 +16952,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100211020,
     "card_id": 100211020,
     "card_name": "背水一战的骑士",
     "card_set_id": 10000,
@@ -16237,6 +16975,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100211060,
     "card_id": 100211060,
     "card_name": "女忍者学徒",
     "card_set_id": 10000,
@@ -16259,6 +16998,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211020,
     "card_id": 101211020,
     "card_name": "不屈的士兵",
     "card_set_id": 10001,
@@ -16281,6 +17021,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211030,
     "card_id": 101211030,
     "card_name": "宫廷剑士",
     "card_set_id": 10001,
@@ -16303,6 +17044,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101211040,
     "card_id": 101211040,
     "card_name": "暴风战士",
     "card_set_id": 10001,
@@ -16325,6 +17067,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211050,
     "card_id": 101211050,
     "card_name": "人马斥候",
     "card_set_id": 10001,
@@ -16347,6 +17090,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211110,
     "card_id": 101211110,
     "card_name": "身经百战的长枪兵",
     "card_set_id": 10001,
@@ -16369,6 +17113,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101221010,
     "card_id": 101221010,
     "card_name": "女仆事务长",
     "card_set_id": 10001,
@@ -16391,6 +17136,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101221020,
     "card_id": 101221020,
     "card_name": "刺客",
     "card_set_id": 10001,
@@ -16413,6 +17159,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101221080,
     "card_id": 101221080,
     "card_name": "鲁米那斯骑士",
     "card_set_id": 10001,
@@ -16435,6 +17182,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101221090,
     "card_id": 101221090,
     "card_name": "公主的近卫兵",
     "card_set_id": 10001,
@@ -16457,6 +17205,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102211020,
     "card_id": 102211020,
     "card_name": "勇战的旗手",
     "card_set_id": 10002,
@@ -16479,6 +17228,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102221010,
     "card_id": 102221010,
     "card_name": "女仆枪手·赛莉亚",
     "card_set_id": 10002,
@@ -16501,6 +17251,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103211050,
     "card_id": 103211050,
     "card_name": "武士",
     "card_set_id": 10003,
@@ -16523,6 +17274,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103221030,
     "card_id": 103221030,
     "card_name": "骑士团副队长·格尔德",
     "card_set_id": 10003,
@@ -16545,6 +17297,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104211020,
     "card_id": 104211020,
     "card_name": "海舰卫士·希莫妮",
     "card_set_id": 10004,
@@ -16567,6 +17320,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105221030,
     "card_id": 105221030,
     "card_name": "尖刃刺鼠",
     "card_set_id": 10005,
@@ -16589,6 +17343,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105231010,
     "card_id": 105231010,
     "card_name": "小红帽·梅西",
     "card_set_id": 10005,
@@ -16611,6 +17366,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106221010,
     "card_id": 106221010,
     "card_name": "库胡林",
     "card_set_id": 10006,
@@ -16633,6 +17389,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106231010,
     "card_id": 106231010,
     "card_name": "太阳之枪·璐",
     "card_set_id": 10006,
@@ -16655,6 +17412,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107221020,
     "card_id": 107221020,
     "card_name": "归来的佣兵",
     "card_set_id": 10007,
@@ -16677,6 +17435,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107231020,
     "card_id": 107231020,
     "card_name": "清廉忠臣",
     "card_set_id": 10007,
@@ -16699,6 +17458,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108211030,
     "card_id": 108211030,
     "card_name": "白熊圣骑士",
     "card_set_id": 10008,
@@ -16721,6 +17481,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108221020,
     "card_id": 108221020,
     "card_name": "粗暴的豪剑士",
     "card_set_id": 10008,
@@ -16743,6 +17504,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108231010,
     "card_id": 108231010,
     "card_name": "无邪公主·普莉姆",
     "card_set_id": 10008,
@@ -16765,6 +17527,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108231020,
     "card_id": 108231020,
     "card_name": "恶魔伯爵·达利欧",
     "card_set_id": 10008,
@@ -16787,6 +17550,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108241010,
     "card_id": 108241010,
     "card_name": "天空指挥官·榭莉亚",
     "card_set_id": 10008,
@@ -16809,6 +17573,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109211030,
     "card_id": 109211030,
     "card_name": "大商人",
     "card_set_id": 10009,
@@ -16831,6 +17596,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110211030,
     "card_id": 110211030,
     "card_name": "篡夺的随从",
     "card_set_id": 10010,
@@ -16853,6 +17619,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111211030,
     "card_id": 111211030,
     "card_name": "魔法商贩·艾尔涅丝塔",
     "card_set_id": 10011,
@@ -16875,6 +17642,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111231010,
     "card_id": 111231010,
     "card_name": "夜月之刃·里欧德",
     "card_set_id": 10011,
@@ -16897,6 +17665,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112211010,
     "card_id": 112211010,
     "card_name": "加农炮破坏者",
     "card_set_id": 10012,
@@ -16919,6 +17688,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112211020,
     "card_id": 112211020,
     "card_name": "不屈的司令官",
     "card_set_id": 10012,
@@ -16941,6 +17711,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113211020,
     "card_id": 113211020,
     "card_name": "雷维翁弓箭手",
     "card_set_id": 10013,
@@ -16963,6 +17734,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113221010,
     "card_id": 113221010,
     "card_name": "绚丽的剑术教官",
     "card_set_id": 10013,
@@ -16985,6 +17757,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113221020,
     "card_id": 113221020,
     "card_name": "雷维翁猛者·杰诺",
     "card_set_id": 10013,
@@ -17007,6 +17780,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114211030,
     "card_id": 114211030,
     "card_name": "斧枪战狼",
     "card_set_id": 10014,
@@ -17029,6 +17803,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114221020,
     "card_id": 114221020,
     "card_name": "神准狙击手·瓦路兹",
     "card_set_id": 10014,
@@ -17051,6 +17826,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115211020,
     "card_id": 115211020,
     "card_name": "放浪野武士",
     "card_set_id": 10015,
@@ -17073,6 +17849,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115221020,
     "card_id": 115221020,
     "card_name": "迅斩双刀士",
     "card_set_id": 10015,
@@ -17095,6 +17872,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115231010,
     "card_id": 115231010,
     "card_name": "刚毅卓绝的武士",
     "card_set_id": 10015,
@@ -17117,6 +17895,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116211010,
     "card_id": 116211010,
     "card_name": "机械输送者",
     "card_set_id": 10016,
@@ -17139,6 +17918,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116221020,
     "card_id": 116221020,
     "card_name": "黑豹侦察者",
     "card_set_id": 10016,
@@ -17161,6 +17941,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116221030,
     "card_id": 116221030,
     "card_name": "雷维翁魔兽使",
     "card_set_id": 10016,
@@ -17183,6 +17964,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116231020,
     "card_id": 116231020,
     "card_name": "荣华王子",
     "card_set_id": 10016,
@@ -17205,6 +17987,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117211030,
     "card_id": 117211030,
     "card_name": "诚实的盗贼",
     "card_set_id": 10017,
@@ -17227,6 +18010,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117231020,
     "card_id": 117231020,
     "card_name": "动乱商人·伊尔米斯娜",
     "card_set_id": 10017,
@@ -17249,6 +18033,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118211020,
     "card_id": 118211020,
     "card_name": "娜哈特的私兵",
     "card_set_id": 10018,
@@ -17271,6 +18056,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119221010,
     "card_id": 119221010,
     "card_name": "沉睡的辉龙·亚瑟",
     "card_set_id": 10019,
@@ -17293,6 +18079,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119221020,
     "card_id": 119221020,
     "card_name": "沉睡的狮子·莫德雷德",
     "card_set_id": 10019,
@@ -17315,6 +18102,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119231010,
     "card_id": 119231010,
     "card_name": "武魂梦想家·味琳",
     "card_set_id": 10019,
@@ -17337,6 +18125,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120211010,
     "card_id": 120211010,
     "card_name": "盛装的暗杀者",
     "card_set_id": 10020,
@@ -17359,6 +18148,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120221010,
     "card_id": 120221010,
     "card_name": "王城司令官",
     "card_set_id": 10020,
@@ -17381,6 +18171,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120231020,
     "card_id": 120231020,
     "card_name": "俏猫上将",
     "card_set_id": 10020,
@@ -17403,6 +18194,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121211010,
     "card_id": 121211010,
     "card_name": "无晓的余党",
     "card_set_id": 10021,
@@ -17425,6 +18217,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121211030,
     "card_id": 121211030,
     "card_name": "鼯鼠传令兵",
     "card_set_id": 10021,
@@ -17447,6 +18240,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121221020,
     "card_id": 121221020,
     "card_name": "圣剑之光的小队长",
     "card_set_id": 10021,
@@ -17469,6 +18263,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122211020,
     "card_id": 122211020,
     "card_name": "齐力的骑兵",
     "card_set_id": 10022,
@@ -17491,6 +18286,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122231010,
     "card_id": 122231010,
     "card_name": "突击骑士",
     "card_set_id": 10022,
@@ -17513,6 +18309,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123211020,
     "card_id": 123211020,
     "card_name": "强袭盗贼",
     "card_set_id": 10023,
@@ -17535,6 +18332,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123231020,
     "card_id": 123231020,
     "card_name": "亚森·罗苹",
     "card_set_id": 10023,
@@ -17557,6 +18355,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124211010,
     "card_id": 124211010,
     "card_name": "帐房蛙",
     "card_set_id": 10024,
@@ -17579,6 +18378,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124241010,
     "card_id": 124241010,
     "card_name": "华之大将·武祇",
     "card_set_id": 10024,
@@ -17601,6 +18401,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125211010,
     "card_id": 125211010,
     "card_name": "出色的盗贼",
     "card_set_id": 10025,
@@ -17623,6 +18424,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125211020,
     "card_id": 125211020,
     "card_name": "鲁米那斯治疗师·琍菈菈",
     "card_set_id": 10025,
@@ -17645,6 +18447,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125221030,
     "card_id": 125221030,
     "card_name": "鲁米那斯枪士",
     "card_set_id": 10025,
@@ -17667,6 +18470,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125231010,
     "card_id": 125231010,
     "card_name": "神速的迅捷剑士",
     "card_set_id": 10025,
@@ -17689,6 +18493,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125231020,
     "card_id": 125231020,
     "card_name": "骁战的鲁米那斯骑士",
     "card_set_id": 10025,
@@ -17711,6 +18516,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126211010,
     "card_id": 126211010,
     "card_name": "火炎战士",
     "card_set_id": 10026,
@@ -17733,6 +18539,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126211020,
     "card_id": 126211020,
     "card_name": "洁白骑士",
     "card_set_id": 10026,
@@ -17755,6 +18562,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126221030,
     "card_id": 126221030,
     "card_name": "魔鞭少女",
     "card_set_id": 10026,
@@ -17777,6 +18585,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127211020,
     "card_id": 127211020,
     "card_name": "无拘的骑士",
     "card_set_id": 10027,
@@ -17799,6 +18608,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127221010,
     "card_id": 127221010,
     "card_name": "海潮炮手",
     "card_set_id": 10027,
@@ -17821,6 +18631,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128211020,
     "card_id": 128211020,
     "card_name": "耿直的琢磨·托尼",
     "card_set_id": 10028,
@@ -17843,6 +18654,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128211030,
     "card_id": 128211030,
     "card_name": "企鹅武斗家",
     "card_set_id": 10028,
@@ -17865,6 +18677,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128241030,
     "card_id": 128241030,
     "card_name": "约定之荣耀·高文",
     "card_set_id": 10028,
@@ -17887,6 +18700,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129221020,
     "card_id": 129221020,
     "card_name": "豪放的战士·马尔克",
     "card_set_id": 10029,
@@ -17909,6 +18723,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129241010,
     "card_id": 129241010,
     "card_name": "时空提督·莫妮卡",
     "card_set_id": 10029,
@@ -17931,6 +18746,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900211030,
     "card_id": 900211030,
     "card_name": "铁甲骑士",
     "card_set_id": 90000,
@@ -17953,6 +18769,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900211080,
     "card_id": 900211080,
     "card_name": "恶浪海贼",
     "card_set_id": 90000,
@@ -17975,6 +18792,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900211090,
     "card_id": 900211090,
     "card_name": "加农炮水手",
     "card_set_id": 90000,
@@ -17997,6 +18815,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900211100,
     "card_id": 900211100,
     "card_name": "巡洋突击兵",
     "card_set_id": 90000,
@@ -18019,6 +18838,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900231080,
     "card_id": 900231080,
     "card_name": "魔雾管家·利路耶",
     "card_set_id": 90000,
@@ -18041,6 +18861,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900231090,
     "card_id": 900231090,
     "card_name": "魔雾女仆·席娜",
     "card_set_id": 90000,
@@ -18063,6 +18884,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900231110,
     "card_id": 900231110,
     "card_name": "雷维翁副团长·玛姆",
     "card_set_id": 90000,
@@ -18085,6 +18907,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101224010,
     "card_id": 101224010,
     "card_name": "征兵",
     "card_set_id": 10001,
@@ -18107,6 +18930,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102224040,
     "card_id": 102224040,
     "card_name": "全力斩击",
     "card_set_id": 10002,
@@ -18129,6 +18953,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105224010,
     "card_id": 105224010,
     "card_name": "火遁之术",
     "card_set_id": 10005,
@@ -18151,6 +18976,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106224010,
     "card_id": 106224010,
     "card_name": "星之铠甲",
     "card_set_id": 10006,
@@ -18173,6 +18999,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110214010,
     "card_id": 110214010,
     "card_name": "篡夺的蛇剑",
     "card_set_id": 10010,
@@ -18195,6 +19022,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111214010,
     "card_id": 111214010,
     "card_name": "神速的步法",
     "card_set_id": 10011,
@@ -18217,6 +19045,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112224010,
     "card_id": 112224010,
     "card_name": "白刃剑舞",
     "card_set_id": 10012,
@@ -18239,6 +19068,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114214010,
     "card_id": 114214010,
     "card_name": "分身之术",
     "card_set_id": 10014,
@@ -18261,6 +19091,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114234010,
     "card_id": 114234010,
     "card_name": "意外失足",
     "card_set_id": 10014,
@@ -18283,6 +19114,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117224010,
     "card_id": 117224010,
     "card_name": "坚盾战阵",
     "card_set_id": 10017,
@@ -18305,6 +19137,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119224010,
     "card_id": 119224010,
     "card_name": "老练的教鞭",
     "card_set_id": 10019,
@@ -18327,6 +19160,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120224010,
     "card_id": 120224010,
     "card_name": "战果竞卖会",
     "card_set_id": 10020,
@@ -18349,6 +19183,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121224010,
     "card_id": 121224010,
     "card_name": "隐伏的记忆",
     "card_set_id": 10021,
@@ -18371,6 +19206,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124214010,
     "card_id": 124214010,
     "card_name": "减价交涉",
     "card_set_id": 10024,
@@ -18393,6 +19229,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125214010,
     "card_id": 125214010,
     "card_name": "手里剑术",
     "card_set_id": 10025,
@@ -18415,6 +19252,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127214010,
     "card_id": 127214010,
     "card_name": "掷射忍具",
     "card_set_id": 10027,
@@ -18437,6 +19275,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129224010,
     "card_id": 129224010,
     "card_name": "雷迅卿的电光",
     "card_set_id": 10029,
@@ -18459,6 +19298,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900224040,
     "card_id": 900224040,
     "card_name": "冰击枪",
     "card_set_id": 90000,
@@ -18481,6 +19321,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234010,
     "card_id": 900234010,
     "card_name": "潜入搜查",
     "card_set_id": 90000,
@@ -18503,6 +19344,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900234030,
     "card_id": 900234030,
     "card_name": "光辉剑击",
     "card_set_id": 90000,
@@ -18525,6 +19367,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244040,
     "card_id": 900244040,
     "card_name": "亡命者的枪击",
     "card_set_id": 90000,
@@ -18547,6 +19390,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244050,
     "card_id": 900244050,
     "card_name": "空绝的残光",
     "card_set_id": 90000,
@@ -18569,6 +19413,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244060,
     "card_id": 900244060,
     "card_name": "炫目的崭露",
     "card_set_id": 90000,
@@ -18591,6 +19436,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101222010,
     "card_id": 101222010,
     "card_name": "铁壁要塞",
     "card_set_id": 10001,
@@ -18613,6 +19459,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109223010,
     "card_id": 109223010,
     "card_name": "历战的兵器",
     "card_set_id": 10009,
@@ -18635,6 +19482,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900223010,
     "card_id": 900223010,
     "card_name": "坚韧之盾",
     "card_set_id": 90000,
@@ -18657,6 +19505,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900223020,
     "card_id": 900223020,
     "card_name": "锐利之剑",
     "card_set_id": 90000,
@@ -18679,6 +19528,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100311010,
     "card_id": 100311010,
     "card_name": "新星魔术师·萨米",
     "card_set_id": 10000,
@@ -18701,6 +19551,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311010,
     "card_id": 101311010,
     "card_name": "企鹅魔法师",
     "card_set_id": 10001,
@@ -18723,6 +19574,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311020,
     "card_id": 101311020,
     "card_name": "睿智的术士",
     "card_set_id": 10001,
@@ -18745,6 +19597,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311060,
     "card_id": 101311060,
     "card_name": "见习炼金术师",
     "card_set_id": 10001,
@@ -18767,6 +19620,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101321040,
     "card_id": 101321040,
     "card_name": "精通咒法的女巫",
     "card_set_id": 10001,
@@ -18789,6 +19643,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102331010,
     "card_id": 102331010,
     "card_name": "年迈的魔法师·里维",
     "card_set_id": 10002,
@@ -18811,6 +19666,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103311030,
     "card_id": 103311030,
     "card_name": "马纳历亚巫术师·克雷格",
     "card_set_id": 10003,
@@ -18833,6 +19689,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103321030,
     "card_id": 103321030,
     "card_name": "矮人炼金术师",
     "card_set_id": 10003,
@@ -18855,6 +19712,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104321020,
     "card_id": 104321020,
     "card_name": "学院新生·露",
     "card_set_id": 10004,
@@ -18877,6 +19735,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104321030,
     "card_id": 104321030,
     "card_name": "幻惑的奇术师",
     "card_set_id": 10004,
@@ -18899,6 +19758,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105311010,
     "card_id": 105311010,
     "card_name": "甜点巫师",
     "card_set_id": 10005,
@@ -18921,6 +19781,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105311030,
     "card_id": 105311030,
     "card_name": "马纳历亚宝石兽",
     "card_set_id": 10005,
@@ -18943,6 +19804,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106311030,
     "card_id": 106311030,
     "card_name": "魔法猫头鹰",
     "card_set_id": 10006,
@@ -18965,6 +19827,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106341010,
     "card_id": 106341010,
     "card_name": "观星魔女·丝特拉",
     "card_set_id": 10006,
@@ -18987,6 +19850,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107311020,
     "card_id": 107311020,
     "card_name": "术式的教师·吉尔",
     "card_set_id": 10007,
@@ -19009,6 +19873,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108311010,
     "card_id": 108311010,
     "card_name": "预知魔女",
     "card_set_id": 10008,
@@ -19031,6 +19896,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108311030,
     "card_id": 108311030,
     "card_name": "兽面魔法师",
     "card_set_id": 10008,
@@ -19053,6 +19919,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108321020,
     "card_id": 108321020,
     "card_name": "马纳历亚龙术师",
     "card_set_id": 10008,
@@ -19075,6 +19942,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109311010,
     "card_id": 109311010,
     "card_name": "黑魔女·安娜",
     "card_set_id": 10009,
@@ -19097,6 +19965,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110311010,
     "card_id": 110311010,
     "card_name": "马纳历亚骑士·欧文",
     "card_set_id": 10010,
@@ -19119,6 +19988,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110331020,
     "card_id": 110331020,
     "card_name": "真实的使徒",
     "card_set_id": 10010,
@@ -19141,6 +20011,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111311010,
     "card_id": 111311010,
     "card_name": "灵兔法师",
     "card_set_id": 10011,
@@ -19163,6 +20034,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111341030,
     "card_id": 111341030,
     "card_name": "巨锤术师·吉奥斯",
     "card_set_id": 10011,
@@ -19185,6 +20057,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112311030,
     "card_id": 112311030,
     "card_name": "马纳历亚富家子·希勒迪",
     "card_set_id": 10012,
@@ -19207,6 +20080,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112321020,
     "card_id": 112321020,
     "card_name": "机械生命体",
     "card_set_id": 10012,
@@ -19229,6 +20103,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112341030,
     "card_id": 112341030,
     "card_name": "魔法之王·所罗门",
     "card_set_id": 10012,
@@ -19251,6 +20126,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113311010,
     "card_id": 113311010,
     "card_name": "喷射巫师",
     "card_set_id": 10013,
@@ -19273,6 +20149,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113311030,
     "card_id": 113311030,
     "card_name": "雷光灵猫",
     "card_set_id": 10013,
@@ -19295,6 +20172,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114311010,
     "card_id": 114311010,
     "card_name": "大地元素使",
     "card_set_id": 10014,
@@ -19317,6 +20195,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114311030,
     "card_id": 114311030,
     "card_name": "豪腕巨像",
     "card_set_id": 10014,
@@ -19339,6 +20218,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115311020,
     "card_id": 115311020,
     "card_name": "暴风元素使",
     "card_set_id": 10015,
@@ -19361,6 +20241,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115311030,
     "card_id": 115311030,
     "card_name": "奇幻魔鼠",
     "card_set_id": 10015,
@@ -19383,6 +20264,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116311010,
     "card_id": 116311010,
     "card_name": "机具占卜师",
     "card_set_id": 10016,
@@ -19405,6 +20287,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116321010,
     "card_id": 116321010,
     "card_name": "大地魔女",
     "card_set_id": 10016,
@@ -19427,6 +20310,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116321020,
     "card_id": 116321020,
     "card_name": "境界魔导士",
     "card_set_id": 10016,
@@ -19449,6 +20333,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116341030,
     "card_id": 116341030,
     "card_name": "元素大魔法师·亚连",
     "card_set_id": 10016,
@@ -19471,6 +20356,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117311010,
     "card_id": 117311010,
     "card_name": "创物魔法师",
     "card_set_id": 10017,
@@ -19493,6 +20379,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117341010,
     "card_id": 117341010,
     "card_name": "《愚者》·琳库露",
     "card_set_id": 10017,
@@ -19515,6 +20402,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117341030,
     "card_id": 117341030,
     "card_name": "决意预言者·露妮",
     "card_set_id": 10017,
@@ -19537,6 +20425,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118311010,
     "card_id": 118311010,
     "card_name": "勒比卢的保安官",
     "card_set_id": 10018,
@@ -19559,6 +20448,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118341030,
     "card_id": 118341030,
     "card_name": "无尽魔像",
     "card_set_id": 10018,
@@ -19581,6 +20471,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119321010,
     "card_id": 119321010,
     "card_name": "炎狱的葬送者·艾尔蒙特",
     "card_set_id": 10019,
@@ -19603,6 +20494,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119331020,
     "card_id": 119331020,
     "card_name": "星辰舞者",
     "card_set_id": 10019,
@@ -19625,6 +20517,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120311030,
     "card_id": 120311030,
     "card_name": "魔幻松鼠",
     "card_set_id": 10020,
@@ -19647,6 +20540,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120341030,
     "card_id": 120341030,
     "card_name": "神圣天体·弥莉卡",
     "card_set_id": 10020,
@@ -19669,6 +20563,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121311020,
     "card_id": 121311020,
     "card_name": "持心机械",
     "card_set_id": 10021,
@@ -19691,6 +20586,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121331020,
     "card_id": 121331020,
     "card_name": "翔伞魔女",
     "card_set_id": 10021,
@@ -19713,6 +20609,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121341020,
     "card_id": 121341020,
     "card_name": "荣耀之花·爱莲娜",
     "card_set_id": 10021,
@@ -19735,6 +20632,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122311020,
     "card_id": 122311020,
     "card_name": "黏土术师",
     "card_set_id": 10022,
@@ -19757,6 +20655,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122311030,
     "card_id": 122311030,
     "card_name": "马纳历亚吊灯怪",
     "card_set_id": 10022,
@@ -19779,6 +20678,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123321010,
     "card_id": 123321010,
     "card_name": "扫帚魔女",
     "card_set_id": 10023,
@@ -19801,6 +20701,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123331010,
     "card_id": 123331010,
     "card_name": "强欲魔女",
     "card_set_id": 10023,
@@ -19823,6 +20724,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123341020,
     "card_id": 123341020,
     "card_name": "睿智的神鸟",
     "card_set_id": 10023,
@@ -19845,6 +20747,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124311010,
     "card_id": 124311010,
     "card_name": "宿簿猫头鹰",
     "card_set_id": 10024,
@@ -19867,6 +20770,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124341030,
     "card_id": 124341030,
     "card_name": "精灵萨满·莱莉",
     "card_set_id": 10024,
@@ -19889,6 +20793,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125311010,
     "card_id": 125311010,
     "card_name": "聪颖的猫头鹰",
     "card_set_id": 10025,
@@ -19911,6 +20816,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125321010,
     "card_id": 125321010,
     "card_name": "遥不可及的睿智·里维",
     "card_set_id": 10025,
@@ -19933,6 +20839,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125321020,
     "card_id": 125321020,
     "card_name": "马纳历亚女仆·汉娜",
     "card_set_id": 10025,
@@ -19955,6 +20862,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126331010,
     "card_id": 126331010,
     "card_name": "神秘皇后·梅迪",
     "card_set_id": 10026,
@@ -19977,6 +20885,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126341030,
     "card_id": 126341030,
     "card_name": "天体术师",
     "card_set_id": 10026,
@@ -19999,6 +20908,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127311010,
     "card_id": 127311010,
     "card_name": "沉迷的实验体",
     "card_set_id": 10027,
@@ -20021,6 +20931,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127321010,
     "card_id": 127321010,
     "card_name": "热衷的研究者",
     "card_set_id": 10027,
@@ -20043,6 +20954,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128311010,
     "card_id": 128311010,
     "card_name": "小小贤者",
     "card_set_id": 10028,
@@ -20065,6 +20977,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128321020,
     "card_id": 128321020,
     "card_name": "鲁纳尔的教会长·葛芮妮",
     "card_set_id": 10028,
@@ -20087,6 +21000,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128331010,
     "card_id": 128331010,
     "card_name": "缔结之红莲·古蕾娅",
     "card_set_id": 10028,
@@ -20109,6 +21023,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129311010,
     "card_id": 129311010,
     "card_name": "速成驯魔师",
     "card_set_id": 10029,
@@ -20131,6 +21046,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129321010,
     "card_id": 129321010,
     "card_name": "多元魔法师",
     "card_set_id": 10029,
@@ -20153,6 +21069,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900311020,
     "card_id": 900311020,
     "card_name": "泥尘巨像",
     "card_set_id": 90000,
@@ -20175,6 +21092,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311080,
     "card_id": 900311080,
     "card_name": "马纳历亚执事·凯曼",
     "card_set_id": 90000,
@@ -20197,6 +21115,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900311090,
     "card_id": 900311090,
     "card_name": "式神·小纸人",
     "card_set_id": 90000,
@@ -20219,6 +21138,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900331010,
     "card_id": 900331010,
     "card_name": "雪人骑士",
     "card_set_id": 90000,
@@ -20241,6 +21161,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900331020,
     "card_id": 900331020,
     "card_name": "雪人狂战士",
     "card_set_id": 90000,
@@ -20263,6 +21184,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900331030,
     "card_id": 900331030,
     "card_name": "洋葱军团兵",
     "card_set_id": 90000,
@@ -20285,6 +21207,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900331040,
     "card_id": 900331040,
     "card_name": "安的巨大英灵",
     "card_set_id": 90000,
@@ -20307,6 +21230,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314020,
     "card_id": 100314020,
     "card_name": "魔导飞弹",
     "card_set_id": 10000,
@@ -20329,6 +21253,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314030,
     "card_id": 100314030,
     "card_name": "巨像炼成术",
     "card_set_id": 10000,
@@ -20351,6 +21276,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314040,
     "card_id": 100314040,
     "card_name": "疾风喷射",
     "card_set_id": 10000,
@@ -20373,6 +21299,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314010,
     "card_id": 101314010,
     "card_name": "虹色光辉",
     "card_set_id": 10001,
@@ -20395,6 +21322,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105334010,
     "card_id": 105334010,
     "card_name": "巨像突击",
     "card_set_id": 10005,
@@ -20417,6 +21345,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106334010,
     "card_id": 106334010,
     "card_name": "连锁呼唤",
     "card_set_id": 10006,
@@ -20439,6 +21368,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109314010,
     "card_id": 109314010,
     "card_name": "雄伟之枪",
     "card_set_id": 10009,
@@ -20461,6 +21391,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111314010,
     "card_id": 111314010,
     "card_name": "魔法的一击",
     "card_set_id": 10011,
@@ -20483,6 +21414,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112334010,
     "card_id": 112334010,
     "card_name": "1、2、Magic！",
     "card_set_id": 10012,
@@ -20505,6 +21437,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113334010,
     "card_id": 113334010,
     "card_name": "马纳历亚的伟大研究",
     "card_set_id": 10013,
@@ -20527,6 +21460,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114314010,
     "card_id": 114314010,
     "card_name": "马纳历亚的睿智",
     "card_set_id": 10014,
@@ -20549,6 +21483,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115314010,
     "card_id": 115314010,
     "card_name": "式神役使之术",
     "card_set_id": 10015,
@@ -20571,6 +21506,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116334010,
     "card_id": 116334010,
     "card_name": "齐心的魔法",
     "card_set_id": 10016,
@@ -20593,6 +21529,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117324010,
     "card_id": 117324010,
     "card_name": "预知未来",
     "card_set_id": 10017,
@@ -20615,6 +21552,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117334010,
     "card_id": 117334010,
     "card_name": "乱无章法的嵌合",
     "card_set_id": 10017,
@@ -20637,6 +21575,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118324010,
     "card_id": 118324010,
     "card_name": "烈火爆破",
     "card_set_id": 10018,
@@ -20659,6 +21598,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119324010,
     "card_id": 119324010,
     "card_name": "灵药调合",
     "card_set_id": 10019,
@@ -20681,6 +21621,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119334010,
     "card_id": 119334010,
     "card_name": "魔御结界",
     "card_set_id": 10019,
@@ -20703,6 +21644,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120314010,
     "card_id": 120314010,
     "card_name": "源于魔力的复制",
     "card_set_id": 10020,
@@ -20725,6 +21667,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122324010,
     "card_id": 122324010,
     "card_name": "反制魔法",
     "card_set_id": 10022,
@@ -20747,6 +21690,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124314020,
     "card_id": 124314020,
     "card_name": "大地魔拳",
     "card_set_id": 10024,
@@ -20769,6 +21713,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124334010,
     "card_id": 124334010,
     "card_name": "一生的探究",
     "card_set_id": 10024,
@@ -20791,6 +21736,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126314010,
     "card_id": 126314010,
     "card_name": "液态球体",
     "card_set_id": 10026,
@@ -20813,6 +21759,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126334010,
     "card_id": 126334010,
     "card_name": "奇幻战略",
     "card_set_id": 10026,
@@ -20835,6 +21782,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314010,
     "card_id": 900314010,
     "card_name": "守护者炼成术",
     "card_set_id": 90000,
@@ -20857,6 +21805,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314030,
     "card_id": 900314030,
     "card_name": "真理的术式",
     "card_set_id": 90000,
@@ -20879,6 +21828,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314040,
     "card_id": 900314040,
     "card_name": "马纳历亚魔弹",
     "card_set_id": 90000,
@@ -20901,6 +21851,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314050,
     "card_id": 900314050,
     "card_name": "马纳历亚防御阵",
     "card_set_id": 90000,
@@ -20923,6 +21874,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314070,
     "card_id": 900314070,
     "card_name": "巨像创造",
     "card_set_id": 90000,
@@ -20945,6 +21897,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334030,
     "card_id": 900334030,
     "card_name": "魔创炼金",
     "card_set_id": 90000,
@@ -20967,6 +21920,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344010,
     "card_id": 900344010,
     "card_name": "引世箴言",
     "card_set_id": 90000,
@@ -20989,6 +21943,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344070,
     "card_id": 900344070,
     "card_name": "剥落的镇压",
     "card_set_id": 90000,
@@ -21011,6 +21966,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344120,
     "card_id": 900344120,
     "card_name": "联合魔法",
     "card_set_id": 90000,
@@ -21033,6 +21989,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344160,
     "card_id": 900344160,
     "card_name": "苦痛",
     "card_set_id": 90000,
@@ -21055,6 +22012,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101312010,
     "card_id": 101312010,
     "card_name": "睿智的教诲",
     "card_set_id": 10001,
@@ -21077,6 +22035,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102312050,
     "card_id": 102312050,
     "card_name": "灼热的术式",
     "card_set_id": 10002,
@@ -21099,6 +22058,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104313010,
     "card_id": 104313010,
     "card_name": "魔法图书馆",
     "card_set_id": 10004,
@@ -21121,6 +22081,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107322010,
     "card_id": 107322010,
     "card_name": "寂静的实验室",
     "card_set_id": 10007,
@@ -21143,6 +22104,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115332010,
     "card_id": 115332010,
     "card_name": "真理的魔镜",
     "card_set_id": 10015,
@@ -21165,6 +22127,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129322010,
     "card_id": 129322010,
     "card_name": "束缚术式",
     "card_set_id": 10029,
@@ -21187,6 +22150,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100411010,
     "card_id": 100411010,
     "card_name": "龙骑兵",
     "card_set_id": 10000,
@@ -21209,6 +22173,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101411020,
     "card_id": 101411020,
     "card_name": "暴岚的巨龙",
     "card_set_id": 10001,
@@ -21231,6 +22196,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101411060,
     "card_id": 101411060,
     "card_name": "沙暴龙",
     "card_set_id": 10001,
@@ -21253,6 +22219,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101411110,
     "card_id": 101411110,
     "card_name": "火焰蜥蜴",
     "card_set_id": 10001,
@@ -21275,6 +22242,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101431010,
     "card_id": 101431010,
     "card_name": "龙人织术师",
     "card_set_id": 10001,
@@ -21297,6 +22265,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101431040,
     "card_id": 101431040,
     "card_name": "半龙人魔法师",
     "card_set_id": 10001,
@@ -21319,6 +22288,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102411020,
     "card_id": 102411020,
     "card_name": "赤怒蛇",
     "card_set_id": 10002,
@@ -21341,6 +22311,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102411040,
     "card_id": 102411040,
     "card_name": "暴虐的龙少女",
     "card_set_id": 10002,
@@ -21363,6 +22334,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103411050,
     "card_id": 103411050,
     "card_name": "驯龙师",
     "card_set_id": 10003,
@@ -21385,6 +22357,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103411060,
     "card_id": 103411060,
     "card_name": "煌牙战士·基德",
     "card_set_id": 10003,
@@ -21407,6 +22380,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103431030,
     "card_id": 103431030,
     "card_name": "伊达政宗",
     "card_set_id": 10003,
@@ -21429,6 +22403,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104421030,
     "card_id": 104421030,
     "card_name": "咏风少年·杰鲁",
     "card_set_id": 10004,
@@ -21451,6 +22426,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105411010,
     "card_id": 105411010,
     "card_name": "龙人召唤师",
     "card_set_id": 10005,
@@ -21473,6 +22449,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106411010,
     "card_id": 106411010,
     "card_name": "育龙者·玛蒂达",
     "card_set_id": 10006,
@@ -21495,6 +22472,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107421010,
     "card_id": 107421010,
     "card_name": "艳丽龙人·玛利翁",
     "card_set_id": 10007,
@@ -21517,6 +22495,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107431010,
     "card_id": 107431010,
     "card_name": "龙剑少女·艾拉",
     "card_set_id": 10007,
@@ -21539,6 +22518,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108411040,
     "card_id": 108411040,
     "card_name": "昼梦白龙",
     "card_set_id": 10008,
@@ -21561,6 +22541,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108421010,
     "card_id": 108421010,
     "card_name": "屠龙勇士",
     "card_set_id": 10008,
@@ -21583,6 +22564,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108441030,
     "card_id": 108441030,
     "card_name": "银冰龙人·菲琳",
     "card_set_id": 10008,
@@ -21605,6 +22587,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109411010,
     "card_id": 109411010,
     "card_name": "屠龙少女",
     "card_set_id": 10009,
@@ -21627,6 +22610,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109421020,
     "card_id": 109421020,
     "card_name": "小小幼龙",
     "card_set_id": 10009,
@@ -21649,6 +22633,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110411030,
     "card_id": 110411030,
     "card_name": "侮蔑的随从",
     "card_set_id": 10010,
@@ -21671,6 +22656,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110441030,
     "card_id": 110441030,
     "card_name": "暴龙·伊达政宗",
     "card_set_id": 10010,
@@ -21693,6 +22679,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111411020,
     "card_id": 111411020,
     "card_name": "侮蔑的狂信者",
     "card_set_id": 10011,
@@ -21715,6 +22702,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112411010,
     "card_id": 112411010,
     "card_name": "慈爱的龙战士",
     "card_set_id": 10012,
@@ -21737,6 +22725,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112411030,
     "card_id": 112411030,
     "card_name": "爆弹河豚",
     "card_set_id": 10012,
@@ -21759,6 +22748,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112421010,
     "card_id": 112421010,
     "card_name": "突击龙骑士",
     "card_set_id": 10012,
@@ -21781,6 +22771,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112441020,
     "card_id": 112441020,
     "card_name": "钢甲龙骑士·拜伦",
     "card_set_id": 10012,
@@ -21803,6 +22794,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113411010,
     "card_id": 113411010,
     "card_name": "机关美人鱼",
     "card_set_id": 10013,
@@ -21825,6 +22817,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114411030,
     "card_id": 114411030,
     "card_name": "雷电迅猛龙",
     "card_set_id": 10014,
@@ -21847,6 +22840,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114421010,
     "card_id": 114421010,
     "card_name": "碧沫人鱼",
     "card_set_id": 10014,
@@ -21869,6 +22863,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115411010,
     "card_id": 115411010,
     "card_name": "蛇腹剑龙骑士",
     "card_set_id": 10015,
@@ -21891,6 +22886,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115421030,
     "card_id": 115421030,
     "card_name": "履冰龙战士",
     "card_set_id": 10015,
@@ -21913,6 +22909,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115431020,
     "card_id": 115431020,
     "card_name": "懦弱的龙少女·祈梨",
     "card_set_id": 10015,
@@ -21935,6 +22932,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115441010,
     "card_id": 115441010,
     "card_name": "霸业龙人·卧龙",
     "card_set_id": 10015,
@@ -21957,6 +22955,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116411030,
     "card_id": 116411030,
     "card_name": "岩槌甲龙",
     "card_set_id": 10016,
@@ -21979,6 +22978,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116431020,
     "card_id": 116431020,
     "card_name": "金刚钻厚头龙",
     "card_set_id": 10016,
@@ -22001,6 +23001,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116441010,
     "card_id": 116441010,
     "card_name": "极炎龙骑士·洛乐",
     "card_set_id": 10016,
@@ -22023,6 +23024,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117411010,
     "card_id": 117411010,
     "card_name": "召水驭龙使",
     "card_set_id": 10017,
@@ -22045,6 +23047,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117411030,
     "card_id": 117411030,
     "card_name": "热带铠鱼",
     "card_set_id": 10017,
@@ -22067,6 +23070,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117421020,
     "card_id": 117421020,
     "card_name": "大洋钓手",
     "card_set_id": 10017,
@@ -22089,6 +23093,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118421020,
     "card_id": 118421020,
     "card_name": "龙人工匠",
     "card_set_id": 10018,
@@ -22111,6 +23116,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118431010,
     "card_id": 118431010,
     "card_name": "万花凤凰",
     "card_set_id": 10018,
@@ -22133,6 +23139,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119411030,
     "card_id": 119411030,
     "card_name": "鲨鱼战士",
     "card_set_id": 10019,
@@ -22155,6 +23162,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119411040,
     "card_id": 119411040,
     "card_name": "人鱼弓手",
     "card_set_id": 10019,
@@ -22177,6 +23185,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120411010,
     "card_id": 120411010,
     "card_name": "珍珠人鱼",
     "card_set_id": 10020,
@@ -22199,6 +23208,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120421020,
     "card_id": 120421020,
     "card_name": "珊瑚鲨",
     "card_set_id": 10020,
@@ -22221,6 +23231,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121421010,
     "card_id": 121421010,
     "card_name": "爪牙的战斗兵",
     "card_set_id": 10021,
@@ -22243,6 +23254,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122411010,
     "card_id": 122411010,
     "card_name": "火炎龙斗士",
     "card_set_id": 10022,
@@ -22265,6 +23277,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122411020,
     "card_id": 122411020,
     "card_name": "崇敬的龙骑士",
     "card_set_id": 10022,
@@ -22287,6 +23300,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122441020,
     "card_id": 122441020,
     "card_name": "天威的龙巫女",
     "card_set_id": 10022,
@@ -22309,6 +23323,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123411010,
     "card_id": 123411010,
     "card_name": "侮蔑的隐者",
     "card_set_id": 10023,
@@ -22331,6 +23346,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123421010,
     "card_id": 123421010,
     "card_name": "风之龙人",
     "card_set_id": 10023,
@@ -22353,6 +23369,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123421020,
     "card_id": 123421020,
     "card_name": "迷你龙",
     "card_set_id": 10023,
@@ -22375,6 +23392,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123441010,
     "card_id": 123441010,
     "card_name": "冻雪冰心·菲琳",
     "card_set_id": 10023,
@@ -22397,6 +23415,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124411020,
     "card_id": 124411020,
     "card_name": "献身的水龙",
     "card_set_id": 10024,
@@ -22419,6 +23438,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124421010,
     "card_id": 124421010,
     "card_name": "烧锅龙人",
     "card_set_id": 10024,
@@ -22441,6 +23461,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124421020,
     "card_id": 124421020,
     "card_name": "热带美人鱼",
     "card_set_id": 10024,
@@ -22463,6 +23484,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125411020,
     "card_id": 125411020,
     "card_name": "武斗龙人",
     "card_set_id": 10025,
@@ -22485,6 +23507,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125421030,
     "card_id": 125421030,
     "card_name": "片仓小十郎",
     "card_set_id": 10025,
@@ -22507,6 +23530,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125441030,
     "card_id": 125441030,
     "card_name": "独眼龙·伊达政宗",
     "card_set_id": 10025,
@@ -22529,6 +23553,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126411020,
     "card_id": 126411020,
     "card_name": "诛龙剑士",
     "card_set_id": 10026,
@@ -22551,6 +23576,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126431010,
     "card_id": 126431010,
     "card_name": "炽拳之龙·多拉格尼尔",
     "card_set_id": 10026,
@@ -22573,6 +23599,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127421020,
     "card_id": 127421020,
     "card_name": "重生的龙骑士",
     "card_set_id": 10027,
@@ -22595,6 +23622,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127421030,
     "card_id": 127421030,
     "card_name": "瞬刃龙人",
     "card_set_id": 10027,
@@ -22617,6 +23645,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128421010,
     "card_id": 128421010,
     "card_name": "虎鲸冲浪家",
     "card_set_id": 10028,
@@ -22639,6 +23668,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128431020,
     "card_id": 128431020,
     "card_name": "绯色贵公子·迪翁",
     "card_set_id": 10028,
@@ -22661,6 +23691,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128441010,
     "card_id": 128441010,
     "card_name": "龙之魔女·莉莉尤姆",
     "card_set_id": 10028,
@@ -22683,6 +23714,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129411030,
     "card_id": 129411030,
     "card_name": "海藻之灵",
     "card_set_id": 10029,
@@ -22705,6 +23737,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129421010,
     "card_id": 129421010,
     "card_name": "覆羽蜥蜴",
     "card_set_id": 10029,
@@ -22727,6 +23760,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900411030,
     "card_id": 900411030,
     "card_name": "虎鲸",
     "card_set_id": 90000,
@@ -22749,6 +23783,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900431010,
     "card_id": 900431010,
     "card_name": "波赛顿的士兵",
     "card_set_id": 90000,
@@ -22771,6 +23806,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900441040,
     "card_id": 900441040,
     "card_name": "地狱火魔龙",
     "card_set_id": 90000,
@@ -22793,6 +23829,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900441050,
     "card_id": 900441050,
     "card_name": "龙帝的近卫兵",
     "card_set_id": 90000,
@@ -22815,6 +23852,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900441130,
     "card_id": 900441130,
     "card_name": "莉莉尤姆的巨龙",
     "card_set_id": 90000,
@@ -22837,6 +23875,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100414010,
     "card_id": 100414010,
     "card_name": "龙之启示",
     "card_set_id": 10000,
@@ -22859,6 +23898,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101414010,
     "card_id": 101414010,
     "card_name": "龙之翼击",
     "card_set_id": 10001,
@@ -22881,6 +23921,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101414040,
     "card_id": 101414040,
     "card_name": "狂野追击",
     "card_set_id": 10001,
@@ -22903,6 +23944,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101424010,
     "card_id": 101424010,
     "card_name": "龙之传令",
     "card_set_id": 10001,
@@ -22925,6 +23967,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102424030,
     "card_id": 102424030,
     "card_name": "龙人的怒拳",
     "card_set_id": 10002,
@@ -22947,6 +23990,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103434010,
     "card_id": 103434010,
     "card_name": "沙拉曼达的吐息",
     "card_set_id": 10003,
@@ -22969,6 +24013,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106414010,
     "card_id": 106414010,
     "card_name": "龙瞳的预视",
     "card_set_id": 10006,
@@ -22991,6 +24036,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108424010,
     "card_id": 108424010,
     "card_name": "虎鲸巨涡",
     "card_set_id": 10008,
@@ -23013,6 +24059,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111414010,
     "card_id": 111414010,
     "card_name": "侮蔑的嘲笑",
     "card_set_id": 10011,
@@ -23035,6 +24082,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111434010,
     "card_id": 111434010,
     "card_name": "力之锻造",
     "card_set_id": 10011,
@@ -23057,6 +24105,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113414010,
     "card_id": 113414010,
     "card_name": "虎鲸逆流",
     "card_set_id": 10013,
@@ -23079,6 +24128,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117434010,
     "card_id": 117434010,
     "card_name": "聚龙之唤",
     "card_set_id": 10017,
@@ -23101,6 +24151,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118414010,
     "card_id": 118414010,
     "card_name": "雷霆咆哮",
     "card_set_id": 10018,
@@ -23123,6 +24174,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118424010,
     "card_id": 118424010,
     "card_name": "龙之赠言",
     "card_set_id": 10018,
@@ -23145,6 +24197,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120414010,
     "card_id": 120414010,
     "card_name": "龙人的振翅",
     "card_set_id": 10020,
@@ -23167,6 +24220,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121414010,
     "card_id": 121414010,
     "card_name": "相触的思念",
     "card_set_id": 10021,
@@ -23189,6 +24243,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121434010,
     "card_id": 121434010,
     "card_name": "森罗的初啼",
     "card_set_id": 10021,
@@ -23211,6 +24266,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122434010,
     "card_id": 122434010,
     "card_name": "贯穿的咆哮",
     "card_set_id": 10022,
@@ -23233,6 +24289,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125434010,
     "card_id": 125434010,
     "card_name": "蜥蜴的吐息",
     "card_set_id": 10025,
@@ -23255,6 +24312,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126414010,
     "card_id": 126414010,
     "card_name": "龙人的怪力",
     "card_set_id": 10026,
@@ -23277,6 +24335,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128434010,
     "card_id": 128434010,
     "card_name": "武装卸除",
     "card_set_id": 10028,
@@ -23299,6 +24358,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129414010,
     "card_id": 129414010,
     "card_name": "屠龙良机",
     "card_set_id": 10029,
@@ -23321,6 +24381,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900424020,
     "card_id": 900424020,
     "card_name": "圣白龙息",
     "card_set_id": 90000,
@@ -23343,6 +24404,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434010,
     "card_id": 900434010,
     "card_name": "活龙剑",
     "card_set_id": 90000,
@@ -23365,6 +24427,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434020,
     "card_id": 900434020,
     "card_name": "屠龙剑",
     "card_set_id": 90000,
@@ -23387,6 +24450,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900434040,
     "card_id": 900434040,
     "card_name": "白垩冥想",
     "card_set_id": 90000,
@@ -23409,6 +24473,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444010,
     "card_id": 900444010,
     "card_name": "银冰吐息",
     "card_set_id": 90000,
@@ -23431,6 +24496,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444070,
     "card_id": 900444070,
     "card_name": "龙之创造",
     "card_set_id": 90000,
@@ -23453,6 +24519,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101422010,
     "card_id": 101422010,
     "card_name": "黄金龙的巢穴",
     "card_set_id": 10001,
@@ -23475,6 +24542,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100511010,
     "card_id": 100511010,
     "card_name": "尸魂战士",
     "card_set_id": 10000,
@@ -23497,6 +24565,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100511020,
     "card_id": 100511020,
     "card_name": "幽魂",
     "card_set_id": 10000,
@@ -23519,6 +24588,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101511010,
     "card_id": 101511010,
     "card_name": "骷骨巨蛇",
     "card_set_id": 10001,
@@ -23541,6 +24611,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101511020,
     "card_id": 101511020,
     "card_name": "亡骨寡妇",
     "card_set_id": 10001,
@@ -23563,6 +24634,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101511060,
     "card_id": 101511060,
     "card_name": "尸鬼",
     "card_set_id": 10001,
@@ -23585,6 +24657,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101511110,
     "card_id": 101511110,
     "card_name": "小木乃伊",
     "card_set_id": 10001,
@@ -23607,6 +24680,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101521020,
     "card_id": 101521020,
     "card_name": "暗命未亡人",
     "card_set_id": 10001,
@@ -23629,6 +24703,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102511010,
     "card_id": 102511010,
     "card_name": "暗黑奇术师",
     "card_set_id": 10002,
@@ -23651,6 +24726,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103511030,
     "card_id": 103511030,
     "card_name": "怪犬的守墓人",
     "card_set_id": 10003,
@@ -23673,6 +24749,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103521030,
     "card_id": 103521030,
     "card_name": "蹒跚的活尸",
     "card_set_id": 10003,
@@ -23695,6 +24772,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103531030,
     "card_id": 103531030,
     "card_name": "暗影收割者",
     "card_set_id": 10003,
@@ -23717,6 +24795,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104531020,
     "card_id": 104531020,
     "card_name": "破魂少女",
     "card_set_id": 10004,
@@ -23739,6 +24818,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105511010,
     "card_id": 105511010,
     "card_name": "恶魔猎食者",
     "card_set_id": 10005,
@@ -23761,6 +24841,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105511030,
     "card_id": 105511030,
     "card_name": "骷髅巨魔",
     "card_set_id": 10005,
@@ -23783,6 +24864,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105521010,
     "card_id": 105521010,
     "card_name": "冥河引导者",
     "card_set_id": 10005,
@@ -23805,6 +24887,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106511030,
     "card_id": 106511030,
     "card_name": "百勒努斯",
     "card_set_id": 10006,
@@ -23827,6 +24910,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106531020,
     "card_id": 106531020,
     "card_name": "安德雷斐斯",
     "card_set_id": 10006,
@@ -23849,6 +24933,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107511010,
     "card_id": 107511010,
     "card_name": "阴郁的死灵术师",
     "card_set_id": 10007,
@@ -23871,6 +24956,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107511030,
     "card_id": 107511030,
     "card_name": "骸骨虫",
     "card_set_id": 10007,
@@ -23893,6 +24979,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108511010,
     "card_id": 108511010,
     "card_name": "骸骨的代言者",
     "card_set_id": 10008,
@@ -23915,6 +25002,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108531030,
     "card_id": 108531030,
     "card_name": "死骸勋爵",
     "card_set_id": 10008,
@@ -23937,6 +25025,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109511020,
     "card_id": 109511020,
     "card_name": "禁咒的恋人·萨鲁南",
     "card_set_id": 10009,
@@ -23959,6 +25048,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109521020,
     "card_id": 109521020,
     "card_name": "心眼的双葬女·灰淑女",
     "card_set_id": 10009,
@@ -23981,6 +25071,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109531020,
     "card_id": 109531020,
     "card_name": "降魔的操纵者·达涅雅",
     "card_set_id": 10009,
@@ -24003,6 +25094,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109541010,
     "card_id": 109541010,
     "card_name": "幽想的少女·菲莉",
     "card_set_id": 10009,
@@ -24025,6 +25117,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110511030,
     "card_id": 110511030,
     "card_name": "沉默的随从",
     "card_set_id": 10010,
@@ -24047,6 +25140,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111511010,
     "card_id": 111511010,
     "card_name": "骸骨犎牛",
     "card_set_id": 10011,
@@ -24069,6 +25163,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111521010,
     "card_id": 111521010,
     "card_name": "尸鬼骑士",
     "card_set_id": 10011,
@@ -24091,6 +25186,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111531010,
     "card_id": 111531010,
     "card_name": "禁断之腕·尼古拉",
     "card_set_id": 10011,
@@ -24113,6 +25209,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112511010,
     "card_id": 112511010,
     "card_name": "幽魂作家",
     "card_set_id": 10012,
@@ -24135,6 +25232,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112511020,
     "card_id": 112511020,
     "card_name": "食尸鬼",
     "card_set_id": 10012,
@@ -24157,6 +25255,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112521010,
     "card_id": 112521010,
     "card_name": "死梦少女",
     "card_set_id": 10012,
@@ -24179,6 +25278,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113511030,
     "card_id": 113511030,
     "card_name": "伟大的小木乃伊",
     "card_set_id": 10013,
@@ -24201,6 +25301,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113521020,
     "card_id": 113521020,
     "card_name": "铁械医师",
     "card_set_id": 10013,
@@ -24223,6 +25324,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113531020,
     "card_id": 113531020,
     "card_name": "魔拳法·索拉",
     "card_set_id": 10013,
@@ -24245,6 +25347,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114511030,
     "card_id": 114511030,
     "card_name": "羊骸之灵",
     "card_set_id": 10014,
@@ -24267,6 +25370,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114541020,
     "card_id": 114541020,
     "card_name": "托特",
     "card_set_id": 10014,
@@ -24289,6 +25393,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114541030,
     "card_id": 114541030,
     "card_name": "传奇之骸",
     "card_set_id": 10014,
@@ -24311,6 +25416,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115511020,
     "card_id": 115511020,
     "card_name": "骸骨鹤",
     "card_set_id": 10015,
@@ -24333,6 +25439,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115521010,
     "card_id": 115521010,
     "card_name": "雪女",
     "card_set_id": 10015,
@@ -24355,6 +25462,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115531030,
     "card_id": 115531030,
     "card_name": "暗殒骑士",
     "card_set_id": 10015,
@@ -24377,6 +25485,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116521020,
     "card_id": 116521020,
     "card_name": "三爪镰死神",
     "card_set_id": 10016,
@@ -24399,6 +25508,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116531010,
     "card_id": 116531010,
     "card_name": "机动刃凿掘者",
     "card_set_id": 10016,
@@ -24421,6 +25531,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116541010,
     "card_id": 116541010,
     "card_name": "预视死期者·格莫瑞",
     "card_set_id": 10016,
@@ -24443,6 +25554,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117521020,
     "card_id": 117521020,
     "card_name": "幽灵女仆",
     "card_set_id": 10017,
@@ -24465,6 +25577,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117531020,
     "card_id": 117531020,
     "card_name": "狂欢死灵法师",
     "card_set_id": 10017,
@@ -24487,6 +25600,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118511030,
     "card_id": 118511030,
     "card_name": "逐梦骷髅",
     "card_set_id": 10018,
@@ -24509,6 +25623,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118541010,
     "card_id": 118541010,
     "card_name": "淘金潮的狂魂",
     "card_set_id": 10018,
@@ -24531,6 +25646,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119511030,
     "card_id": 119511030,
     "card_name": "骨翼僵尸",
     "card_set_id": 10019,
@@ -24553,6 +25669,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119511040,
     "card_id": 119511040,
     "card_name": "灵魂向导",
     "card_set_id": 10019,
@@ -24575,6 +25692,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119541010,
     "card_id": 119541010,
     "card_name": "细腻的奏魔者·妮欧",
     "card_set_id": 10019,
@@ -24597,6 +25715,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120511010,
     "card_id": 120511010,
     "card_name": "哥德风死神",
     "card_set_id": 10020,
@@ -24619,6 +25738,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120521010,
     "card_id": 120521010,
     "card_name": "求魂死灵术师",
     "card_set_id": 10020,
@@ -24641,6 +25761,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120521020,
     "card_id": 120521020,
     "card_name": "贵族亡灵",
     "card_set_id": 10020,
@@ -24663,6 +25784,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120541020,
     "card_id": 120541020,
     "card_name": "一刀幽鬼·蜃景",
     "card_set_id": 10020,
@@ -24685,6 +25807,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121511020,
     "card_id": 121511020,
     "card_name": "灵魂指挥者",
     "card_set_id": 10021,
@@ -24707,6 +25830,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121521010,
     "card_id": 121521010,
     "card_name": "怨念咒杀者",
     "card_set_id": 10021,
@@ -24729,6 +25853,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121541010,
     "card_id": 121541010,
     "card_name": "永续的机械·尼古拉",
     "card_set_id": 10021,
@@ -24751,6 +25876,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122511020,
     "card_id": 122511020,
     "card_name": "恶灵剑士",
     "card_set_id": 10022,
@@ -24773,6 +25899,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122511030,
     "card_id": 122511030,
     "card_name": "骷髅盗贼",
     "card_set_id": 10022,
@@ -24795,6 +25922,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122521020,
     "card_id": 122521020,
     "card_name": "静谧的守墓者",
     "card_set_id": 10022,
@@ -24817,6 +25945,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122531010,
     "card_id": 122531010,
     "card_name": "丧尸犬",
     "card_set_id": 10022,
@@ -24839,6 +25968,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122541030,
     "card_id": 122541030,
     "card_name": "科尔努诺丝",
     "card_set_id": 10022,
@@ -24861,6 +25991,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123531010,
     "card_id": 123531010,
     "card_name": "诛魂的猫死神",
     "card_set_id": 10023,
@@ -24883,6 +26014,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124511010,
     "card_id": 124511010,
     "card_name": "旅馆的幽灵犬",
     "card_set_id": 10024,
@@ -24905,6 +26037,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124511030,
     "card_id": 124511030,
     "card_name": "无头战鬼",
     "card_set_id": 10024,
@@ -24927,6 +26060,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124541030,
     "card_id": 124541030,
     "card_name": "恶魂猎手",
     "card_set_id": 10024,
@@ -24949,6 +26083,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125511020,
     "card_id": 125511020,
     "card_name": "丽墓的幽灵",
     "card_set_id": 10025,
@@ -24971,6 +26106,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125541020,
     "card_id": 125541020,
     "card_name": "冥焰地狱犬·凯尔贝洛斯",
     "card_set_id": 10025,
@@ -24993,6 +26129,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126511020,
     "card_id": 126511020,
     "card_name": "骸骨粉碎者",
     "card_set_id": 10026,
@@ -25015,6 +26152,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126531010,
     "card_id": 126531010,
     "card_name": "小鬼怪·帕克鲁斯",
     "card_set_id": 10026,
@@ -25037,6 +26175,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127511010,
     "card_id": 127511010,
     "card_name": "地狱中士",
     "card_set_id": 10027,
@@ -25059,6 +26198,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127511020,
     "card_id": 127511020,
     "card_name": "甜食死灵术师",
     "card_set_id": 10027,
@@ -25081,6 +26221,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127521020,
     "card_id": 127521020,
     "card_name": "钩爪骷髅",
     "card_set_id": 10027,
@@ -25103,6 +26244,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127541010,
     "card_id": 127541010,
     "card_name": "敕令的罪人·夷苏丹忒",
     "card_set_id": 10027,
@@ -25125,6 +26267,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128511010,
     "card_id": 128511010,
     "card_name": "狩灵少女",
     "card_set_id": 10028,
@@ -25147,6 +26290,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128521010,
     "card_id": 128521010,
     "card_name": "恋咒术师·莉姿",
     "card_set_id": 10028,
@@ -25169,6 +26313,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128541020,
     "card_id": 128541020,
     "card_name": "夜想教镰·玫美丹特",
     "card_set_id": 10028,
@@ -25191,6 +26336,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129511010,
     "card_id": 129511010,
     "card_name": "绽樱幽魂",
     "card_set_id": 10029,
@@ -25213,6 +26359,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129511040,
     "card_id": 129511040,
     "card_name": "骷髅掠食怪",
     "card_set_id": 10029,
@@ -25235,6 +26382,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129531010,
     "card_id": 129531010,
     "card_name": "索魂魔",
     "card_set_id": 10029,
@@ -25257,6 +26405,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900511030,
     "card_id": 900511030,
     "card_name": "僵尸",
     "card_set_id": 90000,
@@ -25279,6 +26428,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900541120,
     "card_id": 900541120,
     "card_name": "一尾狐",
     "card_set_id": 90000,
@@ -25301,6 +26451,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900541130,
     "card_id": 900541130,
     "card_name": "骷髅老爸",
     "card_set_id": 90000,
@@ -25323,6 +26474,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100514010,
     "card_id": 100514010,
     "card_name": "不灭的怨念",
     "card_set_id": 10000,
@@ -25345,6 +26497,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101514020,
     "card_id": 101514020,
     "card_name": "死亡捷径",
     "card_set_id": 10001,
@@ -25367,6 +26520,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101524020,
     "card_id": 101524020,
     "card_name": "灵体化",
     "card_set_id": 10001,
@@ -25389,6 +26543,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102524030,
     "card_id": 102524030,
     "card_name": "死者的复归",
     "card_set_id": 10002,
@@ -25411,6 +26566,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104514010,
     "card_id": 104514010,
     "card_name": "僵尸派对",
     "card_set_id": 10004,
@@ -25433,6 +26589,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105534010,
     "card_id": 105534010,
     "card_name": "再生的毒苹果",
     "card_set_id": 10005,
@@ -25455,6 +26612,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106524010,
     "card_id": 106524010,
     "card_name": "死咒之忠诚",
     "card_set_id": 10006,
@@ -25477,6 +26635,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108514010,
     "card_id": 108514010,
     "card_name": "灵魂再生",
     "card_set_id": 10008,
@@ -25499,6 +26658,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111514010,
     "card_id": 111514010,
     "card_name": "恶意附体",
     "card_set_id": 10011,
@@ -25521,6 +26681,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116514010,
     "card_id": 116514010,
     "card_name": "灵魂的强袭",
     "card_set_id": 10016,
@@ -25543,6 +26704,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117514010,
     "card_id": 117514010,
     "card_name": "饥欲斩击",
     "card_set_id": 10017,
@@ -25565,6 +26727,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117534010,
     "card_id": 117534010,
     "card_name": "强制轮回",
     "card_set_id": 10017,
@@ -25587,6 +26750,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120514010,
     "card_id": 120514010,
     "card_name": "鬼魂惊奇",
     "card_set_id": 10020,
@@ -25609,6 +26773,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120534010,
     "card_id": 120534010,
     "card_name": "不祥的复生",
     "card_set_id": 10020,
@@ -25631,6 +26796,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121514010,
     "card_id": 121514010,
     "card_name": "纪律的继任",
     "card_set_id": 10021,
@@ -25653,6 +26819,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124524010,
     "card_id": 124524010,
     "card_name": "灵魂出窍",
     "card_set_id": 10024,
@@ -25675,6 +26842,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125514010,
     "card_id": 125514010,
     "card_name": "确认寿命",
     "card_set_id": 10025,
@@ -25697,6 +26865,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125524010,
     "card_id": 125524010,
     "card_name": "统率灵魂",
     "card_set_id": 10025,
@@ -25719,6 +26888,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126514010,
     "card_id": 126514010,
     "card_name": "死灵嘉年华",
     "card_set_id": 10026,
@@ -25741,6 +26911,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127524010,
     "card_id": 127524010,
     "card_name": "亡魂泯灭",
     "card_set_id": 10027,
@@ -25763,6 +26934,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900534030,
     "card_id": 900534030,
     "card_name": "把你变成布丁哟",
     "card_set_id": 90000,
@@ -25777,7 +26949,7 @@ let cardData = [
     "skill": "lose,power_down,powerup",
     "skill_condition": "character=me,character=me,character=me",
     "skill_preprocess": "none,none,none",
-    "skill_disc": "使1个敌方的从者失去所有能力（攻击力/生命值的效果不受影响）。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵·宫子+3/+3效果。",
+    "skill_disc": "使1个敌方的从者失去所有能力。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵·宫子+3/+3效果。",
     "skill_option": "none,set_offense=0&set_life=1,add_offense=3&add_life=3",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,character=op&target=last_target&card_type=unit,character=me&target=inplay&card_type=unit&base_card_id=115531010&random_count=1",
     "tribe_name": "-",
@@ -25785,6 +26957,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544080,
     "card_id": 900544080,
     "card_name": "入魂一刀",
     "card_set_id": 90000,
@@ -25807,6 +26980,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544090,
     "card_id": 900544090,
     "card_name": "死灵的诱惑",
     "card_set_id": 90000,
@@ -25829,6 +27003,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104522010,
     "card_id": 104522010,
     "card_name": "渎神之墓",
     "card_set_id": 10004,
@@ -25851,6 +27026,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105522010,
     "card_id": 105522010,
     "card_name": "赛莲之泪",
     "card_set_id": 10005,
@@ -25873,6 +27049,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106512010,
     "card_id": 106512010,
     "card_name": "林立的墓地",
     "card_set_id": 10006,
@@ -25895,6 +27072,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109512010,
     "card_id": 109512010,
     "card_name": "黄金之棺",
     "card_set_id": 10009,
@@ -25917,6 +27095,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117523010,
     "card_id": 117523010,
     "card_name": "幽魂之棺",
     "card_set_id": 10017,
@@ -25939,6 +27118,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118533010,
     "card_id": 118533010,
     "card_name": "死者派对",
     "card_set_id": 10018,
@@ -25961,6 +27141,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100611010,
     "card_id": 100611010,
     "card_name": "梦魔",
     "card_set_id": 10000,
@@ -25983,6 +27164,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100611020,
     "card_id": 100611020,
     "card_name": "魅惑的吸血鬼",
     "card_set_id": 10000,
@@ -26005,6 +27187,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611010,
     "card_id": 101611010,
     "card_name": "莉莉姆",
     "card_set_id": 10001,
@@ -26027,6 +27210,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101611020,
     "card_id": 101611020,
     "card_name": "毒牙眼镜蛇",
     "card_set_id": 10001,
@@ -26049,6 +27233,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611030,
     "card_id": 101611030,
     "card_name": "雨魔",
     "card_set_id": 10001,
@@ -26071,6 +27256,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611050,
     "card_id": 101611050,
     "card_name": "嗜血魔狼",
     "card_set_id": 10001,
@@ -26093,6 +27279,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101621020,
     "card_id": 101621020,
     "card_name": "摩耳摩",
     "card_set_id": 10001,
@@ -26115,6 +27302,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101621070,
     "card_id": 101621070,
     "card_name": "黑暗召唤师",
     "card_set_id": 10001,
@@ -26137,6 +27325,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102611010,
     "card_id": 102611010,
     "card_name": "享乐的恶魔",
     "card_set_id": 10002,
@@ -26159,6 +27348,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102611040,
     "card_id": 102611040,
     "card_name": "巨蛇魅术师",
     "card_set_id": 10002,
@@ -26181,6 +27371,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102631030,
     "card_id": 102631030,
     "card_name": "吸血鬼公主·班比",
     "card_set_id": 10002,
@@ -26203,6 +27394,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103611030,
     "card_id": 103611030,
     "card_name": "雷维翁公爵·尤里乌斯",
     "card_set_id": 10003,
@@ -26225,6 +27417,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104611020,
     "card_id": 104611020,
     "card_name": "蛛网恶魔",
     "card_set_id": 10004,
@@ -26247,6 +27440,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104621020,
     "card_id": 104621020,
     "card_name": "巴风特",
     "card_set_id": 10004,
@@ -26269,6 +27463,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104631030,
     "card_id": 104631030,
     "card_name": "爱之恶魔·加列德",
     "card_set_id": 10004,
@@ -26291,6 +27486,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105611030,
     "card_id": 105611030,
     "card_name": "托卜狸",
     "card_set_id": 10005,
@@ -26313,6 +27509,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105621020,
     "card_id": 105621020,
     "card_name": "狼少年",
     "card_set_id": 10005,
@@ -26335,6 +27532,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106611030,
     "card_id": 106611030,
     "card_name": "邪毒天蝎",
     "card_set_id": 10006,
@@ -26357,6 +27555,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106621030,
     "card_id": 106621030,
     "card_name": "恶夜魔羊",
     "card_set_id": 10006,
@@ -26379,6 +27578,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107611010,
     "card_id": 107611010,
     "card_name": "玻璃刃的恶魔",
     "card_set_id": 10007,
@@ -26401,6 +27601,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107611030,
     "card_id": 107611030,
     "card_name": "咒怨稻草人",
     "card_set_id": 10007,
@@ -26423,6 +27624,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108621020,
     "card_id": 108621020,
     "card_name": "银锁的使徒",
     "card_set_id": 10008,
@@ -26445,6 +27647,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108631020,
     "card_id": 108631020,
     "card_name": "宵之吸血鬼·瓦妮亚",
     "card_set_id": 10008,
@@ -26467,6 +27670,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109611010,
     "card_id": 109611010,
     "card_name": "艳丽的魅魔",
     "card_set_id": 10009,
@@ -26489,6 +27693,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109621010,
     "card_id": 109621010,
     "card_name": "双石恶魔",
     "card_set_id": 10009,
@@ -26511,6 +27716,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109641010,
     "card_id": 109641010,
     "card_name": "狂恋的华铠·薇拉",
     "card_set_id": 10009,
@@ -26533,6 +27739,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110611020,
     "card_id": 110611020,
     "card_name": "嗜血仓鼠",
     "card_set_id": 10010,
@@ -26555,6 +27762,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110611030,
     "card_id": 110611030,
     "card_name": "奸淫的随从",
     "card_set_id": 10010,
@@ -26577,6 +27785,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111611040,
     "card_id": 111611040,
     "card_name": "恶魔侵略者",
     "card_set_id": 10011,
@@ -26599,6 +27808,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111631010,
     "card_id": 111631010,
     "card_name": "单翼恶魔·圮尤菈",
     "card_set_id": 10011,
@@ -26621,6 +27831,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111631020,
     "card_id": 111631020,
     "card_name": "狼人狂战士",
     "card_set_id": 10011,
@@ -26643,6 +27854,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112611010,
     "card_id": 112611010,
     "card_name": "娇幼狼人·莉贝尔缇",
     "card_set_id": 10012,
@@ -26665,6 +27877,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112621010,
     "card_id": 112621010,
     "card_name": "狱炎恶魔",
     "card_set_id": 10012,
@@ -26687,6 +27900,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112631020,
     "card_id": 112631020,
     "card_name": "芭伦·双生之念",
     "card_set_id": 10012,
@@ -26709,6 +27923,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112641020,
     "card_id": 112641020,
     "card_name": "绯红抗战者·莫诺",
     "card_set_id": 10012,
@@ -26731,6 +27946,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113611010,
     "card_id": 113611010,
     "card_name": "机蛇调教师",
     "card_set_id": 10013,
@@ -26753,6 +27969,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113611030,
     "card_id": 113611030,
     "card_name": "蠢动的恶鬼",
     "card_set_id": 10013,
@@ -26775,6 +27992,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113621010,
     "card_id": 113621010,
     "card_name": "破灭欲想·梦魔",
     "card_set_id": 10013,
@@ -26797,6 +28015,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114611010,
     "card_id": 114611010,
     "card_name": "蕾拉洁",
     "card_set_id": 10014,
@@ -26819,6 +28038,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114611030,
     "card_id": 114611030,
     "card_name": "躁狂蝙蝠",
     "card_set_id": 10014,
@@ -26841,6 +28061,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115611010,
     "card_id": 115611010,
     "card_name": "新手梦魔",
     "card_set_id": 10015,
@@ -26863,6 +28084,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115611020,
     "card_id": 115611020,
     "card_name": "角羚战士",
     "card_set_id": 10015,
@@ -26885,6 +28107,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115621020,
     "card_id": 115621020,
     "card_name": "猛袭狂战士",
     "card_set_id": 10015,
@@ -26907,6 +28130,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115631020,
     "card_id": 115631020,
     "card_name": "魅惑的教鞭·伊绪",
     "card_set_id": 10015,
@@ -26929,6 +28153,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116611010,
     "card_id": 116611010,
     "card_name": "密约吸血鬼",
     "card_set_id": 10016,
@@ -26951,6 +28176,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116621020,
     "card_id": 116621020,
     "card_name": "凶枪战士",
     "card_set_id": 10016,
@@ -26973,6 +28199,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117611010,
     "card_id": 117611010,
     "card_name": "月下的狼人",
     "card_set_id": 10017,
@@ -26995,6 +28222,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117621020,
     "card_id": 117621020,
     "card_name": "迅鞭小恶魔",
     "card_set_id": 10017,
@@ -27017,6 +28245,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117631020,
     "card_id": 117631020,
     "card_name": "讥讽的恶魔",
     "card_set_id": 10017,
@@ -27039,6 +28268,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118611010,
     "card_id": 118611010,
     "card_name": "斗志高昂的狼人",
     "card_set_id": 10018,
@@ -27061,6 +28291,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118621010,
     "card_id": 118621010,
     "card_name": "双骰恶魔",
     "card_set_id": 10018,
@@ -27083,6 +28314,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118631010,
     "card_id": 118631010,
     "card_name": "梭牌俏恶魔",
     "card_set_id": 10018,
@@ -27105,6 +28337,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119611030,
     "card_id": 119611030,
     "card_name": "邪恶魔狼",
     "card_set_id": 10019,
@@ -27127,6 +28360,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119621020,
     "card_id": 119621020,
     "card_name": "追逐自由的男子汉·斯卡尔",
     "card_set_id": 10019,
@@ -27149,6 +28383,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120621010,
     "card_id": 120621010,
     "card_name": "缀斧恶魔",
     "card_set_id": 10020,
@@ -27171,6 +28406,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120631010,
     "card_id": 120631010,
     "card_name": "激狂狼人·莉贝尔缇",
     "card_set_id": 10020,
@@ -27193,6 +28429,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120641020,
     "card_id": 120641020,
     "card_name": "永劫的吸血鬼·亚瑞札特",
     "card_set_id": 10020,
@@ -27215,6 +28452,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120641030,
     "card_id": 120641030,
     "card_name": "红魔淑女·萝洁露媞",
     "card_set_id": 10020,
@@ -27237,6 +28475,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121611010,
     "card_id": 121611010,
     "card_name": "鲜血妖精",
     "card_set_id": 10021,
@@ -27259,6 +28498,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121621010,
     "card_id": 121621010,
     "card_name": "收割的恶魔",
     "card_set_id": 10021,
@@ -27281,6 +28521,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121641010,
     "card_id": 121641010,
     "card_name": "悠久的绯红·莫诺",
     "card_set_id": 10021,
@@ -27303,6 +28544,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122611020,
     "card_id": 122611020,
     "card_name": "恶魔士兵",
     "card_set_id": 10022,
@@ -27325,6 +28567,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123611010,
     "card_id": 123611010,
     "card_name": "奸淫的隐者",
     "card_set_id": 10023,
@@ -27347,6 +28590,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123631010,
     "card_id": 123631010,
     "card_name": "迦梨",
     "card_set_id": 10023,
@@ -27369,6 +28613,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123641030,
     "card_id": 123641030,
     "card_name": "爱绝奸淫·瓦娜蕾格",
     "card_set_id": 10023,
@@ -27391,6 +28636,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124611010,
     "card_id": 124611010,
     "card_name": "迎宾蝙蝠",
     "card_set_id": 10024,
@@ -27413,6 +28659,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124611020,
     "card_id": 124611020,
     "card_name": "银钉射手",
     "card_set_id": 10024,
@@ -27435,6 +28682,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124641010,
     "card_id": 124641010,
     "card_name": "憧憬的飞跃·苇剑",
     "card_set_id": 10024,
@@ -27457,6 +28705,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125611010,
     "card_id": 125611010,
     "card_name": "狡猾的蜘蛛恶魔",
     "card_set_id": 10025,
@@ -27479,6 +28728,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125621010,
     "card_id": 125621010,
     "card_name": "欢舞的迷你灵魔",
     "card_set_id": 10025,
@@ -27501,6 +28751,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125641020,
     "card_id": 125641020,
     "card_name": "赤血女王·班比",
     "card_set_id": 10025,
@@ -27523,6 +28774,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126611020,
     "card_id": 126611020,
     "card_name": "凶残的鸟妖",
     "card_set_id": 10026,
@@ -27545,6 +28797,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126621010,
     "card_id": 126621010,
     "card_name": "长号恶魔",
     "card_set_id": 10026,
@@ -27567,6 +28820,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126631020,
     "card_id": 126631020,
     "card_name": "恶魔指挥家",
     "card_set_id": 10026,
@@ -27589,6 +28843,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126641020,
     "card_id": 126641020,
     "card_name": "残酷的媚猫·帷",
     "card_set_id": 10026,
@@ -27611,6 +28866,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127621010,
     "card_id": 127621010,
     "card_name": "猛袭的特攻队长",
     "card_set_id": 10027,
@@ -27633,6 +28889,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128621020,
     "card_id": 128621020,
     "card_name": "魔眼太妹",
     "card_set_id": 10028,
@@ -27655,6 +28912,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128631010,
     "card_id": 128631010,
     "card_name": "凶轮手·亚琉嘉",
     "card_set_id": 10028,
@@ -27677,6 +28935,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128641020,
     "card_id": 128641020,
     "card_name": "逢魔校长·沃露嘉丝",
     "card_set_id": 10028,
@@ -27699,6 +28958,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129611020,
     "card_id": 129611020,
     "card_name": "恶魔小队长",
     "card_set_id": 10029,
@@ -27721,6 +28981,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129631010,
     "card_id": 129631010,
     "card_name": "饥欲之王·葛帝尔",
     "card_set_id": 10029,
@@ -27743,6 +29004,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129641010,
     "card_id": 129641010,
     "card_name": "芭伦·完美之念",
     "card_set_id": 10029,
@@ -27765,6 +29027,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900611030,
     "card_id": 900611030,
     "card_name": "恶魔",
     "card_set_id": 90000,
@@ -27787,6 +29050,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900631010,
     "card_id": 900631010,
     "card_name": "白夜吸血鬼·瓦妮亚",
     "card_set_id": 90000,
@@ -27809,6 +29073,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900631020,
     "card_id": 900631020,
     "card_name": "午夜吸血鬼·瓦妮亚",
     "card_set_id": 90000,
@@ -27831,6 +29096,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900631030,
     "card_id": 900631030,
     "card_name": "朵莉露的女仆·亚兹与伊兹",
     "card_set_id": 90000,
@@ -27853,6 +29119,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900631040,
     "card_id": 900631040,
     "card_name": "饥欲的猫头鹰",
     "card_set_id": 90000,
@@ -27875,6 +29142,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900631050,
     "card_id": 900631050,
     "card_name": "豹狮魔兽",
     "card_set_id": 90000,
@@ -27897,6 +29165,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900641040,
     "card_id": 900641040,
     "card_name": "呢喃的深渊来访者",
     "card_set_id": 90000,
@@ -27919,6 +29188,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100614010,
     "card_id": 100614010,
     "card_name": "血之契约",
     "card_set_id": 10000,
@@ -27941,6 +29211,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100614020,
     "card_id": 100614020,
     "card_name": "利爪的一击",
     "card_set_id": 10000,
@@ -27963,6 +29234,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101614010,
     "card_id": 101614010,
     "card_name": "莉蜜儿的秘密",
     "card_set_id": 10001,
@@ -27985,6 +29257,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101614020,
     "card_id": 101614020,
     "card_name": "从魔召唤",
     "card_set_id": 10001,
@@ -28007,6 +29280,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102614050,
     "card_id": 102614050,
     "card_name": "鲜血的吻唇",
     "card_set_id": 10002,
@@ -28029,6 +29303,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102624040,
     "card_id": 102624040,
     "card_name": "梅杜莎的魔眼",
     "card_set_id": 10002,
@@ -28051,6 +29326,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103624010,
     "card_id": 103624010,
     "card_name": "不死族的群袭",
     "card_set_id": 10003,
@@ -28073,6 +29349,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106624010,
     "card_id": 106624010,
     "card_name": "缚命之锁",
     "card_set_id": 10006,
@@ -28095,6 +29372,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110624010,
     "card_id": 110624010,
     "card_name": "奸淫的羽翼",
     "card_set_id": 10010,
@@ -28117,6 +29395,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113614010,
     "card_id": 113614010,
     "card_name": "魅惑的一击",
     "card_set_id": 10013,
@@ -28139,6 +29418,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114614010,
     "card_id": 114614010,
     "card_name": "恶魔的低语",
     "card_set_id": 10014,
@@ -28161,6 +29441,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116624010,
     "card_id": 116624010,
     "card_name": "邪恶的誓约",
     "card_set_id": 10016,
@@ -28183,6 +29464,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116634010,
     "card_id": 116634010,
     "card_name": "血色圆舞曲",
     "card_set_id": 10016,
@@ -28205,6 +29487,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117614010,
     "card_id": 117614010,
     "card_name": "暗黑融合",
     "card_set_id": 10017,
@@ -28227,6 +29510,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120624010,
     "card_id": 120624010,
     "card_name": "恶魔突击",
     "card_set_id": 10020,
@@ -28249,6 +29533,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121624010,
     "card_id": 121624010,
     "card_name": "午夜的对谈",
     "card_set_id": 10021,
@@ -28271,6 +29556,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122634010,
     "card_id": 122634010,
     "card_name": "暗黑指令",
     "card_set_id": 10022,
@@ -28293,6 +29579,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123614010,
     "card_id": 123614010,
     "card_name": "恶德的传播",
     "card_set_id": 10023,
@@ -28315,6 +29602,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123624010,
     "card_id": 123624010,
     "card_name": "赤红仁义",
     "card_set_id": 10023,
@@ -28337,6 +29625,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124624010,
     "card_id": 124624010,
     "card_name": "月下纵身",
     "card_set_id": 10024,
@@ -28359,6 +29648,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127634010,
     "card_id": 127634010,
     "card_name": "虚饰的炎热",
     "card_set_id": 10027,
@@ -28381,6 +29671,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129614010,
     "card_id": 129614010,
     "card_name": "血腥演奏",
     "card_set_id": 10029,
@@ -28403,6 +29694,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644010,
     "card_id": 900644010,
     "card_name": "鲜红的猛击",
     "card_set_id": 90000,
@@ -28425,6 +29717,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102632020,
     "card_id": 102632020,
     "card_name": "吸血鬼的古城",
     "card_set_id": 10002,
@@ -28447,6 +29740,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104623010,
     "card_id": 104623010,
     "card_name": "黑死假面",
     "card_set_id": 10004,
@@ -28469,6 +29763,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115613010,
     "card_id": 115613010,
     "card_name": "疾奔的兽皮",
     "card_set_id": 10015,
@@ -28491,6 +29786,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125633010,
     "card_id": 125633010,
     "card_name": "女王的城堡",
     "card_set_id": 10025,
@@ -28513,6 +29809,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900623010,
     "card_id": 900623010,
     "card_name": "暗夜袭击",
     "card_set_id": 90000,
@@ -28535,6 +29832,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900623020,
     "card_id": 900623020,
     "card_name": "狂气现形",
     "card_set_id": 90000,
@@ -28557,6 +29855,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900623030,
     "card_id": 900623030,
     "card_name": "苍炎的魔石",
     "card_set_id": 90000,
@@ -28579,6 +29878,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100711010,
     "card_id": 100711010,
     "card_name": "蛇神女祭司",
     "card_set_id": 10000,
@@ -28601,6 +29901,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101711010,
     "card_id": 101711010,
     "card_name": "兔耳治愈师",
     "card_set_id": 10001,
@@ -28623,6 +29924,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101711020,
     "card_id": 101711020,
     "card_name": "充满热诚的修女",
     "card_set_id": 10001,
@@ -28645,6 +29947,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101711090,
     "card_id": 101711090,
     "card_name": "曼纽",
     "card_set_id": 10001,
@@ -28667,6 +29970,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101721060,
     "card_id": 101721060,
     "card_name": "圣护的女修士",
     "card_set_id": 10001,
@@ -28689,6 +29993,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102711010,
     "card_id": 102711010,
     "card_name": "天界的忠犬",
     "card_set_id": 10002,
@@ -28711,6 +30016,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103711050,
     "card_id": 103711050,
     "card_name": "圣人蛙",
     "card_set_id": 10003,
@@ -28733,6 +30039,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103721030,
     "card_id": 103721030,
     "card_name": "煌翼战士·莉诺",
     "card_set_id": 10003,
@@ -28755,6 +30062,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104711030,
     "card_id": 104711030,
     "card_name": "迷雾萨满",
     "card_set_id": 10004,
@@ -28777,6 +30085,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104721030,
     "card_id": 104721030,
     "card_name": "圣弓射手·库鲁特",
     "card_set_id": 10004,
@@ -28799,6 +30108,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105731020,
     "card_id": 105731020,
     "card_name": "赤枝圣骑士·诺榭",
     "card_set_id": 10005,
@@ -28821,6 +30131,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105741010,
     "card_id": 105741010,
     "card_name": "白雪公主",
     "card_set_id": 10005,
@@ -28843,6 +30154,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106711030,
     "card_id": 106711030,
     "card_name": "星辰主教",
     "card_set_id": 10006,
@@ -28865,6 +30177,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106731010,
     "card_id": 106731010,
     "card_name": "安朵美达",
     "card_set_id": 10006,
@@ -28887,6 +30200,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107711010,
     "card_id": 107711010,
     "card_name": "剑刃修女",
     "card_set_id": 10007,
@@ -28909,6 +30223,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108711020,
     "card_id": 108711020,
     "card_name": "死镰修女",
     "card_set_id": 10008,
@@ -28931,6 +30246,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108731010,
     "card_id": 108731010,
     "card_name": "宝石巫女",
     "card_set_id": 10008,
@@ -28953,6 +30269,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109711020,
     "card_id": 109711020,
     "card_name": "风之僧侣·海森",
     "card_set_id": 10009,
@@ -28975,6 +30292,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109731010,
     "card_id": 109731010,
     "card_name": "圣光牧师·萝蕾娜",
     "card_set_id": 10009,
@@ -28997,6 +30315,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110711010,
     "card_id": 110711010,
     "card_name": "神鸟修道女",
     "card_set_id": 10010,
@@ -29019,6 +30338,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110721010,
     "card_id": 110721010,
     "card_name": "独角兽骑士",
     "card_set_id": 10010,
@@ -29041,6 +30361,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110721020,
     "card_id": 110721020,
     "card_name": "安息的信徒",
     "card_set_id": 10010,
@@ -29063,6 +30384,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111711030,
     "card_id": 111711030,
     "card_name": "邪恶的月兔妖",
     "card_set_id": 10011,
@@ -29085,6 +30407,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111721020,
     "card_id": 111721020,
     "card_name": "圣洁枪手·珂蕾特",
     "card_set_id": 10011,
@@ -29107,6 +30430,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112711030,
     "card_id": 112711030,
     "card_name": "灵白驯鹿",
     "card_set_id": 10012,
@@ -29129,6 +30453,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112721010,
     "card_id": 112721010,
     "card_name": "异端女修士·梅鲁柯特",
     "card_set_id": 10012,
@@ -29151,6 +30476,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112721020,
     "card_id": 112721020,
     "card_name": "机翼飞鹰",
     "card_set_id": 10012,
@@ -29173,6 +30499,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113711030,
     "card_id": 113711030,
     "card_name": "愤怒的天界忠犬",
     "card_set_id": 10013,
@@ -29195,6 +30522,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113721010,
     "card_id": 113721010,
     "card_name": "机械腕祈祷师",
     "card_set_id": 10013,
@@ -29217,6 +30545,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113731020,
     "card_id": 113731020,
     "card_name": "调和的圣女·雷莉亚",
     "card_set_id": 10013,
@@ -29239,6 +30568,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113741020,
     "card_id": 113741020,
     "card_name": "清纯祈祷者·耶菈",
     "card_set_id": 10013,
@@ -29261,6 +30591,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114711030,
     "card_id": 114711030,
     "card_name": "天翼之鼠",
     "card_set_id": 10014,
@@ -29283,6 +30614,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114721020,
     "card_id": 114721020,
     "card_name": "翼族制裁者",
     "card_set_id": 10014,
@@ -29305,6 +30637,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115711010,
     "card_id": 115711010,
     "card_name": "圣杖司祭",
     "card_set_id": 10015,
@@ -29327,6 +30660,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116711010,
     "card_id": 116711010,
     "card_name": "祈光修女",
     "card_set_id": 10016,
@@ -29349,6 +30683,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116731010,
     "card_id": 116731010,
     "card_name": "博爱的翼人",
     "card_set_id": 10016,
@@ -29371,6 +30706,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116731020,
     "card_id": 116731020,
     "card_name": "机械鞭僧侣",
     "card_set_id": 10016,
@@ -29393,6 +30729,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117711020,
     "card_id": 117711020,
     "card_name": "刚健的翼人",
     "card_set_id": 10017,
@@ -29415,6 +30752,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117711030,
     "card_id": 117711030,
     "card_name": "优雅的丽鸟",
     "card_set_id": 10017,
@@ -29437,6 +30775,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118711020,
     "card_id": 118711020,
     "card_name": "着魔的圣战士",
     "card_set_id": 10018,
@@ -29459,6 +30798,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118731010,
     "card_id": 118731010,
     "card_name": "伐罪狙击手",
     "card_set_id": 10018,
@@ -29481,6 +30821,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118731020,
     "card_id": 118731020,
     "card_name": "赦罪圣骑士",
     "card_set_id": 10018,
@@ -29503,6 +30844,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119711010,
     "card_id": 119711010,
     "card_name": "钟楼的修女",
     "card_set_id": 10019,
@@ -29525,6 +30867,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119741010,
     "card_id": 119741010,
     "card_name": "开眼者·乌诺",
     "card_set_id": 10019,
@@ -29547,6 +30890,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120731010,
     "card_id": 120731010,
     "card_name": "非法正义·帕茵",
     "card_set_id": 10020,
@@ -29569,6 +30913,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121711020,
     "card_id": 121711020,
     "card_name": "孔苏",
     "card_set_id": 10021,
@@ -29591,6 +30936,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122711010,
     "card_id": 122711010,
     "card_name": "闪耀的修女",
     "card_set_id": 10022,
@@ -29613,6 +30959,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122721020,
     "card_id": 122721020,
     "card_name": "虹蛇",
     "card_set_id": 10022,
@@ -29635,6 +30982,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122731020,
     "card_id": 122731020,
     "card_name": "奇迹的笑声·加尔蜜亚",
     "card_set_id": 10022,
@@ -29657,6 +31005,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123711010,
     "card_id": 123711010,
     "card_name": "安息的隐者",
     "card_set_id": 10023,
@@ -29679,6 +31028,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123711020,
     "card_id": 123711020,
     "card_name": "神殿的治愈师",
     "card_set_id": 10023,
@@ -29701,6 +31051,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123721030,
     "card_id": 123721030,
     "card_name": "绝望的崇拜者",
     "card_set_id": 10023,
@@ -29723,6 +31074,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123741010,
     "card_id": 123741010,
     "card_name": "光灿圣骑士·维尔伯特",
     "card_set_id": 10023,
@@ -29745,6 +31097,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124711030,
     "card_id": 124711030,
     "card_name": "双刃翼族",
     "card_set_id": 10024,
@@ -29767,6 +31120,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124721010,
     "card_id": 124721010,
     "card_name": "警策翼人",
     "card_set_id": 10024,
@@ -29789,6 +31143,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124741020,
     "card_id": 124741020,
     "card_name": "奈赫贝特",
     "card_set_id": 10024,
@@ -29811,6 +31166,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125711020,
     "card_id": 125711020,
     "card_name": "假面女修士",
     "card_set_id": 10025,
@@ -29833,6 +31189,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125721010,
     "card_id": 125721010,
     "card_name": "圣心修女·汀娜",
     "card_set_id": 10025,
@@ -29855,6 +31212,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125731010,
     "card_id": 125731010,
     "card_name": "天召的圣之光稜牧师",
     "card_set_id": 10025,
@@ -29877,6 +31235,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126711030,
     "card_id": 126711030,
     "card_name": "圣铠猎豹",
     "card_set_id": 10026,
@@ -29899,6 +31258,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126721010,
     "card_id": 126721010,
     "card_name": "蓝宝石祭司",
     "card_set_id": 10026,
@@ -29921,6 +31281,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126741010,
     "card_id": 126741010,
     "card_name": "璀钻之主",
     "card_set_id": 10026,
@@ -29943,6 +31304,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127711010,
     "card_id": 127711010,
     "card_name": "宗规成员",
     "card_set_id": 10027,
@@ -29965,6 +31327,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127711020,
     "card_id": 127711020,
     "card_name": "紫水晶疾狮",
     "card_set_id": 10027,
@@ -29987,6 +31350,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127721010,
     "card_id": 127721010,
     "card_name": "戒律间谍",
     "card_set_id": 10027,
@@ -30009,6 +31373,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127741030,
     "card_id": 127741030,
     "card_name": "圣启梦羊",
     "card_set_id": 10027,
@@ -30031,6 +31396,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128711010,
     "card_id": 128711010,
     "card_name": "纯真的花少女",
     "card_set_id": 10028,
@@ -30053,6 +31419,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128721010,
     "card_id": 128721010,
     "card_name": "恒心少女·琪蓝",
     "card_set_id": 10028,
@@ -30075,6 +31442,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128741010,
     "card_id": 128741010,
     "card_name": "异端的指导者·贝尔迪俪亚",
     "card_set_id": 10028,
@@ -30097,6 +31465,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129711010,
     "card_id": 129711010,
     "card_name": "仙狐巡礼者",
     "card_set_id": 10029,
@@ -30119,6 +31488,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900711130,
     "card_id": 900711130,
     "card_name": "圣盾天狮",
     "card_set_id": 90000,
@@ -30141,6 +31511,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900741030,
     "card_id": 900741030,
     "card_name": "圣骑兵",
     "card_set_id": 90000,
@@ -30163,6 +31534,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714010,
     "card_id": 100714010,
     "card_name": "崇高的教义",
     "card_set_id": 10000,
@@ -30185,6 +31557,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714020,
     "card_id": 100714020,
     "card_name": "漆黑法典",
     "card_set_id": 10000,
@@ -30207,6 +31580,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101734020,
     "card_id": 101734020,
     "card_name": "慈爱福音",
     "card_set_id": 10001,
@@ -30229,6 +31603,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102714040,
     "card_id": 102714040,
     "card_name": "僧侣的圣水",
     "card_set_id": 10002,
@@ -30251,6 +31626,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108714010,
     "card_id": 108714010,
     "card_name": "圣狮结晶",
     "card_set_id": 10008,
@@ -30273,6 +31649,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115714010,
     "card_id": 115714010,
     "card_name": "崇高的反击",
     "card_set_id": 10015,
@@ -30295,6 +31672,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116714010,
     "card_id": 116714010,
     "card_name": "平等的制裁",
     "card_set_id": 10016,
@@ -30317,6 +31695,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118724010,
     "card_id": 118724010,
     "card_name": "纯净的转变",
     "card_set_id": 10018,
@@ -30339,6 +31718,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120724010,
     "card_id": 120724010,
     "card_name": "神爱的一击",
     "card_set_id": 10020,
@@ -30361,6 +31741,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122714010,
     "card_id": 122714010,
     "card_name": "不屈的祷告",
     "card_set_id": 10022,
@@ -30383,6 +31764,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126734010,
     "card_id": 126734010,
     "card_name": "均衡的天恩",
     "card_set_id": 10026,
@@ -30405,6 +31787,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900734020,
     "card_id": 900734020,
     "card_name": "萝蕾娜的铁拳",
     "card_set_id": 90000,
@@ -30427,6 +31810,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900744020,
     "card_id": 900744020,
     "card_name": "圣祝射击",
     "card_set_id": 90000,
@@ -30449,6 +31833,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100713010,
     "card_id": 100713010,
     "card_name": "咏唱：圣兽之誓",
     "card_set_id": 10000,
@@ -30471,6 +31856,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101713030,
     "card_id": 101713030,
     "card_name": "咏唱：异端审判",
     "card_set_id": 10001,
@@ -30493,6 +31879,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101722010,
     "card_id": 101722010,
     "card_name": "庇护的天光",
     "card_set_id": 10001,
@@ -30515,6 +31902,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101723010,
     "card_id": 101723010,
     "card_name": "咏唱：圣狮之牙",
     "card_set_id": 10001,
@@ -30537,6 +31925,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101733020,
     "card_id": 101733020,
     "card_name": "咏唱：神域守护者",
     "card_set_id": 10001,
@@ -30559,6 +31948,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101733040,
     "card_id": 101733040,
     "card_name": "咏唱：噬天圣龙",
     "card_set_id": 10001,
@@ -30581,6 +31971,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102713010,
     "card_id": 102713010,
     "card_name": "咏唱：神铁之翼",
     "card_set_id": 10002,
@@ -30603,6 +31994,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102723010,
     "card_id": 102723010,
     "card_name": "咏唱：野兽公主的呼唤",
     "card_set_id": 10002,
@@ -30625,6 +32017,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105713010,
     "card_id": 105713010,
     "card_name": "肃清的圣堂",
     "card_set_id": 10005,
@@ -30647,6 +32040,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105732010,
     "card_id": 105732010,
     "card_name": "爱丽丝的冒险",
     "card_set_id": 10005,
@@ -30669,6 +32063,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106713010,
     "card_id": 106713010,
     "card_name": "炎熔铁靴",
     "card_set_id": 10006,
@@ -30691,6 +32086,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107713010,
     "card_id": 107713010,
     "card_name": "咏唱：宝石之甲",
     "card_set_id": 10007,
@@ -30713,6 +32109,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107723010,
     "card_id": 107723010,
     "card_name": "咏唱：蛇神之宴",
     "card_set_id": 10007,
@@ -30735,6 +32132,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108713010,
     "card_id": 108713010,
     "card_name": "愚神礼赞",
     "card_set_id": 10008,
@@ -30757,6 +32155,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108722010,
     "card_id": 108722010,
     "card_name": "圣狮神殿",
     "card_set_id": 10008,
@@ -30779,6 +32178,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110713010,
     "card_id": 110713010,
     "card_name": "安息的领域",
     "card_set_id": 10010,
@@ -30801,6 +32201,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113713010,
     "card_id": 113713010,
     "card_name": "咏唱：白翼之湖",
     "card_set_id": 10013,
@@ -30823,6 +32224,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116723010,
     "card_id": 116723010,
     "card_name": "巡礼之道",
     "card_set_id": 10016,
@@ -30845,6 +32247,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121733010,
     "card_id": 121733010,
     "card_name": "莫司蔻果实",
     "card_set_id": 10021,
@@ -30867,6 +32270,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122723010,
     "card_id": 122723010,
     "card_name": "咏唱：天降援助",
     "card_set_id": 10022,
@@ -30889,6 +32293,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123723010,
     "card_id": 123723010,
     "card_name": "背理盾·倢诺",
     "card_set_id": 10023,
@@ -30911,6 +32316,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124733010,
     "card_id": 124733010,
     "card_name": "净秽居室",
     "card_set_id": 10024,
@@ -30933,6 +32339,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125733010,
     "card_id": 125733010,
     "card_name": "咏唱：神圣的高唤",
     "card_set_id": 10025,
@@ -30955,6 +32362,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127723010,
     "card_id": 127723010,
     "card_name": "不可侵犯的教会",
     "card_set_id": 10027,
@@ -30977,6 +32385,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128713010,
     "card_id": 128713010,
     "card_name": "典仪之杯",
     "card_set_id": 10028,
@@ -30999,6 +32408,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900713010,
     "card_id": 900713010,
     "card_name": "神圣的开示",
     "card_set_id": 90000,
@@ -31021,6 +32431,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900713020,
     "card_id": 900713020,
     "card_name": "畏忌的开示",
     "card_set_id": 90000,
@@ -31043,6 +32454,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733040,
     "card_id": 900733040,
     "card_name": "班布蒂的试场",
     "card_set_id": 90000,
@@ -31065,6 +32477,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733050,
     "card_id": 900733050,
     "card_name": "麻姆的试场",
     "card_set_id": 90000,
@@ -31087,6 +32500,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733060,
     "card_id": 900733060,
     "card_name": "蒲拉慕的试场",
     "card_set_id": 90000,
@@ -31109,6 +32523,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900742020,
     "card_id": 900742020,
     "card_name": "遗存的球体",
     "card_set_id": 90000,
@@ -31131,6 +32546,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900742030,
     "card_id": 900742030,
     "card_name": "遗存的角柱",
     "card_set_id": 90000,
@@ -31153,6 +32569,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900742040,
     "card_id": 900742040,
     "card_name": "遗存的圆柱",
     "card_set_id": 90000,
@@ -31175,6 +32592,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900742050,
     "card_id": 900742050,
     "card_name": "遗存的正多面体",
     "card_set_id": 90000,
@@ -31197,6 +32615,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900743050,
     "card_id": 900743050,
     "card_name": "虚脱的刚腕",
     "card_set_id": 90000,
@@ -31219,6 +32638,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100811020,
     "card_id": 100811020,
     "card_name": "操偶师",
     "card_set_id": 10000,
@@ -31241,6 +32661,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100811060,
     "card_id": 100811060,
     "card_name": "机械女仆",
     "card_set_id": 10000,
@@ -31263,6 +32684,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100811070,
     "card_id": 100811070,
     "card_name": "魔铁狂狮",
     "card_set_id": 10000,
@@ -31285,6 +32707,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100821010,
     "card_id": 100821010,
     "card_name": "魔钢傀儡",
     "card_set_id": 10000,
@@ -31307,6 +32730,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811020,
     "card_id": 107811020,
     "card_name": "熊偶少女",
     "card_set_id": 10007,
@@ -31329,6 +32753,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811090,
     "card_id": 107811090,
     "card_name": "汉姆林",
     "card_set_id": 10007,
@@ -31351,6 +32776,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811100,
     "card_id": 107811100,
     "card_name": "机动翼剑士",
     "card_set_id": 10007,
@@ -31373,6 +32799,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811130,
     "card_id": 107811130,
     "card_name": "恶魔的祭文",
     "card_set_id": 10007,
@@ -31395,6 +32822,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107821010,
     "card_id": 107821010,
     "card_name": "机动翼少女·萝夏",
     "card_set_id": 10007,
@@ -31417,6 +32845,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107821020,
     "card_id": 107821020,
     "card_name": "花漾玩偶",
     "card_set_id": 10007,
@@ -31439,6 +32868,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107821030,
     "card_id": 107821030,
     "card_name": "伊卡洛斯",
     "card_set_id": 10007,
@@ -31461,6 +32891,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107821070,
     "card_id": 107821070,
     "card_name": "机械工匠·吉诺",
     "card_set_id": 10007,
@@ -31483,6 +32914,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108811010,
     "card_id": 108811010,
     "card_name": "博识的史学家",
     "card_set_id": 10008,
@@ -31505,6 +32937,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108821010,
     "card_id": 108821010,
     "card_name": "被赋生者·米莉亚姆",
     "card_set_id": 10008,
@@ -31527,6 +32960,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109811020,
     "card_id": 109811020,
     "card_name": "古代机械兵",
     "card_set_id": 10009,
@@ -31549,6 +32983,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109831010,
     "card_id": 109831010,
     "card_name": "帕拉塞尔苏斯",
     "card_set_id": 10009,
@@ -31571,6 +33006,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109841020,
     "card_id": 109841020,
     "card_name": "小小布偶师·洛可可",
     "card_set_id": 10009,
@@ -31593,6 +33029,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110811010,
     "card_id": 110811010,
     "card_name": "流体操纵者",
     "card_set_id": 10010,
@@ -31615,6 +33052,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110821020,
     "card_id": 110821020,
     "card_name": "破坏的信徒",
     "card_set_id": 10010,
@@ -31637,6 +33075,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110831020,
     "card_id": 110831020,
     "card_name": "抗争领导者·露琪娜",
     "card_set_id": 10010,
@@ -31659,6 +33098,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111821010,
     "card_id": 111821010,
     "card_name": "傀儡男孩",
     "card_set_id": 10011,
@@ -31681,6 +33121,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112811010,
     "card_id": 112811010,
     "card_name": "人偶天使·蜜亚",
     "card_set_id": 10012,
@@ -31703,6 +33144,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112811030,
     "card_id": 112811030,
     "card_name": "试作型机械兵",
     "card_set_id": 10012,
@@ -31725,6 +33167,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112831010,
     "card_id": 112831010,
     "card_name": "秩序之光·辛恩",
     "card_set_id": 10012,
@@ -31747,6 +33190,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113811010,
     "card_id": 113811010,
     "card_name": "灵猫枪手",
     "card_set_id": 10013,
@@ -31769,6 +33213,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113821010,
     "card_id": 113821010,
     "card_name": "齿轮运行者·里希特",
     "card_set_id": 10013,
@@ -31791,6 +33236,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113831030,
     "card_id": 113831030,
     "card_name": "人偶虐杀者·菲亚",
     "card_set_id": 10013,
@@ -31813,6 +33259,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114811020,
     "card_id": 114811020,
     "card_name": "人偶宗师",
     "card_set_id": 10014,
@@ -31835,6 +33282,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114811030,
     "card_id": 114811030,
     "card_name": "尖钻刺猬",
     "card_set_id": 10014,
@@ -31857,6 +33305,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114831020,
     "card_id": 114831020,
     "card_name": "净化之辉·慕妮耶",
     "card_set_id": 10014,
@@ -31879,6 +33328,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115811030,
     "card_id": 115811030,
     "card_name": "风镜鼹鼠",
     "card_set_id": 10015,
@@ -31901,6 +33351,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115831010,
     "card_id": 115831010,
     "card_name": "钢刃暗器师",
     "card_set_id": 10015,
@@ -31923,6 +33374,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115831030,
     "card_id": 115831030,
     "card_name": "梦境使者·爱梅斯",
     "card_set_id": 10015,
@@ -31945,6 +33397,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116811010,
     "card_id": 116811010,
     "card_name": "机体工学少女",
     "card_set_id": 10016,
@@ -31967,6 +33420,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116841010,
     "card_id": 116841010,
     "card_name": "音速机械·洛菈米亚",
     "card_set_id": 10016,
@@ -31989,6 +33443,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117811010,
     "card_id": 117811010,
     "card_name": "持偶者",
     "card_set_id": 10017,
@@ -32011,6 +33466,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117821010,
     "card_id": 117821010,
     "card_name": "巧猫调律师",
     "card_set_id": 10017,
@@ -32033,6 +33489,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117831020,
     "card_id": 117831020,
     "card_name": "界门的人造体·菈姿莉",
     "card_set_id": 10017,
@@ -32055,6 +33512,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118821020,
     "card_id": 118821020,
     "card_name": "道班机狼",
     "card_set_id": 10018,
@@ -32077,6 +33535,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119811010,
     "card_id": 119811010,
     "card_name": "机械化步兵",
     "card_set_id": 10019,
@@ -32099,6 +33558,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119821010,
     "card_id": 119821010,
     "card_name": "夜隐的桃烟·凯萨琳",
     "card_set_id": 10019,
@@ -32121,6 +33581,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119821020,
     "card_id": 119821020,
     "card_name": "回旋的艺术家·斯毕拿",
     "card_set_id": 10019,
@@ -32143,6 +33604,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119831010,
     "card_id": 119831010,
     "card_name": "妄想少女A·璐娜露",
     "card_set_id": 10019,
@@ -32165,6 +33627,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119841020,
     "card_id": 119841020,
     "card_name": "闪耀双剑·卡托鲁",
     "card_set_id": 10019,
@@ -32187,6 +33650,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120811010,
     "card_id": 120811010,
     "card_name": "能源补给员",
     "card_set_id": 10020,
@@ -32209,6 +33673,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120821020,
     "card_id": 120821020,
     "card_name": "装置研发者",
     "card_set_id": 10020,
@@ -32231,6 +33696,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121821010,
     "card_id": 121821010,
     "card_name": "截线人偶",
     "card_set_id": 10021,
@@ -32253,6 +33719,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121821020,
     "card_id": 121821020,
     "card_name": "机械兵",
     "card_set_id": 10021,
@@ -32275,6 +33742,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121841010,
     "card_id": 121841010,
     "card_name": "肃清之器·梅希亚",
     "card_set_id": 10021,
@@ -32297,6 +33765,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121841030,
     "card_id": 121841030,
     "card_name": "凌驾次元者·伊昂",
     "card_set_id": 10021,
@@ -32319,6 +33788,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122821010,
     "card_id": 122821010,
     "card_name": "伪相操偶师",
     "card_set_id": 10022,
@@ -32341,6 +33811,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122821020,
     "card_id": 122821020,
     "card_name": "铁翼探险家",
     "card_set_id": 10022,
@@ -32363,6 +33834,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122821030,
     "card_id": 122821030,
     "card_name": "多臂的创造物",
     "card_set_id": 10022,
@@ -32385,6 +33857,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122831020,
     "card_id": 122831020,
     "card_name": "盘外指标·可萝儿",
     "card_set_id": 10022,
@@ -32407,6 +33880,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123811020,
     "card_id": 123811020,
     "card_name": "少女人偶",
     "card_set_id": 10023,
@@ -32429,6 +33903,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123821010,
     "card_id": 123821010,
     "card_name": "矮人技师",
     "card_set_id": 10023,
@@ -32451,6 +33926,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123821030,
     "card_id": 123821030,
     "card_name": "奏绝的崇拜者",
     "card_set_id": 10023,
@@ -32473,6 +33949,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123831010,
     "card_id": 123831010,
     "card_name": "不祥的人偶师",
     "card_set_id": 10023,
@@ -32495,6 +33972,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123841010,
     "card_id": 123841010,
     "card_name": "宇宙之翼·洛菈米亚",
     "card_set_id": 10023,
@@ -32517,6 +33995,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124811010,
     "card_id": 124811010,
     "card_name": "机偶侍童",
     "card_set_id": 10024,
@@ -32539,6 +34018,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124811020,
     "card_id": 124811020,
     "card_name": "机械天才",
     "card_set_id": 10024,
@@ -32561,6 +34041,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124821020,
     "card_id": 124821020,
     "card_name": "机动枪击手",
     "card_set_id": 10024,
@@ -32583,6 +34064,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125811010,
     "card_id": 125811010,
     "card_name": "于花园绽放的玩偶",
     "card_set_id": 10025,
@@ -32605,6 +34087,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125821010,
     "card_id": 125821010,
     "card_name": "解放的少女·萝夏",
     "card_set_id": 10025,
@@ -32627,6 +34110,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125821020,
     "card_id": 125821020,
     "card_name": "勇敢的少年·卡西姆",
     "card_set_id": 10025,
@@ -32649,6 +34133,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125831010,
     "card_id": 125831010,
     "card_name": "次元观测者·缇尔",
     "card_set_id": 10025,
@@ -32671,6 +34156,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127831010,
     "card_id": 127831010,
     "card_name": "熔铁亲信",
     "card_set_id": 10027,
@@ -32693,6 +34179,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127841030,
     "card_id": 127841030,
     "card_name": "万物见证者·洁蒂丝",
     "card_set_id": 10027,
@@ -32715,6 +34202,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128811010,
     "card_id": 128811010,
     "card_name": "相扑机师",
     "card_set_id": 10028,
@@ -32737,6 +34225,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128821010,
     "card_id": 128821010,
     "card_name": "悬浮车手",
     "card_set_id": 10028,
@@ -32759,6 +34248,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128821020,
     "card_id": 128821020,
     "card_name": "勤学工匠·霍弗乐",
     "card_set_id": 10028,
@@ -32781,6 +34271,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128841010,
     "card_id": 128841010,
     "card_name": "无谬偶像·雷琉",
     "card_set_id": 10028,
@@ -32803,6 +34294,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129811020,
     "card_id": 129811020,
     "card_name": "机关雄狮",
     "card_set_id": 10029,
@@ -32825,6 +34317,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129821010,
     "card_id": 129821010,
     "card_name": "虚伪双翼·伊里娜",
     "card_set_id": 10029,
@@ -32847,6 +34340,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129821020,
     "card_id": 129821020,
     "card_name": "织系丝线·艾葳米亚",
     "card_set_id": 10029,
@@ -32869,6 +34363,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900821010,
     "card_id": 900821010,
     "card_name": "文静少女·米莉亚姆",
     "card_set_id": 90000,
@@ -32891,6 +34386,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900821020,
     "card_id": 900821020,
     "card_name": "淘气少女·米莉亚姆",
     "card_set_id": 90000,
@@ -32913,6 +34409,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900831020,
     "card_id": 900831020,
     "card_name": "防御型巨像",
     "card_set_id": 90000,
@@ -32935,6 +34432,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900831030,
     "card_id": 900831030,
     "card_name": "攻击型巨像",
     "card_set_id": 90000,
@@ -32957,6 +34455,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900831040,
     "card_id": 900831040,
     "card_name": "枪炮火药调合师·库姆悠",
     "card_set_id": 90000,
@@ -32979,6 +34478,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900831060,
     "card_id": 900831060,
     "card_name": "虐杀人偶",
     "card_set_id": 90000,
@@ -33001,6 +34501,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900841090,
     "card_id": 900841090,
     "card_name": "洛可可的泰迪熊",
     "card_set_id": 90000,
@@ -33023,6 +34524,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100814010,
     "card_id": 100814010,
     "card_name": "次元断",
     "card_set_id": 10000,
@@ -33045,6 +34547,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108814010,
     "card_id": 108814010,
     "card_name": "火箭喷射拳",
     "card_set_id": 10008,
@@ -33067,6 +34570,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110814010,
     "card_id": 110814010,
     "card_name": "转动发条",
     "card_set_id": 10010,
@@ -33089,6 +34593,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114834010,
     "card_id": 114834010,
     "card_name": "创造物的呼唤",
     "card_set_id": 10014,
@@ -33111,6 +34616,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114844010,
     "card_id": 114844010,
     "card_name": "末日觉醒",
     "card_set_id": 10014,
@@ -33133,6 +34639,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118824010,
     "card_id": 118824010,
     "card_name": "废品的拣选",
     "card_set_id": 10018,
@@ -33155,6 +34662,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121814010,
     "card_id": 121814010,
     "card_name": "无名的决意",
     "card_set_id": 10021,
@@ -33177,6 +34685,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122834010,
     "card_id": 122834010,
     "card_name": "创造物冲击",
     "card_set_id": 10022,
@@ -33199,6 +34708,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123814010,
     "card_id": 123814010,
     "card_name": "发现机体",
     "card_set_id": 10023,
@@ -33221,6 +34731,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126814010,
     "card_id": 126814010,
     "card_name": "傀儡的团结",
     "card_set_id": 10026,
@@ -33243,6 +34754,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127834010,
     "card_id": 127834010,
     "card_name": "机能聚合",
     "card_set_id": 10027,
@@ -33265,6 +34777,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128824010,
     "card_id": 128824010,
     "card_name": "线偶圆舞曲",
     "card_set_id": 10028,
@@ -33287,6 +34800,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900824020,
     "card_id": 900824020,
     "card_name": "真实的斩击",
     "card_set_id": 90000,
@@ -33309,6 +34823,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126832010,
     "card_id": 126832010,
     "card_name": "弧晶体",
     "card_set_id": 10026,
@@ -33331,6 +34846,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900822010,
     "card_id": 900822010,
     "card_name": "优秀的发明",
     "card_set_id": 90000,
@@ -33353,6 +34869,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100011030,
     "card_id": 100011030,
     "card_name": "流浪的佣兵",
     "card_set_id": 10000,
@@ -33375,6 +34892,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100031010,
     "card_id": 100031010,
     "card_name": "被封印的双子·烈焰",
     "card_set_id": 10000,
@@ -33397,6 +34915,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100031020,
     "card_id": 100031020,
     "card_name": "被封印的双子·琉璃",
     "card_set_id": 10000,
@@ -33419,6 +34938,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101011030,
     "card_id": 101011030,
     "card_name": "圣盾天使",
     "card_set_id": 10001,
@@ -33441,6 +34961,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101011040,
     "card_id": 101011040,
     "card_name": "治愈天使",
     "card_set_id": 10001,
@@ -33463,6 +34984,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101021020,
     "card_id": 101021020,
     "card_name": "蜥蜴人",
     "card_set_id": 10001,
@@ -33485,6 +35007,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103011030,
     "card_id": 103011030,
     "card_name": "迷你哥布林法师",
     "card_set_id": 10003,
@@ -33507,6 +35030,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103011050,
     "card_id": 103011050,
     "card_name": "圣言天使",
     "card_set_id": 10003,
@@ -33529,6 +35053,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103021040,
     "card_id": 103021040,
     "card_name": "霸食帝·凯加",
     "card_set_id": 10003,
@@ -33551,6 +35076,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104011020,
     "card_id": 104011020,
     "card_name": "战斧斗士",
     "card_set_id": 10004,
@@ -33573,6 +35099,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104031020,
     "card_id": 104031020,
     "card_name": "风之军神·格里姆尼尔",
     "card_set_id": 10004,
@@ -33595,6 +35122,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105011020,
     "card_id": 105011020,
     "card_name": "天使骑士",
     "card_set_id": 10005,
@@ -33617,6 +35145,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105011030,
     "card_id": 105011030,
     "card_name": "哥布林队长",
     "card_set_id": 10005,
@@ -33639,6 +35168,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105031010,
     "card_id": 105031010,
     "card_name": "拉潘索",
     "card_set_id": 10005,
@@ -33661,6 +35191,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106011010,
     "card_id": 106011010,
     "card_name": "倪克斯",
     "card_set_id": 10006,
@@ -33683,6 +35214,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106021020,
     "card_id": 106021020,
     "card_name": "纯真的歌唱者",
     "card_set_id": 10006,
@@ -33705,6 +35237,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107011010,
     "card_id": 107011010,
     "card_name": "迷宫探险家·克萝伊",
     "card_set_id": 10007,
@@ -33727,6 +35260,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107011020,
     "card_id": 107011020,
     "card_name": "豪爽的斧战士",
     "card_set_id": 10007,
@@ -33749,6 +35283,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107021020,
     "card_id": 107021020,
     "card_name": "哥布林山岭巨兽骑士",
     "card_set_id": 10007,
@@ -33771,6 +35306,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107031020,
     "card_id": 107031020,
     "card_name": "哥布林帝王",
     "card_set_id": 10007,
@@ -33793,6 +35329,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107041020,
     "card_id": 107041020,
     "card_name": "芭依波卡赫",
     "card_set_id": 10007,
@@ -33815,6 +35352,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108011010,
     "card_id": 108011010,
     "card_name": "混沌的女武神",
     "card_set_id": 10008,
@@ -33837,6 +35375,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109011020,
     "card_id": 109011020,
     "card_name": "时髦三人组·罗艾因",
     "card_set_id": 10009,
@@ -33859,6 +35398,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109031020,
     "card_id": 109031020,
     "card_name": "革命霸食帝·凯加",
     "card_set_id": 10009,
@@ -33881,8 +35421,9 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111011010,
     "card_id": 111011010,
-    "card_name": "酒馆老闆",
+    "card_name": "酒馆老板",
     "card_set_id": 10011,
     "char_type": 1,
     "clan": 0,
@@ -33903,6 +35444,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112021020,
     "card_id": 112021020,
     "card_name": "火焰军神·亚文哈尔",
     "card_set_id": 10012,
@@ -33925,6 +35467,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112031020,
     "card_id": 112031020,
     "card_name": "飓风军神·格里姆尼尔",
     "card_set_id": 10012,
@@ -33947,6 +35490,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113031020,
     "card_id": 113031020,
     "card_name": "圣鸟·汉萨",
     "card_set_id": 10013,
@@ -33969,6 +35513,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114011010,
     "card_id": 114011010,
     "card_name": "妙厨少女",
     "card_set_id": 10014,
@@ -33991,6 +35536,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115031020,
     "card_id": 115031020,
     "card_name": "公主骑士",
     "card_set_id": 10015,
@@ -34013,6 +35559,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116011010,
     "card_id": 116011010,
     "card_name": "浪漫寻宝家",
     "card_set_id": 10016,
@@ -34035,6 +35582,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116021010,
     "card_id": 116021010,
     "card_name": "爱之歌演唱者",
     "card_set_id": 10016,
@@ -34057,6 +35605,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116041010,
     "card_id": 116041010,
     "card_name": "神谕的大天使·加百列",
     "card_set_id": 10016,
@@ -34079,6 +35628,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118021010,
     "card_id": 118021010,
     "card_name": "荒原蜥蜴",
     "card_set_id": 10018,
@@ -34101,6 +35651,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118031020,
     "card_id": 118031020,
     "card_name": "哥布林女王",
     "card_set_id": 10018,
@@ -34123,6 +35674,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119011010,
     "card_id": 119011010,
     "card_name": "飘柔天使",
     "card_set_id": 10019,
@@ -34145,6 +35697,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119031030,
     "card_id": 119031030,
     "card_name": "烬燃恶魔",
     "card_set_id": 10019,
@@ -34167,6 +35720,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120021020,
     "card_id": 120021020,
     "card_name": "侦探美眉",
     "card_set_id": 10020,
@@ -34189,6 +35743,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121021010,
     "card_id": 121021010,
     "card_name": "愤怒的鱼人智者",
     "card_set_id": 10021,
@@ -34211,6 +35766,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124011010,
     "card_id": 124011010,
     "card_name": "照明的引路人",
     "card_set_id": 10024,
@@ -34233,6 +35789,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125021020,
     "card_id": 125021020,
     "card_name": "圣言大天使",
     "card_set_id": 10025,
@@ -34255,6 +35812,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125031020,
     "card_id": 125031020,
     "card_name": "超可爱佣兵·菲娜",
     "card_set_id": 10025,
@@ -34277,6 +35835,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125041030,
     "card_id": 125041030,
     "card_name": "三相女神·芭依波卡赫",
     "card_set_id": 10025,
@@ -34299,6 +35858,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126021020,
     "card_id": 126021020,
     "card_name": "迷宫探索者",
     "card_set_id": 10026,
@@ -34321,6 +35881,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128021010,
     "card_id": 128021010,
     "card_name": "青春物语·剑斗士与骷髅士兵",
     "card_set_id": 10028,
@@ -34343,6 +35904,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128041010,
     "card_id": 128041010,
     "card_name": "传奇教师·路西乌斯",
     "card_set_id": 10028,
@@ -34365,6 +35927,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129031010,
     "card_id": 129031010,
     "card_name": "希望的残片·奇利烨",
     "card_set_id": 10029,
@@ -34387,6 +35950,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900011020,
     "card_id": 900011020,
     "card_name": "梅花突击兵",
     "card_set_id": 90000,
@@ -34409,6 +35973,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900011030,
     "card_id": 900011030,
     "card_name": "红心铁卫兵",
     "card_set_id": 90000,
@@ -34431,6 +35996,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900011040,
     "card_id": 900011040,
     "card_name": "黑桃奇袭兵",
     "card_set_id": 90000,
@@ -34453,6 +36019,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900011050,
     "card_id": 900011050,
     "card_name": "时髦三人组·艾尔赛姆",
     "card_set_id": 90000,
@@ -34475,6 +36042,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900011060,
     "card_id": 900011060,
     "card_name": "时髦三人组·托摩伊",
     "card_set_id": 90000,
@@ -34497,6 +36065,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900031020,
     "card_id": 900031020,
     "card_name": "堕天使",
     "card_set_id": 90000,
@@ -34519,6 +36088,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900041040,
     "card_id": 900041040,
     "card_name": "天照",
     "card_set_id": 90000,
@@ -34541,6 +36111,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900041050,
     "card_id": 900041050,
     "card_name": "月读",
     "card_set_id": 90000,
@@ -34563,6 +36134,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900041110,
     "card_id": 900041110,
     "card_name": "暴威统率者",
     "card_set_id": 90000,
@@ -34585,6 +36157,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900041150,
     "card_id": 900041150,
     "card_name": "斯雷普尼尔",
     "card_set_id": 90000,
@@ -34607,6 +36180,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101014020,
     "card_id": 101014020,
     "card_name": "天界的乐曲",
     "card_set_id": 10001,
@@ -34629,6 +36203,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101024020,
     "card_id": 101024020,
     "card_name": "天使的箭雨",
     "card_set_id": 10001,
@@ -34651,6 +36226,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102024010,
     "card_id": 102024010,
     "card_name": "烈焰魔弹",
     "card_set_id": 10002,
@@ -34673,6 +36249,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107014010,
     "card_id": 107014010,
     "card_name": "落穴陷阱",
     "card_set_id": 10007,
@@ -34695,6 +36272,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108044010,
     "card_id": 108044010,
     "card_name": "月与日",
     "card_set_id": 10008,
@@ -34717,6 +36295,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110024010,
     "card_id": 110024010,
     "card_name": "饥饿的光辉",
     "card_set_id": 10010,
@@ -34739,6 +36318,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114034010,
     "card_id": 114034010,
     "card_name": "霸食帝的厨技",
     "card_set_id": 10014,
@@ -34761,6 +36341,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116024010,
     "card_id": 116024010,
     "card_name": "哥布林列阵",
     "card_set_id": 10016,
@@ -34783,6 +36364,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118014010,
     "card_id": 118014010,
     "card_name": "香料洗礼",
     "card_set_id": 10018,
@@ -34805,6 +36387,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122044010,
     "card_id": 122044010,
     "card_name": "安稳的降临",
     "card_set_id": 10022,
@@ -34827,6 +36410,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124024010,
     "card_id": 124024010,
     "card_name": "天使的恩宠",
     "card_set_id": 10024,
@@ -34849,6 +36433,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126014010,
     "card_id": 126014010,
     "card_name": "穿刺陷阱",
     "card_set_id": 10026,
@@ -34871,6 +36456,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128014010,
     "card_id": 128014010,
     "card_name": "坠情箭击",
     "card_set_id": 10028,
@@ -34893,6 +36479,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128024010,
     "card_id": 128024010,
     "card_name": "情谊的证明",
     "card_set_id": 10028,
@@ -34915,6 +36502,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900034020,
     "card_id": 900034020,
     "card_name": "无情激流",
     "card_set_id": 90000,
@@ -34937,6 +36525,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044030,
     "card_id": 900044030,
     "card_name": "芭依波卡赫的福音",
     "card_set_id": 90000,
@@ -34959,6 +36548,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104013010,
     "card_id": 104013010,
     "card_name": "阿秋霸",
     "card_set_id": 10004,
@@ -34981,6 +36571,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104022010,
     "card_id": 104022010,
     "card_name": "冻结的古代象",
     "card_set_id": 10004,
@@ -35003,6 +36594,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106013010,
     "card_id": 106013010,
     "card_name": "天之河",
     "card_set_id": 10006,
@@ -35025,6 +36617,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115032010,
     "card_id": 115032010,
     "card_name": "巅峰斗技场",
     "card_set_id": 10015,
@@ -35047,6 +36640,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900012040,
     "card_id": 900012040,
     "card_name": "魔导装甲车",
     "card_set_id": 90000,
@@ -35069,6 +36663,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100111060,
     "card_id": 100111060,
     "card_name": "黑暗精灵·芙蕾",
     "card_set_id": 10000,
@@ -35091,6 +36686,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101111050,
     "card_id": 101111050,
     "card_name": "弓箭手",
     "card_set_id": 10001,
@@ -35113,6 +36709,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101111060,
     "card_id": 101111060,
     "card_name": "沼泽妖灵",
     "card_set_id": 10001,
@@ -35135,6 +36732,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101121010,
     "card_id": 101121010,
     "card_name": "舞夜妖精",
     "card_set_id": 10001,
@@ -35157,6 +36755,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101121030,
     "card_id": 101121030,
     "card_name": "塔姆林",
     "card_set_id": 10001,
@@ -35179,6 +36778,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101121040,
     "card_id": 101121040,
     "card_name": "魔化食人花",
     "card_set_id": 10001,
@@ -35201,6 +36801,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101141020,
     "card_id": 101141020,
     "card_name": "远古精灵",
     "card_set_id": 10001,
@@ -35223,6 +36824,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102111030,
     "card_id": 102111030,
     "card_name": "治愈精灵",
     "card_set_id": 10002,
@@ -35245,6 +36847,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103111040,
     "card_id": 103111040,
     "card_name": "森林之魂",
     "card_set_id": 10003,
@@ -35267,6 +36870,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104111030,
     "card_id": 104111030,
     "card_name": "邱贝雷",
     "card_set_id": 10004,
@@ -35289,6 +36893,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104111040,
     "card_id": 104111040,
     "card_name": "天虫战士",
     "card_set_id": 10004,
@@ -35311,6 +36916,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105111030,
     "card_id": 105111030,
     "card_name": "和善的树人",
     "card_set_id": 10005,
@@ -35333,6 +36939,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105131010,
     "card_id": 105131010,
     "card_name": "妖精大魔导士·莉拉",
     "card_set_id": 10005,
@@ -35355,6 +36962,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106111020,
     "card_id": 106111020,
     "card_name": "星光精灵",
     "card_set_id": 10006,
@@ -35377,6 +36985,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106131020,
     "card_id": 106131020,
     "card_name": "魔族少年·翟恩",
     "card_set_id": 10006,
@@ -35399,8 +37008,9 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107111010,
     "card_id": 107111010,
-    "card_name": "百炼的弓箭手",
+    "card_name": "百鍊的弓箭手",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 1,
@@ -35421,6 +37031,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107121010,
     "card_id": 107121010,
     "card_name": "赤弓精灵",
     "card_set_id": 10007,
@@ -35443,6 +37054,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108111030,
     "card_id": 108111030,
     "card_name": "蚱蜢指挥家",
     "card_set_id": 10008,
@@ -35465,6 +37077,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108121020,
     "card_id": 108121020,
     "card_name": "夜鹰人",
     "card_set_id": 10008,
@@ -35487,6 +37100,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109111030,
     "card_id": 109111030,
     "card_name": "真菌人",
     "card_set_id": 10009,
@@ -35509,6 +37123,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109131010,
     "card_id": 109131010,
     "card_name": "高贵的猫姊妹·暹罗与暹玛",
     "card_set_id": 10009,
@@ -35531,6 +37146,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110141030,
     "card_id": 110141030,
     "card_name": "森之女王·莉莎",
     "card_set_id": 10010,
@@ -35553,6 +37169,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111111020,
     "card_id": 111111020,
     "card_name": "疯狂的黑暗精灵",
     "card_set_id": 10011,
@@ -35575,6 +37192,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112111020,
     "card_id": 112111020,
     "card_name": "森之隐者",
     "card_set_id": 10012,
@@ -35597,6 +37215,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112131020,
     "card_id": 112131020,
     "card_name": "山岳少女·米萝洛",
     "card_set_id": 10012,
@@ -35619,6 +37238,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113111030,
     "card_id": 113111030,
     "card_name": "机刃爪精灵",
     "card_set_id": 10013,
@@ -35641,6 +37261,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113121020,
     "card_id": 113121020,
     "card_name": "裂翅者·梅里拉",
     "card_set_id": 10013,
@@ -35663,6 +37284,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113141020,
     "card_id": 113141020,
     "card_name": "慈爱之翅·媞丝塔",
     "card_set_id": 10013,
@@ -35685,6 +37307,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114131010,
     "card_id": 114131010,
     "card_name": "丰饶斗士·爱莉涅",
     "card_set_id": 10014,
@@ -35707,6 +37330,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114141010,
     "card_id": 114141010,
     "card_name": "妖精剑师·阿玛兹",
     "card_set_id": 10014,
@@ -35729,6 +37353,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115111030,
     "card_id": 115111030,
     "card_name": "战锤小猕猴",
     "card_set_id": 10015,
@@ -35751,6 +37376,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115121020,
     "card_id": 115121020,
     "card_name": "冲锋迅豹",
     "card_set_id": 10015,
@@ -35773,6 +37399,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116141030,
     "card_id": 116141030,
     "card_name": "森林彩饰者·精灵女王",
     "card_set_id": 10016,
@@ -35795,6 +37422,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117141010,
     "card_id": 117141010,
     "card_name": "《倒吊人》·罗弗拉德",
     "card_set_id": 10017,
@@ -35817,6 +37445,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117141030,
     "card_id": 117141030,
     "card_name": "恒久的光辉·艾琳",
     "card_set_id": 10017,
@@ -35839,6 +37468,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118111010,
     "card_id": 118111010,
     "card_name": "伺察精灵",
     "card_set_id": 10018,
@@ -35861,6 +37491,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119141030,
     "card_id": 119141030,
     "card_name": "闪光精灵·艾珥芭塔",
     "card_set_id": 10019,
@@ -35883,6 +37514,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120111010,
     "card_id": 120111010,
     "card_name": "繁花矮人",
     "card_set_id": 10020,
@@ -35905,6 +37537,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120111040,
     "card_id": 120111040,
     "card_name": "森林妖精",
     "card_set_id": 10020,
@@ -35927,6 +37560,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120131010,
     "card_id": 120131010,
     "card_name": "危险时尚·奈尔香",
     "card_set_id": 10020,
@@ -35949,6 +37583,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121111020,
     "card_id": 121111020,
     "card_name": "稳健派的探索者",
     "card_set_id": 10021,
@@ -35971,6 +37606,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121131010,
     "card_id": 121131010,
     "card_name": "妖精贤者",
     "card_set_id": 10021,
@@ -35993,6 +37629,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121131020,
     "card_id": 121131020,
     "card_name": "幻惑的灌熊",
     "card_set_id": 10021,
@@ -36015,6 +37652,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122121020,
     "card_id": 122121020,
     "card_name": "微风精灵",
     "card_set_id": 10022,
@@ -36037,6 +37675,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123111030,
     "card_id": 123111030,
     "card_name": "辉角兽",
     "card_set_id": 10023,
@@ -36059,6 +37698,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123141030,
     "card_id": 123141030,
     "card_name": "绝命不弑·艾兹迪亚",
     "card_set_id": 10023,
@@ -36081,6 +37721,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124111010,
     "card_id": 124111010,
     "card_name": "灯笼妖精",
     "card_set_id": 10024,
@@ -36103,6 +37744,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124111030,
     "card_id": 124111030,
     "card_name": "风之枪士",
     "card_set_id": 10024,
@@ -36125,6 +37767,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124131010,
     "card_id": 124131010,
     "card_name": "清泉之灵",
     "card_set_id": 10024,
@@ -36147,6 +37790,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124141010,
     "card_id": 124141010,
     "card_name": "狸惑的女将·穗澄",
     "card_set_id": 10024,
@@ -36169,6 +37813,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125111030,
     "card_id": 125111030,
     "card_name": "胡蜂使役者",
     "card_set_id": 10025,
@@ -36191,6 +37836,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125121020,
     "card_id": 125121020,
     "card_name": "鲜艳的夜鹰人",
     "card_set_id": 10025,
@@ -36213,6 +37859,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125131020,
     "card_id": 125131020,
     "card_name": "妖精的骑士·塔姆林",
     "card_set_id": 10025,
@@ -36235,6 +37882,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127111030,
     "card_id": 127111030,
     "card_name": "越林的商人",
     "card_set_id": 10027,
@@ -36257,6 +37905,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129111020,
     "card_id": 129111020,
     "card_name": "迅虎少女",
     "card_set_id": 10029,
@@ -36279,6 +37928,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900131010,
     "card_id": 900131010,
     "card_name": "翱翔的猎鹰",
     "card_set_id": 90000,
@@ -36301,6 +37951,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900141020,
     "card_id": 900141020,
     "card_name": "心善的森之美女",
     "card_set_id": 90000,
@@ -36323,6 +37974,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900141030,
     "card_id": 900141030,
     "card_name": "愤怒的森之野兽",
     "card_set_id": 90000,
@@ -36345,6 +37997,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114060,
     "card_id": 101114060,
     "card_name": "元素之矛",
     "card_set_id": 10001,
@@ -36367,6 +38020,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102124020,
     "card_id": 102124020,
     "card_name": "精灵的弓术",
     "card_set_id": 10002,
@@ -36389,6 +38043,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103124010,
     "card_id": 103124010,
     "card_name": "竖剑成树",
     "card_set_id": 10003,
@@ -36411,6 +38066,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103134010,
     "card_id": 103134010,
     "card_name": "塞尔文的号令",
     "card_set_id": 10003,
@@ -36433,6 +38089,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104114010,
     "card_id": 104114010,
     "card_name": "蔓藤魔弹",
     "card_set_id": 10004,
@@ -36455,6 +38112,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107124010,
     "card_id": 107124010,
     "card_name": "本能解放",
     "card_set_id": 10007,
@@ -36477,6 +38135,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113114010,
     "card_id": 113114010,
     "card_name": "丰收的季节",
     "card_set_id": 10013,
@@ -36499,6 +38158,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113144010,
     "card_id": 113144010,
     "card_name": "爱之奇迹",
     "card_set_id": 10013,
@@ -36521,6 +38181,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117134010,
     "card_id": 117134010,
     "card_name": "生命的盛宴",
     "card_set_id": 10017,
@@ -36543,6 +38204,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118114010,
     "card_id": 118114010,
     "card_name": "蜂之袭击",
     "card_set_id": 10018,
@@ -36565,6 +38227,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124134010,
     "card_id": 124134010,
     "card_name": "幻梦款待",
     "card_set_id": 10024,
@@ -36587,6 +38250,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125114010,
     "card_id": 125114010,
     "card_name": "森林调剂",
     "card_set_id": 10025,
@@ -36609,6 +38273,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900124030,
     "card_id": 900124030,
     "card_name": "蜂之毒针",
     "card_set_id": 90000,
@@ -36631,6 +38296,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900144060,
     "card_id": 900144060,
     "card_name": "宏大的回归",
     "card_set_id": 90000,
@@ -36653,6 +38319,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101112010,
     "card_id": 101112010,
     "card_name": "妖精的乐园",
     "card_set_id": 10001,
@@ -36675,6 +38342,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104123010,
     "card_id": 104123010,
     "card_name": "食人花园",
     "card_set_id": 10004,
@@ -36697,6 +38365,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105112010,
     "card_id": 105112010,
     "card_name": "森之乐队",
     "card_set_id": 10005,
@@ -36719,6 +38388,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111113010,
     "card_id": 111113010,
     "card_name": "不弑的圆阵",
     "card_set_id": 10011,
@@ -36741,6 +38411,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112122010,
     "card_id": 112122010,
     "card_name": "森林之核",
     "card_set_id": 10012,
@@ -36763,6 +38434,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100211030,
     "card_id": 100211030,
     "card_name": "凯旋的骑士",
     "card_set_id": 10000,
@@ -36785,6 +38457,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211060,
     "card_id": 101211060,
     "card_name": "剑术教官",
     "card_set_id": 10001,
@@ -36807,6 +38480,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211090,
     "card_id": 101211090,
     "card_name": "见习骑兵",
     "card_set_id": 10001,
@@ -36829,6 +38503,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101211100,
     "card_id": 101211100,
     "card_name": "骄傲的园艺师",
     "card_set_id": 10001,
@@ -36851,6 +38526,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101221050,
     "card_id": 101221050,
     "card_name": "舰队指挥官",
     "card_set_id": 10001,
@@ -36873,6 +38549,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101221070,
     "card_id": 101221070,
     "card_name": "任性的公主",
     "card_set_id": 10001,
@@ -36895,6 +38572,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101231030,
     "card_id": 101231030,
     "card_name": "执宝杖的司令官",
     "card_set_id": 10001,
@@ -36917,6 +38595,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102211010,
     "card_id": 102211010,
     "card_name": "迅捷潜行者",
     "card_set_id": 10002,
@@ -36939,6 +38618,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102221020,
     "card_id": 102221020,
     "card_name": "冷酷的暗杀者",
     "card_set_id": 10002,
@@ -36961,6 +38641,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102231010,
     "card_id": 102231010,
     "card_name": "白银圣骑士",
     "card_set_id": 10002,
@@ -36983,6 +38664,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103211030,
     "card_id": 103211030,
     "card_name": "雷霆枪士",
     "card_set_id": 10003,
@@ -37005,6 +38687,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103211060,
     "card_id": 103211060,
     "card_name": "盗贼",
     "card_set_id": 10003,
@@ -37027,6 +38710,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104211040,
     "card_id": 104211040,
     "card_name": "旅者蛙",
     "card_set_id": 10004,
@@ -37049,6 +38733,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104231020,
     "card_id": 104231020,
     "card_name": "船团长·莉夏",
     "card_set_id": 10004,
@@ -37071,6 +38756,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105211030,
     "card_id": 105211030,
     "card_name": "兔耳亲卫官",
     "card_set_id": 10005,
@@ -37093,6 +38779,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105221010,
     "card_id": 105221010,
     "card_name": "狩鬼少女·小桃",
     "card_set_id": 10005,
@@ -37115,6 +38802,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105221020,
     "card_id": 105221020,
     "card_name": "老爷爷与老奶奶",
     "card_set_id": 10005,
@@ -37137,6 +38825,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105241010,
     "card_id": 105241010,
     "card_name": "仙杜瑞拉",
     "card_set_id": 10005,
@@ -37159,6 +38848,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106211010,
     "card_id": 106211010,
     "card_name": "星锤骑士",
     "card_set_id": 10006,
@@ -37181,6 +38871,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106221020,
     "card_id": 106221020,
     "card_name": "战地王女·茱丽叶",
     "card_set_id": 10006,
@@ -37203,6 +38894,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106221030,
     "card_id": 106221030,
     "card_name": "领主将军·罗密欧",
     "card_set_id": 10006,
@@ -37225,6 +38917,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106241010,
     "card_id": 106241010,
     "card_name": "沉默的炎将·玛尔斯",
     "card_set_id": 10006,
@@ -37247,6 +38940,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107211020,
     "card_id": 107211020,
     "card_name": "商贩女孩",
     "card_set_id": 10007,
@@ -37269,6 +38963,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107231010,
     "card_id": 107231010,
     "card_name": "狂岚长枪手",
     "card_set_id": 10007,
@@ -37291,6 +38986,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108211020,
     "card_id": 108211020,
     "card_name": "武士宗师",
     "card_set_id": 10008,
@@ -37313,6 +39009,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108221010,
     "card_id": 108221010,
     "card_name": "沉默的女仆·诺嘉",
     "card_set_id": 10008,
@@ -37335,6 +39032,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108221030,
     "card_id": 108221030,
     "card_name": "魔导狙击手·瓦路兹",
     "card_set_id": 10008,
@@ -37357,6 +39055,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109211010,
     "card_id": 109211010,
     "card_name": "暗影执法者·塔妮亚",
     "card_set_id": 10009,
@@ -37379,6 +39078,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109221010,
     "card_id": 109221010,
     "card_name": "娇小的圣骑士·夏绿蒂",
     "card_set_id": 10009,
@@ -37401,6 +39101,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110211020,
     "card_id": 110211020,
     "card_name": "年迈的领导者",
     "card_set_id": 10010,
@@ -37423,6 +39124,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110221020,
     "card_id": 110221020,
     "card_name": "豪爽的海贼",
     "card_set_id": 10010,
@@ -37445,6 +39147,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110221030,
     "card_id": 110221030,
     "card_name": "篡夺的信徒",
     "card_set_id": 10010,
@@ -37467,6 +39170,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110241010,
     "card_id": 110241010,
     "card_name": "篡夺绝杰·欧克托莉斯",
     "card_set_id": 10010,
@@ -37489,6 +39193,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111211010,
     "card_id": 111211010,
     "card_name": "战犬",
     "card_set_id": 10011,
@@ -37511,6 +39216,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111221020,
     "card_id": 111221020,
     "card_name": "武器商贩·伊尔米斯娜",
     "card_set_id": 10011,
@@ -37533,6 +39239,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111241020,
     "card_id": 111241020,
     "card_name": "白翼战神·埃忒耳",
     "card_set_id": 10011,
@@ -37555,6 +39262,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112211030,
     "card_id": 112211030,
     "card_name": "鬼影暗杀者",
     "card_set_id": 10012,
@@ -37577,6 +39285,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112231020,
     "card_id": 112231020,
     "card_name": "哈古贝尔格之雷锤·特洛依雅",
     "card_set_id": 10012,
@@ -37599,6 +39308,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113211030,
     "card_id": 113211030,
     "card_name": "历战的旅者蛙",
     "card_set_id": 10013,
@@ -37621,6 +39331,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113231010,
     "card_id": 113231010,
     "card_name": "机械刃斥侯",
     "card_set_id": 10013,
@@ -37643,6 +39354,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114211010,
     "card_id": 114211010,
     "card_name": "盗贼少女",
     "card_set_id": 10014,
@@ -37665,6 +39377,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114241030,
     "card_id": 114241030,
     "card_name": "妖刃之鬼·椿",
     "card_set_id": 10014,
@@ -37687,6 +39400,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115211030,
     "card_id": 115211030,
     "card_name": "矫捷狐枪兵",
     "card_set_id": 10015,
@@ -37709,6 +39423,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115241020,
     "card_id": 115241020,
     "card_name": "空腹公主·贪吃佩可",
     "card_set_id": 10015,
@@ -37731,6 +39446,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116211020,
     "card_id": 116211020,
     "card_name": "锐击暗杀者",
     "card_set_id": 10016,
@@ -37753,6 +39469,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116221010,
     "card_id": 116221010,
     "card_name": "勇悍骑士·格尔德",
     "card_set_id": 10016,
@@ -37775,6 +39492,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116231010,
     "card_id": 116231010,
     "card_name": "流丽的枪术士",
     "card_set_id": 10016,
@@ -37797,6 +39515,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117221010,
     "card_id": 117221010,
     "card_name": "安宁的女王",
     "card_set_id": 10017,
@@ -37819,6 +39538,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117241010,
     "card_id": 117241010,
     "card_name": "《战车》·奥辂昂",
     "card_set_id": 10017,
@@ -37841,6 +39561,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118211010,
     "card_id": 118211010,
     "card_name": "前线教官",
     "card_set_id": 10018,
@@ -37863,6 +39584,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118221010,
     "card_id": 118221010,
     "card_name": "亡命枪手",
     "card_set_id": 10018,
@@ -37885,6 +39607,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119211020,
     "card_id": 119211020,
     "card_name": "残刃蛮贼",
     "card_set_id": 10019,
@@ -37907,6 +39630,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119231030,
     "card_id": 119231030,
     "card_name": "武装管家",
     "card_set_id": 10019,
@@ -37929,6 +39653,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120241020,
     "card_id": 120241020,
     "card_name": "曙光少女·赛拉",
     "card_set_id": 10020,
@@ -37951,6 +39676,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121221010,
     "card_id": 121221010,
     "card_name": "瓦罗纳商贩",
     "card_set_id": 10021,
@@ -37973,6 +39699,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121241020,
     "card_id": 121241020,
     "card_name": "月光执行者·里欧德",
     "card_set_id": 10021,
@@ -37995,6 +39722,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121241030,
     "card_id": 121241030,
     "card_name": "忠义剑士·艾莉卡",
     "card_set_id": 10021,
@@ -38017,6 +39745,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122221020,
     "card_id": 122221020,
     "card_name": "刺剑贵族",
     "card_set_id": 10022,
@@ -38039,6 +39768,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122241020,
     "card_id": 122241020,
     "card_name": "灿金勇士",
     "card_set_id": 10022,
@@ -38061,6 +39791,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123211010,
     "card_id": 123211010,
     "card_name": "篡夺的隐者",
     "card_set_id": 10023,
@@ -38083,6 +39814,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123241010,
     "card_id": 123241010,
     "card_name": "失落武士·景光",
     "card_set_id": 10023,
@@ -38105,6 +39837,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123241020,
     "card_id": 123241020,
     "card_name": "空绝篡夺·欧克托莉斯",
     "card_set_id": 10023,
@@ -38127,6 +39860,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124221010,
     "card_id": 124221010,
     "card_name": "绝顶艺者",
     "card_set_id": 10024,
@@ -38149,6 +39883,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124241030,
     "card_id": 124241030,
     "card_name": "炙燃之炎·玛尔斯",
     "card_set_id": 10024,
@@ -38171,6 +39906,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125221020,
     "card_id": 125221020,
     "card_name": "辉光的鲁米那斯法师",
     "card_set_id": 10025,
@@ -38193,6 +39929,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126231020,
     "card_id": 126231020,
     "card_name": "正义盗贼·卡婕",
     "card_set_id": 10026,
@@ -38215,6 +39952,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126241020,
     "card_id": 126241020,
     "card_name": "武装千金的大参谋",
     "card_set_id": 10026,
@@ -38237,6 +39975,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127211030,
     "card_id": 127211030,
     "card_name": "重铠战士",
     "card_set_id": 10027,
@@ -38259,6 +39998,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127221020,
     "card_id": 127221020,
     "card_name": "铁壁守卫者",
     "card_set_id": 10027,
@@ -38281,6 +40021,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127231010,
     "card_id": 127231010,
     "card_name": "怒涛副船长",
     "card_set_id": 10027,
@@ -38303,6 +40044,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127231030,
     "card_id": 127231030,
     "card_name": "冲锋将领",
     "card_set_id": 10027,
@@ -38325,6 +40067,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128221010,
     "card_id": 128221010,
     "card_name": "神准训练生",
     "card_set_id": 10028,
@@ -38347,6 +40090,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128241010,
     "card_id": 128241010,
     "card_name": "校舍的黄昏·莉夏与奈诺",
     "card_set_id": 10028,
@@ -38369,6 +40113,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129211030,
     "card_id": 129211030,
     "card_name": "扫除的猫人族",
     "card_set_id": 10029,
@@ -38391,6 +40136,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900211040,
     "card_id": 900211040,
     "card_name": "海盗",
     "card_set_id": 90000,
@@ -38413,6 +40159,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900211050,
     "card_id": 900211050,
     "card_name": "维京战士",
     "card_set_id": 90000,
@@ -38435,6 +40182,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900211060,
     "card_id": 900211060,
     "card_name": "神盾卫士",
     "card_set_id": 90000,
@@ -38457,6 +40205,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900231130,
     "card_id": 900231130,
     "card_name": "雷维翁武斗家·梅姆",
     "card_set_id": 90000,
@@ -38479,6 +40228,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900241090,
     "card_id": 900241090,
     "card_name": "英勇之王·伊梅拉",
     "card_set_id": 90000,
@@ -38501,6 +40251,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900241100,
     "card_id": 900241100,
     "card_name": "高雅女王·玛格娜丝",
     "card_set_id": 90000,
@@ -38523,6 +40274,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900241110,
     "card_id": 900241110,
     "card_name": "阿拉密斯",
     "card_set_id": 90000,
@@ -38545,6 +40297,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900241120,
     "card_id": 900241120,
     "card_name": "波尔多斯",
     "card_set_id": 90000,
@@ -38567,6 +40320,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900241130,
     "card_id": 900241130,
     "card_name": "阿多斯",
     "card_set_id": 90000,
@@ -38589,6 +40343,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900241140,
     "card_id": 900241140,
     "card_name": "达太安",
     "card_set_id": 90000,
@@ -38611,6 +40366,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100214020,
     "card_id": 100214020,
     "card_name": "武装强化",
     "card_set_id": 10000,
@@ -38633,6 +40389,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101214030,
     "card_id": 101214030,
     "card_name": "巨人杀手",
     "card_set_id": 10001,
@@ -38655,6 +40412,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103214020,
     "card_id": 103214020,
     "card_name": "忍者艺术",
     "card_set_id": 10003,
@@ -38677,6 +40435,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105214010,
     "card_id": 105214010,
     "card_name": "公主之吻",
     "card_set_id": 10005,
@@ -38699,6 +40458,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107214010,
     "card_id": 107214010,
     "card_name": "暗杀术",
     "card_set_id": 10007,
@@ -38721,6 +40481,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115234010,
     "card_id": 115234010,
     "card_name": "贵族的舞蹈",
     "card_set_id": 10015,
@@ -38743,6 +40504,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116214010,
     "card_id": 116214010,
     "card_name": "商人的鉴定",
     "card_set_id": 10016,
@@ -38765,6 +40527,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116234010,
     "card_id": 116234010,
     "card_name": "信念之剑闪",
     "card_set_id": 10016,
@@ -38787,6 +40550,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118214010,
     "card_id": 118214010,
     "card_name": "盗贼的奇袭",
     "card_set_id": 10018,
@@ -38809,6 +40573,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118234010,
     "card_id": 118234010,
     "card_name": "绚丽的美技",
     "card_set_id": 10018,
@@ -38831,6 +40596,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120214010,
     "card_id": 120214010,
     "card_name": "周密准备",
     "card_set_id": 10020,
@@ -38853,6 +40619,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122244010,
     "card_id": 122244010,
     "card_name": "黑白残局",
     "card_set_id": 10022,
@@ -38875,6 +40642,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128224010,
     "card_id": 128224010,
     "card_name": "势不可当",
     "card_set_id": 10028,
@@ -38897,6 +40665,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102232020,
     "card_id": 102232020,
     "card_name": "盗贼的奥义",
     "card_set_id": 10002,
@@ -38919,6 +40688,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103233010,
     "card_id": 103233010,
     "card_name": "天空城",
     "card_set_id": 10003,
@@ -38941,6 +40711,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104222010,
     "card_id": 104222010,
     "card_name": "鲁米那斯骑士团旗纹",
     "card_set_id": 10004,
@@ -38963,6 +40734,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112222010,
     "card_id": 112222010,
     "card_name": "荣耀之核",
     "card_set_id": 10012,
@@ -38985,6 +40757,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900242030,
     "card_id": 900242030,
     "card_name": "炎将的双枪",
     "card_set_id": 90000,
@@ -39007,6 +40780,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311040,
     "card_id": 101311040,
     "card_name": "符文守卫",
     "card_set_id": 10001,
@@ -39029,6 +40803,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311050,
     "card_id": 101311050,
     "card_name": "金属腕甲治疗师",
     "card_set_id": 10001,
@@ -39051,6 +40826,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101321020,
     "card_id": 101321020,
     "card_name": "幻影巫术师",
     "card_set_id": 10001,
@@ -39073,6 +40849,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102311050,
     "card_id": 102311050,
     "card_name": "幼年女巫·爱蜜儿",
     "card_set_id": 10002,
@@ -39095,6 +40872,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103321040,
     "card_id": 103321040,
     "card_name": "神秘探求者·克拉克",
     "card_set_id": 10003,
@@ -39117,6 +40895,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104311020,
     "card_id": 104311020,
     "card_name": "闪亮亮治疗师",
     "card_set_id": 10004,
@@ -39139,6 +40918,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104311030,
     "card_id": 104311030,
     "card_name": "夜月的魔法师",
     "card_set_id": 10004,
@@ -39161,6 +40941,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105321030,
     "card_id": 105321030,
     "card_name": "马纳历亚魔法书",
     "card_set_id": 10005,
@@ -39183,6 +40964,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105341020,
     "card_id": 105341020,
     "card_name": "被唤醒的禁忌",
     "card_set_id": 10005,
@@ -39205,6 +40987,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106321020,
     "card_id": 106321020,
     "card_name": "魔枪狩猎者",
     "card_set_id": 10006,
@@ -39227,6 +41010,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106321030,
     "card_id": 106321030,
     "card_name": "圣魔法教师·费洛",
     "card_set_id": 10006,
@@ -39249,6 +41033,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106331010,
     "card_id": 106331010,
     "card_name": "欧罗芭",
     "card_set_id": 10006,
@@ -39271,6 +41056,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107311010,
     "card_id": 107311010,
     "card_name": "马纳历亚召唤师·贝莉鲁",
     "card_set_id": 10007,
@@ -39293,6 +41079,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108321010,
     "card_id": 108321010,
     "card_name": "天才魔法师·艾尔莎",
     "card_set_id": 10008,
@@ -39315,6 +41102,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109321020,
     "card_id": 109321020,
     "card_name": "未完的炼金术师·克拉莉丝",
     "card_set_id": 10009,
@@ -39337,6 +41125,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110321010,
     "card_id": 110321010,
     "card_name": "真实的信徒",
     "card_set_id": 10010,
@@ -39359,6 +41148,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110331030,
     "card_id": 110331030,
     "card_name": "马纳历亚龙人公主·古蕾娅",
     "card_set_id": 10010,
@@ -39381,6 +41171,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111311030,
     "card_id": 111311030,
     "card_name": "马纳历亚创作家·琪可",
     "card_set_id": 10011,
@@ -39403,6 +41194,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111331010,
     "card_id": 111331010,
     "card_name": "天外之花·爱莲娜",
     "card_set_id": 10011,
@@ -39425,6 +41217,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111341010,
     "card_id": 111341010,
     "card_name": "沉睡的灾祸巨兽",
     "card_set_id": 10011,
@@ -39447,6 +41240,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112331010,
     "card_id": 112331010,
     "card_name": "机械魔导巨像",
     "card_set_id": 10012,
@@ -39469,6 +41263,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112341010,
     "card_id": 112341010,
     "card_name": "灭拳魔女·玛姬纱",
     "card_set_id": 10012,
@@ -39491,6 +41286,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113321010,
     "card_id": 113321010,
     "card_name": "笑颜魔女·爱蜜儿",
     "card_set_id": 10013,
@@ -39513,6 +41309,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114311020,
     "card_id": 114311020,
     "card_name": "激欲的炼金术师",
     "card_set_id": 10014,
@@ -39535,6 +41332,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114321010,
     "card_id": 114321010,
     "card_name": "炎元素术师",
     "card_set_id": 10014,
@@ -39557,6 +41355,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114341020,
     "card_id": 114341020,
     "card_name": "魔神使役者",
     "card_set_id": 10014,
@@ -39579,6 +41378,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115331010,
     "card_id": 115331010,
     "card_name": "小小优等生·镜华",
     "card_set_id": 10015,
@@ -39601,6 +41401,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116331010,
     "card_id": 116331010,
     "card_name": "风暴元素使",
     "card_set_id": 10016,
@@ -39623,6 +41424,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116331020,
     "card_id": 116331020,
     "card_name": "异面巫术师",
     "card_set_id": 10016,
@@ -39645,6 +41447,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117311020,
     "card_id": 117311020,
     "card_name": "魔导书撰写者",
     "card_set_id": 10017,
@@ -39667,6 +41470,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118311030,
     "card_id": 118311030,
     "card_name": "水晶魔剑士",
     "card_set_id": 10018,
@@ -39689,6 +41493,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118331010,
     "card_id": 118331010,
     "card_name": "魔导枪击手",
     "card_set_id": 10018,
@@ -39711,6 +41516,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119311010,
     "card_id": 119311010,
     "card_name": "博学的魔导士",
     "card_set_id": 10019,
@@ -39733,6 +41539,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119341010,
     "card_id": 119341010,
     "card_name": "魔导的神子·芬芙",
     "card_set_id": 10019,
@@ -39755,6 +41562,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120331010,
     "card_id": 120331010,
     "card_name": "雷格尼斯之主·古蕾娅",
     "card_set_id": 10020,
@@ -39777,6 +41585,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120331020,
     "card_id": 120331020,
     "card_name": "欢宴女巫",
     "card_set_id": 10020,
@@ -39799,6 +41608,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120341010,
     "card_id": 120341010,
     "card_name": "马纳历亚女王·安",
     "card_set_id": 10020,
@@ -39821,6 +41631,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121311010,
     "card_id": 121311010,
     "card_name": "灵药炼金术师",
     "card_set_id": 10021,
@@ -39843,6 +41654,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121321020,
     "card_id": 121321020,
     "card_name": "玛绮斯的魔导士",
     "card_set_id": 10021,
@@ -39865,6 +41677,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121341010,
     "card_id": 121341010,
     "card_name": "清澄的苍蓝·坦忒菈",
     "card_set_id": 10021,
@@ -39887,6 +41700,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121341030,
     "card_id": 121341030,
     "card_name": "深究的魔法师·伊莎贝尔",
     "card_set_id": 10021,
@@ -39909,6 +41723,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122321010,
     "card_id": 122321010,
     "card_name": "炸裂魔女",
     "card_set_id": 10022,
@@ -39931,6 +41746,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123321030,
     "card_id": 123321030,
     "card_name": "绝尽的崇拜者",
     "card_set_id": 10023,
@@ -39953,6 +41769,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123331020,
     "card_id": 123331020,
     "card_name": "酸蚀巨像",
     "card_set_id": 10023,
@@ -39975,6 +41792,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124321010,
     "card_id": 124321010,
     "card_name": "管弦魔法师",
     "card_set_id": 10024,
@@ -39997,6 +41815,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124331020,
     "card_id": 124331020,
     "card_name": "封禁之术·芭赛特",
     "card_set_id": 10024,
@@ -40019,6 +41838,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125341020,
     "card_id": 125341020,
     "card_name": "起始魔法·马纳历亚",
     "card_set_id": 10025,
@@ -40041,6 +41861,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126311010,
     "card_id": 126311010,
     "card_name": "奇幻城堡",
     "card_set_id": 10026,
@@ -40063,6 +41884,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126341020,
     "card_id": 126341020,
     "card_name": "万能的奇迹·梅露缇娜",
     "card_set_id": 10026,
@@ -40085,6 +41907,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127331010,
     "card_id": 127331010,
     "card_name": "忘我的才女",
     "card_set_id": 10027,
@@ -40107,6 +41930,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128321010,
     "card_id": 128321010,
     "card_name": "手铃魔法师",
     "card_set_id": 10028,
@@ -40129,6 +41953,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128341020,
     "card_id": 128341020,
     "card_name": "光艳之魔导·安",
     "card_set_id": 10028,
@@ -40151,6 +41976,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129321020,
     "card_id": 129321020,
     "card_name": "老鼠奇术师",
     "card_set_id": 10029,
@@ -40173,6 +41999,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129341020,
     "card_id": 129341020,
     "card_name": "灿烂巫女·帕梅拉",
     "card_set_id": 10029,
@@ -40195,6 +42022,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900311050,
     "card_id": 900311050,
     "card_name": "冰结巨像",
     "card_set_id": 90000,
@@ -40217,6 +42045,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900311100,
     "card_id": 900311100,
     "card_name": "式神·暴鬼",
     "card_set_id": 90000,
@@ -40239,6 +42068,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314050,
     "card_id": 100314050,
     "card_name": "雪人召唤术",
     "card_set_id": 10000,
@@ -40261,6 +42091,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101324040,
     "card_id": 101324040,
     "card_name": "魔力积蓄",
     "card_set_id": 10001,
@@ -40283,6 +42114,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101324050,
     "card_id": 101324050,
     "card_name": "转化的魔法",
     "card_set_id": 10001,
@@ -40305,6 +42137,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101334030,
     "card_id": 101334030,
     "card_name": "初级诅咒",
     "card_set_id": 10001,
@@ -40327,6 +42160,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102314010,
     "card_id": 102314010,
     "card_name": "魔女的雷击",
     "card_set_id": 10002,
@@ -40349,6 +42183,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102324040,
     "card_id": 102324040,
     "card_name": "冰像召唤术",
     "card_set_id": 10002,
@@ -40371,6 +42206,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103314010,
     "card_id": 103314010,
     "card_name": "破魔的术式",
     "card_set_id": 10003,
@@ -40393,6 +42229,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103334010,
     "card_id": 103334010,
     "card_name": "伊拉斯莫斯的秘密仪式",
     "card_set_id": 10003,
@@ -40415,6 +42252,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106324010,
     "card_id": 106324010,
     "card_name": "精神统一",
     "card_set_id": 10006,
@@ -40437,6 +42275,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108334010,
     "card_id": 108334010,
     "card_name": "冰刺枪击",
     "card_set_id": 10008,
@@ -40459,6 +42298,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110314010,
     "card_id": 110314010,
     "card_name": "占星术",
     "card_set_id": 10010,
@@ -40481,6 +42321,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110324020,
     "card_id": 110324020,
     "card_name": "安眠魔法",
     "card_set_id": 10010,
@@ -40503,6 +42344,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111324010,
     "card_id": 111324010,
     "card_name": "发现真理",
     "card_set_id": 10011,
@@ -40525,6 +42367,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113344010,
     "card_id": 113344010,
     "card_name": "究极炼成术",
     "card_set_id": 10013,
@@ -40547,6 +42390,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116314010,
     "card_id": 116314010,
     "card_name": "吸纳之术",
     "card_set_id": 10016,
@@ -40569,6 +42413,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121324010,
     "card_id": 121324010,
     "card_name": "睿智的成果",
     "card_set_id": 10021,
@@ -40591,6 +42436,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123314010,
     "card_id": 123314010,
     "card_name": "折射魔力",
     "card_set_id": 10023,
@@ -40613,6 +42459,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124314010,
     "card_id": 124314010,
     "card_name": "魔力填充",
     "card_set_id": 10024,
@@ -40635,6 +42482,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127324010,
     "card_id": 127324010,
     "card_name": "将军",
     "card_set_id": 10027,
@@ -40657,6 +42505,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128324010,
     "card_id": 128324010,
     "card_name": "淘气的箭袭",
     "card_set_id": 10028,
@@ -40679,6 +42528,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129334010,
     "card_id": 129334010,
     "card_name": "双花齐力",
     "card_set_id": 10029,
@@ -40701,6 +42551,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334060,
     "card_id": 900334060,
     "card_name": "古蕾娅的灼热之术",
     "card_set_id": 90000,
@@ -40723,6 +42574,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334100,
     "card_id": 900334100,
     "card_name": "致命炽燃",
     "card_set_id": 90000,
@@ -40745,6 +42597,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344100,
     "card_id": 900344100,
     "card_name": "卓越爆击",
     "card_set_id": 90000,
@@ -40767,6 +42620,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344140,
     "card_id": 900344140,
     "card_name": "绝尽的伪证",
     "card_set_id": 90000,
@@ -40789,6 +42643,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101312030,
     "card_id": 101312030,
     "card_name": "初级炼金实验",
     "card_set_id": 10001,
@@ -40811,6 +42666,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101322010,
     "card_id": 101322010,
     "card_name": "炼金术的代价",
     "card_set_id": 10001,
@@ -40833,6 +42689,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105322010,
     "card_id": 105322010,
     "card_name": "糖果屋",
     "card_set_id": 10005,
@@ -40855,6 +42712,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112322010,
     "card_id": 112322010,
     "card_name": "睿智之核",
     "card_set_id": 10012,
@@ -40877,6 +42735,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100411050,
     "card_id": 100411050,
     "card_name": "远古飞龙",
     "card_set_id": 10000,
@@ -40899,6 +42758,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101411030,
     "card_id": 101411030,
     "card_name": "龙骑士·艾拉",
     "card_set_id": 10001,
@@ -40921,6 +42781,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101411040,
     "card_id": 101411040,
     "card_name": "邪翼双头龙",
     "card_set_id": 10001,
@@ -40943,6 +42804,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101411100,
     "card_id": 101411100,
     "card_name": "大鹏鸟",
     "card_set_id": 10001,
@@ -40965,6 +42827,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101411120,
     "card_id": 101411120,
     "card_name": "圣白龙",
     "card_set_id": 10001,
@@ -40987,6 +42850,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101421010,
     "card_id": 101421010,
     "card_name": "龙人公主",
     "card_set_id": 10001,
@@ -41009,6 +42873,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101421030,
     "card_id": 101421030,
     "card_name": "天龙之女·艾琪卡",
     "card_set_id": 10001,
@@ -41031,6 +42896,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101421080,
     "card_id": 101421080,
     "card_name": "被封印的古代巨龙",
     "card_set_id": 10001,
@@ -41053,6 +42919,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101421090,
     "card_id": 101421090,
     "card_name": "王牌龙骑士",
     "card_set_id": 10001,
@@ -41075,6 +42942,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102411010,
     "card_id": 102411010,
     "card_name": "铁鳞龙人",
     "card_set_id": 10002,
@@ -41097,6 +42965,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103411040,
     "card_id": 103411040,
     "card_name": "狮鹫兽骑士",
     "card_set_id": 10003,
@@ -41119,6 +42988,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103421020,
     "card_id": 103421020,
     "card_name": "翼龙骑士·叶花",
     "card_set_id": 10003,
@@ -41141,6 +43011,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104411020,
     "card_id": 104411020,
     "card_name": "蓝海仙灵",
     "card_set_id": 10004,
@@ -41163,6 +43034,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104411030,
     "card_id": 104411030,
     "card_name": "巨镰龙骑士",
     "card_set_id": 10004,
@@ -41185,6 +43057,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105421020,
     "card_id": 105421020,
     "card_name": "龙技达人",
     "card_set_id": 10005,
@@ -41207,6 +43080,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105431010,
     "card_id": 105431010,
     "card_name": "戏曲龙剑士",
     "card_set_id": 10005,
@@ -41229,6 +43103,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105431020,
     "card_id": 105431020,
     "card_name": "赤翼猛龙",
     "card_set_id": 10005,
@@ -41251,6 +43126,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106411030,
     "card_id": 106411030,
     "card_name": "星辰兽",
     "card_set_id": 10006,
@@ -41273,6 +43149,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106421020,
     "card_id": 106421020,
     "card_name": "贝奥武夫",
     "card_set_id": 10006,
@@ -41295,6 +43172,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106431020,
     "card_id": 106431020,
     "card_name": "星之不死鸟",
     "card_set_id": 10006,
@@ -41317,6 +43195,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106441010,
     "card_id": 106441010,
     "card_name": "元祖驭龙使",
     "card_set_id": 10006,
@@ -41339,6 +43218,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107411010,
     "card_id": 107411010,
     "card_name": "游龙少女",
     "card_set_id": 10007,
@@ -41361,6 +43241,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108411030,
     "card_id": 108411030,
     "card_name": "龙甲大剑师",
     "card_set_id": 10008,
@@ -41383,6 +43264,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108431010,
     "card_id": 108431010,
     "card_name": "斩龙剑士·罗伊",
     "card_set_id": 10008,
@@ -41405,6 +43287,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109411030,
     "card_id": 109411030,
     "card_name": "毒尾巨龙",
     "card_set_id": 10009,
@@ -41427,6 +43310,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109421010,
     "card_id": 109421010,
     "card_name": "炎足的丽姬·艾莉纱",
     "card_set_id": 10009,
@@ -41449,6 +43333,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110411010,
     "card_id": 110411010,
     "card_name": "龙首巨蛇",
     "card_set_id": 10010,
@@ -41471,6 +43356,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111411030,
     "card_id": 111411030,
     "card_name": "正义的龙骑士",
     "card_set_id": 10011,
@@ -41493,6 +43379,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111421030,
     "card_id": 111421030,
     "card_name": "灵龙公主",
     "card_set_id": 10011,
@@ -41515,6 +43402,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111431020,
     "card_id": 111431020,
     "card_name": "安妮萝洁",
     "card_set_id": 10011,
@@ -41537,6 +43425,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113411030,
     "card_id": 113411030,
     "card_name": "雄伟的大鹏鸟",
     "card_set_id": 10013,
@@ -41559,6 +43448,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113421020,
     "card_id": 113421020,
     "card_name": "钢爪龙战士",
     "card_set_id": 10013,
@@ -41581,6 +43471,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113431010,
     "card_id": 113431010,
     "card_name": "聪慧的龙人织术师",
     "card_set_id": 10013,
@@ -41603,6 +43494,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114411020,
     "card_id": 114411020,
     "card_name": "龙族大厨",
     "card_set_id": 10014,
@@ -41625,6 +43517,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114421020,
     "card_id": 114421020,
     "card_name": "旋风翼龙",
     "card_set_id": 10014,
@@ -41647,6 +43540,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115421020,
     "card_id": 115421020,
     "card_name": "水鳞猛将",
     "card_set_id": 10015,
@@ -41669,6 +43563,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115441030,
     "card_id": 115441030,
     "card_name": "暗夜狱龙",
     "card_set_id": 10015,
@@ -41691,6 +43586,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116431010,
     "card_id": 116431010,
     "card_name": "飓铁龙人",
     "card_set_id": 10016,
@@ -41713,6 +43609,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117421010,
     "card_id": 117421010,
     "card_name": "日轮之龙",
     "card_set_id": 10017,
@@ -41735,6 +43632,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117431010,
     "card_id": 117431010,
     "card_name": "虐杀的龙人",
     "card_set_id": 10017,
@@ -41757,6 +43655,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117441020,
     "card_id": 117441020,
     "card_name": "恶极唤龙者",
     "card_set_id": 10017,
@@ -41779,6 +43678,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117441030,
     "card_id": 117441030,
     "card_name": "绝对零度·菲琳",
     "card_set_id": 10017,
@@ -41801,6 +43701,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118411010,
     "card_id": 118411010,
     "card_name": "美人鱼向导",
     "card_set_id": 10018,
@@ -41823,6 +43724,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118431020,
     "card_id": 118431020,
     "card_name": "燎火的扳手铁匠",
     "card_set_id": 10018,
@@ -41845,6 +43747,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118441020,
     "card_id": 118441020,
     "card_name": "烈霸工匠·蕾吉",
     "card_set_id": 10018,
@@ -41867,6 +43770,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120411020,
     "card_id": 120411020,
     "card_name": "大地龙人",
     "card_set_id": 10020,
@@ -41889,6 +43793,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120441030,
     "card_id": 120441030,
     "card_name": "净火的不死鸟",
     "card_set_id": 10020,
@@ -41911,6 +43816,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121411010,
     "card_id": 121411010,
     "card_name": "激进派的侦察兵",
     "card_set_id": 10021,
@@ -41933,6 +43839,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121411020,
     "card_id": 121411020,
     "card_name": "幻梦人鱼",
     "card_set_id": 10021,
@@ -41955,6 +43862,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121431010,
     "card_id": 121431010,
     "card_name": "奋勇的兽人·吉娜",
     "card_set_id": 10021,
@@ -41977,6 +43885,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121441030,
     "card_id": 121441030,
     "card_name": "龙枪战士·罗文",
     "card_set_id": 10021,
@@ -41999,6 +43908,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123411020,
     "card_id": 123411020,
     "card_name": "新手龙骑士",
     "card_set_id": 10023,
@@ -42021,6 +43931,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124411010,
     "card_id": 124411010,
     "card_name": "接送的走龙",
     "card_set_id": 10024,
@@ -42043,6 +43954,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124431020,
     "card_id": 124431020,
     "card_name": "龙首猎杀者",
     "card_set_id": 10024,
@@ -42065,6 +43977,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124441010,
     "card_id": 124441010,
     "card_name": "独尊龙·四龙",
     "card_set_id": 10024,
@@ -42087,6 +44000,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125421010,
     "card_id": 125421010,
     "card_name": "双龙的引导者",
     "card_set_id": 10025,
@@ -42109,6 +44023,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125431020,
     "card_id": 125431020,
     "card_name": "红炎龙爪·艾琪卡",
     "card_set_id": 10025,
@@ -42131,6 +44046,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126421010,
     "card_id": 126421010,
     "card_name": "战矛蜥蜴",
     "card_set_id": 10026,
@@ -42153,6 +44069,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126431030,
     "card_id": 126431030,
     "card_name": "银色清纯·雅尔贞特",
     "card_set_id": 10026,
@@ -42175,6 +44092,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127411030,
     "card_id": 127411030,
     "card_name": "妙舞蟹",
     "card_set_id": 10027,
@@ -42197,6 +44115,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127421010,
     "card_id": 127421010,
     "card_name": "毁坏的袭击者",
     "card_set_id": 10027,
@@ -42219,6 +44138,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128411020,
     "card_id": 128411020,
     "card_name": "伊普皮亚拉",
     "card_set_id": 10028,
@@ -42241,6 +44161,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128431010,
     "card_id": 128431010,
     "card_name": "全胜驭龙使",
     "card_set_id": 10028,
@@ -42263,6 +44184,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129421020,
     "card_id": 129421020,
     "card_name": "异爪龙人",
     "card_set_id": 10029,
@@ -42285,6 +44207,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900411050,
     "card_id": 900411050,
     "card_name": "巴西利斯克",
     "card_set_id": 90000,
@@ -42307,6 +44230,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101414020,
     "card_id": 101414020,
     "card_name": "龙之咆哮",
     "card_set_id": 10001,
@@ -42329,6 +44253,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106434010,
     "card_id": 106434010,
     "card_name": "誓灭暴击",
     "card_set_id": 10006,
@@ -42351,6 +44276,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108434010,
     "card_id": 108434010,
     "card_name": "龙人的威慑",
     "card_set_id": 10008,
@@ -42373,6 +44299,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110414010,
     "card_id": 110414010,
     "card_name": "恐龙时代",
     "card_set_id": 10010,
@@ -42395,6 +44322,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116414010,
     "card_id": 116414010,
     "card_name": "龙人的吐息",
     "card_set_id": 10016,
@@ -42417,6 +44345,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116434010,
     "card_id": 116434010,
     "card_name": "龙之嗔怒",
     "card_set_id": 10016,
@@ -42439,6 +44368,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117414010,
     "card_id": 117414010,
     "card_name": "龙之诞生",
     "card_set_id": 10017,
@@ -42461,6 +44391,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118434010,
     "card_id": 118434010,
     "card_name": "深海的迫近",
     "card_set_id": 10018,
@@ -42483,6 +44414,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123424010,
     "card_id": 123424010,
     "card_name": "银冰飞雪",
     "card_set_id": 10023,
@@ -42505,6 +44437,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128424010,
     "card_id": 128424010,
     "card_name": "龙之恩泽",
     "card_set_id": 10028,
@@ -42527,6 +44460,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129424010,
     "card_id": 129424010,
     "card_name": "巨蟹夹击",
     "card_set_id": 10029,
@@ -42549,6 +44483,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129434010,
     "card_id": 129434010,
     "card_name": "狱火陨坠",
     "card_set_id": 10029,
@@ -42571,6 +44506,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102432030,
     "card_id": 102432030,
     "card_name": "龙女巫的仪式",
     "card_set_id": 10002,
@@ -42593,6 +44529,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109423010,
     "card_id": 109423010,
     "card_name": "龙之祠堂",
     "card_set_id": 10009,
@@ -42615,6 +44552,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112422010,
     "card_id": 112422010,
     "card_name": "龙威之核",
     "card_set_id": 10012,
@@ -42637,6 +44575,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120423010,
     "card_id": 120423010,
     "card_name": "火龙之火山",
     "card_set_id": 10020,
@@ -42659,6 +44598,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900423010,
     "card_id": 900423010,
     "card_name": "猛爪践踏",
     "card_set_id": 90000,
@@ -42681,6 +44621,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900423020,
     "card_id": 900423020,
     "card_name": "狂风袭卷",
     "card_set_id": 90000,
@@ -42703,6 +44644,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100511030,
     "card_id": 100511030,
     "card_name": "见习死灵法师",
     "card_set_id": 10000,
@@ -42725,6 +44667,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101511030,
     "card_id": 101511030,
     "card_name": "不散的阴魂",
     "card_set_id": 10001,
@@ -42747,6 +44690,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101511040,
     "card_id": 101511040,
     "card_name": "兔灵邪法师",
     "card_set_id": 10001,
@@ -42769,6 +44713,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101511050,
     "card_id": 101511050,
     "card_name": "骷髅骑士",
     "card_set_id": 10001,
@@ -42791,6 +44736,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101511090,
     "card_id": 101511090,
     "card_name": "骷髅狂战士",
     "card_set_id": 10001,
@@ -42813,6 +44759,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101521030,
     "card_id": 101521030,
     "card_name": "死灵使者",
     "card_set_id": 10001,
@@ -42835,6 +44782,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101521050,
     "card_id": 101521050,
     "card_name": "魔神法师",
     "card_set_id": 10001,
@@ -42857,6 +44805,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101531020,
     "card_id": 101531020,
     "card_name": "巫妖女士",
     "card_set_id": 10001,
@@ -42879,6 +44828,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102511020,
     "card_id": 102511020,
     "card_name": "死之追随者",
     "card_set_id": 10002,
@@ -42901,6 +44851,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102511060,
     "card_id": 102511060,
     "card_name": "尸魂士兵",
     "card_set_id": 10002,
@@ -42923,6 +44874,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102521040,
     "card_id": 102521040,
     "card_name": "白骨奇美拉",
     "card_set_id": 10002,
@@ -42945,6 +44897,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103511040,
     "card_id": 103511040,
     "card_name": "双翼警备员",
     "card_set_id": 10003,
@@ -42967,6 +44920,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103511050,
     "card_id": 103511050,
     "card_name": "暗之从魔",
     "card_set_id": 10003,
@@ -42989,6 +44943,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103511060,
     "card_id": 103511060,
     "card_name": "海盗僵尸",
     "card_set_id": 10003,
@@ -43011,6 +44966,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104511040,
     "card_id": 104511040,
     "card_name": "哥布林僵尸",
     "card_set_id": 10004,
@@ -43033,6 +44989,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104521030,
     "card_id": 104521030,
     "card_name": "骨之贵公子",
     "card_set_id": 10004,
@@ -43055,6 +45012,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104541010,
     "card_id": 104541010,
     "card_name": "灵魂守门人·命忒",
     "card_set_id": 10004,
@@ -43077,6 +45035,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106521010,
     "card_id": 106521010,
     "card_name": "恶魔拳法家·索拉",
     "card_set_id": 10006,
@@ -43099,6 +45058,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107521010,
     "card_id": 107521010,
     "card_name": "唤灵少女",
     "card_set_id": 10007,
@@ -43121,6 +45081,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108521010,
     "card_id": 108521010,
     "card_name": "巨魂猎手",
     "card_set_id": 10008,
@@ -43143,6 +45104,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108531020,
     "card_id": 108531020,
     "card_name": "恒暗之枭",
     "card_set_id": 10008,
@@ -43165,6 +45127,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109521010,
     "card_id": 109521010,
     "card_name": "怪物少女·芙兰",
     "card_set_id": 10009,
@@ -43187,6 +45150,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109531010,
     "card_id": 109531010,
     "card_name": "复苏的狂战士",
     "card_set_id": 10009,
@@ -43209,6 +45173,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110521020,
     "card_id": 110521020,
     "card_name": "沉默的信徒",
     "card_set_id": 10010,
@@ -43231,6 +45196,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110541020,
     "card_id": 110541020,
     "card_name": "沉默绝杰·鲁鲁纳伊",
     "card_set_id": 10010,
@@ -43253,6 +45219,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111521020,
     "card_id": 111521020,
     "card_name": "南瓜头·克里斯",
     "card_set_id": 10011,
@@ -43275,6 +45242,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113511020,
     "card_id": 113511020,
     "card_name": "机械锯死亡使者",
     "card_set_id": 10013,
@@ -43297,6 +45265,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113531010,
     "card_id": 113531010,
     "card_name": "冥守继承者·卡穆拉",
     "card_set_id": 10013,
@@ -43319,6 +45288,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114511020,
     "card_id": 114511020,
     "card_name": "附身的怨灵",
     "card_set_id": 10014,
@@ -43341,6 +45311,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114531010,
     "card_id": 114531010,
     "card_name": "不容侵犯之死灵·黑利欧",
     "card_set_id": 10014,
@@ -43363,6 +45334,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114531030,
     "card_id": 114531030,
     "card_name": "热战的僵尸少女",
     "card_set_id": 10014,
@@ -43385,6 +45357,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115511010,
     "card_id": 115511010,
     "card_name": "座敷童子",
     "card_set_id": 10015,
@@ -43407,6 +45380,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115511030,
     "card_id": 115511030,
     "card_name": "木乃伊大厨",
     "card_set_id": 10015,
@@ -43429,6 +45403,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115521020,
     "card_id": 115521020,
     "card_name": "火之车",
     "card_set_id": 10015,
@@ -43451,6 +45426,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116511020,
     "card_id": 116511020,
     "card_name": "亡灵使役者",
     "card_set_id": 10016,
@@ -43473,6 +45449,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116521010,
     "card_id": 116521010,
     "card_name": "兽魂灵媒师",
     "card_set_id": 10016,
@@ -43495,6 +45472,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116531020,
     "card_id": 116531020,
     "card_name": "王墓之骸",
     "card_set_id": 10016,
@@ -43517,6 +45495,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117511020,
     "card_id": 117511020,
     "card_name": "灵魂鉴定师",
     "card_set_id": 10017,
@@ -43539,6 +45518,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118511010,
     "card_id": 118511010,
     "card_name": "怨恨传诵者",
     "card_set_id": 10018,
@@ -43561,6 +45541,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119511020,
     "card_id": 119511020,
     "card_name": "骸骨鱼",
     "card_set_id": 10019,
@@ -43583,6 +45564,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119531020,
     "card_id": 119531020,
     "card_name": "三头犬",
     "card_set_id": 10019,
@@ -43605,6 +45587,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120511030,
     "card_id": 120511030,
     "card_name": "四臂死兵",
     "card_set_id": 10020,
@@ -43627,6 +45610,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120531020,
     "card_id": 120531020,
     "card_name": "死门连结者",
     "card_set_id": 10020,
@@ -43649,6 +45633,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120541010,
     "card_id": 120541010,
     "card_name": "永暗新娘·赛蕾丝",
     "card_set_id": 10020,
@@ -43671,6 +45656,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121511010,
     "card_id": 121511010,
     "card_name": "链杖死灵法师",
     "card_set_id": 10021,
@@ -43693,6 +45679,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121541020,
     "card_id": 121541020,
     "card_name": "创造的丹紫·安镍儿",
     "card_set_id": 10021,
@@ -43715,6 +45702,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122511010,
     "card_id": 122511010,
     "card_name": "白骨赞美者",
     "card_set_id": 10022,
@@ -43737,6 +45725,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122541020,
     "card_id": 122541020,
     "card_name": "狂气收割者",
     "card_set_id": 10022,
@@ -43759,6 +45748,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123511010,
     "card_id": 123511010,
     "card_name": "沉默的隐者",
     "card_set_id": 10023,
@@ -43781,6 +45771,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123541030,
     "card_id": 123541030,
     "card_name": "绝叫沉默·鲁鲁纳伊",
     "card_set_id": 10023,
@@ -43803,6 +45794,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124521010,
     "card_id": 124521010,
     "card_name": "冥果采收者",
     "card_set_id": 10024,
@@ -43825,6 +45817,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124541010,
     "card_id": 124541010,
     "card_name": "因果的迷途之子·安瑟乔",
     "card_set_id": 10024,
@@ -43847,6 +45840,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125511030,
     "card_id": 125511030,
     "card_name": "尸骸买主",
     "card_set_id": 10025,
@@ -43869,6 +45863,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125521020,
     "card_id": 125521020,
     "card_name": "巡视的活尸",
     "card_set_id": 10025,
@@ -43891,6 +45886,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125531020,
     "card_id": 125531020,
     "card_name": "冥域的烈牙·欧特鲁斯",
     "card_set_id": 10025,
@@ -43913,6 +45909,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126511010,
     "card_id": 126511010,
     "card_name": "冥火的披萨烤制人",
     "card_set_id": 10026,
@@ -43935,6 +45932,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126521020,
     "card_id": 126521020,
     "card_name": "福金与雾尼",
     "card_set_id": 10026,
@@ -43957,6 +45955,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126531020,
     "card_id": 126531020,
     "card_name": "巧计的杜拉汉",
     "card_set_id": 10026,
@@ -43979,6 +45978,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127531030,
     "card_id": 127531030,
     "card_name": "死魂射手",
     "card_set_id": 10027,
@@ -44001,6 +46001,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128521020,
     "card_id": 128521020,
     "card_name": "夜镜亡魂",
     "card_set_id": 10028,
@@ -44023,6 +46024,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129521010,
     "card_id": 129521010,
     "card_name": "亡骸复活者",
     "card_set_id": 10029,
@@ -44045,6 +46047,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900531050,
     "card_id": 900531050,
     "card_name": "巨型狂灵",
     "card_set_id": 90000,
@@ -44067,6 +46070,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900541110,
     "card_id": 900541110,
     "card_name": "死灵兽群",
     "card_set_id": 90000,
@@ -44089,6 +46093,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101514030,
     "card_id": 101514030,
     "card_name": "灵魂狩猎",
     "card_set_id": 10001,
@@ -44111,6 +46116,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101514040,
     "card_id": 101514040,
     "card_name": "不洁重生",
     "card_set_id": 10001,
@@ -44133,6 +46139,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101534020,
     "card_id": 101534020,
     "card_name": "腐坏飓风",
     "card_set_id": 10001,
@@ -44155,6 +46162,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102514050,
     "card_id": 102514050,
     "card_name": "死之一闪",
     "card_set_id": 10002,
@@ -44177,6 +46185,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103514020,
     "card_id": 103514020,
     "card_name": "怨叹之声",
     "card_set_id": 10003,
@@ -44199,6 +46208,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103534010,
     "card_id": 103534010,
     "card_name": "冥府神的契约",
     "card_set_id": 10003,
@@ -44221,6 +46231,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108524010,
     "card_id": 108524010,
     "card_name": "骚灵现象",
     "card_set_id": 10008,
@@ -44243,6 +46254,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112514010,
     "card_id": 112514010,
     "card_name": "灵魂强夺",
     "card_set_id": 10012,
@@ -44265,6 +46277,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122514010,
     "card_id": 122514010,
     "card_name": "亡骨奔腾",
     "card_set_id": 10022,
@@ -44287,6 +46300,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123524010,
     "card_id": 123524010,
     "card_name": "殄灭宴",
     "card_set_id": 10023,
@@ -44309,6 +46323,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128524010,
     "card_id": 128524010,
     "card_name": "骸骨加工",
     "card_set_id": 10028,
@@ -44331,6 +46346,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102533010,
     "card_id": 102533010,
     "card_name": "灵魂回收",
     "card_set_id": 10002,
@@ -44353,6 +46369,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102533020,
     "card_id": 102533020,
     "card_name": "死灵之宴",
     "card_set_id": 10002,
@@ -44375,6 +46392,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107513010,
     "card_id": 107513010,
     "card_name": "头骨戒指",
     "card_set_id": 10007,
@@ -44397,6 +46415,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112522010,
     "card_id": 112522010,
     "card_name": "灵魂之核",
     "card_set_id": 10012,
@@ -44419,6 +46438,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900523010,
     "card_id": 900523010,
     "card_name": "深渊之梦",
     "card_set_id": 90000,
@@ -44441,6 +46461,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100611030,
     "card_id": 100611030,
     "card_name": "疯狂的刽子手",
     "card_set_id": 10000,
@@ -44463,6 +46484,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611060,
     "card_id": 101611060,
     "card_name": "金属的石像鬼",
     "card_set_id": 10001,
@@ -44485,6 +46507,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611070,
     "card_id": 101611070,
     "card_name": "小恶魔",
     "card_set_id": 10001,
@@ -44507,6 +46530,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101611110,
     "card_id": 101611110,
     "card_name": "魔掌暗杀者",
     "card_set_id": 10001,
@@ -44529,6 +46553,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101611130,
     "card_id": 101611130,
     "card_name": "恶魔射手",
     "card_set_id": 10001,
@@ -44551,6 +46576,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101611140,
     "card_id": 101611140,
     "card_name": "魅魔",
     "card_set_id": 10001,
@@ -44573,6 +46599,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101621010,
     "card_id": 101621010,
     "card_name": "复仇的恶魔",
     "card_set_id": 10001,
@@ -44595,6 +46622,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101621030,
     "card_id": 101621030,
     "card_name": "午夜的吸血鬼",
     "card_set_id": 10001,
@@ -44617,6 +46645,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101621080,
     "card_id": 101621080,
     "card_name": "狼魂吸血鬼",
     "card_set_id": 10001,
@@ -44639,6 +46668,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101621090,
     "card_id": 101621090,
     "card_name": "铁面虐杀者",
     "card_set_id": 10001,
@@ -44661,6 +46691,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101631020,
     "card_id": 101631020,
     "card_name": "恶魔司令·萝拉",
     "card_set_id": 10001,
@@ -44683,6 +46714,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102611020,
     "card_id": 102611020,
     "card_name": "迷你灵魔",
     "card_set_id": 10002,
@@ -44705,6 +46737,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103611050,
     "card_id": 103611050,
     "card_name": "狼人族长",
     "card_set_id": 10003,
@@ -44727,6 +46760,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103621020,
     "card_id": 103621020,
     "card_name": "吸血贵公子·拜特",
     "card_set_id": 10003,
@@ -44749,6 +46783,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104611040,
     "card_id": 104611040,
     "card_name": "蝙蝠蛙",
     "card_set_id": 10004,
@@ -44771,6 +46806,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105611010,
     "card_id": 105611010,
     "card_name": "别扭的恶魔",
     "card_set_id": 10005,
@@ -44793,6 +46829,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106611020,
     "card_id": 106611020,
     "card_name": "狂牙巨蛇",
     "card_set_id": 10006,
@@ -44815,6 +46852,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107611020,
     "card_id": 107611020,
     "card_name": "残暴魔狼",
     "card_set_id": 10007,
@@ -44837,6 +46875,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107621010,
     "card_id": 107621010,
     "card_name": "瓦沙克",
     "card_set_id": 10007,
@@ -44859,6 +46898,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107621020,
     "card_id": 107621020,
     "card_name": "帕祖祖",
     "card_set_id": 10007,
@@ -44881,6 +46921,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107631010,
     "card_id": 107631010,
     "card_name": "迷人魅魔·莉莉姆",
     "card_set_id": 10007,
@@ -44903,6 +46944,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108611010,
     "card_id": 108611010,
     "card_name": "梦魇恶魔",
     "card_set_id": 10008,
@@ -44925,6 +46967,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108641030,
     "card_id": 108641030,
     "card_name": "狼人之王·华兹",
     "card_set_id": 10008,
@@ -44947,6 +46990,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109611020,
     "card_id": 109611020,
     "card_name": "试验品·泽赫克",
     "card_set_id": 10009,
@@ -44969,6 +47013,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109631030,
     "card_id": 109631030,
     "card_name": "基塔布利鲁",
     "card_set_id": 10009,
@@ -44991,6 +47036,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110641010,
     "card_id": 110641010,
     "card_name": "奸淫绝杰·瓦娜蕾格",
     "card_set_id": 10010,
@@ -45013,6 +47059,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111611010,
     "card_id": 111611010,
     "card_name": "佛尔佛尔",
     "card_set_id": 10011,
@@ -45035,6 +47082,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112611030,
     "card_id": 112611030,
     "card_name": "钢翼夜蝠",
     "card_set_id": 10012,
@@ -45057,6 +47105,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113611020,
     "card_id": 113611020,
     "card_name": "恸哭魔人·涅菲里欧",
     "card_set_id": 10013,
@@ -45079,6 +47128,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113641020,
     "card_id": 113641020,
     "card_name": "恶逆公爵·尤里乌斯",
     "card_set_id": 10013,
@@ -45101,6 +47151,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114611020,
     "card_id": 114611020,
     "card_name": "激斩巨魔",
     "card_set_id": 10014,
@@ -45123,6 +47174,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114621020,
     "card_id": 114621020,
     "card_name": "狂气的狼人",
     "card_set_id": 10014,
@@ -45145,6 +47197,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114641030,
     "card_id": 114641030,
     "card_name": "库德拉克",
     "card_set_id": 10014,
@@ -45167,6 +47220,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115621010,
     "card_id": 115621010,
     "card_name": "狮爪少女",
     "card_set_id": 10015,
@@ -45189,6 +47243,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115631010,
     "card_id": 115631010,
     "card_name": "豪熊狂战士",
     "card_set_id": 10015,
@@ -45211,6 +47266,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115641020,
     "card_id": 115641020,
     "card_name": "暗夜统御者·伊莉亚",
     "card_set_id": 10015,
@@ -45233,6 +47289,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116631010,
     "card_id": 116631010,
     "card_name": "机巧魔护士",
     "card_set_id": 10016,
@@ -45255,6 +47312,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116631020,
     "card_id": 116631020,
     "card_name": "悖德的狂兽",
     "card_set_id": 10016,
@@ -45277,6 +47335,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117621010,
     "card_id": 117621010,
     "card_name": "暴虐的恶魔",
     "card_set_id": 10017,
@@ -45299,6 +47358,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117641030,
     "card_id": 117641030,
     "card_name": "芭力",
     "card_set_id": 10017,
@@ -45321,6 +47381,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118621020,
     "card_id": 118621020,
     "card_name": "红帽怪",
     "card_set_id": 10018,
@@ -45343,6 +47404,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118641020,
     "card_id": 118641020,
     "card_name": "无伤双翼·圮尤菈",
     "card_set_id": 10018,
@@ -45365,6 +47427,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119621010,
     "card_id": 119621010,
     "card_name": "坏天之灾·哈勒婕娜",
     "card_set_id": 10019,
@@ -45387,6 +47450,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119631030,
     "card_id": 119631030,
     "card_name": "灰白之豹·艾路",
     "card_set_id": 10019,
@@ -45409,6 +47473,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120611010,
     "card_id": 120611010,
     "card_name": "银白剑士",
     "card_set_id": 10020,
@@ -45431,6 +47496,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120611030,
     "card_id": 120611030,
     "card_name": "魔界处刑人",
     "card_set_id": 10020,
@@ -45453,6 +47519,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121611020,
     "card_id": 121611020,
     "card_name": "狂爪恶魔",
     "card_set_id": 10021,
@@ -45475,6 +47542,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121641030,
     "card_id": 121641030,
     "card_name": "终幕吸血鬼·尤里亚斯",
     "card_set_id": 10021,
@@ -45497,6 +47565,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122611010,
     "card_id": 122611010,
     "card_name": "强欲的恶魔使者",
     "card_set_id": 10022,
@@ -45519,6 +47588,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122621030,
     "card_id": 122621030,
     "card_name": "狂舞的兽人",
     "card_set_id": 10022,
@@ -45541,6 +47611,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122641020,
     "card_id": 122641020,
     "card_name": "夜空吸血鬼",
     "card_set_id": 10022,
@@ -45563,6 +47634,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123641010,
     "card_id": 123641010,
     "card_name": "血艳领主·夕月",
     "card_set_id": 10023,
@@ -45585,6 +47657,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124611030,
     "card_id": 124611030,
     "card_name": "跑酷狼人",
     "card_set_id": 10024,
@@ -45607,6 +47680,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124631010,
     "card_id": 124631010,
     "card_name": "变幻自如的伪装者",
     "card_set_id": 10024,
@@ -45629,6 +47703,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125611020,
     "card_id": 125611020,
     "card_name": "熟练的恶魔猎手",
     "card_set_id": 10025,
@@ -45651,6 +47726,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125621020,
     "card_id": 125621020,
     "card_name": "致命毒蛇",
     "card_set_id": 10025,
@@ -45673,6 +47749,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126611030,
     "card_id": 126611030,
     "card_name": "魔剑鬼人",
     "card_set_id": 10026,
@@ -45695,6 +47772,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126631010,
     "card_id": 126631010,
     "card_name": "庞克恶魔·戴莫尼亚",
     "card_set_id": 10026,
@@ -45717,6 +47795,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127611020,
     "card_id": 127611020,
     "card_name": "回旋狼人",
     "card_set_id": 10027,
@@ -45739,6 +47818,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127631010,
     "card_id": 127631010,
     "card_name": "激愤的副总长",
     "card_set_id": 10027,
@@ -45761,6 +47841,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128611010,
     "card_id": 128611010,
     "card_name": "极徒会头目·登南",
     "card_set_id": 10028,
@@ -45783,6 +47864,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129611030,
     "card_id": 129611030,
     "card_name": "假面绅士",
     "card_set_id": 10029,
@@ -45805,6 +47887,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129621010,
     "card_id": 129621010,
     "card_name": "恶魔护士",
     "card_set_id": 10029,
@@ -45827,6 +47910,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101614030,
     "card_id": 101614030,
     "card_name": "沸血之怒",
     "card_set_id": 10001,
@@ -45849,6 +47933,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103634010,
     "card_id": 103634010,
     "card_name": "嗜虐之夜",
     "card_set_id": 10003,
@@ -45871,6 +47956,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105634010,
     "card_id": 105634010,
     "card_name": "致命之刃",
     "card_set_id": 10005,
@@ -45893,6 +47979,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106614010,
     "card_id": 106614010,
     "card_name": "剧毒蛇吻",
     "card_set_id": 10006,
@@ -45915,6 +48002,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106634010,
     "card_id": 106634010,
     "card_name": "戈尔贡的试炼",
     "card_set_id": 10006,
@@ -45937,6 +48025,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107614010,
     "card_id": 107614010,
     "card_name": "吸血的刻印",
     "card_set_id": 10007,
@@ -45959,6 +48048,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109614010,
     "card_id": 109614010,
     "card_name": "血红渴望",
     "card_set_id": 10009,
@@ -45981,6 +48071,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111634010,
     "card_id": 111634010,
     "card_name": "理性的崩坏",
     "card_set_id": 10011,
@@ -46003,6 +48094,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112614010,
     "card_id": 112614010,
     "card_name": "猛毒之牙",
     "card_set_id": 10012,
@@ -46025,6 +48117,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112634010,
     "card_id": 112634010,
     "card_name": "恶梦之始",
     "card_set_id": 10012,
@@ -46047,6 +48140,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116614010,
     "card_id": 116614010,
     "card_name": "诅咒魔剑的一闪",
     "card_set_id": 10016,
@@ -46069,6 +48163,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118614010,
     "card_id": 118614010,
     "card_name": "蛛网放射",
     "card_set_id": 10018,
@@ -46091,6 +48186,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119624010,
     "card_id": 119624010,
     "card_name": "侵蚀的杀意",
     "card_set_id": 10019,
@@ -46113,6 +48209,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900634010,
     "card_id": 900634010,
     "card_name": "恶魔之歌",
     "card_set_id": 90000,
@@ -46135,6 +48232,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101633010,
     "card_id": 101633010,
     "card_name": "漆黑之契",
     "card_set_id": 10001,
@@ -46157,6 +48255,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104633010,
     "card_id": 104633010,
     "card_name": "血红之月",
     "card_set_id": 10004,
@@ -46179,6 +48278,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105613010,
     "card_id": 105613010,
     "card_name": "恶魔之钥",
     "card_set_id": 10005,
@@ -46201,6 +48301,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110613010,
     "card_id": 110613010,
     "card_name": "孤独的王座",
     "card_set_id": 10010,
@@ -46223,6 +48324,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112622010,
     "card_id": 112622010,
     "card_name": "血红之核",
     "card_set_id": 10012,
@@ -46245,6 +48347,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113623010,
     "card_id": 113623010,
     "card_name": "凌虐囚房",
     "card_set_id": 10013,
@@ -46267,6 +48370,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900643010,
     "card_id": 900643010,
     "card_name": "无欲之恩宠",
     "card_set_id": 90000,
@@ -46289,6 +48393,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101711030,
     "card_id": 101711030,
     "card_name": "见习修女",
     "card_set_id": 10001,
@@ -46311,6 +48416,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101711040,
     "card_id": 101711040,
     "card_name": "黑暗牧师",
     "card_set_id": 10001,
@@ -46333,6 +48439,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101721010,
     "card_id": 101721010,
     "card_name": "教会守护者",
     "card_set_id": 10001,
@@ -46355,6 +48462,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101721020,
     "card_id": 101721020,
     "card_name": "圣之光稜牧师",
     "card_set_id": 10001,
@@ -46377,6 +48485,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101721070,
     "card_id": 101721070,
     "card_name": "光耀萨满",
     "card_set_id": 10001,
@@ -46399,6 +48508,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101721080,
     "card_id": 101721080,
     "card_name": "圣光法师",
     "card_set_id": 10001,
@@ -46421,6 +48531,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102711020,
     "card_id": 102711020,
     "card_name": "天空之灵",
     "card_set_id": 10002,
@@ -46443,6 +48554,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102721010,
     "card_id": 102721010,
     "card_name": "狂热驱魔师",
     "card_set_id": 10002,
@@ -46465,6 +48577,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103711030,
     "card_id": 103711030,
     "card_name": "圣女智者",
     "card_set_id": 10003,
@@ -46487,6 +48600,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103721040,
     "card_id": 103721040,
     "card_name": "邪恶预言者·达姆斯",
     "card_set_id": 10003,
@@ -46509,6 +48623,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104731020,
     "card_id": 104731020,
     "card_name": "黄金都市公主·莉迪耶尔",
     "card_set_id": 10004,
@@ -46531,6 +48646,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105711030,
     "card_id": 105711030,
     "card_name": "圣兽白虎",
     "card_set_id": 10005,
@@ -46553,6 +48669,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106711010,
     "card_id": 106711010,
     "card_name": "惩戒的修女",
     "card_set_id": 10006,
@@ -46575,6 +48692,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106721020,
     "card_id": 106721020,
     "card_name": "埃癸娜",
     "card_set_id": 10006,
@@ -46597,6 +48715,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107741010,
     "card_id": 107741010,
     "card_name": "希望引导者·圣女贞德",
     "card_set_id": 10007,
@@ -46619,6 +48738,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108721010,
     "card_id": 108721010,
     "card_name": "和平的推动者",
     "card_set_id": 10008,
@@ -46641,6 +48761,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109711010,
     "card_id": 109711010,
     "card_name": "内向的月兔妖",
     "card_set_id": 10009,
@@ -46663,6 +48784,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109721020,
     "card_id": 109721020,
     "card_name": "星迹的朝圣者·苏菲雅",
     "card_set_id": 10009,
@@ -46685,6 +48807,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110711030,
     "card_id": 110711030,
     "card_name": "安息的随从",
     "card_set_id": 10010,
@@ -46707,6 +48830,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111731010,
     "card_id": 111731010,
     "card_name": "均衡之光·马龙",
     "card_set_id": 10011,
@@ -46729,6 +48853,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111731020,
     "card_id": 111731020,
     "card_name": "赛克美特",
     "card_set_id": 10011,
@@ -46751,6 +48876,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112711010,
     "card_id": 112711010,
     "card_name": "铁腕女修士",
     "card_set_id": 10012,
@@ -46773,6 +48899,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112741010,
     "card_id": 112741010,
     "card_name": "希望女王·莉迪耶尔",
     "card_set_id": 10012,
@@ -46795,6 +48922,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115711030,
     "card_id": 115711030,
     "card_name": "圣洁狮鹫兽",
     "card_set_id": 10015,
@@ -46817,6 +48945,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115731010,
     "card_id": 115731010,
     "card_name": "圣艳之先导者",
     "card_set_id": 10015,
@@ -46839,6 +48968,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115731020,
     "card_id": 115731020,
     "card_name": "神圣守护者·优花梨",
     "card_set_id": 10015,
@@ -46861,6 +48991,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116711030,
     "card_id": 116711030,
     "card_name": "天惠圣鸟",
     "card_set_id": 10016,
@@ -46883,6 +49014,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116721020,
     "card_id": 116721020,
     "card_name": "辉耀灵鼠族",
     "card_set_id": 10016,
@@ -46905,6 +49037,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117721010,
     "card_id": 117721010,
     "card_name": "圣柱巨龟",
     "card_set_id": 10017,
@@ -46927,6 +49060,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117731020,
     "card_id": 117731020,
     "card_name": "传教司祭·萝蕾娜",
     "card_set_id": 10017,
@@ -46949,6 +49083,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117741020,
     "card_id": 117741020,
     "card_name": "破暗煌辉·萨莉沙",
     "card_set_id": 10017,
@@ -46971,6 +49106,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119731010,
     "card_id": 119731010,
     "card_name": "日轮的巫女·萨哈梅莉娜",
     "card_set_id": 10019,
@@ -46993,6 +49129,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120711010,
     "card_id": 120711010,
     "card_name": "炫彩翼人",
     "card_set_id": 10020,
@@ -47015,6 +49152,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120711020,
     "card_id": 120711020,
     "card_name": "链锤祭司",
     "card_set_id": 10020,
@@ -47037,6 +49175,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120721010,
     "card_id": 120721010,
     "card_name": "圣杖月兔妖",
     "card_set_id": 10020,
@@ -47059,6 +49198,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120741010,
     "card_id": 120741010,
     "card_name": "绝望的圣女·贞德",
     "card_set_id": 10020,
@@ -47081,6 +49221,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120741030,
     "card_id": 120741030,
     "card_name": "亚必迭",
     "card_set_id": 10020,
@@ -47103,6 +49244,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121711010,
     "card_id": 121711010,
     "card_name": "耶斯嘉马利的建言者",
     "card_set_id": 10021,
@@ -47125,6 +49267,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121741010,
     "card_id": 121741010,
     "card_name": "平稳制定者·马龙",
     "card_set_id": 10021,
@@ -47147,6 +49290,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122741020,
     "card_id": 122741020,
     "card_name": "圣辉女剑士",
     "card_set_id": 10022,
@@ -47169,6 +49313,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123721010,
     "card_id": 123721010,
     "card_name": "熟练的翼战士",
     "card_set_id": 10023,
@@ -47191,6 +49336,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125711030,
     "card_id": 125711030,
     "card_name": "金角羚",
     "card_set_id": 10025,
@@ -47213,6 +49359,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125741020,
     "card_id": 125741020,
     "card_name": "救赎的圣女·贞德",
     "card_set_id": 10025,
@@ -47235,6 +49382,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127731020,
     "card_id": 127731020,
     "card_name": "飞翔看守",
     "card_set_id": 10027,
@@ -47257,6 +49405,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128711020,
     "card_id": 128711020,
     "card_name": "圣水神职者",
     "card_set_id": 10028,
@@ -47279,6 +49428,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128721020,
     "card_id": 128721020,
     "card_name": "净火千金",
     "card_set_id": 10028,
@@ -47301,6 +49451,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900711010,
     "card_id": 900711010,
     "card_name": "神圣猎鹰",
     "card_set_id": 90000,
@@ -47323,6 +49474,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900711110,
     "card_id": 900711110,
     "card_name": "白蛇",
     "card_set_id": 90000,
@@ -47345,6 +49497,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900711120,
     "card_id": 900711120,
     "card_name": "时之猫头鹰",
     "card_set_id": 90000,
@@ -47367,6 +49520,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900711140,
     "card_id": 900711140,
     "card_name": "森林参谋长·喵鲁",
     "card_set_id": 90000,
@@ -47389,6 +49543,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101714010,
     "card_id": 101714010,
     "card_name": "守护之力",
     "card_set_id": 10001,
@@ -47411,6 +49566,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101714020,
     "card_id": 101714020,
     "card_name": "治愈祷告",
     "card_set_id": 10001,
@@ -47433,6 +49589,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106724010,
     "card_id": 106724010,
     "card_name": "星之奔流",
     "card_set_id": 10006,
@@ -47455,6 +49612,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109724010,
     "card_id": 109724010,
     "card_name": "圣之光稜杖击",
     "card_set_id": 10009,
@@ -47477,6 +49635,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110724010,
     "card_id": 110724010,
     "card_name": "迅翼冲刺",
     "card_set_id": 10010,
@@ -47499,6 +49658,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116734010,
     "card_id": 116734010,
     "card_name": "拥覆的祈愿",
     "card_set_id": 10016,
@@ -47521,6 +49681,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120714010,
     "card_id": 120714010,
     "card_name": "圣徒的投掷",
     "card_set_id": 10020,
@@ -47543,6 +49704,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900724020,
     "card_id": 900724020,
     "card_name": "独角兽之枪",
     "card_set_id": 90000,
@@ -47565,6 +49727,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100713030,
     "card_id": 100713030,
     "card_name": "咏唱：白龙降临",
     "card_set_id": 10000,
@@ -47587,6 +49750,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101713050,
     "card_id": 101713050,
     "card_name": "咏唱：神鸟之笛",
     "card_set_id": 10001,
@@ -47609,6 +49773,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102723020,
     "card_id": 102723020,
     "card_name": "咏唱：禁忌仪式",
     "card_set_id": 10002,
@@ -47631,6 +49796,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102732020,
     "card_id": 102732020,
     "card_name": "耶菈的祈祷",
     "card_set_id": 10002,
@@ -47653,6 +49819,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103723010,
     "card_id": 103723010,
     "card_name": "贝卡萨斯的结晶像",
     "card_set_id": 10003,
@@ -47675,6 +49842,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104712010,
     "card_id": 104712010,
     "card_name": "祈愿的烛台",
     "card_set_id": 10004,
@@ -47697,6 +49865,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108733010,
     "card_id": 108733010,
     "card_name": "咏唱：白牙神殿",
     "card_set_id": 10008,
@@ -47719,6 +49888,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110732010,
     "card_id": 110732010,
     "card_name": "黄金都市",
     "card_set_id": 10010,
@@ -47741,6 +49911,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112722010,
     "card_id": 112722010,
     "card_name": "圣洁之核",
     "card_set_id": 10012,
@@ -47763,6 +49934,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114733010,
     "card_id": 114733010,
     "card_name": "洞窟圣堂",
     "card_set_id": 10014,
@@ -47785,6 +49957,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115723010,
     "card_id": 115723010,
     "card_name": "翼之圣域",
     "card_set_id": 10015,
@@ -47807,6 +49980,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123713010,
     "card_id": 123713010,
     "card_name": "神圣的法槌",
     "card_set_id": 10023,
@@ -47829,6 +50003,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123733010,
     "card_id": 123733010,
     "card_name": "悠久的绝望",
     "card_set_id": 10023,
@@ -47851,6 +50026,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126713010,
     "card_id": 126713010,
     "card_name": "祈愿的圣遗物",
     "card_set_id": 10026,
@@ -47873,6 +50049,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126723010,
     "card_id": 126723010,
     "card_name": "咏唱：金牛的加护",
     "card_set_id": 10026,
@@ -47895,6 +50072,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127713020,
     "card_id": 127713020,
     "card_name": "咏唱：圣兽的古迹",
     "card_set_id": 10027,
@@ -47917,6 +50095,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129713010,
     "card_id": 129713010,
     "card_name": "禁忌的祭坛",
     "card_set_id": 10029,
@@ -47939,6 +50118,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100811010,
     "card_id": 100811010,
     "card_name": "玩具士兵",
     "card_set_id": 10000,
@@ -47961,6 +50141,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100811030,
     "card_id": 100811030,
     "card_name": "机偶骑士",
     "card_set_id": 10000,
@@ -47983,6 +50164,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107811050,
     "card_id": 107811050,
     "card_name": "肉球炮击手",
     "card_set_id": 10007,
@@ -48005,6 +50187,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811060,
     "card_id": 107811060,
     "card_name": "钢铁破坏者",
     "card_set_id": 10007,
@@ -48027,6 +50210,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811070,
     "card_id": 107811070,
     "card_name": "铁杖机械士",
     "card_set_id": 10007,
@@ -48049,6 +50233,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107811140,
     "card_id": 107811140,
     "card_name": "被诅咒的石像",
     "card_set_id": 10007,
@@ -48071,6 +50256,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107821040,
     "card_id": 107821040,
     "card_name": "狂热的机械兵",
     "card_set_id": 10007,
@@ -48093,6 +50279,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108811030,
     "card_id": 108811030,
     "card_name": "废弃物",
     "card_set_id": 10008,
@@ -48115,6 +50302,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108831020,
     "card_id": 108831020,
     "card_name": "境界线的恶魔",
     "card_set_id": 10008,
@@ -48137,6 +50325,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109811010,
     "card_id": 109811010,
     "card_name": "清新的铳士·洁西卡",
     "card_set_id": 10009,
@@ -48159,6 +50348,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109831020,
     "card_id": 109831020,
     "card_name": "清新的枪械设计师·库库璐",
     "card_set_id": 10009,
@@ -48181,6 +50371,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109841030,
     "card_id": 109841030,
     "card_name": "邪恶之眼",
     "card_set_id": 10009,
@@ -48203,6 +50394,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110811030,
     "card_id": 110811030,
     "card_name": "破坏的随从",
     "card_set_id": 10010,
@@ -48225,6 +50417,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111811030,
     "card_id": 111811030,
     "card_name": "人偶之主·薇奥拉",
     "card_set_id": 10011,
@@ -48247,6 +50440,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111821020,
     "card_id": 111821020,
     "card_name": "机动二轮天使",
     "card_set_id": 10011,
@@ -48269,6 +50463,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111831030,
     "card_id": 111831030,
     "card_name": "肃清的英雄·梅希亚",
     "card_set_id": 10011,
@@ -48291,6 +50486,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112811020,
     "card_id": 112811020,
     "card_name": "爬行的史莱姆",
     "card_set_id": 10012,
@@ -48313,6 +50509,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112831020,
     "card_id": 112831020,
     "card_name": "无尽的人偶师",
     "card_set_id": 10012,
@@ -48335,6 +50532,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114821020,
     "card_id": 114821020,
     "card_name": "暗云巫女·叶涅司",
     "card_set_id": 10014,
@@ -48357,6 +50555,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115811020,
     "card_id": 115811020,
     "card_name": "重力柔术士",
     "card_set_id": 10015,
@@ -48379,6 +50578,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115821020,
     "card_id": 115821020,
     "card_name": "迅疾踢击手",
     "card_set_id": 10015,
@@ -48401,6 +50601,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115841010,
     "card_id": 115841010,
     "card_name": "武艺至尊·迦尔拉",
     "card_set_id": 10015,
@@ -48423,6 +50624,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116811020,
     "card_id": 116811020,
     "card_name": "魔导具技师",
     "card_set_id": 10016,
@@ -48445,6 +50647,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116811030,
     "card_id": 116811030,
     "card_name": "装甲铠鼠",
     "card_set_id": 10016,
@@ -48467,6 +50670,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117811030,
     "card_id": 117811030,
     "card_name": "钢之猛虎",
     "card_set_id": 10017,
@@ -48489,6 +50693,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117841010,
     "card_id": 117841010,
     "card_name": "《命运之轮》·斯洛士",
     "card_set_id": 10017,
@@ -48511,6 +50716,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118811010,
     "card_id": 118811010,
     "card_name": "光束熘球少女",
     "card_set_id": 10018,
@@ -48533,6 +50739,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119811020,
     "card_id": 119811020,
     "card_name": "间谍装置",
     "card_set_id": 10019,
@@ -48555,6 +50762,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119811040,
     "card_id": 119811040,
     "card_name": "突破自我的操偶师",
     "card_set_id": 10019,
@@ -48577,6 +50785,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119841010,
     "card_id": 119841010,
     "card_name": "魔弹射手·艾席儿",
     "card_set_id": 10019,
@@ -48599,6 +50808,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120821010,
     "card_id": 120821010,
     "card_name": "双人傀儡师",
     "card_set_id": 10020,
@@ -48621,6 +50831,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121831010,
     "card_id": 121831010,
     "card_name": "大型机械兵",
     "card_set_id": 10021,
@@ -48643,6 +50854,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122811010,
     "card_id": 122811010,
     "card_name": "智慧人造体",
     "card_set_id": 10022,
@@ -48665,6 +50877,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122831010,
     "card_id": 122831010,
     "card_name": "齿轮魔法师·里希特",
     "card_set_id": 10022,
@@ -48687,6 +50900,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124831010,
     "card_id": 124831010,
     "card_name": "扳机操偶师",
     "card_set_id": 10024,
@@ -48709,6 +50923,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124841020,
     "card_id": 124841020,
     "card_name": "全弹击发的枪手",
     "card_set_id": 10024,
@@ -48731,6 +50946,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125811020,
     "card_id": 125811020,
     "card_name": "水枪炮手",
     "card_set_id": 10025,
@@ -48753,6 +50969,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126831020,
     "card_id": 126831020,
     "card_name": "动物布偶师",
     "card_set_id": 10026,
@@ -48775,6 +50992,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126841010,
     "card_id": 126841010,
     "card_name": "人造的代言者·薇米蒂亚",
     "card_set_id": 10026,
@@ -48797,6 +51015,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127811010,
     "card_id": 127811010,
     "card_name": "镀黑小卒",
     "card_set_id": 10027,
@@ -48819,6 +51038,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127811020,
     "card_id": 127811020,
     "card_name": "孤僻的玩偶师",
     "card_set_id": 10027,
@@ -48841,6 +51061,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127831020,
     "card_id": 127831020,
     "card_name": "击针看守",
     "card_set_id": 10027,
@@ -48863,6 +51084,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129831010,
     "card_id": 129831010,
     "card_name": "门扉解放者·菈姿莉",
     "card_set_id": 10029,
@@ -48885,6 +51107,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129841010,
     "card_id": 129841010,
     "card_name": "混沌的终幕·辛恩",
     "card_set_id": 10029,
@@ -48907,6 +51130,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900811020,
     "card_id": 900811020,
     "card_name": "神秘的创造物",
     "card_set_id": 90000,
@@ -48929,6 +51153,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900811070,
     "card_id": 900811070,
     "card_name": "增殖的创造物",
     "card_set_id": 90000,
@@ -48951,6 +51176,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900831010,
     "card_id": 900831010,
     "card_name": "维多利亚",
     "card_set_id": 90000,
@@ -48973,6 +51199,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900841040,
     "card_id": 900841040,
     "card_name": "洛伊德",
     "card_set_id": 90000,
@@ -48995,6 +51222,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900841190,
     "card_id": 900841190,
     "card_name": "神秘的遗物·丝碧涅与璐契儿",
     "card_set_id": 90000,
@@ -49017,6 +51245,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107824010,
     "card_id": 107824010,
     "card_name": "画皮",
     "card_set_id": 10007,
@@ -49039,6 +51268,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113814010,
     "card_id": 113814010,
     "card_name": "人偶冲击",
     "card_set_id": 10013,
@@ -49061,6 +51291,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117834010,
     "card_id": 117834010,
     "card_name": "人偶的反噬",
     "card_set_id": 10017,
@@ -49083,6 +51314,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119824010,
     "card_id": 119824010,
     "card_name": "肉球射击",
     "card_set_id": 10019,
@@ -49105,6 +51337,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120814010,
     "card_id": 120814010,
     "card_name": "调整失败",
     "card_set_id": 10020,
@@ -49127,6 +51360,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121834010,
     "card_id": 121834010,
     "card_name": "战栗的侵略",
     "card_set_id": 10021,
@@ -49149,6 +51383,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124824010,
     "card_id": 124824010,
     "card_name": "无情的侵蚀",
     "card_set_id": 10024,
@@ -49171,6 +51406,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125844010,
     "card_id": 125844010,
     "card_name": "神器鸣动",
     "card_set_id": 10025,
@@ -49193,6 +51429,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129814010,
     "card_id": 129814010,
     "card_name": "机械的暴走",
     "card_set_id": 10029,
@@ -49215,6 +51452,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844010,
     "card_id": 900844010,
     "card_name": "格莱亚斯的威光",
     "card_set_id": 90000,
@@ -49237,6 +51475,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107813010,
     "card_id": 107813010,
     "card_name": "静谧的齿轮",
     "card_set_id": 10007,
@@ -49259,6 +51498,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107813020,
     "card_id": 107813020,
     "card_name": "人偶房",
     "card_set_id": 10007,
@@ -49281,6 +51521,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112822010,
     "card_id": 112822010,
     "card_name": "起源之核",
     "card_set_id": 10012,
@@ -49303,6 +51544,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115823010,
     "card_id": 115823010,
     "card_name": "布偶收藏箱",
     "card_set_id": 10015,
@@ -49325,6 +51567,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900823010,
     "card_id": 900823010,
     "card_name": "机美出击指令",
     "card_set_id": 90000,
@@ -49347,6 +51590,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900843010,
     "card_id": 900843010,
     "card_name": "惨祸的圆环",
     "card_set_id": 90000,
@@ -49369,6 +51613,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900843020,
     "card_id": 900843020,
     "card_name": "审判之枪",
     "card_set_id": 90000,
@@ -49391,6 +51636,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900843030,
     "card_id": 900843030,
     "card_name": "罪恶之盾",
     "card_set_id": 90000,
@@ -49413,6 +51659,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900843040,
     "card_id": 900843040,
     "card_name": "永恒教义",
     "card_set_id": 90000,
@@ -49435,6 +51682,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100011040,
     "card_id": 100011040,
     "card_name": "歌利亚",
     "card_set_id": 10000,
@@ -49457,6 +51705,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101011020,
     "card_id": 101011020,
     "card_name": "沙漠骑士",
     "card_set_id": 10001,
@@ -49479,6 +51728,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101031010,
     "card_id": 101031010,
     "card_name": "乌尔德",
     "card_set_id": 10001,
@@ -49501,6 +51751,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102021030,
     "card_id": 102021030,
     "card_name": "蛋蛋先生",
     "card_set_id": 10002,
@@ -49523,6 +51774,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103031010,
     "card_id": 103031010,
     "card_name": "乌列尔",
     "card_set_id": 10003,
@@ -49545,6 +51797,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103031020,
     "card_id": 103031020,
     "card_name": "哥布林杀手·汀娜",
     "card_set_id": 10003,
@@ -49567,6 +51820,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104021040,
     "card_id": 104021040,
     "card_name": "均衡的大枭",
     "card_set_id": 10004,
@@ -49589,6 +51843,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 105011010,
     "card_id": 105011010,
     "card_name": "懒散的天使·艾菲梅拉",
     "card_set_id": 10005,
@@ -49611,6 +51866,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105041010,
     "card_id": 105041010,
     "card_name": "不可思议的探求者·爱丽丝",
     "card_set_id": 10005,
@@ -49633,6 +51889,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107031010,
     "card_id": 107031010,
     "card_name": "闪耀之钟·叮咚天使",
     "card_set_id": 10007,
@@ -49655,6 +51912,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108031030,
     "card_id": 108031030,
     "card_name": "俄刻阿诺斯",
     "card_set_id": 10008,
@@ -49677,6 +51935,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109011010,
     "card_id": 109011010,
     "card_name": "苍穹领路人·拉卡姆",
     "card_set_id": 10009,
@@ -49699,6 +51958,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110031010,
     "card_id": 110031010,
     "card_name": "爆烈佣兵·菲娜",
     "card_set_id": 10010,
@@ -49721,6 +51981,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110031030,
     "card_id": 110031030,
     "card_name": "神弓座天使·莉莉耶尔",
     "card_set_id": 10010,
@@ -49743,6 +52004,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111011020,
     "card_id": 111011020,
     "card_name": "高等附魔师",
     "card_set_id": 10011,
@@ -49765,6 +52027,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112011010,
     "card_id": 112011010,
     "card_name": "辣妹天使·阿尔蒂丝",
     "card_set_id": 10012,
@@ -49787,6 +52050,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113011020,
     "card_id": 113011020,
     "card_name": "重装歌利亚",
     "card_set_id": 10013,
@@ -49809,6 +52073,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115011010,
     "card_id": 115011010,
     "card_name": "驯羊骑手",
     "card_set_id": 10015,
@@ -49831,6 +52096,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117011020,
     "card_id": 117011020,
     "card_name": "翔翼信使",
     "card_set_id": 10017,
@@ -49853,6 +52119,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117041020,
     "card_id": 117041020,
     "card_name": "天霸风神·斐兰",
     "card_set_id": 10017,
@@ -49875,6 +52142,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119021010,
     "card_id": 119021010,
     "card_name": "苍烈的志士·尤金",
     "card_set_id": 10019,
@@ -49897,6 +52165,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120021010,
     "card_id": 120021010,
     "card_name": "魔法食材商人",
     "card_set_id": 10020,
@@ -49919,6 +52188,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120031010,
     "card_id": 120031010,
     "card_name": "虚无的嚎风·格里姆尼尔",
     "card_set_id": 10020,
@@ -49941,6 +52211,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121011010,
     "card_id": 121011010,
     "card_name": "福音天使",
     "card_set_id": 10021,
@@ -49963,6 +52234,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122011010,
     "card_id": 122011010,
     "card_name": "净火的天使",
     "card_set_id": 10022,
@@ -49985,6 +52257,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122021010,
     "card_id": 122021010,
     "card_name": "新锐烟火师·玛薇菈",
     "card_set_id": 10022,
@@ -50007,6 +52280,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124011020,
     "card_id": 124011020,
     "card_name": "劫火巨人",
     "card_set_id": 10024,
@@ -50029,6 +52303,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126041010,
     "card_id": 126041010,
     "card_name": "乌拉诺斯",
     "card_set_id": 10026,
@@ -50051,6 +52326,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127041030,
     "card_id": 127041030,
     "card_name": "奇幻之梦·爱丽丝",
     "card_set_id": 10027,
@@ -50073,6 +52349,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129041020,
     "card_id": 129041020,
     "card_name": "飓风天枪·格里姆尼尔",
     "card_set_id": 10029,
@@ -50095,6 +52372,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900031010,
     "card_id": 900031010,
     "card_name": "哥布林王",
     "card_set_id": 90000,
@@ -50117,6 +52395,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900041070,
     "card_id": 900041070,
     "card_name": "欲望缠身者",
     "card_set_id": 90000,
@@ -50139,6 +52418,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101014030,
     "card_id": 101014030,
     "card_name": "恶魔冲击波",
     "card_set_id": 10001,
@@ -50161,6 +52441,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107034010,
     "card_id": 107034010,
     "card_name": "堕天",
     "card_set_id": 10007,
@@ -50183,6 +52464,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113034010,
     "card_id": 113034010,
     "card_name": "天使的箭击",
     "card_set_id": 10013,
@@ -50205,6 +52487,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117034010,
     "card_id": 117034010,
     "card_name": "堕落的决意",
     "card_set_id": 10017,
@@ -50227,6 +52510,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118034010,
     "card_id": 118034010,
     "card_name": "冰狱的显现",
     "card_set_id": 10018,
@@ -50249,6 +52533,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120034010,
     "card_id": 120034010,
     "card_name": "红莲之冻结",
     "card_set_id": 10020,
@@ -50271,6 +52556,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123024010,
     "card_id": 123024010,
     "card_name": "哥布林的奇袭",
     "card_set_id": 10023,
@@ -50293,6 +52579,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044070,
     "card_id": 900044070,
     "card_name": "地坏",
     "card_set_id": 90000,
@@ -50315,6 +52602,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101032010,
     "card_id": 101032010,
     "card_name": "冥府之路",
     "card_set_id": 10001,
@@ -50337,6 +52625,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111023010,
     "card_id": 111023010,
     "card_name": "繁荣的喷泉",
     "card_set_id": 10011,
@@ -50359,6 +52648,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100111030,
     "card_id": 100111030,
     "card_name": "巨狼",
     "card_set_id": 10000,
@@ -50381,6 +52671,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100121030,
     "card_id": 100121030,
     "card_name": "玫瑰花园守卫者",
     "card_set_id": 10000,
@@ -50403,6 +52694,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101121080,
     "card_id": 101121080,
     "card_name": "魔法精灵公主",
     "card_set_id": 10001,
@@ -50425,6 +52717,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101121090,
     "card_id": 101121090,
     "card_name": "魔法雄鹿",
     "card_set_id": 10001,
@@ -50447,6 +52740,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101131010,
     "card_id": 101131010,
     "card_name": "花仙剑士",
     "card_set_id": 10001,
@@ -50469,6 +52763,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102111040,
     "card_id": 102111040,
     "card_name": "林荫中的兽人",
     "card_set_id": 10002,
@@ -50491,6 +52786,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102121010,
     "card_id": 102121010,
     "card_name": "千年妖狐·尤埃尔",
     "card_set_id": 10002,
@@ -50513,6 +52809,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103111030,
     "card_id": 103111030,
     "card_name": "妖精骑士",
     "card_set_id": 10003,
@@ -50535,6 +52832,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104121030,
     "card_id": 104121030,
     "card_name": "精灵管家·维斯特",
     "card_set_id": 10004,
@@ -50557,6 +52855,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105111010,
     "card_id": 105111010,
     "card_name": "花漾公主",
     "card_set_id": 10005,
@@ -50579,6 +52878,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105121020,
     "card_id": 105121020,
     "card_name": "雪原战士",
     "card_set_id": 10005,
@@ -50601,6 +52901,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105131020,
     "card_id": 105131020,
     "card_name": "妖精使役者",
     "card_set_id": 10005,
@@ -50623,6 +52924,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106121020,
     "card_id": 106121020,
     "card_name": "大自然的教师·阿蕾雅",
     "card_set_id": 10006,
@@ -50645,6 +52947,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107111020,
     "card_id": 107111020,
     "card_name": "森林哲学者",
     "card_set_id": 10007,
@@ -50667,6 +52970,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107141010,
     "card_id": 107141010,
     "card_name": "先导者妖精公主·阿丽雅",
     "card_set_id": 10007,
@@ -50689,6 +52993,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108111010,
     "card_id": 108111010,
     "card_name": "精灵战将",
     "card_set_id": 10008,
@@ -50711,6 +53016,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108121010,
     "card_id": 108121010,
     "card_name": "时尚女王·奈尔香",
     "card_set_id": 10008,
@@ -50733,6 +53039,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109121010,
     "card_id": 109121010,
     "card_name": "神箭的射手·苏提拉",
     "card_set_id": 10009,
@@ -50755,6 +53062,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109131020,
     "card_id": 109131020,
     "card_name": "天赋的射手·梅提拉",
     "card_set_id": 10009,
@@ -50777,6 +53085,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110111010,
     "card_id": 110111010,
     "card_name": "震怒的山神",
     "card_set_id": 10010,
@@ -50799,6 +53108,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110121020,
     "card_id": 110121020,
     "card_name": "不弑的信徒",
     "card_set_id": 10010,
@@ -50821,6 +53131,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 111131020,
     "card_id": 111131020,
     "card_name": "猛毒公主·莉柯瑞丝",
     "card_set_id": 10011,
@@ -50843,6 +53154,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111131030,
     "card_id": 111131030,
     "card_name": "狐耳姊妹·莉娜与茢娜",
     "card_set_id": 10011,
@@ -50865,6 +53177,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111141010,
     "card_id": 111141010,
     "card_name": "永恒的辉石·宝石兽",
     "card_set_id": 10011,
@@ -50887,6 +53200,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112121010,
     "card_id": 112121010,
     "card_name": "铁弓射手",
     "card_set_id": 10012,
@@ -50909,6 +53223,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113111010,
     "card_id": 113111010,
     "card_name": "不屈的妖精勇者",
     "card_set_id": 10013,
@@ -50931,6 +53246,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114111010,
     "card_id": 114111010,
     "card_name": "调皮的精灵",
     "card_set_id": 10014,
@@ -50953,6 +53269,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114121010,
     "card_id": 114121010,
     "card_name": "尖枪精灵",
     "card_set_id": 10014,
@@ -50975,6 +53292,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115131010,
     "card_id": 115131010,
     "card_name": "原生林族长",
     "card_set_id": 10015,
@@ -50997,6 +53315,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116131020,
     "card_id": 116131020,
     "card_name": "铁扇精灵",
     "card_set_id": 10016,
@@ -51019,6 +53338,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117111010,
     "card_id": 117111010,
     "card_name": "深谋的兽人",
     "card_set_id": 10017,
@@ -51041,6 +53361,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117131010,
     "card_id": 117131010,
     "card_name": "船孃精灵",
     "card_set_id": 10017,
@@ -51063,6 +53384,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118121020,
     "card_id": 118121020,
     "card_name": "害兽猎人",
     "card_set_id": 10018,
@@ -51085,6 +53407,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119111030,
     "card_id": 119111030,
     "card_name": "盛绽树精",
     "card_set_id": 10019,
@@ -51107,6 +53430,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119131020,
     "card_id": 119131020,
     "card_name": "阿斯塔蒂",
     "card_set_id": 10019,
@@ -51129,6 +53453,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119141010,
     "card_id": 119141010,
     "card_name": "魔眼的猎手·苏恩",
     "card_set_id": 10019,
@@ -51151,6 +53476,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120141010,
     "card_id": 120141010,
     "card_name": "身环瘴气的妖精公主·阿丽雅",
     "card_set_id": 10020,
@@ -51173,6 +53499,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121111030,
     "card_id": 121111030,
     "card_name": "树角雄鹿",
     "card_set_id": 10021,
@@ -51195,6 +53522,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121121020,
     "card_id": 121121020,
     "card_name": "幻兽保卫者",
     "card_set_id": 10021,
@@ -51217,6 +53545,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121141020,
     "card_id": 121141020,
     "card_name": "万绿的回归·拉缇卡",
     "card_set_id": 10021,
@@ -51239,6 +53568,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122111010,
     "card_id": 122111010,
     "card_name": "妖精的引领者",
     "card_set_id": 10022,
@@ -51261,6 +53591,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122141010,
     "card_id": 122141010,
     "card_name": "璀璨妖精",
     "card_set_id": 10022,
@@ -51283,6 +53614,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123121020,
     "card_id": 123121020,
     "card_name": "邪弓精灵",
     "card_set_id": 10023,
@@ -51305,6 +53637,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123141020,
     "card_id": 123141020,
     "card_name": "冻土女王·皮雅希",
     "card_set_id": 10023,
@@ -51327,6 +53660,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124141020,
     "card_id": 124141020,
     "card_name": "四季的化身",
     "card_set_id": 10024,
@@ -51349,6 +53683,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125141010,
     "card_id": 125141010,
     "card_name": "辉耀女武神",
     "card_set_id": 10025,
@@ -51371,6 +53706,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126121010,
     "card_id": 126121010,
     "card_name": "蔷薇鹿人",
     "card_set_id": 10026,
@@ -51393,6 +53729,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126121020,
     "card_id": 126121020,
     "card_name": "迷林的大枭",
     "card_set_id": 10026,
@@ -51415,6 +53752,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126141020,
     "card_id": 126141020,
     "card_name": "黑百合女王·诺瓦莉丝",
     "card_set_id": 10026,
@@ -51437,6 +53775,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126141030,
     "card_id": 126141030,
     "card_name": "恩眷精灵",
     "card_set_id": 10026,
@@ -51459,6 +53798,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129111040,
     "card_id": 129111040,
     "card_name": "遍绿的巨人",
     "card_set_id": 10029,
@@ -51481,6 +53821,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129131020,
     "card_id": 129131020,
     "card_name": "猛悍战斧·艾比",
     "card_set_id": 10029,
@@ -51503,6 +53844,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900121020,
     "card_id": 900121020,
     "card_name": "残株",
     "card_set_id": 90000,
@@ -51525,6 +53867,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900141010,
     "card_id": 900141010,
     "card_name": "冰晶光芒·伊芙",
     "card_set_id": 90000,
@@ -51547,6 +53890,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114030,
     "card_id": 101114030,
     "card_name": "侠盗的仁义",
     "card_set_id": 10001,
@@ -51569,6 +53913,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108124010,
     "card_id": 108124010,
     "card_name": "森之细语",
     "card_set_id": 10008,
@@ -51591,6 +53936,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109134010,
     "card_id": 109134010,
     "card_name": "乱箭星雨",
     "card_set_id": 10009,
@@ -51613,6 +53959,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113124010,
     "card_id": 113124010,
     "card_name": "自然的侵蚀",
     "card_set_id": 10013,
@@ -51635,6 +53982,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117114010,
     "card_id": 117114010,
     "card_name": "妖精突击",
     "card_set_id": 10017,
@@ -51657,6 +54005,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104132010,
     "card_id": 104132010,
     "card_name": "妖精牢笼",
     "card_set_id": 10004,
@@ -51679,6 +54028,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116123010,
     "card_id": 116123010,
     "card_name": "妖精的石碑",
     "card_set_id": 10016,
@@ -51701,6 +54051,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100211040,
     "card_id": 100211040,
     "card_name": "白银将军",
     "card_set_id": 10000,
@@ -51723,6 +54074,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100221010,
     "card_id": 100221010,
     "card_name": "华丽的花园剑士",
     "card_set_id": 10000,
@@ -51745,6 +54097,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101211070,
     "card_id": 101211070,
     "card_name": "勇猛的骑士",
     "card_set_id": 10001,
@@ -51767,6 +54120,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101221030,
     "card_id": 101221030,
     "card_name": "被诅咒的将军",
     "card_set_id": 10001,
@@ -51789,6 +54143,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101221100,
     "card_id": 101221100,
     "card_name": "剑豪",
     "card_set_id": 10001,
@@ -51811,6 +54166,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101231010,
     "card_id": 101231010,
     "card_name": "影夜暗杀者",
     "card_set_id": 10001,
@@ -51833,6 +54189,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101231050,
     "card_id": 101231050,
     "card_name": "无惧的先锋·雷瑟姆",
     "card_set_id": 10001,
@@ -51855,6 +54212,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102211060,
     "card_id": 102211060,
     "card_name": "幻象守卫者",
     "card_set_id": 10002,
@@ -51877,6 +54235,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103221040,
     "card_id": 103221040,
     "card_name": "雷维翁斥侯·杰诺",
     "card_set_id": 10003,
@@ -51899,6 +54258,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103231020,
     "card_id": 103231020,
     "card_name": "白银骑士·艾蜜莉亚",
     "card_set_id": 10003,
@@ -51921,6 +54281,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104221040,
     "card_id": 104221040,
     "card_name": "暗影猎命师",
     "card_set_id": 10004,
@@ -51943,6 +54304,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104241020,
     "card_id": 104241020,
     "card_name": "圆桌武士·高文",
     "card_set_id": 10004,
@@ -51965,6 +54327,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107221010,
     "card_id": 107221010,
     "card_name": "先锋骑兵",
     "card_set_id": 10007,
@@ -51987,6 +54350,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109211020,
     "card_id": 109211020,
     "card_name": "华美公主·汀娜",
     "card_set_id": 10009,
@@ -52009,6 +54373,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 109231010,
     "card_id": 109231010,
     "card_name": "神秘特务·蒂伊",
     "card_set_id": 10009,
@@ -52031,6 +54396,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110211010,
     "card_id": 110211010,
     "card_name": "粗蛮的女战士",
     "card_set_id": 10010,
@@ -52053,6 +54419,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110221010,
     "card_id": 110221010,
     "card_name": "阿洛伊代",
     "card_set_id": 10010,
@@ -52075,6 +54442,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111211020,
     "card_id": 111211020,
     "card_name": "篡夺的狂信者",
     "card_set_id": 10011,
@@ -52097,6 +54465,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112221020,
     "card_id": 112221020,
     "card_name": "机刃士兵",
     "card_set_id": 10012,
@@ -52119,6 +54488,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112231010,
     "card_id": 112231010,
     "card_name": "虐袭城塞",
     "card_set_id": 10012,
@@ -52141,6 +54511,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112241010,
     "card_id": 112241010,
     "card_name": "苍空剑士·莉夏",
     "card_set_id": 10012,
@@ -52163,6 +54534,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114241020,
     "card_id": 114241020,
     "card_name": "王者威光·贝里昂",
     "card_set_id": 10014,
@@ -52185,6 +54557,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115231020,
     "card_id": 115231020,
     "card_name": "姐姐剑士·静流",
     "card_set_id": 10015,
@@ -52207,6 +54580,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117231010,
     "card_id": 117231010,
     "card_name": "静寂的元帅",
     "card_set_id": 10017,
@@ -52229,6 +54603,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117241030,
     "card_id": 117241030,
     "card_name": "战争商人·阿尔亚斯卡",
     "card_set_id": 10017,
@@ -52251,6 +54626,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118241020,
     "card_id": 118241020,
     "card_name": "咒箱女王·娜哈特·娜哈特",
     "card_set_id": 10018,
@@ -52273,6 +54649,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118241030,
     "card_id": 118241030,
     "card_name": "苍空总长·瓦佛利特",
     "card_set_id": 10018,
@@ -52295,6 +54672,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119211040,
     "card_id": 119211040,
     "card_name": "奇石商贩",
     "card_set_id": 10019,
@@ -52317,6 +54695,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119241020,
     "card_id": 119241020,
     "card_name": "天星剑王·席耶提",
     "card_set_id": 10019,
@@ -52339,6 +54718,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120211020,
     "card_id": 120211020,
     "card_name": "奋击卫士",
     "card_set_id": 10020,
@@ -52361,6 +54741,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120231010,
     "card_id": 120231010,
     "card_name": "暴虐武人·杰诺",
     "card_set_id": 10020,
@@ -52383,6 +54764,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121211020,
     "card_id": 121211020,
     "card_name": "骇浪海盗",
     "card_set_id": 10021,
@@ -52405,6 +54787,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121231020,
     "card_id": 121231020,
     "card_name": "灾患弑杀者",
     "card_set_id": 10021,
@@ -52427,6 +54810,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122211010,
     "card_id": 122211010,
     "card_name": "流水长枪手",
     "card_set_id": 10022,
@@ -52449,6 +54833,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122221010,
     "card_id": 122221010,
     "card_name": "降星公主",
     "card_set_id": 10022,
@@ -52471,6 +54856,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122221030,
     "card_id": 122221030,
     "card_name": "双剑骑士",
     "card_set_id": 10022,
@@ -52493,6 +54879,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124231010,
     "card_id": 124231010,
     "card_name": "斑豹格斗家",
     "card_set_id": 10024,
@@ -52515,6 +54902,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124241020,
     "card_id": 124241020,
     "card_name": "天下大盗贼·治右卫门",
     "card_set_id": 10024,
@@ -52537,6 +54925,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125241020,
     "card_id": 125241020,
     "card_name": "荣光剑士·奥蕾莉亚",
     "card_set_id": 10025,
@@ -52559,6 +54948,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126221010,
     "card_id": 126221010,
     "card_name": "音速骑士",
     "card_set_id": 10026,
@@ -52581,6 +54971,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126241010,
     "card_id": 126241010,
     "card_name": "骁勇剑士",
     "card_set_id": 10026,
@@ -52603,6 +54994,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127241010,
     "card_id": 127241010,
     "card_name": "出航的罪人·芭芭萝丝",
     "card_set_id": 10027,
@@ -52625,6 +55017,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 128211010,
     "card_id": 128211010,
     "card_name": "奋勇格斗家",
     "card_set_id": 10028,
@@ -52647,6 +55040,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128231010,
     "card_id": 128231010,
     "card_name": "飞跃的双剑手",
     "card_set_id": 10028,
@@ -52669,6 +55063,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128231020,
     "card_id": 128231020,
     "card_name": "拣选的教员·汎斯",
     "card_set_id": 10028,
@@ -52691,6 +55086,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129221010,
     "card_id": 129221010,
     "card_name": "暮光护卫",
     "card_set_id": 10029,
@@ -52713,6 +55109,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129231010,
     "card_id": 129231010,
     "card_name": "光剑使役者",
     "card_set_id": 10029,
@@ -52735,6 +55132,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900231010,
     "card_id": 900231010,
     "card_name": "净白之王·伊梅拉",
     "card_set_id": 90000,
@@ -52757,6 +55155,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900231020,
     "card_id": 900231020,
     "card_name": "漆黑女王·玛格娜丝",
     "card_set_id": 90000,
@@ -52779,6 +55178,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900231120,
     "card_id": 900231120,
     "card_name": "雷维翁魔法师·蜜姆",
     "card_set_id": 90000,
@@ -52801,6 +55201,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900241040,
     "card_id": 900241040,
     "card_name": "不灭的群青·贝雅特丽丝",
     "card_set_id": 90000,
@@ -52823,6 +55224,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900241080,
     "card_id": 900241080,
     "card_name": "魔导四轮车·V",
     "card_set_id": 90000,
@@ -52845,6 +55247,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101214010,
     "card_id": 101214010,
     "card_name": "激励之舞",
     "card_set_id": 10001,
@@ -52867,6 +55270,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101234010,
     "card_id": 101234010,
     "card_name": "军师的妙计",
     "card_set_id": 10001,
@@ -52889,6 +55293,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107234010,
     "card_id": 107234010,
     "card_name": "逆境处理",
     "card_set_id": 10007,
@@ -52911,6 +55316,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113214010,
     "card_id": 113214010,
     "card_name": "武勇入阵",
     "card_set_id": 10013,
@@ -52933,6 +55339,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115214010,
     "card_id": 115214010,
     "card_name": "居合的精髓",
     "card_set_id": 10015,
@@ -52955,6 +55362,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123214010,
     "card_id": 123214010,
     "card_name": "炮击齐发",
     "card_set_id": 10023,
@@ -52977,6 +55385,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900224030,
     "card_id": 900224030,
     "card_name": "炎击枪",
     "card_set_id": 90000,
@@ -52999,6 +55408,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100222010,
     "card_id": 100222010,
     "card_name": "皇家御用战旗",
     "card_set_id": 10000,
@@ -53021,6 +55431,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108213010,
     "card_id": 108213010,
     "card_name": "战线城壁",
     "card_set_id": 10008,
@@ -53043,6 +55454,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100321020,
     "card_id": 100321020,
     "card_name": "恶魔炎术师",
     "card_set_id": 10000,
@@ -53065,6 +55477,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101311030,
     "card_id": 101311030,
     "card_name": "结界魔法师",
     "card_set_id": 10001,
@@ -53087,6 +55500,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101311100,
     "card_id": 101311100,
     "card_name": "高阶炼金术师",
     "card_set_id": 10001,
@@ -53109,6 +55523,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101321050,
     "card_id": 101321050,
     "card_name": "女王·梅芙",
     "card_set_id": 10001,
@@ -53131,6 +55546,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101321070,
     "card_id": 101321070,
     "card_name": "符文之剑召唤师",
     "card_set_id": 10001,
@@ -53153,6 +55569,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101341020,
     "card_id": 101341020,
     "card_name": "梅林",
     "card_set_id": 10001,
@@ -53175,6 +55592,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102311020,
     "card_id": 102311020,
     "card_name": "水晶魔击手",
     "card_set_id": 10002,
@@ -53197,6 +55615,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102321010,
     "card_id": 102321010,
     "card_name": "双子女巫·蕾米拉米",
     "card_set_id": 10002,
@@ -53219,6 +55638,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103311040,
     "card_id": 103311040,
     "card_name": "时光巫女",
     "card_set_id": 10003,
@@ -53241,6 +55661,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104311040,
     "card_id": 104311040,
     "card_name": "天轮巨像",
     "card_set_id": 10004,
@@ -53263,6 +55684,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105311020,
     "card_id": 105311020,
     "card_name": "见习魔法剑士",
     "card_set_id": 10005,
@@ -53285,6 +55707,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106311010,
     "card_id": 106311010,
     "card_name": "雷光长枪手",
     "card_set_id": 10006,
@@ -53307,6 +55730,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106321010,
     "card_id": 106321010,
     "card_name": "太阳舞者·萝莉亚",
     "card_set_id": 10006,
@@ -53329,6 +55753,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107321010,
     "card_id": 107321010,
     "card_name": "笑眯眯的奇术师·萨米",
     "card_set_id": 10007,
@@ -53351,6 +55776,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108311020,
     "card_id": 108311020,
     "card_name": "月影魔法师",
     "card_set_id": 10008,
@@ -53373,6 +55799,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108341010,
     "card_id": 108341010,
     "card_name": "宿命宣读者·露妮",
     "card_set_id": 10008,
@@ -53395,6 +55822,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109331020,
     "card_id": 109331020,
     "card_name": "开辟的炼金术师·卡莉欧斯托萝",
     "card_set_id": 10009,
@@ -53417,6 +55845,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109341030,
     "card_id": 109341030,
     "card_name": "杀戮魔女·薇丝朋",
     "card_set_id": 10009,
@@ -53439,6 +55868,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111321020,
     "card_id": 111321020,
     "card_name": "马纳历亚见习教师·帕丝卡尔",
     "card_set_id": 10011,
@@ -53461,6 +55891,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111331020,
     "card_id": 111331020,
     "card_name": "小可爱★莫妮卡",
     "card_set_id": 10011,
@@ -53483,6 +55914,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112311020,
     "card_id": 112311020,
     "card_name": "机装术师",
     "card_set_id": 10012,
@@ -53505,6 +55937,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112341020,
     "card_id": 112341020,
     "card_name": "苍蓝反叛者·坦忒菈",
     "card_set_id": 10012,
@@ -53527,6 +55960,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113331020,
     "card_id": 113331020,
     "card_name": "睿智的魔法师·里维",
     "card_set_id": 10013,
@@ -53549,6 +55983,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117311030,
     "card_id": 117311030,
     "card_name": "魔药巫师",
     "card_set_id": 10017,
@@ -53571,6 +56006,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117331010,
     "card_id": 117331010,
     "card_name": "魔导君临者",
     "card_set_id": 10017,
@@ -53593,6 +56029,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118311020,
     "card_id": 118311020,
     "card_name": "镜之女巫",
     "card_set_id": 10018,
@@ -53615,6 +56052,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118331020,
     "card_id": 118331020,
     "card_name": "欲望观察者·浮士德",
     "card_set_id": 10018,
@@ -53637,6 +56075,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118341020,
     "card_id": 118341020,
     "card_name": "和平维系者·宾森特",
     "card_set_id": 10018,
@@ -53659,6 +56098,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120311020,
     "card_id": 120311020,
     "card_name": "环阵魔法师",
     "card_set_id": 10020,
@@ -53681,6 +56121,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121331010,
     "card_id": 121331010,
     "card_name": "奇美拉创造师",
     "card_set_id": 10021,
@@ -53703,6 +56144,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122311010,
     "card_id": 122311010,
     "card_name": "禁书库守卫",
     "card_set_id": 10022,
@@ -53725,6 +56167,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122331010,
     "card_id": 122331010,
     "card_name": "魔幻奇猫",
     "card_set_id": 10022,
@@ -53747,6 +56190,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123321020,
     "card_id": 123321020,
     "card_name": "卷轴魔法师",
     "card_set_id": 10023,
@@ -53769,6 +56213,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124341010,
     "card_id": 124341010,
     "card_name": "真理大文豪·幸岛",
     "card_set_id": 10024,
@@ -53791,6 +56236,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125331010,
     "card_id": 125331010,
     "card_name": "工房炼金术师·诺诺",
     "card_set_id": 10025,
@@ -53813,6 +56259,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126311030,
     "card_id": 126311030,
     "card_name": "扑克奇术师",
     "card_set_id": 10026,
@@ -53835,6 +56282,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126321020,
     "card_id": 126321020,
     "card_name": "牌卡术师·梦璃",
     "card_set_id": 10026,
@@ -53857,6 +56305,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128331020,
     "card_id": 128331020,
     "card_name": "奇幻主教",
     "card_set_id": 10028,
@@ -53879,6 +56328,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129331010,
     "card_id": 129331010,
     "card_name": "猫头鹰使役者",
     "card_set_id": 10029,
@@ -53901,6 +56351,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129341010,
     "card_id": 129341010,
     "card_name": "轮回的大魔法师·里维",
     "card_set_id": 10029,
@@ -53923,6 +56374,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900311030,
     "card_id": 900311030,
     "card_name": "守护者巨像",
     "card_set_id": 90000,
@@ -53945,6 +56397,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900341020,
     "card_id": 900341020,
     "card_name": "式神·天后",
     "card_set_id": 90000,
@@ -53967,6 +56420,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314060,
     "card_id": 100314060,
     "card_name": "二重炼成术",
     "card_set_id": 10000,
@@ -53989,6 +56443,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314030,
     "card_id": 101314030,
     "card_name": "地裂弹",
     "card_set_id": 10001,
@@ -54011,6 +56466,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101334040,
     "card_id": 101334040,
     "card_name": "火焰连锁",
     "card_set_id": 10001,
@@ -54033,6 +56489,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103324010,
     "card_id": 103324010,
     "card_name": "符文魔贯炮",
     "card_set_id": 10003,
@@ -54055,6 +56512,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107334010,
     "card_id": 107334010,
     "card_name": "诺娃的炎弹",
     "card_set_id": 10007,
@@ -54077,6 +56535,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109324010,
     "card_id": 109324010,
     "card_name": "才能开花",
     "card_set_id": 10009,
@@ -54099,6 +56558,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118314010,
     "card_id": 118314010,
     "card_name": "大地的活用",
     "card_set_id": 10018,
@@ -54121,6 +56581,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126324010,
     "card_id": 126324010,
     "card_name": "镜像召唤",
     "card_set_id": 10026,
@@ -54143,6 +56604,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127334010,
     "card_id": 127334010,
     "card_name": "浩大的召唤",
     "card_set_id": 10027,
@@ -54165,6 +56627,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129314010,
     "card_id": 129314010,
     "card_name": "火山爆发",
     "card_set_id": 10029,
@@ -54187,6 +56650,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344060,
     "card_id": 900344060,
     "card_name": "蒙昧的术式",
     "card_set_id": 90000,
@@ -54209,6 +56673,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101312020,
     "card_id": 101312020,
     "card_name": "炼金工房",
     "card_set_id": 10001,
@@ -54231,6 +56696,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108323010,
     "card_id": 108323010,
     "card_name": "召唤之环",
     "card_set_id": 10008,
@@ -54253,6 +56719,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126333010,
     "card_id": 126333010,
     "card_name": "奇术箱",
     "card_set_id": 10026,
@@ -54275,6 +56742,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100411030,
     "card_id": 100411030,
     "card_name": "尸腐龙",
     "card_set_id": 10000,
@@ -54297,6 +56765,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100421010,
     "card_id": 100421010,
     "card_name": "龙族勇士",
     "card_set_id": 10000,
@@ -54319,6 +56788,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101411050,
     "card_id": 101411050,
     "card_name": "闪光魔弹翼龙",
     "card_set_id": 10001,
@@ -54341,6 +56811,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101421020,
     "card_id": 101421020,
     "card_name": "死亡收割者",
     "card_set_id": 10001,
@@ -54363,6 +56834,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101421040,
     "card_id": 101421040,
     "card_name": "利维坦",
     "card_set_id": 10001,
@@ -54385,6 +56857,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101431070,
     "card_id": 101431070,
     "card_name": "死雾魔龙",
     "card_set_id": 10001,
@@ -54407,6 +56880,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102421020,
     "card_id": 102421020,
     "card_name": "齐格菲",
     "card_set_id": 10002,
@@ -54429,6 +56903,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102421040,
     "card_id": 102421040,
     "card_name": "魔吼龙",
     "card_set_id": 10002,
@@ -54451,6 +56926,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103421030,
     "card_id": 103421030,
     "card_name": "辉石龙",
     "card_set_id": 10003,
@@ -54473,6 +56949,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104431030,
     "card_id": 104431030,
     "card_name": "勒哈布",
     "card_set_id": 10004,
@@ -54495,6 +56972,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105411020,
     "card_id": 105411020,
     "card_name": "巨龟长老",
     "card_set_id": 10005,
@@ -54517,6 +56995,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107411020,
     "card_id": 107411020,
     "card_name": "巴西利斯克骑手",
     "card_set_id": 10007,
@@ -54539,6 +57018,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107421020,
     "card_id": 107421020,
     "card_name": "镇塔红龙·艾特尔",
     "card_set_id": 10007,
@@ -54561,6 +57041,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109431020,
     "card_id": 109431020,
     "card_name": "炎龙使役者",
     "card_set_id": 10009,
@@ -54583,6 +57064,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110411020,
     "card_id": 110411020,
     "card_name": "驭龙射手",
     "card_set_id": 10010,
@@ -54605,6 +57087,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110421010,
     "card_id": 110421010,
     "card_name": "狮鹫兽守卫",
     "card_set_id": 10010,
@@ -54627,6 +57110,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110431010,
     "card_id": 110431010,
     "card_name": "侮蔑的使徒",
     "card_set_id": 10010,
@@ -54649,6 +57133,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110431020,
     "card_id": 110431020,
     "card_name": "白垩龙骑士",
     "card_set_id": 10010,
@@ -54671,6 +57156,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111411010,
     "card_id": 111411010,
     "card_name": "食岩龙蜥",
     "card_set_id": 10011,
@@ -54693,6 +57179,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111441010,
     "card_id": 111441010,
     "card_name": "翔天龙人",
     "card_set_id": 10011,
@@ -54715,6 +57202,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111441030,
     "card_id": 111441030,
     "card_name": "特拉洛克",
     "card_set_id": 10011,
@@ -54737,6 +57225,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112411020,
     "card_id": 112411020,
     "card_name": "机装潜将",
     "card_set_id": 10012,
@@ -54759,6 +57248,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113421010,
     "card_id": 113421010,
     "card_name": "乘风者·叶花",
     "card_set_id": 10013,
@@ -54781,6 +57271,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113431020,
     "card_id": 113431020,
     "card_name": "弑龙者·尹安",
     "card_set_id": 10013,
@@ -54803,6 +57294,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114441020,
     "card_id": 114441020,
     "card_name": "诅咒之影·拜迪",
     "card_set_id": 10014,
@@ -54825,6 +57317,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115431030,
     "card_id": 115431030,
     "card_name": "稀世金属秘龙",
     "card_set_id": 10015,
@@ -54847,6 +57340,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116411010,
     "card_id": 116411010,
     "card_name": "治愈的龙骑士",
     "card_set_id": 10016,
@@ -54869,6 +57363,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116421010,
     "card_id": 116421010,
     "card_name": "汞合金装甲龙",
     "card_set_id": 10016,
@@ -54891,6 +57386,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118441030,
     "card_id": 118441030,
     "card_name": "圣乔治",
     "card_set_id": 10018,
@@ -54913,6 +57409,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119411010,
     "card_id": 119411010,
     "card_name": "残影龙人",
     "card_set_id": 10019,
@@ -54935,6 +57432,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119411020,
     "card_id": 119411020,
     "card_name": "巨型巴西利斯克",
     "card_set_id": 10019,
@@ -54957,6 +57455,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119431010,
     "card_id": 119431010,
     "card_name": "天穿的铳枪骑士·拉丝提娜",
     "card_set_id": 10019,
@@ -54979,6 +57478,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119441010,
     "card_id": 119441010,
     "card_name": "怪力乱神·萨拉莎",
     "card_set_id": 10019,
@@ -55001,6 +57501,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119441030,
     "card_id": 119441030,
     "card_name": "神异形·迪亚马特",
     "card_set_id": 10019,
@@ -55023,6 +57524,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120421010,
     "card_id": 120421010,
     "card_name": "炎柱龙人",
     "card_set_id": 10020,
@@ -55045,6 +57547,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121411030,
     "card_id": 121411030,
     "card_name": "冰霜蜥蜴",
     "card_set_id": 10021,
@@ -55067,6 +57570,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121441020,
     "card_id": 121441020,
     "card_name": "崇高的雳雷·罗玛洛尼雅",
     "card_set_id": 10021,
@@ -55089,6 +57593,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122441030,
     "card_id": 122441030,
     "card_name": "暴戾龙人",
     "card_set_id": 10022,
@@ -55111,6 +57616,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123411030,
     "card_id": 123411030,
     "card_name": "深海触手",
     "card_set_id": 10023,
@@ -55133,6 +57639,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125411010,
     "card_id": 125411010,
     "card_name": "坠敌的龙骑士",
     "card_set_id": 10025,
@@ -55155,6 +57662,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125421020,
     "card_id": 125421020,
     "card_name": "坚鳞的龙首巨蛇",
     "card_set_id": 10025,
@@ -55177,6 +57685,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 125431010,
     "card_id": 125431010,
     "card_name": "激昂的利维坦",
     "card_set_id": 10025,
@@ -55199,6 +57708,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126411010,
     "card_id": 126411010,
     "card_name": "蜥蜴骑兵",
     "card_set_id": 10026,
@@ -55221,6 +57731,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127411020,
     "card_id": 127411020,
     "card_name": "暗黑人鱼",
     "card_set_id": 10027,
@@ -55243,6 +57754,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900431020,
     "card_id": 900431020,
     "card_name": "新婚夫妇·尹安＆艾特尔",
     "card_set_id": 90000,
@@ -55265,6 +57777,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900431030,
     "card_id": 900431030,
     "card_name": "妒火红龙·艾特尔",
     "card_set_id": 90000,
@@ -55287,6 +57800,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100414030,
     "card_id": 100414030,
     "card_name": "龙之怒",
     "card_set_id": 10000,
@@ -55309,6 +57823,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101414030,
     "card_id": 101414030,
     "card_name": "龙之力",
     "card_set_id": 10001,
@@ -55331,6 +57846,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101424020,
     "card_id": 101424020,
     "card_name": "龙化秘术",
     "card_set_id": 10001,
@@ -55353,6 +57869,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102414030,
     "card_id": 102414030,
     "card_name": "龙的智慧",
     "card_set_id": 10002,
@@ -55375,6 +57892,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104434010,
     "card_id": 104434010,
     "card_name": "弑龙的代价",
     "card_set_id": 10004,
@@ -55397,6 +57915,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107434010,
     "card_id": 107434010,
     "card_name": "破龙激震",
     "card_set_id": 10007,
@@ -55419,6 +57938,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112414010,
     "card_id": 112414010,
     "card_name": "威压猛击",
     "card_set_id": 10012,
@@ -55441,6 +57961,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117424010,
     "card_id": 117424010,
     "card_name": "龙威迫击",
     "card_set_id": 10017,
@@ -55463,6 +57984,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124414010,
     "card_id": 124414010,
     "card_name": "飞龙俯冲",
     "card_set_id": 10024,
@@ -55485,6 +58007,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124434010,
     "card_id": 124434010,
     "card_name": "龙山的鸣动",
     "card_set_id": 10024,
@@ -55507,6 +58030,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127414010,
     "card_id": 127414010,
     "card_name": "屠龙一闪",
     "card_set_id": 10027,
@@ -55529,6 +58053,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900414010,
     "card_id": 900414010,
     "card_name": "龙之爪击",
     "card_set_id": 90000,
@@ -55551,6 +58076,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900424030,
     "card_id": 900424030,
     "card_name": "暗黑龙息",
     "card_set_id": 90000,
@@ -55573,6 +58099,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900444020,
     "card_id": 900444020,
     "card_name": "影之侵蚀",
     "card_set_id": 90000,
@@ -55595,6 +58122,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105412010,
     "card_id": 105412010,
     "card_name": "龙之石像",
     "card_set_id": 10005,
@@ -55617,6 +58145,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900443010,
     "card_id": 900443010,
     "card_name": "遗留的电击",
     "card_set_id": 90000,
@@ -55639,6 +58168,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100511040,
     "card_id": 100511040,
     "card_name": "腐朽的骷髅兵",
     "card_set_id": 10000,
@@ -55661,6 +58191,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100521010,
     "card_id": 100521010,
     "card_name": "爱捣蛋的死灵法师",
     "card_set_id": 10000,
@@ -55683,6 +58214,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100521020,
     "card_id": 100521020,
     "card_name": "地狱献祭者",
     "card_set_id": 10000,
@@ -55705,6 +58237,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101511130,
     "card_id": 101511130,
     "card_name": "罪恶信使",
     "card_set_id": 10001,
@@ -55727,6 +58260,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101521040,
     "card_id": 101521040,
     "card_name": "战魂骑士",
     "card_set_id": 10001,
@@ -55749,6 +58283,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101531010,
     "card_id": 101531010,
     "card_name": "尸鬼之王",
     "card_set_id": 10001,
@@ -55771,6 +58306,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101531030,
     "card_id": 101531030,
     "card_name": "幻魔龙",
     "card_set_id": 10001,
@@ -55793,6 +58329,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102511030,
     "card_id": 102511030,
     "card_name": "邪恶亡魂",
     "card_set_id": 10002,
@@ -55815,6 +58352,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103521020,
     "card_id": 103521020,
     "card_name": "死灵暗杀者",
     "card_set_id": 10003,
@@ -55837,6 +58375,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104521020,
     "card_id": 104521020,
     "card_name": "欧特鲁斯",
     "card_set_id": 10004,
@@ -55859,6 +58398,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105521020,
     "card_id": 105521020,
     "card_name": "恶梦处刑人",
     "card_set_id": 10005,
@@ -55881,6 +58421,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105521030,
     "card_id": 105521030,
     "card_name": "满腹谜题的毛虫",
     "card_set_id": 10005,
@@ -55903,6 +58444,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105541020,
     "card_id": 105541020,
     "card_name": "灾厄的尸魔王",
     "card_set_id": 10005,
@@ -55925,6 +58467,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106511020,
     "card_id": 106511020,
     "card_name": "卡斯托尔",
     "card_set_id": 10006,
@@ -55947,6 +58490,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106531010,
     "card_id": 106531010,
     "card_name": "暗夜千金·赛蕾丝",
     "card_set_id": 10006,
@@ -55969,6 +58513,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106541010,
     "card_id": 106541010,
     "card_name": "暮光女皇",
     "card_set_id": 10006,
@@ -55991,6 +58536,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107511020,
     "card_id": 107511020,
     "card_name": "木乃伊",
     "card_set_id": 10007,
@@ -56013,6 +58559,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108521020,
     "card_id": 108521020,
     "card_name": "巨腕骷髅",
     "card_set_id": 10008,
@@ -56035,6 +58582,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 109521030,
     "card_id": 109521030,
     "card_name": "冥河引路人",
     "card_set_id": 10009,
@@ -56057,6 +58605,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110511020,
     "card_id": 110511020,
     "card_name": "邪恶之棺",
     "card_set_id": 10010,
@@ -56079,6 +58628,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110521010,
     "card_id": 110521010,
     "card_name": "冥界斗犬·欧特鲁斯",
     "card_set_id": 10010,
@@ -56101,6 +58651,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110531020,
     "card_id": 110531020,
     "card_name": "沉默的使徒",
     "card_set_id": 10010,
@@ -56123,6 +58674,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110541030,
     "card_id": 110541030,
     "card_name": "欧西里斯",
     "card_set_id": 10010,
@@ -56145,6 +58697,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111511020,
     "card_id": 111511020,
     "card_name": "沉默的狂信者",
     "card_set_id": 10011,
@@ -56167,6 +58720,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111541010,
     "card_id": 111541010,
     "card_name": "地狱君主·婕贝特",
     "card_set_id": 10011,
@@ -56189,6 +58743,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112511030,
     "card_id": 112511030,
     "card_name": "骸骨翔机",
     "card_set_id": 10012,
@@ -56211,6 +58766,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112531020,
     "card_id": 112531020,
     "card_name": "业火魔犬",
     "card_set_id": 10012,
@@ -56233,6 +58789,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112541020,
     "card_id": 112541020,
     "card_name": "丹紫抵御者·安镍儿",
     "card_set_id": 10012,
@@ -56255,6 +58812,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113541020,
     "card_id": 113541020,
     "card_name": "冥守之巅·艾夏",
     "card_set_id": 10013,
@@ -56277,6 +58835,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113541030,
     "card_id": 113541030,
     "card_name": "狩魂者·菈菈",
     "card_set_id": 10013,
@@ -56299,6 +58858,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114511010,
     "card_id": 114511010,
     "card_name": "灵魂掠夺者",
     "card_set_id": 10014,
@@ -56321,6 +58881,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115531020,
     "card_id": 115531020,
     "card_name": "酒吞童子",
     "card_set_id": 10015,
@@ -56343,6 +58904,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115541020,
     "card_id": 115541020,
     "card_name": "骷髅通灵师·忍",
     "card_set_id": 10015,
@@ -56365,6 +58927,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116511010,
     "card_id": 116511010,
     "card_name": "妙舞幽魂",
     "card_set_id": 10016,
@@ -56387,6 +58950,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117511010,
     "card_id": 117511010,
     "card_name": "死之魔鸟",
     "card_set_id": 10017,
@@ -56409,6 +58973,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118521020,
     "card_id": 118521020,
     "card_name": "漆黑的恶灵",
     "card_set_id": 10018,
@@ -56431,6 +58996,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118531010,
     "card_id": 118531010,
     "card_name": "大十字镐之骸",
     "card_set_id": 10018,
@@ -56453,6 +59019,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119521020,
     "card_id": 119521020,
     "card_name": "坏妄的狂战士·沙萨",
     "card_set_id": 10019,
@@ -56475,6 +59042,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120531010,
     "card_id": 120531010,
     "card_name": "异族魔境·克里斯托福",
     "card_set_id": 10020,
@@ -56497,6 +59065,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121511030,
     "card_id": 121511030,
     "card_name": "骸骨首领",
     "card_set_id": 10021,
@@ -56519,6 +59088,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 121521020,
     "card_id": 121521020,
     "card_name": "火焰僵尸",
     "card_set_id": 10021,
@@ -56541,6 +59111,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122531020,
     "card_id": 122531020,
     "card_name": "诅咒制造家·丝姞",
     "card_set_id": 10022,
@@ -56563,6 +59134,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123521010,
     "card_id": 123521010,
     "card_name": "虚空之船",
     "card_set_id": 10023,
@@ -56585,6 +59157,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124511020,
     "card_id": 124511020,
     "card_name": "骨鞭死灵法师",
     "card_set_id": 10024,
@@ -56607,6 +59180,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125511010,
     "card_id": 125511010,
     "card_name": "深渊从魔",
     "card_set_id": 10025,
@@ -56629,6 +59203,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126511030,
     "card_id": 126511030,
     "card_name": "弔魂的幽灵船",
     "card_set_id": 10026,
@@ -56651,6 +59226,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126541030,
     "card_id": 126541030,
     "card_name": "死镰猎犬",
     "card_set_id": 10026,
@@ -56673,6 +59249,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127521010,
     "card_id": 127521010,
     "card_name": "冥府中尉",
     "card_set_id": 10027,
@@ -56695,6 +59272,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127531020,
     "card_id": 127531020,
     "card_name": "形骸看守",
     "card_set_id": 10027,
@@ -56717,6 +59295,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128531020,
     "card_id": 128531020,
     "card_name": "不洁的古灵",
     "card_set_id": 10028,
@@ -56739,6 +59318,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129511030,
     "card_id": 129511030,
     "card_name": "骸骨掠夺者",
     "card_set_id": 10029,
@@ -56761,6 +59341,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900511040,
     "card_id": 900511040,
     "card_name": "巫妖",
     "card_set_id": 90000,
@@ -56783,6 +59364,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900531010,
     "card_id": 900531010,
     "card_name": "魔铠骑兵",
     "card_set_id": 90000,
@@ -56805,6 +59387,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900531020,
     "card_id": 900531020,
     "card_name": "骸骨骑兵",
     "card_set_id": 90000,
@@ -56827,6 +59410,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900541010,
     "card_id": 900541010,
     "card_name": "绝对速度的甲虫",
     "card_set_id": 90000,
@@ -56849,6 +59433,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900541020,
     "card_id": 900541020,
     "card_name": "绝对死亡的毒蜂",
     "card_set_id": 90000,
@@ -56871,6 +59456,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900541030,
     "card_id": 900541030,
     "card_name": "绝对守护的魔蝎",
     "card_set_id": 90000,
@@ -56893,6 +59479,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900541070,
     "card_id": 900541070,
     "card_name": "绝对利刃的螳螂",
     "card_set_id": 90000,
@@ -56915,6 +59502,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900541080,
     "card_id": 900541080,
     "card_name": "绝对潜伏的怪蝶",
     "card_set_id": 90000,
@@ -56937,6 +59525,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900541090,
     "card_id": 900541090,
     "card_name": "圆滚滚1号",
     "card_set_id": 90000,
@@ -56959,6 +59548,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100514020,
     "card_id": 100514020,
     "card_name": "来自深渊的诱惑",
     "card_set_id": 10000,
@@ -56981,6 +59571,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101524010,
     "card_id": 101524010,
     "card_name": "重生的咒印",
     "card_set_id": 10001,
@@ -57003,6 +59594,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101534010,
     "card_id": 101534010,
     "card_name": "幻影之啸",
     "card_set_id": 10001,
@@ -57025,6 +59617,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116524010,
     "card_id": 116524010,
     "card_name": "致命指令",
     "card_set_id": 10016,
@@ -57047,6 +59640,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118524010,
     "card_id": 118524010,
     "card_name": "死灵冲击",
     "card_set_id": 10018,
@@ -57069,6 +59663,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121524010,
     "card_id": 121524010,
     "card_name": "禁断与均衡",
     "card_set_id": 10021,
@@ -57091,6 +59686,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125534010,
     "card_id": 125534010,
     "card_name": "死之龙的暴食",
     "card_set_id": 10025,
@@ -57113,6 +59709,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104533010,
     "card_id": 104533010,
     "card_name": "死神的记事本",
     "card_set_id": 10004,
@@ -57135,6 +59732,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113523010,
     "card_id": 113523010,
     "card_name": "咒杀现场",
     "card_set_id": 10013,
@@ -57157,6 +59755,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100611050,
     "card_id": 100611050,
     "card_name": "暗魔女将",
     "card_set_id": 10000,
@@ -57179,6 +59778,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100621020,
     "card_id": 100621020,
     "card_name": "血祭侵略者",
     "card_set_id": 10000,
@@ -57201,6 +59801,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101611080,
     "card_id": 101611080,
     "card_name": "狂怒的巨人",
     "card_set_id": 10001,
@@ -57223,6 +59824,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101611090,
     "card_id": 101611090,
     "card_name": "野蛮的恶魔",
     "card_set_id": 10001,
@@ -57245,6 +59847,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101621040,
     "card_id": 101621040,
     "card_name": "革律翁",
     "card_set_id": 10001,
@@ -57267,6 +59870,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101631040,
     "card_id": 101631040,
     "card_name": "恶魔审判官",
     "card_set_id": 10001,
@@ -57289,6 +59893,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101641020,
     "card_id": 101641020,
     "card_name": "灵魂商人",
     "card_set_id": 10001,
@@ -57311,6 +59916,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102621010,
     "card_id": 102621010,
     "card_name": "迷宫中的恶魔",
     "card_set_id": 10002,
@@ -57333,6 +59939,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103611040,
     "card_id": 103611040,
     "card_name": "宝光恶魔·摩里亚娜",
     "card_set_id": 10003,
@@ -57355,6 +59962,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104611030,
     "card_id": 104611030,
     "card_name": "狼人突击兵",
     "card_set_id": 10004,
@@ -57377,6 +59985,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104641010,
     "card_id": 104641010,
     "card_name": "贝尔芬格",
     "card_set_id": 10004,
@@ -57399,6 +60008,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105611020,
     "card_id": 105611020,
     "card_name": "豪拳保镖",
     "card_set_id": 10005,
@@ -57421,6 +60031,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106621010,
     "card_id": 106621010,
     "card_name": "尤芮艾莉",
     "card_set_id": 10006,
@@ -57443,6 +60054,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106641010,
     "card_id": 106641010,
     "card_name": "毒牙公主·梅杜莎",
     "card_set_id": 10006,
@@ -57465,6 +60077,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107631020,
     "card_id": 107631020,
     "card_name": "骇人的恶魔",
     "card_set_id": 10007,
@@ -57487,6 +60100,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108641010,
     "card_id": 108641010,
     "card_name": "暗夜公主·班比",
     "card_set_id": 10008,
@@ -57509,6 +60123,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109611030,
     "card_id": 109611030,
     "card_name": "恶魔之手",
     "card_set_id": 10009,
@@ -57531,6 +60146,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109631020,
     "card_id": 109631020,
     "card_name": "幻形的斩姬·娜鲁梅亚",
     "card_set_id": 10009,
@@ -57553,6 +60169,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110611010,
     "card_id": 110611010,
     "card_name": "炎蛇剑士",
     "card_set_id": 10010,
@@ -57575,6 +60192,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110621010,
     "card_id": 110621010,
     "card_name": "黑暗元素",
     "card_set_id": 10010,
@@ -57597,6 +60215,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110631020,
     "card_id": 110631020,
     "card_name": "佛劳洛斯",
     "card_set_id": 10010,
@@ -57619,6 +60238,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110631030,
     "card_id": 110631030,
     "card_name": "恶魔偶像·朵莉露",
     "card_set_id": 10010,
@@ -57641,6 +60261,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111611020,
     "card_id": 111611020,
     "card_name": "奸淫的狂信者",
     "card_set_id": 10011,
@@ -57663,6 +60284,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111641010,
     "card_id": 111641010,
     "card_name": "狄亚波罗斯·究极",
     "card_set_id": 10011,
@@ -57685,6 +60307,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111641030,
     "card_id": 111641030,
     "card_name": "狂暴司令·萝拉",
     "card_set_id": 10011,
@@ -57707,6 +60330,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112611020,
     "card_id": 112611020,
     "card_name": "战狂恶魔",
     "card_set_id": 10012,
@@ -57729,6 +60353,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113621020,
     "card_id": 113621020,
     "card_name": "机臂恶魔",
     "card_set_id": 10013,
@@ -57751,6 +60376,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113631010,
     "card_id": 113631010,
     "card_name": "堕落的漆黑·阿撒塞勒",
     "card_set_id": 10013,
@@ -57773,6 +60399,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114621010,
     "card_id": 114621010,
     "card_name": "吸血鬼探索者·尤娜",
     "card_set_id": 10014,
@@ -57795,6 +60422,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115641010,
     "card_id": 115641010,
     "card_name": "狂狼战士·阿拉加维",
     "card_set_id": 10015,
@@ -57817,6 +60445,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116611020,
     "card_id": 116611020,
     "card_name": "血刃狂战士",
     "card_set_id": 10016,
@@ -57839,6 +60468,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116641020,
     "card_id": 116641020,
     "card_name": "拂晓吸血鬼·诺因",
     "card_set_id": 10016,
@@ -57861,6 +60491,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117611030,
     "card_id": 117611030,
     "card_name": "蛮吼的巨魔",
     "card_set_id": 10017,
@@ -57883,6 +60514,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117641020,
     "card_id": 117641020,
     "card_name": "深渊之契·达尔霍德",
     "card_set_id": 10017,
@@ -57905,6 +60537,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118631020,
     "card_id": 118631020,
     "card_name": "魔剑骑士·哈萨恩",
     "card_set_id": 10018,
@@ -57927,6 +60560,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119611040,
     "card_id": 119611040,
     "card_name": "洞察的恶魔",
     "card_set_id": 10019,
@@ -57949,6 +60583,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119631010,
     "card_id": 119631010,
     "card_name": "暴食的恶魔",
     "card_set_id": 10019,
@@ -57971,6 +60606,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119631020,
     "card_id": 119631020,
     "card_name": "炼狱之黑暗骑士",
     "card_set_id": 10019,
@@ -57993,6 +60629,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119641030,
     "card_id": 119641030,
     "card_name": "桑杨沙",
     "card_set_id": 10019,
@@ -58015,6 +60652,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120641010,
     "card_id": 120641010,
     "card_name": "赤红战争·萝拉",
     "card_set_id": 10020,
@@ -58037,6 +60675,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121621020,
     "card_id": 121621020,
     "card_name": "恶魔狩猎者",
     "card_set_id": 10021,
@@ -58059,6 +60698,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121631010,
     "card_id": 121631010,
     "card_name": "恶魔歌姬",
     "card_set_id": 10021,
@@ -58081,6 +60721,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122631020,
     "card_id": 122631020,
     "card_name": "幽暗蝙蝠",
     "card_set_id": 10022,
@@ -58103,6 +60744,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123621020,
     "card_id": 123621020,
     "card_name": "邪恶黑狮",
     "card_set_id": 10023,
@@ -58125,6 +60767,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124641020,
     "card_id": 124641020,
     "card_name": "贪婪的大恶魔·帕拉璱丽婕",
     "card_set_id": 10024,
@@ -58147,6 +60790,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125631010,
     "card_id": 125631010,
     "card_name": "高贵的暗夜·拜特",
     "card_set_id": 10025,
@@ -58169,6 +60813,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126621020,
     "card_id": 126621020,
     "card_name": "恶意的剑士",
     "card_set_id": 10026,
@@ -58191,6 +60836,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126631030,
     "card_id": 126631030,
     "card_name": "狼人女王·卢娜",
     "card_set_id": 10026,
@@ -58213,6 +60859,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127641010,
     "card_id": 127641010,
     "card_name": "罗刹的罪人·葛洛达特",
     "card_set_id": 10027,
@@ -58235,6 +60882,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128611030,
     "card_id": 128611030,
     "card_name": "音诱梦魔",
     "card_set_id": 10028,
@@ -58257,6 +60905,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128641010,
     "card_id": 128641010,
     "card_name": "帝拳·荷洛穆",
     "card_set_id": 10028,
@@ -58279,6 +60928,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900641010,
     "card_id": 900641010,
     "card_name": "梅杜希亚娜",
     "card_set_id": 90000,
@@ -58301,6 +60951,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900641020,
     "card_id": 900641020,
     "card_name": "仁慈女王·班比",
     "card_set_id": 90000,
@@ -58323,6 +60974,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900641030,
     "card_id": 900641030,
     "card_name": "血色女王·班比",
     "card_set_id": 90000,
@@ -58345,6 +60997,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100614030,
     "card_id": 100614030,
     "card_name": "血红净化",
     "card_set_id": 10000,
@@ -58367,6 +61020,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101624010,
     "card_id": 101624010,
     "card_name": "暗夜中的兽群",
     "card_set_id": 10001,
@@ -58389,6 +61043,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120634010,
     "card_id": 120634010,
     "card_name": "爪牙的现形",
     "card_set_id": 10020,
@@ -58411,6 +61066,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125624010,
     "card_id": 125624010,
     "card_name": "鲜血斩击",
     "card_set_id": 10025,
@@ -58433,6 +61089,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107622010,
     "card_id": 107622010,
     "card_name": "魔神之剑",
     "card_set_id": 10007,
@@ -58455,6 +61112,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118633010,
     "card_id": 118633010,
     "card_name": "契约之碑文",
     "card_set_id": 10018,
@@ -58477,6 +61135,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900623040,
     "card_id": 900623040,
     "card_name": "红炎的魔石",
     "card_set_id": 90000,
@@ -58499,6 +61158,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100721020,
     "card_id": 100721020,
     "card_name": "持矛鎚的僧侣",
     "card_set_id": 10000,
@@ -58521,6 +61181,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101711050,
     "card_id": 101711050,
     "card_name": "修女卫士",
     "card_set_id": 10001,
@@ -58543,6 +61204,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101711100,
     "card_id": 101711100,
     "card_name": "虔诚的女修士",
     "card_set_id": 10001,
@@ -58565,6 +61227,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101721040,
     "card_id": 101721040,
     "card_name": "残暴的女修士",
     "card_set_id": 10001,
@@ -58587,6 +61250,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102711030,
     "card_id": 102711030,
     "card_name": "圣光狐·格里莫",
     "card_set_id": 10002,
@@ -58609,6 +61273,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103711060,
     "card_id": 103711060,
     "card_name": "熟练的驯兽师",
     "card_set_id": 10003,
@@ -58631,6 +61296,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104711020,
     "card_id": 104711020,
     "card_name": "圣洁的治疗师",
     "card_set_id": 10004,
@@ -58653,6 +61319,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104711040,
     "card_id": 104711040,
     "card_name": "章鱼主教",
     "card_set_id": 10004,
@@ -58675,6 +61342,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105711010,
     "card_id": 105711010,
     "card_name": "育鸟的使徒",
     "card_set_id": 10005,
@@ -58697,6 +61365,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106711020,
     "card_id": 106711020,
     "card_name": "追逐繁星的精灵",
     "card_set_id": 10006,
@@ -58719,6 +61388,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107711020,
     "card_id": 107711020,
     "card_name": "誓言之翼战士",
     "card_set_id": 10007,
@@ -58741,6 +61411,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107731010,
     "card_id": 107731010,
     "card_name": "天马骑士杜拉汉",
     "card_set_id": 10007,
@@ -58763,6 +61434,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110731010,
     "card_id": 110731010,
     "card_name": "安息的使徒",
     "card_set_id": 10010,
@@ -58785,6 +61457,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110741020,
     "card_id": 110741020,
     "card_name": "安息绝杰·玛文",
     "card_set_id": 10010,
@@ -58807,6 +61480,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 110741030,
     "card_id": 110741030,
     "card_name": "救济的圣狮",
     "card_set_id": 10010,
@@ -58829,6 +61503,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111711020,
     "card_id": 111711020,
     "card_name": "安息的狂信者",
     "card_set_id": 10011,
@@ -58851,6 +61526,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112731020,
     "card_id": 112731020,
     "card_name": "希望守护者·索妮亚",
     "card_set_id": 10012,
@@ -58873,6 +61549,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112741020,
     "card_id": 112741020,
     "card_name": "残缺的圣女·莉莫涅姆",
     "card_set_id": 10012,
@@ -58895,6 +61572,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113731010,
     "card_id": 113731010,
     "card_name": "圣弓使役者·库鲁特",
     "card_set_id": 10013,
@@ -58917,6 +61595,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113741010,
     "card_id": 113741010,
     "card_name": "咏赞的狂魔像·壹米纳",
     "card_set_id": 10013,
@@ -58939,6 +61618,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114741010,
     "card_id": 114741010,
     "card_name": "灵鼠族公主·蜜尔菲",
     "card_set_id": 10014,
@@ -58961,6 +61641,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115721020,
     "card_id": 115721020,
     "card_name": "辉光猎鹰",
     "card_set_id": 10015,
@@ -58983,6 +61664,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115741020,
     "card_id": 115741020,
     "card_name": "育幼院之主·笑恋",
     "card_set_id": 10015,
@@ -59005,6 +61687,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116711020,
     "card_id": 116711020,
     "card_name": "扬旗翼族",
     "card_set_id": 10016,
@@ -59027,6 +61710,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116721010,
     "card_id": 116721010,
     "card_name": "崇光信仰者",
     "card_set_id": 10016,
@@ -59049,6 +61733,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117711010,
     "card_id": 117711010,
     "card_name": "先见的神官",
     "card_set_id": 10017,
@@ -59071,6 +61756,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118741010,
     "card_id": 118741010,
     "card_name": "炽熔霜糖·圣里奈",
     "card_set_id": 10018,
@@ -59093,6 +61779,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120721020,
     "card_id": 120721020,
     "card_name": "狐耳圣骑士",
     "card_set_id": 10020,
@@ -59115,6 +61802,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120731020,
     "card_id": 120731020,
     "card_name": "披荆代行者",
     "card_set_id": 10020,
@@ -59137,6 +61825,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121741030,
     "card_id": 121741030,
     "card_name": "赎罪司祭·伊莉丝",
     "card_set_id": 10021,
@@ -59159,6 +61848,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123711030,
     "card_id": 123711030,
     "card_name": "医官鸟",
     "card_set_id": 10023,
@@ -59181,6 +61871,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123741020,
     "card_id": 123741020,
     "card_name": "贝勒罗芬",
     "card_set_id": 10023,
@@ -59203,6 +61894,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123741030,
     "card_id": 123741030,
     "card_name": "绝望安息·玛文",
     "card_set_id": 10023,
@@ -59225,6 +61917,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124721020,
     "card_id": 124721020,
     "card_name": "天马骑兵",
     "card_set_id": 10024,
@@ -59247,6 +61940,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125721020,
     "card_id": 125721020,
     "card_name": "神圣骑士·路西乌斯",
     "card_set_id": 10025,
@@ -59269,6 +61963,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125741010,
     "card_id": 125741010,
     "card_name": "崇高圣体",
     "card_set_id": 10025,
@@ -59291,6 +61986,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128741020,
     "card_id": 128741020,
     "card_name": "华丽淑女·耶伦毕菈",
     "card_set_id": 10028,
@@ -59313,6 +62009,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129721020,
     "card_id": 129721020,
     "card_name": "绿松石修女",
     "card_set_id": 10029,
@@ -59335,6 +62032,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129741010,
     "card_id": 129741010,
     "card_name": "白翼的慈爱·埃忒耳",
     "card_set_id": 10029,
@@ -59357,6 +62055,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900711020,
     "card_id": 900711020,
     "card_name": "圣炎猛虎",
     "card_set_id": 90000,
@@ -59379,6 +62078,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900711080,
     "card_id": 900711080,
     "card_name": "梦境白兔",
     "card_set_id": 90000,
@@ -59401,6 +62101,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900711100,
     "card_id": 900711100,
     "card_name": "七彩宝石龟",
     "card_set_id": 90000,
@@ -59423,6 +62124,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900721010,
     "card_id": 900721010,
     "card_name": "纯白圣鸟",
     "card_set_id": 90000,
@@ -59445,6 +62147,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900721020,
     "card_id": 900721020,
     "card_name": "漆黑魔鸟",
     "card_set_id": 90000,
@@ -59467,6 +62170,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900721030,
     "card_id": 900721030,
     "card_name": "圣铠天狮",
     "card_set_id": 90000,
@@ -59489,6 +62193,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900731010,
     "card_id": 900731010,
     "card_name": "天界巨像",
     "card_set_id": 90000,
@@ -59511,6 +62216,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101734030,
     "card_id": 101734030,
     "card_name": "暗黑供奉",
     "card_set_id": 10001,
@@ -59533,6 +62239,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111724010,
     "card_id": 111724010,
     "card_name": "安息的显现",
     "card_set_id": 10011,
@@ -59555,6 +62262,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111734010,
     "card_id": 111734010,
     "card_name": "射杀的光辉",
     "card_set_id": 10011,
@@ -59577,6 +62285,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119724010,
     "card_id": 119724010,
     "card_name": "净化的矛鎚",
     "card_set_id": 10019,
@@ -59599,6 +62308,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127734010,
     "card_id": 127734010,
     "card_name": "繁羽风暴",
     "card_set_id": 10027,
@@ -59621,6 +62331,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101713040,
     "card_id": 101713040,
     "card_name": "咏唱：净魂之狐",
     "card_set_id": 10001,
@@ -59643,6 +62354,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101723020,
     "card_id": 101723020,
     "card_name": "咏唱：死亡宣告",
     "card_set_id": 10001,
@@ -59665,6 +62377,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103733010,
     "card_id": 103733010,
     "card_name": "神魔审判所",
     "card_set_id": 10003,
@@ -59687,6 +62400,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104723010,
     "card_id": 104723010,
     "card_name": "铁处女",
     "card_set_id": 10004,
@@ -59709,6 +62423,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107733010,
     "card_id": 107733010,
     "card_name": "咏唱：远古守护者",
     "card_set_id": 10007,
@@ -59731,6 +62446,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108723010,
     "card_id": 108723010,
     "card_name": "相克的双翼像",
     "card_set_id": 10008,
@@ -59753,6 +62469,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108732010,
     "card_id": 108732010,
     "card_name": "天狐之社",
     "card_set_id": 10008,
@@ -59775,6 +62492,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112713010,
     "card_id": 112713010,
     "card_name": "咏唱：誓言之炎",
     "card_set_id": 10012,
@@ -59797,6 +62515,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117713010,
     "card_id": 117713010,
     "card_name": "咏唱：纯白祭坛",
     "card_set_id": 10017,
@@ -59819,6 +62538,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118732010,
     "card_id": 118732010,
     "card_name": "洁净的领域",
     "card_set_id": 10018,
@@ -59841,6 +62561,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124713010,
     "card_id": 124713010,
     "card_name": "咏唱：白鹫的洗礼",
     "card_set_id": 10024,
@@ -59863,6 +62584,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128712010,
     "card_id": 128712010,
     "card_name": "明辉圣域",
     "card_set_id": 10028,
@@ -59885,6 +62607,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900743040,
     "card_id": 900743040,
     "card_name": "疯狂的咒器",
     "card_set_id": 90000,
@@ -59907,6 +62630,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100811040,
     "card_id": 100811040,
     "card_name": "钢铁拳斗士",
     "card_set_id": 10000,
@@ -59929,6 +62653,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100821020,
     "card_id": 100821020,
     "card_name": "白黑双翼·涅克丝",
     "card_set_id": 10000,
@@ -59951,6 +62676,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107811010,
     "card_id": 107811010,
     "card_name": "机械弓兵",
     "card_set_id": 10007,
@@ -59973,6 +62699,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107811030,
     "card_id": 107811030,
     "card_name": "重力战士",
     "card_set_id": 10007,
@@ -59995,6 +62722,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107831030,
     "card_id": 107831030,
     "card_name": "银轮的回旋者",
     "card_set_id": 10007,
@@ -60017,6 +62745,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107831050,
     "card_id": 107831050,
     "card_name": "心神统治者·莫顿",
     "card_set_id": 10007,
@@ -60039,6 +62768,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108811020,
     "card_id": 108811020,
     "card_name": "冷酷的人偶师",
     "card_set_id": 10008,
@@ -60061,6 +62791,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109821020,
     "card_id": 109821020,
     "card_name": "坚立的钢之战士·四郎",
     "card_set_id": 10009,
@@ -60083,6 +62814,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110831010,
     "card_id": 110831010,
     "card_name": "破坏的使徒",
     "card_set_id": 10010,
@@ -60105,6 +62837,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110841010,
     "card_id": 110841010,
     "card_name": "破坏绝杰·里榭娜",
     "card_set_id": 10010,
@@ -60127,6 +62860,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110841020,
     "card_id": 110841020,
     "card_name": "机动铠甲",
     "card_set_id": 10010,
@@ -60149,6 +62883,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111831010,
     "card_id": 111831010,
     "card_name": "人偶支配者·历亚姆",
     "card_set_id": 10011,
@@ -60171,6 +62906,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112821020,
     "card_id": 112821020,
     "card_name": "疾速机兵",
     "card_set_id": 10012,
@@ -60193,6 +62929,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113811020,
     "card_id": 113811020,
     "card_name": "魔笛奏者·汉姆林",
     "card_set_id": 10013,
@@ -60215,6 +62952,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113821020,
     "card_id": 113821020,
     "card_name": "翔天的伊卡洛斯",
     "card_set_id": 10013,
@@ -60237,6 +62975,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113831020,
     "card_id": 113831020,
     "card_name": "空翔战机",
     "card_set_id": 10013,
@@ -60259,6 +62998,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114821010,
     "card_id": 114821010,
     "card_name": "机动猛虎",
     "card_set_id": 10014,
@@ -60281,6 +63021,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114841020,
     "card_id": 114841020,
     "card_name": "绝高无上·谦恭",
     "card_set_id": 10014,
@@ -60303,6 +63044,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115831020,
     "card_id": 115831020,
     "card_name": "要塞主宰者",
     "card_set_id": 10015,
@@ -60325,6 +63067,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116831010,
     "card_id": 116831010,
     "card_name": "铁螫灭击者",
     "card_set_id": 10016,
@@ -60347,6 +63090,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117821020,
     "card_id": 117821020,
     "card_name": "劲力操偶师",
     "card_set_id": 10017,
@@ -60369,6 +63113,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117841020,
     "card_id": 117841020,
     "card_name": "次元支配者",
     "card_set_id": 10017,
@@ -60391,6 +63136,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118811030,
     "card_id": 118811030,
     "card_name": "异形",
     "card_set_id": 10018,
@@ -60413,6 +63159,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 118831010,
     "card_id": 118831010,
     "card_name": "暗狱使者·贾丝珀",
     "card_set_id": 10018,
@@ -60435,6 +63182,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118841030,
     "card_id": 118841030,
     "card_name": "均衡之刃·希尔薇娅",
     "card_set_id": 10018,
@@ -60457,6 +63205,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121811030,
     "card_id": 121811030,
     "card_name": "迷你战车",
     "card_set_id": 10021,
@@ -60479,6 +63228,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122841010,
     "card_id": 122841010,
     "card_name": "创世的创造物",
     "card_set_id": 10022,
@@ -60501,6 +63251,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123811030,
     "card_id": 123811030,
     "card_name": "机械分析器",
     "card_set_id": 10023,
@@ -60523,6 +63274,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123821020,
     "card_id": 123821020,
     "card_name": "光炮鸟",
     "card_set_id": 10023,
@@ -60545,6 +63297,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123831020,
     "card_id": 123831020,
     "card_name": "喷射炮手",
     "card_set_id": 10023,
@@ -60567,6 +63320,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123841030,
     "card_id": 123841030,
     "card_name": "奏绝破坏·里榭娜",
     "card_set_id": 10023,
@@ -60589,6 +63343,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125821030,
     "card_id": 125821030,
     "card_name": "多变的创造者",
     "card_set_id": 10025,
@@ -60611,6 +63366,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127821010,
     "card_id": 127821010,
     "card_name": "精炼保镖",
     "card_set_id": 10027,
@@ -60633,6 +63389,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127821020,
     "card_id": 127821020,
     "card_name": "冲沙滑板手",
     "card_set_id": 10027,
@@ -60655,6 +63412,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127821030,
     "card_id": 127821030,
     "card_name": "改造技师",
     "card_set_id": 10027,
@@ -60677,6 +63435,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128831010,
     "card_id": 128831010,
     "card_name": "玩具记者",
     "card_set_id": 10028,
@@ -60699,6 +63458,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900841060,
     "card_id": 900841060,
     "card_name": "提线傀儡·朵叶",
     "card_set_id": 90000,
@@ -60721,6 +63481,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900841170,
     "card_id": 900841170,
     "card_name": "阻断的触手",
     "card_set_id": 90000,
@@ -60743,6 +63504,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900841180,
     "card_id": 900841180,
     "card_name": "蹂躏的触手",
     "card_set_id": 90000,
@@ -60765,6 +63527,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900841250,
     "card_id": 900841250,
     "card_name": "守卫的创造物",
     "card_set_id": 90000,
@@ -60787,6 +63550,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900841260,
     "card_id": 900841260,
     "card_name": "防御的创造物",
     "card_set_id": 90000,
@@ -60809,6 +63573,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100824010,
     "card_id": 100824010,
     "card_name": "人偶师的线",
     "card_set_id": 10000,
@@ -60831,6 +63596,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110834010,
     "card_id": 110834010,
     "card_name": "破坏的歌声",
     "card_set_id": 10010,
@@ -60853,6 +63619,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111824010,
     "card_id": 111824010,
     "card_name": "异次元的侵略",
     "card_set_id": 10011,
@@ -60875,6 +63642,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112814010,
     "card_id": 112814010,
     "card_name": "支配之线",
     "card_set_id": 10012,
@@ -60897,6 +63665,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116824010,
     "card_id": 116824010,
     "card_name": "人偶袭击",
     "card_set_id": 10016,
@@ -60919,6 +63688,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116834010,
     "card_id": 116834010,
     "card_name": "反叛命运",
     "card_set_id": 10016,
@@ -60941,6 +63711,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126824010,
     "card_id": 126824010,
     "card_name": "发掘遗物",
     "card_set_id": 10026,
@@ -60963,6 +63734,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128814010,
     "card_id": 128814010,
     "card_name": "光束聚焦",
     "card_set_id": 10028,
@@ -60985,6 +63757,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834040,
     "card_id": 900834040,
     "card_name": "混沌的觉醒",
     "card_set_id": 90000,
@@ -61007,6 +63780,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900844040,
     "card_id": 900844040,
     "card_name": "虚象具现",
     "card_set_id": 90000,
@@ -61029,6 +63803,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108822010,
     "card_id": 108822010,
     "card_name": "魔晶加农炮",
     "card_set_id": 10008,
@@ -61051,6 +63826,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 100011050,
     "card_id": 100011050,
     "card_name": "天女剑士",
     "card_set_id": 10000,
@@ -61073,6 +63849,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101021040,
     "card_id": 101021040,
     "card_name": "哥布林巨魔骑士",
     "card_set_id": 10001,
@@ -61095,6 +63872,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101031020,
     "card_id": 101031020,
     "card_name": "风神",
     "card_set_id": 10001,
@@ -61117,6 +63895,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103021020,
     "card_id": 103021020,
     "card_name": "历战佣兵·菲娜",
     "card_set_id": 10003,
@@ -61139,6 +63918,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103031030,
     "card_id": 103031030,
     "card_name": "哥布林屠杀者·路西乌斯",
     "card_set_id": 10003,
@@ -61161,6 +63941,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104021020,
     "card_id": 104021020,
     "card_name": "哥布林公主",
     "card_set_id": 10004,
@@ -61183,6 +63964,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105021020,
     "card_id": 105021020,
     "card_name": "强悍的山岳队长",
     "card_set_id": 10005,
@@ -61205,6 +63987,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105031020,
     "card_id": 105031020,
     "card_name": "白猫贤者·丝诺",
     "card_set_id": 10005,
@@ -61227,6 +64010,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105031030,
     "card_id": 105031030,
     "card_name": "赫特尔",
     "card_set_id": 10005,
@@ -61249,6 +64033,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106031020,
     "card_id": 106031020,
     "card_name": "芙琳蒂",
     "card_set_id": 10006,
@@ -61271,6 +64056,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106031030,
     "card_id": 106031030,
     "card_name": "麒麟",
     "card_set_id": 10006,
@@ -61293,6 +64079,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106041010,
     "card_id": 106041010,
     "card_name": "洛基",
     "card_set_id": 10006,
@@ -61315,6 +64102,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107021010,
     "card_id": 107021010,
     "card_name": "圣光天使·阿尔缇雅",
     "card_set_id": 10007,
@@ -61337,6 +64125,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110031020,
     "card_id": 110031020,
     "card_name": "饥饿的使徒",
     "card_set_id": 10010,
@@ -61359,6 +64148,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110041010,
     "card_id": 110041010,
     "card_name": "唯我绝杰·马塞班恩",
     "card_set_id": 10010,
@@ -61381,6 +64171,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114021020,
     "card_id": 114021020,
     "card_name": "美食传教士",
     "card_set_id": 10014,
@@ -61403,6 +64194,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115021010,
     "card_id": 115021010,
     "card_name": "斗技场主持人·恰特",
     "card_set_id": 10015,
@@ -61425,6 +64217,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117031010,
     "card_id": 117031010,
     "card_name": "星辉女神",
     "card_set_id": 10017,
@@ -61447,6 +64240,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117031020,
     "card_id": 117031020,
     "card_name": "降罪之大天使",
     "card_set_id": 10017,
@@ -61469,6 +64263,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117041010,
     "card_id": 117041010,
     "card_name": "《世界》·捷尔加内亚",
     "card_set_id": 10017,
@@ -61491,6 +64286,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118021020,
     "card_id": 118021020,
     "card_name": "雷鸣吉他手",
     "card_set_id": 10018,
@@ -61513,6 +64309,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121031010,
     "card_id": 121031010,
     "card_name": "永恒天使",
     "card_set_id": 10021,
@@ -61535,6 +64332,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122031010,
     "card_id": 122031010,
     "card_name": "传统烟火师·弗德",
     "card_set_id": 10022,
@@ -61557,6 +64355,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123021010,
     "card_id": 123021010,
     "card_name": "天空使者",
     "card_set_id": 10023,
@@ -61579,6 +64378,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124031010,
     "card_id": 124031010,
     "card_name": "兵械巨魔",
     "card_set_id": 10024,
@@ -61601,6 +64401,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126011020,
     "card_id": 126011020,
     "card_name": "犀牛人",
     "card_set_id": 10026,
@@ -61623,6 +64424,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126041020,
     "card_id": 126041020,
     "card_name": "庭园追忆·奥莉薇与希尔薇娅",
     "card_set_id": 10026,
@@ -61645,6 +64447,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127021010,
     "card_id": 127021010,
     "card_name": "天使制裁者",
     "card_set_id": 10027,
@@ -61667,6 +64470,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129021010,
     "card_id": 129021010,
     "card_name": "女武神·布兰",
     "card_set_id": 10029,
@@ -61689,6 +64493,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900011010,
     "card_id": 900011010,
     "card_name": "小锡兵",
     "card_set_id": 90000,
@@ -61711,6 +64516,7 @@ let cardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 900041010,
     "card_id": 900041010,
     "card_name": "撒旦的从魔",
     "card_set_id": 90000,
@@ -61733,6 +64539,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900041060,
     "card_id": 900041060,
     "card_name": "恶意的炎帝",
     "card_set_id": 90000,
@@ -61755,6 +64562,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900041140,
     "card_id": 900041140,
     "card_name": "十天众统御者·古兰与吉塔",
     "card_set_id": 90000,
@@ -61777,6 +64585,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900041160,
     "card_id": 900041160,
     "card_name": "暗影指挥官",
     "card_set_id": 90000,
@@ -61799,6 +64608,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900041170,
     "card_id": 900041170,
     "card_name": "暗影突击者",
     "card_set_id": 90000,
@@ -61821,6 +64631,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900041180,
     "card_id": 900041180,
     "card_name": "暗影上将",
     "card_set_id": 90000,
@@ -61843,6 +64654,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101024030,
     "card_id": 101024030,
     "card_name": "处决",
     "card_set_id": 10001,
@@ -61865,6 +64677,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102014030,
     "card_id": 102014030,
     "card_name": "殒命之舞",
     "card_set_id": 10002,
@@ -61887,6 +64700,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103024010,
     "card_id": 103024010,
     "card_name": "冰狱的呼唤",
     "card_set_id": 10003,
@@ -61909,6 +64723,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108024010,
     "card_id": 108024010,
     "card_name": "天罚",
     "card_set_id": 10008,
@@ -61931,6 +64746,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111034010,
     "card_id": 111034010,
     "card_name": "唯我的一刀",
     "card_set_id": 10011,
@@ -61953,6 +64769,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119044010,
     "card_id": 119044010,
     "card_name": "飞向未来",
     "card_set_id": 10019,
@@ -61975,6 +64792,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121014010,
     "card_id": 121014010,
     "card_name": "伊兹尼亚的复兴",
     "card_set_id": 10021,
@@ -61997,6 +64815,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121044010,
     "card_id": 121044010,
     "card_name": "母之慈爱",
     "card_set_id": 10021,
@@ -62019,6 +64838,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129014010,
     "card_id": 129014010,
     "card_name": "格萝德的搜索",
     "card_set_id": 10029,
@@ -62041,6 +64861,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112032010,
     "card_id": 112032010,
     "card_name": "天界之门",
     "card_set_id": 10012,
@@ -62063,6 +64884,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100111050,
     "card_id": 100111050,
     "card_name": "树精",
     "card_set_id": 10000,
@@ -62085,6 +64907,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101111080,
     "card_id": 101111080,
     "card_name": "妖精魔法师",
     "card_set_id": 10001,
@@ -62107,6 +64930,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101121050,
     "card_id": 101121050,
     "card_name": "精灵预言者",
     "card_set_id": 10001,
@@ -62129,6 +64953,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101131030,
     "card_id": 101131030,
     "card_name": "妖精贵族",
     "card_set_id": 10001,
@@ -62151,6 +64976,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101131050,
     "card_id": 101131050,
     "card_name": "罗宾汉",
     "card_set_id": 10001,
@@ -62173,6 +64999,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102111060,
     "card_id": 102111060,
     "card_name": "深绿守护者",
     "card_set_id": 10002,
@@ -62195,6 +65022,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102141010,
     "card_id": 102141010,
     "card_name": "冰晶公主·蒂亚",
     "card_set_id": 10002,
@@ -62217,6 +65045,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103121020,
     "card_id": 103121020,
     "card_name": "天马精灵",
     "card_set_id": 10003,
@@ -62239,6 +65068,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103121040,
     "card_id": 103121040,
     "card_name": "精灵王子·莱昂内尔",
     "card_set_id": 10003,
@@ -62261,6 +65091,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103131020,
     "card_id": 103131020,
     "card_name": "宝石精灵",
     "card_set_id": 10003,
@@ -62283,6 +65114,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104131030,
     "card_id": 104131030,
     "card_name": "丛林守护者",
     "card_set_id": 10004,
@@ -62305,6 +65137,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106111030,
     "card_id": 106111030,
     "card_name": "虹灵巨蜥",
     "card_set_id": 10006,
@@ -62327,6 +65160,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106131010,
     "card_id": 106131010,
     "card_name": "维纳斯",
     "card_set_id": 10006,
@@ -62349,6 +65183,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108131020,
     "card_id": 108131020,
     "card_name": "瞬速的巨狼",
     "card_set_id": 10008,
@@ -62371,6 +65206,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109121020,
     "card_id": 109121020,
     "card_name": "枯木守卫",
     "card_set_id": 10009,
@@ -62393,6 +65229,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109141010,
     "card_id": 109141010,
     "card_name": "绚丽的纺织者·歌露瓦",
     "card_set_id": 10009,
@@ -62415,6 +65252,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109141020,
     "card_id": 109141020,
     "card_name": "弑神猎人·塞尔文",
     "card_set_id": 10009,
@@ -62437,6 +65275,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110121010,
     "card_id": 110121010,
     "card_name": "胡蜂士兵",
     "card_set_id": 10010,
@@ -62459,6 +65298,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110131020,
     "card_id": 110131020,
     "card_name": "不弑的使徒",
     "card_set_id": 10010,
@@ -62481,6 +65321,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111121010,
     "card_id": 111121010,
     "card_name": "森之战士",
     "card_set_id": 10011,
@@ -62503,6 +65344,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111131010,
     "card_id": 111131010,
     "card_name": "兽人战士·赛德斯",
     "card_set_id": 10011,
@@ -62525,6 +65367,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112121020,
     "card_id": 112121020,
     "card_name": "大自然守护者",
     "card_set_id": 10012,
@@ -62547,6 +65390,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113111020,
     "card_id": 113111020,
     "card_name": "树影之绿荫木灵",
     "card_set_id": 10013,
@@ -62569,6 +65413,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114141020,
     "card_id": 114141020,
     "card_name": "回归的拥抱·拉缇卡",
     "card_set_id": 10014,
@@ -62591,6 +65436,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116111010,
     "card_id": 116111010,
     "card_name": "妖精参谋",
     "card_set_id": 10016,
@@ -62613,6 +65459,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116131010,
     "card_id": 116131010,
     "card_name": "扬风妖精",
     "card_set_id": 10016,
@@ -62635,6 +65482,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117121010,
     "card_id": 117121010,
     "card_name": "赞誉之驭兽使",
     "card_set_id": 10017,
@@ -62657,6 +65505,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118121010,
     "card_id": 118121010,
     "card_name": "嬉笑的破坏者·卡嫚茵",
     "card_set_id": 10018,
@@ -62679,6 +65528,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118141020,
     "card_id": 118141020,
     "card_name": "套索的拓荒者·洛奇萨斯",
     "card_set_id": 10018,
@@ -62701,6 +65551,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118141030,
     "card_id": 118141030,
     "card_name": "天香剑士·卢梵",
     "card_set_id": 10018,
@@ -62723,6 +65574,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119111020,
     "card_id": 119111020,
     "card_name": "深绿驯鹿",
     "card_set_id": 10019,
@@ -62745,6 +65597,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120121010,
     "card_id": 120121010,
     "card_name": "日光精灵",
     "card_set_id": 10020,
@@ -62767,6 +65620,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122121010,
     "card_id": 122121010,
     "card_name": "保卫领域的狐耳战士",
     "card_set_id": 10022,
@@ -62789,6 +65643,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123111010,
     "card_id": 123111010,
     "card_name": "不弑的隐者",
     "card_set_id": 10023,
@@ -62811,6 +65666,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123121010,
     "card_id": 123121010,
     "card_name": "翠玉野狐",
     "card_set_id": 10023,
@@ -62833,6 +65689,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125121030,
     "card_id": 125121030,
     "card_name": "驭音的黑暗精灵·亚卢巴",
     "card_set_id": 10025,
@@ -62855,6 +65712,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126111020,
     "card_id": 126111020,
     "card_name": "林野的精灵术师",
     "card_set_id": 10026,
@@ -62877,6 +65735,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127111020,
     "card_id": 127111020,
     "card_name": "兽人枪士",
     "card_set_id": 10027,
@@ -62899,6 +65758,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128121020,
     "card_id": 128121020,
     "card_name": "农作精灵",
     "card_set_id": 10028,
@@ -62921,6 +65781,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128141020,
     "card_id": 128141020,
     "card_name": "幻想使役者·霏璃",
     "card_set_id": 10028,
@@ -62943,6 +65804,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101134010,
     "card_id": 101134010,
     "card_name": "森林的意志",
     "card_set_id": 10001,
@@ -62965,6 +65827,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101134030,
     "card_id": 101134030,
     "card_name": "回归根源",
     "card_set_id": 10001,
@@ -62987,6 +65850,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122114010,
     "card_id": 122114010,
     "card_name": "妖精的芳香",
     "card_set_id": 10022,
@@ -63009,6 +65873,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128134010,
     "card_id": 128134010,
     "card_name": "雄壮的集结",
     "card_set_id": 10028,
@@ -63031,6 +65896,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101132010,
     "card_id": 101132010,
     "card_name": "提泰妮娅的妖精乡",
     "card_set_id": 10001,
@@ -63053,6 +65919,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100211050,
     "card_id": 100211050,
     "card_name": "忍者大师",
     "card_set_id": 10000,
@@ -63075,6 +65942,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101211080,
     "card_id": 101211080,
     "card_name": "守护骑士",
     "card_set_id": 10001,
@@ -63097,6 +65965,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101221040,
     "card_id": 101221040,
     "card_name": "珀西瓦里",
     "card_set_id": 10001,
@@ -63119,6 +65988,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101221060,
     "card_id": 101221060,
     "card_name": "贵族骑士",
     "card_set_id": 10001,
@@ -63141,6 +66011,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101241020,
     "card_id": 101241020,
     "card_name": "皇家剑士·奥蕾莉亚",
     "card_set_id": 10001,
@@ -63163,6 +66034,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102211040,
     "card_id": 102211040,
     "card_name": "突击队司令官",
     "card_set_id": 10002,
@@ -63185,6 +66057,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102211050,
     "card_id": 102211050,
     "card_name": "破阵之刃",
     "card_set_id": 10002,
@@ -63207,6 +66080,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103221020,
     "card_id": 103221020,
     "card_name": "苍穹提督·莫妮卡",
     "card_set_id": 10003,
@@ -63229,6 +66103,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103241010,
     "card_id": 103241010,
     "card_name": "雷维翁剑士·阿尔贝尔",
     "card_set_id": 10003,
@@ -63251,6 +66126,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104211030,
     "card_id": 104211030,
     "card_name": "圆桌武士·崔斯坦",
     "card_set_id": 10004,
@@ -63273,6 +66149,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 104221020,
     "card_id": 104221020,
     "card_name": "鲁米那斯法师",
     "card_set_id": 10004,
@@ -63295,6 +66172,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105211010,
     "card_id": 105211010,
     "card_name": "女忍者大师",
     "card_set_id": 10005,
@@ -63317,6 +66195,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105231020,
     "card_id": 105231020,
     "card_name": "银岭的秘剑士",
     "card_set_id": 10005,
@@ -63339,6 +66218,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106211030,
     "card_id": 106211030,
     "card_name": "波鲁克斯",
     "card_set_id": 10006,
@@ -63361,6 +66241,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106241020,
     "card_id": 106241020,
     "card_name": "巴巴罗萨",
     "card_set_id": 10006,
@@ -63383,6 +66264,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107211010,
     "card_id": 107211010,
     "card_name": "王城守卫",
     "card_set_id": 10007,
@@ -63405,6 +66287,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109231020,
     "card_id": 109231020,
     "card_name": "翱翔的剑士",
     "card_set_id": 10009,
@@ -63427,6 +66310,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110231020,
     "card_id": 110231020,
     "card_name": "篡夺的使徒",
     "card_set_id": 10010,
@@ -63449,6 +66333,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110231030,
     "card_id": 110231030,
     "card_name": "狩杀巨人的剑士",
     "card_set_id": 10010,
@@ -63471,6 +66356,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110241030,
     "card_id": 110241030,
     "card_name": "战地歌姬·玛格诺莉雅",
     "card_set_id": 10010,
@@ -63493,6 +66379,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112241030,
     "card_id": 112241030,
     "card_name": "紫电之黑豹",
     "card_set_id": 10012,
@@ -63515,6 +66402,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113241020,
     "card_id": 113241020,
     "card_name": "雷维翁英雄·阿尔贝尔",
     "card_set_id": 10013,
@@ -63537,6 +66425,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114211020,
     "card_id": 114211020,
     "card_name": "雷维翁探索者",
     "card_set_id": 10014,
@@ -63559,6 +66448,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114221010,
     "card_id": 114221010,
     "card_name": "疾跃的兽人战士",
     "card_set_id": 10014,
@@ -63581,6 +66471,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115221010,
     "card_id": 115221010,
     "card_name": "秘传拔刀者",
     "card_set_id": 10015,
@@ -63603,6 +66494,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115241030,
     "card_id": 115241030,
     "card_name": "煌剑战士·亨莉雅妲",
     "card_set_id": 10015,
@@ -63625,6 +66517,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116241020,
     "card_id": 116241020,
     "card_name": "迅猛驭剑士·葛雷森",
     "card_set_id": 10016,
@@ -63647,6 +66540,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116241030,
     "card_id": 116241030,
     "card_name": "白银的耀闪·艾蜜莉亚",
     "card_set_id": 10016,
@@ -63669,6 +66563,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117211020,
     "card_id": 117211020,
     "card_name": "冲锋骑士",
     "card_set_id": 10017,
@@ -63691,6 +66586,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118221020,
     "card_id": 118221020,
     "card_name": "甩石士兵",
     "card_set_id": 10018,
@@ -63713,6 +66609,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118231010,
     "card_id": 118231010,
     "card_name": "改革者·莱恩哈尔特",
     "card_set_id": 10018,
@@ -63735,6 +66632,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118241010,
     "card_id": 118241010,
     "card_name": "幻影拍档·巴妮与巴侬",
     "card_set_id": 10018,
@@ -63757,6 +66655,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119211010,
     "card_id": 119211010,
     "card_name": "武斗女兵",
     "card_set_id": 10019,
@@ -63779,6 +66678,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120211030,
     "card_id": 120211030,
     "card_name": "战猪",
     "card_set_id": 10020,
@@ -63801,6 +66701,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120241010,
     "card_id": 120241010,
     "card_name": "雷灭卿·阿尔贝尔",
     "card_set_id": 10020,
@@ -63823,6 +66724,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123221010,
     "card_id": 123221010,
     "card_name": "驭剑战将",
     "card_set_id": 10023,
@@ -63845,6 +66747,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125231030,
     "card_id": 125231030,
     "card_name": "战术指挥官",
     "card_set_id": 10025,
@@ -63867,6 +66770,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126241030,
     "card_id": 126241030,
     "card_name": "顶峰战将",
     "card_set_id": 10026,
@@ -63889,6 +66793,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127221030,
     "card_id": 127221030,
     "card_name": "驭风斩击者",
     "card_set_id": 10027,
@@ -63911,6 +66816,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129241020,
     "card_id": 129241020,
     "card_name": "天下无双的武人",
     "card_set_id": 10029,
@@ -63933,6 +66839,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900231040,
     "card_id": 900231040,
     "card_name": "不屈不挠的骑士·范恩",
     "card_set_id": 90000,
@@ -63955,6 +66862,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900231050,
     "card_id": 900231050,
     "card_name": "屠龙的骑士·齐格菲",
     "card_set_id": 90000,
@@ -63977,6 +66885,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900231060,
     "card_id": 900231060,
     "card_name": "杰出的双剑士·兰斯洛特",
     "card_set_id": 90000,
@@ -63999,6 +66908,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900231070,
     "card_id": 900231070,
     "card_name": "炎帝·帕西瓦尔",
     "card_set_id": 90000,
@@ -64021,6 +66931,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900241020,
     "card_id": 900241020,
     "card_name": "希望谋士·榭莉亚",
     "card_set_id": 90000,
@@ -64043,6 +66954,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900241030,
     "card_id": 900241030,
     "card_name": "绝望使者·榭莉亚",
     "card_set_id": 90000,
@@ -64065,6 +66977,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101214020,
     "card_id": 101214020,
     "card_name": "猛袭",
     "card_set_id": 10001,
@@ -64087,6 +67000,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103224010,
     "card_id": 103224010,
     "card_name": "旋风刃",
     "card_set_id": 10003,
@@ -64109,6 +67023,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105234010,
     "card_id": 105234010,
     "card_name": "扑克骑士召集令",
     "card_set_id": 10005,
@@ -64131,6 +67046,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106214010,
     "card_id": 106214010,
     "card_name": "拔刀术",
     "card_set_id": 10006,
@@ -64153,6 +67069,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106234010,
     "card_id": 106234010,
     "card_name": "圆桌会议",
     "card_set_id": 10006,
@@ -64175,6 +67092,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109234010,
     "card_id": 109234010,
     "card_name": "龙骑士的集结",
     "card_set_id": 10009,
@@ -64197,6 +67115,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111224010,
     "card_id": 111224010,
     "card_name": "篡夺之舞",
     "card_set_id": 10011,
@@ -64219,6 +67138,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112214010,
     "card_id": 112214010,
     "card_name": "双剑之技",
     "card_set_id": 10012,
@@ -64241,6 +67161,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120234010,
     "card_id": 120234010,
     "card_name": "剑圣的一斩",
     "card_set_id": 10020,
@@ -64263,6 +67184,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123244010,
     "card_id": 123244010,
     "card_name": "火枪手的誓言",
     "card_set_id": 10023,
@@ -64285,6 +67207,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126234010,
     "card_id": 126234010,
     "card_name": "英勇出击！",
     "card_set_id": 10026,
@@ -64307,6 +67230,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129234010,
     "card_id": 129234010,
     "card_name": "黄昏与白银",
     "card_set_id": 10029,
@@ -64329,6 +67253,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900224010,
     "card_id": 900224010,
     "card_name": "净化之圣弹",
     "card_set_id": 90000,
@@ -64351,6 +67276,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900244010,
     "card_id": 900244010,
     "card_name": "暮光之刃",
     "card_set_id": 90000,
@@ -64373,6 +67299,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101232010,
     "card_id": 101232010,
     "card_name": "骑士王的威望",
     "card_set_id": 10001,
@@ -64395,6 +67322,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104232010,
     "card_id": 104232010,
     "card_name": "炮击支援",
     "card_set_id": 10004,
@@ -64417,6 +67345,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111232010,
     "card_id": 111232010,
     "card_name": "士兵的誓言",
     "card_set_id": 10011,
@@ -64439,6 +67368,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100321030,
     "card_id": 100321030,
     "card_name": "雷光射手",
     "card_set_id": 10000,
@@ -64461,6 +67391,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101311080,
     "card_id": 101311080,
     "card_name": "旋风奇术师",
     "card_set_id": 10001,
@@ -64483,6 +67414,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101321060,
     "card_id": 101321060,
     "card_name": "缚炎女巫",
     "card_set_id": 10001,
@@ -64505,6 +67437,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101331010,
     "card_id": 101331010,
     "card_name": "远古炼金术师",
     "card_set_id": 10001,
@@ -64527,6 +67460,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102311060,
     "card_id": 102311060,
     "card_name": "伟大的圣石像",
     "card_set_id": 10002,
@@ -64549,6 +67483,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102341010,
     "card_id": 102341010,
     "card_name": "太阳巫女·帕梅拉",
     "card_set_id": 10002,
@@ -64571,6 +67506,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103311050,
     "card_id": 103311050,
     "card_name": "巨眼观察者",
     "card_set_id": 10003,
@@ -64593,6 +67529,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104331020,
     "card_id": 104331020,
     "card_name": "魔导少女·梅薇",
     "card_set_id": 10004,
@@ -64615,6 +67552,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105321010,
     "card_id": 105321010,
     "card_name": "幻影术师",
     "card_set_id": 10005,
@@ -64637,6 +67575,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105331010,
     "card_id": 105331010,
     "card_name": "鲁纳尔的魔法师·普丽丝",
     "card_set_id": 10005,
@@ -64659,6 +67598,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105341010,
     "card_id": 105341010,
     "card_name": "奥兹国的大魔女",
     "card_set_id": 10005,
@@ -64681,6 +67621,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106331020,
     "card_id": 106331020,
     "card_name": "暴虐的巨像",
     "card_set_id": 10006,
@@ -64703,6 +67644,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107331010,
     "card_id": 107331010,
     "card_name": "马纳历亚学生会长·汉娜",
     "card_set_id": 10007,
@@ -64725,6 +67667,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107341010,
     "card_id": 107341010,
     "card_name": "魔法始祖·马纳历亚",
     "card_set_id": 10007,
@@ -64747,6 +67690,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108341030,
     "card_id": 108341030,
     "card_name": "真实考究者·浮士德",
     "card_set_id": 10008,
@@ -64769,6 +67713,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109311020,
     "card_id": 109311020,
     "card_name": "爱好和平的召唤师",
     "card_set_id": 10009,
@@ -64791,6 +67736,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110341030,
     "card_id": 110341030,
     "card_name": "奥利哈钢巨像",
     "card_set_id": 10010,
@@ -64813,6 +67759,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111321010,
     "card_id": 111321010,
     "card_name": "人马萨满",
     "card_set_id": 10011,
@@ -64835,6 +67782,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112321010,
     "card_id": 112321010,
     "card_name": "马纳历亚领导者·汉娜",
     "card_set_id": 10012,
@@ -64857,6 +67805,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113321020,
     "card_id": 113321020,
     "card_name": "机学魔导书士",
     "card_set_id": 10013,
@@ -64879,6 +67828,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114331020,
     "card_id": 114331020,
     "card_name": "混沌巫术师",
     "card_set_id": 10014,
@@ -64901,6 +67851,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114341030,
     "card_id": 114341030,
     "card_name": "秘仪魔女·梅蒂亚",
     "card_set_id": 10014,
@@ -64923,6 +67874,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115331020,
     "card_id": 115331020,
     "card_name": "祸殃咒术师",
     "card_set_id": 10015,
@@ -64945,6 +67897,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116311020,
     "card_id": 116311020,
     "card_name": "冰雪魔法师",
     "card_set_id": 10016,
@@ -64967,6 +67920,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117321020,
     "card_id": 117321020,
     "card_name": "甜品魔术师",
     "card_set_id": 10017,
@@ -64989,6 +67943,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118321010,
     "card_id": 118321010,
     "card_name": "魔法艺术家",
     "card_set_id": 10018,
@@ -65011,6 +67966,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119311020,
     "card_id": 119311020,
     "card_name": "石英魔女",
     "card_set_id": 10019,
@@ -65033,6 +67989,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119341030,
     "card_id": 119341030,
     "card_name": "银灰之星·阿莱斯特",
     "card_set_id": 10019,
@@ -65055,6 +68012,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120311010,
     "card_id": 120311010,
     "card_name": "驭猫魔女",
     "card_set_id": 10020,
@@ -65077,6 +68035,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120341020,
     "card_id": 120341020,
     "card_name": "稜镜虹辉·济欧司",
     "card_set_id": 10020,
@@ -65099,6 +68058,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121311030,
     "card_id": 121311030,
     "card_name": "魔书怪",
     "card_set_id": 10021,
@@ -65121,6 +68081,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123311010,
     "card_id": 123311010,
     "card_name": "真实的隐者",
     "card_set_id": 10023,
@@ -65143,6 +68104,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123311020,
     "card_id": 123311020,
     "card_name": "冰结魔兽",
     "card_set_id": 10023,
@@ -65165,6 +68127,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123341010,
     "card_id": 123341010,
     "card_name": "五行宗师·久苑",
     "card_set_id": 10023,
@@ -65187,6 +68150,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124311020,
     "card_id": 124311020,
     "card_name": "环刃魔法师",
     "card_set_id": 10024,
@@ -65209,6 +68173,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124331010,
     "card_id": 124331010,
     "card_name": "雷云炼金术师",
     "card_set_id": 10024,
@@ -65231,6 +68196,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125311020,
     "card_id": 125311020,
     "card_name": "高雅的魔女",
     "card_set_id": 10025,
@@ -65253,6 +68219,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125341030,
     "card_id": 125341030,
     "card_name": "马纳历亚双姬·安与古蕾娅",
     "card_set_id": 10025,
@@ -65275,6 +68242,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127311020,
     "card_id": 127311020,
     "card_name": "群青魔女",
     "card_set_id": 10027,
@@ -65297,6 +68265,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127341010,
     "card_id": 127341010,
     "card_name": "耽溺的罪人·瑟霏",
     "card_set_id": 10027,
@@ -65319,6 +68288,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127341030,
     "card_id": 127341030,
     "card_name": "双素精灵",
     "card_set_id": 10027,
@@ -65341,6 +68311,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314020,
     "card_id": 101314020,
     "card_name": "命运的指引",
     "card_set_id": 10001,
@@ -65363,6 +68334,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101324010,
     "card_id": 101324010,
     "card_name": "巨像守护术",
     "card_set_id": 10001,
@@ -65385,6 +68357,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101334050,
     "card_id": 101334050,
     "card_name": "冬之女王的即兴艺术",
     "card_set_id": 10001,
@@ -65407,6 +68380,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102334020,
     "card_id": 102334020,
     "card_name": "白霜之风",
     "card_set_id": 10002,
@@ -65429,6 +68403,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107314020,
     "card_id": 107314020,
     "card_name": "连锁雷击",
     "card_set_id": 10007,
@@ -65451,6 +68426,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108314010,
     "card_id": 108314010,
     "card_name": "风怒之术",
     "card_set_id": 10008,
@@ -65473,6 +68449,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112314010,
     "card_id": 112314010,
     "card_name": "巨像的暴走",
     "card_set_id": 10012,
@@ -65495,6 +68472,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113324010,
     "card_id": 113324010,
     "card_name": "烟消雾散",
     "card_set_id": 10013,
@@ -65517,6 +68495,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120334010,
     "card_id": 120334010,
     "card_name": "混沌的行仪",
     "card_set_id": 10020,
@@ -65539,6 +68518,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125314010,
     "card_id": 125314010,
     "card_name": "炽炎爆弹",
     "card_set_id": 10025,
@@ -65561,6 +68541,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125324010,
     "card_id": 125324010,
     "card_name": "行使魔眼",
     "card_set_id": 10025,
@@ -65583,6 +68564,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900314060,
     "card_id": 900314060,
     "card_name": "马纳历亚秘术",
     "card_set_id": 90000,
@@ -65605,6 +68587,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101332010,
     "card_id": 101332010,
     "card_name": "魔导力场",
     "card_set_id": 10001,
@@ -65627,6 +68610,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900332010,
     "card_id": 900332010,
     "card_name": "紧急召唤",
     "card_set_id": 90000,
@@ -65649,6 +68633,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900332020,
     "card_id": 900332020,
     "card_name": "术式结界",
     "card_set_id": 90000,
@@ -65671,6 +68656,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100411020,
     "card_id": 100411020,
     "card_name": "灾祸之龙",
     "card_set_id": 10000,
@@ -65693,6 +68679,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101411070,
     "card_id": 101411070,
     "card_name": "海剑龙",
     "card_set_id": 10001,
@@ -65715,6 +68702,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101421050,
     "card_id": 101421050,
     "card_name": "雷霆之贝西摩斯",
     "card_set_id": 10001,
@@ -65737,6 +68725,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102411060,
     "card_id": 102411060,
     "card_name": "巨蛇女王",
     "card_set_id": 10002,
@@ -65759,6 +68748,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102421010,
     "card_id": 102421010,
     "card_name": "变异巨龙",
     "card_set_id": 10002,
@@ -65781,6 +68771,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103411030,
     "card_id": 103411030,
     "card_name": "阴险的翼龙",
     "card_set_id": 10003,
@@ -65803,6 +68794,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104411040,
     "card_id": 104411040,
     "card_name": "圣域海马",
     "card_set_id": 10004,
@@ -65825,6 +68817,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104421020,
     "card_id": 104421020,
     "card_name": "邪毒的紫龙",
     "card_set_id": 10004,
@@ -65847,6 +68840,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104421040,
     "card_id": 104421040,
     "card_name": "拉斯杜雷克",
     "card_set_id": 10004,
@@ -65869,6 +68863,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104441010,
     "card_id": 104441010,
     "card_name": "水龙神巫女",
     "card_set_id": 10004,
@@ -65891,6 +68886,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105421010,
     "card_id": 105421010,
     "card_name": "骏鹰兽骑手",
     "card_set_id": 10005,
@@ -65913,6 +68909,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106421010,
     "card_id": 106421010,
     "card_name": "魔兽骑手",
     "card_set_id": 10006,
@@ -65935,6 +68932,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106431010,
     "card_id": 106431010,
     "card_name": "驭龙歌姬",
     "card_set_id": 10006,
@@ -65957,6 +68955,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108411020,
     "card_id": 108411020,
     "card_name": "龙翼暗杀者",
     "card_set_id": 10008,
@@ -65979,6 +68978,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108421020,
     "card_id": 108421020,
     "card_name": "异相之息·迦鲁亚",
     "card_set_id": 10008,
@@ -66001,6 +69001,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109431010,
     "card_id": 109431010,
     "card_name": "护国真龙·斯卡塔赫",
     "card_set_id": 10009,
@@ -66023,6 +69024,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110441010,
     "card_id": 110441010,
     "card_name": "侮蔑绝杰·嘉鲁蜜儿",
     "card_set_id": 10010,
@@ -66045,6 +69047,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111421010,
     "card_id": 111421010,
     "card_name": "不祥的紫龙",
     "card_set_id": 10011,
@@ -66067,6 +69070,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112431020,
     "card_id": 112431020,
     "card_name": "唤厄之龙",
     "card_set_id": 10012,
@@ -66089,6 +69093,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 113411020,
     "card_id": 113411020,
     "card_name": "知风者·杰鲁",
     "card_set_id": 10013,
@@ -66111,6 +69116,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114411040,
     "card_id": 114411040,
     "card_name": "刺针龙人",
     "card_set_id": 10014,
@@ -66133,6 +69139,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115411030,
     "card_id": 115411030,
     "card_name": "猛毒双冠龙",
     "card_set_id": 10015,
@@ -66155,6 +69162,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115431010,
     "card_id": 115431010,
     "card_name": "不死鸟女帝",
     "card_set_id": 10015,
@@ -66177,6 +69185,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116421020,
     "card_id": 116421020,
     "card_name": "繁茂的剑龙",
     "card_set_id": 10016,
@@ -66199,6 +69208,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119431020,
     "card_id": 119431020,
     "card_name": "风霆之龙",
     "card_set_id": 10019,
@@ -66221,6 +69231,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120431010,
     "card_id": 120431010,
     "card_name": "屠龙骑士·罗伊",
     "card_set_id": 10020,
@@ -66243,6 +69254,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122421020,
     "card_id": 122421020,
     "card_name": "冰翼贤龙",
     "card_set_id": 10022,
@@ -66265,6 +69277,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123441030,
     "card_id": 123441030,
     "card_name": "烈绝侮蔑·嘉鲁蜜儿",
     "card_set_id": 10023,
@@ -66287,6 +69300,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124441030,
     "card_id": 124441030,
     "card_name": "黑白乱舞·诺尔与卜朗",
     "card_set_id": 10024,
@@ -66309,6 +69323,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126441010,
     "card_id": 126441010,
     "card_name": "灭剑焰龙",
     "card_set_id": 10026,
@@ -66331,6 +69346,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126441020,
     "card_id": 126441020,
     "card_name": "船长·达拉伍德",
     "card_set_id": 10026,
@@ -66353,6 +69369,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127431010,
     "card_id": 127431010,
     "card_name": "焦土的不法者",
     "card_set_id": 10027,
@@ -66375,6 +69392,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 128441020,
     "card_id": 128441020,
     "card_name": "热血龙教师·乔",
     "card_set_id": 10028,
@@ -66397,6 +69415,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129411010,
     "card_id": 129411010,
     "card_name": "止风祈祷师",
     "card_set_id": 10029,
@@ -66419,6 +69438,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900411010,
     "card_id": 900411010,
     "card_name": "飞龙",
     "card_set_id": 90000,
@@ -66441,6 +69461,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900441070,
     "card_id": 900441070,
     "card_name": "霸业之金龙",
     "card_set_id": 90000,
@@ -66463,6 +69484,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900441080,
     "card_id": 900441080,
     "card_name": "霸业之银龙",
     "card_set_id": 90000,
@@ -66485,6 +69507,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900441100,
     "card_id": 900441100,
     "card_name": "悲戚的赤龙",
     "card_set_id": 90000,
@@ -66507,6 +69530,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103424010,
     "card_id": 103424010,
     "card_name": "龙之斗气",
     "card_set_id": 10003,
@@ -66529,6 +69553,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109414010,
     "card_id": 109414010,
     "card_name": "摆尾强袭",
     "card_set_id": 10009,
@@ -66551,6 +69576,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114434010,
     "card_id": 114434010,
     "card_name": "不死鸟之啸",
     "card_set_id": 10014,
@@ -66573,6 +69599,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124424010,
     "card_id": 124424010,
     "card_name": "海神的威望",
     "card_set_id": 10024,
@@ -66595,6 +69622,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101432020,
     "card_id": 101432020,
     "card_name": "凤凰的庭园",
     "card_set_id": 10001,
@@ -66617,6 +69645,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103412020,
     "card_id": 103412020,
     "card_name": "龙爪项链",
     "card_set_id": 10003,
@@ -66639,6 +69668,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900443020,
     "card_id": 900443020,
     "card_name": "弑龙之枪",
     "card_set_id": 90000,
@@ -66661,6 +69691,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900443030,
     "card_id": 900443030,
     "card_name": "龙山温泉",
     "card_set_id": 90000,
@@ -66683,6 +69714,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100511050,
     "card_id": 100511050,
     "card_name": "唤尸掘墓人",
     "card_set_id": 10000,
@@ -66705,6 +69737,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101511080,
     "card_id": 101511080,
     "card_name": "噬魂魔",
     "card_set_id": 10001,
@@ -66727,6 +69760,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101521060,
     "card_id": 101521060,
     "card_name": "暗魂暴食者",
     "card_set_id": 10001,
@@ -66749,6 +69783,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101521080,
     "card_id": 101521080,
     "card_name": "求魂亡灵",
     "card_set_id": 10001,
@@ -66771,6 +69806,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101521100,
     "card_id": 101521100,
     "card_name": "杜拉汉",
     "card_set_id": 10001,
@@ -66793,6 +69829,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101541010,
     "card_id": 101541010,
     "card_name": "凯尔贝洛斯",
     "card_set_id": 10001,
@@ -66815,6 +69852,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102511040,
     "card_id": 102511040,
     "card_name": "尸魂指挥官",
     "card_set_id": 10002,
@@ -66837,6 +69875,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102521010,
     "card_id": 102521010,
     "card_name": "凯伦",
     "card_set_id": 10002,
@@ -66859,6 +69898,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102531010,
     "card_id": 102531010,
     "card_name": "关德温",
     "card_set_id": 10002,
@@ -66881,6 +69921,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104521040,
     "card_id": 104521040,
     "card_name": "忌刃战士",
     "card_set_id": 10004,
@@ -66903,6 +69944,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105531020,
     "card_id": 105531020,
     "card_name": "捷特·马洛斯",
     "card_set_id": 10005,
@@ -66925,6 +69967,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106511010,
     "card_id": 106511010,
     "card_name": "漆黑之剑鬼",
     "card_set_id": 10006,
@@ -66947,6 +69990,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106521030,
     "card_id": 106521030,
     "card_name": "赫拉斯瓦格尔",
     "card_set_id": 10006,
@@ -66969,6 +70013,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 107541010,
     "card_id": 107541010,
     "card_name": "冥守族长·艾夏",
     "card_set_id": 10007,
@@ -66991,6 +70036,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108511020,
     "card_id": 108511020,
     "card_name": "厄夜死神",
     "card_set_id": 10008,
@@ -67013,6 +70059,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109511010,
     "card_id": 109511010,
     "card_name": "忧郁的灵媒师",
     "card_set_id": 10009,
@@ -67035,6 +70082,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110511010,
     "card_id": 110511010,
     "card_name": "冥界骑兵",
     "card_set_id": 10010,
@@ -67057,6 +70105,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110531030,
     "card_id": 110531030,
     "card_name": "死与暗之魔鸦",
     "card_set_id": 10010,
@@ -67079,6 +70128,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110541010,
     "card_id": 110541010,
     "card_name": "冥界守卫犬·凯尔贝洛斯",
     "card_set_id": 10010,
@@ -67101,6 +70151,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111511030,
     "card_id": 111511030,
     "card_name": "木乃伊·梅里安",
     "card_set_id": 10011,
@@ -67123,6 +70174,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112521020,
     "card_id": 112521020,
     "card_name": "机甲僵尸",
     "card_set_id": 10012,
@@ -67145,6 +70197,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 112541010,
     "card_id": 112541010,
     "card_name": "永恒新娘·赛蕾丝",
     "card_set_id": 10012,
@@ -67167,6 +70220,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114511040,
     "card_id": 114511040,
     "card_name": "孤寂鬼魂",
     "card_set_id": 10014,
@@ -67189,6 +70243,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114531020,
     "card_id": 114531020,
     "card_name": "不灭巨象",
     "card_set_id": 10014,
@@ -67211,6 +70266,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114541010,
     "card_id": 114541010,
     "card_name": "死灵聚集体·鲁蓓露",
     "card_set_id": 10014,
@@ -67233,6 +70289,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116511030,
     "card_id": 116511030,
     "card_name": "复生死灵法师",
     "card_set_id": 10016,
@@ -67255,6 +70312,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116541030,
     "card_id": 116541030,
     "card_name": "噬梦貘",
     "card_set_id": 10016,
@@ -67277,6 +70335,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117511030,
     "card_id": 117511030,
     "card_name": "灵魂之箱",
     "card_set_id": 10017,
@@ -67299,6 +70358,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117541010,
     "card_id": 117541010,
     "card_name": "《恋人》·米路缇欧",
     "card_set_id": 10017,
@@ -67321,6 +70381,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121531010,
     "card_id": 121531010,
     "card_name": "圆滚滚2号",
     "card_set_id": 10021,
@@ -67343,6 +70404,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123511020,
     "card_id": 123511020,
     "card_name": "冥府召唤者",
     "card_set_id": 10023,
@@ -67365,6 +70427,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123541010,
     "card_id": 123541010,
     "card_name": "惊骇盛宴·吟雪",
     "card_set_id": 10023,
@@ -67387,6 +70450,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126541010,
     "card_id": 126541010,
     "card_name": "假面亡魂",
     "card_set_id": 10026,
@@ -67409,6 +70473,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126541020,
     "card_id": 126541020,
     "card_name": "高贵的灵使·忒露雪菈",
     "card_set_id": 10026,
@@ -67431,6 +70496,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129521020,
     "card_id": 129521020,
     "card_name": "返魂的小提琴家",
     "card_set_id": 10029,
@@ -67453,6 +70519,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129541010,
     "card_id": 129541010,
     "card_name": "冥境咆哮犬·凯尔贝洛斯",
     "card_set_id": 10029,
@@ -67475,6 +70542,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107534010,
     "card_id": 107534010,
     "card_name": "生死逆转",
     "card_set_id": 10007,
@@ -67497,6 +70565,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113514010,
     "card_id": 113514010,
     "card_name": "骸骨爆裂",
     "card_set_id": 10013,
@@ -67519,6 +70588,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116534010,
     "card_id": 116534010,
     "card_name": "羁绊的共振",
     "card_set_id": 10016,
@@ -67541,6 +70611,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120524010,
     "card_id": 120524010,
     "card_name": "白骨的邂逅",
     "card_set_id": 10020,
@@ -67563,6 +70634,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122524010,
     "card_id": 122524010,
     "card_name": "活尸的来访",
     "card_set_id": 10022,
@@ -67585,6 +70657,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122534010,
     "card_id": 122534010,
     "card_name": "不死者溃击",
     "card_set_id": 10022,
@@ -67607,6 +70680,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129524010,
     "card_id": 129524010,
     "card_name": "骇人大镰",
     "card_set_id": 10029,
@@ -67629,6 +70703,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900534020,
     "card_id": 900534020,
     "card_name": "禁断的一击",
     "card_set_id": 90000,
@@ -67651,6 +70726,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544030,
     "card_id": 900544030,
     "card_name": "永恒的秘药",
     "card_set_id": 90000,
@@ -67673,6 +70749,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900512010,
     "card_id": 900512010,
     "card_name": "禁忌的复生",
     "card_set_id": 90000,
@@ -67695,6 +70772,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900512020,
     "card_id": 900512020,
     "card_name": "被藏匿的财宝",
     "card_set_id": 90000,
@@ -67717,6 +70795,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101611100,
     "card_id": 101611100,
     "card_name": "强欲的魔兽",
     "card_set_id": 10001,
@@ -67739,6 +70818,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101621100,
     "card_id": 101621100,
     "card_name": "吸血鬼吟游诗人",
     "card_set_id": 10001,
@@ -67761,6 +70841,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101631030,
     "card_id": 101631030,
     "card_name": "厄里倪厄斯",
     "card_set_id": 10001,
@@ -67783,6 +70864,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101641030,
     "card_id": 101641030,
     "card_name": "魔兽支配者",
     "card_set_id": 10001,
@@ -67805,6 +70887,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102611060,
     "card_id": 102611060,
     "card_name": "灵魂引路人",
     "card_set_id": 10002,
@@ -67827,6 +70910,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102641010,
     "card_id": 102641010,
     "card_name": "血腥玛丽",
     "card_set_id": 10002,
@@ -67849,6 +70933,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103621030,
     "card_id": 103621030,
     "card_name": "千雨长枪手",
     "card_set_id": 10003,
@@ -67871,6 +70956,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 103631030,
     "card_id": 103631030,
     "card_name": "莫斯提马",
     "card_set_id": 10003,
@@ -67893,6 +70979,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104621030,
     "card_id": 104621030,
     "card_name": "弗拉德·德古拉",
     "card_set_id": 10004,
@@ -67915,6 +71002,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104621040,
     "card_id": 104621040,
     "card_name": "混沌方舟",
     "card_set_id": 10004,
@@ -67937,6 +71025,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 105621010,
     "card_id": 105621010,
     "card_name": "绯色剑士",
     "card_set_id": 10005,
@@ -67959,6 +71048,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105621030,
     "card_id": 105621030,
     "card_name": "潘达斯奈基",
     "card_set_id": 10005,
@@ -67981,6 +71071,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106631020,
     "card_id": 106631020,
     "card_name": "轰雷的恶魔",
     "card_set_id": 10006,
@@ -68003,6 +71094,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106641020,
     "card_id": 106641020,
     "card_name": "耶梦加得",
     "card_set_id": 10006,
@@ -68025,6 +71117,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107641010,
     "card_id": 107641010,
     "card_name": "沃普尔吉斯",
     "card_set_id": 10007,
@@ -68047,6 +71140,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108611030,
     "card_id": 108611030,
     "card_name": "激愤的恶魔",
     "card_set_id": 10008,
@@ -68069,6 +71163,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108631010,
     "card_id": 108631010,
     "card_name": "血脉之王",
     "card_set_id": 10008,
@@ -68091,6 +71186,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109631010,
     "card_id": 109631010,
     "card_name": "邪眼恶魔",
     "card_set_id": 10009,
@@ -68113,6 +71209,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109641030,
     "card_id": 109641030,
     "card_name": "轰雷之贝西摩斯",
     "card_set_id": 10009,
@@ -68135,6 +71232,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110631010,
     "card_id": 110631010,
     "card_name": "奸淫的使徒",
     "card_set_id": 10010,
@@ -68157,6 +71255,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110641030,
     "card_id": 110641030,
     "card_name": "暗黑恶魔·米尔兰特",
     "card_set_id": 10010,
@@ -68179,6 +71278,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111621020,
     "card_id": 111621020,
     "card_name": "莎乐美",
     "card_set_id": 10011,
@@ -68201,6 +71301,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112621020,
     "card_id": 112621020,
     "card_name": "铁刃之恶鬼",
     "card_set_id": 10012,
@@ -68223,6 +71324,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112641010,
     "card_id": 112641010,
     "card_name": "魔眼蛇神·梅杜莎",
     "card_set_id": 10012,
@@ -68245,6 +71347,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114631010,
     "card_id": 114631010,
     "card_name": "蒙面斗士·莎兰婕亚",
     "card_set_id": 10014,
@@ -68267,6 +71370,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114631030,
     "card_id": 114631030,
     "card_name": "恶怨保镖·巴尔特",
     "card_set_id": 10014,
@@ -68289,6 +71393,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116611030,
     "card_id": 116611030,
     "card_name": "孤高的恶鬼",
     "card_set_id": 10016,
@@ -68311,6 +71416,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116621010,
     "card_id": 116621010,
     "card_name": "夜想吸血鬼",
     "card_set_id": 10016,
@@ -68333,6 +71439,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119611020,
     "card_id": 119611020,
     "card_name": "恶魔狂战士",
     "card_set_id": 10019,
@@ -68355,6 +71462,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120621020,
     "card_id": 120621020,
     "card_name": "霹雷恶魔",
     "card_set_id": 10020,
@@ -68377,6 +71485,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121631020,
     "card_id": 121631020,
     "card_name": "恶意之壁",
     "card_set_id": 10021,
@@ -68399,6 +71508,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122621010,
     "card_id": 122621010,
     "card_name": "恶魔千金",
     "card_set_id": 10022,
@@ -68421,6 +71531,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123611030,
     "card_id": 123611030,
     "card_name": "偏执恶魔",
     "card_set_id": 10023,
@@ -68443,6 +71554,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126641010,
     "card_id": 126641010,
     "card_name": "噪声恶魔",
     "card_set_id": 10026,
@@ -68465,6 +71577,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127621020,
     "card_id": 127621020,
     "card_name": "恶魔鼓手",
     "card_set_id": 10027,
@@ -68487,6 +71600,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127631020,
     "card_id": 127631020,
     "card_name": "腐朽看守",
     "card_set_id": 10027,
@@ -68509,6 +71623,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129641020,
     "card_id": 129641020,
     "card_name": "终焉魔狼·芬里尔",
     "card_set_id": 10029,
@@ -68531,6 +71646,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900621010,
     "card_id": 900621010,
     "card_name": "圣洁少女·布菈",
     "card_set_id": 90000,
@@ -68553,6 +71669,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900621020,
     "card_id": 900621020,
     "card_name": "暗黑少女·布菈",
     "card_set_id": 90000,
@@ -68575,6 +71692,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101624020,
     "card_id": 101624020,
     "card_name": "残酷猎杀",
     "card_set_id": 10001,
@@ -68597,6 +71715,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101634010,
     "card_id": 101634010,
     "card_name": "破坏神的气息",
     "card_set_id": 10001,
@@ -68619,6 +71738,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117624010,
     "card_id": 117624010,
     "card_name": "盛燃的抵抗",
     "card_set_id": 10017,
@@ -68641,6 +71761,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128624010,
     "card_id": 128624010,
     "card_name": "魅惑狂想曲",
     "card_set_id": 10028,
@@ -68663,6 +71784,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129634010,
     "card_id": 129634010,
     "card_name": "无尽痛楚",
     "card_set_id": 10029,
@@ -68685,6 +71807,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900644020,
     "card_id": 900644020,
     "card_name": "原初之一",
     "card_set_id": 90000,
@@ -68707,6 +71830,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100721010,
     "card_id": 100721010,
     "card_name": "高阶牧师",
     "card_set_id": 10000,
@@ -68729,6 +71853,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101711060,
     "card_id": 101711060,
     "card_name": "光之治愈牧师",
     "card_set_id": 10001,
@@ -68751,6 +71876,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101721030,
     "card_id": 101721030,
     "card_name": "教团圣枪兵",
     "card_set_id": 10001,
@@ -68773,6 +71899,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101721100,
     "card_id": 101721100,
     "card_name": "圣殿女骑士",
     "card_set_id": 10001,
@@ -68795,6 +71922,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102711050,
     "card_id": 102711050,
     "card_name": "飞翼王子",
     "card_set_id": 10002,
@@ -68817,6 +71945,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 102721030,
     "card_id": 102721030,
     "card_name": "光辉天使",
     "card_set_id": 10002,
@@ -68839,6 +71968,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103721020,
     "card_id": 103721020,
     "card_name": "远古圣狮之魂",
     "card_set_id": 10003,
@@ -68861,6 +71991,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103741010,
     "card_id": 103741010,
     "card_name": "疯狂的魔神像",
     "card_set_id": 10003,
@@ -68883,6 +72014,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104721020,
     "card_id": 104721020,
     "card_name": "黄金都市守墓人·索妮亚",
     "card_set_id": 10004,
@@ -68905,6 +72037,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105721010,
     "card_id": 105721010,
     "card_name": "天狐",
     "card_set_id": 10005,
@@ -68927,6 +72060,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106721030,
     "card_id": 106721030,
     "card_name": "神殿的狂鬼",
     "card_set_id": 10006,
@@ -68949,6 +72083,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108711030,
     "card_id": 108711030,
     "card_name": "莱卡翁",
     "card_set_id": 10008,
@@ -68971,6 +72106,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108741020,
     "card_id": 108741020,
     "card_name": "刻律涅",
     "card_set_id": 10008,
@@ -68993,6 +72129,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109711030,
     "card_id": 109711030,
     "card_name": "信仰的天使像",
     "card_set_id": 10009,
@@ -69015,6 +72152,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110731020,
     "card_id": 110731020,
     "card_name": "暴行神父",
     "card_set_id": 10010,
@@ -69037,6 +72175,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112711020,
     "card_id": 112711020,
     "card_name": "花之翼族",
     "card_set_id": 10012,
@@ -69059,6 +72198,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112741030,
     "card_id": 112741030,
     "card_name": "欺瞒之伪神",
     "card_set_id": 10012,
@@ -69081,6 +72221,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113711020,
     "card_id": 113711020,
     "card_name": "钢铁翼人",
     "card_set_id": 10013,
@@ -69103,6 +72244,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114711010,
     "card_id": 114711010,
     "card_name": "圣具修女",
     "card_set_id": 10014,
@@ -69125,6 +72267,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114731010,
     "card_id": 114731010,
     "card_name": "审判之圣枪执行者",
     "card_set_id": 10014,
@@ -69147,6 +72290,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115711020,
     "card_id": 115711020,
     "card_name": "心静之翼族",
     "card_set_id": 10015,
@@ -69169,6 +72313,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115721010,
     "card_id": 115721010,
     "card_name": "神圣长枪手",
     "card_set_id": 10015,
@@ -69191,6 +72336,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116741010,
     "card_id": 116741010,
     "card_name": "圣拳月兔妖·洁思缇",
     "card_set_id": 10016,
@@ -69213,6 +72359,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116741030,
     "card_id": 116741030,
     "card_name": "乐园双翼·迦楼罗",
     "card_set_id": 10016,
@@ -69235,6 +72382,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117731010,
     "card_id": 117731010,
     "card_name": "神域的法王",
     "card_set_id": 10017,
@@ -69257,6 +72405,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 117741010,
     "card_id": 117741010,
     "card_name": "《力量》·索菲娜",
     "card_set_id": 10017,
@@ -69279,6 +72428,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117741030,
     "card_id": 117741030,
     "card_name": "光辉显世·拉",
     "card_set_id": 10017,
@@ -69301,6 +72451,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118721010,
     "card_id": 118721010,
     "card_name": "渎职的神父",
     "card_set_id": 10018,
@@ -69323,6 +72474,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118741030,
     "card_id": 118741030,
     "card_name": "歼灭的月兔妖",
     "card_set_id": 10018,
@@ -69345,6 +72497,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119711030,
     "card_id": 119711030,
     "card_name": "跃剑月兔妖",
     "card_set_id": 10019,
@@ -69367,6 +72520,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119731020,
     "card_id": 119731020,
     "card_name": "狐耳神父",
     "card_set_id": 10019,
@@ -69389,6 +72543,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119741020,
     "card_id": 119741020,
     "card_name": "异幻·沃芙玛纳芙",
     "card_set_id": 10019,
@@ -69411,6 +72566,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120711030,
     "card_id": 120711030,
     "card_name": "圣地守护兽",
     "card_set_id": 10020,
@@ -69433,6 +72589,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121721020,
     "card_id": 121721020,
     "card_name": "耶斯嘉马利的巡视者",
     "card_set_id": 10021,
@@ -69455,6 +72612,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121731010,
     "card_id": 121731010,
     "card_name": "圣晶大神官",
     "card_set_id": 10021,
@@ -69477,6 +72635,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122711030,
     "card_id": 122711030,
     "card_name": "圣洁红鹤",
     "card_set_id": 10022,
@@ -69499,6 +72658,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123731020,
     "card_id": 123731020,
     "card_name": "独角兽战士",
     "card_set_id": 10023,
@@ -69521,6 +72681,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124731010,
     "card_id": 124731010,
     "card_name": "旋镖修女",
     "card_set_id": 10024,
@@ -69543,6 +72704,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125731020,
     "card_id": 125731020,
     "card_name": "指引的圣使",
     "card_set_id": 10025,
@@ -69565,6 +72727,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126711020,
     "card_id": 126711020,
     "card_name": "灵鼠族小丑",
     "card_set_id": 10026,
@@ -69587,6 +72750,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129711020,
     "card_id": 129711020,
     "card_name": "采集药草的兔人",
     "card_set_id": 10029,
@@ -69609,6 +72773,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129731010,
     "card_id": 129731010,
     "card_name": "神域之狼",
     "card_set_id": 10029,
@@ -69631,6 +72796,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900711030,
     "card_id": 900711030,
     "card_name": "贝卡萨斯",
     "card_set_id": 90000,
@@ -69653,6 +72819,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900711040,
     "card_id": 900711040,
     "card_name": "守护仙狐",
     "card_set_id": 90000,
@@ -69675,6 +72842,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900711060,
     "card_id": 900711060,
     "card_name": "壮丽大神隼",
     "card_set_id": 90000,
@@ -69697,6 +72865,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900711090,
     "card_id": 900711090,
     "card_name": "金刚神鹰",
     "card_set_id": 90000,
@@ -69719,6 +72888,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900741010,
     "card_id": 900741010,
     "card_name": "黎明神鹿·刻律涅",
     "card_set_id": 90000,
@@ -69741,6 +72911,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900741020,
     "card_id": 900741020,
     "card_name": "夜幕神鹿·刻律涅",
     "card_set_id": 90000,
@@ -69763,6 +72934,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714030,
     "card_id": 100714030,
     "card_name": "破邪圣光",
     "card_set_id": 10000,
@@ -69785,6 +72957,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107724010,
     "card_id": 107724010,
     "card_name": "圣洁的歼灭",
     "card_set_id": 10007,
@@ -69807,6 +72980,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115734010,
     "card_id": 115734010,
     "card_name": "崇敬的实现",
     "card_set_id": 10015,
@@ -69829,6 +73003,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118714010,
     "card_id": 118714010,
     "card_name": "仁爱光芒",
     "card_set_id": 10018,
@@ -69851,6 +73026,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100723010,
     "card_id": 100723010,
     "card_name": "咏唱：双生之炎",
     "card_set_id": 10000,
@@ -69873,6 +73049,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105723010,
     "card_id": 105723010,
     "card_name": "三月兔的茶会",
     "card_set_id": 10005,
@@ -69895,6 +73072,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111713010,
     "card_id": 111713010,
     "card_name": "远古圣域",
     "card_set_id": 10011,
@@ -69917,6 +73095,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120733010,
     "card_id": 120733010,
     "card_name": "圣鼠神殿",
     "card_set_id": 10020,
@@ -69939,6 +73118,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128723010,
     "card_id": 128723010,
     "card_name": "咏唱：无垢的赞美诗歌",
     "card_set_id": 10028,
@@ -69961,6 +73141,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 107811040,
     "card_id": 107811040,
     "card_name": "魔枪佣兵",
     "card_set_id": 10007,
@@ -69983,6 +73164,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107811120,
     "card_id": 107811120,
     "card_name": "假面人偶",
     "card_set_id": 10007,
@@ -70005,6 +73187,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107821090,
     "card_id": 107821090,
     "card_name": "不稳定的实验体",
     "card_set_id": 10007,
@@ -70027,6 +73210,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107821100,
     "card_id": 107821100,
     "card_name": "机偶战士",
     "card_set_id": 10007,
@@ -70049,6 +73233,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107831020,
     "card_id": 107831020,
     "card_name": "哈克菈比",
     "card_set_id": 10007,
@@ -70071,6 +73256,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107841020,
     "card_id": 107841020,
     "card_name": "神秘守门人·丝碧涅",
     "card_set_id": 10007,
@@ -70093,6 +73279,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107841030,
     "card_id": 107841030,
     "card_name": "机械降神",
     "card_set_id": 10007,
@@ -70115,6 +73302,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108821020,
     "card_id": 108821020,
     "card_name": "豪腕斗士·迪尔克",
     "card_set_id": 10008,
@@ -70137,6 +73325,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109811030,
     "card_id": 109811030,
     "card_name": "恩奇杜",
     "card_set_id": 10009,
@@ -70159,6 +73348,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111811020,
     "card_id": 111811020,
     "card_name": "破坏的狂信者",
     "card_set_id": 10011,
@@ -70181,6 +73371,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111841010,
     "card_id": 111841010,
     "card_name": "远古双剑士·戴恩",
     "card_set_id": 10011,
@@ -70203,6 +73394,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113841020,
     "card_id": 113841020,
     "card_name": "回响之心·枷薇",
     "card_set_id": 10013,
@@ -70225,6 +73417,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 116831020,
     "card_id": 116831020,
     "card_name": "歼炮巨龟",
     "card_set_id": 10016,
@@ -70247,6 +73440,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117831010,
     "card_id": 117831010,
     "card_name": "神志分割者",
     "card_set_id": 10017,
@@ -70269,6 +73463,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117841030,
     "card_id": 117841030,
     "card_name": "遗物守门人·璐契儿",
     "card_set_id": 10017,
@@ -70291,6 +73486,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119831030,
     "card_id": 119831030,
     "card_name": "山宏巨偶",
     "card_set_id": 10019,
@@ -70313,6 +73509,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120811020,
     "card_id": 120811020,
     "card_name": "机臂技师",
     "card_set_id": 10020,
@@ -70335,6 +73532,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121831020,
     "card_id": 121831020,
     "card_name": "机械神女",
     "card_set_id": 10021,
@@ -70357,6 +73555,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122841020,
     "card_id": 122841020,
     "card_name": "睿智之板创造者",
     "card_set_id": 10022,
@@ -70379,6 +73578,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123811010,
     "card_id": 123811010,
     "card_name": "破坏的隐者",
     "card_set_id": 10023,
@@ -70401,6 +73601,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124841010,
     "card_id": 124841010,
     "card_name": "神伟的剑士",
     "card_set_id": 10024,
@@ -70423,6 +73624,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125831020,
     "card_id": 125831020,
     "card_name": "外界审判者·诺伦",
     "card_set_id": 10025,
@@ -70445,6 +73647,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 126811030,
     "card_id": 126811030,
     "card_name": "伤锈巨兵",
     "card_set_id": 10026,
@@ -70467,6 +73670,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126821020,
     "card_id": 126821020,
     "card_name": "异界的生命",
     "card_set_id": 10026,
@@ -70489,6 +73693,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127811030,
     "card_id": 127811030,
     "card_name": "遗迹拟态兵",
     "card_set_id": 10027,
@@ -70511,6 +73716,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128831020,
     "card_id": 128831020,
     "card_name": "双机臂救援者",
     "card_set_id": 10028,
@@ -70533,6 +73739,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900811040,
     "card_id": 900811040,
     "card_name": "绚烂的创造物",
     "card_set_id": 90000,
@@ -70555,6 +73762,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900811080,
     "card_id": 900811080,
     "card_name": "守御的创造物",
     "card_set_id": 90000,
@@ -70577,6 +73785,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900811090,
     "card_id": 900811090,
     "card_name": "锋锐的创造物",
     "card_set_id": 90000,
@@ -70599,6 +73808,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900811100,
     "card_id": 900811100,
     "card_name": "迅袭的创造物",
     "card_set_id": 90000,
@@ -70621,6 +73831,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900821030,
     "card_id": 900821030,
     "card_name": "苏醒的钢之战士·机美",
     "card_set_id": 90000,
@@ -70643,6 +73854,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841270,
     "card_id": 900841270,
     "card_name": "正义暴君",
     "card_set_id": 90000,
@@ -70665,6 +73877,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900841290,
     "card_id": 900841290,
     "card_name": "世界驱除者",
     "card_set_id": 90000,
@@ -70687,6 +73900,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841300,
     "card_id": 900841300,
     "card_name": "神器的使者",
     "card_set_id": 90000,
@@ -70709,6 +73923,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107834010,
     "card_id": 107834010,
     "card_name": "异界传送",
     "card_set_id": 10007,
@@ -70731,6 +73946,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108834010,
     "card_id": 108834010,
     "card_name": "无心之斗",
     "card_set_id": 10008,
@@ -70753,6 +73969,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109824010,
     "card_id": 109824010,
     "card_name": "蛮夺的指挥",
     "card_set_id": 10009,
@@ -70775,6 +73992,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109834010,
     "card_id": 109834010,
     "card_name": "创造物激光炮",
     "card_set_id": 10009,
@@ -70797,6 +74015,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117814010,
     "card_id": 117814010,
     "card_name": "人偶的闪击",
     "card_set_id": 10017,
@@ -70819,6 +74038,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101031030,
     "card_id": 101031030,
     "card_name": "天翼吞噬者",
     "card_set_id": 10001,
@@ -70841,6 +74061,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101031040,
     "card_id": 101031040,
     "card_name": "雅典娜",
     "card_set_id": 10001,
@@ -70863,6 +74084,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102011020,
     "card_id": 102011020,
     "card_name": "愤怒的双头巨魔",
     "card_set_id": 10002,
@@ -70885,6 +74107,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105021030,
     "card_id": 105021030,
     "card_name": "狮中豪杰",
     "card_set_id": 10005,
@@ -70907,6 +74130,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106011020,
     "card_id": 106011020,
     "card_name": "满月先生",
     "card_set_id": 10006,
@@ -70929,6 +74153,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 108031010,
     "card_id": 108031010,
     "card_name": "苏图恩",
     "card_set_id": 10008,
@@ -70951,6 +74176,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109021010,
     "card_id": 109021010,
     "card_name": "苍天守护骑士·卡塔莉娜",
     "card_set_id": 10009,
@@ -70973,6 +74199,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110011010,
     "card_id": 110011010,
     "card_name": "斯卡萨哈",
     "card_set_id": 10010,
@@ -70995,6 +74222,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112021010,
     "card_id": 112021010,
     "card_name": "美食天使·叶卡莉奴",
     "card_set_id": 10012,
@@ -71017,6 +74245,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113031010,
     "card_id": 113031010,
     "card_name": "再临的女神·乌尔德",
     "card_set_id": 10013,
@@ -71039,6 +74268,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114041010,
     "card_id": 114041010,
     "card_name": "大地之母",
     "card_set_id": 10014,
@@ -71061,6 +74291,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114041020,
     "card_id": 114041020,
     "card_name": "希瓦",
     "card_set_id": 10014,
@@ -71083,6 +74314,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115031010,
     "card_id": 115031010,
     "card_name": "晨曦女神·宓特菈",
     "card_set_id": 10015,
@@ -71105,6 +74337,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121041010,
     "card_id": 121041010,
     "card_name": "黄昏的神枪·奥丁",
     "card_set_id": 10021,
@@ -71127,6 +74360,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122041010,
     "card_id": 122041010,
     "card_name": "朱庇特",
     "card_set_id": 10022,
@@ -71149,6 +74383,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123041010,
     "card_id": 123041010,
     "card_name": "绝大唯我·马塞班恩",
     "card_set_id": 10023,
@@ -71171,6 +74406,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124041020,
     "card_id": 124041020,
     "card_name": "撒旦耶尔",
     "card_set_id": 10024,
@@ -71193,6 +74429,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125031010,
     "card_id": 125031010,
     "card_name": "巨型快乐小猪",
     "card_set_id": 10025,
@@ -71215,6 +74452,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127011020,
     "card_id": 127011020,
     "card_name": "奥秘探索者",
     "card_set_id": 10027,
@@ -71237,6 +74475,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127041020,
     "card_id": 127041020,
     "card_name": "混沌天使",
     "card_set_id": 10027,
@@ -71259,6 +74498,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 900041020,
     "card_id": 900041020,
     "card_name": "沉默的魔将",
     "card_set_id": 90000,
@@ -71281,6 +74521,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900041080,
     "card_id": 900041080,
     "card_name": "贪欲的毒蝎",
     "card_set_id": 90000,
@@ -71303,6 +74544,7 @@ let cardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 900041120,
     "card_id": 900041120,
     "card_name": "边狱的恶鬼",
     "card_set_id": 90000,
@@ -71325,6 +74567,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102014040,
     "card_id": 102014040,
     "card_name": "魔法书的解析",
     "card_set_id": 10002,
@@ -71347,6 +74590,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116014010,
     "card_id": 116014010,
     "card_name": "侦探的推理",
     "card_set_id": 10016,
@@ -71369,6 +74613,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129024020,
     "card_id": 129024020,
     "card_name": "永恒指令",
     "card_set_id": 10029,
@@ -71391,6 +74636,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129034010,
     "card_id": 129034010,
     "card_name": "通向过往的旅程",
     "card_set_id": 10029,
@@ -71413,6 +74659,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116033010,
     "card_id": 116033010,
     "card_name": "神话战剑",
     "card_set_id": 10016,
@@ -71435,6 +74682,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117023010,
     "card_id": 117023010,
     "card_name": "巨人的较劲",
     "card_set_id": 10017,
@@ -71457,6 +74705,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100111070,
     "card_id": 100111070,
     "card_name": "精灵驱逐者",
     "card_set_id": 10000,
@@ -71479,6 +74728,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100121010,
     "card_id": 100121010,
     "card_name": "伟大的药剂师",
     "card_set_id": 10000,
@@ -71501,6 +74751,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101121060,
     "card_id": 101121060,
     "card_name": "远古树精",
     "card_set_id": 10001,
@@ -71523,6 +74774,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101121070,
     "card_id": 101121070,
     "card_name": "妖精守护圣兽",
     "card_set_id": 10001,
@@ -71545,6 +74797,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101141010,
     "card_id": 101141010,
     "card_name": "妖精公主",
     "card_set_id": 10001,
@@ -71567,6 +74820,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 102121030,
     "card_id": 102121030,
     "card_name": "太古森林守护神",
     "card_set_id": 10002,
@@ -71589,6 +74843,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102131010,
     "card_id": 102131010,
     "card_name": "精灵骑士·辛西亚",
     "card_set_id": 10002,
@@ -71611,6 +74866,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102131020,
     "card_id": 102131020,
     "card_name": "神箭手·塞尔文",
     "card_set_id": 10002,
@@ -71633,6 +74889,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103131030,
     "card_id": 103131030,
     "card_name": "马赫斯",
     "card_set_id": 10003,
@@ -71655,6 +74912,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104131020,
     "card_id": 104131020,
     "card_name": "冰晶光芒·艾琳",
     "card_set_id": 10004,
@@ -71677,6 +74935,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105121030,
     "card_id": 105121030,
     "card_name": "长老之树",
     "card_set_id": 10005,
@@ -71699,6 +74958,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105141010,
     "card_id": 105141010,
     "card_name": "美女与野兽",
     "card_set_id": 10005,
@@ -71721,6 +74981,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106121030,
     "card_id": 106121030,
     "card_name": "忌刃鬼",
     "card_set_id": 10006,
@@ -71743,6 +75004,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106141010,
     "card_id": 106141010,
     "card_name": "卡西欧佩亚",
     "card_set_id": 10006,
@@ -71765,6 +75027,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107131020,
     "card_id": 107131020,
     "card_name": "妖精剑士",
     "card_set_id": 10007,
@@ -71787,6 +75050,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108141010,
     "card_id": 108141010,
     "card_name": "世界树",
     "card_set_id": 10008,
@@ -71809,6 +75073,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108141020,
     "card_id": 108141020,
     "card_name": "白鬃圣猿",
     "card_set_id": 10008,
@@ -71831,6 +75096,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 108141030,
     "card_id": 108141030,
     "card_name": "翠岚的大斧手",
     "card_set_id": 10008,
@@ -71853,6 +75119,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111141020,
     "card_id": 111141020,
     "card_name": "森之巫女·帕梅拉",
     "card_set_id": 10011,
@@ -71875,6 +75142,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112141010,
     "card_id": 112141010,
     "card_name": "女王之剑·辛西亚",
     "card_set_id": 10012,
@@ -71897,6 +75165,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114111020,
     "card_id": 114111020,
     "card_name": "强袭精灵",
     "card_set_id": 10014,
@@ -71919,6 +75188,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116121020,
     "card_id": 116121020,
     "card_name": "森之斧力士",
     "card_set_id": 10016,
@@ -71941,6 +75211,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116141020,
     "card_id": 116141020,
     "card_name": "螺旋铁腕·达米安",
     "card_set_id": 10016,
@@ -71963,6 +75234,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117141020,
     "card_id": 117141020,
     "card_name": "裂地异种",
     "card_set_id": 10017,
@@ -71985,6 +75257,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118131010,
     "card_id": 118131010,
     "card_name": "牧地巨人",
     "card_set_id": 10018,
@@ -72007,6 +75280,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 119141020,
     "card_id": 119141020,
     "card_name": "异幻·天宫人马",
     "card_set_id": 10019,
@@ -72029,6 +75303,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120111030,
     "card_id": 120111030,
     "card_name": "硕木巨人",
     "card_set_id": 10020,
@@ -72051,6 +75326,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120131020,
     "card_id": 120131020,
     "card_name": "林野领袖",
     "card_set_id": 10020,
@@ -72073,6 +75349,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120141030,
     "card_id": 120141030,
     "card_name": "庞然妖花",
     "card_set_id": 10020,
@@ -72095,6 +75372,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121141010,
     "card_id": 121141010,
     "card_name": "太阳勇士·赛德斯",
     "card_set_id": 10021,
@@ -72117,6 +75395,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122111020,
     "card_id": 122111020,
     "card_name": "旋风枪士",
     "card_set_id": 10022,
@@ -72139,6 +75418,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124121020,
     "card_id": 124121020,
     "card_name": "森林游击者",
     "card_set_id": 10024,
@@ -72161,6 +75441,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126141010,
     "card_id": 126141010,
     "card_name": "波斯菊之牙",
     "card_set_id": 10026,
@@ -72183,6 +75464,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128131020,
     "card_id": 128131020,
     "card_name": "伐木斧的矮人",
     "card_set_id": 10028,
@@ -72205,6 +75487,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119124010,
     "card_id": 119124010,
     "card_name": "大自然的捕食",
     "card_set_id": 10019,
@@ -72227,6 +75510,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100221020,
     "card_id": 100221020,
     "card_name": "睿智指挥官",
     "card_set_id": 10000,
@@ -72249,6 +75533,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101211130,
     "card_id": 101211130,
     "card_name": "战地铁骑兵",
     "card_set_id": 10001,
@@ -72271,6 +75556,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101211140,
     "card_id": 101211140,
     "card_name": "海军上将",
     "card_set_id": 10001,
@@ -72293,6 +75579,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101241010,
     "card_id": 101241010,
     "card_name": "海底都市霸主·乙姬",
     "card_set_id": 10001,
@@ -72315,6 +75602,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101241030,
     "card_id": 101241030,
     "card_name": "椿",
     "card_set_id": 10001,
@@ -72337,6 +75625,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103211040,
     "card_id": 103211040,
     "card_name": "蛇腹剑女仆",
     "card_set_id": 10003,
@@ -72359,6 +75648,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104221030,
     "card_id": 104221030,
     "card_name": "乔利·罗杰",
     "card_set_id": 10004,
@@ -72381,6 +75671,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105211020,
     "card_id": 105211020,
     "card_name": "巨斧破坏者",
     "card_set_id": 10005,
@@ -72403,6 +75694,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107241010,
     "card_id": 107241010,
     "card_name": "黑暗剑士·梅丽莎",
     "card_set_id": 10007,
@@ -72425,6 +75717,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108241030,
     "card_id": 108241030,
     "card_name": "斯巴达克斯",
     "card_set_id": 10008,
@@ -72447,6 +75740,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109241010,
     "card_id": 109241010,
     "card_name": "鲜红的穿光·瑟塔",
     "card_set_id": 10009,
@@ -72469,6 +75763,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109241030,
     "card_id": 109241030,
     "card_name": "铁拳兽人战士",
     "card_set_id": 10009,
@@ -72491,6 +75786,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114231010,
     "card_id": 114231010,
     "card_name": "森林公主·米丝特莉娜",
     "card_set_id": 10014,
@@ -72513,6 +75809,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115211010,
     "card_id": 115211010,
     "card_name": "花艳骑士",
     "card_set_id": 10015,
@@ -72535,6 +75832,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117241020,
     "card_id": 117241020,
     "card_name": "耀钻圣骑士",
     "card_set_id": 10017,
@@ -72557,6 +75855,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121231010,
     "card_id": 121231010,
     "card_name": "绝灭之士兵长",
     "card_set_id": 10021,
@@ -72579,6 +75878,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121241010,
     "card_id": 121241010,
     "card_name": "光耀导引·米丝特莉娜与贝里昂",
     "card_set_id": 10021,
@@ -72601,6 +75901,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122211030,
     "card_id": 122211030,
     "card_name": "战术军犬",
     "card_set_id": 10022,
@@ -72623,6 +75924,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123221020,
     "card_id": 123221020,
     "card_name": "战乱勇士",
     "card_set_id": 10023,
@@ -72645,6 +75947,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125241030,
     "card_id": 125241030,
     "card_name": "君主城塞",
     "card_set_id": 10025,
@@ -72667,6 +75970,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126211040,
     "card_id": 126211040,
     "card_name": "远望的船长",
     "card_set_id": 10026,
@@ -72689,6 +75993,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 127231020,
     "card_id": 127231020,
     "card_name": "尽忠看守",
     "card_set_id": 10027,
@@ -72711,6 +76016,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128221020,
     "card_id": 128221020,
     "card_name": "妙才战略家",
     "card_set_id": 10028,
@@ -72733,6 +76039,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101234020,
     "card_id": 101234020,
     "card_name": "亚尔丽妲的号令",
     "card_set_id": 10001,
@@ -72755,6 +76062,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101311070,
     "card_id": 101311070,
     "card_name": "炼金大师",
     "card_set_id": 10001,
@@ -72777,6 +76085,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101311090,
     "card_id": 101311090,
     "card_name": "怨念的魔女",
     "card_set_id": 10001,
@@ -72799,6 +76108,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101321010,
     "card_id": 101321010,
     "card_name": "宝石巨像",
     "card_set_id": 10001,
@@ -72821,6 +76131,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101321030,
     "card_id": 101321030,
     "card_name": "创造的魔女·玛姬纱",
     "card_set_id": 10001,
@@ -72843,6 +76154,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102321020,
     "card_id": 102321020,
     "card_name": "暗影女巫",
     "card_set_id": 10002,
@@ -72865,6 +76177,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 103311060,
     "card_id": 103311060,
     "card_name": "剑刃魔法师",
     "card_set_id": 10003,
@@ -72887,6 +76200,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103321020,
     "card_id": 103321020,
     "card_name": "灾祸巫女",
     "card_set_id": 10003,
@@ -72909,6 +76223,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103331030,
     "card_id": 103331030,
     "card_name": "禁忌的研究者",
     "card_set_id": 10003,
@@ -72931,6 +76246,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 104341020,
     "card_id": 104341020,
     "card_name": "魔导巨兵",
     "card_set_id": 10004,
@@ -72953,6 +76269,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105321020,
     "card_id": 105321020,
     "card_name": "暗魔法教师·海莱恩",
     "card_set_id": 10005,
@@ -72975,6 +76292,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105331020,
     "card_id": 105331020,
     "card_name": "伟大的魔法师·里维",
     "card_set_id": 10005,
@@ -72997,6 +76315,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106311020,
     "card_id": 106311020,
     "card_name": "神秘占星者",
     "card_set_id": 10006,
@@ -73019,6 +76338,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 109331010,
     "card_id": 109331010,
     "card_name": "光魔法教师·米兰",
     "card_set_id": 10009,
@@ -73041,6 +76361,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109341010,
     "card_id": 109341010,
     "card_name": "神託的妖童·阿鲁鲁麦雅",
     "card_set_id": 10009,
@@ -73063,6 +76384,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109341020,
     "card_id": 109341020,
     "card_name": "绝望奇美拉",
     "card_set_id": 10009,
@@ -73085,6 +76407,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111341020,
     "card_id": 111341020,
     "card_name": "小甜心★梅杜莎",
     "card_set_id": 10011,
@@ -73107,6 +76430,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113341020,
     "card_id": 113341020,
     "card_name": "老练的大魔法师·伊拉斯莫斯",
     "card_set_id": 10013,
@@ -73129,6 +76453,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115341020,
     "card_id": 115341020,
     "card_name": "猫耳魔法使·凯留",
     "card_set_id": 10015,
@@ -73151,6 +76476,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117341020,
     "card_id": 117341020,
     "card_name": "精金巨像",
     "card_set_id": 10017,
@@ -73173,6 +76499,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119341020,
     "card_id": 119341020,
     "card_name": "异幻·伊弗利特",
     "card_set_id": 10019,
@@ -73195,6 +76522,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122331020,
     "card_id": 122331020,
     "card_name": "杰出的魔术师",
     "card_set_id": 10022,
@@ -73217,6 +76545,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124341020,
     "card_id": 124341020,
     "card_name": "极冠幻想兽",
     "card_set_id": 10024,
@@ -73239,6 +76568,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126321010,
     "card_id": 126321010,
     "card_name": "奇幻骑士",
     "card_set_id": 10026,
@@ -73261,6 +76591,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127321020,
     "card_id": 127321020,
     "card_name": "水晶魔女",
     "card_set_id": 10027,
@@ -73283,6 +76614,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128311020,
     "card_id": 128311020,
     "card_name": "狼群召唤师",
     "card_set_id": 10028,
@@ -73305,6 +76637,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900321010,
     "card_id": 900321010,
     "card_name": "马纳历亚白龙",
     "card_set_id": 90000,
@@ -73327,6 +76660,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900321020,
     "card_id": 900321020,
     "card_name": "马纳历亚黑龙",
     "card_set_id": 90000,
@@ -73349,6 +76683,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900321030,
     "card_id": 900321030,
     "card_name": "暗黑奇美拉",
     "card_set_id": 90000,
@@ -73371,6 +76706,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900321040,
     "card_id": 900321040,
     "card_name": "暗黑恶魔",
     "card_set_id": 90000,
@@ -73393,6 +76729,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101334010,
     "card_id": 101334010,
     "card_name": "神秘的礼物",
     "card_set_id": 10001,
@@ -73415,6 +76752,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102334030,
     "card_id": 102334030,
     "card_name": "破灭的禁术",
     "card_set_id": 10002,
@@ -73437,6 +76775,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104334010,
     "card_id": 104334010,
     "card_name": "变异的雷击",
     "card_set_id": 10004,
@@ -73459,6 +76798,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107334020,
     "card_id": 107334020,
     "card_name": "大召唤",
     "card_set_id": 10007,
@@ -73481,6 +76821,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110324010,
     "card_id": 110324010,
     "card_name": "真实的宣告",
     "card_set_id": 10010,
@@ -73503,6 +76844,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115324010,
     "card_id": 115324010,
     "card_name": "大红莲之术",
     "card_set_id": 10015,
@@ -73525,6 +76867,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123334010,
     "card_id": 123334010,
     "card_name": "解放的绝尽",
     "card_set_id": 10023,
@@ -73547,6 +76890,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127314010,
     "card_id": 127314010,
     "card_name": "冰雨坠裂",
     "card_set_id": 10027,
@@ -73569,6 +76913,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334010,
     "card_id": 900334010,
     "card_name": "中级诅咒",
     "card_set_id": 90000,
@@ -73591,6 +76936,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344130,
     "card_id": 900344130,
     "card_name": "究极魔法",
     "card_set_id": 90000,
@@ -73613,6 +76959,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100411040,
     "card_id": 100411040,
     "card_name": "龙骑士守护者",
     "card_set_id": 10000,
@@ -73635,6 +76982,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101421060,
     "card_id": 101421060,
     "card_name": "恶魔龙骑士",
     "card_set_id": 10001,
@@ -73657,6 +77005,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101421100,
     "card_id": 101421100,
     "card_name": "迷雾巨龙",
     "card_set_id": 10001,
@@ -73679,6 +77028,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101431030,
     "card_id": 101431030,
     "card_name": "绯天炎龙骑兵",
     "card_set_id": 10001,
@@ -73701,6 +77051,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101441020,
     "card_id": 101441020,
     "card_name": "黑龙骑士·法露特",
     "card_set_id": 10001,
@@ -73723,6 +77074,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102411050,
     "card_id": 102411050,
     "card_name": "岛屿巨鲸",
     "card_set_id": 10002,
@@ -73745,6 +77097,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103421040,
     "card_id": 103421040,
     "card_name": "夜枭卫士",
     "card_set_id": 10003,
@@ -73767,6 +77120,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 104431020,
     "card_id": 104431020,
     "card_name": "不死鸟骑手·爱娜",
     "card_set_id": 10004,
@@ -73789,6 +77143,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106411020,
     "card_id": 106411020,
     "card_name": "铁鳞狂战士",
     "card_set_id": 10006,
@@ -73811,6 +77166,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108411010,
     "card_id": 108411010,
     "card_name": "暗影龙骑士·克妲",
     "card_set_id": 10008,
@@ -73833,6 +77189,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109441030,
     "card_id": 109441030,
     "card_name": "终战龙骑士",
     "card_set_id": 10009,
@@ -73855,6 +77212,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113441030,
     "card_id": 113441030,
     "card_name": "羁绊龙剑士·艾拉",
     "card_set_id": 10013,
@@ -73877,6 +77235,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114431010,
     "card_id": 114431010,
     "card_name": "雾冰三角龙",
     "card_set_id": 10014,
@@ -73899,6 +77258,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115421010,
     "card_id": 115421010,
     "card_name": "松绿龙军师",
     "card_set_id": 10015,
@@ -73921,6 +77281,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116411020,
     "card_id": 116411020,
     "card_name": "旋棍龙人",
     "card_set_id": 10016,
@@ -73943,6 +77304,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116441020,
     "card_id": 116441020,
     "card_name": "狂涛蛇颈龙",
     "card_set_id": 10016,
@@ -73965,6 +77327,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116441030,
     "card_id": 116441030,
     "card_name": "造极霸龙·吉尔沃",
     "card_set_id": 10016,
@@ -73987,6 +77350,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117431020,
     "card_id": 117431020,
     "card_name": "永恒巨鲸",
     "card_set_id": 10017,
@@ -74009,6 +77373,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119421010,
     "card_id": 119421010,
     "card_name": "爱的大殿堂·法斯堤巴",
     "card_set_id": 10019,
@@ -74031,6 +77396,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120411030,
     "card_id": 120411030,
     "card_name": "龙族治疗师",
     "card_set_id": 10020,
@@ -74053,6 +77419,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120431020,
     "card_id": 120431020,
     "card_name": "光翼天界龙",
     "card_set_id": 10020,
@@ -74075,6 +77442,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120441020,
     "card_id": 120441020,
     "card_name": "焦热龙翼·德莱克",
     "card_set_id": 10020,
@@ -74097,6 +77465,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 121421020,
     "card_id": 121421020,
     "card_name": "岩石巨鲸",
     "card_set_id": 10021,
@@ -74119,6 +77488,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 121441010,
     "card_id": 121441010,
     "card_name": "森林之影·拜迪",
     "card_set_id": 10021,
@@ -74141,6 +77511,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123441020,
     "card_id": 123441020,
     "card_name": "繁荣的宝石龙",
     "card_set_id": 10023,
@@ -74163,6 +77534,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124441020,
     "card_id": 124441020,
     "card_name": "秘汤之山脉龙",
     "card_set_id": 10024,
@@ -74185,6 +77557,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125441020,
     "card_id": 125441020,
     "card_name": "黑翼霸主·法露特",
     "card_set_id": 10025,
@@ -74207,6 +77580,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 127441030,
     "card_id": 127441030,
     "card_name": "海洋之星·吉赛儿",
     "card_set_id": 10027,
@@ -74229,6 +77603,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 128421020,
     "card_id": 128421020,
     "card_name": "威严的龙人·刚培恩",
     "card_set_id": 10028,
@@ -74251,6 +77626,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129441010,
     "card_id": 129441010,
     "card_name": "黑苍之绊·法露特与米莉亚姆",
     "card_set_id": 10029,
@@ -74273,6 +77649,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900411020,
     "card_id": 900411020,
     "card_name": "风暴巨龙",
     "card_set_id": 90000,
@@ -74295,6 +77672,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900441060,
     "card_id": 900441060,
     "card_name": "羁绊之霸龙",
     "card_set_id": 90000,
@@ -74317,6 +77695,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104424010,
     "card_id": 104424010,
     "card_name": "闪光冲击",
     "card_set_id": 10004,
@@ -74339,6 +77718,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105424010,
     "card_id": 105424010,
     "card_name": "驭龙之枪",
     "card_set_id": 10005,
@@ -74361,6 +77741,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101432010,
     "card_id": 101432010,
     "card_name": "龙化之塔",
     "card_set_id": 10001,
@@ -74383,6 +77764,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100511060,
     "card_id": 100511060,
     "card_name": "死灵骑士",
     "card_set_id": 10000,
@@ -74405,6 +77787,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101521070,
     "card_id": 101521070,
     "card_name": "死者之都女王",
     "card_set_id": 10001,
@@ -74427,6 +77810,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101531040,
     "card_id": 101531040,
     "card_name": "死亡暴君",
     "card_set_id": 10001,
@@ -74449,6 +77833,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102541010,
     "card_id": 102541010,
     "card_name": "苍蝇王",
     "card_set_id": 10002,
@@ -74471,6 +77856,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103531020,
     "card_id": 103531020,
     "card_name": "巴罗尔",
     "card_set_id": 10003,
@@ -74493,6 +77879,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104511030,
     "card_id": 104511030,
     "card_name": "漆黑的镰刀手",
     "card_set_id": 10004,
@@ -74515,6 +77902,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105531010,
     "card_id": 105531010,
     "card_name": "黑天鹅·奥黛儿",
     "card_set_id": 10005,
@@ -74537,6 +77925,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107531020,
     "card_id": 107531020,
     "card_name": "骷髅王子",
     "card_set_id": 10007,
@@ -74559,6 +77948,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108541010,
     "card_id": 108541010,
     "card_name": "永劫欲求者·关德温",
     "card_set_id": 10008,
@@ -74581,6 +77971,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110531010,
     "card_id": 110531010,
     "card_name": "冥河引渡者·凯伦",
     "card_set_id": 10010,
@@ -74603,6 +77994,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117521010,
     "card_id": 117521010,
     "card_name": "幽暗守墓者",
     "card_set_id": 10017,
@@ -74625,6 +78017,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117541030,
     "card_id": 117541030,
     "card_name": "冥府的女主宰·奈芙蒂斯",
     "card_set_id": 10017,
@@ -74647,6 +78040,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118521010,
     "card_id": 118521010,
     "card_name": "金矿死灵法师",
     "card_set_id": 10018,
@@ -74669,6 +78063,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118541030,
     "card_id": 118541030,
     "card_name": "伊西丝",
     "card_set_id": 10018,
@@ -74691,6 +78086,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119511010,
     "card_id": 119511010,
     "card_name": "友善的死灵法师",
     "card_set_id": 10019,
@@ -74713,6 +78109,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119541030,
     "card_id": 119541030,
     "card_name": "神异形·赛勒斯特号",
     "card_set_id": 10019,
@@ -74735,6 +78132,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120511020,
     "card_id": 120511020,
     "card_name": "溃击木乃伊",
     "card_set_id": 10020,
@@ -74757,6 +78155,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 120541030,
     "card_id": 120541030,
     "card_name": "恶兆暴君",
     "card_set_id": 10020,
@@ -74779,6 +78178,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122521010,
     "card_id": 122521010,
     "card_name": "怨恨收集者",
     "card_set_id": 10022,
@@ -74801,6 +78201,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123521030,
     "card_id": 123521030,
     "card_name": "绝叫的崇拜者",
     "card_set_id": 10023,
@@ -74823,6 +78224,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123541020,
     "card_id": 123541020,
     "card_name": "混沌的死物",
     "card_set_id": 10023,
@@ -74845,6 +78247,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124521020,
     "card_id": 124521020,
     "card_name": "骷髅人马",
     "card_set_id": 10024,
@@ -74867,6 +78270,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124531010,
     "card_id": 124531010,
     "card_name": "寒气死灵术师",
     "card_set_id": 10024,
@@ -74889,6 +78293,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125531010,
     "card_id": 125531010,
     "card_name": "冥河的流葬·凯伦",
     "card_set_id": 10025,
@@ -74911,6 +78316,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127541020,
     "card_id": 127541020,
     "card_name": "灭尸执行者·米罗尔",
     "card_set_id": 10027,
@@ -74933,6 +78339,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128511020,
     "card_id": 128511020,
     "card_name": "强欲守墓人",
     "card_set_id": 10028,
@@ -74955,6 +78362,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128541030,
     "card_id": 128541030,
     "card_name": "复活之神",
     "card_set_id": 10028,
@@ -74977,6 +78385,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101534030,
     "card_id": 101534030,
     "card_name": "死亡祝福",
     "card_set_id": 10001,
@@ -74999,6 +78408,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900544050,
     "card_id": 900544050,
     "card_name": "永恒的誓言",
     "card_set_id": 90000,
@@ -75021,6 +78431,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900533010,
     "card_id": 900533010,
     "card_name": "奈落之冠",
     "card_set_id": 90000,
@@ -75043,6 +78454,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 100611040,
     "card_id": 100611040,
     "card_name": "恶魔追猎者",
     "card_set_id": 10000,
@@ -75065,6 +78477,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101611120,
     "card_id": 101611120,
     "card_name": "万夫莫敌的巨人",
     "card_set_id": 10001,
@@ -75087,6 +78500,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101631060,
     "card_id": 101631060,
     "card_name": "梅杜莎",
     "card_set_id": 10001,
@@ -75109,6 +78523,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101641010,
     "card_id": 101641010,
     "card_name": "吸血鬼女王",
     "card_set_id": 10001,
@@ -75131,6 +78546,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102611030,
     "card_id": 102611030,
     "card_name": "恶魔奴隶",
     "card_set_id": 10002,
@@ -75153,6 +78569,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103611060,
     "card_id": 103611060,
     "card_name": "傲慢的恶魔",
     "card_set_id": 10003,
@@ -75175,6 +78592,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103621040,
     "card_id": 103621040,
     "card_name": "水源魔兽",
     "card_set_id": 10003,
@@ -75197,6 +78615,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105631020,
     "card_id": 105631020,
     "card_name": "幻影猫",
     "card_set_id": 10005,
@@ -75219,6 +78638,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105641010,
     "card_id": 105641010,
     "card_name": "邪恶妖精·卡拉波斯",
     "card_set_id": 10005,
@@ -75241,6 +78661,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106621020,
     "card_id": 106621020,
     "card_name": "芬里尔",
     "card_set_id": 10006,
@@ -75263,6 +78684,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109621020,
     "card_id": 109621020,
     "card_name": "魔晶上尉·伯梅伦",
     "card_set_id": 10009,
@@ -75285,6 +78707,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111621010,
     "card_id": 111621010,
     "card_name": "誓约的魔人",
     "card_set_id": 10011,
@@ -75307,6 +78730,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112641030,
     "card_id": 112641030,
     "card_name": "钢之吸血鬼·诗雷",
     "card_set_id": 10012,
@@ -75329,6 +78753,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 113631020,
     "card_id": 113631020,
     "card_name": "哀戚的恶鬼",
     "card_set_id": 10013,
@@ -75351,6 +78776,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113631030,
     "card_id": 113631030,
     "card_name": "暗影恶魔·摩里亚娜",
     "card_set_id": 10013,
@@ -75373,6 +78799,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114631020,
     "card_id": 114631020,
     "card_name": "夜袭的吸血鬼",
     "card_set_id": 10014,
@@ -75395,6 +78822,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114641010,
     "card_id": 114641010,
     "card_name": "仁义恶魔·夕月",
     "card_set_id": 10014,
@@ -75417,6 +78845,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115611030,
     "card_id": 115611030,
     "card_name": "虐毒巨蛇",
     "card_set_id": 10015,
@@ -75439,6 +78868,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116641010,
     "card_id": 116641010,
     "card_name": "魔兽女帝·涅蕾雅",
     "card_set_id": 10016,
@@ -75461,6 +78891,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118611030,
     "card_id": 118611030,
     "card_name": "轮盘吸血鬼",
     "card_set_id": 10018,
@@ -75483,6 +78914,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119641010,
     "card_id": 119641010,
     "card_name": "神狼·希斯",
     "card_set_id": 10019,
@@ -75505,6 +78937,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 121611030,
     "card_id": 121611030,
     "card_name": "蹂躏的恶魔",
     "card_set_id": 10021,
@@ -75527,6 +78960,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122631010,
     "card_id": 122631010,
     "card_name": "猩红吸血鬼",
     "card_set_id": 10022,
@@ -75549,6 +78983,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 123611020,
     "card_id": 123611020,
     "card_name": "怪腕魔剑士",
     "card_set_id": 10023,
@@ -75571,6 +79006,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 123641020,
     "card_id": 123641020,
     "card_name": "永远的惨痛",
     "card_set_id": 10023,
@@ -75593,6 +79029,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124621010,
     "card_id": 124621010,
     "card_name": "客房服务的恶魔",
     "card_set_id": 10024,
@@ -75615,6 +79052,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124631020,
     "card_id": 124631020,
     "card_name": "恶魔保镖",
     "card_set_id": 10024,
@@ -75637,6 +79075,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 125611030,
     "card_id": 125611030,
     "card_name": "狂诞的恶鬼",
     "card_set_id": 10025,
@@ -75659,6 +79098,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125641030,
     "card_id": 125641030,
     "card_name": "月下狼王·华兹",
     "card_set_id": 10025,
@@ -75681,6 +79121,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126621030,
     "card_id": 126621030,
     "card_name": "狂怒之狼",
     "card_set_id": 10026,
@@ -75703,6 +79144,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 126641030,
     "card_id": 126641030,
     "card_name": "剧毒的魔风·帕祖祖",
     "card_set_id": 10026,
@@ -75725,6 +79167,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127611030,
     "card_id": 127611030,
     "card_name": "冰霜巨魔",
     "card_set_id": 10027,
@@ -75747,6 +79190,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127641020,
     "card_id": 127641020,
     "card_name": "蛇殿执行者·盖诺姆尔",
     "card_set_id": 10027,
@@ -75769,6 +79213,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128641030,
     "card_id": 128641030,
     "card_name": "坠狱之门",
     "card_set_id": 10028,
@@ -75791,6 +79236,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 129611010,
     "card_id": 129611010,
     "card_name": "血剑锻造师",
     "card_set_id": 10029,
@@ -75813,6 +79259,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100624010,
     "card_id": 100624010,
     "card_name": "恶魔暴风",
     "card_set_id": 10000,
@@ -75835,6 +79282,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104614010,
     "card_id": 104614010,
     "card_name": "生命夺取",
     "card_set_id": 10004,
@@ -75857,6 +79305,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107634010,
     "card_id": 107634010,
     "card_name": "巨大恶魔掌",
     "card_set_id": 10007,
@@ -75879,6 +79328,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101711070,
     "card_id": 101711070,
     "card_name": "神圣战甲",
     "card_set_id": 10001,
@@ -75901,6 +79351,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101721090,
     "card_id": 101721090,
     "card_name": "神谕的贵族",
     "card_set_id": 10001,
@@ -75923,6 +79374,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101731020,
     "card_id": 101731020,
     "card_name": "大主教·雷莉亚",
     "card_set_id": 10001,
@@ -75945,6 +79397,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101741020,
     "card_id": 101741020,
     "card_name": "黑天月兔妖",
     "card_set_id": 10001,
@@ -75967,6 +79420,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102731010,
     "card_id": 102731010,
     "card_name": "辉夜姬",
     "card_set_id": 10002,
@@ -75989,6 +79443,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102731030,
     "card_id": 102731030,
     "card_name": "天空守护者·迦楼罗",
     "card_set_id": 10002,
@@ -76011,6 +79466,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103731030,
     "card_id": 103731030,
     "card_name": "英灵神殿上将",
     "card_set_id": 10003,
@@ -76033,6 +79489,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104721040,
     "card_id": 104721040,
     "card_name": "卡吕冬",
     "card_set_id": 10004,
@@ -76055,6 +79512,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 104731030,
     "card_id": 104731030,
     "card_name": "酷刑审判者",
     "card_set_id": 10004,
@@ -76077,6 +79535,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104741010,
     "card_id": 104741010,
     "card_name": "黑暗贞德",
     "card_set_id": 10004,
@@ -76099,6 +79558,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105711020,
     "card_id": 105711020,
     "card_name": "圣洁的僧侣",
     "card_set_id": 10005,
@@ -76121,6 +79581,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105721020,
     "card_id": 105721020,
     "card_name": "鹰身人",
     "card_set_id": 10005,
@@ -76143,6 +79604,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 105721030,
     "card_id": 105721030,
     "card_name": "哈提",
     "card_set_id": 10005,
@@ -76165,6 +79627,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105731010,
     "card_id": 105731010,
     "card_name": "白天鹅·奥德蒂",
     "card_set_id": 10005,
@@ -76187,6 +79650,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106721010,
     "card_id": 106721010,
     "card_name": "星辰女神官",
     "card_set_id": 10006,
@@ -76209,6 +79673,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106741010,
     "card_id": 106741010,
     "card_name": "白翼守护神·埃忒耳",
     "card_set_id": 10006,
@@ -76231,6 +79696,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107721010,
     "card_id": 107721010,
     "card_name": "大主教·嘉德丽雅",
     "card_set_id": 10007,
@@ -76253,6 +79719,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 108741030,
     "card_id": 108741030,
     "card_name": "图坦卡门",
     "card_set_id": 10008,
@@ -76275,6 +79742,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 109741010,
     "card_id": 109741010,
     "card_name": "七宝石公主·蕾菲尔",
     "card_set_id": 10009,
@@ -76297,6 +79765,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111741010,
     "card_id": 111741010,
     "card_name": "审判的圣女·莱娜",
     "card_set_id": 10011,
@@ -76319,6 +79788,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 113721020,
     "card_id": 113721020,
     "card_name": "邪教神父",
     "card_set_id": 10013,
@@ -76341,6 +79811,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114711020,
     "card_id": 114711020,
     "card_name": "过拥神宠的圣职者",
     "card_set_id": 10014,
@@ -76363,6 +79834,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115741010,
     "card_id": 115741010,
     "card_name": "尊荣骑士·维尔伯特",
     "card_set_id": 10015,
@@ -76385,6 +79857,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115741030,
     "card_id": 115741030,
     "card_name": "丰饶的西风神",
     "card_set_id": 10015,
@@ -76407,6 +79880,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 116741020,
     "card_id": 116741020,
     "card_name": "机指狂人·伊维尔",
     "card_set_id": 10016,
@@ -76429,6 +79903,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117721020,
     "card_id": 117721020,
     "card_name": "光明神父",
     "card_set_id": 10017,
@@ -76451,6 +79926,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119741030,
     "card_id": 119741030,
     "card_name": "弗丽嘉",
     "card_set_id": 10019,
@@ -76473,6 +79949,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 121711030,
     "card_id": 121711030,
     "card_name": "猫熊圣骑士",
     "card_set_id": 10021,
@@ -76495,6 +79972,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121721010,
     "card_id": 121721010,
     "card_name": "明光的翼人",
     "card_set_id": 10021,
@@ -76517,6 +79995,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122741010,
     "card_id": 122741010,
     "card_name": "灾祸之神",
     "card_set_id": 10022,
@@ -76539,6 +80018,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122741030,
     "card_id": 122741030,
     "card_name": "光耀圣狮",
     "card_set_id": 10022,
@@ -76561,6 +80041,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124711020,
     "card_id": 124711020,
     "card_name": "月兔妖守卫",
     "card_set_id": 10024,
@@ -76583,6 +80064,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124731020,
     "card_id": 124731020,
     "card_name": "恶浊神父",
     "card_set_id": 10024,
@@ -76605,6 +80087,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124741010,
     "card_id": 124741010,
     "card_name": "千箔百面之邪神",
     "card_set_id": 10024,
@@ -76627,6 +80110,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126711010,
     "card_id": 126711010,
     "card_name": "绿宝石圣女",
     "card_set_id": 10026,
@@ -76649,6 +80133,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 126721020,
     "card_id": 126721020,
     "card_name": "灵鼠族大厨",
     "card_set_id": 10026,
@@ -76671,6 +80156,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126741020,
     "card_id": 126741020,
     "card_name": "雷导神鸟",
     "card_set_id": 10026,
@@ -76693,6 +80179,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127741010,
     "card_id": 127741010,
     "card_name": "结盟的罪人·艾路拉戴",
     "card_set_id": 10027,
@@ -76715,6 +80202,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128741030,
     "card_id": 128741030,
     "card_name": "拥翼光辉·迦楼罗",
     "card_set_id": 10028,
@@ -76737,6 +80225,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900711050,
     "card_id": 900711050,
     "card_name": "圣翼的白龙",
     "card_set_id": 90000,
@@ -76759,6 +80248,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900711070,
     "card_id": 900711070,
     "card_name": "巴隆",
     "card_set_id": 90000,
@@ -76781,6 +80271,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900721040,
     "card_id": 900721040,
     "card_name": "独角兽",
     "card_set_id": 90000,
@@ -76803,6 +80294,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900731020,
     "card_id": 900731020,
     "card_name": "圣王天狮",
     "card_set_id": 90000,
@@ -76825,6 +80317,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101734010,
     "card_id": 101734010,
     "card_name": "忒弥斯的审判",
     "card_set_id": 10001,
@@ -76847,6 +80340,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112734010,
     "card_id": 112734010,
     "card_name": "肃清的光辉",
     "card_set_id": 10012,
@@ -76869,6 +80363,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101733030,
     "card_id": 101733030,
     "card_name": "咏唱：祈愿者的号召",
     "card_set_id": 10001,
@@ -76891,6 +80386,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129732010,
     "card_id": 129732010,
     "card_name": "烈风巨镰",
     "card_set_id": 10029,
@@ -76913,6 +80409,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900733010,
     "card_id": 900733010,
     "card_name": "幻胧之月",
     "card_set_id": 90000,
@@ -76935,6 +80432,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100811050,
     "card_id": 100811050,
     "card_name": "黑铁士兵",
     "card_set_id": 10000,
@@ -76957,6 +80455,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 107811080,
     "card_id": 107811080,
     "card_name": "船长·梅帝欧",
     "card_set_id": 10007,
@@ -76979,6 +80478,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107831010,
     "card_id": 107831010,
     "card_name": "被赋生的兽人·纱妃拉",
     "card_set_id": 10007,
@@ -77001,6 +80501,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109821010,
     "card_id": 109821010,
     "card_name": "异界入侵者·巴吉里斯",
     "card_set_id": 10009,
@@ -77023,6 +80524,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 110841030,
     "card_id": 110841030,
     "card_name": "外界之理",
     "card_set_id": 10010,
@@ -77045,6 +80547,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112841030,
     "card_id": 112841030,
     "card_name": "埃亚隆支配者·贝尔弗特",
     "card_set_id": 10012,
@@ -77067,6 +80570,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113811030,
     "card_id": 113811030,
     "card_name": "机兽猛玛象",
     "card_set_id": 10013,
@@ -77089,6 +80593,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113841030,
     "card_id": 113841030,
     "card_name": "连结之心·奥契丝",
     "card_set_id": 10013,
@@ -77111,6 +80616,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 114831010,
     "card_id": 114831010,
     "card_name": "加农炮寄居蟹",
     "card_set_id": 10014,
@@ -77133,6 +80639,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 116841030,
     "card_id": 116841030,
     "card_name": "灭裂械爪熊",
     "card_set_id": 10016,
@@ -77155,6 +80662,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119811030,
     "card_id": 119811030,
     "card_name": "玩具修缮师",
     "card_set_id": 10019,
@@ -77177,6 +80685,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 120831010,
     "card_id": 120831010,
     "card_name": "反逆之命·米莉亚姆",
     "card_set_id": 10020,
@@ -77199,6 +80708,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120841010,
     "card_id": 120841010,
     "card_name": "终末守门人·丝碧涅",
     "card_set_id": 10020,
@@ -77221,6 +80731,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124841030,
     "card_id": 124841030,
     "card_name": "永久之盾·席翁",
     "card_set_id": 10024,
@@ -77243,6 +80754,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125841010,
     "card_id": 125841010,
     "card_name": "无限世界·奥契丝",
     "card_set_id": 10025,
@@ -77265,6 +80777,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126831010,
     "card_id": 126831010,
     "card_name": "器械支配者·吉尔克",
     "card_set_id": 10026,
@@ -77287,6 +80800,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126841030,
     "card_id": 126841030,
     "card_name": "超越万识之物",
     "card_set_id": 10026,
@@ -77309,6 +80823,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 128811030,
     "card_id": 128811030,
     "card_name": "远古遗物",
     "card_set_id": 10028,
@@ -77331,6 +80846,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 128841020,
     "card_id": 128841020,
     "card_name": "驱动领域·格蕾缇娜",
     "card_set_id": 10028,
@@ -77353,6 +80869,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900841070,
     "card_id": 900841070,
     "card_name": "提线傀儡·托蕾",
     "card_set_id": 90000,
@@ -77375,6 +80892,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900841320,
     "card_id": 900841320,
     "card_name": "奥契丝的人偶·洛伊德",
     "card_set_id": 90000,
@@ -77397,6 +80915,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124834010,
     "card_id": 124834010,
     "card_name": "神伟的机变",
     "card_set_id": 10024,
@@ -77419,6 +80938,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101041010,
     "card_id": 101041010,
     "card_name": "加百列",
     "card_set_id": 10001,
@@ -77441,6 +80961,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 102011010,
     "card_id": 102011010,
     "card_name": "帝国猛玛象",
     "card_set_id": 10002,
@@ -77463,6 +80984,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102041010,
     "card_id": 102041010,
     "card_name": "黑暗天使·奥莉薇",
     "card_set_id": 10002,
@@ -77485,6 +81007,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103041020,
     "card_id": 103041020,
     "card_name": "撒哈利尔",
     "card_set_id": 10003,
@@ -77507,6 +81030,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104031010,
     "card_id": 104031010,
     "card_name": "愈音奏者·亨莉雅妲",
     "card_set_id": 10004,
@@ -77529,6 +81053,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 106021030,
     "card_id": 106021030,
     "card_name": "癸干忒斯",
     "card_set_id": 10006,
@@ -77551,6 +81076,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106041020,
     "card_id": 106041020,
     "card_name": "黄道天魔",
     "card_set_id": 10006,
@@ -77573,6 +81099,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 108041010,
     "card_id": 108041010,
     "card_name": "马尔杜克",
     "card_set_id": 10008,
@@ -77595,6 +81122,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 110021010,
     "card_id": 110021010,
     "card_name": "重装巨怪",
     "card_set_id": 10010,
@@ -77617,6 +81145,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110041020,
     "card_id": 110041020,
     "card_name": "饥饿绝杰·吉鲁涅莉婕",
     "card_set_id": 10010,
@@ -77639,6 +81168,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111021010,
     "card_id": 111021010,
     "card_name": "进化引导者·蕾娜",
     "card_set_id": 10011,
@@ -77661,6 +81191,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111031020,
     "card_id": 111031020,
     "card_name": "巨铠牛头人",
     "card_set_id": 10011,
@@ -77683,6 +81214,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111041020,
     "card_id": 111041020,
     "card_name": "异界统领者",
     "card_set_id": 10011,
@@ -77698,13 +81230,14 @@ let cardData = [
     "skill_condition": "character=me,character=me",
     "skill_preprocess": "none,none",
     "skill_disc": "入场曲 由敌方主战者职业的基本卡之中，随机增加不同的2张卡片到手牌中，并使其消费-3。",
-    "skill_option": "none,add=-3",
+    "skill_option": "add=-3",
     "skill_target": "character=op&target=inplay&card_type=class,character=me&target=skill_drew_card&card_type=all",
     "tribe_name": "-",
     "timing": "when_play,when_play"
   },
   {
     "atk": 4,
+    "base_card_id": 112041020,
     "card_id": 112041020,
     "card_name": "至高战神·奥丁",
     "card_set_id": 10012,
@@ -77727,6 +81260,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 115041010,
     "card_id": 115041010,
     "card_name": "埃癸斯之盾·雅典娜",
     "card_set_id": 10015,
@@ -77749,6 +81283,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116031020,
     "card_id": 116031020,
     "card_name": "爆炎魔神",
     "card_set_id": 10016,
@@ -77771,6 +81306,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 116041020,
     "card_id": 116041020,
     "card_name": "钢铁与大地之神",
     "card_set_id": 10016,
@@ -77793,6 +81329,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 120011010,
     "card_id": 120011010,
     "card_name": "伴奏天使",
     "card_set_id": 10020,
@@ -77815,6 +81352,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 123011020,
     "card_id": 123011020,
     "card_name": "山之巨人",
     "card_set_id": 10023,
@@ -77837,6 +81375,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123031020,
     "card_id": 123031020,
     "card_name": "荒天雷神",
     "card_set_id": 10023,
@@ -77859,6 +81398,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128011020,
     "card_id": 128011020,
     "card_name": "远足巨灵",
     "card_set_id": 10028,
@@ -77881,6 +81421,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129041010,
     "card_id": 129041010,
     "card_name": "诸神黄昏之揭幕·奥丁",
     "card_set_id": 10029,
@@ -77903,6 +81444,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900041030,
     "card_id": 900041030,
     "card_name": "烈焰·琉璃",
     "card_set_id": 90000,
@@ -77925,6 +81467,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900041130,
     "card_id": 900041130,
     "card_name": "贪食的贝西摩斯",
     "card_set_id": 90000,
@@ -77947,6 +81490,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105014010,
     "card_id": 105014010,
     "card_name": "蛋蛋大爆炸",
     "card_set_id": 10005,
@@ -77969,6 +81513,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044010,
     "card_id": 900044010,
     "card_name": "狄斯的制裁",
     "card_set_id": 90000,
@@ -77991,6 +81536,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125032010,
     "card_id": 125032010,
     "card_name": "终焉之地",
     "card_set_id": 10025,
@@ -78013,6 +81559,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101121110,
     "card_id": 101121110,
     "card_name": "森林之怒",
     "card_set_id": 10001,
@@ -78035,6 +81582,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102121040,
     "card_id": 102121040,
     "card_name": "精灵王·沃尔特",
     "card_set_id": 10002,
@@ -78057,6 +81605,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 103111060,
     "card_id": 103111060,
     "card_name": "森之巨灵",
     "card_set_id": 10003,
@@ -78079,6 +81628,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 104121040,
     "card_id": 104121040,
     "card_name": "勇猛的矮人",
     "card_set_id": 10004,
@@ -78101,6 +81651,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 104141010,
     "card_id": 104141010,
     "card_name": "精灵女王",
     "card_set_id": 10004,
@@ -78123,6 +81674,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110131010,
     "card_id": 110131010,
     "card_name": "煌刃战士·贝鲁",
     "card_set_id": 10010,
@@ -78145,6 +81697,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112131010,
     "card_id": 112131010,
     "card_name": "机攻枪精灵",
     "card_set_id": 10012,
@@ -78167,6 +81720,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113141010,
     "card_id": 113141010,
     "card_name": "始祖的巨狼·奥姆尼斯",
     "card_set_id": 10013,
@@ -78189,6 +81743,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117111030,
     "card_id": 117111030,
     "card_name": "森林之狼",
     "card_set_id": 10017,
@@ -78211,6 +81766,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117131020,
     "card_id": 117131020,
     "card_name": "森之暗念·莱昂内尔",
     "card_set_id": 10017,
@@ -78233,6 +81789,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119131010,
     "card_id": 119131010,
     "card_name": "原始的恶神",
     "card_set_id": 10019,
@@ -78255,6 +81812,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125141030,
     "card_id": 125141030,
     "card_name": "圣绿的光辉·宝石兽",
     "card_set_id": 10025,
@@ -78277,6 +81835,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127131020,
     "card_id": 127131020,
     "card_name": "芳气看守",
     "card_set_id": 10027,
@@ -78299,6 +81858,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101231040,
     "card_id": 101231040,
     "card_name": "铁卫战将",
     "card_set_id": 10001,
@@ -78321,6 +81881,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 102221040,
     "card_id": 102221040,
     "card_name": "甲贺女忍者",
     "card_set_id": 10002,
@@ -78343,6 +81904,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104241010,
     "card_id": 104241010,
     "card_name": "不灭英杰·罗兰",
     "card_set_id": 10004,
@@ -78365,6 +81927,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107241020,
     "card_id": 107241020,
     "card_name": "骑士王·亚瑟",
     "card_set_id": 10007,
@@ -78387,6 +81950,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111221010,
     "card_id": 111221010,
     "card_name": "狂枪人马",
     "card_set_id": 10011,
@@ -78409,6 +81973,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111231020,
     "card_id": 111231020,
     "card_name": "首席商贩·阿尔亚斯卡",
     "card_set_id": 10011,
@@ -78431,6 +81996,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111241010,
     "card_id": 111241010,
     "card_name": "炎狮大将军",
     "card_set_id": 10011,
@@ -78453,6 +82019,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112231030,
     "card_id": 112231030,
     "card_name": "魔雾公爵·亚卓德",
     "card_set_id": 10012,
@@ -78475,6 +82042,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112241020,
     "card_id": 112241020,
     "card_name": "纯铁英雄·约翰",
     "card_set_id": 10012,
@@ -78497,6 +82065,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113231020,
     "card_id": 113231020,
     "card_name": "荣耀的铁卫战将",
     "card_set_id": 10013,
@@ -78519,6 +82088,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113241010,
     "card_id": 113241010,
     "card_name": "海贼女王·亚尔丽妲",
     "card_set_id": 10013,
@@ -78541,6 +82111,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114241010,
     "card_id": 114241010,
     "card_name": "君临的猛虎",
     "card_set_id": 10014,
@@ -78563,6 +82134,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 116241010,
     "card_id": 116241010,
     "card_name": "战犀骑士·帕特里克",
     "card_set_id": 10016,
@@ -78585,6 +82157,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119231020,
     "card_id": 119231020,
     "card_name": "锐斧战士",
     "card_set_id": 10019,
@@ -78607,6 +82180,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119241030,
     "card_id": 119241030,
     "card_name": "神异形·舒瓦莉",
     "card_set_id": 10019,
@@ -78629,6 +82203,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122241010,
     "card_id": 122241010,
     "card_name": "荣胜剑士",
     "card_set_id": 10022,
@@ -78651,6 +82226,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123231010,
     "card_id": 123231010,
     "card_name": "阔刃熟习者",
     "card_set_id": 10023,
@@ -78673,6 +82249,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 124211030,
     "card_id": 124211030,
     "card_name": "拙速的斧战士",
     "card_set_id": 10024,
@@ -78695,6 +82272,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124231020,
     "card_id": 124231020,
     "card_name": "贵族盾兵",
     "card_set_id": 10024,
@@ -78717,6 +82295,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127241020,
     "card_id": 127241020,
     "card_name": "武皇执行者·雷帝尔",
     "card_set_id": 10027,
@@ -78739,6 +82318,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128241020,
     "card_id": 128241020,
     "card_name": "英杰学园长·盖尔德鲁",
     "card_set_id": 10028,
@@ -78761,6 +82341,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 129211020,
     "card_id": 129211020,
     "card_name": "灼热的刚强剑士",
     "card_set_id": 10029,
@@ -78783,6 +82364,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 900241070,
     "card_id": 900241070,
     "card_name": "《暴走》战车·奥辂昂",
     "card_set_id": 90000,
@@ -78805,6 +82387,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122234010,
     "card_id": 122234010,
     "card_name": "加冕仪式",
     "card_set_id": 10022,
@@ -78827,6 +82410,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900242010,
     "card_id": 900242010,
     "card_name": "不灭圣剑·杜兰朵",
     "card_set_id": 90000,
@@ -78849,6 +82433,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101331020,
     "card_id": 101331020,
     "card_name": "龙魂契约者",
     "card_set_id": 10001,
@@ -78871,6 +82456,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108331010,
     "card_id": 108331010,
     "card_name": "雪人大王",
     "card_set_id": 10008,
@@ -78893,6 +82479,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108331020,
     "card_id": 108331020,
     "card_name": "洋葱军团长·芭赛特",
     "card_set_id": 10008,
@@ -78915,6 +82502,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109321010,
     "card_id": 109321010,
     "card_name": "暗黑召唤师",
     "card_set_id": 10009,
@@ -78937,6 +82525,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110311020,
     "card_id": 110311020,
     "card_name": "真实的随从",
     "card_set_id": 10010,
@@ -78959,6 +82548,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 110341020,
     "card_id": 110341020,
     "card_name": "真实绝杰·莱欧",
     "card_set_id": 10010,
@@ -78981,6 +82571,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114341010,
     "card_id": 114341010,
     "card_name": "究极元素",
     "card_set_id": 10014,
@@ -79003,6 +82594,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115321010,
     "card_id": 115321010,
     "card_name": "古雅的术师",
     "card_set_id": 10015,
@@ -79025,6 +82617,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118321020,
     "card_id": 118321020,
     "card_name": "巨像治安官",
     "card_set_id": 10018,
@@ -79047,6 +82640,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119331010,
     "card_id": 119331010,
     "card_name": "逍遥隐居的前国王·芙莉亚",
     "card_set_id": 10019,
@@ -79069,6 +82663,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120321020,
     "card_id": 120321020,
     "card_name": "飓风巨像",
     "card_set_id": 10020,
@@ -79091,6 +82686,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124321020,
     "card_id": 124321020,
     "card_name": "废墟术师",
     "card_set_id": 10024,
@@ -79113,6 +82709,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127331020,
     "card_id": 127331020,
     "card_name": "异术看守",
     "card_set_id": 10027,
@@ -79135,6 +82732,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128341030,
     "card_id": 128341030,
     "card_name": "帝王巨像",
     "card_set_id": 10028,
@@ -79157,6 +82755,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129311020,
     "card_id": 129311020,
     "card_name": "景观魔导士",
     "card_set_id": 10029,
@@ -79179,6 +82778,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 900331050,
     "card_id": 900331050,
     "card_name": "奇幻魔兽·摩拉",
     "card_set_id": 90000,
@@ -79201,6 +82801,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900331070,
     "card_id": 900331070,
     "card_name": "白泽",
     "card_set_id": 90000,
@@ -79223,6 +82824,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900341010,
     "card_id": 900341010,
     "card_name": "究极·泥尘巨像",
     "card_set_id": 90000,
@@ -79245,6 +82847,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314040,
     "card_id": 101314040,
     "card_name": "双壁召唤术",
     "card_set_id": 10001,
@@ -79267,6 +82870,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101324020,
     "card_id": 101324020,
     "card_name": "炼金术的知识",
     "card_set_id": 10001,
@@ -79289,6 +82893,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102324030,
     "card_id": 102324030,
     "card_name": "连环实验",
     "card_set_id": 10002,
@@ -79311,6 +82916,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104324010,
     "card_id": 104324010,
     "card_name": "魔法剑",
     "card_set_id": 10004,
@@ -79333,6 +82939,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107314010,
     "card_id": 107314010,
     "card_name": "精神剥离",
     "card_set_id": 10007,
@@ -79355,6 +82962,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111334010,
     "card_id": 111334010,
     "card_name": "真实的戒律",
     "card_set_id": 10011,
@@ -79377,6 +82985,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121314010,
     "card_id": 121314010,
     "card_name": "天外的一隅",
     "card_set_id": 10021,
@@ -79399,6 +83008,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122334010,
     "card_id": 122334010,
     "card_name": "想像的具现化",
     "card_set_id": 10022,
@@ -79421,6 +83031,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344040,
     "card_id": 900344040,
     "card_name": "所罗门的戒指",
     "card_set_id": 90000,
@@ -79443,6 +83054,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101333010,
     "card_id": 101333010,
     "card_name": "诺诺的秘密研究室",
     "card_set_id": 10001,
@@ -79465,6 +83077,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114332010,
     "card_id": 114332010,
     "card_name": "魔导具专卖店",
     "card_set_id": 10014,
@@ -79487,6 +83100,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100421020,
     "card_id": 100421020,
     "card_name": "恐惧龙兽",
     "card_set_id": 10000,
@@ -79509,6 +83123,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101411080,
     "card_id": 101411080,
     "card_name": "暗骸龙",
     "card_set_id": 10001,
@@ -79531,6 +83146,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101411130,
     "card_id": 101411130,
     "card_name": "急冻的魔龙",
     "card_set_id": 10001,
@@ -79553,6 +83169,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101421070,
     "card_id": 101421070,
     "card_name": "神龙",
     "card_set_id": 10001,
@@ -79575,6 +83192,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101431060,
     "card_id": 101431060,
     "card_name": "海德拉",
     "card_set_id": 10001,
@@ -79597,6 +83215,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102431010,
     "card_id": 102431010,
     "card_name": "尼普顿",
     "card_set_id": 10002,
@@ -79619,6 +83238,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105411030,
     "card_id": 105411030,
     "card_name": "漆黑的兽人战士",
     "card_set_id": 10005,
@@ -79641,6 +83261,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107441010,
     "card_id": 107441010,
     "card_name": "龙之炎·吉尔尼特拉",
     "card_set_id": 10007,
@@ -79663,6 +83284,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 109411020,
     "card_id": 109411020,
     "card_name": "巨大长鳍鲔鱼",
     "card_set_id": 10009,
@@ -79685,6 +83307,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109441020,
     "card_id": 109441020,
     "card_name": "亚得米勒",
     "card_set_id": 10009,
@@ -79707,6 +83330,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 110441020,
     "card_id": 110441020,
     "card_name": "恶梦之龙·贾巴沃克",
     "card_set_id": 10010,
@@ -79729,6 +83353,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111441020,
     "card_id": 111441020,
     "card_name": "愤怒的龙帝·乙姬",
     "card_set_id": 10011,
@@ -79751,6 +83376,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112421020,
     "card_id": 112421020,
     "card_name": "灭炮龙人",
     "card_set_id": 10012,
@@ -79773,6 +83399,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112441010,
     "card_id": 112441010,
     "card_name": "天空的霸主·法露特",
     "card_set_id": 10012,
@@ -79795,6 +83422,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113421030,
     "card_id": 113421030,
     "card_name": "螺旋赤怒蛇",
     "card_set_id": 10013,
@@ -79817,6 +83445,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 115411020,
     "card_id": 115411020,
     "card_name": "三戟鱼人",
     "card_set_id": 10015,
@@ -79839,6 +83468,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 115441020,
     "card_id": 115441020,
     "card_name": "挑衅少女·嘉夜",
     "card_set_id": 10015,
@@ -79861,6 +83491,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 118421010,
     "card_id": 118421010,
     "card_name": "苍炎龙人",
     "card_set_id": 10018,
@@ -79883,6 +83514,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119431030,
     "card_id": 119431030,
     "card_name": "加鲁古尤",
     "card_set_id": 10019,
@@ -79905,6 +83537,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122431020,
     "card_id": 122431020,
     "card_name": "双牙龙人",
     "card_set_id": 10022,
@@ -79927,6 +83560,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122441010,
     "card_id": 122441010,
     "card_name": "烈焰之龙",
     "card_set_id": 10022,
@@ -79949,6 +83583,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123431010,
     "card_id": 123431010,
     "card_name": "惩治的人鱼",
     "card_set_id": 10023,
@@ -79971,6 +83606,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125411030,
     "card_id": 125411030,
     "card_name": "冰雹龙",
     "card_set_id": 10025,
@@ -79993,6 +83629,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 127441010,
     "card_id": 127441010,
     "card_name": "游猎的罪人·安媞马丽亚",
     "card_set_id": 10027,
@@ -80015,6 +83652,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127441020,
     "card_id": 127441020,
     "card_name": "禁牙执行者·朵列孜尔",
     "card_set_id": 10027,
@@ -80037,6 +83675,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 128411030,
     "card_id": 128411030,
     "card_name": "荒天圣龙",
     "card_set_id": 10028,
@@ -80059,6 +83698,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900421010,
     "card_id": 900421010,
     "card_name": "白鳞之龙",
     "card_set_id": 90000,
@@ -80081,6 +83721,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900421020,
     "card_id": 900421020,
     "card_name": "黑鳞之龙",
     "card_set_id": 90000,
@@ -80103,6 +83744,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900441090,
     "card_id": 900441090,
     "card_name": "盛怒的碧龙",
     "card_set_id": 90000,
@@ -80125,6 +83767,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100424010,
     "card_id": 100424010,
     "card_name": "灼热风暴",
     "card_set_id": 10000,
@@ -80147,6 +83790,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122424010,
     "card_id": 122424010,
     "card_name": "龙骑士的炎息",
     "card_set_id": 10022,
@@ -80169,6 +83813,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105432010,
     "card_id": 105432010,
     "card_name": "无谋之战",
     "card_set_id": 10005,
@@ -80191,6 +83836,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106423010,
     "card_id": 106423010,
     "card_name": "龙之峡谷",
     "card_set_id": 10006,
@@ -80213,6 +83859,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127432010,
     "card_id": 127432010,
     "card_name": "龙宫城",
     "card_set_id": 10027,
@@ -80235,6 +83882,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100521030,
     "card_id": 100521030,
     "card_name": "不死之王",
     "card_set_id": 10000,
@@ -80257,6 +83905,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101511070,
     "card_id": 101511070,
     "card_name": "巨镰骷髅兵",
     "card_set_id": 10001,
@@ -80279,6 +83928,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101511100,
     "card_id": 101511100,
     "card_name": "奥迦斯",
     "card_set_id": 10001,
@@ -80301,6 +83951,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103521040,
     "card_id": 103521040,
     "card_name": "冥守战士·卡穆拉",
     "card_set_id": 10003,
@@ -80323,6 +83974,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104531030,
     "card_id": 104531030,
     "card_name": "不死大君",
     "card_set_id": 10004,
@@ -80345,6 +83997,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104541020,
     "card_id": 104541020,
     "card_name": "魔将·赫克托",
     "card_set_id": 10004,
@@ -80367,6 +84020,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105511020,
     "card_id": 105511020,
     "card_name": "帽子先生",
     "card_set_id": 10005,
@@ -80389,6 +84043,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105541010,
     "card_id": 105541010,
     "card_name": "暗黑爱丽丝",
     "card_set_id": 10005,
@@ -80411,6 +84066,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106541020,
     "card_id": 106541020,
     "card_name": "灭杀之铠",
     "card_set_id": 10006,
@@ -80433,6 +84089,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 107521020,
     "card_id": 107521020,
     "card_name": "阿努比斯",
     "card_set_id": 10007,
@@ -80455,6 +84112,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108531010,
     "card_id": 108531010,
     "card_name": "反覆无常的复活师",
     "card_set_id": 10008,
@@ -80477,6 +84135,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 108541020,
     "card_id": 108541020,
     "card_name": "终末之骸",
     "card_set_id": 10008,
@@ -80499,6 +84158,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 108541030,
     "card_id": 108541030,
     "card_name": "幽灵支配者·阿卡斯",
     "card_set_id": 10008,
@@ -80521,6 +84181,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111531020,
     "card_id": 111531020,
     "card_name": "暴食的女帝",
     "card_set_id": 10011,
@@ -80543,6 +84204,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112541030,
     "card_id": 112541030,
     "card_name": "天鸣巨骸",
     "card_set_id": 10012,
@@ -80565,6 +84227,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 113521010,
     "card_id": 113521010,
     "card_name": "冥守祈祷师·媞媞",
     "card_set_id": 10013,
@@ -80587,6 +84250,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 115541030,
     "card_id": 115541030,
     "card_name": "驭魂苏生者·阿卡斯",
     "card_set_id": 10015,
@@ -80609,6 +84273,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 118541020,
     "card_id": 118541020,
     "card_name": "三体幻怪",
     "card_set_id": 10018,
@@ -80631,6 +84296,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 119531010,
     "card_id": 119531010,
     "card_name": "冥暗的钢刃·巴萨拉加",
     "card_set_id": 10019,
@@ -80653,6 +84319,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121531020,
     "card_id": 121531020,
     "card_name": "死亡违背者",
     "card_set_id": 10021,
@@ -80675,6 +84342,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124541020,
     "card_id": 124541020,
     "card_name": "幽魂的歧路·拉卡德勒",
     "card_set_id": 10024,
@@ -80697,6 +84365,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 126521030,
     "card_id": 126521030,
     "card_name": "腐尸海德拉",
     "card_set_id": 10026,
@@ -80719,6 +84388,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127541030,
     "card_id": 127541030,
     "card_name": "双魂的永恒·关德温",
     "card_set_id": 10027,
@@ -80741,6 +84411,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 128531010,
     "card_id": 128531010,
     "card_name": "幽魂钢琴家",
     "card_set_id": 10028,
@@ -80763,6 +84434,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 128541010,
     "card_id": 128541010,
     "card_name": "尸术王·科里内路司",
     "card_set_id": 10028,
@@ -80785,6 +84457,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129541020,
     "card_id": 129541020,
     "card_name": "不灭海盗",
     "card_set_id": 10029,
@@ -80807,6 +84480,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106534010,
     "card_id": 106534010,
     "card_name": "死灭之雾",
     "card_set_id": 10006,
@@ -80829,6 +84503,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113534010,
     "card_id": 113534010,
     "card_name": "元魂流逝",
     "card_set_id": 10013,
@@ -80851,6 +84526,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109533010,
     "card_id": 109533010,
     "card_name": "尸病之街",
     "card_set_id": 10009,
@@ -80873,6 +84549,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115523010,
     "card_id": 115523010,
     "card_name": "冥界之入魂道",
     "card_set_id": 10015,
@@ -80895,6 +84572,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100621010,
     "card_id": 100621010,
     "card_name": "深渊巨兽",
     "card_set_id": 10000,
@@ -80917,6 +84595,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101621050,
     "card_id": 101621050,
     "card_name": "阿鲁卡多",
     "card_set_id": 10001,
@@ -80939,6 +84618,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 102621020,
     "card_id": 102621020,
     "card_name": "狂人暴君",
     "card_set_id": 10002,
@@ -80961,6 +84641,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103631020,
     "card_id": 103631020,
     "card_name": "冰剑的战鬼",
     "card_set_id": 10003,
@@ -80983,6 +84664,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103641010,
     "card_id": 103641010,
     "card_name": "鲜血女帝",
     "card_set_id": 10003,
@@ -81005,6 +84687,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104631020,
     "card_id": 104631020,
     "card_name": "灵魂终结者",
     "card_set_id": 10004,
@@ -81027,6 +84710,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105631010,
     "card_id": 105631010,
     "card_name": "恶魔巡查官·亚梅拉达",
     "card_set_id": 10005,
@@ -81049,6 +84733,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106611010,
     "card_id": 106611010,
     "card_name": "格萝德",
     "card_set_id": 10006,
@@ -81071,6 +84756,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106631010,
     "card_id": 106631010,
     "card_name": "斯忒诺",
     "card_set_id": 10006,
@@ -81093,6 +84779,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108641020,
     "card_id": 108641020,
     "card_name": "噬暗巨蝠",
     "card_set_id": 10008,
@@ -81115,6 +84802,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 110641020,
     "card_id": 110641020,
     "card_name": "唤厄者",
     "card_set_id": 10010,
@@ -81137,6 +84825,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114641020,
     "card_id": 114641020,
     "card_name": "胎动的魔神",
     "card_set_id": 10014,
@@ -81159,6 +84848,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 117631010,
     "card_id": 117631010,
     "card_name": "灾祸吸血鬼",
     "card_set_id": 10017,
@@ -81181,6 +84871,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118641010,
     "card_id": 118641010,
     "card_name": "享乐的经营者·波耳特欧",
     "card_set_id": 10018,
@@ -81203,6 +84894,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 119641020,
     "card_id": 119641020,
     "card_name": "异幻·迪亚波罗斯",
     "card_set_id": 10019,
@@ -81225,6 +84917,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 120611020,
     "card_id": 120611020,
     "card_name": "双头毒蝎",
     "card_set_id": 10020,
@@ -81247,6 +84940,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 120631020,
     "card_id": 120631020,
     "card_name": "方舟魔神",
     "card_set_id": 10020,
@@ -81269,6 +84963,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 121641020,
     "card_id": 121641020,
     "card_name": "百兽大恶鬼",
     "card_set_id": 10021,
@@ -81291,6 +84986,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122621020,
     "card_id": 122621020,
     "card_name": "蛊惑之魔狼",
     "card_set_id": 10022,
@@ -81313,6 +85009,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122641010,
     "card_id": 122641010,
     "card_name": "暗黑帝王",
     "card_set_id": 10022,
@@ -81335,6 +85032,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122641030,
     "card_id": 122641030,
     "card_name": "嗜血邪魔",
     "card_set_id": 10022,
@@ -81357,6 +85055,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126611010,
     "card_id": 126611010,
     "card_name": "盛饰的恶魔",
     "card_set_id": 10026,
@@ -81379,6 +85078,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 129621020,
     "card_id": 129621020,
     "card_name": "阔步巨蝎",
     "card_set_id": 10029,
@@ -81401,6 +85101,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 100711020,
     "card_id": 100711020,
     "card_name": "伟大的女修士",
     "card_set_id": 10000,
@@ -81423,6 +85124,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101721050,
     "card_id": 101721050,
     "card_name": "白银骑士",
     "card_set_id": 10001,
@@ -81445,6 +85147,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103711040,
     "card_id": 103711040,
     "card_name": "集魂师",
     "card_set_id": 10003,
@@ -81467,6 +85170,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103731020,
     "card_id": 103731020,
     "card_name": "煌角战士·萨莉沙",
     "card_set_id": 10003,
@@ -81489,6 +85193,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105741020,
     "card_id": 105741020,
     "card_name": "黄金乡圣狮",
     "card_set_id": 10005,
@@ -81511,6 +85216,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 106741020,
     "card_id": 106741020,
     "card_name": "邪教化身",
     "card_set_id": 10006,
@@ -81533,6 +85239,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107741020,
     "card_id": 107741020,
     "card_name": "天曜战骑",
     "card_set_id": 10007,
@@ -81555,6 +85262,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108741010,
     "card_id": 108741010,
     "card_name": "神之盾·布罗蒂雅",
     "card_set_id": 10008,
@@ -81577,6 +85285,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110711020,
     "card_id": 110711020,
     "card_name": "圣域执行者",
     "card_set_id": 10010,
@@ -81599,6 +85308,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111741020,
     "card_id": 111741020,
     "card_name": "圣骑士·赫克托",
     "card_set_id": 10011,
@@ -81621,6 +85331,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112731010,
     "card_id": 112731010,
     "card_name": "机装神父",
     "card_set_id": 10012,
@@ -81643,6 +85354,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114741030,
     "card_id": 114741030,
     "card_name": "炎冰司祭·卡拉特",
     "card_set_id": 10014,
@@ -81665,6 +85377,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118721020,
     "card_id": 118721020,
     "card_name": "赛特",
     "card_set_id": 10018,
@@ -81687,6 +85400,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118741020,
     "card_id": 118741020,
     "card_name": "双炮神罚·安维特",
     "card_set_id": 10018,
@@ -81709,6 +85423,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119711020,
     "card_id": 119711020,
     "card_name": "圣洁之虎",
     "card_set_id": 10019,
@@ -81731,6 +85446,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119721020,
     "card_id": 119721020,
     "card_name": "星界的艇人·诺亚",
     "card_set_id": 10019,
@@ -81753,6 +85469,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120741020,
     "card_id": 120741020,
     "card_name": "荣华加护神·亚忒朗图",
     "card_set_id": 10020,
@@ -81775,6 +85492,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122711020,
     "card_id": 122711020,
     "card_name": "唤风翼人",
     "card_set_id": 10022,
@@ -81797,6 +85515,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 124741030,
     "card_id": 124741030,
     "card_name": "金刚拳圣",
     "card_set_id": 10024,
@@ -81819,6 +85538,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125741030,
     "card_id": 125741030,
     "card_name": "俱灭之白骨圣堂教主",
     "card_set_id": 10025,
@@ -81841,6 +85561,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127721020,
     "card_id": 127721020,
     "card_name": "红宝石飞鹰",
     "card_set_id": 10027,
@@ -81863,6 +85584,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127731010,
     "card_id": 127731010,
     "card_name": "誓约干部",
     "card_set_id": 10027,
@@ -81885,6 +85607,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 127741020,
     "card_id": 127741020,
     "card_name": "翼天执行者·乌努尔",
     "card_set_id": 10027,
@@ -81907,6 +85630,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129741020,
     "card_id": 129741020,
     "card_name": "神谕的启程·贞德",
     "card_set_id": 10029,
@@ -81929,6 +85653,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900741050,
     "card_id": 900741050,
     "card_name": "遗存的女神",
     "card_set_id": 90000,
@@ -81951,6 +85676,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 103714010,
     "card_id": 103714010,
     "card_name": "信仰的具现化",
     "card_set_id": 10003,
@@ -81973,6 +85699,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 107821050,
     "card_id": 107821050,
     "card_name": "被赋生的巨像",
     "card_set_id": 10007,
@@ -81995,6 +85722,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 107831060,
     "card_id": 107831060,
     "card_name": "神弹巨像",
     "card_set_id": 10007,
@@ -82017,6 +85745,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108831010,
     "card_id": 108831010,
     "card_name": "杀戮人偶·枷薇",
     "card_set_id": 10008,
@@ -82039,6 +85768,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 108841020,
     "card_id": 108841020,
     "card_name": "抹灭之物",
     "card_set_id": 10008,
@@ -82061,6 +85791,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 108841030,
     "card_id": 108841030,
     "card_name": "魔导电磁巨犀",
     "card_set_id": 10008,
@@ -82083,6 +85814,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109841010,
     "card_id": 109841010,
     "card_name": "奋勉的俊秀·席尔瓦",
     "card_set_id": 10009,
@@ -82105,6 +85837,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110811020,
     "card_id": 110811020,
     "card_name": "银之机械像",
     "card_set_id": 10010,
@@ -82127,6 +85860,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112841010,
     "card_id": 112841010,
     "card_name": "百机之王·格莱亚斯",
     "card_set_id": 10012,
@@ -82149,6 +85883,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113831010,
     "card_id": 113831010,
     "card_name": "创造物再制者",
     "card_set_id": 10013,
@@ -82171,6 +85906,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113841010,
     "card_id": 113841010,
     "card_name": "神伟的巨人",
     "card_set_id": 10013,
@@ -82193,6 +85929,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114811010,
     "card_id": 114811010,
     "card_name": "光明射手",
     "card_set_id": 10014,
@@ -82215,6 +85952,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 118841020,
     "card_id": 118841020,
     "card_name": "混沌支配者·艾希连德凛克",
     "card_set_id": 10018,
@@ -82237,6 +85975,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 119841030,
     "card_id": 119841030,
     "card_name": "神异形·克罗萨斯",
     "card_set_id": 10019,
@@ -82259,6 +85998,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120841020,
     "card_id": 120841020,
     "card_name": "神伟之始",
     "card_set_id": 10020,
@@ -82281,6 +86021,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121811020,
     "card_id": 121811020,
     "card_name": "线圈发明家",
     "card_set_id": 10021,
@@ -82303,6 +86044,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124811030,
     "card_id": 124811030,
     "card_name": "小丑人偶",
     "card_set_id": 10024,
@@ -82325,6 +86067,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125841020,
     "card_id": 125841020,
     "card_name": "百兽狮王·格莱亚斯",
     "card_set_id": 10025,
@@ -82347,6 +86090,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 126811020,
     "card_id": 126811020,
     "card_name": "傀儡情人",
     "card_set_id": 10026,
@@ -82369,6 +86113,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127841020,
     "card_id": 127841020,
     "card_name": "弹哭执行者·克里萨尔",
     "card_set_id": 10027,
@@ -82391,6 +86136,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900811060,
     "card_id": 900811060,
     "card_name": "精奥的创造物",
     "card_set_id": 90000,
@@ -82413,6 +86159,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900841080,
     "card_id": 900841080,
     "card_name": "创造物电磁巨犀",
     "card_set_id": 90000,
@@ -82435,6 +86182,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900841310,
     "card_id": 900841310,
     "card_name": "神器的守卫",
     "card_set_id": 90000,
@@ -82457,6 +86205,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900814010,
     "card_id": 900814010,
     "card_name": "典范转移",
     "card_set_id": 90000,
@@ -82479,6 +86228,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900834030,
     "card_id": 900834030,
     "card_name": "肃清的一刀",
     "card_set_id": 90000,
@@ -82501,6 +86251,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101021030,
     "card_id": 101021030,
     "card_name": "吉尔伽美什",
     "card_set_id": 10001,
@@ -82523,6 +86274,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101041020,
     "card_id": 101041020,
     "card_name": "路西法",
     "card_set_id": 10001,
@@ -82545,6 +86297,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102031020,
     "card_id": 102031020,
     "card_name": "大天使·蕾娜",
     "card_set_id": 10002,
@@ -82567,6 +86320,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 102041020,
     "card_id": 102041020,
     "card_name": "奥丁",
     "card_set_id": 10002,
@@ -82589,6 +86343,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 104031030,
     "card_id": 104031030,
     "card_name": "威震的半兽人",
     "card_set_id": 10004,
@@ -82611,6 +86366,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 106011030,
     "card_id": 106011030,
     "card_name": "暴躁猛玛象",
     "card_set_id": 10006,
@@ -82633,6 +86389,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107041010,
     "card_id": 107041010,
     "card_name": "柯罗诺斯",
     "card_set_id": 10007,
@@ -82655,6 +86412,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112031010,
     "card_id": 112031010,
     "card_name": "机甲天使",
     "card_set_id": 10012,
@@ -82677,6 +86435,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 112041010,
     "card_id": 112041010,
     "card_name": "机械神",
     "card_set_id": 10012,
@@ -82699,6 +86458,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113041010,
     "card_id": 113041010,
     "card_name": "暗之翼·奥莉薇",
     "card_set_id": 10013,
@@ -82721,6 +86481,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 117011010,
     "card_id": 117011010,
     "card_name": "圣贯天使",
     "card_set_id": 10017,
@@ -82743,6 +86504,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 120041010,
     "card_id": 120041010,
     "card_name": "撒哈利尔与伊斯拉菲尔",
     "card_set_id": 10020,
@@ -82765,6 +86527,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124041010,
     "card_id": 124041010,
     "card_name": "双极的生命之烈焰·琉璃",
     "card_set_id": 10024,
@@ -82787,6 +86550,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127031010,
     "card_id": 127031010,
     "card_name": "圆环看守",
     "card_set_id": 10027,
@@ -82809,6 +86573,7 @@ let cardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 127041010,
     "card_id": 127041010,
     "card_name": "轮回统治者·泽勒尔",
     "card_set_id": 10027,
@@ -82831,6 +86596,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 900041090,
     "card_id": 900041090,
     "card_name": "异端的冥兽",
     "card_set_id": 90000,
@@ -82853,6 +86619,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101121100,
     "card_id": 101121100,
     "card_name": "森之巨人",
     "card_set_id": 10001,
@@ -82875,6 +86642,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101131040,
     "card_id": 101131040,
     "card_name": "远古森林巨龙",
     "card_set_id": 10001,
@@ -82897,6 +86665,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101141030,
     "card_id": 101141030,
     "card_name": "玫瑰皇后",
     "card_set_id": 10001,
@@ -82919,6 +86688,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 103141010,
     "card_id": 103141010,
     "card_name": "远古之森的白狼",
     "card_set_id": 10003,
@@ -82941,6 +86711,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104141020,
     "card_id": 104141020,
     "card_name": "森林深处的异种",
     "card_set_id": 10004,
@@ -82963,6 +86734,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109121030,
     "card_id": 109121030,
     "card_name": "枭面巨熊",
     "card_set_id": 10009,
@@ -82985,6 +86757,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111141030,
     "card_id": 111141030,
     "card_name": "胡蜂女王·芭比",
     "card_set_id": 10011,
@@ -83007,6 +86780,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112141030,
     "card_id": 112141030,
     "card_name": "伏贾诺沼泽之主",
     "card_set_id": 10012,
@@ -83029,6 +86803,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115141010,
     "card_id": 115141010,
     "card_name": "森林精锐·丽梅格",
     "card_set_id": 10015,
@@ -83051,6 +86826,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122141030,
     "card_id": 122141030,
     "card_name": "藤蔓之王",
     "card_set_id": 10022,
@@ -83073,6 +86849,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127141020,
     "card_id": 127141020,
     "card_name": "香风执行者·威默尔",
     "card_set_id": 10027,
@@ -83095,6 +86872,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101221110,
     "card_id": 101221110,
     "card_name": "愤怒的将军",
     "card_set_id": 10001,
@@ -83117,6 +86895,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101231020,
     "card_id": 101231020,
     "card_name": "龙人少女·夏洛特",
     "card_set_id": 10001,
@@ -83139,6 +86918,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 102241010,
     "card_id": 102241010,
     "card_name": "亚历山大",
     "card_set_id": 10002,
@@ -83161,6 +86941,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103231030,
     "card_id": 103231030,
     "card_name": "猎龙杀手",
     "card_set_id": 10003,
@@ -83183,6 +86964,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104231030,
     "card_id": 104231030,
     "card_name": "骑空团总长·瓦佛利特",
     "card_set_id": 10004,
@@ -83205,6 +86987,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105241020,
     "card_id": 105241020,
     "card_name": "远古英雄",
     "card_set_id": 10005,
@@ -83227,6 +87010,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 106211020,
     "card_id": 106211020,
     "card_name": "角冠之王",
     "card_set_id": 10006,
@@ -83249,6 +87033,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108241020,
     "card_id": 108241020,
     "card_name": "空天城塞",
     "card_set_id": 10008,
@@ -83271,6 +87056,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 109241020,
     "card_id": 109241020,
     "card_name": "高洁的骑士·雷瑟姆",
     "card_set_id": 10009,
@@ -83293,6 +87079,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 116211030,
     "card_id": 116211030,
     "card_name": "爆击战士",
     "card_set_id": 10016,
@@ -83315,6 +87102,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 119211030,
     "card_id": 119211030,
     "card_name": "蛮冲铁犀",
     "card_set_id": 10019,
@@ -83337,6 +87125,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 119241010,
     "card_id": 119241010,
     "card_name": "刀神·欧克托",
     "card_set_id": 10019,
@@ -83359,6 +87148,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120241030,
     "card_id": 120241030,
     "card_name": "终击铁腕·加尔瓦",
     "card_set_id": 10020,
@@ -83381,6 +87171,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 125241010,
     "card_id": 125241010,
     "card_name": "传奇剑刃指挥官",
     "card_set_id": 10025,
@@ -83403,6 +87194,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900241060,
     "card_id": 900241060,
     "card_name": "终战兵器",
     "card_set_id": 90000,
@@ -83425,6 +87217,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900242040,
     "card_id": 900242040,
     "card_name": "传说之剑",
     "card_set_id": 90000,
@@ -83447,6 +87240,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101341030,
     "card_id": 101341030,
     "card_name": "大召唤师·伊拉斯莫斯",
     "card_set_id": 10001,
@@ -83469,6 +87263,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103331020,
     "card_id": 103331020,
     "card_name": "马纳历亚公主·安",
     "card_set_id": 10003,
@@ -83491,6 +87286,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104331030,
     "card_id": 104331030,
     "card_name": "老迈的龙法魔道士",
     "card_set_id": 10004,
@@ -83513,6 +87309,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107341020,
     "card_id": 107341020,
     "card_name": "白银剑巨像",
     "card_set_id": 10007,
@@ -83535,6 +87332,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 112311010,
     "card_id": 112311010,
     "card_name": "魔刃少女",
     "card_set_id": 10012,
@@ -83557,6 +87355,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113311020,
     "card_id": 113311020,
     "card_name": "双刃魔剑士",
     "card_set_id": 10013,
@@ -83579,6 +87378,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115321020,
     "card_id": 115321020,
     "card_name": "唤鬼僧侣",
     "card_set_id": 10015,
@@ -83601,6 +87401,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 115341030,
     "card_id": 115341030,
     "card_name": "禁约之黑魔术师",
     "card_set_id": 10015,
@@ -83623,6 +87424,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 116341010,
     "card_id": 116341010,
     "card_name": "无尽巫师·桃乐丝",
     "card_set_id": 10016,
@@ -83645,6 +87447,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117331020,
     "card_id": 117331020,
     "card_name": "矮人工房长",
     "card_set_id": 10017,
@@ -83667,6 +87470,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 119311030,
     "card_id": 119311030,
     "card_name": "暴烈巨像",
     "card_set_id": 10019,
@@ -83689,6 +87493,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125341010,
     "card_id": 125341010,
     "card_name": "七能术师",
     "card_set_id": 10025,
@@ -83711,6 +87516,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314070,
     "card_id": 100314070,
     "card_name": "火炎粉碎术",
     "card_set_id": 10000,
@@ -83733,6 +87539,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123314020,
     "card_id": 123314020,
     "card_name": "冰冻暴风",
     "card_set_id": 10023,
@@ -83755,6 +87562,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 101411090,
     "card_id": 101411090,
     "card_name": "地狱炎龙",
     "card_set_id": 10001,
@@ -83777,6 +87585,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101441030,
     "card_id": 101441030,
     "card_name": "吉尔尼特拉",
     "card_set_id": 10001,
@@ -83799,6 +87608,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103431020,
     "card_id": 103431020,
     "card_name": "马纳历亚龙人·古蕾娅",
     "card_set_id": 10003,
@@ -83821,6 +87631,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104441020,
     "card_id": 104441020,
     "card_name": "乌洛波罗斯",
     "card_set_id": 10004,
@@ -83843,6 +87654,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 105441020,
     "card_id": 105441020,
     "card_name": "贾巴沃克",
     "card_set_id": 10005,
@@ -83865,6 +87677,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107411030,
     "card_id": 107411030,
     "card_name": "冰炎龙",
     "card_set_id": 10007,
@@ -83887,6 +87700,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 108431020,
     "card_id": 108431020,
     "card_name": "龙铠战士",
     "card_set_id": 10008,
@@ -83909,6 +87723,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 109431030,
     "card_id": 109431030,
     "card_name": "波赛顿",
     "card_set_id": 10009,
@@ -83931,6 +87746,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111421020,
     "card_id": 111421020,
     "card_name": "帝王龙骑士·艾里欧斯",
     "card_set_id": 10011,
@@ -83953,6 +87769,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111431010,
     "card_id": 111431010,
     "card_name": "震怒的豪炎龙",
     "card_set_id": 10011,
@@ -83975,6 +87792,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 113441020,
     "card_id": 113441020,
     "card_name": "巨威龙人",
     "card_set_id": 10013,
@@ -83997,6 +87815,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114411010,
     "card_id": 114411010,
     "card_name": "龙战剑士",
     "card_set_id": 10014,
@@ -84019,6 +87838,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 114441010,
     "card_id": 114441010,
     "card_name": "苍海霸主·尼普顿",
     "card_set_id": 10014,
@@ -84041,6 +87861,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118411030,
     "card_id": 118411030,
     "card_name": "南瓜龙",
     "card_set_id": 10018,
@@ -84063,6 +87884,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 121431020,
     "card_id": 121431020,
     "card_name": "神谕翼龙",
     "card_set_id": 10021,
@@ -84085,6 +87907,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 124431010,
     "card_id": 124431010,
     "card_name": "冰蚀之龙",
     "card_set_id": 10024,
@@ -84107,6 +87930,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126441030,
     "card_id": 126441030,
     "card_name": "金色威信·璐米欧儿",
     "card_set_id": 10026,
@@ -84129,6 +87953,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 128441030,
     "card_id": 128441030,
     "card_name": "塔拉斯克",
     "card_set_id": 10028,
@@ -84151,6 +87976,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 129411020,
     "card_id": 129411020,
     "card_name": "雷龙",
     "card_set_id": 10029,
@@ -84173,6 +87999,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 129441020,
     "card_id": 129441020,
     "card_name": "邪智之龙·法夫纳",
     "card_set_id": 10029,
@@ -84195,6 +88022,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112433010,
     "card_id": 112433010,
     "card_name": "育龙牧场",
     "card_set_id": 10012,
@@ -84217,6 +88045,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101521090,
     "card_id": 101521090,
     "card_name": "灵魂收割者",
     "card_set_id": 10001,
@@ -84239,6 +88068,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101531050,
     "card_id": 101531050,
     "card_name": "不死斗士·莫迪凯",
     "card_set_id": 10001,
@@ -84261,6 +88091,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 101541030,
     "card_id": 101541030,
     "card_name": "普鲁托",
     "card_set_id": 10001,
@@ -84283,6 +88114,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103541010,
     "card_id": 103541010,
     "card_name": "奈芙蒂斯",
     "card_set_id": 10003,
@@ -84305,6 +88137,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106521020,
     "card_id": 106521020,
     "card_name": "鲁纳尔的死灵术师·琉特",
     "card_set_id": 10006,
@@ -84327,6 +88160,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107531010,
     "card_id": 107531010,
     "card_name": "死龙使役者",
     "card_set_id": 10007,
@@ -84349,6 +88183,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 107541020,
     "card_id": 107541020,
     "card_name": "死界边境的伫立者",
     "card_set_id": 10007,
@@ -84371,6 +88206,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111521030,
     "card_id": 111521030,
     "card_name": "知晓死亡者",
     "card_set_id": 10011,
@@ -84393,6 +88229,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112531010,
     "card_id": 112531010,
     "card_name": "浩劫死灵法师",
     "card_set_id": 10012,
@@ -84415,6 +88252,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 114521010,
     "card_id": 114521010,
     "card_name": "生存之刃·吉尔特",
     "card_set_id": 10014,
@@ -84437,6 +88275,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 117541020,
     "card_id": 117541020,
     "card_name": "征伐的死帝",
     "card_set_id": 10017,
@@ -84459,6 +88298,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 119531030,
     "card_id": 119531030,
     "card_name": "骸骨支配者",
     "card_set_id": 10019,
@@ -84481,6 +88321,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122541010,
     "card_id": 122541010,
     "card_name": "死骸突袭者",
     "card_set_id": 10022,
@@ -84503,6 +88344,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123511030,
     "card_id": 123511030,
     "card_name": "坎卜斯",
     "card_set_id": 10023,
@@ -84525,6 +88367,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125541010,
     "card_id": 125541010,
     "card_name": "死冥狩魂者",
     "card_set_id": 10025,
@@ -84547,6 +88390,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900521010,
     "card_id": 900521010,
     "card_name": "骷髅巨人",
     "card_set_id": 90000,
@@ -84569,6 +88413,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900521020,
     "card_id": 900521020,
     "card_name": "地狱骷髅领主",
     "card_set_id": 90000,
@@ -84591,6 +88436,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 900541060,
     "card_id": 900541060,
     "card_name": "呼唤黑暗者",
     "card_set_id": 90000,
@@ -84613,6 +88459,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 110524010,
     "card_id": 110524010,
     "card_name": "邪魂溢散",
     "card_set_id": 10010,
@@ -84635,6 +88482,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 101631010,
     "card_id": 101631010,
     "card_name": "孚里埃",
     "card_set_id": 10001,
@@ -84657,6 +88505,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 102631010,
     "card_id": 102631010,
     "card_name": "阿撒塞勒",
     "card_set_id": 10002,
@@ -84679,6 +88528,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104641020,
     "card_id": 104641020,
     "card_name": "祸流巨蛇",
     "card_set_id": 10004,
@@ -84701,6 +88551,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105641020,
     "card_id": 105641020,
     "card_name": "深渊的来访者",
     "card_set_id": 10005,
@@ -84723,6 +88574,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111611030,
     "card_id": 111611030,
     "card_name": "亚略",
     "card_set_id": 10011,
@@ -84745,6 +88597,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 111641020,
     "card_id": 111641020,
     "card_name": "鲜红的玫瑰皇后",
     "card_set_id": 10011,
@@ -84767,6 +88620,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113641010,
     "card_id": 113641010,
     "card_name": "绚烂的妖艳吸血鬼",
     "card_set_id": 10013,
@@ -84789,6 +88643,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 113641030,
     "card_id": 113641030,
     "card_name": "覆天之深渊来访者",
     "card_set_id": 10013,
@@ -84811,6 +88666,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122611030,
     "card_id": 122611030,
     "card_name": "铁球巨魔",
     "card_set_id": 10022,
@@ -84833,6 +88689,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 128631020,
     "card_id": 128631020,
     "card_name": "恶魔斗牛士",
     "card_set_id": 10028,
@@ -84855,6 +88712,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101634020,
     "card_id": 101634020,
     "card_name": "启示录",
     "card_set_id": 10001,
@@ -84877,6 +88735,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 101711080,
     "card_id": 101711080,
     "card_name": "假面巨人",
     "card_set_id": 10001,
@@ -84899,6 +88758,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101741030,
     "card_id": 101741030,
     "card_name": "圣女贞德",
     "card_set_id": 10001,
@@ -84921,6 +88781,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 106731020,
     "card_id": 106731020,
     "card_name": "巨天金牛",
     "card_set_id": 10006,
@@ -84943,6 +88804,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 110741010,
     "card_id": 110741010,
     "card_name": "璀璨的炽天使·勒碧丝",
     "card_set_id": 10010,
@@ -84965,6 +88827,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114731020,
     "card_id": 114731020,
     "card_name": "复仇的白刃·阿尼耶丝",
     "card_set_id": 10014,
@@ -84987,6 +88850,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114741020,
     "card_id": 114741020,
     "card_name": "圣波动之斯芬克斯",
     "card_set_id": 10014,
@@ -85009,6 +88873,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123721020,
     "card_id": 123721020,
     "card_name": "破冰的圣兽",
     "card_set_id": 10023,
@@ -85031,6 +88896,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123731010,
     "card_id": 123731010,
     "card_name": "受诅咒的双翼·希萝",
     "card_set_id": 10023,
@@ -85053,6 +88919,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126741030,
     "card_id": 126741030,
     "card_name": "月晖圣骑士·阿斯托尔福",
     "card_set_id": 10026,
@@ -85075,6 +88942,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109734010,
     "card_id": 109734010,
     "card_name": "忒弥斯的肃清",
     "card_set_id": 10009,
@@ -85097,6 +88965,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102743010,
     "card_id": 102743010,
     "card_name": "封印的炽天使",
     "card_set_id": 10002,
@@ -85119,6 +88988,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 104733010,
     "card_id": 104733010,
     "card_name": "不洁的圣杯",
     "card_set_id": 10004,
@@ -85141,6 +89011,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900743010,
     "card_id": 900743010,
     "card_name": "觉醒的炽天使",
     "card_set_id": 90000,
@@ -85163,6 +89034,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900743020,
     "card_id": 900743020,
     "card_name": "复苏的炽天使",
     "card_set_id": 90000,
@@ -85185,6 +89057,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900743030,
     "card_id": 900743030,
     "card_name": "光耀的炽天使·勒碧丝",
     "card_set_id": 90000,
@@ -85207,6 +89080,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 107811110,
     "card_id": 107811110,
     "card_name": "巨鲸飞船",
     "card_set_id": 10007,
@@ -85229,6 +89103,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107831040,
     "card_id": 107831040,
     "card_name": "天威剑士",
     "card_set_id": 10007,
@@ -85251,6 +89126,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107841010,
     "card_id": 107841010,
     "card_name": "神伟的遗物",
     "card_set_id": 10007,
@@ -85273,6 +89149,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108841010,
     "card_id": 108841010,
     "card_name": "人偶少女·奥契丝",
     "card_set_id": 10008,
@@ -85295,6 +89172,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 111811010,
     "card_id": 111811010,
     "card_name": "傀儡龙",
     "card_set_id": 10011,
@@ -85317,6 +89195,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 112841020,
     "card_id": 112841020,
     "card_name": "水银圣盾·席翁",
     "card_set_id": 10012,
@@ -85339,6 +89218,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 114841010,
     "card_id": 114841010,
     "card_name": "极限机铠巨猩",
     "card_set_id": 10014,
@@ -85361,6 +89241,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116821010,
     "card_id": 116821010,
     "card_name": "环刃女将",
     "card_set_id": 10016,
@@ -85383,6 +89264,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 116841020,
     "card_id": 116841020,
     "card_name": "天地侵略者·贝尔弗特",
     "card_set_id": 10016,
@@ -85405,6 +89287,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118831020,
     "card_id": 118831020,
     "card_name": "连结驾驶员",
     "card_set_id": 10018,
@@ -85427,6 +89310,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120831020,
     "card_id": 120831020,
     "card_name": "创造物飞船",
     "card_set_id": 10020,
@@ -85449,6 +89333,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 124831020,
     "card_id": 124831020,
     "card_name": "神圣的创造物",
     "card_set_id": 10024,
@@ -85471,6 +89356,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 128841030,
     "card_id": 128841030,
     "card_name": "灾厄之匣·潘朵拉",
     "card_set_id": 10028,
@@ -85493,6 +89379,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841020,
     "card_id": 900841020,
     "card_name": "坚毅的人偶·奥契丝",
     "card_set_id": 90000,
@@ -85515,6 +89402,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900841030,
     "card_id": 900841030,
     "card_name": "复仇的人偶·奥契丝",
     "card_set_id": 90000,
@@ -85537,6 +89425,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900841100,
     "card_id": 900841100,
     "card_name": "亵渎的化身",
     "card_set_id": 90000,
@@ -85559,6 +89448,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 900841110,
     "card_id": 900841110,
     "card_name": "杀戮女神·提西福涅",
     "card_set_id": 90000,
@@ -85581,6 +89471,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900841120,
     "card_id": 900841120,
     "card_name": "灾乱女神·阿莱克托",
     "card_set_id": 90000,
@@ -85603,6 +89494,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841130,
     "card_id": 900841130,
     "card_name": "愤怒女神·墨盖拉",
     "card_set_id": 90000,
@@ -85625,6 +89517,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841200,
     "card_id": 900841200,
     "card_name": "魔导列车",
     "card_set_id": 90000,
@@ -85647,6 +89540,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900841280,
     "card_id": 900841280,
     "card_name": "幻境粉碎者",
     "card_set_id": 90000,
@@ -85669,6 +89563,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900842030,
     "card_id": 900842030,
     "card_name": "新约·白之章",
     "card_set_id": 90000,
@@ -85691,6 +89586,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900842040,
     "card_id": 900842040,
     "card_name": "新约·黑之章",
     "card_set_id": 90000,
@@ -85713,6 +89609,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104041020,
     "card_id": 104041020,
     "card_name": "伊斯拉菲尔",
     "card_set_id": 10004,
@@ -85735,6 +89632,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 109041010,
     "card_id": 109041010,
     "card_name": "原初的巴哈姆特",
     "card_set_id": 10009,
@@ -85757,6 +89655,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 111041010,
     "card_id": 111041010,
     "card_name": "冰狱之王·撒旦",
     "card_set_id": 10011,
@@ -85779,6 +89678,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 115041020,
     "card_id": 115041020,
     "card_name": "斗技神域猛玛象",
     "card_set_id": 10015,
@@ -85801,6 +89701,7 @@ let cardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 125041010,
     "card_id": 125041010,
     "card_name": "究极巴哈姆特",
     "card_set_id": 10025,
@@ -85823,6 +89724,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 900011070,
     "card_id": 900011070,
     "card_name": "K·B·S·N",
     "card_set_id": 90000,
@@ -85845,6 +89747,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109141030,
     "card_id": 109141030,
     "card_name": "噬天异种",
     "card_set_id": 10009,
@@ -85867,6 +89770,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 114141030,
     "card_id": 114141030,
     "card_name": "始源巨兽",
     "card_set_id": 10014,
@@ -85889,6 +89793,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119111040,
     "card_id": 119111040,
     "card_name": "迅风妖精",
     "card_set_id": 10019,
@@ -85911,6 +89816,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 123131020,
     "card_id": 123131020,
     "card_name": "螺旋角巨象",
     "card_set_id": 10023,
@@ -85933,6 +89839,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 129141020,
     "card_id": 129141020,
     "card_name": "奥伯隆",
     "card_set_id": 10029,
@@ -85955,6 +89862,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101134020,
     "card_id": 101134020,
     "card_name": "白银的箭击",
     "card_set_id": 10001,
@@ -85977,6 +89885,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 102231030,
     "card_id": 102231030,
     "card_name": "列奥尼达",
     "card_set_id": 10002,
@@ -85999,6 +89908,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 110241020,
     "card_id": 110241020,
     "card_name": "自来也",
     "card_set_id": 10010,
@@ -86021,6 +89931,7 @@ let cardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 117211010,
     "card_id": 117211010,
     "card_name": "无私的贵族",
     "card_set_id": 10017,
@@ -86043,6 +89954,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124211020,
     "card_id": 124211020,
     "card_name": "暴狂士兵",
     "card_set_id": 10024,
@@ -86065,6 +89977,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900232010,
     "card_id": 900232010,
     "card_name": "列奥尼达的遗志",
     "card_set_id": 90000,
@@ -86087,6 +90000,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101341010,
     "card_id": 101341010,
     "card_name": "秘银巨像",
     "card_set_id": 10001,
@@ -86109,6 +90023,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103341010,
     "card_id": 103341010,
     "card_name": "次元魔女·桃乐丝",
     "card_set_id": 10003,
@@ -86131,6 +90046,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104321040,
     "card_id": 104321040,
     "card_name": "奇美拉",
     "card_set_id": 10004,
@@ -86153,6 +90069,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104341010,
     "card_id": 104341010,
     "card_name": "言灵使者·洋荷",
     "card_set_id": 10004,
@@ -86175,6 +90092,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 106341020,
     "card_id": 106341020,
     "card_name": "巨兽奇美拉",
     "card_set_id": 10006,
@@ -86197,6 +90115,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 108341020,
     "card_id": 108341020,
     "card_name": "无面魔女",
     "card_set_id": 10008,
@@ -86219,6 +90138,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 110331010,
     "card_id": 110331010,
     "card_name": "马纳历亚魔导公主·安",
     "card_set_id": 10010,
@@ -86241,6 +90161,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111311020,
     "card_id": 111311020,
     "card_name": "真实的狂信者",
     "card_set_id": 10011,
@@ -86263,6 +90184,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113341010,
     "card_id": 113341010,
     "card_name": "厄咒言灵·洋荷",
     "card_set_id": 10013,
@@ -86285,6 +90207,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 114331010,
     "card_id": 114331010,
     "card_name": "元素萨满·莱莉",
     "card_set_id": 10014,
@@ -86307,6 +90230,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 116311030,
     "card_id": 116311030,
     "card_name": "魔素巨像",
     "card_set_id": 10016,
@@ -86329,6 +90253,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120321010,
     "card_id": 120321010,
     "card_name": "魔书术师",
     "card_set_id": 10020,
@@ -86351,6 +90276,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 122341020,
     "card_id": 122341020,
     "card_name": "掠食巨像",
     "card_set_id": 10022,
@@ -86373,6 +90299,7 @@ let cardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 123341030,
     "card_id": 123341030,
     "card_name": "绝尽真实·莱欧",
     "card_set_id": 10023,
@@ -86395,6 +90322,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124324010,
     "card_id": 124324010,
     "card_name": "愿望的实现",
     "card_set_id": 10024,
@@ -86417,6 +90345,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125334010,
     "card_id": 125334010,
     "card_name": "剑雨",
     "card_set_id": 10025,
@@ -86439,6 +90368,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334020,
     "card_id": 900334020,
     "card_name": "致命诅咒",
     "card_set_id": 90000,
@@ -86461,6 +90391,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101431050,
     "card_id": 101431050,
     "card_name": "宝石龙",
     "card_set_id": 10001,
@@ -86483,6 +90414,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 101441010,
     "card_id": 101441010,
     "card_name": "法夫纳",
     "card_set_id": 10001,
@@ -86505,6 +90437,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103441010,
     "card_id": 103441010,
     "card_name": "帝国龙骑士",
     "card_set_id": 10003,
@@ -86527,6 +90460,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 105421030,
     "card_id": 105421030,
     "card_name": "城塞巨蟹",
     "card_set_id": 10005,
@@ -86549,6 +90483,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 105441010,
     "card_id": 105441010,
     "card_name": "天穹龙神",
     "card_set_id": 10005,
@@ -86571,6 +90506,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 106421030,
     "card_id": 106421030,
     "card_name": "塞特斯",
     "card_set_id": 10006,
@@ -86593,6 +90529,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 107431020,
     "card_id": 107431020,
     "card_name": "癫狂暴龙",
     "card_set_id": 10007,
@@ -86615,6 +90552,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108441010,
     "card_id": 108441010,
     "card_name": "龙魂战将·吉尔沃",
     "card_set_id": 10008,
@@ -86637,6 +90575,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 114441030,
     "card_id": 114441030,
     "card_name": "猛焰暴龙",
     "card_set_id": 10014,
@@ -86659,6 +90598,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 119421020,
     "card_id": 119421020,
     "card_name": "独步古今的大拳豪·刚特克泽",
     "card_set_id": 10019,
@@ -86681,6 +90621,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120441010,
     "card_id": 120441010,
     "card_name": "霸道君临者·法露特",
     "card_set_id": 10020,
@@ -86703,6 +90644,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 123431020,
     "card_id": 123431020,
     "card_name": "龙威佣兵",
     "card_set_id": 10023,
@@ -86725,6 +90667,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 126411030,
     "card_id": 126411030,
     "card_name": "碎石龙",
     "card_set_id": 10026,
@@ -86747,6 +90690,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102432020,
     "card_id": 102432020,
     "card_name": "不绝的龙吼",
     "card_set_id": 10002,
@@ -86769,6 +90713,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 101541020,
     "card_id": 101541020,
     "card_name": "骨骸王",
     "card_set_id": 10001,
@@ -86791,6 +90736,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 102521020,
     "card_id": 102521020,
     "card_name": "安托士",
     "card_set_id": 10002,
@@ -86813,6 +90759,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 111541020,
     "card_id": 111541020,
     "card_name": "尸龙·法夫纳",
     "card_set_id": 10011,
@@ -86835,6 +90782,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115541010,
     "card_id": 115541010,
     "card_name": "巨大妖狐·吟雪",
     "card_set_id": 10015,
@@ -86857,6 +90805,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 117531010,
     "card_id": 117531010,
     "card_name": "死灭召来者",
     "card_set_id": 10017,
@@ -86879,6 +90828,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 118531020,
     "card_id": 118531020,
     "card_name": "死之哲学家",
     "card_set_id": 10018,
@@ -86901,6 +90851,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 123531020,
     "card_id": 123531020,
     "card_name": "食魂者",
     "card_set_id": 10023,
@@ -86923,6 +90874,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127531010,
     "card_id": 127531010,
     "card_name": "深渊上校",
     "card_set_id": 10027,
@@ -86945,6 +90897,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101631050,
     "card_id": 101631050,
     "card_name": "妖艳的吸血鬼",
     "card_set_id": 10001,
@@ -86967,6 +90920,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107641020,
     "card_id": 107641020,
     "card_name": "狄亚波罗斯·伪语",
     "card_set_id": 10007,
@@ -86989,6 +90943,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 108611020,
     "card_id": 108611020,
     "card_name": "灾厄的魔神",
     "card_set_id": 10008,
@@ -87011,6 +90966,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 115641030,
     "card_id": 115641030,
     "card_name": "永冻土之贝西摩斯",
     "card_set_id": 10015,
@@ -87033,6 +90989,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 117641010,
     "card_id": 117641010,
     "card_name": "《节制》·卢泽",
     "card_set_id": 10017,
@@ -87055,6 +91012,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 118611020,
     "card_id": 118611020,
     "card_name": "激昂的狂战士",
     "card_set_id": 10018,
@@ -87077,6 +91035,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 125641010,
     "card_id": 125641010,
     "card_name": "渊厄统治者",
     "card_set_id": 10025,
@@ -87099,6 +91058,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 101731010,
     "card_id": 101731010,
     "card_name": "神圣光明龙",
     "card_set_id": 10001,
@@ -87121,6 +91081,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104741020,
     "card_id": 104741020,
     "card_name": "天曜盾甲",
     "card_set_id": 10004,
@@ -87143,6 +91104,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109741020,
     "card_id": 109741020,
     "card_name": "烈风翼神·迦楼罗",
     "card_set_id": 10009,
@@ -87165,6 +91127,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109741030,
     "card_id": 109741030,
     "card_name": "破灭之神·切契巴瓦",
     "card_set_id": 10009,
@@ -87187,6 +91150,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 111721010,
     "card_id": 111721010,
     "card_name": "战场审问官",
     "card_set_id": 10011,
@@ -87209,6 +91173,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 118711030,
     "card_id": 118711030,
     "card_name": "左轮枪猎鹰",
     "card_set_id": 10018,
@@ -87231,6 +91196,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122721010,
     "card_id": 122721010,
     "card_name": "隐密的代行者",
     "card_set_id": 10022,
@@ -87253,6 +91219,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107821060,
     "card_id": 107821060,
     "card_name": "复仇的人偶师·诺亚",
     "card_set_id": 10007,
@@ -87275,6 +91242,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107821080,
     "card_id": 107821080,
     "card_name": "紫晶巨兵",
     "card_set_id": 10007,
@@ -87297,6 +91265,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 111831020,
     "card_id": 111831020,
     "card_name": "世界之扉·缇尔",
     "card_set_id": 10011,
@@ -87319,6 +91288,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 111841020,
     "card_id": 111841020,
     "card_name": "断罪者·希尔薇娅",
     "card_set_id": 10011,
@@ -87341,6 +91311,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115841030,
     "card_id": 115841030,
     "card_name": "天境兵器群",
     "card_set_id": 10015,
@@ -87363,6 +91334,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 121841020,
     "card_id": 121841020,
     "card_name": "极致的创造主·贝尔弗特",
     "card_set_id": 10021,
@@ -87385,6 +91357,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122811030,
     "card_id": 122811030,
     "card_name": "魔铜守卫",
     "card_set_id": 10022,
@@ -87407,6 +91380,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 129841020,
     "card_id": 129841020,
     "card_name": "天降曙光·蕾德拉菲雅",
     "card_set_id": 10029,
@@ -87429,6 +91403,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 900841210,
     "card_id": 900841210,
     "card_name": "再生的杀戮·提西福涅",
     "card_set_id": 90000,
@@ -87451,6 +91426,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 900841220,
     "card_id": 900841220,
     "card_name": "再诞的灾乱·阿莱克托",
     "card_set_id": 90000,
@@ -87473,6 +91449,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 900841230,
     "card_id": 900841230,
     "card_name": "再燃的愤怒·墨盖拉",
     "card_set_id": 90000,
@@ -87495,6 +91472,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 101041030,
     "card_id": 101041030,
     "card_name": "撒旦",
     "card_set_id": 10001,
@@ -87517,6 +91495,7 @@ let cardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 103041010,
     "card_id": 103041010,
     "card_name": "巴哈姆特",
     "card_set_id": 10003,
@@ -87539,6 +91518,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 104041010,
     "card_id": 104041010,
     "card_name": "宙斯",
     "card_set_id": 10004,
@@ -87561,6 +91541,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 105041020,
     "card_id": 105041020,
     "card_name": "魔海女王",
     "card_set_id": 10005,
@@ -87583,6 +91564,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 113041020,
     "card_id": 113041020,
     "card_name": "至高之神·宙斯",
     "card_set_id": 10013,
@@ -87605,6 +91587,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 118041010,
     "card_id": 118041010,
     "card_name": "虚无的堕天使·路西法",
     "card_set_id": 10018,
@@ -87627,6 +91610,7 @@ let cardData = [
   },
   {
     "atk": 12,
+    "base_card_id": 119041010,
     "card_id": 119041010,
     "card_name": "原始之龙·巴哈姆特",
     "card_set_id": 10019,
@@ -87649,6 +91633,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 120031020,
     "card_id": 120031020,
     "card_name": "轮回的女神",
     "card_set_id": 10020,
@@ -87671,6 +91656,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900044020,
     "card_id": 900044020,
     "card_name": "亚斯她录的宣判",
     "card_set_id": 90000,
@@ -87693,6 +91679,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 106141020,
     "card_id": 106141020,
     "card_name": "王者巨象",
     "card_set_id": 10006,
@@ -87715,6 +91702,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 110141010,
     "card_id": 110141010,
     "card_name": "不弑绝杰·艾兹迪亚",
     "card_set_id": 10010,
@@ -87737,6 +91725,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128141030,
     "card_id": 128141030,
     "card_name": "深根的多臂异种",
     "card_set_id": 10028,
@@ -87759,6 +91748,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111241030,
     "card_id": 111241030,
     "card_name": "狂舞之刃·蒂欧涅",
     "card_set_id": 10011,
@@ -87781,6 +91771,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 100321010,
     "card_id": 100321010,
     "card_name": "魔炎毁灭者",
     "card_set_id": 10000,
@@ -87803,6 +91794,7 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112331020,
     "card_id": 112331020,
     "card_name": "未知探求者·克拉克",
     "card_set_id": 10012,
@@ -87825,6 +91817,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122321020,
     "card_id": 122321020,
     "card_name": "冰砖巨像",
     "card_set_id": 10022,
@@ -87847,6 +91840,7 @@ let cardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 125331020,
     "card_id": 125331020,
     "card_name": "马纳历亚咏唱者·克雷格",
     "card_set_id": 10025,
@@ -87869,6 +91863,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900341030,
     "card_id": 900341030,
     "card_name": "式神·贵人",
     "card_set_id": 90000,
@@ -87891,6 +91886,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900334040,
     "card_id": 900334040,
     "card_name": "安的宏大魔法",
     "card_set_id": 90000,
@@ -87913,6 +91909,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 101431020,
     "card_id": 101431020,
     "card_name": "创世龙",
     "card_set_id": 10001,
@@ -87935,6 +91932,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 106441020,
     "card_id": 106441020,
     "card_name": "培冬",
     "card_set_id": 10006,
@@ -87957,6 +91955,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107441020,
     "card_id": 107441020,
     "card_name": "阿吉·塔哈卡",
     "card_set_id": 10007,
@@ -87979,6 +91978,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 108441020,
     "card_id": 108441020,
     "card_name": "林德沃姆",
     "card_set_id": 10008,
@@ -88001,6 +92001,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 112441030,
     "card_id": 112441030,
     "card_name": "深海霸王·达贡",
     "card_set_id": 10012,
@@ -88023,6 +92024,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 113441010,
     "card_id": 113441010,
     "card_name": "天厄的创世龙",
     "card_set_id": 10013,
@@ -88045,6 +92047,7 @@ let cardData = [
   },
   {
     "atk": 11,
+    "base_card_id": 117441010,
     "card_id": 117441010,
     "card_name": "《正义》·伊兰翠",
     "card_set_id": 10017,
@@ -88067,6 +92070,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 118441010,
     "card_id": 118441010,
     "card_name": "噬龙的禁忌",
     "card_set_id": 10018,
@@ -88089,6 +92093,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 122411030,
     "card_id": 122411030,
     "card_name": "魔石巨蟹",
     "card_set_id": 10022,
@@ -88111,6 +92116,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 125441010,
     "card_id": 125441010,
     "card_name": "无尽焰龙",
     "card_set_id": 10025,
@@ -88133,6 +92139,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900441010,
     "card_id": 900441010,
     "card_name": "圣龙·林德沃姆",
     "card_set_id": 90000,
@@ -88155,6 +92162,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 900441020,
     "card_id": 900441020,
     "card_name": "邪龙·林德沃姆",
     "card_set_id": 90000,
@@ -88177,6 +92185,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900432010,
     "card_id": 900432010,
     "card_name": "龙之宝玉",
     "card_set_id": 90000,
@@ -88199,6 +92208,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 109541020,
     "card_id": 109541020,
     "card_name": "永远的决斗者·莫迪凯",
     "card_set_id": 10009,
@@ -88221,6 +92231,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116541020,
     "card_id": 116541020,
     "card_name": "死骸金属巨星",
     "card_set_id": 10016,
@@ -88243,6 +92254,7 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 119541020,
     "card_id": 119541020,
     "card_name": "死灭之剑皇",
     "card_set_id": 10019,
@@ -88265,6 +92277,7 @@ let cardData = [
   },
   {
     "atk": 10,
+    "base_card_id": 124531020,
     "card_id": 124531020,
     "card_name": "亡街大幽灵",
     "card_set_id": 10024,
@@ -88287,6 +92300,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 125541030,
     "card_id": 125541030,
     "card_name": "永劫的决斗·莫迪凯",
     "card_set_id": 10025,
@@ -88309,6 +92323,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109641020,
     "card_id": 109641020,
     "card_name": "普尔森",
     "card_set_id": 10009,
@@ -88331,6 +92346,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112631010,
     "card_id": 112631010,
     "card_name": "破灭的魅魔",
     "card_set_id": 10012,
@@ -88353,6 +92369,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116641030,
     "card_id": 116641030,
     "card_name": "祸网巨蛛",
     "card_set_id": 10016,
@@ -88375,6 +92392,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 123631020,
     "card_id": 123631020,
     "card_name": "沉醉的大恶魔",
     "card_set_id": 10023,
@@ -88397,6 +92415,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 124641030,
     "card_id": 124641030,
     "card_name": "蹂躏的凶王",
     "card_set_id": 10024,
@@ -88419,6 +92438,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101741010,
     "card_id": 101741010,
     "card_name": "白骨圣堂教主",
     "card_set_id": 10001,
@@ -88441,6 +92461,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 115841020,
     "card_id": 115841020,
     "card_name": "霸瞳皇帝",
     "card_set_id": 10015,
@@ -88463,6 +92484,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 119831020,
     "card_id": 119831020,
     "card_name": "巨械工厂",
     "card_set_id": 10019,
@@ -88485,6 +92507,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 900831050,
     "card_id": 900831050,
     "card_name": "混沌之暗·辛恩",
     "card_set_id": 90000,
@@ -88507,6 +92530,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900842010,
     "card_id": 900842010,
     "card_name": "圣白破坏的创造物",
     "card_set_id": 90000,
@@ -88529,6 +92553,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900842020,
     "card_id": 900842020,
     "card_name": "暗黑破坏的创造物",
     "card_set_id": 90000,
@@ -88551,6 +92576,7 @@ let cardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 109441010,
     "card_id": 109441010,
     "card_name": "伟大的调停者·佐伊",
     "card_set_id": 10009,
@@ -88573,6 +92599,7 @@ let cardData = [
   },
   {
     "atk": 11,
+    "base_card_id": 118641030,
     "card_id": 118641030,
     "card_name": "屠杀的大恶魔",
     "card_set_id": 10018,
@@ -88595,6 +92622,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 116141010,
     "card_id": 116141010,
     "card_name": "觉醒的大地",
     "card_set_id": 10016,
@@ -88617,6 +92645,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 127341020,
     "card_id": 127341020,
     "card_name": "破式执行者·沙摩尔",
     "card_set_id": 10027,
@@ -88639,6 +92668,7 @@ let cardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 111541030,
     "card_id": 111541030,
     "card_name": "幽暗浑浊者·塔尔塔洛斯",
     "card_set_id": 10011,
@@ -88661,6 +92691,7 @@ let cardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 113541010,
     "card_id": 113541010,
     "card_name": "冥界之神·黑帝斯",
     "card_set_id": 10013,
@@ -88683,6 +92714,7 @@ let cardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 122341010,
     "card_id": 122341010,
     "card_name": "驭时巫师",
     "card_set_id": 10022,
@@ -88705,6 +92737,7 @@ let cardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 126341010,
     "card_id": 126341010,
     "card_name": "神秘国王",
     "card_set_id": 10026,
@@ -88727,6 +92760,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126841020,
     "card_id": 126841020,
     "card_name": "绝高无上·纯洁",
     "card_set_id": 10026,
@@ -88749,6 +92783,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115341010,
     "card_id": 115341010,
     "card_name": "阴阳祖师·久苑",
     "card_set_id": 10015,
@@ -88771,6 +92806,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344020,
     "card_id": 900344020,
     "card_name": "覆灭预言",
     "card_set_id": 90000,
@@ -88793,6 +92829,7 @@ let cardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 119441020,
     "card_id": 119441020,
     "card_name": "神鱼·迪兹列斯坦",
     "card_set_id": 10019,
@@ -88815,6 +92852,7 @@ let cardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116341020,
     "card_id": 116341020,
     "card_name": "钢铁魔兽·莱柯罗埃",
     "card_set_id": 10016,
@@ -88837,6 +92875,7 @@ let cardData = [
   },
   {
     "atk": 20,
+    "base_card_id": 110341010,
     "card_id": 110341010,
     "card_name": "开辟的预言者",
     "card_set_id": 10010,
@@ -88859,6 +92898,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101334020,
     "card_id": 101334020,
     "card_name": "次元超越",
     "card_set_id": 10001,
@@ -88881,6 +92921,7 @@ let cardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 900344150,
     "card_id": 900344150,
     "card_name": "双姬的大魔法",
     "card_set_id": 90000,
@@ -88903,6 +92944,7 @@ let cardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 120841030,
     "card_id": 120841030,
     "card_name": "绝高无上·宽容",
     "card_set_id": 10020,

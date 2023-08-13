@@ -100,6 +100,7 @@ function createNewDataBase(allcards, subToken) {
     // 要保留的信息字段
     const keepFields = [
         'atk',
+        'base_card_id',
         'card_id',
         'card_name',
         'card_set_id',
@@ -120,7 +121,25 @@ function createNewDataBase(allcards, subToken) {
         'tribe_name'
     ];
 
-    const removal = ["灵魂嚮导‧艾米","黑天月兔妖‧菈米娜","初音未来","暗魔女将‧艾瑟菈","夜空吸血鬼‧卡媞亚","绝望的救赎·贞德"];
+    const replaceRules = [
+      ["鍊金", "炼金"],
+      ["项鍊", "项链"],
+      ["葛兰", "古兰"],
+      ["壹剑","苇剑"]
+      // 可以继续添加更多的规则
+    ];
+
+        // 使用替换规则来替换文本
+    function replaceTextWithRules(text, rules) {
+      let newText = text;
+
+      rules.forEach(rule => {
+        const [search, replace] = rule;
+        newText = newText.split(search).join(replace);
+      });
+
+      return newText;
+    }
     // 用于存储最终的卡片数据
     const uniqueCardsMap = new Map();
 
@@ -159,11 +178,11 @@ function createNewDataBase(allcards, subToken) {
                     let newField = card[field];
                     if (card[field] != null){
                       newField = japToSimplized(simplized(card[field]));
+                      newCard[field] = replaceTextWithRules(newField,replaceRules);
                     }
-                    newCard[field] = newField;
                   } else{
                     let newField = japToSimplized(simplized(card[field]));
-                    newCard[field] = newField;
+                    newCard[field] = replaceTextWithRules(newField,replaceRules);
                   }
 
                 }

@@ -1,16 +1,23 @@
 // guess.js
+let cardPool = [];
+let lastPacket = 10029;
+
 document.addEventListener("DOMContentLoaded", function () {
     const guessButton = document.getElementById("guessButton");
     const guessInput = document.getElementById("guessInput");
     const suggestionsDiv = document.getElementById("suggestions");
     const historyDiv = document.getElementById("history");
+    const historyDiv0 = document.getElementById("history0");
     const playBox = document.getElementById("playBox");
     const guessBox = document.getElementById("guessBox");
     const startBox = document.getElementById("startBox");
     const restartButton = document.getElementById("restartButton");
     const hintButton = document.getElementById("hintButton");
+    const revealButton = document.getElementById("revealButton");
+    const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
     let puzzleCard = null; // 存储解谜时随机抽取的卡牌
     let previousGuess = null;
+
 
     let gameStarted = false;
     let time = 0;
@@ -46,6 +53,62 @@ document.addEventListener("DOMContentLoaded", function () {
     startGameWithSeed(seed); // 使用种子开始游戏
   });
 
+  function addCardsFromLastPackets() {
+    const cardSetIds = Array.from({ length: 5 }, (_, index) => lastPacket - index);
+
+    cardSetIds.forEach(cardSetId => {
+      const matchingCards = cardData.filter(card => card.card_set_id === cardSetId && !cardPool.includes(card));
+
+      matchingCards.forEach(card => {
+        cardPool.push(card);
+
+        // 查找并加入符合条件的技能卡
+        addSkillOptionCards(card.skill_option);
+      });
+    });
+  }
+
+  function addSkillOptionCards(skillOption) {
+    const cardIdToFind = skillOption.match(/\d{9}/); // 使用正则表达式从技能选项中提取连续9位数字
+
+    if (!cardIdToFind) {
+      return; // 无效的技能选项
+    }
+
+    const matchingCard = cardData.find(card => card.card_id === cardIdToFind[0]);
+
+    if (matchingCard && !cardPool.includes(matchingCard)) {
+      if (matchingCard.card_id === baseCardId || matchingCard.card_id === "900811050") {
+        cardPool.push(matchingCard);
+        // 如果需要，可以递归地继续查找并加入新的技能卡
+        addSkillOptionCards(matchingCard.skill_option);
+      }
+    }
+  }
+
+  function addSkillOptionCards(skillOption, baseCardId) {
+    skillOption.replaceAll("&",",");
+    const tokens = skillOption.split(","); // 分割技能选项
+
+    tokens.forEach(token => {
+      const matches = token.split("//")[0].split(")")[0].match(/(token_draw|summon_token|card_id)=([^&]+)/); // 从分割的段落中提取 token 信息
+
+      if (matches && matches[2]) {
+        const cardIds = matches[2].split(":"); // 分割 card_id
+
+        cardIds.forEach(cardIdToFind => {
+          const matchingCard = findCardById(parseInt(cardIdToFind));
+
+          if (matchingCard && (matchingCard.card_id === matchingCard.base_card_id || matchingCard.base_card_id === "900811050")) {
+            if (!cardPool.includes(matchingCard)) {
+              cardPool.push(matchingCard);
+              addSkillOptionCards(matchingCard.skill_option);
+            }
+          }
+        });
+      }
+    });
+  }
   // 生成随机种子
   function generateRandomSeed() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -62,9 +125,16 @@ document.addEventListener("DOMContentLoaded", function () {
     resetGame();
     Math.seedrandom(seed);
 
+    if (specifiedModeCheckbox.checked) {
+      cardPool = [];
+      addCardsFromLastPackets();
+    } else {
+      cardPool = cardData;
+    }
+
     // 初始化游戏逻辑，例如随机抽取一张卡牌作为解谜目标等
-    const randomIndex = Math.floor(Math.random() * cardData.length);
-    puzzleCard = cardData[randomIndex];
+    const randomIndex = Math.floor(Math.random() * cardPool.length);
+    puzzleCard = cardPool[randomIndex];
     // Display similarity of 10th, 100th, and 1000th ranked cards
      const card10 = getCardByRank(10);
      const card100 = getCardByRank(100);
@@ -82,16 +152,23 @@ document.addEventListener("DOMContentLoaded", function () {
        document.getElementById("rank1000Similarity").textContent = card1000.similarity.toFixed(2);
      }
 
+
      // Update the "currentSeed" element with the current seed value
-     document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
+     if (specifiedModeCheckbox.checked) {
+       document.getElementById("currentSeed").textContent = `当前种子：${seed} （指定模式）`;
+     } else {
+       document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
+     }
 
     // 显示解谜开始信息
     const puzzleStartMessage = document.createElement("p");
     puzzleStartMessage.textContent = "解谜开始！系统已抽取一张卡牌，请猜测卡牌名称：";
-    historyDiv.appendChild(puzzleStartMessage);
+    historyDiv0.appendChild(puzzleStartMessage);
 
     // 显示游戏界面
     hintButton.style.display = "block";
+    revealButton.style.display = "block";
+
     startBox.style.display = "none";
     document.getElementById("cSeed").style.display = "block";
     playBox.style.display = "block";
@@ -106,8 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
       sortOptions.style.display = "none";
       playBox.style.display = "none";
       historyDiv.innerHTML = "";
+      historyDiv0.innerHTML = "";
       restartButton.style.display = "none";
       hintButton.style.display = "none";
+      revealButton.style.display = "none";
     }
 
     function restartGame() {
@@ -151,7 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const hintMessage = document.createElement("p");
             time++;
-            hintMessage.textContent = `提示${time}： ${hintCard.card_name}，相似度：${similarity.toFixed(2)}，排名：${rank}`;
+            hintMessage.card_id = hintCard.card_id;
+            hintMessage.innerHTML = `提示${time}：<a href="https://shadowverse-portal.com/card/${hintMessage.card_id}?lang=zh-tw" target="_blank">${hintCard.card_name}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
             hintMessage.similarity = similarity;
             hintMessage.order = time;
 
@@ -170,6 +250,47 @@ document.addEventListener("DOMContentLoaded", function () {
             sortHistory();
         }
     });
+
+    revealButton.addEventListener("click", function () {
+        if (!puzzleCard) {
+            alert("请先点击“解谜开始”按钮开始解谜！");
+            return;
+        }
+        let confirmResult = window.confirm("你确定要揭露答案吗？");
+
+        if (confirmResult) {
+          confirmResult = window.confirm("你真的确定要揭露答案吗？");
+          if (confirmResult){
+            const hintCard = puzzleCard;
+            const similarity = calculateSimilarityScore(puzzleCard, hintCard);
+            const rank = getRank(similarity);
+
+            const hintMessage = document.createElement("p");
+            time++;
+            hintMessage.card_id = hintCard.card_id;
+            hintMessage.innerHTML = `答案：<a href="https://shadowverse-portal.com/card/${hintMessage.card_id}?lang=zh-tw" target="_blank">${hintCard.card_name}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
+            hintMessage.similarity = similarity;
+            hintMessage.order = time;
+
+            hintMessage.classList.add("highlight");
+            // 如果之前有上一条猜测，移除其高亮样式
+            if (previousGuess) {
+              previousGuess.classList.remove("highlight");
+            }
+            // 更新上一条猜测为当前猜测
+            previousGuess = hintMessage;
+
+            if (similarity > highestScore){
+              highestScore = similarity;
+            }
+            historyDiv.appendChild(hintMessage);
+            sortHistory();
+            gameEnd(false);
+          }
+        }
+
+    });
+
 
     function guessCardName(guess) {
         if (!puzzleCard) {
@@ -206,7 +327,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const resultMessage = document.createElement("p");
         time++;
-        resultMessage.textContent = `猜测${time}：${guess}，相似度：${similarity.toFixed(2)}，排名：${rank}`;
+        resultMessage.card_id = foundCard.card_id;
+        resultMessage.innerHTML = `猜测${time}：<a href="https://shadowverse-portal.com/card/${resultMessage.card_id}?lang=zh-tw" target="_blank">${guess}</a>，相似度：${similarity.toFixed(2)}，排名：${rank}`;
         resultMessage.similarity = similarity;
         resultMessage.order = time;
 
@@ -226,15 +348,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         guessInput.value = "";
         if (similarity === 100) {
-            const congratsMessage = document.createElement("p");
-            congratsMessage.textContent = "恭喜你猜对了！";
-            congratsMessage.classList.add("congrats"); // 添加样式类名
-            historyDiv.appendChild(congratsMessage);
-            restartButton.style.display = "block"; // 显示重新开始按钮
-            hintButton.style.display = "none"; // 显示重新开始按钮
-            guessBox.style.display = "none";
-            gameStarted = false;
+            gameEnd(true);
         }
+    }
+
+    function gameEnd(win){
+
+      if (win){
+        const congratsMessage = document.createElement("p");
+        congratsMessage.textContent = "恭喜你猜对了！";
+        congratsMessage.classList.add("congrats"); // 添加样式类名
+        historyDiv.appendChild(congratsMessage);
+      } else {
+        const congratsMessage = document.createElement("p");
+        congratsMessage.textContent = "答案已经揭晓。";
+        congratsMessage.classList.add("congrats"); // 添加样式类名
+        historyDiv.appendChild(congratsMessage);
+      }
+
+      restartButton.style.display = "block"; // 显示重新开始按钮
+      hintButton.style.display = "none"; // 显示重新开始按钮
+      revealButton.style.display = "none"; // 显示重新开始按钮
+      guessBox.style.display = "none";
+      gameStarted = false;
     }
 
     // 根据玩家选择排序历史记录
@@ -283,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 获取相似度排名
     function getRank(similarity) {
-        const sortedCards = cardData
+        const sortedCards = cardPool
             .map((card) => calculateSimilarityScore(puzzleCard, card))
             .sort((a, b) => b - a);
 
@@ -292,11 +428,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function findCardByName(name) {
-        return cardData.find((card) => card.card_name === name);
+        return cardPool.find((card) => card.card_name === name);
     }
 
     function getCardByRank(rank) {
-      const sortedCards = cardData
+      const sortedCards = cardPool
         .map((card) => calculateSimilarityScore(puzzleCard, card))
         .sort((a, b) => b - a);
 
@@ -306,13 +442,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const similarity = sortedCards[rank - 1];
       const cardIndex = sortedCards.indexOf(similarity);
-      const card = cardData[cardIndex];
+      const card = cardPool[cardIndex];
 
       return { similarity, card };
     }
 
     function getHintCardOptions(minScore) {
-        const options = cardData.filter((card) => calculateSimilarityScore(puzzleCard, card) > minScore && calculateSimilarityScore(puzzleCard, card) < 100);
+        const options = cardPool.filter((card) => calculateSimilarityScore(puzzleCard, card) > minScore && calculateSimilarityScore(puzzleCard, card) < 100);
 
         // 将符合条件的卡牌按相似度从高到低排序
         options.sort((a, b) => {
@@ -339,7 +475,7 @@ function getCorrectionSuggestion(guess) {
   const suggestions = [];
 
   // 优先寻找和输入的错误卡名有最多相同字的卡
-  for (const card of cardData) {
+  for (const card of cardPool) {
     if (card.card_name) {
       const numCommonChars = getNumCommonChars(card.card_name, guess);
       suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
@@ -358,7 +494,7 @@ function getCorrectionSuggestion(guess) {
   // 如果建议不足 maxSuggestions 个，则继续使用 Levenshtein 距离来补充
   if (correctionSuggestions.length < maxSuggestions) {
     const remainingSuggestions = maxSuggestions - correctionSuggestions.length;
-    for (const card of cardData) {
+    for (const card of cardPool) {
       if (card.card_name) {
         const distance = calculateLevenshteinDistance(card.card_name, guess);
         correctionSuggestions.push(card.card_name);

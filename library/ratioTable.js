@@ -56,12 +56,14 @@ let ratioTable = {
   "{me.inplay.game_necromance_count}": {reward:2, punish:1}, //墓地任务
   "{me.game_skill_discard_count}": {reward:3, punish:1}, //弃牌任务
   "selfTurnPlayCount": {reward:3, punish:1}, //一回合用牌
+  "target=healing_card": {reward:3, punish:1}, //被奶扳机
   "selfShield": {reward:4.2, punish:4.2}, //脸无敌
   "{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}": {reward:3, punish:1}, //财宝任务
-  "when_buff": {reward:2.5, punish:2.5}, //被BUFF发动
-  "when_discard": {reward:4, punish:4}, //被弃发动
-  "when_discard_other": {reward:4, punish:4}, //弃牌发动
-  "when_resonance_start": {reward:2, punish:2},//切共鸣
+  "when_buff": {reward:2.5, punish:1.5}, //被BUFF发动
+  "when_discard": {reward:4, punish:2}, //被弃发动
+  "when_return": {reward:4, punish:2}, //回手发动
+  "when_discard_other": {reward:4, punish:2}, //弃牌发动
+  "when_resonance_start": {reward:2, punish:1},//切共鸣
   "leader_attach_skill": {reward:1.1, punish:0.9}, //主战者贴效果
   "recycle": {reward:1.4, punish:1.4}, //回收/复制
   "none": {reward:1.1, punish:0.8}, //白板
@@ -75,8 +77,8 @@ let ratioTable = {
   "power_down": {reward:1.5, punish:1.5}, //减能力
   "power_change": {reward:2, punish:2}, //改能力
   "self_power_change": {reward:2.4, punish:2.4}, //改自己能力
-  "leaderPowerup": {reward:8, punish:8}, //加血限
-  "leaderPowerdown": {reward:8, punish:8}, //扣血限
+  "leaderPowerup": {reward:6, punish:3}, //加血限
+  "leaderPowerdown": {reward:6, punish:3}, //扣血限
   "guard": {reward:1, punish:1},
   "ramp": {reward:2, punish:2}, //跳/扣费
   "change_affiliation": {reward:7, punish:7}, //改变种族
@@ -87,10 +89,10 @@ let ratioTable = {
   "evolve": {reward:1.2, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
-  "classCheck": {reward:5, punish:5}, //锁
+  "classCheck": {reward:5, punish:4}, //职业
   "permShield": {reward:5, punish:5}, //天盾1
   "independent": {reward:5, punish:5}, //天盾2
-  "consume_ep_modifier": {reward:3, punish:3}, //不消费EP即可进化
+  "consume_ep_modifier": {reward:3, punish:2}, //不消费EP即可进化
   "special_win": {reward:12, punish:12}, //特殊胜利
   "preprocess_condition": {reward:1.7, punish:1.7},
   "per_turn": {reward:1.2, punish:0.8}, //一回合一次

@@ -536,7 +536,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-      let wholeKeyProsC = ["target=damaged_card"];
+      let wholeKeyProsC = ["target=damaged_card","target=healing_card"];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -582,6 +582,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
                    ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
                    ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
+                   ["target=healing_card",/\{me\.inplay\.healing_card(.*?)count\}/,"."],
                    ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
                    ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
                    ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
@@ -808,7 +809,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return"];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
@@ -2296,7 +2297,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["target=damaged_card"];
+    let wholeKeyProsC = ["target=damaged_card","target=healing_card"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2327,6 +2328,7 @@ function customSplit(input,token) {
                  ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
                  ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
                  ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
+                 ["target=healing_card",/\{me\.inplay\.healing_card(.*?)count\}/,"."],
                  ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
                  ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
                  ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
@@ -2452,7 +2454,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start","when_discard","when_buff","when_discard_other"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return"];
 
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){

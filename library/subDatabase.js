@@ -1,8 +1,8 @@
 let subCardData = [
   {
     "atk": 0,
+    "base_card_id": 810014010,
     "card_id": 810014010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -23,8 +23,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810034010,
     "card_id": 810034010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -45,8 +45,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820044010,
     "card_id": 820044010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -67,8 +67,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 820141010,
     "card_id": 820141010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -89,8 +89,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820244010,
     "card_id": 820244010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -111,8 +111,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820344010,
     "card_id": 820344010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -133,8 +133,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810434010,
     "card_id": 810434010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -155,6 +155,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129624010,
     "card_id": 720624010,
     "card_name": "公主们的遨游",
     "card_set_id": 10029,
@@ -177,8 +178,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644040,
     "card_id": 800644040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -199,8 +200,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820644040,
     "card_id": 820644040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -221,8 +222,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800734010,
     "card_id": 800734010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -243,8 +244,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820744020,
     "card_id": 820744020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -265,8 +266,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810713010,
     "card_id": 810713010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -287,6 +288,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115814010,
     "card_id": 713814010,
     "card_name": "全神贯注",
     "card_set_id": 70023,
@@ -309,6 +311,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123824010,
     "card_id": 715824010,
     "card_name": "突破音速",
     "card_set_id": 10023,
@@ -331,8 +334,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844100,
     "card_id": 800844100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -353,8 +356,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810824010,
     "card_id": 810824010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -375,8 +378,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820844030,
     "card_id": 820844030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -397,8 +400,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820844040,
     "card_id": 820844040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -419,8 +422,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820843010,
     "card_id": 820843010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -441,6 +444,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125011010,
     "card_id": 717011010,
     "card_name": "漫游的哥布林",
     "card_set_id": 70021,
@@ -463,8 +467,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810031030,
     "card_id": 810031030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -485,6 +489,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120014010,
     "card_id": 715014010,
     "card_name": "记忆的轨迹",
     "card_set_id": 70022,
@@ -507,6 +512,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129024010,
     "card_id": 720024010,
     "card_name": "庆典的飨宴",
     "card_set_id": 70029,
@@ -529,8 +535,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034040,
     "card_id": 800034040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -551,8 +557,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800033010,
     "card_id": 800033010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 0,
@@ -573,8 +579,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810033010,
     "card_id": 810033010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 0,
@@ -595,8 +601,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820032010,
     "card_id": 820032010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 0,
@@ -617,6 +623,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120141020,
     "card_id": 716141010,
     "card_name": "宿命的狐火·雪华",
     "card_set_id": 10020,
@@ -639,6 +646,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127111010,
     "card_id": 717111010,
     "card_name": "新芽组员",
     "card_set_id": 10027,
@@ -661,6 +669,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127141030,
     "card_id": 719141010,
     "card_name": "初音未来",
     "card_set_id": 20001,
@@ -683,6 +692,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114010,
     "card_id": 112114010,
     "card_name": "大自然的导引",
     "card_set_id": 10012,
@@ -705,6 +715,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114010,
     "card_id": 709114010,
     "card_name": "大自然的导引",
     "card_set_id": 70008,
@@ -727,6 +738,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101114050,
     "card_id": 110114010,
     "card_name": "妖精的呼朋引伴",
     "card_set_id": 10010,
@@ -749,6 +761,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106114010,
     "card_id": 114114010,
     "card_name": "对空射击",
     "card_set_id": 10014,
@@ -771,6 +784,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106114010,
     "card_id": 702114010,
     "card_name": "对空射击",
     "card_set_id": 70004,
@@ -793,6 +807,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115124010,
     "card_id": 713124010,
     "card_name": "灵之光耀",
     "card_set_id": 70023,
@@ -815,6 +830,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126114010,
     "card_id": 717114010,
     "card_name": "花舞微风",
     "card_set_id": 70027,
@@ -837,6 +853,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127134010,
     "card_id": 717134020,
     "card_name": "朝向未来的指引",
     "card_set_id": 70028,
@@ -859,8 +876,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800114010,
     "card_id": 800114010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -881,8 +898,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800114020,
     "card_id": 800114020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -903,8 +920,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800114030,
     "card_id": 800114030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -925,8 +942,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800124020,
     "card_id": 800124020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -947,8 +964,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800124030,
     "card_id": 800124030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -969,8 +986,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800124030,
     "card_id": 800124040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -991,8 +1008,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800124050,
     "card_id": 800124050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1013,8 +1030,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800134010,
     "card_id": 800134010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1035,8 +1052,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800134020,
     "card_id": 800134020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1057,8 +1074,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800134030,
     "card_id": 800134030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1079,8 +1096,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800134040,
     "card_id": 800134040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1101,8 +1118,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144030,
     "card_id": 800144030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1123,8 +1140,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144040,
     "card_id": 800144040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1145,8 +1162,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144050,
     "card_id": 800144050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1167,8 +1184,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144060,
     "card_id": 800144060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1189,8 +1206,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144070,
     "card_id": 800144070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1211,8 +1228,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144080,
     "card_id": 800144080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1233,8 +1250,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144100,
     "card_id": 800144100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1255,8 +1272,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810134020,
     "card_id": 810134020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -1277,8 +1294,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800113010,
     "card_id": 800113010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 1,
@@ -1299,8 +1316,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800113020,
     "card_id": 800113020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 1,
@@ -1321,8 +1338,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800133010,
     "card_id": 800133010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 1,
@@ -1343,8 +1360,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800143010,
     "card_id": 800143010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 1,
@@ -1365,8 +1382,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800143020,
     "card_id": 800143020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 1,
@@ -1387,6 +1404,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 100211010,
     "card_id": 702211010,
     "card_name": "快刀处刑人 泰姬",
     "card_set_id": 70003,
@@ -1409,6 +1427,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120221020,
     "card_id": 715221010,
     "card_name": "生还的突击兵",
     "card_set_id": 70021,
@@ -1431,6 +1450,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124221020,
     "card_id": 717221020,
     "card_name": "边境的见习骑士",
     "card_set_id": 70021,
@@ -1453,6 +1473,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126231010,
     "card_id": 717231020,
     "card_name": "锐枪骑士·埃米罗斯",
     "card_set_id": 10026,
@@ -1475,6 +1496,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100214010,
     "card_id": 705214010,
     "card_name": "疾风怒涛",
     "card_set_id": 70005,
@@ -1497,6 +1519,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113224010,
     "card_id": 709224020,
     "card_name": "优雅的款待",
     "card_set_id": 70010,
@@ -1519,6 +1542,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117234010,
     "card_id": 713234010,
     "card_name": "所向披靡",
     "card_set_id": 70017,
@@ -1541,6 +1565,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129214010,
     "card_id": 720214010,
     "card_name": "投入兵力",
     "card_set_id": 70029,
@@ -1563,8 +1588,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800234020,
     "card_id": 800234020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -1585,8 +1610,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244090,
     "card_id": 800244090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -1607,8 +1632,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244100,
     "card_id": 800244100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -1629,8 +1654,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800233010,
     "card_id": 800233010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 2,
@@ -1651,8 +1676,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800243010,
     "card_id": 800243010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 2,
@@ -1673,8 +1698,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800243020,
     "card_id": 800243020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 2,
@@ -1695,6 +1720,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314010,
     "card_id": 705314010,
     "card_name": "智慧之光",
     "card_set_id": 70005,
@@ -1717,6 +1743,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119314010,
     "card_id": 715314010,
     "card_name": "戏刀奇术",
     "card_set_id": 70021,
@@ -1739,6 +1766,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123324010,
     "card_id": 715324010,
     "card_name": "阴阳秘法",
     "card_set_id": 10023,
@@ -1761,6 +1789,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 129314020,
     "card_id": 720314020,
     "card_name": "与使魔的契约",
     "card_set_id": 70029,
@@ -1783,8 +1812,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800314030,
     "card_id": 800314030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1805,8 +1834,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800314040,
     "card_id": 800314040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1827,8 +1856,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800314050,
     "card_id": 800314050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1849,8 +1878,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800324010,
     "card_id": 800324010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1871,8 +1900,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800324020,
     "card_id": 800324020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1893,8 +1922,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344040,
     "card_id": 800344040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1915,8 +1944,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344080,
     "card_id": 800344080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1937,8 +1966,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344090,
     "card_id": 800344090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1959,8 +1988,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344100,
     "card_id": 800344100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -1981,8 +2010,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810344010,
     "card_id": 810344010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -2003,6 +2032,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 102312040,
     "card_id": 110312010,
     "card_name": "废铁炼成术",
     "card_set_id": 10010,
@@ -2025,6 +2055,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 105312010,
     "card_id": 113312010,
     "card_name": "魔女的大锅炉",
     "card_set_id": 10013,
@@ -2047,8 +2078,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800312030,
     "card_id": 800312030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -2069,8 +2100,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800312040,
     "card_id": 800312040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -2091,8 +2122,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800322010,
     "card_id": 800322010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -2113,8 +2144,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800323010,
     "card_id": 800323010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 3,
@@ -2135,8 +2166,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800342010,
     "card_id": 800342010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -2157,6 +2188,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 117431020,
     "card_id": 900431040,
     "card_name": "永恒巨鲸",
     "card_set_id": 90000,
@@ -2179,6 +2211,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127411010,
     "card_id": 900411060,
     "card_name": "裂隙的盗匪",
     "card_set_id": 90000,
@@ -2201,8 +2234,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810431010,
     "card_id": 810431010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -2223,6 +2256,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115414010,
     "card_id": 713414010,
     "card_name": "武力炎翔",
     "card_set_id": 70017,
@@ -2245,6 +2279,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118424010,
     "card_id": 900424040,
     "card_name": "龙之赠言",
     "card_set_id": 90000,
@@ -2267,6 +2302,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118424010,
     "card_id": 900424050,
     "card_name": "龙之赠言",
     "card_set_id": 90000,
@@ -2289,6 +2325,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 119424010,
     "card_id": 715424010,
     "card_name": "龙之养成",
     "card_set_id": 70023,
@@ -2311,6 +2348,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123414010,
     "card_id": 715414010,
     "card_name": "猎龙砍击",
     "card_set_id": 70024,
@@ -2333,6 +2371,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125414010,
     "card_id": 717414010,
     "card_name": "人鱼之歌",
     "card_set_id": 70026,
@@ -2355,6 +2394,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126424010,
     "card_id": 717424010,
     "card_name": "龙之武装",
     "card_set_id": 70027,
@@ -2377,8 +2417,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800414040,
     "card_id": 800414040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2399,8 +2439,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800414040,
     "card_id": 800414060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2421,8 +2461,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800414070,
     "card_id": 800414070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2443,8 +2483,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800424030,
     "card_id": 800424030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2465,8 +2505,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800424040,
     "card_id": 800424040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2487,8 +2527,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800434020,
     "card_id": 800434020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2509,8 +2549,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444010,
     "card_id": 800444010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2531,8 +2571,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444070,
     "card_id": 800444070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2553,8 +2593,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444080,
     "card_id": 800444080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2575,8 +2615,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444110,
     "card_id": 800444110,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2597,8 +2637,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444110,
     "card_id": 800444120,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2619,8 +2659,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810444010,
     "card_id": 810444010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2641,8 +2681,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444010,
     "card_id": 820444010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2663,8 +2703,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444030,
     "card_id": 820444030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2685,8 +2725,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444060,
     "card_id": 820444060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2707,8 +2747,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444060,
     "card_id": 820444070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -2729,8 +2769,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800413020,
     "card_id": 800413020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 4,
@@ -2751,8 +2791,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800443010,
     "card_id": 800443010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 4,
@@ -2773,8 +2813,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800443030,
     "card_id": 800443030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 4,
@@ -2795,6 +2835,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115531010,
     "card_id": 711531010,
     "card_name": "布丁幽灵·宫子",
     "card_set_id": 10015,
@@ -2817,6 +2858,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123541030,
     "card_id": 900541150,
     "card_name": "绝叫沉默·鲁鲁纳伊",
     "card_set_id": 90000,
@@ -2839,6 +2881,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126531010,
     "card_id": 900531060,
     "card_name": "小鬼怪·帕克鲁斯",
     "card_set_id": 90000,
@@ -2861,6 +2904,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101514010,
     "card_id": 109514010,
     "card_name": "灵魂转移",
     "card_set_id": 10009,
@@ -2883,6 +2927,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123514010,
     "card_id": 717514010,
     "card_name": "灵体入侵",
     "card_set_id": 70025,
@@ -2905,6 +2950,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123534010,
     "card_id": 715534010,
     "card_name": "怨仇的绝叫",
     "card_set_id": 10023,
@@ -2927,6 +2973,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128514010,
     "card_id": 720514010,
     "card_name": "枕边的邪气",
     "card_set_id": 70029,
@@ -2949,8 +2996,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800514010,
     "card_id": 800514010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -2971,8 +3018,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800514030,
     "card_id": 800514030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -2993,8 +3040,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800524020,
     "card_id": 800524020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3015,8 +3062,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800524030,
     "card_id": 800524030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3037,8 +3084,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800534010,
     "card_id": 800534010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3059,8 +3106,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800534030,
     "card_id": 800534030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3081,8 +3128,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800534030,
     "card_id": 800534040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3103,8 +3150,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544010,
     "card_id": 800544010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3125,8 +3172,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544090,
     "card_id": 800544090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3147,8 +3194,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810534010,
     "card_id": 810534010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3169,8 +3216,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810544010,
     "card_id": 810544010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3191,8 +3238,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544020,
     "card_id": 820544020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3213,8 +3260,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544030,
     "card_id": 820544030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3235,8 +3282,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544030,
     "card_id": 820544040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3257,8 +3304,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544050,
     "card_id": 820544050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3279,8 +3326,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544050,
     "card_id": 820544060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -3301,8 +3348,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800513010,
     "card_id": 800513010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -3323,8 +3370,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800533020,
     "card_id": 800533020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -3345,8 +3392,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800543040,
     "card_id": 800543040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -3367,6 +3414,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118624010,
     "card_id": 713624020,
     "card_name": "血弹坠击",
     "card_set_id": 70020,
@@ -3389,6 +3437,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124634010,
     "card_id": 717634010,
     "card_name": "无尽契约",
     "card_set_id": 10024,
@@ -3411,6 +3460,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125614010,
     "card_id": 717614010,
     "card_name": "悄然逼近的残酷",
     "card_set_id": 70026,
@@ -3433,6 +3483,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126614010,
     "card_id": 717614020,
     "card_name": "邪恶的指挥",
     "card_set_id": 70027,
@@ -3455,6 +3506,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127614010,
     "card_id": 717614030,
     "card_name": "凶猛嚎叫",
     "card_set_id": 70028,
@@ -3477,6 +3529,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128614010,
     "card_id": 720614010,
     "card_name": "剧变为恶",
     "card_set_id": 70021,
@@ -3499,8 +3552,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614050,
     "card_id": 800614050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3521,8 +3574,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614060,
     "card_id": 800614060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3543,8 +3596,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614070,
     "card_id": 800614070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3565,8 +3618,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800624020,
     "card_id": 800624020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3587,8 +3640,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800624030,
     "card_id": 800624030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3609,8 +3662,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634020,
     "card_id": 800634020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3631,8 +3684,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634030,
     "card_id": 800634030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3653,8 +3706,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634040,
     "card_id": 800634040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3675,8 +3728,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644050,
     "card_id": 800644050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3697,8 +3750,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810634020,
     "card_id": 810634020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3719,8 +3772,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820644010,
     "card_id": 820644010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3741,8 +3794,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820644030,
     "card_id": 820644030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -3763,8 +3816,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800633010,
     "card_id": 800633010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -3785,8 +3838,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800633020,
     "card_id": 800633020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -3807,6 +3860,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126731010,
     "card_id": 717731020,
     "card_name": "绚彩瑰石·玟奇",
     "card_set_id": 10026,
@@ -3829,6 +3883,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117724010,
     "card_id": 713724010,
     "card_name": "宝石的光辉",
     "card_set_id": 70020,
@@ -3851,8 +3906,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800724020,
     "card_id": 800724020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3873,8 +3928,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800724030,
     "card_id": 800724030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3895,8 +3950,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800724040,
     "card_id": 800724040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3917,8 +3972,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800734020,
     "card_id": 800734020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3939,8 +3994,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800734030,
     "card_id": 800734030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3961,8 +4016,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744010,
     "card_id": 800744010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -3983,8 +4038,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744020,
     "card_id": 800744020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -4005,8 +4060,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744060,
     "card_id": 800744060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -4027,8 +4082,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744070,
     "card_id": 800744070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -4049,6 +4104,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107732010,
     "card_id": 119732010,
     "card_name": "峰顶的教会",
     "card_set_id": 10019,
@@ -4071,6 +4127,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113733010,
     "card_id": 713733010,
     "card_name": "黄金之钟",
     "card_set_id": 70023,
@@ -4093,6 +4150,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126732010,
     "card_id": 717732010,
     "card_name": "宝石圣堂",
     "card_set_id": 70027,
@@ -4115,6 +4173,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127713010,
     "card_id": 717713010,
     "card_name": "光辉的宝珠",
     "card_set_id": 70028,
@@ -4137,8 +4196,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713020,
     "card_id": 800713020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4159,8 +4218,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713060,
     "card_id": 800713060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4181,8 +4240,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713080,
     "card_id": 800713080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4203,8 +4262,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713100,
     "card_id": 800713100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4225,8 +4284,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713110,
     "card_id": 800713110,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4247,8 +4306,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723010,
     "card_id": 800723010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4269,8 +4328,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723020,
     "card_id": 800723020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4291,8 +4350,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723070,
     "card_id": 800723070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4313,8 +4372,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723080,
     "card_id": 800723080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4335,8 +4394,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743020,
     "card_id": 800743020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4357,8 +4416,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743040,
     "card_id": 800743040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4379,8 +4438,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743050,
     "card_id": 800743050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4401,8 +4460,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743070,
     "card_id": 800743070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -4423,6 +4482,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122811020,
     "card_id": 717811010,
     "card_name": "年幼的操线手",
     "card_set_id": 70021,
@@ -4445,6 +4505,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 125811030,
     "card_id": 717811020,
     "card_name": "机械犬",
     "card_set_id": 70021,
@@ -4467,6 +4528,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 127841010,
     "card_id": 717841010,
     "card_name": "机锋的罪人·卡托司瑞德",
     "card_set_id": 10027,
@@ -4489,8 +4551,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810841010,
     "card_id": 810841010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -4511,6 +4573,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111814010,
     "card_id": 708814010,
     "card_name": "破坏的愉悦",
     "card_set_id": 70004,
@@ -4533,6 +4596,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112834010,
     "card_id": 709834010,
     "card_name": "机械的解放",
     "card_set_id": 70009,
@@ -4555,6 +4619,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113824010,
     "card_id": 713824010,
     "card_name": "构造的解析",
     "card_set_id": 70016,
@@ -4577,6 +4642,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117824010,
     "card_id": 713824020,
     "card_name": "创造物扫描",
     "card_set_id": 70017,
@@ -4599,6 +4665,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125834010,
     "card_id": 717834010,
     "card_name": "转动的命运",
     "card_set_id": 70026,
@@ -4621,8 +4688,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800824020,
     "card_id": 800824020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4643,8 +4710,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834030,
     "card_id": 800834030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4665,8 +4732,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834040,
     "card_id": 800834040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4687,8 +4754,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834060,
     "card_id": 800834060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4709,8 +4776,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834070,
     "card_id": 800834070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4731,8 +4798,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844040,
     "card_id": 800844040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4753,8 +4820,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844060,
     "card_id": 800844060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4775,8 +4842,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844070,
     "card_id": 800844070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4797,8 +4864,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844080,
     "card_id": 800844080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4819,8 +4886,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844090,
     "card_id": 800844090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4841,8 +4908,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844090,
     "card_id": 800844110,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -4863,8 +4930,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800813010,
     "card_id": 800813010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -4885,8 +4952,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800843030,
     "card_id": 800843030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -4907,6 +4974,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 108031020,
     "card_id": 707031010,
     "card_name": "天界的尖兵",
     "card_set_id": 70006,
@@ -4929,6 +4997,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 114031010,
     "card_id": 712031010,
     "card_name": "荒野领路人",
     "card_set_id": 70014,
@@ -4951,6 +5020,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118011020,
     "card_id": 715011010,
     "card_name": "自由的冒险者",
     "card_set_id": 70021,
@@ -4973,6 +5043,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126031020,
     "card_id": 720031010,
     "card_name": "弗蕾亚",
     "card_set_id": 70021,
@@ -4995,6 +5066,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 109034010,
     "card_id": 707034010,
     "card_name": "炽天使之剑",
     "card_set_id": 70006,
@@ -5017,6 +5089,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114014010,
     "card_id": 712014010,
     "card_name": "荒野中的憩息",
     "card_set_id": 70014,
@@ -5039,8 +5112,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800014020,
     "card_id": 800014020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -5061,8 +5134,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034020,
     "card_id": 800034020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -5083,8 +5156,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034020,
     "card_id": 800034030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -5105,8 +5178,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034060,
     "card_id": 800034060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -5127,8 +5200,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034070,
     "card_id": 800034070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -5149,8 +5222,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820032020,
     "card_id": 820032020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 0,
@@ -5171,6 +5244,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122121030,
     "card_id": 715121010,
     "card_name": "妖花捕食者",
     "card_set_id": 70021,
@@ -5193,6 +5267,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125141020,
     "card_id": 717141020,
     "card_name": "神铁锻造师·蕾妮",
     "card_set_id": 10025,
@@ -5215,8 +5290,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810141030,
     "card_id": 810141030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -5237,8 +5312,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820141020,
     "card_id": 820141020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -5259,6 +5334,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100114010,
     "card_id": 705114010,
     "card_name": "森林的反扑",
     "card_set_id": 70005,
@@ -5281,6 +5357,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100114010,
     "card_id": 713114010,
     "card_name": "森林的反扑",
     "card_set_id": 70018,
@@ -5303,6 +5380,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111124010,
     "card_id": 708124010,
     "card_name": "强者的威严",
     "card_set_id": 70004,
@@ -5325,6 +5403,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117124010,
     "card_id": 713124020,
     "card_name": "治愈的波动",
     "card_set_id": 70017,
@@ -5347,6 +5426,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120134010,
     "card_id": 715134010,
     "card_name": "元素斩击",
     "card_set_id": 70023,
@@ -5369,6 +5449,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 121124010,
     "card_id": 715124010,
     "card_name": "温暖的拥抱",
     "card_set_id": 10021,
@@ -5391,6 +5472,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123114010,
     "card_id": 715114010,
     "card_name": "种子射击",
     "card_set_id": 70024,
@@ -5413,8 +5495,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144010,
     "card_id": 800144010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -5435,8 +5517,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144020,
     "card_id": 800144020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -5457,8 +5539,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820144010,
     "card_id": 820144010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -5479,8 +5561,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810122010,
     "card_id": 810122010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 1,
@@ -5501,6 +5583,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 106221010,
     "card_id": 702221010,
     "card_name": "Lancer",
     "card_set_id": 70004,
@@ -5523,8 +5606,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810211010,
     "card_id": 810211010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -5545,8 +5628,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820241010,
     "card_id": 820241010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -5567,6 +5650,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111214010,
     "card_id": 708214010,
     "card_name": "神速的步法",
     "card_set_id": 70004,
@@ -5589,6 +5673,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112224010,
     "card_id": 709224010,
     "card_name": "白刃剑舞",
     "card_set_id": 70008,
@@ -5611,6 +5696,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114234010,
     "card_id": 709234010,
     "card_name": "意外失足",
     "card_set_id": 70013,
@@ -5633,6 +5719,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124214010,
     "card_id": 717214010,
     "card_name": "减价交涉",
     "card_set_id": 70026,
@@ -5655,8 +5742,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800214010,
     "card_id": 800214010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5677,8 +5764,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800214020,
     "card_id": 800214020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5699,8 +5786,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800214020,
     "card_id": 800214050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5721,8 +5808,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800234010,
     "card_id": 800234010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5743,8 +5830,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800234040,
     "card_id": 800234040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5765,8 +5852,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244010,
     "card_id": 800244010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5787,8 +5874,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244020,
     "card_id": 800244020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5809,8 +5896,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244030,
     "card_id": 800244030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5831,8 +5918,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244030,
     "card_id": 800244070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5853,8 +5940,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244120,
     "card_id": 800244120,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -5875,6 +5962,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 117341030,
     "card_id": 716341010,
     "card_name": "决意预言者·露妮",
     "card_set_id": 10017,
@@ -5897,6 +5985,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121341020,
     "card_id": 715341010,
     "card_name": "荣耀之花·爱莲娜",
     "card_set_id": 10021,
@@ -5919,6 +6008,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121341020,
     "card_id": 718341010,
     "card_name": "荣耀之花·爱莲娜",
     "card_set_id": 10021,
@@ -5941,6 +6031,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 128331010,
     "card_id": 720331010,
     "card_name": "缔结之红莲·古蕾娅",
     "card_set_id": 10028,
@@ -5963,8 +6054,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820341020,
     "card_id": 820341020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -5985,6 +6076,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314020,
     "card_id": 709314030,
     "card_name": "魔导飞弹",
     "card_set_id": 70013,
@@ -6007,6 +6099,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314030,
     "card_id": 713314020,
     "card_name": "巨像炼成术",
     "card_set_id": 70018,
@@ -6029,6 +6122,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314040,
     "card_id": 709314020,
     "card_name": "疾风喷射",
     "card_set_id": 70009,
@@ -6051,6 +6145,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111314010,
     "card_id": 708314010,
     "card_name": "魔法的一击",
     "card_set_id": 70004,
@@ -6073,6 +6168,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126334010,
     "card_id": 717334020,
     "card_name": "奇幻战略",
     "card_set_id": 70027,
@@ -6095,8 +6191,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800314010,
     "card_id": 800314010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6117,8 +6213,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800314020,
     "card_id": 800314020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6139,8 +6235,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800324030,
     "card_id": 800324030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6161,8 +6257,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800324040,
     "card_id": 800324040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6183,8 +6279,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800334020,
     "card_id": 800334020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6205,8 +6301,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800334030,
     "card_id": 800334030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6227,8 +6323,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344010,
     "card_id": 800344010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6249,8 +6345,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344030,
     "card_id": 800344030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6271,8 +6367,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344070,
     "card_id": 800344070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -6293,6 +6389,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 107322010,
     "card_id": 114322010,
     "card_name": "寂静的实验室",
     "card_set_id": 10014,
@@ -6315,8 +6412,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800312010,
     "card_id": 800312010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -6337,8 +6434,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800312020,
     "card_id": 800312020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 3,
@@ -6359,6 +6456,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 108441030,
     "card_id": 706441010,
     "card_name": "银冰龙人·菲琳",
     "card_set_id": 10008,
@@ -6381,6 +6479,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116441010,
     "card_id": 714441020,
     "card_name": "极炎龙骑士·洛乐",
     "card_set_id": 10016,
@@ -6403,6 +6502,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 118431010,
     "card_id": 716431010,
     "card_name": "万花凤凰",
     "card_set_id": 10018,
@@ -6425,6 +6525,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124421020,
     "card_id": 717421010,
     "card_name": "特别週",
     "card_set_id": 70025,
@@ -6447,6 +6548,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125441030,
     "card_id": 719441010,
     "card_name": "独眼龙·伊达政宗",
     "card_set_id": 10025,
@@ -6469,8 +6571,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810421010,
     "card_id": 810421010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -6491,8 +6593,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 820441030,
     "card_id": 820441030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -6513,6 +6615,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100414010,
     "card_id": 705414010,
     "card_name": "龙之启示",
     "card_set_id": 70005,
@@ -6535,6 +6638,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100414010,
     "card_id": 713414020,
     "card_name": "龙之启示",
     "card_set_id": 70018,
@@ -6557,6 +6661,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111434010,
     "card_id": 708434010,
     "card_name": "力之锻造",
     "card_set_id": 70004,
@@ -6579,6 +6684,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117434010,
     "card_id": 713434010,
     "card_name": "聚龙之唤",
     "card_set_id": 70019,
@@ -6601,6 +6707,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118424010,
     "card_id": 713424010,
     "card_name": "龙之赠言",
     "card_set_id": 70021,
@@ -6623,8 +6730,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800414030,
     "card_id": 800414030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6645,8 +6752,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800434010,
     "card_id": 800434010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6667,8 +6774,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800434030,
     "card_id": 800434030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6689,8 +6796,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444030,
     "card_id": 800444030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6711,8 +6818,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444060,
     "card_id": 800444060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6733,8 +6840,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444020,
     "card_id": 820444020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6755,8 +6862,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444040,
     "card_id": 820444040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6777,8 +6884,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820444040,
     "card_id": 820444050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -6799,6 +6906,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119511040,
     "card_id": 716511010,
     "card_name": "灵魂向导·艾米",
     "card_set_id": 10019,
@@ -6821,6 +6929,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122541030,
     "card_id": 718541010,
     "card_name": "科尔努诺丝",
     "card_set_id": 10022,
@@ -6843,6 +6952,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 128521010,
     "card_id": 720521010,
     "card_name": "恋咒术师·莉姿",
     "card_set_id": 10028,
@@ -6865,8 +6975,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810531010,
     "card_id": 810531010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6887,8 +6997,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810531020,
     "card_id": 810531020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6909,8 +7019,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810541030,
     "card_id": 810541030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6931,8 +7041,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820541020,
     "card_id": 820541020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -6953,6 +7063,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100514010,
     "card_id": 705514010,
     "card_name": "不灭的怨念",
     "card_set_id": 70005,
@@ -6975,6 +7086,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100514010,
     "card_id": 713514010,
     "card_name": "不灭的怨念",
     "card_set_id": 70018,
@@ -6997,6 +7109,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111514010,
     "card_id": 708514010,
     "card_name": "恶意附体",
     "card_set_id": 70004,
@@ -7019,6 +7132,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124524010,
     "card_id": 717524010,
     "card_name": "灵魂出窍",
     "card_set_id": 70026,
@@ -7041,6 +7155,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126514010,
     "card_id": 717514020,
     "card_name": "死灵嘉年华",
     "card_set_id": 70027,
@@ -7063,8 +7178,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800514020,
     "card_id": 800514020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -7085,8 +7200,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800524010,
     "card_id": 800524010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -7107,8 +7222,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800524040,
     "card_id": 800524040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -7129,8 +7244,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544030,
     "card_id": 800544030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -7151,8 +7266,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544030,
     "card_id": 800544070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -7173,8 +7288,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800523010,
     "card_id": 800523010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7195,8 +7310,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800523020,
     "card_id": 800523020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7217,8 +7332,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800533010,
     "card_id": 800533010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7239,8 +7354,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800533030,
     "card_id": 800533030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7261,8 +7376,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800533040,
     "card_id": 800533040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7283,8 +7398,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800543020,
     "card_id": 800543020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7305,8 +7420,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800543030,
     "card_id": 800543030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -7327,6 +7442,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112641020,
     "card_id": 711641010,
     "card_name": "绯红抗战者·莫诺",
     "card_set_id": 10012,
@@ -7349,6 +7465,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 121621010,
     "card_id": 715621010,
     "card_name": "收割的恶魔",
     "card_set_id": 10021,
@@ -7371,6 +7488,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 123641030,
     "card_id": 900641070,
     "card_name": "爱绝奸淫·瓦娜蕾格",
     "card_set_id": 90000,
@@ -7393,8 +7511,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810611010,
     "card_id": 810611010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -7415,8 +7533,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810621010,
     "card_id": 810621010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -7437,8 +7555,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810631020,
     "card_id": 810631020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -7459,8 +7577,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 820641010,
     "card_id": 820641010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -7481,6 +7599,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100614010,
     "card_id": 713614010,
     "card_name": "血之契约",
     "card_set_id": 70018,
@@ -7503,6 +7622,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100614020,
     "card_id": 705614020,
     "card_name": "利爪的一击",
     "card_set_id": 70005,
@@ -7525,6 +7645,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101614020,
     "card_id": 108614010,
     "card_name": "从魔召唤",
     "card_set_id": 10008,
@@ -7547,6 +7668,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106624010,
     "card_id": 702624010,
     "card_name": "缚命之锁",
     "card_set_id": 70004,
@@ -7569,6 +7691,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113614010,
     "card_id": 709614010,
     "card_name": "魅惑的一击",
     "card_set_id": 70010,
@@ -7591,6 +7714,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123614010,
     "card_id": 715614010,
     "card_name": "恶德的传播",
     "card_set_id": 70024,
@@ -7613,6 +7737,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124624010,
     "card_id": 717624010,
     "card_name": "月下纵身",
     "card_set_id": 70025,
@@ -7635,8 +7760,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614020,
     "card_id": 800614020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7657,8 +7782,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614030,
     "card_id": 800614030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7679,8 +7804,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614040,
     "card_id": 800614040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7701,8 +7826,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800624010,
     "card_id": 800624010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7723,8 +7848,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800624040,
     "card_id": 800624040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7745,8 +7870,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634010,
     "card_id": 800634010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7767,8 +7892,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634070,
     "card_id": 800634070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7789,8 +7914,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644020,
     "card_id": 800644020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7811,8 +7936,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644030,
     "card_id": 800644030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7833,8 +7958,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644030,
     "card_id": 800644060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7855,8 +7980,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644080,
     "card_id": 800644080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7877,8 +8002,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820644020,
     "card_id": 820644020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -7899,8 +8024,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800613020,
     "card_id": 800613020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -7921,8 +8046,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800643010,
     "card_id": 800643010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -7943,8 +8068,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800643020,
     "card_id": 800643020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -7965,6 +8090,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 113741020,
     "card_id": 714741010,
     "card_name": "清纯祈祷者·耶菈",
     "card_set_id": 10013,
@@ -7987,6 +8113,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 123741010,
     "card_id": 718741010,
     "card_name": "光灿圣骑士·维尔伯特",
     "card_set_id": 10023,
@@ -8009,8 +8136,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810711010,
     "card_id": 810711010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -8031,8 +8158,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810731020,
     "card_id": 810731020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -8053,8 +8180,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810741010,
     "card_id": 810741010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -8075,8 +8202,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810741030,
     "card_id": 810741030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -8097,8 +8224,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820741010,
     "card_id": 820741010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -8119,6 +8246,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714010,
     "card_id": 705714010,
     "card_name": "崇高的教义",
     "card_set_id": 70005,
@@ -8141,6 +8269,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714020,
     "card_id": 713714010,
     "card_name": "漆黑法典",
     "card_set_id": 70017,
@@ -8163,6 +8292,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100714020,
     "card_id": 713714020,
     "card_name": "漆黑法典",
     "card_set_id": 70018,
@@ -8185,6 +8315,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122714010,
     "card_id": 715714010,
     "card_name": "不屈的祷告",
     "card_set_id": 70024,
@@ -8207,8 +8338,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744040,
     "card_id": 800744040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -8229,8 +8360,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820744010,
     "card_id": 820744010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -8251,6 +8382,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125733010,
     "card_id": 717733010,
     "card_name": "咏唱：神圣的高唤",
     "card_set_id": 70026,
@@ -8273,8 +8405,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713010,
     "card_id": 800713010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8295,8 +8427,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713030,
     "card_id": 800713030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8317,8 +8449,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713090,
     "card_id": 800713090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8339,8 +8471,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723030,
     "card_id": 800723030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8361,8 +8493,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723040,
     "card_id": 800723040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8383,8 +8515,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723050,
     "card_id": 800723050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8405,8 +8537,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800723050,
     "card_id": 800723060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8427,8 +8559,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800733010,
     "card_id": 800733010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8449,8 +8581,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800733020,
     "card_id": 800733020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8471,8 +8603,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800733030,
     "card_id": 800733030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8493,8 +8625,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743060,
     "card_id": 800743060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -8515,8 +8647,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810732020,
     "card_id": 810732020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 7,
@@ -8537,6 +8669,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 116841010,
     "card_id": 714841010,
     "card_name": "音速机械·洛菈米亚",
     "card_set_id": 10016,
@@ -8559,6 +8692,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120821020,
     "card_id": 715821010,
     "card_name": "叶王",
     "card_set_id": 70024,
@@ -8581,6 +8715,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 121841010,
     "card_id": 718841010,
     "card_name": "肃清之器·梅希亚",
     "card_set_id": 10021,
@@ -8603,8 +8738,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820841010,
     "card_id": 820841010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -8625,6 +8760,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100814010,
     "card_id": 705814010,
     "card_name": "次元断",
     "card_set_id": 70005,
@@ -8647,6 +8783,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 114834010,
     "card_id": 709834020,
     "card_name": "创造物的呼唤",
     "card_set_id": 70013,
@@ -8669,6 +8806,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123814010,
     "card_id": 717814010,
     "card_name": "发现机体",
     "card_set_id": 70025,
@@ -8691,8 +8829,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800814010,
     "card_id": 800814010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -8713,8 +8851,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834010,
     "card_id": 800834010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -8735,8 +8873,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844050,
     "card_id": 800844050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -8757,8 +8895,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800843010,
     "card_id": 800843010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -8779,6 +8917,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119031030,
     "card_id": 715031010,
     "card_name": "烬燃恶魔",
     "card_set_id": 70021,
@@ -8801,8 +8940,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810011010,
     "card_id": 810011010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -8823,8 +8962,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810011030,
     "card_id": 810011030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -8845,8 +8984,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810031010,
     "card_id": 810031010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -8867,6 +9006,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124024010,
     "card_id": 717024010,
     "card_name": "天使的恩宠",
     "card_set_id": 70021,
@@ -8889,8 +9029,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800014010,
     "card_id": 800014010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -8911,8 +9051,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034050,
     "card_id": 800034050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -8933,8 +9073,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044020,
     "card_id": 800044020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -8955,8 +9095,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044030,
     "card_id": 800044030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -8977,8 +9117,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820032030,
     "card_id": 820032030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 0,
@@ -8999,6 +9139,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 101141020,
     "card_id": 701141010,
     "card_name": "远古精灵",
     "card_set_id": 70001,
@@ -9021,6 +9162,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110141030,
     "card_id": 711141010,
     "card_name": "森之女王·莉莎",
     "card_set_id": 10010,
@@ -9043,6 +9185,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 117141010,
     "card_id": 716141020,
     "card_name": "《倒吊人》·罗弗拉德",
     "card_set_id": 10017,
@@ -9065,6 +9208,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124131010,
     "card_id": 717131010,
     "card_name": "清泉之灵",
     "card_set_id": 70021,
@@ -9087,6 +9231,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124141010,
     "card_id": 717141010,
     "card_name": "狸惑的女将·穗澄",
     "card_set_id": 10024,
@@ -9109,6 +9254,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124141010,
     "card_id": 718141020,
     "card_name": "狸惑的女将·穗澄",
     "card_set_id": 10024,
@@ -9131,6 +9277,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113114010,
     "card_id": 709114020,
     "card_name": "丰收的季节",
     "card_set_id": 70010,
@@ -9153,6 +9300,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124134010,
     "card_id": 717134010,
     "card_name": "幻梦款待",
     "card_set_id": 70026,
@@ -9175,8 +9323,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800144110,
     "card_id": 800144110,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -9197,6 +9345,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112122010,
     "card_id": 709122010,
     "card_name": "森林之核",
     "card_set_id": 70012,
@@ -9219,6 +9368,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114241030,
     "card_id": 714241010,
     "card_name": "妖刃之鬼·椿",
     "card_set_id": 10014,
@@ -9241,6 +9391,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121221010,
     "card_id": 715221020,
     "card_name": "麻仓 叶",
     "card_set_id": 70024,
@@ -9263,6 +9414,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124221010,
     "card_id": 717221010,
     "card_name": "绝顶艺者",
     "card_set_id": 10024,
@@ -9285,6 +9437,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 124241030,
     "card_id": 718241010,
     "card_name": "炙燃之炎·玛尔斯",
     "card_set_id": 10024,
@@ -9307,8 +9460,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820231010,
     "card_id": 820231010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -9329,8 +9482,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 820241030,
     "card_id": 820241030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -9351,6 +9504,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100214020,
     "card_id": 713214020,
     "card_name": "武装强化",
     "card_set_id": 70018,
@@ -9373,6 +9527,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 120214010,
     "card_id": 715214010,
     "card_name": "周密准备",
     "card_set_id": 70023,
@@ -9395,6 +9550,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128224010,
     "card_id": 717224010,
     "card_name": "势不可当",
     "card_set_id": 70028,
@@ -9417,8 +9573,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800214030,
     "card_id": 800214030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -9439,8 +9595,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800234030,
     "card_id": 800234030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -9461,8 +9617,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244060,
     "card_id": 800244060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -9483,6 +9639,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112222010,
     "card_id": 709222010,
     "card_name": "荣耀之核",
     "card_set_id": 70012,
@@ -9505,8 +9662,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820243010,
     "card_id": 820243010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 2,
@@ -9527,6 +9684,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 115331010,
     "card_id": 711331010,
     "card_name": "小小优等生·镜华",
     "card_set_id": 10015,
@@ -9549,6 +9707,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123331020,
     "card_id": 717331010,
     "card_name": "酸蚀巨像",
     "card_set_id": 70021,
@@ -9571,8 +9730,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810321010,
     "card_id": 810321010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -9593,8 +9752,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810341010,
     "card_id": 810341010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -9615,8 +9774,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820331010,
     "card_id": 820331010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -9637,8 +9796,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 820341010,
     "card_id": 820341010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 3,
@@ -9659,6 +9818,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106324010,
     "card_id": 702324010,
     "card_name": "精神统一",
     "card_set_id": 70004,
@@ -9681,6 +9841,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 123314010,
     "card_id": 715314020,
     "card_name": "折射魔力",
     "card_set_id": 70024,
@@ -9703,8 +9864,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800334010,
     "card_id": 800334010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -9725,8 +9886,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820344020,
     "card_id": 820344020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -9747,6 +9908,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112322010,
     "card_id": 709322010,
     "card_name": "睿智之核",
     "card_set_id": 70012,
@@ -9769,6 +9931,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112322010,
     "card_id": 709322020,
     "card_name": "睿智之核",
     "card_set_id": 70012,
@@ -9791,8 +9954,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800343010,
     "card_id": 800343010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 3,
@@ -9813,8 +9976,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810421030,
     "card_id": 810421030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -9835,8 +9998,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810441020,
     "card_id": 810441020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -9857,8 +10020,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 820441010,
     "card_id": 820441010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -9879,8 +10042,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 820441020,
     "card_id": 820441020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -9901,6 +10064,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 106434010,
     "card_id": 702434010,
     "card_name": "誓灭暴击",
     "card_set_id": 70004,
@@ -9923,6 +10087,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 128424010,
     "card_id": 720424010,
     "card_name": "龙之恩泽",
     "card_set_id": 70029,
@@ -9945,8 +10110,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800414020,
     "card_id": 800414020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -9967,8 +10132,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444020,
     "card_id": 800444020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -9989,8 +10154,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444050,
     "card_id": 800444050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -10011,8 +10176,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444090,
     "card_id": 800444090,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -10033,8 +10198,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444090,
     "card_id": 800444100,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -10055,6 +10220,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112422010,
     "card_id": 709422010,
     "card_name": "龙威之核",
     "card_set_id": 70012,
@@ -10077,6 +10243,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 126521020,
     "card_id": 717521010,
     "card_name": "福金与雾尼",
     "card_set_id": 70021,
@@ -10099,8 +10266,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810521010,
     "card_id": 810521010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -10121,8 +10288,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810541020,
     "card_id": 810541020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -10143,8 +10310,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 820541010,
     "card_id": 820541010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -10165,6 +10332,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122514010,
     "card_id": 715514010,
     "card_name": "亡骨奔腾",
     "card_set_id": 70024,
@@ -10187,8 +10355,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800534020,
     "card_id": 800534020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -10209,8 +10377,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544050,
     "card_id": 800544050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -10231,8 +10399,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544060,
     "card_id": 800544060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -10253,8 +10421,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820544010,
     "card_id": 820544010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -10275,6 +10443,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112522010,
     "card_id": 709522010,
     "card_name": "灵魂之核",
     "card_set_id": 70012,
@@ -10297,8 +10466,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800543010,
     "card_id": 800543010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 5,
@@ -10319,6 +10488,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 114641030,
     "card_id": 900641050,
     "card_name": "库德拉克",
     "card_set_id": 90000,
@@ -10341,6 +10511,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 120611010,
     "card_id": 715611010,
     "card_name": "银白剑士",
     "card_set_id": 70021,
@@ -10363,6 +10534,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 122641020,
     "card_id": 718641010,
     "card_name": "夜空吸血鬼·卡媞亚",
     "card_set_id": 10022,
@@ -10385,8 +10557,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810641040,
     "card_id": 810641040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -10407,8 +10579,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810641050,
     "card_id": 810641050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -10429,6 +10601,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111634010,
     "card_id": 708634010,
     "card_name": "理性的崩坏",
     "card_set_id": 70004,
@@ -10451,8 +10624,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800614010,
     "card_id": 800614010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -10473,6 +10646,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112622010,
     "card_id": 709622010,
     "card_name": "血红之核",
     "card_set_id": 70012,
@@ -10495,8 +10669,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800613010,
     "card_id": 800613010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -10517,8 +10691,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800623010,
     "card_id": 800623010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -10539,8 +10713,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800643030,
     "card_id": 800643030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 6,
@@ -10561,6 +10735,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 122741020,
     "card_id": 718741020,
     "card_name": "圣辉女剑士",
     "card_set_id": 10022,
@@ -10583,6 +10758,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125741020,
     "card_id": 716741010,
     "card_name": "绝望的救赎·贞德",
     "card_set_id": 10025,
@@ -10605,8 +10781,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810731030,
     "card_id": 810731030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -10627,8 +10803,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800744030,
     "card_id": 800744030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -10649,6 +10825,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112722010,
     "card_id": 709722010,
     "card_name": "圣洁之核",
     "card_set_id": 70012,
@@ -10671,8 +10848,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713040,
     "card_id": 800713040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -10693,8 +10870,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713050,
     "card_id": 800713050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -10715,8 +10892,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743010,
     "card_id": 800743010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -10737,8 +10914,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800743030,
     "card_id": 800743030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -10759,6 +10936,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 129831010,
     "card_id": 720831010,
     "card_name": "门扉解放者·菈姿莉",
     "card_set_id": 10029,
@@ -10781,6 +10959,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 125844010,
     "card_id": 900844080,
     "card_name": "神器鸣动",
     "card_set_id": 90000,
@@ -10803,8 +10982,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800824010,
     "card_id": 800824010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10825,8 +11004,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834020,
     "card_id": 800834020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10847,8 +11026,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800834050,
     "card_id": 800834050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10869,8 +11048,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844010,
     "card_id": 800844010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10891,8 +11070,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844020,
     "card_id": 800844020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10913,8 +11092,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800844030,
     "card_id": 800844030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10935,8 +11114,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810844020,
     "card_id": 810844020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10957,8 +11136,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810844020,
     "card_id": 810844030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -10979,6 +11158,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112822010,
     "card_id": 709822010,
     "card_name": "起源之核",
     "card_set_id": 70012,
@@ -11001,8 +11181,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800843020,
     "card_id": 800843020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -11023,8 +11203,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810843010,
     "card_id": 810843010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -11045,8 +11225,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820843020,
     "card_id": 820843020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -11067,8 +11247,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820843030,
     "card_id": 820843030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 8,
@@ -11089,8 +11269,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810011020,
     "card_id": 810011020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -11111,8 +11291,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810031020,
     "card_id": 810031020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -11133,8 +11313,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810041020,
     "card_id": 810041020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -11155,6 +11335,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 113034010,
     "card_id": 710034010,
     "card_name": "天使的箭击",
     "card_set_id": 70011,
@@ -11177,6 +11358,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117034010,
     "card_id": 713034010,
     "card_name": "堕落的决意",
     "card_set_id": 70019,
@@ -11199,8 +11381,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800034010,
     "card_id": 800034010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -11221,8 +11403,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044060,
     "card_id": 800044060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -11243,6 +11425,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 107141010,
     "card_id": 704141010,
     "card_name": "先导者妖精公主·阿丽雅",
     "card_set_id": 10007,
@@ -11265,6 +11448,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122141010,
     "card_id": 715141010,
     "card_name": "璀璨妖精",
     "card_set_id": 10022,
@@ -11287,6 +11471,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 123141020,
     "card_id": 718141010,
     "card_name": "冻土女王·皮雅希",
     "card_set_id": 10023,
@@ -11309,8 +11494,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810131010,
     "card_id": 810131010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -11331,6 +11516,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 118241020,
     "card_id": 715241010,
     "card_name": "咒箱女王·娜哈特·娜哈特",
     "card_set_id": 10018,
@@ -11353,6 +11539,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 125241020,
     "card_id": 719241010,
     "card_name": "荣光剑士·奥蕾莉亚",
     "card_set_id": 10025,
@@ -11375,8 +11562,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 820241020,
     "card_id": 820241020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -11397,6 +11584,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 115214010,
     "card_id": 713214010,
     "card_name": "居合的精髓",
     "card_set_id": 70016,
@@ -11419,8 +11607,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244050,
     "card_id": 800244050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -11441,8 +11629,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244110,
     "card_id": 800244110,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -11463,6 +11651,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101341020,
     "card_id": 701341010,
     "card_name": "梅林",
     "card_set_id": 70001,
@@ -11485,8 +11674,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810324010,
     "card_id": 810324010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -11507,6 +11696,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114441020,
     "card_id": 714441010,
     "card_name": "诅咒之影·拜迪",
     "card_set_id": 10014,
@@ -11529,8 +11719,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810441040,
     "card_id": 810441040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -11551,6 +11741,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 112414010,
     "card_id": 709414010,
     "card_name": "威压猛击",
     "card_set_id": 70009,
@@ -11573,8 +11764,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800424010,
     "card_id": 800424010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -11595,8 +11786,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800424020,
     "card_id": 800424020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -11617,8 +11808,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800434040,
     "card_id": 800434040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -11639,8 +11830,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800444040,
     "card_id": 800444040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -11661,6 +11852,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 112541020,
     "card_id": 711541010,
     "card_name": "丹紫抵御者·安镍儿",
     "card_set_id": 10012,
@@ -11683,6 +11875,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113541020,
     "card_id": 706541010,
     "card_name": "冥守之巅·艾夏",
     "card_set_id": 10013,
@@ -11705,6 +11898,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 118531010,
     "card_id": 713531010,
     "card_name": "大十字镐之骸",
     "card_set_id": 70021,
@@ -11727,8 +11921,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 820531010,
     "card_id": 820531010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -11749,8 +11943,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 820531010,
     "card_id": 820531020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -11771,6 +11965,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 116524010,
     "card_id": 713524010,
     "card_name": "致命指令",
     "card_set_id": 70017,
@@ -11793,6 +11988,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 118524010,
     "card_id": 713524020,
     "card_name": "死灵冲击",
     "card_set_id": 70020,
@@ -11815,6 +12011,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 100611050,
     "card_id": 704611010,
     "card_name": "暗魔女将·艾瑟菈",
     "card_set_id": 10000,
@@ -11837,6 +12034,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104641010,
     "card_id": 703641010,
     "card_name": "贝尔芬格",
     "card_set_id": 70002,
@@ -11859,6 +12057,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106641010,
     "card_id": 706641010,
     "card_name": "毒牙公主·梅杜莎",
     "card_set_id": 10006,
@@ -11881,6 +12080,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117641010,
     "card_id": 900641060,
     "card_name": "《节制》·卢泽",
     "card_set_id": 90000,
@@ -11903,6 +12103,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 120641010,
     "card_id": 716641010,
     "card_name": "赤红战争·萝拉",
     "card_set_id": 10020,
@@ -11925,8 +12126,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810611020,
     "card_id": 810611020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -11947,8 +12148,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810631010,
     "card_id": 810631010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -11969,8 +12170,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634040,
     "card_id": 800634050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -11991,6 +12192,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 120721020,
     "card_id": 715721010,
     "card_name": "狐耳圣骑士",
     "card_set_id": 70021,
@@ -12013,6 +12215,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124721020,
     "card_id": 717721010,
     "card_name": "目白麦昆",
     "card_set_id": 70025,
@@ -12035,6 +12238,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 111734010,
     "card_id": 708734010,
     "card_name": "射杀的光辉",
     "card_set_id": 70004,
@@ -12057,8 +12261,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800713070,
     "card_id": 800713070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 7,
@@ -12079,8 +12283,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810732010,
     "card_id": 810732010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 7,
@@ -12101,6 +12305,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 110841010,
     "card_id": 711841010,
     "card_name": "破坏绝杰·里榭娜",
     "card_set_id": 10010,
@@ -12123,8 +12328,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810821010,
     "card_id": 810821010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -12145,8 +12350,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810841030,
     "card_id": 810841030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -12167,8 +12372,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810844010,
     "card_id": 810844010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -12189,8 +12394,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820844010,
     "card_id": 820844010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -12211,6 +12416,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 121031010,
     "card_id": 715031020,
     "card_name": "永恒天使",
     "card_set_id": 70021,
@@ -12233,8 +12439,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810021010,
     "card_id": 810021010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -12255,8 +12461,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810041030,
     "card_id": 810041030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -12277,8 +12483,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044040,
     "card_id": 800044040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -12299,8 +12505,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044050,
     "card_id": 800044050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -12321,8 +12527,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800043010,
     "card_id": 800043010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 0,
@@ -12343,6 +12549,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114141020,
     "card_id": 714141010,
     "card_name": "回归的拥抱·拉缇卡",
     "card_set_id": 10014,
@@ -12365,8 +12572,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810134010,
     "card_id": 810134010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 1,
@@ -12387,6 +12594,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103241010,
     "card_id": 703241010,
     "card_name": "雷维翁剑士·阿尔贝尔",
     "card_set_id": 70002,
@@ -12409,6 +12617,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 103241010,
     "card_id": 704241010,
     "card_name": "雷维翁剑士·阿尔贝尔",
     "card_set_id": 10003,
@@ -12431,8 +12640,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810241030,
     "card_id": 810241030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -12453,6 +12662,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 126234010,
     "card_id": 717234010,
     "card_name": "英勇出击！",
     "card_set_id": 70027,
@@ -12475,8 +12685,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810234010,
     "card_id": 810234010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -12497,8 +12707,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820232010,
     "card_id": 820232010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 2,
@@ -12519,6 +12729,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 105341010,
     "card_id": 706341010,
     "card_name": "奥兹国的大魔女",
     "card_set_id": 10005,
@@ -12541,6 +12752,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314020,
     "card_id": 109314020,
     "card_name": "命运的指引",
     "card_set_id": 10009,
@@ -12563,6 +12775,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 101314020,
     "card_id": 709314010,
     "card_name": "命运的指引",
     "card_set_id": 70008,
@@ -12585,8 +12798,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810344020,
     "card_id": 810344020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -12607,6 +12820,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 104441010,
     "card_id": 703441010,
     "card_name": "水龙神巫女",
     "card_set_id": 70002,
@@ -12629,6 +12843,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 110441010,
     "card_id": 711441010,
     "card_name": "侮蔑绝杰·嘉鲁蜜儿",
     "card_set_id": 10010,
@@ -12651,6 +12866,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 123441030,
     "card_id": 715441020,
     "card_name": "烈绝侮蔑·嘉鲁蜜儿",
     "card_set_id": 10023,
@@ -12673,6 +12889,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 124441030,
     "card_id": 900441110,
     "card_name": "黑白乱舞·诺尔与卜朗",
     "card_set_id": 90000,
@@ -12695,6 +12912,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126441010,
     "card_id": 910441010,
     "card_name": "灭剑焰龙·进攻模式",
     "card_set_id": 90000,
@@ -12717,6 +12935,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126441010,
     "card_id": 910441020,
     "card_name": "灭剑焰龙·防御模式",
     "card_set_id": 90000,
@@ -12739,6 +12958,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 126441010,
     "card_id": 910441030,
     "card_name": "灭剑焰龙·爆破模式",
     "card_set_id": 90000,
@@ -12761,6 +12981,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 127441010,
     "card_id": 900441140,
     "card_name": "游猎的罪人·安媞马丽亚",
     "card_set_id": 90000,
@@ -12783,8 +13004,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810441050,
     "card_id": 810441050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -12805,8 +13026,8 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 810441050,
     "card_id": 810441060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -12827,8 +13048,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800413010,
     "card_id": 800413010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 4,
@@ -12849,6 +13070,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101541010,
     "card_id": 701541010,
     "card_name": "凯尔贝洛斯",
     "card_set_id": 70001,
@@ -12871,6 +13093,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101541010,
     "card_id": 704541010,
     "card_name": "凯尔贝洛斯",
     "card_set_id": 10001,
@@ -12893,6 +13116,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106511010,
     "card_id": 702511010,
     "card_name": "Saber Alter",
     "card_set_id": 70004,
@@ -12915,6 +13139,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117541010,
     "card_id": 716541010,
     "card_name": "《恋人》·米路缇欧",
     "card_set_id": 10017,
@@ -12937,6 +13162,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 119531020,
     "card_id": 900531030,
     "card_name": "三头犬",
     "card_set_id": 90000,
@@ -12959,8 +13185,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544030,
     "card_id": 800544040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -12981,8 +13207,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544030,
     "card_id": 800544080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -13003,8 +13229,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810621020,
     "card_id": 810621020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -13025,6 +13251,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 117624010,
     "card_id": 713624010,
     "card_name": "盛燃的抵抗",
     "card_set_id": 70017,
@@ -13047,8 +13274,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644070,
     "card_id": 800644070,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -13069,6 +13296,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 106721030,
     "card_id": 702721010,
     "card_name": "Berserker",
     "card_set_id": 70004,
@@ -13091,6 +13319,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 124731010,
     "card_id": 717731010,
     "card_name": "黄金船",
     "card_set_id": 70025,
@@ -13113,8 +13342,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800724010,
     "card_id": 800724010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 7,
@@ -13135,6 +13364,7 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 107841020,
     "card_id": 704841010,
     "card_name": "神秘守门人·丝碧涅",
     "card_set_id": 10007,
@@ -13157,6 +13387,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117841030,
     "card_id": 716841030,
     "card_name": "遗物守门人·璐契儿",
     "card_set_id": 10017,
@@ -13179,8 +13410,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810841040,
     "card_id": 810841040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -13201,8 +13432,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 820844020,
     "card_id": 820844020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 8,
@@ -13223,8 +13454,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800832010,
     "card_id": 800832010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 2,
     "clan": 8,
@@ -13245,8 +13476,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810041050,
     "card_id": 810041050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -13267,6 +13498,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 106141010,
     "card_id": 706141010,
     "card_name": "卡西欧佩亚",
     "card_set_id": 10006,
@@ -13289,6 +13521,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 124121020,
     "card_id": 717121010,
     "card_name": "无声铃鹿",
     "card_set_id": 70025,
@@ -13311,8 +13544,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810141010,
     "card_id": 810141010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -13333,8 +13566,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810141020,
     "card_id": 810141020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 1,
@@ -13355,6 +13588,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101241010,
     "card_id": 701241010,
     "card_name": "海底都市霸主·乙姬",
     "card_set_id": 70001,
@@ -13377,6 +13611,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 107241010,
     "card_id": 706241010,
     "card_name": "黑暗剑士·梅丽莎",
     "card_set_id": 10007,
@@ -13399,6 +13634,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122211030,
     "card_id": 718211010,
     "card_name": "战术军犬",
     "card_set_id": 10022,
@@ -13421,8 +13657,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810241020,
     "card_id": 810241020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -13443,6 +13679,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 104341020,
     "card_id": 703341010,
     "card_name": "魔导巨兵",
     "card_set_id": 70002,
@@ -13465,6 +13702,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 127314010,
     "card_id": 720314010,
     "card_name": "冰雨坠裂",
     "card_set_id": 70021,
@@ -13487,6 +13725,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101431030,
     "card_id": 702431010,
     "card_name": "混沌龙 厄莳莉丝",
     "card_set_id": 70003,
@@ -13509,6 +13748,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101441020,
     "card_id": 701441010,
     "card_name": "黑龙骑士·法露特",
     "card_set_id": 70001,
@@ -13531,6 +13771,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113441030,
     "card_id": 714441030,
     "card_name": "羁绊龙剑士·艾拉",
     "card_set_id": 10013,
@@ -13553,8 +13794,8 @@ let subCardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 810421020,
     "card_id": 810421020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -13575,8 +13816,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810441030,
     "card_id": 810441030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -13597,8 +13838,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810424010,
     "card_id": 810424010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 4,
@@ -13619,6 +13860,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 125531010,
     "card_id": 717531010,
     "card_name": "冥河的流葬·凯伦",
     "card_set_id": 10025,
@@ -13641,6 +13883,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 126541010,
     "card_id": 900541160,
     "card_name": "假面亡魂",
     "card_set_id": 90000,
@@ -13663,8 +13906,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810521020,
     "card_id": 810521020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -13685,8 +13928,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800544020,
     "card_id": 800544020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 5,
@@ -13707,6 +13950,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 101641010,
     "card_id": 701641010,
     "card_name": "吸血鬼女王",
     "card_set_id": 70001,
@@ -13729,6 +13973,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 114641010,
     "card_id": 714641010,
     "card_name": "仁义恶魔·夕月",
     "card_set_id": 10014,
@@ -13751,6 +13996,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 101741020,
     "card_id": 704741010,
     "card_name": "黑天月兔妖·菈米娜",
     "card_set_id": 10001,
@@ -13773,6 +14019,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 124841030,
     "card_id": 718841020,
     "card_name": "永久之盾·席翁",
     "card_set_id": 10024,
@@ -13795,6 +14042,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 129041010,
     "card_id": 900041190,
     "card_name": "诸神黄昏之揭幕·奥丁",
     "card_set_id": 90000,
@@ -13817,8 +14065,8 @@ let subCardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 810041040,
     "card_id": 810041040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -13839,8 +14087,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800044010,
     "card_id": 800044010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 0,
@@ -13861,6 +14109,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 113141010,
     "card_id": 714141020,
     "card_name": "始祖的巨狼·奥姆尼斯",
     "card_set_id": 10013,
@@ -13883,6 +14132,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115141010,
     "card_id": 900141040,
     "card_name": "森林精锐·丽梅格",
     "card_set_id": 90000,
@@ -13905,6 +14155,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 112231030,
     "card_id": 900231100,
     "card_name": "魔雾公爵·亚卓德",
     "card_set_id": 90000,
@@ -13927,6 +14178,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 123231010,
     "card_id": 717231010,
     "card_name": "东海帝皇",
     "card_set_id": 70025,
@@ -13949,8 +14201,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810231010,
     "card_id": 810231010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -13971,8 +14223,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810241010,
     "card_id": 810241010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 2,
@@ -13993,8 +14245,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244030,
     "card_id": 800244040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -14015,8 +14267,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800244030,
     "card_id": 800244080,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 2,
@@ -14037,6 +14289,7 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 117331020,
     "card_id": 900331060,
     "card_name": "矮人工房长",
     "card_set_id": 90000,
@@ -14059,6 +14312,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 122334010,
     "card_id": 717334010,
     "card_name": "想像的具现化",
     "card_set_id": 70025,
@@ -14081,6 +14335,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 122441010,
     "card_id": 715441010,
     "card_name": "烈焰之龙",
     "card_set_id": 10022,
@@ -14103,8 +14358,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800443020,
     "card_id": 800443020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 3,
     "clan": 4,
@@ -14125,6 +14380,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 113541010,
     "card_id": 900541100,
     "card_name": "冥界之神·黑帝斯",
     "card_set_id": 90000,
@@ -14147,6 +14403,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 119531020,
     "card_id": 900531040,
     "card_name": "三头犬",
     "card_set_id": 90000,
@@ -14169,8 +14426,8 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 810541010,
     "card_id": 810541010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 5,
@@ -14191,6 +14448,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 122641010,
     "card_id": 715641010,
     "card_name": "暗黑帝王",
     "card_set_id": 10022,
@@ -14213,8 +14471,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810641020,
     "card_id": 810641020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -14235,8 +14493,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800634040,
     "card_id": 800634060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -14257,6 +14515,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108741010,
     "card_id": 706741010,
     "card_name": "神之盾·布罗蒂雅",
     "card_set_id": 10008,
@@ -14279,8 +14538,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810741020,
     "card_id": 810741020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -14301,8 +14560,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810741040,
     "card_id": 810741040,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -14323,6 +14582,7 @@ let subCardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 118841020,
     "card_id": 716841010,
     "card_name": "混沌支配者·艾希连德凛克",
     "card_set_id": 10018,
@@ -14345,6 +14605,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 120841020,
     "card_id": 716841020,
     "card_name": "神伟之始",
     "card_set_id": 10020,
@@ -14367,6 +14628,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 112031010,
     "card_id": 710031010,
     "card_name": "机甲天使",
     "card_set_id": 70011,
@@ -14389,6 +14651,7 @@ let subCardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104141020,
     "card_id": 703141010,
     "card_name": "森林深处的异种",
     "card_set_id": 70002,
@@ -14411,6 +14674,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 100314070,
     "card_id": 713314010,
     "card_name": "火炎粉碎术",
     "card_set_id": 70017,
@@ -14433,8 +14697,8 @@ let subCardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 810441010,
     "card_id": 810441010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 4,
@@ -14455,6 +14719,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103541010,
     "card_id": 703541010,
     "card_name": "奈芙蒂斯",
     "card_set_id": 70002,
@@ -14477,8 +14742,8 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 810641010,
     "card_id": 810641010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -14499,8 +14764,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810641030,
     "card_id": 810641030,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -14521,8 +14786,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800644010,
     "card_id": 800644010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 6,
@@ -14543,6 +14808,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 101741030,
     "card_id": 701741010,
     "card_name": "圣女贞德",
     "card_set_id": 70001,
@@ -14565,6 +14831,7 @@ let subCardData = [
   },
   {
     "atk": 7,
+    "base_card_id": 110741010,
     "card_id": 711741010,
     "card_name": "璀璨的炽天使·勒碧丝",
     "card_set_id": 10010,
@@ -14587,8 +14854,8 @@ let subCardData = [
   },
   {
     "atk": 4,
+    "base_card_id": 810731010,
     "card_id": 810731010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 7,
@@ -14609,6 +14876,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 108841010,
     "card_id": 706841010,
     "card_name": "人偶少女·奥契丝",
     "card_set_id": 10008,
@@ -14631,6 +14899,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103341010,
     "card_id": 704341010,
     "card_name": "次元魔女·桃乐丝",
     "card_set_id": 10003,
@@ -14653,6 +14922,7 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 124324010,
     "card_id": 717324020,
     "card_name": "愿望的实现",
     "card_set_id": 70026,
@@ -14675,6 +14945,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 103441010,
     "card_id": 704441010,
     "card_name": "帝国龙骑士·亚尔多斯",
     "card_set_id": 10003,
@@ -14697,6 +14968,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 126411030,
     "card_id": 720411010,
     "card_name": "碎石龙",
     "card_set_id": 70021,
@@ -14719,6 +14991,7 @@ let subCardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 115541010,
     "card_id": 714541010,
     "card_name": "巨大妖狐·吟雪",
     "card_set_id": 10015,
@@ -14741,6 +15014,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 116541020,
     "card_id": 900541140,
     "card_name": "死骸金属巨星",
     "card_set_id": 90000,
@@ -14763,8 +15037,8 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 810641060,
     "card_id": 810641060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 6,
@@ -14785,6 +15059,7 @@ let subCardData = [
   },
   {
     "atk": 8,
+    "base_card_id": 104741020,
     "card_id": 703741010,
     "card_name": "天曜盾甲",
     "card_set_id": 70002,
@@ -14807,6 +15082,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 121841020,
     "card_id": 714841020,
     "card_name": "极致的创造主·贝尔弗特",
     "card_set_id": 10021,
@@ -14829,8 +15105,8 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 810821020,
     "card_id": 810821020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -14851,8 +15127,8 @@ let subCardData = [
   },
   {
     "atk": 13,
+    "base_card_id": 810041010,
     "card_id": 810041010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 0,
@@ -14873,6 +15149,7 @@ let subCardData = [
   },
   {
     "atk": 3,
+    "base_card_id": 111241030,
     "card_id": 711241010,
     "card_name": "狂舞之刃·蒂欧涅",
     "card_set_id": 10011,
@@ -14895,8 +15172,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344020,
     "card_id": 800344020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -14917,8 +15194,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 800344020,
     "card_id": 800344060,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -14939,6 +15216,7 @@ let subCardData = [
   },
   {
     "atk": 6,
+    "base_card_id": 109441010,
     "card_id": 900441030,
     "card_name": "伟大的调停者·佐伊",
     "card_set_id": 90000,
@@ -14961,8 +15239,8 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 810841050,
     "card_id": 810841050,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,
@@ -14983,6 +15261,7 @@ let subCardData = [
   },
   {
     "atk": 5,
+    "base_card_id": 115341010,
     "card_id": 714341010,
     "card_name": "阴阳祖师·久苑",
     "card_set_id": 10015,
@@ -15005,8 +15284,8 @@ let subCardData = [
   },
   {
     "atk": 0,
+    "base_card_id": 810334010,
     "card_id": 810334010,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 4,
     "clan": 3,
@@ -15027,6 +15306,7 @@ let subCardData = [
   },
   {
     "atk": 20,
+    "base_card_id": 110341010,
     "card_id": 711341010,
     "card_name": "开辟的预言者·媞欧",
     "card_set_id": 10010,
@@ -15049,8 +15329,8 @@ let subCardData = [
   },
   {
     "atk": 9,
+    "base_card_id": 810841020,
     "card_id": 810841020,
-    "card_name": null,
     "card_set_id": 90000,
     "char_type": 1,
     "clan": 8,

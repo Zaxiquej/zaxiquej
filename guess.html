@@ -55,6 +55,11 @@
   #cSeed {
     display: none;
   }
+  .button-container {
+    display: flex;
+    justify-content: left; /* 将按钮水平居中 */
+    gap: 20px; /* 设置按钮之间的间隔 */
+  }
 </style>
 </head>
 <body>
@@ -63,6 +68,11 @@
       <button id="randomSeedButton">今日谜题种子</button>
       <input type="text" id="seedInput" placeholder="输入种子">
       <button id="useSeedButton">开始游戏</button>
+
+      <label>
+        <input type="checkbox" id="specifiedModeCheckbox" title="勾选此项以限制卡池仅限指定卡牌与指定卡牌可衍生的token/无限制卡牌。">
+        指定模式
+      </label>
     </div>
     <!--<button id="puzzleStartButton">解谜开始</button> -->
     <div id="sortingOptions">
@@ -82,13 +92,20 @@
 </div>
     <div id="playBox">
     <div id="guessBox">
+      <hr> <!-- 这是分割线 -->
+      <div id="history0"></div>
     <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
     <button id="guessButton">确认</button>
     </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
     <div id="history"></div>
-    <button id="hintButton">提示</button>
+
+    <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank">前往 Shadowverse Portal</a>
+    <div class="button-container">
+      <button id="hintButton">提示</button>
+      <button id="revealButton">揭晓答案</button>
+    </div>
     <button id="restartButton">重新开始</button>
     </div>
 
@@ -108,6 +125,7 @@
            <summary>1. 系统会选择哪些卡牌作为解谜目标？</summary>
            <p>系统会从已有的卡牌数据库中随机选择一张卡牌作为解谜目标（包含token，不包含异画）。</p>
            <p>目前数据库截止至：密斯塔尔希亚的英雄，DLC前</p>
+           <p>如果你选择了指定模式，那么系统只会选指定模式可能出现的卡（注意，有可能会是一张指定卡衍生的token或无限制卡牌！）。</p>
        </details>
        <details>
            <summary>2. 如果我找不到某个卡牌怎么办？</summary>
@@ -156,6 +174,8 @@
        <details>
            <summary>8. 过去的谜题</summary>
            <li>2023/08/12-lagb0tvw</li>
+           <li>2023/08/13-e5YbrBKA</li>
+           <li>2023/08/12-lagb0tvw</li>
            <li>2023/08/11-vxfre60c</li>
            <li>2023/08/10-gomsuRRv</li>
            <li>2023/08/09-WFXRB5fj</li>
@@ -166,6 +186,13 @@
        <details>
          <summary>9. 更新记录</summary>
          <ul style="list-style-type: none; padding: 0;">
+           <li style="margin-left: 20px;">
+             <span style="display: inline-block; width: 140px;">2023/08/13</span>增加了几个新的任务和扳机判定；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了“揭露答案”按钮。；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了跳转portal的链接；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>猜测与提示的卡也可以前往portal进行确认了；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了指定模式，勾选后卡池仅有指定模式可能出现的卡牌；<br>
+           </li>
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/12</span>少许优化了buff类目标的扣分机制；<br>
            </li>
