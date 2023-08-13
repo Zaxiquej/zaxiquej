@@ -49,11 +49,10 @@
 
 /* 添加一些默认样式，使表格更具可读性 */
 .history-table {
-  margin: 0 auto; /* 设置水平居中 */
-  width: 80%; /* 限制宽度为页面宽度的 80% */
-border-collapse: collapse;
-margin-bottom: 20px; /* 为表格底部添加一定间距 */
-}
+    margin: 20px auto; /* 设置外边距使表格居中 */
+    padding: 10px; /* 设置内边距 */
+    border-collapse: collapse; /* 折叠边框，使表格更紧凑 */
+  }
 
 /* 调整表格单元格的宽度 */
 .history-table th:nth-child(1),
@@ -63,7 +62,7 @@ width: 15%; /* 调整第一格的宽度 */
 
 .history-table th:nth-child(2),
 .history-table td:nth-child(2) {
-width: 45%; /* 调整第二格的宽度 */
+width: 30%; /* 调整第二格的宽度 */
 }
 
 .history-table th:nth-child(3),
@@ -79,6 +78,22 @@ width: 20%; /* 调整第三和第四格的宽度 */
 padding: 10px; /* 单元格内边距 */
 text-align: left; /* 左对齐文本 */
 border: 1px solid #ccc; /* 单元格边框 */
+}
+
+/* 去掉表格除标题外的单元格内边框 */
+.history-table {
+  border-collapse: collapse; /* 合并单元格边框 */
+}
+
+.history-table th,
+.history-table td {
+  border: none; /* 移除单元格边框 */
+  padding: 8px; /* 添加内边距以美化外观 */
+}
+
+/* 为标题单元格添加底边框 */
+.history-table th {
+  border-bottom: 1px solid #ccc;
 }
 
 /* 调整输入框和按钮的宽度 */

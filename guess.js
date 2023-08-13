@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function addCardsFromLastPackets() {
-    const cardSetIds = Array.from({ length: 5 }, (_, index) => lastPacket - index);
+    let cardSetIds = Array.from({ length: 5 }, (_, index) => lastPacket - index)
+    cardSetIds.push(10000) //基础包
 
     cardSetIds.forEach(cardSetId => {
       const matchingCards = cardData.filter(card => card.card_set_id === cardSetId && !cardPool.includes(card));
@@ -271,6 +272,17 @@ document.addEventListener("DOMContentLoaded", function () {
             cardCell.appendChild(cardLink);
             var similarityCell = document.createElement("td");
             similarityCell.textContent = similarity.toFixed(2);
+
+            // 计算相似度值在0到100之间的百分比
+            var similarityPercentage = (similarity / 100) * 100;
+
+            // 将百分比映射到颜色渐变，从较浅的颜色到红色
+            var redValue = Math.round(255);
+            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+
+            // 设置单元格文字颜色
+            similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
+
             var rankCell = document.createElement("td");
             rankCell.textContent = rank;
 
@@ -339,6 +351,17 @@ document.addEventListener("DOMContentLoaded", function () {
             cardCell.appendChild(cardLink);
             var similarityCell = document.createElement("td");
             similarityCell.textContent = similarity.toFixed(2);
+
+            // 计算相似度值在0到100之间的百分比
+            var similarityPercentage = (similarity / 100) * 100;
+
+            // 将百分比映射到颜色渐变，从较浅的颜色到红色
+            var redValue = Math.round(255);
+            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+
+            // 设置单元格文字颜色
+            similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
+
             var rankCell = document.createElement("td");
             rankCell.textContent = rank;
 
@@ -439,6 +462,17 @@ document.addEventListener("DOMContentLoaded", function () {
         cardCell.appendChild(cardLink);
         var similarityCell = document.createElement("td");
         similarityCell.textContent = similarity.toFixed(2);
+
+        // 计算相似度值在0到100之间的百分比
+        var similarityPercentage = (similarity / 100) * 100;
+
+        // 将百分比映射到颜色渐变，从较浅的颜色到红色
+        var redValue = Math.round(255);
+        var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+
+        // 设置单元格文字颜色
+        similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
+
         var rankCell = document.createElement("td");
         rankCell.textContent = rank;
 
