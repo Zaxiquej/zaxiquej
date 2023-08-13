@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
             hintMessageRow.order = time;
 
             // 添加到表格中
-            historyTable.querySelector("tbody").appendChild(hintMessageRow);
+            historyTable.appendChild(hintMessageRow);
 
             hintMessageRow.classList.add("highlight");
             // 如果之前有上一条猜测，移除其高亮样式
@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (similarity > highestScore){
               highestScore = similarity;
             }
-            historyTable.querySelector("tbody").appendChild(hintMessageRow);
+            historyTable.appendChild(hintMessageRow);
             //historyDiv.appendChild(hintMessage);
             sortHistory();
 
@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (similarity > highestScore){
               highestScore = similarity;
             }
-            historyTable.querySelector("tbody").appendChild(hintMessageRow);
+            historyTable.appendChild(hintMessageRow);
             sortHistory();
             gameEnd(false);
           }
