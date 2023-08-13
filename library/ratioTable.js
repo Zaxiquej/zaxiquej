@@ -145,12 +145,13 @@ let ratioTable = {
   "change_cemetery": {reward:2.5, punish:2.5}, //改变墓地
   "change_union_burst_count": {reward:1.2, punish:1.2}, //UB
   "remove_by_banish": {reward:6, punish:6}, //离场时消失
-  "burial_rite": {reward:2, punish:2}, //送葬
+  "burial_rite": {reward:2, punish:1.5}, //送葬
   "invoke_skill": {reward:6, punish:6}, //触发入场曲
   "damage_cut": {reward:2.5, punish:2.5}, //减伤、限伤
-  "berserk": {reward:1.3, punish:1.3}, //复仇
-  "wrath": {reward:1.5, punish:1.5}, //狂乱
-  "avarice": {reward:1.8, punish:1.8}, //渴望
+  "berserk": {reward:1.3, punish:1.1}, //复仇
+  "wrath": {reward:1.5, punish:1.2}, //狂乱
+  "resonance": {reward:1.5, punish:1.2}, //共鸣
+  "avarice": {reward:1.8, punish:1.3}, //渴望
   "cant_evolution": {reward:3, punish:3}, //无法进化
   "use_pp": {reward:8, punish:8}, //消耗pp
   "per_game": {reward:5, punish:5}, //每场一次（收获的参谋长·喵鲁）

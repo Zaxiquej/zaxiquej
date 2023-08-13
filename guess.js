@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
             hintMessageRow.appendChild(rankCell);
 
             hintMessageRow.card_id = hintCard.card_id;
-            hintMessageRow.imilarity = similarity;
+            hintMessageRow.similarity = similarity;
             hintMessageRow.order = time;
 
             // 添加到表格中
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
             hintMessageRow.appendChild(rankCell);
 
             hintMessageRow.card_id = hintCard.card_id;
-            hintMessageRow.imilarity = similarity;
+            hintMessageRow.similarity = similarity;
             hintMessageRow.order = time;
 
             // 添加到表格中
