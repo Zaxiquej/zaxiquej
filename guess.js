@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        guessCardName(guess);
+        guessCardName(guess,true);
     });
 
     // 提示按钮
@@ -552,7 +552,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    function guessCardName(guess) {
+    function guessCardName(guess,defau) {
         if (!puzzleCard) {
             alert("请先点击“解谜开始”按钮开始解谜！");
             return;
@@ -560,7 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let foundCard = findCardByName(guess);
 
-        if (!foundCard) {
+        if (!foundCard || defau) {
           let extract = extractKey(guess);
           let correctionSuggestions;
           if (extract){
@@ -571,17 +571,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (correctionSuggestions) {
             const suggestionHTML = correctionSuggestions
-              .map(suggestion => `<button class="suggestionBtn">${suggestion}</button>`)
+              .map(suggestion => `<button class="suggestionBtn" data-suggestion="${suggestion}">${suggestion}</button>`)
               .join("");
 
             suggestionsDiv.innerHTML = suggestionHTML;
 
             const suggestionBtns = document.querySelectorAll(".suggestionBtn");
             suggestionBtns.forEach(btn => {
+              btn.addEventListener("mouseover", async function () {
+                const suggestion = btn.getAttribute("data-suggestion");
+                const cardData = await findCardByName(suggestion);
+                const imageURL = `https://shadowverse-portal.com/image/card/phase2/common/C/C_${cardData.card_id}.png`;
+
+                btn.style.backgroundImage = `url(${imageURL})`;
+              });
+
+              btn.addEventListener("mouseout", function () {
+                btn.style.backgroundImage = "none"; // 清空背景图
+              });
+
               btn.addEventListener("click", function () {
-                guessInput.value = btn.textContent; // 替换输入框的内容为被点击的建议
-                suggestionsDiv.innerHTML = ""; // 清空建议
-                guessCardName(guessInput.value); // 进行搜索
+                guessInput.value = btn.textContent;
+                suggestionsDiv.innerHTML = "";
+                guessCardName(guessInput.value);
               });
             });
 
@@ -589,15 +601,20 @@ document.addEventListener("DOMContentLoaded", function () {
             const rows = Math.ceil(correctionSuggestions.length / 5); // 总共需要的行数
             const cols = Math.min(5, correctionSuggestions.length); // 每行最多按钮数
 
+            const gapBetweenButtons = "2px"; // 根据需要调整此值
+
             suggestionsDiv.style.display = "grid";
             suggestionsDiv.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
             suggestionsDiv.style.gridTemplateRows = `repeat(${rows}, auto)`;
             suggestionsDiv.style.justifyItems = "center"; // 每个按钮水平居中
             suggestionsDiv.style.alignItems = "center"; // 每个按钮垂直居中
             suggestionsDiv.style.gap = "5px"; // 按钮之间的空隙
-
             // 整体居中
             suggestionsDiv.style.textAlign = "center";
+            // 限制最大宽度
+            suggestionsDiv.style.maxWidth = "800px";
+            suggestionsDiv.style.margin = "0 auto"; // 居中显示
+            suggestionsDiv.style.marginTop = "10px";
           } else {
             suggestionsDiv.innerHTML = ""; // 清空建议
           }

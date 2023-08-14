@@ -370,3 +370,15 @@ border-radius: 4px; /* 圆角边框 */
 .close:hover {
   color: #000;
 }
+
+.suggestionBtn {
+  background-size: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.suggestionBtn:hover {
+  width: 100px;
+  height: 128px;
+  font-weight: bold; /* 字体加粗 */
+  text-shadow: 2px 2px 4px white; /* 白色光影 */
+}
