@@ -59,11 +59,12 @@ let ratioTable = {
   "selfTurnPlayCount": {reward:3, punish:1}, //一回合用牌
   "target=healing_card": {reward:3, punish:1}, //被奶扳机
   "selfShield": {reward:4.2, punish:4.2}, //脸无敌
-  "{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}": {reward:3, punish:1}, //财宝任务
+  "looting": {reward:5, punish:1}, //财宝任务
   "when_buff": {reward:2.5, punish:1.5}, //被BUFF发动
   "when_discard": {reward:4, punish:2}, //被弃发动
   "when_return": {reward:4, punish:2}, //回手发动
   "when_destroy": {reward:0.5, punish:0.2}, //谢幕发动
+  "when_evolve": {reward:0.5, punish:0.2}, //谢幕发动
   "when_leave": {reward:1.5, punish:0.5}, //离场发动
   "when_discard_other": {reward:4, punish:2}, //弃牌发动
   "when_accelerate_other": {reward:4, punish:2}, //激奏其他发动
