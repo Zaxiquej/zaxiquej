@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 将百分比映射到颜色渐变，从较浅的颜色到红色
             var redValue = Math.round(255);
-            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 120));
 
             // 设置单元格文字颜色
             similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 将百分比映射到颜色渐变，从较浅的颜色到红色
             var redValue = Math.round(255);
-            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 120));
 
             // 设置单元格文字颜色
             similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
@@ -644,13 +644,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // 计算相似度值在0到100之间的百分比
         var similarityPercentage = (similarity / 100) * 100;
 
-        // 将百分比映射到颜色渐变，从较浅的颜色到红色
+        // 将百分比映射到颜色渐变，从红色到较浅的颜色
         var redValue = Math.round(255);
-        var greenValue = Math.round(255 * ((100 - similarityPercentage) / 100));
+        var greenValue = Math.round(255 * ((100 - similarityPercentage) / 120));
 
         // 设置单元格文字颜色
         similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
-
 
         var rankCell = document.createElement("td");
         rankCell.textContent = rank;
