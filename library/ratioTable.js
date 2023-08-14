@@ -41,6 +41,7 @@ let ratioTable = {
   "clear_destroyed_card_list": {reward:5, punish:5}, //彻底炸牌库（倒吊）
   "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": {reward:1.9, punish:1.9}, //造物种类
   "{me.inplay.class.rally_count}": {reward:1.4, punish:1}, //连协
+  "{me.inplay.unit.count}=1": {reward:3, punish:0.8}, //唯我
   "selfDestroyCount": {reward:2, punish:0.8}, //各种破坏任务
   "selfLeftCount": {reward:2, punish:1}, //离场任务
   "selfSummonCount": {reward:2, punish:1}, //入场任务

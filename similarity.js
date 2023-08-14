@@ -536,7 +536,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-      let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}"];
+      let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -611,7 +611,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
+              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
               let cost = matches[3];
@@ -647,7 +647,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                   continue;
                 }
                 let regex = regexArr[1];
@@ -783,7 +783,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
+              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
               let cost = matches[3];
@@ -819,7 +819,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT2.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                   continue;
                 }
                 let regex = regexArr[1];
@@ -2466,7 +2466,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}"];
+    let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2520,7 +2520,7 @@ function customSplit(input,token) {
             name = "{me.inplay.class.pp}"
           }
           if (keyProsC.includes(name)){
-            if (onlyGreaterC.includes(name) && ![">=",">"].includes(matches[2])){
+            if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                continue;
             }
             let cost = matches[3];
@@ -2556,7 +2556,7 @@ function customSplit(input,token) {
             skillsT1.push('none');
           } else {
             for (let regexArr of stEdC){
-              if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+              if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
               let regex = regexArr[1];
