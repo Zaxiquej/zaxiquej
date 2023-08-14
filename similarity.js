@@ -575,8 +575,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["{me.inplay.unit.attack_count=pre_action.count}","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["{me.inplay.unit.attack_count=pre_action.count}","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let repProsC = ["{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+      let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                    ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -595,6 +595,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                   ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list(.*?)count\}/,"."],
                    ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
       let skipProcS = ['{me.hand_self.count}>0'];
 
@@ -647,7 +648,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && regexArr[0]=="selfInPlaySum"))){
                   continue;
                 }
                 let regex = regexArr[1];
@@ -819,7 +820,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT2.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+                if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && regexArr[0]=="selfInPlaySum"))){
                   continue;
                 }
                 let regex = regexArr[1];
@@ -2485,7 +2486,7 @@ function customSplit(input,token) {
 
     let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
-    let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+    let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                  ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -2504,6 +2505,7 @@ function customSplit(input,token) {
                  ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
+                 ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list(.*?)count\}/,"."],
                  ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
 
     let skipProcS = ['{me.hand_self.count}>0'];
@@ -2556,7 +2558,7 @@ function customSplit(input,token) {
             skillsT1.push('none');
           } else {
             for (let regexArr of stEdC){
-              if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+              if (onlyGreaterC.includes(regexArr[0]) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && regexArr[0]=="selfInPlaySum"))){
                 continue;
               }
               let regex = regexArr[1];

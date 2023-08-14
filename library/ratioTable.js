@@ -87,7 +87,7 @@ let ratioTable = {
   "leaderPowerup": {reward:6, punish:3}, //加血限
   "leaderPowerdown": {reward:6, punish:3}, //扣血限
   "guard": {reward:1, punish:1},
-  "ramp": {reward:2, punish:2}, //跳/扣费
+  "ramp": {reward:3, punish:3}, //跳/扣费
   "change_affiliation": {reward:7, punish:7}, //改变种族
   "necromance": {reward:1.5, punish:1.5}, //死灵术
   "choice": {reward:1.5, punish:1.5}, //抉择
@@ -116,6 +116,7 @@ let ratioTable = {
   "{op.inplay.unit.count}": {reward:1.5, punish:1.1}, //敌方战场上的从者数
   "target=damaged_card": {reward:2.5, punish:1.5}, //敌方受伤
   "{me.damaged_card.unit.count}":{reward:2.5, punish:1.5}, //己方有受伤
+  "selfDiscardThisTurnCardCount":{reward:3, punish:1}, //本回合弃牌
   "sneak": {reward:1.5, punish:1.5},
   "revive": {reward:1.8, punish:1.8}, // 亡召/复活
   "ignore_guard": {reward:2.1, punish:2.1}, //穿墙
