@@ -41,7 +41,7 @@ let ratioTable = {
   "clear_destroyed_card_list": {reward:5, punish:5}, //彻底炸牌库（倒吊）
   "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": {reward:1.9, punish:1.9}, //造物种类
   "{me.inplay.class.rally_count}": {reward:1.4, punish:1}, //连协
-  "selfDestroyCount": {reward:2, punish:1}, //各种破坏任务
+  "selfDestroyCount": {reward:2, punish:0.8}, //各种破坏任务
   "selfLeftCount": {reward:2, punish:1}, //离场任务
   "selfSummonCount": {reward:2, punish:1}, //入场任务
   "selfEvolveCount": {reward:2, punish:1}, //进化任务
@@ -68,6 +68,8 @@ let ratioTable = {
   "when_accelerate_other": {reward:4, punish:2}, //激奏其他发动
   "when_resonance_start": {reward:3, punish:1},//切共鸣
   "when_play_other": {reward:1, punish:0.5},//使用其他牌扳机
+  "when_damage": {reward:2, punish:0.8},//污蔑/伤脸
+  "{me.inplay.unit.attack_count=pre_action.count}": {reward:2, punish:0.6},//安息
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
   "recycle": {reward:1.4, punish:1.4}, //回收/复制
   "none": {reward:1.1, punish:0.8}, //白板

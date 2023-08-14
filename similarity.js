@@ -536,12 +536,15 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-      let wholeKeyProsC = ["target=damaged_card","target=healing_card"];
+      let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}"];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
           if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1" || item == "{op.inplay.unit.selected_cards.max_life}-{op.inplay.unit.selected_cards.life}"){
             item = "target=damaged_card";
+          }
+          if (item == "{me.inplay_self.unit.max_attack_count}={me.inplay_self.unit.attack_count}"){
+            item = "{me.inplay.unit.attack_count=pre_action.count}";
           }
           if (wholeKeyProsC.includes(item)){
             skills1.push(item);
@@ -558,6 +561,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
             item = "target=damaged_card";
           }
+          if (item == "{me.inplay_self.unit.max_attack_count}={me.inplay_self.unit.attack_count}"){
+            item = "{me.inplay.unit.attack_count=pre_action.count}";
+          }
           if (wholeKeyProsC.includes(item)){
             skills2.push(item);
             skillso2.push('none')
@@ -569,8 +575,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
-      let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
+      let repProsC = ["{me.inplay.unit.attack_count=pre_action.count}","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+      let onlyGreaterC = ["{me.inplay.unit.attack_count=pre_action.count}","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
                    ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
@@ -601,7 +607,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           let matches = item.match(pattern);
           if (matches){
             let name = matches[1];
-            if (name == "pp_count"){
+            if (name == "pp_count" && skillsT1[skillsc1.indexOf(highItem)] == "self_turn_end"){
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
@@ -622,7 +628,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst1.push('none');
               skillsT1.push('none');
             } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+              if (name == "{me.inplay.class.pp}" && skills1[skillsc1.indexOf(highItem)] == "pp_fixeduse"){
                 continue;
               }
               hasRepC.push(name)
@@ -641,9 +647,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
-                  continue;
-                }
                 let regex = regexArr[1];
                 const subMatch = name.match(regex);
                 if (subMatch) {
@@ -694,13 +697,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (skipProcS.includes(item)){
             continue;
           }
-          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
           let matches = item.match(pattern);
           if (matches){
-            let name = matches[3];
-            if (name == "pp_count"){
-              name = "{me.inplay.class.pp}"
-            }
+            let name = matches[2];
             if (keyProsC.includes(name)){
               skills1.push(name);
               skillso1.push('none')
@@ -708,9 +708,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst1.push('none');
               skillsT1.push('none');
             } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
-                continue;
-              }
               hasRepC.push(name)
               skills1.push(name);
               skillso1.push('none')
@@ -719,9 +716,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
-                  continue;
-                }
                 let regex = regexArr[1];
                 const subMatch = name.match(regex);
                 if (subMatch) {
@@ -782,7 +776,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           let matches = item.match(pattern);
           if (matches){
             let name = matches[1];
-            if (name == "pp_count"){
+            if (name == "pp_count" && skillsT2[skillsc2.indexOf(highItem)] == "self_turn_end"){
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
@@ -803,7 +797,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst2.push('none');
               skillsT2.push('none');
             } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              if (name == "{me.inplay.class.pp}" && skillsT2[skillsc2.indexOf(highItem)] != "self_turn_end"){
+              if (name == "{me.inplay.class.pp}" && skills2[skillsc2.indexOf(highItem)] == "pp_fixeduse"){
                 continue;
               }
               hasRepC.push(name)
@@ -872,13 +866,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           if (skipProcS.includes(item)){
             continue;
           }
-          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
           let matches = item.match(pattern);
           if (matches){
-            let name = matches[3];
-            if (name == "pp_count"){
-              name = "{me.inplay.class.pp}"
-            }
+            let name = matches[2];
             if (keyProsC.includes(name)){
               skills2.push(name);
               skillso2.push('none')
@@ -886,9 +877,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillst2.push('none');
               skillsT2.push('none');
             } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              if (name == "{me.inplay.class.pp}" && skillsT2[skillsc2.indexOf(highItem)] != "self_turn_end"){
-                continue;
-              }
               hasRepC.push(name)
               skills2.push(name);
               skillso2.push('none')
@@ -897,9 +885,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT2.push('none');
             } else {
               for (let regexArr of stEdC){
-                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
-                  continue;
-                }
                 let regex = regexArr[1];
                 const subMatch = name.match(regex);
                 if (subMatch) {
@@ -977,6 +962,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_leave","when_accelerate_other","when_play_other"];
+      let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
@@ -984,6 +970,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skills1.push(item);
             skillso1.push('none')
             skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
+          if (followerTiming.includes(item)){
+            skills1.push(item);
+            skillso1.push('none')
+            skillsc1.push(skillsc1[skillsT1.indexOf(highItem)]);
             skillst1.push('none');
             skillsT1.push('none');
           }
@@ -996,6 +989,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skills2.push(item);
             skillso2.push('none')
             skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+          }
+          if (followerTiming.includes(item)){
+            skills2.push(item);
+            skillso2.push('none')
+            skillsc2.push(skillsc2[skillsT2.indexOf(highItem)]);
             skillst2.push('none');
             skillsT2.push('none');
           }
@@ -1189,7 +1189,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
       for (let i = 0; i < skills1.length; i++){
-        if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self"))){
+        if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self")  || skillst1[i] == "character=me")){
           skills1.push('selfBuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1219,7 +1219,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((buffKeys.includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
+        if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
           skills1.push('AOEbuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1229,7 +1229,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=self"))){
+        if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=self") || skillst2[i] == "character=me")){
           skills2.push('selfBuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1259,7 +1259,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((buffKeys.includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("target=self"))){
+        if ((buffKeys.includes(skills2[i])) && skills2[i].includes("character=me&target=inplay&card_type=unit") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("target=self"))){
           skills2.push('AOEbuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -2464,7 +2464,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["target=damaged_card","target=healing_card"];
+    let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2514,7 +2514,7 @@ function customSplit(input,token) {
         let matches = item.match(pattern);
         if (matches){
           let name = matches[1];
-          if (name == "pp_count"){
+          if (name == "pp_count" && skillsT1[skillsc1.indexOf(highItem)] == "self_turn_end"){
             name = "{me.inplay.class.pp}"
           }
           if (keyProsC.includes(name)){
@@ -2535,7 +2535,7 @@ function customSplit(input,token) {
             skillst1.push('none');
             skillsT1.push('none');
           } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-            if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+            if (name == "{me.inplay.class.pp}" && skills1[skillsc1.indexOf(highItem)] == "pp_fixeduse"){
               continue;
             }
             hasRepC.push(name)
@@ -2612,13 +2612,10 @@ function customSplit(input,token) {
         if (skipProcS.includes(item)){
           continue;
         }
-        let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+        let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
         let matches = item.match(pattern);
         if (matches){
-          let name = matches[3];
-          if (name == "pp_count"){
-            name = "{me.inplay.class.pp}"
-          }
+          let name = matches[2];
           if (keyProsC.includes(name)){
             skills1.push(name);
             skillso1.push('none')
@@ -2626,9 +2623,6 @@ function customSplit(input,token) {
             skillst1.push('none');
             skillsT1.push('none');
           } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-            if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
-              continue;
-            }
             hasRepC.push(name)
             skills1.push(name);
             skillso1.push('none')
@@ -2637,9 +2631,6 @@ function customSplit(input,token) {
             skillsT1.push('none');
           } else {
             for (let regexArr of stEdC){
-              if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
-                continue;
-              }
               let regex = regexArr[1];
               const subMatch = name.match(regex);
               if (subMatch) {
@@ -2705,6 +2696,7 @@ function customSplit(input,token) {
     }
 
     let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_leave","when_accelerate_other","when_play_other"];
+    let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){
@@ -2712,6 +2704,13 @@ function customSplit(input,token) {
           skills1.push(item);
           skillso1.push('none')
           skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+        if (followerTiming.includes(item)){
+          skills1.push(item);
+          skillso1.push('none')
+          skillsc1.push(skillsc1[skillsT1.indexOf(highItem)]);
           skillst1.push('none');
           skillsT1.push('none');
         }
@@ -2819,7 +2818,7 @@ function customSplit(input,token) {
 
     let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
     for (let i = 0; i < skills1.length; i++){
-      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self"))){
+      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self")  || skillst1[i] == "character=me")){
         skills1.push('selfBuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -2849,7 +2848,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if ((buffKeys.includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
+      if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
         skills1.push('AOEbuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -2857,7 +2856,6 @@ function customSplit(input,token) {
         skillsT1.push('none');
       }
     }
-
     //手牌变形
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'metamorphose' && (skillst1[i].includes('character=me&target=hand') || skillst1[i].includes('character=me&target=hand_other_self'))){
