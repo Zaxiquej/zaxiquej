@@ -17,7 +17,7 @@ let ratioTable = {
   "pp_modifier": {reward:1.3, punish:1.3}, //回/扣费
   "destroy": {reward:1, punish:1},
   "destroyField": {reward:3, punish:3}, //拆符
-  "attach_skill": {reward:1.3, punish:1.3}, //获得能力
+  "attach_skill": {reward:1.6, punish:1.2}, //获得能力
   "heal": {reward:1, punish:1},
   "discard": {reward:1.5, punish:1.5},
   "turn_start_skill_after_stop": {reward:0.5, punish:0.5},
@@ -51,7 +51,7 @@ let ratioTable = {
   "selfInPlaySum": {reward:2.2, punish:1},//站场数
   "selfInPlayCount": {reward:2.2, punish:1},//站场
   "selfDrawCardCount": {reward:2.5, punish:1},//获得XX牌任务
-  "{me.game_play_count}": {reward:1.5, punish:1}, //奥伯龙+深根的用牌任务
+  "{me.game_play_count}": {reward:3.5, punish:1}, //奥伯龙+深根的用牌任务
   "selfPlaySpCardCount": {reward:3, punish:1}, //使用过的XX次数
   "{me.inplay.game_necromance_count}": {reward:2, punish:1}, //墓地任务
   "{me.game_skill_discard_count}": {reward:3, punish:1}, //弃牌任务
@@ -62,9 +62,13 @@ let ratioTable = {
   "when_buff": {reward:2.5, punish:1.5}, //被BUFF发动
   "when_discard": {reward:4, punish:2}, //被弃发动
   "when_return": {reward:4, punish:2}, //回手发动
+  "when_destroy": {reward:0.5, punish:0.2}, //谢幕发动
+  "when_leave": {reward:1.5, punish:0.5}, //离场发动
   "when_discard_other": {reward:4, punish:2}, //弃牌发动
-  "when_resonance_start": {reward:2, punish:1},//切共鸣
-  "leader_attach_skill": {reward:1.1, punish:0.9}, //主战者贴效果
+  "when_accelerate_other": {reward:4, punish:2}, //激奏其他发动
+  "when_resonance_start": {reward:3, punish:1},//切共鸣
+  "when_play_other": {reward:1, punish:0.5},//使用其他牌扳机
+  "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
   "recycle": {reward:1.4, punish:1.4}, //回收/复制
   "none": {reward:1.1, punish:0.8}, //白板
   "long_token_draw": {reward:4, punish:4}, //长token

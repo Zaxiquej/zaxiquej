@@ -53363,7 +53363,7 @@ let cardData = [
     "atk": 4,
     "base_card_id": 117131010,
     "card_id": 117131010,
-    "card_name": "船孃精灵",
+    "card_name": "船娘精灵",
     "card_set_id": 10017,
     "char_type": 1,
     "clan": 1,

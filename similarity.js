@@ -568,8 +568,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+      let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let repProsC = ["{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
       let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
@@ -686,7 +686,91 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+
       //计数器类，和之前并算
+
+      for (let highItem of skillso1){
+        for (let item of customSplit(highItem,'&')){
+          if (skipProcS.includes(item)){
+            continue;
+          }
+          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let matches = item.match(pattern);
+          if (matches){
+            let name = matches[3];
+            if (name == "pp_count"){
+              name = "{me.inplay.class.pp}"
+            }
+            if (keyProsC.includes(name)){
+              skills1.push(name);
+              skillso1.push('none')
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+              if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+                continue;
+              }
+              hasRepC.push(name)
+              skills1.push(name);
+              skillso1.push('none')
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else {
+              for (let regexArr of stEdC){
+                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                  continue;
+                }
+                let regex = regexArr[1];
+                const subMatch = name.match(regex);
+                if (subMatch) {
+                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                  let newContent = content.map(item => {
+                    if (item = "unit_and_allfield"){
+                      item = "all";
+                    }
+                    if (item === "unit" || item === "all" || item === "field") {
+                      return `type=${item}`;
+                    }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card1.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card1.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    return item;
+                  });
+                  if (!hasRepC.includes(regexArr[0])){
+                    skills1.push(regexArr[0]);
+                    if (newContent.length > 0){
+                      skillso1.push(newContent.join('&'));
+                    } else {
+                      skillso1.push('none');
+                    }
+                    skillsc1.push('none');
+                    skillst1.push('none');
+                    skillsT1.push('none');
+                    hasRepC.push(regexArr[0]);
+                    break;
+                  }
+                }
+              }
+              continue;
+            }
+          }
+        }
+      }
 
       hasRepC = [];
       for (let highItem of skillsc2){
@@ -783,6 +867,89 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      for (let highItem of skillso2){
+        for (let item of customSplit(highItem,'&')){
+          if (skipProcS.includes(item)){
+            continue;
+          }
+          let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+          let matches = item.match(pattern);
+          if (matches){
+            let name = matches[3];
+            if (name == "pp_count"){
+              name = "{me.inplay.class.pp}"
+            }
+            if (keyProsC.includes(name)){
+              skills2.push(name);
+              skillso2.push('none')
+              skillsc2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
+            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+              if (name == "{me.inplay.class.pp}" && skillsT2[skillsc2.indexOf(highItem)] != "self_turn_end"){
+                continue;
+              }
+              hasRepC.push(name)
+              skills2.push(name);
+              skillso2.push('none')
+              skillsc2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
+            } else {
+              for (let regexArr of stEdC){
+                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                  continue;
+                }
+                let regex = regexArr[1];
+                const subMatch = name.match(regex);
+                if (subMatch) {
+                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                  let newContent = content.map(item => {
+                    if (item = "unit_and_allfield"){
+                      item = "all";
+                    }
+                    if (item === "unit" || item === "all" || item === "field") {
+                      return `type=${item}`;
+                    }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card2.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card2.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    return item;
+                  });
+                  if (!hasRepC.includes(regexArr[0])){
+                    skills2.push(regexArr[0]);
+                    if (newContent.length > 0){
+                      skillso2.push(newContent.join('&'));
+                    } else {
+                      skillso2.push('none');
+                    }
+                    skillsc2.push('none');
+                    skillst2.push('none');
+                    skillsT2.push('none');
+                    hasRepC.push(regexArr[0]);
+                    break;
+                  }
+                }
+              }
+              continue;
+            }
+          }
+        }
+      }
+
       let wholeKeyProsT = ["character=both","target=damaged_card"];
 
       for (let highItem of skillst1){
@@ -809,7 +976,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_leave","when_accelerate_other","when_play_other"];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
@@ -2314,8 +2481,8 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{me.game_play_count}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-    let repProsC = ["berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let repProsC = ["{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
@@ -2440,6 +2607,89 @@ function customSplit(input,token) {
       }
     }
 
+    for (let highItem of skillso1){
+      for (let item of customSplit(highItem,'&')){
+        if (skipProcS.includes(item)){
+          continue;
+        }
+        let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
+        let matches = item.match(pattern);
+        if (matches){
+          let name = matches[3];
+          if (name == "pp_count"){
+            name = "{me.inplay.class.pp}"
+          }
+          if (keyProsC.includes(name)){
+            skills1.push(name);
+            skillso1.push('none')
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+            if (name == "{me.inplay.class.pp}" && skillsT1[skillsc1.indexOf(highItem)] != "self_turn_end"){
+              continue;
+            }
+            hasRepC.push(name)
+            skills1.push(name);
+            skillso1.push('none')
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          } else {
+            for (let regexArr of stEdC){
+              if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                continue;
+              }
+              let regex = regexArr[1];
+              const subMatch = name.match(regex);
+              if (subMatch) {
+                let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                let newContent = content.map(item => {
+                  if (item = "unit_and_allfield"){
+                    item = "all";
+                  }
+                  if (item === "unit" || item === "all" || item === "field") {
+                    return `type=${item}`;
+                  }
+                  if (item.includes("base_card_id=")){
+                    let temp = parseInt(item.split("=")[1]);
+                    if (temp == card1.card_id){
+                      item = "isSelf=10";
+                    } else {
+                      item = "isSelf=0";
+                    }
+                  }
+                  if (item.includes("base_card_id=")){
+                    let temp = parseInt(item.split("=")[1]);
+                    if (temp == card1.card_id){
+                      item = "isSelf=10";
+                    } else {
+                      item = "isSelf=0";
+                    }
+                  }
+                  return item;
+                });
+                if (!hasRepC.includes(regexArr[0])){
+                  skills1.push(regexArr[0]);
+                  if (newContent.length > 0){
+                    skillso1.push(newContent.join('&'));
+                  } else {
+                    skillso1.push('none');
+                  }
+                  skillsc1.push('none');
+                  skillst1.push('none');
+                  skillsT1.push('none');
+                  hasRepC.push(regexArr[0]);
+                  break;
+                }
+              }
+            }
+            continue;
+          }
+        }
+      }
+    }
+
     let wholeKeyProsT = ["character=both"];
 
     for (let highItem of skillst1){
@@ -2454,7 +2704,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_leave","when_accelerate_other","when_play_other"];
 
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){
