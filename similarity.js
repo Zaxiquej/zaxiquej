@@ -647,6 +647,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               for (let regexArr of stEdC){
+                if (onlyGreaterC.includes(regexArr[0]) && ![">=",">"].includes(matches[2])){
+                  continue;
+                }
                 let regex = regexArr[1];
                 const subMatch = name.match(regex);
                 if (subMatch) {
@@ -2076,7 +2079,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
 
               const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
-
               base *= ol;
               base *= cl;
               base *= tl;
