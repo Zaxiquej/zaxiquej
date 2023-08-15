@@ -788,7 +788,7 @@ function getCorrectionSuggestion(guess) {
         }
 
         if (rarity!="-"){
-          let typesArr = ["bronze","silver","gold","rainbow"];
+          let typesArr = ["","bronze","silver","gold","rainbow"];
           if (typesArr[card.rarity] != rarity){
             continue;
           }
