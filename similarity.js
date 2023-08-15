@@ -231,9 +231,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < targetArray.length; i++) {
         if (excludeIndices.includes(i)) continue;
 
-        const targetItem = targetArray[i];
-        const [targetA, targetSign, targetB] = parseItem(targetItem);
-        const [currentA, currentSign, currentB] = parseItem(array1[index]);
+        let str1 = targetArray[i];
+        let str2 = array1[index];
+        if (str1 == 'none'){
+          str1 = 'character=me';
+        }
+        if (str2 == 'none'){
+          str2 = 'character=me';
+        }
+
+        const [A1, sign1, B1] = parseItem(str1);
+        const [A2, sign2, B2] = parseItem(str2);
+        const [targetA, targetSign, targetB] = parseItem(str1);
+        const [currentA, currentSign, currentB] = parseItem(str2);
 
         if (targetA === currentA) {
           if (targetSign === currentSign) {
@@ -290,9 +300,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       const closestIndex = findClosestMatchingIndex(i, array2, Array.from(visitedIndices));
       if (closestIndex !== -1) {
         visitedIndices.add(closestIndex);
+        let str1 = array1[i];
+        let str2 = array2[closestIndex];
+        if (str1 == 'none'){
+          str1 = 'character=me';
+        }
+        if (str2 == 'none'){
+          str2 = 'character=me';
+        }
 
-        const [A1, sign1, B1] = parseItem(array1[i]);
-        const [A2, sign2, B2] = parseItem(array2[closestIndex]);
+        const [A1, sign1, B1] = parseItem(str1);
+        const [A2, sign2, B2] = parseItem(str2);
+
         let score = 0;
         if (A1 === A2 && weirdKeys.includes(A1)) {
           score = 1;
@@ -2016,10 +2035,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.3) : ratioTable[skill].reward;
               }
 
-              if (card1.card_name == card2.card_name){
-                //console.log(ratioTable[skill].punish,aRatio)
-              }
-
               let oRate, cRate, tRate, timingRate;
               if (ratioTable[skill].reward < 4){
                 oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
@@ -2149,8 +2164,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     //    console.log(skills1Sum,skills2Sum,ex)
     //  }
 
-
-      const maxLength = Math.max(skills1Sum,skills2Sum) + ex;
+    //Math.max(skills1Sum,skills2Sum)
+      const maxLength = (skills1Sum+skills2Sum)/2 + ex;
       let similarity = Math.pow((Math.max(0,commonSkills) / maxLength),2/3) * 100;
       return similarity;
   }
@@ -2158,19 +2173,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
   function is_numeric(str){
     return /^\d+$/.test(str);
 }
-
-  function calculateTokenRate(card1,card2,similarity){
-    const sharedMap = new Map();
-    const mappedB1 = mapNumbersToLetters(extractLargeNumbersFromString(card1.skill_option), card1.card_id, sharedMap);
-    const mappedB2 = mapNumbersToLetters(extractLargeNumbersFromString(card2.skill_option), card2.card_id, sharedMap);
-
-    if (mappedB1.length > 0 && mappedB2.length > 0){
-      let rate = 1 / Math.max(mappedB1.length,mappedB2.length)
-      let tokenscore = 1 / (calculateLevenshteinDistance(mappedB2, mappedB1) + 1);
-      return rate*similarity + (1-rate) *(1 - (1-similarity)*(1-tokenscore));
-    }
-    return similarity;
-  }
 
   function calculateSimilarityScore(card1, card2, midR) {
       let basicScore = calculateBasicScore(card1, card2);
