@@ -231,19 +231,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < targetArray.length; i++) {
         if (excludeIndices.includes(i)) continue;
 
-        let str1 = targetArray[i];
-        let str2 = array1[index];
-        if (str1 == 'none'){
-          str1 = 'character=me';
+        let strA = targetArray[i];
+        let strB = array1[index];
+        if (strA == 'none'){
+          strA = 'character=me';
         }
-        if (str2 == 'none'){
-          str2 = 'character=me';
+        if (strB == 'none'){
+          strB = 'character=me';
         }
 
-        const [A1, sign1, B1] = parseItem(str1);
-        const [A2, sign2, B2] = parseItem(str2);
-        const [targetA, targetSign, targetB] = parseItem(str1);
-        const [currentA, currentSign, currentB] = parseItem(str2);
+        const [A1, sign1, B1] = parseItem(strA);
+        const [A2, sign2, B2] = parseItem(strB);
+        const [targetA, targetSign, targetB] = parseItem(strA);
+        const [currentA, currentSign, currentB] = parseItem(strB);
 
         if (targetA === currentA) {
           if (targetSign === currentSign) {
@@ -1177,7 +1177,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       //自杀特殊判断
       for (let i = 0; i < skills1.length; i++){
         if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
-          let org = skills1[i];
+          let org = "org="+skills1[i];
           skills1[i] = "selfDestroy";
           if (skillso1[i] == "none"){
             skillso1[i] = org;
@@ -1189,7 +1189,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       for (let i = 0; i < skills2.length; i++){
         if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
-          let org = skills2[i];
+          let org = "org="+skills2[i];
           skills2[i] = "selfDestroy";
           if (skillso2[i] == "none"){
             skillso2[i] = org;
@@ -1202,7 +1202,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       //拆符特殊判断
       for (let i = 0; i < skills1.length; i++){
         if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
-          let org = skills1[i];
+          let org = "org="+skills1[i];
           skills1.push('destroyField');
           skillso1.push(org);
           skillsc1.push('none');
@@ -1213,7 +1213,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       for (let i = 0; i < skills2.length; i++){
         if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=op&target=inplay&card_type=field') || skillst2[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
-          let org = skills2[i];
+          let org = "org="+skills2[i];
           skills2.push('destroyField');
           skillso2.push(org);
           skillsc2.push('none');
@@ -2839,7 +2839,7 @@ function customSplit(input,token) {
     //自杀特殊判断
     for (let i = 0; i < skills1.length; i++){
       if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
-        let org = skills1[i];
+        let org = "org="+skills1[i];
         skills1[i] = "selfDestroy";
         if (skillso1[i] == "none"){
           skillso1[i] = org;
@@ -2852,7 +2852,7 @@ function customSplit(input,token) {
     //拆符特殊判断
     for (let i = 0; i < skills1.length; i++){
       if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
-        let org = skills1[i];
+        let org = "org="+skills1[i];
         skills1.push('destroyField');
         skillso1.push(org);
         skillsc1.push('none');
