@@ -795,7 +795,7 @@ function getCorrectionSuggestion(guess) {
         }
 
         if (race){
-          if (card.tribe_name != "全部" && !card.tribe_name.split("·").includes(simplized(race))){
+          if (card.tribe_name != "全部" && ! race.split("·").every(item => card.tribe_name.split("·").includes(simplized(item)))){
             continue;
           }
         }
