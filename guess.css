@@ -386,3 +386,80 @@ border-radius: 4px; /* 圆角边框 */
   font-weight: bold; /* 字体加粗 */
   text-shadow: 2px 2px 4px white; /* 白色光影 */
 }
+
+#guessContainer {
+  display: flex;
+  align-items: center;
+}
+
+#guessInput {
+  flex-grow: 1;
+}
+
+#advancedSearchButton {
+  margin-top: 10px; /* 调整往下的距离 */
+  text-align: right;
+  margin-right: 40px;
+  font-size: 14px; /* 设置按钮字体大小 */
+  cursor: pointer; /* 添加光标样式以指示按钮可点击 */
+}
+
+#advancedSearch {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.advanced-search-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.advanced-search-table tr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.advanced-search-table td {
+  flex: 1; /* 更改为直接使用 flex 属性 */
+  padding: 5px;
+  text-align: left; /* 内容居中 */
+}
+
+.select-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.select-label {
+  margin-bottom: 5px;
+}
+
+.select-input {
+  width: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+/* 数字输入框样式 */
+input[type="number"] {
+  width: 60px; /* 控制数字输入框的宽度 */
+  padding: 2px;
+  box-sizing: border-box;
+}

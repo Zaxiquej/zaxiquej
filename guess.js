@@ -21,6 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector(".close");
     const top100Results = document.getElementById("top100Results");
 
+    const advancedSearchButton = document.getElementById("advancedSearchButton");
+    const advancedSearch = document.getElementById("advancedSearch");
+    const cardTypeSelect = document.getElementById("cardType");
+    const minionOptions1 = document.getElementById("minionOptions1");
+    const minionOptions2 = document.getElementById("minionOptions2");
+
+    cardTypeSelect.addEventListener("change", () => {
+      if (cardTypeSelect.value === "minion") {
+        minionOptions1.style.display = "block";
+        minionOptions2.style.display = "block";
+      } else {
+        minionOptions1.style.display = "none";
+        minionOptions2.style.display = "none";
+      }
+    });
+
+    advancedSearchButton.addEventListener("click", () => {
+      if (advancedSearch.style.display === "none") {
+        toggleIcon.textContent = '-';
+        advancedSearch.style.display = "block";
+      } else {
+        toggleIcon.textContent = '+';
+        advancedSearch.style.display = "none";
+      }
+    });
+
     // 点击按钮显示假窗体
     viewTop100Button.addEventListener("click", function () {
       modal.style.display = "block";
@@ -293,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     guessButton.addEventListener("click", function () {
         const guess = guessInput.value.trim();
-        if (guess === "") {
+        if (guess === "" && advancedSearch.style.display === "none") {
             alert("请输入猜测的卡牌名称！");
             return;
         }
@@ -484,73 +510,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       throw new Error('No valid split found.');
     }
-    function extractKey(guess) {
-      const professionMapping = {
-        '中立': 0,
-        '妖': 1,
-        '皇': 2,
-        '法': 3,
-        '龙': 4,
-        '死': 5,
-        '鬼': 6,
-        '教': 7,
-        '仇': 8
-      };
-
-      const fuzzyProfessionMapping = {
-        '妖精': '妖', // 可以添加更多类似的映射
-      };
-
-      const rarityMapping = {
-        '铜': 1,
-        '银': 2,
-        '金': 3,
-        '虹': 4
-      };
-
-      // 对输入进行预处理，将匹配词替换为对应的模糊匹配词
-       for (const fuzzyKeyword in fuzzyProfessionMapping) {
-         guess = guess.replaceAll(fuzzyKeyword, fuzzyProfessionMapping[fuzzyKeyword]);
-       }
-
-
-      const regexWithStats = /^(中立|妖|皇|法|龙|死|鬼|教|仇)?(铜|银|金|虹)?(\d{3,6})$(铜|银|金|虹)?/;
-      const regexWithoutStats = /^(中立|妖|皇|法|龙|死|鬼|教|仇)?(铜|银|金|虹)?(?:(\d+)费)?(?:(\d+)攻)?(?:(\d+)血)?(法术|随从|护符)?$(铜|银|金|虹)?/;
-
-      const matchWithStats = guess.match(regexWithStats);
-      const matchWithoutStats = guess.match(regexWithoutStats);
-
-      let cardInfo = {};
-      if (matchWithStats) {
-        const [, profession, rarity, stats] = matchWithStats;
-
-        if (profession) cardInfo.clan = professionMapping[profession];
-        if (rarity) cardInfo.rarity = rarityMapping[rarity];
-        cardInfo.char_type = '随从';
-        if (stats) {
-          let numbs = splitNumber(stats);
-          cardInfo.cost = parseInt(numbs[0]);
-          cardInfo.atk = parseInt(numbs[1]);
-          cardInfo.life = parseInt(numbs[2]);
-        }
-
-        return cardInfo;
-      } else if (matchWithoutStats) {
-        const [, profession, rarity, cost, attack, health, type] = matchWithoutStats;
-
-        if (profession) cardInfo.clan = professionMapping[profession];
-        if (rarity) cardInfo.rarity = rarityMapping[rarity];
-        if (cost) cardInfo.cost = parseInt(cost);
-        if (attack) cardInfo.atk = parseInt(attack);
-        if (health) cardInfo.life = parseInt(health);
-        if (type) cardInfo.char_type = type;
-
-        return cardInfo;
-      } else {
-        return null; // 输入不符合格式要求
-      }
-    }
-
 
     function guessCardName(guess,defau) {
         if (!puzzleCard) {
@@ -561,13 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let foundCard = findCardByName(guess);
 
         if (!foundCard || defau) {
-          let extract = extractKey(guess);
-          let correctionSuggestions;
-          if (extract){
-             correctionSuggestions = getCorrectionSuggestion(extract,true);
-          } else {
-             correctionSuggestions = getCorrectionSuggestion(guess,false);
-          }
+          let correctionSuggestions = getCorrectionSuggestion(guess);
 
           if (correctionSuggestions) {
             const suggestionHTML = correctionSuggestions
@@ -802,73 +755,120 @@ document.addEventListener("DOMContentLoaded", function () {
     window.guessCardName = guessCardName;
 });
 
-function getCorrectionSuggestion(guess,isExtract) {
+function getCorrectionSuggestion(guess) {
   const maxSuggestions = 20;
   const suggestions = [];
+  let newCardPool = [];
 
-  // 优先寻找和输入的错误卡名有最多相同字的卡
-  if (isExtract){
-    for (const card of cardPool) {
-      let bad = false;
-      for (let key of ["clan","rarity","cost","atk","life","char_type"]){
-        if (key == "char_type"){
-          if (guess[key] == "随从" && card[key] != 1){
-            bad = true;
-            break;
+  for (const card of cardPool) {
+    if (card.card_name) {
+      if (advancedSearch.style.display === "block"){
+        const cardType = document.getElementById('cardType').value;
+        const classValue = document.getElementById('class').value;
+        const rarity = document.getElementById('rarity').value;
+        const race = document.getElementById('race').value;
+        const description = document.getElementById('description').value;
+        const cost = document.getElementById('cost').value;
+        const costComparison = document.getElementById('costComparison').value;
+        const attack = document.getElementById('attack').value;
+        const attackComparison = document.getElementById('attackComparison').value;
+        const health = document.getElementById('health').value;
+        const healthComparison = document.getElementById('healthComparison').value;
+        if (cardType!="-"){
+          let typesArr = ["","minion","amulet","amulet","spell"];
+          if (typesArr[card.char_type] != cardType){
+            continue;
           }
-          if (guess[key] == "法术" && card[key] != 4){
-            bad = true;
-            break;
+        }
+        if (classValue!="-"){
+          let typesArr = ["neutral","fairy","royalguard","wizard","dragon","necromancer","vampire","bishop","avenger"];
+          if (typesArr[card.clan] != classValue){
+            continue;
           }
-          if (guess[key] == "护符" && ![2,3].includes(card[key])){
-            bad = true;
-            break;
+        }
+
+        if (rarity!="-"){
+          let typesArr = ["bronze","silver","gold","rainbow"];
+          if (typesArr[card.rarity] != rarity){
+            continue;
           }
-        } else {
-          if (guess[key] && card[key] != guess[key]){
-            bad = true;
-            break;
+        }
+
+        if (race){
+          if (card.tribe_name != race){
+            continue;
+          }
+        }
+
+        if (cost){
+          if (costComparison == "equal" && card.cost != cost){
+            continue;
+          }
+          if (costComparison == "greater" && card.cost < cost){
+            continue;
+          }
+          if (costComparison == "less" && card.cost > cost){
+            continue;
+          }
+        }
+
+        if (cardType == "minion"){
+          if (attack){
+            if (attackComparison == "equal" && card.atk != attack){
+              continue;
+            }
+            if (attackComparison == "greater" && card.atk < attack){
+              continue;
+            }
+            if (attackComparison == "less" && card.atk > attack){
+              continue;
+            }
+          }
+          if (health){
+            if (healthComparison == "equal" && card.life != health){
+              continue;
+            }
+            if (healthComparison == "greater" && card.life < health){
+              continue;
+            }
+            if (healthComparison == "less" && card.life > health){
+              continue;
+            }
+          }
+        }
+
+        if (description){
+          if (!card.skill_disc.includes(description) && !card.skill_disc.includes(simplized(description))){
+            continue;
           }
         }
       }
-      if (!bad){
-        suggestions.push({ card_name: card.card_name, pack: card.card_set_id })
-      }
+      newCardPool.push(card);
     }
-
-    // 按相同字数降序排序
-    suggestions.sort((a, b) => b.pack - a.pack);
-  } else {
-    for (const card of cardPool) {
-      if (card.card_name) {
-        const numCommonChars = getNumCommonChars(card.card_name, guess);
-        suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
-      }
-    }
-
-    // 按相同字数降序排序
-    suggestions.sort((a, b) => b.numCommonChars - a.numCommonChars);
   }
 
+  for (const card of newCardPool) {
+    if (card.card_name) {
+      const numCommonChars = getNumCommonChars(card.card_name, guess);
+      suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
+    }
+  }
+
+  // 按相同字数降序排序
+  suggestions.sort((a, b) => b.numCommonChars - a.numCommonChars);
 
   // 如果找到的卡名和输入的错误卡名有相同字，则将它们作为建议
   let correctionSuggestions;
 
-  if (isExtract){
-    correctionSuggestions = suggestions
-      .slice(0, maxSuggestions)
-      .map(suggestion => suggestion.card_name);
-  } else {
-    correctionSuggestions = suggestions
-      .filter(suggestion => suggestion.numCommonChars > 0)
-      .slice(0, maxSuggestions)
-      .map(suggestion => suggestion.card_name);
-  }
+  correctionSuggestions = suggestions
+    .filter(suggestion => suggestion.numCommonChars > 0)
+    .slice(0, maxSuggestions)
+    .map(suggestion => suggestion.card_name);
 
   // 如果建议不足 maxSuggestions 个，则继续使用 Levenshtein 距离来补充
-  if (correctionSuggestions.length < maxSuggestions && !isExtract) {
+  if (correctionSuggestions.length < maxSuggestions) {
     const remainingSuggestions = maxSuggestions - correctionSuggestions.length;
-    for (const card of cardPool) {
+    for (const card of newCardPool) {
       if (card.card_name) {
         const distance = calculateLevenshteinDistance(card.card_name, guess);
         correctionSuggestions.push(card.card_name);

@@ -967,7 +967,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack"];
       let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
@@ -1019,6 +1019,37 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         if (skills2[i].includes('@')){
           skills2[i] = skills2[i].split('@')[0];
           skillso2[i] += "repeat=" + skills2[i].split('@')[1];
+        }
+      }
+
+      //吟唱
+      if (card1.char_type == 3){
+        const inputString = card1.skill_disc;
+        const pattern = /倒数\s+(\d+)\s*<br>/;
+        const match = inputString.match(pattern);
+
+        if (match) {
+          const extractedNumber = match[1];
+          skills1.push('chant');
+          skillso1.push('value='+extractedNumber);
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      if (card2.char_type == 3){
+        const inputString = card2.skill_disc;
+        const pattern = /倒数\s+(\d+)\s*<br>/;
+        const match = inputString.match(pattern);
+
+        if (match) {
+          const extractedNumber = match[1];
+          skills2.push('chant');
+          skillso2.push('value='+extractedNumber);
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
         }
       }
 
@@ -2702,7 +2733,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack"];
     let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){
@@ -2721,6 +2752,22 @@ function customSplit(input,token) {
           skillst1.push('none');
           skillsT1.push('none');
         }
+      }
+    }
+
+    //吟唱判断
+    if (card1.char_type == 3){
+      const inputString = card1.skill_disc;
+      const pattern = /倒数\s+(\d+)\s*<br>/;
+      const match = inputString.match(pattern);
+
+      if (match) {
+        const extractedNumber = match[1];
+        skills1.push('chant');
+        skillso1.push('value='+extractedNumber);
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
       }
     }
 

@@ -10,6 +10,7 @@
 
 let ratioTable = {
   "damage": {reward:1, punish:1},
+  "chant": {reward:0.5, punish:0.5}, //吟唱
   "draw": {reward:1, punish:1},
   "possess_ep_modifier": {reward:3, punish:3}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
@@ -64,7 +65,9 @@ let ratioTable = {
   "when_discard": {reward:4, punish:2}, //被弃发动
   "when_return": {reward:4, punish:2}, //回手发动
   "when_destroy": {reward:0.5, punish:0.2}, //谢幕发动
-  "when_evolve": {reward:0.5, punish:0.2}, //谢幕发动
+  "when_evolve": {reward:0.5, punish:0.2}, //进化发动
+  "when_attack": {reward:0.7, punish:0.3}, //攻击发动
+  "when_fight": {reward:0.7, punish:0.3}, //交战发动
   "when_leave": {reward:1.5, punish:0.5}, //离场发动
   "when_discard_other": {reward:4, punish:2}, //弃牌发动
   "when_accelerate_other": {reward:4, punish:2}, //激奏其他发动
@@ -132,7 +135,7 @@ let ratioTable = {
   "killer": {reward:1.1, punish:1.1},
   "drain": {reward:1.5, punish:1.5},
   "evolution_end_stop": {reward:2, punish:2}, //进化前后关键词不同
-  "fusion": {reward:2.4, punish:2.4}, //融合
+  "fusion": {reward:4, punish:2}, //融合
   "attack_count": {reward:2.2, punish:2.2}, //连击
   "change_rally_count": {reward:6, punish:6}, //改变连协
   "not_be_attacked": {reward:3, punish:3}, //物免

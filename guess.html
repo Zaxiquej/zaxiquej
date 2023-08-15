@@ -50,10 +50,104 @@
     <div id="guessBox">
       <hr> <!-- 这是分割线 -->
       <div id="history0"></div>
-      <div id="guessContainer">
-        <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
-        <button id="guessButton">确认</button>
-      </div>
+        <div id="guessContainer">
+          <input type="text" id="guessInput" placeholder="输入猜测的卡牌名称">
+          <button id="guessButton">确认</button>
+        </div>
+
+        <div id="advancedSearchButton">
+          <span>高级搜索</span>
+          <span id="toggleIcon">+</span>
+        </div>
+
+        <div id="advancedSearch" style="display: none;">
+          <table class="advanced-search-table">
+            <tr>
+              <td>
+                <label for="cardType">类型：</label>
+                <select id="cardType">
+                  <option value="-">-</option>
+                  <option value="minion">随从</option>
+                  <option value="spell">法术</option>
+                  <option value="amulet">护符</option>
+                </select>
+              </td>
+
+              <td>
+                <label for="cost">费用：</label>
+                <select id="costComparison">
+                  <option value="equal">等于</option>
+                  <option value="greater">以上</option>
+                  <option value="less">以下</option>
+                </select>
+                <input type="number" id="cost">
+              </td>
+            </tr>
+
+            <tr>
+              <td id="minionOptions1" style="display: none;">
+                <label for="attack">攻击：</label>
+                <select id="attackComparison">
+                  <option value="equal">等于</option>
+                  <option value="greater">以上</option>
+                  <option value="less">以下</option>
+                </select>
+                <input type="number" id="attack">
+              </td>
+
+              <td id="minionOptions2" style="display: none;">
+                <label for="health">生命值：</label>
+                <select id="healthComparison">
+                  <option value="equal">等于</option>
+                  <option value="greater">以上</option>
+                  <option value="less">以下</option>
+                </select>
+                <input type="number" id="health">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label for="class">职业：</label>
+                <select id="class">
+                  <option value="-">-</option>
+                  <option value="neutral">中立</option>
+                  <option value="fairy">妖精</option>
+                  <option value="royalguard">皇家护卫</option>
+                  <option value="wizard">巫师</option>
+                  <option value="dragon">龙族</option>
+                  <option value="necromancer">死灵术士</option>
+                  <option value="vampire">吸血鬼</option>
+                  <option value="bishop">主教</option>
+                  <option value="avenger">复仇者</option>
+                </select>
+              </td>
+
+              <td>
+                <label for="rarity">稀有度：</label>
+                <select id="rarity">
+                  <option value="-">-</option>
+                  <option value="rainbow">虹</option>
+                  <option value="gold">金</option>
+                  <option value="silver">银</option>
+                  <option value="bronze">铜</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label for="race">种族：</label>
+                <input type="text" id="race">
+              </td>
+
+              <td>
+                <label for="description">描述文字：</label>
+                <input type="text" id="description">
+              </td>
+            </tr>
+          </table>
+        </div>
     </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
@@ -174,6 +268,10 @@
        <details>
          <summary>9. 更新记录</summary>
          <ul style="list-style-type: none; padding: 0;">
+           <li style="margin-left: 20px;">
+             <span style="display: inline-block; width: 140px;">2023/08/15</span>移除了基础模糊搜索，改为高级搜索；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了吟唱护符吟唱数判定；<br>
+
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/14</span>增加了基础模糊搜索；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了几个新的任务和扳机判定；<br>
