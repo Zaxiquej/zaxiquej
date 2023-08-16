@@ -354,26 +354,31 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
     return finalScore;
   }
 
+  function removeItemsByIndexes(arr, indexes) {
+    const result = arr.filter((_, index) => !indexes.includes(index));
+    return result;
+  }
+
   function calculateSkillScore(card1, card2) {
       let cskill1 = card1.skill.replace("//",",");
       let cskill2 = card2.skill.replace("//",",");
-      const skills1 = cskill1 ? cskill1.split(",") : [];
-      const skills2 = cskill2 ? cskill2.split(",") : [];
+      let skills1 = cskill1 ? cskill1.split(",") : [];
+      let skills2 = cskill2 ? cskill2.split(",") : [];
 
       let cskillo1 = card1.skill_option.replace("//",",");
       let cskillo2 = card2.skill_option.replace("//",",");
-      const skillso1 = cskillo1 ? cskillo1.split(",") : [];
-      const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+      let skillso1 = cskillo1 ? cskillo1.split(",") : [];
+      let skillso2 = cskillo2 ? cskillo2.split(",") : [];
 
       let cskillc1 = card1.skill_condition.replace("//",",");
       let cskillc2 = card2.skill_condition.replace("//",",");
-      const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
-      const skillsc2 = cskillc2 ? cskillc2.split(",") : [];
+      let skillsc1 = cskillc1 ? cskillc1.split(",") : [];
+      let skillsc2 = cskillc2 ? cskillc2.split(",") : [];
 
       let cskillT1 = card1.timing.replace("//",",");
       let cskillT2 = card2.timing.replace("//",",");
-      const skillsT1 = cskillT1 ? cskillT1.split(",") : [];
-      const skillsT2 = cskillT2 ? cskillT2.split(",") : [];
+      let skillsT1 = cskillT1 ? cskillT1.split(",") : [];
+      let skillsT2 = cskillT2 ? cskillT2.split(",") : [];
 
       //将部分cost加入skill
       let cskillp1 = card1.skill_preprocess.replace("//",",").replaceAll("&",",");
@@ -392,8 +397,66 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let cskillt1 = card1.skill_target.replace("//",",");
       let cskillt2 = card2.skill_target.replace("//",",");
-      const skillst1 = cskillt1 ? cskillt1.split(",") : [];
-      const skillst2 = cskillt2 ? cskillt2.split(",") : [];
+      let skillst1 = cskillt1 ? cskillt1.split(",") : [];
+      let skillst2 = cskillt2 ? cskillt2.split(",") : [];
+
+      //去除重复
+      let list = [];
+      let count = [];
+      let removal = [];
+      for (let i = 0; i < skills1.length; i++){
+        let arr = [skills1[i],skillso1[i],skillsc1[i],skillst1[i],skillsT1[i]].join("阿");
+        if (!list.includes(arr)){
+          list[i] = arr;
+          count[i] = 1;
+        } else {
+          count[list.indexOf(arr)] += 1;
+          removal.push(i);
+        }
+      }
+      for (let i = 0; i < count.length; i++){
+        if (count[i] && count[i] > 1){
+          if (skillso1[i] == 'none'){
+            skillso1[i]="repeat_count="+count[i];
+          } else {
+            skillso1[i]+="&repeat_count="+count[i];
+          }
+        }
+      }
+      skills1 = removeItemsByIndexes(skills1, removal);
+      skillso1 = removeItemsByIndexes(skillso1, removal);
+      skillsc1 = removeItemsByIndexes(skillsc1, removal);
+      skillst1 = removeItemsByIndexes(skillst1, removal);
+      skillsT1 = removeItemsByIndexes(skillsT1, removal);
+
+      list = [];
+      count = [];
+      removal = [];
+      for (let i = 0; i < skills2.length; i++){
+        let arr = [skills2[i],skillso2[i],skillsc2[i],skillst2[i],skillsT2[i]].join("阿");
+        if (!list.includes(arr)){
+          list[i] = arr;
+          count[i] = 1;
+        } else {
+          count[list.indexOf(arr)] += 1;
+          removal.push(i);
+        }
+      }
+      for (let i = 0; i < count.length; i++){
+        if (count[i] && count[i] > 1){
+          if (skillso2[i] == 'none'){
+            skillso2[i]="repeat_count="+count[i];
+          } else {
+            skillso2[i]+="&repeat_count="+count[i];
+          }
+        }
+      }
+
+      skills2 = removeItemsByIndexes(skills2, removal);
+      skillso2 = removeItemsByIndexes(skillso2, removal);
+      skillsc2 = removeItemsByIndexes(skillsc2, removal);
+      skillst2 = removeItemsByIndexes(skillst2, removal);
+      skillsT2 = removeItemsByIndexes(skillsT2, removal);
 
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'attach_skill' && skillso1[i].includes("skill=")){
@@ -593,7 +656,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let keyProsC = ["repeat_count","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
       let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
@@ -2263,12 +2326,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let cskill1 = card1.skill.replace("//",",");
       let cskill2 = card2.skill.replace("//",",");
-      const skills1 = cskill1 ? cskill1.split(",") : [];
-      const skills2 = cskill2 ? cskill2.split(",") : [];
+      let skills1 = cskill1 ? cskill1.split(",") : [];
+      let skills2 = cskill2 ? cskill2.split(",") : [];
       let cskillo1 = card1.skill_option.replace("//",",");
       let cskillo2 = card2.skill_option.replace("//",",");
-      const skillso1 = cskillo1 ? cskillo1.split(",") : [];
-      const skillso2 = cskillo2 ? cskillo2.split(",") : [];
+      let skillso1 = cskillo1 ? cskillo1.split(",") : [];
+      let skillso2 = cskillo2 ? cskillo2.split(",") : [];
 
       let transSub1 = [];
 
@@ -2462,13 +2525,13 @@ function customSplit(input,token) {
     let skills1 = cskill1 ? cskill1.split(",") : [];
 
     let cskillo1 = card1.skill_option.replace("//",",");
-    const skillso1 = cskillo1 ? cskillo1.split(",") : [];
+    let skillso1 = cskillo1 ? cskillo1.split(",") : [];
 
     let cskillc1 = card1.skill_condition.replace("//",",");
-    const skillsc1 = cskillc1 ? cskillc1.split(",") : [];
+    let skillsc1 = cskillc1 ? cskillc1.split(",") : [];
 
     let cskillT1 = card1.timing.replace("//",",");
-    const skillsT1 = cskillT1 ? cskillT1.split(",") : [];
+    let skillsT1 = cskillT1 ? cskillT1.split(",") : [];
 
     //将部分cost加入skill
     let cskillp1 = card1.skill_preprocess.replace("//",",").replaceAll("&",",");
@@ -2494,7 +2557,36 @@ function customSplit(input,token) {
     const skillp1 = cskillp1 ? cskillp1.split(",") : [];
 
     let cskillt1 = card1.skill_target.replace("//",",");
-    const skillst1 = cskillt1 ? cskillt1.split(",") : [];
+    let skillst1 = cskillt1 ? cskillt1.split(",") : [];
+
+    //去除重复
+    let list = [];
+    let count = [];
+    let removal = [];
+    for (let i = 0; i < skills1.length; i++){
+      let arr = [skills1[i],skillso1[i],skillsc1[i],skillst1[i],skillsT1[i]].join("阿");
+      if (!list.includes(arr)){
+        list[i] = arr;
+        count[i] = 1;
+      } else {
+        count[list.indexOf(arr)] += 1;
+        removal.push(i);
+      }
+    }
+    for (let i = 0; i < count.length; i++){
+      if (count[i] && count[i] > 1){
+        if (skillso1[i] == 'none'){
+          skillso1[i]="repeat_count="+count[i];
+        } else {
+          skillso1[i]+="&repeat_count="+count[i];
+        }
+      }
+    }
+    skills1 = removeItemsByIndexes(skills1, removal);
+    skillso1 = removeItemsByIndexes(skillso1, removal);
+    skillsc1 = removeItemsByIndexes(skillsc1, removal);
+    skillst1 = removeItemsByIndexes(skillst1, removal);
+    skillsT1 = removeItemsByIndexes(skillsT1, removal);
 
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'attach_skill' && skillso1[i].includes("skill=")){
@@ -2595,7 +2687,7 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let keyProsC = ["repeat_count","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];

@@ -31,6 +31,7 @@ let ratioTable = {
   "play_count_change": {reward:5, punish:5}, //增加连击
   "rush": {reward:1, punish:1},
   "quick": {reward:1, punish:1}, //疾驰
+  "repeat_count": {reward:0.5, punish:0.5}, //重复
   "trigger": {reward:1, punish:1},
   "lose": {reward:3, punish:3}, //沉默
   "{me.inplay.class.pp}": {reward:3, punish:3}, //余费
