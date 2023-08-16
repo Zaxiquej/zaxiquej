@@ -618,7 +618,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-      let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
+      let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
 
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -1154,6 +1154,35 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && ownLeaderKey.includes(skillst2[i]) ){
           skills2[i] = "selfDamage";
+        }
+      }
+
+      //奶敌特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'heal' && skillst1[i]=="character=op&target=inplay&card_type=class" ){
+          skills1[i] = "oppoHeal";
+        }
+        if (skills1[i] == 'heal' && skillst1[i]=="character=both&target=inplay&card_type=class" ){
+          skillst1[i]=="character=me&target=inplay&card_type=class"
+          skills1.push('oppoHeal');
+          skillso1.push(skillso1[i]);
+          skillsc1.push(skillsc1[i]);
+          skillst1.push("character=op&target=inplay&card_type=class" );
+          skillsT1.push(skillsT1[i]);
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'heal' && skillst2[i]=="character=op&target=inplay&card_type=class" ){
+          skills2[i] = "oppoHeal";
+        }
+        if (skills2[i] == 'heal' && skillst2[i]=="character=both&target=inplay&card_type=class" ){
+          skillst2[i]=="character=me&target=inplay&card_type=class"
+          skills2.push('oppoHeal');
+          skillso2.push(skillso2[i]);
+          skillsc2.push(skillsc2[i]);
+          skillst2.push("character=op&target=inplay&card_type=class" );
+          skillsT2.push(skillsT2[i]);
         }
       }
 
@@ -2670,7 +2699,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
+    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
@@ -2960,6 +2989,22 @@ function customSplit(input,token) {
         skills1[i] = "selfDamage";
       }
     }
+
+    //奶敌特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'heal' && skillst1[i]=="character=op&target=inplay&card_type=class" ){
+        skills1[i] = "oppoHeal";
+      }
+      if (skills1[i] == 'heal' && skillst1[i]=="character=both&target=inplay&card_type=class" ){
+        skillst1[i]=="character=me&target=inplay&card_type=class"
+        skills1.push('oppoHeal');
+        skillso1.push(skillso1[i]);
+        skillsc1.push(skillsc1[i]);
+        skillst1.push("character=op&target=inplay&card_type=class" );
+        skillsT1.push(skillsT1[i]);
+      }
+    }
+
 
     let selfKey = ["character=me&target=self","character=me&target=inplay_self"]
     //自回手特殊判断

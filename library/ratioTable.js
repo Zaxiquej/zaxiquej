@@ -28,6 +28,7 @@ let ratioTable = {
   "open_card": {reward:4, punish:4}, //公开
   "pp_fixeduse": {reward:1, punish:1}, //爆能
   "summon_token": {reward:1, punish:1},
+  "{me.usable_ep}>{op.usable_ep}": {reward:2, punish:1}, //后手优势
   "play_count_change": {reward:5, punish:5}, //增加连击
   "rush": {reward:1, punish:1},
   "quick": {reward:1, punish:1}, //疾驰
@@ -97,6 +98,7 @@ let ratioTable = {
   "necromance": {reward:1.5, punish:1.5}, //死灵术
   "choice": {reward:1.5, punish:1.5}, //抉择
   "selfDamage": {reward:1.5, punish:1.5}, //自残
+  "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:3}, //自回手
   "selfDestroy": {reward:2, punish:2}, //自杀
   "evolve": {reward:1.2, punish:1.2}, //进化
