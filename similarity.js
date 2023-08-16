@@ -1055,7 +1055,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other"];
       let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
@@ -1289,7 +1289,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //自杀特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+        if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me'))){
           let org = "org="+skills1[i];
           skills1[i] = "selfDestroy";
           if (skillso1[i] == "none"){
@@ -1301,7 +1301,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=me&target=inplay&card_type=unit') || skillst2[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+        if ((skills2[i] == 'destroy' || skills2[i] == 'destroy') && (skillst2[i].includes('character=me'))){
           let org = "org="+skills2[i];
           skills2[i] = "selfDestroy";
           if (skillso2[i] == "none"){
@@ -1337,7 +1337,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //aoe特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
           skills1.push('AOE');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1347,7 +1347,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count="))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
           skills2.push('AOE');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1388,7 +1388,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
+        if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
           skills1.push('AOEbuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1428,7 +1428,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((buffKeys.includes(skills2[i])) && skills2[i].includes("character=me&target=inplay&card_type=unit") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("target=self"))){
+        if ((buffKeys.includes(skills2[i])) && skills2[i].includes("character=me&target=inplay&card_type=unit") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
           skills2.push('AOEbuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -2935,7 +2935,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other"];
     let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){
@@ -3062,7 +3062,7 @@ function customSplit(input,token) {
 
     //自杀特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me&target=inplay&card_type=unit') || skillst1[i].includes('character=me&target=inplay_other_self&card_type=unit'))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=me'))){
         let org = "org="+skills1[i];
         skills1[i] = "selfDestroy";
         if (skillso1[i] == "none"){
@@ -3087,7 +3087,7 @@ function customSplit(input,token) {
 
     //aoe特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count="))){
+      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
         skills1.push('AOE');
         skillso1.push('none')
         skillsc1.push('none');
@@ -3128,7 +3128,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("target=self"))){
+      if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
         skills1.push('AOEbuff');
         skillso1.push('none')
         skillsc1.push('none');
