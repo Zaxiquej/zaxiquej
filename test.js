@@ -286,9 +286,9 @@ function getAllCardsLowRate(){
     let cardGet = getCardByRank(card,2);
     let sim = cardGet.similarity;
     let card2 = cardGet.card;
-    if (sim < 55){
-        if (sim < 45){
-          if (sim < 35){
+    if (sim < 50){
+        if (sim < 40){
+          if (sim < 30){
             console.log("Extreme Warning:"+card.card_name, card2, sim);
           } else {
             console.log("Warning:"+card.card_name, card2, sim);

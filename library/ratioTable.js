@@ -31,7 +31,7 @@ let ratioTable = {
   "play_count_change": {reward:5, punish:5}, //增加连击
   "rush": {reward:1, punish:1},
   "quick": {reward:1, punish:1}, //疾驰
-  "trigger": {reward:1.3, punish:1.3},
+  "trigger": {reward:1, punish:1},
   "lose": {reward:3, punish:3}, //沉默
   "{me.inplay.class.pp}": {reward:3, punish:3}, //余费
   "update_deck": {reward:1.5, punish:1.5}, //洗牌
@@ -96,18 +96,19 @@ let ratioTable = {
   "necromance": {reward:1.5, punish:1.5}, //死灵术
   "choice": {reward:1.5, punish:1.5}, //抉择
   "selfDamage": {reward:1.5, punish:1.5}, //自残
+  "selfReturn": {reward:3, punish:3}, //自回手
   "selfDestroy": {reward:2, punish:2}, //自杀
   "evolve": {reward:1.2, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
   "classCheck": {reward:5, punish:4}, //职业
-  "permShield": {reward:5, punish:5}, //天盾1
-  "independent": {reward:5, punish:5}, //天盾2
+  "permShield": {reward:5, punish:4}, //天盾1
+  "independent": {reward:5, punish:4}, //天盾2
   "consume_ep_modifier": {reward:3, punish:2}, //不消费EP即可进化
   "special_win": {reward:12, punish:12}, //特殊胜利
   "preprocess_condition": {reward:1.7, punish:1.7},
   "per_turn": {reward:1.2, punish:0.8}, //一回合一次
-  "indestructible": {reward:3, punish:3}, //金膜
+  "indestructible": {reward:3, punish:2}, //金膜
   "selfCrystalCount": {reward:3, punish:1}, //结晶任务
   "{me.game_used_ep_count}": {reward:3, punish:1}, //吃豆任务
   "AOE": {reward:1.2, punish:0.6}, //aoe
@@ -127,8 +128,8 @@ let ratioTable = {
   "turn_start_stop": {reward:0.4, punish:0.4}, //直到回合开始
   "chant_count_change": {reward:1.55, punish:1.55}, //改变吟唱
   "return_card": {reward:1.75, punish:1.75}, //回手
-  "invocation": {reward:2.25, punish:2.25}, //瞬念
-  "cant_attack": {reward:2.4, punish:2.4}, //无法攻击
+  "invocation": {reward:2.4, punish:2}, //瞬念
+  "cant_attack": {reward:2.4, punish:2}, //无法攻击
   "obtain_self": {reward:3, punish:3}, //套娃
   "obtain_self_diff": {reward:5, punish:5}, //变异套娃
   "token_draw_modifier": {reward:6, punish:6}, //获得token修正（花叶之狐）
@@ -138,8 +139,8 @@ let ratioTable = {
   "fusion": {reward:4, punish:2}, //融合
   "attack_count": {reward:2.2, punish:2.2}, //连击
   "change_rally_count": {reward:6, punish:6}, //改变连协
-  "not_be_attacked": {reward:3, punish:3}, //物免
-  "untouchable": {reward:3, punish:3}, //方块膜
+  "not_be_attacked": {reward:3, punish:2}, //物免
+  "untouchable": {reward:3, punish:2}, //方块膜
   "ritual": {reward:1.5, punish:1.5}, //土秘
   "spell_charge": {reward:1.5, punish:1.5}, //魔力增幅效果
   "random_array": {reward:3, punish:3}, //随机数
@@ -179,16 +180,17 @@ let ratioTable = {
   "force_skill_target": {reward:7, punish:7}, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
   "change_skybound_art_count": {reward:1.2, punish:1.2}, //奥义
   "change_super_skybound_art_count": {reward:0.3, punish:0.3}, //解放奥义（呃重复了）
-  "use_ep": {reward:12, punish:12}, //消耗豆子
+  "use_ep": {reward:12, punish:8}, //消耗豆子
   "generic_value_modifier": {reward:6, punish:6},
   "accelerateORcrystallize": {reward:1.1, punish:1.1}, //激奏或结晶
-  "remove_by_destroy": {reward:6, punish:6}, //能力无法破坏或使这个从者消失
-  "special_lose": {reward:12, punish:12}, //特殊失败
-  "force_berserk": {reward:8, punish:8}, //狼王
+  "remove_by_destroy": {reward:6, punish:4}, //能力无法破坏或使这个从者消失
+  "special_lose": {reward:12, punish:4}, //特殊失败
+  "force_berserk": {reward:8, punish:6}, //狼王
   "turn_end_period_of_stop_time": {reward:0.4, punish:0.4}, //到下个自己回合结束
   "heal_modifier": {reward:9, punish:9}, //主战者回复生命值时的数值转变为1
-  "unite": {reward:10, punish:10}, //合体
-  "geton": {reward:7, punish:7}, //操纵
+  "unite": {reward:10, punish:5}, //合体
+  "Gacha": {reward:4, punish:3}, //扭蛋
+  "geton": {reward:7, punish:4}, //操纵
   "getoff": {reward:1, punish:1}, //有上面那个啦
   "rob_skill": {reward:7, punish:3}, //偷
   "copy_skill": {reward:8, punish:3}, //复制
@@ -199,6 +201,6 @@ let ratioTable = {
   "evolve_to_other": {reward:6, punish:2}, //其他进化（莱瓦丁）
   "reflection": {reward:6, punish:2}, //玛丽反伤
   "loop_skill": {reward:5, punish:2}, //复读技能（旋镖修女）
-  "turn_start_fixed_pp": {reward:6, punish:6}, //卡波
+  "turn_start_fixed_pp": {reward:6, punish:2}, //卡波
   "extra_turn": {reward:6, punish:2} //开门！
 }

@@ -597,25 +597,25 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
       let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
-      let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
-                   ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
-                   ["selfCrystalCount",/\{me\.game_crystallized_cards(.*?)count\}/,"."],
-                   ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
-                   ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
-                   ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
-                   ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
-                   ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
-                   ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
-                   ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
-                   ["target=healing_card",/\{me\.inplay\.healing_card(.*?)count\}/,"."],
-                   ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
-                   ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
-                   ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
-                   ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
-                   ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
-                   ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
-                   ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list(.*?)count\}/,"."],
-                   ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
+      let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list\.(.*?)count\}/,"."],
+                   ["selfLeftCount",/\{me\.game_left_cards\.(.*?)count\}/,"."],
+                   ["selfCrystalCount",/\{me\.game_crystallized_cards\.(.*?)count\}/,"."],
+                   ["selfSummonCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                   ["selfEvolveCount",/\{me\.evolved_card_list\.(.*?)count\}/,"."],
+                   ["selfDeckCount",/\{me\.deck\.(.*?)count\}/,"."],
+                   ["selfHandCount",/\{me\.hand_other_self\.(.*?)count\}/,"."],
+                   ["selfHandCount",/\{me\.hand\.(.*?)count\}/,"."],
+                   ["selfInPlaySum",/\{me\.inplay\.(.*?)sum\}/,"."],
+                   ["selfInPlaySum",/\{me\.inplay_other_self\.(.*?)sum\}/,"."],
+                   ["target=healing_card",/\{me\.inplay\.healing_card\.(.*?)count\}/,"."],
+                   ["selfInPlayCount",/\{me\.inplay\.(.*?)count\}/,"."],
+                   ["selfInPlayCount",/\{me\.inplay_other_self\.(.*?)count\}/,"."],
+                   ["selfTurnPlayCount",/\{me\.turn_play_cards\.(.*?)count\}/,"."],
+                   ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self\.(.*?)count\}/,"."],
+                   ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self\.(.*?)count\}/,"."],
+                   ["selfPlaySpCardCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                   ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
+                   ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
       let skipProcS = ['{me.hand_self.count}>0'];
 
       for (let highItem of skillsc1){
@@ -632,6 +632,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
+              if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
+                continue;
+              }
               if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
@@ -805,6 +808,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "{me.inplay.class.pp}"
             }
             if (keyProsC.includes(name)){
+              if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
+                continue;
+              }
               if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
@@ -1085,6 +1091,21 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && ownLeaderKey.includes(skillst2[i]) ){
           skills2[i] = "selfDamage";
+        }
+      }
+
+      //自回手特殊判断
+
+      let selfKey = ["character=me&target=self","character=me&target=inplay_self"]
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'return_card' && selfKey.includes(skillst1[i])){
+          skills1[i] = "selfReturn";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'return_card' && selfKey.includes(skillst2[i])){
+          skills2[i] = "selfReturn";
         }
       }
 
@@ -1676,6 +1697,61 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+
+      //扭蛋特殊词条
+
+      for (let i = 0; i < skillst1.length; i++){
+        for (let ar of skillst1[i].split("&")){
+          let arr = ar.split("=");
+          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+            if (arr[1].includes("-")){
+              arr[1] = parseInt(arr[1].split("-")[0]) - 1;
+            }
+            if (!is_numeric(arr[1])){
+              arr[1] = "X"
+            }
+            skills1.push("Gacha");
+            let str = "";
+            if (['summon_token','summon_card'].includes(skills1[i])){
+              str = "type=summ"
+            } else {
+              str = "type=draw"
+            }
+            str += "&value="+arr[1];
+            skillso1.push(str);
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
+        }
+      }
+
+      for (let i = 0; i < skillst2.length; i++){
+        for (let ar of skillst2[i].split("&")){
+          let arr = ar.split("=");
+          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+            if (arr[1].includes("-")){
+              arr[1] = parseInt(arr[1].split("-")[0]) - 1;
+            }
+            if (!is_numeric(arr[1])){
+              arr[1] = "X"
+            }
+            skills2.push("Gacha");
+            let str = "";
+            if (['summon_token','summon_card'].includes(skills2[i])){
+              str = "type=summ"
+            } else {
+              str = "type=draw"
+            }
+            str += "&value="+arr[1];
+            skillso2.push(str);
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+          }
+        }
+      }
+
 
       //套娃特殊词条
       for (let i = 0; i < skills1.length; i++){
@@ -2523,25 +2599,25 @@ function customSplit(input,token) {
     let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
-    let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list(.*?)count\}/,"."],
-                 ["selfLeftCount",/\{me\.game_left_cards(.*?)count\}/,"."],
-                 ["selfCrystalCount",/\{me\.game_crystallized_cards(.*?)count\}/,"."],
-                 ["selfSummonCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
-                 ["selfEvolveCount",/\{me\.evolved_card_list(.*?)count\}/,"."],
-                 ["selfDeckCount",/\{me\.deck(.*?)count\}/,"."],
-                 ["selfHandCount",/\{me\.hand_other_self(.*?)count\}/,"."],
-                 ["selfHandCount",/\{me\.hand(.*?)count\}/,"."],
-                 ["selfInPlaySum",/\{me\.inplay(.*?)sum\}/,"."],
-                 ["selfInPlaySum",/\{me\.inplay_other_self(.*?)sum\}/,"."],
-                 ["target=healing_card",/\{me\.inplay\.healing_card(.*?)count\}/,"."],
-                 ["selfInPlayCount",/\{me\.inplay(.*?)count\}/,"."],
-                 ["selfInPlayCount",/\{me\.inplay_other_self(.*?)count\}/,"."],
-                 ["selfTurnPlayCount",/\{me\.turn_play_cards(.*?)count\}/,"."],
-                 ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self(.*?)count\}/,"."],
-                 ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self(.*?)count\}/,"."],
-                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other(.*?)count\}/,"."],
-                 ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list(.*?)count\}/,"."],
-                 ["selfDrawCardCount",/\{me\.game_draw_cards(.*?)count\}/,"."]];
+    let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list\.(.*?)count\}/,"."],
+                 ["selfLeftCount",/\{me\.game_left_cards\.(.*?)count\}/,"."],
+                 ["selfCrystalCount",/\{me\.game_crystallized_cards\.(.*?)count\}/,"."],
+                 ["selfSummonCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                 ["selfEvolveCount",/\{me\.evolved_card_list\.(.*?)count\}/,"."],
+                 ["selfDeckCount",/\{me\.deck\.(.*?)count\}/,"."],
+                 ["selfHandCount",/\{me\.hand_other_self\.(.*?)count\}/,"."],
+                 ["selfHandCount",/\{me\.hand\.(.*?)count\}/,"."],
+                 ["selfInPlaySum",/\{me\.inplay\.(.*?)sum\}/,"."],
+                 ["selfInPlaySum",/\{me\.inplay_other_self\.(.*?)sum\}/,"."],
+                 ["target=healing_card",/\{me\.inplay\.healing_card\.(.*?)count\}/,"."],
+                 ["selfInPlayCount",/\{me\.inplay\.(.*?)count\}/,"."],
+                 ["selfInPlayCount",/\{me\.inplay_other_self\.(.*?)count\}/,"."],
+                 ["selfTurnPlayCount",/\{me\.turn_play_cards\.(.*?)count\}/,"."],
+                 ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self\.(.*?)count\}/,"."],
+                 ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self\.(.*?)count\}/,"."],
+                 ["selfPlaySpCardCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                 ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
+                 ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
 
     let skipProcS = ['{me.hand_self.count}>0'];
     for (let highItem of skillsc1){
@@ -2558,6 +2634,9 @@ function customSplit(input,token) {
             name = "{me.inplay.class.pp}"
           }
           if (keyProsC.includes(name)){
+            if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
+              continue;
+            }
             if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                continue;
             }
@@ -2787,6 +2866,14 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
         skills1[i] = "selfDamage";
+      }
+    }
+
+    let selfKey = ["character=me&target=self","character=me&target=inplay_self"]
+    //自回手特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'return_card' && selfKey.includes(skillst1[i])){
+        skills1[i] = "selfReturn";
       }
     }
 
@@ -3098,6 +3185,35 @@ function customSplit(input,token) {
             }
           }
         }
+
+    //扭蛋特殊词条
+
+    for (let i = 0; i < skillst1.length; i++){
+      for (let ar of skillst1[i].split("&")){
+        let arr = ar.split("=");
+        if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+          if (arr[1].includes("-")){
+            arr[1] = parseInt(arr[1].split("-")[0]) - 1;
+          }
+          if (!is_numeric(arr[1])){
+            arr[1] = "X"
+          }
+          skills1.push("Gacha");
+          let str = "";
+          if (['summon_token','summon_card'].includes(skills1[i])){
+            str = "type=summ"
+          } else {
+            str = "type=draw"
+          }
+          str += "&value="+arr[1];
+          skillso1.push(str);
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+    }
+
 
     //套娃特殊词条
     for (let i = 0; i < skills1.length; i++){

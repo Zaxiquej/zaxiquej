@@ -76363,7 +76363,7 @@ let cardData = [
     "atk": 5,
     "base_card_id": 109341010,
     "card_id": 109341010,
-    "card_name": "神託的妖童·阿鲁鲁麦雅",
+    "card_name": "神托的妖童·阿鲁鲁麦雅",
     "card_set_id": 10009,
     "char_type": 1,
     "clan": 3,
