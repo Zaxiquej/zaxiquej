@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Test</title>
+    <style>
+        #grid-container {
+            display: flex;
+            flex-wrap: nowrap; /* 阻止换行 */
+        }
+        .grid-cell {
+            width: 20px;
+            height: 20px;
+            background-color: #444;
+            margin: 0;
+            border: 1px solid #000;
+            transition: background-color 0.3s;
+        }
+        .grid-cell.green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="grid-container">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+    </div>
+
+    <script>
+        // JavaScript code if needed
+    </script>
+</body>
+</html>

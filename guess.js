@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector(".close");
     const top100Results = document.getElementById("top100Results");
 
-    const advancedSearchButton = document.getElementById("advancedSearchButton");
+    const advancedSearchSec = document.getElementById("advancedSearchSec");
     const advancedSearch = document.getElementById("advancedSearch");
     const cardTypeSelect = document.getElementById("cardType");
     const minionOptions1 = document.getElementById("minionOptions1");
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    advancedSearchButton.addEventListener("click", () => {
+    advancedSearchSec.addEventListener("click", () => {
       if (advancedSearch.style.display === "none") {
         toggleIcon.textContent = '-';
         advancedSearch.style.display = "block";
@@ -278,10 +278,14 @@ document.addEventListener("DOMContentLoaded", function () {
       extraGameButton.style.display = "none";
       //viewTop100Button.style.display = "none";
       puzzleStartMessage.textContent = "额外轮次！试试你能猜中多少前100名的卡牌！";
+      for (let card of goodGuesses){
+        guessCardName(card);
+      }
     }
 
     function resetGame() {
       pastGuesses = [];
+      goodGuesses = [];
       extraGaming = false;
       gameStarted = true;
       sortOptions.style.display = "none";
@@ -629,9 +633,6 @@ document.addEventListener("DOMContentLoaded", function () {
               cross.classList.add("cross");
               cross.textContent = "×";
               infoContainer.appendChild(cross);
-
-
-
               card.appendChild(infoContainer);
             } else {
                 card.style.backgroundColor = "green";
@@ -697,6 +698,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   similarity = 0;
                 }
               }
+            }
+            if (rank <= 100){
+              goodGuesses.push(foundCard.card_name);
             }
 
             resultMessageRow.appendChild(timeCell);
