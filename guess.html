@@ -28,8 +28,6 @@
         </div>
       </div>
     </div>
-
-
     <!--<button id="puzzleStartButton">解谜开始</button> -->
     <div id="sortingOptions">
         <label for="sortOption">排序选项：</label>
@@ -151,6 +149,8 @@
     </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
+    <div id="extrahistory">
+    </div>
     <div id="history">
       <table id="historyTable">
     <thead>
@@ -167,6 +167,7 @@
   </table></div>
 
   <div class="button-container">
+    <button id="extraGameButton">猜测前100名</button>
     <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank" class="link-button">前往 Shadowverse Portal</a>
 
     <div class="button-row">
@@ -175,6 +176,7 @@
       </div>
   </div>
     <div class="tip-box" id="tipBox">你获得了一个提示</div>
+    <div class="warn-box" id="warnBox">你已经猜过这张卡牌了</div>
     <div class="button-container">
     <button id="restartButton">重新开始</button>
     <button id="viewTop100Button">查看前100名</button>
@@ -253,6 +255,7 @@
        </details>
        <details>
            <summary>8. 过去的谜题</summary>
+           <li>2023/08/18-n0ZUjN1I</li>
            <li>2023/08/17-I4XQG2eh</li>
            <li>2023/08/16-1A1atQNx</li>
            <li>2023/08/15-2NLp6wWx</li>
@@ -273,7 +276,8 @@
              <span style="display: inline-block; width: 140px;">2023/08/17</span>优化了激奏结晶的打分标准，现在最高分有额外加权；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了复数词条的打分标准，现在多段同词条可以对上少段同词条，只是溢出部分分数会降为50%；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许优化了部分任务词条的判定；<br>
-             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许调整了部分词条的加权分；
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许调整了部分词条的加权分；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加额外轮次游戏；
 
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/16</span>移除了基础模糊搜索，改为高级搜索；<br>

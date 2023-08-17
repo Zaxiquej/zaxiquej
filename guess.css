@@ -26,6 +26,21 @@ body {
   transition: opacity 1s ease-in-out;
 }
 
+/* 警告框样式 */
+.warn-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FF5733;
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
 @keyframes explode {
   0% {
     transform: scale(1);
@@ -462,4 +477,62 @@ input[type="number"] {
   width: 60px; /* 控制数字输入框的宽度 */
   padding: 2px;
   box-sizing: border-box;
+}
+
+#extrahistory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Gap between cards */
+}
+.card {
+    margin: 0; /* Reset margin to allow for gap */
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    white-space: nowrap; /* Prevent content from wrapping */
+}
+.green {
+    background-color: green;
+}
+.black {
+    background-color: black;
+}
+.number {
+    background-color: darkgreen;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 5px; /* Add margin to push down the content */
+}
+.cross {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px; /* Add margin to push down the content */
+}
+.info-container {
+    white-space: nowrap; /* Prevent content from wrapping */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#extraGameButton {
+   font-size: 16px;
+   background-color: #4CAF50; /* Green color */
+   border: none;
+   color: white;
+   padding: 10px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+#extraGameButton:hover {
+   background-color: #45a049; /* Slightly darker green color on hover */
 }

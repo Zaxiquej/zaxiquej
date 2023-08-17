@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const guessBox = document.getElementById("guessBox");
     const startBox = document.getElementById("startBox");
     const restartButton = document.getElementById("restartButton");
+    const extraGameButton = document.getElementById("extraGameButton");
     const hintButton = document.getElementById("hintButton");
     const revealButton = document.getElementById("revealButton");
     const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
@@ -100,10 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let puzzleCard = null; // 存储解谜时随机抽取的卡牌
     let previousGuess = null;
+    let pastGuesses = [];
 
     let gameStarted = false;
+    let extraGaming = false;
     let time = 0;
     let highestScore = 0;
+    let puzzleStartMessage;
 
     // 排序选项和按钮
     const sortOptions = document.getElementById("sortingOptions");
@@ -249,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
      }
 
     // 显示解谜开始信息
-    const puzzleStartMessage = document.createElement("p");
+    puzzleStartMessage = document.createElement("p");
     puzzleStartMessage.textContent = "解谜开始！系统已抽取一张卡牌，请猜测卡牌名称：";
     historyDiv0.appendChild(puzzleStartMessage);
 
@@ -265,12 +269,24 @@ document.addEventListener("DOMContentLoaded", function () {
     sortButton.addEventListener("click", sortHistory);
         // 重新开始按钮
     restartButton.addEventListener("click", restartGame);
+    extraGameButton.addEventListener("click", extraGame);
+
+    function extraGame() {
+      extraGaming = true;
+      guessBox.style.display = "block";
+      extraGameButton.style.display = "none";
+      //viewTop100Button.style.display = "none";
+      puzzleStartMessage.textContent = "额外轮次！试试你能猜中多少前100名的卡牌！";
+    }
 
     function resetGame() {
-      gameStarted = false;
+      pastGuesses = [];
+      extraGaming = false;
+      gameStarted = true;
       sortOptions.style.display = "none";
       playBox.style.display = "none";
       historyDiv.innerHTML = "";
+      extrahistory.innerHTML = "";
 
             // 创建表格元素和标题行
       historyTable = document.createElement("table");
@@ -299,6 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       historyDiv0.innerHTML = "";
       restartButton.style.display = "none";
+      extraGameButton.style.display = "none";
       viewTop100Button.style.display = "none";
       hintButton.style.display = "none";
       revealButton.style.display = "none";
@@ -579,65 +596,123 @@ document.addEventListener("DOMContentLoaded", function () {
         const similarity = calculateSimilarityScore(puzzleCard, foundCard);
         const rank = getRank(similarity);
 
-        const resultMessage = document.createElement("p");
-        time++;
-
-        var resultMessageRow = document.createElement("tr");
-        var timeCell = document.createElement("td");
-        timeCell.textContent = `猜测${time}`;
-        var cardCell = document.createElement("td");
-        var cardLink = document.createElement("a");
-        cardLink.href = `https://shadowverse-portal.com/card/${foundCard.card_id}?lang=zh-tw`;
-        cardLink.target = "_blank";
-        cardLink.textContent = foundCard.card_name;
-        cardCell.appendChild(cardLink);
-        var similarityCell = document.createElement("td");
-        similarityCell.textContent = similarity.toFixed(2);
-
-        // 计算相似度值在0到100之间的百分比
-        var similarityPercentage = (similarity / 100) * 100;
-
-        // 将百分比映射到颜色渐变，从红色到较浅的颜色
-        var redValue = Math.round(255);
-        var greenValue = Math.round(255 * ((100 - similarityPercentage) / 120));
-
-        // 设置单元格文字颜色
-        similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
-
-        var rankCell = document.createElement("td");
-        rankCell.textContent = rank;
-
-        resultMessageRow.appendChild(timeCell);
-        resultMessageRow.appendChild(cardCell);
-        resultMessageRow.appendChild(similarityCell);
-        resultMessageRow.appendChild(rankCell);
-
-        resultMessageRow.card_id = foundCard.card_id;
-        resultMessageRow.similarity = similarity;
-        resultMessageRow.order = time;
-
-        resultMessageRow.classList.add("highlight");
-        // 如果之前有上一条猜测，移除其高亮样式
-        if (previousGuess) {
-          previousGuess.classList.remove("highlight");
+        if (pastGuesses.includes(foundCard.card_id)){
+          warnBox.style.display = "block";
+          setTimeout(() => {
+            warnBox.style.opacity = "0";
+          }, 1000);
+          setTimeout(() => {
+            warnBox.style.display = "none";
+            warnBox.style.opacity = "1";
+          }, 2000);
+          return;
+        } else {
+          pastGuesses.push(foundCard.card_id);
         }
-        // 更新上一条猜测为当前猜测
-        previousGuess = resultMessageRow;
 
-        if (similarity > highestScore){
-          highestScore = similarity;
-        }
-        historyTable.appendChild(resultMessageRow);
-        sortHistory();
+        if (extraGaming){
+            const card = document.createElement("div");
+            card.similarity = similarity;
+            card.rank = rank;
+            card.classList.add("card");
+            if (rank > 100) {
+              card.style.backgroundColor = "black";
 
-        guessInput.value = "";
-        if (parseInt(similarity) === 100) {
-            gameEnd(true);
+              const infoContainer = document.createElement("div");
+              infoContainer.classList.add("info-container");
+
+              const name = document.createElement("div");
+              name.textContent = foundCard.card_name;
+              infoContainer.appendChild(name);
+
+              const cross = document.createElement("div");
+              cross.classList.add("cross");
+              cross.textContent = "×";
+              infoContainer.appendChild(cross);
+
+
+
+              card.appendChild(infoContainer);
+            } else {
+                card.style.backgroundColor = "green";
+
+                const infoContainer = document.createElement("div");
+                infoContainer.classList.add("info-container");
+
+                const name = document.createElement("div");
+                name.textContent = foundCard.card_name;
+                infoContainer.appendChild(name);
+
+                const number = document.createElement("div");
+                number.classList.add("number");
+                number.textContent = rank;
+                infoContainer.appendChild(number);
+
+                card.appendChild(infoContainer);
+            }
+            guessInput.value = "";
+            extrahistory.appendChild(card);
+        } else {
+            const resultMessage = document.createElement("p");
+            time++;
+
+            var resultMessageRow = document.createElement("tr");
+            var timeCell = document.createElement("td");
+            timeCell.textContent = `猜测${time}`;
+            var cardCell = document.createElement("td");
+            var cardLink = document.createElement("a");
+            cardLink.href = `https://shadowverse-portal.com/card/${foundCard.card_id}?lang=zh-tw`;
+            cardLink.target = "_blank";
+            cardLink.textContent = foundCard.card_name;
+            cardCell.appendChild(cardLink);
+            var similarityCell = document.createElement("td");
+            similarityCell.textContent = similarity.toFixed(2);
+
+            // 计算相似度值在0到100之间的百分比
+            var similarityPercentage = (similarity / 100) * 100;
+
+            // 将百分比映射到颜色渐变，从红色到较浅的颜色
+            var redValue = Math.round(255);
+            var greenValue = Math.round(255 * ((100 - similarityPercentage) / 120));
+
+            // 设置单元格文字颜色
+            similarityCell.style.color = `rgb(${redValue}, ${greenValue}, ${greenValue})`;
+
+            var rankCell = document.createElement("td");
+            rankCell.textContent = rank;
+
+            resultMessageRow.appendChild(timeCell);
+            resultMessageRow.appendChild(cardCell);
+            resultMessageRow.appendChild(similarityCell);
+            resultMessageRow.appendChild(rankCell);
+
+            resultMessageRow.card_id = foundCard.card_id;
+            resultMessageRow.similarity = similarity;
+            resultMessageRow.order = time;
+
+            resultMessageRow.classList.add("highlight");
+            // 如果之前有上一条猜测，移除其高亮样式
+            if (previousGuess) {
+              previousGuess.classList.remove("highlight");
+            }
+            // 更新上一条猜测为当前猜测
+            previousGuess = resultMessageRow;
+
+            if (similarity > highestScore){
+              highestScore = similarity;
+            }
+            historyTable.appendChild(resultMessageRow);
+            sortHistory();
+
+            guessInput.value = "";
+            if (parseInt(similarity) === 100) {
+                gameEnd(true);
+            }
         }
     }
 
     function gameEnd(win){
-
+      pastGuesses = [];
       if (win){
         const congratsMessage = document.createElement("p");
         congratsMessage.textContent = "恭喜你猜对了！";
@@ -651,6 +726,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       restartButton.style.display = "block"; // 显示重新开始按钮
+      extraGameButton.style.display = "block"; // 显示重新开始按钮
       viewTop100Button.style.display = "block";
       hintButton.style.display = "none"; // 显示重新开始按钮
       revealButton.style.display = "none"; // 显示重新开始按钮
