@@ -38,30 +38,31 @@ let ratioTable = {
   "{me.inplay.class.pp}": {reward:3, punish:3}, //余费
   "update_deck": {reward:1.5, punish:1.5}, //洗牌
   "shortage_deck_win": {reward:14, punish:14}, //天使
-  "banish_deck": {reward:6, punish:6}, //消失牌库
-  "banish_hand": {reward:4, punish:4}, //消失手牌
-  "give_guard": {reward:7, punish:7}, //角力
+  "banish_deck": {reward:6, punish:3}, //消失牌库
+  "banish_hand": {reward:4, punish:2}, //消失手牌
+  "give_guard": {reward:7, punish:4}, //角力
   "clear_destroyed_card_list": {reward:5, punish:5}, //彻底炸牌库（倒吊）
   "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": {reward:1.9, punish:1.9}, //造物种类
-  "{me.inplay.class.rally_count}": {reward:1.4, punish:1}, //连协
-  "{me.inplay.unit.count}=1": {reward:3, punish:0.8}, //唯我
-  "selfDestroyCount": {reward:2, punish:0.8}, //各种破坏任务
-  "selfLeftCount": {reward:2, punish:1}, //离场任务
-  "selfSummonCount": {reward:2, punish:1}, //入场任务
-  "selfEvolveCount": {reward:2, punish:1}, //进化任务
-  "selfDeckCount": {reward:2, punish:1}, //牌库任务
-  "selfHandCount": {reward:2, punish:1}, //牌库任务
-  "status_life": {reward:2, punish:1}, //屁股任务
-  "selfInPlaySum": {reward:2.2, punish:1},//站场数
-  "selfInPlayCount": {reward:2.2, punish:1},//站场
-  "selfDrawCardCount": {reward:2.5, punish:1},//获得XX牌任务
-  "{me.game_play_count}": {reward:3.5, punish:1}, //奥伯龙+深根的用牌任务
-  "selfPlaySpCardCount": {reward:3, punish:1}, //使用过的XX次数
-  "{me.inplay.game_necromance_count}": {reward:2, punish:1}, //墓地任务
-  "{me.game_skill_discard_count}": {reward:3, punish:1}, //弃牌任务
-  "selfTurnPlayCount": {reward:3, punish:1}, //一回合用牌
-  "target=healing_card": {reward:3, punish:1}, //被奶扳机
-  "selfShield": {reward:4.2, punish:4.2}, //脸无敌
+  "{me.inplay.class.rally_count}": {reward:1.4, punish:0.5}, //连协
+  "{me.inplay.unit.count}=1": {reward:2.5, punish:0.4}, //唯我
+  "selfDestroyCount": {reward:1.5, punish:0.4}, //各种破坏任务
+  "selfLeftCount": {reward:1.5, punish:0.5}, //离场任务
+  "selfSummonCount": {reward:1.5, punish:0.5}, //入场任务
+  "selfEvolveCount": {reward:1.5, punish:0.5}, //进化任务
+  "selfDeckCount": {reward:1.5, punish:0.5}, //牌库任务
+  "selfHandCount": {reward:1.5, punish:0.5}, //牌库任务
+  "status_life": {reward:1.5, punish:0.5}, //屁股任务
+  "selfInPlaySum": {reward:1.7, punish:0.5},//站场数
+  "selfInPlayCount": {reward:1.7, punish:0.5},//站场
+  "selfDrawCardCount": {reward:1.6, punish:0.5},//获得XX牌任务
+  "{me.game_play_count}": {reward:3, punish:0.5}, //奥伯龙+深根的用牌任务
+  "selfPlaySpCardCount": {reward:2, punish:0.5}, //使用过的XX次数
+  "{me.inplay.game_necromance_count}": {reward:1.5, punish:0.5}, //墓地任务
+  "{me.game_skill_discard_count}": {reward:2.5, punish:0.5}, //弃牌任务
+  "selfTurnPlayCount": {reward:2, punish:0.5}, //一回合用牌
+  "target=healing_card": {reward:2, punish:0.5}, //被奶扳机
+  "{me.inplay.class.life}<{op.inplay.class.life}": {reward:2, punish:0.5}, //己方血少
+  "selfShield": {reward:4.2, punish:2.1}, //脸无敌
   "looting": {reward:5, punish:1}, //财宝任务
   "when_buff": {reward:2.5, punish:1.5}, //被BUFF发动
   "when_discard": {reward:4, punish:2}, //被弃发动
@@ -97,12 +98,12 @@ let ratioTable = {
   "guard": {reward:1, punish:1},
   "ramp": {reward:3, punish:3}, //跳/扣费
   "change_affiliation": {reward:7, punish:7}, //改变种族
-  "necromance": {reward:1.5, punish:1.5}, //死灵术
+  "necromance": {reward:1.5, punish:1.2}, //死灵术
   "choice": {reward:1.5, punish:1.5}, //抉择
-  "selfDamage": {reward:1.5, punish:1.5}, //自残
+  "selfDamage": {reward:1.5, punish:1.2}, //自残
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
-  "selfReturn": {reward:3, punish:3}, //自回手
-  "selfDestroy": {reward:2, punish:2}, //自杀
+  "selfReturn": {reward:3, punish:2.5}, //自回手
+  "selfDestroy": {reward:2, punish:1.5}, //自杀
   "evolve": {reward:1.2, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
@@ -156,7 +157,7 @@ let ratioTable = {
   "{self.charge_count}": {reward:1.5, punish:1.5}, //魔力增幅（到达X次）
   "change_white_ritual_stack": {reward:3, punish:3}, //增加积蓄
   "stack_white_ritual": {reward:3, punish:3}, //积蓄
-  "awake": {reward:1.4, punish:1.4}, //觉醒
+  "awake": {reward:1.4, punish:1.1}, //觉醒
   "{me.inplay.class.max_pp}": {reward:3, punish:3}, //最大X PP
   "metamorphose": {reward:3, punish:3}, //变形
   "handMetamorphose": {reward:6, punish:6}, //手牌变形
@@ -166,23 +167,23 @@ let ratioTable = {
   "burial_rite": {reward:2, punish:1.5}, //送葬
   "invoke_skill": {reward:6, punish:6}, //触发入场曲
   "damage_cut": {reward:2.5, punish:2.5}, //减伤、限伤
-  "berserk": {reward:1.3, punish:1.1}, //复仇
-  "wrath": {reward:1.5, punish:1.2}, //狂乱
-  "resonance": {reward:1.5, punish:1.2}, //共鸣
-  "avarice": {reward:1.8, punish:1.3}, //渴望
+  "berserk": {reward:1.3, punish:1}, //复仇
+  "wrath": {reward:1.5, punish:1.1}, //狂乱
+  "resonance": {reward:1.5, punish:1.1}, //共鸣
+  "avarice": {reward:1.8, punish:1.2}, //渴望
   "cant_evolution": {reward:3, punish:3}, //无法进化
-  "use_pp": {reward:8, punish:8}, //消耗pp
-  "per_game": {reward:5, punish:5}, //每场一次（收获的参谋长·喵鲁）
-  "attack_by_life": {reward:9, punish:9}, //教会
-  "no_duplication_random_array": {reward:6, punish:6}, //不重复的随机数
-  "power_modifier": {reward:5, punish:5}, //光剑饿姐的不平衡加减
-  "cant_activate_fanfare": {reward:12, punish:12}, //诗人
-  "cant_summon": {reward:8, punish:8}, //闪耀
-  "weird_evolve": {reward:1.5, punish:1.5}, //异形身材
-  "flush": {reward:12, punish:12}, //20姐18弟
-  "cosmos": {reward:12, punish:12}, //宇宙
-  "cant_play": {reward:10, punish:10}, //无法使用XX卡
-  "force_skill_target": {reward:7, punish:7}, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
+  "use_pp": {reward:8, punish:5}, //消耗pp
+  "per_game": {reward:5, punish:4}, //每场一次（收获的参谋长·喵鲁）
+  "attack_by_life": {reward:9, punish:6}, //教会
+  "no_duplication_random_array": {reward:6, punish:3}, //不重复的随机数
+  "power_modifier": {reward:5, punish:3}, //光剑饿姐的不平衡加减
+  "cant_activate_fanfare": {reward:12, punish:6}, //诗人
+  "cant_summon": {reward:8, punish:4}, //闪耀
+  "weird_evolve": {reward:1.5, punish:0.5}, //异形身材
+  "flush": {reward:12, punish:6}, //20姐18弟
+  "cosmos": {reward:12, punish:6}, //宇宙
+  "cant_play": {reward:10, punish:6}, //无法使用XX卡
+  "force_skill_target": {reward:7, punish:4}, //当敌方发动的能力可指定这个从者时，则只能指定这个从者
   "change_skybound_art_count": {reward:1.2, punish:1.2}, //奥义
   "change_super_skybound_art_count": {reward:0.3, punish:0.3}, //解放奥义（呃重复了）
   "use_ep": {reward:12, punish:8}, //消耗豆子

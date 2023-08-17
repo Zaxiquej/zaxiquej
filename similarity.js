@@ -618,7 +618,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
+    let wholeKeyProsC = ["{me.inplay.class.life}<{op.inplay.class.life}","{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
           if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1" || item == "{op.inplay.unit.selected_cards.max_life}-{op.inplay.unit.selected_cards.life}"){
@@ -2155,7 +2155,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         let id = -1;
         let r = 1;
         let sr = 1;
-        let ar = 1;
+        let ar = 0;
         let beilv = 1;
         let findChoice = false;
         for (let beilv = 1; beilv > 0; beilv-=0.5){
@@ -2205,17 +2205,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 }
 
                 let oRate, cRate, tRate, timingRate;
-                if (ratioTable[skill].reward < 4){
+                let rew = ratioTable[skill].reward;
+                //手动调权
+                if (rew < 3){
                   oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
                   cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
                   tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
                   timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.66;
-                } else if (ratioTable[skill].reward < 8){
+                } else if (rew < 6){
                   oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6)/1.25;
                   cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
                   tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
                   timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.33;
-                } else if (ratioTable[skill].reward < 12){
+                } else if (rew < 9){
                   oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7)/1.1;
                   cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
                   tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
@@ -2297,10 +2299,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
 
                 const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
-                base *= ol;
-                base *= cl;
-                base *= tl;
-                base *= timingl;
+                base *= ol*cl*tl*timingl;
+                aRatio -= 1;
+                aRatio *= ol*cl*tl*timingl;
 
                 //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
                 if (base > nb){
@@ -2313,10 +2314,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             }
           }
 
-          commonSkills += nb*sr*beilv + (ar - 1);
+          commonSkills += nb*sr*beilv + ar;
 
-
-          ex += ar - r + sr - 1;
+          ex += ar - r + sr;
           if (id != -1 && !chosen.includes(id)){
             chosen.push(id);
           }
@@ -2342,6 +2342,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
     //Math.max(skills1Sum,skills2Sum)
       const maxLength = (skills1Sum+skills2Sum)/2 + ex;
+
       let similarity = Math.pow((Math.max(0,commonSkills) / maxLength),2/3) * 100;
       return similarity;
   }
@@ -2721,7 +2722,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
+    let wholeKeyProsC = ["{me.inplay.class.life}<{op.inplay.class.life}","{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
