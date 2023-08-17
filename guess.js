@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const hintButton = document.getElementById("hintButton");
     const revealButton = document.getElementById("revealButton");
     const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
+    const lowModeCheckbox = document.getElementById("lowModeCheckbox");
     const viewTop100Button = document.getElementById("viewTop100Button");
     const modal = document.getElementById("modal");
     const closeBtn = document.querySelector(".close");
@@ -496,7 +497,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gameEnd(false);
           }
         }
-
     });
 
     function splitNumber(input) {
@@ -593,8 +593,8 @@ document.addEventListener("DOMContentLoaded", function () {
           suggestionsDiv.innerHTML = ""; // 清空建议
         }
 
-        const similarity = calculateSimilarityScore(puzzleCard, foundCard);
-        const rank = getRank(similarity);
+        let similarity = calculateSimilarityScore(puzzleCard, foundCard);
+        let rank = getRank(similarity);
 
         if (pastGuesses.includes(foundCard.card_id)){
           warnBox.style.display = "block";
@@ -680,6 +680,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var rankCell = document.createElement("td");
             rankCell.textContent = rank;
+
+            if (!lowModeCheckbox.checked) {
+              if (specifiedModeCheckbox.checked) {
+                if (rank > 500){
+                  rankCell.textContent = "500+";
+                  similarityCell.textContent = "-"
+                  similarityCell.style.color = `rgb(200,200,200)`;
+                  similarity = 0;
+                }
+              } else {
+                if (rank > 1000){
+                  rankCell.textContent = "1000+";
+                  similarityCell.textContent = "-"
+                  similarityCell.style.color = `rgb(200,200,200)`;
+                  similarity = 0;
+                }
+              }
+            }
 
             resultMessageRow.appendChild(timeCell);
             resultMessageRow.appendChild(cardCell);
@@ -819,8 +837,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // 获取尾部的10%内的随机选项
-        const startIndex = Math.floor(options.length * 0.9);
-        const endIndex = options.length;
+        let startIndex = Math.floor(options.length * 0.9);
+        let endIndex = options.length;
+        if (specifiedModeCheckbox.checked) {
+          if (startIndex > 1000){
+            startIndex = 990;
+            endIndex = 1000;
+          }
+        } else {
+          if (startIndex > 500){
+            startIndex = 490;
+            endIndex = 500;
+          }
+        }
         const randomIndex = Math.floor(Math.random() * (endIndex - startIndex)) + startIndex;
 
         return options.length > 0 ? [options[randomIndex]] : [];

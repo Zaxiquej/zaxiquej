@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 显示每张卡得到的基础分和描述分
         const cardListHTML = sortedCards
-            .map((card) => `<li>${card.card_name} - 相似度：${card.similarity.toFixed(2)} 基础分: ${card.basicScore.toFixed(2)}, 技能分: ${card.skillScore.toFixed(2)}, 描述分: ${card.descriptionScore.toFixed(2)}</li>`)
+            .map((card,index) => `<li>${index + 1}. ${card.card_name} - 相似度：${card.similarity.toFixed(2)} 基础分: ${card.basicScore.toFixed(2)}, 技能分: ${card.skillScore.toFixed(2)}, 描述分: ${card.descriptionScore.toFixed(2)}</li>`)
             .join("");
         resultDiv.innerHTML = `<ul>${cardListHTML}</ul>`;
     }
