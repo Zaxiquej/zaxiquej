@@ -76,8 +76,9 @@ let ratioTable = {
   "when_resonance_start": {reward:3, punish:1},//切共鸣
   "when_play_other": {reward:1, punish:0.5},//使用其他牌扳机
   "when_summon_other": {reward:1, punish:0.5},//召唤其他牌扳机
+  "previous_turn_attacked=true": {reward:3, punish:0.5},//上一回合攻击过
   "when_damage": {reward:2, punish:0.8},//污蔑/伤脸
-  "{me.inplay.unit.attack_count=pre_action.count}": {reward:2, punish:0.6},//安息
+  "{me.inplay.unit.attack_count=pre_action.count}=0": {reward:2.4, punish:0.6},//安息
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
   "recycle": {reward:1.4, punish:1.4}, //回收/复制
   "none": {reward:1.1, punish:0.8}, //白板

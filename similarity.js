@@ -618,15 +618,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-      let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
-
+    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
           if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1" || item == "{op.inplay.unit.selected_cards.max_life}-{op.inplay.unit.selected_cards.life}"){
             item = "target=damaged_card";
           }
           if (item == "{me.inplay_self.unit.max_attack_count}={me.inplay_self.unit.attack_count}"){
-            item = "{me.inplay.unit.attack_count=pre_action.count}";
+            item = "{me.inplay.unit.attack_count=pre_action.count}=0";
           }
           if (wholeKeyProsC.includes(item)){
             skills1.push(item);
@@ -640,11 +639,11 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       for (let highItem of skillsc2){
         for (let item of customSplit(highItem,'&')){
-          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1"){
+          if (item == "{op.last_target.unit.max_life}-{op.last_target.unit.life}>=1" || item == "{op.inplay.unit.selected_cards.max_life}-{op.inplay.unit.selected_cards.life}"){
             item = "target=damaged_card";
           }
           if (item == "{me.inplay_self.unit.max_attack_count}={me.inplay_self.unit.attack_count}"){
-            item = "{me.inplay.unit.attack_count=pre_action.count}";
+            item = "{me.inplay.unit.attack_count=pre_action.count}=0";
           }
           if (wholeKeyProsC.includes(item)){
             skills2.push(item);
@@ -778,7 +777,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
-
 
       //计数器类，和之前并算
 
@@ -2158,163 +2156,173 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         let r = 1;
         let sr = 1;
         let ar = 1;
-        for (let j = 0; j < skills2.length; j++){
-          if (chosen.includes(j)){
-            continue;
-          }
-          if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
-              let base = 1;
-              let ratio = 1;
-              let sRatio = 1;
-              let aRatio = 1;
+        let beilv = 1;
+        let findChoice = false;
+        for (let beilv = 1; beilv > 0; beilv-=0.5){
+          for (let j = 0; j < skills2.length; j++){
+            if (chosen.includes(j) && beilv == 1){
+              continue;
+            }
+            if (skills2[j] == skill){ //|| (["token_draw","summon_token"].includes(skill) && ["token_draw","summon_token"].includes(skills2[j]))) {
+                findChoice = true;
+                let base = 1;
+                let ratio = 1;
+                let sRatio = 1;
+                let aRatio = 1;
 
-              if (['leader_attach_skill'].includes(skill)){
-                sRatio *= 0.4;
-              }
+                if (['leader_attach_skill'].includes(skill)){
+                  sRatio *= 0.4;
+                }
 
-              if (['accelerateORcrystallize'].includes(skill)){
-                sRatio *= 0.8;
-              }
+                if (['accelerateORcrystallize'].includes(skill)){
+                  sRatio *= 0.8;
+                }
 
-              ratio = ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
+                ratio = ratioTable[skill].punish >= 1 ? Math.sqrt(ratioTable[skill].punish) : ratioTable[skill].punish;
 
-              if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
-                //主战者能力对上有增权
-                aRatio = 6;
-              } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
-                //主战者能力对上有增权
-                aRatio = 2;
-              }
+                if (skillso1[i].includes('fromAttach') && skillso2[j].includes('fromAttach')){
+                  //主战者能力对上有增权
+                  aRatio = 6;
+                } else if (skillso1[i].includes('fromAttach') || skillso2[j].includes('fromAttach')){
+                  //主战者能力对上有增权
+                  aRatio = 2;
+                }
 
-              if (ratioTable[skill].punish > 0){
-                aRatio += Math.sqrt(ratioTable[skill].reward) - ratio;
-              }
+                if (ratioTable[skill].punish > 0){
+                  aRatio += Math.sqrt(ratioTable[skill].reward) - ratio;
+                }
 
-
-              aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.2) : ratioTable[skill].reward;
-
-              if (ratioTable[skill].reward >= 4){
-                aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.1) : ratioTable[skill].reward;
-              }
-              if (ratioTable[skill].reward >= 8){
                 aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.2) : ratioTable[skill].reward;
-              }
-              if (ratioTable[skill].reward >= 12){
-                aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.3) : ratioTable[skill].reward;
-              }
 
-              let oRate, cRate, tRate, timingRate;
-              if (ratioTable[skill].reward < 4){
-                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
-                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
-                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
-                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.66;
-              } else if (ratioTable[skill].reward < 8){
-                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6)/1.25;
-                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
-                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
-                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.33;
-              } else if (ratioTable[skill].reward < 12){
-                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7)/1.1;
-                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
-                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
-                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.2;
-              } else {
-                oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8);
-                cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
-                tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
-                timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.1;
-              }
+                if (ratioTable[skill].reward >= 4){
+                  aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.1) : ratioTable[skill].reward;
+                }
+                if (ratioTable[skill].reward >= 8){
+                  aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.2) : ratioTable[skill].reward;
+                }
+                if (ratioTable[skill].reward >= 12){
+                  aRatio *= ratioTable[skill].reward >= 1 ? Math.pow(ratioTable[skill].reward,0.3) : ratioTable[skill].reward;
+                }
+
+                let oRate, cRate, tRate, timingRate;
+                if (ratioTable[skill].reward < 4){
+                  oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5)/1.5;
+                  cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
+                  tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.8;
+                  timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.5))/1.66;
+                } else if (ratioTable[skill].reward < 8){
+                  oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6)/1.25;
+                  cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
+                  tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.5;
+                  timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.6))/1.33;
+                } else if (ratioTable[skill].reward < 12){
+                  oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7)/1.1;
+                  cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
+                  tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.3;
+                  timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.7))/1.2;
+                } else {
+                  oRate = 1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8);
+                  cRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
+                  tRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.2;
+                  timingRate = (1/Math.pow(Math.min(skills1.length, skills2.length) + 1,0.8))/1.1;
+                }
 
 
-              if (["summon_token","token_draw"].includes(skill)){
-                oRate = 1 - (1-oRate)/2;
-              }
+                if (["summon_token","token_draw"].includes(skill)){
+                  oRate = 1 - (1-oRate)/2;
+                }
 
-              if (["powerup","damage","power_down"].includes(skill)){
-                tRate = 1 - (1-tRate)*0.9;
-              }
+                if (["powerup","damage","power_down"].includes(skill)){
+                  tRate = 1 - (1-tRate)*0.9;
+                }
 
-              if (!skillso2[j]){skillso2[j] = ""};
-              if (!skillsc2[j]){skillsc2[j] = ""};
-              if (!skillso1[i]){skillso1[i] = ""};
-              if (!skillsc1[i]){skillsc1[i] = ""};
-              skillso1[i] = skillso1[i].replaceAll("&&","占")
-              skillso2[j] = skillso2[j].replaceAll("&&","占")
-              let skillsoArr1 = customSplit(skillso1[i],"&");
-              let skillsoArr2 = customSplit(skillso2[j],"&");
-              skillso1[i] = skillso1[i].replaceAll("占","&&")
-              skillso2[j] = skillso2[j].replaceAll("占","&&")
-              let ol;
-              if (skillsoArr1.length <= skillsoArr2.length){
-                ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
-              } else {
-                ol = (1 - oRate * (1 - calculateConditionScore(card2, card1, skillsoArr2,skillsoArr1)));
-              }
+                if (!skillso2[j]){skillso2[j] = ""};
+                if (!skillsc2[j]){skillsc2[j] = ""};
+                if (!skillso1[i]){skillso1[i] = ""};
+                if (!skillsc1[i]){skillsc1[i] = ""};
+                skillso1[i] = skillso1[i].replaceAll("&&","占")
+                skillso2[j] = skillso2[j].replaceAll("&&","占")
+                let skillsoArr1 = customSplit(skillso1[i],"&");
+                let skillsoArr2 = customSplit(skillso2[j],"&");
+                skillso1[i] = skillso1[i].replaceAll("占","&&")
+                skillso2[j] = skillso2[j].replaceAll("占","&&")
+                let ol;
+                if (skillsoArr1.length <= skillsoArr2.length){
+                  ol = (1 - oRate * (1 - calculateConditionScore(card1, card2, skillsoArr1,skillsoArr2)));
+                } else {
+                  ol = (1 - oRate * (1 - calculateConditionScore(card2, card1, skillsoArr2,skillsoArr1)));
+                }
 
-              //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
+                //const ol = (1 - 0.5 * calculateLevenshteinDistance(skillso1[i], skillso2[j]) / Math.max(skillso1[i].length, skillso2[j].length));
 
-              skillsc1[i] = skillsc1[i].replaceAll("&&","占")
-              skillsc2[j] = skillsc2[j].replaceAll("&&","占")
-              let skillscArr1 = customSplit(skillsc1[i],"&");
-              let skillscArr2 = customSplit(skillsc2[j],"&");;
-              skillsc1[i] = skillsc1[i].replaceAll("占","&&")
-              skillsc2[j] = skillsc2[j].replaceAll("占","&&")
-              //condition 里无cd和cd自己基本上等同
-              skillscArr1 = skillscArr1.map(item => (item === "none" ? "character=me" : item));
-              skillscArr2 = skillscArr2.map(item => (item === "none" ? "character=me" : item));
+                skillsc1[i] = skillsc1[i].replaceAll("&&","占")
+                skillsc2[j] = skillsc2[j].replaceAll("&&","占")
+                let skillscArr1 = customSplit(skillsc1[i],"&");
+                let skillscArr2 = customSplit(skillsc2[j],"&");;
+                skillsc1[i] = skillsc1[i].replaceAll("占","&&")
+                skillsc2[j] = skillsc2[j].replaceAll("占","&&")
+                //condition 里无cd和cd自己基本上等同
+                skillscArr1 = skillscArr1.map(item => (item === "none" ? "character=me" : item));
+                skillscArr2 = skillscArr2.map(item => (item === "none" ? "character=me" : item));
 
-              let cl;
-              if (skillscArr1.length <= skillscArr2.length){
-                cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
-              } else {
-                cl = (1 - cRate * (1 - calculateConditionScore(card2, card1, skillscArr2,skillscArr1)));
-              }
+                let cl;
+                if (skillscArr1.length <= skillscArr2.length){
+                  cl = (1 - cRate * (1 - calculateConditionScore(card1, card2, skillscArr1,skillscArr2)));
+                } else {
+                  cl = (1 - cRate * (1 - calculateConditionScore(card2, card1, skillscArr2,skillscArr1)));
+                }
 
-              skillst1[i] = skillst1[i].replace(/\{([^}]+)\}/g, 'character=$1');
-              skillst2[j] = skillst2[j].replace(/\{([^}]+)\}/g, 'character=$1');
+                skillst1[i] = skillst1[i].replace(/\{([^}]+)\}/g, 'character=$1');
+                skillst2[j] = skillst2[j].replace(/\{([^}]+)\}/g, 'character=$1');
 
-              skillst1[i] = skillst1[i].replaceAll("&&","占")
-              skillst2[j] = skillst2[j].replaceAll("&&","占")
-              let skillstArr1 = customSplit(skillst1[i],"&");
-              let skillstArr2 = customSplit(skillst2[j],"&");
-              skillst1[i] = skillst1[i].replaceAll("占","&&")
-              skillst2[j] = skillst2[j].replaceAll("占","&&")
+                skillst1[i] = skillst1[i].replaceAll("&&","占")
+                skillst2[j] = skillst2[j].replaceAll("&&","占")
+                let skillstArr1 = customSplit(skillst1[i],"&");
+                let skillstArr2 = customSplit(skillst2[j],"&");
+                skillst1[i] = skillst1[i].replaceAll("占","&&")
+                skillst2[j] = skillst2[j].replaceAll("占","&&")
 
-              let tl;
-              if (skillstArr1.length <= skillstArr2.length){
-                tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
-              } else {
-                tl = (1 - tRate * (1 - calculateConditionScore(card2, card1, skillstArr2,skillstArr1)));
-              }
+                let tl;
+                if (skillstArr1.length <= skillstArr2.length){
+                  tl = (1 - tRate * (1 - calculateConditionScore(card1, card2, skillstArr1,skillstArr2)));
+                } else {
+                  tl = (1 - tRate * (1 - calculateConditionScore(card2, card1, skillstArr2,skillstArr1)));
+                }
 
-            //  skillsT1[i] = skillsT1[i].replaceAll("&&","占")
-            //  skillsT2[j] = skillsT2[j].replaceAll("&&","占")
-            //  let skillsTArr1 = customSplit(skillsT1[i],"&");
-            //  let skillsTArr2 = customSplit(skillsT2[j],"&");
-            //  skillsT1[i] = skillsT1[i].replaceAll("占","&&")
-            //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
+              //  skillsT1[i] = skillsT1[i].replaceAll("&&","占")
+              //  skillsT2[j] = skillsT2[j].replaceAll("&&","占")
+              //  let skillsTArr1 = customSplit(skillsT1[i],"&");
+              //  let skillsTArr2 = customSplit(skillsT2[j],"&");
+              //  skillsT1[i] = skillsT1[i].replaceAll("占","&&")
+              //  skillsT2[j] = skillsT2[j].replaceAll("占","&&")
 
-              const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
-              base *= ol;
-              base *= cl;
-              base *= tl;
-              base *= timingl;
+                const timingl = (1 - timingRate * (calculateLevenshteinDistance(skillsT1[i], skillsT2[j]) / Math.max(skillsT1[i].length, skillsT2[j].length)));
+                base *= ol;
+                base *= cl;
+                base *= tl;
+                base *= timingl;
 
-              //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
-              if (base > nb){
-                nb = base;
-                id = j;
-                r = ratio;
-                sr = sRatio;
-                ar = aRatio;
-              }
+                //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
+                if (base > nb){
+                  nb = base;
+                  id = j;
+                  r = ratio;
+                  sr = sRatio;
+                  ar = aRatio;
+                }
+            }
           }
-        }
-        commonSkills += nb*sr + ar*(r-1);
-        ex += (ar-1)*(r-1) + sr - 1;
-        if (id != -1){
-          chosen.push(id);
+
+          commonSkills += nb*sr*beilv + (ar - 1);
+
+
+          ex += ar - r + sr - 1;
+          if (id != -1 && !chosen.includes(id)){
+            chosen.push(id);
+          }
+          if (findChoice){
+            beilv = 0;
+          }
         }
       }
 
@@ -2406,14 +2414,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             let max = 0;
             let maxId = -1;
             for (let j = 0; j < transSub2.length; j++){
+              cid2 = transSub2[j];
+              const strNumber1 = cid1.toString();
+              const strNumber2 = cid2.toString();
+              let nCard1;
+              let nCard2;
+              nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
+              nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
+              let newBasicScore = calculateBasicScore(nCard1,nCard2);
+              if (newBasicScore > basicScore){
+                basicScore = newBasicScore;
+              }
               if (!occupied.includes(j)){
-                cid2 = transSub2[j];
-                const strNumber1 = cid1.toString();
-                const strNumber2 = cid2.toString();
-                let nCard1;
-                let nCard2;
-                nCard1 = findCardById(parseInt(cid1),strNumber1.charAt(0) === "8");
-                nCard2 = findCardById(parseInt(cid2),strNumber2.charAt(0) === "8");
                 if (transSub1[i] != card1.card_id){
                   nCard1.card_parentName = card1.card_name;
                 }
@@ -2433,18 +2445,28 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillScore = 0;
 
           let zeroCab = 1 + 1/Math.max(transSub1.length,transSub2.length)/2.5;
-          let selfBonus = 1.5;
+          let maxBonus = 2.5;
+          let isSelf = false;
+          let maxS = 0;
           for (let i = 0; i < transSub1.length; i++){
             if (scores[i]!=undefined){
-              if ((transSub1[i] == card1.card_id && transSub2[occupied[i]] == card2.card_id) || (transSub1[i] == card2.card_id && transSub2[occupied[i]] == card1.card_id && switched)){ //本体对上加成
-                skillScore += scores[i]*selfBonus;
-              } else {
-                skillScore += scores[i];
+              skillScore += scores[i];
+              if (scores[i] > maxS){
+                if (transSub1[i] == card1.card_id || (switched && transSub1[i] == card2.card_id) ){
+                  isSelf = true;
+                } else {
+                  isSelf = false;
+                }
+                maxS = scores[i];
               }
             }
           }
+          if (isSelf){
+            maxBonus *= 2;
+          }
+          skillScore += maxS * (maxBonus - 1);
           //basicScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
-          skillScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (selfBonus-1);
+          skillScore /= (Math.abs(transSub1.length - transSub2.length) / zeroCab) + Math.min(transSub1.length,transSub2.length) + (maxBonus-1);
       }
 
       if (midR == 1){
@@ -2699,7 +2721,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}","{me.inplay.unit.count}=1"];
+    let wholeKeyProsC = ["{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
 
     for (let highItem of skillsc1){
       for (let item of customSplit(highItem,'&')){
