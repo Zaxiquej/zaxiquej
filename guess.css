@@ -545,3 +545,15 @@ input[type="number"] {
 #guessedCount {
   font-size: 28px;
 }
+
+#race {
+  width: 64px; /* 设置 race 输入框的宽度为 100px */
+}
+
+#description {
+  width: 468px; /* 设置 antiDescription 输入框的宽度为 200px */
+}
+
+#antiDescription {
+  width: 468px; /* 设置 antiDescription 输入框的宽度为 200px */
+}
