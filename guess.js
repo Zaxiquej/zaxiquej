@@ -979,7 +979,7 @@ function getCorrectionSuggestion(guess) {
 
         if (description){
           let nomatch = false;
-          let disc = card.skill_disc.concat(card.skill_disc.evo_skill_disc)
+          let disc = card.skill_disc.concat(card.evo_skill_disc)
           for (let des of description.split(" ")){
             if (!disc.includes(des) && !disc.includes(simplized(des))){
               nomatch = true;
@@ -999,7 +999,7 @@ function getCorrectionSuggestion(guess) {
 
         if (antiDescription){
           let nomatch = false;
-          let disc = card.skill_disc.concat(card.skill_disc.evo_skill_disc)
+          let disc = card.skill_disc.concat(card.evo_skill_disc)
           for (let des of antiDescription.split(" ")){
             if (disc.includes(des) || disc.includes(simplized(des))){
               nomatch = true;
