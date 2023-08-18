@@ -1793,7 +1793,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skillst1.length; i++){
         for (let ar of skillst1[i].split("&")){
           let arr = ar.split("=");
-          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "no_duplication_random_count_in_order" || arr[0] == "custom_select"){
             if (arr[1].includes("-")){
               arr[1] = parseInt(arr[1].split("-")[0]) - 1;
             }
@@ -1819,7 +1819,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skillst2.length; i++){
         for (let ar of skillst2[i].split("&")){
           let arr = ar.split("=");
-          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+          if (arr[0] == "id_no_duplication_random_count" || arr[0] == "no_duplication_random_count_in_order" || arr[0] == "custom_select"){
             if (arr[1].includes("-")){
               arr[1] = parseInt(arr[1].split("-")[0]) - 1;
             }
@@ -3351,7 +3351,7 @@ function customSplit(input,token) {
     for (let i = 0; i < skillst1.length; i++){
       for (let ar of skillst1[i].split("&")){
         let arr = ar.split("=");
-        if (arr[0] == "id_no_duplication_random_count" || arr[0] == "custom_select"){
+        if (arr[0] == "id_no_duplication_random_count" || arr[0] == "no_duplication_random_count_in_order" || arr[0] == "custom_select"){
           if (arr[1].includes("-")){
             arr[1] = parseInt(arr[1].split("-")[0]) - 1;
           }

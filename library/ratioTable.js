@@ -195,15 +195,15 @@ let ratioTable = {
   "turn_end_period_of_stop_time": {reward:0.4, punish:0.4}, //到下个自己回合结束
   "heal_modifier": {reward:9, punish:9}, //主战者回复生命值时的数值转变为1
   "unite": {reward:10, punish:5}, //合体
-  "Gacha": {reward:4, punish:3}, //扭蛋
+  "Gacha": {reward:3, punish:0.5}, //扭蛋
   "geton": {reward:7, punish:4}, //操纵
   "getoff": {reward:1, punish:1}, //有上面那个啦
   "rob_skill": {reward:7, punish:3}, //偷
   "copy_skill": {reward:8, punish:3}, //复制
   "not_decrease_pp": {reward:7, punish:3}, //乔老师
   "repeat_skill": {reward:6, punish:6}, //复读（暮光）
-  "force_avarice": {reward:2, punish:2}, //碑文
-  "force_wrath": {reward:2, punish:2}, //碑文
+  "force_avarice": {reward:2, punish:1}, //碑文
+  "force_wrath": {reward:2, punish:1}, //碑文
   "evolve_to_other": {reward:6, punish:2}, //其他进化（莱瓦丁）
   "reflection": {reward:6, punish:2}, //玛丽反伤
   "loop_skill": {reward:5, punish:2}, //复读技能（旋镖修女）
