@@ -22,6 +22,10 @@
           <input type="checkbox" id="specifiedModeCheckbox">
           指定模式
         </label>
+        <label title="勾选此项以限制卡池仅不再出现无法加入卡组的token卡牌（指定模式下不会出现衍生的无限制卡牌）。">
+          <input type="checkbox" id="noTokenModeCheckbox">
+          无token模式
+        </label>
           <label title="勾选此项以在猜卡对象为1000名以后（指定模式为500名）时，依然公开详细名次与相似度。">
           <input type="checkbox" id="lowModeCheckbox">
           低相似度公开
@@ -153,6 +157,9 @@
     </div>
     <div id="suggestions"></div>
     <hr> <!-- 这是分割线 -->
+    <div id="result">
+      <span id="guessedCount">0</span> 个被猜测到
+    </div>
     <div id="extrahistory">
     </div>
     <div id="history">
@@ -283,7 +290,8 @@
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>少许调整了部分词条的加权分；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加额外轮次游戏；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了提示，提示给出的至少会是1000名以内的了（指定模式为500名）<br>
-             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>现在默认名次1000名开外（指定模式为500名）不显示具体名字和相似度，可以通过勾选开关显示。
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>现在默认名次1000名开外（指定模式为500名）不显示具体名字和相似度，可以通过勾选开关显示。<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了无token模式
 
            <li style="margin-left: 20px;">
              <span style="display: inline-block; width: 140px;">2023/08/16</span>移除了基础模糊搜索，改为高级搜索；<br>

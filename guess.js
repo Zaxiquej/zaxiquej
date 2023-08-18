@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const hintButton = document.getElementById("hintButton");
     const revealButton = document.getElementById("revealButton");
     const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
+    const noTokenModeCheckbox = document.getElementById("noTokenModeCheckbox");
     const lowModeCheckbox = document.getElementById("lowModeCheckbox");
     const viewTop100Button = document.getElementById("viewTop100Button");
     const modal = document.getElementById("modal");
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardTypeSelect = document.getElementById("cardType");
     const minionOptions1 = document.getElementById("minionOptions1");
     const minionOptions2 = document.getElementById("minionOptions2");
+    const guessedCountSpan = document.getElementById('guessedCount');
 
     cardTypeSelect.addEventListener("change", () => {
       if (cardTypeSelect.value === "minion") {
@@ -152,7 +154,9 @@ document.addEventListener("DOMContentLoaded", function () {
           cardPool.push(card);
 
           // 查找并加入符合条件的技能卡
-          addSkillOptionCards(card.skill_option);
+          if (!noTokenModeCheckbox){
+            addSkillOptionCards(card.skill_option);
+          }
         }
       });
     });
@@ -219,7 +223,11 @@ document.addEventListener("DOMContentLoaded", function () {
       cardPool = [];
       addCardsFromLastPackets();
     } else {
-      cardPool = cardData;
+      if (noTokenModeCheckbox.checked){
+        cardPool = cardData.filter((card) => card.card_set_id != 90000);
+      } else {
+        cardPool = cardData;
+      }
     }
 
     // 初始化游戏逻辑，例如随机抽取一张卡牌作为解谜目标等
@@ -244,13 +252,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
      // Update the "currentSeed" element with the current seed value
+     document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
      if (specifiedModeCheckbox.checked) {
-       document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
        var strongElement = document.createElement("strong");
        strongElement.textContent = "（指定模式）";
        document.getElementById("currentSeed").appendChild(strongElement);
-     } else {
-       document.getElementById("currentSeed").textContent = `当前种子：${seed}`;
+     }
+     if (noTokenModeCheckbox.checked) {
+       var emElement = document.createElement("em");
+       emElement.textContent = "（无token模式）";
+       document.getElementById("currentSeed").appendChild(emElement);
      }
 
     // 显示解谜开始信息
@@ -276,6 +287,9 @@ document.addEventListener("DOMContentLoaded", function () {
       extraGaming = true;
       guessBox.style.display = "block";
       extraGameButton.style.display = "none";
+
+      result.style.display = "block";
+      guessedCountSpan.textContent = '0';
       //viewTop100Button.style.display = "none";
       puzzleStartMessage.textContent = "额外轮次！试试你能猜中多少前100名的卡牌！";
       for (let card of goodGuesses){
@@ -292,6 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
       playBox.style.display = "none";
       historyDiv.innerHTML = "";
       extrahistory.innerHTML = "";
+      result.style.display = "none";
 
             // 创建表格元素和标题行
       historyTable = document.createElement("table");
@@ -650,7 +665,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 infoContainer.appendChild(number);
 
                 card.appendChild(infoContainer);
+
+                guessedCountSpan.textContent = parseInt(guessedCountSpan.textContent) + 1;
             }
+            card.addEventListener("click", function() {
+              let cid = foundCard.card_id;
+              const url = `https://shadowverse-portal.com/card/${cid}?lang=zh-tw`;
+              window.open(url, "_blank");
+            });
             guessInput.value = "";
             extrahistory.appendChild(card);
         } else {
@@ -864,9 +886,17 @@ document.addEventListener("DOMContentLoaded", function () {
     window.guessCardName = guessCardName;
 });
 
+function removeFirstSubstring(inputString, substringToRemove) {
+  var index = inputString.indexOf(substringToRemove);
+  if (index !== -1) {
+    return inputString.slice(0, index) + inputString.slice(index + substringToRemove.length);
+  }
+  return inputString;
+}
+
 function getCorrectionSuggestion(guess) {
   const maxSuggestions = 20;
-  const suggestions = [];
+  let suggestions = [];
   let newCardPool = [];
 
   for (const card of cardPool) {
@@ -947,7 +977,21 @@ function getCorrectionSuggestion(guess) {
         }
 
         if (description){
-          if (!card.skill_disc.includes(description) && !card.skill_disc.includes(simplized(description))){
+          let nomatch = false;
+          let disc = card.skill_disc.concat(card.skill_disc.evo_skill_disc)
+          for (let des of description.split(" ")){
+            if (!disc.includes(des) && !disc.includes(simplized(des))){
+              nomatch = true;
+              break;
+            } else {
+              if (disc.includes(des)){
+                disc = removeFirstSubstring(disc,des)
+              } else {
+                disc = removeFirstSubstring(disc,simplized(des))
+              }
+            }
+          }
+          if (nomatch){
             continue;
           }
         }
@@ -978,6 +1022,9 @@ function getCorrectionSuggestion(guess) {
   if (correctionSuggestions.length < maxSuggestions) {
     const remainingSuggestions = maxSuggestions - correctionSuggestions.length;
     for (const card of newCardPool) {
+      if (correctionSuggestions.includes(card.card_name)){
+        continue;
+      }
       if (card.card_name) {
         const distance = calculateLevenshteinDistance(card.card_name, guess);
         correctionSuggestions.push(card.card_name);
