@@ -907,6 +907,7 @@ function getCorrectionSuggestion(guess) {
         const rarity = document.getElementById('rarity').value;
         const race = document.getElementById('race').value;
         const description = document.getElementById('description').value;
+        const antiDescription = document.getElementById('antiDescription').value;
         const cost = document.getElementById('cost').value;
         const costComparison = document.getElementById('costComparison').value;
         const attack = document.getElementById('attack').value;
@@ -989,6 +990,20 @@ function getCorrectionSuggestion(guess) {
               } else {
                 disc = removeFirstSubstring(disc,simplized(des))
               }
+            }
+          }
+          if (nomatch){
+            continue;
+          }
+        }
+
+        if (antiDescription){
+          let nomatch = false;
+          let disc = card.skill_disc.concat(card.skill_disc.evo_skill_disc)
+          for (let des of description.split(" ")){
+            if (disc.includes(des) || disc.includes(simplized(des))){
+              nomatch = true;
+              break;
             }
           }
           if (nomatch){
