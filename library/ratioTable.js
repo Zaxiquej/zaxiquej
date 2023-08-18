@@ -10,7 +10,7 @@
 
 let ratioTable = {
   "damage": {reward:1, punish:1},
-  "chant": {reward:0.5, punish:0.5}, //吟唱
+  "chant": {reward:0.5, punish:0.2}, //吟唱
   "draw": {reward:1, punish:1},
   "possess_ep_modifier": {reward:3, punish:3}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
@@ -72,6 +72,7 @@ let ratioTable = {
   "when_attack": {reward:0.7, punish:0.3}, //攻击发动
   "when_fight": {reward:0.7, punish:0.3}, //交战发动
   "when_leave": {reward:1.5, punish:0.5}, //离场发动
+  "when_evolve_other": {reward:1.5, punish:0.5}, //进化其他发动
   "when_discard_other": {reward:4, punish:2}, //弃牌发动
   "when_accelerate_other": {reward:4, punish:2}, //激奏其他发动
   "when_resonance_start": {reward:3, punish:1},//切共鸣
@@ -91,8 +92,8 @@ let ratioTable = {
   "turn_end_remove": {reward:0.4, punish:0.4},//回合结束失去能力
   "cost_change": {reward:1.3, punish:1.3}, //改变费用
   "power_down": {reward:1.5, punish:1.5}, //减能力
-  "power_change": {reward:2, punish:2}, //改能力
-  "self_power_change": {reward:2.4, punish:2.4}, //改自己能力
+  "power_change": {reward:5, punish:2}, //改能力
+  "self_power_change": {reward:4, punish:2.4}, //改自己能力
   "leaderPowerup": {reward:6, punish:3}, //加血限
   "leaderPowerdown": {reward:6, punish:3}, //扣血限
   "guard": {reward:1, punish:1},
@@ -188,7 +189,7 @@ let ratioTable = {
   "change_super_skybound_art_count": {reward:0.3, punish:0.3}, //解放奥义（呃重复了）
   "use_ep": {reward:12, punish:8}, //消耗豆子
   "generic_value_modifier": {reward:6, punish:6},
-  "accelerateORcrystallize": {reward:1.1, punish:1.1}, //激奏或结晶
+  "accelerateORcrystallize": {reward:0.5, punish:0.5}, //激奏或结晶
   "remove_by_destroy": {reward:6, punish:4}, //能力无法破坏或使这个从者消失
   "special_lose": {reward:12, punish:4}, //特殊失败
   "force_berserk": {reward:8, punish:6}, //狼王

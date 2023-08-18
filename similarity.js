@@ -1053,11 +1053,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other"];
       let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
+          if (item == "when_evolve_self_and_other"){
+            item = "when_evolve_other";
+          }
           if (wholeKeyProsTiming.includes(item)){
             skills1.push(item);
             skillso1.push('none')
@@ -1077,6 +1080,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       for (let highItem of skillsT2){
         for (let item of customSplit(highItem,'&')){
+          if (item == "when_evolve_self_and_other"){
+            item = "when_evolve_other";
+          }
           if (wholeKeyProsTiming.includes(item)){
             skills2.push(item);
             skillso2.push('none')
@@ -2958,11 +2964,14 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other"];
     let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){
+        if (item == "when_evolve_self_and_other"){
+          item = "when_evolve_other";
+        }
         if (wholeKeyProsTiming.includes(item)){
           skills1.push(item);
           skillso1.push('none')
