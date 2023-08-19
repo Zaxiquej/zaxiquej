@@ -12,6 +12,7 @@ let ratioTable = {
   "damage": {reward:1, punish:1},
   "chant": {reward:0.5, punish:0.2}, //吟唱
   "draw": {reward:1, punish:1},
+  "status_offense={op.inplay.unit.offense.max}": {reward:1.2, punish:0.4}, //攻击力最高
   "possess_ep_modifier": {reward:3, punish:3}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
   "character=both": {reward:1.5, punish:1.5},//敌我不分

@@ -1027,7 +1027,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsT = ["character=both","target=damaged_card"];
+      let wholeKeyProsT = ["character=both","target=damaged_card","status_offense={op.inplay.unit.offense.max}"];
 
       for (let highItem of skillst1){
         for (let item of customSplit(highItem,'&')){
@@ -1341,7 +1341,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //aoe特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
           skills1.push('AOE');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1351,7 +1351,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
           skills2.push('AOE');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1392,7 +1392,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+        if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
           skills1.push('AOEbuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1432,7 +1432,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((buffKeys.includes(skills2[i])) && skills2[i].includes("character=me&target=inplay&card_type=unit") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
+        if ((buffKeys.includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
           skills2.push('AOEbuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -2953,8 +2953,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsT = ["character=both"];
-
+      let wholeKeyProsT = ["character=both","target=damaged_card","status_offense={op.inplay.unit.offense.max}"];
     for (let highItem of skillst1){
       for (let item of customSplit(highItem,'&')){
         if (wholeKeyProsT.includes(item)){
@@ -3110,7 +3109,7 @@ function customSplit(input,token) {
 
     //拆符特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'destroy') && skillst1[i].includes("target=inplay") && (skillst1[i].includes('character=op&target=inplay&card_type=field') || skillst1[i].includes('character=op&target=inplay&card_type=unit_and_allfield'))){
         let org = "org="+skills1[i];
         skills1.push('destroyField');
         skillso1.push(org);
@@ -3122,7 +3121,7 @@ function customSplit(input,token) {
 
     //aoe特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
         skills1.push('AOE');
         skillso1.push('none')
         skillsc1.push('none');
@@ -3133,7 +3132,7 @@ function customSplit(input,token) {
 
     let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
     for (let i = 0; i < skills1.length; i++){
-      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self")  || skillst1[i] == "character=me")){
+      if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self") || skillst1[i] == "character=me")){
         skills1.push('selfBuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -3163,7 +3162,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if ((buffKeys.includes(skills1[i])) && skills1[i].includes("character=me&target=inplay&card_type=unit") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+      if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
         skills1.push('AOEbuff');
         skillso1.push('none')
         skillsc1.push('none');
