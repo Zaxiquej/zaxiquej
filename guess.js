@@ -1020,7 +1020,13 @@ function getCorrectionSuggestion(guess) {
 
   for (const card of newCardPool) {
     if (card.card_name) {
-      const numCommonChars = getNumCommonChars(card.card_name, guess);
+      let numCommonChars = getNumCommonChars(card.card_name, guess);
+      if (guess.includes(card.card_name) || (card.card_name).includes(guess)){
+        numCommonChars += 1;
+      }
+      if (card.card_name == guess){
+        numCommonChars += 1;
+      }
       suggestions.push({ card_name: card.card_name, numCommonChars: numCommonChars });
     }
   }
