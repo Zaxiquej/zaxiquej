@@ -52,7 +52,10 @@ let ratioTable = {
   "selfEvolveCount": {reward:1.5, punish:0.5}, //进化任务
   "selfDeckCount": {reward:1.5, punish:0.5}, //牌库任务
   "selfHandCount": {reward:1.5, punish:0.5}, //牌库任务
-  "status_life": {reward:1.5, punish:0.5}, //屁股任务
+  "status_life": {reward:0.7, punish:0.3}, //血量要求
+  "status_offense": {reward:0.9, punish:0.3}, //攻击要求
+  "status_cost": {reward:1.2, punish:0.3}, //费用要求
+  "selfStatus_life": {reward:2, punish:0.5}, //屁股任务
   "selfInPlaySum": {reward:1.7, punish:0.5},//站场数
   "selfInPlayCount": {reward:1.7, punish:0.5},//站场
   "selfDrawCardCount": {reward:1.6, punish:0.5},//获得XX牌任务
@@ -104,6 +107,7 @@ let ratioTable = {
   "necromance": {reward:1.5, punish:0.8}, //死灵术
   "choice": {reward:1.5, punish:1.2}, //抉择
   "selfDamage": {reward:1.5, punish:1}, //自残
+  "selfFollowerDamage": {reward:2.5, punish:1}, //侮蔑随从
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手
   "selfDestroy": {reward:2, punish:1.5}, //自杀
