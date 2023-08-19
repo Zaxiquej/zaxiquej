@@ -1916,6 +1916,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'summon_token' || skills2[i] == 'token_draw'){
           if (!skillso2[i].includes(skills2[i]) && !skillso2[i].includes('repeat_count')){
@@ -1932,6 +1933,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 skillso2[i] += "&type=draw"
               }
             }
+
             skills2[i] = 'recycle';
           }
           let arr = skillso2[i].split('&');
@@ -1981,6 +1983,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+
+
 
       for (let i = 0; i < skills1.length; i++){
         if (skills1[i] == 'update_deck'){
@@ -2046,9 +2050,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               } else {
                 newStr.push(s)
               }
-              if (change){
-                newStr.push("len="+p.length);
-              }
+          }
+          if (change){
+            newStr.push("len="+p.length);
           }
           if (change){
             skillso2[i] = newStr.join('&');
@@ -2308,7 +2312,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 base *= ol*cl*tl*timingl;
                 aRatio -= 1;
                 aRatio *= ol*cl*tl*timingl;
-
                 //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
                 if (base > nb){
                   nb = base;

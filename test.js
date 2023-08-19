@@ -47,41 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         resultDiv.innerHTML = `<ul>${cardListHTML}</ul>`;
     }
 
-    function extractCardInfo(cards) {
-        const cardInfo = [];
-        for (let i = 0; i < cards.length; i++) {
-            const card = cards[i];
-            let info = {
-                card_id: card.card_id,
-                card_name: card.card_name,
-                char_type: card.char_type,
-                clan: card.clan,
-                cost: card.cost,
-                skill_disc: card.skill_disc,
-                evo_skill_disc: card.evo_skill_disc,
-                tribe_name: card.tribe_name,
-                rarity: card.rarity,
-                atk: card.atk,
-                life: card.life,
-                evo_atk: card.evo_atk,
-                evo_life: card.evo_life
-            }
-            if (info.card_id == 900144120){
-              info.skill = "attach_skill,attach_skill,attach_skill";
-            }
-            if (info.card_id == 111041020){
-              info.skill_option = "none,add=-3";
-            }
-            if (info.card_id == 900534030){
-              info.skill_disc = "使1个敌方的从者失去所有能力（攻击力/生命值的效果不受影响）。使该从者的攻击力/生命值分别转变为0/1。<br>随机给予1个自己的布丁幽灵·宫子+3/+3效果。";
-            }
-
-            cardInfo.push(info);
-        }
-
-        return cardInfo;
-    }
-
     function displayData(cardInfo) {
         const cardListHTML = cardInfo
             .map((card) => `<li>${JSON.stringify(card)}</li>`)
@@ -187,6 +152,12 @@ function createNewDataBase(allcards, subToken) {
 
                 }
             });
+            if (newCard.card_id == 900144120){
+              newCard.skill = "attach_skill,attach_skill,attach_skill";
+            }
+            if (newCard.card_id == 111041020){
+              newCard.skill_option = "none,add=-3";
+            }
             return newCard;
         });
 

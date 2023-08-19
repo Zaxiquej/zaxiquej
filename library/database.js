@@ -3129,6 +3129,29 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129131030,
+    "card_id": 129131030,
+    "card_name": "新芽之风·小梅",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 1,
+    "cost": 1,
+    "evo_atk": 3,
+    "evo_life": 3,
+    "evo_skill_disc": "",
+    "life": 1,
+    "rarity": 3,
+    "skill": "summon_card,return_card,damage,damage",
+    "skill_condition": "character=me&target=deck_self&card_type=unit&play_count=4,{me.inplay_self.count}>0&character=me&target=self&deck_summoned_card=self,character=me&play_count>2&play_count<=4,character=me&play_count>4",
+    "skill_preprocess": "none,none,none,none",
+    "skill_disc": "瞬念召唤 当自己使用卡片时，如果该卡片为本回合中使用的第4张，则会将1张此卡片由自己的牌堆召唤到战场上。随后，使这张卡片返回手牌中。<br>---------- <br>入场曲 本回合中如果已经使用的卡片数为2张以上（不包含本卡片），则会给予敌方的从者全体1点伤害。如果已经使用的卡片数为4张以上，则会由原本的1点伤害转变为2点伤害。",
+    "skill_option": "none,none,damage=1,damage=2",
+    "skill_target": "character=me&target=deck_self&card_type=unit,character=me&target=self,character=op&target=inplay&card_type=unit,character=op&target=inplay&card_type=unit",
+    "tribe_name": "-",
+    "timing": "when_play_other,when_summon,when_play,when_play"
+  },
+  {
+    "atk": 1,
     "base_card_id": 900111010,
     "card_id": 900111010,
     "card_name": "妖精",
@@ -4529,6 +4552,29 @@ let cardData = [
     "skill_target": "none,character=me&target=self",
     "tribe_name": "士兵",
     "timing": "when_fight,when_play"
+  },
+  {
+    "atk": 1,
+    "base_card_id": 129231020,
+    "card_id": 129231020,
+    "card_name": "向往炽爱的淑女",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 2,
+    "cost": 1,
+    "evo_atk": 3,
+    "evo_life": 4,
+    "evo_skill_disc": "",
+    "life": 2,
+    "rarity": 3,
+    "skill": "choice,token_draw,trigger,summon_token",
+    "skill_condition": "character=me,character=me&target=chosen_cards&card_type=all&{me.inplay.class.rally_count}<10,{me.inplay.class.rally_count}>=10,character=me&target=chosen_cards&card_type=all&{me.inplay.class.rally_count}>=10",
+    "skill_preprocess": "none,none,none,none",
+    "skill_disc": "·领主将军·罗密欧<br>·战地王女·茱丽叶<br>入场曲 增加1张命运抉择 所指定的卡片到手牌中。协作 10； 由原本的增加到手牌中转变为召唤到战场上。",
+    "skill_option": "card_id=106221030:106221020,repeat_count=1&summon_side=me,none,repeat_count=1&summon_side=me",
+    "skill_target": "none,target=chosen_cards&card_type=all,none,target=chosen_cards&card_type=all",
+    "tribe_name": "士兵",
+    "timing": "when_choice_play,when_play,when_play,when_play"
   },
   {
     "atk": 1,
@@ -12900,7 +12946,7 @@ let cardData = [
     "skill_option": "none,damage=2,healing=2//card_id=900011080:900012010,repeat_count=1&summon_side=me",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=inplay&card_type=class//none,target=chosen_cards&card_type=all",
     "tribe_name": "机械·自然",
-    "timing": "none,when_play,when_play//when_choice_evolve,when_evolve"
+    "timing": "when_play,when_play,when_play//when_choice_evolve,when_evolve"
   },
   {
     "atk": 5,
@@ -14234,7 +14280,7 @@ let cardData = [
     "skill_option": "none,damage=2",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -14809,7 +14855,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "none,character=op&target=inplay&card_type=field&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -14970,7 +15016,7 @@ let cardData = [
     "skill_option": "none,damage={me.hand_other_self.all.tribe=machine.count}//damage=2",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1//character=op&target=inplay&card_type=unit_and_class&select_count=1",
     "tribe_name": "机械",
-    "timing": "none,when_play//when_evolve"
+    "timing": "when_play,when_play//when_evolve"
   },
   {
     "atk": 2,
@@ -15131,7 +15177,7 @@ let cardData = [
     "skill_option": "token_draw=115111010,none,damage=2",
     "skill_target": "none,none,character=op&target=inplay&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "when_play,none,when_play"
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -16169,6 +16215,29 @@ let cardData = [
     "timing": "when_play,when_play,when_play//when_change_inplay,when_attack"
   },
   {
+    "atk": 2,
+    "base_card_id": 129141030,
+    "card_id": 129141030,
+    "card_name": "耀灿冰晶·莉莉",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 1,
+    "cost": 2,
+    "evo_atk": 4,
+    "evo_life": 4,
+    "evo_skill_disc": "进化时 使1个敌方的从者变身为雪人。",
+    "life": 2,
+    "rarity": 4,
+    "skill": "heal,attach_skill//metamorphose",
+    "skill_condition": "character=me,character=me//character=me",
+    "skill_preprocess": "none,turn_end_stop=op//none",
+    "skill_disc": "入场曲 回复自己的主战者2点生命值。到敌方的回合结束为止，给予自己的主战者「当有疾驰 效果的敌方从者对自己的主战者进行攻击时，给予该从者-2/-0效果」效果。主战者无法重复叠加此效果。",
+    "skill_option": "healing=2,skill=(skill:power_down)(timing:when_attack_self_and_other)(condition:{me.be_attacked.class.count}>0&character=op&target=attacker&card_type=unit&ability=quick)(target:character=op&target=attacker&card_type=unit&ability=quick)(option:gain_offense=2&gain_life=-0)(preprocess:none)(effect_path:btl_129141030_5)(se_path:se_btl_129141030_5)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.1)(effect_target_type:single)&duplicate_ban_id=1291410301//metamorphose=900311010",
+    "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class//character=op&target=inplay&card_type=unit&select_count=1",
+    "tribe_name": "-",
+    "timing": "when_play,when_play//when_evolve"
+  },
+  {
     "atk": 1,
     "base_card_id": 900121010,
     "card_id": 900121010,
@@ -17086,7 +17155,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -17293,7 +17362,7 @@ let cardData = [
     "skill_option": "add_offense=1,none,none",
     "skill_target": "character=me,character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_play,when_play,none"
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 2,
@@ -17868,7 +17937,7 @@ let cardData = [
     "skill_option": "none,none//attack_count=2",
     "skill_target": "character=me&target=self&card_type=unit,none//character=me",
     "tribe_name": "士兵",
-    "timing": "when_play,none//when_change_inplay"
+    "timing": "when_play,when_play//when_change_inplay"
   },
   {
     "atk": 1,
@@ -18305,7 +18374,7 @@ let cardData = [
     "skill_option": "none,none,none,none",
     "skill_target": "character=me&target=self,character=me&target=self,character=me&target=self,none",
     "tribe_name": "士兵",
-    "timing": "when_play,when_play,when_play,none"
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 3,
@@ -18443,7 +18512,7 @@ let cardData = [
     "skill_option": "none,healing=2,skill=(skill:shield)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=self&card_type=class)(option:type=all)(preprocess:damage_after_stop),none",
     "skill_target": "character=me,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,none",
     "tribe_name": "士兵",
-    "timing": "when_change_inplay,when_play,when_play,none"
+    "timing": "when_change_inplay,when_play,when_play,when_play"
   },
   {
     "atk": 1,
@@ -26405,6 +26474,29 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129541030,
+    "card_id": 129541030,
+    "card_name": "死亡摇篮·命忒",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 5,
+    "cost": 2,
+    "evo_atk": 4,
+    "evo_life": 4,
+    "evo_skill_disc": "进化时 这场对战中，给予自己的主战者「当自己发动死灵术 时，使自己的墓场+X。X为该死灵术 的数值。此效果每个自己的回合仅限发动1次」效果。主战者无法重复叠加此效果。",
+    "life": 2,
+    "rarity": 4,
+    "skill": "draw//attach_skill",
+    "skill_condition": "character=me&burial_rite=true//character=me",
+    "skill_preprocess": "burial_rite//none",
+    "skill_disc": "入场曲 如果葬送 已发动，则会随机将1张「有死灵术 效果的从者卡」，由自己的牌堆抽取到手牌中。",
+    "skill_option": "none//skill=(skill:change_cemetery)(timing:when_necromance)(condition:character=me&turn=self)(target:character=me)(option:add_count={me.inplay.class.last_necromance_count})(preprocess:per_turn=1)&duplicate_ban_id=1295410301",
+    "skill_target": "character=me&target=deck&card_type=unit&ability=necromance&random_count=1//character=me&target=inplay&card_type=class",
+    "tribe_name": "-",
+    "timing": "when_play//when_evolve"
+  },
+  {
+    "atk": 2,
     "base_card_id": 900511030,
     "card_id": 900511030,
     "card_name": "僵尸",
@@ -29004,6 +29096,29 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129631020,
+    "card_id": 129631020,
+    "card_name": "魔性煽动者",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 6,
+    "cost": 2,
+    "evo_atk": 2,
+    "evo_life": 2,
+    "evo_skill_disc": "进化时 到下个自己的回合结束为止，即使自己主战者的生命值为11以上，也会发动复仇 状态。指定1个消费为2以下的敌方从者，并将其破坏。使1个与「所指定的从者」同名的从者进入自己的战场。给予该从者突进 效果。",
+    "life": 2,
+    "rarity": 3,
+    "skill": "none//force_berserk,destroy,summon_token,rush",
+    "skill_condition": "none//character=me,character=me,character=me,character=me",
+    "skill_preprocess": "none//turn_end_period_of_stop_time=1:0,none,none,none",
+    "skill_disc": "",
+    "skill_option": "none//none,none,summon_side=me,none",
+    "skill_target": "none//character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit&status_cost<=2&select_count=1,character=op&target=last_target&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
+    "tribe_name": "-",
+    "timing": "none//when_evolve,when_evolve,when_evolve,when_evolve"
+  },
+  {
+    "atk": 2,
     "base_card_id": 129641010,
     "card_id": 129641010,
     "card_name": "芭伦·完美之念",
@@ -30886,7 +31001,7 @@ let cardData = [
     "skill_option": "none,none,gain_skybound_art_count=1*{me.evolution_card.unit.count},none,damage=11,gain_super_skybound_art_count=1*{me.evolution_card.unit.count},cut_amount=1",
     "skill_target": "character=me,character=me&target=self,character=me&target=self,none,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=self,character=me&target=inplay_other_self&card_type=unit_and_class",
     "tribe_name": "-",
-    "timing": "when_change_inplay,when_play,when_evolve_other,none,when_play,when_evolve_other,when_play"
+    "timing": "when_change_inplay,when_play,when_evolve_other,when_play,when_play,when_evolve_other,when_play"
   },
   {
     "atk": 1,
@@ -30955,7 +31070,7 @@ let cardData = [
     "skill_option": "none,damage=4",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 1,
@@ -34363,6 +34478,29 @@ let cardData = [
   },
   {
     "atk": 2,
+    "base_card_id": 129831020,
+    "card_id": 129831020,
+    "card_name": "失却记忆·贾丝珀",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 8,
+    "cost": 2,
+    "evo_atk": 4,
+    "evo_life": 4,
+    "evo_skill_disc": "进化时 随机将2种消费为1的创造物卡各1张，由自己的牌堆抽取到手牌中。",
+    "life": 2,
+    "rarity": 3,
+    "skill": "consume_ep_modifier//draw",
+    "skill_condition": "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}>=6//character=me",
+    "skill_preprocess": "none//none",
+    "skill_disc": "入场曲 如果「本次对战中自己已被破坏的创造物卡名称」为6种以上，则会获得「不消费EP即可进化」效果。（1回合中依旧只能进化1张卡片）",
+    "skill_option": "none//none",
+    "skill_target": "character=me&target=self//character=me&target=deck&card_type=all&tribe=artifact&status_cost=1&id_no_duplication_random_count=2",
+    "tribe_name": "创造物",
+    "timing": "when_play//when_evolve"
+  },
+  {
+    "atk": 2,
     "base_card_id": 900821010,
     "card_id": 900821010,
     "card_name": "文静少女·米莉亚姆",
@@ -35950,6 +36088,29 @@ let cardData = [
   },
   {
     "atk": 1,
+    "base_card_id": 129031020,
+    "card_id": 129031020,
+    "card_name": "双生姊妹·明日香与诗织",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 0,
+    "cost": 3,
+    "evo_atk": 3,
+    "evo_life": 3,
+    "evo_skill_disc": "",
+    "life": 1,
+    "rarity": 3,
+    "skill": "draw,heal,pp_modifier",
+    "skill_condition": "character=me,{me.usable_ep}>{op.usable_ep},{me.usable_ep}>{op.usable_ep}",
+    "skill_preprocess": "none,none,none",
+    "skill_disc": "入场曲 抽取2张卡片。如果自己剩余的EP多于敌方的EP，则会回复自己的主战者2点生命值。回复自己的PP 2点。（若该回合尚未进化解禁，则剩余EP为0）",
+    "skill_option": "none,healing=2,add_pp=2",
+    "skill_target": "character=me&target=deck&card_type=all&random_count=2,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
+  },
+  {
+    "atk": 1,
     "base_card_id": 900011020,
     "card_id": 900011020,
     "card_name": "梅花突击兵",
@@ -36797,7 +36958,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "none,character=op&target=inplay&card_type=field&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -38522,7 +38683,7 @@ let cardData = [
     "skill_option": "add_offense=1&add_life=1,none",
     "skill_target": "character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -38637,7 +38798,7 @@ let cardData = [
     "skill_option": "none,none,none",
     "skill_target": "character=me,character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_change_inplay,when_play,none"
+    "timing": "when_change_inplay,when_play,when_play"
   },
   {
     "atk": 3,
@@ -39028,7 +39189,7 @@ let cardData = [
     "skill_option": "none,none,none",
     "skill_target": "character=me&target=self&card_type=unit,character=me&target=self&card_type=unit,none",
     "tribe_name": "士兵",
-    "timing": "when_change_inplay,when_play,none"
+    "timing": "when_change_inplay,when_play,when_play"
   },
   {
     "atk": 2,
@@ -39488,7 +39649,7 @@ let cardData = [
     "skill_option": "none,none,skill=(skill:draw)(timing:self_turn_start)(condition:character=me)(target:character=me&target=deck&card_type=all&tribe=lord&random_count=1)(option:none)(preprocess:none)",
     "skill_target": "character=me&target=self&card_type=unit,none,character=me&target=inplay&card_type=class",
     "tribe_name": "士兵",
-    "timing": "when_play,none,when_destroy"
+    "timing": "when_play,when_play,when_destroy"
   },
   {
     "atk": 3,
@@ -43421,7 +43582,7 @@ let cardData = [
     "skill_option": "none,damage=1//add_pptotal=1",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1//character=me&target=inplay&card_type=class",
     "tribe_name": "-",
-    "timing": "none,when_play//when_evolve"
+    "timing": "when_play,when_play//when_evolve"
   },
   {
     "atk": 3,
@@ -44204,6 +44365,29 @@ let cardData = [
     "skill_target": "character=me&target=self,character=me&target=self//none,character=me&target=last_target&card_type=spell",
     "tribe_name": "-",
     "timing": "when_change_inplay,when_play//when_attack,when_attack"
+  },
+  {
+    "atk": 3,
+    "base_card_id": 129431020,
+    "card_id": 129431020,
+    "card_name": "珊瑚礁精灵",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 4,
+    "cost": 3,
+    "evo_atk": 5,
+    "evo_life": 5,
+    "evo_skill_disc": "守护 <br>敌方的能力无法指定此卡片。",
+    "life": 3,
+    "rarity": 3,
+    "skill": "trigger,banish,heal,evolve//guard,untouchable",
+    "skill_condition": "{me.evolved_card_list.count}>=1,{me.evolved_card_list.count}>=1&{op.inplay.unit.selectable.count}>0,{me.evolved_card_list.count}>=3,{me.evolved_card_list.count}>=5//character=me,character=me",
+    "skill_preprocess": "none,none,none,none//none,none",
+    "skill_disc": "入场曲 如果「这场对战中，自己的从者进化的次数」为1次以上，则会使1个敌方的从者消失。如果为3次以上，则会回复自己的主战者3点生命值。如果为5次以上，则会使这个从者进化。",
+    "skill_option": "none,none,healing=3,none//none,none",
+    "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=inplay&card_type=class,character=me&target=self//character=me,character=me",
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play,when_play//when_change_inplay,when_change_inplay"
   },
   {
     "atk": 1,
@@ -47170,7 +47354,7 @@ let cardData = [
     "skill_option": "none,damage=3,fixeduse=6,add_offense=3&add_life=3",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,none,character=me&target=self",
     "tribe_name": "-",
-    "timing": "none,when_play,when_play,when_play"
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 3,
@@ -47331,7 +47515,7 @@ let cardData = [
     "skill_option": "none,damage=2//skill=(skill:damage@{me.deck_draw_card.count})(timing:when_draw_other)(condition:character=me&card_type=class&turn=self&{me.deck_draw_card.count}>0)(target:character=op&target=inplay&card_type=unit_and_class&random_count=1)(option:damage=1)(preprocess:none)(effect_path:btl_dark_shot_2)(se_path:se_btl_dark_shot_2)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single)&duplicate_ban_id=1166310201",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1//character=me&target=inplay&card_type=class",
     "tribe_name": "自然",
-    "timing": "none,when_play//when_evolve"
+    "timing": "when_play,when_play//when_evolve"
   },
   {
     "atk": 3,
@@ -54760,7 +54944,7 @@ let cardData = [
     "skill_option": "add_offense=1,none,none",
     "skill_target": "character=me&target=self&card_type=unit,character=me&target=self&card_type=unit,character=both&target=inplay&card_type=unit&evolution=true&random_count=1",
     "tribe_name": "士兵·雷维翁",
-    "timing": "induction,none,none"
+    "timing": "when_destroy_other,when_destroy_other,when_play"
   },
   {
     "atk": 3,
@@ -55129,6 +55313,29 @@ let cardData = [
     "skill_target": "character=me,character=me,character=me,character=me&target=self,character=me&target=inplay&card_type=class",
     "tribe_name": "士兵",
     "timing": "when_change_inplay,when_change_inplay,when_change_inplay,self_turn_end,self_turn_end"
+  },
+  {
+    "atk": 3,
+    "base_card_id": 129241030,
+    "card_id": 129241030,
+    "card_name": "大海征服者·罗杰",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 2,
+    "cost": 4,
+    "evo_atk": 5,
+    "evo_life": 5,
+    "evo_skill_disc": "进化时 召唤1个加农炮水手到战场上。这场对战中，给予自己的主战者「当自己使用财宝卡时，如果该卡片为本回合中使用的第1张，则会回复自己的PP 1点。如果为第2张，则会给予敌方的主战者2点伤害」效果。主战者无法重复叠加此效果。",
+    "life": 3,
+    "rarity": 4,
+    "skill": "pp_fixeduse,transform,token_draw,pp_modifier//summon_token,attach_skill,attach_skill",
+    "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost}&{me.turn_play_cards_other_self.all.play_moment_tribe=looting.count}>0,{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost},{me.inplay.class.pp}>={me.hand_self.cost}//character=me,character=me,character=me",
+    "skill_preprocess": "none,none,none,none//none,none,none",
+    "skill_disc": "本回合中如果已经使用财宝卡，则可发动激奏 效果。<br>激奏 1； 召唤1个加农炮水手到战场上。<br>---------- <br>入场曲 增加1张黄金之杯卡片到手牌中。回复自己的PP 2点。",
+    "skill_option": "fixeduse=1,card_id=800244130,token_draw=900214020,add_pp=2//summon_token=900211090,skill=(skill:pp_modifier)(timing:when_play_other)(condition:character=me&target=played_card&card_type=all&tribe=looting&{me.turn_play_cards_other_self.all.play_moment_tribe=looting.count}=1)(target:character=me&target=inplay&card_type=class)(option:add_pp=1)(preprocess:none)&duplicate_ban_id=1292410301,skill=(skill:damage)(timing:when_play_other)(condition:character=me&target=played_card&card_type=all&tribe=looting&{me.turn_play_cards_other_self.all.play_moment_tribe=looting.count}=2)(target:character=op&target=inplay&card_type=class)(option:damage=2)(preprocess:none)(effect_path:btl_129241030_3)(se_path:se_btl_129241030_3)(effect_move_type:DIRECT_LEADER)(engine_type:SHURIKEN)(effect_time:0.2)(effect_target_type:single)&duplicate_ban_id=1292410302",
+    "skill_target": "none,none,none,character=me&target=inplay&card_type=class//none,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
+    "tribe_name": "指挥官",
+    "timing": "when_accelerate,when_accelerate,when_play,when_play//when_evolve,when_evolve,when_evolve"
   },
   {
     "atk": 3,
@@ -59866,7 +60073,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "none,character=op&target=inplay&card_type=field&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -60211,7 +60418,7 @@ let cardData = [
     "skill_option": "damage=4,none,damage=2",
     "skill_target": "character=me&target=inplay&card_type=class,none,character=op&target=inplay&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "when_destroy,none,when_play"
+    "timing": "when_destroy,when_play,when_play"
   },
   {
     "atk": 5,
@@ -60326,7 +60533,7 @@ let cardData = [
     "skill_option": "none,skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none),skill=(skill:quick)(timing:when_change_inplay)(condition:character=me)(target:character=me&target=self&card_type=unit)(option:none)(preprocess:none)//none",
     "skill_target": "none,character=me&target=hand_other_self&card_type=unit&clan=vampire&select_count=1,character=me&target=hand_other_self&card_type=unit&clan=vampire//character=me",
     "tribe_name": "-",
-    "timing": "none,when_play,when_play//when_change_inplay"
+    "timing": "when_play,when_play,when_play//when_change_inplay"
   },
   {
     "atk": 4,
@@ -60395,7 +60602,7 @@ let cardData = [
     "skill_option": "damage=2,none,damage=6//set_max_life=10,skill=(skill:damage_cut)(timing:when_change_inplay_immediate)(condition:character=me)(target:character=me&target=inplay&card_type=class)(option:cut_clipping=3)(preprocess:none)&duplicate_ban_id=1136310101",
     "skill_target": "character=op&target=inplay&card_type=unit&select_count=1,none,character=op&target=inplay&card_type=unit&select_count=1//character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
     "tribe_name": "-",
-    "timing": "when_play,none,when_play//when_evolve,when_evolve"
+    "timing": "when_play,when_play,when_play//when_evolve,when_evolve"
   },
   {
     "atk": 4,
@@ -61752,7 +61959,7 @@ let cardData = [
     "skill_option": "none,none,none",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=self",
     "tribe_name": "-",
-    "timing": "none,when_play,when_play"
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 3,
@@ -64190,7 +64397,7 @@ let cardData = [
     "skill_option": "add_offense=1&add_life=1,none,add_offense=2&add_life=2",
     "skill_target": "character=me&target=inplay_other_self&card_type=unit&select_count=1,none,character=me&target=inplay_other_self&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "when_play,none,when_play"
+    "timing": "when_play,when_play,when_play"
   },
   {
     "atk": 4,
@@ -65271,7 +65478,7 @@ let cardData = [
     "skill_option": "fixeduse=2,card_id=800144010,none,none,damage=4,damage=2",
     "skill_target": "none,none,character=me,none,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=unit",
     "tribe_name": "-",
-    "timing": "when_accelerate,when_accelerate,when_change_inplay,none,when_play,when_play"
+    "timing": "when_accelerate,when_accelerate,when_change_inplay,when_play,when_play,when_play"
   },
   {
     "atk": 5,
@@ -65961,7 +66168,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 4,
@@ -66145,7 +66352,7 @@ let cardData = [
     "skill_option": "skill=(skill:summon_token)(timing:when_destroy)(condition:character=me)(target:none)(option:summon_token=104211030)(preprocess:none),none",
     "skill_target": "character=me,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 2,
@@ -66582,7 +66789,7 @@ let cardData = [
     "skill_option": "none,none",
     "skill_target": "character=me&target=self&card_type=unit,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 4,
@@ -66720,7 +66927,7 @@ let cardData = [
     "skill_option": "none,add_offense=2,none,fixeduse=9,none,attack_count=2",
     "skill_target": "character=me,character=me&target=self,character=me&target=inplay_other_self&card_type=unit&select_count=1,none,character=both&target=inplay_other_self&card_type=unit,character=me&target=self",
     "tribe_name": "指挥官·雷维翁",
-    "timing": "none,add_offense=2,none,fixeduse=9,none,attack_count=2"
+    "timing": "when_change_inplay,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 4,
@@ -68310,6 +68517,29 @@ let cardData = [
     "timing": "when_play,when_play//when_evolve,when_evolve"
   },
   {
+    "atk": 2,
+    "base_card_id": 129331020,
+    "card_id": 129331020,
+    "card_name": "爆破法师",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 3,
+    "cost": 5,
+    "evo_atk": 4,
+    "evo_life": 4,
+    "evo_skill_disc": "每当自己使用法术卡时，随机给予1个敌方的从者2点伤害。<br>进化时 随机将1张消费为2的巫师法术卡，由自己的牌堆抽取到手牌中。",
+    "life": 2,
+    "rarity": 3,
+    "skill": "cost_change,damage,draw//damage,draw",
+    "skill_condition": "character=me,{me.inplay_self.count}>0&character=me&target=played_card&card_type=spell,character=me//{me.inplay_self.count}>0&character=me&target=played_card&card_type=spell,character=me",
+    "skill_preprocess": "none,none,none//none,none",
+    "skill_disc": "魔力增幅 消费-1<br>每当自己使用法术卡时，随机给予1个敌方的从者2点伤害。<br>入场曲 随机将1张消费为1的巫师法术卡，由自己的牌堆抽取到手牌中。",
+    "skill_option": "add=ADD_CHARGE_COUNT*-1,damage=2,none//damage=2,none",
+    "skill_target": "character=me&target=self,character=op&target=inplay&card_type=unit&random_count=1,character=me&target=deck&card_type=spell&clan=witch&status_cost=1&random_count=1//character=op&target=inplay&card_type=unit&random_count=1,character=me&target=deck&card_type=spell&clan=witch&status_cost=2&random_count=1",
+    "tribe_name": "-",
+    "timing": "when_spell_charge,when_play_other,when_play//when_play_other,when_evolve"
+  },
+  {
     "atk": 0,
     "base_card_id": 101314020,
     "card_id": 101314020,
@@ -69435,6 +69665,29 @@ let cardData = [
     "skill_target": "character=me&target=inplay&card_type=class",
     "tribe_name": "-",
     "timing": "when_play"
+  },
+  {
+    "atk": 5,
+    "base_card_id": 129441030,
+    "card_id": 129441030,
+    "card_name": "灭世巨鲨",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 4,
+    "cost": 5,
+    "evo_atk": 7,
+    "evo_life": 4,
+    "evo_skill_disc": "与进化前能力相同。（入场曲 能力除外）",
+    "life": 2,
+    "rarity": 4,
+    "skill": "pp_fixeduse,transform,rush,summon_token,powerup",
+    "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me",
+    "skill_preprocess": "none,none,none,none,none",
+    "skill_disc": "激奏 1； 增加2张珊瑚鲨卡片到牌堆中。给予自己牌堆中全部的龙族从者卡+0/+1效果。<br>---------- <br>突进 <br>入场曲 召唤1隻灭世巨鲨到战场上。<br>谢幕曲 给予自己牌堆中全部的龙族从者卡+0/+2效果。",
+    "skill_option": "fixeduse=1,card_id=800444130,none,summon_token=129441030&effect=owner,add_life=2",
+    "skill_target": "none,none,character=me,none,character=me&target=deck&card_type=unit&clan=dragon",
+    "tribe_name": "-",
+    "timing": "when_accelerate,when_accelerate,when_change_inplay,when_play,when_destroy"
   },
   {
     "atk": 5,
@@ -70925,7 +71178,7 @@ let cardData = [
     "skill": "reflection,reflection",
     "skill_condition": "character=me&target=self&turn=self,{me.inplay_self.count}>0&character=me&target=self",
     "skill_preprocess": "turn_end_remove=me&turn_end_stop=me&remove_from_inplay_stop,turn_end_stop=me&remove_from_inplay_stop",
-    "skill_disc": "只要这个从者在战场上，在自己的回合中，自己的主战者所受的全部伤害都将转移到敌方的主战者身上。",
+    "skill_disc": "只要这个从者在战场上，给予自己的主战者「自己的回合中，当自己的主战者受到伤害时，该伤害将转移到敌方的主战者身上」效果。",
     "skill_option": "target=class,target=class",
     "skill_target": "character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
     "tribe_name": "-",
@@ -70952,7 +71205,7 @@ let cardData = [
     "skill_option": "none,damage=2//damage=2",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1//character=op&target=inplay&card_type=unit&select_count=1",
     "tribe_name": "-",
-    "timing": "none,when_play//when_evolve"
+    "timing": "when_play,when_play//when_evolve"
   },
   {
     "atk": 6,
@@ -71643,6 +71896,29 @@ let cardData = [
     "skill_target": "character=me,character=me&target=self,character=me,character=op&target=be_attacked&card_type=unit,character=me//character=me&target=self,character=me,character=op&target=be_attacked&card_type=unit",
     "tribe_name": "-",
     "timing": "when_change_class_life_inplay,when_change_inplay,when_change_inplay,when_attack,when_attack//when_change_inplay,when_change_inplay,when_attack"
+  },
+  {
+    "atk": 5,
+    "base_card_id": 129641030,
+    "card_id": 129641030,
+    "card_name": "转轮魔神",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 6,
+    "cost": 5,
+    "evo_atk": 7,
+    "evo_life": 7,
+    "evo_skill_disc": "与进化前能力相同。（入场曲 能力除外）",
+    "life": 5,
+    "rarity": 4,
+    "skill": "summon_card,rush,heal,update_deck,cost_change,powerup",
+    "skill_condition": "character=me&target=deck_self&{me.evolved_card_list.count}>=5,character=me,character=me,character=me,character=me,character=me",
+    "skill_preprocess": "preprocess_condition=({me.deck_self.unit.offense}<=5),none,none,none,none,none",
+    "skill_disc": "瞬念召唤 自己的回合开始时，如果「这场对战中，自己的从者进化的次数」为5次以上，则会将1张攻击力为5以下的转轮魔神卡片，由自己的牌堆召唤到战场上。<br>---------- <br>突进 <br>入场曲 回复自己的主战者3点生命值。<br>谢幕曲 增加1张转轮魔神卡片到牌堆中。使其消费转变为1。给予该卡片+5/+5效果。",
+    "skill_option": "none,none,healing=3,token_draw=129641030&type=add,set=1,add_offense=5&add_life=5",
+    "skill_target": "character=me&target=deck_self,character=me,character=me&target=inplay&card_type=class,none,character=me&target=skill_update_deck_card&card_type=unit,character=me&target=skill_update_deck_card&card_type=unit",
+    "tribe_name": "-",
+    "timing": "self_turn_start,when_change_inplay,when_play,when_destroy,when_destroy,when_destroy"
   },
   {
     "atk": 3,
@@ -72420,7 +72696,7 @@ let cardData = [
     "skill": "pp_fixeduse,transform,damage_cut,damage_cut,powerup,guard",
     "skill_condition": "{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},character=me,{me.inplay_self.count}>0&character=me&target=summoned_card&card_type=unit,character=me,character=me",
     "skill_preprocess": "none,none,remove_from_inplay_stop,remove_from_inplay_stop,none,none",
-    "skill_disc": "激奏 2； 召唤1个虚脱的刚腕到战场上。<br>---------- <br>只要这个从者在战场上，自己的从者全体与所有新进入自己战场的从者所受到的伤害如果为4以上，则会转变为3。<br>入场曲 给予自己的其他从者全体+1/+1与守护 效果。",
+    "skill_disc": "激奏 2； 召唤1个虚脱的刚腕到战场上。<br>---------- <br>只要这个从者在战场上，给予自己的从者全体与所有新进入自己战场的从者「受到的伤害如果为4以上，则会转变为3」效果。<br>入场曲 给予自己的其他从者全体+1/+1与守护 效果。",
     "skill_option": "fixeduse=2,card_id=800744040,cut_clipping=3&duplicate_ban=self_skill:skill_num_1,cut_clipping=3&duplicate_ban=self_skill:skill_num_1,add_offense=1&add_life=1,none",
     "skill_target": "none,none,character=me&target=inplay&card_type=unit,character=me&target=summoned_card&card_type=unit&is_inplay=true,character=me&target=inplay_other_self&card_type=unit,character=me&target=last_target&card_type=unit",
     "tribe_name": "-",
@@ -74497,6 +74773,29 @@ let cardData = [
     "timing": "when_change_inplay,when_play,when_play,when_play//when_change_inplay_immediate,when_change_inplay"
   },
   {
+    "atk": 6,
+    "base_card_id": 129041030,
+    "card_id": 129041030,
+    "card_name": "浑然的双极之烈焰·琉璃",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 0,
+    "cost": 6,
+    "evo_atk": 8,
+    "evo_life": 8,
+    "evo_skill_disc": "与进化前能力相同。（入场曲 能力除外）",
+    "life": 6,
+    "rarity": 4,
+    "skill": "guard,untouchable,damage,cant_attack,summon_token",
+    "skill_condition": "character=me,character=me,{op.inplay.unit.selectable.count}>0,character=me,character=me",
+    "skill_preprocess": "none,none,none,turn_end_stop=op,none",
+    "skill_disc": "守护 <br>敌方的能力无法指定此卡片。<br>入场曲 指定1个敌方的从者，并给予该从者6点伤害。随机使1个未指定的敌方从者到敌方的回合结束为止无法进行攻击。<br>谢幕曲 召唤1个被封印的双子·烈焰与1个被封印的双子·琉璃到战场上。",
+    "skill_option": "none,none,damage=6,cant_attack=all,summon_token=100031010:100031020",
+    "skill_target": "character=me&target=self,character=me&target=self,character=op&target=inplay&card_type=unit&select_count=1,character=op&target=inplay&card_type=unit&exclution={op.selected_cards}&random_count=1,none",
+    "tribe_name": "-",
+    "timing": "when_change_inplay,when_change_inplay,when_play,when_play,when_destroy"
+  },
+  {
     "atk": 8,
     "base_card_id": 900041020,
     "card_id": 900041020,
@@ -75644,7 +75943,7 @@ let cardData = [
     "skill_option": "damage=1,none",
     "skill_target": "character=op&target=inplay&card_type=unit,none",
     "tribe_name": "士兵",
-    "timing": "when_play,none"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 5,
@@ -76403,7 +76702,7 @@ let cardData = [
     "skill_option": "none,damage=3,add_pp=3,none",
     "skill_target": "none,character=op&target=inplay&card_type=unit&select_count=1,character=me&target=inplay&card_type=class,character=me&target=self&card_type=unit",
     "tribe_name": "-",
-    "timing": "none,when_play,when_play,when_play"
+    "timing": "when_play,when_play,when_play,when_play"
   },
   {
     "atk": 3,
@@ -78384,6 +78683,29 @@ let cardData = [
     "timing": "when_summon_self_and_other,when_play//when_summon_self_and_other,when_evolve"
   },
   {
+    "atk": 5,
+    "base_card_id": 129531020,
+    "card_id": 129531020,
+    "card_name": "死尸驱除者",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 5,
+    "cost": 6,
+    "evo_atk": 7,
+    "evo_life": 7,
+    "evo_skill_disc": "与进化前能力相同。（入场曲 能力除外）",
+    "life": 5,
+    "rarity": 3,
+    "skill": "pp_fixeduse,transform,rush,summon_token,attach_skill,evolve",
+    "skill_condition": "{me.inplay.class.pp}>=0&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=0&{me.inplay.class.pp}<{me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost},character=me,character=me&{me.inplay.class.pp}>={me.hand_self.cost}",
+    "skill_preprocess": "none,none,none,none,none,necromance=8",
+    "skill_disc": "激奏 0； 死灵术 4； 召唤1个僵尸到战场上。给予该从者「谢幕曲 给予敌方的主战者1点伤害」效果。<br>---------- <br>突进 <br>入场曲 召唤2个僵尸到战场上。给予上述从者「谢幕曲 给予敌方的主战者1点伤害」效果。死灵术 8； 使其全数进化。",
+    "skill_option": "fixeduse=0,card_id=800534050,none,summon_token=900511030:900511030,skill=(skill:damage)(timing:when_destroy)(condition:none)(target:character=op&target=inplay&card_type=class)(option:damage=1)(preprocess:none)(effect_path:btl_dark_shot_1)(se_path:se_btl_dark_shot_1)(effect_move_type:ARC)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single),none",
+    "skill_target": "none,none,character=me,none,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
+    "tribe_name": "-",
+    "timing": "when_accelerate,when_accelerate,when_change_inplay,when_play,when_play,when_play"
+  },
+  {
     "atk": 0,
     "base_card_id": 101534030,
     "card_id": 101534030,
@@ -78772,7 +79094,7 @@ let cardData = [
     "skill_option": "none,add=-1",
     "skill_target": "none,character=me&target=hand_other_self&card_type=all&clan=vampire&base_card_id!=113631020&select_count=2",
     "tribe_name": "-",
-    "timing": "none,when_play"
+    "timing": "when_play,when_play"
   },
   {
     "atk": 4,
@@ -80222,6 +80544,29 @@ let cardData = [
     "skill_target": "none,none,character=me&target=hand_other_self&card_type=field&clan=bishop&select_count=1,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all,character=me&target=last_target&card_type=all",
     "tribe_name": "-",
     "timing": "when_crystallize,when_crystallize,when_play,when_play,when_play,when_play"
+  },
+  {
+    "atk": 4,
+    "base_card_id": 129731020,
+    "card_id": 129731020,
+    "card_name": "玉兔治疗师",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 7,
+    "cost": 6,
+    "evo_atk": 6,
+    "evo_life": 6,
+    "evo_skill_disc": "自己的回合结束时，回复全部自己的跃剑月兔妖5点生命值。<br>进化时 召唤1个黑天月兔妖到战场上。",
+    "life": 4,
+    "rarity": 3,
+    "skill": "heal,summon_token,possess_ep_modifier//heal,summon_token",
+    "skill_condition": "{me.inplay_self.count}>0,character=me,character=me//{me.inplay_self.count}>0,character=me",
+    "skill_preprocess": "none,none,none//none,none",
+    "skill_disc": "自己的回合结束时，回复全部自己的跃剑月兔妖5点生命值。<br>入场曲 召唤1个跃剑月兔妖到战场上。回复自己的EP 1点。",
+    "skill_option": "healing=5,summon_token=119711030,add_ep=1//healing=5,summon_token=101741020",
+    "skill_target": "character=me&target=inplay_other_self&card_type=unit&base_card_id=119711030,none,character=me&target=inplay&card_type=class//character=me&target=inplay_other_self&card_type=unit&base_card_id=119711030,none",
+    "tribe_name": "-",
+    "timing": "self_turn_end,when_play,when_play//self_turn_end,when_evolve"
   },
   {
     "atk": 6,
@@ -82777,6 +83122,29 @@ let cardData = [
     "timing": "when_accelerate,when_accelerate,when_play,when_play"
   },
   {
+    "atk": 7,
+    "base_card_id": 129341030,
+    "card_id": 129341030,
+    "card_name": "欢庆巨像",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 3,
+    "cost": 7,
+    "evo_atk": 9,
+    "evo_life": 12,
+    "evo_skill_disc": "与进化前能力相同。（入场曲 能力除外）",
+    "life": 10,
+    "rarity": 4,
+    "skill": "pp_fixeduse,transform,guard,change_white_ritual_stack,damage,heal",
+    "skill_condition": "{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=2&{me.inplay.class.pp}<{me.hand_self.cost},character=me,{me.inplay.class.pp}>={me.hand_self.cost},{me.game_used_white_ritual_stack}>=7&{me.inplay.class.pp}>={me.hand_self.cost},{me.game_used_white_ritual_stack}>=7&{me.inplay.class.pp}>={me.hand_self.cost}",
+    "skill_preprocess": "none,none,none,none,none,none",
+    "skill_disc": "结晶 2； 土之印； 蓄积 3<br>无法被能力破坏，并且敌方的能力无法指定此卡片。（蓄积 效果可以破坏这个护符）<br>自己的回合结束时，如果自己战场上的蓄积 为2以上，则会回复自己的主战者2点生命值。发动1次土之秘术。<br>---------- <br>守护 <br>入场曲 使自己战场上的蓄积 +5。如果本次对战中自己已消耗的蓄积 为7以上，则会给予敌方的从者全体7点伤害。回复自己的主战者7点生命值。",
+    "skill_option": "fixeduse=2,card_id=800342020,none,add=5,damage=7,healing=7",
+    "skill_target": "none,none,character=me&target=self,none,character=op&target=inplay&card_type=unit,character=me&target=inplay&card_type=class",
+    "tribe_name": "-",
+    "timing": "when_crystallize,when_crystallize,when_change_inplay,when_play,when_play,when_play"
+  },
+  {
     "atk": 1,
     "base_card_id": 900331050,
     "card_id": 900331050,
@@ -83096,7 +83464,7 @@ let cardData = [
     "skill_option": "none,add_ep=-1,skill=(skill:damage)(timing:when_play_other)(condition:{me.inplay_self.count}>0&character=me&target=played_card&card_type=all)(target:character=op&target=inplay&card_type=unit_and_class&random_count=1)(option:damage=2)(preprocess:none)(effect_path:btl_thunder_shot_1)(se_path:se_btl_thunder_shot_1)(effect_move_type:DIRECT)(engine_type:SHURIKEN)(effect_time:0.3)(effect_target_type:single),skill=(skill:pp_modifier)(timing:when_play_other)(condition:{me.inplay_self.count}>0&character=me&target=played_card&card_type=all&{me.deck.unit.count}=0)(target:character=me&target=inplay&card_type=class)(option:add_pp=1)(preprocess:none)",
     "skill_target": "character=me&target=deck_self&card_type=field,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class,character=me&target=inplay&card_type=class",
     "tribe_name": "-",
-    "timing": "self_turn_start,when_change_inplay,when_change_inplay,when_change_inplay"
+    "timing": "self_turn_start,when_summon,when_change_inplay,when_change_inplay"
   },
   {
     "atk": 4,
@@ -86135,6 +86503,29 @@ let cardData = [
     "timing": "when_change_inplay,self_turn_end,self_turn_end,when_play"
   },
   {
+    "atk": 6,
+    "base_card_id": 129841030,
+    "card_id": 129841030,
+    "card_name": "卫星侵略体",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 8,
+    "cost": 7,
+    "evo_atk": 8,
+    "evo_life": 8,
+    "evo_skill_disc": "",
+    "life": 6,
+    "rarity": 4,
+    "skill": "banish,pp_fixeduse,attach_skill",
+    "skill_condition": "character=me,pp_count>=8,pp_count>=8",
+    "skill_preprocess": "none,none,turn_start_skill_after_stop=(op&me_or_op_turn_end_count=1)",
+    "skill_disc": "入场曲 使其他的从者全部消失。<br>爆能强化 8； 给予敌方的主战者「下个自己的回合开始时，随机舍弃2张手牌」效果。",
+    "skill_option": "none,fixeduse=8,skill=(skill:discard)(timing:self_turn_start)(condition:character=me)(target:character=me&target=hand&card_type=all&random_count=2)(option:none)(preprocess:inplay_period_of_time=1:0)",
+    "skill_target": "character=both&target=inplay_other_self&card_type=unit,none,character=op&target=inplay&card_type=class",
+    "tribe_name": "-",
+    "timing": "when_play,when_play,when_play"
+  },
+  {
     "atk": 5,
     "base_card_id": 900811060,
     "card_id": 900811060,
@@ -88939,6 +89330,29 @@ let cardData = [
     "skill_target": "none,none,character=me&target=self,character=me&target=self,none,character=me&target=skill_summoned_card&card_type=unit,character=me&target=skill_summoned_card&card_type=unit",
     "tribe_name": "-",
     "timing": "when_crystallize,when_crystallize,when_change_inplay,when_change_inplay,when_play,when_play,when_play"
+  },
+  {
+    "atk": 5,
+    "base_card_id": 129741030,
+    "card_id": 129741030,
+    "card_name": "圣铠使徒",
+    "card_set_id": 10029,
+    "char_type": 1,
+    "clan": 7,
+    "cost": 8,
+    "evo_atk": 7,
+    "evo_life": 7,
+    "evo_skill_disc": "",
+    "life": 5,
+    "rarity": 4,
+    "skill": "pp_fixeduse,transform,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal,damage,heal",
+    "skill_condition": "{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},{me.inplay.class.pp}>=1&{me.inplay.class.pp}<{me.hand_self.cost},character=me&{me.evolved_card_list.count}>=1&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=1&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=2&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=2&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=3&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=3&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=4&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=4&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=5&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=5&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=6&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=6&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=7&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=7&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=8&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=8&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=9&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=9&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=10&{me.inplay.class.pp}>={me.hand_self.cost},character=me&{me.evolved_card_list.count}>=10&{me.inplay.class.pp}>={me.hand_self.cost}",
+    "skill_preprocess": "none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none",
+    "skill_disc": "激奏 1； 随机给予1个敌方的从者1点伤害。此行动将进行3次。<br>---------- <br>入场曲 「随机给予敌方的主战者或1个敌方的从者2点伤害。回复自己的主战者1点生命值」此行动将进行X次。X为「这场对战中，自己的从者进化的次数」。上限为10次。",
+    "skill_option": "fixeduse=1,card_id=800744080,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1,damage=2,healing=1",
+    "skill_target": "none,none,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class,character=op&target=inplay&card_type=unit_and_class&random_count=1,character=me&target=inplay&card_type=class",
+    "tribe_name": "-",
+    "timing": "when_accelerate,when_accelerate,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play,when_play"
   },
   {
     "atk": 0,
