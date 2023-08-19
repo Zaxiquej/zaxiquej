@@ -1444,6 +1444,26 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      for (let i = 0; i < skills1.length; i++){
+        if (["evolve"].includes(skills1[i]) && (skillst1[i].includes("target=self") || skillst1[i] == "character=me")){
+          skills1.push('selfEvolve');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills1.length; i++){
+        if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+          skills1.push('AOEevolve');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
+      }
+
       for (let i = 0; i < skills2.length; i++){
         if (buffKeys.includes(skills2[i]) && (skillst2[i].includes("target=self") || skillst2[i] == "character=me")){
           skills2.push('selfBuff');
@@ -1477,6 +1497,26 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if ((buffKeys.includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
           skills2.push('AOEbuff');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (["evolve"].includes(skills2[i]) && (skillst2[i].includes("target=self") || skillst2[i] == "character=me")){
+          skills2.push('selfEvolve');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if ((['evolve'].includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
+          skills2.push('AOEevolve');
           skillso2.push('none')
           skillsc2.push('none');
           skillst2.push('none');
@@ -3263,6 +3303,26 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
         skills1.push('AOEbuff');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if (["evolve"].includes(skills1[i]) && (skillst1[i].includes("target=self") || skillst1[i] == "character=me")){
+        skills1.push('selfEvolve');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    for (let i = 0; i < skills1.length; i++){
+      if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+        skills1.push('AOEevolve');
         skillso1.push('none')
         skillsc1.push('none');
         skillst1.push('none');

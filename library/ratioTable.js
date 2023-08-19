@@ -88,7 +88,7 @@ let ratioTable = {
   "{me.inplay.unit.attack_count=pre_action.count}=0": {reward:2.4, punish:0.6},//安息
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
   "recycle": {reward:1.4, punish:1.4}, //回收/复制
-  "none": {reward:1.1, punish:0.8}, //白板
+  "none": {reward:0.8, punish:0.5}, //白板
   "long_token_draw": {reward:4, punish:4}, //长token
   "token_draw": {reward:1, punish:1},
   "select": {reward:1.2, punish:1.2},//选择目标
@@ -111,7 +111,7 @@ let ratioTable = {
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手
   "selfDestroy": {reward:2, punish:1.5}, //自杀
-  "evolve": {reward:1.2, punish:1.2}, //进化
+  "evolve": {reward:1.6, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
   "classCheck": {reward:5, punish:4}, //职业
@@ -127,6 +127,8 @@ let ratioTable = {
   "{me.game_used_ep_count}": {reward:3, punish:1}, //吃豆任务
   "AOE": {reward:1.2, punish:0.6}, //aoe
   "AOEbuff": {reward:1.2, punish:0.6}, //aoeBUff
+  "selfEvolve": {reward:1.2, punish:0.6}, //aoeBUff
+  "AOEevolve": {reward:3.6, punish:0.6}, //aoeBUff
   "selfBuff": {reward:1.2, punish:0.6}, //selfBUff
   "deckBuff": {reward:1.2, punish:0.6}, //deckBUff
   "handBuff": {reward:1.2, punish:0.6}, //handBUff
