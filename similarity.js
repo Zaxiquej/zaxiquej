@@ -405,6 +405,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       let count = [];
       let removal = [];
       for (let i = 0; i < skills1.length; i++){
+        if (card1.card_id == "129741030" && ["damage","heal"].includes(skills1[i])){
+          skillsc1[i] = "character=me&{me.evolved_card_list.count}>=X&{me.inplay.class.pp}>={me.hand_self.cost}";
+        }
         let arr = [skills1[i],skillso1[i],skillsc1[i],skillst1[i],skillsT1[i]].join("阿");
         if (!list.includes(arr)){
           list[i] = arr;
@@ -417,9 +420,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < count.length; i++){
         if (count[i] && count[i] > 1){
           if (skillso1[i] == 'none'){
-            skillso1[i]="repeat_count="+count[i];
+            skillso1[i]="repeat_times="+count[i];
           } else {
-            skillso1[i]+="&repeat_count="+count[i];
+            skillso1[i]+="&repeat_times="+count[i];
           }
         }
       }
@@ -433,6 +436,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       count = [];
       removal = [];
       for (let i = 0; i < skills2.length; i++){
+        if (card2.card_id == "129741030" && ["damage","heal"].includes(skills2[i])){
+          skillsc2[i] = "character=me&{me.evolved_card_list.count}>=X&{me.inplay.class.pp}>={me.hand_self.cost}";
+        }
         let arr = [skills2[i],skillso2[i],skillsc2[i],skillst2[i],skillsT2[i]].join("阿");
         if (!list.includes(arr)){
           list[i] = arr;
@@ -445,9 +451,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < count.length; i++){
         if (count[i] && count[i] > 1){
           if (skillso2[i] == 'none'){
-            skillso2[i]="repeat_count="+count[i];
+            skillso2[i]="repeat_times="+count[i];
           } else {
-            skillso2[i]+="&repeat_count="+count[i];
+            skillso2[i]+="&repeat_times="+count[i];
           }
         }
       }
@@ -618,6 +624,22 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           }
         }
       }
+
+      //特殊判断消除
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i].includes('@')){
+          skills1[i] = skills1[i].split('@')[0];
+          skillso1[i] += "&repeat_times=" + skills1[i].split('@')[1];
+          //let repeat = parseInt(skills1[i].split('@')[1]);
+        }
+      }
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i].includes('@')){
+          skills2[i] = skills2[i].split('@')[0];
+          skillso2[i] += "&repeat_times=" + skills2[i].split('@')[1];
+        }
+      }
+
     let wholeKeyProsC = ["{me.inplay.class.life}<{op.inplay.class.life}","{me.usable_ep}>{op.usable_ep}","target=damaged_card","target=healing_card","{me.inplay.unit.attack_count=pre_action.count}=0","{me.inplay.unit.count}=1","previous_turn_attacked=true"];
       for (let highItem of skillsc1){
         for (let item of customSplit(highItem,'&')){
@@ -655,7 +677,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["repeat_count","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
       let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
       let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
@@ -676,6 +698,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self\.(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self\.(.*?)count\}/,"."],
                    ["selfPlaySpCardCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                   ["selfTriggerCardCount",/\{me\.summoned_card\.(.*?)count\}/,"."],
+                   ["selfTriggerCardCount",/\{me\.played_card\.(.*?)count\}/,"."],
                    ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
                    ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
       let skipProcS = ['{me.hand_self.count}>0'];
@@ -780,6 +804,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //计数器类，和之前并算
 
+      let keyProsO = ["repeat_times"];
+
       for (let highItem of skillso1){
         for (let item of customSplit(highItem,'&')){
           if (skipProcS.includes(item)){
@@ -788,72 +814,80 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
           let matches = item.match(pattern);
           if (matches){
-            let name = matches[2];
-            if (keyProsC.includes(name)){
-              skills1.push(name);
-              skillso1.push('none')
-              skillsc1.push('none');
-              skillst1.push('none');
-              skillsT1.push('none');
-            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              hasRepC.push(name)
-              skills1.push(name);
-              skillso1.push('none')
+            let fName = matches[1];
+            if (keyProsO.includes(fName)){
+              skills1.push(fName);
+              skillso1.push('value='+matches[2])
               skillsc1.push('none');
               skillst1.push('none');
               skillsT1.push('none');
             } else {
-              for (let regexArr of stEdC){
-                let regex = regexArr[1];
-                const subMatch = name.match(regex);
-                if (subMatch) {
-                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
-                  let newContent = content.map(item => {
-                    if (item = "unit_and_allfield"){
-                      item = "all";
-                    }
-                    if (item === "unit" || item === "all" || item === "field") {
-                      return `type=${item}`;
-                    }
-                    if (item.includes("base_card_id=")){
-                      let temp = parseInt(item.split("=")[1]);
-                      if (temp == card1.card_id){
-                        item = "isSelf=10";
-                      } else {
-                        item = "isSelf=0";
+              let name = matches[2];
+              if (keyProsC.includes(name)){
+                skills1.push(name);
+                skillso1.push('none')
+                skillsc1.push('none');
+                skillst1.push('none');
+                skillsT1.push('none');
+              } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+                hasRepC.push(name)
+                skills1.push(name);
+                skillso1.push('none')
+                skillsc1.push('none');
+                skillst1.push('none');
+                skillsT1.push('none');
+              } else {
+                for (let regexArr of stEdC){
+                  let regex = regexArr[1];
+                  const subMatch = name.match(regex);
+                  if (subMatch) {
+                    let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                    let newContent = content.map(item => {
+                      if (item = "unit_and_allfield"){
+                        item = "all";
                       }
-                    }
-                    if (item.includes("base_card_id=")){
-                      let temp = parseInt(item.split("=")[1]);
-                      if (temp == card1.card_id){
-                        item = "isSelf=10";
-                      } else {
-                        item = "isSelf=0";
+                      if (item === "unit" || item === "all" || item === "field") {
+                        return `type=${item}`;
                       }
+                      if (item.includes("base_card_id=")){
+                        let temp = parseInt(item.split("=")[1]);
+                        if (temp == card1.card_id){
+                          item = "isSelf=10";
+                        } else {
+                          item = "isSelf=0";
+                        }
+                      }
+                      if (item.includes("base_card_id=")){
+                        let temp = parseInt(item.split("=")[1]);
+                        if (temp == card1.card_id){
+                          item = "isSelf=10";
+                        } else {
+                          item = "isSelf=0";
+                        }
+                      }
+                      return item;
+                    });
+                    if (!hasRepC.includes(regexArr[0])){
+                      skills1.push(regexArr[0]);
+                      if (newContent.length > 0){
+                        skillso1.push(newContent.join('&'));
+                      } else {
+                        skillso1.push('none');
+                      }
+                      skillsc1.push('none');
+                      skillst1.push('none');
+                      skillsT1.push('none');
+                      hasRepC.push(regexArr[0]);
+                      break;
                     }
-                    return item;
-                  });
-                  if (!hasRepC.includes(regexArr[0])){
-                    skills1.push(regexArr[0]);
-                    if (newContent.length > 0){
-                      skillso1.push(newContent.join('&'));
-                    } else {
-                      skillso1.push('none');
-                    }
-                    skillsc1.push('none');
-                    skillst1.push('none');
-                    skillsT1.push('none');
-                    hasRepC.push(regexArr[0]);
-                    break;
                   }
                 }
+                continue;
               }
-              continue;
             }
           }
         }
       }
-
       hasRepC = [];
       for (let highItem of skillsc2){
         for (let item of customSplit(highItem,'&')){
@@ -961,67 +995,76 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
           let matches = item.match(pattern);
           if (matches){
-            let name = matches[2];
-            if (keyProsC.includes(name)){
-              skills2.push(name);
-              skillso2.push('none')
-              skillsc2.push('none');
-              skillst2.push('none');
-              skillsT2.push('none');
-            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-              hasRepC.push(name)
-              skills2.push(name);
-              skillso2.push('none')
+            let fName = matches[1];
+            if (keyProsO.includes(fName)){
+              skills2.push(fName);
+              skillso2.push('value='+matches[2])
               skillsc2.push('none');
               skillst2.push('none');
               skillsT2.push('none');
             } else {
-              for (let regexArr of stEdC){
-                let regex = regexArr[1];
-                const subMatch = name.match(regex);
-                if (subMatch) {
-                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
-                  let newContent = content.map(item => {
-                    if (item = "unit_and_allfield"){
-                      item = "all";
-                    }
-                    if (item === "unit" || item === "all" || item === "field") {
-                      return `type=${item}`;
-                    }
-                    if (item.includes("base_card_id=")){
-                      let temp = parseInt(item.split("=")[1]);
-                      if (temp == card2.card_id){
-                        item = "isSelf=10";
-                      } else {
-                        item = "isSelf=0";
+              let name = matches[2];
+              if (keyProsC.includes(name)){
+                skills2.push(name);
+                skillso2.push('none')
+                skillsc2.push('none');
+                skillst2.push('none');
+                skillsT2.push('none');
+              } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+                hasRepC.push(name)
+                skills2.push(name);
+                skillso2.push('none')
+                skillsc2.push('none');
+                skillst2.push('none');
+                skillsT2.push('none');
+              } else {
+                for (let regexArr of stEdC){
+                  let regex = regexArr[1];
+                  const subMatch = name.match(regex);
+                  if (subMatch) {
+                    let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                    let newContent = content.map(item => {
+                      if (item = "unit_and_allfield"){
+                        item = "all";
                       }
-                    }
-                    if (item.includes("base_card_id=")){
-                      let temp = parseInt(item.split("=")[1]);
-                      if (temp == card2.card_id){
-                        item = "isSelf=10";
-                      } else {
-                        item = "isSelf=0";
+                      if (item === "unit" || item === "all" || item === "field") {
+                        return `type=${item}`;
                       }
+                      if (item.includes("base_card_id=")){
+                        let temp = parseInt(item.split("=")[1]);
+                        if (temp == card2.card_id){
+                          item = "isSelf=10";
+                        } else {
+                          item = "isSelf=0";
+                        }
+                      }
+                      if (item.includes("base_card_id=")){
+                        let temp = parseInt(item.split("=")[1]);
+                        if (temp == card2.card_id){
+                          item = "isSelf=10";
+                        } else {
+                          item = "isSelf=0";
+                        }
+                      }
+                      return item;
+                    });
+                    if (!hasRepC.includes(regexArr[0])){
+                      skills2.push(regexArr[0]);
+                      if (newContent.length > 0){
+                        skillso2.push(newContent.join('&'));
+                      } else {
+                        skillso2.push('none');
+                      }
+                      skillsc2.push('none');
+                      skillst2.push('none');
+                      skillsT2.push('none');
+                      hasRepC.push(regexArr[0]);
+                      break;
                     }
-                    return item;
-                  });
-                  if (!hasRepC.includes(regexArr[0])){
-                    skills2.push(regexArr[0]);
-                    if (newContent.length > 0){
-                      skillso2.push(newContent.join('&'));
-                    } else {
-                      skillso2.push('none');
-                    }
-                    skillsc2.push('none');
-                    skillst2.push('none');
-                    skillsT2.push('none');
-                    hasRepC.push(regexArr[0]);
-                    break;
                   }
                 }
+                continue;
               }
-              continue;
             }
           }
         }
@@ -1097,20 +1140,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillst2.push('none');
             skillsT2.push('none');
           }
-        }
-      }
-      //特殊判断消除
-      for (let i = 0; i < skills1.length; i++){
-        if (skills1[i].includes('@')){
-          skills1[i] = skills1[i].split('@')[0];
-          skillso1[i] += "repeat=" + skills1[i].split('@')[1];
-          //let repeat = parseInt(skills1[i].split('@')[1]);
-        }
-      }
-      for (let i = 0; i < skills2.length; i++){
-        if (skills2[i].includes('@')){
-          skills2[i] = skills2[i].split('@')[0];
-          skillso2[i] += "repeat=" + skills2[i].split('@')[1];
         }
       }
 
@@ -1514,6 +1543,38 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       if ([110341010].includes(card2.card_id)){
         skills2.push("flush");
         skillso2.push('end=10')
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
+      if ([117431010].includes(card1.card_id)){
+        skills1.push("evenodd");
+        skillso1.push('type=1')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if ([119431020].includes(card1.card_id)){
+        skills1.push("evenodd");
+        skillso1.push('type=0')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+
+      if ([117431010].includes(card2.card_id)){
+        skills2.push("evenodd");
+        skillso2.push('type=1')
+        skillsc2.push('none');
+        skillst2.push('none');
+        skillsT2.push('none');
+      }
+
+      if ([119431020].includes(card2.card_id)){
+        skills2.push("evenodd");
+        skillso2.push('type=0')
         skillsc2.push('none');
         skillst2.push('none');
         skillsT2.push('none');
@@ -2312,6 +2373,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 base *= ol*cl*tl*timingl;
                 aRatio -= 1;
                 aRatio *= ol*cl*tl*timingl;
+
                 //const cl = (1 - 0.5 * calculateLevenshteinDistance(skillsc1[i], skillsc2[j]) / Math.max(skillsc1[i].length, skillsc2[j].length));
                 if (base > nb){
                   nb = base;
@@ -2625,6 +2687,9 @@ function customSplit(input,token) {
     let count = [];
     let removal = [];
     for (let i = 0; i < skills1.length; i++){
+      if (card1.card_id == "129741030" && ["damage","heal"].includes(skills1[i])){
+        skillsc1[i] = "character=me&{me.evolved_card_list.count}>=X&{me.inplay.class.pp}>={me.hand_self.cost}";
+      }
       let arr = [skills1[i],skillso1[i],skillsc1[i],skillst1[i],skillsT1[i]].join("阿");
       if (!list.includes(arr)){
         list[i] = arr;
@@ -2637,9 +2702,9 @@ function customSplit(input,token) {
     for (let i = 0; i < count.length; i++){
       if (count[i] && count[i] > 1){
         if (skillso1[i] == 'none'){
-          skillso1[i]="repeat_count="+count[i];
+          skillso1[i]="repeat_times="+count[i];
         } else {
-          skillso1[i]+="&repeat_count="+count[i];
+          skillso1[i]+="&repeat_times="+count[i];
         }
       }
     }
@@ -2748,7 +2813,7 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["repeat_count","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","status_life","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
     let repProsC = ["looting","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","status_life","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
@@ -2769,6 +2834,8 @@ function customSplit(input,token) {
                  ["selfTurnPlayCount",/\{me\.turn_play_cards_other_self\.(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_play_cards_other_self\.(.*?)count\}/,"."],
                  ["selfPlaySpCardCount",/\{me\.game_summon_cards_other\.(.*?)count\}/,"."],
+                 ["selfTriggerCardCount",/\{me\.summoned_card\.(.*?)count\}/,"."],
+                 ["selfTriggerCardCount",/\{me\.played_card\.(.*?)count\}/,"."],
                  ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
                  ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
 
@@ -2879,6 +2946,8 @@ function customSplit(input,token) {
       }
     }
 
+    let keyProsO = ["repeat_times"];
+
     for (let highItem of skillso1){
       for (let item of customSplit(highItem,'&')){
         if (skipProcS.includes(item)){
@@ -2887,67 +2956,76 @@ function customSplit(input,token) {
         let pattern = /(\w+)\s*=\s*(\{[^{}]*\}|[^,]+)/;
         let matches = item.match(pattern);
         if (matches){
-          let name = matches[2];
-          if (keyProsC.includes(name)){
-            skills1.push(name);
-            skillso1.push('none')
-            skillsc1.push('none');
-            skillst1.push('none');
-            skillsT1.push('none');
-          } else if (repProsC.includes(name) && !hasRepC.includes(name)){
-            hasRepC.push(name)
-            skills1.push(name);
-            skillso1.push('none')
+          let fName = matches[1];
+          if (keyProsO.includes(fName)){
+            skills1.push(fName);
+            skillso1.push('value='+matches[2])
             skillsc1.push('none');
             skillst1.push('none');
             skillsT1.push('none');
           } else {
-            for (let regexArr of stEdC){
-              let regex = regexArr[1];
-              const subMatch = name.match(regex);
-              if (subMatch) {
-                let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
-                let newContent = content.map(item => {
-                  if (item = "unit_and_allfield"){
-                    item = "all";
-                  }
-                  if (item === "unit" || item === "all" || item === "field") {
-                    return `type=${item}`;
-                  }
-                  if (item.includes("base_card_id=")){
-                    let temp = parseInt(item.split("=")[1]);
-                    if (temp == card1.card_id){
-                      item = "isSelf=10";
-                    } else {
-                      item = "isSelf=0";
+            let name = matches[2];
+            if (keyProsC.includes(name)){
+              skills1.push(name);
+              skillso1.push('none')
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else if (repProsC.includes(name) && !hasRepC.includes(name)){
+              hasRepC.push(name)
+              skills1.push(name);
+              skillso1.push('none')
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            } else {
+              for (let regexArr of stEdC){
+                let regex = regexArr[1];
+                const subMatch = name.match(regex);
+                if (subMatch) {
+                  let content = subMatch[1].trim().split(regexArr[2]).filter(item => item !== "");
+                  let newContent = content.map(item => {
+                    if (item = "unit_and_allfield"){
+                      item = "all";
                     }
-                  }
-                  if (item.includes("base_card_id=")){
-                    let temp = parseInt(item.split("=")[1]);
-                    if (temp == card1.card_id){
-                      item = "isSelf=10";
-                    } else {
-                      item = "isSelf=0";
+                    if (item === "unit" || item === "all" || item === "field") {
+                      return `type=${item}`;
                     }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card1.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    if (item.includes("base_card_id=")){
+                      let temp = parseInt(item.split("=")[1]);
+                      if (temp == card1.card_id){
+                        item = "isSelf=10";
+                      } else {
+                        item = "isSelf=0";
+                      }
+                    }
+                    return item;
+                  });
+                  if (!hasRepC.includes(regexArr[0])){
+                    skills1.push(regexArr[0]);
+                    if (newContent.length > 0){
+                      skillso1.push(newContent.join('&'));
+                    } else {
+                      skillso1.push('none');
+                    }
+                    skillsc1.push('none');
+                    skillst1.push('none');
+                    skillsT1.push('none');
+                    hasRepC.push(regexArr[0]);
+                    break;
                   }
-                  return item;
-                });
-                if (!hasRepC.includes(regexArr[0])){
-                  skills1.push(regexArr[0]);
-                  if (newContent.length > 0){
-                    skillso1.push(newContent.join('&'));
-                  } else {
-                    skillso1.push('none');
-                  }
-                  skillsc1.push('none');
-                  skillst1.push('none');
-                  skillsT1.push('none');
-                  hasRepC.push(regexArr[0]);
-                  break;
                 }
               }
+              continue;
             }
-            continue;
           }
         }
       }
@@ -3206,6 +3284,22 @@ function customSplit(input,token) {
     if ([110341010].includes(card1.card_id)){
       skills1.push("flush");
       skillso1.push('end=10')
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
+    }
+
+    if ([117431010].includes(card1.card_id)){
+      skills1.push("evenodd");
+      skillso1.push('type=1')
+      skillsc1.push('none');
+      skillst1.push('none');
+      skillsT1.push('none');
+    }
+
+    if ([119431020].includes(card1.card_id)){
+      skills1.push("evenodd");
+      skillso1.push('type=0')
       skillsc1.push('none');
       skillst1.push('none');
       skillsT1.push('none');

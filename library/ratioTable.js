@@ -13,7 +13,7 @@ let ratioTable = {
   "chant": {reward:0.5, punish:0.2}, //吟唱
   "draw": {reward:1, punish:1},
   "status_offense={op.inplay.unit.offense.max}": {reward:1.2, punish:0.4}, //攻击力最高
-  "possess_ep_modifier": {reward:3, punish:3}, //回豆
+  "possess_ep_modifier": {reward:3, punish:2}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
   "character=both": {reward:1.5, punish:1.5},//敌我不分
   "pp_modifier": {reward:1.3, punish:1.3}, //回/扣费
@@ -21,19 +21,19 @@ let ratioTable = {
   "destroyField": {reward:3, punish:3}, //拆符
   "attach_skill": {reward:1.6, punish:1.2}, //获得能力
   "heal": {reward:1, punish:1},
-  "discard": {reward:1.5, punish:1.5},
+  "discard": {reward:1.5, punish:1.2},
   "turn_start_skill_after_stop": {reward:0.5, punish:0.5},
-  "banish": {reward:1.5, punish:1.5},
+  "banish": {reward:1.5, punish:1.2},
   "play_count": {reward:1.5, punish:1.5}, //连击
   "powerup": {reward:1, punish:1},
-  "open_card": {reward:4, punish:4}, //公开
+  "open_card": {reward:4, punish:3}, //公开
   "pp_fixeduse": {reward:1, punish:1}, //爆能
   "summon_token": {reward:1, punish:1},
-  "{me.usable_ep}>{op.usable_ep}": {reward:2, punish:1}, //后手优势
-  "play_count_change": {reward:5, punish:5}, //增加连击
+  "{me.usable_ep}>{op.usable_ep}": {reward:2.5, punish:1.5}, //后手优势
+  "play_count_change": {reward:5, punish:3}, //增加连击
   "rush": {reward:1, punish:1},
   "quick": {reward:1, punish:1}, //疾驰
-  "repeat_count": {reward:0.5, punish:0.5}, //重复
+  "repeat_times": {reward:1.5, punish:0.5}, //重复
   "trigger": {reward:1, punish:1},
   "lose": {reward:3, punish:3}, //沉默
   "{me.inplay.class.pp}": {reward:3, punish:3}, //余费
@@ -58,6 +58,7 @@ let ratioTable = {
   "selfDrawCardCount": {reward:1.6, punish:0.5},//获得XX牌任务
   "{me.game_play_count}": {reward:3, punish:0.5}, //奥伯龙+深根的用牌任务
   "selfPlaySpCardCount": {reward:2, punish:0.5}, //使用过的XX次数
+  "selfTriggerCardCount": {reward:2, punish:0.5}, //使用XX牌扳机
   "{me.inplay.game_necromance_count}": {reward:1.5, punish:0.5}, //墓地任务
   "{me.game_skill_discard_count}": {reward:2.5, punish:0.5}, //弃牌任务
   "selfTurnPlayCount": {reward:2, punish:0.5}, //一回合用牌
@@ -100,9 +101,9 @@ let ratioTable = {
   "guard": {reward:1, punish:1},
   "ramp": {reward:3, punish:3}, //跳/扣费
   "change_affiliation": {reward:7, punish:7}, //改变种族
-  "necromance": {reward:1.5, punish:1.2}, //死灵术
-  "choice": {reward:1.5, punish:1.5}, //抉择
-  "selfDamage": {reward:1.5, punish:1.2}, //自残
+  "necromance": {reward:1.5, punish:0.8}, //死灵术
+  "choice": {reward:1.5, punish:1.2}, //抉择
+  "selfDamage": {reward:1.5, punish:1}, //自残
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手
   "selfDestroy": {reward:2, punish:1.5}, //自杀
@@ -110,13 +111,14 @@ let ratioTable = {
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
   "classCheck": {reward:5, punish:4}, //职业
+  "evenodd": {reward:10, punish:4}, //奇偶
   "permShield": {reward:5, punish:4}, //天盾1
   "independent": {reward:5, punish:4}, //天盾2
   "consume_ep_modifier": {reward:3, punish:2}, //不消费EP即可进化
   "special_win": {reward:12, punish:12}, //特殊胜利
   "preprocess_condition": {reward:1.7, punish:1.7},
   "per_turn": {reward:1.2, punish:0.8}, //一回合一次
-  "indestructible": {reward:3, punish:2}, //金膜
+  "indestructible": {reward:2.5, punish:1.5}, //金膜
   "selfCrystalCount": {reward:3, punish:1}, //结晶任务
   "{me.game_used_ep_count}": {reward:3, punish:1}, //吃豆任务
   "AOE": {reward:1.2, punish:0.6}, //aoe
@@ -136,21 +138,21 @@ let ratioTable = {
   "turn_start_stop": {reward:0.4, punish:0.4}, //直到回合开始
   "chant_count_change": {reward:1.55, punish:1.55}, //改变吟唱
   "return_card": {reward:1.75, punish:1.75}, //回手
-  "invocation": {reward:2.4, punish:2}, //瞬念
-  "cant_attack": {reward:2.4, punish:2}, //无法攻击
-  "obtain_self": {reward:3, punish:3}, //套娃
-  "obtain_self_diff": {reward:5, punish:5}, //变异套娃
-  "token_draw_modifier": {reward:6, punish:6}, //获得token修正（花叶之狐）
+  "invocation": {reward:2.4, punish:1.6}, //瞬念
+  "cant_attack": {reward:2.4, punish:1.6}, //无法攻击
+  "obtain_self": {reward:3, punish:2}, //套娃
+  "obtain_self_diff": {reward:5, punish:3}, //变异套娃
+  "token_draw_modifier": {reward:6, punish:2}, //获得token修正（花叶之狐）
   "killer": {reward:1.1, punish:1.1},
   "drain": {reward:1.5, punish:1.5},
   "evolution_end_stop": {reward:2, punish:2}, //进化前后关键词不同
   "fusion": {reward:4, punish:2}, //融合
   "attack_count": {reward:2.2, punish:2.2}, //连击
-  "change_rally_count": {reward:6, punish:6}, //改变连协
-  "not_be_attacked": {reward:3, punish:2}, //物免
-  "untouchable": {reward:3, punish:2}, //方块膜
-  "ritual": {reward:1.5, punish:1.5}, //土秘
-  "spell_charge": {reward:1.5, punish:1.5}, //魔力增幅效果
+  "change_rally_count": {reward:6, punish:2}, //改变连协
+  "not_be_attacked": {reward:2.5, punish:1.5}, //物免
+  "untouchable": {reward:2.5, punish:1.5}, //方块膜
+  "ritual": {reward:1.5, punish:1}, //土秘
+  "spell_charge": {reward:1.5, punish:1}, //魔力增幅效果
   "random_array": {reward:3, punish:3}, //随机数
   "damage_modifier": {reward:6, punish:6}, //项链
   "damage_zero": {reward:7.5, punish:7.5}, //伟大的意志
@@ -179,7 +181,7 @@ let ratioTable = {
   "attack_by_life": {reward:9, punish:6}, //教会
   "no_duplication_random_array": {reward:6, punish:3}, //不重复的随机数
   "power_modifier": {reward:5, punish:3}, //光剑饿姐的不平衡加减
-  "cant_activate_fanfare": {reward:12, punish:6}, //诗人
+  "cant_activate_fanfare": {reward:12, punish:4}, //诗人
   "cant_summon": {reward:8, punish:4}, //闪耀
   "weird_evolve": {reward:1.5, punish:0.5}, //异形身材
   "flush": {reward:12, punish:6}, //20姐18弟
