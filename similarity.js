@@ -825,6 +825,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               let name = matches[2];
+              if (name == "PLAY_COUNT"){
+                name = "play_count"
+              }
               if (keyProsC.includes(name)){
                 skills1.push(name);
                 skillso1.push('none')
@@ -1010,6 +1013,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT2.push('none');
             } else {
               let name = matches[2];
+              if (name == "PLAY_COUNT"){
+                name = "play_count"
+              }
               if (keyProsC.includes(name)){
                 skills2.push(name);
                 skillso2.push('none')
@@ -2494,8 +2500,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       // 设置基础分和描述分占比
       const basicScoreWeight = 0.2;
-      const skillScoreWeight = 0.5;
-      const descriptionScoreWeight = 0.3;
+      const skillScoreWeight = 0.6;
+      const descriptionScoreWeight = 0.2;
       //处理卡牌变形（结晶、激奏、抉择）
 
       let cskill1 = card1.skill.replace("//",",");
@@ -3034,6 +3040,9 @@ function customSplit(input,token) {
             skillsT1.push('none');
           } else {
             let name = matches[2];
+            if (name == "PLAY_COUNT"){
+              name = "play_count"
+            }
             if (keyProsC.includes(name)){
               skills1.push(name);
               skillso1.push('none')

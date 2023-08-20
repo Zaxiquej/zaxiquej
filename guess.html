@@ -232,7 +232,7 @@
            <summary>2. 如果我找不到某个卡牌怎么办？</summary>
            <p>如果找不到相应的卡牌，请检查输入的名称是否正确。数据库来自于shadowverseportal进行简化，因此可能有部分卡名称和国服采用的有出入。</p>
            <p>你可以搜索部分卡名，然后在近似词提示中找你想要的卡牌；如果找不到，或发现卡名出入太大，请联系作者。</p>
-           <p>除此之外，你可以用"妖虹333"，"法金3费法术","鬼4血随从"的方式搜索。（该条正在优化中）</p>
+           <p>除此之外，你可以使用高级搜索或者portal进行搜索</p>
        </details>
        <details>
            <summary>3. 具体而言，相似度是如何判定的?</summary>
@@ -240,7 +240,7 @@
            <li>基础分：卡牌的类型、种类、费用、稀有度、（如果是随从）进化前的攻击与生命。其中基础分的40%在于两张卡是否是同类型；如果是随从这部分会允给身材。</li>
            <li>技能分：卡牌具有的特殊能力，会检查双方共享能力在双方总能力之中的占比，如果有同能力但数据不同会有相应的扣分。相同的能力如果比较稀有，会有相应的补正。</li>
            <li>描述分：卡牌的描述文字，会检查双方描述文字的Levenshtein距离。在此基础上，如果双方描述有公用部分，则有一个最高30%的补正。</li>
-           <p>系统会对这三部分各打一个分，随后按照2:5:3的权重生成总分，满分为100。</p>
+           <p>系统会对这三部分各打一个分，随后按照2:6:2的权重生成总分，满分为100。</p>
        </details>
        <details>
            <summary>4. 卡牌的相似度我所想象的不太一样！</summary>
@@ -275,6 +275,7 @@
        </details>
        <details>
            <summary>8. 过去的谜题</summary>
+           <li>2023/08/21-f9JBXF8W</li>
            <li>2023/08/20-cA2n4HCS</li>
            <li>2023/08/19-xzKZkwgT</li>
            <li>2023/08/18-n0ZUjN1I</li>
@@ -295,7 +296,11 @@
          <summary>9. 更新记录</summary>
          <ul style="list-style-type: none; padding: 0;">
            <li style="margin-left: 20px;">
-             <span style="display: inline-block; width: 140px;">2023/08/20</span>更新了dlc包；<br>
+             <span style="display: inline-block; width: 140px;">2023/08/21</span>优化了部分词条判定；<br>
+             <span style="display: inline-block; width: 140px; margin-left: 0;"></span>因为算法更先进了，调整了权重
+
+           <li style="margin-left: 20px;">
+             <span style="display: inline-block; width: 140px;">2023/08/20</span>更新了密斯塔尔希亚dlc包；<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了重复词条计算<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>增加了部分检查（血量、攻击、费用）词条<br>
              <span style="display: inline-block; width: 140px; margin-left: 0;"></span>优化了进化词条，增加了进化自己/其他随从/全体随从的区别<br>

@@ -24,7 +24,7 @@ let ratioTable = {
   "discard": {reward:1.5, punish:1.2},
   "turn_start_skill_after_stop": {reward:0.5, punish:0.5},
   "banish": {reward:1.5, punish:1.2},
-  "play_count": {reward:1.5, punish:1.5}, //连击
+  "play_count": {reward:1.2, punish:0.5}, //连击
   "powerup": {reward:1, punish:1},
   "open_card": {reward:4, punish:3}, //公开
   "pp_fixeduse": {reward:1, punish:1}, //爆能
@@ -102,7 +102,7 @@ let ratioTable = {
   "turn_end_remove": {reward:0.4, punish:0.4},//回合结束失去能力
   "cost_change": {reward:1.3, punish:1.3}, //改变费用
   "power_down": {reward:1.5, punish:1.5}, //减能力
-  "power_change": {reward:5, punish:2}, //改能力
+  "power_change": {reward:6, punish:3}, //改能力
   "self_power_change": {reward:4, punish:2.4}, //改自己能力
   "leaderPowerup": {reward:6, punish:3}, //加血限
   "leaderPowerdown": {reward:6, punish:3}, //扣血限
