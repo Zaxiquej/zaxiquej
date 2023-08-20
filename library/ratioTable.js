@@ -168,7 +168,7 @@ let ratioTable = {
   "damage_modifier": {reward:6, punish:6}, //项链
   "damage_zero": {reward:7.5, punish:7.5}, //伟大的意志
   "only_random_index": {reward:1.2, punish:1.2}, //随机数计数器，有randomarray了可以低
-  "remove_from_inplay_stop": {reward:0.6, punish:0.6}, //站场光环
+  "remove_from_inplay_stop": {reward:0.8, punish:0.5}, //站场光环
   "{self.charge_count}": {reward:1.5, punish:1.5}, //魔力增幅（到达X次）
   "change_white_ritual_stack": {reward:3, punish:3}, //增加积蓄
   "stack_white_ritual": {reward:3, punish:3}, //积蓄
