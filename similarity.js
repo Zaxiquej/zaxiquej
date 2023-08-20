@@ -1104,7 +1104,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
       let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
@@ -1184,6 +1184,19 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
       let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=op&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+
+      //优化词条
+      for (let i = 0; i < skills1.length; i++){
+        if (skills1[i] == 'draw' && skillsc1[i]!="character=me" && skillsc1[i].includes("character=me") && skillst1[i].includes(skillsc1[i])){
+          skillsc1[i] = "character=me";
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if (skills2[i] == 'draw' && skillsc2[i]!="character=me" && skillsc2[i].includes("character=me") && skillst2[i].includes(skillsc1[i])){
+          skillsc2[i] = "character=me";
+        }
+      }
 
       //自残特殊判断
       for (let i = 0; i < skills1.length; i++){
@@ -1315,7 +1328,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //变能力
       for (let i = 0; i < skills1.length; i++){
-        if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_defense="))){
+        if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_life="))){
           if (skillst1[i].includes("character=me")){
             skills1[i] = "self_power_change";
           } else {
@@ -1325,7 +1338,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if (skills2[i] == 'power_down' && (skillso2[i].includes("set_offense=") || skillso2[i].includes("set_defense="))){
+        if (skills2[i] == 'power_down' && (skillso2[i].includes("set_offense=") || skillso2[i].includes("set_life="))){
           if (skillst2[i].includes("character=me")){
             skills2[i] = "self_power_change";
           } else {
@@ -3102,7 +3115,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
     let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){
@@ -3152,6 +3165,13 @@ function customSplit(input,token) {
 
     let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
     let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+
+    //优化词条
+    for (let i = 0; i < skills1.length; i++){
+      if (skills1[i] == 'draw' && skillsc1[i]!="character=me" && skillsc1[i].includes("character=me") && skillst1[i].includes(skillsc1[i])){
+        skillsc1[i] = "character=me";
+      }
+    }
 
     //自残特殊判断
     for (let i = 0; i < skills1.length; i++){
@@ -3224,7 +3244,7 @@ function customSplit(input,token) {
 
     //变能力
     for (let i = 0; i < skills1.length; i++){
-      if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_defense="))){
+      if (skills1[i] == 'power_down' && (skillso1[i].includes("set_offense=") || skillso1[i].includes("set_life="))){
         if (skillst1[i].includes("character=me")){
           skills1[i] = "self_power_change";
         } else {

@@ -159,6 +159,12 @@ function createNewDataBase(allcards, subToken) {
             if (newCard.card_id == 111041020){
               newCard.skill_option = "none,add=-3";
             }
+            if ([129121010,106111020,108311010,114011010,105211030,101721020].includes(newCard.card_id)){
+              newCard.skill_condition= "character=me";
+            }
+            if (newCard.card_id == 117721010){
+              newCard.skill_target = "character=me,character=me&target=deck&card_type=unit_and_allfield&clan=bishop&status_cost=4&random_count=1";
+            }
             return newCard;
         });
 

@@ -73,6 +73,11 @@ let ratioTable = {
   "when_discard": {reward:4, punish:2}, //被弃发动
   "when_return": {reward:4, punish:2}, //回手发动
   "when_destroy": {reward:0.5, punish:0.2}, //谢幕发动
+  "when_destroy_other": {reward:1.8, punish:0.7}, //其他破坏发动
+  "self_turn_end": {reward:0.8, punish:0.3}, //回合结束
+  "self_turn_start": {reward:0.8, punish:0.3}, //回合开始
+  "op_turn_start": {reward:0.8, punish:0.3}, //回合结束
+  "op_turn_end": {reward:0.8, punish:0.3}, //回合开始
   "when_evolve": {reward:0.5, punish:0.2}, //进化发动
   "when_attack": {reward:0.7, punish:0.3}, //攻击发动
   "when_fight": {reward:0.7, punish:0.3}, //交战发动
