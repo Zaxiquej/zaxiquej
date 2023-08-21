@@ -1,24 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-  function playSound(soundIndex) {
-      // Create a new audio buffer source
-      const audioSource = audioContext.createBufferSource();
-
-      // Load and decode the audio file
-      fetch(`sound/sound${soundIndex}.mp3`)
-          .then(response => response.arrayBuffer())
-          .then(data => audioContext.decodeAudioData(data))
-          .then(decodedBuffer => {
-              audioSource.buffer = decodedBuffer;
-              audioSource.connect(audioContext.destination);
-              audioSource.volume = audioPlayer.volume; // Set the volume
-              audioSource.playbackRate = globalFrequencySlider.value / 100; // Set the playback rate
-              audioSource.start(0);
-          })
-          .catch(error => console.error(error));
-  }
-
     const keyboard = document.querySelector(".keyboard");
 
     const createKeyButton = (keyName, imageName, soundIndex) => {
@@ -121,21 +103,33 @@ const keyMappings = [
     { keyName: ".", imageName: "creature119.png", soundIndex: 119 }
 ];
 
+function playSound(soundIndex) {
+    // Create a new audio buffer source
+    const audioSource = audioContext.createBufferSource();
+
+    // Load and decode the audio file
+    fetch(`sound/sound${soundIndex}.mp3`)
+        .then(response => response.arrayBuffer())
+        .then(data => audioContext.decodeAudioData(data))
+        .then(decodedBuffer => {
+            audioSource.buffer = decodedBuffer;
+            audioSource.connect(audioContext.destination);
+            audioSource.volume = audioPlayer.volume; // Set the volume
+            audioSource.playbackRate = globalFrequencySlider.value / 100; // Set the playback rate
+            audioSource.start(0);
+        })
+        .catch(error => console.error(error));
+}
+
 // Enable keyboard key press
 window.addEventListener("keydown", (event) => {
-  const keyMapping = keyMappings.find(
-      (mapping) => mapping.keyName === event.key.toUpperCase()
-  );
-  if (keyMapping) {
-      const { soundIndex } = keyMapping;
-      const newAudioElement = new Audio(`sound/sound${soundIndex}.mp3`);
-      newAudioElement.volume = audioPlayer.volume;
-      newAudioElement.playbackRate = globalFrequencySlider.value / 100;
-      newAudioElement.play();
-
-      // Store active audio element
-      activeAudioElements.push(newAudioElement);
-  }
+    const keyMapping = keyMappings.find(
+        (mapping) => mapping.keyName === event.key.toUpperCase()
+    );
+    if (keyMapping) {
+        const { soundIndex } = keyMapping;
+        playSound(soundIndex); // Call the playSound function with the soundIndex
+    }
 });
 
 // Pause previously active audio elements when ended
