@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.style.backgroundBlendMode = "multiply"; // Combine image and gradient with multiply blend mode
 
 
-        button.addEventListener("click", () => playSoundInWorker(mapping.soundIndex));
+        button.addEventListener("click", () => playSound(mapping.soundIndex));
         keyboardContainer.appendChild(button);
     });
 
@@ -103,9 +103,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    function playSoundInWorker(soundIndex) {
-        const worker = new Worker("sound-worker.js");
-        worker.postMessage({ soundIndex: soundIndex });
+    function playSound(soundIndex) {
+        // Create a new audio buffer source
+        const audioSource = audioContext.createBufferSource();
+
+        // Load and decode the audio file
+        fetch(`sound/sound${soundIndex}.mp3`)
+            .then(response => response.arrayBuffer())
+            .then(data => audioContext.decodeAudioData(data))
+            .then(decodedBuffer => {
+                audioSource.buffer = decodedBuffer;
+                audioSource.connect(audioContext.destination);
+                audioSource.volume = audioPlayer.volume; // Set the volume
+                audioSource.playbackRate = globalFrequencySlider.value / 100; // Set the playback rate
+                audioSource.start(0);
+            })
+            .catch(error => console.error(error));
     }
 
     // Enable keyboard key press
@@ -115,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         if (keyMapping) {
             const { soundIndex } = keyMapping;
-            playSoundInWorker(soundIndex); // Call the playSoundInWorker function with the soundIndex
+            playSound(soundIndex); // Call the playSound function with the soundIndex
         }
     });
 
