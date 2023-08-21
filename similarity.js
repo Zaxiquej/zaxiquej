@@ -704,6 +704,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       let skipProcS = ['{me.hand_self.count}>0'];
 
       for (let highItem of skillsc1.concat(skillst1)){
+        if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
+          highItem = "{me.hand_other_self.clan=all.count}>=X";
+        }
         highItem = highItem.replaceAll("character=me&target=self&status_life","selfStatus_life")
         for (let item of customSplit(highItem,'&')){
           if (skipProcS.includes(item)){
@@ -896,6 +899,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
       hasRepC = [];
       for (let highItem of skillsc2.concat(skillst2)){
+        if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
+          highItem = "{me.hand_other_self.clan=all.count}>=X";
+        }
         highItem = highItem.replaceAll("character=me&target=self&status_life","selfStatus_life")
         for (let item of customSplit(highItem,'&')){
           if (skipProcS.includes(item)){
@@ -2914,6 +2920,9 @@ function customSplit(input,token) {
 
     let skipProcS = ['{me.hand_self.count}>0'];
     for (let highItem of skillsc1.concat(skillst1)){
+      if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
+        highItem = "{me.hand_other_self.clan=all.count}>=X";
+      }
       highItem = highItem.replaceAll("character=me&target=self&status_life","selfStatus_life")
       for (let item of customSplit(highItem,'&')){
         if (skipProcS.includes(item)){

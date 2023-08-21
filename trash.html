@@ -3,36 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid Test</title>
-    <style>
-        #grid-container {
-            display: flex;
-            flex-wrap: nowrap; /* 阻止换行 */
-        }
-        .grid-cell {
-            width: 20px;
-            height: 20px;
-            background-color: #444;
-            margin: 0;
-            border: 1px solid #000;
-            transition: background-color 0.3s;
-        }
-        .grid-cell.green {
-            background-color: green;
-        }
-    </style>
+    <title>Voice Mimicry</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
-    <div id="grid-container">
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
-        <div class="grid-cell"></div>
-    </div>
+    <h1>Voice Mimicry</h1>
+    <button id="startRecording">开始录音</button>
+    <button id="stopRecording" disabled>停止录音</button>
+    <button id="playMimicry" disabled>播放模仿</button>
 
     <script>
-        // JavaScript code if needed
+        let mediaRecorder;
+        let recordedChunks = [];
+        let mimicrySound;
+
+        const startRecordingButton = document.getElementById('startRecording');
+        const stopRecordingButton = document.getElementById('stopRecording');
+        const playMimicryButton = document.getElementById('playMimicry');
+
+        const mimicryFolderNames = ['arisa', 'rowen', 'yuwan','bahamut','erika','eris','luna','orchis','mysterian','vania']; // 可以添加更多文件夹名称
+        const numOfAudioFiles = 20; // 假设每个文件夹中有20个音频文件
+
+        startRecordingButton.addEventListener('click', async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = event => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                mimicrySound = new Howl({
+                    src: getMimicryAudioUrls(),
+                    autoplay: false,
+                    volume: 1,
+                    onend: () => {
+                        playMimicryButton.disabled = false;
+                    }
+                });
+
+                startRecordingButton.disabled = false;
+                stopRecordingButton.disabled = true;
+                playMimicryButton.disabled = true;
+            };
+
+            mediaRecorder.start();
+            startRecordingButton.disabled = true;
+            stopRecordingButton.disabled = false;
+            playMimicryButton.disabled = true;
+        });
+
+        stopRecordingButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+        });
+
+        playMimicryButton.addEventListener('click', () => {
+            mimicrySound.play();
+        });
+
+        function getMimicryAudioUrls() {
+            const audioUrls = [];
+            for (const folderName of mimicryFolderNames) {
+                for (let i = 1; i <= numOfAudioFiles; i++) {
+                    const audioUrl = `${folderName}/sound/sound${i}.mp3`;
+                    audioUrls.push(audioUrl);
+                }
+            }
+            return audioUrls;
+        }
     </script>
 </body>
 </html>

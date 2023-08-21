@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+.resources, .buildings {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+}
+
+.building {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
