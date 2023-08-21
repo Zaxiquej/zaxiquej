@@ -675,8 +675,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","selfStatus_life","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-      let repProsC = ["looting","status_life","status_offense","status_cost","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+      let keyProsC = ["{self.max_life}-{self.life}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","selfStatus_life","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","HAND_SPACE_COUNT","HAND_COUNT","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+      let repProsC = ["looting","{me.cemetery.count}","status_life","status_offense","status_cost","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
       let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
       let hasRepC = [];
       let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list\.(.*?)count\}/,"."],
@@ -699,7 +699,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfTriggerCardCount",/\{me\.summoned_card\.(.*?)count\}/,"."],
                    ["selfTriggerCardCount",/\{me\.played_card\.(.*?)count\}/,"."],
                    ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
-                   ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
+                   ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."],
+                   ["selfMaxCount",/\{me\.inplay\.(.*?)max\}/,"."]];
       let skipProcS = ['{me.hand_self.count}>0'];
 
       for (let highItem of skillsc1.concat(skillst1)){
@@ -716,7 +717,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             if (name == "pp_count" && skillsT1[skillsc1.indexOf(highItem)] == "self_turn_end"){
               name = "{me.inplay.class.pp}"
             }
-            if (name == "{me.self.unit.life}"){
+            if (name == "{me.self.unit.life}" || name == "{self.life}"){
               name = "selfStatus_life"
             }
             if (keyProsC.includes(name)){
@@ -825,7 +826,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT1.push('none');
             } else {
               let name = matches[2];
-              if (name == "PLAY_COUNT"){
+              if (name == "PLAY_COUNT" || name == "PLAY_COUNT-1"){
                 name = "play_count"
               }
               if (keyProsC.includes(name)){
@@ -908,7 +909,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             if (name == "pp_count" && skillsT2[skillsc2.indexOf(highItem)] == "self_turn_end"){
               name = "{me.inplay.class.pp}"
             }
-            if (name == "{me.self.unit.life}"){
+            if (name == "{me.self.unit.life}" || name == "{self.life}"){
               name = "selfStatus_life"
             }
             if (keyProsC.includes(name)){
@@ -1013,7 +1014,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               skillsT2.push('none');
             } else {
               let name = matches[2];
-              if (name == "PLAY_COUNT"){
+              if (name == "PLAY_COUNT" || name == "PLAY_COUNT-1"){
                 name = "play_count"
               }
               if (keyProsC.includes(name)){
@@ -1108,7 +1109,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
+      let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_attack_after","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
       let followerTiming = ["when_damage"];
 
       for (let highItem of skillsT1){
@@ -2884,8 +2885,8 @@ function customSplit(input,token) {
       }
     }
 
-    let keyProsC = ["{op.last_target.unit.max_life}-{op.last_target.unit.life}","selfStatus_life","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
-    let repProsC = ["looting","status_life","status_offense","status_cost","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
+    let keyProsC = ["{self.max_life}-{self.life}","{op.last_target.unit.max_life}-{op.last_target.unit.life}","selfStatus_life","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","{me.inplay.game_necromance_count}","{me.game_skill_discard_count}","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count","HAND_SPACE_COUNT","HAND_COUNT","{me.inplay.class.max_pp}","{self.charge_count}","{op.inplay.unit.count}"]
+    let repProsC = ["looting","{me.cemetery.count}","status_life","status_offense","status_cost","{me.game_play_count}","berserk","wrath","resonance","avarice","awake","selfPlaySpCardCount","selfHandCount","{me.inplay.class.pp}"]; //不计重复
     let onlyGreaterC = ["selfDiscardThisTurnCardCount","selfDrawCardCount","selfPlaySpCardCount","{me.game_play_count}","selfInPlayCount","{op.last_target.unit.max_life}-{op.last_target.unit.life}","{me.damaged_card.unit.count}","{me.turn_play_cards_other_self=me:1.all.play_moment_tribe=hellbound.count}","{me.game_used_ep_count}","{me.game_skill_return_card_count}","selfCrystalCount","{me.inplay.game_necromance_count}","selfTurnPlayCount","looting","selfInPlaySum","{me.game_skill_discard_count}","selfDeckCount","selfEvolveCount","selfDestroyCount","selfLeftCount","selfSummonCount","{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}","cemetery_count","{me.inplay.class.rally_count}","play_count"]
     let hasRepC = [];
     let stEdC = [["selfDestroyCount",/\{me\.destroyed_card_list\.(.*?)count\}/,"."],
@@ -2908,7 +2909,8 @@ function customSplit(input,token) {
                  ["selfTriggerCardCount",/\{me\.summoned_card\.(.*?)count\}/,"."],
                  ["selfTriggerCardCount",/\{me\.played_card\.(.*?)count\}/,"."],
                  ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
-                 ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."]];
+                 ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."],
+                 ["selfMaxCount",/\{me\.inplay\.(.*?)max\}/,"."]];
 
     let skipProcS = ['{me.hand_self.count}>0'];
     for (let highItem of skillsc1.concat(skillst1)){
@@ -2925,7 +2927,7 @@ function customSplit(input,token) {
           if (name == "pp_count" && skillsT1[skillsc1.indexOf(highItem)] == "self_turn_end"){
             name = "{me.inplay.class.pp}"
           }
-          if (name == "{me.self.unit.life}"){
+          if (name == "{me.self.unit.life}" || name == "{self.life}"){
             name = "selfStatus_life"
           }
           if (keyProsC.includes(name)){
@@ -3040,7 +3042,7 @@ function customSplit(input,token) {
             skillsT1.push('none');
           } else {
             let name = matches[2];
-            if (name == "PLAY_COUNT"){
+            if (name == "PLAY_COUNT" || name == "PLAY_COUNT-1"){
               name = "play_count"
             }
             if (keyProsC.includes(name)){
@@ -3122,7 +3124,7 @@ function customSplit(input,token) {
       }
     }
 
-    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
+    let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_attack_after","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
     let followerTiming = ["when_damage"];
 
     for (let highItem of skillsT1){

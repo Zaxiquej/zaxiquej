@@ -80,6 +80,7 @@ let ratioTable = {
   "op_turn_end": {reward:0.8, punish:0.3}, //回合开始
   "when_evolve": {reward:0.5, punish:0.2}, //进化发动
   "when_attack": {reward:0.7, punish:0.3}, //攻击发动
+  "when_attack_after": {reward:1.5, punish:0.5}, //攻击后结算
   "when_fight": {reward:0.7, punish:0.3}, //交战发动
   "when_leave": {reward:1.5, punish:0.5}, //离场发动
   "when_evolve_other": {reward:1.5, punish:0.5}, //进化其他发动
@@ -103,6 +104,11 @@ let ratioTable = {
   "cost_change": {reward:1.3, punish:1.3}, //改变费用
   "power_down": {reward:1.5, punish:1.5}, //减能力
   "power_change": {reward:6, punish:3}, //改能力
+  "HAND_SPACE_COUNT": {reward:6, punish:3}, //手牌加满
+  "HAND_COUNT": {reward:3, punish:1}, //手牌数
+  "selfMaxCount": {reward:2, punish:0.5}, //XX最高数
+  "{me.cemetery.count}": {reward:1.2, punish:0.6}, //墓场检查
+  "{self.max_life}-{self.life}": {reward:1.5, punish:0.3}, //受伤状态
   "self_power_change": {reward:4, punish:2.4}, //改自己能力
   "leaderPowerup": {reward:6, punish:3}, //加血限
   "leaderPowerdown": {reward:6, punish:3}, //扣血限
