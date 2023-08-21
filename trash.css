@@ -1,17 +1,77 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
-.resources, .buildings {
-  display: inline-block;
-  vertical-align: top;
-  margin: 20px;
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    justify-content: center; /* Center the keyboard horizontally */
+    margin-top: 20px;
 }
 
-.building {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px 0;
+.keyboard button {
+    width: 100px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.1); /* Background color with 10% opacity */
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    overflow: hidden;
+    padding: 5px;
+    text-align: center;
+    font-size: 80px;
+    font-family: "Caveat", cursive; /* Use "Caveat" font from Google Fonts */
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    background-size: cover; /* Use cover to scale the background image */
+    background-position: center; /* Center the background image */
+}
+
+.keyboard button img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.9; /* Opacity for the image */
+    padding: 5px;
+    object-fit: contain;
+}
+
+
+.keyboard button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.control-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-slider {
+    flex-grow: 1;
+}
+
+.slider-value {
+    width: 40px;
+    text-align: center;
 }
