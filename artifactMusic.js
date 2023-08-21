@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         keyButton.addEventListener("click", () => {
             const newAudioElement = new Audio(`sound/sound${soundIndex}.mp3`);
-            newAudioElement.volume = volumeSlider.value;
             newAudioElement.play();
 
             // Store active audio element
