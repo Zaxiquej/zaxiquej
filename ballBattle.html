@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  #playground {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: #000;
+  }
+
+  .ball {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 50%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  #scoreboard {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+  }
+
+  #restartButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="playground"></div>
+<div id="scoreboard"></div>
+<div id="restartButton" onclick="restartGame()">重新开始</div>
+
+<script>
+  const playground = document.getElementById("playground");
+  const scoreboard = document.getElementById("scoreboard");
+  const restartButton = document.getElementById("restartButton");
+  const balls = [];
+  const teams = [
+    { color: "红", rgb: "255, 0, 0" },
+    { color: "黄", rgb: "255, 255, 0" },
+    { color: "蓝", rgb: "0, 0, 255" },
+    { color: "绿", rgb: "0, 255, 0" }
+  ];
+  let winnerFound = false;
+
+  function createBall(x, y, teamIndex, velocityX, velocityY) {
+    const size = 26;
+    const rgb = teams[teamIndex].rgb;
+    const ball = document.createElement("div");
+    ball.className = "ball";
+    ball.style.width = size + "px";
+    ball.style.height = size + "px";
+    ball.style.backgroundColor = `rgb(${rgb})`;
+    ball.style.left = x + "px";
+    ball.style.top = y + "px";
+    ball.innerHTML = "10";
+    playground.appendChild(ball);
+
+    balls.push({ element: ball, x, y, size, rgb, teamIndex, velocityX, velocityY, score: 10 });
+  }
+
+  function updateBallPositions() {
+    if (winnerFound) return;
+
+    balls.forEach(ball => {
+      if (ball.score > 0){
+        ball.x += ball.velocityX;
+        ball.y += ball.velocityY;
+
+        if (ball.x <= 0 || ball.x >= playground.clientWidth - ball.size) {
+          ball.velocityX = -ball.velocityX;
+          if (ball.x <= 0){
+            ball.x = 0;
+          } else {
+            ball.x = playground.clientWidth - ball.size;
+          }
+        }
+        if (ball.y <= 0 || ball.y >= playground.clientHeight - ball.size) {
+          ball.velocityY = -ball.velocityY;
+          if (ball.y <= 0){
+            ball.y = 0;
+          } else {
+            ball.y = playground.clientHeight - ball.size;
+          }
+        }
+
+        ball.element.style.left = ball.x + "px";
+        ball.element.style.top = ball.y + "px";
+
+        balls.forEach(otherBall => {
+          if (ball !== otherBall && otherBall.score > 0) {
+            const dx = otherBall.x - ball.x;
+            const dy = otherBall.y - ball.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance <= (ball.size + otherBall.size) / 2 - 2) {
+              const angle = Math.atan2(dy, dx);
+              const magnitude1 = Math.sqrt(ball.velocityX * ball.velocityX + ball.velocityY * ball.velocityY);
+              const magnitude2 = Math.sqrt(otherBall.velocityX * otherBall.velocityX + otherBall.velocityY * otherBall.velocityY);
+              const direction1 = Math.atan2(ball.velocityY, ball.velocityX);
+              const direction2 = Math.atan2(otherBall.velocityY, otherBall.velocityX);
+
+              const newVelocityX1 = magnitude1 * Math.cos(direction1 - angle);
+              const newVelocityY1 = magnitude1 * Math.sin(direction1 - angle);
+              const newVelocityX2 = magnitude2 * Math.cos(direction2 - angle);
+              const newVelocityY2 = magnitude2 * Math.sin(direction2 - angle);
+
+              const finalVelocityX1 = ((ball.size - otherBall.size) * newVelocityX1 + (otherBall.size + otherBall.size) * newVelocityX2) / (ball.size + otherBall.size);
+              const finalVelocityY1 = ((ball.size - otherBall.size) * newVelocityY1 + (otherBall.size + otherBall.size) * newVelocityY2) / (ball.size + otherBall.size);
+              const finalVelocityX2 = ((ball.size + ball.size) * newVelocityX1 + (otherBall.size - ball.size) * newVelocityX2) / (ball.size + otherBall.size);
+              const finalVelocityY2 = ((ball.size + ball.size) * newVelocityY1 + (otherBall.size - ball.size) * newVelocityY2) / (ball.size + otherBall.size);
+
+              ball.velocityX = finalVelocityX1;
+              ball.velocityY = finalVelocityY1;
+              otherBall.velocityX = finalVelocityX2;
+              otherBall.velocityY = finalVelocityY2;
+
+              const overlap = (ball.size + otherBall.size) / 2 - distance + 1;
+              const angleBetweenBalls = Math.atan2(otherBall.y - ball.y, otherBall.x - ball.x);
+              ball.x -= overlap * Math.cos(angleBetweenBalls);
+              ball.y -= overlap * Math.sin(angleBetweenBalls);
+              otherBall.x += overlap * Math.cos(angleBetweenBalls);
+              otherBall.y += overlap * Math.sin(angleBetweenBalls);
+              if (ball.teamIndex === otherBall.teamIndex) {
+                ball.score++;
+                otherBall.score++;
+                ball.size += 1;
+                otherBall.size += 1;
+                ball.element.innerHTML = ball.score;
+                otherBall.element.innerHTML = otherBall.score;
+                updateBallSize(ball);
+                updateBallSize(otherBall);
+              } else {
+                if (ball.score > otherBall.score){
+                  otherBall.score-= Math.max(1,parseInt(ball.score / 10));
+                  otherBall.size -= Math.max(1,parseInt(ball.score / 10));
+                } else if (ball.score == otherBall.score){
+                  ball.score -= Math.max(1,parseInt(otherBall.score / 10))
+                  otherBall.score -= Math.max(1,parseInt(ball.score / 10));
+                  ball.size -= Math.max(1,parseInt(otherBall.score / 10));
+                  otherBall.size -= Math.max(1,parseInt(ball.score / 10));
+                } else {
+                  ball.score -= Math.max(1,parseInt(otherBall.score / 10));
+                  ball.size -= Math.max(1,parseInt(otherBall.score / 10));
+                }
+
+                ball.element.innerHTML = ball.score;
+                otherBall.element.innerHTML = otherBall.score;
+                if (ball.score <= 0) {
+                  ball.element.style.display = "none";
+                }
+                if (otherBall.score <= 0) {
+                  otherBall.element.style.display = "none";
+                }
+                updateBallSize(ball);
+                updateBallSize(otherBall);
+              }
+            }
+          }
+        });
+
+        if (ball.score <= 0) {
+          ball.score = 0;
+          ball.element.style.display = "none";
+        }
+      }
+    });
+
+    updateScoreboard();
+
+    checkForWinner();
+
+    requestAnimationFrame(updateBallPositions);
+  }
+
+  function updateBallSize(ball) {
+    ball.element.style.width = ball.size + "px";
+    ball.element.style.height = ball.size + "px";
+    ball.element.style.fontSize = ball.size / 4 + "px";
+  }
+
+  function updateScoreboard() {
+    let scoreboardText = "";
+    teams.forEach((team, index) => {
+      scoreboardText += `${team.color}队: ${calculateTeamScore(index)}分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+    });
+    scoreboard.innerHTML = scoreboardText;
+  }
+
+  function calculateTeamScore(teamIndex) {
+    return balls.filter(ball => ball.teamIndex === teamIndex).reduce((totalScore, ball) => {
+      totalScore += ball.score;
+      return totalScore;
+    }, 0);
+  }
+
+  function checkForWinner() {
+    const activeTeams = teams.filter((team, index) => calculateTeamScore(index) > 0);
+    if (activeTeams.length === 1) {
+      const winnerIndex = teams.indexOf(activeTeams[0]);
+      winnerFound = true;
+      restartButton.style.display = "block";
+      restartButton.innerHTML = `${teams[winnerIndex].color}队获胜！重新开始`;
+    }
+  }
+
+  function restartGame() {
+    balls.forEach(ball => {
+      ball.element.remove();
+    });
+    balls.length = 0;
+
+    teams.forEach((team, index) => {
+      for (let i = 0; i < 20; i++) {
+        const x = Math.random() * (playground.clientWidth - 50);
+        const y = Math.random() * (playground.clientHeight - 50);
+        const teamIndex = index;
+        const velocityX = (Math.random() - 0.5) * 10;
+        const velocityY = (Math.random() - 0.5) * 10;
+        createBall(x, y, teamIndex, velocityX, velocityY);
+      }
+    });
+
+    updateScoreboard();
+    winnerFound = false;
+    restartButton.style.display = "none";
+
+    updateBallPositions();
+  }
+
+  restartGame();
+</script>
+</body>
+</html>

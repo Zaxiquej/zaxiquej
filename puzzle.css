@@ -1,0 +1,78 @@
+/* 样式定义，您可以根据需要进行样式的设计和布局 */
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player img,
+.monster img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.exp-bar,
+.action-bar {
+  width: 100px;
+  height: 10px;
+  background-color: #ccc;
+  border: 1px solid #666;
+  position: relative;
+}
+
+.exp-fill,
+.action-fill {
+  height: 100%;
+  background-color: #66cc66;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.player-stats,
+.monster-stats {
+  flex: 1;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.questions {
+  flex: 2;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.actions {
+  text-align: center;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

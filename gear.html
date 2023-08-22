@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  #playground {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: #000;
+  }
+
+  .ball {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+</style>
+</head>
+<body>
+<div id="playground"></div>
+
+<script>
+  const playground = document.getElementById("playground");
+  const balls = [];
+  const windStrength = 0.1; // Wind strength factor
+
+  function createBall(x, y, size, color, velocityX, velocityY) {
+    const ball = document.createElement("div");
+    ball.className = "ball";
+    ball.style.width = size + "px";
+    ball.style.height = size + "px";
+    ball.style.backgroundColor = color;
+    ball.style.left = x + "px";
+    ball.style.top = y + "px";
+    ball.style.fontSize = size / 2 + "px"; // Adjust font size based on ball size
+    ball.innerHTML = "0"; // Initialize hit count
+    playground.appendChild(ball);
+
+    balls.push({ element: ball, x, y, size, color, velocityX, velocityY, hitCount: 0 });
+  }
+
+  function updateBallPositions() {
+    balls.forEach(ball => {
+      ball.x += ball.velocityX;
+      ball.y += ball.velocityY;
+
+      if (ball.x <= 0 || ball.x >= playground.clientWidth - ball.size) {
+        ball.velocityX = -ball.velocityX;
+        if (ball.x <= 0){
+          ball.x = 0;
+        } else {
+          ball.x = playground.clientWidth - ball.size;
+        }
+      }
+      if (ball.y <= 0 || ball.y >= playground.clientHeight - ball.size) {
+        ball.velocityY = -ball.velocityY;
+        if (ball.y <= 0){
+          ball.y = 0;
+        } else {
+          ball.y = playground.clientHeight - ball.size;
+        }
+      }
+
+      ball.element.style.left = ball.x + "px";
+      ball.element.style.top = ball.y + "px";
+
+      balls.forEach(otherBall => {
+        if (ball !== otherBall) {
+          const dx = otherBall.x - ball.x;
+          const dy = otherBall.y - ball.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance <= (ball.size + otherBall.size) / 2) {
+            const angle = Math.atan2(dy, dx);
+            const magnitude1 = Math.sqrt(ball.velocityX * ball.velocityX + ball.velocityY * ball.velocityY);
+            const magnitude2 = Math.sqrt(otherBall.velocityX * otherBall.velocityX + otherBall.velocityY * otherBall.velocityY);
+            const direction1 = Math.atan2(ball.velocityY, ball.velocityX);
+            const direction2 = Math.atan2(otherBall.velocityY, otherBall.velocityX);
+
+            const newVelocityX1 = magnitude1 * Math.cos(direction1 - angle);
+            const newVelocityY1 = magnitude1 * Math.sin(direction1 - angle);
+            const newVelocityX2 = magnitude2 * Math.cos(direction2 - angle);
+            const newVelocityY2 = magnitude2 * Math.sin(direction2 - angle);
+
+            const finalVelocityX1 = ((ball.size - otherBall.size) * newVelocityX1 + (otherBall.size + otherBall.size) * newVelocityX2) / (ball.size + otherBall.size);
+            const finalVelocityY1 = ((ball.size - otherBall.size) * newVelocityY1 + (otherBall.size + otherBall.size) * newVelocityY2) / (ball.size + otherBall.size);
+            const finalVelocityX2 = ((ball.size + ball.size) * newVelocityX1 + (otherBall.size - ball.size) * newVelocityX2) / (ball.size + otherBall.size);
+            const finalVelocityY2 = ((ball.size + ball.size) * newVelocityY1 + (otherBall.size - ball.size) * newVelocityY2) / (ball.size + otherBall.size);
+
+            ball.velocityX = finalVelocityX1;
+            ball.velocityY = finalVelocityY1;
+            otherBall.velocityX = finalVelocityX2;
+            otherBall.velocityY = finalVelocityY2;
+
+            const overlap = (ball.size + otherBall.size) / 2 - distance + 1;
+            const angleBetweenBalls = Math.atan2(otherBall.y - ball.y, otherBall.x - ball.x);
+            ball.x -= overlap * Math.cos(angleBetweenBalls);
+            ball.y -= overlap * Math.sin(angleBetweenBalls);
+            otherBall.x += overlap * Math.cos(angleBetweenBalls);
+            otherBall.y += overlap * Math.sin(angleBetweenBalls);
+
+            ball.hitCount++;
+            otherBall.hitCount++;
+            ball.element.innerHTML = ball.hitCount;
+            otherBall.element.innerHTML = otherBall.hitCount;
+          }
+        }
+      });
+
+      // Apply wind effect when arrow keys are pressed
+      if (windDirection.left && ball.x > playground.clientWidth / 2) {
+        ball.velocityX -= windStrength * (ball.x - playground.clientWidth / 2) / (playground.clientWidth / 2);
+      }
+      if (windDirection.right && ball.x < playground.clientWidth / 2) {
+        ball.velocityX += windStrength * (playground.clientWidth / 2 - ball.x) / (playground.clientWidth / 2);
+      }
+      if (windDirection.up && ball.y > playground.clientHeight / 2) {
+        ball.velocityY -= windStrength * (ball.y - playground.clientHeight / 2) / (playground.clientHeight / 2);
+      }
+      if (windDirection.down && ball.y < playground.clientHeight / 2) {
+        ball.velocityY += windStrength * (playground.clientHeight / 2 - ball.y) / (playground.clientHeight / 2);
+      }
+    });
+
+    requestAnimationFrame(updateBallPositions);
+  }
+
+  const windDirection = { left: false, right: false, up: false, down: false };
+
+  window.addEventListener("keydown", event => {
+    switch (event.key) {
+      case "ArrowLeft":
+        windDirection.left = true;
+        break;
+      case "ArrowRight":
+        windDirection.right = true;
+        break;
+      case "ArrowUp":
+        windDirection.up = true;
+        break;
+      case "ArrowDown":
+        windDirection.down = true;
+        break;
+    }
+  });
+
+  window.addEventListener("keyup", event => {
+    switch (event.key) {
+      case "ArrowLeft":
+        windDirection.left = false;
+        break;
+      case "ArrowRight":
+        windDirection.right = false;
+        break;
+      case "ArrowUp":
+        windDirection.up = false;
+        break;
+      case "ArrowDown":
+        windDirection.down = false;
+        break;
+    }
+  });
+
+  playground.addEventListener("mousedown", event => {
+    if (event.button === 0) { // Left mouse button
+      const x = event.clientX;
+      const y = event.clientY;
+      const size = Math.random() * 50 + 20; // Slightly larger balls
+      const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+      const velocityX = (Math.random() - 0.5) * 5;
+      const velocityY = (Math.random() - 0.5) * 5;
+      createBall(x, y, size, color, velocityX, velocityY);
+    }
+  });
+
+  updateBallPositions();
+</script>
+</body>
+</html>

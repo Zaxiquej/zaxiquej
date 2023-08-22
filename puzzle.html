@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="puzzle.css">
+  <title>微积分战斗游戏</title>
+</head>
+<body>
+  <div class="game-container">
+    <div class="character">
+      <div class="player">
+        <img src="player.png" alt="Player">
+        <div class="exp-bar">
+          <div class="exp-fill" id="exp-fill"></div>
+        </div>
+      </div>
+      <div class="monster">
+        <img src="monster.png" alt="Monster">
+        <div class="action-bar">
+          <div class="action-fill" id="action-fill"></div>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="player-stats">
+        <h2>主角状态</h2>
+        <p>生命值: <span id="player-health">100</span></p>
+        <p>攻击力: <span id="player-attack">10</span></p>
+        <p>防御力: <span id="player-defense">5</span></p>
+        <p>经验: <span id="player-exp">0</span></p>
+      </div>
+      <div class="monster-stats">
+        <h2>怪物状态</h2>
+        <p>生命值: <span id="monster-health">80</span></p>
+        <p>攻击力: <span id="monster-attack">8</span></p>
+        <p>防御力: <span id="monster-defense">3</span></p>
+      </div>
+    </div>
+    <div class="questions">
+      <h2>微积分题目</h2>
+      <div class="question">
+        <p id="question-text">解微分方程 dy/dx = x^2</p>
+        <input type="text" id="answer-input" placeholder="请输入答案">
+      </div>
+      <div class="actions">
+        <button id="attack-btn">攻击</button>
+        <button id="heal-btn">回血</button>
+      </div>
+    </div>
+  </div>
+  <script src="puzzle.js"></script>
+</body>
+</html>
