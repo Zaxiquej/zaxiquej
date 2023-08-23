@@ -701,7 +701,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfDiscardThisTurnCardCount",/\{me\.discard_this_turn_card_list\.(.*?)count\}/,"."],
                    ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."],
                    ["selfMaxCount",/\{me\.inplay\.(.*?)max\}/,"."]];
-      let skipProcS = ['{me.hand_self.count}>0'];
+      let skipProcS = ['{me.hand_self.count}>0','{op.inplay.unit.count}>=1','{me.inplay_other_self.selectable.unit.count}>0','{op.inplay.selectable.unit.count}>0','{me.inplay.unit.evolution=false.count}>0'];
 
       for (let highItem of skillsc1.concat(skillst1)){
         if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
@@ -724,9 +724,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "selfStatus_life"
             }
             if (keyProsC.includes(name)){
-              if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
-                continue;
-              }
               if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
@@ -919,9 +916,6 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               name = "selfStatus_life"
             }
             if (keyProsC.includes(name)){
-              if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
-                continue;
-              }
               if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                 continue;
               }
@@ -2918,7 +2912,7 @@ function customSplit(input,token) {
                  ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."],
                  ["selfMaxCount",/\{me\.inplay\.(.*?)max\}/,"."]];
 
-    let skipProcS = ['{me.hand_self.count}>0'];
+    let skipProcS = ['{me.hand_self.count}>0','{op.inplay.unit.count}>=1','{me.inplay_other_self.selectable.unit.count}>0','{op.inplay.selectable.unit.count}>0','{me.inplay.unit.evolution=false.count}>0'];
     for (let highItem of skillsc1.concat(skillst1)){
       if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
         highItem = "{me.hand_other_self.clan=all.count}>=X";
@@ -2940,9 +2934,6 @@ function customSplit(input,token) {
             name = "selfStatus_life"
           }
           if (keyProsC.includes(name)){
-            if (name == "{op.inplay.unit.count}" && matches[2] == ">=" && matches[3] == "1"){
-              continue;
-            }
             if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
                continue;
             }

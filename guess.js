@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
           cardPool.push(card);
 
           // 查找并加入符合条件的技能卡
-          if (!noTokenModeCheckbox){
+          if (!noTokenModeCheckbox.checked){
             addSkillOptionCards(card.skill_option);
           }
         }
@@ -749,7 +749,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sortHistory();
 
             guessInput.value = "";
-            if (parseInt(similarity) === 100) {
+            if (Math.abs(similarity - 100) < 0.0001) {
                 gameEnd(true);
             }
         }
