@@ -15,7 +15,7 @@ let ratioTable = {
   "status_offense={op.inplay.unit.offense.max}": {reward:1.2, punish:0.4}, //攻击力最高
   "possess_ep_modifier": {reward:3, punish:2}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
-  "character=both": {reward:1.5, punish:0.3},//敌我不分
+  "character=both": {reward:1.2, punish:0.3},//敌我不分
   "pp_modifier": {reward:1.3, punish:1.3}, //回/扣费
   "destroy": {reward:1, punish:1},
   "destroyField": {reward:3, punish:3}, //拆符
@@ -95,10 +95,10 @@ let ratioTable = {
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
   "NTR": {reward:4, punish:1.5}, //牛头人
   "recycle": {reward:1.8, punish:1.2}, //回收/复制
-  "none": {reward:0.8, punish:0.5}, //白板
+  "none": {reward:0.3, punish:0.1}, //白板
   "long_token_draw": {reward:4, punish:4}, //长token
   "token_draw": {reward:1, punish:1},
-  "select": {reward:1.2, punish:1.2},//选择目标
+  "select": {reward:1, punish:1},//选择目标
   "summon_card": {reward:1.5, punish:1.5},//拉东西
   "turn_end_stop": {reward:0.3, punish:0.3},//直到回合结束
   "turn_end_remove": {reward:0.4, punish:0.4},//回合结束失去能力
