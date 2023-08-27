@@ -202,7 +202,7 @@ let ratioTable = {
   "power_modifier": {reward:5, punish:3}, //光剑饿姐的不平衡加减
   "cant_activate_fanfare": {reward:12, punish:4}, //诗人
   "cant_summon": {reward:8, punish:4}, //闪耀
-  "weird_evolve": {reward:1.5, punish:0.5}, //异形身材
+  "weird_evolve": {reward:0.3, punish:0.1}, //异形身材
   "flush": {reward:12, punish:6}, //20姐18弟
   "cosmos": {reward:12, punish:6}, //宇宙
   "cant_play": {reward:10, punish:6}, //无法使用XX卡

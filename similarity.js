@@ -2331,7 +2331,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       //异形判定
-      if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
+      if (card1.char_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
         skills1.push("weird_evolve");
         let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
         skillso1.push(str);
@@ -2340,7 +2340,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         skillsT1.push('none');
       }
 
-      if (card2.card_type == 1 && (card2.evo_atk - card2.atk != 2 || card2.evo_life - card2.life != 2)){
+      if (card2.char_type == 1 && (card2.evo_atk - card2.atk != 2 || card2.evo_life - card2.life != 2)){
         skills2.push("weird_evolve");
         let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
         skillso2.push(str);
@@ -3822,7 +3822,7 @@ function customSplit(input,token) {
     }
 
     //异形判定
-    if (card1.card_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
+    if (card1.char_type == 1 && (card1.evo_atk - card1.atk != 2 || card1.evo_life - card1.life != 2)){
       skills1.push("weird_evolve");
       let str = "atk="+(card1.evo_atk - card1.atk)+"&life="+(card1.evo_life - card1.life);
       skillso1.push(str);
