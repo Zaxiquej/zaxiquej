@@ -93,6 +93,7 @@ let ratioTable = {
   "when_damage": {reward:2, punish:0.8},//污蔑/伤脸
   "{me.inplay.unit.attack_count=pre_action.count}=0": {reward:2.4, punish:0.6},//安息
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
+  "NTR": {reward:4, punish:1.5}, //牛头人
   "recycle": {reward:1.8, punish:1.2}, //回收/复制
   "none": {reward:0.8, punish:0.5}, //白板
   "long_token_draw": {reward:4, punish:4}, //长token

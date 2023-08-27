@@ -1137,47 +1137,54 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_attack_after","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
       let followerTiming = ["when_damage"];
+      let hasProsTiming = [];
 
       for (let highItem of skillsT1){
         for (let item of customSplit(highItem,'&')){
           if (item == "when_evolve_self_and_other"){
             item = "when_evolve_other";
           }
-          if (wholeKeyProsTiming.includes(item)){
+          if (wholeKeyProsTiming.includes(item) && !(hasProsTiming.includes(item)) ){
             skills1.push(item);
             skillso1.push('none')
             skillsc1.push('none');
             skillst1.push('none');
             skillsT1.push('none');
+            hasProsTiming.push(item)
           }
-          if (followerTiming.includes(item)){
+          if (followerTiming.includes(item) && !(hasProsTiming.includes(item)) ){
             skills1.push(item);
             skillso1.push('none')
             skillsc1.push(skillsc1[skillsT1.indexOf(highItem)]);
             skillst1.push('none');
             skillsT1.push('none');
+            hasProsTiming.push(item)
           }
         }
       }
+
+      hasProsTiming = [];
 
       for (let highItem of skillsT2){
         for (let item of customSplit(highItem,'&')){
           if (item == "when_evolve_self_and_other"){
             item = "when_evolve_other";
           }
-          if (wholeKeyProsTiming.includes(item)){
+          if (wholeKeyProsTiming.includes(item) && !(hasProsTiming.includes(item))){
             skills2.push(item);
             skillso2.push('none')
             skillsc2.push('none');
             skillst2.push('none');
             skillsT2.push('none');
+            hasProsTiming.push(item)
           }
-          if (followerTiming.includes(item)){
+          if (followerTiming.includes(item) && !(hasProsTiming.includes(item))){
             skills2.push(item);
             skillso2.push('none')
             skillsc2.push(skillsc2[skillsT2.indexOf(highItem)]);
             skillst2.push('none');
             skillsT2.push('none');
+            hasProsTiming.push(item)
           }
         }
       }
@@ -2049,8 +2056,12 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 skillso1[i] += "&type=draw"
               }
             }
+            if (i > 0 && skillst1[i].includes("character=op")){
+              skills1[i] = 'NTR';
+            } else {
+              skills1[i] = 'recycle';
+            }
 
-            skills1[i] = 'recycle';
           }
           let arr = skillso1[i].split('&');
           let newStr = [];
@@ -2117,7 +2128,11 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               }
             }
 
-            skills2[i] = 'recycle';
+            if (i > 0 && skillst2[i].includes("character=op")){
+              skills2[i] = 'NTR';
+            } else {
+              skills2[i] = 'recycle';
+            }
           }
           let arr = skillso2[i].split('&');
           let newStr = [];
@@ -3191,24 +3206,28 @@ function customSplit(input,token) {
     let wholeKeyProsTiming = ["when_resonance_start", "when_discard","when_buff","when_discard_other","when_return","when_destroy","when_destroy_other","when_evolve","when_leave","when_accelerate_other","when_play_other","when_fight","when_attack","when_attack_after","when_summon_other","when_evolve_other","self_turn_end","self_turn_start","op_turn_end","op_turn_start"];
     let followerTiming = ["when_damage"];
 
+    let hasProsTiming = [];
+
     for (let highItem of skillsT1){
       for (let item of customSplit(highItem,'&')){
         if (item == "when_evolve_self_and_other"){
           item = "when_evolve_other";
         }
-        if (wholeKeyProsTiming.includes(item)){
+        if (wholeKeyProsTiming.includes(item) && !(hasProsTiming.includes(item)) ){
           skills1.push(item);
           skillso1.push('none')
           skillsc1.push('none');
           skillst1.push('none');
           skillsT1.push('none');
+          hasProsTiming.push(item)
         }
-        if (followerTiming.includes(item)){
+        if (followerTiming.includes(item) && !(hasProsTiming.includes(item)) ){
           skills1.push(item);
           skillso1.push('none')
           skillsc1.push(skillsc1[skillsT1.indexOf(highItem)]);
           skillst1.push('none');
           skillsT1.push('none');
+          hasProsTiming.push(item)
         }
       }
     }
@@ -3684,7 +3703,11 @@ function customSplit(input,token) {
             }
           }
 
-          skills1[i] = 'recycle';
+          if (i > 0 && skillst1[i].includes("character=op")){
+            skills1[i] = 'NTR';
+          } else {
+            skills1[i] = 'recycle';
+          }
         }
         let arr = skillso1[i].split('&');
         let newStr = [];
