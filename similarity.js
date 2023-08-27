@@ -1389,6 +1389,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillso1[i] += "&" + org;
           }
         }
+        if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both'))){
+          let org = "org="+skills1[i];
+          skills1.push("selfDestroy");
+          if (skillso1[i] == "none"){
+            skillso1.push(org)
+          } else {
+            skillso1.push(skillso1[i] + "&" + org);
+          }
+          skillsc1.push(skillsc1[i]);
+          skillst1.push(skillst1[i].replace('character=both','character=me'))
+          skillsT1.push(skillsT1[i]);
+        }
       }
 
       for (let i = 0; i < skills2.length; i++){
@@ -1400,6 +1412,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           } else {
             skillso2[i] += "&" + org;
           }
+        }
+        if ((skills2[i] == 'destroy' || skills2[i] == 'banish') && (skillst2[i].includes('character=both'))){
+          let org = "org="+skills2[i];
+          skills2.push("selfDestroy");
+          if (skillso2[i] == "none"){
+            skillso2.push(org)
+          } else {
+            skillso2.push(skillso2[i] + "&" + org);
+          }
+          skillsc2.push(skillsc2[i]);
+          skillst2.push(skillst2[i].replace('character=both','character=me'))
+          skillsT2.push(skillsT2[i]);
         }
       }
 
@@ -3312,6 +3336,18 @@ function customSplit(input,token) {
         } else {
           skillso1[i] += "&" + org;
         }
+      }
+      if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both'))){
+        let org = "org="+skills1[i];
+        skills1.push("selfDestroy");
+        if (skillso1[i] == "none"){
+          skillso1.push(org)
+        } else {
+          skillso1.push(skillso1[i] + "&" + org);
+        }
+        skillsc1.push(skillsc1[i]);
+        skillst1.push(skillst1[i].replace('character=both','character=me'))
+        skillsT1.push(skillsT1[i]);
       }
     }
 

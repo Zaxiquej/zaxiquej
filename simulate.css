@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#results {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+#abilities, #costs, #gods {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#abilities h3, #costs h3, #gods h3 {
+  margin: 0;
+}
+
+#abilities span, #costs span, #gods span {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+#gods ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  margin: 0 auto;
+}
+
+#gods li {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.god-ability {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.god-ability.guard {
+  color: #333;
+}
+
+.god-ability.sprint {
+  color: #007bff;
+}
+
+.god-ability.critical {
+  color: #8b008b;
+}
+
+.god-ability.hit-2 {
+  color: #dc3545;
+}
+
+.god-ability.heal-4 {
+  color: #28a745;
+}
+
+.god-ability.recover-2 {
+  color: #218838;
+}
+
+.god-ability.draw-2 {
+  color: #ffc107;
+}
+
+.god-ability.sweep-3 {
+  color: #17a2b8;
+}
+
+.god-ability.destroy-1 {
+  color: #6c757d;
+}
+
+.god-ability.evolve {
+  color: #20c997;
+}

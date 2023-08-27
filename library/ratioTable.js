@@ -15,7 +15,7 @@ let ratioTable = {
   "status_offense={op.inplay.unit.offense.max}": {reward:1.2, punish:0.4}, //攻击力最高
   "possess_ep_modifier": {reward:3, punish:2}, //回豆
   "cemetery_count": {reward:3, punish:3},//墓冥府
-  "character=both": {reward:1.5, punish:1.5},//敌我不分
+  "character=both": {reward:1.5, punish:0.3},//敌我不分
   "pp_modifier": {reward:1.3, punish:1.3}, //回/扣费
   "destroy": {reward:1, punish:1},
   "destroyField": {reward:3, punish:3}, //拆符
@@ -78,7 +78,7 @@ let ratioTable = {
   "self_turn_start": {reward:0.8, punish:0.3}, //回合开始
   "op_turn_start": {reward:0.8, punish:0.3}, //回合结束
   "op_turn_end": {reward:0.8, punish:0.3}, //回合开始
-  "when_evolve": {reward:0.5, punish:0.2}, //进化发动
+  "when_evolve": {reward:0.5, punish:0.16}, //进化发动
   "when_attack": {reward:0.7, punish:0.3}, //攻击发动
   "when_attack_after": {reward:1.5, punish:0.5}, //攻击后结算
   "when_fight": {reward:0.7, punish:0.3}, //交战发动
@@ -93,7 +93,7 @@ let ratioTable = {
   "when_damage": {reward:2, punish:0.8},//污蔑/伤脸
   "{me.inplay.unit.attack_count=pre_action.count}=0": {reward:2.4, punish:0.6},//安息
   "leader_attach_skill": {reward:0.9, punish:0.7}, //主战者贴效果
-  "recycle": {reward:1.4, punish:1.4}, //回收/复制
+  "recycle": {reward:1.8, punish:1.2}, //回收/复制
   "none": {reward:0.8, punish:0.5}, //白板
   "long_token_draw": {reward:4, punish:4}, //长token
   "token_draw": {reward:1, punish:1},

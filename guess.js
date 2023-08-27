@@ -1098,3 +1098,30 @@ function generateCurrentDateSeed() {
 
   return seed;
 }
+
+function generatePastDateSeeds(numDays) {
+  const seeds = [];
+
+  for (let i = 0; i < numDays; i++) {
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 8 - i * 24); // Adjust for past days
+    const year = currentDate.getUTCFullYear().toString();
+    const month = (currentDate.getUTCMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getUTCDate().toString().padStart(2, '0');
+
+    const dateSeed = year + month + day;
+
+    Math.seedrandom(dateSeed);
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let seed = '';
+    for (let j = 0; j < 8; j++) {
+      const randomIndex = Math.floor(Math.random() * letters.length);
+      seed += letters[randomIndex];
+    }
+
+    seeds.push(`<li>${year}/${month}/${day}-${seed}</li>`);
+  }
+
+  return seeds.join('\n');
+}
