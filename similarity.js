@@ -2056,10 +2056,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 skillso1[i] += "&type=draw"
               }
             }
+
+            skills1[i] = 'recycle';
             if (i > 0 && skillst1[i].includes("character=op")){
-              skills1[i] = 'NTR';
-            } else {
-              skills1[i] = 'recycle';
+              skills1.push('NTR');
+              skillsc1.push('none');
+              skillso1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
             }
 
           }
@@ -2128,10 +2132,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               }
             }
 
+            skills2[i] = 'recycle';
             if (i > 0 && skillst2[i].includes("character=op")){
-              skills2[i] = 'NTR';
-            } else {
-              skills2[i] = 'recycle';
+              skills2.push('NTR');
+              skillsc2.push('none');
+              skillso2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
             }
           }
           let arr = skillso2[i].split('&');
@@ -3703,10 +3710,13 @@ function customSplit(input,token) {
             }
           }
 
+          skills1[i] = 'recycle';
           if (i > 0 && skillst1[i].includes("character=op")){
-            skills1[i] = 'NTR';
-          } else {
-            skills1[i] = 'recycle';
+            skills1.push('NTR');
+            skillsc1.push('none');
+            skillso1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
           }
         }
         let arr = skillso1[i].split('&');
