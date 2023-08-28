@@ -2082,7 +2082,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               } else {
                 newStr.push("type=draw")
               }
-              skills1[i] = 'obtain_self';
+              skills1.push('obtain_self');
             } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
               let cName = findCardById(parseInt(p[0]),true).card_name;
               if (cName == card1.card_name){
@@ -2092,7 +2092,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 } else {
                   newStr.push("type=drawXX")
                 }
-                skills1[i] = 'obtain_self';
+                skills1.push('obtain_self');
               } else if (card1.card_parentName && cName == card1.card_parentName){
                 change = true;
                 if (skills1[i] == 'summon_token'){
@@ -2100,7 +2100,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 } else {
                   newStr.push("type=drawXX")
                 }
-                skills1[i] = 'obtain_self_diff';
+                skills1.push('obtain_self_diff');
               }
             } else {
               newStr.push(s)
@@ -2110,7 +2110,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             }
           }
           if (change){
-            skillso1[i] = newStr.join('&');
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+            skillso1.push(newStr.join('&'));
           }
         }
       }
@@ -2156,7 +2159,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               } else {
                 newStr.push("type=draw")
               }
-              skills2[i] = 'obtain_self';
+              skills2.push('obtain_self');
             } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
               let cName = findCardById(parseInt(p[0]),true).card_name;
               if (cName == card2.card_name){
@@ -2166,7 +2169,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 } else {
                   newStr.push("type=drawXX")
                 }
-                skills2[i] = 'obtain_self';
+                skills2.push('obtain_self');
               } else if (card2.card_parentName && cName == card2.card_parentName){
                 change = true;
                 if (skills2[i] == 'summon_token'){
@@ -2174,7 +2177,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                 } else {
                   newStr.push("type=drawXX")
                 }
-                skills2[i] = 'obtain_self_diff';
+                skills2.push('obtain_self_diff');
               }
             } else {
               newStr.push(s)
@@ -2184,7 +2187,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             }
           }
           if (change){
-            skillso2[i] = newStr.join('&');
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+            skillso2.push(newStr.join('&'));
           }
         }
       }
@@ -2204,17 +2210,17 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             if (p[0] == card1.card_id){
               change = true;
               newStr.push("type=deck")
-              skills1[i] = 'obtain_self';
+              skills1.push('obtain_self');
             } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
               let cName = findCardById(parseInt(p[0]),true).card_name;
               if (cName == card1.card_name){
                 change = true;
                 newStr.push("type=deckXX");
-                skills1[i] = 'obtain_self';
+                skills1.push('obtain_self');
               } else if (card1.card_parentName && cName == card1.card_parentName){
                 change = true;
                 newStr.push("type=deckXX");
-                skills1[i] = 'obtain_self_diff';
+                skills1.push('obtain_self_diff');
               }
            } else {
              newStr.push(s)
@@ -2223,7 +2229,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
              newStr.push("len="+p.length);
            }
           if (change){
-            skillso1[i] = newStr.join('&');
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+            skillso1.push(newStr.join('&'));
           }
         }
       }
@@ -2241,17 +2250,17 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             if (p[0] == card2.card_id){
               change = true;
               newStr.push("type=deck")
-              skills2[i] = 'obtain_self';
+              skills2.push('obtain_self');
             } else if (findCardById(parseInt(p[0]),true)){ //假面，三头犬
               let cName = findCardById(parseInt(p[0]),true).card_name;
               if (cName == card2.card_name){
                 change = true;
                 newStr.push("type=deckXX");
-                skills2[i] = 'obtain_self';
+                skills2.push('obtain_self');
               } else if (card2.card_parentName && cName == card2.card_parentName){
                 change = true;
                 newStr.push("type=deckXX");
-                skills2[i] = 'obtain_self_diff';
+                skills2.push('obtain_self_diff');
               } else {
                 newStr.push(s)
               }
@@ -2260,7 +2269,10 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             newStr.push("len="+p.length);
           }
           if (change){
-            skillso2[i] = newStr.join('&');
+            skillsc2.push('none');
+            skillst2.push('none');
+            skillsT2.push('none');
+            skillso2.push(newStr.join('&'));
           }
         }
       }
@@ -3734,7 +3746,7 @@ function customSplit(input,token) {
             } else {
               newStr.push("type=draw")
             }
-            skills1[i] = 'obtain_self';
+            skills1.push('obtain_self');
           } else if (findCardById(parseInt(p[0]),true) && findCardById(parseInt(p[0]),true).card_name == card1.card_name){ //假面，三头犬
             change = true;
             if (skills1[i] == 'summon_token'){
@@ -3742,7 +3754,7 @@ function customSplit(input,token) {
             } else {
               newStr.push("type=drawXX")
             }
-            skills1[i] = 'obtain_self';
+            skills1.push('obtain_self');
           } else {
             newStr.push(s)
           }
@@ -3751,7 +3763,10 @@ function customSplit(input,token) {
           }
         }
         if (change){
-          skillso1[i] = newStr.join('&');
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+          skillso1.push(newStr.join('&'));
         }
       }
     }
@@ -3769,11 +3784,11 @@ function customSplit(input,token) {
           if (p[0] == card1.card_id){
             change = true;
             newStr.push("type=deck")
-            skills1[i] = 'obtain_self';
+            skills1.push('obtain_self');
           } else if (findCardById(parseInt(p[0]),true) && findCardById(parseInt(p[0]),true).card_name == card1.card_name){ //假面，三头犬
             change = true;
             newStr.push("type=deckXX")
-            skills1[i] = 'obtain_self';
+            skills1.push('obtain_self');
           } else {
             newStr.push(s)
           }
@@ -3782,7 +3797,10 @@ function customSplit(input,token) {
           }
         }
         if (change){
-          skillso1[i] = newStr.join('&');
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+          skillso1.push(newStr.join('&'));
         }
       }
     }

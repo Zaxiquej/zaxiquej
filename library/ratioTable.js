@@ -37,7 +37,7 @@ let ratioTable = {
   "trigger": {reward:1, punish:1},
   "lose": {reward:3, punish:3}, //沉默
   "{me.inplay.class.pp}": {reward:3, punish:3}, //余费
-  "update_deck": {reward:1.5, punish:1.5}, //洗牌
+  "update_deck": {reward:1.5, punish:1.0}, //洗牌
   "shortage_deck_win": {reward:14, punish:14}, //天使
   "banish_deck": {reward:6, punish:3}, //消失牌库
   "banish_hand": {reward:4, punish:2}, //消失手牌
@@ -117,7 +117,7 @@ let ratioTable = {
   "ramp": {reward:3, punish:3}, //跳/扣费
   "change_affiliation": {reward:7, punish:7}, //改变种族
   "necromance": {reward:1.5, punish:0.8}, //死灵术
-  "choice": {reward:1.5, punish:1.2}, //抉择
+  "choice": {reward:1.5, punish:1.0}, //抉择
   "selfDamage": {reward:1.5, punish:1}, //自残
   "selfFollowerDamage": {reward:2.5, punish:1}, //侮蔑随从
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
@@ -158,8 +158,8 @@ let ratioTable = {
   "return_card": {reward:1.75, punish:1.75}, //回手
   "invocation": {reward:2.4, punish:1.6}, //瞬念
   "cant_attack": {reward:2.4, punish:1.6}, //无法攻击
-  "obtain_self": {reward:3, punish:2}, //套娃
-  "obtain_self_diff": {reward:5, punish:3}, //变异套娃
+  "obtain_self": {reward:3, punish:1.5}, //套娃
+  "obtain_self_diff": {reward:5, punish:2.5}, //变异套娃
   "token_draw_modifier": {reward:6, punish:2}, //获得token修正（花叶之狐）
   "killer": {reward:1.1, punish:1.1},
   "drain": {reward:1.5, punish:1.5},
