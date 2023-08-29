@@ -1,0 +1,38 @@
+#intro {
+  text-align: center;
+}
+
+#game {
+  text-align: center;
+}
+
+#cardImg {
+  display: block;
+  margin: 0 auto; /* 居中显示图片 */
+  width: 300px;
+  height: auto;
+}
+.clanBtn {
+  width: 100px;
+  height: 100px;
+  background-color: transparent; /* 将背景颜色设置为透明 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  margin: 10px;
+}
+
+#restartBtn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+:root {
+  --grayscale-intensity: 100%;
+}
+
+#cardImg.gray {
+  filter: grayscale(var(--grayscale-intensity));
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>影之诗卡牌大师</title>
+  <link rel="stylesheet" href="picGuess.css">
+</head>
+<body>
+
+  <div id="intro">
+    <h1>影之诗卡牌大师</h1>
+    <p>规则：你将会看到一张随机的影之诗卡牌图像。猜测它是哪个职业的卡牌。</p>
+    <p>如果猜对，你将得分一分。如果猜错，游戏结束。</p>
+    <p>当分数提高后，图片可能会出现灰度以进行干扰。</p>
+    <button id="startBtn">开始游戏</button>
+  </div>
+
+  <div id="game" style="display:none;">
+    <h2>分数：<span id="scoreDisplay">0</span></h2>
+    <img id="cardImg">
+    <div id="clanBtns"></div>
+    <h2 id="result"></h2>
+    <button id="restartBtn" style="display:none;">重新开始游戏</button>
+  </div>
+
+  <script src="library/database.js"></script>
+  <script src="picGuess.js"></script>
+
+</body>
+</html>
