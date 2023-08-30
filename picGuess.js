@@ -236,12 +236,12 @@ function checkAnswer(guess) {
           } else if (diceRoll === 4) {
             distraction[3] += 15;
           } else if (diceRoll === 5) {
-            distraction[4] += 20;
+            distraction[4] += 25;
           }
         }
         distraction[1] = Math.min(distraction[1],5);
       } else {
-        distraction = [100,4,120,140,160]
+        distraction = [100,4,125,140,200]
       }
 
       applyGrayScaleEffect(distraction[0])
