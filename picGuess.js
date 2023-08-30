@@ -25,7 +25,7 @@ function preloadImage(src) {
 }
 
 // 预先加载的卡牌数量
-const numPreloadCards = 20; // 可根据需求调整
+const numPreloadCards = 10; // 可根据需求调整
 // 阻止右键菜单弹出行为
 cardImg.addEventListener('contextmenu', (event) => {
   event.preventDefault();
@@ -234,14 +234,14 @@ function checkAnswer(guess) {
           } else if (diceRoll === 3) {
             distraction[2] += 10;
           } else if (diceRoll === 4) {
-            distraction[3] += 10;
+            distraction[3] += 15;
           } else if (diceRoll === 5) {
-            distraction[4] += 15;
+            distraction[4] += 20;
           }
         }
         distraction[1] = Math.min(distraction[1],5);
       } else {
-        distraction = [100,5,140,140,160]
+        distraction = [100,4,120,140,160]
       }
 
       applyGrayScaleEffect(distraction[0])
