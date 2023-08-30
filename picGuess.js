@@ -13,6 +13,7 @@ const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
 const noTokenModeCheckbox = document.getElementById("noTokenModeCheckbox");
 
 const cardImg = document.getElementById('cardImg');
+cardImg.crossOrigin = "";
 
 // 创建一个临时的canvas来计算亮度
 const canvas = document.createElement('canvas');
