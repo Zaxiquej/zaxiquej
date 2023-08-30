@@ -1,9 +1,11 @@
 let score = 0;
 let correctClan = 0;
 let correctCardN;
+let correctId = 0;
 let timer;
 let clanNames = ["中立","妖精","皇家护卫","巫师","龙族","死灵法师","吸血鬼","主教","复仇者"]
 let diceRoll;
+const cardImg = document.getElementById('cardImg');
 // 预加载图片
 function preloadImage(src) {
   return new Promise((resolve, reject) => {
@@ -15,12 +17,17 @@ function preloadImage(src) {
 }
 
 // 预先加载的卡牌数量
-const numPreloadCards = 10; // 可根据需求调整
+const numPreloadCards = 20; // 可根据需求调整
+// 阻止右键菜单弹出行为
+cardImg.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
 
 // 初始化预加载数组
 let preCards = [];
 // 生成系列按钮
 const clanBtns = document.getElementById('clanBtns');
+clanBtns.style.display = 'flex';
 for (let i = 0; i <= 8; i++) {
   let btn = document.createElement('button');
   btn.classList.add('clanBtn');
@@ -67,27 +74,26 @@ function pickCard() {
   const { card, imgSrc } = preCards.shift(); // 获取预先加载的卡牌数据和图片链接
   correctClan = card.clan;
   correctCardN = card.card_name;
-
-  // 获取图片元素
-  const cardImg = document.getElementById('cardImg');
+  correctId = card.card_id;
 
   // 隐藏图片
-  cardImg.classList.remove('gray'); // 移除灰度效果
+  cardImg.classList.remove('combined'); // 移除灰度效果
+
   cardImg.style.display = 'none';
 
-    // 图片加载完成事件
-    cardImg.onload = () => {
-      // 显示图片
-      cardImg.style.display = 'block';
+  // 图片加载完成事件
+  cardImg.onload = () => {
+    // 显示图片
+    cardImg.style.display = 'block';
 
-      // 更新图片源
-      cardImg.src = imgSrc;
+    // 更新图片源
+    cardImg.src = imgSrc;
 
-      // 重新显示按钮
-      document.querySelectorAll('.clanBtn').forEach(btn => {
-        btn.disabled = false;
-      });
-    };
+    // 重新显示按钮
+    document.querySelectorAll('.clanBtn').forEach(btn => {
+      btn.disabled = false;
+    });
+  };
 
   // 设置图片源
   cardImg.src = imgSrc;
@@ -113,7 +119,6 @@ function addPre(){
 // 加载下一张卡牌
 function nextCard() {
   // 隐藏图片
-  const cardImg = document.getElementById('cardImg');
   cardImg.style.display = 'none';
 
   // 隐藏按钮
@@ -134,16 +139,31 @@ function checkAnswer(guess) {
     document.getElementById('scoreDisplay').textContent = score;
     // 根据分数添加遮罩效果
     nextCard(); // 加载下一张卡牌
+    initializeFilterParameters();
 
-    if (score >= 1) {
-      const diceRoll = Math.floor(Math.random() * 4) + 1;
-      if (diceRoll === 1) {
-        applyGrayScaleEffect(50)
-      } else if (diceRoll === 2) {
-        applyGrayScaleEffect(80)
-      } else if (diceRoll === 3) {
-        applyGrayScaleEffect(100)
+    if (score >= 6) {
+      let distraction = [0,0,100,100,100];
+      for (let i = 0; i <= Math.min(parseInt(score/4) + 2,25); i++){
+        const diceRoll = Math.floor(Math.random() * 6) + 1;
+        if (diceRoll === 1) {
+          distraction[0] += 20;
+        } else if (diceRoll === 2) {
+          distraction[1] += 1;
+        } else if (diceRoll === 3) {
+          distraction[2] += 20;
+        } else if (diceRoll === 4) {
+          distraction[3] += 20;
+        } else if (diceRoll === 5) {
+          distraction[4] += 20;
+        }
       }
+      console.log(distraction)
+      applyGrayScaleEffect(distraction[0])
+      applyBlurScaleEffect(distraction[1])
+      applyBrightScaleEffect(distraction[2])
+      applyContrastScaleEffect(distraction[3])
+      applySaturateScaleEffect(distraction[4])
+      cardImg.classList.add('combined'); // 添加灰度效果
     }
   } else {
     endGame();
@@ -153,9 +173,9 @@ function checkAnswer(guess) {
 // 结束游戏
 function endGame() {
   clearInterval(timer);
-  document.getElementById('result').textContent = `错误！正确答案是：${clanNames[correctClan]}。该卡牌为${correctCardN}。最终得分：${score}`;
-
-  // 隐藏按钮，显示重新开始
+  cardImg.classList.remove('combined'); // 移除灰度效果
+  initializeFilterParameters();
+  document.getElementById('result').innerHTML = `错误！正确答案是：${clanNames[correctClan]}。该卡牌为 <a href="https://shadowverse-portal.com/card/${correctId}?lang=zh-tw" target="_blank">${correctCardN}</a>。最终得分：${score}`;
   clanBtns.style.display = 'none';
   document.getElementById('restartBtn').style.display = 'block';
 }
@@ -165,16 +185,6 @@ const restartBtn = document.getElementById('restartBtn');
 restartBtn.addEventListener('click', () => {
   // 重置
   score = 0;
-  preCards = [];
-  // 预先加载卡牌图片
-  for (let i = 0; i < numPreloadCards; i++) {
-    const cardIndex = Math.floor(Math.random() * cardData.length);
-    const card = cardData[cardIndex];
-    const cardId = card.char_type === 1 ? card.card_id * 10 + (Math.random() < 0.5 ? 1 : 0) : card.card_id * 10;
-    const imgSrc = `https://svgdb.me/assets/fullart/${cardId}.png`;
-    preCards.push({ card, imgSrc });
-    preloadImage(imgSrc);
-  }
   // 隐藏结果，显示按钮
   document.getElementById('result').textContent = '';
   clanBtns.style.display = 'flex';
@@ -182,8 +192,37 @@ restartBtn.addEventListener('click', () => {
   startGame();
 });
 
+function initializeFilterParameters() {
+  // 灰度强度
+  document.documentElement.style.setProperty('--grayscale-intensity', '100%');
+  // 模糊强度
+  document.documentElement.style.setProperty('--blur-intensity', '0px');
+  // 亮度强度
+  document.documentElement.style.setProperty('--brightness-intensity', '100%');
+  // 对比度强度
+  document.documentElement.style.setProperty('--contrast-intensity', '100%');
+  // 饱和度强度
+  document.documentElement.style.setProperty('--saturate-intensity', '100%');
+}
+
+
 function applyGrayScaleEffect(intensity) {
   document.documentElement.style.setProperty('--grayscale-intensity', intensity+'%')
-  const cardImg = document.getElementById('cardImg');
-  cardImg.classList.add('gray'); // 添加灰度效果
+}
+
+function applyBlurScaleEffect(intensity) {
+  document.documentElement.style.setProperty('--blur-intensity', intensity+'px')
+}
+
+
+function applyBrightScaleEffect(intensity) {
+  document.documentElement.style.setProperty('--brightness-intensity', intensity + '%')
+}
+
+function applyContrastScaleEffect(intensity) {
+  document.documentElement.style.setProperty('--contrast-intensity', intensity + '%')
+}
+
+function applySaturateScaleEffect(intensity) {
+  document.documentElement.style.setProperty('--saturate-intensity', intensity + '%')
 }

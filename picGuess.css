@@ -13,13 +13,14 @@
   height: auto;
 }
 .clanBtn {
+  display: flex;
   width: 100px;
   height: 100px;
   background-color: transparent; /* 将背景颜色设置为透明 */
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
-  margin: 10px;
+  margin: 10px auto;
 }
 
 #restartBtn {
@@ -31,8 +32,12 @@
 
 :root {
   --grayscale-intensity: 100%;
+  --blur-intensity: 0px;
+  --default-brightness: 100%;
+  --default-contrast: 100%;
+  --saturate-intensity: 100%;
 }
 
-#cardImg.gray {
-  filter: grayscale(var(--grayscale-intensity));
+#cardImg.combined {
+  filter: grayscale(var(--grayscale-intensity)) blur(var(--blur-intensity)) brightness(var(--brightness-intensity)) contrast(var(--contrast-intensity)) saturate(var(--saturate-intensity));;
 }
