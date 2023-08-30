@@ -37171,7 +37171,7 @@ let cardData = [
     "atk": 3,
     "base_card_id": 107111010,
     "card_id": 107111010,
-    "card_name": "百鍊的弓箭手",
+    "card_name": "百炼的弓箭手",
     "card_set_id": 10007,
     "char_type": 1,
     "clan": 1,

@@ -163,24 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addSkillOptionCards(skillOption) {
-    const cardIdToFind = skillOption.match(/\d{9}/); // 使用正则表达式从技能选项中提取连续9位数字
-
-    if (!cardIdToFind) {
-      return; // 无效的技能选项
-    }
-
-    const matchingCard = cardData.find(card => card.card_id === cardIdToFind[0]);
-
-    if (matchingCard && !cardPool.includes(matchingCard)) {
-      if (matchingCard.card_id === baseCardId || matchingCard.card_id === "900811050") {
-        cardPool.push(matchingCard);
-        // 如果需要，可以递归地继续查找并加入新的技能卡
-        addSkillOptionCards(matchingCard.skill_option);
-      }
-    }
-  }
-
-  function addSkillOptionCards(skillOption, baseCardId) {
     skillOption.replaceAll("&",",");
     const tokens = skillOption.split(","); // 分割技能选项
 

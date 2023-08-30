@@ -13,6 +13,23 @@
     <p>当分数提高后，图片可能会出现灰度、模糊、过曝光、过饱和等以进行干扰。</p>
     <p>来试试你是否真的卡面烧成灰都认识吧！</p>
     <p>（因为需要加载图片，需要一定网速支持，网页会预加载最多20张。）</p>
+    <div class="mode-checkbox">
+      <label title="勾选此项以限制卡池仅限指定卡牌与指定卡牌可衍生的 token/无限制卡牌。">
+        <input type="checkbox" id="specifiedModeCheckbox">
+        指定模式
+      </label>
+      <label title="勾选此项以限制卡池仅不再出现无法加入卡组的token卡牌（指定模式下不会出现衍生的无限制卡牌）。">
+        <input type="checkbox" id="noTokenModeCheckbox">
+        无token模式
+      </label>
+    </div>
+
+    <select id="difficultySelect">
+      <option value="easy" title="该难度下不会出现干扰，可以给你没有玩过szb的朋友来认职业">新手</option>
+      <option value="medium" selected title="该难度下会随着分数出现随机干扰。">标准</option>
+      <option value="hard" title="该难度下将一直是极高程度干扰">恐怖</option>
+    </select>
+
     <button id="startBtn">开始游戏</button>
   </div>
 
@@ -23,6 +40,12 @@
     <h2 id="result"></h2>
     <button id="restartBtn" style="display:none;">重新开始游戏</button>
   </div>
+
+  <div class="footer" id="other">         <li>
+        <span> 其他神秘内容 -</span>
+          <a href="yuwan.html">听声辨卡部门</a>
+          <a href="guess.html">猜卡部门</a>
+      </li></div>
 
   <script src="library/database.js"></script>
   <script src="picGuess.js"></script>

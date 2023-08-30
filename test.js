@@ -89,6 +89,7 @@ function createNewDataBase(allcards, subToken) {
     const replaceRules = [
       ["鍊金", "炼金"],
       ["项鍊", "项链"],
+      ["百鍊", "百炼"]
       ["葛兰", "古兰"],
       ["壹剑","苇剑"],
       ["凯留","凯露"]

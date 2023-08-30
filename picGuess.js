@@ -5,6 +5,13 @@ let correctId = 0;
 let timer;
 let clanNames = ["中立","妖精","皇家护卫","巫师","龙族","死灵法师","吸血鬼","主教","复仇者"]
 let diceRoll;
+let difficulty;
+let cardPool = [];
+let lastPacket = 10029;
+
+const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
+const noTokenModeCheckbox = document.getElementById("noTokenModeCheckbox");
+
 const cardImg = document.getElementById('cardImg');
 // 预加载图片
 function preloadImage(src) {
@@ -44,14 +51,84 @@ for (let i = 0; i <= 8; i++) {
 const startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startGame);
 
+function findCardById(id) {
+  return cardData.find((card) => card.card_id === id);
+}
+
+function addCardsFromLastPackets() {
+  let cardSetIds = Array.from({ length: 5 }, (_, index) => lastPacket - index)
+  cardSetIds.push(10000) //基础包
+
+  cardSetIds.forEach(cardSetId => {
+    const matchingCards = cardData.filter(card => card.card_set_id === cardSetId && !cardPool.includes(card));
+
+    matchingCards.forEach(card => {
+      if (!cardPool.includes(card)) {
+        cardPool.push(card);
+
+        // 查找并加入符合条件的技能卡
+        if (!noTokenModeCheckbox.checked){
+          addSkillOptionCards(card.skill_option);
+        }
+      }
+    });
+  });
+}
+
+function addSkillOptionCards(skillOption) {
+  skillOption.replaceAll("&",",");
+  const tokens = skillOption.split(","); // 分割技能选项
+
+  tokens.forEach(token => {
+    const matches = token.split("//")[0].split(")")[0].match(/(token_draw|summon_token|card_id)=([^&]+)/); // 从分割的段落中提取 token 信息
+
+    if (matches && matches[2]) {
+      const cardIds = matches[2].split(":"); // 分割 card_id
+
+      cardIds.forEach(cardIdToFind => {
+        const matchingCard = findCardById(parseInt(cardIdToFind));
+
+        if (matchingCard && (matchingCard.card_id === matchingCard.base_card_id || matchingCard.base_card_id === "900811050")) {
+          if (!cardPool.includes(matchingCard)) {
+            cardPool.push(matchingCard);
+            addSkillOptionCards(matchingCard.skill_option);
+          }
+        }
+      });
+    }
+  });
+}
+
 function startGame() {
   // 隐藏介绍，显示游戏界面
   document.getElementById('intro').style.display = 'none';
+  document.getElementById('other').style.display = 'none';
   document.getElementById('game').style.display = 'block';
+
+  const difficultySelect = document.getElementById('difficultySelect');
+  const selectedDifficulty = difficultySelect.value;
+  // 根据选择的难度设置投骰子效果
+  difficulty = 1;
+  if (selectedDifficulty === 'medium') {
+    difficulty = 2;
+  } else if (selectedDifficulty === 'hard') {
+    difficulty = 3;
+  }
+
+  if (specifiedModeCheckbox.checked) {
+    cardPool = [];
+    addCardsFromLastPackets();
+  } else {
+    if (noTokenModeCheckbox.checked){
+      cardPool = cardData.filter((card) => card.card_set_id != 90000);
+    } else {
+      cardPool = cardData;
+    }
+  }
   // 预先加载卡牌图片
   for (let i = 0; i < numPreloadCards; i++) {
-    const cardIndex = Math.floor(Math.random() * cardData.length);
-    const card = cardData[cardIndex];
+    const cardIndex = Math.floor(Math.random() * cardPool.length);
+    const card = cardPool[cardIndex];
     const cardId = card.char_type === 1 ? card.card_id * 10 + (Math.random() < 0.5 ? 1 : 0) : card.card_id * 10;
     const imgSrc = `https://svgdb.me/assets/fullart/${cardId}.png`;
     preCards.push({ card, imgSrc });
@@ -108,8 +185,8 @@ function pickCard() {
 }
 
 function addPre(){
-  const cardIndex = Math.floor(Math.random() * cardData.length);
-  const card = cardData[cardIndex];
+  const cardIndex = Math.floor(Math.random() * cardPool.length);
+  const card = cardPool[cardIndex];
   const cardId = card.char_type === 1 ? card.card_id * 10 + (Math.random() < 0.5 ? 1 : 0) : card.card_id * 10;
   const imgSrc = `https://svgdb.me/assets/fullart/${cardId}.png`;
   preCards.push({ card, imgSrc });
@@ -140,24 +217,31 @@ function checkAnswer(guess) {
     // 根据分数添加遮罩效果
     nextCard(); // 加载下一张卡牌
     initializeFilterParameters();
-
-    if (score >= 6) {
+    if (difficulty == 1){
+      return;
+    }
+    if (score >= 6 || difficulty == 3) {
       let distraction = [0,0,100,100,100];
-      for (let i = 0; i <= Math.min(parseInt(score/4) + 2,25); i++){
-        const diceRoll = Math.floor(Math.random() * 6) + 1;
-        if (diceRoll === 1) {
-          distraction[0] += 20;
-        } else if (diceRoll === 2) {
-          distraction[1] += 1;
-        } else if (diceRoll === 3) {
-          distraction[2] += 20;
-        } else if (diceRoll === 4) {
-          distraction[3] += 20;
-        } else if (diceRoll === 5) {
-          distraction[4] += 20;
+      if (difficulty == 2){
+        for (let i = 0; i <= Math.min(parseInt(score/3) + 2,20); i++){
+          const diceRoll = Math.floor(Math.random() * 6) + 1;
+          if (diceRoll === 1) {
+            distraction[0] += 25;
+          } else if (diceRoll === 2) {
+            distraction[1] += 1;
+          } else if (diceRoll === 3) {
+            distraction[2] += 10;
+          } else if (diceRoll === 4) {
+            distraction[3] += 10;
+          } else if (diceRoll === 5) {
+            distraction[4] += 15;
+          }
         }
+        distraction[1] = Math.min(distraction[1],5);
+      } else {
+        distraction = [100,5,140,140,160]
       }
-      console.log(distraction)
+
       applyGrayScaleEffect(distraction[0])
       applyBlurScaleEffect(distraction[1])
       applyBrightScaleEffect(distraction[2])
