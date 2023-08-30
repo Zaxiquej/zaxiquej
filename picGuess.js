@@ -13,11 +13,6 @@ const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
 const noTokenModeCheckbox = document.getElementById("noTokenModeCheckbox");
 
 const cardImg = document.getElementById('cardImg');
-cardImg.crossOrigin = "";
-
-// 创建一个临时的canvas来计算亮度
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
 
 // 预加载图片
 function preloadImage(src) {
@@ -227,37 +222,6 @@ function checkAnswer(guess) {
       return;
     }
     if (score >= 6 || difficulty == 3) {
-      // 设置canvas的尺寸和图片尺寸一致
-      canvas.width = cardImg.width;
-      canvas.height = cardImg.height;
-
-      // 在canvas上绘制图片
-      ctx.drawImage(cardImg, 0, 0);
-
-      // 获取图片的像素数据
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const pixels = imageData.data;
-
-      // 计算图片的亮度
-      let totalBrightness = 0;
-      for (let i = 0; i < pixels.length; i += 4) {
-        const r = pixels[i];
-        const g = pixels[i + 1];
-        const b = pixels[i + 2];
-        // 使用加权平均法计算亮度
-        const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-        totalBrightness += brightness;
-      }
-
-      // 计算平均亮度
-      const averageBrightness = totalBrightness / (canvas.width * canvas.height);
-      console.log(averageBrightness);
-
-      let li = 10;
-      if (averageBrightness != 0 && averageBrightness > 128){
-        li = 0;
-      }
-
       let distraction = [0,0,100,100,100];
 
       if (difficulty == 2){
@@ -268,7 +232,7 @@ function checkAnswer(guess) {
           } else if (diceRoll === 2) {
             distraction[1] += 1;
           } else if (diceRoll === 3) {
-            distraction[2] += li;
+            distraction[2] += 10;
           } else if (diceRoll === 4) {
             distraction[3] += 10;
           } else if (diceRoll === 5) {
@@ -277,7 +241,7 @@ function checkAnswer(guess) {
         }
         distraction[1] = Math.min(distraction[1],5);
       } else {
-        distraction = [100,5,li,140,160]
+        distraction = [100,5,140,140,160]
       }
 
       applyGrayScaleEffect(distraction[0])
