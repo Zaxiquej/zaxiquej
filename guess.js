@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const minionOptions2 = document.getElementById("minionOptions2");
     const guessedCountSpan = document.getElementById('guessedCount');
 
+    // 获取包含 generatePastDateSeeds(20) 内容的字符串
+    var functionContent = generatePastDateSeeds(20).toString();
+
+    // 将函数内容设置到 <pre> 元素中
+    var functionContentElement = document.getElementById("functionContent");
+    functionContentElement.innerHTML = functionContent;
+
     cardTypeSelect.addEventListener("change", () => {
       if (cardTypeSelect.value === "minion") {
         minionOptions1.style.display = "block";
@@ -1086,7 +1093,7 @@ function generatePastDateSeeds(numDays) {
 
   for (let i = 0; i < numDays; i++) {
     const currentDate = new Date();
-    currentDate.setHours(currentDate.getHours() + 8 - i * 24); // Adjust for past days
+    currentDate.setHours(currentDate.getHours() + 8 - (i+1) * 24); // Adjust for past days
     const year = currentDate.getUTCFullYear().toString();
     const month = (currentDate.getUTCMonth() + 1).toString().padStart(2, '0');
     const day = currentDate.getUTCDate().toString().padStart(2, '0');
@@ -1105,5 +1112,5 @@ function generatePastDateSeeds(numDays) {
     seeds.push(`<li>${year}/${month}/${day}-${seed}</li>`);
   }
 
-  return seeds.join('\n');
+  return seeds.join('<br>');
 }

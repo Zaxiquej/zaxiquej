@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>卡组码转10进制数组工具</title>
+    <script>
+        let data;
+        // Function to convert binary to spaced binary
+        function spacedBinary(binaryString, groupSize) {
+          let spacedBinaryString = '';
+          for (let i = 0; i < binaryString.length; i++) {
+            spacedBinaryString += binaryString[i];
+            if ((i + 1) % groupSize === 0 && i !== binaryString.length - 1) {
+              spacedBinaryString += ' ';
+            }
+          }
+          return spacedBinaryString;
+        }
+
+        function decodeDeckCode(deckCode) {
+          const base64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+          const decodeMap = new Map([...base64].map((c, i) => [c, i]));
+          const bytes = deckCode.split("").map(c => decodeMap.get(c));
+          const format = bytes[0];
+          const version = bytes[1];
+          i = 2;
+          const cards = [];
+          let cardIndex = 0;
+          while (i < bytes.length) {
+            let count = 0;
+            let value = 0;
+            while (bytes[i] & 0x80) {
+              value |= (bytes[i] & 0x7f) << (7 * count);
+              count++;
+              i++;
+            }
+            value |= bytes[i] << (7 * count);
+            count++;
+            i++;
+            for (let j = 0; j < count; j++) {
+              cards[cardIndex + j] = value % 10000;
+              value = Math.floor(value / 10000);
+            }
+            cardIndex += count;
+          }
+
+           return { format, version, cards };
+        }
+
+
+        function convertDeckstring() {
+            let deckstring = document.getElementById("deckstringInput").value;
+            deckstring = deckstring.replaceAll("_","/");
+            deckstring = deckstring.replaceAll("-","+");
+            console.log(decodeDeckCode(deckstring))
+            const binary = atob(deckstring);
+            function toBinary(number) {
+              return number.toString(2).padStart(8, '0');
+            }
+
+            let spacedBinaryResult = '';
+
+            for (let i = 0; i < binary.length; i++) {
+              spacedBinaryResult += toBinary(binary.charCodeAt(i)) + ' ';
+
+              if ((i + 1) % 4 === 0) {
+                spacedBinaryResult += ' ';
+              }
+            }
+
+
+            //let hex = "";
+            //for (let i = 0; i < binary.length; i++) {
+            //    const byte = binary.charCodeAt(i).toString(16).padStart(2, "0");
+            //    hex += byte;
+            //}
+
+            //document.getElementById("decimalOutput").textContent = spacedBinaryResult;
+            //return;
+
+            data = [];
+            for (let i = 0; i < binary.length; i++) {
+                const decimalValue = binary.charCodeAt(i);
+                data.push(decimalValue);
+            }
+            document.getElementById("decimalOutput").textContent = JSON.stringify(data);
+            let data2 = [];
+            while (data.length > 0){
+              data2.push(read_varint(data));
+            }
+            document.getElementById("decimalOutput2").textContent = JSON.stringify(data2);
+        }
+
+        function read_varint(data) {
+        	let shift = 0;
+        	let result = 0;
+        	let c;
+        	do {
+        		c = data.shift();
+        		result |= (c & 0x7f) << shift;
+        		shift += 7;
+        	}
+        	while (c & 0x80);
+        	return result;
+        }
+
+        function parse_deck(data) {
+        	const reserve = read_varint(data);
+        	if (reserve !== 0) {
+        		//return "Invalid deckstring";
+        	}
+        	const version = read_varint(data);
+        	if (version !== 1) {
+        		//return "Unsupported deckstring version " + version;
+        	}
+        	const format = read_varint(data);
+
+        	const cards = [];
+        	const num_cards_x1 = read_varint(data);
+        	for (let i = 0; i < num_cards_x1; i++) {
+        		const card_id = read_varint(data);
+        		cards.push([card_id, 1]);
+        	}
+        	const num_cards_x2 = read_varint(data);
+        	for (let i = 0; i < num_cards_x2; i++) {
+        		const card_id = read_varint(data);
+        		cards.push([card_id, 2]);
+        	}
+        	const num_cards_xn = read_varint(data);
+        	for (let i = 0; i < num_cards_xn; i++) {
+        		const card_id = read_varint(data);
+        		const count = read_varint(data);
+        		cards.push([card_id, count]);
+        	}
+        	return { cards, format };
+        }
+
+    </script>
+</head>
+<body>
+    <h1>卡组码转10进制数组工具</h1>
+    <p>输入卡组码：<input type="text" id="deckstringInput"></p>
+    <button onclick="convertDeckstring()">转换为10进制数组</button>
+    <p>对应的10进制数组：<span id="decimalOutput"></span></p>
+    <p>对应的10进制数组2：<span id="decimalOutput2"></span></p>
+</body>
+</html>

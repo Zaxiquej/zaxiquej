@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>卡牌游戏比赛报名</title>
+</head>
+<body>
+    <h1>卡牌游戏比赛报名</h1>
+    <form action="/register" method="post">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="deck">卡组：</label>
+        <textarea id="deck" name="deck" rows="4" required></textarea><br>
+        <button type="submit">报名</button>
+    </form>
+
+    <h2>参赛选手</h2>
+    <ul id="participants">
+        <!-- 这里将显示参赛选手 -->
+    </ul>
+
+    <script>
+        async function fetchParticipants() {
+            const response = await fetch('/participants');
+            const data = await response.json();
+
+            const participantsList = document.getElementById('participants');
+            participantsList.innerHTML = '';
+
+            data.forEach(participant => {
+                const li = document.createElement('li');
+                li.textContent = `${participant.name} (${participant.deck})`;
+                participantsList.appendChild(li);
+            });
+        }
+
+        fetchParticipants();
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传和转换</title>
+</head>
+<body>
+    <h1>文件上传和转换</h1>
+    <input type="file" id="fileInput" accept=".csv">
+    <br><br>
+    <button onclick="processFile()">转换文件</button>
+    <br><br>
+    <div id="output"></div>
+    <a id="downloadLink" style="display: none" download="converted_data.json">点击此处下载</a>
+
+    <script src="library/database.js"></script>
+    <script>
+        function processFile() {
+            const fileInput = document.getElementById('fileInput');
+            const outputDiv = document.getElementById('output');
+            const downloadLink = document.getElementById('downloadLink');
+
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('请选择一个文件');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.readAsText(file);
+
+            reader.onload = function(event) {
+                const fileContent = event.target.result;
+                const lines = fileContent.split('\n');
+                const data = [];
+
+                for (const line of lines) {
+                    const [card_id, short_id] = line.trim().split(',');
+                    console.log(card_id)
+                    const matchingCard = cardData.find(card => card.card_id == card_id);
+
+                    if (matchingCard) {
+                        data.push({
+                            card_id: card_id,
+                            short_id: parseInt(short_id),
+                            card_name: matchingCard.card_name
+                        });
+                    }
+                }
+
+                if (data.length === 0) {
+                    outputDiv.innerHTML = '<p>没有匹配的数据。</p>';
+                } else {
+                    // 输出处理后的数据
+                    outputDiv.innerHTML = '<h2>转换后的数据：</h2>' + JSON.stringify(data, null, 2);
+
+                    // 生成并设置下载链接
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    downloadLink.href = url;
+                    downloadLink.style.display = 'block';
+                }
+            };
+        }
+    </script>
+</body>
+</html>
