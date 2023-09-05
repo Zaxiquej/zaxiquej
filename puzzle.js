@@ -178,23 +178,15 @@ function undoDirection(){
   suggestionsDiv.innerHTML = '';
 }
 
+calcButton.addEventListener('click', () => {
+    findAndSetBestMove(startcard,endCard);
+});
+
 function findAndSetBestMove(startCard, endCard) {
   // 创建一个新的Worker实例
-  const worker = new Worker('worker.js');
-  worker.postMessage({ startCard, endCard });
-  // 监听从Worker返回的消息
-  worker.onmessage = function (e) {
-      const { path, error } = e.data;
-        if (path) {
-          answer = path;
-          const bestMoveText = `最佳步数：${answer.length - 1}`;
-          document.getElementById("bestMove").textContent = bestMoveText;
-      } else if (error) {
-          // 处理未找到路径的情况
-          console.error("未找到路径:", error);
-          document.getElementById("bestMove").textContent = "未找到路径";
-      }
-  };
+  answer = findShortestPath(startCard,endCard);
+  const bestMoveText = `最佳步数：${answer.length - 1}`;
+  document.getElementById("bestMove").textContent = bestMoveText;
 }
 
 function findShortestPath(startCard, endCard) {
@@ -301,8 +293,6 @@ function generateRandomStartEndCards(seed) {
     // 初始时，当前卡片为起始卡
     currentStCard = startCard;
     currentEdCard = endCard;
-
-    findAndSetBestMove(startCard, endCard);
 }
 
 // 创建包含卡片信息的容器

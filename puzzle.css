@@ -29,6 +29,7 @@ border-radius: 4px; /* 圆角边框 */
 #useSeedButton,
 #reverseButton,
 #undoButton,
+#calcButton,
 #link-button {
   width: auto; /* 调整按钮的宽度 */
   padding: 8px; /* 调整内边距 */
@@ -46,6 +47,7 @@ border-radius: 4px; /* 圆角边框 */
 #useSeedButton:hover,
 #reverseButton:hover,
 #undoButton:hover,
+#calcButton:hover,
 #link-button:hover {
   background-color: #0056b3;
 }
