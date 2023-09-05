@@ -57,9 +57,7 @@ body {
 #sortingOptions {
   display: none;
 }
-#cSeed {
-  display: none;
-}
+
 .button-container {
   display: flex;
   justify-content: left; /* 将按钮水平居中 */
@@ -266,6 +264,7 @@ border-radius: 4px; /* 圆角边框 */
 }
 
 #cSeed {
+  display: none;
   text-align: center; /* 文本居中 */
   margin: 20px 0; /* 上下外边距 */
   padding: 15px; /* 内边距 */

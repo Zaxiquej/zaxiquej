@@ -3412,7 +3412,7 @@ function customSplit(input,token) {
       }
     }
 
-    let buffKeys = ['shield','powerup','spell_charge',"cost_change"];
+    let buffKeys = ['shield','powerup'];
     for (let i = 0; i < skills1.length; i++){
       if (buffKeys.includes(skills1[i]) && (skillst1[i].includes("target=self") || skillst1[i] == "character=me")){
         skills1.push('selfBuff');

@@ -1,78 +1,212 @@
-/* 样式定义，您可以根据需要进行样式的设计和布局 */
-.game-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.character {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#startBox, #gameBox {
+    text-align: center;
+    margin: 20px;
+}
+/* 调整输入框和按钮容器的样式 */
+#subStartBox {
+display: flex; /* 使用 Flex 布局使输入框和按钮水平排列 */
+gap: 10px; /* 添加间距 */
+justify-content: center; /* 居中排列 */
+margin-bottom: 20px; /* 底部间距 */
+margin: 0 auto; /* 设置水平居中 */
+width: 60%; /* 限制宽度为页面宽度的 80% */
 }
 
-.player img,
-.monster img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 10px;
+/* 调整输入框和按钮的宽度 */
+#seedInput {
+width: 100%; /* 调整输入框的宽度 */
+padding: 10px; /* 添加内边距以美化外观 */
+border: 1px solid #ccc; /* 添加边框 */
+border-radius: 4px; /* 圆角边框 */
 }
 
-.exp-bar,
-.action-bar {
-  width: 100px;
-  height: 10px;
-  background-color: #ccc;
-  border: 1px solid #666;
+#randomSeedButton,
+#restartButton,
+#useSeedButton,
+#link-button {
+  width: auto; /* 调整按钮的宽度 */
+  padding: 8px; /* 调整内边距 */
+  font-size: 14px; /* 调整字体大小 */
+  margin: 0 5px; /* 调整按钮之间的外边距 */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#randomSeedButton:hover,
+#restartButton:hover,
+#useSeedButton:hover,
+#link-button:hover {
+  background-color: #0056b3;
+}
+
+.input-container {
+  flex: 1;
   position: relative;
 }
 
-.exp-fill,
-.action-fill {
-  height: 100%;
-  background-color: #66cc66;
-  position: absolute;
-  top: 0;
-  left: 0;
+.input-container input[type="text"] {
+  width: 60%; /* 调整输入框的宽度 */
+  padding: 10px; /* 添加内边距以美化外观 */
+  border: 1px solid #ccc; /* 添加边框 */
+  border-radius: 4px; /* 圆角边框 */
 }
 
-.stats {
+.center-button {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#gameBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#path {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.card-container img {
+    width: 100px;
+    height: 120px;
+}
+
+.mini-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+.mini-card-container img {
+    width: 50px;
+    height: 60px;
+}
+
+.arrow {
+    width: auto;
+    height: auto;
+    margin: 0 4px;
+    font-size: 12px;
+}
+
+/* 设置按钮组样式 */
+#suggestionsDiv {
+  max-width: 300px; /* 设置最大宽度 */
+  margin: 0 auto; /* 水平居中 */
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* 水平居中 */
+  gap: 10px; /* 按钮之间的空隙 */
+  margin-bottom: 10px; /* 顶部间距 */
+  margin-top: 10px; /* 顶部间距 */
 }
 
-.player-stats,
-.monster-stats {
-  flex: 1;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  text-align: center;
+/* 按钮样式 */
+.suggestionBtn {
+  padding: 5px 10px; /* 按钮内边距 */
+  background-color: #f0f0f0; /* 按钮背景颜色 */
+  color: #333; /* 按钮文字颜色 */
+  border: none; /* 移除按钮边框 */
+  border-radius: 4px; /* 圆角按钮 */
+  cursor: pointer; /* 添加鼠标指针效果 */
+  background-size: cover;
+  transition: transform 0.3s ease-in-out;
 }
 
-.questions {
-  flex: 2;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+.suggestionBtn:hover {
+  background-color: #ddd; /* 鼠标悬停时的背景颜色 */
+  width: 100px;
+  height: 120px;
+  font-weight: bold; /* 字体加粗 */
+  text-shadow: 2px 2px 4px white; /* 白色光影 */
 }
 
-.question {
-  margin-bottom: 10px;
+/* 按钮样式 */
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    width: 180px
 }
 
-.actions {
-  text-align: center;
+/* 按钮标题样式 */
+.custom-button .button-title {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-button {
-  padding: 8px 16px;
-  margin: 0 5px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+/* 按钮内容样式 */
+.custom-button .button-content {
+    font-size: 12px;
+}
+
+#cSeed {
+  display: none;
+  text-align: center; /* 文本居中 */
+  margin: 20px 0; /* 上下外边距 */
+  padding: 15px; /* 内边距 */
+  background-color: #f5f5f5; /* 背景色 */
+  border-radius: 8px; /* 圆角边框 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+#cSeed p {
+  margin: 8px 0; /* 上下外边距 */
+  font-size: 16px; /* 字体大小 */
+}
+
+#cSeed span {
+  font-weight: bold; /* 加粗文本 */
+  color: #007bff; /* 文本颜色 */
+}
+
+#cSeed #currentSeed {
+  font-size: 18px; /* 标题字体大小 */
+  margin-bottom: 15px; /* 底部外边距 */
+}
+
+/* 美化链接样式 */
+a {
+  text-decoration: none; /* 移除下划线 */
+  color: #007bff; /* 链接颜色 */
+}
+
+a:hover {
+  text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
+
+#path {
+    white-space: pre-wrap;
+    height: 200px; /* 设置固定高度 */
+    overflow-y: auto; /* 启用垂直滚动条 */
 }

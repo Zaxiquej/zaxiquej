@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="puzzle.css">
-  <title>微积分战斗游戏</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="puzzle.css">
+    <title>寻找关联</title>
 </head>
 <body>
-  <div class="game-container">
-    <div class="character">
-      <div class="player">
-        <img src="player.png" alt="Player">
-        <div class="exp-bar">
-          <div class="exp-fill" id="exp-fill"></div>
+    <div id="startBox">
+        <div id="subStartBox">
+            <button id="randomSeedButton">今日谜题种子</button>
+            <div class="input-container">
+                <input type="text" id="seedInput" placeholder="输入种子">
+            </div>
         </div>
-      </div>
-      <div class="monster">
-        <img src="monster.png" alt="Monster">
-        <div class="action-bar">
-          <div class="action-fill" id="action-fill"></div>
+        <div class="center-button">
+            <button id="useSeedButton">开始游戏</button>
         </div>
-      </div>
     </div>
-    <div class="stats">
-      <div class="player-stats">
-        <h2>主角状态</h2>
-        <p>生命值: <span id="player-health">100</span></p>
-        <p>攻击力: <span id="player-attack">10</span></p>
-        <p>防御力: <span id="player-defense">5</span></p>
-        <p>经验: <span id="player-exp">0</span></p>
+
+    <div id="gameBox" class="hidden">
+      <div id="cSeed">
+      <p id="currentSeed">当前种子：</p>
       </div>
-      <div class="monster-stats">
-        <h2>怪物状态</h2>
-        <p>生命值: <span id="monster-health">80</span></p>
-        <p>攻击力: <span id="monster-attack">8</span></p>
-        <p>防御力: <span id="monster-defense">3</span></p>
-      </div>
+        <div id="path">
+            <!-- 路径信息将在游戏中动态更新 -->
+        </div>
+        <div id="options">
+            <!-- 选项按钮将在游戏中动态生成 -->
+        </div>
+        <div id="suggestions">
+            <!-- 选项按钮将在游戏中动态生成 -->
+        </div>
+        <div id="stepCounter">
+            步数: <span id="stepCount">0</span>
+        </div>
+        <div id="result" class="hidden">
+            <!-- 游戏结果将在游戏结束后显示 -->
+        </div>
+        <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank" id="link-button">前往 Shadowverse Portal</a>
     </div>
-    <div class="questions">
-      <h2>微积分题目</h2>
-      <div class="question">
-        <p id="question-text">解微分方程 dy/dx = x^2</p>
-        <input type="text" id="answer-input" placeholder="请输入答案">
-      </div>
-      <div class="actions">
-        <button id="attack-btn">攻击</button>
-        <button id="heal-btn">回血</button>
-      </div>
-    </div>
-  </div>
-  <script src="puzzle.js"></script>
+
+    <script src="library/database.js"></script>
+    <script src="library/subdatabase.js"></script>
+    <script src="library/ratioTable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="puzzleButtons.js"></script>
+    <script src="similarity.js"></script>
+    <script src="puzzle.js"></script>
 </body>
 </html>
