@@ -4,6 +4,7 @@ const gameBox = document.getElementById('gameBox');
 const randomSeedButton = document.getElementById('randomSeedButton');
 const seedInput = document.getElementById('seedInput');
 const useSeedButton = document.getElementById('useSeedButton');
+const reverseButton = document.getElementById('reverseButton');
 const stepCounter = document.getElementById('stepCounter');
 const stepCount = document.getElementById('stepCount');
 const options = document.getElementById('options');
@@ -14,20 +15,27 @@ const suggestionsDiv = document.getElementById('suggestions');
 let currentSeed = '';
 let startCard;
 let endCard;
-let currentCard; // 新增：用于记录当前卡片
-let step = 0;
+let answer;
+let currentStCard; // 新增：用于记录当前卡片
+let currentEdCard; // 新增：用于记录当前卡片
+let currentCardelems = [];
+let direction = 1; //顺推
 let questionMark = 0;
 let isGameOver = false; // 用于标记游戏是否结束
 
 // 初始化游戏界面
 function initGame() {
-    startBox.classList.add('hidden');
+    startBox.classList.remove('hidden');
     result.classList.add('hidden');
     path.innerHTML = ''; // 清空路径信息
-    step = 0;
+    currentCardelems = [];
+    direction = 1; //顺推
+    answer = undefined;
+    document.getElementById("bestMove").textContent = `最佳步数：计算中`;
 
     // 初始时，当前卡片为起始卡
-    currentCard = startCard;
+    currentStCard = startCard;
+    currentEdCard = endCard;
 }
 
 // 生成随机的3个选项按钮
@@ -46,22 +54,54 @@ function createOptionButton(buttonInfo) {
     return button.getButtonElement();
 }
 
+Element.prototype.insertAfter = function(newElement, targetElement) {
+  const parentElement = targetElement.parentNode;
+
+  if (targetElement === parentElement.lastChild) {
+    parentElement.appendChild(newElement);
+  } else {
+    parentElement.insertBefore(newElement, targetElement.nextSibling);
+  }
+};
 // 更新路径信息
 function updatePath(selectedCard) {
-    currentCard = selectedCard;
+  if (direction == 1){
+    currentStCard = selectedCard;
+  } else {
+    currentEdCard = selectedCard;
+  }
+
     const arrow = document.createElement('div');
     arrow.classList.add('arrow');
     arrow.textContent = '→';
-
-    if (currentCard === endCard) {
-        path.removeChild(questionMark);
+    if (direction == 1){
+      if (currentStCard === currentEdCard) {
+          path.removeChild(questionMark);
+      } else {
+        const newCardContainer = createCardContainer(currentStCard, true);
+        const arrow = document.createElement('div');
+        arrow.classList.add('arrow');
+        arrow.textContent = '→';
+        path.insertBefore(newCardContainer,questionMark);
+        path.insertBefore(arrow,questionMark);
+        currentCardelems[direction].classList.remove("highlight");
+        currentCardelems[direction] = newCardContainer;
+        currentCardelems[direction].classList.add("highlight");
+      }
     } else {
-      const newCardContainer = createCardContainer(currentCard, true);
-      const arrow = document.createElement('div');
-      arrow.classList.add('arrow');
-      arrow.textContent = '→';
-      path.insertBefore(newCardContainer,questionMark);
-      path.insertBefore(arrow,questionMark);
+      if (currentStCard === currentEdCard) {
+          path.removeChild(questionMark);
+      } else {
+        const newCardContainer = createCardContainer(currentEdCard, true);
+        const arrow = document.createElement('div');
+        arrow.classList.add('arrow');
+        arrow.textContent = '→';
+        path.insertAfter(arrow,questionMark);
+        path.insertAfter(newCardContainer,questionMark);
+        currentCardelems[direction].classList.remove("highlight");
+        currentCardelems[direction] = newCardContainer;
+        currentCardelems[direction].classList.add("highlight");
+      }
     }
 }
 
@@ -81,8 +121,81 @@ useSeedButton.addEventListener('click', () => {
     if (enteredSeed) {
         currentSeed = enteredSeed;
     }
+    if (currentSeed === "") {
+      alert("请输入种子或点击随机种子按钮获取随机种子！");
+      return;
+    }
     startGame();
 });
+
+reverseButton.addEventListener('click', () => {
+    flipDirection();
+});
+
+function flipDirection(){
+  if (direction == 1){
+    currentCardelems[direction].classList.remove("highlight");
+    direction = 0;
+    currentCardelems[direction].classList.add("highlight");
+  } else {
+    currentCardelems[direction].classList.remove("highlight");
+    direction = 1;
+    currentCardelems[direction].classList.add("highlight");
+  }
+  suggestionsDiv.innerHTML = '';
+}
+
+undoButton.addEventListener('click', () => {
+    undoDirection();
+});
+
+function undoDirection(){
+  if (direction == 1){
+    if (currentStCard.special){
+      alert("你不可以撤回起始卡！")
+      return;
+    }
+    currentCardelems[direction] = currentCardelems[direction].previousSibling.previousSibling;
+    currentStCard = currentCardelems[direction].card;
+    currentCardelems[direction].classList.add("highlight");
+    path.removeChild(currentCardelems[direction].nextSibling);
+    path.removeChild(currentCardelems[direction].nextSibling);
+    const currentStep = parseInt(stepCount.textContent) - 1;
+    stepCount.textContent = currentStep;
+  } else {
+    if (currentEdCard.special){
+      alert("你不可以撤回终止卡！")
+      return;
+    }
+    currentCardelems[direction] = currentCardelems[direction].nextSibling.nextSibling;
+    currentStCard = currentCardelems[direction].card;
+    currentCardelems[direction].classList.add("highlight");
+    path.removeChild(currentCardelems[direction].previousSibling);
+    path.removeChild(currentCardelems[direction].previousSibling);
+    const currentStep = parseInt(stepCount.textContent) - 1;
+    stepCount.textContent = currentStep;
+  }
+  suggestionsDiv.innerHTML = '';
+}
+
+function findAndSetBestMove(startCard, endCard) {
+  // 创建一个新的Worker实例
+  const worker = new Worker('worker.js');
+  worker.postMessage({ startCard, endCard });
+  // 监听从Worker返回的消息
+  worker.onmessage = function (e) {
+      const { path, error } = e.data;
+        if (path) {
+          answer = path;
+          const bestMoveText = `最佳步数：${answer.length - 1}`;
+          document.getElementById("bestMove").textContent = bestMoveText;
+      } else if (error) {
+          // 处理未找到路径的情况
+          console.error("未找到路径:", error);
+          document.getElementById("bestMove").textContent = "未找到路径";
+      }
+  };
+}
 
 // 生成随机的起始卡和终止卡
 function generateRandomStartEndCards(seed) {
@@ -97,6 +210,8 @@ function generateRandomStartEndCards(seed) {
 
     startCard = cardData[startIndex];
     endCard = cardData[endIndex];
+    startCard.special = true;
+    endCard.special = true;
 
     // 显示起始卡和终止卡信息
     const startCardContainer = createCardContainer(startCard, false);
@@ -112,9 +227,15 @@ function generateRandomStartEndCards(seed) {
     questionMark = document.createTextNode(' ??? →');
     path.appendChild(questionMark);
     path.appendChild(endCardContainer);
+    currentCardelems[1] = startCardContainer;
+    currentCardelems[0] = endCardContainer;
+    currentCardelems[1].classList.add("highlight");
 
     // 初始时，当前卡片为起始卡
-    currentCard = startCard;
+    currentStCard = startCard;
+    currentEdCard = endCard;
+
+    findAndSetBestMove(startCard, endCard);
 }
 
 // 创建包含卡片信息的容器
@@ -141,6 +262,7 @@ function createCardContainer(card, isMini) {
     // 将图片和超链接添加到容器中
     cardContainer.appendChild(cardImage);
     cardContainer.appendChild(cardLink);
+    cardContainer.card = card;
 
     return cardContainer;
 }
@@ -148,7 +270,7 @@ function createCardContainer(card, isMini) {
 // 开始游戏函数
 function startGame() {
     startBox.classList.add('hidden');
-    gameBox.classList.remove('hidden');
+    gameBox.style.display = "block";
     stepCount.textContent = '0';
     result.classList.add('hidden');
     document.getElementById("cSeed").style.display = "block";
@@ -262,7 +384,7 @@ function generateRelatedCardButtons(operation) {
              updatePath(selectedCard); // 更新路径信息
 
              // 判断是否游戏结束
-             if (currentCard === endCard) {
+             if (currentStCard == currentEdCard) {
                  isGameOver = true;
                  result.textContent = '游戏结束，你胜利了！';
                  result.classList.remove('hidden');
@@ -273,7 +395,8 @@ function generateRelatedCardButtons(operation) {
                  restartButton.textContent = '重新开始';
                  restartButton.id = 'restartButton'; // 设置按钮的 id
                  restartButton.addEventListener('click', () => {
-                   gameBox.classList.add('hidden');
+                   gameBox.style.display = "none";
+
                      initGame();
                      generateRandomOptions();
                  });
@@ -307,13 +430,34 @@ function generateRelatedCardButtons(operation) {
 function getTrueDesc(card){
   return (card.skill_disc + card.evo_skill_disc).replaceAll("与进化前能力相同。（入场曲 能力除外）","").replaceAll("与进化前能力相同。","");
 }
-// 示例：根据操作获取相关的卡片数据
-function getRelatedCards(operation) {
+
+function minorToken(item1,item2){
+  var skillArray = item1.skill.split(",");
+  var skillOArray = item1.skill_option.split(",");
+
+  for (var i = 0; i < skillArray.length; i++) {
+    if (skillArray[i] === "transform") {
+      if (skillOArray[i].includes(item2.card_id)) {
+        return true;
+      }
+    }
+  }
+}
+
+function getRelatedCards(operation,currentCard) {
+  if (!currentCard){
+    if (direction == 1){
+      currentCard = currentStCard;
+    } else {
+      currentCard = currentEdCard;
+    }
+  }
+
     switch (operation) {
         case '同一卡包同职业':
             return cardData.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
         case '衍生或被衍生':
-            return cardData.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) ) && card.card_id !== currentCard.card_id);
+            return cardData.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card)) && card.card_id !== currentCard.card_id);
         case '同身材稀有度':
             return cardData.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.rarity == currentCard.rarity && card.card_id !== currentCard.card_id);
         case '描述相似过75':
