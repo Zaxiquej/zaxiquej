@@ -1,5 +1,5 @@
 // 导入你需要的函数和数据
-importScripts('library/database.js');
+importScripts('library/database.js','library/subdatabase.js','similarity.js');
 
 // 示例：根据操作获取相关的卡片数据
 function findShortestPath(startCard, endCard) {
