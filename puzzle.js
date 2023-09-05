@@ -179,7 +179,7 @@ function undoDirection(){
 }
 
 calcButton.addEventListener('click', () => {
-    findAndSetBestMove(startcard,endCard);
+    findAndSetBestMove(startCard,endCard);
 });
 
 function findAndSetBestMove(startCard, endCard) {
