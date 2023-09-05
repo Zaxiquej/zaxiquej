@@ -1,5 +1,5 @@
 // 导入你需要的函数和数据
-importScripts('library/database.js','library/subDatabase.js','similarity.js');
+importScripts('library/database.js','library/subDatabase.js','similarity.js','puzzle.js');
 // 导入你需要的函数和数据，确保相对路径是正确的
 import { findShortestPath } from 'puzzle.js';
 // 示例：根据操作获取相关的卡片数据
