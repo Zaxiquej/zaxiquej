@@ -240,6 +240,10 @@ function minorToken(item1,item2){
   }
 }
 
+function unOutable(card){
+  return card.clan == 6 && card.card_set_id == 10019; //十天鬼
+  return false;
+}
 function getRelatedCards(operation,currentCard) {
   if (!currentCard){
     if (direction == 1){
@@ -272,8 +276,12 @@ function generateRandomStartEndCards(seed) {
 
     let fcardPool = cardPool.filter(card => card && card.clan != 0);
     const startIndex = Math.floor(Math.random() * fcardPool.length);
+    while (unOutable(fcardPool[startIndex])){
+        startIndex = Math.floor(Math.random() * fcardPool.length);
+    }
     let endIndex = Math.floor(Math.random() * fcardPool.length);
-    while (endIndex === startIndex) {
+
+    while (endIndex === startIndex || unOutable(fcardPool[endIndex]) {
         endIndex = Math.floor(Math.random() * fcardPool.length);
     }
 
