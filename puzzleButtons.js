@@ -35,4 +35,18 @@ const buttonInfoArray = [
         bgColor: '#ffd700',
         operation: '重印'
     },
+    {
+        id: 6,
+        title: '语音联动',
+        content: '（仅限随从卡）显示与当前卡有语音联动的卡片',
+        bgColor: '#ff4500',
+        operation: '语音联动'
+    },
+    {
+        id: 7,
+        title: '特殊身材',
+        content: '（仅限随从卡）显示与当前卡类型、费用、进化前攻击生命相同的卡片，但仅限结果不超过10张时。',
+        bgColor: '#ff4500',
+        operation: '特殊身材'
+    },
 ];

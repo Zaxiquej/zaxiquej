@@ -21,17 +21,25 @@
                     complete: function(results) {
                         const data = results.data;
                         const dataArray = [];
+                        const soundArray = [];
 
                         for (const row of data) {
                             if (row.length >= 19) { // Ensure at least 19 columns (A and S are column 0 and 18)
                                 const id = row[0];
                                 const timing = row[18];
                                 const timingSub = row[17];
-                                dataArray.push({ id, timing, timingSub });
+                                let sound = row[55];
+                                const soundSub = row[54];
+                                if (soundSub.length > 0){
+                                  sound = soundSub;
+                                }
+                                dataArray.push({ id, timing, timingSub});
+                                soundArray.push({id, sound})
                             }
                         }
 
-                        displayData(dataArray);
+                        //displayData(dataArray);
+                        displayData(soundArray);
                     }
                 });
             }

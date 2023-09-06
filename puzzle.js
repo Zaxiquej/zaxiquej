@@ -42,9 +42,10 @@ function initGame() {
 }
 
 // 生成随机的3个选项按钮
+//,5
 function generateRandomOptions() {
     options.innerHTML = '';
-    for (let i of [0,1,4]) {
+    for (let i of [0,1,4,6]) {
         let buttonInfo = buttonInfoArray[i];
         const button = createOptionButton(buttonInfo);
         options.appendChild(button);
@@ -215,7 +216,7 @@ function findShortestPath(startCard, endCard) {
           visited.add(currentCard);
 
           // 获取当前卡片的相关卡片，这里需要根据您的实际需求获取相关卡片
-          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)).concat(getRelatedCards("重印", currentCard)); // 自定义函数
+          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)).concat(getRelatedCards("重印", currentCard)).concat(getRelatedCards("语音联动", currentCard)); // 自定义函数
 
           for (const relatedCard of relatedCards) {
               if (!visited.has(relatedCard)) {
@@ -242,6 +243,7 @@ function minorToken(item1,item2){
 
 function unOutable(card){
   return card.clan == 6 && card.card_set_id == 10019; //十天鬼
+  return card.clan == 0 && card.card_set_id == 10022; //中立
   return false;
 }
 
@@ -253,7 +255,6 @@ function getRelatedCards(operation,currentCard) {
       currentCard = currentEdCard;
     }
   }
-
     switch (operation) {
         case '同一卡包同职业':
             return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
@@ -265,6 +266,10 @@ function getRelatedCards(operation,currentCard) {
             return cardPool.filter(card => (getTrueDesc(card) == "" && getTrueDesc(currentCard) == "") || calculateLevenshteinDistance(getTrueDesc(card),getTrueDesc(currentCard)) < Math.min(getTrueDesc(card).length,getTrueDesc(currentCard).length) * 0.25);
         case '技能相似过75':
             return cardPool.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
+        case '特殊身材':
+            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
+            let pool = cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.card_id !== currentCard.card_id);
+            return pool//.length > 20 ? [] : pool;
         default:
             return [];
     }
@@ -275,7 +280,7 @@ function generateRandomStartEndCards(seed) {
     // 使用种子生成随机数
     Math.seedrandom(seed);
 
-    let fcardPool = cardPool.filter(card => card && card.clan != 0);
+    let fcardPool = cardPool//.filter(card => card && card.clan == 0);
     const startIndex = Math.floor(Math.random() * fcardPool.length);
     while (unOutable(fcardPool[startIndex]) ){
         startIndex = Math.floor(Math.random() * fcardPool.length);
@@ -530,6 +535,21 @@ function minorToken(item1,item2){
   }
 }
 
+const soundDataMap = new Map(soundData.map(card => [card.id, card]));
+
+function voiceInteract(item1, item2) {
+  const id1 = item1.card_id;
+  const id2 = item2.card_id;
+  const voiceInfo = soundDataMap.get(""+id1);
+
+  if (!voiceInfo) {
+    return false;
+  }
+
+  const voices = voiceInfo.sound.split(",");
+  return voices.some(voice => voice.includes("" + id2));
+}
+
 function getRelatedCards(operation,currentCard) {
   if (!currentCard){
     if (direction == 1){
@@ -552,6 +572,12 @@ function getRelatedCards(operation,currentCard) {
             return cardPool.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
         case '重印':
             return cardPool.filter(card => card.card_name === currentCard.card_name && card.card_id !== currentCard.card_id);
+        case '语音联动':
+            return cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.card_id !== currentCard.card_id && (voiceInteract(card,currentCard) || voiceInteract(currentCard,card)));
+        case '特殊身材':
+            let pool = cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.card_id !== currentCard.card_id);
+            //console.log(pool)
+            return pool.length > 10 ? [] : pool;
         default:
             return [];
     }
