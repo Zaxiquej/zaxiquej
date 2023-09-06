@@ -5,12 +5,15 @@ const randomSeedButton = document.getElementById('randomSeedButton');
 const seedInput = document.getElementById('seedInput');
 const useSeedButton = document.getElementById('useSeedButton');
 const reverseButton = document.getElementById('reverseButton');
+const buttons = document.getElementById('buttons');
 const stepCounter = document.getElementById('stepCounter');
 const stepCount = document.getElementById('stepCount');
 const options = document.getElementById('options');
 const path = document.getElementById('path');
 const result = document.getElementById('result');
 const suggestionsDiv = document.getElementById('suggestions');
+
+let cardPool = cardData.concat(subCardData.filter(card => card.card_id < 200000000))
 
 let currentSeed = '';
 let startCard;
@@ -31,7 +34,7 @@ function initGame() {
     currentCardelems = [];
     direction = 1; //顺推
     answer = undefined;
-    document.getElementById("bestMove").textContent = `最佳步数：计算中`;
+    //document.getElementById("bestMove").textContent = `最佳步数：计算中`;
 
     // 初始时，当前卡片为起始卡
     currentStCard = startCard;
@@ -41,7 +44,7 @@ function initGame() {
 // 生成随机的3个选项按钮
 function generateRandomOptions() {
     options.innerHTML = '';
-    for (let i = 0; i <= 1; i++) {
+    for (let i of [0,1,4]) {
         let buttonInfo = buttonInfoArray[i];
         const button = createOptionButton(buttonInfo);
         options.appendChild(button);
@@ -168,7 +171,7 @@ function undoDirection(){
       return;
     }
     currentCardelems[direction] = currentCardelems[direction].nextSibling.nextSibling;
-    currentStCard = currentCardelems[direction].card;
+    currentEdCard = currentCardelems[direction].card;
     currentCardelems[direction].classList.add("highlight");
     path.removeChild(currentCardelems[direction].previousSibling);
     path.removeChild(currentCardelems[direction].previousSibling);
@@ -178,15 +181,21 @@ function undoDirection(){
   suggestionsDiv.innerHTML = '';
 }
 
-calcButton.addEventListener('click', () => {
-    findAndSetBestMove(startCard,endCard);
-});
+//calcButton.addEventListener('click', () => {
+//    findAndSetBestMove(startCard,endCard);
+//});
 
 function findAndSetBestMove(startCard, endCard) {
   // 创建一个新的Worker实例
   answer = findShortestPath(startCard,endCard);
-  const bestMoveText = `最佳步数：${answer.length - 1}`;
-  document.getElementById("bestMove").textContent = bestMoveText;
+  if (answer){
+    const bestMoveText = `最佳步数：${answer.length - 1}`;
+    document.getElementById("bestMove").textContent = bestMoveText;
+  } else {
+    const bestMoveText = `最佳步数：无解`;
+    document.getElementById("bestMove").textContent = bestMoveText;
+  }
+
 }
 
 function findShortestPath(startCard, endCard) {
@@ -198,7 +207,7 @@ function findShortestPath(startCard, endCard) {
       const currentCard = path[path.length - 1];
 
       if (currentCard === endCard) {
-        console.log(path)
+        //console.log(path)
           return path; // 找到最短路径，使用 resolve 返回结果
       }
 
@@ -206,7 +215,7 @@ function findShortestPath(startCard, endCard) {
           visited.add(currentCard);
 
           // 获取当前卡片的相关卡片，这里需要根据您的实际需求获取相关卡片
-          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)); // 自定义函数
+          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)).concat(getRelatedCards("重印", currentCard)); // 自定义函数
 
           for (const relatedCard of relatedCards) {
               if (!visited.has(relatedCard)) {
@@ -242,15 +251,15 @@ function getRelatedCards(operation,currentCard) {
 
     switch (operation) {
         case '同一卡包同职业':
-            return cardData.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
         case '衍生或被衍生':
-            return cardData.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card)) && card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card)) && card.card_id !== currentCard.card_id);
         case '同身材稀有度':
-            return cardData.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.rarity == currentCard.rarity && card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.rarity == currentCard.rarity && card.card_id !== currentCard.card_id);
         case '描述相似过75':
-            return cardData.filter(card => (getTrueDesc(card) == "" && getTrueDesc(currentCard) == "") || calculateLevenshteinDistance(getTrueDesc(card),getTrueDesc(currentCard)) < Math.min(getTrueDesc(card).length,getTrueDesc(currentCard).length) * 0.25);
+            return cardPool.filter(card => (getTrueDesc(card) == "" && getTrueDesc(currentCard) == "") || calculateLevenshteinDistance(getTrueDesc(card),getTrueDesc(currentCard)) < Math.min(getTrueDesc(card).length,getTrueDesc(currentCard).length) * 0.25);
         case '技能相似过75':
-            return cardData.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
+            return cardPool.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
         default:
             return [];
     }
@@ -261,14 +270,15 @@ function generateRandomStartEndCards(seed) {
     // 使用种子生成随机数
     Math.seedrandom(seed);
 
-    const startIndex = Math.floor(Math.random() * cardData.length);
-    let endIndex = Math.floor(Math.random() * cardData.length);
+    let fcardPool = cardPool.filter(card => card && card.clan != 0);
+    const startIndex = Math.floor(Math.random() * fcardPool.length);
+    let endIndex = Math.floor(Math.random() * fcardPool.length);
     while (endIndex === startIndex) {
-        endIndex = Math.floor(Math.random() * cardData.length);
+        endIndex = Math.floor(Math.random() * fcardPool.length);
     }
 
-    startCard = cardData[startIndex];
-    endCard = cardData[endIndex];
+    startCard = fcardPool[startIndex];
+    endCard = fcardPool[endIndex];
     startCard.special = true;
     endCard.special = true;
 
@@ -283,7 +293,9 @@ function generateRandomStartEndCards(seed) {
     path.innerHTML = '';
     path.appendChild(startCardContainer);
     path.appendChild(arrow);
-    questionMark = document.createTextNode(' ??? →');
+    questionMark = document.createElement('div');
+    questionMark.classList.add('arrow');
+    questionMark.textContent =(' ??? →');
     path.appendChild(questionMark);
     path.appendChild(endCardContainer);
     currentCardelems[1] = startCardContainer;
@@ -327,6 +339,7 @@ function createCardContainer(card, isMini) {
 // 开始游戏函数
 function startGame() {
     startBox.classList.add('hidden');
+    buttons.classList.remove('hidden');
     gameBox.style.display = "block";
     stepCount.textContent = '0';
     result.classList.add('hidden');
@@ -397,8 +410,12 @@ class CustomButton {
     }
 }
 
+function findCardByIdR(id) {
+  return cardPool.find((card) => card.card_id === id);
+}
+
 function findCardByName(name) {
-    return cardData.find((card) => card.card_name === name);
+    return cardPool.find((card) => card.card_name === name);
 }
 // 示例：生成与操作相关的卡片按钮
 function generateRelatedCardButtons(operation) {
@@ -414,12 +431,13 @@ function generateRelatedCardButtons(operation) {
          button.classList.add('suggestionBtn');
          button.setAttribute('data-suggestion', card.card_name);
          button.textContent = card.card_name;
+         button.cid = card.card_id;
 
          // 鼠标悬停事件
          button.addEventListener('mouseover', async function () {
              const suggestion = button.getAttribute('data-suggestion');
-             const cardData = await findCardByName(suggestion);
-             const imageURL = `https://shadowverse-portal.com/image/card/phase2/common/C/C_${cardData.card_id}.png`;
+             const tCard = await findCardByIdR(button.cid);
+             const imageURL = `https://shadowverse-portal.com/image/card/phase2/common/C/C_${tCard.card_id}.png`;
 
              button.style.backgroundImage = `url(${imageURL})`;
          });
@@ -432,7 +450,7 @@ function generateRelatedCardButtons(operation) {
          // 点击事件
          button.addEventListener('click', function () {
              suggestionsDiv.innerHTML = '';
-             let selectedCard = findCardByName(button.textContent);
+             let selectedCard = findCardByIdR(button.cid);
              // 更新步数
              const currentStep = parseInt(stepCount.textContent) + 1;
              stepCount.textContent = currentStep;
@@ -443,8 +461,10 @@ function generateRelatedCardButtons(operation) {
              // 判断是否游戏结束
              if (currentStCard == currentEdCard) {
                  isGameOver = true;
+                 currentCardelems[direction].classList.remove("highlight");
                  result.textContent = '游戏结束，你胜利了！';
                  result.classList.remove('hidden');
+                 buttons.classList.add('hidden');
                  document.getElementById("cSeed").style.display = "none";
                  options.innerHTML = '';
                  // 添加重新开始按钮
@@ -494,7 +514,7 @@ function minorToken(item1,item2){
 
   for (var i = 0; i < skillArray.length; i++) {
     if (skillArray[i] === "transform") {
-      if (skillOArray[i].includes(item2.card_id)) {
+      if (findCardById(parseInt(skillOArray[i].split("=")[1]),true) && findCardById(parseInt(skillOArray[i].split("=")[1]),true).skill_option.includes(item2.card_id)) {
         return true;
       }
     }
@@ -512,15 +532,17 @@ function getRelatedCards(operation,currentCard) {
 
     switch (operation) {
         case '同一卡包同职业':
-            return cardData.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
         case '衍生或被衍生':
-            return cardData.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card)) && card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => card.card_id !== currentCard.card_id && (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id) || card.skill_condition.includes(currentCard.card_id) || currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || currentCard.skill_condition.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card) ) );
         case '同身材稀有度':
-            return cardData.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.rarity == currentCard.rarity && card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.rarity == currentCard.rarity && card.card_id !== currentCard.card_id);
         case '描述相似过75':
-            return cardData.filter(card => (getTrueDesc(card) == "" && getTrueDesc(currentCard) == "") || calculateLevenshteinDistance(getTrueDesc(card),getTrueDesc(currentCard)) < Math.min(getTrueDesc(card).length,getTrueDesc(currentCard).length) * 0.25);
+            return cardPool.filter(card => (getTrueDesc(card) == "" && getTrueDesc(currentCard) == "") || calculateLevenshteinDistance(getTrueDesc(card),getTrueDesc(currentCard)) < Math.min(getTrueDesc(card).length,getTrueDesc(currentCard).length) * 0.25);
         case '技能相似过75':
-            return cardData.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
+            return cardPool.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
+        case '重印':
+            return cardPool.filter(card => card.card_name === currentCard.card_name && card.card_id !== currentCard.card_id);
         default:
             return [];
     }

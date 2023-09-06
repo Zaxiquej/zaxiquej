@@ -83,6 +83,7 @@ border-radius: 4px; /* 圆角边框 */
 #path {
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap; /* 设置为 wrap 以实现自动换行 */
     align-items: center;
     justify-content: center;
 }
@@ -163,7 +164,10 @@ border-radius: 4px; /* 圆角边框 */
     border: none;
     border-radius: 5px;
     margin: 5px;
-    width: 180px
+    width: 180px;
+    height: 120px;
+    vertical-align: top; /* 添加此样式以保持垂直对齐 */
+    margin-top: 20px; /* 设置上边距为 20px */
 }
 
 /* 按钮标题样式 */
@@ -212,14 +216,40 @@ a:hover {
   text-decoration: underline; /* 鼠标悬停时添加下划线 */
 }
 
-#path {
-    white-space: pre-wrap;
-    height: 200px; /* 设置固定高度 */
-    overflow-y: auto; /* 启用垂直滚动条 */
-}
-
 .highlight {
   background-color: transparent; /* 可选，如果不希望有背景颜色 */
   box-shadow: 0 0 10px green, inset 0 0 10px green;
   transition: box-shadow 0.5s ease-in-out;
+}
+
+#ruleBox {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#ruleBox h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#ruleBox p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center; /* 文本居中 */
+    margin-bottom: 10px;
+}
+
+#stepCounter {
+    font-size: 16px;
+    text-align: center; /* 文本居中 */
+}
+
+#stepCounter span{
+    font-size: 24px;
 }

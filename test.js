@@ -241,6 +241,23 @@ function checkKeyNameStats(){
   document.body.appendChild(ulElement);
 }
 
+function getAllCardName(){
+  // 按 card_set_id 进行排序
+  cardData.sort((a, b) => a.card_set_id - b.card_set_id);
+
+  // 遍历并打印名称
+  // 创建一个<ul>元素来显示排序后的属性
+  const ulElement = document.createElement('ul');
+
+  cardData.forEach(card => {
+    const liElement = document.createElement('li');
+    liElement.textContent = card.card_name;
+    ulElement.appendChild(liElement);
+  });
+  // 将<ul>元素添加到页面
+  document.body.appendChild(ulElement);
+}
+
 function getCardByRank(puzzleCard, rank) {
   const sortedCards = cardData
     .map((card) => ({ similarity: calculateSimilarityScore(puzzleCard, card), card }))
@@ -255,7 +272,6 @@ function getCardByRank(puzzleCard, rank) {
 
   return { similarity: cardInfo.similarity, card: cardName };
 }
-
 
 function getAllCardsLowRate(){
   let forceStop = 100;
