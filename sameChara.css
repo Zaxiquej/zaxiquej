@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#startBox, #gameBox {
+    text-align: center;
+    margin: 20px;
+}
+/* 调整输入框和按钮容器的样式 */
+#subStartBox {
+display: flex; /* 使用 Flex 布局使输入框和按钮水平排列 */
+gap: 10px; /* 添加间距 */
+justify-content: center; /* 居中排列 */
+margin-bottom: 20px; /* 底部间距 */
+margin: 0 auto; /* 设置水平居中 */
+width: 60%; /* 限制宽度为页面宽度的 80% */
+}
+
+/* 调整输入框和按钮的宽度 */
+#seedInput {
+width: 100%; /* 调整输入框的宽度 */
+padding: 10px; /* 添加内边距以美化外观 */
+border: 1px solid #ccc; /* 添加边框 */
+border-radius: 4px; /* 圆角边框 */
+}
+
+#randomSeedButton,
+#restartButton,
+#useSeedButton,
+#reverseButton,
+#undoButton,
+#calcButton,
+#link-button {
+  width: auto; /* 调整按钮的宽度 */
+  padding: 8px; /* 调整内边距 */
+  font-size: 14px; /* 调整字体大小 */
+  margin: 0 5px; /* 调整按钮之间的外边距 */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#randomSeedButton:hover,
+#restartButton:hover,
+#useSeedButton:hover,
+#reverseButton:hover,
+#undoButton:hover,
+#calcButton:hover,
+#link-button:hover {
+  background-color: #0056b3;
+}
+
+.input-container {
+  flex: 1;
+  position: relative;
+}
+
+.input-container input[type="text"] {
+  width: 60%; /* 调整输入框的宽度 */
+  padding: 10px; /* 添加内边距以美化外观 */
+  border: 1px solid #ccc; /* 添加边框 */
+  border-radius: 4px; /* 圆角边框 */
+}
+
+.center-button {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#gameBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    display: none
+}
+
+.path {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 设置为 wrap 以实现自动换行 */
+    align-items: center;
+    justify-content: flex-start; /* 左对齐内容 */
+}
+
+/* 子元素 */
+.path-item {
+    margin-right: auto; /* 将剩余空间推向右侧，实现左对齐 */
+    /* 可以添加其他样式属性 */
+}
+
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.card-container img {
+    width: 150px;
+    height: 180px;
+}
+
+.mini-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+.mini-card-container img {
+    width: 100px;
+    height: 120px;
+}
+
+.arrow {
+    width: auto;
+    height: auto;
+    margin: 0 4px;
+    font-size: 24px;
+    font-weight: bold; /* 添加这一行以使文本加粗 */
+}
+
+/* 美化链接样式 */
+a {
+  text-decoration: none; /* 移除下划线 */
+  color: #007bff; /* 链接颜色 */
+}
+
+a:hover {
+  text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
+
+.highlight {
+  background-color: transparent; /* 可选，如果不希望有背景颜色 */
+  box-shadow: 0 0 10px green, inset 0 0 10px green;
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+h1 {
+    text-align: center; /* 文本居中 */
+    margin-bottom: 10px;
+}
+
+#result {
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
