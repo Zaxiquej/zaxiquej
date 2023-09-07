@@ -267,8 +267,8 @@ function getRelatedCards(operation,currentCard) {
         case '技能相似过75':
             return cardPool.filter(card => (calculateSkillScore(card,currentCard) >= 75 && card.card_id !== currentCard.card_id) );
         case '特殊身材':
-            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
             let pool = cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.card_id !== currentCard.card_id);
+            console.log(pool)
             return pool//.length > 20 ? [] : pool;
         default:
             return [];
@@ -577,7 +577,11 @@ function getRelatedCards(operation,currentCard) {
         case '特殊身材':
             let pool = cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.life == currentCard.life && card.cost == currentCard.cost && card.card_id !== currentCard.card_id);
             //console.log(pool)
-            return pool.length > 10 ? [] : pool;
+            return pool.length > 11 ? [] : pool;
+        case '特殊进化':
+            return cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && card.atk == currentCard.atk && card.evo_atk == currentCard.evo_atk && card.life == currentCard.life && card.evo_life == currentCard.evo_life && !(card.evo_atk - card.atk == 2 && card.evo_life - card.life == 2) && card.card_id !== currentCard.card_id);
+        case '特殊进化2':
+            return cardPool.filter(card => card.char_type == 1 && currentCard.char_type == 1 && (card.evo_atk - card.atk == currentCard.evo_atk - currentCard.atk) && (card.evo_life - card.life == currentCard.evo_life - currentCard.life) && !(card.evo_atk - card.atk == 2 && card.evo_life - card.life == 2) && card.card_id !== currentCard.card_id);
         default:
             return [];
     }

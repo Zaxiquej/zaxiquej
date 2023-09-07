@@ -72,6 +72,7 @@ function createNewDataBase(allcards, subToken) {
         'char_type',
         'clan',
         'cost',
+        'cv',
         'evo_atk',
         'evo_life',
         'evo_skill_disc',
@@ -249,9 +250,9 @@ function getAllCardName(){
   // 创建一个<ul>元素来显示排序后的属性
   const ulElement = document.createElement('ul');
 
-  cardData.forEach(card => {
+  cardData.concat(subCardData).forEach(card => {
     const liElement = document.createElement('li');
-    liElement.textContent = card.card_name;
+    liElement.textContent = card.card_id + " " +card.card_name;
     ulElement.appendChild(liElement);
   });
   // 将<ul>元素添加到页面

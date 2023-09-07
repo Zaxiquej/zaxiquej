@@ -154,6 +154,11 @@ function pickCard() {
   correctCardN = card.card_name;
   correctId = card.card_id;
 
+  // 禁用按钮
+  document.querySelectorAll('.clanBtn').forEach(btn => {
+    btn.disabled = true;
+  });
+  
   // 隐藏图片
   cardImg.classList.remove('combined'); // 移除灰度效果
 
@@ -175,11 +180,6 @@ function pickCard() {
 
     // 设置图片源
     cardImg.src = imgSrc;
-
-    // 禁用按钮
-    document.querySelectorAll('.clanBtn').forEach(btn => {
-      btn.disabled = true;
-    });
 
     // 移除已用的卡牌并添加新卡牌
     addPre();
