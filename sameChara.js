@@ -57,30 +57,62 @@ function printSameChara() {
     const arrowB = document.createElement('div');
     arrowB.classList.add('arrow');
     arrowB.textContent = ',';
-    let fCard = findCardById(line[0]);
-    //console.log(line[0],fCard)
-    if (fCard.clan != lastClan){
-      const h = document.createElement('h2');
-      h.textContent = clanNames[fCard.clan];
-      h.innerHTML += "<br>";
-      resultDiv.appendChild(h);
-      let lineBreak = document.createElement('hr');
-      resultDiv.appendChild(lineBreak);
-      lastClan = fCard.clan;
-    }
-    if (fCard.cost != lastCost){
-      const h = document.createElement('h3');
-      h.textContent = fCard.cost +"费";
-      h.innerHTML += "<br>";
-      resultDiv.appendChild(h);
-      let lineBreak = document.createElement('hr');
-      resultDiv.appendChild(lineBreak);
-      lastCost = fCard.cost;
-    }
-
     let path = document.createElement('div');
     path.classList.add('path');
-    path.appendChild(createCardContainer(fCard, false));
+    let fCol = document.createElement('div');
+    if (Array.isArray(line[0])){
+      for (let l of line[0]){
+        let fCard = findCardById(l);
+        //console.log(line[0],fCard)
+        if (l == line[0][0]){
+          if (fCard.clan != lastClan){
+            const h = document.createElement('h2');
+            h.textContent = clanNames[fCard.clan];
+            h.innerHTML += "<br>";
+            resultDiv.appendChild(h);
+            let lineBreak = document.createElement('hr');
+            resultDiv.appendChild(lineBreak);
+            lastClan = fCard.clan;
+          }
+          if (fCard.cost != lastCost){
+            const h = document.createElement('h3');
+            h.textContent = fCard.cost +"费";
+            h.innerHTML += "<br>";
+            resultDiv.appendChild(h);
+            let lineBreak = document.createElement('hr');
+            resultDiv.appendChild(lineBreak);
+            lastCost = fCard.cost;
+          }
+        }
+        //fCol.appendChild(createCardContainer(fCard, false));
+        fCol.appendChild(createCardContainer(fCard, false));
+        //fCol.innerHTML += "<br>";
+      }
+      path.appendChild(fCol);
+    } else {
+      let fCard = findCardById(line[0]);
+      //console.log(line[0],fCard)
+      if (fCard.clan != lastClan){
+        const h = document.createElement('h2');
+        h.textContent = clanNames[fCard.clan];
+        h.innerHTML += "<br>";
+        resultDiv.appendChild(h);
+        let lineBreak = document.createElement('hr');
+        resultDiv.appendChild(lineBreak);
+        lastClan = fCard.clan;
+      }
+      if (fCard.cost != lastCost){
+        const h = document.createElement('h3');
+        h.textContent = fCard.cost +"费";
+        h.innerHTML += "<br>";
+        resultDiv.appendChild(h);
+        let lineBreak = document.createElement('hr');
+        resultDiv.appendChild(lineBreak);
+        lastCost = fCard.cost;
+      }
+      path.appendChild(createCardContainer(fCard, false));
+    }
+
     for (let i = 1; i < line.length; i++){
       if (i == 1){
         path.appendChild(arrowA);
