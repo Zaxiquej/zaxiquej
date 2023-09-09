@@ -1466,11 +1466,25 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillst1.push('none');
           skillsT1.push('none');
         }
+        if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+          skills1.push('AOEReturn');
+          skillso1.push('none')
+          skillsc1.push('none');
+          skillst1.push('none');
+          skillsT1.push('none');
+        }
       }
 
       for (let i = 0; i < skills2.length; i++){
         if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
           skills2.push('AOE');
+          skillso2.push('none')
+          skillsc2.push('none');
+          skillst2.push('none');
+          skillsT2.push('none');
+        }
+        if ((['return_card'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
+          skills2.push('AOEReturn');
           skillso2.push('none')
           skillsc2.push('none');
           skillst2.push('none');
@@ -3405,6 +3419,13 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
         skills1.push('AOE');
+        skillso1.push('none')
+        skillsc1.push('none');
+        skillst1.push('none');
+        skillsT1.push('none');
+      }
+      if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+        skills1.push('AOEReturn');
         skillso1.push('none')
         skillsc1.push('none');
         skillst1.push('none');

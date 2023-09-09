@@ -122,6 +122,7 @@ let ratioTable = {
   "selfFollowerDamage": {reward:2.5, punish:1}, //侮蔑随从
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手
+  "AOEReturn": {reward:9, punish:6}, //全回手
   "selfDestroy": {reward:2, punish:1.5}, //自杀
   "evolve": {reward:1.6, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
