@@ -216,7 +216,7 @@ function findShortestPath(startCard, endCard) {
           visited.add(currentCard);
 
           // 获取当前卡片的相关卡片，这里需要根据您的实际需求获取相关卡片
-          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)).concat(getRelatedCards("重印", currentCard)).concat(getRelatedCards("语音联动", currentCard)); // 自定义函数
+          const relatedCards = getRelatedCards("同一卡包同职业", currentCard).concat(getRelatedCards("衍生或被衍生", currentCard)).concat(getRelatedCards("重印", currentCard)).concat(getRelatedCards("特殊身材", currentCard)); // 自定义函数
 
           for (const relatedCard of relatedCards) {
               if (!visited.has(relatedCard)) {
@@ -257,7 +257,7 @@ function getRelatedCards(operation,currentCard) {
   }
     switch (operation) {
         case '同一卡包同职业':
-            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan &&card.card_id !== currentCard.card_id);
+            return cardPool.filter(card => currentCard.card_set_id != 90000 && card.card_set_id === currentCard.card_set_id && card.clan === currentCard.clan && card.card_id !== currentCard.card_id);
         case '衍生或被衍生':
             return cardPool.filter(card => (card.skill_option.includes(currentCard.card_id) || card.skill_target.includes(currentCard.card_id)) || (currentCard.skill_option.includes(card.card_id) || currentCard.skill_target.includes(card.card_id) || minorToken(card,currentCard) || minorToken(currentCard,card)) && card.card_id !== currentCard.card_id);
         case '同身材稀有度':
