@@ -21,6 +21,7 @@ let ratioTable = {
   "destroyField": {reward:3, punish:3}, //拆符
   "attach_skill": {reward:1.6, punish:1.2}, //获得能力
   "heal": {reward:1, punish:1},
+  "healMAX": {reward:5, punish:0.5}, //奶满
   "discard": {reward:1.5, punish:1.2},
   "turn_start_skill_after_stop": {reward:0.5, punish:0.5},
   "banish": {reward:1.5, punish:1.2},
@@ -167,7 +168,7 @@ let ratioTable = {
   "evolution_end_stop": {reward:2, punish:2}, //进化前后关键词不同
   "fusion": {reward:4, punish:2}, //融合
   "type=oldest": {reward:1.5, punish:0.4}, //轮流伤害
-  "attack_count": {reward:2.2, punish:2.2}, //连击
+  "attack_count": {reward:2.8, punish:1.2}, //连击
   "change_rally_count": {reward:6, punish:2}, //改变连协
   "not_be_attacked": {reward:2.5, punish:1.5}, //物免
   "untouchable": {reward:2.5, punish:1.5}, //方块膜

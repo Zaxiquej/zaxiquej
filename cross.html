@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cross.css">
+    <title>寻找连线</title>
+</head>
+<body>
+  <h1>影之诗连线大师（beta）</h1>
+    <div id="startBox">
+        <div id="subStartBox">
+            <button id="randomSeedButton">今日谜题种子</button>
+            <div class="input-container">
+                <input type="text" id="seedInput" placeholder="输入种子">
+            </div>
+        </div>
+        <select id="difficultySelect">
+          <option value="easy" title="3*3，其中会有一个困难词条和两个普通词条">简单</option>
+          <option value="medium" selected title="4*4，其中会有两个困难词条和两个普通词条">标准</option>
+          <option value="hard" title="5*5，其中会有三个困难词条和两个普通词条">困难</option>
+        </select>
+        <div class="center-button">
+            <button id="useSeedButton">开始游戏</button>
+        </div>
+    </div>
+
+    <div id="gameBox">
+      <div id="cSeed">
+      <p id="currentSeed">当前种子：</p>
+      <p id="bestMove"></p>
+      </div>
+      <div id="elementsDiv" class="element-container"></div>
+        <div id="result" class="hidden">
+            <!-- 游戏结果将在游戏结束后显示 -->
+        </div>
+        <div id="buttons">
+          <button id="fourButton">检验连线</button>
+          <a href="https://shadowverse-portal.com/cards?format=1&lang=zh-tw" target="_blank" id="link-button">前往 Shadowverse Portal</a>
+        </div>
+    </div>
+    <div id="ruleBox">
+        <h2>游戏规则</h2>
+        <p>1. 系统会抽取X个不同难度的词条，随后每个词条中抽取X张卡，组成X^2张卡并打乱(X视难度可能为3、4、5)。</p>
+        <p>2. 所有卡均只符合自己相关的词条，不会符合其他任何词条。</p>
+        <p>3. 游戏计划是将属于同一词条的X张卡分出来。</p>
+        <p>4. 因为是随机抽卡，也许会有X张卡同时具有某个非目标词条——检查一下是否有其他卡也符合，如果是的话，这就不是正确的一组。</p>
+    </div>
+
+    <div class="footer" id="other">         <li>
+          <span> 其他神秘内容 -</span>
+            <a href="yuwan.html">听声辨卡部门</a>
+            <a href="guess.html">猜卡部门</a>
+            <a href="picGuess.html">卡图部门</a>
+        </li></div>
+
+
+    <script src="library/database.js"></script>
+    <script src="library/soundData.js"></script>
+    <script src="library/subDatabase.js"></script>
+    <script src="library/ratioTable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="crossFilter.js"></script>
+    <script src="similarity.js"></script>
+    <script src="cross.js"></script>
+
+</body>
+</html>

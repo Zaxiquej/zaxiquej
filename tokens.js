@@ -92,6 +92,9 @@ function printTokenUsage() {
   // 2. 根据频率从高到低排序 <summary>
   var sortedFrequencies = Object.keys(tokensByFrequency).sort((a, b) => b - a);
 
+  let ids = [];
+  let names = [];
+
   // 3. 遍历并添加 <summary> 元素
   sortedFrequencies.forEach(frequency => {
     var tokens = tokensByFrequency[frequency];
@@ -99,11 +102,17 @@ function printTokenUsage() {
     summary.textContent = `调用次数：${frequency}，张数：${tokens.length}`;
 
     var details = document.createElement("details");
+
     tokens.forEach(token => {
       var matchingCard = cardData.find(item => item.card_id == token && item.card_name !== "" && item.card_name !== undefined);
       var matchingSubCard = subCardData.find(item => item.card_id == token && item.card_name !== "" && item.card_name !== undefined);
 
       if (matchingCard) {
+        if (frequencyMap[token] >= 6){
+          ids.push(matchingCard.card_id);
+          names.push(matchingCard.card_name);
+        }
+
         let str = `<a href="${getCardLink(matchingCard.card_id)}" target="_blank">${matchingCard.card_name}</a>，调用次数：${frequencyMap[token]}（`
         for (let i = 0; i < callerMap[token].length; i++){
           if (i != 0){
@@ -114,6 +123,10 @@ function printTokenUsage() {
         str += `）<br>`
         details.innerHTML += str;
       } else if (matchingSubCard) {
+        if (frequencyMap[token] >= 6){
+          ids.push(matchingCard.card_id);
+          names.push(matchingCard.card_name);
+        }
         let str = `${matchingSubCard.card_name}，调用次数：${frequencyMap[token]}（`
         for (let i = 0; i < callerMap[token].length; i++){
           if (i != 0){
@@ -129,6 +142,9 @@ function printTokenUsage() {
     details.appendChild(summary);
     resultDiv.appendChild(details);
   });
+
+  console.log(ids);
+  console.log(names);
 }
 
 // 在页面加载完毕后运行printTokenUsage()

@@ -80,7 +80,7 @@ function updatePath(selectedCard) {
     arrow.textContent = '→';
     if (direction == 1){
       if (currentStCard === currentEdCard) {
-          path.removeChild(questionMark);
+        path.removeChild(questionMark);
       } else {
         const newCardContainer = createCardContainer(currentStCard, true);
         const arrow = document.createElement('div');

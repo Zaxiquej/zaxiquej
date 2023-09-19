@@ -713,6 +713,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             continue;
           }
           item = item.replaceAll("{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","looting");
+          item = item.replaceAll("{me.inplay_other_self.unit.attack_count=0.count}","unattacked");
+          item = item.replaceAll("{me.inplay_self.count}","alive");
           let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
           let matches = item.match(pattern);
           if (matches){
@@ -905,6 +907,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             continue;
           }
           item = item.replaceAll("{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","looting");
+          item = item.replaceAll("{me.inplay_other_self.unit.attack_count=0.count}","unattacked");
+          item = item.replaceAll("{me.inplay_self.count}","alive");
           let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
           let matches = item.match(pattern);
           if (matches){
@@ -1453,6 +1457,27 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillso2.push(org);
           skillsc2.push('none');
           skillst2.push('none');
+          skillsT2.push('none');
+        }
+      }
+
+      //奶满特殊判断
+      for (let i = 0; i < skills1.length; i++){
+        if ((skills1[i] == 'heal') && (skillso1[i].includes('healing={me.inplay.unit.max.life.max_life}'))){
+          skills1.push('healMAX');
+          skillso1.push('none');
+          skillsc1.push('none');
+          skillst1.push(skillst1[i]);
+          skillsT1.push('none');
+        }
+      }
+
+      for (let i = 0; i < skills2.length; i++){
+        if ((skills2[i] == 'heal') && (skillso2[i].includes('healing={me.inplay.unit.max.life.max_life}'))){
+          skills2.push('healMAX');
+          skillso2.push('none');
+          skillsc2.push('none');
+          skillst2.push(skillst2[i]);
           skillsT2.push('none');
         }
       }
@@ -3021,6 +3046,8 @@ function customSplit(input,token) {
           continue;
         }
         item = item.replaceAll("{me.game_play_cards_other_self.all.play_moment_tribe=looting.count}+{me.game_fusion_ingrediented_cards.all.tribe=looting.count}","looting");
+        item = item.replaceAll("{me.inplay_other_self.unit.attack_count=0.count}","unattacked");
+        item = item.replaceAll("{me.inplay_self.count}","alive");
         let pattern = /(\{[^}]+\}|[\w]+)\s*([><=]+)\s*(\w+)/;
         let matches = item.match(pattern);
         if (matches){
@@ -3411,6 +3438,17 @@ function customSplit(input,token) {
         skillso1.push(org);
         skillsc1.push('none');
         skillst1.push('none');
+        skillsT1.push('none');
+      }
+    }
+
+    //奶满特殊判断
+    for (let i = 0; i < skills1.length; i++){
+      if ((skills1[i] == 'heal') && (skillso1[i].includes('healing={me.inplay.unit.max.life.max_life}'))){
+        skills1.push('healMAX');
+        skillso1.push('none');
+        skillsc1.push('none');
+        skillst1.push(skillst1[i]);
         skillsT1.push('none');
       }
     }
