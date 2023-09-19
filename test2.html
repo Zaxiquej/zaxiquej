@@ -28,10 +28,10 @@
                                 const id = row[0];
                                 const timing = row[18];
                                 const timingSub = row[17];
-                                let sound = row[55];
+                                let sound = [row[55],row[56],row[57],row[58]];
                                 const soundSub = row[54];
                                 if (soundSub.length > 0){
-                                  sound = soundSub;
+                                  sound = [row[54],row[55],row[56],row[57]];
                                 }
                                 dataArray.push({ id, timing, timingSub});
                                 soundArray.push({id, sound})

@@ -46,13 +46,6 @@ const lowRules = [
         operation: 'card.skill_condition.includes(rand) || (minorCard(card) && minorCard(card).skill_condition.includes(rand))'
     },
     {
-        id: 101,
-        title: '自带能力词条',
-        rand: ['key',["guard","quick","killer","rush","drain"],["守护","疾驰","必杀","突进","吸血"]],
-        operation: 'findKey(rand,card) || (minorCard(card) && findKey(rand,minorCard(card)))'
-    },
-
-    {
         id: 104,
         title: '使用时/入场曲要指定',
         rand: ['key',["me1op1"],["1个己方目标与1个敌方目标"]],
@@ -67,7 +60,7 @@ const lowRules = [
     {
         id: 106,
         title: '结晶使用',
-        rand: ['num',0,5],
+        rand: ['num',1,5],
         operation: 'fixeduseKey("crystallize",card,rand)',
     },
     {
@@ -79,9 +72,62 @@ const lowRules = [
     {
         id: 108,
         title: '具有能力',
-        rand: ['key',["discard","banish","destroy","cost_change","return_card","shield","evolve","selfDestroy","indestructible","revive","ignore_guard","invocation","obtain_self","fusion","type=oldest","not_be_attacked","untouchable","metamorphose","cant_evolution","attack_count"],
-        ["弃牌","消失","破坏","改变费用","回手其他卡片","下一次受到伤害转变为0","自动进化","自我破坏","金膜","复活","无视守护","瞬念召唤","召唤自己","融合","轮流造成伤害","无法被攻击","方块膜","变形","无法进化","1回合中可进行X次攻击"]],
+        rand: ['key',["discard","banish","destroy","cost_change","return_card","shield"],
+        ["弃牌","消失","破坏","改变费用","回手其他卡片","下一次受到伤害转变为0"]],
         operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+    },
+    {
+        id: 109,
+        title: '具有能力',
+        rand: ['key',["fusion","type=oldest","not_be_attacked","untouchable","metamorphose","cant_evolution","attack_count"],
+        ["融合","轮流造成伤害","无法被攻击","方块膜","变形","无法进化","多次攻击/攻击次数修改"]],
+        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+    },
+    {
+        id: 110,
+        title: '具有能力',
+        rand: ['key',["evolve","selfDestroy","indestructible","revive","ignore_guard","invocation","obtain_self"],
+        ["自动进化","自我破坏","金膜","复活","无视守护","瞬念召唤","衍生自己"]],
+        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+    },
+    {
+        id: 111,
+        title: '造成伤害',
+        rand: ['num',1,10],
+        operation: 'findKey("damage",card,rand) || (minorCard(card) && findKey("damage",minorCard(card),rand))'
+    },
+    {
+        id: 112,
+        title: '回复生命值',
+        rand: ['num',1,3],
+        operation: 'findKey("heal",card,rand) || (minorCard(card) && findKey("heal",minorCard(card),rand))'
+    },
+    {
+        id: 113,
+        title: '抽牌',
+        rand: ['key',[/character=me&target=deck&card_type=all&random_count=1/,/character=me&target=deck&card_type=all&random_count=2/,/character=me&target=deck&card_type=all&tribe=[^&]+/],
+        ["1张","2张","检索种族"]],
+        operation: 'matchKey("draw",card,rand) || (minorCard(card) && matchKey("draw",minorCard(card),rand))'
+    },
+    {
+        id: 114,
+        title: '具有能力',
+        rand: ['key',["leaderPowerup","leaderPowerdown","power_down","choice","selfDamage","selfFollowerDamage"],
+        ["+血上限","-血上限","扣除能力值","抉择","自残","打自己随从"]],
+        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+    },
+    {
+        id: 115,
+        title: '具有能力',
+        rand: ['key',["burial_rite","necromance","ritual","spell_charge"],
+        ["葬送","死灵术","土之秘术","魔力增幅"]],
+        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+    },
+    {
+        id: 116,
+        title: '增加能力值',
+        rand: ['str',["+1/+0","+2/+0","+0/+1","+0/+2","+0/+3","+3/+0","+1/+1","+1/+2","+2/+1","+2/+2","+3/+3","+4/+4","+X/+0","+X/+X"]],
+        operation: 'getTrueDesc(card).includes(rand)'
     }
 ];
 
@@ -133,5 +179,17 @@ const highRules = [
       title: '具有异画',
       rand: ['none'],
       operation: 'hasDiffer(card)'
+  },
+  {
+      id: 305,
+      title: '进化后会更换部分语音',
+      rand: ['none'],
+      operation: 'card.char_type == 1 && hasSPEvolveVoice(card)'
+  },
+  {
+      id: 305,
+      title: '不具有独特爆能语音的随从',
+      rand: ['none'],
+      operation: 'card.char_type == 1 && generateSkills(card).includes("pp_fixeduse") && !hasEHEvolveVoice(card)'
   }
 ];

@@ -328,6 +328,20 @@ document.addEventListener("DOMContentLoaded", function () {
       viewTop100Button.style.display = "none";
       hintButton.style.display = "none";
       revealButton.style.display = "none";
+
+      document.getElementById("cardType").selectedIndex = 0;
+      document.getElementById("costComparison").selectedIndex = 0;
+      document.getElementById("attackComparison").selectedIndex = 0;
+      document.getElementById("healthComparison").selectedIndex = 0;
+      document.getElementById("class").selectedIndex = 0;
+      document.getElementById("rarity").selectedIndex = 0;
+
+      document.getElementById("cost").value = "";
+      document.getElementById("attack").value = "";
+      document.getElementById("health").value = "";
+      document.getElementById("race").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("antiDescription").value = "";
     }
 
     function restartGame() {

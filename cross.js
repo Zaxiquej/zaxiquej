@@ -241,7 +241,7 @@ function startGame() {
     // Update the "currentSeed" element with the current seed value
     if (num == 3) {
       var strongElement = document.createElement("p");
-      strongElement.textContent = "（普通）";
+      strongElement.textContent = "（简单）";
       document.getElementById("currentSeed").appendChild(strongElement);
     }
     if (num == 4) {
@@ -348,12 +348,36 @@ function fixeduseKey(key,card,val){
 }
 
 
-function findKey(key,card){
+function findKey(key,card,val){
   if (!card || !card.skill){
     return false;
   }
   for (let i = 0; i < card.skill.split(",").length; i++){
-    if (card.skill.split(",")[i] == key && card.skill_condition.split(",")[i] === "character=me" && card.skill_preprocess.split(",")[i] === "none" && card.skill_target.split(",")[i] === "character=me"){
+    if (card.skill.split(",")[i] == key && card.skill_option.split(",")[i].includes(key+"="+val)){
+      return true;
+    }
+  }
+  return false;
+}
+function hasSubName(currentCard){
+  for (let j = 0; j < cardData.length; j++) {
+    const otherCard = cardData[j];
+
+    // 检查是否两者的 .card_name 包含相同内容且 .clan 不同
+    if (currentCard.card_name.includes(otherCard.card_name) && currentCard.clan !== otherCard.clan) {
+      return true;
+    }
+  }
+  return false; // 在循环结束后返回 false
+}
+
+
+function matchKey(key,card,val){
+  if (!card || !card.skill){
+    return false;
+  }
+  for (let i = 0; i < card.skill.split(",").length; i++){
+    if (card.skill.split(",")[i] == key && val.exec(card.skill_target.split(",")[i])){
       return true;
     }
   }
@@ -390,8 +414,30 @@ function hasVoiceInteract(item1) {
     return false;
   }
 
-  const voices = voiceInfo.sound.split(",");
+  const voices = voiceInfo.sound[0].split(",");
   return voices.some(voice => voice.includes("_7_") || voice.includes("_8_"));
+}
+
+function hasSPEvolveVoice(item1) {
+  const id1 = item1.card_id;
+  const voiceInfo = soundDataMap.get(""+id1);
+
+  if (!voiceInfo) {
+    return false;
+  }
+  const voices = voiceInfo.sound;
+  return voices.some(voiceStr => voiceStr.split(",").some(voice => voice.includes("evo")));
+}
+
+function hasEHEvolveVoice(item1) {
+  const id1 = item1.card_id;
+  const voiceInfo = soundDataMap.get(""+id1);
+
+  if (!voiceInfo) {
+    return false;
+  }
+  const voices = voiceInfo.sound[0];
+  return voices.some(voice => voice.includes("enh"));
 }
 
 function isNToken(item1) {
@@ -476,6 +522,7 @@ function generateSets(){
         }
       }
     }
+    console.log(rules[0],rules[1],rules[2])
   }
   for (let i = 0; i < num; i++){
      ruleSets.push(rules[i]);
