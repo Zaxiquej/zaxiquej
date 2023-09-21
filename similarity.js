@@ -1484,14 +1484,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //aoe特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
           skills1.push('AOE');
           skillso1.push('none')
           skillsc1.push('none');
           skillst1.push('none');
           skillsT1.push('none');
         }
-        if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+        if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
           skills1.push('AOEReturn');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1501,14 +1501,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
+        if ((['destroy','powerdown','damage','banish'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("select_index=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
           skills2.push('AOE');
           skillso2.push('none')
           skillsc2.push('none');
           skillst2.push('none');
           skillsT2.push('none');
         }
-        if ((['return_card'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
+        if ((['return_card'].includes(skills2[i])) && skillst2[i].includes("target=inplay") && !(skillst2[i].includes("select_count=") || skillst2[i].includes("select_index=") || skillso2[i].includes("type=oldest") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class"))){
           skills2.push('AOEReturn');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1549,7 +1549,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+        if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
           skills1.push('AOEbuff');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1569,7 +1569,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills1.length; i++){
-        if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst1[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso1[skills1.indexOf("summon_token")].includes(":")))  && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+        if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst1[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso1[skills1.indexOf("summon_token")].includes(":")))  && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
           skills1.push('AOEevolve');
           skillso1.push('none')
           skillsc1.push('none');
@@ -1609,7 +1609,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((buffKeys.includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
+        if ((buffKeys.includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("select_index=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
           skills2.push('AOEbuff');
           skillso2.push('none')
           skillsc2.push('none');
@@ -1629,7 +1629,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((['evolve'].includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst2[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso2[skills2.indexOf("summon_token")].includes(":"))) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
+        if ((['evolve'].includes(skills2[i])) && (skillst2[i].includes("character=me&target=inplay&card_type=unit") || skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst2[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso2[skills2.indexOf("summon_token")].includes(":"))) && !(skillst2[i].includes("select_count=") || skillst2[i].includes("select_index=") || skillst2[i].includes("random_count=") || skillst2[i].includes("card_type=class") || skillst2[i].includes("target=self"))){
           skills2.push('AOEevolve');
           skillso2.push('none')
           skillsc2.push('none');
@@ -3455,14 +3455,14 @@ function customSplit(input,token) {
 
     //aoe特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+      if ((['destroy','powerdown','damage','banish'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
         skills1.push('AOE');
         skillso1.push('none')
         skillsc1.push('none');
         skillst1.push('none');
         skillsT1.push('none');
       }
-      if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
+      if ((['return_card'].includes(skills1[i])) && skillst1[i].includes("target=inplay") && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillso1[i].includes("type=oldest") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class"))){
         skills1.push('AOEReturn');
         skillso1.push('none')
         skillsc1.push('none');
@@ -3503,7 +3503,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
+      if ((buffKeys.includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit")) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") || skillst1[i].includes("target=self"))){
         skills1.push('AOEbuff');
         skillso1.push('none')
         skillsc1.push('none');
@@ -3523,7 +3523,7 @@ function customSplit(input,token) {
     }
 
     for (let i = 0; i < skills1.length; i++){
-      if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst1[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso1[skills1.indexOf("summon_token")].includes(":"))) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") ||     skillst1[i].includes("target=self"))){
+      if ((["evolve"].includes(skills1[i])) && (skillst1[i].includes("character=me&target=inplay&card_type=unit") || skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || (skillst1[i].includes("character=me&target=skill_summoned_card&card_type=unit") && skillso1[skills1.indexOf("summon_token")].includes(":"))) && !(skillst1[i].includes("select_count=") || skillst1[i].includes("select_index=") || skillst1[i].includes("random_count=") || skillst1[i].includes("card_type=class") ||     skillst1[i].includes("target=self"))){
         skills1.push('AOEevolve');
         skillso1.push('none')
         skillsc1.push('none');

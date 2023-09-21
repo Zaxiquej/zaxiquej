@@ -72,7 +72,6 @@ function createNewDataBase(allcards, subToken) {
         'char_type',
         'clan',
         'cost',
-        'cv',
         'evo_atk',
         'evo_life',
         'evo_skill_disc',
@@ -87,14 +86,27 @@ function createNewDataBase(allcards, subToken) {
         'tribe_name'
     ];
 
+    const keepFields2 = [
+        'card_id',
+        'cv',
+        'description',
+        'evo_description'
+    ];
+
     const replaceRules = [
-      ["鍊金", "炼金"],
-      ["项鍊", "项链"],
-      ["百鍊", "百炼"]
-      ["葛兰", "古兰"],
+      ["鍊金","炼金"],
+      ["项鍊","项链"],
+      ["百鍊","百炼"],
+      ["葛兰","古兰"],
       ["壹剑","苇剑"],
       ["凯留","凯露"],
-      ["猛玛","猛犸"]
+      ["猛玛","猛犸"],
+      ["梅杜莎","美杜莎"],
+      ["耶菈","耶拉"],
+      ["班比","斑比"],
+      ["笑恋","咲恋"],
+      ["巴侬","巴隆"],
+      ["库胡林","库丘林"]
       // 可以继续添加更多的规则
     ];
 
@@ -171,6 +183,29 @@ function createNewDataBase(allcards, subToken) {
             return newCard;
         });
 
+    const newDatabase2 = Array.from(uniqueCardsMap.values())
+        .map(card => {
+            const newCard = {};
+            keepFields2.forEach(field => {
+                if (typeof card[field] == 'number'){
+                  newCard[field] = card[field];
+                } else {
+                  if (subToken == 1){
+                    let newField = card[field];
+                    if (card[field] != null){
+                      newField = japToSimplized(simplized(card[field]));
+                      newCard[field] = replaceTextWithRules(newField,replaceRules);
+                    }
+                  } else{
+                    let newField = japToSimplized(simplized(card[field]));
+                    newCard[field] = replaceTextWithRules(newField,replaceRules);
+                  }
+
+                }
+            });
+            return newCard;
+        });
+
     // 创建一个Blob对象
     const jsonData = JSON.stringify(newDatabase, null, 2);
     const blob = new Blob([jsonData], { type: 'application/json' });
@@ -184,6 +219,20 @@ function createNewDataBase(allcards, subToken) {
     downloadLink.download = 'new_database.json'; // 下载文件的名称
     downloadLink.textContent = '点击此处下载新的数据库文件';
     document.body.appendChild(downloadLink);
+
+    // 创建一个Blob对象
+    const jsonData2 = JSON.stringify(newDatabase2, null, 2);
+    const blob2 = new Blob([jsonData2], { type: 'application/json' });
+
+    // 创建一个URL对象
+    const url2 = URL.createObjectURL(blob2);
+
+    // 创建一个链接并添加到页面
+    const downloadLink2 = document.createElement('a');
+    downloadLink2.href = url2;
+    downloadLink2.download = 'new_database.json'; // 下载文件的名称
+    downloadLink2.textContent = '点击此处下载新的cv/lore文件';
+    document.body.appendChild(downloadLink2);
 }
 
 function combineTiming(aData) {
