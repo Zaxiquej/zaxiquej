@@ -402,11 +402,24 @@ const highRules = [
       title: '经过',
       rand: ['key',["strengthen","weaken","change"],["加强（含回调）","削弱（含回调）","能力修改"]],
       operation: 'changeArr[rand].includes(card.card_name)'
-  }//,
+  },
   //{
       //id: 315,
       //title: '卡面角色出现在其他法术/护符上过（自衍生除外）',
       //rand: ['none'],
       //operation: 'spellAlt.some(arr => arr.slice(1).some(item => item.includes(card.card_id)));'
   //}
+  {
+      id: 315,
+      title: '闪卡会眨眼',
+      rand: ['none'],
+      operation: 'differArr[\'twinkCard\'].includes(card.card_name)'
+  },
+
+  {
+      id: 316,
+      title: '具有演示PV',
+      rand: ['none'],
+      operation: 'differArr[\'displayVideo\'].includes(card.card_name)'
+  }
 ];

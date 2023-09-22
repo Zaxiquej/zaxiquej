@@ -11987,7 +11987,7 @@ let subCardData = [
     "atk": 2,
     "base_card_id": 112541020,
     "card_id": 711541010,
-    "card_name": "丹紫抵御者·安镍儿",
+    "card_name": "丹紫抵御者·安涅儿",
     "card_set_id": 10012,
     "char_type": 1,
     "clan": 5,
