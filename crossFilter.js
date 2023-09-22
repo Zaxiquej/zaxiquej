@@ -1,6 +1,7 @@
 // 模拟按钮信息数组
 let lastPacket = 10029;
 
+const packetNames = ["基础卡","经典卡包","暗影进化","巴哈姆特降临","诸神狂岚","梦境奇想","星神传说","时空转生","起源之光·终焉之暗","苍空骑翔","灭祸十杰","扭曲次元","钢铁的反叛者","荣耀再临","森罗咆哮","极斗之巅","那塔拉的崩坏","命运诸神","勒比卢的旋风","十天觉醒","暗黑的威尔萨","物语重归","超越灾祸者","十祸斗争","天象乐土","极天龙鸣","示天龙剑","八狱魔境·阿兹弗特","悠久学院","密斯塔尔希亚的英雄"];
 
 const cvTable = [
     "潘めぐみ",
@@ -192,7 +193,7 @@ const lowRules = [
         rand: ['key',
         ["possess_ep_modifier","lose","update_deck","open_card","NTR","ramp","change_affiliation","oppoHeal","AOEReturn","lock","independent","permShield","damage_modifier","stack_white_ritual","handMetamorphose"],
         ["回复EP","（使）失去能力","洗入牌堆","公开","牛头人","跳/扣费","改变种族","治疗对手","全体回手","锁","不受效果英雄","受到伤害变为0","增加造成的伤害","蓄积","手牌变形"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 7,
@@ -229,21 +230,21 @@ const lowRules = [
         title: '具有能力',
         rand: ['key',["discard","banish","destroy","cost_change","return_card","shield"],
         ["弃牌","消失","破坏","改变费用","回手其他卡片","下一次受到伤害转变为0"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 109,
         title: '具有能力',
         rand: ['key',["fusion","type=oldest","not_be_attacked","untouchable","metamorphose","cant_evolution","attack_count"],
         ["融合","轮流造成伤害","无法被攻击","方块膜","变形","无法进化","多次攻击/攻击次数修改"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 110,
         title: '具有能力',
         rand: ['key',["evolve","selfDestroy","indestructible","revive","ignore_guard","invocation","obtain_self"],
         ["自动进化","自我破坏","金膜","复活","无视守护","瞬念召唤","衍生自己"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 111,
@@ -269,14 +270,14 @@ const lowRules = [
         title: '具有能力',
         rand: ['key',["leaderPowerup","leaderPowerdown","power_down","choice","selfDamage","selfFollowerDamage"],
         ["+血上限","-血上限","扣除能力值","抉择","自残","打自己随从"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 115,
         title: '具有能力',
         rand: ['key',["burial_rite","necromance","ritual","spell_charge"],
         ["葬送","死灵术","土之秘术","魔力增幅"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 116,
@@ -289,7 +290,7 @@ const lowRules = [
         title: '会检查以下计数',
         rand: ['key',["selfDestroyCount","selfLeftCount","selfSummonCount","selfEvolveCount","selfDeckCount","selfHandCount","status_life","status_offense","selfStatus_life","selfInPlaySum","selfInPlayCount","selfPlaySpCardCount"],
         ["破坏数量","离场数量","入场数量","进化次数","牌库数","手牌结构","其他随从的生命值","其他随从的攻击","自己的生命值","己方随从数","己方随从结构","使用过某张牌的数量"]],
-        operation: 'generateSkills(card).includes(rand) || (minorCard(card) && generateSkills(minorCard(card)).includes(rand))'
+        operation: 'generateSkills(card).includes(rand)'
     },
     {
         id: 118,
@@ -327,7 +328,7 @@ const highRules = [
   {
       id: 301,
       title: '同卡包',
-      rand: ['num',10000,10029],
+      rand: ['key',Array.from({ length: lastPacket - 9999 }, (_, i) => i + 10000),packetNames],
       operation: 'card.card_set_id == rand'
   },
   {
@@ -401,11 +402,11 @@ const highRules = [
       title: '经过',
       rand: ['key',["strengthen","weaken","change"],["加强（含回调）","削弱（含回调）","能力修改"]],
       operation: 'changeArr[rand].includes(card.card_name)'
-  },
-  {
-      id: 315,
-      title: '卡面角色出现在其他法术/护符上过',
-      rand: ['none'],
-      operation: 'spellAlt.some(arr => arr.slice(1).some(item => item.includes(card.card_id)));'
-  }
+  }//,
+  //{
+      //id: 315,
+      //title: '卡面角色出现在其他法术/护符上过（自衍生除外）',
+      //rand: ['none'],
+      //operation: 'spellAlt.some(arr => arr.slice(1).some(item => item.includes(card.card_id)));'
+  //}
 ];

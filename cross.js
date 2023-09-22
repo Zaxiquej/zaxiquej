@@ -25,6 +25,7 @@ let cardSets = [];
 let ruleSets = [];
 let num = 5;
 let isGameOver = false; // 用于标记游戏是否结束
+let lineupIndex = 0;//排列
 
 // 初始化游戏界面
 function initGame() {
@@ -92,6 +93,31 @@ function arrayMatch(arr1, arr2) {
   return matchedIndexes.every(matched => matched);
 }
 
+function arraysDifferByOneElement(arr1, arr2) {
+  // 如果数组长度不相等，直接返回 false
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+
+  // 创建一个临时数组，用于存放已经匹配的元素
+  const matchedIndexes = new Array(arr1.length).fill(false);
+
+  // 遍历 arr1 中的元素
+  for (let i = 0; i < arr1.length; i++) {
+    const element1 = arr1[i];
+    const index2 = arr2.indexOf(element1);
+
+    // 如果找到了匹配的元素且未被匹配过，标记为已匹配
+    if (index2 !== -1 && !matchedIndexes[index2]) {
+      matchedIndexes[index2] = true;
+    }
+  }
+  // 如果所有元素都匹配了，返回 true
+  return matchedIndexes.filter(matched => !matched).length == 1;
+}
+
+
+
 // 创建函数，将所有highlight的cardContainer去除highlight，添加由内向外的渐变背景
 function removeHighlightAndChangeBackground() {
   // 获取所有拥有 highlight 类的元素
@@ -107,7 +133,7 @@ function removeHighlightAndChangeBackground() {
     }
 
     // 添加由内向外的渐变背景，调整颜色停止位置来控制深浅
-    element.style.background = `radial-gradient(circle, ${gradientColor} 20%, transparent 100%)`;
+    //element.style.background = `radial-gradient(circle, ${gradientColor} 20%, transparent 100%)`;
 
     // 移除所有元素的 highlight 类
     element.classList.remove('highlight');
@@ -179,7 +205,7 @@ function checkFour(){
   }
   const matchingIndex = cardSets.findIndex(set => arrayMatch(set, highlightedCards));
   let cardNames = highlightedCards.map(card => card.card_name);
-  if (matchingIndex != -1){
+  if (matchingIndex >= 0){
     colors = ["#00CC00","#00CCCC","#CCCC00","#CC0000","#CC00CC"];
     gradientColor = colors[matchingIndex];
     for (let i = 0; i < num; i++){
@@ -188,9 +214,77 @@ function checkFour(){
         return anchorElement && anchorElement.textContent === highlightedCards[i].card_name;
       })[0];
       //console.log(elementsDiv.children[0].innerText)
-      let elem2 = elementsDiv.children[matchingIndex].children[i];
+      let elem2 = elementsDiv.children[lineupIndex].children[0].children[i];
       swapDivs(elem1,elem2)
     }
+
+    // 获取要操作的元素
+    var element = elementsDiv.children[lineupIndex];
+
+    // 添加圆角矩形样式
+    element.style.borderRadius = "10px"; // 设置圆角半径
+    element.style.backgroundColor = gradientColor;
+    element.style.background = `radial-gradient(circle, ${gradientColor} 20%, transparent 100%)`;
+
+    element.style.padding = "10px"; // 设置内边距
+
+    if (ruleSets[matchingIndex].id == 204){
+      for (let i = 0; i < num; i++){
+        let elem = elementsDiv.children[lineupIndex].children[0].children[i];
+        let card = findNToken(elem.card);
+        const cardLink = document.createElement('a');
+        cardLink.href = `https://shadowverse-portal.com/card/${card.card_id}?lang=zh-tw`;
+        cardLink.target = '_blank';
+        cardLink.textContent = "("+card.card_name+")";
+        elem.appendChild(cardLink);
+        elem.height = '144px';
+        // 创建超链接元素
+      }
+    }
+
+    if (ruleSets[matchingIndex].id == 310){
+      for (let i = 0; i < num; i++){
+        let elem = elementsDiv.children[lineupIndex].children[0].children[i];
+        let card = findCardByIdR(findFlavor(elem.card).card_id);
+        const cardLink = document.createElement('a');
+        cardLink.href = `https://shadowverse-portal.com/card/${card.card_id}?lang=zh-tw`;
+        cardLink.target = '_blank';
+        cardLink.textContent = "("+card.card_name+")";
+        elem.appendChild(cardLink);
+        elem.height = '144px';
+        // 创建超链接元素
+      }
+    }
+
+    if (ruleSets[matchingIndex].id == 315){
+      for (let i = 0; i < num; i++){
+        let elem = elementsDiv.children[lineupIndex].children[0].children[i];
+        let card = findCardByIdR(spellAlt.filter(arr => arr.slice(1).some(item => item.includes(elem.card.card_id)))[0][0]);
+        const cardLink = document.createElement('a');
+        cardLink.href = `https://shadowverse-portal.com/card/${card.card_id}?lang=zh-tw`;
+        cardLink.target = '_blank';
+        cardLink.textContent = "("+card.card_name+")";
+        elem.appendChild(cardLink);
+        elem.height = '144px';
+        // 创建超链接元素
+      }
+    }
+
+    // 创建并添加一行文字
+    var paragraph = document.createElement("strong"); // 创建<p>元素
+    if (ruleSets[matchingIndex].stRand != undefined){
+      paragraph.textContent = ruleSets[matchingIndex].title + "：" + ruleSets[matchingIndex].stRand;
+    } else {
+      paragraph.textContent = ruleSets[matchingIndex].title;
+    }
+
+    // 使用 CSS 来抬高一点
+    paragraph.style.marginBottom = "10px"; // 通过增加底部外边距抬高元素
+    element.appendChild(paragraph); // 将<p>元素添加到目标元素中
+
+
+    lineupIndex++;
+
     removeHighlightAndChangeBackground();
     gradientColor = "green";
     for (let c of highlightedCards){
@@ -198,9 +292,9 @@ function checkFour(){
     }
     highlightedCards = [];
     if (ruleSets[matchingIndex].stRand != undefined){
-      insertTextWithGradientBackground("连线成功："+cardNames.join('、')+"（"+ruleSets[matchingIndex].title+"："+ruleSets[matchingIndex].stRand+"）。","#ffffff","#00ff00");
+      insertTextWithGradientBackground("分组成功："+cardNames.join('、')+"（"+ruleSets[matchingIndex].title+"："+ruleSets[matchingIndex].stRand+"）。","#ffffff","#00ff00");
     } else {
-      insertTextWithGradientBackground("连线成功："+cardNames.join('、')+"（"+ruleSets[matchingIndex].title+"）。","#ffffff","#00ff00");
+      insertTextWithGradientBackground("分组成功："+cardNames.join('、')+"（"+ruleSets[matchingIndex].title+"）。","#ffffff","#00ff00");
     }
 
     if (outedCards.length == num * num) {
@@ -215,8 +309,14 @@ function checkFour(){
         result.appendChild(restartButton);
     }
   } else {
-    gradientColor = "red";
-    insertTextWithGradientBackground("连线失败："+cardNames.join('、')+"。","#ffffff","#ff0000");
+    let hasDiffOne = cardSets.findIndex(set => arraysDifferByOneElement(set, highlightedCards));
+    if (hasDiffOne >= 0){
+      gradientColor = "#FFA500";
+      insertTextWithGradientBackground("分组失败（一个不同）："+cardNames.join('、')+"。","#ffffff","#FFA500");
+    } else {
+      gradientColor = "red";
+      insertTextWithGradientBackground("分组失败："+cardNames.join('、')+"。","#ffffff","#ff0000");
+    }
   }
 }
 
@@ -283,6 +383,7 @@ function startGame() {
     } else if (selectedDifficulty === 'hard') {
       num = 5;
     }
+    lineupIndex = 0;
     startBox.classList.add('hidden');
     buttons.classList.remove('hidden');
     gameBox.style.display = "block";
@@ -509,6 +610,24 @@ function hasFlavor(item1) {
   return false;
 }
 
+function findFlavor(item1) {
+  if (item1.char_type != 1){
+    return;
+  }
+  const id1 = item1.card_id;
+  let regex = /<br>──(.*?)<br>|<br>──(.*?)$/g;
+  for (let card of cvloreData){
+    let r1 = regex.exec(card.description);
+    let r2 = regex.exec(card.evo_description);
+    if (r1 && r1.some(des => des && des.split("与").includes(item1.card_name) || des == item1.card_name)){
+      return card;
+    }
+    if (r2 && r2.some(des => des && des.split("与").includes(item1.card_name) || des == item1.card_name)){
+      return card;
+    }
+  }
+  return undefined;
+}
 
 
 function hasSPEvolveVoice(item1) {
@@ -574,6 +693,11 @@ function uniqueStats(item1) {
 function isNToken(item1) {
   const id1 = item1.card_id;
   return cardData.some(card => !item1.skill_option.includes(card.base_card_id) && ((card.skill_option.includes("="+id1) || card.skill_option.includes("&"+id1)) || (minorCard(card) && (minorCard(card).skill_option.includes("="+id1) || minorCard(card).skill_option.includes(":"+id1)))));
+}
+
+function findNToken(item1) {
+  const id1 = item1.card_id;
+  return cardData.filter(card => !item1.skill_option.includes(card.base_card_id) && ((card.skill_option.includes("="+id1) || card.skill_option.includes("&"+id1)) || (minorCard(card) && (minorCard(card).skill_option.includes("="+id1) || minorCard(card).skill_option.includes(":"+id1)))))[0];
 }
 
 function hasDiffer(item1) {
@@ -688,6 +812,8 @@ function drawSets(){
   }
 
   for (let i = 0; i < num; i++) {
+    const lgContainer = document.createElement('div');
+    lgContainer.classList.add('lg');
     const rowContainer = document.createElement('div');
     rowContainer.classList.add('row');
 
@@ -696,7 +822,9 @@ function drawSets(){
       rowContainer.appendChild(cardContainer);
     }
 
-    elementsDiv.appendChild(rowContainer);
+    lgContainer.appendChild(rowContainer);
+
+    elementsDiv.appendChild(lgContainer);
 
     //const lineBreak = document.createElement('br');
     //elementsDiv.appendChild(lineBreak);
