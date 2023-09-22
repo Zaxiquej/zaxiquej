@@ -14,6 +14,14 @@ const elementsDiv = document.getElementById('elementsDiv');
 const suggestionsDiv = document.getElementById('suggestions');
 let gradientColor = "lightblue"; // 这里可以根据需要设置默认的渐变颜色
 
+// 获取包含 generatePastDateSeeds(20) 内容的字符串
+var functionContent = generatePastDateSeeds(1).toString();
+
+// 将函数内容设置到 <pre> 元素中
+var functionContentElement = document.getElementById("functionContent");
+functionContentElement.innerHTML = functionContent;
+
+
 // 全局变量，用于跟踪已有外框的图片信息
 let highlightedCards = [];
 let outedCards = [];
@@ -859,4 +867,31 @@ function countCVStrings(cvloreData) {
   const counts = filteredStrings.map(([_, count]) => count);
 
   return [strings, counts];
+}
+
+function generatePastDateSeeds(numDays) {
+  const seeds = [];
+
+  for (let i = 0; i < numDays; i++) {
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 8 - (i+1) * 24); // Adjust for past days
+    const year = currentDate.getUTCFullYear().toString();
+    const month = (currentDate.getUTCMonth() + 1).toString().padStart(2, '0');
+    const day = currentDate.getUTCDate().toString().padStart(2, '0');
+
+    const dateSeed = year + month + day;
+
+    Math.seedrandom(dateSeed);
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let seed = '';
+    for (let j = 0; j < 8; j++) {
+      const randomIndex = Math.floor(Math.random() * letters.length);
+      seed += letters[randomIndex];
+    }
+
+    seeds.push(`<li>${year}/${month}/${day}-${seed}</li>`);
+  }
+
+  return seeds.join('<br>');
 }

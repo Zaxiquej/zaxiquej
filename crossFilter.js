@@ -421,5 +421,11 @@ const highRules = [
       title: '具有演示PV',
       rand: ['none'],
       operation: 'differArr[\'displayVideo\'].includes(card.card_name)'
+  },
+  {
+      id: 317,
+      title: '预览季新卡发布者',
+      rand: ['key',["lutiyaCard","xybmCard"],["璐缇雅","饼"]],
+      operation: 'differArr[rand].includes(card.card_name)'
   }
 ];

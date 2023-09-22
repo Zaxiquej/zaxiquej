@@ -191,13 +191,6 @@ h1 {
   align-items: center;
 }
 
-/* 可选：如果希望容器在小屏幕上堆叠，可以添加以下媒体查询 */
-@media (max-width: 400px) {
-  .row {
-    flex-direction: column; /* 在小屏幕上堆叠 */
-  }
-}
-
 /* 基本样式 */
 #difficultySelect {
   padding: 5px;
