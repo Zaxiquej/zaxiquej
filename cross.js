@@ -772,7 +772,7 @@ function generateSets(){
     for (let i = 0; i < num; i++){
        rands[i] = evaRand(rules[i]);
     }
-    console.log(rules[0],rules[1],rules[2],rules[3],rules[4])
+  //  console.log(rules[0],rules[1],rules[2],rules[3],rules[4])
     for (let i = 0; i < num; i++){
       rCardPools[i] = tempCardPool.slice();
       for (let j = 0; j < num; j++){
@@ -783,7 +783,7 @@ function generateSets(){
         }
       }
     }
-    console.log(rCardPools[0],rCardPools[1],rCardPools[2],rCardPools[3],rCardPools[4])
+  //  console.log(rCardPools[0],rCardPools[1],rCardPools[2],rCardPools[3],rCardPools[4])
   }
   for (let i = 0; i < num; i++){
      ruleSets.push(rules[i]);
