@@ -386,12 +386,6 @@ const highRules = [
       operation: 'hasCV(card,rand)'
   },
   {
-      id: 310,
-      title: '在某张卡的风味描述中有过发言（——XXX的形式）',
-      rand: ['none'],
-      operation: 'hasFlavor(card)'
-  },
-  {
       id: 312,
       title: '（曾）是',
       rand: ['key',["twoPickBan","unlimitedBan","doubleClassBan"],["2p禁卡","无限禁限卡","双职业禁限卡"]],
@@ -402,13 +396,20 @@ const highRules = [
       title: '经过',
       rand: ['key',["strengthen","weaken","change"],["加强（含回调）","削弱（含回调）","能力修改"]],
       operation: 'changeArr[rand].includes(card.card_name)'
-  },
+  }]
   //{
       //id: 315,
       //title: '卡面角色出现在其他法术/护符上过（自衍生除外）',
       //rand: ['none'],
       //operation: 'spellAlt.some(arr => arr.slice(1).some(item => item.includes(card.card_id)));'
   //}
+  const hellRules = [
+  {
+      id: 310,
+      title: '在某张卡的风味描述中有过发言（——XXX的形式）',
+      rand: ['none'],
+      operation: 'hasFlavor(card)'
+  },
   {
       id: 315,
       title: '闪卡会眨眼',
@@ -424,6 +425,12 @@ const highRules = [
   },
   {
       id: 317,
+      title: '抽卡界面看板',
+      rand: ['none'],
+      operation: 'differArr[\'drawCard\'].includes(card.card_name)'
+  },
+  {
+      id: 318,
       title: '预览季新卡发布者',
       rand: ['key',["lutiyaCard","xybmCard"],["璐缇雅","饼"]],
       operation: 'differArr[rand].includes(card.card_name)'

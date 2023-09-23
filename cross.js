@@ -215,6 +215,9 @@ function checkFour(){
   let cardNames = highlightedCards.map(card => card.card_name);
   if (matchingIndex >= 0){
     colors = ["#00CC00","#00CCCC","#CCCC00","#CC0000","#CC00CC"];
+    if (num == 4){
+      colors = ["#00CC00","#00CCCC","#CCCC00","#CC00CC"];
+    }
     gradientColor = colors[matchingIndex];
     for (let i = 0; i < num; i++){
       let elem1 = Array.from(document.querySelectorAll('.highlight')).filter(elem => {
@@ -764,14 +767,24 @@ function generateSets(){
   while (p < 1 && !(rCardPools.every(arr => arr.length >= num))){
     let tpLow = lowRules.slice();
     let tpHigh = highRules.slice();
+    let tpEx = hellRules.slice();
     for (let i = 0; i < 2; i++){
       rules[i] = tpLow[Math.floor(Math.random() * tpLow.length)];
       tpLow.remove(rules[i]);
     }
-    for (let i = 2; i < num; i++){
-      rules[i] = tpHigh[Math.floor(Math.random() * tpHigh.length)];
-      tpHigh.remove(rules[i]);
+    if (num == 3){
+      for (let i = 2; i < num; i++){
+        rules[i] = tpHigh[Math.floor(Math.random() * tpHigh.length)];
+        tpHigh.remove(rules[i]);
+      }
+    } else {
+      for (let i = 2; i < num - 1; i++){
+        rules[i] = tpHigh[Math.floor(Math.random() * tpHigh.length)];
+        tpHigh.remove(rules[i]);
+      }
+      rules[num - 1] = tpEx[Math.floor(Math.random() * tpEx.length)];
     }
+
     let ros = [];
     for (let i = 0; i < num; i++){
        ros[i] = rules[i].operation.replaceAll("rand","rands["+i+"]");
