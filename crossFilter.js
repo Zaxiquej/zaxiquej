@@ -191,8 +191,8 @@ const lowRules = [
         id: 5,
         title: '具有能力',
         rand: ['key',
-        ["evolution_end_stop","rush","quick","drain","killer","guard","cant_attack"],
-        ["进化后失去词条","突进","疾驰","吸血","必杀","守护","无法攻击"]],
+        ["evolution_end_stop","rush","quick","drain","killer","guard","sneak","cant_attack"],
+        ["进化后失去词条","突进","疾驰","吸血","必杀","守护","潜行","无法攻击"]],
         operation: 'generateSkills(card).includes(rand)'
     },
     {
