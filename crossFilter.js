@@ -188,6 +188,14 @@ const lowRules = [
         operation: 'card.tribe_name.includes(rand) || (minorCard(card) && minorCard(card).tribe_name.includes(rand)) || card.tribe_name == "全部"'
     },
     {
+        id: 5,
+        title: '具有能力',
+        rand: ['key',
+        ["evolution_end_stop","rush","quick","drain","killer","guard","cant_attack"],
+        ["进化后失去词条","突进","疾驰","吸血","必杀","守护","无法攻击"]],
+        operation: 'generateSkills(card).includes(rand)'
+    },
+    {
         id: 6,
         title: '具有能力',
         rand: ['key',
