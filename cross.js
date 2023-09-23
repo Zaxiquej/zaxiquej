@@ -267,7 +267,7 @@ function checkFour(){
       }
     }
 
-    if (ruleSets[matchingIndex].id == 315){
+    if (ruleSets[matchingIndex].id == 314.9){
       for (let i = 0; i < num; i++){
         let elem = elementsDiv.children[lineupIndex].children[0].children[i];
         let card = findCardByIdR(spellAlt.filter(arr => arr.slice(1).some(item => item.includes(elem.card.card_id)))[0][0]);
