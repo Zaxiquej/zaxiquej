@@ -15,7 +15,7 @@ const suggestionsDiv = document.getElementById('suggestions');
 let gradientColor = "lightblue"; // 这里可以根据需要设置默认的渐变颜色
 
 // 获取包含 generatePastDateSeeds(20) 内容的字符串
-var functionContent = generatePastDateSeeds(1).toString();
+var functionContent = generatePastDateSeeds(2).toString();
 
 // 将函数内容设置到 <pre> 元素中
 var functionContentElement = document.getElementById("functionContent");
