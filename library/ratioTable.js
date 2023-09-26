@@ -45,6 +45,7 @@ let ratioTable = {
   "give_guard": {reward:7, punish:4}, //角力
   "clear_destroyed_card_list": {reward:5, punish:5}, //彻底炸牌库（倒吊）
   "{me.destroyed_card_list.tribe=artifact.unique_base_card_id_card.count}": {reward:1.9, punish:1.9}, //造物种类
+  "{me.game_add_update_deck_cards.unit.tribe=artifact.count}": {reward:1.9, punish:1.9}, //洗造物数
   "{me.inplay.class.rally_count}": {reward:1.4, punish:0.5}, //连协
   "{me.inplay.unit.count}=1": {reward:2.5, punish:0.4}, //唯我
   "selfDestroyCount": {reward:1.5, punish:0.4}, //各种破坏任务
@@ -81,6 +82,9 @@ let ratioTable = {
   "op_turn_end": {reward:0.8, punish:0.3}, //回合开始
   "when_evolve": {reward:0.5, punish:0.16}, //进化发动
   "when_attack": {reward:0.7, punish:0.3}, //攻击发动
+  "when_fusion": {reward:2, punish:1}, //融合发动
+  "when_fusioned": {reward:6, punish:2}, //被融合发动
+  "discardReturn": {reward:6, punish:0.5}, //返还弃牌
   "when_attack_after": {reward:1.5, punish:0.5}, //攻击后结算
   "when_fight": {reward:0.7, punish:0.3}, //交战发动
   "when_leave": {reward:1.5, punish:0.5}, //离场发动
@@ -125,6 +129,7 @@ let ratioTable = {
   "selfReturn": {reward:3, punish:2.5}, //自回手
   "AOEReturn": {reward:9, punish:6}, //全回手
   "selfDestroy": {reward:2, punish:1.5}, //自杀
+  "AOEselfDestroy": {reward:3, punish:0.5}, //群体自杀
   "evolve": {reward:1.6, punish:1.2}, //进化
   "shield": {reward:1.6, punish:1.6}, //圣盾
   "lock": {reward:3, punish:3}, //锁
@@ -156,7 +161,8 @@ let ratioTable = {
   "revive": {reward:1.8, punish:1.8}, // 亡召/复活
   "ignore_guard": {reward:2.1, punish:2.1}, //穿墙
   "turn_start_stop": {reward:0.4, punish:0.4}, //直到回合开始
-  "chant_count_change": {reward:1.55, punish:1.55}, //改变吟唱
+  "chant_count_change": {reward:3, punish:1.55}, //改变吟唱
+  "checkSpCard": {reward:5, punish:1.5}, //检查特定卡牌
   "return_card": {reward:1.75, punish:1.75}, //回手
   "invocation": {reward:2.4, punish:1.6}, //瞬念
   "cant_attack": {reward:2.4, punish:1.6}, //无法攻击
@@ -183,8 +189,10 @@ let ratioTable = {
   "change_white_ritual_stack": {reward:3, punish:3}, //增加积蓄
   "stack_white_ritual": {reward:3, punish:3}, //积蓄
   "awake": {reward:1.4, punish:1.1}, //觉醒
-  "{me.inplay.class.max_pp}": {reward:3, punish:3}, //最大X PP
+  "{me.inplay.class.max_pp}": {reward:3, punish:2}, //最大X PP
+  "buff_count>0": {reward:2.5, punish:1.5}, //检测有buff的随从
   "metamorphose": {reward:3, punish:3}, //变形
+  "fusion_metamorphose": {reward: 2, punish: 1.5}, //融合变形
   "handMetamorphose": {reward:6, punish:6}, //手牌变形
   "change_cemetery": {reward:2.5, punish:2.5}, //改变墓地
   "change_union_burst_count": {reward:1.2, punish:1.2}, //UB
