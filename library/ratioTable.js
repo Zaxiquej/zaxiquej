@@ -172,7 +172,7 @@ let ratioTable = {
   "killer": {reward:1.1, punish:1.1},
   "drain": {reward:1.5, punish:1.5},
   "evolution_end_stop": {reward:2, punish:2}, //进化前后关键词不同
-  "fusion": {reward:4, punish:2}, //融合
+  "fusion": {reward:2, punish:1}, //融合
   "type=oldest": {reward:1.5, punish:0.4}, //轮流伤害
   "attack_count": {reward:2.8, punish:1.2}, //连击
   "change_rally_count": {reward:6, punish:2}, //改变连协
