@@ -526,6 +526,69 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
+      //处理单体多target
+      for (let i = 0; i < skills1.length; i++){
+        const pattern = /^{([^}]+)}&{([^}]+)}$/;
+
+        // 使用正则表达式匹配字符串
+        const matches = skillst1[i].match(pattern);
+
+        if (matches){
+          skillst1[i] = formatConversion(matches[1]);
+          skills1.push(skills1[i]);
+          skillso1.push(skillso1[i]);
+          skillsc1.push(skillsc1[i]);
+          skillst1.push(formatConversion(matches[2]));
+          skillsT1.push(skillsT1[i]);
+        }
+      }
+
+      //处理单体多target
+      for (let i = 0; i < skills1.length; i++){
+        const pattern = /^{([^}]+)}$/;
+
+        // 使用正则表达式匹配字符串
+        const matches = skillst1[i].match(pattern);
+
+        if (matches){
+          skillst1[i] = formatConversion(matches[1]);
+        }
+      }
+
+
+      //处理单体多target
+      for (let i = 0; i < skills2.length; i++){
+        const pattern = /^{([^}]+)}&{([^}]+)}$/;
+
+        // 使用正则表达式匹配字符串
+        const matches = skillst2[i].match(pattern);
+
+        if (matches){
+          skillst2[i] = formatConversion(matches[1]);
+          skills2.push(skills2[i]);
+          skillso2.push(skillso2[i]);
+          skillsc2.push(skillsc2[i]);
+          skillst2.push(formatConversion(matches[2]));
+          skillsT2.push(skillsT2[i]);
+        }
+      }
+
+      //处理单体多target
+      for (let i = 0; i < skills2.length; i++){
+        const pattern = /^{([^}]+)}$/;
+
+        // 使用正则表达式匹配字符串
+        const matches = skillst2[i].match(pattern);
+
+        if (matches){
+          skillst2[i] = formatConversion(matches[1]);
+          if (skillst2[i] == "me.self"){
+            console.log(card2)
+          }
+        }
+      }
+
+
       let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn"];
       let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
       let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
@@ -1247,7 +1310,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         }
       }
 
-      let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+      let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class']
+      let bLeaderKey = ['character=both&target=inplay&card_type=class','character=both&target=inplay&card_type=unit_and_class'];
       let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=op&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
 
       //优化词条
@@ -1268,13 +1332,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
           skills1[i] = "selfDamage";
         }
-        if (skills1[i] == 'damage' && [108611030].includes(card1.card_id)){
-          skills1.push('damage');
+        if (skills1[i] == 'damage' && bLeaderKey.includes(skillst1[i]) ){
+          skillst1[i].replace("=both","=op")
+          skills1.push('selfDamage');
           skillso1.push(skillso1[i]);
           skillsc1.push(skillsc1[i]);
-          skillst1.push("character=me&target=inplay&card_type=class" );
+          skillst1.push(skillst1[i].replace("=op","=me"));
           skillsT1.push(skillsT1[i]);
-          skillst1[i] = "character=op&target=inplay&card_type=unit";
         }
         if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
           skills1[i] = "selfFollowerDamage";
@@ -1285,13 +1349,13 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         if (skills2[i] == 'damage' && ownLeaderKey.includes(skillst2[i]) ){
           skills2[i] = "selfDamage";
         }
-        if (skills2[i] == 'damage' && [108611030].includes(card2.card_id)){
-          skills2.push('damage');
+        if (skills2[i] == 'damage' && bLeaderKey.includes(skillst2[i]) ){
+          skillst2[i].replace("=both","=op")
+          skills2.push('selfDamage');
           skillso2.push(skillso2[i]);
           skillsc2.push(skillsc2[i]);
-          skillst2.push("character=me&target=inplay&card_type=class" );
+          skillst2.push(skillst2[i].replace("=op","=me"));
           skillsT2.push(skillsT2[i]);
-          skillst2[i] = "character=op&target=inplay&card_type=unit";
         }
         if (skills2[i] == 'damage' && (skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst2[i].includes("character=me&target=inplay&card_type=unit"))){
           skills2[i] = "selfFollowerDamage";
@@ -3009,6 +3073,36 @@ function customSplit(input,token) {
         }
       }
     }
+
+    //处理单体多target
+    for (let i = 0; i < skills1.length; i++){
+      const pattern = /^{([^}]+)}&{([^}]+)}$/;
+
+      // 使用正则表达式匹配字符串
+      const matches = skillst1[i].match(pattern);
+
+      if (matches){
+        skillst1[i] = formatConversion(matches[1]);
+        skills1.push(skills1[i]);
+        skillso1.push(skillso1[i]);
+        skillsc1.push(skillsc1[i]);
+        skillst1.push(formatConversion(matches[2]));
+        skillsT1.push(skillsT1[i]);
+      }
+    }
+
+    //处理单体多target
+    for (let i = 0; i < skills1.length; i++){
+      const pattern = /^{([^}]+)}$/;
+
+      // 使用正则表达式匹配字符串
+      const matches = skillst1[i].match(pattern);
+
+      if (matches){
+        skillst1[i] = formatConversion(matches[1]);
+      }
+    }
+
     let keyPros = ["ritual","burial_rite","necromance","use_pp","use_ep","open_card","evolution_end_stop","per_turn"];
     let lkeyPros = ["turn_end_period_of_stop_time","turn_start_skill_after_stop","preprocess_condition"]; //后面跟的一定是字母的
     let repPros = ["turn_end_stop","turn_start_stop","turn_end_remove","only_random_index","remove_from_inplay_stop","per_game","per_turn"]; //容易复读的
@@ -3397,6 +3491,7 @@ function customSplit(input,token) {
     }
 
     let ownLeaderKey = ['character=me&target=self&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
+    let bLeaderKey = ['character=both&target=inplay&card_type=class','character=both&target=inplay&card_type=unit_and_class'];
     let enemyLeaderKey = ['character=op&target=inplay&card_type=class','character=me&target=inplay&card_type=class','character=both&target=inplay&card_type=class']
 
     //优化词条
@@ -3411,13 +3506,13 @@ function customSplit(input,token) {
       if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
         skills1[i] = "selfDamage";
       }
-      if (skills1[i] == 'damage' && [108611030].includes(card1.card_id)){
-        skills1.push('damage');
+      if (skills1[i] == 'damage' && bLeaderKey.includes(skillst1[i]) ){
+        skillst1[i].replace("=both","=op")
+        skills1.push('selfDamage');
         skillso1.push(skillso1[i]);
         skillsc1.push(skillsc1[i]);
-        skillst1.push("character=me&target=inplay&card_type=class" );
+        skillst1.push(skillst1[i].replace("=op","=me"));
         skillsT1.push(skillsT1[i]);
-        skillst1[i] = "character=op&target=inplay&card_type=unit";
       }
       if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
         skills1[i] = "selfFollowerDamage";
@@ -4022,4 +4117,15 @@ function customSplit(input,token) {
       skillsT1.push('none');
     }
     return skills1;
+  }
+
+  function formatConversion(input) {
+    const parts = input.split('.');
+    if (parts.length === 3) {
+      return `character=${parts[0]}&target=${parts[1]}&card_type=${parts[2]}`;
+    } else if (parts.length === 2) {
+      return `character=${parts[0]}&target=${parts[1]}`;
+    } else {
+      return input; // 如果不符合格式要求，返回原始输入
+    }
   }
