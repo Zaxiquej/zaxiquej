@@ -1268,6 +1268,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
         if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
           skills1[i] = "selfDamage";
         }
+        if (skills1[i] == 'damage' && [108611030].includes(card1.card_id)){
+          skills1.push('damage');
+          skillso1.push(skillso1[i]);
+          skillsc1.push(skillsc1[i]);
+          skillst1.push("character=me&target=inplay&card_type=class" );
+          skillsT1.push(skillsT1[i]);
+          skillst1[i] = "character=op&target=inplay&card_type=unit";
+        }
         if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
           skills1[i] = "selfFollowerDamage";
         }
@@ -1276,6 +1284,14 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let i = 0; i < skills2.length; i++){
         if (skills2[i] == 'damage' && ownLeaderKey.includes(skillst2[i]) ){
           skills2[i] = "selfDamage";
+        }
+        if (skills2[i] == 'damage' && [108611030].includes(card2.card_id)){
+          skills2.push('damage');
+          skillso2.push(skillso2[i]);
+          skillsc2.push(skillsc2[i]);
+          skillst2.push("character=me&target=inplay&card_type=class" );
+          skillsT2.push(skillsT2[i]);
+          skillst2[i] = "character=op&target=inplay&card_type=unit";
         }
         if (skills2[i] == 'damage' && (skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst2[i].includes("character=me&target=inplay&card_type=unit"))){
           skills2[i] = "selfFollowerDamage";
@@ -3394,6 +3410,14 @@ function customSplit(input,token) {
     for (let i = 0; i < skills1.length; i++){
       if (skills1[i] == 'damage' && ownLeaderKey.includes(skillst1[i]) ){
         skills1[i] = "selfDamage";
+      }
+      if (skills1[i] == 'damage' && [108611030].includes(card1.card_id)){
+        skills1.push('damage');
+        skillso1.push(skillso1[i]);
+        skillsc1.push(skillsc1[i]);
+        skillst1.push("character=me&target=inplay&card_type=class" );
+        skillsT1.push(skillsT1[i]);
+        skillst1[i] = "character=op&target=inplay&card_type=unit";
       }
       if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
         skills1[i] = "selfFollowerDamage";
