@@ -124,6 +124,7 @@ let ratioTable = {
   "necromance": {reward:1.5, punish:0.8}, //死灵术
   "choice": {reward:1.5, punish:1.0}, //抉择
   "selfDamage": {reward:1.5, punish:1}, //自残
+  "selfownDamage": {reward:2, punish:1}, //负伤剑圣
   "selfFollowerDamage": {reward:2.5, punish:1}, //侮蔑随从
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手

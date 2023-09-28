@@ -1340,6 +1340,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillst1.push(skillst1[i].replace("=op","=me"));
           skillsT1.push(skillsT1[i]);
         }
+        if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=self") || skillst1[i].includes("character=me&target=inplay_self"))){
+          skills1[i] = "selfownDamage";
+        }
         if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
           skills1[i] = "selfFollowerDamage";
         }
@@ -1356,6 +1359,9 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
           skillsc2.push(skillsc2[i]);
           skillst2.push(skillst2[i].replace("=op","=me"));
           skillsT2.push(skillsT2[i]);
+        }
+        if (skills2[i] == 'damage' && (skillst2[i].includes("character=me&target=self") || skillst2[i].includes("character=me&target=inplay_self"))){
+          skills2[i] = "selfownDamage";
         }
         if (skills2[i] == 'damage' && (skillst2[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst2[i].includes("character=me&target=inplay&card_type=unit"))){
           skills2[i] = "selfFollowerDamage";
@@ -3513,6 +3519,9 @@ function customSplit(input,token) {
         skillsc1.push(skillsc1[i]);
         skillst1.push(skillst1[i].replace("=op","=me"));
         skillsT1.push(skillsT1[i]);
+      }
+      if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=self") || skillst1[i].includes("character=me&target=inplay_self"))){
+        skills1[i] = "selfownDamage";
       }
       if (skills1[i] == 'damage' && (skillst1[i].includes("character=me&target=inplay_other_self&card_type=unit") || skillst1[i].includes("character=me&target=inplay&card_type=unit"))){
         skills1[i] = "selfFollowerDamage";
