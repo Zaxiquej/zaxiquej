@@ -1155,6 +1155,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       let wholeKeyProsO = ["type=oldest"];
+      let subO = ["skill_drew_card"];
 
       for (let highItem of skillso1){
         for (let item of customSplit(highItem,'&')){
@@ -1165,8 +1166,18 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillst1.push('none');
             skillsT1.push('none');
           }
+          for (let sO of subO){
+            if (item.includes(sO)){
+              skills1.push(sO);
+              skillso1.push('none');
+              skillsc1.push('none');
+              skillst1.push('none');
+              skillsT1.push('none');
+            }
+          }
         }
       }
+
 
       for (let highItem of skillso2){
         for (let item of customSplit(highItem,'&')){
@@ -1176,6 +1187,15 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillsc2.push('none');
             skillst2.push('none');
             skillsT2.push('none');
+          }
+          for (let sO of subO){
+            if (item.includes(sO)){
+              skills2.push(sO);
+              skillso2.push('none');
+              skillsc2.push('none');
+              skillst2.push('none');
+              skillsT2.push('none');
+            }
           }
         }
       }
@@ -3407,6 +3427,7 @@ function customSplit(input,token) {
     }
 
     let wholeKeyProsO = ["type=oldest"];
+    let subO = ["skill_drew_card"];
 
     for (let highItem of skillso1){
       for (let item of customSplit(highItem,'&')){
@@ -3416,6 +3437,15 @@ function customSplit(input,token) {
           skillsc1.push('none');
           skillst1.push('none');
           skillsT1.push('none');
+        }
+        for (let sO of subO){
+          if (item.includes(sO)){
+            skills1.push(sO);
+            skillso1.push('none');
+            skillsc1.push('none');
+            skillst1.push('none');
+            skillsT1.push('none');
+          }
         }
       }
     }

@@ -126,6 +126,7 @@ let ratioTable = {
   "selfDamage": {reward:1.5, punish:1}, //自残
   "selfownDamage": {reward:2, punish:1}, //负伤剑圣
   "selfFollowerDamage": {reward:2.5, punish:1}, //侮蔑随从
+  "skill_drew_card": {reward:2.4, punish:0.4}, //检查抽卡情况
   "oppoHeal": {reward:3, punish:1.5}, //奶敌
   "selfReturn": {reward:3, punish:2.5}, //自回手
   "AOEReturn": {reward:9, punish:6}, //全回手
