@@ -763,6 +763,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["selfDrawCardCount",/\{me\.game_draw_cards\.(.*?)count\}/,"."],
                    ["selfMaxCount",/\{me\.inplay\.(.*?)max\}/,"."],
                    ["token_type=oldest",/\{me\.hand_other_oldest\.(.*?)count\}/,"."]];
+
       let skipProcS = ['{me.hand_self.count}>0','{op.inplay.unit.count}>=1','{me.inplay_other_self.selectable.unit.count}>0','{op.inplay.selectable.unit.count}>0','{me.inplay.unit.evolution=false.count}>0'];
 
       for (let highItem of skillsc1.concat(skillst1)){
@@ -1186,7 +1187,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       for (let highItem of skillso2){
         for (let item of customSplit(highItem,'&')){
           if (wholeKeyProsO.includes(item)){
-            if (item == "type=oldest" && skills1[skillso1.indexOf(highItem)] == "token_draw"){
+            if (item == "type=oldest" && skills2[skillso2.indexOf(highItem)] == "token_draw"){
               item = "token_type=oldest"
             }
             skills2.push(item);
