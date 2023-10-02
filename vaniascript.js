@@ -41,6 +41,7 @@ const creatures = [
   { id: 21, image: 'vania/image/creature21.png', sound: 'vania/sound/sound21.mp3' },
   { id: 22, image: 'vania/image/creature22.png', sound: 'vania/sound/sound22.mp3' },
   { id: 23, image: 'vania/image/creature23.png', sound: 'vania/sound/sound23.mp3' },
+  { id: 24, image: 'vania/image/creature24.png', sound: 'vania/sound/sound24.mp3' },
 ];
 
 // 创造物进化后的数据（示例数据）
@@ -68,6 +69,7 @@ const evolvedCreatures = [
   { id: 121, image: 'vania/image/creature121.png', sound: 'vania/sound/sound121.mp3' },
   { id: 122, image: 'vania/image/creature122.png', sound: 'vania/sound/sound122.mp3' },
   { id: 123, image: 'vania/image/creature123.png', sound: 'vania/sound/sound123.mp3' },
+  { id: 124, image: 'vania/image/creature124.png', sound: 'vania/sound/sound124.mp3' },
   // 依次添加其他进化后的创造物数据
 ];
 

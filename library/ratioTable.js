@@ -175,7 +175,8 @@ let ratioTable = {
   "drain": {reward:1.5, punish:1.5},
   "evolution_end_stop": {reward:2, punish:2}, //进化前后关键词不同
   "fusion": {reward:2, punish:1}, //融合
-  "type=oldest": {reward:1.5, punish:0.4}, //轮流伤害
+  "type=oldest": {reward:1.8, punish:0.4}, //轮流伤害
+  "token_type=oldest": {reward:3.5, punish:0.4}, //最早进入手牌
   "attack_count": {reward:2.8, punish:1.2}, //连击
   "change_rally_count": {reward:6, punish:2}, //改变连协
   "not_be_attacked": {reward:2.5, punish:1.5}, //物免

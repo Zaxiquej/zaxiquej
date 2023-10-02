@@ -37,6 +37,9 @@ const creatures = [
   { id: 17, image: 'rowen/image/creature17.png', sound: 'rowen/sound/sound17.mp3' },
   { id: 18, image: 'rowen/image/creature18.png', sound: 'rowen/sound/sound18.mp3' },
   { id: 19, image: 'rowen/image/creature19.png', sound: 'rowen/sound/sound19.mp3' },
+  { id: 20, image: 'rowen/image/creature20.png', sound: 'rowen/sound/sound20.mp3' },
+  { id: 21, image: 'rowen/image/creature21.png', sound: 'rowen/sound/sound21.mp3' },
+
 ];
 
 // 创造物进化后的数据（示例数据）
@@ -60,6 +63,8 @@ const evolvedCreatures = [
   { id: 117, image: 'rowen/image/creature117.png', sound: 'rowen/sound/sound117.mp3' },
   { id: 118, image: 'rowen/image/creature118.png', sound: 'rowen/sound/sound118.mp3' },
   { id: 119, image: 'rowen/image/creature119.png', sound: 'rowen/sound/sound119.mp3' },
+  { id: 120, image: 'rowen/image/creature120.png', sound: 'rowen/sound/sound120.mp3' },
+  { id: 121, image: 'rowen/image/creature121.png', sound: 'rowen/sound/sound121.mp3' },
   // 依次添加其他进化后的创造物数据
 ];
 

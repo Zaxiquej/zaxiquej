@@ -42,6 +42,9 @@ const creatures = [
   { id: 39, image: 'angel/image/creature39.png', sound: 'angel/sound/sound39.mp3' },
   { id: 40, image: 'angel/image/creature40.png', sound: 'angel/sound/sound40.mp3' },
   { id: 41, image: 'angel/image/creature41.png', sound: 'angel/sound/sound41.mp3' },
+  { id: 42, image: 'angel/image/creature42.png', sound: 'angel/sound/sound42.mp3' },
+  { id: 43, image: 'angel/image/creature43.png', sound: 'angel/sound/sound43.mp3' },
+  { id: 44, image: 'angel/image/creature44.png', sound: 'angel/sound/sound44.mp3' },
 ];
 
 // 创造物进化后的数据（示例数据）
@@ -87,6 +90,15 @@ const evolvedCreatures = [
   { id: 139, image: 'angel/image/creature139.png', sound: 'angel/sound/sound139.mp3' },
   { id: 140, image: 'angel/image/creature140.png', sound: 'angel/sound/sound140.mp3' },
   { id: 141, image: 'angel/image/creature141.png', sound: 'angel/sound/sound141.mp3' },
+  { id: 142, image: 'angel/image/creature142.png', sound: 'angel/sound/sound142.mp3' },
+  { id: 143, image: 'angel/image/creature143.png', sound: 'angel/sound/sound143.mp3' },
+  { id: 144, image: 'angel/image/creature144.png', sound: 'angel/sound/sound144.mp3' },
+
+  { id: 843, image: 'angel/image/creature843.png', sound: 'angel/sound/sound843.mp3' },
+  { id: 844, image: 'angel/image/creature844.png', sound: 'angel/sound/sound844.mp3' },
+
+  { id: 943, image: 'angel/image/creature943.png', sound: 'angel/sound/sound943.mp3' },
+  { id: 944, image: 'angel/image/creature944.png', sound: 'angel/sound/sound944.mp3' },
 ];
 
 // 初始化游戏状态
