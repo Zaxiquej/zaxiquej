@@ -765,6 +765,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
                    ["token_type=oldest",/\{me\.hand_other_oldest\.(.*?)count\}/,"."]];
 
       let skipProcS = ['{me.hand_self.count}>0','{op.inplay.unit.count}>=1','{me.inplay_other_self.selectable.unit.count}>0','{op.inplay.selectable.unit.count}>0','{me.inplay.unit.evolution=false.count}>0'];
+      let can0C = ["{me.damaged_card.unit.count}"];
 
       for (let highItem of skillsc1.concat(skillst1)){
         if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
@@ -792,7 +793,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               continue;
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && !can0C.includes(name)))){
                 continue;
               }
               let cost = matches[3];
@@ -989,7 +990,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
               continue;
             }
             if (keyProsC.includes(name)){
-              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+              if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && !can0C.includes(name)))){
                 continue;
               }
               let cost = matches[3];
@@ -3235,6 +3236,8 @@ function customSplit(input,token) {
                  ["token_type=oldest",/\{me\.hand_other_oldest\.(.*?)count\}/,"."]];
 
     let skipProcS = ['{me.hand_self.count}>0','{op.inplay.unit.count}>=1','{me.inplay_other_self.selectable.unit.count}>0','{op.inplay.selectable.unit.count}>0','{me.inplay.unit.evolution=false.count}>0'];
+    let can0C = ["{me.damaged_card.unit.count}"];
+
     for (let highItem of skillsc1.concat(skillst1)){
       if (highItem == "{me.hand_other_self.clan=witch.count}<={me.hand_other_self.clan=all.count}"){
         highItem = "{me.hand_other_self.clan=all.count}>=X";
@@ -3258,7 +3261,7 @@ function customSplit(input,token) {
             name = "selfStatus_life"
           }
           if (keyProsC.includes(name)){
-            if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || matches[3] == "0")){
+            if (onlyGreaterC.includes(name) && (![">=",">"].includes(matches[2]) || (matches[3] == "0" && !can0C.includes(name)))){
                continue;
             }
             let cost = matches[3];

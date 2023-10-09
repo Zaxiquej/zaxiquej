@@ -243,8 +243,8 @@ const lowRules = [
     {
         id: 109,
         title: '具有能力',
-        rand: ['key',["fusion","type=oldest","not_be_attacked","untouchable","metamorphose","cant_evolution","attack_count"],
-        ["融合","轮流造成伤害","无法被攻击","方块膜","变形","无法进化","多次攻击/攻击次数修改"]],
+        rand: ['key',["fusion","fusion_metamorphose","type=oldest","not_be_attacked","untouchable","metamorphose","cant_evolution","attack_count"],
+        ["融合","融合变身","轮流造成伤害","无法被攻击","方块膜","变形","无法进化","多次攻击/攻击次数修改"]],
         operation: 'generateSkills(card).includes(rand)'
     },
     {
