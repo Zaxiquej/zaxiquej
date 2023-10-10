@@ -90,7 +90,8 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       if (!misc.includes(card2.evo_skill_disc)){
         description2 += card2.evo_skill_disc;
       }
-
+      description1 = description1.trim();
+      description2 = description2.trim();
       if (description1.length === 0 && description2.length === 0) {
           return 100; // Both are empty descriptions, consider them as similar
       }
