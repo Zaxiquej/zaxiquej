@@ -140,7 +140,7 @@ let ratioTable = {
   "permShield": {reward:5, punish:4}, //天盾1
   "independent": {reward:5, punish:4}, //天盾2
   "consume_ep_modifier": {reward:3, punish:2}, //不消费EP即可进化
-  "special_win": {reward:12, punish:12}, //特殊胜利
+  "special_win": {reward:16, punish:12}, //特殊胜利
   "preprocess_condition": {reward:1.7, punish:1.7},
   "per_turn": {reward:1.2, punish:0.8}, //一回合一次
   "indestructible": {reward:2.5, punish:1.5}, //金膜
