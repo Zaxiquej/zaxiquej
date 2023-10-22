@@ -526,7 +526,7 @@ function findKey(key,card,val){
     key2 = key;
   }
   for (let i = 0; i < card.skill.split(",").length; i++){
-    if (card.skill.split(",")[i] == key && card.skill_option.split(",")[i].includes(key2+"="+val)){
+    if (card.skill.split(",")[i] == key && card.skill_option.split(",")[i].includes(key2+"="+val) && !card.skill_option.split(",")[i].includes(key2+"="+val+"0") && !card.skill_option.split(",")[i].includes(key2+"="+val+"1")){
       return true;
     }
   }
