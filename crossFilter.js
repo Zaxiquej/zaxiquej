@@ -237,7 +237,7 @@ const lowRules = [
         id: 108,
         title: '具有能力',
         rand: ['key',["discard","banish","destroy","cost_change","return_card","shield"],
-        ["弃牌","消失","破坏","改变费用","回手其他卡片","下一次受到伤害转变为0"]],
+        ["弃牌","消失敌方","破坏敌方","改变费用","回手其他卡片","下一次受到伤害转变为0"]],
         operation: 'generateSkills(card).includes(rand)'
     },
     {
