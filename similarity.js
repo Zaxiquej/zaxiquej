@@ -1530,7 +1530,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
 
       //自杀特殊判断
       for (let i = 0; i < skills1.length; i++){
-        if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=me'))){
+        if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=me&target=inplay'))){
           let org = "org="+skills1[i];
           skills1[i] = "selfDestroy";
           if (skillso1[i] == "none"){
@@ -1539,7 +1539,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillso1[i] += "&" + org;
           }
         }
-        if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both'))){
+        if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both&target=inplay'))){
           let org = "org="+skills1[i];
           skills1.push("selfDestroy");
           if (skillso1[i] == "none"){
@@ -1554,7 +1554,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
       }
 
       for (let i = 0; i < skills2.length; i++){
-        if ((skills2[i] == 'destroy' || skills2[i] == 'banish') && (skillst2[i].includes('character=me'))){
+        if ((skills2[i] == 'destroy' || skills2[i] == 'banish') && (skillst2[i].includes('character=me&target=inplay'))){
           let org = "org="+skills2[i];
           skills2[i] = "selfDestroy";
           if (skillso2[i] == "none"){
@@ -1563,7 +1563,7 @@ let skillMaxNum = Math.max(...Object.values(skillRates));
             skillso2[i] += "&" + org;
           }
         }
-        if ((skills2[i] == 'destroy' || skills2[i] == 'banish') && (skillst2[i].includes('character=both'))){
+        if ((skills2[i] == 'destroy' || skills2[i] == 'banish') && (skillst2[i].includes('character=both&target=inplay'))){
           let org = "org="+skills2[i];
           skills2.push("selfDestroy");
           if (skillso2[i] == "none"){
@@ -3646,7 +3646,7 @@ function customSplit(input,token) {
 
     //自杀特殊判断
     for (let i = 0; i < skills1.length; i++){
-      if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && ((skillst1[i].includes('character=me')))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && ((skillst1[i].includes('character=me&target=inplay')))){
         let org = "org="+skills1[i];
         skills1[i] = "selfDestroy";
         if (skillso1[i] == "none"){
@@ -3655,7 +3655,7 @@ function customSplit(input,token) {
           skillso1[i] += "&" + org;
         }
       }
-      if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both'))){
+      if ((skills1[i] == 'destroy' || skills1[i] == 'banish') && (skillst1[i].includes('character=both&target=inplay'))){
         let org = "org="+skills1[i];
         skills1.push("selfDestroy");
         if (skillso1[i] == "none"){
