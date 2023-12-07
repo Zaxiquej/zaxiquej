@@ -404,6 +404,12 @@ const highRules = [
       title: '经过',
       rand: ['key',["strengthen","weaken","change"],["加强（含回调）","削弱（含回调）","能力修改"]],
       operation: 'changeArr[rand].includes(card.card_name)'
+  },
+  {
+      id: 319,
+      title: '影之幻境随从',
+      rand: ['none'],
+      operation: 'differArr[\'phantom\'].includes(card.card_name)'
   }]
   //{
       //id: 315,

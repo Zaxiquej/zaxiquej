@@ -606,6 +606,9 @@ function hasFlavor(item1) {
   if (item1.char_type != 1){
     return;
   }
+  if (["巴隆"].includes(item1.card_name)){
+    return;
+  }
   const id1 = item1.card_id;
   let regex = /<br>──(.*?)<br>|<br>──(.*?)$/g;
   for (let card of cvloreData){
