@@ -1,6 +1,6 @@
 // guess.js
 let cardPool = [];
-let lastPacket = 10030;
+let lastPacket = 10031;
 
 document.addEventListener("DOMContentLoaded", function () {
     const guessButton = document.getElementById("guessButton");
