@@ -407,7 +407,7 @@ const highRules = [
   },
   {
       id: 319,
-      title: '影之幻境随从',
+      title: '初代影之幻境随从',
       rand: ['none'],
       operation: 'differArr[\'phantom\'].includes(card.card_name)'
   }]
