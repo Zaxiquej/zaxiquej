@@ -1,4 +1,4 @@
-let cvloredata = [
+let cvloreData = [
   {
     "card_id": 900044080,
     "cv": "小野友树",
