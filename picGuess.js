@@ -7,7 +7,7 @@ let clanNames = ["中立","妖精","皇家护卫","巫师","龙族","死灵法�
 let diceRoll;
 let difficulty;
 let cardPool = [];
-let lastPacket = 10029;
+let lastPacket = 10031;
 
 const specifiedModeCheckbox = document.getElementById("specifiedModeCheckbox");
 const noTokenModeCheckbox = document.getElementById("noTokenModeCheckbox");
@@ -158,7 +158,7 @@ function pickCard() {
   document.querySelectorAll('.clanBtn').forEach(btn => {
     btn.disabled = true;
   });
-  
+
   // 隐藏图片
   cardImg.classList.remove('combined'); // 移除灰度效果
 

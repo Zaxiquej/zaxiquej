@@ -200,7 +200,7 @@ const lowRules = [
         title: '具有能力',
         rand: ['key',
         ["possess_ep_modifier","lose","update_deck","open_card","NTR","ramp","change_affiliation","oppoHeal","AOEReturn","lock","independent","permShield","damage_modifier","stack_white_ritual","handMetamorphose"],
-        ["回复EP","（使）失去能力","洗入牌堆","公开","牛头人","跳/扣费","改变种族","治疗对手","全体回手","锁","不受效果英雄","受到伤害变为0","增加造成的伤害","蓄积","手牌变形"]],
+        ["回复EP","（使）失去能力","洗入牌堆","公开","牛头人","跳/扣费","改变种族","治疗对手","全体回手","锁","不受效果影响","受到伤害变为0","增加造成的伤害","蓄积","手牌变形"]],
         operation: 'generateSkills(card).includes(rand)'
     },
     {
