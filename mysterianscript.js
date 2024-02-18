@@ -60,7 +60,7 @@ const evolvedCreatures = [
   { id: 116, image: 'mysterian/image/creature116.png', sound: 'mysterian/sound/sound116.mp3' },
   { id: 117, image: 'mysterian/image/creature117.png', sound: 'mysterian/sound/sound117.mp3' },
   { id: 118, image: 'mysterian/image/creature118.png', sound: 'mysterian/sound/sound118.mp3' },
-  { id: 119, image: 'mysterian/image/creature119.png', sound: 'mysterian/sound/sound119.mp3' }
+  { id: 119, image: 'mysterian/image/creature119.png', sound: 'mysterian/sound/sound119.mp3' },
   { id: 120, image: 'mysterian/image/creature120.png', sound: 'mysterian/sound/sound120.mp3' }
   // 依次添加其他进化后的创造物数据
 ];
