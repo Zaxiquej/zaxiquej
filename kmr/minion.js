@@ -23,12 +23,12 @@ const minions = [
         description: '介绍懒得写',
         baseattack: 6,
         addattack: 4,
-        attackSpeed: 900, // in milliseconds
+        attackSpeed: 1100, // in milliseconds
         basecost: 18,
         enhancecost: 8,
         supEnhancecost: 2,
         skills: [
-            { level: 6, name: '冲击冠军', effect: '4%概率攻击时永久提升[该助战等级]点攻击.' },
+            { level: 6, name: '冲击冠军', effect: '3%概率攻击时永久提升[该助战等级]点攻击.' },
             { level: 12, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击.' }
         ]
     },
@@ -147,8 +147,8 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 2.33,
         skills: [
-            { level: 4, name: '我吃我吃', effect: '攻击后，有8%概率增加15%攻击力，但攻击间隔上升10%。' },
-            { level: 20, name: '猪之力', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
+            { level: 4, name: '我吃我吃', effect: '攻击后，有6%概率增加12.5%攻击力，但攻击间隔上升10%。' },
+            { level: 20, name: '猪之力', effect: '每24s，造成等同于[攻击力*攻击间隔]的伤害。' }
         ]
     },
 ];

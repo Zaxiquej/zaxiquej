@@ -118,12 +118,16 @@ function clickKmr() {
 function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     kmrHealthValue -= dam;
-    totalClickDamage += dam;
+    minion.totalDamage += dam;
+    if (!minionDamages[minion.name]){
+      minionDamages[minion.name] = 0;
+    }
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
     let y = position.top + (Math.random()*kmr.height);
     showEffect(x,y, 'hit-effect');
-    showDamage(x,y, 1);
+    showDamage(x,y, dam);
+    minionDamages[minion.name] += dam;
     const hitSound = new Audio(minion.voice);
     hitSound.play();
     coins += dam;
@@ -212,14 +216,14 @@ function minionAttack(minion) {
     hitSound.play();
     coins += minion.attack;
     if (minion.learnedSkills.includes("冲击冠军")){
-      if (checkLuck(0.04)) {
+      if (checkLuck(0.03)) {
         minion.attack += minion.level;
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = minion.attack;
       }
     }
     if (minion.learnedSkills.includes("我吃我吃")){
-      if (checkLuck(0.08)) {
-        minion.attack = parseInt(minion.attack*1.15)
+      if (checkLuck(0.06)) {
+        minion.attack = parseInt(minion.attack*1.125)
         minion.attackSpeed = parseInt(minion.attackSpeed*1.1)
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = minion.attack;
         document.getElementById(`attack-speed-${unlockedMinions.indexOf(minion.name)}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
@@ -267,7 +271,7 @@ function refMinions() {
             <div>等级: <span id="level-${index}">${minion.level}</span></div>
             <div>攻击: <span id="attack-${index}">${minion.attack}</span></div>
             <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
-            <button id="cost-${index}" onclick="upgradeMinion(${rindex})" >升级 (金币: ${mupgradeCost(minion)})</button>
+            <button id="cost-${index}" onclick="upgradeMinion(${index})" >升级 (金币: ${mupgradeCost(minion)})</button>
         `;
         minionElement.addEventListener('click', () => {
             showMinionDetails(index);
@@ -287,7 +291,7 @@ function unlockCost(n) {
   if (minions.length == unlockedMinions.length){
     return 99999999;
   }
-  return 10 + 12*n + 6*n*n;
+  return 9 + 12*n + 6*n*n + parseInt(2*Math.pow(n,3.25) + Math.pow(2.5,n));
 }
 
 function unlockRandMinion() {
@@ -371,7 +375,7 @@ function updateCounts() {
       if (!m.count){m.count = 0};
       m.count ++;
       if (m.count >= 24){
-        let dam = parseInt(2*m.attack*m.attackSpeed/1000);
+        let dam = parseInt(m.attack*m.attackSpeed/1000);
         damageKmr(dam,m);
         updateDisplays();
       }
