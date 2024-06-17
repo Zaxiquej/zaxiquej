@@ -63,7 +63,7 @@ const minions = [
         supEnhancecost: 2.4,
         skills: [
             { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.8)*该助战等级/1000]的伤害.' },
-            { level: 14, name: '白骨夫人', effect: '所有升级消费金币降低20%.' }
+            { level: 17, name: '白骨夫人', effect: '所有升级消费金币降低20%.' }
         ]
     },
     {
@@ -80,7 +80,7 @@ const minions = [
         supEnhancecost: 2.7,
         skills: [
             { level: 6, name: '说书', effect: '攻击速度减少0.4s.' },
-            { level: 13, name: '运气不如他们', effect: '其他助战成功触发一个概率低于20%的技能后，该助战永久获得4攻击力。' }
+            { level: 13, name: '运气不如他们', effect: '其他助战成功触发一个概率低于20%的技能后，该助战永久获得[等级/10]攻击力（最低为4）。' }
         ]
     },
     {
@@ -151,4 +151,38 @@ const minions = [
             { level: 20, name: '猪之力', effect: '每24s，造成等同于[攻击力*攻击间隔]的伤害。' }
         ]
     },
+    {
+        name: '一只小51',
+        id: 9,
+        image: 'kmr/image/51.png',
+        voice: 'kmr/voice/51.mp3',
+        description: '掌握郭楠之力的战士',
+        baseattack: 7,
+        addattack: 6,
+        attackSpeed: 2200, // in milliseconds
+        basecost: 24,
+        enhancecost: 8,
+        supEnhancecost: 2.5,
+        skills: [
+            { level: 8, name: '罕见', effect: '攻击时，有5%概率直接获得10%造成伤害前金币量的金币。' },
+            { level: 24, name: 'GN', effect: '其他助战攻击触发其自己的技能时，有10%概率增加等同于[其攻击力1%]的攻击力，随后该助战追加3次攻击。' }
+        ]
+    },
+    {
+        name: 'ZenX',
+        id: 10,
+        image: 'kmr/image/zenx.png',
+        voice: 'kmr/voice/zenx.mp3',
+        description: 'szb永远的上帝，兼任亚军',
+        baseattack: 17,
+        addattack: 8,
+        attackSpeed: 2600, // in milliseconds
+        basecost: 48,
+        enhancecost: 18,
+        supEnhancecost: 4,
+        skills: [
+            { level: 10, name: '上帝', effect: '其他助战增加攻击力时，该助战也会获得增加量的15%。（至少1点）' },
+            { level: 30, name: '掌控', effect: '每11s，有12.5%的概率使下一次攻击造成的伤害变为8倍。每次触发，使倍率增加6。' }
+        ]
+    }
 ];

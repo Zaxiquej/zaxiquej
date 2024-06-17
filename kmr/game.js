@@ -25,6 +25,9 @@ let minionsState = [];
 let unlockedMinions = [];
 let totaltimePlayed = 0;
 let burning = 0;
+let skilled = false;
+let zenxLV = 0;
+let zenxActive = false;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -175,9 +178,17 @@ function getattack(minion){
   if (minion.learnedSkills.includes("素质家族")){
     if (checkLuck(0.1)) {
       atk*=10;
+      skilled = true;
     }
   }
+  if (minion.learnedSkills.includes("掌控") && zenxActive){
+    zenxActive = false;
+    atk*= 8 + zenxLV*6;
+    zenxLV = zenxLV + 1;
+    skilled = true;
+  }
   if (minion.learnedSkills.includes("开播！")){
+    skilled = true;
     atk += parseInt(Math.pow(coins,0.8)/1000*minion.level);
   }
   return atk;
@@ -188,7 +199,7 @@ function checkLuck(r) {
   if (Math.random() < r) {
     for (let m of minionsState){
       if (m.learnedSkills.includes("运气不如他们") && r <= 0.2){
-        m.attack += 4;
+        raiseAtk(m,Math.max(4,parseInt(m.level/10)));
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = m.attack;
       }
     }
@@ -200,6 +211,7 @@ function checkLuck(r) {
 
 function minionAttack(minion) {
     if (kmrHealthValue <= 0) return;
+    skilled = false;
     let dam = getattack(minion)
     kmrHealthValue -= dam;
     minion.totalDamage += dam;
@@ -215,14 +227,23 @@ function minionAttack(minion) {
     const hitSound = new Audio(minion.voice);
     hitSound.play();
     coins += minion.attack;
+
+    if (minion.learnedSkills.includes("罕见")){
+      if (checkLuck(0.05)) {
+        coins += parseInt(coins/10);
+        skilled = true;
+      }
+    }
     if (minion.learnedSkills.includes("冲击冠军")){
       if (checkLuck(0.03)) {
-        minion.attack += minion.level;
+        raiseAtk(minion,minion.level);
+        skilled = true;
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = minion.attack;
       }
     }
     if (minion.learnedSkills.includes("我吃我吃")){
       if (checkLuck(0.06)) {
+        skilled = true;
         minion.attack = parseInt(minion.attack*1.125)
         minion.attackSpeed = parseInt(minion.attackSpeed*1.1)
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = minion.attack;
@@ -234,22 +255,32 @@ function minionAttack(minion) {
     }
     if (minion.learnedSkills.includes("金牌陪练") && unlockedMinions.length > 1){
       if (checkLuck(0.12)) {
+        skilled = true;
         let r = parseInt(Math.random()*(unlockedMinions.length - 1));
         if (r >= unlockedMinions.indexOf(minion.name)){
           r += 1;
         }
-        minionsState[r].attack += parseInt(minion.attack/20);
+        raiseAtk(minionsState[r],parseInt(minion.attack/20));
         document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = minionsState[r].attack;
       }
     }
     if (minion.learnedSkills.includes("奶1")){
       if (checkLuck(0.33)) {
+        skilled = true;
         coins += parseInt(Math.pow(minion.level,1.5));
       }
     }
     for (let m of minionsState){
       if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
         if (checkLuck(0.08)) {
+          minionAttack(m);
+        }
+      }
+      if (skilled && m.name != minion.name && m.learnedSkills.includes("GN")){
+        if (checkLuck(0.1)) {
+          raiseAtk(m, parseInt(minion.attack*0.01));
+          minionAttack(m);
+          minionAttack(m);
           minionAttack(m);
         }
       }
@@ -333,11 +364,20 @@ function refreshMinionDetails() {
       <button onclick="upgradeMinion(${rindex})" >${code} (金币: ${mupgradeCost(minion)})</button>
       <h4>技能</h4>
       <ul>
-          ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${skill.effect}</li>`).join('')}
+          ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill)}</li>`).join('')}
       </ul>
   `;
 }
 
+function getEff(skill){
+  switch (skill.name){
+    case "掌控":
+      return "每11s，有12.5%的概率使下一次攻击造成的伤害变为"+(8+6*zenxLV)+"倍。每次触发，使倍率增加6。";
+    default:
+      return skill.effect
+  }
+
+}
 function mupgradeCost(minion){
   let cost = parseInt(minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
   for (let m of minionsState){
@@ -354,7 +394,7 @@ function updateCounts() {
       burning ++;
       if (burning >= 20){
         burning = 0;
-        m.attack += 5*unlockedMinions.length;
+        raiseAtk(m,5*unlockedMinions.length);
         updateDisplays();
       }
     }
@@ -365,10 +405,19 @@ function updateCounts() {
         m.count = 0;
         for (let mi of minionsState){
           if (mi.name != m.name){
-            mi.attack += parseInt(m.attack/40);
+            raiseAtk(mi,parseInt(m.attack/40));
           }
         }
         updateDisplays();
+      }
+    }
+    if (m.learnedSkills.includes("掌控")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 11){
+        if (checkLuck(0.125)){
+          zenxActive = true;
+        }
       }
     }
     if (m.learnedSkills.includes("猪之力")){
@@ -395,6 +444,16 @@ function updateCounts() {
     }
   }
 }
+
+function raiseAtk(minion,amount){
+  minion.attack += amount;
+  for (let m of minionsState){
+    if (m.name != minion.name && m.learnedSkills.includes("上帝")){
+      m.attack += Math.max(1,parseInt(amount*0.15));
+      document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = m.attack;
+    }
+  }
+}
 function upgradeMinion(index) {
     burning = 0;
     const minion = minionsState[index];
@@ -402,10 +461,10 @@ function upgradeMinion(index) {
     if (coins >= upgradeCost) {
         coins -= upgradeCost;
         minion.level += 1;
-        minion.attack += minion.addattack; // Increase attack by 2 for each level
+        raiseAtk(minion,minion.addattack); // Increase attack by 2 for each level
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
-            minion.attack += parseInt(m.attack/30);
+            raiseAtk(minion,minion.addattack);
           }
         }
         for (let s of minion.skills){
@@ -418,11 +477,11 @@ function upgradeMinion(index) {
               minion.intervalId = intervalId;
             }
             if (s.name == "鲁智深"){
-              minion.attack += 280;
+              raiseAtk(minion,280);
             }
             if (s.name == "阴阳秘法"){
               for (let m of minionsState){
-                m.attack += 27;
+                raiseAtk(m,27);
               }
             }
           }
