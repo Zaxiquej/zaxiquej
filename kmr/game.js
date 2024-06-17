@@ -101,7 +101,7 @@ function checkVictory() {
 }
 
 function restartGame() {
-    kmrHealthValue = 50000;
+    kmrHealthValue = 500000;
     coins = 10;
     timePlayed = 0;
     totalClickDamage = 0;
@@ -122,7 +122,7 @@ function getattack(minion){
   let atk = minion.attack;
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
-      atk += m.level;
+      atk += parseInt(m.attack/2);
     }
   }
   if (minion.learnedSkills.includes("素质家族")){
@@ -131,7 +131,7 @@ function getattack(minion){
     }
   }
   if (minion.learnedSkills.includes("开播！")){
-    atk += parseInt(coins/100*minion.level);
+    atk += parseInt(Math.sqrt(coins)*minion.level);
   }
   return atk;
 }
@@ -155,7 +155,7 @@ function minionAttack(minion) {
     if (kmrHealthValue <= 0) return;
     let dam = getattack(minion)
     kmrHealthValue -= dam;
-    minion.totalDamage += minion.dam;
+    minion.totalDamage += dam;
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
     }
@@ -169,8 +169,8 @@ function minionAttack(minion) {
     hitSound.play();
     coins += minion.attack;
     if (minion.learnedSkills.includes("冲击冠军")){
-      if (checkLuck(0.02)) {
-        minion.attack += 2;
+      if (checkLuck(0.03)) {
+        minion.attack += 5;
         document.getElementById(`attack-${minion.id}`).textContent = minion.attack;
       }
     }
@@ -181,7 +181,7 @@ function minionAttack(minion) {
     }
     for (let m of minionsState){
       if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
-        if (checkLuck(0.02)) {
+        if (checkLuck(0.06)) {
           minionAttack(m);
         }
       }

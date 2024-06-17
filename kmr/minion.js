@@ -27,8 +27,8 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 2,
         skills: [
-            { level: 5, name: '冲击冠军', effect: '2%概率攻击时永久提升1攻击.' },
-            { level: 15, name: '永失吾艾', effect: '4%概率在其他助战攻击时，直接攻击.' }
+            { level: 5, name: '冲击冠军', effect: '3%概率攻击时永久提升4攻击.' },
+            { level: 15, name: '永失吾艾', effect: '6%概率在其他助战攻击时，直接攻击.' }
         ]
     },
     {
@@ -38,12 +38,12 @@ const minions = [
         description: '介绍没写',
         attack: 0,
         addattack: 3,
-        attackSpeed: 2000, // in milliseconds
+        attackSpeed: 1800, // in milliseconds
         basecost: 24,
         enhancecost: 6,
         supEnhancecost: 2.5,
         skills: [
-            { level: 5, name: '苦痛', effect: '所有其他助战攻击时，额外造成等同于[该助战等级]的伤害.' },
+            { level: 5, name: '苦痛', effect: '所有其他助战攻击时，额外造成等同于[该助战攻击力/2]的伤害.' },
             { level: 15, name: '奶1', effect: '33%概率在攻击时，额外获得11金币.' }
         ]
     },
@@ -59,7 +59,7 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 2.4,
         skills: [
-            { level: 5, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币*该助战等级/100]的伤害.' },
+            { level: 5, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币*该助战等级/1000]的伤害.' },
             { level: 15, name: '白骨夫人', effect: '所有升级消费金币降低20%.' }
         ]
     },
