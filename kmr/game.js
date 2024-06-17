@@ -1,0 +1,292 @@
+const kmr = document.getElementById('kmr');
+const kmrHealth = document.getElementById('kmr-health');
+//const hitSound = document.getElementById('hit-sound');
+const coinsDisplay = document.getElementById('coins');
+
+const timePlayedDisplay = document.getElementById('time-played');
+const totalClickDamageDisplay = document.getElementById('total-click-damage');
+const minionDamagesDisplay = document.getElementById('minion-damages');
+const victoryMessage = document.getElementById('victory-message');
+const totalTimeDisplay = document.getElementById('total-time');
+const finalStatsDisplay = document.getElementById('final-stats');
+
+let kmrHealthValue = 500000;
+let coins = 10;
+let dps = 0;
+let timePlayed = 0;
+let totalClickDamage = 0;
+let rindex = 0;
+let minionDamages = {};
+let minionsState = minions.map(minion => ({
+    ...minion,
+    level: 0,
+    totalDamage: 0,
+    learnedSkills: [],
+}));
+
+function showEffect(x, y, effectClass) {
+    const effect = document.createElement('div');
+    effect.className = effectClass;
+    effect.style.left = `${x - 10}px`;
+    effect.style.top = `${y - 10}px`;
+    document.body.appendChild(effect);
+    setTimeout(() => effect.remove(), 1000);
+}
+
+function showDamage(x, y, damage) {
+    const damageEffect = document.createElement('div');
+    damageEffect.className = 'damage-effect';
+    damageEffect.innerText = `-${damage}`;
+    damageEffect.style.left = `${x - 10}px`;
+    damageEffect.style.top = `${y - 20}px`;
+    document.body.appendChild(damageEffect);
+    setTimeout(() => damageEffect.remove(), 1000);
+}
+function updateDisplays() {
+    kmrHealth.textContent = kmrHealthValue.toLocaleString();
+    coinsDisplay.textContent = coins;
+    timePlayedDisplay.textContent = `${timePlayed}s`;
+    totalClickDamageDisplay.textContent = totalClickDamage;
+    minionDamagesDisplay.innerHTML = Object.keys(minionDamages)
+        .map(name => `<li>${name}: ${minionDamages[name]}</li>`).join('');
+    refreshMinionDetails()
+
+    minionDamagesDisplay.innerHTML = '';
+    for (const [minion, damage] of Object.entries(minionDamages)) {
+        const li = document.createElement('li');
+        li.textContent = `${minion}: ${damage}`;
+        minionDamagesDisplay.appendChild(li);
+    }
+}
+
+// 创建伤害数字动画
+function createDamageNumber(damage) {
+    const damageNumber = document.createElement('div');
+    damageNumber.className = 'damage-number';
+    damageNumber.textContent = `-${damage}`;
+    damageNumber.style.left = `${Math.random() * 100}%`;
+    damageNumber.style.top = `${Math.random() * 100}%`;
+    kmr.parentElement.appendChild(damageNumber);
+
+    setTimeout(() => {
+        damageNumber.remove();
+    }, 1000);
+}
+
+function clickKmr() {
+    if (kmrHealthValue <= 0) return;
+    kmrHealthValue -= 1;
+    totalClickDamage += 1;
+    var position = kmr.getBoundingClientRect();
+    let x = position.left + (Math.random()*kmr.width);
+    let y = position.top + (Math.random()*kmr.height);
+    showEffect(x,y, 'hit-effect');
+    showDamage(x,y, 1);
+    const hitSound = new Audio('kmr/hit.ogg');
+    hitSound.play();
+    coins += 1;
+    updateDisplays();
+    checkVictory();
+}
+
+function checkVictory() {
+    if (kmrHealthValue <= 0) {
+        victoryMessage.classList.remove('hidden');
+        totalTimeDisplay.textContent = timePlayed;
+        finalStatsDisplay.innerHTML = `
+            <li>点击伤害: ${totalClickDamage}</li>
+            ${minionsState.map(minion => `<li>${minion.name}: ${minion.totalDamage}</li>`).join('')}
+        `;
+    }
+}
+
+function restartGame() {
+    kmrHealthValue = 50000;
+    coins = 10;
+    timePlayed = 0;
+    totalClickDamage = 0;
+    minionDamages = {};
+    minionsState = minions.map(minion => ({
+        ...minion,
+        level: 0,
+        atk: 0,
+        totalDamage: 0,
+        learnedSkills: [],
+    }));
+    victoryMessage.classList.add('hidden');
+    updateDisplays();
+    initMinions(); // Initialize minions again after restarting game
+}
+
+function getattack(minion){
+  let atk = minion.attack;
+  for (let m of minionsState){
+    if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
+      atk += m.level;
+    }
+  }
+  if (minion.learnedSkills.includes("素质家族")){
+    if (checkLuck(0.05)) {
+      atk*=10;
+    }
+  }
+  if (minion.learnedSkills.includes("开播！")){
+    atk += parseInt(coins/100*minion.level);
+  }
+  return atk;
+}
+
+
+function checkLuck(r) {
+  if (Math.random() < r) {
+    for (let m of minionsState){
+      if (m.learnedSkills.includes("运气不如他们") && r <= 0.1){
+        m.attack += 2;
+        document.getElementById(`attack-${m.id}`).textContent = m.attack;
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function minionAttack(minion) {
+    if (kmrHealthValue <= 0) return;
+    let dam = getattack(minion)
+    kmrHealthValue -= dam;
+    minion.totalDamage += minion.dam;
+    if (!minionDamages[minion.name]){
+      minionDamages[minion.name] = 0;
+    }
+    var position = kmr.getBoundingClientRect();
+    let x = position.left + (Math.random()*kmr.width);
+    let y = position.top + (Math.random()*kmr.height);
+    showEffect(x,y, 'hit-effect');
+    showDamage(x,y, dam);
+    minionDamages[minion.name] += dam;
+    const hitSound = new Audio('kmr/hit.ogg');
+    hitSound.play();
+    coins += minion.attack;
+    if (minion.learnedSkills.includes("冲击冠军")){
+      if (checkLuck(0.02)) {
+        minion.attack += 2;
+        document.getElementById(`attack-${minion.id}`).textContent = minion.attack;
+      }
+    }
+    if (minion.learnedSkills.includes("奶1")){
+      if (checkLuck(0.33)) {
+        coins += 11;
+      }
+    }
+    for (let m of minionsState){
+      if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
+        if (checkLuck(0.02)) {
+          minionAttack(m);
+        }
+      }
+    }
+    updateDisplays();
+    checkVictory();
+}
+
+function initMinions() {
+    const minionsContainer = document.getElementById('minions-container');
+    minionsContainer.innerHTML = ''; // Clear existing minions
+
+    minionsState.forEach((minion, index) => {
+        const minionElement = document.createElement('div');
+        minionElement.className = 'minion';
+        minionElement.innerHTML = `
+            <img src="${minion.image}" alt="${minion.name}">
+            <div>${minion.name}</div>
+            <div>等级: <span id="level-${index}">${minion.level}</span></div>
+            <div>攻击: <span id="attack-${index}">${minion.attack}</span></div>
+            <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
+        `;
+        minionElement.addEventListener('click', () => {
+            showMinionDetails(index);
+        });
+        minionsContainer.appendChild(minionElement);
+    });
+}
+
+function showMinionDetails(index) {
+    rindex = index;
+}
+
+function refreshMinionDetails() {
+  const minion = minionsState[rindex];
+  const detailsContainer = document.getElementById('selected-minion-details');
+  let code = "升级";
+
+  if (minion.level == 0){
+    code = "解锁"
+  }
+  detailsContainer.innerHTML = `
+      <h3>${minion.name}</h3>
+      <img src="${minion.image}" alt="${minion.name}">
+      <p>${minion.description}</p>
+      <div>等级: ${minion.level}</div>
+      <div>攻击: ${minion.attack}</div>
+      <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
+      <div>升级+攻击: ${minion.addattack}</div>
+      <button onclick="upgradeMinion(${rindex})" >${code} (金币: ${mupgradeCost(minion)})</button>
+      <h4>技能</h4>
+      <ul>
+          ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${skill.effect}</li>`).join('')}
+      </ul>
+  `;
+}
+
+function mupgradeCost(minion){
+  let cost = parseInt(minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("白骨夫人")){
+      cost = parseInt(0.8*cost)
+    }
+  }
+  return cost;
+}
+function upgradeMinion(index) {
+    const minion = minionsState[index];
+    const upgradeCost = mupgradeCost(minion);
+    if (coins >= upgradeCost) {
+        coins -= upgradeCost;
+        minion.level += 1;
+        minion.attack += minion.addattack; // Increase attack by 2 for each level
+        for (let m of minionsState){
+          if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
+            minion.attack += parseInt(m.attack/30);
+          }
+        }
+        for (let s of minion.skills){
+          if (minion.level == s.level){
+            minion.learnedSkills.push(s.name);
+            if (s.name == "说书"){
+              minion.attackSpeed -= 400;
+            }
+          }
+        }
+        document.getElementById(`level-${index}`).textContent = minion.level;
+        document.getElementById(`attack-${index}`).textContent = minion.attack;
+        document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
+        updateDisplays();
+        showMinionDetails(index);
+        if (minion.level == 1) {
+            setInterval(() => minionAttack(minion), minion.attackSpeed);
+        }
+    } else {
+        alert('金币不足!');
+    }
+}
+
+// Update game state every second
+setInterval(() => {
+    timePlayed += 1;
+    updateDisplays();
+}, 1000);
+
+kmr.addEventListener('click', clickKmr);
+initMinions();
+updateDisplays();

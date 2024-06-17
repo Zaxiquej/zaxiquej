@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kmr-container {
+    position: relative;
+    cursor: pointer;
+}
+
+#kmr {
+    width: 200px;
+    height: auto;
+}
+
+#kmr-health {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: red;
+}
+
+.minions-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.minion {
+    margin: 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.minion img {
+    width: 50px;
+    height: 60px;
+}
+
+.details-container, .stats-container {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#victory-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.gold-effect, .hit-effect, .damage-effect {
+    position: absolute;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: gold-animation 1s forwards;
+    pointer-events: none;
+}
+
+.gold-effect {
+    background: gold;
+}
+
+.hit-effect {
+    background: red;
+}
+
+.damage-effect {
+    background: transparent;
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@keyframes gold-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes hit-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}

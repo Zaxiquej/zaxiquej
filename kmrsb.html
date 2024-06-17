@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>挑战KMR</title>
+    <link rel="stylesheet" href="kmr/styles.css">
+</head>
+<body>
+
+  <div class="stats-container">
+      <div>游戏时长: <span id="time-played">0s</span></div>
+      <div>总点击伤害: <span id="total-click-damage">0</span></div>
+      <div>每个助战造成的伤害:
+          <ul id="minion-damages">
+              <!-- Minion damage stats will be shown here -->
+          </ul>
+      </div>
+  </div>
+
+    <div class="game-container">
+      <h1>挑战kmr</h1>
+      <p>邪恶的kmr因为吃不起泡面把byd给吃了，快和其他傻u一起发起炎上吧！</p>
+        <div class="kmr-container">
+            <img src="kmr/kmr.jpg" alt="KMR" id="kmr">
+            <div id="kmr-health">500,000</div>
+        </div>
+              <div>金币: <span id="coins">10</span></div>
+        <div class="minions-container" id="minions-container">
+            <!-- Minion info will be inserted here dynamically -->
+        </div>
+    </div>
+
+    <div class="details-container">
+        <div id="selected-minion-details">
+            <!-- Selected minion details will be shown here -->
+        </div>
+    </div>
+
+    <div id="victory-message" class="hidden">
+        <h1>胜利！</h1>
+        <p>你花了 <span id="total-time">0</span> 秒打败了KMR。</p>
+        <p>每个随从/点击的输出：</p>
+        <ul id="final-stats">
+            <!-- Final stats will be shown here -->
+        </ul>
+        <button onclick="restartGame()">重新开始</button>
+    </div>
+    <audio id="hit-sound" src="kmr/hit.ogg"></audio>
+    <script src="kmr/minion.js"></script>
+    <script src="kmr/game.js"></script>
+</body>
+</html>
