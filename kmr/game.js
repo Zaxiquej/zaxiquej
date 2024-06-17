@@ -10,19 +10,38 @@ const victoryMessage = document.getElementById('victory-message');
 const totalTimeDisplay = document.getElementById('total-time');
 const finalStatsDisplay = document.getElementById('final-stats');
 
+
 let kmrHealthValue = 500000;
-let coins = 10;
+let coins = 0;
 let dps = 0;
 let timePlayed = 0;
 let totalClickDamage = 0;
 let rindex = 0;
 let minionDamages = {};
-let minionsState = minions.map(minion => ({
-    ...minion,
-    level: 0,
-    totalDamage: 0,
-    learnedSkills: [],
-}));
+let minionsState = [];
+let unlockedMinions = [];
+
+//minions.map(minion => ({
+//    ...minion,
+//    level: 0,
+//    totalDamage: 0,
+//    learnedSkills: [],
+//}));
+
+function unlockMinion(minion){
+  unlockedMinions.push(minion.name);
+  minion = {
+      ...minion,
+      level: 1,
+      attack: minion.baseattack,
+      totalDamage: 0,
+      learnedSkills: [],
+  }
+
+  let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
+  minion.intervalId = intervalId;
+  minionsState = minionsState.concat(minion)
+}
 
 function showEffect(x, y, effectClass) {
     const effect = document.createElement('div');
@@ -49,7 +68,9 @@ function updateDisplays() {
     totalClickDamageDisplay.textContent = totalClickDamage;
     minionDamagesDisplay.innerHTML = Object.keys(minionDamages)
         .map(name => `<li>${name}: ${minionDamages[name]}</li>`).join('');
-    refreshMinionDetails()
+    if (unlockedMinions.length > 0){
+      refreshMinionDetails()
+    }
 
     minionDamagesDisplay.innerHTML = '';
     for (const [minion, damage] of Object.entries(minionDamages)) {
@@ -102,17 +123,13 @@ function checkVictory() {
 
 function restartGame() {
     kmrHealthValue = 500000;
-    coins = 10;
+    coins = 0;
     timePlayed = 0;
     totalClickDamage = 0;
-    minionDamages = {};
-    minionsState = minions.map(minion => ({
-        ...minion,
-        level: 0,
-        atk: 0,
-        totalDamage: 0,
-        learnedSkills: [],
-    }));
+    let rindex = 0;
+    let minionDamages = {};
+    let minionsState = [];
+    let unlockedMinions = [];
     victoryMessage.classList.add('hidden');
     updateDisplays();
     initMinions(); // Initialize minions again after restarting game
@@ -142,7 +159,7 @@ function checkLuck(r) {
     for (let m of minionsState){
       if (m.learnedSkills.includes("运气不如他们") && r <= 0.1){
         m.attack += 2;
-        document.getElementById(`attack-${m.id}`).textContent = m.attack;
+        document.getElementById(`attack-${unlockMinion.indexOf(m.name)}`).textContent = m.attack;
       }
     }
     return true;
@@ -171,7 +188,17 @@ function minionAttack(minion) {
     if (minion.learnedSkills.includes("冲击冠军")){
       if (checkLuck(0.03)) {
         minion.attack += 5;
-        document.getElementById(`attack-${minion.id}`).textContent = minion.attack;
+        document.getElementById(`attack-${unlockMinion.indexOf(minion.name)}`).textContent = minion.attack;
+      }
+    }
+    if (minion.learnedSkills.includes("金牌陪练") && unlockedMinions.length > 1){
+      if (checkLuck(0.1)) {
+        let r = parseInt(Math.random()*(unlockedMinions.length - 1));
+        if (r >= unlockedMinions.indexOf(minion.name)){
+          r += 1;
+        }
+        minionsState[r].attack += parseInt(minion.attack/20);
+        document.getElementById(`attack-${unlockMinion.indexOf(minionsState[r].name)}`).textContent = minionsState[r].attack;
       }
     }
     if (minion.learnedSkills.includes("奶1")){
@@ -190,7 +217,7 @@ function minionAttack(minion) {
     checkVictory();
 }
 
-function initMinions() {
+function refMinions() {
     const minionsContainer = document.getElementById('minions-container');
     minionsContainer.innerHTML = ''; // Clear existing minions
 
@@ -208,11 +235,41 @@ function initMinions() {
             showMinionDetails(index);
         });
         minionsContainer.appendChild(minionElement);
+
     });
+
+    const minionElement = document.createElement('div');
+    minionElement.innerHTML = `
+        <button onclick="unlockRandMinion(${rindex})" >抽取助战 (金币: ${unlockCost(unlockedMinions.length)})</button>
+    `;
+    minionsContainer.appendChild(minionElement);
 }
+
+function unlockCost(n) {
+  if (minions.length == unlockedMinions.length){
+    return 99999999;
+  }
+  return 10 + 12*n + 6*n*n;
+}
+
+function unlockRandMinion() {
+    const uCost = unlockCost(unlockedMinions.length)
+    if (coins >= uCost) {
+      coins -= uCost;
+        let r = parseInt(Math.random() * (minions.length - unlockedMinions.length));
+        let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+        unlockMinion(restMinions[r]);
+        refMinions();
+        updateDisplays();
+    } else {
+        alert('金币不足!');
+    }
+}
+
 
 function showMinionDetails(index) {
     rindex = index;
+    refreshMinionDetails();
 }
 
 function refreshMinionDetails() {
@@ -265,6 +322,12 @@ function upgradeMinion(index) {
             minion.learnedSkills.push(s.name);
             if (s.name == "说书"){
               minion.attackSpeed -= 400;
+              clearInterval(minion.intervalId)
+              let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
+              minion.intervalId = intervalId;
+            }
+            if (s.name == "鲁智深"){
+              minion.attack += 200;
             }
           }
         }
@@ -273,9 +336,6 @@ function upgradeMinion(index) {
         document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
         updateDisplays();
         showMinionDetails(index);
-        if (minion.level == 1) {
-            setInterval(() => minionAttack(minion), minion.attackSpeed);
-        }
     } else {
         alert('金币不足!');
     }
@@ -288,5 +348,5 @@ setInterval(() => {
 }, 1000);
 
 kmr.addEventListener('click', clickKmr);
-initMinions();
+refMinions();
 updateDisplays();
