@@ -96,8 +96,8 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 3.2,
         skills: [
-            { level: 5, name: '鲁智深', effect: '增加330攻击.' },
-            { level: 15, name: '金牌陪练', effect: '攻击后，12%概率随机使一个其他助战永久获得[该助战攻击力/20]点攻击力。' }
+            { level: 5, name: '鲁智深', effect: '增加400攻击.' },
+            { level: 15, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力。' }
         ]
     },
     {
@@ -141,13 +141,13 @@ const minions = [
         voice: 'kmr/voice/lty.mp3',
         description: '这是我们的超美丽官方牢头，你们的游戏有这种牢头吗',
         baseattack: 9,
-        addattack: 5,
+        addattack: 7,
         attackSpeed: 2000, // in milliseconds
         basecost: 18,
         enhancecost: 6,
         supEnhancecost: 3.33,
         skills: [
-            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加12.5%攻击力，但攻击间隔上升10%。' },
+            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加15%攻击力，但攻击间隔上升10%。' },
             { level: 20, name: '龙之咆哮', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
         ]
     },
@@ -181,7 +181,7 @@ const minions = [
         enhancecost: 18,
         supEnhancecost: 4.5,
         skills: [
-            { level: 10, name: '上帝', effect: '其他助战永久增加攻击力时，该助战也会永久获得增加量的15%。（至少1点）' },
+            { level: 10, name: '上帝', effect: '其他助战永久增加攻击力时，该助战也会永久获得增加量的12%。（至少1点）' },
             { level: 30, name: '掌控', effect: '每11s，有12.5%的概率使下一次攻击造成的伤害变为8倍。每次触发，使倍率增加4。' }
         ]
     },
@@ -301,7 +301,41 @@ const minions = [
         supEnhancecost: 4.2,
         skills: [
             { level: 10, name: '连协之力', effect: '降低25%解锁助战需要的金币。' },
-            { level: 24, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，使全部助战攻击力增加3%（至少为1）。' }
+            { level: 24, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，且是首次达到该数值，使全部助战攻击力增加3%（至少为1）。' }
+        ]
+    },
+    {
+        name: '蕾米莉亚',
+        id: 18,
+        image: 'kmr/image/rem.png',
+        voice: 'kmr/voice/rem.mp3',
+        description: '蕾咪最终还是抽到了他最爱的大小姐',
+        baseattack: 5,
+        addattack: 3,
+        attackSpeed: 1300, // in milliseconds
+        basecost: 24,
+        enhancecost: 10,
+        supEnhancecost: 4.2,
+        skills: [
+            { level: 8, name: '复仇', effect: 'kmr的生命值低于一半时，该助战对其造成的伤害增加[50+等级]%。' },
+            { level: 24, name: '操纵命运', effect: '每45s，使下2个概率低于20%触发的技能必定触发。（每100级增加1个，上限8个）' }
+        ]
+    },
+    {
+        name: 'yokidou',
+        id: 19,
+        image: 'kmr/image/ykd.png',
+        voice: 'kmr/voice/ykd.mp3',
+        description: '命运抉择：入厂曲 或 谢幕曲',
+        baseattack: 10,
+        addattack: 10,
+        attackSpeed: 2500, // in milliseconds
+        basecost: 12,
+        enhancecost: 6,
+        supEnhancecost: 2.2,
+        skills: [
+            { level: 8, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
+            { level: 24, name: '成熟', effect: '每30s，失去1%等级，并使一个随机其他助战失去1%等级（至少1级，不会因此失去攻击力或失去已学会的技能，最多降为1级）。' }
         ]
     }
 ];

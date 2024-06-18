@@ -25,23 +25,23 @@ body {
 }
 
 .minion {
+    width: 120px; /* 设置宽度 */
+    height: 200px; /* 设置高度 */
     margin: 0 10px;
     text-align: center;
     cursor: pointer;
     font-size: 12px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-    padding: 10px; /* Optional: Add some padding for spacing */
+    box-sizing: border-box; /* 确保填充和边框包含在元素的总宽度和高度内 */
+    padding: 10px; /* 可选：添加一些填充以增加间距 */
+    background-color: #f0f0f0 !important; /* 设置淡灰色背景 */
+    border-radius: 10px; /* 设置圆角 */
 }
+
+
 
 .minion img {
     width: 50px;
     height: 60px;
-}
-
-.details-container, .stats-container {
-    margin-top: 20px;
-    min-width: 160px;
-    max-width: 320px;
 }
 
 .hidden {
@@ -59,7 +59,7 @@ body {
     text-align: center;
 }
 
-.gold-effect, .hit-effect, .damage-effect,.word-effect {
+.gold-effect, .hit-effect, .damage-effect,.word-effect,.heal-effect {
     position: absolute;
     border-radius: 50%;
     width: 20px;
@@ -97,6 +97,13 @@ body {
     font-weight: bold;
 }
 
+.heal-effect {
+    background: transparent;
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 @keyframes gold-animation {
     0% {
         transform: scale(1);
@@ -119,10 +126,21 @@ body {
     }
 }
 
+.details-container {
+    margin-top: 20px;
+    width: 25%;
+}
+
+.stats-container {
+    margin-top: 20px;
+    width: 15%;
+}
+
 .game-container {
     margin: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
+    width: 60%;
     max-height: 100vh; /* 最大高度为视窗高度的90% */
     overflow-y: auto; /* 允许垂直滚动 */
 }
