@@ -361,7 +361,7 @@ function unlockCost(n) {
   if (minions.length == unlockedMinions.length){
     return 99999999;
   }
-  return 9 + 12*n + 6*n*n + parseInt(2*Math.pow(n,3.25) + Math.pow(2.5,n));
+  return 9 + 12*n + 6*n*n + parseInt(3*Math.pow(n,3.25) + Math.pow(2.7,n));
 }
 
 function unlockRandMinion() {
@@ -422,7 +422,9 @@ function getEff(skill){
 
 }
 function mupgradeCost(minion){
-  let cost = parseInt(minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
+  let cost = (minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
+  cost = Math.pow(cost,1 + minion.level/10000)
+  cost = parseInt(cost);
   for (let m of minionsState){
     if (m.learnedSkills.includes("白骨夫人")){
       cost = parseInt(0.8*cost)

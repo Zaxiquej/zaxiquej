@@ -106,8 +106,8 @@ const minions = [
         image: 'kmr/image/bing.png',
         voice: 'kmr/voice/bing.mp3',
         description: '饼神伟大，无需多言',
-        baseattack: 40,
-        addattack: 20,
+        baseattack: 30,
+        addattack: 18,
         attackSpeed: 6940, // in milliseconds
         basecost: 20,
         enhancecost: 5,
@@ -174,9 +174,9 @@ const minions = [
         image: 'kmr/image/zenx.png',
         voice: 'kmr/voice/zenx.mp3',
         description: 'szb永远的上帝，兼任亚军',
-        baseattack: 11,
-        addattack: 8,
-        attackSpeed: 4900, // in milliseconds
+        baseattack: 22,
+        addattack: 16,
+        attackSpeed: 4200, // in milliseconds
         basecost: 48,
         enhancecost: 18,
         supEnhancecost: 4,
