@@ -196,10 +196,10 @@ const minions = [
         attackSpeed: 1900, // in milliseconds
         basecost: 13,
         enhancecost: 16,
-        supEnhancecost: 4,
+        supEnhancecost: 5,
         skills: [
             { level: 6, name: '虫虫咬他', effect: '升级该角色后，如果等级为奇数，永久提升升级增加的攻击力1点。' },
-            { level: 19, name: '无尽连击', effect: '每当任何助战攻击kmr，获得等同于升级提升攻击力50%的临时攻击力。每30秒，失去这些临时攻击力，但是有5%概率将其的10%转变为永久攻击力，且每50级提升1%概率（上限25%）。' }
+            { level: 19, name: '无尽连击', effect: '每当任何助战攻击kmr，获得等同于升级提升攻击力50%的临时攻击力。每30s，失去这些临时攻击力，但是有5%概率将其的10%转变为永久攻击力，且每50级提升1%概率（上限25%）。' }
         ]
     },
     {
