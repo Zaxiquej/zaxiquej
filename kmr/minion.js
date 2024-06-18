@@ -249,7 +249,7 @@ const minions = [
         enhancecost: 9.6,
         supEnhancecost: 4.8,
         skills: [
-            { level: 8, name: '铁犀冲锋', effect: '每8s，4%概率造成[攻击力*(等级^0.9)]的伤害。' },
+            { level: 8, name: '铁犀冲锋', effect: '每8s，4%概率造成[攻击力*(等级^0.7)]的伤害。' },
             { level: 21, name: '重返赛场', effect: '所有其他概率触发的技能如果触发失败，21%概率重新判定一次，不会重复发动。（每25级提升1%概率，最高50%）' }
         ]
     },
