@@ -7,15 +7,10 @@ body {
     background-color: #f0f0f0;
 }
 
-.game-container {
+.skill-effect-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.kmr-container {
-    position: relative;
-    cursor: pointer;
 }
 
 #kmr {
@@ -25,6 +20,7 @@ body {
 
 .minions-container {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
@@ -32,6 +28,9 @@ body {
     margin: 0 10px;
     text-align: center;
     cursor: pointer;
+    font-size: 12px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    padding: 10px; /* Optional: Add some padding for spacing */
 }
 
 .minion img {
@@ -41,6 +40,8 @@ body {
 
 .details-container, .stats-container {
     margin-top: 20px;
+    min-width: 160px;
+    max-width: 320px;
 }
 
 .hidden {
@@ -58,7 +59,7 @@ body {
     text-align: center;
 }
 
-.gold-effect, .hit-effect, .damage-effect {
+.gold-effect, .hit-effect, .damage-effect,.word-effect {
     position: absolute;
     border-radius: 50%;
     width: 20px;
@@ -122,6 +123,8 @@ body {
     margin: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
+    max-height: 100vh; /* 最大高度为视窗高度的90% */
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 h1 {
@@ -137,10 +140,11 @@ p {
 }
 
 .kmr-container {
-    position: relative;
+    position: sticky;
     display: inline-block;
     margin-bottom: 20px;
     text-align: center;
+    cursor: pointer;
 }
 
 #kmr {
@@ -189,7 +193,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
-    font-size: 14px;
+    font-size: 10px;
     transition: background-color 0.3s ease;
 }
 
