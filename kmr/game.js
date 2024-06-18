@@ -671,7 +671,7 @@ function updateCounts() {
       if (m.count >= 8){
         m.count = zeroCountDown(8);
         if (checkLuck(0.04)){
-          let dam = Math.floor(m.attack*Math.pow(m.level,0.7));
+          let dam = Math.floor(m.attack*Math.pow(m.level,0.6));
           damageKmr(dam,m);
           showSkillWord(m, "铁犀冲锋");
         }
