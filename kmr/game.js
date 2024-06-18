@@ -824,7 +824,7 @@ function upgradeMinion(index,auto,free) {
         document.getElementById(`level-${index}`).textContent = minion.level;
         document.getElementById(`attack-${index}`).textContent = minion.attack;
         document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
-        document.getElementById(`cost-${index}`).textContent = "升级 ("+mupgradeCost(minion)+")";
+        document.getElementById(`cost-${index}`).textContent = "升级 ("+formatNumber(mupgradeCost(minion))+")";
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("光速上分")){
             if (checkLuck(0.1)){
