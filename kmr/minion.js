@@ -283,7 +283,7 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 4.2,
         skills: [
-            { level: 8, name: '巨人', effect: '每40s，造成[全部助战攻击力之和*该助战攻击力位数/2]的伤害。' },
+            { level: 8, name: '巨人', effect: '每32s，造成[全部助战攻击力之和*该助战攻击力位数/2]的伤害。' },
             { level: 21, name: '护国神橙', effect: '所有直接攻击外的伤害增加20%。（每5级，额外提升2%）。' }
         ]
     },

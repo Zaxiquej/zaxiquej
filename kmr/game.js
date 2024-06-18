@@ -690,8 +690,8 @@ function updateCounts() {
     if (m.learnedSkills.includes("巨人")){
       if (!m.count){m.count = 0};
       m.count ++;
-      if (m.count >= 40){
-        m.count = zeroCountDown(40);
+      if (m.count >= 32){
+        m.count = zeroCountDown(32);
         let dam = 0;
         for (let mi of minionsState){
           dam += mi.attack;
