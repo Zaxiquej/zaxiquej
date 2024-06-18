@@ -21,14 +21,16 @@
     <div class="game-container">
       <h1>挑战kmr</h1>
       <p>邪恶的kmr因为吃不起泡面把byd给吃了，快和其他傻u一起发起炎上吧！</p>
-        <div class="kmr-container">
-            <img src="kmr/kmr.jpg" alt="KMR" id="kmr">
-            <div id="kmr-health">500,000</div>
-        </div>
+      <div class="kmr-container">
+          <div id="kmr-health" style="width: 100%;">500,000</div>
+          <img src="kmr/kmr.jpg" alt="KMR" id="kmr">
+      </div>
               <div>金币: <span id="coins">0</span></div>
         <div class="minions-container" id="minions-container">
             <!-- Minion info will be inserted here dynamically -->
         </div>
+          <button id='unlockButton' onclick="unlockRandMinion()"> 抽取助战 (金币: 10)</button>
+        <button onclick="autoupgradeMinion()">一键升级</button>
     </div>
 
     <div class="details-container">

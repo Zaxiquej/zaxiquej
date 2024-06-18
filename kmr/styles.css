@@ -23,15 +23,6 @@ body {
     height: auto;
 }
 
-#kmr-health {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 20px;
-    color: red;
-}
-
 .minions-container {
     display: flex;
     margin-top: 20px;
@@ -77,7 +68,21 @@ body {
 }
 
 .gold-effect {
-    background: gold;
+    background: transparent;
+    color: orange; /* 设置字体颜色为金色 */
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap; /* 防止换行 */
+    font-family: Arial, sans-serif; /* 设置字体族为常见的无衬线字体，可以根据需要更改 */
+}
+
+.word-effect {
+    background: transparent;
+    color: green; /* 设置字体颜色为金色 */
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap; /* 防止换行 */
+    font-family: Arial, sans-serif; /* 设置字体族为常见的无衬线字体，可以根据需要更改 */
 }
 
 .hit-effect {
@@ -111,4 +116,92 @@ body {
         transform: scale(2);
         opacity: 0;
     }
+}
+
+.game-container {
+    margin: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.kmr-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#kmr {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#kmr-health-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 10px;
+    height: 1px;
+}
+
+#kmr-health {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: r;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#coins {
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFD700; /* 金色 */
+}
+
+.minions-container {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007BFF; /* 蓝色背景 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* 深蓝色背景 */
+}
+
+button:active {
+    background-color: #003f7f; /* 更深的蓝色背景 */
+}
+
+button:disabled {
+    background-color: #CCCCCC; /* 灰色背景 */
+    cursor: not-allowed;
 }

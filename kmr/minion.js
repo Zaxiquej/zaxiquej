@@ -96,7 +96,7 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 3.2,
         skills: [
-            { level: 5, name: '鲁智深', effect: '增加280攻击.' },
+            { level: 5, name: '鲁智深', effect: '增加330攻击.' },
             { level: 15, name: '金牌陪练', effect: '攻击后，12%概率随机使一个其他助战永久获得[该助战攻击力/20]点攻击力。' }
         ]
     },
@@ -130,7 +130,7 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 2.4,
         skills: [
-            { level: 6, name: '阴阳秘法', effect: '所有助战获得27攻击力。' },
+            { level: 6, name: '阴阳秘法', effect: '所有助战获得36攻击力。' },
             { level: 22, name: '次元超越', effect: '每30s，使全部其他助战攻击一次。' }
         ]
     },
@@ -174,15 +174,15 @@ const minions = [
         image: 'kmr/image/zenx.png',
         voice: 'kmr/voice/zenx.mp3',
         description: 'szb永远的上帝，兼任亚军',
-        baseattack: 17,
+        baseattack: 11,
         addattack: 8,
-        attackSpeed: 2600, // in milliseconds
+        attackSpeed: 4900, // in milliseconds
         basecost: 48,
         enhancecost: 18,
         supEnhancecost: 4,
         skills: [
             { level: 10, name: '上帝', effect: '其他助战增加攻击力时，该助战也会获得增加量的15%。（至少1点）' },
-            { level: 30, name: '掌控', effect: '每11s，有12.5%的概率使下一次攻击造成的伤害变为8倍。每次触发，使倍率增加6。' }
+            { level: 30, name: '掌控', effect: '每11s，有12.5%的概率使下一次攻击造成的伤害变为8倍。每次触发，使倍率增加2。' }
         ]
     }
 ];
