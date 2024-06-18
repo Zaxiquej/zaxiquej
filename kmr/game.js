@@ -29,6 +29,7 @@ let skilled = false;
 let zenxLV = 0;
 let zenxActive = false;
 let fishTempAtk = 0;
+let autoing = false;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -81,6 +82,9 @@ function showWord(x, y, word) {
 }
 
 function showSkillWord(minion, word) {
+  if (autoing){
+    return;
+  }
     let im = document.getElementById(`image-${unlockedMinions.indexOf(minion.name)}`);
     var position = im.getBoundingClientRect();
 
@@ -104,6 +108,9 @@ function updateHealth(health) {
 }
 
 function updateDisplays() {
+  if (autoing){
+    return;
+  }
     kmrHealth.textContent = kmrHealthValue.toLocaleString();
     coinsDisplay.textContent = coins;
     timePlayedDisplay.textContent = `${timePlayed}s`;
@@ -138,7 +145,6 @@ function createDamageNumber(damage) {
 }
 
 function clickKmr() {
-    if (kmrHealthValue <= 0) return;
     burning = 0;
     kmrHealthValue -= 1;
     totalClickDamage += 1;
@@ -156,6 +162,11 @@ function clickKmr() {
 
 function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
+    for (let m of minionsState){
+      if (m.name != minion.name && m.learnedSkills.includes("护国神橙")){
+        dam = parseInt(dam*(1 + 0.2 + 0.02*parseInt(m.level/5)));
+      }
+    }
     kmrHealthValue -= dam;
     minion.totalDamage += dam;
     if (!minionDamages[minion.name]){
@@ -177,6 +188,7 @@ function damageKmr(dam,minion) {
 
 function checkVictory() {
     if (kmrHealthValue <= 0) {
+      autoing = false;
       totaltimePlayed = totaltimePlayed + timePlayed;
         victoryMessage.classList.remove('hidden');
         totalTimeDisplay.textContent = timePlayed;
@@ -226,7 +238,7 @@ function getattack(minion){
   }
   if (minion.learnedSkills.includes("开播！")){
     skilled = true;
-    atk += parseInt(Math.pow(coins,0.8)/1000*minion.level);
+    atk += parseInt(Math.pow(coins,0.6)/1000*minion.level);
   }
   return atk;
 }
@@ -237,7 +249,7 @@ function checkLuck(r) {
   let pass = Math.random() < r;
   for (let m of minionsState){
     if (m.learnedSkills.includes("重返赛场") && !pass){
-      let luck = Math.min(0.5,0.1 + 0.01*parseInt(m.level/25));
+      let luck = Math.min(0.5,0.21 + 0.01*parseInt(m.level/25));
       if (Math.random() < luck){
         showSkillWord(m, "重返赛场");
         pass = Math.random() < r;
@@ -248,7 +260,7 @@ function checkLuck(r) {
     for (let m of minionsState){
       if (m.learnedSkills.includes("运气不如他们") && r <= 0.2){
         showSkillWord(m, "运气不如他们");
-        raiseAtk(m,Math.max(2,parseInt(m.level/12)));
+        raiseAtk(m,Math.max(3,parseInt(m.level/12)));
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = m.attack;
       }
     }
@@ -285,7 +297,7 @@ function minionAttack(minion) {
         showSkillWord(minion, "冲击冠军");
       }
     }
-    if (minion.learnedSkills.includes("我吃我吃")){
+    if (minion.learnedSkills.includes("+1+1")){
       if (checkLuck(0.06)) {
         skilled = true;
         minion.attack = parseInt(minion.attack*1.125)
@@ -295,7 +307,7 @@ function minionAttack(minion) {
         clearInterval(minion.intervalId)
         let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
         minion.intervalId = intervalId;
-        showSkillWord(minion, "我吃我吃");
+        showSkillWord(minion, "+1+1");
       }
     }
     if (minion.learnedSkills.includes("金牌陪练") && unlockedMinions.length > 1){
@@ -377,9 +389,15 @@ function refMinions() {
 
 function unlockCost(n) {
   if (minions.length == unlockedMinions.length){
-    return 99999999;
+    return Infinity;
   }
-  return 9 + 12*n + 6*n*n + parseInt(2.5*Math.pow(n,3.25) + Math.pow(2.5,n));
+  let cost = 9 + 12*n + 6*n*n + parseInt(2.5*Math.pow(n,3.25) + Math.pow(2.5,n));
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("连协之力")){
+      cost = parseInt(0.75*cost)
+    }
+  }
+  return cost;
 }
 
 function unlockRandMinion() {
@@ -510,7 +528,7 @@ function updateCounts() {
         m.attack = Math.max(0,m.attack);
         let luck = 0.05 + 0.01*parseInt(m.level/50);
         if (checkLuck(luck)){
-          m.raiseAtk(attack,parseInt(fishTempAtk/10));
+          raiseAtk(m,parseInt(fishTempAtk/10));
         }
         fishTempAtk = 0;
         showSkillWord(m, "无尽连击");
@@ -560,6 +578,20 @@ function updateCounts() {
         showSkillWord(m, "一十九米肃清刀");
       }
     }
+    if (m.learnedSkills.includes("巨人")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 24){
+        m.count = zeroCountDown(24);
+        let dam = 0;
+        for (let mi of minionsState){
+          dam += mi.attack;
+        }
+        dam*= (""+m.attack).length;
+        damageKmr(dam,m);
+        showSkillWord(m, "巨人");
+      }
+    }
     if (m.learnedSkills.includes("次元超越")){
       let c = 30;
       c -= Math.max(0,Math.min(10,parseInt(m.level/100)));
@@ -595,16 +627,17 @@ function raiseAtk(minion,amount){
 }
 
 function autoupgradeMinion(){
+  autoing = true;
   let enough = true;
   while (enough){
+    enough = false;
     for (let i = 0; i < unlockedMinions.length; i++){
-      let enough = upgradeMinion(i,true);
-      if (!enough){
-        showMinionDetails(i);
-        return;
+      if (upgradeMinion(i,true)){
+        enough = true;
       }
     }
   }
+  autoing = false;
   updateDisplays();
 }
 function upgradeMinion(index,auto,free) {
@@ -681,12 +714,21 @@ function upgradeMinion(index,auto,free) {
         document.getElementById(`cost-${index}`).textContent = "升级 ("+mupgradeCost(minion)+")";
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("光速上分")){
-            if (checkLuck(0.15)){
-              let time = Math.min(20,2+parseInt(m.level/20));
-              for (let t = 1; t <= time; t++){
-                minionAttack(minion);
-                minionAttack(m);
+            if (checkLuck(0.1)){
+              coins += parseInt(upgradeCost * Math.min(1,0.3 + 0.01*parseInt(m.level/10)))
+              showSkillWord(m, "光速上分");
+            }
+          }
+          if (m.name != minion.name && m.learnedSkills.includes("杀出重围")){
+            let tlv = 0;
+            for (let mi of minionsState){
+              tlv += mi.level;
+            }
+            if (tlv%100 == 0){
+              for (let mi of minionsState){
+                mi.attack = parseInt(1.03*mi.attack);
               }
+              showSkillWord(m, "杀出重围");
             }
           }
         }
