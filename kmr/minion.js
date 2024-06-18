@@ -11,7 +11,7 @@ const minions = [
         enhancecost: 7,
         supEnhancecost: 4,
         skills: [
-            { level: 4, name: '素质家族', effect: '10%概率造成 1000% 伤害.' },
+            { level: 4, name: '素质家族', effect: '10%概率造成 1000% 伤害。' },
             { level: 16, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力/30]点攻击力' }
         ]
     },
@@ -28,8 +28,8 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 3,
         skills: [
-            { level: 6, name: '冲击冠军', effect: '3%概率攻击时永久提升[该助战等级]点攻击.' },
-            { level: 12, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击.' }
+            { level: 6, name: '冲击冠军', effect: '3%概率攻击时永久提升[该助战等级]点攻击。' },
+            { level: 12, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
         ]
     },
     {
@@ -45,8 +45,8 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 3.5,
         skills: [
-            { level: 3, name: '苦痛', effect: '所有其他助战攻击时，额外造成等同于[该助战攻击力*0.8]的伤害.' },
-            { level: 13, name: '奶1', effect: '33%概率在攻击时，额外获得等同于[该助战等级^1.5]的金币.' }
+            { level: 3, name: '奶1', effect: '33%概率在攻击时，额外获得等同于[该助战等级^1.5]的金币。' },
+            { level: 13, name: '苦痛', effect: '所有其他助战攻击时，额外造成等同于[该助战攻击力*0.8]的伤害。' }
         ]
     },
     {
@@ -62,8 +62,8 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 3.4,
         skills: [
-            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.6)*该助战等级/1000]的伤害.' },
-            { level: 17, name: '白骨夫人', effect: '所有升级消费金币降低20%.' }
+            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.6)*该助战等级/1000]的伤害。' },
+            { level: 17, name: '白骨夫人', effect: '所有升级消费金币降低20%。（每100级额外减少1%，最高30%）' }
         ]
     },
     {
@@ -79,7 +79,7 @@ const minions = [
         enhancecost: 13,
         supEnhancecost: 3.7,
         skills: [
-            { level: 6, name: '说书', effect: '攻击速度减少0.4s.' },
+            { level: 6, name: '说书', effect: '攻击速度减少0.4s。' },
             { level: 13, name: '运气不如他们', effect: '其他助战成功触发一个概率低于20%的技能后，该助战永久获得[等级/12]攻击力（最低为3）。' }
         ]
     },
@@ -96,7 +96,7 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 3.2,
         skills: [
-            { level: 5, name: '鲁智深', effect: '增加400攻击.' },
+            { level: 5, name: '鲁智深', effect: '增加400攻击。' },
             { level: 15, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力。' }
         ]
     },
@@ -147,7 +147,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 3.33,
         skills: [
-            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加15%攻击力，但攻击间隔上升10%。' },
+            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加13%攻击力，但攻击间隔上升10%。' },
             { level: 20, name: '龙之咆哮', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
         ]
     },
@@ -165,7 +165,7 @@ const minions = [
         supEnhancecost: 3.5,
         skills: [
             { level: 8, name: '罕见', effect: '每50s，直接获得10%金币量的金币。' },
-            { level: 24, name: 'GN', effect: '其他助战攻击触发其自己的技能时，有10%概率增加等同于[其攻击力1%]的攻击力，随后该助战追加3次攻击。' }
+            { level: 24, name: 'GN', effect: '其他助战攻击触发其自己的技能时，有10%概率增加等同于[其攻击力2%]的攻击力，随后该助战追加3次攻击。' }
         ]
     },
     {
@@ -249,7 +249,7 @@ const minions = [
         enhancecost: 9.6,
         supEnhancecost: 4.8,
         skills: [
-            { level: 8, name: '铁犀冲锋', effect: '每8s，4%概率造成[等级*攻击力]的伤害。' },
+            { level: 8, name: '铁犀冲锋', effect: '每8s，4%概率造成[攻击力*(等级^0.9)]的伤害。' },
             { level: 21, name: '重返赛场', effect: '所有其他概率触发的技能如果触发失败，21%概率重新判定一次，不会重复发动。（每25级提升1%概率，最高50%）' }
         ]
     },
@@ -283,7 +283,7 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 4.2,
         skills: [
-            { level: 8, name: '巨人', effect: '每24s，造成[全部助战攻击力之和*该助战攻击力位数]的伤害。' },
+            { level: 8, name: '巨人', effect: '每40s，造成[全部助战攻击力之和*该助战攻击力位数/2]的伤害。' },
             { level: 21, name: '护国神橙', effect: '所有直接攻击外的伤害增加20%。（每5级，额外提升2%）。' }
         ]
     },
@@ -301,7 +301,7 @@ const minions = [
         supEnhancecost: 4.2,
         skills: [
             { level: 10, name: '连协之力', effect: '降低25%解锁助战需要的金币。' },
-            { level: 24, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，且是首次达到该数值，使全部助战攻击力增加3%（至少为1）。' }
+            { level: 24, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，且是首次达到该数值，使全部助战攻击力增加[等级之和]点攻击力。' }
         ]
     },
     {
@@ -318,7 +318,7 @@ const minions = [
         supEnhancecost: 4.2,
         skills: [
             { level: 8, name: '复仇', effect: 'kmr的生命值低于一半时，该助战对其造成的伤害增加[50+等级]%。' },
-            { level: 24, name: '操纵命运', effect: '每45s，使下2个概率低于20%触发的技能必定触发。（每100级增加1个，上限8个）' }
+            { level: 24, name: '操纵命运', effect: '每25s，使下2个概率低于20%触发的技能必定触发。（每100级增加1个，上限8个）' }
         ]
     },
     {
