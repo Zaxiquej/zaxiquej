@@ -494,6 +494,7 @@ function updateCounts() {
       if (m.count >= 30){
         m.count = zeroCountDown(30);
         m.attack -= fishTempAtk;
+        m.attack = Math.max(0,m.attack);
         let luck = 0.05 + 0.01*parseInt(m.level/50);
         if (checkLuck(luck)){
           m.raiseAtk(attack,parseInt(fishTempAtk/10));
