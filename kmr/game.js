@@ -128,6 +128,7 @@ function updateDisplays() {
         minionDamagesDisplay.appendChild(li);
     }
     updateHealth(kmrHealthValue);
+    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + unlockCost(unlockedMinions.length) +")";
 }
 
 // 创建伤害数字动画
@@ -204,7 +205,6 @@ function checkVictory() {
 function restartGame() {
     level = level +1;
     kmrHealthValue = 500000 * Math.pow(10,level);
-    coins = 0;
     timePlayed = 0;
     //totalClickDamage = 0;
     //let rindex = 0;
@@ -490,6 +490,7 @@ function updateCounts() {
       if (burning >= 20){
         burning = zeroCountDown(20);
         raiseAtk(m,5*unlockedMinions.length);
+        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = m.attack;
         need = true;
         showSkillWord(m, "五种打法");
       }
@@ -609,9 +610,9 @@ function updateCounts() {
       }
 
     }
-    if (need){
-      updateDisplays();
-    }
+  }
+  if (need){
+    updateDisplays();
   }
 }
 
@@ -694,14 +695,14 @@ function upgradeMinion(index,auto,free) {
               unlockedPigs++;
             }
           }
-          if (unlockedPigs.length > 1 && checkLuck(0.5)) {
+          if (unlockedPigs > 1 && checkLuck(0.5)) {
             skilled = true;
-            let r = parseInt(Math.random()*(unlockedPigs - 1));
+            let r = parseInt(Math.random()*(unlockedPigs - 1)) + 1;
             for (let m of minionsState){
               if (m.description.includes("🐷") && m.name != minion.name){
                 r -= 1;
                 if (r == 0){
-                  upgradeMinion(m,undefined,true);
+                  upgradeMinion(unlockedMinions.indexOf(m.name),undefined,true);
                 }
               }
             }
