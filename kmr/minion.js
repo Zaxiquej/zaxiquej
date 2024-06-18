@@ -37,7 +37,7 @@ const minions = [
         id: 2,
         image: 'kmr/image/amlls.png',
         voice: 'kmr/voice/amlls.mp3',
-        description: '只会奶1的amlls',
+        description: '只会奶1的amlls🐷🐷',
         baseattack: 6,
         addattack: 3,
         attackSpeed: 1800, // in milliseconds
@@ -135,11 +135,11 @@ const minions = [
         ]
     },
     {
-        name: '美少女莉莉猪',
+        name: '璐缇雅',
         id: 8,
-        image: 'kmr/image/lili.png',
-        voice: 'kmr/voice/lili.mp3',
-        description: '恐怖双猪之lilipig',
+        image: 'kmr/image/lty.png',
+        voice: 'kmr/voice/lty.mp3',
+        description: '这是我们的超美丽官方牢头，你们的游戏有这种牢头吗',
         baseattack: 9,
         addattack: 5,
         attackSpeed: 2000, // in milliseconds
@@ -148,7 +148,7 @@ const minions = [
         supEnhancecost: 3.33,
         skills: [
             { level: 4, name: '我吃我吃', effect: '攻击后，有6%概率增加12.5%攻击力，但攻击间隔上升10%。' },
-            { level: 20, name: '猪之力', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
+            { level: 20, name: '龙之咆哮', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
         ]
     },
     {
@@ -179,9 +179,9 @@ const minions = [
         attackSpeed: 3900, // in milliseconds
         basecost: 48,
         enhancecost: 18,
-        supEnhancecost: 5,
+        supEnhancecost: 4.5,
         skills: [
-            { level: 10, name: '上帝', effect: '其他助战增加攻击力时，该助战也会获得增加量的15%。（至少1点）' },
+            { level: 10, name: '上帝', effect: '其他助战永久增加攻击力时，该助战也会永久获得增加量的15%。（至少1点）' },
             { level: 30, name: '掌控', effect: '每11s，有12.5%的概率使下一次攻击造成的伤害变为8倍。每次触发，使倍率增加4。' }
         ]
     },
@@ -196,7 +196,7 @@ const minions = [
         attackSpeed: 1900, // in milliseconds
         basecost: 13,
         enhancecost: 16,
-        supEnhancecost: 6,
+        supEnhancecost: 4,
         skills: [
             { level: 6, name: '虫虫咬他', effect: '升级该角色后，如果等级为奇数，永久提升升级增加的攻击力1点。' },
             { level: 19, name: '无尽连击', effect: '每当任何助战攻击kmr，获得等同于升级提升攻击力50%的临时攻击力。每30秒，失去这些临时攻击力，但是有5%概率将其的10%转变为永久攻击力，且每50级提升1%概率（上限25%）。' }
@@ -217,6 +217,23 @@ const minions = [
         skills: [
             { level: 8, name: '一十九米肃清刀', effect: '每19s，造成等同于[攻击力*你拥有的助战数]的伤害。' },
             { level: 22, name: '电表白转', effect: '每当一个倒计时技能触发后，20%概率将其进度转变为50%，而不是从零开始。（每50级提高1%概率，最高40%）' }
+        ]
+    },
+    {
+        name: '美少女莉莉猪',
+        id: 13,
+        image: 'kmr/image/lili.png',
+        voice: 'kmr/voice/lili.mp3',
+        description: '恐怖双🐷之lilipig',
+        baseattack: 10,
+        addattack: 7,
+        attackSpeed: 2800, // in milliseconds
+        basecost: 19,
+        enhancecost: 6,
+        supEnhancecost: 2,
+        skills: [
+            { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率重新攻击一次。' },
+            { level: 24, name: '双猪的羁绊', effect: '每当介绍中含有🐷的助战升级后，如果等级为5的倍数，使其攻击力增加[该助战等级^1.1]的数值。' }
         ]
     }
 ];

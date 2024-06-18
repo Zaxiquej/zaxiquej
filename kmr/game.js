@@ -201,7 +201,7 @@ function restartGame() {
     //let unlockedMinions = [];
     victoryMessage.classList.add('hidden');
     updateDisplays();
-    initMinions(); // Initialize minions again after restarting game
+    //initMinions(); // Initialize minions again after restarting game
 }
 
 function getattack(minion){
@@ -313,6 +313,12 @@ function minionAttack(minion) {
           showSkillWord(m, "永失吾艾");
         }
       }
+      if (minion.description.includes("🐷") && m.learnedSkills.includes("身外化身")){
+        if (checkLuck(0.1)) {
+          minionAttack(minion);
+          showSkillWord(m, "身外化身");
+        }
+      }
       if (skilled && m.name != minion.name && m.learnedSkills.includes("GN")){
         if (checkLuck(0.1)) {
           raiseAtk(m, parseInt(minion.attack*0.01));
@@ -362,7 +368,7 @@ function unlockCost(n) {
   if (minions.length == unlockedMinions.length){
     return 99999999;
   }
-  return 9 + 12*n + 6*n*n + parseInt(3*Math.pow(n,3.25) + Math.pow(2.7,n));
+  return 9 + 12*n + 6*n*n + parseInt(2.5*Math.pow(n,3.25) + Math.pow(2.5,n));
 }
 
 function unlockRandMinion() {
@@ -490,7 +496,7 @@ function updateCounts() {
         m.attack -= fishTempAtk;
         let luck = 0.05 + 0.01*parseInt(m.level/50);
         if (checkLuck(luck)){
-          m.attack += parseInt(fishTempAtk/10);
+          m.raiseAtk(attack,parseInt(fishTempAtk/10));
         }
         fishTempAtk = 0;
         showSkillWord(m, "无尽连击");
@@ -508,14 +514,14 @@ function updateCounts() {
         }
       }
     }
-    if (m.learnedSkills.includes("猪之力")){
+    if (m.learnedSkills.includes("龙之咆哮")){
       if (!m.count){m.count = 0};
       m.count ++;
       if (m.count >= 24){
         m.count = zeroCountDown(24);
         let dam = parseInt(2*m.attack*m.attackSpeed/1000);
         damageKmr(dam,m);
-        showSkillWord(m, "猪之力");
+        showSkillWord(m, "龙之咆哮");
       }
     }
     if (m.learnedSkills.includes("一十九米肃清刀")){
@@ -583,8 +589,12 @@ function upgradeMinion(index,auto) {
         raiseAtk(minion,minion.addattack); // Increase attack by 2 for each level
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
-            raiseAtk(minion,minion.addattack);
+            raiseAtk(minion,parseInt(m.attack/30));
             showSkillWord(m, "构筑带师");
+          }
+          if (minion.level%5 == 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")){
+            raiseAtk(minion,Math.pow(m.level,1.1));
+            showSkillWord(m, "双猪的羁绊");
           }
         }
         for (let s of minion.skills){
