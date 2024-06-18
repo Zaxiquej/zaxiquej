@@ -233,11 +233,22 @@ function getattack(minion){
 
 
 function checkLuck(r) {
-  if (Math.random() < r) {
+  let re = 0;
+  let pass = Math.random() < r;
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("重返赛场") && !pass){
+      let luck = Math.min(0.5,0.1 + 0.01*parseInt(m.level/25));
+      if (Math.random() < luck){
+        showSkillWord(m, "重返赛场");
+        pass = Math.random() < r;
+      }
+    }
+  }
+  if (pass) {
     for (let m of minionsState){
       if (m.learnedSkills.includes("运气不如他们") && r <= 0.2){
-        showSkillWord(minion, "运气不如他们");
-        raiseAtk(m,Math.max(4,parseInt(m.level/10)));
+        showSkillWord(m, "运气不如他们");
+        raiseAtk(m,Math.max(2,parseInt(m.level/12)));
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = m.attack;
       }
     }
@@ -372,6 +383,7 @@ function unlockCost(n) {
 }
 
 function unlockRandMinion() {
+  if (kmrHealthValue <= 0){return;}
     const uCost = unlockCost(unlockedMinions.length)
     if (coins >= uCost) {
       coins -= uCost;
@@ -452,6 +464,7 @@ function zeroCountDown(c) {
   return 0;
 }
 function updateCounts() {
+  if (kmrHealthValue <= 0){return;}
   let need = false;
   for (let m of minionsState){
     if (m.learnedSkills.includes("五种打法")){
@@ -525,6 +538,18 @@ function updateCounts() {
         showSkillWord(m, "龙之咆哮");
       }
     }
+    if (m.learnedSkills.includes("铁犀冲锋")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 8){
+        m.count = zeroCountDown(8);
+        if (checkLuck(0.04)){
+          let dam = parseInt(m.attack*m.level);
+          damageKmr(dam,m);
+          showSkillWord(m, "铁犀冲锋");
+        }
+      }
+    }
     if (m.learnedSkills.includes("一十九米肃清刀")){
       if (!m.count){m.count = 0};
       m.count ++;
@@ -575,15 +600,22 @@ function autoupgradeMinion(){
     for (let i = 0; i < unlockedMinions.length; i++){
       let enough = upgradeMinion(i,true);
       if (!enough){
+        showMinionDetails(i);
         return;
       }
     }
   }
+  updateDisplays();
 }
-function upgradeMinion(index,auto) {
+function upgradeMinion(index,auto,free) {
+  if (kmrHealthValue <= 0 && !free){return;}
+
     burning = 0;
     const minion = minionsState[index];
-    const upgradeCost = mupgradeCost(minion);
+    let upgradeCost = mupgradeCost(minion);
+    if (free){
+      upgradeCost = 0;
+    }
     if (coins >= upgradeCost) {
         coins -= upgradeCost;
         minion.level += 1;
@@ -594,7 +626,7 @@ function upgradeMinion(index,auto) {
             showSkillWord(m, "构筑带师");
           }
           if (minion.level%5 == 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")){
-            raiseAtk(minion,Math.pow(m.level,1.1));
+            raiseAtk(minion,parseInt(Math.pow(m.level,1.1)));
             showSkillWord(m, "双猪的羁绊");
           }
         }
@@ -621,13 +653,48 @@ function upgradeMinion(index,auto) {
           showSkillWord(minion, "虫虫咬他");
           minion.addattack += 1;
         }
+
+        if (minion.learnedSkills.includes("双猪齐力")){
+          let unlockedPigs = 0;
+          for (let m of minionsState){
+            if (m.description.includes("🐷")){
+              unlockedPigs++;
+            }
+          }
+          if (unlockedPigs.length > 1 && checkLuck(0.5)) {
+            skilled = true;
+            let r = parseInt(Math.random()*(unlockedPigs - 1));
+            for (let m of minionsState){
+              if (m.description.includes("🐷") && m.name != minion.name){
+                r -= 1;
+                if (r == 0){
+                  upgradeMinion(m,undefined,true);
+                }
+              }
+            }
+            showSkillWord(minion, "双猪齐力");
+          }
+        }
         document.getElementById(`level-${index}`).textContent = minion.level;
         document.getElementById(`attack-${index}`).textContent = minion.attack;
         document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
         document.getElementById(`cost-${index}`).textContent = "升级 ("+mupgradeCost(minion)+")";
+        for (let m of minionsState){
+          if (m.name != minion.name && m.learnedSkills.includes("光速上分")){
+            if (checkLuck(0.15)){
+              let time = Math.min(20,2+parseInt(m.level/20));
+              for (let t = 1; t <= time; t++){
+                minionAttack(minion);
+                minionAttack(m);
+              }
+            }
+          }
+        }
+        if (!auto){
+          updateDisplays();
+          showMinionDetails(index);
+        }
 
-        updateDisplays();
-        showMinionDetails(index);
         return true;
     } else {
       if (auto){
