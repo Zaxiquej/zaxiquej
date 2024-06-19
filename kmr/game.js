@@ -940,7 +940,7 @@ function upgradeMinion(index,auto,free,noskill) {
             }
             if (tlv%100 == 0){
               for (let mi of minionsState){
-                mi.attack += tlv/5;
+                raiseAtk(mi,tlv/5);
               }
               showSkillWord(m, "杀出重围");
             }
