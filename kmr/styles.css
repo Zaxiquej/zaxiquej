@@ -26,7 +26,6 @@ body {
 
 .minion {
     width: 120px; /* 设置宽度 */
-    height: 200px; /* 设置高度 */
     margin: 0 10px;
     text-align: center;
     cursor: pointer;

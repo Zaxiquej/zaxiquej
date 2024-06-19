@@ -29,7 +29,7 @@ const minions = [
         supEnhancecost: 3,
         skills: [
             { level: 6, name: '冲击冠军', effect: '3%概率攻击时永久提升[该助战等级]点攻击。' },
-            { level: 12, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
+            { level: 19, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
         ]
     },
     {
@@ -97,7 +97,7 @@ const minions = [
         supEnhancecost: 3.2,
         skills: [
             { level: 5, name: '鲁智深', effect: '增加400攻击。' },
-            { level: 15, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力。' }
+            { level: 12, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力。' }
         ]
     },
     {
@@ -148,7 +148,7 @@ const minions = [
         supEnhancecost: 3.33,
         skills: [
             { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加13%攻击力，但攻击间隔上升10%。' },
-            { level: 20, name: '龙之咆哮', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
+            { level: 20, name: '饿龙咆哮', effect: '每24s，造成等同于[2*攻击力*攻击间隔]的伤害。' }
         ]
     },
     {
@@ -165,7 +165,7 @@ const minions = [
         supEnhancecost: 3.5,
         skills: [
             { level: 8, name: '罕见', effect: '每50s，直接获得10%金币量的金币。' },
-            { level: 24, name: 'GN', effect: '其他助战攻击触发其自己的技能时，有10%概率增加等同于[其攻击力2%]的攻击力，随后该助战追加3次攻击。' }
+            { level: 20, name: 'GN', effect: '其他助战攻击触发其自己的技能时，有10%概率增加等同于[其攻击力2%]的攻击力，随后该助战追加3次攻击。' }
         ]
     },
     {
@@ -232,7 +232,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 2,
         skills: [
-            { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率重新攻击一次。' },
+            { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率令其重新攻击一次。' },
             { level: 24, name: '双猪的羁绊', effect: '每当介绍中含有🐷的助战升级后，如果等级为5的倍数，使其攻击力增加[该助战等级^1.1]的数值。' }
         ]
     },
@@ -300,8 +300,8 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 4.2,
         skills: [
-            { level: 10, name: '连协之力', effect: '降低25%解锁助战需要的金币。' },
-            { level: 24, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，且是首次达到该数值，使全部助战攻击力增加[等级之和]点攻击力。' }
+            { level: 10, name: '连协之力', effect: '降低25%解锁助战与重抽助战需要的金币。' },
+            { level: 18, name: '杀出重围', effect: '当你升级助战后，如果你的助战等级之和变为100的倍数，使全部助战攻击力增加[等级之和/5]点攻击力。' }
         ]
     },
     {
@@ -326,7 +326,7 @@ const minions = [
         id: 19,
         image: 'kmr/image/ykd.png',
         voice: 'kmr/voice/ykd.mp3',
-        description: '命运抉择：入厂曲 或 谢幕曲',
+        description: '🐷族大厨的命运抉择：入厂曲 或 谢幕曲',
         baseattack: 10,
         addattack: 10,
         attackSpeed: 2500, // in milliseconds
@@ -334,8 +334,42 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 2.2,
         skills: [
-            { level: 8, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
-            { level: 24, name: '成熟', effect: '每30s，失去1%等级，并使一个随机其他助战失去1%等级（至少1级，不会因此失去攻击力或失去已学会的技能，最多降为1级）。' }
+            { level: 5, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
+            { level: 16, name: '成熟', effect: '每30s，失去1%等级，并使一个随机其他助战失去1%等级（至少1级，不会因此失去攻击力或失去已学会的技能，最多降为1级）。' }
+        ]
+    },
+    {
+        name: '雪亲王',
+        id: 20,
+        image: 'kmr/image/xqw.png',
+        voice: 'kmr/voice/xqw.mp3',
+        description: '靠运气走不了太远，但是祥瑞御免另说',
+        baseattack: 12,
+        addattack: 8,
+        attackSpeed: 2200, // in milliseconds
+        basecost: 12,
+        enhancecost: 6,
+        supEnhancecost: 2.2,
+        skills: [
+            { level: 6, name: '祥瑞', effect: '该助战与前/后一个助战攻击kmr时，其攻击力会在50%~200%内随机浮动。（每10级增加4%上限同时降低1%下限，下限最低为0%。）' },
+            { level: 16, name: '大梦仙尊', effect: '攻击后，1%概率使下5次你升级助战需要的金币数转变为0。（攻击力每到达2的一个次方，提升0.1%概率，上限3%。）' }
+        ]
+    },
+    {
+        name: '茶叶OMO',
+        id: 17,
+        image: 'kmr/image/ygg.png',
+        voice: 'kmr/voice/ygg.mp3',
+        description: 'ygg又败给了女人，我们皇家护卫什么时候才能站起来（bushi',
+        baseattack: 8,
+        addattack: 4,
+        attackSpeed: 1000, // in milliseconds
+        basecost: 18,
+        enhancecost: 4,
+        supEnhancecost: 2.5,
+        skills: [
+            { level: 8, name: '中速导师', effect: '你解锁一个助战后，立刻免费将其升到该助战一半的等级，随后将其等级变回1（但是保留获得的攻击力，不会因此获得技能）。' },
+            { level: 18, name: '皇室荣耀', effect: '攻击时8%概率额外造成322点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。' }
         ]
     }
 ];
