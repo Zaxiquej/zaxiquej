@@ -12,7 +12,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-
+let version = "2.3.1";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
@@ -24,13 +24,14 @@ let minionDamages = {};
 let minionsState = [];
 let unlockedMinions = [];
 let totaltimePlayed = 0;
+let buffs = [];
+let states = {};
 let burning = 0;
 let skilled = false;
 let zenxLV = 0;
 let zenxActive = false;
 let autoing = false;
 let remluck = 0;
-let ykd = 0;
 let reroll = 0;
 let freeReroll = 2;
 let freeUp = 0;
@@ -57,6 +58,7 @@ function b64_to_utf8(str) {
 
 function saveGame(auto) {
     const gameState = {
+        version,
         kmrHealthValue,
         level,
         coins,
@@ -74,7 +76,7 @@ function saveGame(auto) {
         zenxActive,
         autoing,
         remluck,
-        ykd,
+        buffs,
         reroll,
         freeReroll,
         freeUp,
@@ -108,7 +110,7 @@ function loadGame() {
     if (encodedGameState) {
         const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
         const gameState = JSON.parse(gameStateStr);
-
+        version = gameState.version;
         kmrHealthValue = gameState.kmrHealthValue;
         level = gameState.level;
         coins = gameState.coins;
@@ -126,7 +128,7 @@ function loadGame() {
         zenxActive = gameState.zenxActive;
         autoing = gameState.autoing;
         remluck = gameState.remluck;
-        ykd = gameState.ykd;
+        buffs = gameState.buffs;
         reroll = gameState.reroll;
         freeReroll = gameState.freeReroll;
         freeUp = gameState.freeUp;
@@ -148,6 +150,7 @@ function loadGame() {
 
 // Function to reset all game variables
 function resetGame() {
+    version = "2.3.1";
     kmrHealthValue = 500000;
     level = 0;
     coins = 0;
@@ -164,7 +167,7 @@ function resetGame() {
     zenxActive = false;
     autoing = false;
     remluck = 0;
-    ykd = 0;
+    buffs = [];
     reroll = 0;
     freeReroll = 2;
     freeUp = 0;
@@ -203,6 +206,41 @@ function restoreIntervals() {
   }
 }
 
+function addBuff(name,power,length,stackable){
+  if (!stackable){
+    for (let buff of buffs){
+      if (buff.name == name){
+        return;
+      }
+    }
+  }
+  buffs.push([name,power,length]);
+}
+
+function getBuffPower(name){
+  let pow = [];
+  for (let buff of buffs){
+    pow.push(buff[1]);
+  }
+  return pow;
+}
+
+function getBuffLength(name){
+  let pow = [];
+  for (let buff of buffs){
+    pow.push(buff[2]);
+  }
+  return pow;
+}
+
+function buffCountDown() {
+  for (let i = buffs.length - 1; i >= 0; i--) {
+    buffs[i][2]--; // 减少length
+    if (buffs[i][2] <= 0) {
+      buffs.splice(i, 1); // 删除length为0的项目
+    }
+  }
+}
 
 function unlockMinion(minion,temp){
   unlockedMinions.push(minion.name);
@@ -341,7 +379,8 @@ function createDamageNumber(damage) {
 }
 
 function gainCoin(c){
-  if (ykd > 0){
+  if (getBuffPower("ykd").length > 0){
+    let c = getBuffPower("ykd")[0];
     c = Math.floor(c * 2);
   }
   coins += c;
@@ -447,7 +486,7 @@ function phaseUpGame() {
     //let unlockedMinions = [];
     victoryMessage.classList.add('hidden');
     updateDisplays();
-    saveGame();
+    saveGame(true);
     //initMinions(); // Initialize minions again after restarting game
 }
 
@@ -516,6 +555,11 @@ function getattack(minion){
   if (minion.learnedSkills.includes("开播！")){
     skilled = true;
     atk += Math.floor(Math.pow(Math.abs(coins),0.66)/1000*minion.level);
+  }
+  if (getBuffPower("idol").length > 0){
+    for (let i of getBuffPower("idol")){
+      atk *= i;
+    }
   }
   atk = Math.floor(atk);
   return atk;
@@ -602,7 +646,7 @@ function minionAttack(minion,master) {
         dam = - dam;
         showSkillWord(minion, "下饭");
         if (checkLuck(0.1)) {
-          ykd = getDigit(minion.attack)
+          addBuff("ykd", 2, getDigit(minion.attack), false);
           showSkillWord(minion, "进入下饭状态！");
         }
       }
@@ -700,6 +744,27 @@ function minionAttack(minion,master) {
         skilled = true;
         gainCoin(Math.floor(Math.pow(minion.level,1.5)));
         showSkillWord(minion, "奶1");
+      }
+    }
+    if (minion.learnedSkills.includes("偶像")){
+      if (checkLuck(0.07)) {
+        skilled = true;
+        addBuff("idol",1.2 + 0.02*getDigit(dam),10,true)
+        showSkillWord(minion, "偶像");
+      }
+    }
+    if (minion.learnedSkills.includes("人偶使") && unlockedMinions.length > 1){
+      if (checkLuck(0.08)) {
+        skilled = true;
+        let t = 3 + getBuffPower("idol").length * 3;
+        for (let i = 0; i < t; i++){
+          let r = Math.floor(Math.random()*(unlockedMinions.length - 1));
+          if (r >= unlockedMinions.indexOf(minion.name)){
+            r += 1;
+          }
+          minionAttack(minionsState[r]);
+        }
+        showSkillWord(minion, "人偶使");
       }
     }
     for (let m of minionsState){
@@ -916,9 +981,7 @@ function updateCounts() {
   if (kmrHealthValue <= 0){return;}
   let need = false;
   let ref = false;
-  if (ykd > 0){
-    ykd = Math.max(0,ykd - 1);
-  }
+  buffCountDown();
   for (let m of minionsState){
     if (m.learnedSkills.includes("五种打法")){
       burning ++;

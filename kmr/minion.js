@@ -422,5 +422,22 @@ const minions = [
             { level: 11, name: '造谣', effect: '每20s，随机使1名助战攻击力的随机1位数字增加1（不视作增加攻击，非首位的9会变为0，首位则会变为10）（每50级，额外重复1次）。' },
             { level: 17, name: '黄油品鉴', effect: '攻击时，10%概率使随机1名具有倒计时技能助战的技能倒计时加快3s，溢出部分不会结算至下一循环。（每100级，增加1s，上限8s）' }
         ]
+    },
+    {
+        name: '梦生白涅',
+        id: 25,
+        image: 'kmr/image/meng.png',
+        voice: 'kmr/voice/meng.mp3',
+        description: '梦子什么时候cos水银灯',
+        baseattack: 11,
+        addattack: 7,
+        attackSpeed: 2400, // in milliseconds
+        basecost: 22,
+        enhancecost: 11,
+        supEnhancecost: 2.6,
+        skills: [
+            { level: 8, name: '偶像', effect: '攻击时，7%概率使所有己方助战在接下来10s内攻击时，额外造成[20+伤害位数*2]%的伤害（可叠加）。' },
+            { level: 18, name: '人偶使', effect: '攻击时，8%概率令1个随机其他助战攻击，触发3次。如果正处于前一技能的状态中，每有一层则额外增加3次。' }
+        ]
     }
 ];
