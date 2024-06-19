@@ -391,7 +391,7 @@ const minions = [
     },
     {
         name: '星导过星导',
-        id: 22,
+        id: 23,
         image: 'kmr/image/xd.png',
         voice: 'kmr/voice/xd.mp3',
         description: '这里是不务正业又犯🐷病的屑作者🐷导',
