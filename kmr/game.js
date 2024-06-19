@@ -517,9 +517,9 @@ function getattack(minion){
       skilled = true;
       xxBuff = false;
     } else {
-      let luck = Math.max(0.2, 0.7 - 0.01* Math.floor(minion.level/10));
+      let luck = Math.max(0.2, 0.7 - 0.01* Math.floor(minion.level/15));
       if (checkLuck(luck)) {
-        atk*= 2 + 0.1*0.01* Math.floor(minion.level/10);
+        atk*= 2 + 0.1*0.01* Math.floor(minion.level/15);
         skilled = true;
         showSkillWord(minion, "结晶教胜利！");
         curjjj = 0;
@@ -528,7 +528,7 @@ function getattack(minion){
         if (xxjjj < curjjj){
           xxjjj = curjjj;
         }
-        showSkillWord(minion, "小心结晶教！");
+        showSkillWord(minion, "小心结晶教！*"+curjjj);
       }
     }
   }
@@ -953,7 +953,7 @@ function getEff(skill){
     case "皇室荣耀":
       return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
-      return "每32s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
+      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     default:
       return skill.effect;
   }
@@ -1014,8 +1014,8 @@ function updateCounts() {
     if (m.learnedSkills.includes("魔咒")){
       if (!m.count){m.count = 0};
       m.count ++;
-      if (m.count >= 32){
-        m.count = zeroCountDown(32);
+      if (m.count >= 48){
+        m.count = zeroCountDown(48);
         xxBuff = true;
         showSkillWord(m, "魔咒");
         need = true;
