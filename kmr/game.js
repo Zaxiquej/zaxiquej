@@ -66,9 +66,11 @@ function unlockMinion(minion,temp){
 
   for (let m of minionsState){
     if (m.learnedSkills.includes("中速导师")){
+      autoing = true;
       for (let i = 1; i < Math.floor(m.level/2); i++){
         upgradeMinion(minionsState.indexOf(minion),undefined,true,true);
       }
+      autoing = false;
       minion.level = 1;
       refMinions();
     }
@@ -394,7 +396,7 @@ function checkLuck(r) {
 function getDigit(num){
   return Math.floor(getBaseLog(10,Math.abs(num)));
 }
-function minionAttack(minion) {
+function minionAttack(minion,master) {
     if (kmrHealthValue <= 0) return;
     skilled = false;
     let dam = getattack(minion)
@@ -412,7 +414,14 @@ function minionAttack(minion) {
       }
     }
     kmrHealthValue -= dam;
-    minion.totalDamage += dam;
+    if (master){
+      master.totalDamage += dam;
+      minionDamages[master.name] += dam;
+    } else {
+      minion.totalDamage += dam;
+      minionDamages[minion.name] += dam;
+    }
+
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
     }
@@ -421,7 +430,7 @@ function minionAttack(minion) {
     let y = position.top + (Math.random()*kmr.height);
     showEffect(x,y, 'hit-effect');
     showDamage(x,y, dam);
-    minionDamages[minion.name] += dam;
+
     if (Math.random() < 0.1){
       const hitSound = new Audio(minion.voice);
       hitSound.play();
@@ -583,6 +592,7 @@ function rerollMinion(index){
         let temp = minionsState[index].reroll;
         let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
         let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+        clearInterval(minionsState[index].intervalId);
         unlockedMinions.splice(index, 1);
         minionsState.splice(index, 1);
         unlockMinion(restMinions[r],temp);
@@ -883,7 +893,7 @@ function updateCounts() {
         m.count = zeroCountDown(c);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            minionAttack(mi);
+            minionAttack(mi,m);
           }
         }
         showSkillWord(m, "次元超越");

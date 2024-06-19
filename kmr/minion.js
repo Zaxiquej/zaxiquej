@@ -131,7 +131,7 @@ const minions = [
         supEnhancecost: 3.4,
         skills: [
             { level: 6, name: '阴阳秘法', effect: '所有助战获得36攻击力。' },
-            { level: 22, name: '次元超越', effect: '每30s，使全部其他助战攻击一次。（每100级，减少1s倒数，最多减为20s）' }
+            { level: 22, name: '次元超越', effect: '每30s，使全部其他助战攻击一次，伤害视为该助战造成。（每100级，减少1s倒数，最多减为20s）' }
         ]
     },
     {
