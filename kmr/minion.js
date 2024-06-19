@@ -174,7 +174,7 @@ const minions = [
         image: 'kmr/image/zenx.png',
         voice: 'kmr/voice/zenx.mp3',
         description: 'szb永远的上帝，兼任亚军',
-        baseattack: 22,
+        baseattack: 20,
         addattack: 16,
         attackSpeed: 3900, // in milliseconds
         basecost: 48,
@@ -404,6 +404,23 @@ const minions = [
         skills: [
             { level: 5, name: '不稳定的传送门', effect: '解锁新助战时重抽次数由2次转变为3次，下3次重抽变为免费。' },
             { level: 16, name: '逆境被动', effect: '每12s，该助战有0%概率获得[其他助战中最大的[攻击力/攻击间隔]/10]点攻击力，且追加0次攻击。每有一个总伤害高于该助战的其他助战，触发概率增加2%，并追加2次攻击。' }
+        ]
+    },
+    {
+        name: '英梨梨的男友',
+        id: 24,
+        image: 'kmr/image/yll.png',
+        voice: 'kmr/voice/yll.mp3',
+        description: '接下来我要点名一名柚子厨',
+        baseattack: 10,
+        addattack: 10,
+        attackSpeed: 3200, // in milliseconds
+        basecost: 27,
+        enhancecost: 12,
+        supEnhancecost: 2.75,
+        skills: [
+            { level: 11, name: '造谣', effect: '每20s，随机使1名助战攻击力的随机1位数字增加1（不视作增加攻击，非首位的9会变为0，首位则会变为10）（每50级，额外重复1次）。' },
+            { level: 17, name: '黄油品鉴', effect: '攻击时，10%概率使随机1名具有倒计时技能助战的技能倒计时加快3s，溢出部分不会结算至下一循环。（每100级，增加1s，上限8s）' }
         ]
     }
 ];

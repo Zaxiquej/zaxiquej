@@ -356,12 +356,47 @@ function getattack(minion){
   }
   if (minion.learnedSkills.includes("开播！")){
     skilled = true;
-    atk += Math.floor(Math.pow(coins,0.66)/1000*minion.level);
+    atk += Math.floor(Math.pow(Math.abs(coins),0.66)/1000*minion.level);
   }
   atk = Math.floor(atk);
   return atk;
 }
 
+function incrementRandomDigit(num) {
+    // 将输入转换为数字
+    let originalNum = Number(num);
+    let isNegative = originalNum < 0;
+    let absNum = Math.abs(originalNum);
+
+    // 计算位数
+    let numDigits = Math.floor(Math.log10(absNum)) + 1;
+
+    // 随机选择一位
+    let randomIndex = Math.floor(Math.random() * numDigits);
+
+    // 计算该位的值
+    let factor = Math.pow(10, randomIndex);
+    let currentDigit = Math.floor((absNum / factor) % 10);
+
+    let result;
+    if (randomIndex === numDigits - 1) {
+        // 首位特殊处理
+        result = absNum + factor;
+    } else {
+        if (currentDigit === 9) {
+            result = absNum - 9 * factor + 10 * factor;
+        } else {
+            result = absNum + factor;
+        }
+    }
+
+    // 如果原数是负数，则结果也应为负数
+    if (isNegative) {
+        result = -result;
+    }
+
+    return result;
+}
 
 function checkLuck(r) {
   let re = 0;
@@ -415,15 +450,17 @@ function minionAttack(minion,master) {
     }
     kmrHealthValue -= dam;
     if (master){
+      if (!minionDamages[master.name]){
+        minionDamages[master.name] = 0;
+      }
       master.totalDamage += dam;
       minionDamages[master.name] += dam;
     } else {
+      if (!minionDamages[minion.name]){
+        minionDamages[minion.name] = 0;
+      }
       minion.totalDamage += dam;
       minionDamages[minion.name] += dam;
-    }
-
-    if (!minionDamages[minion.name]){
-      minionDamages[minion.name] = 0;
     }
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
@@ -476,6 +513,27 @@ function minionAttack(minion,master) {
         raiseAtk(minionsState[r],Math.floor(minion.attack/15));
         document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = formatNumber(minionsState[r].attack);
         showSkillWord(minion, "金牌陪练");
+      }
+    }
+    if (minion.learnedSkills.includes("黄油品鉴")){
+      if (checkLuck(0.1)){
+        let unlockedCD = 0;
+        for (let m of minionsState){
+          if (m.count != undefined){
+            unlockedCD++;
+          }
+        }
+        skilled = true;
+        let r = Math.floor(Math.random()*(unlockedCD - 1)) + 1;
+        for (let m of minionsState){
+          if (m.count != undefined){
+            r -= 1;
+            if (r == 0){
+              m.count += Math.min(8,3+Math.floor(minion.level/100));
+            }
+          }
+        }
+        showSkillWord(minion, "黄油品鉴");
       }
     }
     if (minion.learnedSkills.includes("奶1")){
@@ -698,6 +756,7 @@ function zeroCountDown(c) {
 function updateCounts() {
   if (kmrHealthValue <= 0){return;}
   let need = false;
+  let ref = false;
   if (ykd > 0){
     ykd = Math.max(0,ykd - 1);
   }
@@ -746,11 +805,26 @@ function updateCounts() {
         minionsState[r].level = Math.max(1,minionsState[r].level);
         m.level = Math.max(1,m.level);
         showSkillWord(m, "成熟!");
-        refMinions();
+        ref = true;
         need = true;
       }
     }
+    if (m.learnedSkills.includes("造谣")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 20){
+        m.count = zeroCountDown(20);
+        let times = 1 + Math.floor(m.level/50);
+        for (let t = 0; t < times; t++){
+          let r = Math.floor(Math.random()*(unlockedMinions.length));
+          minionsState[r].attack = incrementRandomDigit(minionsState[r].attack);
+        }
 
+        showSkillWord(m, "造谣");
+        ref = true;
+        need = true;
+      }
+    }
     if (m.learnedSkills.includes("每日饼之诗")){
       if (!m.count){m.count = 0};
       m.count ++;
@@ -901,6 +975,9 @@ function updateCounts() {
       }
 
     }
+  }
+  if (ref){
+    refMinions();
   }
   if (need){
     updateDisplays();
