@@ -46,6 +46,108 @@ let xxBuff = false;
 //    learnedSkills: [],
 //}));
 
+function utf8_to_b64(str) {
+    return btoa(unescape(encodeURIComponent(str)));
+}
+
+function b64_to_utf8(str) {
+    return decodeURIComponent(escape(atob(str)));
+}
+
+
+function saveGame() {
+    const gameState = {
+        kmrHealthValue,
+        level,
+        coins,
+        dps,
+        timePlayed,
+        totalClickDamage,
+        rindex,
+        minionDamages,
+        minionsState,
+        unlockedMinions,
+        totaltimePlayed,
+        burning,
+        skilled,
+        zenxLV,
+        zenxActive,
+        autoing,
+        remluck,
+        ykd,
+        reroll,
+        freeReroll,
+        freeUp,
+        yggdam,
+        upgrading,
+        xxjjj,
+        curjjj,
+        xxBuff
+    };
+
+    const gameStateStr = JSON.stringify(gameState);
+    console.log(gameStateStr)
+    const encodedGameState = utf8_to_b64(gameStateStr); // Base64 encode the game state
+
+    localStorage.setItem('savedGame', encodedGameState);
+}
+document.getElementById('saveButton').addEventListener('click', saveGame);
+
+function loadGame() {
+    const encodedGameState = localStorage.getItem('savedGame');
+    if (encodedGameState) {
+        const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
+        const gameState = JSON.parse(gameStateStr);
+
+        kmrHealthValue = gameState.kmrHealthValue;
+        level = gameState.level;
+        coins = gameState.coins;
+        dps = gameState.dps;
+        timePlayed = gameState.timePlayed;
+        totalClickDamage = gameState.totalClickDamage;
+        rindex = gameState.rindex;
+        minionDamages = gameState.minionDamages;
+        minionsState = gameState.minionsState;
+        unlockedMinions = gameState.unlockedMinions;
+        totaltimePlayed = gameState.totaltimePlayed;
+        burning = gameState.burning;
+        skilled = gameState.skilled;
+        zenxLV = gameState.zenxLV;
+        zenxActive = gameState.zenxActive;
+        autoing = gameState.autoing;
+        remluck = gameState.remluck;
+        ykd = gameState.ykd;
+        reroll = gameState.reroll;
+        freeReroll = gameState.freeReroll;
+        freeUp = gameState.freeUp;
+        yggdam = gameState.yggdam;
+        upgrading = gameState.upgrading;
+        xxjjj = gameState.xxjjj;
+        curjjj = gameState.curjjj;
+        xxBuff = gameState.xxBuff;
+
+
+
+        // Restore intervals (assuming you have functions to set them)
+        restoreIntervals();
+        updateDisplays();
+        refMinions();
+    } else {
+        console.log('No saved game found.');
+    }
+}
+
+document.getElementById('loadButton').addEventListener('click', loadGame);
+
+function restoreIntervals() {
+  for (let minion of minionsState){
+    clearInterval(minion.intervalId)
+    let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
+    minion.intervalId = intervalId;
+  }
+}
+
+
 function unlockMinion(minion,temp){
   unlockedMinions.push(minion.name);
   minion = {
@@ -719,7 +821,7 @@ function getEff(skill){
     case "掌控":
       return "每11s，有12.5%的概率使下一次攻击造成的伤害变为"+(8+4*zenxLV)+"倍。每次触发，使倍率增加4。";
     case "皇室荣耀":
-      return "攻击时8%概率额外造成"+yggdam+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
+      return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
       return "每32s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     default:
