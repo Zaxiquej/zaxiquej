@@ -676,7 +676,6 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 30){
         m.count = zeroCountDown(30);
-        remluck = Math.min(6,2 + Math.floor(m.level/100))
         let r = Math.floor(Math.random()*(unlockedMinions.length - 1));
         if (r >= unlockedMinions.indexOf(m.name)){
           r += 1;
@@ -685,7 +684,8 @@ function updateCounts() {
         m.level -= Math.max(1,Math.floor(m.level*0.01));
         minionsState[r].level = Math.max(1,minionsState[r].level);
         m.level = Math.max(1,m.level);
-        showSkillWord(m, "成熟");
+        showSkillWord(m, "成熟!");
+        refMinions();
         need = true;
       }
     }
