@@ -16,8 +16,8 @@
               <!-- Minion damage stats will be shown here -->
           </ul>
       </div>
-      <button id="saveButton">保存游戏</button>
-<button id="loadButton">读取游戏</button>
+<button id="saveButton">手动保存</button>
+<button id="rsButton">硬重置游戏</button>
   </div>
 
     <div class="game-container">
@@ -51,7 +51,7 @@
         <ul id="final-stats">
             <!-- Final stats will be shown here -->
         </ul>
-        <button onclick="restartGame()">下一周目</button>
+        <button onclick="phaseUpGame()">下一周目</button>
     </div>
     <audio id="hit-sound" src="kmr/hit.ogg"></audio>
     <script src="kmr/minion.js"></script>

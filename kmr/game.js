@@ -55,7 +55,7 @@ function b64_to_utf8(str) {
 }
 
 
-function saveGame() {
+function saveGame(auto) {
     const gameState = {
         kmrHealthValue,
         level,
@@ -86,12 +86,22 @@ function saveGame() {
     };
 
     const gameStateStr = JSON.stringify(gameState);
-    console.log(gameStateStr)
     const encodedGameState = utf8_to_b64(gameStateStr); // Base64 encode the game state
 
     localStorage.setItem('savedGame', encodedGameState);
+    const mi = document.getElementById(`saveButton`);
+    var position = mi.getBoundingClientRect();
+    let x = position.left + (0.5*position.width);
+    let y = position.top + (0.5*position.height);
+    if (auto){
+      showWord(x,y, "自动保存成功！");
+    } else {
+      showWord(x,y, "保存成功！");
+    }
 }
-document.getElementById('saveButton').addEventListener('click', saveGame);
+document.getElementById('saveButton').addEventListener('click', () => {
+    saveGame();
+});
 
 function loadGame() {
     const encodedGameState = localStorage.getItem('savedGame');
@@ -127,17 +137,63 @@ function loadGame() {
         xxBuff = gameState.xxBuff;
 
 
-
         // Restore intervals (assuming you have functions to set them)
         restoreIntervals();
         updateDisplays();
         refMinions();
     } else {
-        console.log('No saved game found.');
+
     }
 }
 
-document.getElementById('loadButton').addEventListener('click', loadGame);
+// Function to reset all game variables
+function resetGame() {
+    kmrHealthValue = 500000;
+    level = 0;
+    coins = 0;
+    dps = 0;
+    timePlayed = 0;
+    totalClickDamage = 0;
+    rindex = 0;
+    minionDamages = {};
+    unlockedMinions = [];
+    totaltimePlayed = 0;
+    burning = 0;
+    skilled = false;
+    zenxLV = 0;
+    zenxActive = false;
+    autoing = false;
+    remluck = 0;
+    ykd = 0;
+    reroll = 0;
+    freeReroll = 2;
+    freeUp = 0;
+    yggdam = 322;
+    upgrading = false;
+    xxjjj = 0;
+    curjjj = 0;
+    xxBuff = false;
+    for (let minion of minionsState){
+      clearInterval(minion.intervalId);
+    }
+    minionsState = [];
+    refMinions();
+    updateDisplays();
+
+    const detailsContainer = document.getElementById('selected-minion-details');
+    detailsContainer.innerHTML = ``;
+}
+
+// Function to handle hard reset confirmation
+function hardResetGame() {
+    if (confirm("你确定要重置游戏吗？这将清除所有进度。")) {
+        if (confirm("再次确认：你真的要重置游戏吗？这将无法撤销。")) {
+            resetGame();
+        }
+    }
+}
+
+document.getElementById('rsButton').addEventListener('click', hardResetGame);
 
 function restoreIntervals() {
   for (let minion of minionsState){
@@ -380,7 +436,7 @@ function checkVictory() {
     }
 }
 
-function restartGame() {
+function phaseUpGame() {
     level = level +1;
     kmrHealthValue = 500000 * Math.pow(10,level);
     timePlayed = 0;
@@ -391,6 +447,7 @@ function restartGame() {
     //let unlockedMinions = [];
     victoryMessage.classList.add('hidden');
     updateDisplays();
+    saveGame();
     //initMinions(); // Initialize minions again after restarting game
 }
 
@@ -1247,6 +1304,10 @@ function upgradeMinion(index,auto,free,noskill) {
 // Update game state every second
 setInterval(() => {
     timePlayed += 1;
+    let t = timePlayed + totaltimePlayed
+    if (t > 0 && t%60 == 0){
+      saveGame(true);
+    }
     updateCounts();
     updateDisplays();
 }, 1000);
@@ -1254,3 +1315,4 @@ setInterval(() => {
 kmr.addEventListener('click', clickKmr);
 refMinions();
 updateDisplays();
+loadGame();
