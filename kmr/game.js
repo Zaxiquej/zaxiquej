@@ -763,7 +763,7 @@ function minionAttack(minion,master) {
           if (r >= unlockedMinions.indexOf(minion.name)){
             r += 1;
           }
-          minionAttack(minionsState[r]);
+          minionAttack(minionsState[r],minion);
         }
         showSkillWord(minion, "人偶使");
       }
