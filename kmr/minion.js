@@ -3,6 +3,7 @@ const minions = [
         name: '空调宅男',
         id: 0,
         image: 'kmr/image/ktzn.png',
+        voice: 'kmr/voice/ktzn.mp3',
         description: '致敬传奇双职业首任霸主ktzn',
         baseattack: 7,
         addattack: 6,
@@ -334,7 +335,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 2.2,
         skills: [
-            { level: 5, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率进入下饭模式，你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
+            { level: 5, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率进入下饭模式，你接下来[攻击力位数]秒内获得的全部金币增加100%。（上限10秒，时间内再次触发改为延长时间）' },
             { level: 16, name: '成熟', effect: '每30s，失去1%等级，并使一个随机其他助战失去1%等级（至少1级，不会因此失去攻击力或失去已学会的技能，最多降为1级）。' }
         ]
     },
@@ -349,10 +350,10 @@ const minions = [
         attackSpeed: 2200, // in milliseconds
         basecost: 12,
         enhancecost: 6,
-        supEnhancecost: 2.2,
+        supEnhancecost: 3.2,
         skills: [
             { level: 6, name: '祥瑞', effect: '该助战与前/后一个助战攻击kmr时，其攻击力会在50%~200%内随机浮动。（每10级增加4%上限同时降低1%下限，下限最低为0%。）' },
-            { level: 16, name: '大梦仙尊', effect: '攻击后，1%概率使下5次你升级助战需要的金币数转变为0。（攻击力每到达2的一个次方，提升0.1%概率，上限3%。）' }
+            { level: 23, name: '大梦仙尊', effect: '攻击后，1%概率使下5次你升级助战需要的金币数转变为0。（攻击力每到达2的一个次方，提升0.1%概率，上限3%。）' }
         ]
     },
     {
@@ -366,7 +367,7 @@ const minions = [
         attackSpeed: 1000, // in milliseconds
         basecost: 18,
         enhancecost: 4,
-        supEnhancecost: 2.5,
+        supEnhancecost: 3.25,
         skills: [
             { level: 8, name: '中速导师', effect: '你解锁一个助战后，立刻免费将其升到该助战一半的等级，随后将其等级变回1（但是保留获得的攻击力，不会因此获得技能）。' },
             { level: 18, name: '皇室荣耀', effect: '攻击时8%概率额外造成322点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。' }
@@ -381,12 +382,12 @@ const minions = [
         baseattack: 16,
         addattack: 8,
         attackSpeed: 2250, // in milliseconds
-        basecost: 18,
-        enhancecost: 4,
-        supEnhancecost: 2.5,
+        basecost: 15,
+        enhancecost: 6,
+        supEnhancecost: 3.1,
         skills: [
             { level: 4, name: '打个教先', effect: '攻击时，70%概率造成200%伤害。（每10级，降低1%概率但增加10%伤害，最低降为20%概率）' },
-            { level: 22, name: '魔咒', effect: '每32s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为0）。' }
+            { level: 22, name: '魔咒', effect: '每32s，使你下一次攻击不再判定[打个教先]，而是改为额外造成[本局游戏[打个教先]最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为0）。' }
         ]
     },
     {
@@ -400,7 +401,7 @@ const minions = [
         attackSpeed: 1700, // in milliseconds
         basecost: 17,
         enhancecost: 7,
-        supEnhancecost: 2.25,
+        supEnhancecost: 3.25,
         skills: [
             { level: 5, name: '不稳定的传送门', effect: '解锁新助战时重抽次数由2次转变为3次，下3次重抽变为免费。' },
             { level: 16, name: '逆境被动', effect: '每12s，该助战有0%概率获得[其他助战中最大的[攻击力/攻击间隔]/10]点攻击力，且追加0次攻击。每有一个总伤害高于该助战的其他助战，触发概率增加2%，并追加2次攻击。' }
@@ -417,7 +418,7 @@ const minions = [
         attackSpeed: 3200, // in milliseconds
         basecost: 27,
         enhancecost: 12,
-        supEnhancecost: 2.75,
+        supEnhancecost: 3.75,
         skills: [
             { level: 11, name: '造谣', effect: '每20s，随机使1名助战攻击力的随机1位数字增加1（不视作增加攻击，非首位的9会变为0，首位则会变为10）（每50级，额外重复1次）。' },
             { level: 17, name: '黄油品鉴', effect: '攻击时，10%概率使随机1名具有倒计时技能助战的技能倒计时加快3s，溢出部分不会结算至下一循环。（每100级，增加1s，上限8s）' }
@@ -434,10 +435,27 @@ const minions = [
         attackSpeed: 2400, // in milliseconds
         basecost: 22,
         enhancecost: 11,
-        supEnhancecost: 2.6,
+        supEnhancecost: 3.6,
         skills: [
             { level: 8, name: '偶像', effect: '攻击时，7%概率使所有己方助战在接下来10s内攻击时，额外造成[20+伤害位数*2]%的伤害（可叠加）。' },
-            { level: 18, name: '人偶使', effect: '攻击时，8%概率令1个随机其他助战攻击，触发3次。如果正处于前一技能的状态中，每有一层则额外增加3次。' }
+            { level: 18, name: '人偶使', effect: '攻击时，8%概率令1个随机其他助战攻击，触发3次。如果正处于[偶像]的状态中，每有一层则额外增加3次。' }
+        ]
+    },
+    {
+        name: '热乎闹闹',
+        id: 26,
+        image: 'kmr/image/nao.png',
+        voice: 'kmr/voice/nao.mp3',
+        description: '最爱钻研独门构筑的闹闹🐷',
+        baseattack: 8,
+        addattack: 7,
+        attackSpeed: 1800, // in milliseconds
+        basecost: 26,
+        enhancecost: 7,
+        supEnhancecost: 3.4,
+        skills: [
+            { level: 4, name: '汲取兄弟', effect: '每25s，有15%概率获得一个随机其他介绍中带有🐷的助战的攻击力的2%（至少1点），并使其失去3等级（不会因此失去攻击力或失去已学会的技能，最多降为1级）。' },
+            { level: 16, name: '闹系列', effect: '升级后，如果等级变为质数，接下来8s内，[汲取兄弟]的触发概率变为45%，且所有介绍中带有🐷的助战攻击后，下一秒[汲取兄弟]倒计时立刻归零（时间内再次触发改为延长时间）。' }
         ]
     }
 ];

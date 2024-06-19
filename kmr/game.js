@@ -209,7 +209,8 @@ function restoreIntervals() {
 function addBuff(name,power,length,stackable){
   if (!stackable){
     for (let buff of buffs){
-      if (buff.name == name){
+      if (buff[0] == name){
+        buff[2] += length;
         return;
       }
     }
@@ -767,7 +768,14 @@ function minionAttack(minion,master) {
         showSkillWord(minion, "人偶使");
       }
     }
+
     for (let m of minionsState){
+      if (getBuffPower("nao").length > 0){
+        if (minion.description.includes("🐷") && m.learnedSkills.includes("闹系列")){
+          m.count = 999;
+          showSkillWord(m, "闹系列发威！");
+        }
+      }
       if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
         if (checkLuck(0.08)) {
           minionAttack(m);
@@ -1013,6 +1021,40 @@ function updateCounts() {
         need = true;
       }
     }
+    if (m.learnedSkills.includes("汲取兄弟")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 25){
+        m.count = zeroCountDown(25);
+        let unlockedPigs = 0;
+        for (let m of minionsState){
+          if (m.description.includes("🐷")){
+            unlockedPigs++;
+          }
+        }
+        let luck = 0.15;
+        if (getBuffPower("nao") > 0){
+          luck = 0.45;
+        }
+        if (unlockedPigs > 1 && checkLuck(luck)) {
+          skilled = true;
+          let r = Math.floor(Math.random()*(unlockedPigs - 1)) + 1;
+          for (let m of minionsState){
+            if (m.description.includes("🐷") && m.name != minion.name){
+              r -= 1;
+              if (r == 0){
+                m.raiseAtk(Math.max(1,Math.floor(minionsState[r].attack*0.02)))
+                minionsState[r].level -= 3;
+                minionsState[r].level = Math.max(1,minionsState[r].level);
+              }
+            }
+          }
+          showSkillWord(minion, "汲取兄弟");
+          ref = true;
+          need = true;
+        }
+      }
+    }
     if (m.learnedSkills.includes("成熟")){
       if (!m.count){m.count = 0};
       m.count ++;
@@ -1239,6 +1281,35 @@ function autoupgradeMinion(){
   autoing = false;
   updateDisplays();
 }
+
+function isPrime(num) {
+    // 质数必须大于1
+    if (num <= 1) {
+        return false;
+    }
+
+    // 2和3是质数
+    if (num <= 3) {
+        return true;
+    }
+
+    // 如果可以被2或3整除，不是质数
+    if (num % 2 === 0 || num % 3 === 0) {
+        return false;
+    }
+
+    // 在6的倍数的两侧才可能是质数
+    let i = 5;
+    while (i * i <= num) {
+        if (num % i === 0 || num % (i + 2) === 0) {
+            return false;
+        }
+        i += 6;
+    }
+
+    return true;
+}
+
 function upgradeMinion(index,auto,free,noskill) {
   if (kmrHealthValue <= 0 && !free){return;}
     upgrading = true;
@@ -1253,7 +1324,10 @@ function upgradeMinion(index,auto,free,noskill) {
         if (upgradeCost == 0 && !free){
           freeUp -= 1;
         }
-        minion.reroll = 0;
+        if (!noskill){
+          minion.reroll = 0;
+        }
+
         minion.level += 1;
         raiseAtk(minion,minion.addattack); // Increase attack by 2 for each level
         for (let m of minionsState){
@@ -1316,6 +1390,10 @@ function upgradeMinion(index,auto,free,noskill) {
             }
             showSkillWord(minion, "双猪齐力");
           }
+        }
+        if (minion.learnedSkills.includes("闹系列") && isPrime(minion.level)){
+          addBuff("nao",1,8,false)
+          showSkillWord(minion, "闹系列");
         }
         document.getElementById(`level-${index}`).textContent = minion.level;
         document.getElementById(`attack-${index}`).textContent = formatNumber(minion.attack);
