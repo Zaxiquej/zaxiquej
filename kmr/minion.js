@@ -62,7 +62,7 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 3.4,
         skills: [
-            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.6)*该助战等级/1000]的伤害。' },
+            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.66)*该助战等级/1000]的伤害。' },
             { level: 17, name: '白骨夫人', effect: '所有升级消费金币降低20%。（每100级额外减少1%，最高30%）' }
         ]
     },
@@ -91,7 +91,7 @@ const minions = [
         description: '鲁大师在人间的化身',
         baseattack: 35,
         addattack: 24,
-        attackSpeed: 5000, // in milliseconds
+        attackSpeed: 4800, // in milliseconds
         basecost: 24,
         enhancecost: 10,
         supEnhancecost: 3.2,
@@ -122,7 +122,7 @@ const minions = [
         id: 7,
         image: 'kmr/image/fox.png',
         voice: 'kmr/voice/fox.mp3',
-        description: '狐神伟大，无需多言',
+        description: '狐神太热爱szb了，我哭死',
         baseattack: 7,
         addattack: 6,
         attackSpeed: 2250, // in milliseconds
@@ -131,7 +131,7 @@ const minions = [
         supEnhancecost: 3.4,
         skills: [
             { level: 6, name: '阴阳秘法', effect: '所有助战获得36攻击力。' },
-            { level: 22, name: '次元超越', effect: '每30s，使全部其他助战攻击一次。（每100级，减少1s倒数，最多减为20）' }
+            { level: 22, name: '次元超越', effect: '每30s，使全部其他助战攻击一次。（每100级，减少1s倒数，最多减为20s）' }
         ]
     },
     {
@@ -250,7 +250,7 @@ const minions = [
         supEnhancecost: 4.8,
         skills: [
             { level: 8, name: '铁犀冲锋', effect: '每8s，4%概率造成[攻击力*(等级^0.6)]的伤害。' },
-            { level: 21, name: '重返赛场', effect: '所有其他概率触发的技能如果触发失败，21%概率重新判定一次，不会重复发动。（每25级提升1%概率，最高50%）' }
+            { level: 21, name: '重返赛场', effect: '所有其他概率低于20%触发的技能如果触发失败，21%概率重新判定一次，不会重复发动。（每25级提升1%概率，最高50%）' }
         ]
     },
     {
@@ -334,7 +334,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 2.2,
         skills: [
-            { level: 5, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
+            { level: 5, name: '下饭', effect: '10%的概率攻击时猪鼻，造成伤害改为回复kmr的生命值，但获得[攻击力位数]倍的金钱。在此基础上，10%概率进入下饭模式，你接下来[攻击力位数]秒内获得的全部金币增加100%。（不可叠加，上限10秒）' },
             { level: 16, name: '成熟', effect: '每30s，失去1%等级，并使一个随机其他助战失去1%等级（至少1级，不会因此失去攻击力或失去已学会的技能，最多降为1级）。' }
         ]
     },
@@ -357,7 +357,7 @@ const minions = [
     },
     {
         name: '茶叶OMO',
-        id: 17,
+        id: 21,
         image: 'kmr/image/ygg.png',
         voice: 'kmr/voice/ygg.mp3',
         description: 'ygg又败给了女人，我们皇家护卫什么时候才能站起来（bushi',
@@ -370,6 +370,40 @@ const minions = [
         skills: [
             { level: 8, name: '中速导师', effect: '你解锁一个助战后，立刻免费将其升到该助战一半的等级，随后将其等级变回1（但是保留获得的攻击力，不会因此获得技能）。' },
             { level: 18, name: '皇室荣耀', effect: '攻击时8%概率额外造成322点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。' }
+        ]
+    },
+    {
+        name: '雪雪',
+        id: 22,
+        image: 'kmr/image/xx.png',
+        voice: 'kmr/voice/xx.mp3',
+        description: '热知识：我们敬爱的雪雪选手已在2023年打败了结晶教心魔',
+        baseattack: 16,
+        addattack: 8,
+        attackSpeed: 2250, // in milliseconds
+        basecost: 18,
+        enhancecost: 4,
+        supEnhancecost: 2.5,
+        skills: [
+            { level: 4, name: '打个教先', effect: '攻击时，70%概率造成200%伤害。（每10级，降低1%概率但增加10%伤害，最低降为20%概率）' },
+            { level: 22, name: '魔咒', effect: '每32s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为0）。' }
+        ]
+    },
+    {
+        name: '星导过星导',
+        id: 22,
+        image: 'kmr/image/xd.png',
+        voice: 'kmr/voice/xd.mp3',
+        description: '这里是不务正业又犯🐷病的屑作者🐷导',
+        baseattack: 7,
+        addattack: 6,
+        attackSpeed: 1700, // in milliseconds
+        basecost: 17,
+        enhancecost: 7,
+        supEnhancecost: 2.25,
+        skills: [
+            { level: 5, name: '不稳定的传送门', effect: '解锁新助战时重抽次数由2次转变为3次，下3次重抽变为免费。' },
+            { level: 16, name: '逆境被动', effect: '每12s，该助战有0%概率获得[其他助战中最大的[攻击力/攻击间隔]/10]点攻击力，且追加0次攻击。每有一个总伤害高于该助战的其他助战，触发概率增加2%，并追加2次攻击。' }
         ]
     }
 ];
