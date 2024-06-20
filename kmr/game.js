@@ -43,6 +43,7 @@ let xxBuff = false;
 let zheluck = 2;
 let zhedam = 2600;
 let maxdamZ = 0;
+let daZhaiQiYue = false;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -89,7 +90,8 @@ function encodeGameState(){
       xxBuff,
       zheluck,
       zhedam,
-      maxdamZ
+      maxdamZ,
+      daZhaiQiYue
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -180,6 +182,7 @@ function loadGameState(encodedGameState){
   if (gameState.zheluck) zheluck = gameState.zheluck;
   if (gameState.zhedam) zhedam = gameState.zhedam;
   if (gameState.maxdamZ) maxdamZ = gameState.maxdamZ;
+  if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -792,6 +795,7 @@ function minionAttack(minion,master) {
         skilled = true;
         freeUp += 5;
         showSkillWord(minion, "大梦仙尊");
+        refMinions();
       }
     }
     if (minion.learnedSkills.includes("+1+1")){
@@ -903,6 +907,12 @@ function minionAttack(minion,master) {
         m.tempAtk += Math.floor(m.addattack/2);
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         showSkillWord(m, "无尽连击");
+      }
+    }
+    if (getBuffPower("pigu").length > 0){
+      if (checkLuck(0.01*getBuffPower("pigu")[0])){
+        minionAttack(minion,master);
+        showSkillWord(minion, "鼙鼓！");
       }
     }
     updateDisplays();
@@ -1057,6 +1067,13 @@ function getEff(skill){
       return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     case "乾坤一掷":
       return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck*100)/100+"%概率永久增加本技能[除该技能外，kmr单次受到的最高伤害/11]点伤害。（目前最高单次伤害为"+formatNumber(maxdamZ)+");"
+    case "卓绝的契约":
+      if (daZhaiQiYue){
+        return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约已签订——"+daZhaiQiYue+"）";
+      } else {
+        return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约尚未签订）";
+      }
+
     default:
       return skill.effect;
   }
@@ -1111,9 +1128,20 @@ function updateCounts() {
       if (!m.count){m.count = 0};
       m.count ++;
       if (m.count >= 25){
-        m.count = zeroCountDown(45);
+        m.count = zeroCountDown(25);
         remluck = Math.min(8,2 + Math.floor(m.level/100))
         showSkillWord(m, "操纵命运");
+        need = true;
+      }
+    }
+    if (m.learnedSkills.includes("鼙鼓时间！")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      let time = Math.max(36,48 - Math.floor(m.level/100));
+      if (m.count >= time){
+        m.count = zeroCountDown(time);
+        addBuff("pigu",5,6,false);
+        showSkillWord(m, "鼙鼓时间！");
         need = true;
       }
     }
@@ -1538,10 +1566,7 @@ function upgradeMinion(index,auto,free,noskill) {
           addBuff("nao",1,8,false)
           showSkillWord(minion, "闹系列");
         }
-        document.getElementById(`level-${index}`).textContent = minion.level;
-        document.getElementById(`attack-${index}`).textContent = formatNumber(minion.attack);
-        document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
-        document.getElementById(`cost-${index}`).textContent = "升级 ("+formatNumber(mupgradeCost(minion))+")";
+
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("光速上分")){
             if (checkLuck(0.1)){
@@ -1561,7 +1586,19 @@ function upgradeMinion(index,auto,free,noskill) {
               showSkillWord(m, "杀出重围");
             }
           }
+          if (m.learnedSkills.includes("卓绝的契约") && !auto && !noskill && minion.level == 2 && unlockedMinions.length >= 7 && daZhaiQiYue==false){
+            minion.attack += m.attack;
+            minion.attackSpeed = Math.floor(0.8*minion.attackSpeed);
+            minion.addattack = Math.pow(minion.addattack,2);
+            daZhaiQiYue = minion.name;
+            showSkillWord(m, "卓绝的契约");
+          }
         }
+
+        document.getElementById(`level-${index}`).textContent = minion.level;
+        document.getElementById(`attack-${index}`).textContent = formatNumber(minion.attack);
+        document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
+        document.getElementById(`cost-${index}`).textContent = "升级 ("+formatNumber(mupgradeCost(minion))+")";
         if (!auto){
           updateDisplays();
           showMinionDetails(index);
