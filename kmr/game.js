@@ -12,7 +12,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "2.3.1";
+let version = "2.4.1";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
@@ -40,6 +40,9 @@ let upgrading = false;
 let xxjjj = 0;
 let curjjj = 0;
 let xxBuff = false;
+let zheluck = 2;
+let zhedam = 2600;
+let maxdamZ = 0;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -83,7 +86,10 @@ function encodeGameState(){
       upgrading,
       xxjjj,
       curjjj,
-      xxBuff
+      xxBuff,
+      zheluck,
+      zhedam,
+      maxdamZ
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -144,34 +150,36 @@ function loadGame() {
 function loadGameState(encodedGameState){
   const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
   const gameState = JSON.parse(gameStateStr);
-  version = gameState.version;
-  kmrHealthValue = gameState.kmrHealthValue;
-  level = gameState.level;
-  coins = gameState.coins;
-  dps = gameState.dps;
-  timePlayed = gameState.timePlayed;
-  totalClickDamage = gameState.totalClickDamage;
-  rindex = gameState.rindex;
-  minionDamages = gameState.minionDamages;
-  minionsState = gameState.minionsState;
-  unlockedMinions = gameState.unlockedMinions;
-  totaltimePlayed = gameState.totaltimePlayed;
-  burning = gameState.burning;
-  skilled = gameState.skilled;
-  zenxLV = gameState.zenxLV;
-  zenxActive = gameState.zenxActive;
-  autoing = gameState.autoing;
-  remluck = gameState.remluck;
-  buffs = gameState.buffs;
-  reroll = gameState.reroll;
-  freeReroll = gameState.freeReroll;
-  freeUp = gameState.freeUp;
-  yggdam = gameState.yggdam;
-  upgrading = gameState.upgrading;
-  xxjjj = gameState.xxjjj;
-  curjjj = gameState.curjjj;
-  xxBuff = gameState.xxBuff;
-
+  if (gameState.version) version = gameState.version;
+  if (gameState.kmrHealthValue) kmrHealthValue = gameState.kmrHealthValue;
+  if (gameState.level) level = gameState.level;
+  if (gameState.coins) coins = gameState.coins;
+  if (gameState.dps) dps = gameState.dps;
+  if (gameState.timePlayed) timePlayed = gameState.timePlayed;
+  if (gameState.totalClickDamage) totalClickDamage = gameState.totalClickDamage;
+  if (gameState.rindex) rindex = gameState.rindex;
+  if (gameState.minionDamages) minionDamages = gameState.minionDamages;
+  if (gameState.minionsState) minionsState = gameState.minionsState;
+  if (gameState.unlockedMinions) unlockedMinions = gameState.unlockedMinions;
+  if (gameState.totaltimePlayed) totaltimePlayed = gameState.totaltimePlayed;
+  if (gameState.burning) burning = gameState.burning;
+  if (gameState.skilled) skilled = gameState.skilled;
+  if (gameState.zenxLV) zenxLV = gameState.zenxLV;
+  if (gameState.zenxActive) zenxActive = gameState.zenxActive;
+  if (gameState.autoing) autoing = gameState.autoing;
+  if (gameState.remluck) remluck = gameState.remluck;
+  if (gameState.buffs) buffs = gameState.buffs;
+  if (gameState.reroll) reroll = gameState.reroll;
+  if (gameState.freeReroll) freeReroll = gameState.freeReroll;
+  if (gameState.freeUp) freeUp = gameState.freeUp;
+  if (gameState.yggdam) yggdam = gameState.yggdam;
+  if (gameState.upgrading) upgrading = gameState.upgrading;
+  if (gameState.xxjjj) xxjjj = gameState.xxjjj;
+  if (gameState.curjjj) curjjj = gameState.curjjj;
+  if (gameState.xxBuff) xxBuff = gameState.xxBuff;
+  if (gameState.zheluck) zheluck = gameState.zheluck;
+  if (gameState.zhedam) zhedam = gameState.zhedam;
+  if (gameState.maxdamZ) maxdamZ = gameState.maxdamZ;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -438,7 +446,7 @@ function gainCoin(c){
 
 function clickKmr() {
     burning = 0;
-    kmrHealthValue -= 1;
+    kmrTakeDam(1);
     totalClickDamage += 1;
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
@@ -452,6 +460,12 @@ function clickKmr() {
     checkVictory();
 }
 
+function kmrTakeDam(dam,fromZhe){
+  kmrHealthValue -= dam;
+  if (!fromZhe && dam > maxdamZ){
+    maxdamZ = dam;
+  }
+}
 function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     for (let m of minionsState){
@@ -459,7 +473,7 @@ function damageKmr(dam,minion) {
         dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
-    kmrHealthValue -= dam;
+    kmrTakeDam(dam);
     minion.totalDamage += dam;
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
@@ -560,6 +574,18 @@ function getattack(minion,master){
       showSkillWord(minion, "素质家族");
     }
   }
+  if (minion.learnedSkills.includes("乾坤一掷")){
+    if (checkLuck(zheluck*0.01,true)) {
+      atk+=zhedam;
+      skilled = true;
+      showSkillWord(minion, "乾坤一掷");
+      if (checkLuck(zheluck*0.01,true)) {
+        zhedam += Math.floor(maxdamZ/11);
+        zheluck = 2;
+        showSkillWord(minion, "伤害提升！");
+      }
+    }
+  }
   if (minion.learnedSkills.includes("打个教先")){
     if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
       atk*= Math.floor(1 + Math.pow(xxjjj,2.25));
@@ -651,19 +677,44 @@ function incrementRandomDigit(num) {
     return result;
 }
 
-function checkLuck(r) {
+function checkLuck(r,fromZhe) {
   let re = 0;
   let pass = Math.random() < r;
   if (r < 0.2 && remluck > 0){
     remluck--;
     pass = true;
   }
+  if (fromZhe){
+    for (let minion of minionsState){
+      if (minion.learnedSkills.includes("终将降临的肃清")){
+        let luck = Math.min(1,0.3 + 0.01 * Math.floor(minion.level/50));
+        if (Math.random() < luck) {
+          pass = Math.random() < r;
+          if (!pass) {
+            zheluck += 0.2;
+            r += 0.2;
+            showSkillWord(minion, "终将降临的肃清");
+          }
+        }
+      }
+    }
+  }
+
   for (let m of minionsState){
     if (m.learnedSkills.includes("重返赛场") && !pass && r < 0.2){
       let luck = Math.min(0.5,0.21 + 0.01*Math.floor(m.level/25));
       if (Math.random() < luck){
         showSkillWord(m, "重返赛场");
         pass = Math.random() < r;
+        if (fromZhe && !pass){
+          for (let minion of minionsState){
+            if (minion.learnedSkills.includes("终将降临的肃清")){
+              zheluck += 0.2;
+              r += 0.2;
+              showSkillWord(minion, "终将降临的肃清");
+            }
+          }
+        }
       }
     }
   }
@@ -701,7 +752,7 @@ function minionAttack(minion,master) {
         }
       }
     }
-    kmrHealthValue -= dam;
+    kmrTakeDam(dam);
     if (master){
       if (!minionDamages[master.name]){
         minionDamages[master.name] = 0;
@@ -827,7 +878,7 @@ function minionAttack(minion,master) {
         }
       }
       if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
-        if (checkLuck(0.09)) {
+        if (checkLuck(0.08)) {
           minionAttack(m);
           showSkillWord(m, "永失吾艾");
         }
@@ -871,7 +922,7 @@ function refMinions() {
             <div>等级: <span id="level-${index}">${minion.level}</span></div>
             <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
             <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
-            <button id="cost-${index}" onclick="upgradeMinion(${index})" >升级 (${formatNumber(mupgradeCost(minion))})</button>
+            <button id="cost-${index}" onclick="upgradeMinionClick(${index})" >升级 (${formatNumber(mupgradeCost(minion))})</button>
         `;
         if (minion.reroll > 0 && unlockCost(unlockedMinions.length) < Infinity){
           minionElement.innerHTML += `<button id="reroll-${index}" onclick="rerollMinion(${index})" >重抽 (剩余${minion.reroll}次) (${formatNumber(rerollCost(unlockedMinions.length))})</button>`
@@ -988,7 +1039,7 @@ function refreshMinionDetails() {
       <div>攻击: ${formatNumber(minion.attack)}</div>
       <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
       <div>升级+攻击: ${minion.addattack}</div>
-      <button onclick="upgradeMinion(${rindex})" >${code} (金币: ${formatNumber(mupgradeCost(minion))})</button>
+      <button onclick="upgradeMinionClick(${rindex})" >${code} (金币: ${formatNumber(mupgradeCost(minion))})</button>
       <h4>技能</h4>
       <ul>
           ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill)}</li>`).join('')}
@@ -1004,6 +1055,8 @@ function getEff(skill){
       return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
       return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
+    case "乾坤一掷":
+      return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck*100)/100+"%概率永久增加本技能[除该技能外，kmr单次受到的最高伤害/11]点伤害。（目前最高单次伤害为"+formatNumber(maxdamZ)+");"
     default:
       return skill.effect;
   }
@@ -1015,7 +1068,7 @@ function mupgradeCost(minion){
   }
   let cost = (minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
   if (minion.level > 100){
-    cost *= minion.level/100;
+    cost *= Math.floor(Math.pow(minion.level/100,0.5));
   }
   cost = Math.pow(cost,1 + minion.level/5000)
   cost = Math.floor(cost);
@@ -1346,6 +1399,16 @@ function autoupgradeMinion(){
     updateDisplays();
 }
 
+
+function upgradeMinionClick(index) {
+    if (event.ctrlKey) {
+        return autoupgradeOneMinion(index);
+    } else {
+        return upgradeMinion(index);
+    }
+}
+
+
 function autoupgradeOneMinion(index){
     autoing = true;
     let enough = true;
@@ -1532,6 +1595,36 @@ setInterval(() => {
     updateCounts();
     updateDisplays();
 }, 1000);
+
+
+// Get the modal
+const modal = document.getElementById("helpModal");
+
+// Get the button that opens the modal
+const helpButton = document.getElementById("helpButton");
+
+// Get the <span> element that closes the modal
+const closeSpan = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal and pause the game
+helpButton.onclick = function() {
+    modal.style.display = "block";
+    //pauseGame();
+}
+
+// When the user clicks on <span> (x), close the modal and continue the game
+closeSpan.onclick = function() {
+    modal.style.display = "none";
+    //continueGame();
+}
+
+// When the user clicks anywhere outside of the modal, close it and continue the game
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        continueGame();
+    }
+}
 
 kmr.addEventListener('click', clickKmr);
 refMinions();
