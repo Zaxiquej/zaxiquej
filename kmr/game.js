@@ -532,7 +532,7 @@ function phaseUpGame() {
     //initMinions(); // Initialize minions again after restarting game
 }
 
-function getattack(minion){
+function getattack(minion,master){
   let atk = minion.attack;
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
@@ -679,7 +679,7 @@ function getDigit(num){
 function minionAttack(minion,master) {
     if (kmrHealthValue <= 0) return;
     skilled = false;
-    let dam = getattack(minion)
+    let dam = getattack(minion,master)
     let gainC = dam;
 
     if (minion.learnedSkills.includes("下饭")){
