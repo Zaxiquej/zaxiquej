@@ -1088,7 +1088,7 @@ function updateCounts() {
             if (mi.description.includes("🐷") && mi.name != m.name){
               r -= 1;
               if (r == 0){
-                m.raiseAtk(Math.max(1,Math.floor(minionsState[r].attack*0.02)))
+                raiseAtk(Math.max(1,Math.floor(minionsState[r].attack*0.02)))
                 minionsState[r].level -= 3;
                 minionsState[r].level = Math.max(1,minionsState[r].level);
               }
