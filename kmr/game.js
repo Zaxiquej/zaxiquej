@@ -94,11 +94,19 @@ function encodeGameState(){
 function exportGame() {
     let encodedGameState = encodeGameState();
 
+    // Get current date and time in Beijing Time (UTC+8)
+    const date = new Date();
+    const beijingOffset = 8 * 60 * 60 * 1000; // Beijing is UTC+8
+    const beijingDate = new Date(date.getTime() + beijingOffset);
+
+    const formattedDate = beijingDate.toISOString().replace(/T/, '_').replace(/:/g, '-').split('.')[0];
+    const fileName = `kmrsb_save_${formattedDate}.txt`;
+
     const blob = new Blob([encodedGameState], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'game_save.txt';
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
