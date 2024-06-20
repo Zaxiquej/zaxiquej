@@ -55,40 +55,59 @@ function b64_to_utf8(str) {
     return decodeURIComponent(escape(atob(str)));
 }
 
+function encodeGameState(){
+  const gameState = {
+      version,
+      kmrHealthValue,
+      level,
+      coins,
+      dps,
+      timePlayed,
+      totalClickDamage,
+      rindex,
+      minionDamages,
+      minionsState,
+      unlockedMinions,
+      totaltimePlayed,
+      burning,
+      skilled,
+      zenxLV,
+      zenxActive,
+      autoing,
+      remluck,
+      buffs,
+      reroll,
+      freeReroll,
+      freeUp,
+      yggdam,
+      upgrading,
+      xxjjj,
+      curjjj,
+      xxBuff
+  };
+
+  const gameStateStr = JSON.stringify(gameState);
+  const encodedGameState = utf8_to_b64(gameStateStr); // Base64 encode the game state
+  return encodedGameState;
+}
+
+function exportGame() {
+    let encodedGameState = encodeGameState();
+
+    const blob = new Blob([encodedGameState], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'game_save.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+document.getElementById('exportButton').addEventListener('click', exportGame);
 
 function saveGame(auto) {
-    const gameState = {
-        version,
-        kmrHealthValue,
-        level,
-        coins,
-        dps,
-        timePlayed,
-        totalClickDamage,
-        rindex,
-        minionDamages,
-        minionsState,
-        unlockedMinions,
-        totaltimePlayed,
-        burning,
-        skilled,
-        zenxLV,
-        zenxActive,
-        autoing,
-        remluck,
-        buffs,
-        reroll,
-        freeReroll,
-        freeUp,
-        yggdam,
-        upgrading,
-        xxjjj,
-        curjjj,
-        xxBuff
-    };
-
-    const gameStateStr = JSON.stringify(gameState);
-    const encodedGameState = utf8_to_b64(gameStateStr); // Base64 encode the game state
+    let encodedGameState = encodeGameState();
 
     localStorage.setItem('savedGame', encodedGameState);
     const mi = document.getElementById(`saveButton`);
@@ -108,45 +127,67 @@ document.getElementById('saveButton').addEventListener('click', () => {
 function loadGame() {
     const encodedGameState = localStorage.getItem('savedGame');
     if (encodedGameState) {
-        const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
-        const gameState = JSON.parse(gameStateStr);
-        version = gameState.version;
-        kmrHealthValue = gameState.kmrHealthValue;
-        level = gameState.level;
-        coins = gameState.coins;
-        dps = gameState.dps;
-        timePlayed = gameState.timePlayed;
-        totalClickDamage = gameState.totalClickDamage;
-        rindex = gameState.rindex;
-        minionDamages = gameState.minionDamages;
-        minionsState = gameState.minionsState;
-        unlockedMinions = gameState.unlockedMinions;
-        totaltimePlayed = gameState.totaltimePlayed;
-        burning = gameState.burning;
-        skilled = gameState.skilled;
-        zenxLV = gameState.zenxLV;
-        zenxActive = gameState.zenxActive;
-        autoing = gameState.autoing;
-        remluck = gameState.remluck;
-        buffs = gameState.buffs;
-        reroll = gameState.reroll;
-        freeReroll = gameState.freeReroll;
-        freeUp = gameState.freeUp;
-        yggdam = gameState.yggdam;
-        upgrading = gameState.upgrading;
-        xxjjj = gameState.xxjjj;
-        curjjj = gameState.curjjj;
-        xxBuff = gameState.xxBuff;
-
-
-        // Restore intervals (assuming you have functions to set them)
-        restoreIntervals();
-        updateDisplays();
-        refMinions();
+        loadGameState(encodedGameState);
     } else {
 
     }
 }
+
+function loadGameState(encodedGameState){
+  const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
+  const gameState = JSON.parse(gameStateStr);
+  version = gameState.version;
+  kmrHealthValue = gameState.kmrHealthValue;
+  level = gameState.level;
+  coins = gameState.coins;
+  dps = gameState.dps;
+  timePlayed = gameState.timePlayed;
+  totalClickDamage = gameState.totalClickDamage;
+  rindex = gameState.rindex;
+  minionDamages = gameState.minionDamages;
+  minionsState = gameState.minionsState;
+  unlockedMinions = gameState.unlockedMinions;
+  totaltimePlayed = gameState.totaltimePlayed;
+  burning = gameState.burning;
+  skilled = gameState.skilled;
+  zenxLV = gameState.zenxLV;
+  zenxActive = gameState.zenxActive;
+  autoing = gameState.autoing;
+  remluck = gameState.remluck;
+  buffs = gameState.buffs;
+  reroll = gameState.reroll;
+  freeReroll = gameState.freeReroll;
+  freeUp = gameState.freeUp;
+  yggdam = gameState.yggdam;
+  upgrading = gameState.upgrading;
+  xxjjj = gameState.xxjjj;
+  curjjj = gameState.curjjj;
+  xxBuff = gameState.xxBuff;
+
+
+  // Restore intervals (assuming you have functions to set them)
+  restoreIntervals();
+  updateDisplays();
+  refMinions();
+}
+
+function importGame(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const encodedGameState = e.target.result;
+        loadGameState(encodedGameState);
+    };
+    reader.readAsText(file);
+}
+
+document.getElementById('importInput').addEventListener('change', importGame);
+
+document.getElementById('importButton').addEventListener('click', () => {
+    document.getElementById('importInput').click();
+});
 
 // Function to reset all game variables
 function resetGame() {
@@ -407,7 +448,7 @@ function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     for (let m of minionsState){
       if (m.name != minion.name && m.learnedSkills.includes("护国神橙")){
-        dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6)));
+        dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
     kmrHealthValue -= dam;
@@ -1043,8 +1084,8 @@ function updateCounts() {
         if (unlockedPigs > 1 && checkLuck(luck)) {
           skilled = true;
           let r = Math.floor(Math.random()*(unlockedPigs - 1)) + 1;
-          for (let m of minionsState){
-            if (m.description.includes("🐷") && m.name != minion.name){
+          for (let mi of minionsState){
+            if (mi.description.includes("🐷") && mi.name != m.name){
               r -= 1;
               if (r == 0){
                 m.raiseAtk(Math.max(1,Math.floor(minionsState[r].attack*0.02)))
@@ -1053,7 +1094,7 @@ function updateCounts() {
               }
             }
           }
-          showSkillWord(minion, "汲取兄弟");
+          showSkillWord(m, "汲取兄弟");
           ref = true;
           need = true;
         }
