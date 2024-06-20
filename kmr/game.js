@@ -1321,18 +1321,39 @@ function raiseAtk(minion,amount){
 }
 
 function autoupgradeMinion(){
-  autoing = true;
-  let enough = true;
-  while (enough){
-    enough = false;
-    for (let i = 0; i < unlockedMinions.length; i++){
-      if (upgradeMinion(i,true)){
-        enough = true;
-      }
+    autoing = true;
+    let enough = true;
+    while (enough) {
+        enough = false;
+        let minCost = Infinity;
+        let minIndex = -1;
+
+        // 找到升级花费最小的随从
+        for (let i = 0; i < unlockedMinions.length; i++) {
+            const cost = mupgradeCost(minionsState[i]);
+            if (cost < minCost) {
+                minCost = cost;
+                minIndex = i;
+            }
+        }
+
+        // 如果找到的最小花费随从可以升级，则升级它
+        if (minIndex !== -1 && upgradeMinion(minIndex, true)) {
+            enough = true;
+        }
     }
-  }
-  autoing = false;
-  updateDisplays();
+    autoing = false;
+    updateDisplays();
+}
+
+function autoupgradeOneMinion(index){
+    autoing = true;
+    let enough = true;
+    while (enough) {
+        enough = upgradeMinion(index, true)
+    }
+    autoing = false;
+    updateDisplays();
 }
 
 function isPrime(num) {
