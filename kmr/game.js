@@ -407,7 +407,7 @@ function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     for (let m of minionsState){
       if (m.name != minion.name && m.learnedSkills.includes("护国神橙")){
-        dam = Math.floor(dam*(1 + 0.2 + 0.02*Math.floor(m.level/5)));
+        dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6)));
       }
     }
     kmrHealthValue -= dam;
@@ -495,7 +495,7 @@ function getattack(minion){
   let atk = minion.attack;
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
-      atk += Math.floor(m.attack*0.8);
+      atk += Math.floor(m.attack*0.5);
     }
     if (m.learnedSkills.includes("祥瑞") && Math.abs(minionsState.indexOf(minion) - minionsState.indexOf(m))<=1 ){
       let low = Math.max(0, 0.5 - 0.01 * Math.floor(m.level/10));
@@ -505,15 +505,15 @@ function getattack(minion){
     }
   }
   if (minion.learnedSkills.includes("素质家族")){
-    if (checkLuck(0.1)) {
-      atk*=10;
+    if (checkLuck(0.08)) {
+      atk*=20;
       skilled = true;
       showSkillWord(minion, "素质家族");
     }
   }
   if (minion.learnedSkills.includes("打个教先")){
-    if (xxBuff && minion.learnedSkills.includes("魔咒")){
-      atk*= Math.floor(1 + Math.pow(xxjjj,2.5));
+    if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
+      atk*= Math.floor(1 + Math.pow(xxjjj,2.25));
       skilled = true;
       xxBuff = false;
     } else {
@@ -533,7 +533,7 @@ function getattack(minion){
     }
   }
   if (minion.learnedSkills.includes("皇室荣耀")){
-    if (checkLuck(0.08)) {
+    if (checkLuck(0.1)) {
       atk += yggdam;
       skilled = true;
       showSkillWord(minion, "皇室荣耀");
@@ -543,7 +543,7 @@ function getattack(minion){
     const maxHealth = 500000*Math.pow(10,level); // 假设最大血量为500,000
     const healthPercentage = (kmrHealthValue / maxHealth) * 100;
     if (healthPercentage <= 50) {
-      atk*= 1 + 0.5 + 0.01*minion.level;
+      atk*= 1 + 0.5 + 0.01*Math.floor(Math.pow(minion.level,0.75));
       showSkillWord(minion, "复仇");
     }
   }
@@ -555,7 +555,7 @@ function getattack(minion){
   }
   if (minion.learnedSkills.includes("开播！")){
     skilled = true;
-    atk += Math.floor(Math.pow(Math.abs(coins),0.66)/1000*minion.level);
+    atk += Math.floor(Math.pow(Math.abs(coins),0.7)/1000*minion.level);
   }
   if (getBuffPower("idol").length > 0){
     for (let i of getBuffPower("idol")){
@@ -647,7 +647,7 @@ function minionAttack(minion,master) {
         dam = - dam;
         showSkillWord(minion, "下饭");
         if (checkLuck(0.1)) {
-          addBuff("ykd", 2, getDigit(minion.attack), false);
+          addBuff("ykd", 3, getDigit(minion.attack), false);
           showSkillWord(minion, "进入下饭状态！");
         }
       }
@@ -679,7 +679,7 @@ function minionAttack(minion,master) {
     gainCoin(gainC);
 
     if (minion.learnedSkills.includes("冲击冠军")){
-      if (checkLuck(0.03)) {
+      if (checkLuck(0.04)) {
         raiseAtk(minion,minion.level);
         skilled = true;
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
@@ -687,7 +687,7 @@ function minionAttack(minion,master) {
       }
     }
     if (minion.learnedSkills.includes("大梦仙尊")){
-      let luck = Math.min(0.03,0.01 + 0.001 * getBaseLog(2,Math.abs(minion.attack)));
+      let luck = Math.min(0.03,0.01 + 0.001 * Math.max(0,getBaseLog(2,Math.abs(minion.attack)) - 10));
       if (checkLuck(luck)) {
         skilled = true;
         freeUp += 5;
@@ -695,10 +695,10 @@ function minionAttack(minion,master) {
       }
     }
     if (minion.learnedSkills.includes("+1+1")){
-      if (checkLuck(0.06)) {
+      if (checkLuck(0.04)) {
         skilled = true;
-        minion.attack = Math.floor(minion.attack*1.13)
-        minion.attackSpeed = Math.floor(minion.attackSpeed*1.1)
+        minion.attack = Math.floor(minion.attack*1.1)
+        minion.attackSpeed = Math.floor(minion.attackSpeed*1.08)
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
         document.getElementById(`attack-speed-${unlockedMinions.indexOf(minion.name)}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
         clearInterval(minion.intervalId)
@@ -716,6 +716,7 @@ function minionAttack(minion,master) {
         }
         raiseAtk(minionsState[r],Math.floor(minion.attack/15));
         document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = formatNumber(minionsState[r].attack);
+        minionAttack(minionsState[r],minion);
         showSkillWord(minion, "金牌陪练");
       }
     }
@@ -777,7 +778,7 @@ function minionAttack(minion,master) {
         }
       }
       if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
-        if (checkLuck(0.08)) {
+        if (checkLuck(0.09)) {
           minionAttack(m);
           showSkillWord(m, "永失吾艾");
         }
@@ -790,7 +791,7 @@ function minionAttack(minion,master) {
       }
       if (skilled && m.name != minion.name && m.learnedSkills.includes("GN")){
         if (checkLuck(0.1)) {
-          raiseAtk(m, Math.floor(minion.attack*0.02));
+          raiseAtk(m, Math.floor(minion.attack*0.03));
           for (let i = 0; i < 3; i++){
             minionAttack(m);
           }
@@ -953,7 +954,7 @@ function getEff(skill){
     case "皇室荣耀":
       return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
-      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
+      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     default:
       return skill.effect;
   }
@@ -964,6 +965,9 @@ function mupgradeCost(minion){
     return 0;
   }
   let cost = (minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
+  if (minion.level > 100){
+    cost *= minion.level/100;
+  }
   cost = Math.pow(cost,1 + minion.level/5000)
   cost = Math.floor(cost);
   for (let m of minionsState){
@@ -977,7 +981,7 @@ function mupgradeCost(minion){
 function zeroCountDown(c) {
   for (let m of minionsState){
     if (m.learnedSkills.includes("电表白转")){
-      let luck = 0.2 + 0.01*Math.min(20,Math.floor(m.level/50));
+      let luck = 0.15 + 0.01*Math.min(25,Math.floor(m.level/50));
       if (checkLuck(luck)){
         return Math.floor(c/2);
       }
@@ -995,7 +999,7 @@ function updateCounts() {
       burning ++;
       if (burning >= 20){
         burning = zeroCountDown(20);
-        raiseAtk(m,5*unlockedMinions.length);
+        raiseAtk(m,5*unlockedMinions.length*(level+1));
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         need = true;
         showSkillWord(m, "五种打法");
@@ -1076,8 +1080,8 @@ function updateCounts() {
     if (m.learnedSkills.includes("造谣")){
       if (!m.count){m.count = 0};
       m.count ++;
-      if (m.count >= 20){
-        m.count = zeroCountDown(20);
+      if (m.count >= 14){
+        m.count = zeroCountDown(14);
         let times = 1 + Math.floor(m.level/50);
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random()*(unlockedMinions.length));
@@ -1180,7 +1184,7 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 24){
         m.count = zeroCountDown(24);
-        let dam = Math.floor(2*m.attack*m.attackSpeed/1000);
+        let dam = Math.floor(m.attack*m.attackSpeed/1000);
         damageKmr(dam,m);
         showSkillWord(m, "饿龙咆哮");
       }
@@ -1202,7 +1206,7 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 19){
         m.count = zeroCountDown(19);
-        let dam = Math.floor(m.attack*unlockedMinions.length);
+        let dam = Math.floor(m.attack*unlockedMinions.length/2);
         damageKmr(dam,m);
         showSkillWord(m, "一十九米肃清刀");
       }
@@ -1350,14 +1354,6 @@ function upgradeMinion(index,auto,free,noskill) {
                 let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
                 minion.intervalId = intervalId;
               }
-              if (s.name == "鲁智深"){
-                raiseAtk(minion,400);
-              }
-              if (s.name == "阴阳秘法"){
-                for (let m of minionsState){
-                  raiseAtk(m,36);
-                }
-              }
               if (s.name == "不稳定的传送门"){
                 freeReroll += 3;
               }
@@ -1365,6 +1361,20 @@ function upgradeMinion(index,auto,free,noskill) {
           }
         }
 
+        if (minion.learnedSkills.includes("鲁智深") && (minion.level==5 || minion.level%25 == 0)){
+          raiseAtk(minion,40*minion.level);
+          if (minion.level == 5){raiseAtk(minion,40*minion.level)}
+        }
+        if (minion.learnedSkills.includes("阴阳秘法") && (minion.level==6 || minion.level%36 == 0)){
+          for (let m of minionsState){
+            raiseAtk(m,3*minion.level);
+          }
+          if (minion.level == 6){
+            for (let m of minionsState){
+              raiseAtk(m,3*minion.level);
+            }
+          }
+        }
         if (minion.learnedSkills.includes("虫虫咬他") && minion.level%2 == 1){
           showSkillWord(minion, "虫虫咬他");
           minion.addattack += 1;
