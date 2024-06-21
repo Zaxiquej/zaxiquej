@@ -437,7 +437,7 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 3.6,
         skills: [
-            { level: 8, name: '偶像', effect: '攻击时，7%概率使所有己方助战在接下来10s内攻击时，额外造成[20+伤害位数*2]%的伤害（可叠加）。' },
+            { level: 8, name: '偶像', effect: '攻击时，7%概率使所有己方助战在接下来10s内攻击时，额外造成[20+本次攻击伤害位数*2]%的伤害（可叠加）。' },
             { level: 55, name: '人偶使', effect: '攻击时，8%概率令1个随机其他助战攻击，触发3次，伤害视为该助战造成。如果正处于[偶像]的状态中，每有一层则额外增加3次。' }
         ]
     },
@@ -506,7 +506,41 @@ const minions = [
         supEnhancecost: 3.6,
         skills: [
             { level: 7, name: '理解不行', effect: '攻击后，5%概率获得[10*等级^2]的金币，并失去1等级。攻击力每有1位数，增加1%概率，上限25%。（不会因此失去攻击力或失去已学会的技能，最多降为1级）。' },
-            { level: 59, name: '恭顺', effect: '每当一个助战等级降低，使1名具有倒计时技能助战的技能倒计时加快2s，溢出部分不会结算至下一循环。优先加快已倒计时时间最长的助战技能。（每100级，增加1s，上限8s），' }
+            { level: 59, name: '恭顺', effect: '每当一个助战等级降低，使1名具有倒计时技能助战的技能倒计时加快2s，溢出部分不会结算至下一循环。优先加快已倒计时时间最长的助战技能。（每100级，增加1s，上限8s）' }
+        ]
+    },
+    {
+        name: 'kaga',
+        id: 30,
+        image: 'kmr/image/kaga.png',
+        voice: 'kmr/voice/kaga.mp3',
+        description: '智慧的星光，照不亮你心中的蛮荒；午后的虫鸣，找不回你冲分的热情。打牌吗，我是ka尔努诺斯',
+        baseattack: 14,
+        addattack: 11,
+        attackSpeed: 2100, // in milliseconds
+        basecost: 29,
+        enhancecost: 14,
+        supEnhancecost: 4.5,
+        skills: [
+            { level: 8, name: '死灵艺术', effect: '每当一个倒计时技能触发后，15%概率造成[攻击力*(周目数+1)]点伤害。' },
+            { level: 69, name: '做法', effect: '当一个助战获得永久攻击力时，如果增加的数值不足[该随从攻击力的1%]，15%概率将其提升至该数值。（不能超过原数值的4倍。）' }
+        ]
+    },
+    {
+        name: '卖火柴的可可亚',
+        id: 31,
+        image: 'kmr/image/ya.png',
+        voice: 'kmr/voice/ya.mp3',
+        description: '本英雄的介绍文字被口住了',
+        baseattack: 12,
+        addattack: 8,
+        attackSpeed: 2200, // in milliseconds
+        basecost: 15,
+        enhancecost: 10,
+        supEnhancecost: 5,
+        skills: [
+            { level: 6, name: '弹幕机器人', effect: '每当一个倒计时技能触发后，8%概率在接下来的8s内，攻击时25%概率额外造成300%伤害。（可叠加，复数伤害叠加）' },
+            { level: 52, name: '鸭皇旋风斩！', effect: '如果当前有光环效果（具有持续时长的效果）进行中，攻击时，攻击力增加[所有助战中最高的攻击力*(0.1*当前光环效果数)]点。' }
         ]
     }
 ];

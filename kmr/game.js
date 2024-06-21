@@ -562,6 +562,14 @@ function phaseUpGame() {
 
 function getattack(minion,master){
   let atk = minion.attack;
+  if (minion.learnedSkills.includes("鸭皇旋风斩！") && buffs.length > 0){
+    const maxAttackMinion = minionsState.reduce((max, minion) => {
+      return (minion.attack > max.attack) ? minion : max;
+    }, { attack: -Infinity }); // 初始化时假设最大的 attack 值非常小
+
+    atk += Math.floor(maxAttackMinion.attack * (0.1* buffs.length));
+    showSkillWord(minion, "鸭皇旋风斩！");
+  }
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
       atk += Math.floor(m.attack*0.5);
@@ -642,6 +650,13 @@ function getattack(minion,master){
     for (let i of getBuffPower("idol")){
       atk *= i;
     }
+  }
+  if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")){
+    let exbl = 0;
+    for (let i of getBuffPower("ya")){
+      exbl += i;
+    }
+    atk *= 1 + exbl;
   }
   atk = Math.floor(atk);
   return atk;
@@ -872,6 +887,7 @@ function minionAttack(minion,master) {
         showSkillWord(minion, "偶像");
       }
     }
+
     if (minion.learnedSkills.includes("人偶使") && unlockedMinions.length > 1){
       if (checkLuck(0.08)) {
         skilled = true;
@@ -1138,6 +1154,22 @@ function minusLevel(minion,l){
 }
 
 function zeroCountDown(c) {
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("死灵艺术")){
+      if (checkLuck(0.15)){
+        m.count = zeroCountDown(19);
+        let dam = Math.floor(m.attack*2*(level+1));
+        damageKmr(dam,m);
+        showSkillWord(m, "死灵艺术");
+      }
+    }
+    if (m.learnedSkills.includes("弹幕机器人")){
+      if (checkLuck(0.08)) {
+        addBuff("ya",3,8,true)
+        showSkillWord(m, "弹幕机器人");
+      }
+    }
+  }
   for (let m of minionsState){
     if (m.learnedSkills.includes("电表白转")){
       let luck = 0.15 + 0.01*Math.min(25,Math.floor(m.level/50));
@@ -1423,11 +1455,19 @@ function getBaseLog(x, y) {
   return Math.log(y) / Math.log(x);
 }
 
-function raiseAtk(minion,amount){
+function raiseAtk(minion,amount,norepeat){
+  for (let m of minionsState){
+    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount < 0.01 * m.attack){
+      if (checkLuck(0.15)){
+        amount = Math.min(amount * 4, Math.floor(0.01 * m.attack));
+        showSkillWord(m, "做法");
+      }
+    }
+  }
   minion.attack += amount;
   for (let m of minionsState){
-    if (m.name != minion.name && m.learnedSkills.includes("上帝")){
-      m.attack += Math.max(1,Math.floor(amount*0.12));
+    if (m.name != minion.name && m.learnedSkills.includes("上帝") && !norepeat){
+      raiseAtk(m,Math.max(1,Math.floor(amount*0.12)),true);
       document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
       showSkillWord(m, "上帝");
     }
@@ -1525,6 +1565,9 @@ function upgradeMinion(index,auto,free,noskill) {
         coins -= upgradeCost;
         if (upgradeCost == 0 && !free){
           freeUp -= 1;
+          if (freeUp == 0){
+            refMinions();
+          }
         }
         if (!noskill){
           minion.reroll = 0;
@@ -1623,7 +1666,7 @@ function upgradeMinion(index,auto,free,noskill) {
               showSkillWord(m, "杀出重围");
             }
           }
-          if (m.learnedSkills.includes("卓绝的契约") && !auto && !noskill && minion.level == 2 && unlockedMinions.length >= 7 && daZhaiQiYue==false){
+          if (m.learnedSkills.includes("卓绝的契约") && !noskill && minion.level == 2 && unlockedMinions.length >= 7 && daZhaiQiYue==false){
             minion.attack += m.attack;
             minion.attackSpeed = Math.floor(0.8*minion.attackSpeed);
             minion.addattack = Math.pow(minion.addattack,2);
