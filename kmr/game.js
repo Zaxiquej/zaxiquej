@@ -41,9 +41,11 @@ let xxjjj = 0;
 let curjjj = 0;
 let xxBuff = false;
 let zheluck = 2;
+let zheluck2 = 2;
 let zhedam = 2600;
 let maxdamZ = 0;
 let daZhaiQiYue = false;
+let chongMing = 1;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -89,9 +91,11 @@ function encodeGameState(){
       curjjj,
       xxBuff,
       zheluck,
+      zheluck2,
       zhedam,
       maxdamZ,
-      daZhaiQiYue
+      daZhaiQiYue,
+      chongMing
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -180,9 +184,11 @@ function loadGameState(encodedGameState){
   if (gameState.curjjj) curjjj = gameState.curjjj;
   if (gameState.xxBuff) xxBuff = gameState.xxBuff;
   if (gameState.zheluck) zheluck = gameState.zheluck;
+  if (gameState.zheluck2) zheluck2 = gameState.zheluck2;
   if (gameState.zhedam) zhedam = gameState.zhedam;
   if (gameState.maxdamZ) maxdamZ = gameState.maxdamZ;
   if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
+  if (gameState.chongMing) chongMing = gameState.chongMing;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -236,6 +242,13 @@ function resetGame() {
     xxjjj = 0;
     curjjj = 0;
     xxBuff = false;
+    zheluck = 2;
+    zheluck2 = 2;
+    zhedam = 2600;
+    maxdamZ = 0;
+    daZhaiQiYue = false;
+    chongMing = 1;
+
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
     }
@@ -479,7 +492,7 @@ function damageKmr(dam,minion) {
         dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
-    kmrTakeDam(dam);
+    kmrTakeDam(dam,minion.name == "折光成影");
     minion.totalDamage += dam;
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
@@ -589,13 +602,14 @@ function getattack(minion,master){
     }
   }
   if (minion.learnedSkills.includes("乾坤一掷")){
-    if (checkLuck(zheluck*0.01,true)) {
+    if (checkLuck(zheluck*0.01,1)) {
       atk+=zhedam;
       skilled = true;
+      zheluck = 2;
       showSkillWord(minion, "乾坤一掷");
-      if (checkLuck(zheluck*0.01,true)) {
+      if (checkLuck(zheluck2*0.01,2)) {
         zhedam += Math.floor(maxdamZ/11);
-        zheluck = 2;
+        zheluck2 = 2;
         showSkillWord(minion, "伤害提升！");
       }
     }
@@ -720,7 +734,8 @@ function checkLuck(r,fromZhe) {
         if (Math.random() < luck) {
           pass = Math.random() < r;
           if (!pass) {
-            zheluck += 0.2;
+            if (fromZhe == 1){zheluck += 0.2;}
+            if (fromZhe == 2){zheluck2 += 0.2;}
             r += 0.2;
             showSkillWord(minion, "终将降临的肃清");
           }
@@ -738,7 +753,8 @@ function checkLuck(r,fromZhe) {
         if (fromZhe && !pass){
           for (let minion of minionsState){
             if (minion.learnedSkills.includes("终将降临的肃清")){
-              zheluck += 0.2;
+              if (fromZhe == 1){zheluck += 0.2;}
+              if (fromZhe == 2){zheluck2 += 0.2;}
               r += 0.2;
               showSkillWord(minion, "终将降临的肃清");
             }
@@ -781,7 +797,7 @@ function minionAttack(minion,master) {
         }
       }
     }
-    kmrTakeDam(dam);
+    kmrTakeDam(dam,minion.name == "折光成影");
     if (master){
       if (!minionDamages[master.name]){
         minionDamages[master.name] = 0;
@@ -980,7 +996,7 @@ function refMinions() {
 
     });
 
-    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + unlockCost(unlockedMinions.length) +")";
+    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) +")";
 }
 
 function unlockCost(n) {
@@ -1102,14 +1118,15 @@ function getEff(skill){
     case "魔咒":
       return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     case "乾坤一掷":
-      return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck*100)/100+"%概率永久增加本技能[除该技能外，kmr单次受到的最高伤害/11]点伤害。（目前最高单次伤害为"+formatNumber(maxdamZ)+");"
+      return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck2*100)/100+"%概率永久增加本技能[除该技能外，kmr单次受到的最高伤害/11]点伤害。（目前最高单次伤害为"+formatNumber(maxdamZ)+");"
     case "卓绝的契约":
       if (daZhaiQiYue){
         return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约已签订——"+daZhaiQiYue+"）";
       } else {
         return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约尚未签订）";
       }
-
+    case "虫法之王":
+      return "每当一个倒计时技能触发后，使一个随机助战获得"+chongMing+"*[该助战等级/3]点攻击力。每次触发，使倍率+1。";
     default:
       return skill.effect;
   }
@@ -1176,6 +1193,12 @@ function zeroCountDown(c) {
         showSkillWord(m, "弹幕机器人");
       }
     }
+    if (m.learnedSkills.includes("虫法之王")){
+      let r = Math.floor(Math.random()*(unlockedMinions.length));
+      raiseAtk(minionsState[r],Math.floor(chongMing*m.level/3));
+      chongMing += 1;
+      showSkillWord(m, "虫法之王");
+    }
   }
   for (let m of minionsState){
     if (m.learnedSkills.includes("电表白转")){
@@ -1187,6 +1210,33 @@ function zeroCountDown(c) {
   }
   return 0;
 }
+
+function generateXYZ(totalAllies) {
+  // 用于生成符合二项分布的随机整数
+  const randomMultinomial = (n, pArray) => {
+    const results = Array(pArray.length).fill(0);
+    for (let i = 0; i < n; i++) {
+      let r = Math.random();
+      for (let j = 0; j < pArray.length; j++) {
+        if (r < pArray[j]) {
+          results[j]++;
+          break;
+        }
+        r -= pArray[j];
+      }
+    }
+    return results;
+  };
+
+  // 概率可以均匀分布，意味着 pX = pY = pZ = 1/3
+  const probabilities = [1/3, 1/3, 1/3];
+
+  // 调用 randomMultinomial 生成 X, Y, Z
+  const [X, Y, Z] = randomMultinomial(totalAllies, probabilities);
+
+  return { X, Y, Z };
+}
+
 function updateCounts() {
   if (kmrHealthValue <= 0){return;}
   let need = false;
@@ -1311,6 +1361,41 @@ function updateCounts() {
           }
         }
         showSkillWord(m, "每日饼之诗");
+        need = true;
+      }
+    }
+
+    if (m.learnedSkills.includes("法神的宣告")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 60){
+        m.count = zeroCountDown(60);
+        let prob = generateXYZ(unlockedMinions.length);
+        damageKmr(prob.X*m.attack,m);
+        let unlockedCD = 0;
+        for (let m of minionsState){
+          if (m.count != undefined){
+            unlockedCD++;
+          }
+        }
+        for (let i = 0; i < prob.Y; i++){
+          let r = Math.floor(Math.random()*(unlockedCD - 1));
+          for (let mi of minionsState){
+            if (m.name != mi.name && mi.count != undefined){
+              r -= 1;
+              if (r == 0){
+                mi.count += 1;
+              }
+            }
+          }
+        }
+        for (let i = 0; i < prob.Z; i++){
+          let r = Math.floor(Math.random()*(unlockedMinions.length));
+          raiseAtk(minionsState[r],Math.floor(chongMing*m.level/3));
+          chongMing += 1;
+          showSkillWord(m, "虫法之王");
+        }
+        showSkillWord(m, "法神的宣告");
         need = true;
       }
     }
@@ -1623,7 +1708,7 @@ function upgradeMinion(index,auto,free,noskill) {
             }
           }
         }
-        if (minion.learnedSkills.includes("虫虫咬他") && minion.level%2 == 1){
+        if (minion.learnedSkills.includes("虫虫咬他")){
           showSkillWord(minion, "虫虫咬他");
           minion.addattack += 1;
         }

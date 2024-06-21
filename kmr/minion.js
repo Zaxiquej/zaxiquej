@@ -13,7 +13,7 @@ const minions = [
         supEnhancecost: 4,
         skills: [
             { level: 4, name: '素质家族', effect: '8%概率造成 2000% 伤害。' },
-            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力/30]点攻击力' }
+            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力/30]点攻击力。' }
         ]
     },
     {
@@ -193,13 +193,13 @@ const minions = [
         voice: 'kmr/voice/fish.mp3',
         description: 'szb最后的妖精使',
         baseattack: 11,
-        addattack: 2,
+        addattack: 1,
         attackSpeed: 1900, // in milliseconds
         basecost: 9,
         enhancecost: 16,
         supEnhancecost: 5,
         skills: [
-            { level: 4, name: '虫虫咬他', effect: '升级该角色后，如果等级为奇数，永久提升升级增加的攻击力1点。' },
+            { level: 6, name: '虫虫咬他', effect: '升级该角色后，永久提升升级增加的攻击力1点。' },
             { level: 33, name: '无尽连击', effect: '每当任何助战攻击，该助战获得等同于升级提升攻击力50%的临时攻击力。每30s，失去这些临时攻击力，但是有5%概率将其的10%转变为永久攻击力，且每50级提升1%概率（上限25%）。' }
         ]
     },
@@ -472,7 +472,7 @@ const minions = [
         supEnhancecost: 4.8,
         skills: [
             { level: 9, name: '乾坤一掷', effect: '攻击后，有2%概率附加2600点伤害；在此基础上，2%概率永久增加本技能[除该技能外，kmr单次受到的最高伤害/11]点伤害。' },
-            { level: 65, name: '终将降临的肃清', effect: '[乾坤一掷]中的任何一项触发失败后，30%概率重新判定一次。每次[乾坤一掷]重新判定依然失败，使其成功率增加0.2%。成功增加伤害后，消除额外成功率。（每50级增加1%改判概率，最高100%）' }
+            { level: 65, name: '终将降临的肃清', effect: '[乾坤一掷]中的任何一项触发失败后，30%概率重新判定一次。每次[乾坤一掷]重新判定依然失败，使该部分成功率增加0.2%。成功后，消除该部分的额外成功率。（每50级增加1%改判概率，最高100%）' }
         ]
     },
     {
@@ -514,7 +514,7 @@ const minions = [
         id: 30,
         image: 'kmr/image/kaga.png',
         voice: 'kmr/voice/kaga.mp3',
-        description: '别吵 打箱子呢',
+        description: '别吵 打箱子呢.png',
         baseattack: 14,
         addattack: 11,
         attackSpeed: 2100, // in milliseconds
@@ -541,6 +541,23 @@ const minions = [
         skills: [
             { level: 6, name: '弹幕机器人', effect: '每当一个倒计时技能触发后，8%概率在接下来的8s内，攻击时25%概率额外造成300%伤害。（可叠加，复数伤害叠加）' },
             { level: 52, name: '鸭皇旋风斩！', effect: '如果当前有光环效果（具有持续时长的效果）进行中，攻击时，攻击力增加[所有助战中最高的攻击力*(0.1*当前光环效果数)]点。' }
+        ]
+    },
+    {
+        name: '达拉斯泰尔',
+        id: 32,
+        image: 'kmr/image/da.png',
+        voice: 'kmr/voice/da.mp3',
+        description: '智慧的星光，照不亮你心中的蛮荒；午后的虫鸣，找不回你冲分的热情。打牌吗，我是达拉斯泰尔',
+        baseattack: 8,
+        addattack: 5,
+        attackSpeed: 1500, // in milliseconds
+        basecost: 32,
+        enhancecost: 12,
+        supEnhancecost: 4.6,
+        skills: [
+            { level: 9, name: '虫法之王', effect: '每当一个倒计时技能触发后，使一个随机助战获得1*[该助战等级/3]点攻击力。每次触发，使倍率+1。' },
+            { level: 44, name: '法神的宣告', effect: '每60s，造成[X*攻击力]点伤害，将[Y]s分配到其他倒计时上（溢出部分不会结算至下一循环），立刻触发[Z]次[虫法之王]。XYZ的数值为随机指定，其和为[你拥有的助战数]。' }
         ]
     }
 ];
