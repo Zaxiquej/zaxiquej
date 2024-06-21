@@ -514,7 +514,7 @@ const minions = [
         id: 30,
         image: 'kmr/image/kaga.png',
         voice: 'kmr/voice/kaga.mp3',
-        description: '智慧的星光，照不亮你心中的蛮荒；午后的虫鸣，找不回你冲分的热情。打牌吗，我是ka尔努诺斯',
+        description: '别吵 打箱子呢',
         baseattack: 14,
         addattack: 11,
         attackSpeed: 2100, // in milliseconds
