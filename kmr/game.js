@@ -653,10 +653,17 @@ function getattack(minion,master){
   }
   if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")){
     let exbl = 0;
+    let exNum = 0;
     for (let i of getBuffPower("ya")){
-      exbl += i;
+      if (checkLuck(0.25)){
+        exbl += i;
+        exNum += 1;
+      }
     }
     atk *= 1 + exbl;
+    if (exNum > 0){
+      showSkillWord(minion, "弹幕指点*"+exNum);
+    }
   }
   atk = Math.floor(atk);
   return atk;
