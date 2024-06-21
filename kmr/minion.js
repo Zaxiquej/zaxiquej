@@ -491,5 +491,22 @@ const minions = [
             { level: 8, name: '鼙鼓时间！', effect: '每48s，在接下来的6s内，所有助战攻击后，5%概率再次进行1次攻击（可重复触发，时间内再次触发改为延长时间）。每100级，减少1s倒计时（下限36s）' },
             { level: 46, name: '卓绝的契约', effect: '每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。' }
         ]
+    },
+    {
+        name: '龙魂仓鼠',
+        id: 29,
+        image: 'kmr/image/cangshu.png',
+        voice: 'kmr/voice/cangshu.mp3',
+        description: '我们至今仍不知道🐉 👻 🐹使用T1的胜率',
+        baseattack: 14,
+        addattack: 11,
+        attackSpeed: 3200, // in milliseconds
+        basecost: 22,
+        enhancecost: 12,
+        supEnhancecost: 3.6,
+        skills: [
+            { level: 7, name: '理解不行', effect: '攻击后，5%概率获得[10*等级^2]的金币，并失去1等级。攻击力每有1位数，增加1%概率，上限25%。（不会因此失去攻击力或失去已学会的技能，最多降为1级）。' },
+            { level: 59, name: '恭顺', effect: '每当一个助战等级降低，使1名具有倒计时技能助战的技能倒计时加快2s，溢出部分不会结算至下一循环。优先加快已倒计时时间最长的助战技能。（每100级，增加1s，上限8s），' }
+        ]
     }
 ];

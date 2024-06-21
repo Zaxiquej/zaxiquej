@@ -374,6 +374,9 @@ function showSkillWord(minion, word) {
     return;
   }
     let im = document.getElementById(`image-${unlockedMinions.indexOf(minion.name)}`);
+    if (!im){
+      return;
+    }
     var position = im.getBoundingClientRect();
 
     let x = position.left + (Math.random()*position.width);
@@ -853,6 +856,15 @@ function minionAttack(minion,master) {
         showSkillWord(minion, "奶1");
       }
     }
+    if (minion.learnedSkills.includes("理解不行")){
+      let luck = Math.min(0,25,0.05 + 0.01 * getDigit(minion.attack));
+      if (checkLuck(luck)) {
+        skilled = true;
+        gainCoin(10*Math.floor(Math.pow(minion.level,2)));
+        minusLevel(minion,1);
+        showSkillWord(minion, "理解不行");
+      }
+    }
     if (minion.learnedSkills.includes("偶像")){
       if (checkLuck(0.07)) {
         skilled = true;
@@ -1098,6 +1110,33 @@ function mupgradeCost(minion){
   return cost;
 }
 
+function minusLevel(minion,l){
+  minion.level -= l;
+  minion.level = Math.max(1,minion.level);
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("恭顺")){
+      let unlockedCD = 0;
+      let maxCount = -1;
+      let maxCountMinion = null;
+
+      for (let m of minionsState) {
+        if (m.count != undefined) {
+          if (m.count > maxCount) {
+            maxCount = m.count;
+            maxCountMinion = m;
+          }
+        }
+      }
+
+      if (maxCountMinion != null) {
+        maxCountMinion.count += 2;
+      }
+
+      showSkillWord(m, "恭顺");
+    }
+  }
+}
+
 function zeroCountDown(c) {
   for (let m of minionsState){
     if (m.learnedSkills.includes("电表白转")){
@@ -1179,8 +1218,7 @@ function updateCounts() {
               r -= 1;
               if (r == 0){
                 raiseAtk(m,Math.max(1,Math.floor(minionsState[r].attack*0.02)))
-                minionsState[r].level -= 3;
-                minionsState[r].level = Math.max(1,minionsState[r].level);
+                minusLevel(minionsState[r],3);
               }
             }
           }
@@ -1199,10 +1237,8 @@ function updateCounts() {
         if (r >= unlockedMinions.indexOf(m.name)){
           r += 1;
         }
-        minionsState[r].level -= Math.max(1,Math.floor(minionsState[r].level*0.01));
-        m.level -= Math.max(1,Math.floor(m.level*0.01));
-        minionsState[r].level = Math.max(1,minionsState[r].level);
-        m.level = Math.max(1,m.level);
+        minusLevel(minionsState[r],Math.max(1,Math.floor(minionsState[r].level*0.01)));
+        minusLevel(m.level, Math.max(1,Math.floor(m.level*0.01)));
         showSkillWord(m, "成熟!");
         ref = true;
         need = true;
