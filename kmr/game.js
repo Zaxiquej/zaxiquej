@@ -682,10 +682,11 @@ function incrementRandomDigit(num) {
 
 function checkLuck(r,fromZhe) {
   let re = 0;
-  let pass = Math.random() < r;
+  let rand = Math.random();
+  let pass = rand < r;
   if (r < 0.2 && remluck > 0){
     remluck--;
-    pass = true;
+    pass = rand < (r * 3);
   }
   if (fromZhe){
     for (let minion of minionsState){
@@ -1127,9 +1128,9 @@ function updateCounts() {
     if (m.learnedSkills.includes("操纵命运")){
       if (!m.count){m.count = 0};
       m.count ++;
-      if (m.count >= 25){
-        m.count = zeroCountDown(25);
-        remluck = Math.min(8,2 + Math.floor(m.level/100))
+      if (m.count >= 35){
+        m.count = zeroCountDown(35);
+        remluck = Math.min(12,2 + Math.floor(m.level/100))
         showSkillWord(m, "操纵命运");
         need = true;
       }
