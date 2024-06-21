@@ -13,7 +13,7 @@ const minions = [
         supEnhancecost: 4,
         skills: [
             { level: 4, name: '素质家族', effect: '8%概率造成 2000% 伤害。' },
-            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力/30]点攻击力。' }
+            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力^0.95/30]点攻击力。' }
         ]
     },
     {

@@ -1669,7 +1669,7 @@ function upgradeMinion(index,auto,free,noskill) {
         raiseAtk(minion,minion.addattack); // Increase attack by 2 for each level
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
-            raiseAtk(minion,Math.floor(m.attack/30));
+            raiseAtk(minion,Math.floor(Math.pow(m.attack,0.95)/30));
             showSkillWord(m, "构筑带师");
           }
           if (minion.level%5 == 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")){
