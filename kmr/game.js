@@ -1165,7 +1165,7 @@ function zeroCountDown(c) {
     if (m.learnedSkills.includes("死灵艺术")){
       if (checkLuck(0.15)){
         m.count = zeroCountDown(19);
-        let dam = Math.floor(m.attack*2*(level+1));
+        let dam = Math.floor(m.attack*Math.pow(level+1,0.5));
         damageKmr(dam,m);
         showSkillWord(m, "死灵艺术");
       }
