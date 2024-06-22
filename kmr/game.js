@@ -46,6 +46,7 @@ let zhedam = 2600;
 let maxdamZ = 0;
 let daZhaiQiYue = false;
 let chongMing = 1;
+let cangSkill = "";
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -95,7 +96,8 @@ function encodeGameState(){
       zhedam,
       maxdamZ,
       daZhaiQiYue,
-      chongMing
+      chongMing,
+      cangSkill
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -189,7 +191,7 @@ function loadGameState(encodedGameState){
   if (gameState.maxdamZ) maxdamZ = gameState.maxdamZ;
   if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
   if (gameState.chongMing) chongMing = gameState.chongMing;
-
+  if (gameState.cangSkill) cangSkill = gameState.cangSkill;
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -479,7 +481,18 @@ function clickKmr() {
     checkVictory();
 }
 
-function kmrTakeDam(dam,fromZhe){
+function kmrTakeDam(dam){
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("素材奖励")){
+      let maxHealth = 500000 * Math.pow(10,level);
+      if (kmrHealthValue > Math.floor(2/3*maxHealth) && (kmrHealthValue - dam) < Math.floor(2/3*maxHealth)){
+        refreshCangSkill();
+      }
+      if (kmrHealthValue > Math.floor(1/3*maxHealth) && (kmrHealthValue - dam) < Math.floor(1/3*maxHealth)){
+        refreshCangSkill();
+      }
+    }
+  }
   kmrHealthValue -= dam;
   if (dam > maxdamZ){
     maxdamZ = dam;
@@ -492,7 +505,7 @@ function damageKmr(dam,minion) {
         dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
-    kmrTakeDam(dam,minion.name == "折光成影");
+    kmrTakeDam(dam);
     minion.totalDamage += dam;
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
@@ -570,6 +583,12 @@ function phaseUpGame() {
     victoryMessage.classList.add('hidden');
     updateDisplays();
     saveGame(true);
+    for (let m of minionsState){
+      if (m.learnedSkills.includes("马纳利亚时刻")){
+        refreshCangSkill();
+      }
+    }
+
     //initMinions(); // Initialize minions again after restarting game
 }
 
@@ -622,7 +641,7 @@ function getattack(minion,master){
     } else {
       let luck = Math.max(0.2, 0.7 - 0.01* Math.floor(minion.level/15));
       if (checkLuck(luck)) {
-        atk*= 2 + 0.1*0.01* Math.floor(minion.level/15);
+        atk*= Math.min(10,2 + 0.1*0.01* Math.floor(minion.level/15));
         skilled = true;
         showSkillWord(minion, "结晶教胜利！");
         curjjj = 0;
@@ -797,7 +816,7 @@ function minionAttack(minion,master) {
         }
       }
     }
-    kmrTakeDam(dam,minion.name == "折光成影");
+    kmrTakeDam(dam);
     if (master){
       if (!minionDamages[master.name]){
         minionDamages[master.name] = 0;
@@ -832,7 +851,7 @@ function minionAttack(minion,master) {
       }
     }
     if (minion.learnedSkills.includes("大梦仙尊")){
-      let luck = Math.min(0.03,0.01 + 0.001 * Math.max(0,getBaseLog(2,Math.abs(minion.attack)) - 10));
+      let luck = Math.min(0.02,0.005 + 0.0005 * Math.max(0,getBaseLog(2,Math.abs(minion.attack)) - 10));
       if (checkLuck(luck)) {
         skilled = true;
         freeUp += 5;
@@ -1127,10 +1146,26 @@ function getEff(skill){
       }
     case "虫法之王":
       return "每当一个倒计时技能触发后，使一个随机助战获得"+chongMing+"*[该助战等级/3]点攻击力。每次触发，使倍率+1。";
+      case "马纳利亚时刻":
+        return `该技能为一个随机其他技能，与其共享各种变量。进入新周目后，切换随机技能。<br>当前技能：<br><span style="font-size: smaller;">${cangSkill} - ${getdesc(cangSkill)}</span>`;
+
     default:
       return skill.effect;
   }
 
+}
+
+function getdesc(skillName){
+  if (skillName == ''){
+    return "暂无";
+  }
+  for (let m of minions){
+    for (let s of m.skills){
+      if (s.name == skillName){
+        return getEff(s);
+      }
+    }
+  }
 }
 function mupgradeCost(minion){
   if (freeUp > 0){
@@ -1173,6 +1208,37 @@ function minusLevel(minion,l){
       }
 
       showSkillWord(m, "恭顺");
+    }
+  }
+}
+
+function refreshCangSkill() {
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("马纳利亚时刻")){
+
+      for (let s of m.learnedSkills){
+        if (!["马纳利亚时刻","素材奖励"].includes(s)){
+          m.learnedSkills.splice(m.learnedSkills.indexOf(s));
+          break;
+        }
+      }
+      let r = Math.floor(Math.random()*(minions.length - 1));
+      if (r >= 33){ //仓仓是33
+        r += 1;
+      }
+      let s = minions[r].skills[Math.floor(Math.random() * 2)];
+      console.log(s)
+      m.learnedSkills.push(s.name);
+      cangSkill = s.name;
+      showSkillWord(m, "马纳利亚时刻！");
+      if (m.learnedSkills.includes("素材奖励")){
+        for (let mi of minionsState){
+          if (m.name != mi.name && mi.learnedSkills.includes(s.name)){
+            raiseAtk(mi,Math.floor(m.attack*0.05));
+            showSkillWord(m, "素材奖励");
+          }
+        }
+      }
     }
   }
 }
@@ -1689,6 +1755,9 @@ function upgradeMinion(index,auto,free,noskill) {
               }
               if (s.name == "不稳定的传送门"){
                 freeReroll += 3;
+              }
+              if (s.name == "马纳利亚时刻"){
+                refreshCangSkill();
               }
             }
           }
