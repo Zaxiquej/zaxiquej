@@ -40,8 +40,8 @@ let upgrading = false;
 let xxjjj = 0;
 let curjjj = 0;
 let xxBuff = false;
-let zheluck = 2;
-let zheluck2 = 2;
+let zheluck = 3;
+let zheluck2 = 3;
 let zhedam = 2600;
 let maxdamZ = 0;
 let daZhaiQiYue = false;
@@ -242,8 +242,8 @@ function resetGame() {
     xxjjj = 0;
     curjjj = 0;
     xxBuff = false;
-    zheluck = 2;
-    zheluck2 = 2;
+    zheluck = 3;
+    zheluck2 = 3;
     zhedam = 2600;
     maxdamZ = 0;
     daZhaiQiYue = false;
@@ -481,7 +481,7 @@ function clickKmr() {
 
 function kmrTakeDam(dam,fromZhe){
   kmrHealthValue -= dam;
-  if (!fromZhe && dam > maxdamZ){
+  if (dam > maxdamZ){
     maxdamZ = dam;
   }
 }
@@ -605,11 +605,11 @@ function getattack(minion,master){
     if (checkLuck(zheluck*0.01,1)) {
       atk+=zhedam;
       skilled = true;
-      zheluck = 2;
+      zheluck = 3;
       showSkillWord(minion, "乾坤一掷");
       if (checkLuck(zheluck2*0.01,2)) {
-        zhedam += Math.floor(maxdamZ/11);
-        zheluck2 = 2;
+        zhedam = Math.max(zhedam,Math.floor(maxdamZ/11));
+        zheluck2 = 3;
         showSkillWord(minion, "伤害提升！");
       }
     }
@@ -734,9 +734,9 @@ function checkLuck(r,fromZhe) {
         if (Math.random() < luck) {
           pass = Math.random() < r;
           if (!pass) {
-            if (fromZhe == 1){zheluck += 0.2;}
-            if (fromZhe == 2){zheluck2 += 0.2;}
-            r += 0.2;
+            if (fromZhe == 1){zheluck += 0.3;}
+            if (fromZhe == 2){zheluck2 += 0.3;}
+            r += 0.003;
             showSkillWord(minion, "终将降临的肃清");
           }
         }
@@ -753,9 +753,9 @@ function checkLuck(r,fromZhe) {
         if (fromZhe && !pass){
           for (let minion of minionsState){
             if (minion.learnedSkills.includes("终将降临的肃清")){
-              if (fromZhe == 1){zheluck += 0.2;}
-              if (fromZhe == 2){zheluck2 += 0.2;}
-              r += 0.2;
+              if (fromZhe == 1){zheluck += 0.3;}
+              if (fromZhe == 2){zheluck2 += 0.3;}
+              r += 0.003;
               showSkillWord(minion, "终将降临的肃清");
             }
           }
@@ -1338,7 +1338,7 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 14){
         m.count = zeroCountDown(14);
-        let times = 1 + Math.floor(m.level/50);
+        let times = 1 + Math.floor(Math.pow(m.level,0.8)/50);
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random()*(unlockedMinions.length));
           minionsState[r].attack = incrementRandomDigit(minionsState[r].attack);
