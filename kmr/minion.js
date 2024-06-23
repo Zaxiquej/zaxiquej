@@ -115,7 +115,7 @@ const minions = [
         supEnhancecost: 5,
         skills: [
             { level: 9, name: '五种打法', effect: '如果你连续20s没有进行任何操作，获得[5*你拥有的助战数*(当前周目数+1)]点攻击力。' },
-            { level: 50, name: '每日饼之诗', effect: '每60s，使全部其他助战永久获得[该助战攻击力/40]点攻击力。' }
+            { level: 50, name: '每日饼之诗', effect: '每90s，使全部其他助战永久获得[该助战攻击力/25]点攻击力。' }
         ]
     },
     {
@@ -369,7 +369,7 @@ const minions = [
         enhancecost: 4,
         supEnhancecost: 3.25,
         skills: [
-            { level: 8, name: '中速导师', effect: '你解锁一个助战后，立刻免费将其升到该助战一半的等级，随后将其等级变回1（但是保留获得的攻击力，不会因此获得技能）。' },
+            { level: 8, name: '中速导师', effect: '你解锁或重抽助战后，立刻免费将其升到该助战一半的等级，随后将其等级变回1（但是保留获得的攻击力，不会因此获得技能）。' },
             { level: 36, name: '皇室荣耀', effect: '攻击时10%概率额外造成322点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。' }
         ]
     },
@@ -575,6 +575,23 @@ const minions = [
         skills: [
           { level: 10, name: '马纳利亚时刻', effect: '该技能为一个随机其他助战的技能，与其共享各种变量。进入新周目后，切换随机技能。' },
           { level: 50, name: '素材奖励', effect: 'kmr的生命值每周目第一次降到1/3以下与2/3以下时，也会切换随机技能。每当你切换到一个已有其他助战学会的技能，使其永久获得本助战攻击力的5%。' }
+        ]
+    },
+    {
+        name: '天宇技师',
+        id: 34,
+        image: 'kmr/image/tyjs.png',
+        voice: 'kmr/voice/tyjs.mp3',
+        description: '20个优胜，最高32连胜，SNC冠军，wgp梦碎者，现在还是人生导师',
+        baseattack: 14,
+        addattack: 7,
+        attackSpeed: 2000, // in milliseconds
+        basecost: 19,
+        enhancecost: 12,
+        supEnhancecost: 4.6,
+        skills: [
+            { level: 5, name: '知名皇黑', effect: '每当解锁或重抽助战后，接下来的18s内，你造成的伤害增加34%。（时间内再次触发改为延长时间）' },
+            { level: 66, name: '记忆殿堂', effect: '每72s，重新获得本局游戏中每种光环（具有持续时长的效果）最后一次获得时的效果。' }
         ]
     }
 ];

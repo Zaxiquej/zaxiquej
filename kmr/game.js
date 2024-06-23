@@ -47,6 +47,7 @@ let maxdamZ = 0;
 let daZhaiQiYue = false;
 let chongMing = 1;
 let cangSkill = "";
+let lastBuffs = {};
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -97,7 +98,8 @@ function encodeGameState(){
       maxdamZ,
       daZhaiQiYue,
       chongMing,
-      cangSkill
+      cangSkill,
+      lastBuffs
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -192,6 +194,7 @@ function loadGameState(encodedGameState){
   if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
   if (gameState.chongMing) chongMing = gameState.chongMing;
   if (gameState.cangSkill) cangSkill = gameState.cangSkill;
+  if (gameState.lastBuffs) lastBuffs = gameState.lastBuffs;
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -290,6 +293,7 @@ function addBuff(name,power,length,stackable){
       }
     }
   }
+  lastBuffs[name] = [power,length,stackable];
   buffs.push([name,power,length]);
 }
 
@@ -345,7 +349,13 @@ function unlockMinion(minion,temp){
       autoing = false;
       minion.level = 1;
       refMinions();
+      showSkillWord(m, "中速导师");
     }
+    if (m.learnedSkills.includes("知名皇黑")){
+      addBuff("huanghei", 34, 18, false);
+      showSkillWord(m, "知名皇黑");
+    }
+
   }
 }
 
@@ -482,6 +492,10 @@ function clickKmr() {
 }
 
 function kmrTakeDam(dam){
+  if (getBuffPower("huanghei").length > 0){
+    let huanghei = getBuffPower("huanghei")[0];
+    dam = Math.floor(dam * (1 + 0.01*huanghei))
+  }
   for (let m of minionsState){
     if (m.learnedSkills.includes("素材奖励")){
       let maxHealth = 500000 * Math.pow(10,level);
@@ -1227,7 +1241,7 @@ function refreshCangSkill() {
         r += 1;
       }
       let s = minions[r].skills[Math.floor(Math.random() * 2)];
-      console.log(s)
+
       m.learnedSkills.push(s.name);
       cangSkill = s.name;
       showSkillWord(m, "马纳利亚时刻！");
@@ -1418,15 +1432,28 @@ function updateCounts() {
     if (m.learnedSkills.includes("每日饼之诗")){
       if (!m.count){m.count = 0};
       m.count ++;
-      if (m.count >= 60){
-        m.count = zeroCountDown(60);
+      if (m.count >= 90){
+        m.count = zeroCountDown(90);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            raiseAtk(mi,Math.floor(m.attack/40));
+            raiseAtk(mi,Math.floor(m.attack/25));
             document.getElementById(`attack-${unlockedMinions.indexOf(mi.name)}`).textContent = formatNumber(mi.attack);
           }
         }
         showSkillWord(m, "每日饼之诗");
+        need = true;
+      }
+    }
+    if (m.learnedSkills.includes("记忆殿堂")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 72){
+        m.count = zeroCountDown(72);
+        for (let b of Object.keys(lastBuffs)){
+          let binfo = lastBuffs[b];
+          addBuff(b,binfo[0],binfo[1],binfo[2]);
+        }
+        showSkillWord(m, "记忆殿堂");
         need = true;
       }
     }
