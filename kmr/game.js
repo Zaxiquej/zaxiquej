@@ -49,6 +49,7 @@ let chongMing = 1;
 let cangSkill = "";
 let lastBuffs = {};
 let marriage = [];
+let victory = false;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -101,7 +102,8 @@ function encodeGameState(){
       chongMing,
       cangSkill,
       lastBuffs,
-      marriage
+      marriage,
+      victory
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -199,6 +201,7 @@ function loadGameState(encodedGameState){
   if (gameState.cangSkill) cangSkill = gameState.cangSkill;
   if (gameState.lastBuffs) lastBuffs = gameState.lastBuffs;
   if (gameState.marriage) marriage = gameState.marriage;
+  if (gameState.victory) victory = gameState.victory;
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -260,6 +263,7 @@ function resetGame() {
     cangSkill = "";
     lastBuffs = {};
     marriage = [];
+    victory = false;
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
@@ -307,7 +311,9 @@ function addBuff(name,power,length,stackable){
 function getBuffPower(name){
   let pow = [];
   for (let buff of buffs){
-    pow.push(buff[1]);
+    if (buff[0] == name){
+      pow.push(buff[1]);
+    }
   }
   return pow;
 }
@@ -315,7 +321,9 @@ function getBuffPower(name){
 function getBuffLength(name){
   let pow = [];
   for (let buff of buffs){
-    pow.push(buff[2]);
+    if (buff[0] == name){
+      pow.push(buff[2]);
+    }
   }
   return pow;
 }
@@ -588,7 +596,8 @@ function formatNumber(num) {
 }
 
 function checkVictory() {
-    if (kmrHealthValue <= 0) {
+    if (kmrHealthValue <= 0 && !victory) {
+      victory = true;
       autoing = false;
       totaltimePlayed = totaltimePlayed + timePlayed;
         victoryMessage.classList.remove('hidden');
@@ -607,6 +616,7 @@ function checkVictory() {
 }
 
 function phaseUpGame() {
+  victory = false;
     level = level +1;
     kmrHealthValue = 500000 * Math.pow(10,level);
     timePlayed = 0;
@@ -646,7 +656,7 @@ function getattack(minion,master){
     }
     if (m.learnedSkills.includes("祥瑞") && Math.abs(minionsState.indexOf(minion) - minionsState.indexOf(m))<=1 ){
       let low = Math.max(0, 0.5 - 0.01 * Math.floor(m.level/10));
-      let high = 2 + 0.04 * Math.floor(m.level/10);
+      let high = Math.min(10,2 + 0.04 * Math.floor(m.level/10));
       let rd = Math.random()* (high - low) + low;
       atk = Math.floor(atk * rd);
     }
@@ -740,7 +750,7 @@ function getattack(minion,master){
     let exbl = 0;
     let sp = [];
     for (let i = 0; i < getBuffPower("saki").length; i++){
-      exbl += getBuffPower("saki")[i];
+      exbl += 0.01*getBuffPower("saki")[i];
       if (checkLuck(0.02)){
         sp.push(getBuffPower("saki"));
       }
@@ -864,6 +874,7 @@ function getDigit(num){
 }
 function minionAttack(minion,master) {
     if (kmrHealthValue <= 0) return;
+
     skilled = false;
     let dam = getattack(minion,master)
     let gainC = dam;
@@ -880,6 +891,7 @@ function minionAttack(minion,master) {
       }
     }
     kmrTakeDam(dam);
+
     if (master){
       if (!minionDamages[master.name]){
         minionDamages[master.name] = 0;
@@ -1988,8 +2000,8 @@ function upgradeMinion(index,auto,free,noskill) {
 // Update game state every second
 setInterval(() => {
     timePlayed += 1;
-    let t = timePlayed + totaltimePlayed
-    if (t > 0 && t%60 == 0){
+    let t = timePlayed + totaltimePlayed;
+    if (t > 0 && t%60 == 0 && !victory){
       saveGame(true);
     }
     updateCounts();
