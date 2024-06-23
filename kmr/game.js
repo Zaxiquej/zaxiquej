@@ -1397,16 +1397,15 @@ function refreshCangSkill() {
       }
 
       let valid = false;
-
+      let s;
       while (!valid){
         let r = Math.floor(Math.random()*(minions.length - 1));
         if (r >= 33){ //仓仓是33
           r += 1;
         }
-        let s = minions[r].skills[Math.floor(Math.random() * 2)];
+        s = minions[r].skills[Math.floor(Math.random() * 2)];
         valid = !(["说书","不稳定的传送门","卓绝的契约","红娘"].includes(s));
       }
-
 
       m.learnedSkills.push(s.name);
       if (m.tempAtk > 0){
