@@ -160,6 +160,7 @@ function loadGame() {
     const encodedGameState = localStorage.getItem('savedGame');
     if (encodedGameState) {
         loadGameState(encodedGameState);
+        victory = false;
         checkVictory();
     } else {
 
@@ -551,6 +552,7 @@ function gainCoin(c){
 function clickKmr() {
     burning = 0;
     kmrTakeDam(1);
+    victory = false;
     totalClickDamage += 1;
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
