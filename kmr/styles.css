@@ -125,6 +125,194 @@ body {
     }
 }
 
+@keyframes color-animation {
+    0% {
+        color: red;
+    }
+    20% {
+        color: orange;
+    }
+    40% {
+        color: yellow;
+    }
+    60% {
+        color: green;
+    }
+    80% {
+        color: blue;
+    }
+    100% {
+        color: violet;
+    }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 旋转特效 */
+.rotate-effect {
+    animation: rotate-animation 1s forwards;
+}
+
+@keyframes rotate-animation {
+    0% {
+        transform: rotate(0deg);
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: rotate(360deg);
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 闪烁特效 */
+.blink-effect {
+    animation: blink-animation 1s forwards;
+}
+
+@keyframes blink-animation {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        opacity: 1;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        opacity: 0;
+    }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+/* 颜色变化特效 */
+.color-change-effect {
+    animation: color-animation 1s forwards;
+}
+/* 滑动特效 */
+.slide-effect {
+    animation: slide-animation 1s forwards;
+}
+
+@keyframes slide-animation {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 跳跃特效 */
+.jump-effect {
+    animation: jump-animation 1s forwards;
+}
+
+@keyframes jump-animation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(2);
+    }
+}
+
+/* 扭曲特效 */
+.twist-effect {
+    animation: twist-animation 1s forwards;
+}
+
+@keyframes twist-animation {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(45deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(2);
+    }
+}
+
+/* 弹性特效 */
+.bounce-effect {
+    animation: bounce-animation 1s forwards;
+}
+
+@keyframes bounce-animation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(-10px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(5px);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(-5px);
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(2);
+    }
+}
+
 @keyframes hit-animation {
     0% {
         transform: scale(1);

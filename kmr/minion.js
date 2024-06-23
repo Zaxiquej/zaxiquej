@@ -98,7 +98,7 @@ const minions = [
         supEnhancecost: 3.2,
         skills: [
             { level: 5, name: '鲁智深', effect: '增加[40*等级]攻击力。此技能还会在每个25的倍数等级触发，首次触发时额外重复一次。' },
-            { level: 24, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力，并令其立刻攻击一次，伤害视为该随从造成。' }
+            { level: 24, name: '金牌陪练', effect: '攻击后，18%概率随机使一个其他助战永久获得[该助战攻击力/15]点攻击力，并令其立刻攻击一次，伤害视为该助战造成。' }
         ]
     },
     {
@@ -233,7 +233,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 3,
         skills: [
-            { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率令其重新攻击一次。' },
+            { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率令其重新攻击一次，伤害视为该助战造成。' },
             { level: 34, name: '双猪的羁绊', effect: '每当介绍中含有🐷的助战升级后，如果等级为5的倍数，使其攻击力增加[该助战等级^1.1]的数值。' }
         ]
     },
@@ -573,7 +573,7 @@ const minions = [
         enhancecost: 16,
         supEnhancecost: 4,
         skills: [
-          { level: 10, name: '马纳利亚时刻', effect: '该技能为一个随机其他助战的技能。进入新周目后，切换随机技能。（会与技能原持有者共享技能相关变量与光环（具有持续时长的效果）收益）' },
+          { level: 10, name: '马纳利亚时刻', effect: '该技能为一个随机其他助战的技能。进入新周目后，切换随机技能。（会与技能原持有者共享技能相关变量与光环（具有持续时长的效果）收益，不会随机到一次性技能）' },
           { level: 50, name: '素材奖励', effect: 'kmr的生命值每周目第一次降到1/3以下与2/3以下时，也会切换随机技能。每当你切换到一个已有其他助战学会的技能，使其永久获得本助战攻击力的5%。' }
         ]
     },
@@ -626,6 +626,23 @@ const minions = [
         skills: [
             { level: 7, name: '老实猪猪', effect: '介绍中带有🐷的助战升级时增加的攻击力额外增加20%。' },
             { level: 77, name: '红娘', effect: '每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。' }
+        ]
+    },
+    {
+        name: '千代田桃',
+        id: 26,
+        image: 'kmr/image/tao.png',
+        voice: 'kmr/voice/tao.mp3',
+        description: '著有著名小说：《🐷猪之死》',
+        baseattack: 8,
+        addattack: 6,
+        attackSpeed: 2300, // in milliseconds
+        basecost: 10,
+        enhancecost: 5,
+        supEnhancecost: 2.2,
+        skills: [
+            { level: 6, name: '管人痴', effect: '介绍中带有🐷的助战升级消费的金钱变为原本的^0.95。' },
+            { level: 24, name: '小说家', effect: '你可以将字体特效变得 <em>炫酷</em>！在1秒内快速连续点击kmr3次以开启/关闭。' }
         ]
     }
 ];

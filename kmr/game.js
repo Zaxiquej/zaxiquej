@@ -50,6 +50,8 @@ let cangSkill = "";
 let lastBuffs = {};
 let marriage = [];
 let victory = false;
+let kmrquickHit = 0;
+let coolAnim = false;
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -103,7 +105,9 @@ function encodeGameState(){
       cangSkill,
       lastBuffs,
       marriage,
-      victory
+      victory,
+      kmrquickHit,
+      coolAnim
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -202,6 +206,9 @@ function loadGameState(encodedGameState){
   if (gameState.lastBuffs) lastBuffs = gameState.lastBuffs;
   if (gameState.marriage) marriage = gameState.marriage;
   if (gameState.victory) victory = gameState.victory;
+  if (gameState.kmrquickHit) kmrquickHit = gameState.kmrquickHit;
+  if (gameState.coolAnim) victory = gameState.coolAnim;
+
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -264,6 +271,8 @@ function resetGame() {
     lastBuffs = {};
     marriage = [];
     victory = false;
+    kmrquickHit = 0;
+    coolAnim = false;
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
@@ -423,6 +432,16 @@ function showWord(x, y, word) {
     setTimeout(() => wordEffect.remove(), 1000);
 }
 
+function generateRainbowText(text) {
+  const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  let coloredText = '';
+  for (let i = 0; i < text.length; i++) {
+    const color = colors[i % colors.length];
+    coloredText += `<span style="color: ${color};">${text[i]}</span>`;
+  }
+  return coloredText;
+}
+
 function showSkillWord(minion, word) {
   if (autoing){
     return;
@@ -440,6 +459,31 @@ function showSkillWord(minion, word) {
     wordEffect.innerText = `${word}`;
     wordEffect.style.left = `${x - 10}px`;
     wordEffect.style.top = `${y - 20}px`;
+
+    if (coolAnim) {
+      let rand = Math.random();
+
+      if (rand < 0.5){
+        wordEffect.innerHTML = generateRainbowText(word);
+      }
+
+      rand = Math.random();
+      if (rand < 0.5) {
+        const effects = [
+          'rotate-effect',
+          'blink-effect',
+          'color-change-effect',
+          'slide-effect',
+          'jump-effect',
+          'twist-effect',
+          'bounce-effect',
+        ];
+        const randomEffect = effects[Math.floor(Math.random() * effects.length)];
+        wordEffect.classList.add(randomEffect);
+      }
+
+    }
+
     document.body.appendChild(wordEffect);
     setTimeout(() => wordEffect.remove(), 1000);
 }
@@ -516,6 +560,27 @@ function clickKmr() {
     const hitSound = new Audio('kmr/hit.ogg');
     hitSound.play();
     gainCoin(1);
+    kmrquickHit += 1;
+    for (let m of minionsState){
+      if (m.learnedSkills.includes("小说家") && kmrquickHit >= 3){
+        kmrquickHit = 0;
+        if (coolAnim){
+          coolAnim = false;
+          const mi = document.getElementById(`kmr`);
+          var position = mi.getBoundingClientRect();
+          let x = position.left + (0.5*position.width);
+          let y = position.top + (0.5*position.height);
+          showWord(x,y, "小说家：特效已关闭");
+        } else {
+          coolAnim = true;
+          const mi = document.getElementById(`kmr`);
+          var position = mi.getBoundingClientRect();
+          let x = position.left + (0.5*position.width);
+          let y = position.top + (0.5*position.height);
+          showWord(x,y, "小说家：特效已开启");
+        }
+      }
+    }
     updateDisplays();
     checkVictory();
 }
@@ -1242,6 +1307,12 @@ function getEff(skill){
       } else {
         return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（已连结红线：["+marriage[0]+"]与["+marriage[1]+"]）";
       }
+      case "小说家":
+        if (coolAnim){
+          return skill.effect + "（已开启）";
+        } else {
+          return skill.effect + "（已关闭）";
+        }
     default:
       return skill.effect;
   }
@@ -1270,6 +1341,13 @@ function mupgradeCost(minion){
   }
   cost = Math.pow(cost,1 + minion.level/5000)
   cost = Math.floor(cost);
+
+  for (let m of minionsState){
+    if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")){
+      cost = Math.floor(Math.pow(cost,0.95));
+    }
+  }
+
   for (let m of minionsState){
     if (m.learnedSkills.includes("白骨夫人")){
       cost = Math.floor((0.8 - Math.min(0.1,0.01*Math.floor(m.level/100)))*cost)
@@ -1315,11 +1393,18 @@ function refreshCangSkill() {
           break;
         }
       }
-      let r = Math.floor(Math.random()*(minions.length - 1));
-      if (r >= 33){ //仓仓是33
-        r += 1;
+
+      let valid = false;
+
+      while (!valid){
+        let r = Math.floor(Math.random()*(minions.length - 1));
+        if (r >= 33){ //仓仓是33
+          r += 1;
+        }
+        let s = minions[r].skills[Math.floor(Math.random() * 2)];
+        valid = !(["说书","不稳定的传送门","卓绝的契约","红娘"].includes(s));
       }
-      let s = minions[r].skills[Math.floor(Math.random() * 2)];
+
 
       m.learnedSkills.push(s.name);
       if (m.tempAtk > 0){
@@ -1901,6 +1986,9 @@ function upgradeMinion(index,auto,free,noskill) {
           raiseAtk(minion,40*minion.level);
           if (minion.level == 5){raiseAtk(minion,40*minion.level,true)}
         }
+        if (minion.learnedSkills.includes("小说家")){
+          coolAnim = true;
+        }
         if (minion.learnedSkills.includes("阴阳秘法") && (minion.level==6 || minion.level%36 == 0)){
           for (let m of minionsState){
             raiseAtk(m,3*minion.level,true);
@@ -2004,6 +2092,7 @@ setInterval(() => {
     if (t > 0 && t%60 == 0 && !victory){
       saveGame(true);
     }
+    kmrquickHit = 0;
     updateCounts();
     updateDisplays();
 }, 1000);
