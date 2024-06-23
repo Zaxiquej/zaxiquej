@@ -633,7 +633,7 @@ const minions = [
         id: 26,
         image: 'kmr/image/tao.png',
         voice: 'kmr/voice/tao.mp3',
-        description: '著有著名小说：《🐷猪之死》',
+        description: '著有著名小说：《🍑🐷之死》',
         baseattack: 8,
         addattack: 6,
         attackSpeed: 2300, // in milliseconds
