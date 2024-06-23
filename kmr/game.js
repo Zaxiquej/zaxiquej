@@ -1665,8 +1665,8 @@ function updateCounts() {
       }
     }
     if (m.learnedSkills.includes("次元超越")){
-      let c = 30;
-      c -= Math.max(0,Math.min(10,Math.floor(m.level/100)));
+      let c = 40;
+      c -= Math.max(0,Math.min(15,Math.floor(Math.pow(m.level,0.8)/100)));
       if (!m.count){m.count = 0};
       m.count ++;
       if (m.count >= c){
