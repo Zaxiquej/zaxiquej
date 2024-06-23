@@ -715,7 +715,7 @@ function getattack(minion,master){
   }
   if (minion.learnedSkills.includes("开播！")){
     skilled = true;
-    atk += Math.floor(Math.pow(Math.abs(coins),0.7)/1000*minion.level);
+    atk += Math.floor(Math.pow(Math.abs(coins),0.66)/1000*minion.level);
   }
   if (getBuffPower("idol").length > 0){
     for (let i of getBuffPower("idol")){
@@ -807,7 +807,7 @@ function checkLuck(r,fromZhe) {
   let pass = rand < r;
   if (r < 0.2 && remluck > 0){
     remluck--;
-    pass = rand < (r * 3);
+    pass = rand < (r * 4);
   }
   if (fromZhe){
     for (let minion of minionsState){
@@ -934,7 +934,7 @@ function minionAttack(minion,master) {
       }
     }
     if (minion.learnedSkills.includes("+1+1")){
-      if (checkLuck(0.04)) {
+      if (checkLuck(0.06)) {
         skilled = true;
         minion.attack = Math.floor(minion.attack*1.1)
         minion.attackSpeed = Math.floor(minion.attackSpeed*1.08)

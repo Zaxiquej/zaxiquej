@@ -63,7 +63,7 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 3.4,
         skills: [
-            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.7)*该助战等级/1000]的伤害。' },
+            { level: 8, name: '开播！', effect: '该助战攻击时，额外造成等同于[金币^(0.66)*该助战等级/1000]的伤害。' },
             { level: 50, name: '白骨夫人', effect: '所有升级消费金币降低20%。（每100级额外减少1%，最高30%）' }
         ]
     },
@@ -148,7 +148,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 3.33,
         skills: [
-            { level: 4, name: '+1+1', effect: '攻击后，有4%概率增加10%攻击力，但攻击间隔上升8%。' },
+            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加10%攻击力，但攻击间隔上升8%。' },
             { level: 40, name: '饿龙咆哮', effect: '每24s，造成等同于[攻击力*攻击间隔]的伤害。' }
         ]
     },
@@ -319,7 +319,7 @@ const minions = [
         supEnhancecost: 4.2,
         skills: [
             { level: 8, name: '复仇', effect: 'kmr的生命值低于一半时，该助战对其造成的伤害增加[50+等级^0.75]%。' },
-            { level: 50, name: '操纵命运', effect: '每35s，使下2个概率低于20%触发的技能触发概率变为3倍。（每100级增加1个，上限12个）' }
+            { level: 50, name: '操纵命运', effect: '每35s，使下2个概率低于20%触发的技能触发概率变为4倍。（每100级增加1个，上限12个）' }
         ]
     },
     {
