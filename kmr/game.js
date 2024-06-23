@@ -48,6 +48,7 @@ let daZhaiQiYue = false;
 let chongMing = 1;
 let cangSkill = "";
 let lastBuffs = {};
+let marriage = [];
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -99,7 +100,8 @@ function encodeGameState(){
       daZhaiQiYue,
       chongMing,
       cangSkill,
-      lastBuffs
+      lastBuffs,
+      marriage
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -196,6 +198,7 @@ function loadGameState(encodedGameState){
   if (gameState.chongMing) chongMing = gameState.chongMing;
   if (gameState.cangSkill) cangSkill = gameState.cangSkill;
   if (gameState.lastBuffs) lastBuffs = gameState.lastBuffs;
+  if (gameState.marriage) marriage = gameState.marriage;
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -254,6 +257,9 @@ function resetGame() {
     maxdamZ = 0;
     daZhaiQiYue = false;
     chongMing = 1;
+    cangSkill = "";
+    lastBuffs = {};
+    marriage = [];
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
@@ -745,6 +751,13 @@ function getattack(minion,master){
       showSkillWord(minion, "必可活用于下一次……");
     }
   }
+
+  //沉底
+  for (let m of minionsState){
+    if (minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")){
+      atk *= 1.2;
+    }
+  }
   atk = Math.floor(atk);
   return atk;
 }
@@ -1055,9 +1068,11 @@ function refMinions() {
     minionsState.forEach((minion, index) => {
         const minionElement = document.createElement('div');
         minionElement.className = 'minion';
+        const nameStyle = marriage.includes(minion.name) ? 'style="color: pink;"' : '';
+
         minionElement.innerHTML = `
             <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
-            <div>${minion.name}</div>
+            <div ${nameStyle}>${minion.name}</div>
             <div>等级: <span id="level-${index}">${minion.level}</span></div>
             <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
             <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
@@ -1204,9 +1219,14 @@ function getEff(skill){
       }
     case "虫法之王":
       return "每当一个倒计时技能触发后，使一个随机助战获得"+chongMing+"*[该助战等级/3]点攻击力。每次触发，使倍率+1。";
-      case "马纳利亚时刻":
-        return `该技能为一个随机其他技能，与其共享各种变量。进入新周目后，切换随机技能。<br>当前技能：<br><span style="font-size: smaller;">${cangSkill} - ${getdesc(cangSkill)}</span>`;
-
+    case "马纳利亚时刻":
+      return `该技能为一个随机其他技能，与其共享各种变量。进入新周目后，切换随机技能。<br>当前技能：<br><span style="font-size: smaller;">${cangSkill} - ${getdesc(cangSkill)}</span>`;
+    case "红娘":
+      if (marriage.length < 2){
+        return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（尚未连结红线！）";
+      } else {
+        return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（已连结红线：["+marriage[0]+"]与["+marriage[1]+"]）";
+      }
     default:
       return skill.effect;
   }
@@ -1430,8 +1450,8 @@ function updateCounts() {
             if (mi.description.includes("🐷") && mi.name != m.name){
               r -= 1;
               if (r == 0){
-                raiseAtk(m,Math.max(1,Math.floor(minionsState[r].attack*0.02)))
-                minusLevel(minionsState[r],3);
+                raiseAtk(m,Math.max(1,Math.floor(mi.attack*0.02)))
+                minusLevel(mi,3);
               }
             }
           }
@@ -1694,7 +1714,7 @@ function getBaseLog(x, y) {
   return Math.log(y) / Math.log(x);
 }
 
-function raiseAtk(minion,amount,norepeat){
+function raiseAtk(minion,amount,norepeat,fromUpgrade){
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("做法") && amount < 0.01 * m.attack){
       if (checkLuck(0.15)){
@@ -1704,6 +1724,12 @@ function raiseAtk(minion,amount,norepeat){
     }
   }
   minion.attack += amount;
+  if (marriage[0] == minion.name && fromUpgrade){
+    raiseAtk(minionsState(unlockedMinions.indexOf(marriage[1])),amount);
+  }
+  if (marriage[1] == minion.name && fromUpgrade){
+    raiseAtk(minionsState(unlockedMinions.indexOf(marriage[0])),amount);
+  }
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("上帝") && !norepeat){
       raiseAtk(m,Math.max(1,Math.floor(amount*0.12)),true);
@@ -1813,14 +1839,22 @@ function upgradeMinion(index,auto,free,noskill) {
         }
 
         minion.level += 1;
-        raiseAtk(minion,minion.addattack); // Increase attack by 2 for each level
+        raiseAtk(minion,minion.addattack,true); // Increase attack by 2 for each level
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
-            raiseAtk(minion,Math.floor(Math.pow(m.attack,0.95)/30));
+            raiseAtk(minion,Math.floor(Math.pow(m.attack,0.95)/30),true);
             showSkillWord(m, "构筑带师");
           }
+          if (m.name != minion.name && m.learnedSkills.includes("红娘")){
+            if (marriage.length < 2 && (!autoing) && (!free) && (!auto) && (!noskill) && (!marriage.includes(minion.name))){
+              marriage.push(minion.name);
+              showSkillWord(m, "红娘");
+              showSkillWord(minion, "结婚(" + marriage.length + "/2)");
+              refMinions();
+            }
+          }
           if (minion.level%5 == 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")){
-            raiseAtk(minion,Math.floor(Math.pow(m.level,1.1)));
+            raiseAtk(minion,Math.floor(Math.pow(m.level,1.1)),true);
             showSkillWord(m, "双猪的羁绊");
           }
         }
@@ -1846,15 +1880,15 @@ function upgradeMinion(index,auto,free,noskill) {
 
         if (minion.learnedSkills.includes("鲁智深") && (minion.level==5 || minion.level%25 == 0)){
           raiseAtk(minion,40*minion.level);
-          if (minion.level == 5){raiseAtk(minion,40*minion.level)}
+          if (minion.level == 5){raiseAtk(minion,40*minion.level,true)}
         }
         if (minion.learnedSkills.includes("阴阳秘法") && (minion.level==6 || minion.level%36 == 0)){
           for (let m of minionsState){
-            raiseAtk(m,3*minion.level);
+            raiseAtk(m,3*minion.level,true);
           }
           if (minion.level == 6){
             for (let m of minionsState){
-              raiseAtk(m,3*minion.level);
+              raiseAtk(m,3*minion.level,true);
             }
           }
         }
@@ -1903,7 +1937,7 @@ function upgradeMinion(index,auto,free,noskill) {
             }
             if (tlv%100 == 0){
               for (let mi of minionsState){
-                raiseAtk(mi,tlv/5);
+                raiseAtk(mi,tlv/5,true);
               }
               showSkillWord(m, "杀出重围");
             }
