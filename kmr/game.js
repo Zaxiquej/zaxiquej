@@ -12,7 +12,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "2.4.6";
+let version = "2.4.7";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
