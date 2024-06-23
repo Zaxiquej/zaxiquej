@@ -1111,7 +1111,7 @@ function minionAttack(minion,master) {
       }
       if (minion.description.includes("🐷") && m.learnedSkills.includes("身外化身")){
         if (checkLuck(0.1)) {
-          minionAttack(minion);
+          minionAttack(minion,m);
           showSkillWord(m, "身外化身");
         }
       }
