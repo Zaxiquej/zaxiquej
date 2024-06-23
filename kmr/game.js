@@ -152,6 +152,7 @@ function loadGame() {
     const encodedGameState = localStorage.getItem('savedGame');
     if (encodedGameState) {
         loadGameState(encodedGameState);
+        checkVictory();
     } else {
 
     }
@@ -318,6 +319,20 @@ function buffCountDown() {
     buffs[i][2]--; // 减少length
     if (buffs[i][2] <= 0) {
       buffs.splice(i, 1); // 删除length为0的项目
+    }
+  }
+}
+
+function buffExtend(time) {
+  for (let i = buffs.length - 1; i >= 0; i--) {
+    buffs[i][2]+=time;
+  }
+}
+
+function killBuff(name,power) {
+  for (let i = buffs.length - 1; i >= 0; i--) {
+    if (buffs[i][0] == name && buffs[i][1] == power){
+      buffs.splice(i, 1)
     }
   }
 }
@@ -609,12 +624,14 @@ function phaseUpGame() {
 function getattack(minion,master){
   let atk = minion.attack;
   if (minion.learnedSkills.includes("鸭皇旋风斩！") && buffs.length > 0){
-    const maxAttackMinion = minionsState.reduce((max, minion) => {
-      return (minion.attack > max.attack) ? minion : max;
-    }, { attack: -Infinity }); // 初始化时假设最大的 attack 值非常小
+    if (checkLuck(0.25)){
+      const maxAttackMinion = minionsState.reduce((max, minion) => {
+        return (minion.attack > max.attack) ? minion : max;
+      }, { attack: -Infinity }); // 初始化时假设最大的 attack 值非常小
+      atk += Math.floor(maxAttackMinion.attack * (0.1* buffs.length));
+      showSkillWord(minion, "鸭皇旋风斩！");
+    }
 
-    atk += Math.floor(maxAttackMinion.attack * (0.1* buffs.length));
-    showSkillWord(minion, "鸭皇旋风斩！");
   }
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
@@ -710,6 +727,22 @@ function getattack(minion,master){
     atk *= 1 + exbl;
     if (exNum > 0){
       showSkillWord(minion, "弹幕指点*"+exNum);
+    }
+  }
+  if (getBuffPower("saki").length > 0 && minion.learnedSkills.includes("终轮常客")){
+    let exbl = 0;
+    let sp = [];
+    for (let i = 0; i < getBuffPower("saki").length; i++){
+      exbl += getBuffPower("saki")[i];
+      if (checkLuck(0.02)){
+        sp.push(getBuffPower("saki"));
+      }
+    }
+    atk *= 1 + exbl;
+    for (let i = sp.length - 1; i >= 0; i--) {
+      killBuff("saki",sp[i])
+      raiseAtk(minion,Math.floor(10*Math.pow(minion.attack,0.8)));
+      showSkillWord(minion, "必可活用于下一次……");
     }
   }
   atk = Math.floor(atk);
@@ -858,7 +891,7 @@ function minionAttack(minion,master) {
 
     if (minion.learnedSkills.includes("冲击冠军")){
       if (checkLuck(0.04)) {
-        raiseAtk(minion,minion.level);
+        raiseAtk(minion,Math.floor(Math.pow(minion.level,1.1)));
         skilled = true;
         document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
         showSkillWord(minion, "冲击冠军");
@@ -871,6 +904,17 @@ function minionAttack(minion,master) {
         freeUp += 5;
         showSkillWord(minion, "大梦仙尊");
         refMinions();
+      }
+    }
+    if (minion.learnedSkills.includes("咲夜的怀表")){
+      if (checkLuck(0.01)) {
+        skilled = true;
+        let t = 2;
+        if (getBuffPower("saki").length > 0){
+          t = 4;
+        }
+        buffExtend(t);
+        showSkillWord(minion, "咲夜的怀表");
       }
     }
     if (minion.learnedSkills.includes("+1+1")){
@@ -1444,6 +1488,16 @@ function updateCounts() {
         need = true;
       }
     }
+    if (m.learnedSkills.includes("终轮常客")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 40){
+        m.count = zeroCountDown(40);
+        addBuff("saki", Math.floor(100 + Math.pow(m.level,0.5)), 20, false);
+        showSkillWord(m, "终轮常客");
+      }
+    }
+
     if (m.learnedSkills.includes("记忆殿堂")){
       if (!m.count){m.count = 0};
       m.count ++;

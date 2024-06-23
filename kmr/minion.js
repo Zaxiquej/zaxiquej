@@ -29,7 +29,7 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 3,
         skills: [
-            { level: 6, name: '冲击冠军', effect: '4%概率攻击时永久提升[该助战等级]点攻击。' },
+            { level: 6, name: '冲击冠军', effect: '4%概率攻击时永久提升[该助战等级^1.1]点攻击。' },
             { level: 39, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
         ]
     },
@@ -231,7 +231,7 @@ const minions = [
         attackSpeed: 2800, // in milliseconds
         basecost: 19,
         enhancecost: 6,
-        supEnhancecost: 2,
+        supEnhancecost: 3,
         skills: [
             { level: 7, name: '身外化身', effect: '介绍中含有🐷的助战攻击后，10%概率令其重新攻击一次。' },
             { level: 34, name: '双猪的羁绊', effect: '每当介绍中含有🐷的助战升级后，如果等级为5的倍数，使其攻击力增加[该助战等级^1.1]的数值。' }
@@ -540,7 +540,7 @@ const minions = [
         supEnhancecost: 5,
         skills: [
             { level: 6, name: '弹幕机器人', effect: '每当一个倒计时技能触发后，8%概率在接下来的8s内，攻击时25%概率额外造成300%伤害。（可叠加，复数伤害叠加）' },
-            { level: 52, name: '鸭皇旋风斩！', effect: '如果当前有光环效果（具有持续时长的效果）进行中，攻击时，攻击力增加[所有助战中最高的攻击力*(0.1*当前光环效果数)]点。' }
+            { level: 52, name: '鸭皇旋风斩！', effect: '如果当前有光环效果（具有持续时长的效果）进行中，攻击时，25%概率攻击力增加[所有助战中最高的攻击力*(0.1*当前光环效果数)]点。' }
         ]
     },
     {
@@ -573,7 +573,7 @@ const minions = [
         enhancecost: 16,
         supEnhancecost: 4,
         skills: [
-          { level: 10, name: '马纳利亚时刻', effect: '该技能为一个随机其他助战的技能，与其共享各种变量。进入新周目后，切换随机技能。' },
+          { level: 10, name: '马纳利亚时刻', effect: '该技能为一个随机其他助战的技能。进入新周目后，切换随机技能。（会与技能原持有者共享技能相关变量与光环（具有持续时长的效果）收益）' },
           { level: 50, name: '素材奖励', effect: 'kmr的生命值每周目第一次降到1/3以下与2/3以下时，也会切换随机技能。每当你切换到一个已有其他助战学会的技能，使其永久获得本助战攻击力的5%。' }
         ]
     },
@@ -590,8 +590,25 @@ const minions = [
         enhancecost: 12,
         supEnhancecost: 4.6,
         skills: [
-            { level: 5, name: '知名皇黑', effect: '每当解锁或重抽助战后，接下来的18s内，你造成的伤害增加34%。（时间内再次触发改为延长时间）' },
+            { level: 5, name: '知名皇黑', effect: '每当解锁或重抽助战后，接下来的18s内，kmr受到的伤害增加34%。（时间内再次触发改为延长时间）' },
             { level: 66, name: '记忆殿堂', effect: '每72s，重新获得本局游戏中每种光环（具有持续时长的效果）最后一次获得时的效果。' }
+        ]
+    },
+    {
+        name: 'Saki',
+        id: 35,
+        image: 'kmr/image/saki.png',
+        voice: 'kmr/voice/saki.mp3',
+        description: '一个不会卖虫的男人',
+        baseattack: 19,
+        addattack: 14,
+        attackSpeed: 3800, // in milliseconds
+        basecost: 23,
+        enhancecost: 13,
+        supEnhancecost: 4.8,
+        skills: [
+            { level: 8, name: '终轮常客', effect: '每40s，在接下来的20s内，攻击时额外造成[100+该助战等级^0.5]%伤害，但是攻击时有2%概率直接失去此状态并永久增加[该助战攻击力^0.8]点攻击力。（可叠加）' },
+            { level: 45, name: '咲夜的怀表', effect: '攻击后，1%概率使全部当前光环（具有持续时长的效果）持续时长增加2s。如果处于[终轮常客]状态下，则改为增加4s。' }
         ]
     }
 ];
