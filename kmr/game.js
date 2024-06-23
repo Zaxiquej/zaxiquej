@@ -1068,7 +1068,7 @@ function refMinions() {
     minionsState.forEach((minion, index) => {
         const minionElement = document.createElement('div');
         minionElement.className = 'minion';
-        const nameStyle = marriage.includes(minion.name) ? 'style="color: pink;"' : '';
+        const nameStyle = marriage.includes(minion.name) ? 'style="color: pink; font-weight: bold;"' : '';
 
         minionElement.innerHTML = `
             <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
@@ -1307,6 +1307,10 @@ function refreshCangSkill() {
       let s = minions[r].skills[Math.floor(Math.random() * 2)];
 
       m.learnedSkills.push(s.name);
+      if (m.tempAtk > 0){
+        m.attack -= m.tempAtk;
+        m.tempAtk = 0;
+      }
       cangSkill = s.name;
       showSkillWord(m, "马纳利亚时刻！");
       if (m.learnedSkills.includes("素材奖励")){
