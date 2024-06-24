@@ -646,6 +646,13 @@ function damageKmr(dam,minion) {
           showSkillWord(minion, "大地之子");
         }
       }
+      if (m.learnedSkills.includes("比武招亲")){
+        if (checkLuck(0.05)){
+          let dam = Math.floor(m.attack*0.02*Math.pow(timePlayed + totaltimePlayed,0.5));
+          damageKmr(dam,m);
+          showSkillWord(m, "比武招亲");
+        }
+      }
       if (m.learnedSkills.includes("雷维翁之力")){
         raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.002));
         showSkillWord(minion, "雷维翁之力");
@@ -837,10 +844,13 @@ function getattack(minion,master){
   }
 
   if (getBuffPower("earth").length > 0){
+    let aa = 1;
     for (let i of getBuffPower("earth")){
-      atk *= (1 + i);
+      aa *= (1 + i);
       plusBuffPower("earth",i,0.01);
     }
+    aa = Math.min(1000,aa);
+    atk *= aa;
   }
   if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")){
     let exbl = 0;
@@ -2099,13 +2109,6 @@ function upgradeMinion(index,auto,free,noskill) {
             if (checkLuck(0.1)){
               gainCoin(Math.floor(upgradeCost * Math.min(1,0.3 + 0.01*Math.floor(m.level/10))));
               showSkillWord(m, "光速上分");
-            }
-          }
-          if (m.learnedSkills.includes("比武招亲")){
-            if (checkLuck(0.08)){
-              let dam = Math.floor(m.attack*0.02*Math.pow(timePlayed + totaltimePlayed,0.5));
-              damageKmr(dam,m);
-              showSkillWord(m, "比武招亲");
             }
           }
 
