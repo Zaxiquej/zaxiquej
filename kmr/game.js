@@ -628,7 +628,7 @@ function damageKmr(dam,minion) {
 
     for (let m of minionsState){
       if (m.learnedSkills.includes("雷维翁之力")){
-        raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.01));
+        raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.002));
         showSkillWord(minion, "雷维翁之力");
       }
     }
