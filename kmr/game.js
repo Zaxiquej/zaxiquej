@@ -1,4 +1,4 @@
-雷维翁之力const kmr = document.getElementById('kmr');
+const kmr = document.getElementById('kmr');
 const kmrHealth = document.getElementById('kmr-health');
 //const hitSound = document.getElementById('hit-sound');
 const coinsDisplay = document.getElementById('coins');
@@ -330,6 +330,17 @@ function getBuffPower(name){
   return pow;
 }
 
+function plusBuffPower(name,power,amount){
+  let pow = [];
+  for (let buff of buffs){
+    if (buff[0] == name && buff[1] == power){
+      buff[1] += amount;
+      return;
+    }
+  }
+
+}
+
 function getBuffLength(name){
   let pow = [];
   for (let buff of buffs){
@@ -627,6 +638,14 @@ function damageKmr(dam,minion) {
     minion.totalDamage += dam;
 
     for (let m of minionsState){
+
+      if (m.learnedSkills.includes("大地之子")){
+        if (checkLuck(0.01)) {
+          skilled = true;
+          addBuff("earth",0.01,5,true)
+          showSkillWord(minion, "大地之子");
+        }
+      }
       if (m.learnedSkills.includes("雷维翁之力")){
         raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.002));
         showSkillWord(minion, "雷维翁之力");
@@ -814,6 +833,13 @@ function getattack(minion,master){
   if (getBuffPower("idol").length > 0){
     for (let i of getBuffPower("idol")){
       atk *= i;
+    }
+  }
+
+  if (getBuffPower("earth").length > 0){
+    for (let i of getBuffPower("earth")){
+      atk *= (1 + i);
+      plusBuffPower("earth",i,0.01);
     }
   }
   if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")){
@@ -1630,6 +1656,26 @@ function updateCounts() {
         need = true;
       }
     }
+
+    if (m.learnedSkills.includes("硬实力冠军")){
+      if (!m.count){m.count = 0};
+      m.count ++;
+      if (m.count >= 30){
+        m.count = zeroCountDown(30);
+        let addatk = [];
+        for (let mi of minionsState){
+          if (mi.name != m.name && mi.attack > m.attack){
+            addatk.push(Math.floor(Math.pow(Math.abs(mi.attack - m.attack),0.9) * 0.1) );
+          }
+        }
+        for (let a of addatk){
+          raiseAtk(m,a);
+        }
+        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
+        showSkillWord(m, "硬实力冠军");
+        need = true;
+      }
+    }
     if (m.learnedSkills.includes("终轮常客")){
       if (!m.count){m.count = 0};
       m.count ++;
@@ -2057,7 +2103,7 @@ function upgradeMinion(index,auto,free,noskill) {
           }
           if (m.learnedSkills.includes("比武招亲")){
             if (checkLuck(0.08)){
-              let dam = Math.floor(m.attack*0.05*Math.pow(timePlayed + totaltimePlayed,0.5));
+              let dam = Math.floor(m.attack*0.02*Math.pow(timePlayed + totaltimePlayed,0.5));
               damageKmr(dam,m);
               showSkillWord(m, "比武招亲");
             }
