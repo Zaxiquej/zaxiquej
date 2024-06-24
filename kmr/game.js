@@ -52,6 +52,8 @@ let marriage = [];
 let victory = false;
 let kmrquickHit = 0;
 let coolAnim = false;
+let lostXYZ = 3;
+let lostTeam = [];
 //minions.map(minion => ({
 //    ...minion,
 //    level: 0,
@@ -107,7 +109,9 @@ function encodeGameState(){
       marriage,
       victory,
       kmrquickHit,
-      coolAnim
+      coolAnim,
+      lostXYZ,
+      lostTeam
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -209,6 +213,8 @@ function loadGameState(encodedGameState){
   if (gameState.victory) victory = gameState.victory;
   if (gameState.kmrquickHit) kmrquickHit = gameState.kmrquickHit;
   if (gameState.coolAnim) victory = gameState.coolAnim;
+  if (gameState.lostXYZ) lostXYZ = gameState.lostXYZ;
+  if (gameState.lostTeam) lostTeam = gameState.lostTeam;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -276,6 +282,8 @@ function resetGame() {
     victory = false;
     kmrquickHit = 0;
     coolAnim = false;
+    lostXYZ = 3;
+    lostTeam = [];
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
@@ -415,13 +423,38 @@ function showEffect(x, y, effectClass) {
   if (autoing){
     return;
   }
+  if (getBuffPower("lost").length > 0){
+    const effects = [
+      'lightning-effect',
+      'flame-effect',
+      'particle-explosion-effect',
+      'freeze-effect',
+      'poison-effect',
+      'flash-effect',
+    ];
+    effectClass = effects[Math.floor(Math.random() * effects.length)];
+  }
+
+
     const effect = document.createElement('div');
     effect.className = effectClass;
     effect.style.left = `${x - 10}px`;
     effect.style.top = `${y - 10}px`;
+
+    if (effectClass == "particle-explosion-effect"){
+      for (let i = 0; i < 10; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.setProperty('--x', `${Math.random() * 100 - 50}px`);
+          particle.style.setProperty('--y', `${Math.random() * 100 - 50}px`);
+          effect.appendChild(particle);
+      }
+    }
+
     document.body.appendChild(effect);
     setTimeout(() => effect.remove(), 1000);
 }
+
 
 function showDamage(x, y, damage) {
   if (autoing){
@@ -514,15 +547,16 @@ function updateHealth(health) {
     kmrHealthValue = Math.floor(kmrHealthValue)
     const healthPercentage = (kmrHealthValue / maxHealth) * 100;
     healthElement.style.width = healthPercentage + '%';
-    healthElement.textContent = health.toLocaleString();
+    healthElement.textContent = formatNumber2(health)
 }
 
 function updateDisplays() {
   if (autoing){
     return;
   }
-    kmrHealth.textContent = kmrHealthValue.toLocaleString();
+    kmrHealth.textContent = formatNumber2(kmrHealthValue);
     coinsDisplay.textContent = formatNumber(coins);
+    document.getElementById('phase-level').textContent = level;
     timePlayedDisplay.textContent = `${timePlayed}s`;
     totalClickDamageDisplay.textContent = totalClickDamage;
     minionDamagesDisplay.innerHTML = Object.keys(minionDamages)
@@ -634,6 +668,9 @@ function damageKmr(dam,minion) {
         dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
+    if (lostTeam.includes(minion.name)){
+      dam = dam * 3;
+    }
     kmrTakeDam(dam);
     minion.totalDamage += dam;
 
@@ -704,6 +741,41 @@ function formatNumber(num) {
     }
 }
 
+function formatNumber2(num) {
+    if (num == Infinity){
+        return num.toString();
+    }
+    const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
+    const threshold = 10000; // 万的阈值
+
+    if (num < threshold) {
+        return num.toString(); // 小于万，直接返回数字
+    }
+
+    let unitIndex = -1;
+    let formattedNum = num;
+
+    while (formattedNum >= threshold && unitIndex < units.length) {
+        formattedNum /= threshold;
+        unitIndex++;
+    }
+
+    if (unitIndex < units.length) {
+        let result = [];
+        for (let i = unitIndex; i >= 0; i--) {
+            const unitValue = Math.floor(num / Math.pow(threshold, i + 1));
+            if (unitValue > 0 || result.length > 0) { // 跳过高位的零
+                result.push(`${unitValue}${units[i]}`);
+                num -= unitValue * Math.pow(threshold, i + 1);
+            }
+        }
+
+        return result.slice(0, 4).join(''); // 只取最大的3个单位
+    } else {
+        return num.toExponential(12); // 超过最大单位，使用科学计数法，保留12位小数
+    }
+}
+
 function checkVictory() {
     if (kmrHealthValue <= 0 && !victory) {
       victory = true;
@@ -728,6 +800,7 @@ function checkVictory() {
 function phaseUpGame() {
   victory = false;
     level = level +1;
+    document.getElementById('phase-level').textContent = level;
     kmrHealthValue = 500000 * Math.pow(10,level);
     timePlayed = 0;
     //totalClickDamage = 0;
@@ -998,6 +1071,9 @@ function minionAttack(minion,master) {
     skilled = false;
     let dam = getattack(minion,master)
     let gainC = dam;
+    if (lostTeam.includes(minion.name)){
+      dam = dam * 3;
+    }
 
     if (minion.learnedSkills.includes("下饭")){
       if (checkLuck(0.1)) {
@@ -1010,6 +1086,7 @@ function minionAttack(minion,master) {
         }
       }
     }
+
     kmrTakeDam(dam);
 
     if (master){
@@ -1203,7 +1280,13 @@ function refMinions() {
     minionsState.forEach((minion, index) => {
         const minionElement = document.createElement('div');
         minionElement.className = 'minion';
-        const nameStyle = marriage.includes(minion.name) ? 'style="color: pink; font-weight: bold;"' : '';
+        const nameStyle = marriage.includes(minion.name) && lostTeam.includes(minion.name)
+            ? 'style="background: linear-gradient(to right, pink, red); -webkit-background-clip: text; color: transparent; font-weight: bold;"'
+            : marriage.includes(minion.name)
+                ? 'style="color: pink; font-weight: bold;"'
+                : lostTeam.includes(minion.name)
+                    ? 'style="color: red; font-weight: bold;"'
+                    : '';
 
         minionElement.innerHTML = `
             <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
@@ -1362,12 +1445,16 @@ function getEff(skill){
       } else {
         return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（已连结红线：["+marriage[0]+"]与["+marriage[1]+"]）";
       }
-      case "小说家":
-        if (coolAnim){
-          return skill.effect + "（已开启）";
-        } else {
-          return skill.effect + "（已关闭）";
-        }
+    case "小说家":
+      if (coolAnim){
+        return skill.effect + "（已开启）";
+      } else {
+        return skill.effect + "（已关闭）";
+      }
+    case "行为艺术":
+      return "每随机10s~70s，攻击X次，加速下一个该技能Ys，接下来Zs你的攻击将会造成酷炫的特效（不叠加，复数延长时长）。XYZ的数值为随机指定，其和为"+lostXYZ+"。每当任意一项为0，永久增加本技能XYZ的和1点。";
+    case "太上皇":
+      return skill.effect + "（当前战队成员："+(lostTeam.length > 0 ? lostTeam.join('、') : '无')+"）";
     default:
       return skill.effect;
   }
@@ -1535,6 +1622,25 @@ function generateXYZ(totalAllies) {
 
   // 调用 randomMultinomial 生成 X, Y, Z
   const [X, Y, Z] = randomMultinomial(totalAllies, probabilities);
+
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("太上皇")){
+      if (Z >= X + Y){
+        let filteredMinions = unlockedMinions.filter(mi =>
+            !lostTeam.includes(mi) && mi !== m.name
+        );
+        let r = Math.floor(Math.random()*(filteredMinions.length - 1));
+        let rname = filteredMinions[r];
+        let n = unlockedMinions.indexOf(rname);
+        lostTeam.push(rname);
+        showSkillWord(m, "太上皇招募："+rname);
+        if (lostTeam.length > Math.floor(Math.pow(unlockedMinions.length,0.5))){
+          lostTeam = [];
+          showSkillWord(m, "解散！");
+        }
+      }
+    }
+  }
 
   return { X, Y, Z };
 }
@@ -1740,7 +1846,30 @@ function updateCounts() {
           chongMing += 1;
           showSkillWord(m, "虫法之王");
         }
-        showSkillWord(m, "法神的宣告");
+        showSkillWord(m, "法神的宣告：X="+prob.X+", Y="+prob.Y+", Z="+prob.Z);
+        need = true;
+      }
+    }
+
+    if (m.learnedSkills.includes("行为艺术")){
+      if (!m.count){m.count = 0};
+      if (!m.maxCount){m.maxCount = Math.floor(10 + 60*Math.random())};
+      m.count ++;
+      if (m.count >= m.maxCount){
+        m.maxCount = Math.floor(10 + 60*Math.random());
+        m.count = zeroCountDown(m.maxCount);
+        let prob = generateXYZ(lostXYZ);
+        for (let i = 0; i < prob.X; i++){
+          minionAttack(m);
+        }
+        m.count += prob.Y;
+        if (prob.Z > 0){
+          addBuff("lost",114,prob.Z,false)
+        }
+        if (prob.X == 0 || prob.Y == 0 || prob.Z == 0){
+          lostXYZ += 1;
+        }
+        showSkillWord(m, "行为艺术：X="+prob.X+", Y="+prob.Y+", Z="+prob.Z);
         need = true;
       }
     }
@@ -2051,6 +2180,20 @@ function upgradeMinion(index,auto,free,noskill) {
               }
               if (s.name == "马纳利亚时刻"){
                 refreshCangSkill();
+              }
+              if (m.learnedSkills.includes("太上皇")){
+                let filteredMinions = unlockedMinions.filter(mi =>
+                    !lostTeam.includes(mi) && mi !== m.name
+                );
+                let r = Math.floor(Math.random()*(filteredMinions.length - 1));
+                let rname = filteredMinions[r];
+                let n = unlockedMinions.indexOf(rname);
+                lostTeam.push(rname);
+                showSkillWord(m, "太上皇招募："+rname);
+                if (lostTeam.length > Math.floor(Math.pow(unlockedMinions.length,0.5))){
+                  lostTeam = [];
+                  showSkillWord(m, "解散！");
+                }
               }
             }
           }
