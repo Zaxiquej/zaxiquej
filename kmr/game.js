@@ -12,7 +12,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "2.4.7";
+let version = "2.4.8";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
@@ -224,6 +224,8 @@ function importGame(event) {
     reader.onload = function(e) {
         const encodedGameState = e.target.result;
         loadGameState(encodedGameState);
+        victory = false;
+        checkVictory();
     };
     reader.readAsText(file);
 }
@@ -399,6 +401,9 @@ function unlockMinion(minion,temp){
 }
 
 function showEffect(x, y, effectClass) {
+  if (autoing){
+    return;
+  }
     const effect = document.createElement('div');
     effect.className = effectClass;
     effect.style.left = `${x - 10}px`;
@@ -408,6 +413,9 @@ function showEffect(x, y, effectClass) {
 }
 
 function showDamage(x, y, damage) {
+  if (autoing){
+    return;
+  }
     const damageEffect = document.createElement('div');
     if (damage > 0){
       damageEffect.className = 'damage-effect';
@@ -611,12 +619,19 @@ function kmrTakeDam(dam){
 function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     for (let m of minionsState){
-      if (m.name != minion.name && m.learnedSkills.includes("护国神橙")){
+      if (m.learnedSkills.includes("护国神橙")){
         dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
     kmrTakeDam(dam);
     minion.totalDamage += dam;
+
+    for (let m of minionsState){
+      if (m.learnedSkills.includes("被窝观赛")){
+        raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.01));
+      }
+    }
+
     if (!minionDamages[minion.name]){
       minionDamages[minion.name] = 0;
     }
@@ -678,6 +693,7 @@ function checkVictory() {
                 .map(minion => `<li>${minion.name}: ${formatNumber(minion.totalDamage)}</li>`)
                 .join('')}
         `;
+        timePlayed = 0;
 
     }
 }
@@ -2038,6 +2054,14 @@ function upgradeMinion(index,auto,free,noskill) {
               showSkillWord(m, "光速上分");
             }
           }
+          if (m.learnedSkills.includes("比武招亲")){
+            if (checkLuck(0.08)){
+              let dam = Math.floor(m.attack*0.05*Math.pow(timePlayed + totaltimePlayed,0.5));
+              damageKmr(dam,m);
+              showSkillWord(m, "比武招亲");
+            }
+          }
+
           if (m.name != minion.name && m.learnedSkills.includes("杀出重围")){
             let tlv = 0;
             for (let mi of minionsState){
@@ -2092,6 +2116,9 @@ setInterval(() => {
     let t = timePlayed + totaltimePlayed;
     if (t > 0 && t%60 == 0 && !victory){
       saveGame(true);
+    }
+    if (victory && timePlayed == 30){
+      phaseUpGame()
     }
     kmrquickHit = 0;
     updateCounts();
