@@ -661,22 +661,5 @@ const minions = [
             { level: 13, name: '比武招亲', effect: '每当一个助战升级，8%概率造成[0.05*攻击力*(总计经过时间^0.5)]点伤害。' },
             { level: 65, name: '雷维翁之力', effect: '每当一个助战造成直接攻击外的伤害，使其攻击力永久提升[(此伤害^0.85)*0.002]点。' }
         ]
-    },
-    {
-        name: '真白',
-        id: 39,
-        image: 'kmr/image/mashiro.png',
-        voice: 'kmr/voice/mashiro.mp3',
-        description: '感谢真白的大地之母为饼神挡住了贼尼克斯的诅咒',
-        baseattack: 8,
-        addattack: 7,
-        attackSpeed: 1900, // in milliseconds
-        basecost: 14,
-        enhancecost: 8,
-        supEnhancecost: 4.2,
-        skills: [
-            { level: 10, name: '硬实力冠军', effect: '每当一个助战造成直接攻击外的伤害，使其攻击力永久提升[(此伤害^0.85)*0.01]点。' },
-            { level: 60, name: '大地之子', effect: '每当一个助战造成直接攻击外的伤害，3%概率在接下来的5s内，所有助战在攻击后1%概率免费升一级，随后转变回原本的等级（不可叠加，复数延长时长）' }
-        ]
     }
 ];
