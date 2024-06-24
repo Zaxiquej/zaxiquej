@@ -1,4 +1,4 @@
-const kmr = document.getElementById('kmr');
+雷维翁之力const kmr = document.getElementById('kmr');
 const kmrHealth = document.getElementById('kmr-health');
 //const hitSound = document.getElementById('hit-sound');
 const coinsDisplay = document.getElementById('coins');
@@ -627,8 +627,9 @@ function damageKmr(dam,minion) {
     minion.totalDamage += dam;
 
     for (let m of minionsState){
-      if (m.learnedSkills.includes("被窝观赛")){
+      if (m.learnedSkills.includes("雷维翁之力")){
         raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.01));
+        showSkillWord(minion, "雷维翁之力");
       }
     }
 
