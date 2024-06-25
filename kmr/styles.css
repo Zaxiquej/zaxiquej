@@ -403,6 +403,13 @@ p {
     color: #FFD700;
 }
 
+#ethers {
+    font-weight: bold;
+    font-size: 18px;
+    color: #FF0000;
+}
+
+
 .minions-container {
     margin-bottom: 20px;
 }
@@ -649,4 +656,15 @@ button:disabled {
         transform: scale(2);
         opacity: 0;
     }
+}
+
+#ether-container {
+    display: none;
+}
+
+#softRsButton {
+    display: none; /* 初始状态隐藏 */
+    margin: 0 auto; /* 自动左右边距居中 */
+    text-align: center; /* 确保按钮文本居中 */
+    /* 你可以添加其他样式，比如 padding, border, background 等 */
 }

@@ -2,6 +2,7 @@ const kmr = document.getElementById('kmr');
 const kmrHealth = document.getElementById('kmr-health');
 //const hitSound = document.getElementById('hit-sound');
 const coinsDisplay = document.getElementById('coins');
+const ethersDisplay = document.getElementById('ethers');
 
 const timePlayedDisplay = document.getElementById('time-played');
 const totalClickDamageDisplay = document.getElementById('total-click-damage');
@@ -12,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "2.4.8";
+let version = "2.5";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
@@ -53,12 +54,10 @@ let kmrquickHit = 0;
 let coolAnim = false;
 let lostXYZ = 3;
 let lostTeam = [];
-//minions.map(minion => ({
-//    ...minion,
-//    level: 0,
-//    totalDamage: 0,
-//    learnedSkills: [],
-//}));
+
+//全局区
+let ethers = 0;
+let totalEthers = 0;
 
 function utf8_to_b64(str) {
     return btoa(unescape(encodeURIComponent(str)));
@@ -109,7 +108,9 @@ function encodeGameState(){
       kmrquickHit,
       coolAnim,
       lostXYZ,
-      lostTeam
+      lostTeam,
+      ethers,
+      totalEthers
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -171,6 +172,8 @@ function loadGame() {
 }
 
 function loadGameState(encodedGameState){
+  hardResetVars();
+  resetVars();
   const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
   const gameState = JSON.parse(gameStateStr);
   if (gameState.version) version = gameState.version;
@@ -213,6 +216,8 @@ function loadGameState(encodedGameState){
   if (gameState.coolAnim) victory = gameState.coolAnim;
   if (gameState.lostXYZ) lostXYZ = gameState.lostXYZ;
   if (gameState.lostTeam) lostTeam = gameState.lostTeam;
+  if (gameState.ethers) ethers = gameState.ethers;
+  if (gameState.totalEthers) totalEthers = gameState.totalEthers;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -254,47 +259,55 @@ document.getElementById('importButton').addEventListener('click', () => {
     document.getElementById('importInput').click();
 });
 
-// Function to reset all game variables
+function hardResetVars() {
+    ethers = 0;
+    totalEthers = 0;
+}
+
+function resetVars() {
+  version = "2.5"
+  kmrHealthValue = 500000;
+  level = 0;
+  coins = 0;
+  dps = 0;
+  timePlayed = 0;
+  totalClickDamage = 0;
+  rindex = 0;
+  unlockedMinions = [];
+  totaltimePlayed = 0;
+  burning = 0;
+  skilled = false;
+  zenxLV = 0;
+  zenxActive = false;
+  autoing = false;
+  remluck = 0;
+  buffs = [];
+  reroll = 0;
+  freeReroll = 2;
+  freeUp = 0;
+  yggdam = 322;
+  upgrading = false;
+  xxjjj = 0;
+  curjjj = 0;
+  xxBuff = false;
+  zheluck = 3;
+  zheluck2 = 3;
+  zhedam = 2600;
+  maxdamZ = 0;
+  daZhaiQiYue = false;
+  chongMing = 1;
+  cangSkill = "";
+  lastBuffs = {};
+  marriage = [];
+  victory = false;
+  kmrquickHit = 0;
+  coolAnim = false;
+  lostXYZ = 3;
+  lostTeam = [];
+}
+
 function resetGame() {
-    version = "2.3.1";
-    kmrHealthValue = 500000;
-    level = 0;
-    coins = 0;
-    dps = 0;
-    timePlayed = 0;
-    totalClickDamage = 0;
-    rindex = 0;
-    unlockedMinions = [];
-    totaltimePlayed = 0;
-    burning = 0;
-    skilled = false;
-    zenxLV = 0;
-    zenxActive = false;
-    autoing = false;
-    remluck = 0;
-    buffs = [];
-    reroll = 0;
-    freeReroll = 2;
-    freeUp = 0;
-    yggdam = 322;
-    upgrading = false;
-    xxjjj = 0;
-    curjjj = 0;
-    xxBuff = false;
-    zheluck = 3;
-    zheluck2 = 3;
-    zhedam = 2600;
-    maxdamZ = 0;
-    daZhaiQiYue = false;
-    chongMing = 1;
-    cangSkill = "";
-    lastBuffs = {};
-    marriage = [];
-    victory = false;
-    kmrquickHit = 0;
-    coolAnim = false;
-    lostXYZ = 3;
-    lostTeam = [];
+    resetVars();
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
@@ -307,12 +320,35 @@ function resetGame() {
     detailsContainer.innerHTML = ``;
 }
 
+function gainEtherAmount(){
+  return level - 9;
+}
+
+function gainEther(){
+  let amount = gainEtherAmount();
+  ethers += amount;
+  totalEthers += amount;
+}
+
+function etherPlusDam(){
+  return 1 + 0.05 * ethers;
+}
+
 // Function to handle hard reset confirmation
 function hardResetGame() {
     if (confirm("你确定要重置游戏吗？这将清除所有进度。")) {
         if (confirm("再次确认：你真的要重置游戏吗？这将无法撤销。")) {
+            hardResetVars();
             resetGame();
         }
+    }
+}
+
+// Function to handle hard reset confirmation
+function softReset() {
+    if (confirm("你确定要转生吗？这将清除所有进度，但你可以获得+"+gainEtherAmount()+"以太奖励。")) {
+      gainEther();
+      resetGame();
     }
 }
 
@@ -567,6 +603,7 @@ function updateDisplays() {
   }
     kmrHealth.textContent = formatNumber2(kmrHealthValue);
     coinsDisplay.textContent = formatNumber(coins);
+    ethersDisplay.textContent = formatNumber(ethers) + "("+ formatNumber(totalEthers)+")";
     document.getElementById('phase-level').textContent = level;
     timePlayedDisplay.textContent = `${timePlayed}s`;
     totalClickDamageDisplay.textContent = totalClickDamage;
@@ -578,6 +615,19 @@ function updateDisplays() {
     `;
     updateHealth(kmrHealthValue);
     document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) +")";
+    const etherContainer = document.getElementById('ether-container');
+    if (totalEthers > 0) {
+        etherContainer.style.display = 'block';
+    } else {
+        etherContainer.style.display = 'none';
+    }
+    const prestige = document.getElementById('softRsButton');
+    if (level > 10) {
+        prestige.style.display = 'block';
+    } else {
+        prestige.style.display = 'none';
+    }
+    prestige.innerHTML = "转生(+"+gainEtherAmount()+"以太)"
 }
 
 // 创建伤害数字动画
@@ -604,17 +654,20 @@ function gainCoin(c){
 
 function clickKmr() {
     burning = 0;
-    kmrTakeDam(1);
+    let dam = 1;
+    dam = dam * etherPlusDam();
+    dam = Math.floor(dam);
+    kmrTakeDam(dam);
     victory = false;
-    totalClickDamage += 1;
+    totalClickDamage += dam;
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
     let y = position.top + (Math.random()*kmr.height);
     showEffect(x,y, 'hit-effect');
-    showDamage(x,y, 1);
+    showDamage(x,y, dam);
     const hitSound = new Audio('kmr/hit.ogg');
     hitSound.play();
-    gainCoin(1);
+    gainCoin(dam);
     kmrquickHit += 1;
     for (let m of minionsState){
       if (m.learnedSkills.includes("小说家") && kmrquickHit >= 3){
@@ -665,12 +718,14 @@ function damageKmr(dam,minion) {
     if (kmrHealthValue <= 0) return;
     for (let m of minionsState){
       if (m.learnedSkills.includes("护国神橙")){
-        dam = Math.floor(dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
+        dam = (dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
     if (lostTeam.includes(minion.name)){
       dam = dam * 3;
     }
+    dam = dam * etherPlusDam();
+    dam = Math.floor(dam);
     kmrTakeDam(dam);
 
     for (let m of minionsState){
@@ -1077,6 +1132,8 @@ function minionAttack(minion,master) {
     if (lostTeam.includes(minion.name)){
       dam = dam * 3;
     }
+    dam = dam * etherPlusDam();
+    dam = Math.floor(dam);
 
     if (minion.learnedSkills.includes("下饭")){
       if (checkLuck(0.1)) {
@@ -1214,7 +1271,7 @@ function minionAttack(minion,master) {
             let t = 3 + getBuffPower("idol").length * 3;
 
             // 过滤掉所有learnedSkills中有“人偶使”的角色
-            const filteredMinions = unlockedMinions.filter(m => !minionsState[m].learnedSkills.includes("人偶使"));
+            const filteredMinions = unlockedMinions.filter(m => !minionsState[unlockedMinions.indexOf(m)].learnedSkills.includes("人偶使"));
 
             for (let i = 0; i < t; i++) {
                 if (filteredMinions.length === 0) break; // 如果没有可选的角色，提前退出循环
