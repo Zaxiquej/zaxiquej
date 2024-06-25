@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "2.5";
+let version = "3.0.0";
 let kmrHealthValue = 500000;
 let level = 0;
 let coins = 0;
@@ -54,6 +54,7 @@ let kmrquickHit = 0;
 let coolAnim = false;
 let lostXYZ = 3;
 let lostTeam = [];
+let obtainedBonds = {};
 
 //全局区
 let ethers = 0;
@@ -110,7 +111,8 @@ function encodeGameState(){
       lostXYZ,
       lostTeam,
       ethers,
-      totalEthers
+      totalEthers,
+      obtainedBonds
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -166,6 +168,7 @@ function loadGame() {
         victory = false;
         checkVictory();
         updateSkills();
+        autoing = false;
     } else {
 
     }
@@ -218,6 +221,7 @@ function loadGameState(encodedGameState){
   if (gameState.lostTeam) lostTeam = gameState.lostTeam;
   if (gameState.ethers) ethers = gameState.ethers;
   if (gameState.totalEthers) totalEthers = gameState.totalEthers;
+  if (gameState.obtainedBonds) obtainedBonds = gameState.obtainedBonds;
 
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -249,6 +253,8 @@ function importGame(event) {
         loadGameState(encodedGameState);
         victory = false;
         checkVictory();
+        updateSkills();
+        autoing = false;
     };
     reader.readAsText(file);
 }
@@ -262,10 +268,11 @@ document.getElementById('importButton').addEventListener('click', () => {
 function hardResetVars() {
     ethers = 0;
     totalEthers = 0;
+    obtainedBonds = {};
 }
 
 function resetVars() {
-  version = "2.5"
+  version = "3.0.0"
   kmrHealthValue = 500000;
   level = 0;
   coins = 0;
@@ -321,7 +328,7 @@ function resetGame() {
 }
 
 function gainEtherAmount(){
-  return level - 9;
+  return level;
 }
 
 function gainEther(){
@@ -331,7 +338,7 @@ function gainEther(){
 }
 
 function etherPlusDam(){
-  return 1 + 0.05 * ethers;
+  return 1 + 0.025 * totalEthers;
 }
 
 // Function to handle hard reset confirmation
@@ -618,8 +625,10 @@ function updateDisplays() {
     const etherContainer = document.getElementById('ether-container');
     if (totalEthers > 0) {
         etherContainer.style.display = 'block';
+        document.getElementById('bondsButton').style.display = 'block';
     } else {
         etherContainer.style.display = 'none';
+        document.getElementById('bondsButton').style.display = 'none';
     }
     const prestige = document.getElementById('softRsButton');
     if (level > 10) {
@@ -721,10 +730,7 @@ function damageKmr(dam,minion) {
         dam = (dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
       }
     }
-    if (lostTeam.includes(minion.name)){
-      dam = dam * 3;
-    }
-    dam = dam * etherPlusDam();
+    dam = dam * extraDamRatio(minion);
     dam = Math.floor(dam);
     kmrTakeDam(dam);
 
@@ -1129,10 +1135,7 @@ function minionAttack(minion,master) {
     skilled = false;
     let dam = getattack(minion,master)
     let gainC = dam;
-    if (lostTeam.includes(minion.name)){
-      dam = dam * 3;
-    }
-    dam = dam * etherPlusDam();
+    dam = dam * extraDamRatio(minion);
     dam = Math.floor(dam);
 
     if (minion.learnedSkills.includes("下饭")){
@@ -1250,6 +1253,12 @@ function minionAttack(minion,master) {
     }
     if (minion.learnedSkills.includes("理解不行")){
       let luck = Math.min(0,25,0.05 + 0.01 * getDigit(minion.attack));
+      for (let bond of bondData){
+        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '理解不行'){
+          let c = bond.skillPlus[1];
+          luck += loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+        }
+      }
       if (checkLuck(luck)) {
         skilled = true;
         gainCoin(10*Math.floor(Math.pow(minion.level,2)));
@@ -1276,7 +1285,7 @@ function minionAttack(minion,master) {
             for (let i = 0; i < t; i++) {
                 if (filteredMinions.length === 0) break; // 如果没有可选的角色，提前退出循环
                 let r = Math.floor(Math.random() * filteredMinions.length);
-                minionAttack(minionsState[filteredMinions[r]], minion);
+                minionAttack(minionsState[unlockedMinions.indexOf(filteredMinions[r])], minion);
             }
 
             showSkillWord(minion, "人偶使");
@@ -1375,9 +1384,17 @@ function unlockCost(n) {
   }
   for (let m of minionsState){
     if (m.learnedSkills.includes("小猪存钱罐")){
-      cost = Math.floor(0.75*cost)
+      cost = 0.75*cost;
     }
   }
+  for (let bond of bondData){
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.unlockMinusCost){
+      let c = bond.unlockMinusCost;
+      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+      cost *= (1 - minrate);
+    }
+  }
+  cost = Math.floor(cost)
   return cost;
 }
 
@@ -1537,7 +1554,19 @@ function mupgradeCost(minion){
     cost *= Math.floor(Math.pow(minion.level/100,0.5));
   }
   cost = Math.pow(cost,1 + minion.level/5000)
-  cost = Math.floor(cost);
+
+  for (let bond of bondData){
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeMinusCost && bond.characters.includes(minion.name)){
+      let c = bond.upgradeMinusCost;
+      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+      cost *= (1 - minrate);
+    }
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllMinusCost ){
+      let c = bond.upgradeAllMinusCost;
+      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+      cost *= (1 - minrate);
+    }
+  }
 
   for (let m of minionsState){
     if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")){
@@ -1550,6 +1579,8 @@ function mupgradeCost(minion){
       cost = Math.floor((0.8 - Math.min(0.1,0.01*Math.floor(m.level/100)))*cost)
     }
   }
+
+  cost = Math.floor(cost);
   return cost;
 }
 
@@ -1700,6 +1731,62 @@ function generateXYZ(totalAllies) {
   return { X, Y, Z };
 }
 
+function completedBond(bond){
+    for (let c of bond.characters){
+      if (!unlockedMinions.includes(c)){
+        return false;
+      }
+    }
+    return true;
+}
+
+function extraDamRatio(minion){
+  let dam = 1;
+  if (lostTeam.includes(minion.name)){
+    dam = dam * 3;
+  }
+  dam = dam * etherPlusDam();
+  for (let bond of bondData){
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.extraDam && bond.characters.includes(minion.name)){
+      dam *= 1 + bond.extraDam * obtainedBonds[bond.name].level;
+    }
+  }
+  for (let bond of bondData){
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.extraDamAll){
+      dam *= 1 + bond.extraDamAll * obtainedBonds[bond.name].level;
+    }
+  }
+
+  return dam;
+}
+function getAddattack(minion){
+    let amount = minion.addattack;
+    for (let bond of bondData){
+      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeExtraA && bond.characters.includes(minion.name)){
+        amount += bond.upgradeExtraA * obtainedBonds[bond.name].level;
+      }
+    }
+    return amount;
+}
+
+function loglevel(level,base,thres,decayRate,max) {
+    let reductionRate = 0;
+
+    if (level <= thres) {
+        reductionRate = base * level;
+    } else {
+        reductionRate = base * thres;
+
+        const excessLevels = level - thres;
+        const logDecay = Math.log(1 + excessLevels*base) * decayRate;
+
+        reductionRate += logDecay;
+    }
+
+    return reductionRate;
+}
+
+
 function updateCounts() {
   if (kmrHealthValue <= 0){return;}
   let need = false;
@@ -1819,7 +1906,14 @@ function updateCounts() {
         m.count = zeroCountDown(90);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            raiseAtk(mi,Math.floor(m.attack/25));
+            let amount = m.attack/25;
+            for (let bond of bondData){
+              if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '每日饼之诗'){
+                let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+                amount *= 1 + c;
+              }
+            }
+            raiseAtk(mi,Math.floor(amount));
             document.getElementById(`attack-${unlockedMinions.indexOf(mi.name)}`).textContent = formatNumber(mi.attack);
           }
         }
@@ -1897,7 +1991,21 @@ function updateCounts() {
         }
         for (let i = 0; i < prob.Z; i++){
           let r = Math.floor(Math.random()*(unlockedMinions.length));
-          raiseAtk(minionsState[r],Math.floor(chongMing*m.level/3));
+          let kagaMulti = 1;
+          let amount = chongMing*m.level/3
+
+          for (let bond of bondData){
+            if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫法之王'){
+              let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+              kagaMulti *= 1 + c;
+              chongMing += obtainedBonds[bond.name].level;
+            }
+          }
+
+          if (minionsState[r].name == 'kaga'){
+            amount *= kagaMulti;
+          }
+          raiseAtk(minionsState[r],Math.floor(amount));
           chongMing += 1;
           showSkillWord(m, "虫法之王");
         }
@@ -1965,7 +2073,15 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 50){
         m.count = zeroCountDown(50);
-        gainCoin(Math.min(maxdamZ,Math.floor(coins/10)));
+        let amount = coins/10;
+        for (let bond of bondData){
+          if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '罕见'){
+            let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+            amount *= 1 + c;
+          }
+        }
+        amount = Math.floor(amount);
+        gainCoin(Math.min(maxdamZ,amount));
         skilled = true;
         showSkillWord(m, "罕见");
         need = true;
@@ -2037,8 +2153,18 @@ function updateCounts() {
       if (m.count >= 32){
         m.count = zeroCountDown(32);
         let dam = 0;
+        let zPlus = 0;
+        for (let bond of bondData){
+          if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '巨人'){
+            let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+            zPlus += c;
+          }
+        }
         for (let mi of minionsState){
           dam += mi.attack;
+          if (mi.name == "ZenX"){
+            dam += mi.attack * zPlus;
+          }
         }
         dam*= getDigit(m.attack);
         dam = Math.floor(dam/2)
@@ -2077,6 +2203,13 @@ function getBaseLog(x, y) {
 }
 
 function raiseAtk(minion,amount,norepeat,fromUpgrade){
+  if (fromUpgrade){
+    for (let bond of bondData){
+      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl){
+        amount += Math.max(1,amount * (1 +bond.upgradeAllAPlus * obtainedBonds[bond.name].level));
+      }
+    }
+  }
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("做法") && amount < 0.01 * m.attack){
       if (checkLuck(0.15)){
@@ -2092,14 +2225,45 @@ function raiseAtk(minion,amount,norepeat,fromUpgrade){
   if (marriage[1] == minion.name && fromUpgrade){
     raiseAtk(minionsState(unlockedMinions.indexOf(marriage[0])),amount);
   }
+
+  if (fromUpgrade){
+    for (let bond of bondData){
+      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upBond){
+        let c = bond.upBond;
+        let ratio = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+        if (bond.characters[0] == minion.name){
+          raiseAtk(minionsState(unlockedMinions.indexOf(bond.characters[1])),Math.max(1,Math.floor(ratio * amount)));
+        }
+        if (bond.characters[1] == minion.name){
+          raiseAtk(minionsState(unlockedMinions.indexOf(mbond.characters[0])),Math.max(1,Math.floor(ratio * amount)));
+        }
+      }
+    }
+  }
+
   for (let m of minionsState){
     if (m.name != minion.name && m.learnedSkills.includes("上帝") && !norepeat){
-      raiseAtk(m,Math.max(1,Math.floor(amount*0.12)),true);
+      let ratio = 0.12;
+      for (let bond of bondData){
+        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '上帝'){
+          let c = bond.skillPlus[1];
+          ratio += loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+        }
+      }
+      raiseAtk(m,Math.max(1,Math.floor(amount*ratio)),true);
       document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
       showSkillWord(m, "上帝");
     }
     if (upgrading && m.learnedSkills.includes("皇室荣耀")){
-      yggdam += amount;
+      let am = amount;
+      for (let bond of bondData){
+        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '皇室荣耀'){
+          let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+          am *= 1 + c;
+        }
+      }
+      am = Math.floor(am);
+      yggdam += am;
       showSkillWord(m, "皇室荣耀");
     }
   }
@@ -2201,7 +2365,7 @@ function upgradeMinion(index,auto,free,noskill) {
         }
 
         minion.level += 1;
-        raiseAtk(minion,minion.addattack,true); // Increase attack by 2 for each level
+        raiseAtk(minion,getAddattack(minion),true); // Increase attack by 2 for each level
         for (let m of minionsState){
           if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
             raiseAtk(minion,Math.floor(Math.pow(m.attack,0.95)/30),true);
@@ -2236,18 +2400,18 @@ function upgradeMinion(index,auto,free,noskill) {
               if (s.name == "马纳利亚时刻"){
                 refreshCangSkill();
               }
-              if (m.learnedSkills.includes("太上皇")){
+              if (s.name == ("太上皇")){
                 let filteredMinions = unlockedMinions.filter(mi =>
-                    !lostTeam.includes(mi) && mi !== m.name
+                    !lostTeam.includes(mi) && mi !== minion.name
                 );
                 let r = Math.floor(Math.random()*(filteredMinions.length - 1));
                 let rname = filteredMinions[r];
                 let n = unlockedMinions.indexOf(rname);
                 lostTeam.push(rname);
-                showSkillWord(m, "太上皇招募："+rname);
+                showSkillWord(minion, "太上皇招募："+rname);
                 if (lostTeam.length > Math.floor(Math.pow(unlockedMinions.length,0.5))){
                   lostTeam = [];
-                  showSkillWord(m, "解散！");
+                  showSkillWord(minion, "解散！");
                 }
               }
             }
@@ -2393,6 +2557,175 @@ const helpButton = document.getElementById("helpButton");
 // Get the <span> element that closes the modal
 const closeSpan = document.getElementsByClassName("close")[0];
 
+document.getElementById('bondsButton').onclick = toggleBondsModal;
+
+function toggleBondsModal() {
+   const modal = document.getElementById('bondsModal');
+   modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+   if (modal.style.display === 'block') {
+       updateBondsList();
+   }
+}
+
+function drawBond(times) {
+   if (ethers < times) {
+       const mi = document.getElementById(`draw-`+times);
+       var position = mi.getBoundingClientRect();
+       let x = position.left + (0.5*position.width);
+       let y = position.top + (0.5*position.height);
+       showWord(x,y, "以太不足！");
+       return;
+   }
+   ethers -= times;
+
+   for (let i = 0; i < times; i++) {
+       const rarity = getRandomRarity();
+       const bond = getRandomBond(rarity);
+       showDrawEffect(bond);
+       if (!obtainedBonds[bond.name]) {
+           obtainedBonds[bond.name] = {level:0, require: 1, have: 0};
+       }
+       obtainedBonds[bond.name].have += 1;
+       if (obtainedBonds[bond.name].have >= obtainedBonds[bond.name].require){
+         obtainedBonds[bond.name].level += 1;
+         obtainedBonds[bond.name].require += obtainedBonds[bond.name].level + 1;
+         if (obtainedBonds[bond.name].level == 20){
+           obtainedBonds[bond.name].require = Math.Infinity;
+         }
+       }
+   }
+
+       // 获取所有羁绊名称
+    const bondNames = Object.keys(obtainedBonds);
+
+    // 定义稀有度顺序
+    const rarityOrder = ['rainbow', 'gold', 'silver', 'bronze'];
+
+    // 根据稀有度排序羁绊
+    bondNames.sort((bondName1, bondName2) => {
+        const rarity1 = bondData.find(bond => bond.name === bondName1).rarity;
+        const rarity2 = bondData.find(bond => bond.name === bondName2).rarity;
+
+        return rarityOrder.indexOf(rarity1) - rarityOrder.indexOf(rarity2);
+    });
+
+    // 根据排序后的羁绊名称更新 obtainedBonds
+    const sortedObtainedBonds = {};
+    bondNames.forEach(bondName => {
+        sortedObtainedBonds[bondName] = obtainedBonds[bondName];
+    });
+
+    // 更新 obtainedBonds 为排序后的结果
+    obtainedBonds = sortedObtainedBonds;
+   updateBondsList();
+}
+
+function showDrawEffect(bond) {
+    let effectClass;
+
+    switch (bond.rarity) {
+        case 'bronze':
+            effectClass = 'bronze-effect'; // Bronze rarity animation
+            break;
+        case 'silver':
+            effectClass = 'silver-effect'; // Silver rarity animation
+            break;
+        case 'gold':
+            effectClass = 'goldy-effect'; // Gold rarity animation
+            break;
+        case 'rainbow':
+            effectClass = 'rainbow-effect'; // Rainbow rarity animation
+            break;
+        default:
+            effectClass = 'bronze-effect'; // Default to bronze if unknown rarity
+    }
+
+    const x = (0.25 + 0.5 * Math.random()) * window.innerWidth;
+    const y = (0.25 + 0.5 * Math.random()) * window.innerHeight;
+
+    playDrawAnimation(x, y, effectClass, bond.name);
+}
+
+function playDrawAnimation(x, y, effectClass, bondName) {
+    const animationElement = document.createElement('div');
+    animationElement.className = effectClass;
+    animationElement.style.left = `${x}px`;
+    animationElement.style.top = `${y}px`;
+    animationElement.textContent = bondName; // Display bond name within the animation
+
+    document.body.appendChild(animationElement);
+
+    setTimeout(() => {
+        animationElement.remove();
+    }, 2000); // Adjust animation duration as needed
+}
+
+function getRandomRarity() {
+   const rand = Math.random();
+   if (rand < 0.5) return 'bronze';
+   if (rand < 0.8) return 'silver';
+   if (rand < 0.95) return 'gold';
+   return 'rainbow';
+}
+
+function getRandomBond(rarity) {
+   const bonds = bondData.filter(b => b.rarity === rarity);
+   const bond = bonds[Math.floor(Math.random() * bonds.length)];
+   return bond;
+}
+
+function updateBondsList() {
+    const bondsList = document.getElementById('bondsList');
+    bondsList.innerHTML = '';
+
+    Object.keys(obtainedBonds).forEach(bondName => {
+        let bond = bondData.filter(m => m.name == bondName)[0];
+        let bondInfo = obtainedBonds[bondName];
+        const bondItem = document.createElement('div');
+        bondItem.className = `bond-item bond-rarity-${bond.rarity}`;
+
+        // 修改部分开始
+        const bondContainer = document.createElement('div');
+        bondContainer.className = 'bond-container';
+
+        const bondCharacters = document.createElement('div');
+        bondCharacters.className = 'bond-characters';
+
+        bond.characters.forEach(characterName => {
+            const character = minions.find(m => m.name === characterName);
+            const bondCharacter = document.createElement('div');
+            bondCharacter.className = `bond-character ${obtainedBonds[bond.name] && unlockedMinions.includes(characterName) ? 'unlocked' : 'locked'}`;
+            bondCharacter.innerHTML = `<div>${character.name}</div><img src="${character.image}" alt="${character.name}">`;
+            bondCharacters.appendChild(bondCharacter);
+        });
+
+        const bondInfoContainer = document.createElement('div');
+        bondInfoContainer.className = 'bond-info-container';
+
+        const bondHeader = document.createElement('div');
+        bondHeader.className = 'bond-header';
+
+        const bondNameD = document.createElement('div');
+        bondNameD.className = 'bond-name';
+        bondNameD.textContent = `${bond.name} 等级 ${bondInfo.level} (${bondInfo.have}/${bondInfo.require})`;
+        bondHeader.appendChild(bondNameD);
+
+        const bondBenefit = document.createElement('div');
+        bondBenefit.className = 'bond-benefit';
+        bondBenefit.textContent = '收益: ' + bond.benefit;
+
+        bondInfoContainer.appendChild(bondHeader);
+        bondInfoContainer.appendChild(bondBenefit);
+
+        bondContainer.appendChild(bondCharacters);
+        bondContainer.appendChild(bondInfoContainer);
+        // 修改部分结束
+
+        bondItem.appendChild(bondContainer);
+        bondsList.appendChild(bondItem);
+    });
+
+}
 // When the user clicks the button, open the modal and pause the game
 helpButton.onclick = function() {
     modal.style.display = "block";

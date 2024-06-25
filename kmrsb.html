@@ -33,12 +33,13 @@
       <div class="modal-content">
           <span class="close">&times;</span>
           <h2>游戏帮助</h2>
-          <p>最新版本：V2.5.</p>
+          <p>最新版本：V3.0.0.</p>
           <p>未进行手机端适配，建议使用电脑游玩。</p>
           <p>每次解锁助战，你有2次机会重新抽取，每局游戏前2次重抽免费。如果将助战升级则不能再重抽。</p>
           <p>按住Ctrl可以一键升级单个助战。</p>
           <p>游戏存档在浏览器缓存中，但是缓存可能会自我清理，尤其是更新游戏需要清除浏览器缓存。如果您不想丢档，建议结束游戏前手动下载存档。</p>
-          <p>10周目以上可以转生。通过转生可以获得以太，每个获得过的以太增加5%伤害。（目前没有其他作用，将在后续版本更新）</p>
+          <p>10周目以上可以转生。通过转生可以获得以太，每个获得过的以太增加2.5%伤害。</p>
+          <p>以太可以用于抽取羁绊。只有抽齐羁绊中的全部助战，羁绊才会生效。</p>
           <p>游戏作者：星导过星导。如有bug与反馈请联系。</p>
       </div>
   </div>
@@ -55,7 +56,10 @@
               <div id="ether-container">以太: <span id="ethers">0 (0)</span></div>
               <button id='unlockButton' onclick="unlockRandMinion()"> 抽取助战 (金币: 10)</button>
             <button onclick="autoupgradeMinion()">一键升级</button>
-            <button id="softRsButton" onclick="softReset()">转生</button>
+            <div id="buttonContainer">
+              <button id="softRsButton" onclick="softReset()">转生</button>
+              <button id="bondsButton">羁绊</button>
+            </div>
         <div class="minions-container" id="minions-container">
             <!-- Minion info will be inserted here dynamically -->
         </div>
@@ -80,7 +84,20 @@
         </ul>
 
     </div>
+
+    <div id="bondsModal">
+        <span class="close-button" onclick="toggleBondsModal()">×</span>
+        <h2>羁绊</h2>
+        <div>
+            <button id = "draw-1" onclick="drawBond(1)">花费 1 以太 抽取羁绊</button>
+            <button id = "draw-10" onclick="drawBond(10)">花费 10 以太 10连抽</button>
+        </div>
+        <div id="bondsList"></div>
+    </div>
+
     <audio id="hit-sound" src="kmr/hit.ogg"></audio>
+
+    <script src="kmr/bonds.js"></script>
     <script src="kmr/minion.js"></script>
     <script src="kmr/game.js"></script>
 </body>

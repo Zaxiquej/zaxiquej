@@ -74,7 +74,7 @@ body {
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    animation: gold-animation 1s forwards;
+    animation: golden-animation 1s forwards;
     pointer-events: none;
 }
 
@@ -114,7 +114,7 @@ body {
     font-weight: bold;
 }
 
-@keyframes gold-animation {
+@keyframes golden-animation {
     0% {
         transform: scale(1);
         opacity: 1;
@@ -664,7 +664,266 @@ button:disabled {
 
 #softRsButton {
     display: none; /* 初始状态隐藏 */
-    margin: 0 auto; /* 自动左右边距居中 */
+    padding: 10px 20px; /* 添加填充 */
+    background-color: #4CAF50; /* 按钮背景色 */
+    color: white; /* 按钮文本颜色 */
+    border: none; /* 去掉边框 */
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer; /* 鼠标指针 */
+    font-size: 16px; /* 字体大小 */
+    margin: 2 auto; /* 自动左右边距居中 */
     text-align: center; /* 确保按钮文本居中 */
-    /* 你可以添加其他样式，比如 padding, border, background 等 */
+    display: inline-block; /* 将按钮设置为块级元素以应用居中 */
+}
+
+#bondsButton {
+    padding: 10px 20px; /* 添加填充 */
+    background-color: #4CAF50; /* 按钮背景色 */
+    color: white; /* 按钮文本颜色 */
+    border: none; /* 去掉边框 */
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer; /* 鼠标指针 */
+    font-size: 16px; /* 字体大小 */
+    margin: 2 auto; /* 自动左右边距居中 */
+    text-align: center; /* 确保按钮文本居中 */
+    display: inline-block; /* 将按钮设置为块级元素以应用居中 */
+}
+
+#buttonContainer {
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中（如果需要） */
+}
+
+#bondsModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.close-button {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.bond-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.bond-info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bond-character {
+  width: 80px;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bond-character img {
+    width: 100%;
+    height: 100%;
+}
+
+.bond-rarity-bronze { border: 2px solid #cd7f32; }
+.bond-rarity-silver { border: 2px solid #c0c0c0; }
+.bond-rarity-gold { border: 2px solid #ffd700; }
+.bond-rarity-rainbow { border: 2px solid #9400D3; }
+
+/* 新增和修改的样式 */
+.bond-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bond-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.bond-benefit {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.bond-character {
+    display: inline-block;
+    width: 90px;
+    height: 100px;
+    text-align: center;
+    margin: 5px;
+}
+
+.bond-character img {
+    width: 50px;
+    height: 60px;
+}
+
+.bond-character div {
+    margin-top: 5px;
+    font-size: 10px;
+    color: black;
+}
+
+.unlocked img {
+    filter: none;
+}
+
+
+.locked img {
+    filter: grayscale(1);
+}
+
+.bronze-effect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #cd7f32; /* Bronze color */
+    border-radius: 50%;
+    animation: bronze-animation 2s ease-out forwards;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.silver-effect {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: #c0c0c0; /* Silver color */
+    border-radius: 50%;
+    animation: silver-animation 2s ease-out forwards;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.goldy-effect {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background-color: #ffd700; /* Gold color */
+    border-radius: 50%;
+    animation: goldy-animation 2s ease-out forwards;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px #ffd700, 0 0 25px #ffd700, 0 0 35px #ffd700; /* Glowing effect */
+}
+
+.rainbow-effect {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* Rainbow gradient */
+    border-radius: 50%;
+    animation: rainbow-animation 2s ease-out forwards, rotating-animation 2s linear infinite; /* Added rotation */
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff; /* Glowing effect */
+}
+
+@keyframes bronze-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes silver-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes goldy-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.75);
+        opacity: 0;
+    }
+}
+
+@keyframes rainbow-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes rotating-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
