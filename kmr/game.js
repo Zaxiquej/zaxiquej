@@ -254,6 +254,9 @@ function importGame(event) {
         for (let minion of minionsState){
           clearInterval(minion.intervalId);
         }
+        for (let i = 2; i < 99; i++){
+          clearInterval(i);
+        }
         victory = false;
         checkVictory();
         updateSkills();
@@ -321,6 +324,9 @@ function resetGame() {
 
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
+    }
+    for (let i = 2; i < 99; i++){
+      clearInterval(i);
     }
     minionsState = [];
     refMinions();
@@ -2430,14 +2436,15 @@ function upgradeMinion(index,auto,free,noskill) {
           coolAnim = true;
         }
         if (minion.learnedSkills.includes("阴阳秘法") && (minion.level==6 || minion.level%36 == 0)){
-          for (let m of minionsState){
-            raiseAtk(m,3*minion.level,true);
-          }
           if (minion.level == 6){
             for (let m of minionsState){
               raiseAtk(m,3*minion.level,true);
             }
           }
+          for (let m of minionsState){
+            raiseAtk(m,3*minion.level,true);
+          }
+          refMinions();
         }
         if (minion.learnedSkills.includes("虫虫咬他")){
           showSkillWord(minion, "虫虫咬他");
