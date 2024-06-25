@@ -251,6 +251,9 @@ function importGame(event) {
     reader.onload = function(e) {
         const encodedGameState = e.target.result;
         loadGameState(encodedGameState);
+        for (let minion of minionsState){
+          clearInterval(minion.intervalId);
+        }
         victory = false;
         checkVictory();
         updateSkills();
@@ -463,6 +466,7 @@ function unlockMinion(minion,temp){
       autoing = false;
       minion.level = 1;
       refMinions();
+      refreshMinionDetails();
       showSkillWord(m, "中速导师");
     }
     if (m.learnedSkills.includes("知名皇黑")){
@@ -1150,13 +1154,13 @@ function minionAttack(minion,master) {
       }
     }
 
-    kmrTakeDam(dam);
-
     if (master){
       master.totalDamage += dam;
     } else {
       minion.totalDamage += dam;
     }
+
+    kmrTakeDam(dam);
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
     let y = position.top + (Math.random()*kmr.height);
