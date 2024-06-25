@@ -20,7 +20,6 @@ let dps = 0;
 let timePlayed = 0;
 let totalClickDamage = 0;
 let rindex = 0;
-let minionDamages = {};
 let minionsState = [];
 let unlockedMinions = [];
 let totaltimePlayed = 0;
@@ -79,7 +78,6 @@ function encodeGameState(){
       timePlayed,
       totalClickDamage,
       rindex,
-      minionDamages,
       minionsState,
       unlockedMinions,
       totaltimePlayed,
@@ -166,6 +164,7 @@ function loadGame() {
         loadGameState(encodedGameState);
         victory = false;
         checkVictory();
+        updateSkills();
     } else {
 
     }
@@ -182,7 +181,6 @@ function loadGameState(encodedGameState){
   if (gameState.timePlayed) timePlayed = gameState.timePlayed;
   if (gameState.totalClickDamage) totalClickDamage = gameState.totalClickDamage;
   if (gameState.rindex) rindex = gameState.rindex;
-  if (gameState.minionDamages) minionDamages = gameState.minionDamages;
   if (gameState.minionsState) minionsState = gameState.minionsState;
   if (gameState.unlockedMinions) unlockedMinions = gameState.unlockedMinions;
   if (gameState.totaltimePlayed) totaltimePlayed = gameState.totaltimePlayed;
@@ -222,6 +220,20 @@ function loadGameState(encodedGameState){
   refMinions();
 }
 
+function updateSkills(){
+  for (let minion of minions){
+    let r = unlockedMinions.indexOf(minion.name);
+    if (r > -1){
+      minionsState[r].skills = minion.skills;
+      if (minionsState[r].learnedSkills[0]){
+        minionsState[r].learnedSkills[0] = minion.skills[0].name;
+      }
+      if (minionsState[r].learnedSkills[0]!="马纳利亚时刻" && minionsState[r].learnedSkills[1]){
+        minionsState[r].learnedSkills[1] = minion.skills[1].name;
+      }
+    }
+  }
+}
 function importGame(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -252,7 +264,6 @@ function resetGame() {
     timePlayed = 0;
     totalClickDamage = 0;
     rindex = 0;
-    minionDamages = {};
     unlockedMinions = [];
     totaltimePlayed = 0;
     burning = 0;
@@ -559,23 +570,12 @@ function updateDisplays() {
     document.getElementById('phase-level').textContent = level;
     timePlayedDisplay.textContent = `${timePlayed}s`;
     totalClickDamageDisplay.textContent = totalClickDamage;
-    minionDamagesDisplay.innerHTML = Object.keys(minionDamages)
-        .map(name => `<li>${name}: ${minionDamages[name]}</li>`).join('');
-    if (unlockedMinions.length > 0){
-      refreshMinionDetails()
-    }
-
-    minionDamagesDisplay.innerHTML = '';
-
-    // 将 Object.entries(minionDamages) 转换为数组，并按 damage 从大到小排序
-    const sortedMinionDamages = Object.entries(minionDamages)
-        .sort(([, damageA], [, damageB]) => damageB - damageA);
-
-    for (const [minion, damage] of sortedMinionDamages) {
-        const li = document.createElement('li');
-        li.textContent = `${minion}: ${formatNumber(damage)}`;
-        minionDamagesDisplay.appendChild(li);
-    }
+    minionDamagesDisplay.innerHTML = `
+        ${[...minionsState] // 创建 minionsState 的副本
+            .sort((a, b) => b.totalDamage - a.totalDamage) // 按 totalDamage 从大到小排序
+            .map(minion => `<li>${minion.name}: ${formatNumber(minion.totalDamage)}</li>`)
+            .join('')}
+    `;
     updateHealth(kmrHealthValue);
     document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) +")";
 }
@@ -672,7 +672,6 @@ function damageKmr(dam,minion) {
       dam = dam * 3;
     }
     kmrTakeDam(dam);
-    minion.totalDamage += dam;
 
     for (let m of minionsState){
 
@@ -696,15 +695,13 @@ function damageKmr(dam,minion) {
       }
     }
 
-    if (!minionDamages[minion.name]){
-      minionDamages[minion.name] = 0;
-    }
+    minion.totalDamage += dam;
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
     let y = position.top + (Math.random()*kmr.height);
     showEffect(x,y, 'hit-effect');
     showDamage(x,y, dam);
-    minionDamages[minion.name] += dam;
+
     if (Math.random() < 0.1){
       const hitSound = new Audio(minion.voice);
       hitSound.play();
@@ -745,14 +742,14 @@ function formatNumber2(num) {
     if (num == Infinity){
         return num.toString();
     }
-    const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
+    const units = ['','万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
     const threshold = 10000; // 万的阈值
 
     if (num < threshold) {
         return num.toString(); // 小于万，直接返回数字
     }
 
-    let unitIndex = -1;
+    let unitIndex = 0;
     let formattedNum = num;
 
     while (formattedNum >= threshold && unitIndex < units.length) {
@@ -763,10 +760,16 @@ function formatNumber2(num) {
     if (unitIndex < units.length) {
         let result = [];
         for (let i = unitIndex; i >= 0; i--) {
-            const unitValue = Math.floor(num / Math.pow(threshold, i + 1));
+            const unitValue = Math.floor(num / Math.pow(threshold, i));
             if (unitValue > 0 || result.length > 0) { // 跳过高位的零
-                result.push(`${unitValue}${units[i]}`);
-                num -= unitValue * Math.pow(threshold, i + 1);
+                if (result.length > 0){
+                  let paddedUnitValue = unitValue.toString().padStart(4, '0');
+                  result.push(`${paddedUnitValue}${units[i]}`);
+                } else {
+                  result.push(`${unitValue}${units[i]}`);
+                }
+
+                num -= unitValue * Math.pow(threshold, i);
             }
         }
 
@@ -1090,17 +1093,9 @@ function minionAttack(minion,master) {
     kmrTakeDam(dam);
 
     if (master){
-      if (!minionDamages[master.name]){
-        minionDamages[master.name] = 0;
-      }
       master.totalDamage += dam;
-      minionDamages[master.name] += dam;
     } else {
-      if (!minionDamages[minion.name]){
-        minionDamages[minion.name] = 0;
-      }
       minion.totalDamage += dam;
-      minionDamages[minion.name] += dam;
     }
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random()*kmr.width);
@@ -1213,19 +1208,22 @@ function minionAttack(minion,master) {
       }
     }
 
-    if (minion.learnedSkills.includes("人偶使") && unlockedMinions.length > 1){
-      if (checkLuck(0.08)) {
-        skilled = true;
-        let t = 3 + getBuffPower("idol").length * 3;
-        for (let i = 0; i < t; i++){
-          let r = Math.floor(Math.random()*(unlockedMinions.length - 1));
-          if (r >= unlockedMinions.indexOf(minion.name)){
-            r += 1;
-          }
-          minionAttack(minionsState[r],minion);
+    if (minion.learnedSkills.includes("人偶使") && unlockedMinions.length > 1) {
+        if (checkLuck(0.08)) {
+            skilled = true;
+            let t = 3 + getBuffPower("idol").length * 3;
+
+            // 过滤掉所有learnedSkills中有“人偶使”的角色
+            const filteredMinions = unlockedMinions.filter(m => !minionsState[m].learnedSkills.includes("人偶使"));
+
+            for (let i = 0; i < t; i++) {
+                if (filteredMinions.length === 0) break; // 如果没有可选的角色，提前退出循环
+                let r = Math.floor(Math.random() * filteredMinions.length);
+                minionAttack(minionsState[filteredMinions[r]], minion);
+            }
+
+            showSkillWord(minion, "人偶使");
         }
-        showSkillWord(minion, "人偶使");
-      }
     }
 
     for (let m of minionsState){
@@ -1319,7 +1317,7 @@ function unlockCost(n) {
     cost *= (unlockedMinions.length - 8);
   }
   for (let m of minionsState){
-    if (m.learnedSkills.includes("连协之力")){
+    if (m.learnedSkills.includes("小猪存钱罐")){
       cost = Math.floor(0.75*cost)
     }
   }
@@ -1910,7 +1908,7 @@ function updateCounts() {
       m.count ++;
       if (m.count >= 50){
         m.count = zeroCountDown(50);
-        gainCoin(Math.floor(coins/10));
+        gainCoin(Math.min(maxdamZ,Math.floor(coins/10)));
         skilled = true;
         showSkillWord(m, "罕见");
         need = true;
@@ -2303,8 +2301,19 @@ function upgradeMinion(index,auto,free,noskill) {
     }
 }
 
+const originalClearInterval = window.clearInterval;
+
+// 重写 clearInterval 函数
+window.clearInterval = function(intervalId) {
+    if (intervalId !== gloablintervalID) {
+        originalClearInterval(intervalId);
+    } else {
+        console.log("Attempted to clear interval with ID global , which is not allowed.");
+    }
+};
+
 // Update game state every second
-setInterval(() => {
+let gloablintervalID = setInterval(() => {
     timePlayed += 1;
     let t = timePlayed + totaltimePlayed;
     if (t > 0 && t%60 == 0 && !victory){
@@ -2317,7 +2326,6 @@ setInterval(() => {
     updateCounts();
     updateDisplays();
 }, 1000);
-
 
 // Get the modal
 const modal = document.getElementById("helpModal");
