@@ -2253,7 +2253,7 @@ function upgradeMinion(index,auto,free,noskill) {
             }
           }
 
-          if (m.name != minion.name && m.learnedSkills.includes("杀出重围")){
+          if (m.name != minion.name && m.learnedSkills.includes("日一皇")){
             let tlv = 0;
             for (let mi of minionsState){
               tlv += mi.level;
@@ -2262,7 +2262,7 @@ function upgradeMinion(index,auto,free,noskill) {
               for (let mi of minionsState){
                 raiseAtk(mi,tlv/5,true);
               }
-              showSkillWord(m, "杀出重围");
+              showSkillWord(m, "日一皇");
             }
           }
           if (m.learnedSkills.includes("卓绝的契约") && !noskill && minion.level == 2 && unlockedMinions.length >= 7 && daZhaiQiYue==false){
