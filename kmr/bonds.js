@@ -4,32 +4,32 @@ const bondData = [
         name: '双蛆之力',
         rarity: 'bronze',
         characters: ["空调宅男","佐伯艾莉丝"],
-        benefit: '每级使羁绊中角色升级时，额外增加5攻击。',
-        upgradeExtraA: 5
+        benefit: '每级使羁绊中角色升级时，额外增加10攻击。',
+        upgradeExtraA: 10
     },
     {
         id: 2,
         name: '出列！',
         rarity: 'bronze',
         characters: ["空调宅男","大栗QAQ"],
-        benefit: '每级额外增加20%羁绊中角色造成的伤害。',
-        extraDam: 0.2
+        benefit: '每级额外增加40%羁绊中角色造成的伤害。',
+        extraDam: 0.4
     },
     {
         id: 3,
         name: '贴贴',
         rarity: 'bronze',
         characters: ["璐缇雅","大栗QAQ"],
-        benefit: '每级额外增加20%羁绊中角色造成的伤害。',
-        extraDam: 0.2
+        benefit: '每级额外增加40%羁绊中角色造成的伤害。',
+        extraDam: 0.4
     },
     {
         id: 4,
         name: '圆桌组',
         rarity: 'bronze',
         characters: ["蕾米莉亚","竹取玉白"],
-        benefit: '每级使羁绊中角色升级时，额外增加5攻击。',
-        upgradeExtraA: 5
+        benefit: '每级使羁绊中角色升级时，额外增加10攻击。',
+        upgradeExtraA: 10
     },
     {
         id: 5,
@@ -44,8 +44,8 @@ const bondData = [
         name: '车万内战',
         rarity: 'bronze',
         characters: ["八云橙汁","蕾米莉亚"],
-        benefit: '每级额外增加20%羁绊中角色造成的伤害。',
-        extraDam: 0.2
+        benefit: '每级额外增加40%羁绊中角色造成的伤害。',
+        extraDam: 0.4
     },
     {
         id: 7,
@@ -124,8 +124,8 @@ const bondData = [
         name: '华容道义释Z神',
         rarity: 'silver',
         characters: ["八云橙汁","ZenX"],
-        benefit: '[巨人]计算攻击力之和时，每级额外计算25% ZenX的攻击力。',
-        skillPlus: ['巨人',0.25]
+        benefit: '[巨人]计算攻击力之和时，每级额外计算30% ZenX的攻击力。',
+        skillPlus: ['巨人',0.3]
     },
     {
         id: 2001,
@@ -141,16 +141,16 @@ const bondData = [
         name: 'ygg和女人的故事',
         rarity: 'gold',
         characters: ["茶叶OMO","大栗QAQ","折光成影"],
-        benefit: '每级使[皇室荣耀]的伤害提升时，提升量增加20%。',
-        skillPlus: ['皇室荣耀',0.2]
+        benefit: '每级使[皇室荣耀]的伤害提升时，提升量增加50%。',
+        skillPlus: ['皇室荣耀',0.5]
     },
     {
         id: 2003,
         name: '新卡发布',
         rarity: 'gold',
         characters: ["璐缇雅","星野饼美"],
-        benefit: '每级使解锁/重抽助战消费金钱减少2%。（超过20%的部分将衰减）',
-        unlockMinusCost: [0.02,10,0.8]
+        benefit: '每级使解锁/重抽助战消费金钱减少3%。（超过30%的部分将衰减）',
+        unlockMinusCost: [0.03,10,0.8]
     },
     {
         id: 2004,
@@ -161,13 +161,28 @@ const bondData = [
         unlockMinusCost: [0.1,10,0.6]
     },
     {
-
+        id: 2005,
+        name: '暗杀饼神',
+        rarity: 'gold',
+        characters: ["一只小吾影","星野饼美","真白"],
+        benefit: '每级使[转生]获得的以太数增加10%。',
+        moreEther: 0.1
+    },
+    {
+        id: 2006,
+        name: '绿色羁绊',
+        rarity: 'gold',
+        characters: ["清鱼","达拉斯泰尔"],
+        benefit: '每级使[虫虫咬他]还会在由于升级增加攻击力时，使成长永久增加[增加的攻击力的2%]点（至少1点）',
+        moreEther: 0.1
+    },
+    {
         id: 3001,
         name: 'SNC2022',
         rarity: 'rainbow',
         characters: ["星导过星导","折光成影","蕾米莉亚","雪雪","八云橙汁","竹取玉白","一只小吾影","大栗QAQ"],
-        benefit: '每级额外增加15%全部角色造成的伤害。',
-        extraDamAll: 0.15
+        benefit: '每级额外增加30%全部角色造成的伤害。',
+        extraDamAll: 0.3
     },
     {
         id: 3002,

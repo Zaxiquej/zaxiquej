@@ -179,55 +179,56 @@ function loadGameState(encodedGameState){
   resetVars();
   const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
   const gameState = JSON.parse(gameStateStr);
-  if (gameState.version) version = gameState.version;
-  if (gameState.kmrHealthValue) kmrHealthValue = new Decimal(gameState.kmrHealthValue);
-  if (gameState.level) level = gameState.level;
-  if (gameState.coins) coins = new Decimal(gameState.coins);
-  if (gameState.dps) dps = gameState.dps;
-  if (gameState.timePlayed) timePlayed = gameState.timePlayed;
-  if (gameState.totalClickDamage) totalClickDamage = gameState.totalClickDamage;
-  if (gameState.rindex) rindex = gameState.rindex;
-  if (gameState.minionsState) minionsState = gameState.minionsState;
-  if (gameState.unlockedMinions) unlockedMinions = gameState.unlockedMinions;
-  if (gameState.totaltimePlayed) totaltimePlayed = gameState.totaltimePlayed;
-  if (gameState.burning) burning = gameState.burning;
-  if (gameState.skilled) skilled = gameState.skilled;
-  if (gameState.zenxLV) zenxLV = gameState.zenxLV;
-  if (gameState.zenxActive) zenxActive = gameState.zenxActive;
-  if (gameState.autoing) autoing = gameState.autoing;
-  if (gameState.remluck) remluck = gameState.remluck;
-  if (gameState.buffs) buffs = gameState.buffs;
-  if (gameState.reroll) reroll = gameState.reroll;
-  if (gameState.freeReroll) freeReroll = gameState.freeReroll;
-  if (gameState.freeUp) freeUp = gameState.freeUp;
-  if (gameState.yggdam) yggdam = new Decimal(gameState.yggdam);
-  if (gameState.upgrading) upgrading = gameState.upgrading;
-  if (gameState.xxjjj) xxjjj = gameState.xxjjj;
-  if (gameState.curjjj) curjjj = gameState.curjjj;
-  if (gameState.xxBuff) xxBuff = gameState.xxBuff;
-  if (gameState.zheluck) zheluck = gameState.zheluck;
-  if (gameState.zheluck2) zheluck2 = gameState.zheluck2;
-  if (gameState.zhedam) zhedam = new Decimal(gameState.zhedam);
-  if (gameState.maxdamZ) maxdamZ = new Decimal(gameState.maxdamZ);
-  if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
-  if (gameState.chongMing) chongMing = gameState.chongMing;
-  if (gameState.cangSkill) cangSkill = gameState.cangSkill;
-  if (gameState.lastBuffs) lastBuffs = gameState.lastBuffs;
-  if (gameState.marriage) marriage = gameState.marriage;
-  if (gameState.victory) victory = gameState.victory;
-  if (gameState.kmrquickHit) kmrquickHit = gameState.kmrquickHit;
-  if (gameState.coolAnim) victory = gameState.coolAnim;
-  if (gameState.lostXYZ) lostXYZ = gameState.lostXYZ;
-  if (gameState.lostTeam) lostTeam = gameState.lostTeam;
-  if (gameState.ethers) ethers = gameState.ethers;
-  if (gameState.totalEthers) totalEthers = gameState.totalEthers;
-  if (gameState.obtainedBonds) obtainedBonds = gameState.obtainedBonds;
+  if (gameState.version != undefined) version = gameState.version;
+  if (gameState.kmrHealthValue != undefined) kmrHealthValue = new Decimal(gameState.kmrHealthValue);
+  if (gameState.level != undefined) level = gameState.level;
+  if (gameState.coins != undefined) coins = new Decimal(gameState.coins);
+  if (gameState.dps != undefined) dps = gameState.dps;
+  if (gameState.timePlayed != undefined) timePlayed = gameState.timePlayed;
+  if (gameState.totalClickDamage != undefined) totalClickDamage = gameState.totalClickDamage;
+  if (gameState.rindex != undefined) rindex = gameState.rindex;
+  if (gameState.minionsState != undefined) minionsState = gameState.minionsState;
+  if (gameState.unlockedMinions != undefined) unlockedMinions = gameState.unlockedMinions;
+  if (gameState.totaltimePlayed != undefined) totaltimePlayed = gameState.totaltimePlayed;
+  if (gameState.burning != undefined) burning = gameState.burning;
+  if (gameState.skilled != undefined) skilled = gameState.skilled;
+  if (gameState.zenxLV != undefined) zenxLV = gameState.zenxLV;
+  if (gameState.zenxActive != undefined) zenxActive = gameState.zenxActive;
+  if (gameState.autoing != undefined) autoing = gameState.autoing;
+  if (gameState.remluck != undefined) remluck = gameState.remluck;
+  if (gameState.buffs != undefined) buffs = gameState.buffs;
+  if (gameState.reroll != undefined) reroll = gameState.reroll;
+  if (gameState.freeReroll != undefined) freeReroll = gameState.freeReroll;
+  if (gameState.freeUp != undefined) freeUp = gameState.freeUp;
+  if (gameState.yggdam != undefined) yggdam = new Decimal(gameState.yggdam);
+  if (gameState.upgrading != undefined) upgrading = gameState.upgrading;
+  if (gameState.xxjjj != undefined) xxjjj = gameState.xxjjj;
+  if (gameState.curjjj != undefined) curjjj = gameState.curjjj;
+  if (gameState.xxBuff != undefined) xxBuff = gameState.xxBuff;
+  if (gameState.zheluck != undefined) zheluck = gameState.zheluck;
+  if (gameState.zheluck2 != undefined) zheluck2 = gameState.zheluck2;
+  if (gameState.zhedam != undefined) zhedam = new Decimal(gameState.zhedam);
+  if (gameState.maxdamZ != undefined) maxdamZ = new Decimal(gameState.maxdamZ);
+  if (gameState.daZhaiQiYue != undefined) daZhaiQiYue = gameState.daZhaiQiYue;
+  if (gameState.chongMing != undefined) chongMing = gameState.chongMing;
+  if (gameState.cangSkill != undefined) cangSkill = gameState.cangSkill;
+  if (gameState.lastBuffs != undefined) lastBuffs = gameState.lastBuffs;
+  if (gameState.marriage != undefined) marriage = gameState.marriage;
+  if (gameState.victory != undefined) victory = gameState.victory;
+  if (gameState.kmrquickHit != undefined) kmrquickHit = gameState.kmrquickHit;
+  if (gameState.coolAnim != undefined) victory = gameState.coolAnim;
+  if (gameState.lostXYZ != undefined) lostXYZ = gameState.lostXYZ;
+  if (gameState.lostTeam != undefined) lostTeam = gameState.lostTeam;
+  if (gameState.ethers != undefined) ethers = gameState.ethers;
+  if (gameState.totalEthers != undefined) totalEthers = gameState.totalEthers;
+  if (gameState.obtainedBonds != undefined) obtainedBonds = gameState.obtainedBonds;
   if (Number(zheluck)!== zheluck) zheluck = 3;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 3;
   for (let m of minionsState){
     m.attack = new Decimal(m.attack);
     m.tempAtk = new Decimal(m.tempAtk);
     m.totalDamage = new Decimal(m.totalDamage);
+    m.addattack = new Decimal(m.addattack);
   }
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
@@ -259,7 +260,10 @@ function importGame(event) {
         for (let minion of minionsState){
           clearInterval(minion.intervalId)
         }
+        victoryMessage.classList.add('hidden');
         loadGameState(encodedGameState);
+        const detailsContainer = document.getElementById('selected-minion-details');
+        detailsContainer.innerHTML = '';
         victory = false;
         checkVictory();
         updateSkills();
@@ -338,7 +342,15 @@ function resetGame() {
 }
 
 function gainEtherAmount(){
-  return level - 5;
+  let amount = level - 5;
+  let prod = 1;
+  for (let bond of bondData){
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.moreEther){
+      prod *= 1 + bond.moreEther * obtainedBonds[bond.name].level;
+    }
+  }
+  amount = Math.floor(amount * prod);
+  return amount;
 }
 
 function gainEther(){
@@ -457,6 +469,7 @@ function unlockMinion(minion, temp) {
     totalDamage: new Decimal(0),
     learnedSkills: [],
   }
+  minion.addattack = new Decimal(minion.addattack);
 
   let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
   minion.intervalId = intervalId;
@@ -1101,7 +1114,7 @@ function getattack(minion, master) {
 
         for (let i = sp.length - 1; i >= 0; i--) {
             killBuff("saki", sp[i]);
-            raiseAtk(minion, new Decimal(10).times(minion.attack.pow(0.8)));
+            raiseAtk(minion, new Decimal(10).times(minion.attack.div(minion.attack.fifthrt().sqrt())));
             showSkillWord(minion, "必可活用于下一次……");
         }
     }
@@ -1217,7 +1230,7 @@ function checkLuck(r, fromZhe) {
         for (let m of minionsState) {
             if (m.learnedSkills.includes("运气不如他们") && r < 0.2) {
                 showSkillWord(m, "运气不如他们");
-                raiseAtk(m, Decimal.max(3, Math.floor(m.level / 12)));
+                raiseAtk(m,Decimal.floor(m.attack.div(m.attack.fifthrt().pow(2)).div(10) ));
                 document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
             }
         }
@@ -1274,7 +1287,7 @@ function minionAttack(minion, master) {
 
     if (minion.learnedSkills.includes("冲击冠军")) {
         if (checkLuck(0.04)) {
-            raiseAtk(minion, new Decimal(minion.level).pow(1.1).toDecimalPlaces(0) ); // 升级攻击力
+            raiseAtk(minion, new Decimal(minion.level).times(minion.attack.sqrt()) ); // 升级攻击力
             skilled = true;
             document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
             showSkillWord(minion, "冲击冠军");
@@ -1339,7 +1352,7 @@ function minionAttack(minion, master) {
     if (minion.learnedSkills.includes("奶1")) {
         if (checkLuck(0.33)) {
             skilled = true;
-            gainCoin(new Decimal(minion.level).pow(1.5).toDecimalPlaces(0) ); // 获得金币
+            gainCoin(new Decimal(minion.level).pow(2).toDecimalPlaces(0) ); // 获得金币
             showSkillWord(minion, "奶1");
         }
     }
@@ -1579,7 +1592,7 @@ function refreshMinionDetails() {
     <div>等级: ${minion.level}</div>
     <div>攻击: ${formatNumber(minion.attack)}</div>
     <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
-    <div>升级+攻击: ${minion.addattack}</div>
+    <div>成长: ${formatNumber(minion.addattack)}</div>
     <button onclick="upgradeMinionClick(${rindex})">${code} (金币: ${formatNumber(mCost)})</button>
     <h4>技能</h4>
     <ul>
@@ -1702,7 +1715,7 @@ function refreshCangSkill() {
       if (m.learnedSkills.includes("素材奖励")){
         for (let mi of minionsState){
           if (m.name != mi.name && mi.learnedSkills.includes(s.name)){
-            raiseAtk(mi, Decimal(m.attack).times(0.05).toDecimalPlaces(0) );
+            raiseAtk(mi, Decimal(m.attack).times(0.2).toDecimalPlaces(0) );
             showSkillWord(m, "素材奖励");
           }
         }
@@ -1823,7 +1836,7 @@ function getAddattack(minion){
     let amount = minion.addattack;
     for (let bond of bondData){
       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeExtraA && bond.characters.includes(minion.name)){
-        amount += bond.upgradeExtraA * obtainedBonds[bond.name].level;
+        amount = amount.plus(bond.upgradeExtraA * obtainedBonds[bond.name].level);
       }
     }
     return amount;
@@ -2264,12 +2277,25 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        amount = amount.plus(amount.times(bond.upgradeAllAPlus).times(obtainedBonds[bond.name].level));
      }
    }
+   if (minion.learnedSkills.includes("虫虫咬他")) {
+     for (let bond of bondData) {
+       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫虫咬他') {
+         let c = bond.skillPlus[1];
+         let am = amount.times(c * obtainedBonds[bond.name].level);
+         showSkillWord(minion, "虫虫咬他");
+         minion.addattack = new Decimal(minion.addattack.plus(Decimal.max(new Decimal(1), Decimal.floor(am) )));
+       }
+     }
+   }
  }
  for (let bond of bondData){
    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.extraAtkGain && bond.characters.includes(minion.name)){
      amount = amount.plus(amount.times(bond.extraAtkGain).times(obtainedBonds[bond.name].level));
    }
  }
+
+
+
  for (let m of minionsState) {
    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
      if (checkLuck(0.15)) {
@@ -2285,9 +2311,15 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  // Recursively raise attack for marriage-related minions
  if (marriage[0] == minion.name && fromUpgrade) {
    raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], amount);
+   if (!autoing){
+     document.getElementById(`attack-${unlockedMinions.indexOf(marriage[1])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(marriage[1])].attack);
+   }
  }
  if (marriage[1] == minion.name && fromUpgrade) {
    raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], amount);
+   if (!autoing){
+     document.getElementById(`attack-${unlockedMinions.indexOf(marriage[0])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(marriage[0])].attack);
+   }
  }
 
  // Process additional upgrades using Decimal operations
@@ -2295,12 +2327,18 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
    for (let bond of bondData) {
      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upBond) {
        let c = bond.upBond;
-       let ratio = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+       let ratio = new Decimal(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
        if (bond.characters[0] == minion.name) {
          raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+         if (!autoing){
+           document.getElementById(`attack-${unlockedMinions.indexOf(bond.characters[1])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(bond.characters[1])].attack);
+         }
        }
        if (bond.characters[1] == minion.name) {
          raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[0])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+         if (!autoing){
+           document.getElementById(`attack-${unlockedMinions.indexOf(bond.characters[0])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(bond.characters[0])].attack);
+         }
        }
      }
    }
@@ -2462,7 +2500,7 @@ function mupgradeCost(minion) {
 
   for (let m of minionsState) {
     if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")) {
-      finalCost  = finalCost.div(finalCost.sqrt().cbrt().cbrt());
+      finalCost  = finalCost.div(finalCost.sqrt().sqrt().fifthrt());
     }
   }
 
@@ -2553,7 +2591,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         raiseAtk(minion, Decimal(getAddattack(minion)), undefined, true); // 使用 Decimal 处理攻击提升
         for (let m of minionsState) {
             if (m.name !== minion.name && m.learnedSkills.includes("构筑带师")) {
-                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.attack, 0.95) / 30)), undefined, true); // 使用 Decimal 处理攻击提升
+                raiseAtk(minion, Decimal.floor(m.attack.div(m.attack.sqrt().fifthrt()).div(30) ), undefined, true); // 使用 Decimal 处理攻击提升
                 showSkillWord(m, "构筑带师");
             }
             if (m.name !== minion.name && m.learnedSkills.includes("红娘")) {
@@ -2625,7 +2663,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
         if (minion.learnedSkills.includes("虫虫咬他")) {
             showSkillWord(minion, "虫虫咬他");
-            minion.addattack += 1;
+            minion.addattack = new Decimal(minion.addattack.plus(1));
         }
 
         if (minion.learnedSkills.includes("双猪齐力")) {
@@ -2675,9 +2713,9 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                 }
             }
             if (m.learnedSkills.includes("卓绝的契约") && !noskill && minion.level === 2 && unlockedMinions.length >= 7 && daZhaiQiYue === false) {
-                minion.attack += m.attack;
+                minion.attack = minion.attack.plus(m.attack);
                 minion.attackSpeed = Math.floor(0.8 * minion.attackSpeed);
-                minion.addattack = Math.pow(minion.addattack, 2);
+                minion.addattack = minion.addattack.pow(2);
                 daZhaiQiYue = minion.name;
                 showSkillWord(m, "卓绝的契约");
             }

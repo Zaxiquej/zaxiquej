@@ -420,6 +420,38 @@
     return finalise(r, e, Ctor.rounding, m);
   };
 
+  P.fifthRoot = P.fifthrt = function () {
+      var e, m, n, r, s, sd, t, x = this, Ctor = x.constructor;
+
+      if (!x.isFinite() || x.isZero()) return new Ctor(x);
+      external = false;
+
+      // Initial estimate.
+      s = x.s * Math.pow(Math.abs(x), 1 / 5);
+
+      r = new Ctor(s.toString());
+      sd = 1; // Precision to 1 decimal place
+
+      // Newton's method for fifth root.
+      for (;;) {
+        t = r;
+        var t4 = t.times(t).times(t).times(t); // t^4
+        var t5 = t4.times(t); // t^5
+        var t4x = t4.times(4);
+        r = t.minus(t5.minus(x).div(t4x.plus(t), sd + 2));
+
+        // Check if the result is precise to 1 decimal place.
+        var t_str = t.toString();
+        var r_str = r.toString();
+        if (t_str.substring(0, t_str.indexOf('.') + 2) === r_str.substring(0, r_str.indexOf('.') + 2)) {
+          break;
+        }
+      }
+
+      external = true;
+
+      return r;
+    };
 
   /*
    * Return the number of decimal places of the value of this Decimal.
