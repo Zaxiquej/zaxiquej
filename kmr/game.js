@@ -1370,7 +1370,7 @@ function minionAttack(minion, master) {
         }
         if (checkLuck(luck)) {
             skilled = true;
-            gainCoin(10 * new Decimal(minion.level).pow(2).toDecimalPlaces(0) ); // 获得金币
+            gainCoin(new Decimal(minion.level).pow(2).times(10).toDecimalPlaces(0) ); // 获得金币
             minusLevel(minion, 1); // 减少等级
             showSkillWord(minion, "理解不行");
         }
