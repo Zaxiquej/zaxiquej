@@ -181,24 +181,24 @@ const bondData = [
         name: 'SNC2022',
         rarity: 'rainbow',
         characters: ["星导过星导","折光成影","蕾米莉亚","雪雪","八云橙汁","竹取玉白","一只小吾影","大栗QAQ"],
-        benefit: '每级额外增加30%全部角色造成的伤害。',
-        extraDamAll: 0.3
+        benefit: '每级额外增加50%全部角色造成的伤害。',
+        extraDamAll: 0.5
     },
     {
         id: 3002,
         name: '饼佬打的真是好',
         rarity: 'rainbow',
         characters: ["星野饼美","ZenX","一只小飘飘"],
-        benefit: '每级使[每日饼之诗]的攻击力增加量增加15%。',
-        skillPlus: ['每日饼之诗',0.15]
+        benefit: '每级使[每日饼之诗]的攻击力增加量增加25%。',
+        skillPlus: ['每日饼之诗',0.25]
     },
     {
         id: 3003,
         name: '佐伯家族',
         rarity: 'rainbow',
         characters: ["佐伯艾莉丝","大栗QAQ","一只小吾影","雪雪","空调宅男","梧桐","阿万音铃羽","热乎闹闹","美少女莉莉子"],
-        benefit: '每级使全部角色升级时增加的攻击力增加5%。(至少1点)',
-        upgradeAllAPlus: 0.05
+        benefit: '每级使全部角色升级时增加的攻击力增加10%。(至少1点)',
+        upgradeAllAPlus: 0.1
     }
 
     // 添加更多羁绊信息

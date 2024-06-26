@@ -2584,7 +2584,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                 }
             }
             if (minion.level % 5 === 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")) {
-                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.level, 1.1))), undefined, true); // 使用 Decimal 处理攻击提升
+                raiseAtk(minion, Decimal.floor(Decimal(m.level).times(m.attack.div(m.attack.fifthrt().pow(2))).div(10), undefined, true)); // 使用 Decimal 处理攻击提升
                 showSkillWord(m, "双猪的羁绊");
             }
         }
@@ -2791,12 +2791,9 @@ function drawBond(times) {
            obtainedBonds[bond.name] = {level:0, require: 1, have: 0};
        }
        obtainedBonds[bond.name].have += 1;
-       if (obtainedBonds[bond.name].have >= obtainedBonds[bond.name].require){
+       if (obtainedBonds[bond.name].have >= obtainedBonds[bond.name].require && obtainedBonds[bond.name].level < 20){
          obtainedBonds[bond.name].level += 1;
          obtainedBonds[bond.name].require += obtainedBonds[bond.name].level + 1;
-         if (obtainedBonds[bond.name].level == 20){
-           obtainedBonds[bond.name].require = Math.Infinity;
-         }
        }
    }
 
