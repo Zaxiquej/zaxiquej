@@ -29,7 +29,7 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 3,
         skills: [
-            { level: 6, name: '冲击冠军', effect: '4%概率攻击时永久提升[该助战等级*该助战攻击力^(0.5)]点攻击。' },
+            { level: 6, name: '冲击冠军', effect: '3%概率攻击时永久提升[0.1*该助战等级*(该助战攻击力)^(0.5)]点攻击。' },
             { level: 39, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
         ]
     },
@@ -148,7 +148,7 @@ const minions = [
         enhancecost: 6,
         supEnhancecost: 3.33,
         skills: [
-            { level: 4, name: '+1+1', effect: '攻击后，有6%概率增加10%攻击力，但攻击间隔上升8%。' },
+            { level: 4, name: '+1+1', effect: '攻击后，有6%概率将攻击力转变为1.1倍，但攻击间隔也转变为1.08倍。' },
             { level: 40, name: '饿龙咆哮', effect: '每24s，造成等同于[攻击力*攻击间隔]的伤害。' }
         ]
     },

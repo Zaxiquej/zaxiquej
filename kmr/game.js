@@ -795,7 +795,7 @@ function damageKmr(dam, minion) {
             }
         }
         if (m.learnedSkills.includes("雷维翁之力")) {
-            let raiseAmount = Decimal(dam).pow(0.8).times(0.002).toDecimalPlaces(0);
+            let raiseAmount = dam.div(dam.fifthrt()).times(0.002).toDecimalPlaces(0);
             raiseAtk(minion, raiseAmount);
             showSkillWord(minion, "雷维翁之力");
         }
@@ -1231,7 +1231,6 @@ function checkLuck(r, fromZhe) {
             if (m.learnedSkills.includes("运气不如他们") && r < 0.2) {
                 showSkillWord(m, "运气不如他们");
                 raiseAtk(m,Decimal.floor(m.attack.div(m.attack.fifthrt().pow(2)).div(10) ));
-                document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
             }
         }
         return true;
@@ -1286,10 +1285,9 @@ function minionAttack(minion, master) {
     gainCoin(gainC); // 获得金币
 
     if (minion.learnedSkills.includes("冲击冠军")) {
-        if (checkLuck(0.04)) {
-            raiseAtk(minion, new Decimal(minion.level).times(minion.attack.sqrt()) ); // 升级攻击力
+        if (checkLuck(0.03)) {
+            raiseAtk(minion, Decimal.floor(new Decimal(minion.level).times(minion.attack).sqrt().time(0.1)) ); // 升级攻击力
             skilled = true;
-            document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
             showSkillWord(minion, "冲击冠军");
         }
     }
@@ -1323,7 +1321,6 @@ function minionAttack(minion, master) {
                 r += 1;
             }
             raiseAtk(minionsState[r], minion.attack.div(15).toDecimalPlaces(0) ); // 升级攻击力
-            document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = formatNumber(minionsState[r].attack);
             minionAttack(minionsState[r], minion);
             showSkillWord(minion, "金牌陪练");
         }
@@ -1870,7 +1867,6 @@ function updateCounts() {
       if (burning >= 20){
         burning = zeroCountDown(20);
         raiseAtk(m, new Decimal(5).times(unlockedMinions.length).times(level+1));
-        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         need = true;
         showSkillWord(m, "五种打法");
       }
@@ -1985,7 +1981,6 @@ function updateCounts() {
               }
             }
             raiseAtk(mi, Decimal.floor(amount));
-            document.getElementById(`attack-${unlockedMinions.indexOf(mi.name)}`).textContent = formatNumber(mi.attack);
           }
         }
         showSkillWord(m, "每日饼之诗");
@@ -2006,7 +2001,6 @@ function updateCounts() {
         for (let a of addatk){
           raiseAtk(m, a);
         }
-        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         showSkillWord(m, "硬实力冠军");
         need = true;
       }
@@ -2124,7 +2118,6 @@ function updateCounts() {
           for (let i = 0; i < rank * 2; i++){
             minionAttack(m);
           }
-          document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
           showSkillWord(m, "逆境被动");
         }
         need = true;
@@ -2161,7 +2154,6 @@ function updateCounts() {
            if (checkLuck(luck)) {
              let atkIncrease = m.tempAtk.dividedBy(10).toDecimalPlaces(0);
              raiseAtk(m, atkIncrease);
-             document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
            }
            m.tempAtk = new Decimal(0);
            showSkillWord(m, "无尽连击");
@@ -2293,9 +2285,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      amount = amount.plus(amount.times(bond.extraAtkGain).times(obtainedBonds[bond.name].level));
    }
  }
-
-
-
  for (let m of minionsState) {
    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
      if (checkLuck(0.15)) {
@@ -2311,15 +2300,9 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  // Recursively raise attack for marriage-related minions
  if (marriage[0] == minion.name && fromUpgrade) {
    raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], amount);
-   if (!autoing){
-     document.getElementById(`attack-${unlockedMinions.indexOf(marriage[1])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(marriage[1])].attack);
-   }
  }
  if (marriage[1] == minion.name && fromUpgrade) {
    raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], amount);
-   if (!autoing){
-     document.getElementById(`attack-${unlockedMinions.indexOf(marriage[0])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(marriage[0])].attack);
-   }
  }
 
  // Process additional upgrades using Decimal operations
@@ -2330,15 +2313,9 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        let ratio = new Decimal(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
        if (bond.characters[0] == minion.name) {
          raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
-         if (!autoing){
-           document.getElementById(`attack-${unlockedMinions.indexOf(bond.characters[1])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(bond.characters[1])].attack);
-         }
        }
        if (bond.characters[1] == minion.name) {
          raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[0])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
-         if (!autoing){
-           document.getElementById(`attack-${unlockedMinions.indexOf(bond.characters[0])}`).textContent = formatNumber(minionsState[unlockedMinions.indexOf(bond.characters[0])].attack);
-         }
        }
      }
    }
@@ -2355,7 +2332,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        }
      }
      raiseAtk(m, Decimal.max(1, (amount.times(ratio)).toDecimalPlaces(0) ), true);
-     document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
      showSkillWord(m, "上帝");
    }
    if (upgrading && m.learnedSkills.includes("皇室荣耀")) {
@@ -2370,6 +2346,9 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      yggdam = yggdam.plus(am);
      showSkillWord(m, "皇室荣耀");
    }
+ }
+ if (!autoing){
+   document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
  }
 }
 
