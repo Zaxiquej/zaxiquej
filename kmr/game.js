@@ -266,6 +266,7 @@ function importGame(event) {
         autoing = false;
     };
     reader.readAsText(file);
+    refreshMinionDetails()
 }
 
 document.getElementById('importInput').addEventListener('change', importGame);
@@ -2256,6 +2257,7 @@ function getBaseLog(x, y) {
 }
 
 function raiseAtk(minion, amount, norepeat, fromUpgrade) {
+  //console.log(minion, amount)
  if (fromUpgrade) {
    for (let bond of bondData) {
      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl) {
