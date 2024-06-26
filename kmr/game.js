@@ -2269,7 +2269,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      amount = amount.plus(amount.times(bond.extraAtkGain).times(obtainedBonds[bond.name].level));
    }
  }
-
  for (let m of minionsState) {
    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
      if (checkLuck(0.15)) {
@@ -2491,6 +2490,7 @@ function autoupgradeOneMinion(index){
     }
     autoing = false;
     updateDisplays();
+    refMinions();
 }
 
 function isPrime(num) {
@@ -2552,10 +2552,10 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
 
         minion.level += 1;
-        raiseAtk(minion, Decimal(getAddattack(minion)), true); // 使用 Decimal 处理攻击提升
+        raiseAtk(minion, Decimal(getAddattack(minion)), undefined, true); // 使用 Decimal 处理攻击提升
         for (let m of minionsState) {
             if (m.name !== minion.name && m.learnedSkills.includes("构筑带师")) {
-                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.attack, 0.95) / 30)), true); // 使用 Decimal 处理攻击提升
+                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.attack, 0.95) / 30)), undefined, true); // 使用 Decimal 处理攻击提升
                 showSkillWord(m, "构筑带师");
             }
             if (m.name !== minion.name && m.learnedSkills.includes("红娘")) {
@@ -2567,7 +2567,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                 }
             }
             if (minion.level % 5 === 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")) {
-                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.level, 1.1))), true); // 使用 Decimal 处理攻击提升
+                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.level, 1.1))), undefined, true); // 使用 Decimal 处理攻击提升
                 showSkillWord(m, "双猪的羁绊");
             }
         }
@@ -2607,9 +2607,9 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
 
         if (minion.learnedSkills.includes("鲁智深") && (minion.level === 5 || minion.level % 25 === 0)) {
-            raiseAtk(minion, Decimal(40 * minion.level)); // 使用 Decimal 处理攻击提升
+            raiseAtk(minion, Decimal(40 * minion.level), undefined, true); // 使用 Decimal 处理攻击提升
             if (minion.level === 5) {
-                raiseAtk(minion, Decimal(40 * minion.level), true); // 使用 Decimal 处理攻击提升
+                raiseAtk(minion, Decimal(40 * minion.level), undefined, true); // 使用 Decimal 处理攻击提升
             }
         }
         if (minion.learnedSkills.includes("小说家")) {
@@ -2617,11 +2617,11 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
         if (minion.learnedSkills.includes("阴阳秘法") && (minion.level === 6 || minion.level % 36 === 0)) {
             for (let m of minionsState) {
-                raiseAtk(m, Decimal(3 * minion.level), true); // 使用 Decimal 处理攻击提升
+                raiseAtk(m, Decimal(3 * minion.level),undefined,true); // 使用 Decimal 处理攻击提升
             }
             if (minion.level === 6) {
                 for (let m of minionsState) {
-                    raiseAtk(m, Decimal(3 * minion.level), true); // 使用 Decimal 处理攻击提升
+                    raiseAtk(m, Decimal(3 * minion.level),undefined,true); // 使用 Decimal 处理攻击提升
                 }
             }
         }
@@ -2671,7 +2671,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                 }
                 if (tlv % 100 === 0) {
                     for (let mi of minionsState) {
-                        raiseAtk(mi, Decimal(tlv / 5), true); // 使用 Decimal 处理攻击提升
+                        raiseAtk(mi, Decimal(tlv / 5),undefined,true); // 使用 Decimal 处理攻击提升
                     }
                     showSkillWord(m, "日一皇");
                 }
