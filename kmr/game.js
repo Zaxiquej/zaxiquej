@@ -222,7 +222,8 @@ function loadGameState(encodedGameState){
   if (gameState.ethers) ethers = gameState.ethers;
   if (gameState.totalEthers) totalEthers = gameState.totalEthers;
   if (gameState.obtainedBonds) obtainedBonds = gameState.obtainedBonds;
-
+  if (Number(zheluck)!== zheluck) zheluck = 3;
+  if (Number(zheluck2)!== zheluck2) zheluck2 = 3;
   for (let m of minionsState){
     m.attack = new Decimal(m.attack);
     m.tempAtk = new Decimal(m.tempAtk);
@@ -986,12 +987,12 @@ function getattack(minion, master) {
         if (checkLuck(zheluck*(0.01), 1)) {
             extraDam = extraDam.plus(zhedam);
             skilled = true;
-            zheluck = new Decimal(3);
+            zheluck = 3;
             showSkillWord(minion, "乾坤一掷");
 
             if (checkLuck(zheluck2*(0.01), 2)) {
                 zhedam = Decimal.max(zhedam,(Math.floor(maxdamZ.div(11))) );
-                zheluck2 = new Decimal(3);
+                zheluck2 = 3;
                 showSkillWord(minion, "伤害提升！");
             }
         }
@@ -1153,7 +1154,6 @@ function incrementRandomDigit(num) {
     if (isNegative) {
         result = result.negated();
     }
-    console.log(originalNum.toNumber(),result.toNumber())
     return result;
 }
 
