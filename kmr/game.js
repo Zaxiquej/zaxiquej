@@ -13,10 +13,10 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.0.0";
-let kmrHealthValue = 500000;
+let version = "3.0.1";
+let kmrHealthValue = new Decimal('500000');
 let level = 0;
-let coins = 0;
+let coins = new Decimal('0');
 let dps = 0;
 let timePlayed = 0;
 let totalClickDamage = 0;
@@ -35,15 +35,15 @@ let remluck = 0;
 let reroll = 0;
 let freeReroll = 2;
 let freeUp = 0;
-let yggdam = 322;
+let yggdam = new Decimal('322');
 let upgrading = false;
 let xxjjj = 0;
 let curjjj = 0;
 let xxBuff = false;
 let zheluck = 3;
 let zheluck2 = 3;
-let zhedam = 2600;
-let maxdamZ = 0;
+let zhedam = new Decimal('2600');
+let maxdamZ =  new Decimal('0');
 let daZhaiQiYue = false;
 let chongMing = 1;
 let cangSkill = "";
@@ -180,9 +180,9 @@ function loadGameState(encodedGameState){
   const gameStateStr = b64_to_utf8(encodedGameState); // Base64 decode the game state
   const gameState = JSON.parse(gameStateStr);
   if (gameState.version) version = gameState.version;
-  if (gameState.kmrHealthValue) kmrHealthValue = gameState.kmrHealthValue;
+  if (gameState.kmrHealthValue) kmrHealthValue = new Decimal(gameState.kmrHealthValue);
   if (gameState.level) level = gameState.level;
-  if (gameState.coins) coins = gameState.coins;
+  if (gameState.coins) coins = new Decimal(gameState.coins);
   if (gameState.dps) dps = gameState.dps;
   if (gameState.timePlayed) timePlayed = gameState.timePlayed;
   if (gameState.totalClickDamage) totalClickDamage = gameState.totalClickDamage;
@@ -200,15 +200,15 @@ function loadGameState(encodedGameState){
   if (gameState.reroll) reroll = gameState.reroll;
   if (gameState.freeReroll) freeReroll = gameState.freeReroll;
   if (gameState.freeUp) freeUp = gameState.freeUp;
-  if (gameState.yggdam) yggdam = gameState.yggdam;
+  if (gameState.yggdam) yggdam = new Decimal(gameState.yggdam);
   if (gameState.upgrading) upgrading = gameState.upgrading;
   if (gameState.xxjjj) xxjjj = gameState.xxjjj;
   if (gameState.curjjj) curjjj = gameState.curjjj;
   if (gameState.xxBuff) xxBuff = gameState.xxBuff;
   if (gameState.zheluck) zheluck = gameState.zheluck;
   if (gameState.zheluck2) zheluck2 = gameState.zheluck2;
-  if (gameState.zhedam) zhedam = gameState.zhedam;
-  if (gameState.maxdamZ) maxdamZ = gameState.maxdamZ;
+  if (gameState.zhedam) zhedam = new Decimal(gameState.zhedam);
+  if (gameState.maxdamZ) maxdamZ = new Decimal(gameState.maxdamZ);
   if (gameState.daZhaiQiYue) daZhaiQiYue = gameState.daZhaiQiYue;
   if (gameState.chongMing) chongMing = gameState.chongMing;
   if (gameState.cangSkill) cangSkill = gameState.cangSkill;
@@ -223,6 +223,11 @@ function loadGameState(encodedGameState){
   if (gameState.totalEthers) totalEthers = gameState.totalEthers;
   if (gameState.obtainedBonds) obtainedBonds = gameState.obtainedBonds;
 
+  for (let m of minionsState){
+    m.attack = new Decimal(m.attack);
+    m.tempAtk = new Decimal(m.tempAtk);
+    m.totalDamage = new Decimal(m.totalDamage);
+  }
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
@@ -250,13 +255,10 @@ function importGame(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
         const encodedGameState = e.target.result;
-        loadGameState(encodedGameState);
         for (let minion of minionsState){
-          clearInterval(minion.intervalId);
+          clearInterval(minion.intervalId)
         }
-        for (let i = 2; i < 99; i++){
-          clearInterval(i);
-        }
+        loadGameState(encodedGameState);
         victory = false;
         checkVictory();
         updateSkills();
@@ -278,10 +280,10 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.0.0"
-  kmrHealthValue = 500000;
+  version = "3.0.1";
+  kmrHealthValue = new Decimal('500000');
   level = 0;
-  coins = 0;
+  coins = new Decimal('0');
   dps = 0;
   timePlayed = 0;
   totalClickDamage = 0;
@@ -298,15 +300,15 @@ function resetVars() {
   reroll = 0;
   freeReroll = 2;
   freeUp = 0;
-  yggdam = 322;
+  yggdam = new Decimal('322');
   upgrading = false;
   xxjjj = 0;
   curjjj = 0;
   xxBuff = false;
   zheluck = 3;
   zheluck2 = 3;
-  zhedam = 2600;
-  maxdamZ = 0;
+  zhedam = new Decimal('2600');
+  maxdamZ = new Decimal('0');
   daZhaiQiYue = false;
   chongMing = 1;
   cangSkill = "";
@@ -325,9 +327,6 @@ function resetGame() {
     for (let minion of minionsState){
       clearInterval(minion.intervalId);
     }
-    for (let i = 2; i < 99; i++){
-      clearInterval(i);
-    }
     minionsState = [];
     refMinions();
     updateDisplays();
@@ -337,7 +336,7 @@ function resetGame() {
 }
 
 function gainEtherAmount(){
-  return level;
+  return level - 5;
 }
 
 function gainEther(){
@@ -445,41 +444,40 @@ function killBuff(name,power) {
   }
 }
 
-function unlockMinion(minion,temp){
+function unlockMinion(minion, temp) {
   unlockedMinions.push(minion.name);
   minion = {
-      ...minion,
-      level: 1,
-      attack: minion.baseattack,
-      tempAtk: 0,
-      reroll: 2,
-      totalDamage: 0,
-      learnedSkills: [],
+    ...minion,
+    level: 1,
+    attack: new Decimal(minion.baseattack),
+    tempAtk: new Decimal(0),
+    reroll: 2,
+    totalDamage: new Decimal(0),
+    learnedSkills: [],
   }
 
   let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
   minion.intervalId = intervalId;
-  minionsState = minionsState.concat(minion)
+  minionsState = minionsState.concat(minion);
   minion.reroll = temp - 1;
   refMinions();
 
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("中速导师")){
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("中速导师")) {
       autoing = true;
-      for (let i = 1; i < Math.floor(m.level/2); i++){
-        upgradeMinion(minionsState.indexOf(minion),undefined,true,true);
+      for (let i = 1; i < Math.floor(m.level / 2); i++) {
+        upgradeMinion(minionsState.indexOf(minion), undefined, true, true);
       }
       autoing = false;
       minion.level = 1;
       refMinions();
-      refreshMinionDetails();
+      refreshMinionDetails()
       showSkillWord(m, "中速导师");
     }
-    if (m.learnedSkills.includes("知名皇黑")){
+    if (m.learnedSkills.includes("知名皇黑")) {
       addBuff("huanghei", 34, 18, false);
       showSkillWord(m, "知名皇黑");
     }
-
   }
 }
 
@@ -519,25 +517,28 @@ function showEffect(x, y, effectClass) {
     setTimeout(() => effect.remove(), 1000);
 }
 
-
 function showDamage(x, y, damage) {
-  if (autoing){
+  if (autoing) {
     return;
   }
-    const damageEffect = document.createElement('div');
-    if (damage > 0){
-      damageEffect.className = 'damage-effect';
-      damageEffect.innerText = `-${damage}`;
-    } else {
-      damageEffect.className = 'heal-effect';
-      damageEffect.innerText = `${-damage}`;
-    }
 
-    damageEffect.style.left = `${x - 10}px`;
-    damageEffect.style.top = `${y - 20}px`;
-    document.body.appendChild(damageEffect);
-    setTimeout(() => damageEffect.remove(), 1000);
+  const damageEffect = document.createElement('div');
+  const damageValue = new Decimal(damage);
+
+  if (damageValue.comparedTo(0) > 0) {
+    damageEffect.className = 'damage-effect';
+    damageEffect.innerText = `-${damageValue.toString()}`;
+  } else {
+    damageEffect.className = 'heal-effect';
+    damageEffect.innerText = `${damageValue.negated().toString()}`;
+  }
+
+  damageEffect.style.left = `${x - 10}px`;
+  damageEffect.style.top = `${y - 20}px`;
+  document.body.appendChild(damageEffect);
+  setTimeout(() => damageEffect.remove(), 1000);
 }
+
 
 function showWord(x, y, word) {
     const wordEffect = document.createElement('div');
@@ -607,11 +608,11 @@ function showSkillWord(minion, word) {
 
 function updateHealth(health) {
     const healthElement = document.getElementById('kmr-health');
-    const maxHealth = 500000*Math.pow(10,level); // 假设最大血量为500,000
-    kmrHealthValue = Math.floor(kmrHealthValue)
-    const healthPercentage = (kmrHealthValue / maxHealth) * 100;
-    healthElement.style.width = healthPercentage + '%';
-    healthElement.textContent = formatNumber2(health)
+    const maxHealth = new Decimal('500000').times(Decimal(10).pow(level));
+    kmrHealthValue = new Decimal(kmrHealthValue).toDecimalPlaces(0) ; // 确保 kmrHealthValue 为整数
+    const healthPercentage = kmrHealthValue.dividedBy(maxHealth).times(100);
+    healthElement.style.width = healthPercentage.toFixed(2) + '%';
+    healthElement.textContent = formatNumber2(health);
 }
 
 function updateDisplays() {
@@ -620,7 +621,7 @@ function updateDisplays() {
   }
     kmrHealth.textContent = formatNumber2(kmrHealthValue);
     coinsDisplay.textContent = formatNumber(coins);
-    ethersDisplay.textContent = formatNumber(ethers) + "("+ formatNumber(totalEthers)+")";
+    ethersDisplay.textContent = ethers + "("+ totalEthers+")";
     document.getElementById('phase-level').textContent = level;
     timePlayedDisplay.textContent = `${timePlayed}s`;
     totalClickDamageDisplay.textContent = totalClickDamage;
@@ -665,30 +666,34 @@ function createDamageNumber(damage) {
 
 function gainCoin(c){
   if (getBuffPower("ykd").length > 0){
-    let c = getBuffPower("ykd")[0];
-    c = Math.floor(c * 2);
+    let buffPower = new Decimal(getBuffPower("ykd")[0]);
+    c = buffPower.times(2).toDecimalPlaces(0) .toNumber();
   }
-  coins += c;
+  coins = coins.plus(c);
 }
 
 function clickKmr() {
     burning = 0;
-    let dam = 1;
-    dam = dam * etherPlusDam();
-    dam = Math.floor(dam);
-    kmrTakeDam(dam);
+    let dam = new Decimal(1); // 使用 Decimal 初始化伤害值
+    dam = dam.times(etherPlusDam()); // 计算增加的伤害值
+    dam = dam.toDecimalPlaces(0); // 将 Decimal 转换为整数值
+    kmrTakeDam(dam); // 将 Decimal 转换为普通数值后应用伤害
     victory = false;
-    totalClickDamage += dam;
+    totalClickDamage = totalClickDamage + dam.toNumber(); // 使用 Decimal 累加总点击伤害
+
     var position = kmr.getBoundingClientRect();
-    let x = position.left + (Math.random()*kmr.width);
-    let y = position.top + (Math.random()*kmr.height);
-    showEffect(x,y, 'hit-effect');
-    showDamage(x,y, dam);
+    let x = position.left + (Math.random() * kmr.width);
+    let y = position.top + (Math.random() * kmr.height);
+    showEffect(x, y, 'hit-effect');
+    showDamage(x, y, dam.toNumber()); // 将 Decimal 转换为普通数值后显示伤害
+
     const hitSound = new Audio('kmr/hit.ogg');
     hitSound.play();
-    gainCoin(dam);
+
+    gainCoin(dam); // 将 Decimal 转换为普通数值后增加金币
+
     kmrquickHit += 1;
-    for (let m of minionsState){
+    for (let m of minionsState) {
       if (m.learnedSkills.includes("小说家") && kmrquickHit >= 3){
         kmrquickHit = 0;
         if (coolAnim){
@@ -708,99 +713,126 @@ function clickKmr() {
         }
       }
     }
+
     updateDisplays();
     checkVictory();
 }
 
-function kmrTakeDam(dam){
-  if (getBuffPower("huanghei").length > 0){
-    let huanghei = getBuffPower("huanghei")[0];
-    dam = Math.floor(dam * (1 + 0.01*huanghei))
-  }
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("素材奖励")){
-      let maxHealth = 500000 * Math.pow(10,level);
-      if (kmrHealthValue > Math.floor(2/3*maxHealth) && (kmrHealthValue - dam) < Math.floor(2/3*maxHealth)){
-        refreshCangSkill();
-      }
-      if (kmrHealthValue > Math.floor(1/3*maxHealth) && (kmrHealthValue - dam) < Math.floor(1/3*maxHealth)){
-        refreshCangSkill();
-      }
+function kmrTakeDam(dam) {
+    dam = new Decimal(dam);
+    if (getBuffPower("huanghei").length > 0) {
+        let huanghei = getBuffPower("huanghei")[0];
+        dam = dam.times(1 + huanghei * 0.01).toDecimalPlaces(0); // 使用 Decimal 处理增益效果
     }
-  }
-  kmrHealthValue -= dam;
-  if (dam > maxdamZ){
-    maxdamZ = dam;
-  }
+
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("素材奖励")) {
+            let maxHealth = new Decimal('500000').times(Decimal(10).pow(level)); // 使用 Decimal 处理最大生命值
+            let twoThirdsMaxHealth = maxHealth.times(2).dividedBy(3).toDecimalPlaces(0);
+            let oneThirdMaxHealth = maxHealth.dividedBy(3).toDecimalPlaces(0);
+
+            if (kmrHealthValue.comparedTo(twoThirdsMaxHealth) >= 0 && kmrHealthValue.minus(dam).comparedTo(twoThirdsMaxHealth) <= 0) {
+                refreshCangSkill();
+            }
+            if (kmrHealthValue.comparedTo(oneThirdMaxHealth) >= 0 && kmrHealthValue.minus(dam).comparedTo(oneThirdMaxHealth) <= 0) {
+                refreshCangSkill();
+            }
+        }
+    }
+
+    kmrHealthValue = kmrHealthValue.minus(dam); // 使用 Decimal 处理减法
+
+    if (dam.comparedTo(maxdamZ) > 0) {
+        maxdamZ = dam;
+    }
 }
-function damageKmr(dam,minion) {
-    if (kmrHealthValue <= 0) return;
-    for (let m of minionsState){
-      if (m.learnedSkills.includes("护国神橙")){
-        dam = (dam*(1 + 0.2 + 0.01*Math.floor(Math.pow(m.level,0.6))));
-      }
+
+function damageKmr(dam, minion) {
+    if (kmrHealthValue.comparedTo(0) <= 0) return;
+
+    // 处理护国神橙技能
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("护国神橙")) {
+            dam = dam.times(1 + 0.2 + 0.01 * Math.floor(Math.pow(m.level, 0.6)));
+        }
     }
-    dam = dam * extraDamRatio(minion);
-    dam = Math.floor(dam);
+
+    // 计算额外伤害比例
+    dam = dam.times(extraDamRatio(minion)).toDecimalPlaces(0);
+
+    // 扣除伤害
     kmrTakeDam(dam);
 
-    for (let m of minionsState){
-
-      if (m.learnedSkills.includes("大地之子")){
-        if (checkLuck(0.01)) {
-          skilled = true;
-          addBuff("earth",0.01,5,true)
-          showSkillWord(minion, "大地之子");
+    // 处理其他技能效果
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("大地之子")) {
+            if (checkLuck(0.01)) {
+                skilled = true;
+                addBuff("earth", 0.01, 5, true);
+                showSkillWord(minion, "大地之子");
+            }
         }
-      }
-      if (m.learnedSkills.includes("比武招亲")){
-        if (checkLuck(0.05)){
-          let dam = Math.floor(m.attack*0.02*Math.pow(timePlayed + totaltimePlayed,0.5));
-          damageKmr(dam,m);
-          showSkillWord(m, "比武招亲");
+        if (m.learnedSkills.includes("比武招亲")) {
+            if (checkLuck(0.05)) {
+                let bonusDamage = m.attack.times(0.02).times(Math.sqrt(timePlayed + totaltimePlayed)).toDecimalPlaces(0);
+                damageKmr(bonusDamage, m);
+                showSkillWord(m, "比武招亲");
+            }
         }
-      }
-      if (m.learnedSkills.includes("雷维翁之力")){
-        raiseAtk(minion, Math.floor(Math.pow(dam,0.85)*0.002));
-        showSkillWord(minion, "雷维翁之力");
-      }
+        if (m.learnedSkills.includes("雷维翁之力")) {
+            let raiseAmount = Decimal(dam).pow(0.85).times(0.002).toDecimalPlaces(0);
+            raiseAtk(minion, raiseAmount);
+            showSkillWord(minion, "雷维翁之力");
+        }
     }
 
-    minion.totalDamage += dam;
+    // 更新总伤害记录
+    minion.totalDamage = minion.totalDamage.plus(dam);
+
+    // 显示伤害效果
     var position = kmr.getBoundingClientRect();
-    let x = position.left + (Math.random()*kmr.width);
-    let y = position.top + (Math.random()*kmr.height);
-    showEffect(x,y, 'hit-effect');
-    showDamage(x,y, dam);
+    let x = position.left + (Math.random() * kmr.width);
+    let y = position.top + (Math.random() * kmr.height);
+    showEffect(x, y, 'hit-effect');
+    showDamage(x, y, dam);
 
-    if (Math.random() < 0.1){
-      const hitSound = new Audio(minion.voice);
-      hitSound.play();
+    // 播放声音
+    if (Math.random() < 0.1) {
+        const hitSound = new Audio(minion.voice);
+        hitSound.play();
     }
 
+    // 获得金币
     gainCoin(dam);
+
+    // 更新显示
     updateDisplays();
+
+    // 检查游戏胜利条件
     checkVictory();
 }
 
-function formatNumber(num) {
-    if (num == Infinity){
-      return num;
+function formatNumberSmall(num) {
+    if (!num.isFinite()) {
+        return num.toString();
     }
+
     const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
     const threshold = 10000; // 万的阈值
 
-    if (num < threshold) {
-        return num.toString(); // 小于万，直接返回数字
+    if (num.comparedTo(threshold) < 0) {
+        return num.toString(); // 小于万，直接返回数字的字符串形式
     }
 
-    let unitIndex = -1;
+    let unitIndex = 0;
     let formattedNum = num;
 
-    while (formattedNum >= threshold && unitIndex < units.length) {
-        formattedNum /= threshold;
+    while (formattedNum>=threshold && unitIndex < units.length) {
+        formattedNum = formattedNum/(threshold);
         unitIndex++;
     }
+
+    unitIndex--; // 因为上一个循环多执行了一次
 
     if (unitIndex < units.length) {
         return `${formattedNum.toFixed(2)}${units[unitIndex]}`;
@@ -809,44 +841,70 @@ function formatNumber(num) {
     }
 }
 
-function formatNumber2(num) {
-    if (num == Infinity){
+function formatNumber(num) {
+    if (!num.isFinite()) {
         return num.toString();
     }
-    const units = ['','万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
-    const threshold = 10000; // 万的阈值
 
-    if (num < threshold) {
-        return num.toString(); // 小于万，直接返回数字
+    const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
+    const threshold = new Decimal(10000); // 万的阈值
+
+    if (num.comparedTo(threshold) < 0) {
+        return num.toString(); // 小于万，直接返回数字的字符串形式
     }
 
     let unitIndex = 0;
     let formattedNum = num;
 
-    while (formattedNum >= threshold && unitIndex < units.length) {
-        formattedNum /= threshold;
+    while (formattedNum.comparedTo(threshold) >= 0 && unitIndex < units.length) {
+        formattedNum = formattedNum.dividedBy(threshold);
+        unitIndex++;
+    }
+
+    unitIndex--; // 因为上一个循环多执行了一次
+
+    if (unitIndex < units.length && formattedNum.comparedTo(threshold) <= 0) {
+        return `${formattedNum.toFixed(2)}${units[unitIndex]}`;
+    } else {
+        return num.toExponential(2); // 超过最大单位，使用科学计数法
+    }
+}
+
+function formatNumber2(num) {
+    const units = ['','万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
+    const threshold = new Decimal(10000); // 万的阈值
+
+    if (num < 10000) {
+        return num.toString(); // 小于万，直接返回数字
+    }
+
+    let unitIndex = 0;
+    let formattedNum = new Decimal(num);
+
+    while (formattedNum.gte(threshold) && unitIndex < units.length) {
+        formattedNum = formattedNum.div(threshold);
         unitIndex++;
     }
 
     if (unitIndex < units.length) {
         let result = [];
         for (let i = unitIndex; i >= 0; i--) {
-            const unitValue = Math.floor(num / Math.pow(threshold, i));
-            if (unitValue > 0 || result.length > 0) { // 跳过高位的零
+            const unitValue = new Decimal(num).div(new Decimal(threshold).pow(i)).floor();
+            if (unitValue.gt(0) || result.length > 0) { // 跳过高位的零
                 if (result.length > 0){
-                  let paddedUnitValue = unitValue.toString().padStart(4, '0');
-                  result.push(`${paddedUnitValue}${units[i]}`);
+                    let paddedUnitValue = unitValue.toFixed(0).padStart(4, '0');
+                    result.push(`${paddedUnitValue}${units[i]}`);
                 } else {
-                  result.push(`${unitValue}${units[i]}`);
+                    result.push(`${unitValue}${units[i]}`);
                 }
 
-                num -= unitValue * Math.pow(threshold, i);
+                num -= unitValue.times(new Decimal(threshold).pow(i)).toNumber();
             }
         }
 
         return result.slice(0, 4).join(''); // 只取最大的3个单位
     } else {
-        return num.toExponential(12); // 超过最大单位，使用科学计数法，保留12位小数
+        return new Decimal(num).toExponential(12); // 超过最大单位，使用科学计数法，保留12位小数
     }
 }
 
@@ -872,416 +930,440 @@ function checkVictory() {
 }
 
 function phaseUpGame() {
-  victory = false;
-    level = level +1;
+    victory = false;
+    level = level + 1;
     document.getElementById('phase-level').textContent = level;
-    kmrHealthValue = 500000 * Math.pow(10,level);
+    kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level)); // 更新血量使用 Decimal
     timePlayed = 0;
-    //totalClickDamage = 0;
-    //let rindex = 0;
-    //let minionDamages = {};
-    //let minionsState = [];
-    //let unlockedMinions = [];
     victoryMessage.classList.add('hidden');
     updateDisplays();
     saveGame(true);
-    for (let m of minionsState){
-      if (m.learnedSkills.includes("马纳利亚时刻")){
-        refreshCangSkill();
-      }
-    }
 
-    //initMinions(); // Initialize minions again after restarting game
+    // 检查并执行技能相关逻辑
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("马纳利亚时刻")) {
+            refreshCangSkill();
+        }
+    }
 }
 
-function getattack(minion,master){
-  let atk = minion.attack;
-  let extraDam = 0;
-  if (minion.learnedSkills.includes("鸭皇旋风斩！") && buffs.length > 0){
-    if (checkLuck(0.25)){
-      const maxAttackMinion = minionsState.reduce((max, minion) => {
-        return (minion.attack > max.attack) ? minion : max;
-      }, { attack: -Infinity }); // 初始化时假设最大的 attack 值非常小
-      atk += Math.floor(maxAttackMinion.attack * (0.1* buffs.length));
-      showSkillWord(minion, "鸭皇旋风斩！");
-    }
+function getattack(minion, master) {
+    let atk = new Decimal(minion.attack);
+    let extraDam = new Decimal(0);
 
-  }
-  for (let m of minionsState){
-    if (m.name != minion.name && m.learnedSkills.includes("苦痛")){
-      atk += Math.floor(m.attack*0.5);
-    }
-    if (m.learnedSkills.includes("祥瑞") && Math.abs(minionsState.indexOf(minion) - minionsState.indexOf(m))<=1 ){
-      let low = Math.max(0, 0.5 - 0.01 * Math.floor(m.level/10));
-      let high = Math.min(10,2 + 0.04 * Math.floor(m.level/10));
-      let rd = Math.random()* (high - low) + low;
-      atk = Math.floor(atk * rd);
-    }
-  }
-  if (minion.learnedSkills.includes("素质家族")){
-    if (checkLuck(0.08)) {
-      atk*=20;
-      skilled = true;
-      showSkillWord(minion, "素质家族");
-    }
-  }
-  if (minion.learnedSkills.includes("乾坤一掷")){
-    if (checkLuck(zheluck*0.01,1)) {
-      extraDam+=zhedam;
-      skilled = true;
-      zheluck = 3;
-      showSkillWord(minion, "乾坤一掷");
-      if (checkLuck(zheluck2*0.01,2)) {
-        zhedam = Math.max(zhedam,Math.floor(maxdamZ/11));
-        zheluck2 = 3;
-        showSkillWord(minion, "伤害提升！");
-      }
-    }
-  }
-  if (minion.learnedSkills.includes("打个教先")){
-    if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
-      atk*= Math.floor(1 + Math.pow(xxjjj,2.25));
-      skilled = true;
-      xxBuff = false;
-    } else {
-      let luck = Math.max(0.2, 0.7 - 0.01* Math.floor(minion.level/15));
-      if (checkLuck(luck)) {
-        atk*= Math.min(10,2 + 0.1*0.01* Math.floor(minion.level/15));
-        skilled = true;
-        showSkillWord(minion, "结晶教胜利！");
-        curjjj = 0;
-      } else {
-        curjjj += 1;
-        if (xxjjj < curjjj){
-          xxjjj = curjjj;
+    if (minion.learnedSkills.includes("鸭皇旋风斩！") && buffs.length > 0) {
+        if (checkLuck(0.25)) {
+            const maxAttackMinion = minionsState.reduce((max, m) => {
+                return (m.attack.comparedTo(max.attack) > 0) ? m : max;
+            }, { attack: new Decimal(-Infinity) });
+
+            atk = atk.plus(maxAttackMinion.attack.times(0.1).times(buffs.length));
+            showSkillWord(minion, "鸭皇旋风斩！");
         }
-        showSkillWord(minion, "小心结晶教！*"+curjjj);
-      }
     }
-  }
-  if (minion.learnedSkills.includes("皇室荣耀")){
-    if (checkLuck(0.1)) {
-      atk += yggdam;
-      skilled = true;
-      showSkillWord(minion, "皇室荣耀");
-    }
-  }
-  if (minion.learnedSkills.includes("复仇")){
-    const maxHealth = 500000*Math.pow(10,level); // 假设最大血量为500,000
-    const healthPercentage = (kmrHealthValue / maxHealth) * 100;
-    if (healthPercentage <= 50) {
-      atk*= 1 + 0.5 + 0.01*Math.floor(Math.pow(minion.level,0.75));
-      showSkillWord(minion, "复仇");
-    }
-  }
-  if (minion.learnedSkills.includes("掌控") && zenxActive){
-    zenxActive = false;
-    atk*= 8 + zenxLV*4;
-    zenxLV = zenxLV + 1;
-    skilled = true;
-  }
-  if (minion.learnedSkills.includes("开播！")){
-    skilled = true;
-    atk += Math.floor(Math.pow(Math.abs(coins),0.66)/1000*minion.level);
-  }
-  if (getBuffPower("idol").length > 0){
-    for (let i of getBuffPower("idol")){
-      atk *= i;
-    }
-  }
 
-  if (getBuffPower("earth").length > 0){
-    let aa = 1;
-    for (let i of getBuffPower("earth")){
-      aa *= (1 + i);
-      plusBuffPower("earth",i,0.01);
+    for (let m of minionsState) {
+        if (m.name !== minion.name && m.learnedSkills.includes("苦痛")) {
+            atk = atk.plus(m.attack.times(0.5));
+        }
+        if (m.learnedSkills.includes("祥瑞") && Math.abs(minionsState.indexOf(minion) - minionsState.indexOf(m))<=1 ){
+          let low = Math.max(0, 0.5 - 0.01 * Math.floor(m.level/10));
+          let high = Math.min(10,2 + 0.04 * Math.floor(m.level/10));
+          let rd = Math.random()* (high - low) + low;
+            atk = atk.times(rd);
+        }
     }
-    aa = Math.min(1000,aa);
-    atk *= aa;
-  }
-  if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")){
-    let exbl = 0;
-    let exNum = 0;
-    for (let i of getBuffPower("ya")){
-      if (checkLuck(0.25)){
-        exbl += i;
-        exNum += 1;
-      }
-    }
-    atk *= 1 + exbl;
-    if (exNum > 0){
-      showSkillWord(minion, "弹幕指点*"+exNum);
-    }
-  }
-  if (getBuffPower("saki").length > 0 && minion.learnedSkills.includes("终轮常客")){
-    let exbl = 0;
-    let sp = [];
-    for (let i = 0; i < getBuffPower("saki").length; i++){
-      exbl += 0.01*getBuffPower("saki")[i];
-      if (checkLuck(0.02)){
-        sp.push(getBuffPower("saki"));
-      }
-    }
-    atk *= 1 + exbl;
-    for (let i = sp.length - 1; i >= 0; i--) {
-      killBuff("saki",sp[i])
-      raiseAtk(minion,Math.floor(10*Math.pow(minion.attack,0.8)));
-      showSkillWord(minion, "必可活用于下一次……");
-    }
-  }
 
-  //沉底
-  atk += extraDam;
-
-  for (let m of minionsState){
-    if (minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")){
-      atk *= 1.2;
+    if (minion.learnedSkills.includes("素质家族")) {
+        if (checkLuck(0.08)) {
+            atk = atk.times(20);
+            skilled = true;
+            showSkillWord(minion, "素质家族");
+        }
     }
-  }
-  atk = Math.floor(atk);
-  return atk;
+
+    if (minion.learnedSkills.includes("乾坤一掷")) {
+        if (checkLuck(zheluck*(0.01), 1)) {
+            extraDam = extraDam.plus(zhedam);
+            skilled = true;
+            zheluck = new Decimal(3);
+            showSkillWord(minion, "乾坤一掷");
+
+            if (checkLuck(zheluck2*(0.01), 2)) {
+                zhedam = Decimal.max(zhedam,(Math.floor(maxdamZ.div(11))) );
+                zheluck2 = new Decimal(3);
+                showSkillWord(minion, "伤害提升！");
+            }
+        }
+    }
+    if (minion.learnedSkills.includes("打个教先")){
+       if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
+         atk = atk.times(new Decimal(1).plus(Math.pow(xxjjj,2.25)));
+         skilled = true;
+         xxBuff = false;
+       } else {
+         let luck = Math.max(0.2, 0.7 - 0.01* Math.floor(minion.level/15));
+         if (checkLuck(luck)) {
+           atk = atk.times(Math.min(10,2 + 0.1*0.01* Math.floor(minion.level/15)));
+           skilled = true;
+           showSkillWord(minion, "结晶教胜利！");
+           curjjj = 0;
+         } else {
+           curjjj += 1;
+           if (xxjjj < curjjj){
+             xxjjj = curjjj;
+           }
+           showSkillWord(minion, "小心结晶教！*"+curjjj);
+         }
+       }
+     }
+    if (minion.learnedSkills.includes("皇室荣耀")) {
+        if (checkLuck(0.1)) {
+            atk = atk.plus(yggdam);
+            skilled = true;
+            showSkillWord(minion, "皇室荣耀");
+        }
+    }
+
+    if (minion.learnedSkills.includes("复仇")) {
+        const maxHealth = new Decimal('500000').times(new Decimal('10').pow(level)); // Decimal 处理最大血量
+        const healthPercentage = kmrHealthValue.div(maxHealth).times(100);
+
+        if (healthPercentage.comparedTo(50) <= 0) {
+            atk = atk.times(new Decimal(1).plus(new Decimal(0.5).plus(new Decimal(0.01).times(Math.floor(new Decimal(minion.level).pow(0.75))))));
+            showSkillWord(minion, "复仇");
+        }
+    }
+
+    if (minion.learnedSkills.includes("掌控") && zenxActive) {
+        zenxActive = false;
+        atk = atk.times(new Decimal(8).plus(zenxLV * 4));
+        zenxLV = zenxLV + 1;
+        skilled = true;
+    }
+
+    if (minion.learnedSkills.includes("开播！")) {
+        skilled = true;
+        atk = atk.plus(new Decimal(Math.floor(Math.pow(Math.abs(coins), 0.66) / 1000 * minion.level)));
+    }
+
+    if (getBuffPower("idol").length > 0) {
+        for (let i of getBuffPower("idol")) {
+            atk = atk.times(i);
+        }
+    }
+
+    if (getBuffPower("earth").length > 0) {
+        let aa = 1;
+
+        for (let i of getBuffPower("earth")) {
+            aa = aa * (1 + i);
+            plusBuffPower("earth", i, 0.01);
+        }
+
+        aa = Math.min(aa,1000);
+        atk = atk.times(aa);
+    }
+
+    if (getBuffPower("ya").length > 0 && minion.learnedSkills.includes("弹幕机器人")) {
+        let exbl = new Decimal(0);
+        let exNum = 0;
+
+        for (let i of getBuffPower("ya")) {
+            if (checkLuck(0.25)) {
+                exbl = exbl.plus(i);
+                exNum += 1;
+            }
+        }
+
+        atk = atk.times(new Decimal(1).plus(exbl));
+
+        if (exNum > 0) {
+            showSkillWord(minion, `弹幕指点*${exNum}`);
+        }
+    }
+
+    if (getBuffPower("saki").length > 0 && minion.learnedSkills.includes("终轮常客")) {
+        let exbl = new Decimal(0);
+        let sp = [];
+
+        for (let i = 0; i < getBuffPower("saki").length; i++) {
+            exbl = exbl.plus(new Decimal(0.01).times(getBuffPower("saki")[i]));
+
+            if (checkLuck(0.02)) {
+                sp.push(getBuffPower("saki"));
+            }
+        }
+
+        atk = atk.times(new Decimal(1).plus(exbl));
+
+        for (let i = sp.length - 1; i >= 0; i--) {
+            killBuff("saki", sp[i]);
+            raiseAtk(minion, new Decimal(10).times(minion.attack.pow(0.8)));
+            showSkillWord(minion, "必可活用于下一次……");
+        }
+    }
+
+    // 沉底
+    atk = atk.plus(extraDam);
+
+    for (let m of minionsState) {
+        if (minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")) {
+            atk = atk.times(1.2);
+        }
+    }
+
+    atk = atk.toDecimalPlaces(0) ; // 取整数部分
+
+    return atk;
 }
 
 function incrementRandomDigit(num) {
-    // 将输入转换为数字
-    let originalNum = Number(num);
-    let isNegative = originalNum < 0;
-    let absNum = Math.abs(originalNum);
+    // 将输入转换为 Decimal 对象，确保支持大数值处理
+    let originalNum = new Decimal(num);
+
+    // 判断原始数字的符号
+    let isNegative = originalNum.isNegative();
+
+    // 如果是负数，先转换为正数进行处理
+    let absNum = originalNum.absoluteValue();
 
     // 计算位数
-    let numDigits = Math.floor(Math.log10(absNum)) + 1;
+    let numDigits = absNum.toFixed().length;
 
     // 随机选择一位
     let randomIndex = Math.floor(Math.random() * numDigits);
 
     // 计算该位的值
-    let factor = Math.pow(10, randomIndex);
-    let currentDigit = Math.floor((absNum / factor) % 10);
+    let factor = new Decimal(10).pow(randomIndex);
+    let currentDigit = absNum.dividedBy(factor).toDecimalPlaces(0) .mod(10).toNumber();
 
     let result;
     if (randomIndex === numDigits - 1) {
         // 首位特殊处理
-        result = absNum + factor;
+        result = absNum.plus(factor);
     } else {
         if (currentDigit === 9) {
-            result = absNum - 9 * factor + 10 * factor;
+            result = absNum.minus(new Decimal(9).times(factor)).plus(new Decimal(10).times(factor));
         } else {
-            result = absNum + factor;
+            result = absNum.plus(factor);
         }
     }
 
     // 如果原数是负数，则结果也应为负数
     if (isNegative) {
-        result = -result;
+        result = result.negated();
     }
 
     return result;
 }
 
-function checkLuck(r,fromZhe) {
-  let re = 0;
-  let rand = Math.random();
-  let pass = rand < r;
-  if (r < 0.2 && remluck > 0){
-    remluck--;
-    pass = rand < (r * 4);
-  }
-  if (fromZhe){
-    for (let minion of minionsState){
-      if (minion.learnedSkills.includes("终将降临的肃清")){
-        let luck = Math.min(1,0.3 + 0.01 * Math.floor(minion.level/50));
-        if (Math.random() < luck) {
-          pass = Math.random() < r;
-          if (!pass) {
-            if (fromZhe == 1){zheluck += 0.3;}
-            if (fromZhe == 2){zheluck2 += 0.3;}
-            r += 0.003;
-            showSkillWord(minion, "终将降临的肃清");
-          }
-        }
-      }
-    }
-  }
+function checkLuck(r, fromZhe) {
+    let re = new Decimal(0);
+    let rand = new Decimal(Math.random());
+    let pass = rand < r;
 
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("重返赛场") && !pass && r < 0.2){
-      let luck = Math.min(0.5,0.21 + 0.01*Math.floor(m.level/25));
-      if (Math.random() < luck){
-        showSkillWord(m, "重返赛场");
-        pass = Math.random() < r;
-        if (fromZhe && !pass){
-          for (let minion of minionsState){
-            if (minion.learnedSkills.includes("终将降临的肃清")){
-              if (fromZhe == 1){zheluck += 0.3;}
-              if (fromZhe == 2){zheluck2 += 0.3;}
-              r += 0.003;
-              showSkillWord(minion, "终将降临的肃清");
+    if (r < 0.2 && remluck > 0) {
+        remluck = remluck - 1;
+        pass = rand < r*4;
+    }
+
+    if (fromZhe) {
+        for (let minion of minionsState) {
+            if (minion.learnedSkills.includes("终将降临的肃清")) {
+                let luck = new Decimal(Math.min(1, 0.3 + 0.01 * Math.floor(minion.level / 50)));
+                if (Math.random() < luck) {
+                    pass = Math.random() < r;
+                    if (!pass) {
+                        if (fromZhe === 1) {
+                            zheluck = zheluck + 0.3;
+                        }
+                        if (fromZhe === 2) {
+                            zheluck2 = zheluck2 + 0.3;
+                        }
+                        r = r + 0.003
+                        showSkillWord(minion, "终将降临的肃清");
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
-  if (pass) {
-    for (let m of minionsState){
-      if (m.learnedSkills.includes("运气不如他们") && r < 0.2){
-        showSkillWord(m, "运气不如他们");
-        raiseAtk(m,Math.max(3,Math.floor(m.level/12)));
-        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
-      }
+
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("重返赛场") && !pass && r < 0.2) {
+            let luck = new Decimal(Math.min(0.5, 0.21 + 0.01 * Math.floor(m.level / 25)));
+            if (Math.random() < luck) {
+                showSkillWord(m, "重返赛场");
+                pass = Math.random() < r;
+                if (fromZhe && !pass) {
+                    for (let minion of minionsState) {
+                        if (minion.learnedSkills.includes("终将降临的肃清")) {
+                            if (fromZhe === 1) {
+                                zheluck = zheluck + 0.3;
+                            }
+                            if (fromZhe === 2) {
+                                zheluck2 = zheluck2 + 0.3;
+                            }
+                            r = r + 0.003
+                            showSkillWord(minion, "终将降临的肃清");
+                        }
+                    }
+                }
+            }
+        }
     }
-    return true;
-  } else {
-    return false;
-  }
+
+    if (pass) {
+        for (let m of minionsState) {
+            if (m.learnedSkills.includes("运气不如他们") && r < 0.2) {
+                showSkillWord(m, "运气不如他们");
+                raiseAtk(m, Decimal.max(3, Math.floor(m.level / 12)));
+                document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function getDigit(num){
-  return Math.floor(getBaseLog(10,Math.abs(num)));
+function getDigit(num) {
+    const absNum = new Decimal(Math.abs(num));
+    const numDigits = absNum.dp() > 0 ? absNum.toDecimalPlaces(0).toFixed().length : absNum.toFixed().length;
+    return numDigits;
 }
-function minionAttack(minion,master) {
-    if (kmrHealthValue <= 0) return;
+function minionAttack(minion, master) {
+    if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
 
     skilled = false;
-    let dam = getattack(minion,master)
+    let dam = getattack(minion, master); // 获取攻击力
     let gainC = dam;
-    dam = dam * extraDamRatio(minion);
-    dam = Math.floor(dam);
+    dam = dam.times(extraDamRatio(minion)); // 乘以额外伤害比例
+    dam = dam.toDecimalPlaces(0); // 向下取整
 
-    if (minion.learnedSkills.includes("下饭")){
-      if (checkLuck(0.1)) {
-        gainC = dam*(getDigit(minion.attack));
-        dam = - dam;
-        showSkillWord(minion, "下饭");
+    if (minion.learnedSkills.includes("下饭")) {
         if (checkLuck(0.1)) {
-          addBuff("ykd", 3, getDigit(minion.attack), false);
-          showSkillWord(minion, "进入下饭状态！");
-        }
-      }
-    }
-
-    if (master){
-      master.totalDamage += dam;
-    } else {
-      minion.totalDamage += dam;
-    }
-
-    kmrTakeDam(dam);
-    var position = kmr.getBoundingClientRect();
-    let x = position.left + (Math.random()*kmr.width);
-    let y = position.top + (Math.random()*kmr.height);
-    showEffect(x,y, 'hit-effect');
-    showDamage(x,y, dam);
-
-    if (Math.random() < 0.1){
-      const hitSound = new Audio(minion.voice);
-      hitSound.play();
-    }
-    gainCoin(gainC);
-
-    if (minion.learnedSkills.includes("冲击冠军")){
-      if (checkLuck(0.04)) {
-        raiseAtk(minion,Math.floor(Math.pow(minion.level,1.1)));
-        skilled = true;
-        document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
-        showSkillWord(minion, "冲击冠军");
-      }
-    }
-    if (minion.learnedSkills.includes("大梦仙尊")){
-      let luck = Math.min(0.02,0.005 + 0.0005 * Math.max(0,getBaseLog(2,Math.abs(minion.attack)) - 10));
-      if (checkLuck(luck)) {
-        skilled = true;
-        freeUp += 5;
-        showSkillWord(minion, "大梦仙尊");
-        refMinions();
-      }
-    }
-    if (minion.learnedSkills.includes("咲夜的怀表")){
-      if (checkLuck(0.01)) {
-        skilled = true;
-        let t = 2;
-        if (getBuffPower("saki").length > 0){
-          t = 4;
-        }
-        buffExtend(t);
-        showSkillWord(minion, "咲夜的怀表");
-      }
-    }
-    if (minion.learnedSkills.includes("+1+1")){
-      if (checkLuck(0.06)) {
-        skilled = true;
-        minion.attack = Math.floor(minion.attack*1.1)
-        minion.attackSpeed = Math.floor(minion.attackSpeed*1.08)
-        document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
-        document.getElementById(`attack-speed-${unlockedMinions.indexOf(minion.name)}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
-        clearInterval(minion.intervalId)
-        let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
-        minion.intervalId = intervalId;
-        showSkillWord(minion, "+1+1");
-      }
-    }
-    if (minion.learnedSkills.includes("金牌陪练") && unlockedMinions.length > 1){
-      if (checkLuck(0.18)) {
-        skilled = true;
-        let r = Math.floor(Math.random()*(unlockedMinions.length - 1));
-        if (r >= unlockedMinions.indexOf(minion.name)){
-          r += 1;
-        }
-        raiseAtk(minionsState[r],Math.floor(minion.attack/15));
-        document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = formatNumber(minionsState[r].attack);
-        minionAttack(minionsState[r],minion);
-        showSkillWord(minion, "金牌陪练");
-      }
-    }
-    if (minion.learnedSkills.includes("黄油品鉴")){
-      if (checkLuck(0.1)){
-        let unlockedCD = 0;
-        for (let m of minionsState){
-          if (m.count != undefined){
-            unlockedCD++;
-          }
-        }
-        skilled = true;
-        let r = Math.floor(Math.random()*(unlockedCD - 1)) + 1;
-        for (let m of minionsState){
-          if (m.count != undefined){
-            r -= 1;
-            if (r == 0){
-              m.count += Math.min(8,3+Math.floor(minion.level/100));
+            gainC = dam.times(getDigit(minion.attack)); // gainC 根据攻击力和 getDigit 函数计算
+            dam = dam.negated(); // dam 取负值
+            showSkillWord(minion, "下饭");
+            if (checkLuck(0.1)) {
+                addBuff("ykd", 3, getDigit(minion.attack), false); // 添加 buff
+                showSkillWord(minion, "进入下饭状态！");
             }
-          }
         }
-        showSkillWord(minion, "黄油品鉴");
-      }
     }
-    if (minion.learnedSkills.includes("奶1")){
-      if (checkLuck(0.33)) {
-        skilled = true;
-        gainCoin(Math.floor(Math.pow(minion.level,1.5)));
-        showSkillWord(minion, "奶1");
-      }
+
+    kmrTakeDam(dam); // 执行伤害
+
+    if (master) {
+        master.totalDamage = master.totalDamage.plus(dam); // 累加总伤害
+    } else {
+        minion.totalDamage = minion.totalDamage.plus(dam); // 累加总伤害
     }
-    if (minion.learnedSkills.includes("理解不行")){
-      let luck = Math.min(0,25,0.05 + 0.01 * getDigit(minion.attack));
-      for (let bond of bondData){
-        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '理解不行'){
-          let c = bond.skillPlus[1];
-          luck += loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
+    var position = kmr.getBoundingClientRect();
+    let x = position.left + (Math.random() * kmr.width);
+    let y = position.top + (Math.random() * kmr.height);
+    showEffect(x, y, 'hit-effect'); // 显示效果
+    showDamage(x, y, dam); // 显示伤害
+
+    if (Math.random() < 0.1) {
+        const hitSound = new Audio(minion.voice);
+        hitSound.play(); // 播放音效
+    }
+    gainCoin(gainC); // 获得金币
+
+    if (minion.learnedSkills.includes("冲击冠军")) {
+        if (checkLuck(0.04)) {
+            raiseAtk(minion, new Decimal(minion.level).pow(1.1).toDecimalPlaces(0) ); // 升级攻击力
+            skilled = true;
+            document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
+            showSkillWord(minion, "冲击冠军");
         }
-      }
-      if (checkLuck(luck)) {
-        skilled = true;
-        gainCoin(10*Math.floor(Math.pow(minion.level,2)));
-        minusLevel(minion,1);
-        showSkillWord(minion, "理解不行");
-      }
     }
-    if (minion.learnedSkills.includes("偶像")){
-      if (checkLuck(0.07)) {
-        skilled = true;
-        addBuff("idol",1.2 + 0.02*getDigit(dam),10,true)
-        showSkillWord(minion, "偶像");
-      }
+    if (minion.learnedSkills.includes("大梦仙尊")) {
+        let luck = Decimal.min(0.02, 0.005 + 0.0005 * Decimal.max(0, getBaseLog(2, Math.abs(minion.attack)) - 10));
+        if (checkLuck(luck)) {
+            skilled = true;
+            freeUp += 5;
+            showSkillWord(minion, "大梦仙尊");
+            refMinions();
+        }
+    }
+    if (minion.learnedSkills.includes("+1+1")) {
+        if (checkLuck(0.06)) {
+            skilled = true;
+            minion.attack = minion.attack.times(1.1).toDecimalPlaces(0) ; // 攻击力乘以1.1并向下取整
+            minion.attackSpeed = Math.floor(minion.attackSpeed * 1.08); // 攻击速度乘以1.08并向下取整
+            document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
+            document.getElementById(`attack-speed-${unlockedMinions.indexOf(minion.name)}`).textContent = (minion.attackSpeed/(1000)).toFixed(1) + "s"; // 更新攻击速度
+            clearInterval(minion.intervalId);
+            let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
+            minion.intervalId = intervalId;
+            showSkillWord(minion, "+1+1");
+        }
+    }
+    if (minion.learnedSkills.includes("金牌陪练") && unlockedMinions.length > 1) {
+        if (checkLuck(0.18)) {
+            skilled = true;
+            let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
+            if (r >= unlockedMinions.indexOf(minion.name)) {
+                r += 1;
+            }
+            raiseAtk(minionsState[r], minion.attack.div(15).toDecimalPlaces(0) ); // 升级攻击力
+            document.getElementById(`attack-${unlockedMinions.indexOf(minionsState[r].name)}`).textContent = formatNumber(minionsState[r].attack);
+            minionAttack(minionsState[r], minion);
+            showSkillWord(minion, "金牌陪练");
+        }
+    }
+    if (minion.learnedSkills.includes("黄油品鉴")) {
+        if (checkLuck(0.1)) {
+            let unlockedCD = 0;
+            for (let m of minionsState) {
+                if (m.count != undefined) {
+                    unlockedCD++;
+                }
+            }
+            skilled = true;
+            let r = Math.floor(Math.random() * (unlockedCD - 1)) + 1;
+            for (let m of minionsState) {
+                if (m.count != undefined) {
+                    r -= 1;
+                    if (r == 0) {
+                        m.count = m.count + (Math.min(8, 3 + Math.floor(minion.level/100)));
+                    }
+                }
+            }
+            showSkillWord(minion, "黄油品鉴");
+        }
+    }
+    if (minion.learnedSkills.includes("奶1")) {
+        if (checkLuck(0.33)) {
+            skilled = true;
+            gainCoin(new Decimal(minion.level).pow(1.5).toDecimalPlaces(0) ); // 获得金币
+            showSkillWord(minion, "奶1");
+        }
+    }
+    if (minion.learnedSkills.includes("理解不行")) {
+        let luck = Decimal.min(0.25, 0.05 + 0.01 * getDigit(minion.attack));
+        for (let bond of bondData) {
+            if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '理解不行') {
+                let c = bond.skillPlus[1];
+                luck = luck.plus(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+            }
+        }
+        if (checkLuck(luck)) {
+            skilled = true;
+            gainCoin(10 * new Decimal(minion.level).pow(2).toDecimalPlaces(0) ); // 获得金币
+            minusLevel(minion, 1); // 减少等级
+            showSkillWord(minion, "理解不行");
+        }
+    }
+    if (minion.learnedSkills.includes("偶像")) {
+        if (checkLuck(0.07)) {
+            skilled = true;
+            addBuff("idol", 1.2 + 0.02 * getDigit(dam), 10, true); // 添加 buff
+            showSkillWord(minion, "偶像");
+        }
     }
 
     if (minion.learnedSkills.includes("人偶使") && unlockedMinions.length > 1) {
@@ -1289,7 +1371,6 @@ function minionAttack(minion,master) {
             skilled = true;
             let t = 3 + getBuffPower("idol").length * 3;
 
-            // 过滤掉所有learnedSkills中有“人偶使”的角色
             const filteredMinions = unlockedMinions.filter(m => !minionsState[unlockedMinions.indexOf(m)].learnedSkills.includes("人偶使"));
 
             for (let i = 0; i < t; i++) {
@@ -1297,122 +1378,119 @@ function minionAttack(minion,master) {
                 let r = Math.floor(Math.random() * filteredMinions.length);
                 minionAttack(minionsState[unlockedMinions.indexOf(filteredMinions[r])], minion);
             }
-
             showSkillWord(minion, "人偶使");
         }
     }
 
-    for (let m of minionsState){
-      if (getBuffPower("nao").length > 0){
-        if (minion.description.includes("🐷") && m.learnedSkills.includes("闹系列")){
-          m.count = 999;
-          showSkillWord(m, "闹系列发威！");
+    for (let m of minionsState) {
+        if (getBuffPower("nao").length > 0) {
+            if (minion.description.includes("🐷") && m.learnedSkills.includes("闹系列")) {
+                m.count = 999;
+                showSkillWord(m, "闹系列发威！");
+            }
         }
-      }
-      if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")){
-        if (checkLuck(0.08)) {
-          minionAttack(m);
-          showSkillWord(m, "永失吾艾");
+        if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")) {
+            if (checkLuck(0.08)) {
+                minionAttack(m);
+                showSkillWord(m, "永失吾艾");
+            }
         }
-      }
-      if (minion.description.includes("🐷") && m.learnedSkills.includes("身外化身")){
-        if (checkLuck(0.1)) {
-          minionAttack(minion,m);
-          showSkillWord(m, "身外化身");
-        }
-      }
-      if (skilled && m.name != minion.name && m.learnedSkills.includes("GN")){
-        if (checkLuck(0.1)) {
-          raiseAtk(m, Math.floor(minion.attack*0.03));
-          for (let i = 0; i < 3; i++){
-            minionAttack(m);
+        if (minion.description.includes("🐷") && m.learnedSkills.includes("身外化身")) {
+            if (checkLuck(0.1)) {
+              skilled = true;
+              let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
+              if (r >= unlockedMinions.indexOf(minion.name)) {
+                  r += 1;
+              }
+              minionAttack(minionsState[r], minion);
+              showSkillWord(minion, "身外化身");
           }
-          showSkillWord(m, "GN");
-        }
       }
-      if (m.name != minion.name && m.learnedSkills.includes("无尽连击")){
-        m.attack += Math.floor(m.addattack/2);
-        m.tempAtk += Math.floor(m.addattack/2);
-        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
-        showSkillWord(m, "无尽连击");
-      }
-    }
-    if (getBuffPower("pigu").length > 0){
-      if (checkLuck(0.01*getBuffPower("pigu")[0])){
-        minionAttack(minion,master);
-        showSkillWord(minion, "鼙鼓！");
-      }
-    }
-    updateDisplays();
-    checkVictory();
+  }
 }
 
 function refMinions() {
     const minionsContainer = document.getElementById('minions-container');
-    minionsContainer.innerHTML = ''; // Clear existing minions
+    minionsContainer.innerHTML = ''; // 清空现有的小怪物信息
     let minionsSubs = [];
     minionsState.forEach((minion, index) => {
         const minionElement = document.createElement('div');
         minionElement.className = 'minion';
-        const nameStyle = marriage.includes(minion.name) && lostTeam.includes(minion.name)
-            ? 'style="background: linear-gradient(to right, pink, red); -webkit-background-clip: text; color: transparent; font-weight: bold;"'
-            : marriage.includes(minion.name)
-                ? 'style="color: pink; font-weight: bold;"'
-                : lostTeam.includes(minion.name)
-                    ? 'style="color: red; font-weight: bold;"'
-                    : '';
+        const colors = [];
+
+        if (marriage.includes(minion.name)) {
+            colors.push('pink');
+        }
+
+        if (lostTeam.includes(minion.name)) {
+            colors.push('red');
+        }
+
+        let nameStyle = '';
+        if (colors.length > 1) {
+            nameStyle = `style="background: linear-gradient(to right, ${colors.join(', ')}); -webkit-background-clip: text; color: transparent; font-weight: bold;"`;
+        } else if (colors.length === 1) {
+            nameStyle = `style="color: ${colors[0]}; font-weight: bold;"`;
+        }
 
         minionElement.innerHTML = `
             <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
             <div ${nameStyle}>${minion.name}</div>
             <div>等级: <span id="level-${index}">${minion.level}</span></div>
             <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
-            <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
+            <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed /1000).toFixed(1)}s</span></div>
             <button id="cost-${index}" onclick="upgradeMinionClick(${index})" >升级 (${formatNumber(mupgradeCost(minion))})</button>
         `;
-        if (minion.reroll > 0 && unlockCost(unlockedMinions.length) < Infinity){
-          minionElement.innerHTML += `<button id="reroll-${index}" onclick="rerollMinion(${index})" >重抽 (剩余${minion.reroll}次) (${formatNumber(rerollCost(unlockedMinions.length))})</button>`
+
+        // 添加重抽按钮
+        if (minion.reroll > 0 && unlockedMinions.length < minions.length) {
+            minionElement.innerHTML += `<button id="reroll-${index}" onclick="rerollMinion(${index})" >重抽 (剩余${minion.reroll}次) (${formatNumber(rerollCost(unlockedMinions.length))})</button>`;
         }
+
         minionElement.addEventListener('click', () => {
             showMinionDetails(index);
         });
         minionsContainer.appendChild(minionElement);
-
     });
 
-    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) +")";
+    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) + ")";
 }
 
 function unlockCost(n) {
-  if (minions.length == unlockedMinions.length){
-    return Infinity;
+  if (minions.length === unlockedMinions.length) {
+    return Decimal(Infinity);
   }
-  let cost = 9 + 10*n + 4*n*n + Math.floor(2.7*Math.pow(n,3.25) + Math.pow(2.75,n));
-  cost = Math.floor(cost * Math.pow(unlockedMinions.length + 1,0.5));
-  if (unlockedMinions.length >= 10){
-    cost *= (unlockedMinions.length - 8);
+
+  let cost = Decimal(9).plus(10*n).plus(4*n*n).plus(Decimal(2.7).times(Decimal(n).pow(3.25)).plus(Decimal(2.75).pow(n)));
+  cost = cost.times(Decimal(unlockedMinions.length + 1).sqrt()).toDecimalPlaces(0);
+
+  if (unlockedMinions.length >= 10) {
+    cost = cost.times(unlockedMinions.length - 8);
   }
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("小猪存钱罐")){
-      cost = 0.75*cost;
+
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("小猪存钱罐")) {
+      cost = cost.times(0.75).toDecimalPlaces(0);
     }
   }
-  for (let bond of bondData){
-    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.unlockMinusCost){
+
+  for (let bond of bondData) {
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.unlockMinusCost) {
       let c = bond.unlockMinusCost;
-      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
-      cost *= (1 - minrate);
+      let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+      cost = cost.times(1 - minrate);
     }
   }
-  cost = Math.floor(cost)
-  return cost;
+
+  return cost.toDecimalPlaces(0);
 }
 
 function rerollCost(n) {
-  if (freeReroll > 0){
-    return 0;
+  if (freeReroll > 0) {
+    return Decimal(0);
   }
-  return Math.floor(unlockCost(n-1)/2);
+
+  return unlockCost(n.minus(1)).div(2).toDecimalPlaces(0);
 }
 
 function rerollTime() {
@@ -1425,52 +1503,57 @@ function rerollTime() {
   return t;
 }
 
-function rerollMinion(index){
-  if (kmrHealthValue <= 0){return;}
-  burning = 0;
-    const uCost = rerollCost(unlockedMinions.length)
-    if (coins >= uCost) {
-      coins -= uCost;
-      if (uCost == 0){
-        freeReroll --;
-      }
-        let temp = minionsState[index].reroll;
-        let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
-        let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
-        clearInterval(minionsState[index].intervalId);
-        unlockedMinions.splice(index, 1);
-        minionsState.splice(index, 1);
-        unlockMinion(restMinions[r],temp);
-        updateDisplays();
-    } else {
-      const mi = document.getElementById(`reroll-`+index);
-      var position = mi.getBoundingClientRect();
-      let x = position.left + (0.5*position.width);
-      let y = position.top + (0.5*position.height);
-      showWord(x,y, "金币不足！");
+function rerollMinion(index) {
+  if (kmrHealthValue <= 0) {
+    return;
+  }
+  burning = 0; // Assuming burning is handled as a regular number
+
+  const uCost = new Decimal(rerollCost(unlockedMinions.length));
+
+  if (coins.comparedTo(uCost) >= 0) {
+    coins = coins.minus(uCost);
+    if (uCost.eq(0)) {
+      freeReroll--;
     }
+    let temp = minionsState[index].reroll;
+    let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
+    let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+    clearInterval(minionsState[index].intervalId);
+    unlockedMinions.splice(index, 1);
+    minionsState.splice(index, 1);
+    unlockMinion(restMinions[r], temp);
+    updateDisplays();
+  } else {
+    const mi = document.getElementById(`reroll-${index}`);
+    var position = mi.getBoundingClientRect();
+    let x = position.left + (0.5 * position.width);
+    let y = position.top + (0.5 * position.height);
+    showWord(x, y, "金币不足！");
+  }
 }
 
 function unlockRandMinion() {
-  if (kmrHealthValue <= 0){return;}
+  if (kmrHealthValue <= 0) {
+    return;
+  }
   burning = 0;
-    const uCost = unlockCost(unlockedMinions.length)
-    if (coins >= uCost) {
-      coins -= uCost;
-        let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
-        let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
-        let n = rerollTime();
-        unlockMinion(restMinions[r],n+1);
-        updateDisplays();
-    } else {
-      const mi = document.getElementById(`unlockButton`);
-      var position = mi.getBoundingClientRect();
-      let x = position.left + (0.5*position.width);
-      let y = position.top + (0.5*position.height);
-      showWord(x,y, "金币不足！");
-    }
+  const uCost = new Decimal(unlockCost(unlockedMinions.length));
+  if (coins.comparedTo(uCost) >= 0) {
+    coins = coins.minus(uCost);
+    let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
+    let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+    let n = new Decimal(rerollTime()).plus(1);
+    unlockMinion(restMinions[r], n);
+    updateDisplays();
+  } else {
+    const mi = document.getElementById(`unlockButton`);
+    var position = mi.getBoundingClientRect();
+    let x = position.left + (0.5 * position.width);
+    let y = position.top + (0.5 * position.height);
+    showWord(x, y, "金币不足！");
+  }
 }
-
 
 function showMinionDetails(index) {
     rindex = index;
@@ -1482,22 +1565,25 @@ function refreshMinionDetails() {
   const detailsContainer = document.getElementById('selected-minion-details');
   let code = "升级";
 
-  if (minion.level == 0){
-    code = "解锁"
+  if (minion.level == 0) {
+    code = "解锁";
   }
+
+  const mCost = new Decimal(mupgradeCost(minion));
+
   detailsContainer.innerHTML = `
-      <h3>${minion.name}</h3>
-      <img src="${minion.image}" alt="${minion.name}">
-      <p>${minion.description}</p>
-      <div>等级: ${minion.level}</div>
-      <div>攻击: ${formatNumber(minion.attack)}</div>
-      <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
-      <div>升级+攻击: ${minion.addattack}</div>
-      <button onclick="upgradeMinionClick(${rindex})" >${code} (金币: ${formatNumber(mupgradeCost(minion))})</button>
-      <h4>技能</h4>
-      <ul>
-          ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill)}</li>`).join('')}
-      </ul>
+    <h3>${minion.name}</h3>
+    <img src="${minion.image}" alt="${minion.name}">
+    <p>${minion.description}</p>
+    <div>等级: ${minion.level}</div>
+    <div>攻击: ${formatNumber(minion.attack)}</div>
+    <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
+    <div>升级+攻击: ${minion.addattack}</div>
+    <button onclick="upgradeMinionClick(${rindex})">${code} (金币: ${formatNumber(mCost)})</button>
+    <h4>技能</h4>
+    <ul>
+      ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill)}</li>`).join('')}
+    </ul>
   `;
 }
 
@@ -1555,44 +1641,6 @@ function getdesc(skillName){
     }
   }
 }
-function mupgradeCost(minion){
-  if (freeUp > 0){
-    return 0;
-  }
-  let cost = (minion.basecost + minion.level * minion.enhancecost + minion.level*minion.level * minion.supEnhancecost);
-  if (minion.level > 100){
-    cost *= Math.floor(Math.pow(minion.level/100,0.5));
-  }
-  cost = Math.pow(cost,1 + minion.level/5000)
-
-  for (let bond of bondData){
-    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeMinusCost && bond.characters.includes(minion.name)){
-      let c = bond.upgradeMinusCost;
-      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
-      cost *= (1 - minrate);
-    }
-    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllMinusCost ){
-      let c = bond.upgradeAllMinusCost;
-      let minrate = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
-      cost *= (1 - minrate);
-    }
-  }
-
-  for (let m of minionsState){
-    if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")){
-      cost = Math.floor(Math.pow(cost,0.95));
-    }
-  }
-
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("白骨夫人")){
-      cost = Math.floor((0.8 - Math.min(0.1,0.01*Math.floor(m.level/100)))*cost)
-    }
-  }
-
-  cost = Math.floor(cost);
-  return cost;
-}
 
 function minusLevel(minion,l){
   minion.level -= l;
@@ -1623,18 +1671,18 @@ function minusLevel(minion,l){
 
 function refreshCangSkill() {
   for (let m of minionsState){
-    if (m.learnedSkills.includes("马纳利亚时刻")){
+    if (m.learnedSkills.includes("马纳利亚时刻")) {
 
       for (let s of m.learnedSkills){
         if (!["马纳利亚时刻","素材奖励"].includes(s)){
-          m.learnedSkills.splice(m.learnedSkills.indexOf(s));
+          m.learnedSkills.splice(m.learnedSkills.indexOf(s), 1);
           break;
         }
       }
 
       let valid = false;
       let s;
-      while (!valid){
+      while (!valid) {
         let r = Math.floor(Math.random()*(minions.length - 1));
         if (r >= 33){ //仓仓是33
           r += 1;
@@ -1645,15 +1693,15 @@ function refreshCangSkill() {
 
       m.learnedSkills.push(s.name);
       if (m.tempAtk > 0){
-        m.attack -= m.tempAtk;
-        m.tempAtk = 0;
+        m.attack = Decimal(m.attack).minus(m.tempAtk);
+        m.tempAtk = new Decimal(0);
       }
       cangSkill = s.name;
       showSkillWord(m, "马纳利亚时刻！");
       if (m.learnedSkills.includes("素材奖励")){
         for (let mi of minionsState){
           if (m.name != mi.name && mi.learnedSkills.includes(s.name)){
-            raiseAtk(mi,Math.floor(m.attack*0.05));
+            raiseAtk(mi, Decimal(m.attack).times(0.05).toDecimalPlaces(0) );
             showSkillWord(m, "素材奖励");
           }
         }
@@ -1663,33 +1711,33 @@ function refreshCangSkill() {
 }
 
 function zeroCountDown(c) {
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("死灵艺术")){
-      if (checkLuck(0.15)){
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("死灵艺术")) {
+      if (checkLuck(0.15)) {
         m.count = zeroCountDown(19);
-        let dam = Math.floor(m.attack*Math.pow(level+1,0.5));
-        damageKmr(dam,m);
+        let dam = Decimal(m.attack).times(Math.sqrt(level + 1)).toDecimalPlaces(0);
+        damageKmr(dam, m);
         showSkillWord(m, "死灵艺术");
       }
     }
-    if (m.learnedSkills.includes("弹幕机器人")){
+    if (m.learnedSkills.includes("弹幕机器人")) {
       if (checkLuck(0.08)) {
-        addBuff("ya",3,8,true)
+        addBuff("ya", 3, 8, true);
         showSkillWord(m, "弹幕机器人");
       }
     }
-    if (m.learnedSkills.includes("虫法之王")){
-      let r = Math.floor(Math.random()*(unlockedMinions.length));
-      raiseAtk(minionsState[r],Math.floor(chongMing*m.level/3));
-      chongMing += 1;
+    if (m.learnedSkills.includes("虫法之王")) {
+      let r = Math.floor(Math.random() * (unlockedMinions.length));
+      raiseAtk(minionsState[r], new Decimal(Math.floor(chongMing * m.level / 3)));
+      chongMing = Decimal(chongMing).plus(1);
       showSkillWord(m, "虫法之王");
     }
   }
-  for (let m of minionsState){
-    if (m.learnedSkills.includes("电表白转")){
-      let luck = 0.15 + 0.01*Math.min(25,Math.floor(m.level/50));
-      if (checkLuck(luck)){
-        return Math.floor(c/2);
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("电表白转")) {
+      let luck = 0.15 + 0.01 * Math.min(25, Math.floor(m.level / 50));
+      if (checkLuck(luck)) {
+        return Math.floor(c / 2);
       }
     }
   }
@@ -1769,6 +1817,7 @@ function extraDamRatio(minion){
 
   return dam;
 }
+
 function getAddattack(minion){
     let amount = minion.addattack;
     for (let bond of bondData){
@@ -1796,47 +1845,46 @@ function loglevel(level,base,thres,decayRate,max) {
     return reductionRate;
 }
 
-
 function updateCounts() {
-  if (kmrHealthValue <= 0){return;}
+  if (new Decimal(kmrHealthValue).comparedTo(0) <= 0){ return; }
   let need = false;
   let ref = false;
   buffCountDown();
   for (let m of minionsState){
     if (m.learnedSkills.includes("五种打法")){
-      burning ++;
+      burning++;
       if (burning >= 20){
         burning = zeroCountDown(20);
-        raiseAtk(m,5*unlockedMinions.length*(level+1));
+        raiseAtk(m, new Decimal(5).times(unlockedMinions.length).times(level+1));
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         need = true;
         showSkillWord(m, "五种打法");
       }
     }
     if (m.learnedSkills.includes("操纵命运")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 35){
         m.count = zeroCountDown(35);
-        remluck = Math.min(12,2 + Math.floor(m.level/100))
+        let remluck = Math.min(12, 2 + Math.floor(m.level / 100));
         showSkillWord(m, "操纵命运");
         need = true;
       }
     }
     if (m.learnedSkills.includes("鼙鼓时间！")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      let time = Math.max(36,48 - Math.floor(m.level/100));
+      if (!m.count){ m.count = 0; }
+      m.count++;
+      let time = Math.max(36, 48 - Math.floor(m.level / 100));
       if (m.count >= time){
         m.count = zeroCountDown(time);
-        addBuff("pigu",5,6,false);
+        addBuff("pigu", 5, 6, false);
         showSkillWord(m, "鼙鼓时间！");
         need = true;
       }
     }
     if (m.learnedSkills.includes("魔咒")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 48){
         m.count = zeroCountDown(48);
         xxBuff = true;
@@ -1845,13 +1893,13 @@ function updateCounts() {
       }
     }
     if (m.learnedSkills.includes("汲取兄弟")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 25){
         m.count = zeroCountDown(25);
         let unlockedPigs = 0;
-        for (let m of minionsState){
-          if (m.description.includes("🐷")){
+        for (let mi of minionsState){
+          if (mi.description.includes("🐷")){
             unlockedPigs++;
           }
         }
@@ -1861,13 +1909,13 @@ function updateCounts() {
         }
         if (unlockedPigs > 1 && checkLuck(luck)) {
           skilled = true;
-          let r = Math.floor(Math.random()*(unlockedPigs - 1)) + 1;
+          let r = Math.floor(Math.random() * (unlockedPigs - 1)) + 1;
           for (let mi of minionsState){
             if (mi.description.includes("🐷") && mi.name != m.name){
               r -= 1;
               if (r == 0){
-                raiseAtk(m,Math.max(1,Math.floor(mi.attack*0.02)))
-                minusLevel(mi,3);
+                raiseAtk(m, Decimal.max(1, new Decimal(mi.attack).times(0.02)));
+                minusLevel(mi, 3);
               }
             }
           }
@@ -1878,52 +1926,51 @@ function updateCounts() {
       }
     }
     if (m.learnedSkills.includes("成熟")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 30){
         m.count = zeroCountDown(30);
-        let r = Math.floor(Math.random()*(unlockedMinions.length - 1));
+        let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
         if (r >= unlockedMinions.indexOf(m.name)){
           r += 1;
         }
-        minusLevel(minionsState[r],Math.max(1,Math.floor(minionsState[r].level*0.01)));
-        minusLevel(m.level, Math.max(1,Math.floor(m.level*0.01)));
+        minusLevel(minionsState[r], Math.max(1, Math.floor(minionsState[r].level * 0.01)));
+        minusLevel(m.level, Math.max(1, Math.floor(m.level * 0.01)));
         showSkillWord(m, "成熟!");
         ref = true;
         need = true;
       }
     }
     if (m.learnedSkills.includes("造谣")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 14){
         m.count = zeroCountDown(14);
-        let times = 1 + Math.floor(Math.pow(m.level,0.8)/50);
+        let times = 1 + Math.floor(Math.pow(m.level, 0.8) / 50);
         for (let t = 0; t < times; t++){
-          let r = Math.floor(Math.random()*(unlockedMinions.length));
-          minionsState[r].attack = incrementRandomDigit(minionsState[r].attack);
+          let r = Math.floor(Math.random() * unlockedMinions.length);
+          minionsState[r].attack = new Decimal(incrementRandomDigit(minionsState[r].attack));
         }
-
         showSkillWord(m, "造谣");
         ref = true;
         need = true;
       }
     }
     if (m.learnedSkills.includes("每日饼之诗")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 90){
         m.count = zeroCountDown(90);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            let amount = m.attack/25;
+            let amount = new Decimal(m.attack).div(25);
             for (let bond of bondData){
               if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '每日饼之诗'){
                 let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
-                amount *= 1 + c;
+                amount = amount.times(1 + c);
               }
             }
-            raiseAtk(mi,Math.floor(amount));
+            raiseAtk(mi, amount);
             document.getElementById(`attack-${unlockedMinions.indexOf(mi.name)}`).textContent = formatNumber(mi.attack);
           }
         }
@@ -1931,20 +1978,19 @@ function updateCounts() {
         need = true;
       }
     }
-
     if (m.learnedSkills.includes("硬实力冠军")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 30){
         m.count = zeroCountDown(30);
         let addatk = [];
         for (let mi of minionsState){
-          if (mi.name != m.name && mi.attack > m.attack){
-            addatk.push(Math.floor(Math.pow(Math.abs(mi.attack - m.attack),0.9) * 0.1) );
+          if (mi.name != m.name && new Decimal(mi.attack).comparedTo(m.attack) >= 0){
+            addatk.push(new Decimal(mi.attack).minus(m.attack).pow(0.9).times(0.1).toDecimalPlaces(0) );
           }
         }
         for (let a of addatk){
-          raiseAtk(m,a);
+          raiseAtk(m, a);
         }
         document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
         showSkillWord(m, "硬实力冠军");
@@ -1952,58 +1998,55 @@ function updateCounts() {
       }
     }
     if (m.learnedSkills.includes("终轮常客")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 40){
         m.count = zeroCountDown(40);
-        addBuff("saki", Math.floor(100 + Math.pow(m.level,0.5)), 20, false);
+        addBuff("saki", new Decimal(100).plus(new Decimal(m.level).sqrt()).toDecimalPlaces(0) , 20, false);
         showSkillWord(m, "终轮常客");
       }
     }
-
     if (m.learnedSkills.includes("记忆殿堂")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 72){
         m.count = zeroCountDown(72);
         for (let b of Object.keys(lastBuffs)){
           let binfo = lastBuffs[b];
-          addBuff(b,binfo[0],binfo[1],binfo[2]);
+          addBuff(b, binfo[0], binfo[1], binfo[2]);
         }
         showSkillWord(m, "记忆殿堂");
         need = true;
       }
     }
-
     if (m.learnedSkills.includes("法神的宣告")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 60){
         m.count = zeroCountDown(60);
         let prob = generateXYZ(unlockedMinions.length);
-        damageKmr(prob.X*m.attack,m);
+        damageKmr(new Decimal(prob.X).times(m.attack), m);
         let unlockedCD = 0;
-        for (let m of minionsState){
-          if (m.count != undefined){
+        for (let mi of minionsState){
+          if (mi.count !== undefined){
             unlockedCD++;
           }
         }
         for (let i = 0; i < prob.Y; i++){
-          let r = Math.floor(Math.random()*(unlockedCD - 1));
+          let r = Math.floor(Math.random() * unlockedCD);
           for (let mi of minionsState){
-            if (m.name != mi.name && mi.count != undefined){
-              r -= 1;
-              if (r == 0){
-                mi.count += 1;
+            if (m.name != mi.name && mi.count !== undefined){
+              r--;
+              if (r === 0){
+                mi.count++;
               }
             }
           }
         }
         for (let i = 0; i < prob.Z; i++){
-          let r = Math.floor(Math.random()*(unlockedMinions.length));
+          let r = Math.floor(Math.random() * unlockedMinions.length);
           let kagaMulti = 1;
-          let amount = chongMing*m.level/3
-
+          let amount = new Decimal(chongMing).times(m.level).div(3);
           for (let bond of bondData){
             if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫法之王'){
               let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
@@ -2011,25 +2054,23 @@ function updateCounts() {
               chongMing += obtainedBonds[bond.name].level;
             }
           }
-
-          if (minionsState[r].name == 'kaga'){
-            amount *= kagaMulti;
+          if (minionsState[r].name === 'kaga'){
+            amount = amount.times(kagaMulti);
           }
-          raiseAtk(minionsState[r],Math.floor(amount));
-          chongMing += 1;
+          raiseAtk(minionsState[r], amount.toDecimalPlaces(0) );
+          chongMing++;
           showSkillWord(m, "虫法之王");
         }
-        showSkillWord(m, "法神的宣告：X="+prob.X+", Y="+prob.Y+", Z="+prob.Z);
+        showSkillWord(m, `法神的宣告：X=${prob.X}, Y=${prob.Y}, Z=${prob.Z}`);
         need = true;
       }
     }
-
     if (m.learnedSkills.includes("行为艺术")){
-      if (!m.count){m.count = 0};
-      if (!m.maxCount){m.maxCount = Math.floor(10 + 60*Math.random())};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      if (!m.maxCount){ m.maxCount = Math.floor(10 + 60 * Math.random()); }
+      m.count++;
       if (m.count >= m.maxCount){
-        m.maxCount = Math.floor(10 + 60*Math.random());
+        m.maxCount = Math.floor(10 + 60 * Math.random());
         m.count = zeroCountDown(m.maxCount);
         let prob = generateXYZ(lostXYZ);
         for (let i = 0; i < prob.X; i++){
@@ -2037,274 +2078,399 @@ function updateCounts() {
         }
         m.count += prob.Y;
         if (prob.Z > 0){
-          addBuff("lost",114,prob.Z,false)
+          addBuff("lost", 114, prob.Z, false);
         }
-        if (prob.X == 0 || prob.Y == 0 || prob.Z == 0){
-          lostXYZ += 1;
+        if (prob.X === 0 || prob.Y === 0 || prob.Z === 0){
+          lostXYZ++;
         }
-        showSkillWord(m, "行为艺术：X="+prob.X+", Y="+prob.Y+", Z="+prob.Z);
+        showSkillWord(m, `行为艺术：X=${prob.X}, Y=${prob.Y}, Z=${prob.Z}`);
         need = true;
       }
     }
-
     if (m.learnedSkills.includes("逆境被动")){
-      if (!m.count){m.count = 0};
-      m.count ++;
+      if (!m.count){ m.count = 0; }
+      m.count++;
       if (m.count >= 12){
         m.count = zeroCountDown(12);
         let rank = 0;
         for (let mi of minionsState) {
-            if (mi.name != m.name && mi.totalDamage > m.totalDamage) {
-                rank++;
-            }
+          if (mi.name !== m.name && mi.totalDamage.comparedTo(m.totalDamage)>=0) {
+            rank++;
+          }
         }
-        let luck = 0.02*rank;
+        let luck = 0.02 * rank;
         if (checkLuck(luck)){
           let atkp = 0;
           for (let mi of minionsState) {
-              if (mi.name != m.name && mi.attack/mi.attackSpeed > atkp) {
-                  atkp = Math.floor(mi.attack/(mi.attackSpeed/1000)/10);
-              }
+            if (mi.name !== m.name && new Decimal(mi.attack).div(mi.attackSpeed).comparedTo(atkp) >= 0) {
+              atkp = new Decimal(mi.attack).div(mi.attackSpeed).times(1000).div(10).toDecimalPlaces(0) ;
+            }
           }
-          raiseAtk(m,atkp);
-          for (let i = 0; i < rank*2; i++){
-              minionAttack(m);
+          raiseAtk(m, atkp);
+          for (let i = 0; i < rank * 2; i++){
+            minionAttack(m);
           }
           document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
           showSkillWord(m, "逆境被动");
         }
-
         need = true;
       }
     }
-
     if (m.learnedSkills.includes("罕见")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 50){
-        m.count = zeroCountDown(50);
-        let amount = coins/10;
-        for (let bond of bondData){
-          if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '罕见'){
-            let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
-            amount *= 1 + c;
-          }
-        }
-        amount = Math.floor(amount);
-        gainCoin(Math.min(maxdamZ,amount));
-        skilled = true;
-        showSkillWord(m, "罕见");
-        need = true;
-      }
-    }
-    if (m.learnedSkills.includes("无尽连击")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 30){
-        m.count = zeroCountDown(30);
-        m.attack -= m.tempAtk;
-        m.attack = Math.max(0,m.attack);
-        let luck = 0.05 + 0.01*Math.floor(m.level/50);
-        if (checkLuck(luck)){
-          raiseAtk(m,Math.floor(m.tempAtk/10));
-          document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
-        }
-        m.tempAtk = 0;
-        showSkillWord(m, "无尽连击");
-        need = true;
-      }
-    }
-    if (m.learnedSkills.includes("掌控")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 11){
-        m.count = zeroCountDown(11);
-        if (checkLuck(0.125)){
-          zenxActive = true;
-          showSkillWord(m, "掌控");
-        }
-      }
-    }
-    if (m.learnedSkills.includes("饿龙咆哮")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 24){
-        m.count = zeroCountDown(24);
-        let dam = Math.floor(m.attack*m.attackSpeed/1000);
-        damageKmr(dam,m);
-        showSkillWord(m, "饿龙咆哮");
-      }
-    }
-    if (m.learnedSkills.includes("铁犀冲锋")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 8){
-        m.count = zeroCountDown(8);
-        if (checkLuck(0.04)){
-          let dam = Math.floor(m.attack*Math.pow(m.level,0.6));
-          damageKmr(dam,m);
-          showSkillWord(m, "铁犀冲锋");
-        }
-      }
-    }
-    if (m.learnedSkills.includes("一十九米肃清刀")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 19){
-        m.count = zeroCountDown(19);
-        let dam = Math.floor(m.attack*unlockedMinions.length/2);
-        damageKmr(dam,m);
-        showSkillWord(m, "一十九米肃清刀");
-      }
-    }
-    if (m.learnedSkills.includes("巨人")){
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= 32){
-        m.count = zeroCountDown(32);
-        let dam = 0;
-        let zPlus = 0;
-        for (let bond of bondData){
-          if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '巨人'){
-            let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
-            zPlus += c;
-          }
-        }
-        for (let mi of minionsState){
-          dam += mi.attack;
-          if (mi.name == "ZenX"){
-            dam += mi.attack * zPlus;
-          }
-        }
-        dam*= getDigit(m.attack);
-        dam = Math.floor(dam/2)
-        damageKmr(dam,m);
-        showSkillWord(m, "巨人");
-      }
-    }
-    if (m.learnedSkills.includes("次元超越")){
-      let c = 40;
-      c -= Math.max(0,Math.min(15,Math.floor(Math.pow(m.level,0.8)/100)));
-      if (!m.count){m.count = 0};
-      m.count ++;
-      if (m.count >= c){
-        m.count = zeroCountDown(c);
-        for (let mi of minionsState){
-          if (mi.name != m.name){
-            minionAttack(mi,m);
-          }
-        }
-        showSkillWord(m, "次元超越");
-        need = true;
-      }
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 50){
+           m.count = zeroCountDown(50);
+           let amount = coins.div(10);
+           for (let bond of bondData){
+             if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '罕见'){
+               let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+               amount = amount.times(1 + c);
+             }
+           }
+           amount = amount.toDecimalPlaces(0);
+           amount = Decimal.min(maxdamZ, amount);
+           gainCoin(amount);
+           skilled = true;
+           showSkillWord(m, "罕见");
+           need = true;
+         }
+       }
+       if (m.learnedSkills.includes("无尽连击")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 30){
+           m.count = zeroCountDown(30);
+           m.attack = m.attack.minus(m.tempAtk);
+           m.attack = Decimal.max(new Decimal(0), m.attack);
+           let luck = 0.05 + 0.01 * Math.floor(m.level / 50);
+           if (checkLuck(luck)) {
+             let atkIncrease = m.tempAtk.dividedBy(10).toDecimalPlaces(0);
+             raiseAtk(m, atkIncrease);
+             document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
+           }
+           m.tempAtk = new Decimal(0);
+           showSkillWord(m, "无尽连击");
+           need = true;
+         }
+       }
+       if (m.learnedSkills.includes("掌控")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 11){
+           m.count = zeroCountDown(11);
+           if (checkLuck(0.125)){
+             zenxActive = true;
+             showSkillWord(m, "掌控");
+           }
+         }
+       }
+       if (m.learnedSkills.includes("饿龙咆哮")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 24){
+           m.count = zeroCountDown(24);
+           let dam = m.attack.times(m.attackSpeed).dividedBy(1000).toDecimalPlaces(0);
+           damageKmr(dam, m);
+           showSkillWord(m, "饿龙咆哮");
+         }
+       }
+       if (m.learnedSkills.includes("铁犀冲锋")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 8){
+           m.count = zeroCountDown(8);
+           if (checkLuck(0.04)){
+             let dam = m.attack.times(Math.pow(m.level,0.6)).toDecimalPlaces(0);
+              damageKmr(dam, m);
+             showSkillWord(m, "铁犀冲锋");
+           }
+         }
+       }
+       if (m.learnedSkills.includes("一十九米肃清刀")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 19){
+           m.count = zeroCountDown(19);
+           let dam = m.attack.times(unlockedMinions.length).dividedBy(2).toDecimalPlaces(0);
+           damageKmr(dam, m);
+           showSkillWord(m, "一十九米肃清刀");
+         }
+       }
+       if (m.learnedSkills.includes("巨人")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 32){
+           m.count = zeroCountDown(32);
+           let dam = new Decimal(0);
+           let zPlus = 0;
+           for (let bond of bondData){
+             if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '巨人'){
+               let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+               zPlus += c;
+             }
+           }
+           for (let mi of minionsState) {
+             dam = dam.plus(mi.attack);
+             if (mi.name === "ZenX") {
+               dam = dam.plus(mi.attack.times(zPlus));
+             }
+           }
+           dam = Decimal.floor(dam.times(getDigit(m.attack)).dividedBy(2));
+           damageKmr(dam, m);
+           showSkillWord(m, "巨人");
+         }
+       }
+       if (m.learnedSkills.includes("次元超越")){
+         let c = 40;
+         c -= Math.max(0,Math.min(15,Math.floor(Math.pow(m.level,0.8)/100)));
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= c){
+           m.count = zeroCountDown(c);
+           for (let mi of minionsState){
+             if (mi.name != m.name){
+               minionAttack(mi,m);
+             }
+           }
+           showSkillWord(m, "次元超越");
+           need = true;
+         }
 
-    }
-  }
-  if (ref){
-    refMinions();
-  }
-  if (need){
-    updateDisplays();
-  }
-}
+       }
+     }
+     if (ref){
+       refMinions();
+     }
+     if (need){
+       updateDisplays();
+     }
+   }
+
 
 function getBaseLog(x, y) {
-  return Math.log(y) / Math.log(x);
+ x = new Decimal(x);
+ y = new Decimal(y);
+ let logX = y.div(x).log();
+ return logX.toNumber();
 }
 
-function raiseAtk(minion,amount,norepeat,fromUpgrade){
-  if (fromUpgrade){
-    for (let bond of bondData){
-      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl){
-        amount += Math.max(1,amount * (1 +bond.upgradeAllAPlus * obtainedBonds[bond.name].level));
-      }
-    }
-  }
-  for (let m of minionsState){
-    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount < 0.01 * m.attack){
-      if (checkLuck(0.15)){
-        amount = Math.min(amount * 4, Math.floor(0.01 * m.attack));
-        showSkillWord(m, "做法");
-      }
-    }
-  }
-  minion.attack += amount;
-  if (marriage[0] == minion.name && fromUpgrade){
-    raiseAtk(minionsState(unlockedMinions.indexOf(marriage[1])),amount);
-  }
-  if (marriage[1] == minion.name && fromUpgrade){
-    raiseAtk(minionsState(unlockedMinions.indexOf(marriage[0])),amount);
-  }
+function raiseAtk(minion, amount, norepeat, fromUpgrade) {
+ if (fromUpgrade) {
+   for (let bond of bondData) {
+     if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl) {
+       amount = amount.plus(amount.times(bond.upgradeAllAPlus).times(obtainedBonds[bond.name].level));
+     }
+   }
+ }
+ for (let bond of bondData){
+   if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.extraAtkGain && bond.characters.includes(minion.name)){
+     amount = amount.plus(amount.times(bond.extraAtkGain).times(obtainedBonds[bond.name].level));
+   }
+ }
 
-  if (fromUpgrade){
-    for (let bond of bondData){
-      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upBond){
-        let c = bond.upBond;
-        let ratio = loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
-        if (bond.characters[0] == minion.name){
-          raiseAtk(minionsState(unlockedMinions.indexOf(bond.characters[1])),Math.max(1,Math.floor(ratio * amount)));
-        }
-        if (bond.characters[1] == minion.name){
-          raiseAtk(minionsState(unlockedMinions.indexOf(mbond.characters[0])),Math.max(1,Math.floor(ratio * amount)));
-        }
-      }
-    }
-  }
+ for (let m of minionsState) {
+   if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
+     if (checkLuck(0.15)) {
+       amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
+       showSkillWord(m, "做法");
+     }
+   }
+ }
 
-  for (let m of minionsState){
-    if (m.name != minion.name && m.learnedSkills.includes("上帝") && !norepeat){
-      let ratio = 0.12;
-      for (let bond of bondData){
-        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '上帝'){
-          let c = bond.skillPlus[1];
-          ratio += loglevel(obtainedBonds[bond.name].level,c[0],c[1],[2]);
-        }
-      }
-      raiseAtk(m,Math.max(1,Math.floor(amount*ratio)),true);
-      document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
-      showSkillWord(m, "上帝");
-    }
-    if (upgrading && m.learnedSkills.includes("皇室荣耀")){
-      let am = amount;
-      for (let bond of bondData){
-        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '皇室荣耀'){
-          let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
-          am *= 1 + c;
-        }
-      }
-      am = Math.floor(am);
-      yggdam += am;
-      showSkillWord(m, "皇室荣耀");
-    }
-  }
+ // Convert minion's attack to Decimal for operations
+ minion.attack = new Decimal(minion.attack);
+
+ // Increase minion's attack using Decimal operations
+ minion.attack = minion.attack.plus(amount);
+
+ // Recursively raise attack for marriage-related minions
+ if (marriage[0] == minion.name && fromUpgrade) {
+   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], amount);
+ }
+ if (marriage[1] == minion.name && fromUpgrade) {
+   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], amount);
+ }
+
+ // Process additional upgrades using Decimal operations
+ if (fromUpgrade) {
+   for (let bond of bondData) {
+     if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upBond) {
+       let c = bond.upBond;
+       let ratio = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+       if (bond.characters[0] == minion.name) {
+         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+       }
+       if (bond.characters[1] == minion.name) {
+         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[0])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+       }
+     }
+   }
+ }
+
+ // Process "上帝" skill for other minions
+ for (let m of minionsState) {
+   if (m.name != minion.name && m.learnedSkills.includes("上帝") && !norepeat) {
+     let ratio = new Decimal(0.12);
+     for (let bond of bondData) {
+       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '上帝') {
+         let c = bond.skillPlus[1];
+         ratio = ratio.plus(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+       }
+     }
+     raiseAtk(m, Decimal.max(1, (amount.times(ratio)).toDecimalPlaces(0) ), true);
+     document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
+     showSkillWord(m, "上帝");
+   }
+   if (upgrading && m.learnedSkills.includes("皇室荣耀")) {
+     let am = amount;
+     for (let bond of bondData) {
+       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '皇室荣耀') {
+         let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+         am = am.times(1 + c);
+       }
+     }
+     am = am.toDecimalPlaces(0);
+     yggdam = yggdam.plus(am);
+     showSkillWord(m, "皇室荣耀");
+   }
+ }
 }
 
-function autoupgradeMinion(){
+function autoupgradeMinion() {
     autoing = true;
     let enough = true;
+    let upgradeCount = 0;
+    let minCost, minIndex;
+
+    // 创建一个数组来存储所有随从的升级成本
+    let upgradeCosts = [];
+    for (let i = 0; i < unlockedMinions.length; i++) {
+        upgradeCosts[i] = mupgradeCost(minionsState[i]);
+    }
+
+    let p = 0;
+    minCost = new Decimal(Infinity);
     while (enough) {
+        p += 1;
+      //  console.log(p);
         enough = false;
-        let minCost = Infinity;
-        let minIndex = -1;
+
+        minIndex = -1;
 
         // 找到升级花费最小的随从
         for (let i = 0; i < unlockedMinions.length; i++) {
-            const cost = mupgradeCost(minionsState[i]);
-            if (cost < minCost) {
+            const cost = upgradeCosts[i];
+            if (cost.comparedTo(minCost) <= 0) {
                 minCost = cost;
                 minIndex = i;
             }
         }
 
         // 如果找到的最小花费随从可以升级，则升级它
-        if (minIndex !== -1 && upgradeMinion(minIndex, true)) {
+        if (minIndex !== -1 && upgradeMinion(minIndex, true, undefined, undefined, minCost)) {
             enough = true;
+            // 更新已升级随从的成本
+            upgradeCosts[minIndex] = mupgradeCost(minionsState[minIndex]);
+            minCost = upgradeCosts[minIndex];
+        } else {
+            break;
         }
     }
+
     autoing = false;
-    updateDisplays();
+    refMinions();
+    updateDisplays(); // 最后刷新一次界面
 }
 
+function mupgradeCost(minion) {
+  if (freeUp > 0) {
+    return new Decimal(0);
+  }
+
+  let baseCost = new Decimal(minion.basecost)
+    .plus(minion.level * minion.enhancecost)
+    .plus(minion.level * minion.level * minion.supEnhancecost);
+
+  let levelFactor = minion.level > 100 ? Math.floor(Math.pow(minion.level / 100, 0.5)) : 1;
+  baseCost = baseCost.times(levelFactor);
+
+  // 使用多个整数次幂近似非整数次幂
+  let exp = 1 + minion.level / 2000;
+  let intExp = Math.floor(exp);
+  let fracExp = exp - intExp;
+  let fracCost = new Decimal(1);
+  let fracC = 0;
+  while (fracC < fracExp){
+    let diff = fracExp - fracC;
+    if (diff > 0.5){
+      fracC += 0.5;
+      fracCost = fracCost.times(baseCost.sqrt());
+    } else if (diff > 0.333){
+      fracC += 0.333;
+      fracCost = fracCost.times(baseCost.cbrt());
+    } else if (diff > 0.25){
+      fracC += 0.25;
+      fracCost = fracCost.times(baseCost.sqrt().sqrt());
+    } else if (diff > 0.166){
+      fracC += 0.166;
+      fracCost = fracCost.times(baseCost.cbrt().sqrt());
+    } else if (diff > 0.125){
+      fracC += 0.125;
+      fracCost = fracCost.times(baseCost.sqrt().sqrt().sqrt());
+    } else if (diff > 0.083){
+      fracC += 0.083;
+      fracCost = fracCost.times(baseCost.cbrt().sqrt().sqrt());
+    } else if (diff > 0.037){
+      fracC += 0.037;
+      fracCost = fracCost.times(baseCost.cbrt().cbrt().cbrt());
+    } else if (diff > 0.009){
+      fracC += 0.009
+      fracCost = fracCost.times(baseCost.cbrt().cbrt().cbrt().sqrt().sqrt());
+    } else {
+      break;
+    }
+  }
+
+  baseCost = baseCost.pow(intExp).times(fracCost)//.times(baseCost.pow(fracExp)); // 近似计算
+
+  let bondDiscount = new Decimal(1);
+  for (let bond of bondData) {
+    if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond)) {
+      if (bond.upgradeMinusCost && bond.characters.includes(minion.name)) {
+        let c = bond.upgradeMinusCost;
+        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+        bondDiscount = bondDiscount.times(1 - minrate);
+      }
+      if (bond.upgradeAllMinusCost) {
+        let c = bond.upgradeAllMinusCost;
+        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+        bondDiscount = bondDiscount.times(1 - minrate);
+      }
+    }
+  }
+
+  // 预计算技能减少成本的部分
+  let skillDiscount = new Decimal(1);
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("白骨夫人")) {
+      skillDiscount = skillDiscount.times(0.8 - Math.min(0.1, 0.01 * Math.floor(m.level / 100)));
+    }
+  }
+
+  // 应用所有折扣
+  let finalCost = baseCost.times(bondDiscount).times(skillDiscount);
+
+  for (let m of minionsState) {
+    if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")) {
+      finalCost  = finalCost.div(finalCost.sqrt().cbrt().cbrt());
+    }
+  }
+
+  // 将结果取整
+  finalCost = finalCost.toDecimalPlaces(0);
+  return finalCost;
+}
 
 function upgradeMinionClick(index) {
     if (event.ctrlKey) {
@@ -2353,183 +2519,200 @@ function isPrime(num) {
     return true;
 }
 
-function upgradeMinion(index,auto,free,noskill) {
-  if (kmrHealthValue <= 0 && !free){return;}
+function upgradeMinion(index, auto, free, noskill, givenCost) {
+    if (Decimal(kmrHealthValue).comparedTo(0) <= 0 && !free) { // 使用 Decimal 处理 kmrHealthValue
+        return false;
+    }
     upgrading = true;
     burning = 0;
     const minion = minionsState[index];
-    let upgradeCost = mupgradeCost(minion);
-    if (free){
-      upgradeCost = 0;
+    let upgradeCost;
+    if (!givenCost){
+      upgradeCost = mupgradeCost(minion); // 使用 Decimal 处理升级成本
+    } else {
+      upgradeCost = givenCost;
     }
-    if (coins >= upgradeCost) {
-        coins -= upgradeCost;
-        if (upgradeCost == 0 && !free){
-          freeUp -= 1;
-          if (freeUp == 0){
-            refMinions();
-          }
+    if (free) {
+        upgradeCost = Decimal(0);
+    }
+
+    if (coins.comparedTo(upgradeCost) >= 0) { // 使用 Decimal 处理金币比较
+        coins = coins.minus(upgradeCost); // 使用 Decimal 处理金币减法
+        if (upgradeCost.eq(0) && !free) {
+            freeUp -= 1;
+            if (freeUp === 0) {
+                refMinions();
+            }
         }
-        if (!noskill){
-          minion.reroll = 0;
+
+        if (!noskill) {
+            minion.reroll = 0;
         }
 
         minion.level += 1;
-        raiseAtk(minion,getAddattack(minion),true); // Increase attack by 2 for each level
-        for (let m of minionsState){
-          if (m.name != minion.name && m.learnedSkills.includes("构筑带师")){
-            raiseAtk(minion,Math.floor(Math.pow(m.attack,0.95)/30),true);
-            showSkillWord(m, "构筑带师");
-          }
-          if (m.name != minion.name && m.learnedSkills.includes("红娘")){
-            if (marriage.length < 2 && (!autoing) && (!free) && (!auto) && (!noskill) && (!marriage.includes(minion.name))){
-              marriage.push(minion.name);
-              showSkillWord(m, "红娘");
-              showSkillWord(minion, "结婚(" + marriage.length + "/2)");
-              refMinions();
+        raiseAtk(minion, Decimal(getAddattack(minion)), true); // 使用 Decimal 处理攻击提升
+        for (let m of minionsState) {
+            if (m.name !== minion.name && m.learnedSkills.includes("构筑带师")) {
+                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.attack, 0.95) / 30)), true); // 使用 Decimal 处理攻击提升
+                showSkillWord(m, "构筑带师");
             }
-          }
-          if (minion.level%5 == 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")){
-            raiseAtk(minion,Math.floor(Math.pow(m.level,1.1)),true);
-            showSkillWord(m, "双猪的羁绊");
-          }
-        }
-        if (!noskill){
-          for (let s of minion.skills){
-            if (minion.level == s.level && !minion.learnedSkills.includes(s.name)){
-              minion.learnedSkills.push(s.name);
-              if (s.name == "说书"){
-                minion.attackSpeed -= 400;
-                clearInterval(minion.intervalId)
-                let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
-                minion.intervalId = intervalId;
-              }
-              if (s.name == "不稳定的传送门"){
-                freeReroll += 3;
-              }
-              if (s.name == "马纳利亚时刻"){
-                refreshCangSkill();
-              }
-              if (s.name == ("太上皇")){
-                let filteredMinions = unlockedMinions.filter(mi =>
-                    !lostTeam.includes(mi) && mi !== minion.name
-                );
-                let r = Math.floor(Math.random()*(filteredMinions.length - 1));
-                let rname = filteredMinions[r];
-                let n = unlockedMinions.indexOf(rname);
-                lostTeam.push(rname);
-                showSkillWord(minion, "太上皇招募："+rname);
-                if (lostTeam.length > Math.floor(Math.pow(unlockedMinions.length,0.5))){
-                  lostTeam = [];
-                  showSkillWord(minion, "解散！");
+            if (m.name !== minion.name && m.learnedSkills.includes("红娘")) {
+                if (marriage.length < 2 && !autoing && !free && !auto && !noskill && !marriage.includes(minion.name)) {
+                    marriage.push(minion.name);
+                    showSkillWord(m, "红娘");
+                    showSkillWord(minion, "结婚(" + marriage.length + "/2)");
+                    refMinions();
                 }
-              }
             }
-          }
+            if (minion.level % 5 === 0 && minion.description.includes("🐷") && m.learnedSkills.includes("双猪的羁绊")) {
+                raiseAtk(minion, Decimal(Math.floor(Math.pow(m.level, 1.1))), true); // 使用 Decimal 处理攻击提升
+                showSkillWord(m, "双猪的羁绊");
+            }
         }
 
-        if (minion.learnedSkills.includes("鲁智深") && (minion.level==5 || minion.level%25 == 0)){
-          raiseAtk(minion,40*minion.level);
-          if (minion.level == 5){raiseAtk(minion,40*minion.level,true)}
-        }
-        if (minion.learnedSkills.includes("小说家")){
-          coolAnim = true;
-        }
-        if (minion.learnedSkills.includes("阴阳秘法") && (minion.level==6 || minion.level%36 == 0)){
-          if (minion.level == 6){
-            for (let m of minionsState){
-              raiseAtk(m,3*minion.level,true);
-            }
-          }
-          for (let m of minionsState){
-            raiseAtk(m,3*minion.level,true);
-          }
-          refMinions();
-        }
-        if (minion.learnedSkills.includes("虫虫咬他")){
-          showSkillWord(minion, "虫虫咬他");
-          minion.addattack += 1;
-        }
-
-        if (minion.learnedSkills.includes("双猪齐力")){
-          let unlockedPigs = 0;
-          for (let m of minionsState){
-            if (m.description.includes("🐷")){
-              unlockedPigs++;
-            }
-          }
-          if (unlockedPigs > 1 && checkLuck(0.5)) {
-            skilled = true;
-            let r = Math.floor(Math.random()*(unlockedPigs - 1)) + 1;
-            for (let m of minionsState){
-              if (m.description.includes("🐷") && m.name != minion.name){
-                r -= 1;
-                if (r == 0){
-                  upgradeMinion(unlockedMinions.indexOf(m.name),undefined,true);
+        if (!noskill) {
+            for (let s of minion.skills) {
+                if (minion.level === s.level && !minion.learnedSkills.includes(s.name)) {
+                    minion.learnedSkills.push(s.name);
+                    if (s.name === "说书") {
+                        minion.attackSpeed -= 400;
+                        clearInterval(minion.intervalId);
+                        let intervalId = setInterval(() => minionAttack(minion), minion.attackSpeed);
+                        minion.intervalId = intervalId;
+                    }
+                    if (s.name === "不稳定的传送门") {
+                        freeReroll += 3;
+                    }
+                    if (s.name === "马纳利亚时刻") {
+                        refreshCangSkill();
+                    }
+                    if (s.name === "太上皇") {
+                        let filteredMinions = unlockedMinions.filter(mi =>
+                            !lostTeam.includes(mi) && mi !== minion.name
+                        );
+                        let r = Math.floor(Math.random() * (filteredMinions.length - 1));
+                        let rname = filteredMinions[r];
+                        let n = unlockedMinions.indexOf(rname);
+                        lostTeam.push(rname);
+                        showSkillWord(minion, "太上皇招募：" + rname);
+                        if (lostTeam.length > Math.floor(Math.pow(unlockedMinions.length, 0.5))) {
+                            lostTeam = [];
+                            showSkillWord(minion, "解散！");
+                        }
+                    }
                 }
-              }
             }
-            showSkillWord(minion, "双猪齐力");
-          }
-        }
-        if (minion.learnedSkills.includes("闹系列") && isPrime(minion.level)){
-          addBuff("nao",1,8,false)
-          showSkillWord(minion, "闹系列");
         }
 
-        for (let m of minionsState){
-          if (m.name != minion.name && m.learnedSkills.includes("光速上分")){
-            if (checkLuck(0.1)){
-              gainCoin(Math.floor(upgradeCost * Math.min(1,0.3 + 0.01*Math.floor(m.level/10))));
-              showSkillWord(m, "光速上分");
+        if (minion.learnedSkills.includes("鲁智深") && (minion.level === 5 || minion.level % 25 === 0)) {
+            raiseAtk(minion, Decimal(40 * minion.level)); // 使用 Decimal 处理攻击提升
+            if (minion.level === 5) {
+                raiseAtk(minion, Decimal(40 * minion.level), true); // 使用 Decimal 处理攻击提升
             }
-          }
-
-          if (m.name != minion.name && m.learnedSkills.includes("日一皇")){
-            let tlv = 0;
-            for (let mi of minionsState){
-              tlv += mi.level;
+        }
+        if (minion.learnedSkills.includes("小说家")) {
+            coolAnim = true;
+        }
+        if (minion.learnedSkills.includes("阴阳秘法") && (minion.level === 6 || minion.level % 36 === 0)) {
+            for (let m of minionsState) {
+                raiseAtk(m, Decimal(3 * minion.level), true); // 使用 Decimal 处理攻击提升
             }
-            if (tlv%100 == 0){
-              for (let mi of minionsState){
-                raiseAtk(mi,tlv/5,true);
-              }
-              showSkillWord(m, "日一皇");
+            if (minion.level === 6) {
+                for (let m of minionsState) {
+                    raiseAtk(m, Decimal(3 * minion.level), true); // 使用 Decimal 处理攻击提升
+                }
             }
-          }
-          if (m.learnedSkills.includes("卓绝的契约") && !noskill && minion.level == 2 && unlockedMinions.length >= 7 && daZhaiQiYue==false){
-            minion.attack += m.attack;
-            minion.attackSpeed = Math.floor(0.8*minion.attackSpeed);
-            minion.addattack = Math.pow(minion.addattack,2);
-            daZhaiQiYue = minion.name;
-            showSkillWord(m, "卓绝的契约");
-          }
+        }
+        if (minion.learnedSkills.includes("虫虫咬他")) {
+            showSkillWord(minion, "虫虫咬他");
+            minion.addattack += 1;
         }
 
-        document.getElementById(`level-${index}`).textContent = minion.level;
-        document.getElementById(`attack-${index}`).textContent = formatNumber(minion.attack);
-        document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1)+"s";
-        document.getElementById(`cost-${index}`).textContent = "升级 ("+formatNumber(mupgradeCost(minion))+")";
-        if (!auto){
-          updateDisplays();
-          showMinionDetails(index);
+        if (minion.learnedSkills.includes("双猪齐力")) {
+            let unlockedPigs = 0;
+            for (let m of minionsState) {
+                if (m.description.includes("🐷")) {
+                    unlockedPigs++;
+                }
+            }
+            if (unlockedPigs > 1 && checkLuck(0.5)) {
+                skilled = true;
+                let r = Math.floor(Math.random() * (unlockedPigs - 1)) + 1;
+                for (let m of minionsState) {
+                    if (m.description.includes("🐷") && m.name !== minion.name) {
+                        r -= 1;
+                        if (r === 0) {
+                            upgradeMinion(unlockedMinions.indexOf(m.name), undefined, true);
+                        }
+                    }
+                }
+                showSkillWord(minion, "双猪齐力");
+            }
         }
-        if (minion.level == 2){
-          refMinions();
+        if (minion.learnedSkills.includes("闹系列") && isPrime(minion.level)) {
+            addBuff("nao", 1, 8, false);
+            showSkillWord(minion, "闹系列");
         }
+
+        for (let m of minionsState) {
+            if (m.name !== minion.name && m.learnedSkills.includes("光速上分")) {
+                if (checkLuck(0.1)) {
+                    gainCoin(Decimal(upgradeCost).times(Math.floor(Math.min(1, 0.3 + 0.01 * Math.floor(m.level / 10))))); // 使用 Decimal 处理金币增加
+                    showSkillWord(m, "光速上分");
+                }
+            }
+
+            if (m.name !== minion.name && m.learnedSkills.includes("日一皇")) {
+                let tlv = 0;
+                for (let mi of minionsState) {
+                    tlv += mi.level;
+                }
+                if (tlv % 100 === 0) {
+                    for (let mi of minionsState) {
+                        raiseAtk(mi, Decimal(tlv / 5), true); // 使用 Decimal 处理攻击提升
+                    }
+                    showSkillWord(m, "日一皇");
+                }
+            }
+            if (m.learnedSkills.includes("卓绝的契约") && !noskill && minion.level === 2 && unlockedMinions.length >= 7 && daZhaiQiYue === false) {
+                minion.attack += m.attack;
+                minion.attackSpeed = Math.floor(0.8 * minion.attackSpeed);
+                minion.addattack = Math.pow(minion.addattack, 2);
+                daZhaiQiYue = minion.name;
+                showSkillWord(m, "卓绝的契约");
+            }
+        }
+
+        if (!auto && !noskill){
+          document.getElementById(`level-${index}`).textContent = minion.level;
+          document.getElementById(`attack-${index}`).textContent = formatNumber(minion.attack);
+          document.getElementById(`attack-speed-${index}`).textContent = (minion.attackSpeed / 1000).toFixed(1) + "s";
+          document.getElementById(`cost-${index}`).textContent = "升级 (" + formatNumber(mupgradeCost(minion)) + ")";
+        }
+
+        if (!auto && !noskill) {
+            updateDisplays();
+            showMinionDetails(index);
+        }
+
+        if (minion.level === 2) {
+            refMinions();
+        }
+
         upgrading = false;
         return true;
     } else {
-      upgrading = false;
-      if (auto){
+        upgrading = false;
+        if (auto) {
+            return false;
+        }
+
+        const mi = document.getElementById(`cost-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "金币不足！");
         return false;
-      }
-      const mi = document.getElementById(`cost-${index}`);
-      var position = mi.getBoundingClientRect();
-      let x = position.left + (0.5*position.width);
-      let y = position.top + (0.5*position.height);
-      showWord(x,y, "金币不足！");
-      return false;
     }
 }
 
@@ -2537,7 +2720,7 @@ const originalClearInterval = window.clearInterval;
 
 // 重写 clearInterval 函数
 window.clearInterval = function(intervalId) {
-    if (intervalId !== gloablintervalID) {
+    if (intervalId !== globalintervalID) {
         originalClearInterval(intervalId);
     } else {
         console.log("Attempted to clear interval with ID global , which is not allowed.");
@@ -2545,19 +2728,7 @@ window.clearInterval = function(intervalId) {
 };
 
 // Update game state every second
-let gloablintervalID = setInterval(() => {
-    timePlayed += 1;
-    let t = timePlayed + totaltimePlayed;
-    if (t > 0 && t%60 == 0 && !victory){
-      saveGame(true);
-    }
-    if (victory && timePlayed == 30){
-      phaseUpGame()
-    }
-    kmrquickHit = 0;
-    updateCounts();
-    updateDisplays();
-}, 1000);
+let globalintervalID = 0;
 
 // Get the modal
 const modal = document.getElementById("helpModal");
@@ -2748,6 +2919,48 @@ closeSpan.onclick = function() {
     modal.style.display = "none";
     //continueGame();
 }
+
+let annClose = document.getElementById("annClose");
+let announceModal = document.getElementById("AnnounceModal");
+let firstAnnounce = true;
+
+// 关闭公告窗口的函数
+function closeAnnounceModal() {
+    announceModal.style.display = "none";
+    if (firstAnnounce){
+        firstAnnounce = false;
+        globalintervalID = setInterval(() => {
+            timePlayed += 1;
+            let t = timePlayed + totaltimePlayed;
+            if (t > 0 && t%60 == 0 && !victory){
+                saveGame(true);
+            }
+            if (victory && timePlayed == 30){
+                phaseUpGame();
+            }
+            kmrquickHit = 0;
+            updateCounts();
+            updateDisplays();
+        }, 1000);
+    }
+}
+
+// 点击关闭按钮关闭公告窗口
+annClose.onclick = function() {
+    closeAnnounceModal();
+};
+
+// 按下键盘事件监听器
+document.addEventListener('keydown', function(event) {
+    // 按下 Esc 键或 Enter 键时关闭公告窗口
+    if (event.key === "Escape" || event.key === "Enter") {
+        if (announceModal.style.display !== "none") {
+            closeAnnounceModal();
+        }
+    }
+});
+
+
 
 // When the user clicks anywhere outside of the modal, close it and continue the game
 window.onclick = function(event) {

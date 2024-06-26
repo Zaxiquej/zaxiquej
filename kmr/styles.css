@@ -711,6 +711,10 @@ button:disabled {
     padding: 20px;
 }
 
+#AnnounceModal {
+    display: block;
+}
+
 .close-button {
     float: right;
     cursor: pointer;
