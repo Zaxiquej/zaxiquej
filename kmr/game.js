@@ -1407,6 +1407,7 @@ function minionAttack(minion, master) {
           }
       }
   }
+  checkVictory();
 }
 
 function refMinions() {
@@ -1490,7 +1491,7 @@ function rerollCost(n) {
     return Decimal(0);
   }
 
-  return unlockCost(n.minus(1)).div(2).toDecimalPlaces(0);
+  return unlockCost(n - 1).div(2).toDecimalPlaces(0);
 }
 
 function rerollTime() {
@@ -1946,7 +1947,7 @@ function updateCounts() {
       m.count++;
       if (m.count >= 14){
         m.count = zeroCountDown(14);
-        let times = 1 + Math.floor(Math.pow(m.level, 0.8) / 50);
+        let times = 1 + Math.floor(m.level / 50);
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random() * unlockedMinions.length);
           minionsState[r].attack = new Decimal(incrementRandomDigit(minionsState[r].attack));
@@ -2381,6 +2382,7 @@ function autoupgradeMinion() {
     autoing = false;
     refMinions();
     updateDisplays(); // 最后刷新一次界面
+    refreshMinionDetails();
 }
 
 function mupgradeCost(minion) {
