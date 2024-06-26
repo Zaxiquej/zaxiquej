@@ -1119,8 +1119,7 @@ function getattack(minion, master) {
 }
 
 function incrementRandomDigit(num) {
-    // 将输入转换为 Decimal 对象，确保支持大数值处理
-    let originalNum = new Decimal(num);
+    let originalNum = Decimal.floor(num);
 
     // 判断原始数字的符号
     let isNegative = originalNum.isNegative();
@@ -1154,7 +1153,7 @@ function incrementRandomDigit(num) {
     if (isNegative) {
         result = result.negated();
     }
-
+    console.log(originalNum.toNumber(),result.toNumber())
     return result;
 }
 
@@ -1964,14 +1963,14 @@ function updateCounts() {
         m.count = zeroCountDown(90);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            let amount = new Decimal(m.attack).div(25);
+            let amount = (m.attack).div(25);
             for (let bond of bondData){
               if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '每日饼之诗'){
                 let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
                 amount = amount.times(1 + c);
               }
             }
-            raiseAtk(mi, amount);
+            raiseAtk(mi, Decimal.floor(amount));
             document.getElementById(`attack-${unlockedMinions.indexOf(mi.name)}`).textContent = formatNumber(mi.attack);
           }
         }
@@ -2278,11 +2277,8 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
    }
  }
 
- // Convert minion's attack to Decimal for operations
- minion.attack = new Decimal(minion.attack);
-
  // Increase minion's attack using Decimal operations
- minion.attack = minion.attack.plus(amount);
+ minion.attack = Decimal.floor(minion.attack.plus(amount));
 
  // Recursively raise attack for marriage-related minions
  if (marriage[0] == minion.name && fromUpgrade) {
