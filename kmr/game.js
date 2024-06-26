@@ -490,7 +490,7 @@ function unlockMinion(minion, temp) {
       showSkillWord(m, "中速导师");
     }
     if (m.learnedSkills.includes("知名皇黑")) {
-      addBuff("huanghei", 34, 18, false);
+      addBuff("huanghei", 60, 30, false);
       showSkillWord(m, "知名皇黑");
     }
   }
@@ -1013,7 +1013,7 @@ function getattack(minion, master) {
     }
     if (minion.learnedSkills.includes("打个教先")){
        if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
-         atk = atk.times(new Decimal(1).plus(Math.pow(xxjjj,2.25)));
+         atk = atk.times(new Decimal(1).plus(Math.pow(xxjjj,2.5)));
          skilled = true;
          xxBuff = false;
        } else {
@@ -1285,8 +1285,9 @@ function minionAttack(minion, master) {
     gainCoin(gainC); // 获得金币
 
     if (minion.learnedSkills.includes("冲击冠军")) {
-        if (checkLuck(0.03)) {
-            raiseAtk(minion, Decimal.floor(new Decimal(minion.level).times(minion.attack).sqrt().time(0.1)) ); // 升级攻击力
+        if (checkLuck(0.02)) {
+
+            raiseAtk(minion, Decimal.floor( (minion.attack.sqrt()).times(minion.level).times(0.05)) ); // 升级攻击力
             skilled = true;
             showSkillWord(minion, "冲击冠军");
         }
@@ -1400,7 +1401,7 @@ function minionAttack(minion, master) {
             }
         }
         if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")) {
-            if (checkLuck(0.08)) {
+            if (checkLuck(0.07)) {
                 minionAttack(m);
                 showSkillWord(m, "永失吾艾");
             }
@@ -1605,7 +1606,7 @@ function getEff(skill){
     case "皇室荣耀":
       return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
-      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
+      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
     case "乾坤一掷":
       return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck2*100)/100+"%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害。（不会低于原本伤害，目前最高单次伤害为"+formatNumber(maxdamZ)+");"
     case "卓绝的契约":
@@ -1615,7 +1616,7 @@ function getEff(skill){
         return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约尚未签订）";
       }
     case "虫法之王":
-      return "每当一个倒计时技能触发后，使一个随机助战获得"+chongMing+"*[该助战等级/3]点攻击力。每次触发，使倍率+1。";
+      return "每当一个倒计时技能触发后，使一个随机助战获得"+chongMing+"*[该助战攻击力^(0.4)]点攻击力。每次触发，使倍率+1。";
     case "马纳利亚时刻":
       return `该技能为一个随机其他技能，与其共享各种变量。进入新周目后，切换随机技能。<br>当前技能：<br><span style="font-size: smaller;">${cangSkill} - ${getdesc(cangSkill)}</span>`;
     case "红娘":
@@ -1699,7 +1700,7 @@ function refreshCangSkill() {
           r += 1;
         }
         s = minions[r].skills[Math.floor(Math.random() * 2)];
-        valid = !(["说书","不稳定的传送门","卓绝的契约","红娘"].includes(s));
+        valid = !(["说书","不稳定的传送门","卓绝的契约","红娘"].includes(s.name));
       }
 
       m.learnedSkills.push(s.name);
@@ -1737,10 +1738,10 @@ function zeroCountDown(c) {
         showSkillWord(m, "弹幕机器人");
       }
     }
-    if (m.learnedSkills.includes("虫法之王")) {
+    if (m.learnedSkills.includes("chongming")) {
       let r = Math.floor(Math.random() * (unlockedMinions.length));
-      raiseAtk(minionsState[r], new Decimal(Math.floor(chongMing * m.level / 3)));
-      chongMing = Decimal(chongMing).plus(1);
+      raiseAtk(minionsState[r], m.attack.fifthrt().pow(2).times(chongMing));
+      chongMing = chongMing+1;
       showSkillWord(m, "虫法之王");
     }
   }
@@ -1938,14 +1939,14 @@ function updateCounts() {
     if (m.learnedSkills.includes("成熟")){
       if (!m.count){ m.count = 0; }
       m.count++;
-      if (m.count >= 30){
-        m.count = zeroCountDown(30);
+      if (m.count >= 60){
+        m.count = zeroCountDown(60);
         let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
         if (r >= unlockedMinions.indexOf(m.name)){
           r += 1;
         }
-        minusLevel(minionsState[r], Math.max(1, Math.floor(minionsState[r].level * 0.01)));
-        minusLevel(m.level, Math.max(1, Math.floor(m.level * 0.01)));
+        minusLevel(minionsState[r], Math.max(1,Math.floor(minionsState[r].level*0.01)));
+        minusLevel(m, Math.max(1,Math.floor(m.level*0.01)));
         showSkillWord(m, "成熟!");
         ref = true;
         need = true;
@@ -2299,10 +2300,10 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
 
  // Recursively raise attack for marriage-related minions
  if (marriage[0] == minion.name && fromUpgrade) {
-   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], amount);
+   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], Decimal.floor(amount.times(0.2)));
  }
  if (marriage[1] == minion.name && fromUpgrade) {
-   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], amount);
+   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], Decimal.floor(amount.times(0.2)));
  }
 
  // Process additional upgrades using Decimal operations
@@ -2349,6 +2350,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  }
  if (!autoing){
    document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
+   if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
  }
 }
 
