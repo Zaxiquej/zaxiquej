@@ -13,7 +13,7 @@ const minions = [
         supEnhancecost: 4,
         skills: [
             { level: 4, name: '素质家族', effect: '8%概率造成 2000% 伤害。' },
-            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力^(0.9)]点攻击力。' }
+            { level: 24, name: '构筑带师', effect: '其他助战升级时，额外获得[该助战攻击力^(0.9)/30]点攻击力。' }
         ]
     },
     {
@@ -29,8 +29,8 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 3,
         skills: [
-            { level: 6, name: '冲击冠军', effect: '2%概率攻击时永久提升[0.05*该助战等级*(该助战攻击力)^(0.5)]点攻击。' },
-            { level: 39, name: '永失吾艾', effect: '7%概率在其他助战攻击时，直接攻击。' }
+            { level: 6, name: '冲击冠军', effect: '4%概率攻击时永久提升[0.1*该助战等级*(该助战攻击力)^(0.6)]点攻击。' },
+            { level: 39, name: '永失吾艾', effect: '8%概率在其他助战攻击时，直接攻击。' }
         ]
     },
     {

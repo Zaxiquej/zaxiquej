@@ -1285,9 +1285,9 @@ function minionAttack(minion, master) {
     gainCoin(gainC); // 获得金币
 
     if (minion.learnedSkills.includes("冲击冠军")) {
-        if (checkLuck(0.02)) {
+        if (checkLuck(0.04)) {
 
-            raiseAtk(minion, Decimal.floor( (minion.attack.sqrt()).times(minion.level).times(0.05)) ); // 升级攻击力
+            raiseAtk(minion, Decimal.floor( (minion.attack.fifthrt().pow(3)).times(minion.level).times(0.1)) ); // 升级攻击力
             skilled = true;
             showSkillWord(minion, "冲击冠军");
         }
@@ -1401,7 +1401,7 @@ function minionAttack(minion, master) {
             }
         }
         if (m.name != minion.name && m.learnedSkills.includes("永失吾艾")) {
-            if (checkLuck(0.07)) {
+            if (checkLuck(0.08)) {
                 minionAttack(m);
                 showSkillWord(m, "永失吾艾");
             }
