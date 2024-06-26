@@ -2742,8 +2742,9 @@ const closeSpan = document.getElementsByClassName("close")[0];
 document.getElementById('bondsButton').onclick = toggleBondsModal;
 
 function toggleBondsModal() {
+  console.log(1)
    const modal = document.getElementById('bondsModal');
-   modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+   modal.style.display = 'block';
    if (modal.style.display === 'block') {
        updateBondsList();
    }
