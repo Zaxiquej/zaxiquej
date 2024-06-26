@@ -780,7 +780,7 @@ function damageKmr(dam, minion) {
             }
         }
         if (m.learnedSkills.includes("雷维翁之力")) {
-            let raiseAmount = Decimal(dam).pow(0.85).times(0.002).toDecimalPlaces(0);
+            let raiseAmount = Decimal(dam).pow(0.8).times(0.002).toDecimalPlaces(0);
             raiseAtk(minion, raiseAmount);
             showSkillWord(minion, "雷维翁之力");
         }
