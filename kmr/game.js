@@ -230,6 +230,12 @@ function loadGameState(encodedGameState){
     m.totalDamage = new Decimal(m.totalDamage);
     m.addattack = new Decimal(m.addattack);
   }
+  for (let m of minionsState){
+  	if (m.totalDamage.isNaN()){console.log(1); m.totalDamage = new Decimal(0)}
+  }
+  if (kmrHealthValue.isNaN()){
+    kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level))
+  }
   // Restore intervals (assuming you have functions to set them)
   restoreIntervals();
   updateDisplays();
