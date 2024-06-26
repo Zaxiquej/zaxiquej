@@ -695,5 +695,22 @@ const minions = [
             { level: 8, name: '行为艺术', effect: '每随机10s~70s，攻击X次，加速下一个该技能Ys，接下来Zs你的攻击将会造成酷炫的特效（不叠加，复数延长时长）。XYZ的数值为随机指定，其和为3。每当任意一项为0，永久增加本技能XYZ的和1点。' },
             { level: 40, name: '太上皇', effect: '随机将一名其他助战招募进战队。战队中的助战对kmr造成的全部伤害变为300%。每当一个XYZ技能中，Z不低于X与Y之和，重新触发此技能，但如战队人数超过[你拥有的助战数^0.5]人后就会解散。' }
         ]
+    },
+    {
+        name: 'Foyria',
+        id: 39,
+        image: 'kmr/image/mashiro.png',
+        voice: 'kmr/voice/mashiro.mp3',
+        description: '阻止ktzn夺得WGP2021冠军的罪魁祸首',
+        baseattack: 8,
+        addattack: 7,
+        attackSpeed: 1900, // in milliseconds
+        basecost: 14,
+        enhancecost: 8,
+        supEnhancecost: 4.2,
+        skills: [
+            { level: 8, name: '亚军传承', effect: '每30s，每有一个攻击力超过该助战的其他助战，提升[0.1*双方攻击力差距^0.9]的攻击力。' },
+            { level: 60, name: '炎孕恐怖分子', effect: '每当一个助战造成直接攻击外的伤害，1%概率在接下来的5s内，每当有助战攻击，使其伤害增加1%，再使此数值增加1%。此光环结束后增伤变回1%。（可叠加，全部大地之子光环最多使单次攻击伤害变为1000倍。）' }
+        ]
     }
 ];

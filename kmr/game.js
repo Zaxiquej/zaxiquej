@@ -1649,9 +1649,9 @@ function getEff(skill){
       return `该技能为一个随机其他技能，与其共享各种变量。进入新周目后，切换随机技能。<br>当前技能：<br><span style="font-size: smaller;">${cangSkill} - ${getdesc(cangSkill)}</span>`;
     case "红娘":
       if (marriage.length < 2){
-        return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（尚未连结红线！）";
+        return skill.effect + "（尚未连结红线！）";
       } else {
-        return "每局游戏仅限一次，下2个你手动升级的助战将结婚。结婚的助战其中一方由于升级增加攻击力时，另一方也会提升等量攻击力。（已连结红线：["+marriage[0]+"]与["+marriage[1]+"]）";
+        return skill.effect + "（已连结红线：["+marriage[0]+"]与["+marriage[1]+"]）";
       }
     case "小说家":
       if (coolAnim){
@@ -2652,6 +2652,9 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                             showSkillWord(minion, "解散！");
                         }
                     }
+                    if (s.name =="小说家") {
+                        coolAnim = true;
+                    }
                 }
             }
         }
@@ -2661,9 +2664,6 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
             if (minion.level === 5) {
                 raiseAtk(minion, Decimal(40 * minion.level), undefined, true); // 使用 Decimal 处理攻击提升
             }
-        }
-        if (minion.learnedSkills.includes("小说家")) {
-            coolAnim = true;
         }
         if (minion.learnedSkills.includes("阴阳秘法") && (minion.level === 6 || minion.level % 36 === 0)) {
             for (let m of minionsState) {
