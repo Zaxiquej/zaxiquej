@@ -1413,17 +1413,39 @@ function minionAttack(minion, master) {
             }
         }
         if (minion.description.includes("🐷") && m.learnedSkills.includes("身外化身")) {
-            if (checkLuck(0.1)) {
-              skilled = true;
-              let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
-              if (r >= unlockedMinions.indexOf(minion.name)) {
-                  r += 1;
-              }
-              minionAttack(minionsState[r], minion);
-              showSkillWord(minion, "身外化身");
+          if (checkLuck(0.1)) {
+            skilled = true;
+            let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
+            if (r >= unlockedMinions.indexOf(minion.name)) {
+                r += 1;
+            }
+            minionAttack(minionsState[r], minion);
+            showSkillWord(minion, "身外化身");
+        }
+      }
+      if (skilled && m.name != minion.name && m.learnedSkills.includes("GN")){
+        if (checkLuck(0.1)) {
+          raiseAtk(m, Decimal.floor(minion.attack.times(0.03)));
+          for (let i = 0; i < 3; i++){
+            minionAttack(m);
           }
+          showSkillWord(m, "GN");
+        }
+      }
+      if (m.name != minion.name && m.learnedSkills.includes("无尽连击")){
+        m.attack = m.attack.plus(Decimal.floor(m.addattack.div(2)));
+        m.tempAtk = m.tempAtk.plus(Decimal.floor(m.addattack.div(2)));
+        document.getElementById(`attack-${unlockedMinions.indexOf(m.name)}`).textContent = formatNumber(m.attack);
+        showSkillWord(m, "无尽连击");
       }
   }
+  if (getBuffPower("pigu").length > 0){
+    if (checkLuck(0.01*getBuffPower("pigu")[0])){
+      minionAttack(minion,master);
+      showSkillWord(minion, "鼙鼓！");
+    }
+  }
+  updateDisplays();
   checkVictory();
 }
 
