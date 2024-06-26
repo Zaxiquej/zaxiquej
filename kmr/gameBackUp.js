@@ -665,8 +665,8 @@ function createDamageNumber(damage) {
 
 function gainCoin(c){
   if (getBuffPower("ykd").length > 0){
-    let c = getBuffPower("ykd")[0];
-    c = Math.floor(c * 2);
+    let d = getBuffPower("ykd")[0];
+    c = Math.floor(c * d);
   }
   coins += c;
 }

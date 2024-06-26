@@ -688,7 +688,7 @@ function createDamageNumber(damage) {
 function gainCoin(c){
   if (getBuffPower("ykd").length > 0){
     let buffPower = new Decimal(getBuffPower("ykd")[0]);
-    c = buffPower.times(2).toDecimalPlaces(0) .toNumber();
+    c = c.times(buffPower).toDecimalPlaces(0) .toNumber();
   }
   coins = coins.plus(c);
 }
