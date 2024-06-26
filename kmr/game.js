@@ -1355,11 +1355,11 @@ function minionAttack(minion, master) {
         }
     }
     if (minion.learnedSkills.includes("理解不行")) {
-        let luck = Decimal.min(0.25, 0.05 + 0.01 * getDigit(minion.attack));
+        let luck = Math.min(0.25, 0.05 + 0.01 * getDigit(minion.attack));
         for (let bond of bondData) {
             if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '理解不行') {
                 let c = bond.skillPlus[1];
-                luck = luck.plus(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+                luck = luck+(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
             }
         }
         if (checkLuck(luck)) {
@@ -1482,7 +1482,7 @@ function unlockCost(n) {
 
   for (let m of minionsState) {
     if (m.learnedSkills.includes("小猪存钱罐")) {
-      cost = cost.times(0.75).toDecimalPlaces(0);
+      cost = cost.times(0.6).toDecimalPlaces(0);
     }
   }
 
@@ -2262,6 +2262,11 @@ function getBaseLog(x, y) {
  return logX.toNumber();
 }
 
+function raiseGrowth(minion, amount, norepeat, fromUpgrade) {
+  minion.addattack = new Decimal(minion.addattack.plus(amount));
+}
+
+
 function raiseAtk(minion, amount, norepeat, fromUpgrade) {
   //console.log(minion, amount)
  if (fromUpgrade) {
@@ -2276,7 +2281,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
          let c = bond.skillPlus[1];
          let am = amount.times(c * obtainedBonds[bond.name].level);
          showSkillWord(minion, "虫虫咬他");
-         minion.addattack = new Decimal(minion.addattack.plus(Decimal.max(new Decimal(1), Decimal.floor(am) )));
+         raiseGrowth(minion, Decimal.max(new Decimal(1), Decimal.floor(am) ), false, true);
        }
      }
    }
@@ -2644,7 +2649,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
         if (minion.learnedSkills.includes("虫虫咬他")) {
             showSkillWord(minion, "虫虫咬他");
-            minion.addattack = new Decimal(minion.addattack.plus(1));
+            raiseGrowth(minion, new Decimal(minion.level))
         }
 
         if (minion.learnedSkills.includes("双猪齐力")) {
@@ -2688,7 +2693,8 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                 }
                 if (tlv % 100 === 0) {
                     for (let mi of minionsState) {
-                        raiseAtk(mi, Decimal(tlv / 5),undefined,true); // 使用 Decimal 处理攻击提升
+                        raiseAtk(mi, Decimal(tlv / 10),undefined,true); // 使用 Decimal 处理攻击提升
+                        raiseGrowth(mi, Decimal(tlv / 10),undefined,true);
                     }
                     showSkillWord(m, "日一皇");
                 }

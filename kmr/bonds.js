@@ -53,7 +53,7 @@ const bondData = [
         rarity: 'bronze',
         characters: ["星野饼美","龙魂仓鼠"],
         benefit: '每级使[理解不行]额外增加2%触发概率。（超过20%的部分将衰减）',
-        extraDam: ['理解不行',[0.02,20,0.5]]
+        skillPlus: ['理解不行',[0.02,20,0.5]]
     },
     {
         id: 8,
