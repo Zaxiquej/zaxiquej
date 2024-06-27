@@ -34,7 +34,7 @@
       <div class="modal-content">
           <span class="close">&times;</span>
           <h2>游戏帮助</h2>
-          <p>最新版本：V3.0.1.</p>
+          <p>最新版本：V3.0.2.</p>
           <p>未进行手机端适配，建议使用电脑游玩。</p>
           <p>每次解锁助战，你有2次机会重新抽取，每局游戏前2次重抽免费。如果将助战升级则不能再重抽。</p>
           <p>按住Ctrl可以一键升级单个助战。</p>
@@ -49,15 +49,17 @@
       <div class="modal-content">
           <span id = "annClose" class="close">&times;</span>
           <h2>公告</h2>
-          <p>最新版本：V3.0.1.</p>
+          <p>最新版本：V3.0.2.</p>
           <p>新版本更新内容：改用大数字系统，允许数字超出10^308</p>
           <p>修改升级曲线，避免数字过大时导致的卡顿。下调了升级曲线。</p>
+          <p>新英雄上线：Foyria。</p>
+          <p>修改内容：</p>
           <p>修复了[乾坤一掷]的概率重置时会出错NAN的bug。</p>
           <p>修复了部分加攻技能会错误使攻击力获得小数，随后与[造谣]配合会让攻击力迅速上升的bug。</p>
           <p>对一些老英雄的成长技能进行了加强。</p>
           <p>修复了刷新后如果免费重抽用完会多出2次免费重抽的bug。</p>
           <p>修复了[卓绝的契约]会导致很大的攻击力或NAN的bug。</p>
-          <p>修复了[成熟]不给自己减攻的bug。</p>
+          <p>修复了[成熟]不给自己减等级的bug。</p>
           <p>修复了[虫法之王]参数可能会突然变大的bug。</p>
           <p>下调[红娘]的数值以延缓指数爆炸。</p>
           <p>[马纳利亚时刻]不再会出现无效技能或一次性技能。</p>
@@ -100,7 +102,7 @@
         <p>当前为 <span id="total-level">1</span> 周目。</p>
         <p>你在当前周目花了 <span id="total-time">0</span> 秒打败了KMR。</p>
         <p>总计花了 <span id="total-time2">0</span> 秒。</p>
-        <p>每个随从/点击的输出：</p>
+        <p>每个助战/点击的输出：</p>
         <button onclick="phaseUpGame()">下一周目</button>
         <ul id="final-stats">
             <!-- Final stats will be shown here -->
