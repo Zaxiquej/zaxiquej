@@ -136,6 +136,14 @@ const bondData = [
         skillPlus: ['太上皇',0.1]
     },
     {
+        id: 1009,
+        name: '原初企划组',
+        rarity: 'silver',
+        characters: ["一只小飘飘","六月絮雨"],
+        benefit: '每级使羁绊中角色升级消费金钱减少5%。（超过25%的部分将衰减）',
+        upgradeMinusCost: [0.05,5,0.5]
+    },
+    {
         id: 2001,
         name: '53赛季',
         rarity: 'gold',
@@ -178,9 +186,9 @@ const bondData = [
     },
     {
         id: 2006,
-        name: '绿色羁绊',
+        name: '虫之羁绊',
         rarity: 'gold',
-        characters: ["清鱼","达拉斯泰尔"],
+        characters: ["清鱼","达拉斯泰尔","艺の年"],
         benefit: '每级使[虫虫咬他]还会在由于升级增加攻击力时，使成长永久增加[增加的攻击力的2%]点（至少1点）',
         skillPlus: ['虫虫咬他',0.02]
     },
@@ -223,7 +231,14 @@ const bondData = [
         characters: ["ZenX","Foyria","折光成影","阿万音铃羽"],
         benefit: '每级使总伤害排名为2或2的次方的角色获取的金币量增加100%。恰好为第2的改为增加300%。',
         RunnerUpGoldPlus: [1,3]
+    },
+    {
+        id: 3005,
+        name: 'WGP2019兄弟会',
+        rarity: 'rainbow',
+        characters: ["真白","ZenX","天然呆的龙","艺の年"],
+        benefit: '每级使你前进周目时，如果周目是3的倍数，直接获得1以太。',
+        threeGainEther: 1
     }
-
     // 添加更多羁绊信息
 ];

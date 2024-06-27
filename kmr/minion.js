@@ -387,7 +387,7 @@ const minions = [
         supEnhancecost: 3.2,
         skills: [
             { level: 4, name: '打个教先', effect: '攻击时，70%概率造成200%伤害。（每15级，降低1%概率但增加10%伤害，最低降为20%概率，最高1000%伤害）' },
-            { level: 44, name: '魔咒', effect: '每48s，使你下一次攻击不再判定[打个教先]，而是改为额外造成[本局游戏[打个教先]最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为0）。' }
+            { level: 44, name: '魔咒', effect: '每48s，使你下一次攻击不再判定[打个教先]，而是改为额外造成[本局游戏[打个教先]最高连续失败次数^2.25]倍的伤害。（目前最高连续失败次数为0）。' }
         ]
     },
     {
@@ -523,7 +523,7 @@ const minions = [
         supEnhancecost: 4.5,
         skills: [
             { level: 8, name: '死灵艺术', effect: '每当一个倒计时技能触发后，15%概率造成[攻击力*(周目数+1)^0.5]点伤害。' },
-            { level: 69, name: '做法', effect: '当一个其他助战获得永久攻击力时，如果增加的数值不足[该随从攻击力的1%]，15%概率将其提升至该数值。（不能超过原数值的4倍。）' }
+            { level: 69, name: '做法', effect: '当一个其他助战获得永久攻击力时，如果增加的数值不足[该随从攻击力的1%]，20%概率将其提升至该数值。（不能超过原数值的4倍。）' }
         ]
     },
     {
@@ -675,7 +675,7 @@ const minions = [
         enhancecost: 8,
         supEnhancecost: 4.2,
         skills: [
-            { level: 8, name: '硬实力冠军', effect: '每30s，每有一个攻击力超过该助战的其他助战，提升[0.1*双方攻击力差距^0.9]的攻击力。' },
+            { level: 8, name: '硬实力冠军', effect: '每40s，每有一个攻击力超过该助战的其他助战，提升[0.1*双方攻击力差距^0.9]的攻击力。' },
             { level: 60, name: '大地之子', effect: '每当一个助战造成直接攻击外的伤害，1%概率在接下来的5s内，每当有助战攻击，使其伤害增加1%，再使此数值增加1%。此光环结束后增伤变回1%。（可叠加，全部大地之子光环最多使单次攻击伤害变为1000倍。）' }
         ]
     },
@@ -711,6 +711,40 @@ const minions = [
         skills: [
             { level: 12, name: '亚军传承', effect: '该助战提升攻击力时，还会将[增加量^0.8]*6%的数值加给成长（至少1点）。' },
             { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色提升[成长]点攻击。' }
+        ]
+    },
+    {
+        name: '艺の年',
+        id: 42,
+        image: 'kmr/image/yn.png',
+        voice: 'kmr/voice/yn.mp3',
+        description: '艺年试图抢夺上帝亚军的计划以失败告终',
+        baseattack: 18,
+        addattack: 7,
+        attackSpeed: 2900, // in milliseconds
+        basecost: 30,
+        enhancecost: 14,
+        supEnhancecost: 5.4,
+        skills: [
+            { level: 9, name: '虽强但弱', effect: '每当攻击力最高的其他助战提升攻击力，该助战与攻击力最低的其他助战也提升该数值20%的攻击力（至少1点）。' },
+            { level: 44, name: '卡场绝杰', effect: '每49s，造成[0.2*(上一次该倒计时结束后，助战总攻击次数)^1.2*攻击力]点伤害。' }
+        ]
+    },
+    {
+        name: '六月絮雨',
+        id: 43,
+        image: 'kmr/image/xuyu.png',
+        voice: 'kmr/voice/xuyu.mp3',
+        description: '女装.png 一只小飘飘 赞了',
+        baseattack: 20,
+        addattack: 14,
+        attackSpeed: 3200, // in milliseconds
+        basecost: 25,
+        enhancecost: 15,
+        supEnhancecost: 5,
+        skills: [
+            { level: 8, name: '南梁的祝福', effect: '每60s，使一名助战在接下来的15s内，造成的全部伤害变为400%。每50级增加1s，上限30s。每次触发，此技能的目标切换至下一名助战。（可叠加）' },
+            { level: 48, name: '新春会', effect: '每当一个倒计时技能触发后，5%概率使全部其他助战永久获得[该助战成长/24]点成长（至少1点）。）' }
         ]
     }
 ];
