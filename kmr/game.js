@@ -2493,6 +2493,14 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
     norepeat = [];
   }
   //console.log(minion, amount)
+  for (let m of minionsState) {
+   if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
+     if (checkLuck(0.2)) {
+       amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
+       showSkillWord(m, "做法");
+     }
+   }
+ }
  if (fromUpgrade) {
    for (let bond of bondData) {
      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl) {
@@ -2577,12 +2585,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
    }
  }
  for (let m of minionsState) {
-  if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
-    if (checkLuck(0.2)) {
-      amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
-      showSkillWord(m, "做法");
-    }
-  }
   if (m.name != minion.name && m.learnedSkills.includes("虽强但弱") && !norepeat.includes("虽强但弱")) {
     let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
 
