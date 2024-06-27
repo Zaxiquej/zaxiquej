@@ -1139,7 +1139,7 @@ function getattack(minion, master) {
         const healthPercentage = kmrHealthValue.div(maxHealth).times(100);
 
         if (healthPercentage.comparedTo(50) <= 0) {
-            atk = atk.times(new Decimal(1).plus(new Decimal(0.5).plus(new Decimal(0.01).times(Math.floor(new Decimal(minion.level).pow(0.75))))));
+            atk = atk.times(new Decimal(1).plus(new Decimal(0.5).plus(new Decimal(0.01).times(Math.floor(new Decimal(minion.level).pow(0.9))))));
             showSkillWord(minion, "复仇");
         }
     }

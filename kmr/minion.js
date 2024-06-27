@@ -318,7 +318,7 @@ const minions = [
         enhancecost: 10,
         supEnhancecost: 4.2,
         skills: [
-            { level: 8, name: '复仇', effect: 'kmr的生命值低于一半时，该助战对其造成的伤害增加[50+等级^0.75]%。' },
+            { level: 8, name: '复仇', effect: 'kmr的生命值低于一半时，该助战对其造成的伤害增加[50+等级^0.9]%。' },
             { level: 50, name: '操纵命运', effect: '每35s，使下2个概率低于20%触发的技能触发概率变为4倍。（每100级增加1个，上限12个）' }
         ]
     },
