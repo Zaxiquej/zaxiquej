@@ -4,7 +4,7 @@ const bondData = [
         name: '双蛆之力',
         rarity: 'bronze',
         characters: ["空调宅男","佐伯艾莉丝"],
-        benefit: '每级使羁绊中角色升级时，额外增加10攻击。',
+        benefit: '每级使羁绊中角色由于成长获得攻击力时，额外增加10点。',
         upgradeExtraA: 10
     },
     {

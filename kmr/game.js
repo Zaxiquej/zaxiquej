@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.0.3";
+let version = "3.0.4";
 let kmrHealthValue = new Decimal('500000');
 let level = 0;
 let coins = new Decimal('0');
@@ -59,6 +59,7 @@ let ynAttackCount = 0;
 let xuyuTarget = 0;
 let completedBonds = [];
 let weakauto = false;
+let sharkcounts = [0,0];
 
 let canAutoUpgrade = false;
 
@@ -134,9 +135,11 @@ function encodeGameState(){
       ethers,
       totalEthers,
       obtainedBonds,
+      xuyuTarget,
       ynAttackCount,
       completedBonds,
-      canAutoUpgrade
+      canAutoUpgrade,
+      sharkcounts
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -246,8 +249,10 @@ function loadGameState(encodedGameState){
   if (gameState.ethers != undefined) ethers = gameState.ethers;
   if (gameState.totalEthers != undefined) totalEthers = gameState.totalEthers;
   if (gameState.obtainedBonds != undefined) obtainedBonds = gameState.obtainedBonds;
+  if (gameState.xuyuTarget != undefined) xuyuTarget = gameState.xuyuTarget;
   if (gameState.ynAttackCount != undefined) ynAttackCount = gameState.ynAttackCount;
   if (gameState.canAutoUpgrade != undefined) canAutoUpgrade = gameState.canAutoUpgrade;
+  if (gameState.sharkcounts != undefined) sharkcounts = gameState.sharkcounts;
   if (Number(zheluck)!== zheluck) zheluck = 3;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 3;
   refreshBondCompletion();
@@ -320,7 +325,7 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.0.3";
+  version = "3.0.4";
   kmrHealthValue = new Decimal('500000');
   level = 0;
   coins = new Decimal('0');
@@ -359,9 +364,11 @@ function resetVars() {
   coolAnim = false;
   lostXYZ = 3;
   lostTeam = [];
+  xuyuTarget = 0;
   ynAttackCount = 0;
   completedBonds = [];
   canAutoUpgrade = false;
+  sharkcounts = [0,0];
 }
 
 function resetGame() {
@@ -379,7 +386,7 @@ function resetGame() {
 }
 
 function gainEtherAmount(){
-  let amount = level - 5;
+  let amount = level - 5 + sharkcounts[1] * 2;
   let prod = 1;
   for (let bond of bondData){
     if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.moreEther){
@@ -870,7 +877,7 @@ function damageKmr(dam, minion) {
             if (checkLuck(0.01)) {
                 skilled = true;
                 addBuff("earth", 0.01, 5, true);
-                showSkillWord(minion, "大地之子");
+                showSkillWord(m, "大地之子");
             }
         }
         if (m.learnedSkills.includes("比武招亲")) {
@@ -881,9 +888,9 @@ function damageKmr(dam, minion) {
             }
         }
         if (m.learnedSkills.includes("雷维翁之力")) {
-            let raiseAmount = dam.div(dam.fifthrt()).times(0.002).toDecimalPlaces(0);
+            let raiseAmount = dam.div(dam.fifthrt()).times(0.01).toDecimalPlaces(0);
             raiseAtk(minion, raiseAmount);
-            showSkillWord(minion, "雷维翁之力");
+            showSkillWord(m, "雷维翁之力");
         }
     }
 
@@ -1746,7 +1753,7 @@ function getEff(skill){
     case "皇室荣耀":
       return "攻击时8%概率额外造成"+formatNumber(yggdam)+"点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。";
     case "魔咒":
-      return "每48s，使你下一次攻击不再判定前一技能，而是改为额外造成[本局游戏前一技能最高连续失败次数^2.5]倍的伤害。（目前最高连续失败次数为"+xxjjj+"）。";
+      return skill.effect + "（目前最高连续失败次数为"+xxjjj+"）。";
     case "乾坤一掷":
       return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck2*100)/100+"%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害。（不会低于原本伤害，目前最高单次伤害为"+formatNumber(maxdamZ)+");"
     case "卓绝的契约":
@@ -1779,6 +1786,8 @@ function getEff(skill){
       return skill.effect + "（目前攻击次数："+ynAttackCount+"）";
     case "南梁的祝福":
       return skill.effect + "（下一个目标："+minionsState[xuyuTarget].name+"）";
+    case "lqyy":
+      return skill.effect + "<br>（升级消耗金币减少"+ Math.floor(100*(1 - sharkUpgradeFactor())) +"%；下次转生额外获得"+sharkcounts[1]*2+"以太）";
     default:
       return skill.effect;
   }
@@ -2019,6 +2028,13 @@ function getAddattack(minion){
         amount = amount.plus(bond.upgradeExtraA * obtainedBonds[bond.name].level);
       }
     }
+    for (let m of minionsState){
+      if (m.learnedSkills.includes("鲨鱼之力")){
+        let ratio = 1 + 0.1 + 0.1 * Math.floor(m.level/50);
+        amount = amount.times(ratio);
+      }
+    }
+    amount = Decimal.floor(amount);
     return amount;
 }
 
@@ -2081,8 +2097,8 @@ function updateCounts() {
       let lasting = Math.min(30, 15 + Math.floor(m.level / 50));
       if (m.count >= 60){
         m.count = zeroCountDown(60);
-        addBuff("xuyu", [xuyuTarget,4], lasting, false);
-        xuyuTarget = (xuyuTarget + 1) % unlockedMinions.length;
+        addBuff("xuyu", [xuyuTarget,4], lasting, true);
+        xuyuTarget = (xuyuTarget + 1) % (unlockedMinions.length);
         showSkillWord(m, "南梁的祝福");
         need = true;
       }
@@ -2189,11 +2205,62 @@ function updateCounts() {
         m.count = zeroCountDown(28);
         for (let mi of minionsState){
           if (mi.name != m.name){
-            let amount = mi.addattack;
+            let amount = getAddattack(mi);
             raiseAtk(mi, Decimal.floor(amount));
           }
         }
         showSkillWord(m, "炎孕恐怖分子");
+        need = true;
+      }
+    }
+    if (m.learnedSkills.includes("lqyy")){
+      if (!m.count){ m.count = 0; }
+      m.count++;
+      if (m.count >= 22){
+        m.count = zeroCountDown(22);
+        const totalCards = 40;
+        const dragonCards = 3;
+        const deck = Array(totalCards).fill('normal'); // 初始化卡组，全是普通卡
+        for (let i = 0; i < dragonCards; i++) {
+            deck[i] = 'dragon'; // 把前3张卡设置为龙之启示
+        }
+
+        // 洗牌
+        for (let i = totalCards - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+
+        // 抽5张牌
+        const drawnCards = deck.slice(0, 5);
+        const dragonCount = drawnCards.filter(card => card === 'dragon').length;
+        const firstThreeDragons = drawnCards.slice(0, 3).every(card => card === 'dragon');
+
+        // 根据抽到的龙之启示数量获得增益
+        switch (dragonCount) {
+            case 1:
+                showSkillWord(m, "lqyy：龙启×1");
+                gainCoin(maxdamZ.times(2),m)
+                break;
+            case 2:
+                showSkillWord(m, "lqyy：龙启×2!!");
+                gainCoin(maxdamZ.times(4),m)
+                break;
+            case 3:
+                if (firstThreeDragons) {
+                    sharkcounts[1] += 1;
+                    showSkillWord(m, "lqyy下凡！");
+                } else {
+                  showSkillWord(m, "lqyy：龙启×3!!!!!!");
+                }
+                gainCoin(maxdamZ.times(4),m)
+                sharkcounts[0] += 1;
+                break;
+            default:
+                showSkillWord(m, "lqyy：龙启×0...");
+                break;
+        }
+
         need = true;
       }
     }
@@ -2660,6 +2727,11 @@ function autoupgradeMinion(max) {
     return enough;
 }
 
+function sharkUpgradeFactor(){
+  let factor = 1 * Math.pow(0.92,sharkcounts[0]);
+  return factor;
+}
+
 function mupgradeCost(minion) {
   if (freeUp > 0) {
     return new Decimal(0);
@@ -2671,6 +2743,7 @@ function mupgradeCost(minion) {
 
   let levelFactor = minion.level > 100 ? Math.floor(Math.pow(minion.level / 100, 0.5)) : 1;
   baseCost = baseCost.times(levelFactor);
+  baseCost = baseCost.times(sharkUpgradeFactor());
 
   // 使用多个整数次幂近似非整数次幂
   let exp = 1 + minion.level / 2000;

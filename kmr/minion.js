@@ -659,7 +659,7 @@ const minions = [
         supEnhancecost: 4.4,
         skills: [
             { level: 13, name: '比武招亲', effect: '每当一个助战造成直接攻击外的伤害，5%概率造成[0.02*攻击力*(总计经过时间^0.5)]点伤害。' },
-            { level: 65, name: '雷维翁之力', effect: '每当一个助战造成直接攻击外的伤害，使其攻击力永久提升[(此伤害^0.8)*0.002]点。' }
+            { level: 65, name: '雷维翁之力', effect: '每当一个助战造成直接攻击外的伤害，使其攻击力永久提升[(此伤害^0.8)*0.01]点。' }
         ]
     },
     {
@@ -710,7 +710,7 @@ const minions = [
         supEnhancecost: 4.4,
         skills: [
             { level: 12, name: '亚军传承', effect: '该助战提升攻击力时，还会将[增加量^0.8]*6%的数值加给成长（至少1点）。' },
-            { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色提升[成长]点攻击。' }
+            { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色触发一次成长（获得等同于升级时成长提供的攻击力）。' }
         ]
     },
     {
@@ -745,6 +745,23 @@ const minions = [
         skills: [
             { level: 8, name: '南梁的祝福', effect: '每60s，使一名助战在接下来的15s内，造成的全部伤害变为400%。每50级增加1s，上限30s。每次触发，此技能的目标切换至下一名助战。（可叠加）' },
             { level: 48, name: '新春会', effect: '每当一个倒计时技能触发后，5%概率使全部其他助战永久获得[该助战成长/24]点成长（至少1点）。）' }
+        ]
+    },
+    {
+        name: '鲨鱼叔叔',
+        id: 44,
+        image: 'kmr/image/shark.png',
+        voice: 'kmr/voice/shark.mp3',
+        description: '今天你有看鲨鱼叔转的同人图吗',
+        baseattack: 12,
+        addattack: 10,
+        attackSpeed: 2500, // in milliseconds
+        basecost: 24,
+        enhancecost: 14,
+        supEnhancecost: 4,
+        skills: [
+            { level: 5, name: '鲨鱼之力', effect: '任意助战升级时，成长加成的攻击力增加10%（至少增加1点）。每50级，额外加成10%。' },
+            { level: 48, name: 'lqyy', effect: '每22s，从一个有3张龙之启示，总计40张卡的卡组中抽5张牌。根据抽到的龙之启示数量获得增益：<br><span style="font-size: smaller;">1张：获得[kmr单次受到的最高伤害]/2的金币；<br>2张：改为获得[kmr单次受到的最高伤害]*4的金币；<br>3张：还会使升级消耗金币永久降低8%（叠乘）；<br>3张恰为前3张：还会使下次转生时，额外获得2以太。</span>' }
         ]
     }
 ];
