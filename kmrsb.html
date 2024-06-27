@@ -54,6 +54,7 @@
           <p>修改升级曲线，避免数字过大时导致的卡顿。下调了升级曲线。</p>
           <p>优化光污染：每名助战头上最多同时有10个词条在跳。</p>
           <p>3名新英雄上线。</p>
+          <p>因为卡顿问题，一键升级被自动升级按钮替代。仍然可以按住Ctrl可以一键升级单个助战。</p>  
           <p>修改内容：</p>
           <p>修复了[乾坤一掷]的概率重置时会出错NAN的bug。</p>
           <p>修复了部分加攻技能会错误使攻击力获得小数，随后与[造谣]配合会让攻击力迅速上升的bug。</p>
@@ -83,7 +84,8 @@
               <div>金币: <span id="coins">0</span></div>
               <div id="ether-container">以太: <span id="ethers">0 (0)</span></div>
               <button id='unlockButton' onclick="unlockRandMinion()"> 抽取助战 (金币: 10)</button>
-            <button onclick="autoupgradeMinion()">一键升级</button>
+            <!-- <button onclick="autoupgradeMinion()">一键升级</button>-->
+            <button id="autoUpgradeButton" onclick="toggleAutoUpgrade()">自动升级：OFF</button>
             <div id="buttonContainer">
               <button id="softRsButton" onclick="softReset()">转生</button>
               <button id="bondsButton">羁绊</button>

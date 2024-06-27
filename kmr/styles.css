@@ -931,3 +931,13 @@ button:disabled {
         transform: rotate(360deg);
     }
 }
+
+/* Initial state for the auto upgrade button */
+#autoUpgradeButton {
+    background-color: red; /* Initial background color */
+}
+
+/* State when auto upgrade is ON */
+#autoUpgradeButton.on {
+    background-color: green; /* Background color when ON */
+}

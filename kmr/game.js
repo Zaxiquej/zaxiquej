@@ -57,7 +57,26 @@ let lostTeam = [];
 let obtainedBonds = {};
 let ynAttackCount = 0;
 let xuyuTarget = 0;
+let completedBonds = [];
+let weakauto = false;
 
+let canAutoUpgrade = false;
+
+function toggleAutoUpgrade() {
+    canAutoUpgrade = !canAutoUpgrade;
+    checkAutoUpgradeButton()
+}
+
+function checkAutoUpgradeButton(){
+  const button = document.getElementById('autoUpgradeButton');
+  if (canAutoUpgrade) {
+      button.textContent = '自动升级：ON';
+      button.classList.add('on');
+  } else {
+      button.textContent = '自动升级：OFF';
+      button.classList.remove('on');
+  }
+}
 //全局区
 let ethers = 0;
 let totalEthers = 0;
@@ -115,7 +134,9 @@ function encodeGameState(){
       ethers,
       totalEthers,
       obtainedBonds,
-      ynAttackCount
+      ynAttackCount,
+      completedBonds,
+      canAutoUpgrade
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -226,8 +247,11 @@ function loadGameState(encodedGameState){
   if (gameState.totalEthers != undefined) totalEthers = gameState.totalEthers;
   if (gameState.obtainedBonds != undefined) obtainedBonds = gameState.obtainedBonds;
   if (gameState.ynAttackCount != undefined) ynAttackCount = gameState.ynAttackCount;
+  if (gameState.canAutoUpgrade != undefined) canAutoUpgrade = gameState.canAutoUpgrade;
   if (Number(zheluck)!== zheluck) zheluck = 3;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 3;
+  refreshBondCompletion();
+  checkAutoUpgradeButton();
   for (let m of minionsState){
     m.attack = new Decimal(m.attack);
     m.tempAtk = new Decimal(m.tempAtk);
@@ -336,6 +360,8 @@ function resetVars() {
   lostXYZ = 3;
   lostTeam = [];
   ynAttackCount = 0;
+  completedBonds = [];
+  canAutoUpgrade = false;
 }
 
 function resetGame() {
@@ -498,6 +524,7 @@ function unlockMinion(minion, temp) {
   minion.intervalId = intervalId;
   minionsState = minionsState.concat(minion);
   minion.reroll = temp - 1;
+  refreshBondCompletion();
   refMinions();
 
   for (let m of minionsState) {
@@ -601,7 +628,7 @@ function generateRainbowText(text) {
 const wordEffectsCount = {}; // Object to keep track of wordEffect counts for each minion
 
 function showSkillWord(minion, word) {
-  if (autoing) {
+  if (autoing && !weakauto) {
     return;
   }
 
@@ -1319,6 +1346,7 @@ function getDigit(num) {
     return numDigits;
 }
 function minionAttack(minion, master) {
+    if (firstAnnounce) return;
     if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
 
     skilled = false;
@@ -1943,12 +1971,25 @@ function generateXYZ(totalAllies) {
 }
 
 function completedBond(bond){
+    return completedBonds.includes(bond);
+}
+
+function completedSingleBond(bond){
     for (let c of bond.characters){
       if (!unlockedMinions.includes(c)){
         return false;
       }
     }
     return true;
+}
+
+function refreshBondCompletion(){
+    completedBonds = [];
+    for (let bond of bondData){
+      if (completedSingleBond(bond)){
+        completedBonds.push(bond.name);
+      }
+    }
 }
 
 function extraDamRatio(minion){
@@ -2474,25 +2515,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      amount = amount.plus(amount.times(bond.extraAtkGain).times(obtainedBonds[bond.name].level));
    }
  }
- for (let m of minionsState) {
-   if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
-     if (checkLuck(0.2)) {
-       amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
-       showSkillWord(m, "做法");
-     }
-   }
-   if (m.name != minion.name && m.learnedSkills.includes("虽强但弱") && !norepeat.includes("虽强但弱")) {
-     let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
-
-     if (minion.name == sortedMs[0].name){
-        let ratio = new Decimal(0.2);
-        norepeat.push("虽强但弱");
-        raiseAtk(m, Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
-        raiseAtk(sortedMs[sortedMs.length - 1], Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
-        showSkillWord(m, "虽强但弱");
-     }
-   }
- }
 
 
  // Increase minion's attack using Decimal operations
@@ -2518,10 +2540,10 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        let c = bond.upBond;
        let ratio = new Decimal(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
        if (bond.characters[0] == minion.name) {
-         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, Decimal.floor(ratio.times(amount)) ));
        }
        if (bond.characters[1] == minion.name) {
-         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[0])], Decimal.max(1, (ratio.times(amount)).toDecimalPlaces(0) ));
+         raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[0])], Decimal.max(1, Decimal.floor(ratio.times(amount)) ));
        }
      }
    }
@@ -2538,7 +2560,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        }
      }
      norepeat.push("上帝")
-     raiseAtk(m, Decimal.max(1, (amount.times(ratio)).toDecimalPlaces(0) ), norepeat);
+     raiseAtk(m, Decimal.floor(Decimal.max(1, (amount.times(ratio))) ), norepeat);
      showSkillWord(m, "上帝");
    }
    if (upgrading && m.learnedSkills.includes("皇室荣耀")) {
@@ -2549,22 +2571,46 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
          am = am.times(1 + c);
        }
      }
-     am = am.toDecimalPlaces(0);
+     am =  Decimal.floor(am);
      yggdam = yggdam.plus(am);
      showSkillWord(m, "皇室荣耀");
    }
  }
+ for (let m of minionsState) {
+  if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
+    if (checkLuck(0.2)) {
+      amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
+      showSkillWord(m, "做法");
+    }
+  }
+  if (m.name != minion.name && m.learnedSkills.includes("虽强但弱") && !norepeat.includes("虽强但弱")) {
+    let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
+
+    if (minion.name == sortedMs[0].name){
+       let ratio = new Decimal(0.2);
+       norepeat.push("虽强但弱");
+       raiseAtk(m, Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
+       raiseAtk(sortedMs[sortedMs.length - 1], Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
+       showSkillWord(m, "虽强但弱");
+    }
+  }
+}
  if (!autoing){
    document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
    if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
  }
 }
 
-function autoupgradeMinion() {
+function autoupgradeMinion(max) {
     autoing = true;
     let enough = true;
     let upgradeCount = 0;
     let minCost, minIndex;
+    if (!max){
+      max = 999999;
+    } else {
+      weakauto = true;
+    }
 
     // 创建一个数组来存储所有随从的升级成本
     let upgradeCosts = [];
@@ -2576,7 +2622,7 @@ function autoupgradeMinion() {
     minCost = new Decimal(Infinity);
     while (enough) {
         p += 1;
-        console.log(p);
+        //console.log(p);
         enough = false;
 
         minIndex = -1;
@@ -2599,12 +2645,17 @@ function autoupgradeMinion() {
         } else {
             break;
         }
+        if (p == max){
+          break;
+        }
     }
 
     autoing = false;
     refMinions();
     updateDisplays(); // 最后刷新一次界面
     refreshMinionDetails();
+    weakauto = false;
+    return enough;
 }
 
 function mupgradeCost(minion) {
@@ -2625,36 +2676,9 @@ function mupgradeCost(minion) {
   let fracExp = exp - intExp;
   let fracCost = new Decimal(1);
   let fracC = 0;
-  while (fracC < fracExp){
-    let diff = fracExp - fracC;
-    if (diff > 0.5){
-      fracC += 0.5;
-      fracCost = fracCost.times(baseCost.sqrt());
-    } else if (diff > 0.333){
-      fracC += 0.333;
-      fracCost = fracCost.times(baseCost.cbrt());
-    } else if (diff > 0.25){
-      fracC += 0.25;
-      fracCost = fracCost.times(baseCost.sqrt().sqrt());
-    } else if (diff > 0.166){
-      fracC += 0.166;
-      fracCost = fracCost.times(baseCost.cbrt().sqrt());
-    } else if (diff > 0.125){
-      fracC += 0.125;
-      fracCost = fracCost.times(baseCost.sqrt().sqrt().sqrt());
-    } else if (diff > 0.083){
-      fracC += 0.083;
-      fracCost = fracCost.times(baseCost.cbrt().sqrt().sqrt());
-    } else if (diff > 0.037){
-      fracC += 0.037;
-      fracCost = fracCost.times(baseCost.cbrt().cbrt().cbrt());
-    } else if (diff > 0.009){
-      fracC += 0.009
-      fracCost = fracCost.times(baseCost.cbrt().cbrt().cbrt().sqrt().sqrt());
-    } else {
-      break;
-    }
-  }
+  let po = Math.floor(fracExp/0.009);
+  let sub = baseCost.cbrt().cbrt().cbrt().sqrt().sqrt();
+  fracCost = fracCost.times(sub.pow(po));
 
   baseCost = baseCost.pow(intExp).times(fracCost)//.times(baseCost.pow(fracExp)); // 近似计算
 
@@ -2692,7 +2716,7 @@ function mupgradeCost(minion) {
   }
 
   // 将结果取整
-  finalCost = finalCost.toDecimalPlaces(0);
+  finalCost =  Decimal.floor(finalCost);
   return finalCost;
 }
 
@@ -2924,7 +2948,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
           document.getElementById(`cost-${index}`).textContent = "升级 (" + formatNumber(mupgradeCost(minion)) + ")";
         }
 
-        if (!auto && !noskill) {
+        if (!auto && !noskill && !free) {
             updateDisplays();
             showMinionDetails(index);
         }
@@ -3174,6 +3198,11 @@ function closeAnnounceModal() {
                 phaseUpGame();
             }
             kmrquickHit = 0;
+            if (canAutoUpgrade){
+              if (!autoupgradeMinion(100)){
+                toggleAutoUpgrade();
+              }
+            }
             updateCounts();
             updateDisplays();
         }, 1000);
