@@ -1864,7 +1864,7 @@ function zeroCountDown(c) {
       if (checkLuck(0.05)){
         for (let mi of minionsState){
           if (mi.name != m.name){
-            let amount = Decimal.max((m.addAttack).div(24), new Decimal(1));
+            let amount = Decimal.max((m.addattack).div(24), new Decimal(1));
             raiseGrowth(mi, Decimal.floor(amount));
           }
         }
@@ -2576,7 +2576,7 @@ function autoupgradeMinion() {
     minCost = new Decimal(Infinity);
     while (enough) {
         p += 1;
-      //  console.log(p);
+        console.log(p);
         enough = false;
 
         minIndex = -1;
