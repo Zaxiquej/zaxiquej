@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.0.2";
+let version = "3.0.3";
 let kmrHealthValue = new Decimal('500000');
 let level = 0;
 let coins = new Decimal('0');
@@ -296,7 +296,7 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.0.2";
+  version = "3.0.3";
   kmrHealthValue = new Decimal('500000');
   level = 0;
   coins = new Decimal('0');
@@ -2813,7 +2813,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
                     }
                     if (s.name === "太上皇") {
                         let filteredMinions = unlockedMinions.filter(mi =>
-                            !lostTeam.includes(mi) && mi !== minion.name;
+                            !lostTeam.includes(mi) && mi !== minion.name
                         );
                         let r = Math.floor(Math.random() * (filteredMinions.length - 1));
                         let rname = filteredMinions[r];
