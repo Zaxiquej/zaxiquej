@@ -60,6 +60,10 @@ let xuyuTarget = 0;
 let completedBonds = [];
 let weakauto = false;
 let sharkcounts = [0,0];
+let mscount = 0;
+let msgrowth = 30;
+let noHitVoice = 0;
+const audioObjects = [];
 
 let canAutoUpgrade = false;
 
@@ -139,7 +143,9 @@ function encodeGameState(){
       ynAttackCount,
       completedBonds,
       canAutoUpgrade,
-      sharkcounts
+      sharkcounts,
+      mscount,
+      msgrowth
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -253,6 +259,8 @@ function loadGameState(encodedGameState){
   if (gameState.ynAttackCount != undefined) ynAttackCount = gameState.ynAttackCount;
   if (gameState.canAutoUpgrade != undefined) canAutoUpgrade = gameState.canAutoUpgrade;
   if (gameState.sharkcounts != undefined) sharkcounts = gameState.sharkcounts;
+  if (gameState.mscount != undefined) mscount = gameState.mscount;
+  if (gameState.msgrowth != undefined) msgrowth = gameState.msgrowth;
   if (Number(zheluck)!== zheluck) zheluck = 2;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
   refreshBondCompletion();
@@ -372,6 +380,8 @@ function resetVars() {
   completedBonds = [];
   canAutoUpgrade = false;
   sharkcounts = [0,0];
+  mscount = 0;
+  msgrowth = 30;
 }
 
 function resetGame() {
@@ -911,26 +921,9 @@ function damageKmr(dam, minion) {
     showDamage(x, y, dam);
 
     // 播放声音
-    if (getBuffPower("inm") == true) {
-        let am = dam.div(dam.sqrt().sqrt());
-        minion.raiseGrowth(am);
-        let r = getBuffPower("inm")[0];
-        if (minion.name != minionsState[r].name){
-          minionsState[r].raiseGrowth(am);
-        }
-        showSkillWord(minionsState[r], "inm!");
-        if (isLocal()) {
-          const hitSound = new Audio(minion.voice);
-          hitSound.play();
-        } else {
-            playDistortedSound(minion.voice);
-        }
-
-    } else {
-        const hitSound = new Audio(minion.voice);
-        hitSound.play();
+    if (Math.random() < 0.1) {
+        playVoice(minion);
     }
-
     // 获得金币
     gainCoin(dam,minion);
 
@@ -967,16 +960,16 @@ function playAndDistortAudio(audioContext, audioBuffer) {
     const biquadFilter = audioContext.createBiquadFilter();
     biquadFilter.type = 'lowshelf';
     biquadFilter.frequency.setValueAtTime(1000, audioContext.currentTime);
-    biquadFilter.gain.setValueAtTime(Math.random() * 40 - 10, audioContext.currentTime);
+    biquadFilter.gain.setValueAtTime(Math.random() * 30 - 15, audioContext.currentTime);
 
     const waveShaper = audioContext.createWaveShaper();
-    waveShaper.curve = makeDistortionCurve(Math.random() * 100);
+    waveShaper.curve = makeDistortionCurve(Math.random() * 80);
     waveShaper.oversample = '4x';
 
     const pitchShifter = audioContext.createBiquadFilter();
     pitchShifter.type = 'highshelf';
     pitchShifter.frequency.setValueAtTime(3000, audioContext.currentTime);
-    pitchShifter.gain.setValueAtTime(Math.random() * 40, audioContext.currentTime);
+    pitchShifter.gain.setValueAtTime(Math.random() * 30, audioContext.currentTime);
 
     source.connect(gainNode);
     gainNode.connect(biquadFilter);
@@ -1426,6 +1419,33 @@ function getDigit(num) {
     const numDigits = absNum.dp() > 0 ? absNum.toDecimalPlaces(0).toFixed().length : absNum.toFixed().length;
     return numDigits;
 }
+
+function playVoice(minion){
+  if (getBuffPower("inm") == true) {
+      let am = dam.div(dam.sqrt().sqrt()).times(0.2);
+      minion.raiseGrowth(am);
+      let r = getBuffPower("inm")[0];
+      if (minion.name != minionsState[r].name){
+        minionsState[r].raiseGrowth(am);
+      }
+      showSkillWord(minionsState[r], "inm!");
+      if (noHitVoice == 0){
+        if (isLocal()) {
+          const hitSound = new Audio(minion.voice);
+          hitSound.play();
+          audioObjects.push(hitSound);
+        } else {
+            playDistortedSound(minion.voice);
+        }
+      }
+  } else {
+      if (noHitVoice == 0){
+        const hitSound = new Audio(minion.voice);
+        hitSound.play();
+        audioObjects.push(hitSound);
+      }
+  }
+}
 function minionAttack(minion, master) {
     if (firstAnnounce) return;
     if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
@@ -1464,8 +1484,7 @@ function minionAttack(minion, master) {
     showDamage(x, y, dam); // 显示伤害
 
     if (Math.random() < 0.1) {
-        const hitSound = new Audio(minion.voice);
-        hitSound.play(); // 播放音效
+        playVoice(minion);
     }
     if (master){
       gainCoin(gainC,master); // 获得金币
@@ -1800,10 +1819,6 @@ function refreshMinionDetails() {
   const detailsContainer = document.getElementById('selected-minion-details');
   let code = "升级";
 
-  if (minion.level == 0) {
-    code = "解锁";
-  }
-
   const mCost = new Decimal(mupgradeCost(minion));
 
   detailsContainer.innerHTML = `
@@ -1813,13 +1828,24 @@ function refreshMinionDetails() {
     <div>等级: ${minion.level}</div>
     <div>攻击: ${formatNumber(minion.attack)}</div>
     <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
-    <div>成长: ${formatNumber(minion.addattack)}</div>
-    <button onclick="upgradeMinionClick(${rindex})">${code} (金币: ${formatNumber(mCost)})</button>
+    <div>成长: ${formatNumber(minion.addattack)}</div>`
+
+    if (minion.activeSkill){
+      detailsContainer.innerHTML += `
+          <div>能量: ${(minion.energy)}</span></div>
+          <button id="active-${rindex}" onclick="ActivateClick(${rindex})" >启动</button>
+      `;
+    }
+
+    detailsContainer.innerHTML +=
+    `<button onclick="upgradeMinionClick(${rindex})">${code} (金币: ${formatNumber(mCost)})</button>
     <h4>技能</h4>
     <ul>
       ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill)}</li>`).join('')}
     </ul>
   `;
+
+
 }
 
 function getEff(skill){
@@ -1864,6 +1890,8 @@ function getEff(skill){
       return skill.effect + "（下一个目标："+minionsState[xuyuTarget].name+"）";
     case "lqyy":
       return skill.effect + "<br>（升级消耗金币减少"+ Math.floor(100*(1 - sharkUpgradeFactor())) +"%；下次转生额外获得"+sharkcounts[1]*2+"以太）";
+    case "全勤宗师":
+      return  "每当365个倒计时技能结束，触发"+msgrowth+"次成长（获得等同于升级时成长提供的攻击力），随后造成["+msgrowth+"*攻击力]点伤害。每次触发使此数值增加3。（还剩"+(365 - mscount)+"个！）";
     default:
       return skill.effect;
   }
@@ -1934,6 +1962,13 @@ function refreshCangSkill() {
       }
 
       m.learnedSkills.push(s.name);
+      if (s.active){
+        m.energy = 0;
+        m.activeSkill = s.name;
+      } else {
+        m.energy = undefined;
+        m.activeSkill = undefined;
+      }
       if (m.tempAtk > 0){
         m.attack = Decimal(m.attack).minus(m.tempAtk);
         m.tempAtk = new Decimal(0);
@@ -1983,6 +2018,19 @@ function zeroCountDown(c) {
           }
         }
         showSkillWord(m, "新春会");
+      }
+    }
+    if (m.learnedSkills.includes("全勤宗师")){
+      mscount += 1;
+      if (mscount == 365){
+        mscount = 0;
+        let amount = getAddattack(mi);
+        amount = amount.times(msgrowth);
+        raiseAtk(m, Decimal.floor(amount));
+        let dam = Decimal.floor(m.attack.times(msgrowth));
+        damageKmr(dam, m);
+        msgrowth += 3;
+        showSkillWord(m, "全勤宗师");
       }
     }
   }
@@ -2272,6 +2320,16 @@ function updateCounts() {
           }
         }
         showSkillWord(m, "每日饼之诗");
+        need = true;
+      }
+    }
+    if (m.learnedSkills.includes("inm剧场")){
+      if (!m.count){ m.count = 0; }
+      m.count++;
+      if (m.count >= 48){
+        m.count = zeroCountDown(48);
+        gainEnergy(m,1);
+        showSkillWord(m, "inm剧场");
         need = true;
       }
     }
@@ -2634,9 +2692,62 @@ function getBaseLog(x, y) {
 
 function raiseGrowth(minion, amount, norepeat, fromUpgrade) {
   minion.addattack = new Decimal(minion.addattack.plus(amount));
+  if (!autoing){
+    if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
+  }
 }
 
+function gainEnergy(minion, amount){
+  minion.energy += amount;
+  if (!autoing){
+    if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
+  }
+}
 
+// 停止所有声音函数
+function stopAllSounds() {
+    // 遍历所有音频对象，并停止它们的播放
+    audioObjects.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+
+    // 清空存储音频对象的数组
+    audioObjects.length = 0;
+}
+function ActivateClick(index){
+  let minion = minionsState[index];
+  let skillName = minion.activeSkill;
+  if (!skillName || minion.energy == undefined){
+    console.log("错误：该助战不应该启动")
+    return;
+  }
+  switch (skillName) {
+    case "inm剧场":
+      if (minion.energy == 0){
+        const mi = document.getElementById(`active-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "能量不足！");
+        return;
+      }
+      stopAllSounds();
+      noHitVoice = 1;
+      const actSound = new Audio(minion.activeVoice);
+      actSound.play();
+      addBuff("inm", index, minion.energy * 6, false);
+      minion.energy = 0;
+      showSkillWord(minion, "inm剧场");
+      break;
+    default:
+  }
+  if (!autoing){
+    updateDisplays();
+    refMinions();
+    if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
+  }
+}
 function raiseAtk(minion, amount, norepeat, fromUpgrade) {
   if (!norepeat){
     norepeat = [];
@@ -2988,6 +3099,10 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
             for (let s of minion.skills) {
                 if (minion.level === s.level && !minion.learnedSkills.includes(s.name)) {
                     minion.learnedSkills.push(s.name);
+                    if (s.active){
+                      minion.energy = 0;
+                      minion.activeSkill = s.name;
+                    }
                     if (s.name === "说书") {
                         minion.attackSpeed -= 400;
                         clearInterval(minion.intervalId);
@@ -3356,6 +3471,9 @@ function closeAnnounceModal() {
         firstAnnounce = false;
         globalintervalID = setInterval(() => {
             timePlayed += 1;
+            if (noHitVoice > 0){
+              noHitVoice --;
+            }
             let t = timePlayed + totaltimePlayed;
             if (t > 0 && t%60 == 0 && !victory){
                 saveGame(true);

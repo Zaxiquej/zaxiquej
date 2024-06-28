@@ -369,7 +369,7 @@ const minions = [
         enhancecost: 4,
         supEnhancecost: 3.25,
         skills: [
-            { level: 8, name: '中速导师', effect: '你解锁或重抽助战后，立刻免费将其升1级，本次升级提升的攻击力为[该助战等级/2]倍。随后将其等级变回1。（保留获得的攻击力，不会因此获得技能）。' },
+            { level: 8, name: '中速导师', effect: '你解锁或重抽助战后，立刻免费将其升[该助战等级/2]级，随后将其等级变回1。（保留获得的攻击力，不会因此获得技能）。' },
             { level: 36, name: '皇室荣耀', effect: '攻击时10%概率额外造成322点伤害。每当助战在升级时提升攻击力，该技能的伤害提升等量数值。' }
         ]
     },
@@ -565,6 +565,7 @@ const minions = [
         id: 33,
         image: 'kmr/image/cang.png',
         voice: 'kmr/voice/cang.mp3',
+        activeVoice: 'kmr/voice/cang_eff.mp3',
         description: '😎',
         baseattack: 8,
         addattack: 8,
@@ -710,7 +711,7 @@ const minions = [
         supEnhancecost: 4.4,
         skills: [
             { level: 12, name: '亚军传承', effect: '该助战提升攻击力时，还会将[增加量^0.8]*0.2的数值加给成长（至少1点）。' },
-            { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色触发1次成长（获得等同于升级时成长提供的攻击力），此次成长增加量为[该助战等级^0.9/40]倍。' }
+            { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色触发1次成长（获得等同于升级时成长提供的攻击力），此次成长攻击力增加量为[该助战等级^0.9/40]倍。' }
         ]
     },
     {
@@ -762,6 +763,24 @@ const minions = [
         skills: [
             { level: 5, name: '鲨鱼之力', effect: '任意助战升级时，成长加成的攻击力增加10%（至少增加1点）。每50级，额外加成10%。' },
             { level: 48, name: 'lqyy', effect: '每22s，从一个有3张龙之启示，总计40张卡的卡组中抽6张牌。根据抽到的龙之启示数量获得增益：<br><span style="font-size: smaller;">1张：获得[kmr单次受到的最高伤害]/3的金币；<br>2张：改为获得[kmr单次受到的最高伤害]*3的金币；<br>3张：还会使升级消耗金币永久降低10%（叠乘）；<br>3张恰为前3张：还会使下次转生时，额外获得2以太。</span>' }
+        ]
+    },
+    {
+        name: 'Minsaw丨Scarlet',
+        id: 45,
+        image: 'kmr/image/ms.png',
+        voice: 'kmr/voice/ms.mp3',
+        activeVoice: 'kmr/voice/ms_eff.mp3',
+        description: '77影之一的传奇傻狗',
+        baseattack: 8,
+        addattack: 6,
+        attackSpeed: 2200, // in milliseconds
+        basecost: 28,
+        enhancecost: 12,
+        supEnhancecost: 4.5,
+        skills: [
+            { level: 5, name: 'inm剧场', effect: '每48s，获得1点能量。<br>启动：消耗全部能量，在接下来的[能量*6]s内，每当一个助战触发音效(默认为10%概率），其会被随机扭曲，且触发者（如果非本助战）与该助战均会获得[(本次攻击伤害)^0.75]点成长。（时间内再次触发改为延长时间）', active: true },
+            { level: 48, name: '全勤宗师', effect: '每当365个倒计时技能结束，触发24次成长（获得等同于升级时成长提供的攻击力），随后造成[24*攻击力]点伤害。每次触发使此数值增加3。' }
         ]
     }
 ];
