@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.0.5";
+let version = "3.0.6";
 let kmrHealthValue = new Decimal('500000');
 let level = 0;
 let coins = new Decimal('0');
@@ -63,6 +63,7 @@ let sharkcounts = [0,0];
 let mscount = 0;
 let msgrowth = 30;
 let noHitVoice = 0;
+let ddk = undefined;
 const audioObjects = [];
 
 let canAutoUpgrade = false;
@@ -336,7 +337,7 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.0.5";
+  version = "3.0.6";
   kmrHealthValue = new Decimal('500000');
   level = 0;
   coins = new Decimal('0');
@@ -382,6 +383,7 @@ function resetVars() {
   sharkcounts = [0,0];
   mscount = 0;
   msgrowth = 30;
+  ddk = undefined;
 }
 
 function resetGame() {
@@ -454,17 +456,32 @@ function restoreIntervals() {
   }
 }
 
-function addBuff(name,power,length,stackable){
+function addBuff(name,power,length,stackable,noMemorize){
+  let noPush = false;
   if (!stackable){
     for (let buff of buffs){
       if (buff[0] == name){
         buff[2] += length;
-        return;
+        noPush = true;
+        break;
       }
     }
   }
-  lastBuffs[name] = [power,length,stackable];
-  buffs.push([name,power,length]);
+  if (!noPush){
+    buffs.push([name,power,length]);
+  }
+
+  if (!noMemorize){
+    lastBuffs[name] = [power,length,stackable];
+  }
+  for (let m of minionsState) {
+    if (m.learnedSkills.includes("D！D！K！")) {
+      ddk = true;
+      minionAttack(m);
+      ddk = undefined;
+      showSkillWord(m, "D！D！K！");
+    }
+  }
 }
 
 function getBuffPower(name){
@@ -1111,6 +1128,7 @@ function checkVictory() {
 function phaseUpGame() {
     victory = false;
     level = level + 1;
+    stopAllSounds();
     document.getElementById('phase-level').textContent = level;
     kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level)); // 更新血量使用 Decimal
     timePlayed = 0;
@@ -1421,6 +1439,24 @@ function getDigit(num) {
 }
 
 function playVoice(minion){
+  let voice = minion.voice;
+  let thisStop = false;
+  if (audioObjects.length >= 10) {
+    const firstAudio = audioObjects[0];
+    if (!firstAudio.paused) {
+        thisStop = true;
+    } else {
+        audioObjects.shift();
+    }
+}
+  if (ddk){
+    voice = "kmr/voice/ddk.mp3";
+  }
+  if (getBuffPower("yiyaha").length > 0){
+    let id = (1 + Math.floor(Math.random()*18));
+    if (id >= 14){id += 2};
+    voice = "kmr/voice/yiyaha/"+id+".mp3"
+  }
   if (getBuffPower("inm") == true) {
       let am = dam.div(dam.sqrt().sqrt()).times(0.2);
       minion.raiseGrowth(am);
@@ -1429,18 +1465,18 @@ function playVoice(minion){
         minionsState[r].raiseGrowth(am);
       }
       showSkillWord(minionsState[r], "inm!");
-      if (noHitVoice == 0){
+      if (noHitVoice == 0 || thisStop){
         if (isLocal()) {
-          const hitSound = new Audio(minion.voice);
+          const hitSound = new Audio(voice);
           hitSound.play();
           audioObjects.push(hitSound);
         } else {
-            playDistortedSound(minion.voice);
+            playDistortedSound(voice);
         }
       }
   } else {
-      if (noHitVoice == 0){
-        const hitSound = new Audio(minion.voice);
+      if (noHitVoice == 0 || thisStop){
+        const hitSound = new Audio(voice);
         hitSound.play();
         audioObjects.push(hitSound);
       }
@@ -1500,6 +1536,13 @@ function minionAttack(minion, master) {
             skilled = true;
             showSkillWord(minion, "冲击冠军");
         }
+    }
+    if (minion.learnedSkills.includes("咿呀哈！")){
+      if (checkLuck(0.05)){
+        gainEnergy(minion,1);
+        showSkillWord(minion, "咿呀哈！");
+        need = true;
+      }
     }
     if (minion.learnedSkills.includes("大梦仙尊")) {
         let luck = Decimal.min(0.02, 0.005 + 0.0005 * Decimal.max(0, getBaseLog(2, Math.abs(minion.attack)) - 10));
@@ -1671,6 +1714,10 @@ function refMinions() {
 
         if (lostTeam.includes(minion.name)) {
             colors.push('red');
+        }
+
+        if (minion.activeSkill) {
+            colors.push('green');
         }
 
         for (let i of getBuffPower("xuyu")) {
@@ -2024,7 +2071,7 @@ function zeroCountDown(c) {
       mscount += 1;
       if (mscount == 365){
         mscount = 0;
-        let amount = getAddattack(mi);
+        let amount = getAddattack(m);
         amount = amount.times(msgrowth);
         raiseAtk(m, Decimal.floor(amount));
         let dam = Decimal.floor(m.attack.times(msgrowth));
@@ -2042,6 +2089,15 @@ function zeroCountDown(c) {
         return Math.floor(c / 2);
       }
     }
+  }
+  if (getBuffPower("yiyaha").length > 0){
+    for (let m of minionsState) {
+        if (m.count != undefined) {
+            m.count = m.count + 1;
+        }
+    }
+    const actSound = new Audio("kmr/voice/yiyaha/"+(14 + Math.floor(Math.random()*2))+".mp3");
+    actSound.play();
   }
   return 0;
 }
@@ -2722,6 +2778,7 @@ function ActivateClick(index){
     console.log("错误：该助战不应该启动")
     return;
   }
+  let actSound;
   switch (skillName) {
     case "inm剧场":
       if (minion.energy == 0){
@@ -2734,11 +2791,28 @@ function ActivateClick(index){
       }
       stopAllSounds();
       noHitVoice = 1;
-      const actSound = new Audio(minion.activeVoice);
+      actSound = new Audio(minion.activeVoice);
       actSound.play();
-      addBuff("inm", index, minion.energy * 6, false);
+      addBuff("inm", index, minion.energy * 6, false, true);
       minion.energy = 0;
       showSkillWord(minion, "inm剧场");
+      break;
+    case "咿呀哈！":
+      if (minion.energy < 40){
+        const mi = document.getElementById(`active-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "能量不足！");
+        return;
+      }
+      stopAllSounds();
+      noHitVoice = 1;
+      actSound = new Audio(minion.activeVoice);
+      actSound.play();
+      addBuff("yiyaha", index, 31, false, true);
+      minion.energy -= 40;
+      showSkillWord(minion, "咿呀哈！");
       break;
     default:
   }

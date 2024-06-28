@@ -592,7 +592,7 @@ const minions = [
         supEnhancecost: 4.6,
         skills: [
             { level: 5, name: '知名皇黑', effect: '每当解锁或重抽助战后，接下来的30s内，kmr受到的伤害增加60%。（时间内再次触发改为延长时间）' },
-            { level: 66, name: '记忆殿堂', effect: '每72s，重新获得本局游戏中每种光环（具有持续时长的效果）最后一次获得时的效果。' }
+            { level: 66, name: '记忆殿堂', effect: '每72s，重新获得本局游戏中启动效果以外获得过的每种光环（具有持续时长的效果）最后一次获得时的效果。' }
         ]
     },
     {
@@ -779,8 +779,26 @@ const minions = [
         enhancecost: 12,
         supEnhancecost: 4.5,
         skills: [
-            { level: 5, name: 'inm剧场', effect: '每48s，获得1点能量。<br>启动：消耗全部能量，在接下来的[能量*6]s内，每当一个助战触发音效(默认为10%概率），其会被随机扭曲，且触发者（如果非本助战）与该助战均会获得[(本次攻击伤害)^0.75]点成长。（时间内再次触发改为延长时间）', active: true },
+            { level: 5, name: 'inm剧场', effect: '每48s，获得1点能量。<br>启动：消耗全部能量，在接下来的[能量*6]s内，每当一个助战触发常规音效(10%概率），其会被随机扭曲，且触发者（如果非本助战）与该助战均会获得[(本次攻击伤害)^0.75]点成长。（时间内再次触发改为延长时间）', active: true },
             { level: 48, name: '全勤宗师', effect: '每当365个倒计时技能结束，触发24次成长（获得等同于升级时成长提供的攻击力），随后造成[24*攻击力]点伤害。每次触发使此数值增加3。' }
+        ]
+    },
+    {
+        name: '奶昔purinN',
+        id: 45,
+        image: 'kmr/image/nx.png',
+        voice: 'kmr/voice/nx.mp3',
+        activeVoice: 'kmr/voice/nx_eff.mp3',
+        description: '非常好音Mad，奖励你影之诗二创的播放量（悲）',
+        baseattack: 14,
+        addattack: 10,
+        attackSpeed: 3200, // in milliseconds
+        basecost: 26,
+        enhancecost: 11,
+        supEnhancecost: 4.6,
+        skills: [
+            { level: 5, name: 'D！D！K！', effect: '每当你获得一个光环（具有持续时长的效果），攻击一次，此次攻击如触发音效会播放DDK音效。' },
+            { level: 67, name: '咿呀哈！', effect: '攻击时5%概率获得1点能量。<br>启动：消耗40点能量，接下来的31s内，每当一个倒计时技能触发后，使全部其他倒计时加快1秒，并播放一个咿呀哈语音。期间全部助战的常规音效将会转变为随机乌萨奇语音。<br>（溢出部分不会结算至下一循环，每秒每个倒计时技能依然只能触发最多1次。时间内再次触发改为延长时间）' , active: true}
         ]
     }
 ];
