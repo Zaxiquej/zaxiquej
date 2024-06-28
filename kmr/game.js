@@ -1236,11 +1236,7 @@ function getattack(minion, master) {
     // 沉底
     atk = atk.plus(extraDam);
 
-    for (let m of minionsState) {
-        if (minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")) {
-            atk = atk.times(1.2);
-        }
-    }
+
 
     atk = atk.toDecimalPlaces(0) ; // 取整数部分
 
@@ -2575,28 +2571,21 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
     norepeat = [];
   }
   //console.log(minion, amount)
-  for (let m of minionsState) {
+ for (let m of minionsState) {
    if (m.name != minion.name && m.learnedSkills.includes("做法") && amount.comparedTo(m.attack.times(0.01)) < 0) {
      if (checkLuck(0.2)) {
        amount = Decimal.min(amount.times(4), (m.attack.times(0.01)).toDecimalPlaces(0) );
        showSkillWord(m, "做法");
      }
    }
+   if (fromUpgrade && minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")) {
+       amount = amount.times(1.2);
+   }
  }
  if (fromUpgrade) {
    for (let bond of bondData) {
      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeAllAPlusl) {
        amount = amount.plus(amount.times(bond.upgradeAllAPlus).times(obtainedBonds[bond.name].level));
-     }
-   }
-   if (minion.learnedSkills.includes("虫虫咬他")) {
-     for (let bond of bondData) {
-       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫虫咬他') {
-         let c = bond.skillPlus[1];
-         let am = amount.div(amount.fifthrt().sqrt()).times(c * obtainedBonds[bond.name].level);
-         showSkillWord(minion, "虫虫咬他");
-         raiseGrowth(minion, Decimal.max(new Decimal(1), Decimal.floor(am) ), false, true);
-       }
      }
    }
  }
@@ -2609,6 +2598,19 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
 
  // Increase minion's attack using Decimal operations
  minion.attack = Decimal.floor(minion.attack.plus(amount));
+
+ if (fromUpgrade) {
+   if (minion.learnedSkills.includes("虫虫咬他")) {
+     for (let bond of bondData) {
+       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫虫咬他') {
+         let c = bond.skillPlus[1];
+         let am = amount.div(amount.fifthrt().sqrt()).times(c * obtainedBonds[bond.name].level);
+         showSkillWord(minion, "虫虫咬他");
+         raiseGrowth(minion, Decimal.max(new Decimal(1), Decimal.floor(am) ), false, true);
+       }
+     }
+   }
+ }
 
  if (minion.learnedSkills.includes("亚军传承")) {
    raiseGrowth(minion, Decimal.floor(Decimal.max(amount.div(amount.fifthrt()).times(0.2),1 ) ));
