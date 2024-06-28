@@ -322,6 +322,7 @@ function hardResetVars() {
     ethers = 0;
     totalEthers = 0;
     obtainedBonds = {};
+    refreshBondCompletion();
 }
 
 function resetVars() {
@@ -3134,6 +3135,7 @@ function drawBond(times) {
     // 更新 obtainedBonds 为排序后的结果
     obtainedBonds = sortedObtainedBonds;
    updateBondsList();
+   refreshBondCompletion();
 }
 
 function showDrawEffect(bond) {
