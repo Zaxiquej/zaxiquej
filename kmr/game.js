@@ -2212,9 +2212,11 @@ function updateCounts() {
       m.count++;
       if (m.count >= 28){
         m.count = zeroCountDown(28);
+        let ratio = Math.floor(m.level.pow(0.9)/40);
         for (let mi of minionsState){
           if (mi.name != m.name){
             let amount = getAddattack(mi);
+            amount = amount.times(ratio);
             raiseAtk(mi, Decimal.floor(amount));
           }
         }
@@ -2587,7 +2589,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      for (let bond of bondData) {
        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫虫咬他') {
          let c = bond.skillPlus[1];
-         let am = amount.times(c * obtainedBonds[bond.name].level);
+         let am = amount.div(amount.fifthrt().sqrt()).times(c * obtainedBonds[bond.name].level);
          showSkillWord(minion, "虫虫咬他");
          raiseGrowth(minion, Decimal.max(new Decimal(1), Decimal.floor(am) ), false, true);
        }
