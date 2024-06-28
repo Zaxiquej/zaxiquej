@@ -40,8 +40,8 @@ let upgrading = false;
 let xxjjj = 0;
 let curjjj = 0;
 let xxBuff = false;
-let zheluck = 3;
-let zheluck2 = 3;
+let zheluck = 2;
+let zheluck2 = 2;
 let zhedam = new Decimal('2600');
 let maxdamZ =  new Decimal('0');
 let daZhaiQiYue = false;
@@ -253,8 +253,8 @@ function loadGameState(encodedGameState){
   if (gameState.ynAttackCount != undefined) ynAttackCount = gameState.ynAttackCount;
   if (gameState.canAutoUpgrade != undefined) canAutoUpgrade = gameState.canAutoUpgrade;
   if (gameState.sharkcounts != undefined) sharkcounts = gameState.sharkcounts;
-  if (Number(zheluck)!== zheluck) zheluck = 3;
-  if (Number(zheluck2)!== zheluck2) zheluck2 = 3;
+  if (Number(zheluck)!== zheluck) zheluck = 2;
+  if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
   refreshBondCompletion();
   checkAutoUpgradeButton();
   for (let m of minionsState){
@@ -353,8 +353,8 @@ function resetVars() {
   xxjjj = 0;
   curjjj = 0;
   xxBuff = false;
-  zheluck = 3;
-  zheluck2 = 3;
+  zheluck = 2;
+  zheluck2 = 2;
   zhedam = new Decimal('2600');
   maxdamZ = new Decimal('0');
   daZhaiQiYue = false;
@@ -911,7 +911,16 @@ function damageKmr(dam, minion) {
     showDamage(x, y, dam);
 
     // 播放声音
-    if (Math.random() < 0.1) {
+    if (getBuffPower("inm") == true) {
+        let am = dam.div(dam.sqrt().sqrt());
+        minion.raiseGrowth(am);
+        let r = getBuffPower("inm")[0];
+        if (minion.name != minionsState[r].name){
+          minionsState[r].raiseGrowth(am);
+        }
+        showSkillWord(minionsState[r], "inm!");
+        playDistortedSound(minion.voice);
+    } else {
         const hitSound = new Audio(minion.voice);
         hitSound.play();
     }
@@ -924,6 +933,59 @@ function damageKmr(dam, minion) {
 
     // 检查游戏胜利条件
     checkVictory();
+}
+
+async function playDistortedSound(url) {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioBuffer = await fetchAudioBuffer(audioContext, url);
+    playAndDistortAudio(audioContext, audioBuffer);
+}
+
+async function fetchAudioBuffer(audioContext, url) {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    return await audioContext.decodeAudioData(arrayBuffer);
+}
+
+function playAndDistortAudio(audioContext, audioBuffer) {
+    const source = audioContext.createBufferSource();
+    source.buffer = audioBuffer;
+
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = 1;
+
+    const biquadFilter = audioContext.createBiquadFilter();
+    biquadFilter.type = 'lowshelf';
+    biquadFilter.frequency.setValueAtTime(1000, audioContext.currentTime);
+    biquadFilter.gain.setValueAtTime(Math.random() * 20 - 10, audioContext.currentTime);
+
+    const waveShaper = audioContext.createWaveShaper();
+    waveShaper.curve = makeDistortionCurve(Math.random() * 50);
+    waveShaper.oversample = '4x';
+
+    const pitchShifter = audioContext.createBiquadFilter();
+    pitchShifter.type = 'highshelf';
+    pitchShifter.frequency.setValueAtTime(3000, audioContext.currentTime);
+    pitchShifter.gain.setValueAtTime(Math.random() * 20, audioContext.currentTime);
+
+    source.connect(gainNode);
+    gainNode.connect(biquadFilter);
+    biquadFilter.connect(waveShaper);
+    waveShaper.connect(pitchShifter);
+    pitchShifter.connect(audioContext.destination);
+
+    source.start(0);
+}
+
+function makeDistortionCurve(amount) {
+    const n_samples = 44100;
+    const curve = new Float32Array(n_samples);
+    const deg = Math.PI / 180;
+    for (let i = 0; i < n_samples; ++i) {
+        const x = i * 2 / n_samples - 1;
+        curve[i] = (3 + amount) * x * 20 * deg / (Math.PI + amount * Math.abs(x));
+    }
+    return curve;
 }
 
 function formatNumberSmall(num) {
@@ -1108,12 +1170,12 @@ function getattack(minion, master) {
         if (checkLuck(zheluck*(0.01), 1)) {
             extraDam = extraDam.plus(zhedam);
             skilled = true;
-            zheluck = 3;
+            zheluck = 2;
             showSkillWord(minion, "乾坤一掷");
 
             if (checkLuck(zheluck2*(0.01), 2)) {
                 zhedam = Decimal.max(zhedam,(Math.floor(maxdamZ.div(11))) );
-                zheluck2 = 3;
+                zheluck2 = 2;
                 showSkillWord(minion, "伤害提升！");
             }
         }
@@ -1299,12 +1361,12 @@ function checkLuck(r, fromZhe) {
                     pass = Math.random() < r;
                     if (!pass) {
                         if (fromZhe === 1) {
-                            zheluck = zheluck + 0.3;
+                            zheluck = zheluck + 0.2;
                         }
                         if (fromZhe === 2) {
-                            zheluck2 = zheluck2 + 0.3;
+                            zheluck2 = zheluck2 + 0.2;
                         }
-                        r = r + 0.003
+                        r = r + 0.002
                         showSkillWord(minion, "终将降临的肃清");
                     }
                 }
@@ -1322,12 +1384,12 @@ function checkLuck(r, fromZhe) {
                     for (let minion of minionsState) {
                         if (minion.learnedSkills.includes("终将降临的肃清")) {
                             if (fromZhe === 1) {
-                                zheluck = zheluck + 0.3;
+                                zheluck = zheluck + 0.2;
                             }
                             if (fromZhe === 2) {
-                                zheluck2 = zheluck2 + 0.3;
+                                zheluck2 = zheluck2 + 0.2;
                             }
-                            r = r + 0.003
+                            r = r + 0.002
                             showSkillWord(minion, "终将降临的肃清");
                         }
                     }
@@ -2674,7 +2736,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
     let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
 
     if (minion.name == sortedMs[0].name){
-       let ratio = new Decimal(0.15);
+       let ratio = new Decimal(0.18);
        norepeat.push("虽强但弱");
        raiseAtk(m, Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
        raiseAtk(sortedMs[sortedMs.length - 1], Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
