@@ -1458,11 +1458,11 @@ function playVoice(minion,dam){
     voice = "kmr/voice/yiyaha/"+id+".mp3"
   }
   if (getBuffPower("inm").length > 0) {
-      let am = dam.div(dam.sqrt().sqrt()).times(0.2);
-      minion.raiseGrowth(am);
+      let am = dam.fifthrt().pow(3).times(0.2);
+      raiseGrowth(minion,am);
       let r = getBuffPower("inm")[0];
       if (minion.name != minionsState[r].name){
-        minionsState[r].raiseGrowth(am);
+        raiseGrowth(minionsState[r],am);
       }
       showSkillWord(minionsState[r], "inm!");
       if (noHitVoice == 0 || thisStop){
