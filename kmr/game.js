@@ -1841,6 +1841,7 @@ function minusLevel(minion,l){
       showSkillWord(m, "恭顺");
     }
   }
+  if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
 }
 
 function refreshCangSkill() {
