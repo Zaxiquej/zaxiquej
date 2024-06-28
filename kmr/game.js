@@ -264,8 +264,8 @@ function loadGameState(encodedGameState){
     m.addattack = new Decimal(m.addattack);
   }
   for (let m of minionsState){
-    if (m.attack.isNaN()){ m.attack = new Decimal(0)}
-  	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
+  //  if (m.attack.isNaN()){ m.attack = new Decimal(0)}
+  //	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
   }
   if (coins.isNaN()){coins = new Decimal(0)}
   if (kmrHealthValue.isNaN()){
@@ -894,7 +894,7 @@ function damageKmr(dam, minion) {
             }
         }
         if (m.learnedSkills.includes("雷维翁之力")) {
-            let raiseAmount = dam.div(dam.fifthrt()).times(0.01).toDecimalPlaces(0);
+            let raiseAmount = dam.div(dam.fifthrt()).times(0.02).toDecimalPlaces(0);
             raiseAtk(minion, raiseAmount);
             showSkillWord(m, "雷维翁之力");
         }
@@ -2176,7 +2176,7 @@ function updateCounts() {
       m.count++;
       if (m.count >= 14){
         m.count = zeroCountDown(14);
-        let times = 1 + Math.floor(Math.pow(m.level,0.9) / 50);
+        let times = 1 + Math.floor(Math.pow(m.level,0.8) / 50);
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random() * unlockedMinions.length);
           minionsState[r].attack = new Decimal(incrementRandomDigit(minionsState[r].attack));
