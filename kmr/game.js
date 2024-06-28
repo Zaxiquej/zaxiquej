@@ -957,16 +957,16 @@ function playAndDistortAudio(audioContext, audioBuffer) {
     const biquadFilter = audioContext.createBiquadFilter();
     biquadFilter.type = 'lowshelf';
     biquadFilter.frequency.setValueAtTime(1000, audioContext.currentTime);
-    biquadFilter.gain.setValueAtTime(Math.random() * 20 - 10, audioContext.currentTime);
+    biquadFilter.gain.setValueAtTime(Math.random() * 40 - 10, audioContext.currentTime);
 
     const waveShaper = audioContext.createWaveShaper();
-    waveShaper.curve = makeDistortionCurve(Math.random() * 50);
+    waveShaper.curve = makeDistortionCurve(Math.random() * 100);
     waveShaper.oversample = '4x';
 
     const pitchShifter = audioContext.createBiquadFilter();
     pitchShifter.type = 'highshelf';
     pitchShifter.frequency.setValueAtTime(3000, audioContext.currentTime);
-    pitchShifter.gain.setValueAtTime(Math.random() * 20, audioContext.currentTime);
+    pitchShifter.gain.setValueAtTime(Math.random() * 40, audioContext.currentTime);
 
     source.connect(gainNode);
     gainNode.connect(biquadFilter);
