@@ -2737,7 +2737,7 @@ function autoupgradeMinion(max) {
 }
 
 function sharkUpgradeFactor(){
-  let factor = 1 * Math.pow(0.92,sharkcounts[0]);
+  let factor = 1 * Math.pow(0.9,sharkcounts[0]);
   return factor;
 }
 
