@@ -2442,11 +2442,13 @@ function updateCounts() {
            let luck = 0.05 + 0.01 * Math.floor(m.level / 50);
            if (checkLuck(luck)) {
              let atkIncrease = m.tempAtk.dividedBy(10).toDecimalPlaces(0);
-             raiseAtk(m, atkIncrease);
+             //raiseAtk(m, atkIncrease);
+             m.attack += atkIncrease;
            }
            m.tempAtk = new Decimal(0);
            showSkillWord(m, "无尽连击");
            need = true;
+           ref = true;
          }
        }
        if (m.learnedSkills.includes("掌控")){
@@ -2548,6 +2550,7 @@ function updateCounts() {
      }
      if (ref){
        refMinions();
+       refreshMinionDetails();
      }
      if (need){
        updateDisplays();
