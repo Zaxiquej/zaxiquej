@@ -2212,7 +2212,7 @@ function updateCounts() {
       m.count++;
       if (m.count >= 28){
         m.count = zeroCountDown(28);
-        let ratio = Math.floor(m.level.pow(0.9)/40);
+        let ratio = Math.floor(Math.pow(m.level,0.9)/40);
         for (let mi of minionsState){
           if (mi.name != m.name){
             let amount = getAddattack(mi);
@@ -2612,11 +2612,13 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  }
 
  // Recursively raise attack for marriage-related minions
- if (marriage[0] == minion.name && fromUpgrade) {
-   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], Decimal.floor(amount.times(0.2)));
- }
- if (marriage[1] == minion.name && fromUpgrade) {
-   raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], Decimal.floor(amount.times(0.2)));
+ if (marriage.length >= 2){
+   if (marriage[0] == minion.name && fromUpgrade) {
+     raiseAtk(minionsState[unlockedMinions.indexOf(marriage[1])], Decimal.floor(amount.times(0.2)));
+   }
+   if (marriage[1] == minion.name && fromUpgrade) {
+     raiseAtk(minionsState[unlockedMinions.indexOf(marriage[0])], Decimal.floor(amount.times(0.2)));
+   }
  }
 
  // Process additional upgrades using Decimal operations
