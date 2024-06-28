@@ -264,8 +264,10 @@ function loadGameState(encodedGameState){
     m.addattack = new Decimal(m.addattack);
   }
   for (let m of minionsState){
-  	if (m.totalDamage.isNaN()){console.log(1); m.totalDamage = new Decimal(0)}
+    if (m.attack.isNaN()){ m.attack = new Decimal(0)}
+  	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
   }
+  if (coins.isNaN()){coins = new Decimal(0)}
   if (kmrHealthValue.isNaN()){
     kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level))
   }
@@ -869,7 +871,9 @@ function damageKmr(dam, minion) {
 
     // 计算额外伤害比例
     dam = dam.times(extraDamRatio(minion)).toDecimalPlaces(0);
-
+    if (dam.isNaN()){
+      console.log(minion)
+    }
     // 扣除伤害
     kmrTakeDam(dam);
 
@@ -1374,6 +1378,9 @@ function minionAttack(minion, master) {
                 showSkillWord(minion, "进入下饭状态！");
             }
         }
+    }
+    if (dam.isNaN()){
+      console.log(minion)
     }
 
     kmrTakeDam(dam); // 执行伤害
@@ -2169,7 +2176,7 @@ function updateCounts() {
       m.count++;
       if (m.count >= 14){
         m.count = zeroCountDown(14);
-        let times = 1 + Math.floor(m.level / 50);
+        let times = 1 + Math.floor(Math.pow(m.level,0.9) / 50);
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random() * unlockedMinions.length);
           minionsState[r].attack = new Decimal(incrementRandomDigit(minionsState[r].attack));
