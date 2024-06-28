@@ -2243,8 +2243,8 @@ function updateCounts() {
             [deck[i], deck[j]] = [deck[j], deck[i]];
         }
 
-        // 抽5张牌
-        const drawnCards = deck.slice(0, 5);
+        // 抽6张牌
+        const drawnCards = deck.slice(0, 6);
         const dragonCount = drawnCards.filter(card => card === 'dragon').length;
         const firstThreeDragons = drawnCards.slice(0, 3).every(card => card === 'dragon');
 
@@ -2252,11 +2252,11 @@ function updateCounts() {
         switch (dragonCount) {
             case 1:
                 showSkillWord(m, "lqyy：龙启×1");
-                gainCoin(maxdamZ.times(2),m)
+                gainCoin(Decimal.floor(maxdamZ.div(3)),m)
                 break;
             case 2:
                 showSkillWord(m, "lqyy：龙启×2!!");
-                gainCoin(maxdamZ.times(4),m)
+                gainCoin(maxdamZ.times(3),m)
                 break;
             case 3:
                 if (firstThreeDragons) {
