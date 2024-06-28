@@ -919,7 +919,13 @@ function damageKmr(dam, minion) {
           minionsState[r].raiseGrowth(am);
         }
         showSkillWord(minionsState[r], "inm!");
-        playDistortedSound(minion.voice);
+        if (isLocal()) {
+          const hitSound = new Audio(minion.voice);
+          hitSound.play();
+        } else {
+            playDistortedSound(minion.voice);
+        }
+
     } else {
         const hitSound = new Audio(minion.voice);
         hitSound.play();
@@ -933,6 +939,10 @@ function damageKmr(dam, minion) {
 
     // 检查游戏胜利条件
     checkVictory();
+}
+
+function isLocal() {
+    return window.location.protocol === 'file:';
 }
 
 async function playDistortedSound(url) {
