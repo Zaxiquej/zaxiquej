@@ -1457,7 +1457,7 @@ function playVoice(minion){
     if (id >= 14){id += 2};
     voice = "kmr/voice/yiyaha/"+id+".mp3"
   }
-  if (getBuffPower("inm") == true) {
+  if (getBuffPower("inm").length > 0) {
       let am = dam.div(dam.sqrt().sqrt()).times(0.2);
       minion.raiseGrowth(am);
       let r = getBuffPower("inm")[0];
@@ -1471,7 +1471,6 @@ function playVoice(minion){
           hitSound.play();
           audioObjects.push(hitSound);
         } else {
-            console.log(1)
             playDistortedSound(voice);
         }
       }
