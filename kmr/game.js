@@ -2579,7 +2579,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      }
    }
    if (fromUpgrade && minion.description.includes("🐷") && m.learnedSkills.includes("老实猪猪")) {
-       amount = amount.times(1.2);
+       amount = amount.times(1 + 0.05 * getDigit(minion.attack));
    }
  }
  if (fromUpgrade) {
