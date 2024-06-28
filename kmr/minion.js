@@ -709,7 +709,7 @@ const minions = [
         enhancecost: 11,
         supEnhancecost: 4.4,
         skills: [
-            { level: 12, name: '亚军传承', effect: '该助战提升攻击力时，还会将[增加量^0.8]*6%的数值加给成长（至少1点）。' },
+            { level: 12, name: '亚军传承', effect: '该助战提升攻击力时，还会将[增加量^0.8]*0.2的数值加给成长（至少1点）。' },
             { level: 65, name: '炎孕恐怖分子', effect: '每28s，使所有角色触发一次成长（获得等同于升级时成长提供的攻击力）。' }
         ]
     },

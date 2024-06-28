@@ -67,6 +67,8 @@ body {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 100vh;
+    overflow-y: auto;
 }
 
 .gold-effect, .hit-effect, .damage-effect, .word-effect, .heal-effect {

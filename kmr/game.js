@@ -2605,7 +2605,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  minion.attack = Decimal.floor(minion.attack.plus(amount));
 
  if (minion.learnedSkills.includes("亚军传承")) {
-   raiseGrowth(minion, Decimal.floor(Decimal.max(amount.div(amount.fifthrt()).times(0.06),1 ) ));
+   raiseGrowth(minion, Decimal.floor(Decimal.max(amount.div(amount.fifthrt()).times(0.2),1 ) ));
    showSkillWord(minion, "亚军传承");
  }
 
