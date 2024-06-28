@@ -722,12 +722,12 @@ const minions = [
         baseattack: 18,
         addattack: 7,
         attackSpeed: 2900, // in milliseconds
-        basecost: 30,
-        enhancecost: 14,
-        supEnhancecost: 5.4,
+        basecost: 34,
+        enhancecost: 16,
+        supEnhancecost: 5.8,
         skills: [
-            { level: 9, name: '虽强但弱', effect: '每当攻击力最高的其他助战提升攻击力，该助战与攻击力最低的其他助战也提升该数值20%的攻击力（至少1点）。' },
-            { level: 44, name: '卡场绝杰', effect: '每49s，造成[0.2*(上一次该倒计时结束后，助战总攻击次数)^1.2*攻击力]点伤害。' }
+            { level: 9, name: '虽强但弱', effect: '每当攻击力最高的其他助战提升攻击力，该助战与攻击力最低的其他助战也提升该数值15%的攻击力（至少1点）。' },
+            { level: 64, name: '卡场绝杰', effect: '每49s，造成[0.2*(上一次该倒计时结束后，助战总攻击次数)^1.2*攻击力]点伤害。' }
         ]
     },
     {

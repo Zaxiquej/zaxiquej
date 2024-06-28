@@ -1360,10 +1360,9 @@ function minionAttack(minion, master) {
 
     skilled = false;
     let dam = getattack(minion, master); // 获取攻击力
-    let gainC = dam;
     dam = dam.times(extraDamRatio(minion)); // 乘以额外伤害比例
     dam = dam.toDecimalPlaces(0); // 向下取整
-
+    let gainC = dam;
     if (minion.learnedSkills.includes("下饭")) {
         if (checkLuck(0.1)) {
             gainC = dam.times(getDigit(minion.attack)); // gainC 根据攻击力和 getDigit 函数计算
@@ -2675,7 +2674,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
     let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
 
     if (minion.name == sortedMs[0].name){
-       let ratio = new Decimal(0.2);
+       let ratio = new Decimal(0.15);
        norepeat.push("虽强但弱");
        raiseAtk(m, Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
        raiseAtk(sortedMs[sortedMs.length - 1], Decimal.max(1, Decimal.floor(amount.times(ratio)) ), norepeat);
