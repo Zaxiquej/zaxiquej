@@ -943,3 +943,73 @@ button:disabled {
 #autoUpgradeButton.on {
     background-color: green; /* Background color when ON */
 }
+
+/* 定义彩虹色动态遮罩效果的样式 */
+.colorful-effect {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 50px; /* 根据需要调整大小 */
+    height: 60px;
+}
+
+.colorful-effect img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 增强的彩虹色遮罩 */
+.colorful-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+        rgba(255, 0, 0, 0.7),
+        rgba(255, 154, 0, 0.7),
+        rgba(208, 222, 33, 0.7),
+        rgba(79, 220, 74, 0.7),
+        rgba(63, 218, 216, 0.7),
+        rgba(47, 201, 226, 0.7),
+        rgba(28, 127, 238, 0.7),
+        rgba(95, 21, 242, 0.7),
+        rgba(186, 12, 248, 0.7),
+        rgba(251, 7, 217, 0.7),
+        rgba(255, 0, 0, 0.7)
+    );
+    background-size: 200% 200%;
+    animation: rainbow 5s linear infinite;
+    mix-blend-mode: overlay;
+    opacity: 0.8;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    20% { background-position: 20% 50%; }
+    40% { background-position: 40% 50%; }
+    60% { background-position: 60% 50%; }
+    80% { background-position: 80% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* 添加光晕效果 */
+.colorful-effect::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}

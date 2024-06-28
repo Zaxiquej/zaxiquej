@@ -1471,6 +1471,7 @@ function playVoice(minion){
           hitSound.play();
           audioObjects.push(hitSound);
         } else {
+            console.log(1)
             playDistortedSound(voice);
         }
       }
@@ -1735,7 +1736,8 @@ function refMinions() {
         }
 
         minionElement.innerHTML = `
-            <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
+            <div id="eff-${index}" class="effect">
+            <img id="image-${index}" src="${minion.image}" alt="${minion.name}"></div>
             <div ${nameStyle}>${minion.name}</div>
             <div>等级: <span id="level-${index}">${minion.level}</span></div>
             <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
@@ -1752,6 +1754,14 @@ function refMinions() {
             showMinionDetails(index);
         });
         minionsContainer.appendChild(minionElement);
+
+                // 获取图像元素的父元素
+        const colorfulElement = document.getElementById(`eff-${index}`);
+
+        // 根据条件添加彩虹色效果
+      //  if (colorfulElement) {
+      //      colorfulElement.classList.add('colorful-effect');
+      //  }
     });
 
     document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) + ")";
@@ -3591,23 +3601,6 @@ window.onclick = function(event) {
         continueGame();
     }
 }
-
-document.addEventListener('DOMContentLoaded', (event) => {
-            const uniqueKey = 'unique_page_identifier'; // This should be unique for each page
-
-            // Check if the page is already open in another tab
-            if (localStorage.getItem(uniqueKey)) {
-                alert('此游戏似乎已经在其他窗口/标签页打开了！为了确保稳定性，建议不要双开。');
-            } else {
-                // Mark the page as open
-                localStorage.setItem(uniqueKey, 'open');
-
-                // Remove the marker when the page is closed or reloaded
-                window.addEventListener('beforeunload', () => {
-                    localStorage.removeItem(uniqueKey);
-                });
-            }
-        });
 
 kmr.addEventListener('click', clickKmr);
 refMinions();
