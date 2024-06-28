@@ -939,7 +939,7 @@ function damageKmr(dam, minion) {
 
     // 播放声音
     if (Math.random() < 0.1) {
-        playVoice(minion);
+        playVoice(minion,dam);
     }
     // 获得金币
     gainCoin(dam,minion);
@@ -1438,7 +1438,7 @@ function getDigit(num) {
     return numDigits;
 }
 
-function playVoice(minion){
+function playVoice(minion,dam){
   let voice = minion.voice;
   let thisStop = false;
   if (audioObjects.length >= 10) {
@@ -1520,7 +1520,7 @@ function minionAttack(minion, master) {
     showDamage(x, y, dam); // 显示伤害
 
     if (Math.random() < 0.1) {
-        playVoice(minion);
+        playVoice(minion,dam);
     }
     if (master){
       gainCoin(gainC,master); // 获得金币
