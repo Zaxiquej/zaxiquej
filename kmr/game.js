@@ -394,6 +394,7 @@ function gainEtherAmount(){
       prod *= 1 + bond.moreEther * obtainedBonds[bond.name].level;
     }
   }
+
   amount = Math.floor(amount * prod);
   return amount;
 }
@@ -1981,7 +1982,7 @@ function generateXYZ(totalAllies) {
 }
 
 function completedBond(bond){
-    return completedBonds.includes(bond);
+    return completedBonds.includes(bond.name);
 }
 
 function completedSingleBond(bond){
