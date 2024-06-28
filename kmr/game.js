@@ -2443,7 +2443,7 @@ function updateCounts() {
            if (checkLuck(luck)) {
              let atkIncrease = m.tempAtk.dividedBy(10).toDecimalPlaces(0);
              //raiseAtk(m, atkIncrease);
-             m.attack += atkIncrease;
+             m.attack = m.attack.plus(atkIncrease);
            }
            m.tempAtk = new Decimal(0);
            showSkillWord(m, "无尽连击");
