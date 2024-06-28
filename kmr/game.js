@@ -1228,7 +1228,7 @@ function getattack(minion, master) {
 
         for (let i = sp.length - 1; i >= 0; i--) {
             killBuff("saki", sp[i]);
-            raiseAtk(minion, new Decimal(2).times(minion.attack.div(minion.attack.fifthrt().sqrt())));
+            raiseAtk(minion, new Decimal(5).times(minion.attack.div(minion.attack.fifthrt().sqrt())));
             showSkillWord(minion, "必可活用于下一次……");
         }
     }
