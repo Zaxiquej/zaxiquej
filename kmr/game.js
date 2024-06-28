@@ -3329,6 +3329,23 @@ window.onclick = function(event) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', (event) => {
+            const uniqueKey = 'unique_page_identifier'; // This should be unique for each page
+
+            // Check if the page is already open in another tab
+            if (localStorage.getItem(uniqueKey)) {
+                alert('此游戏似乎已经在其他窗口/标签页打开了！为了确保稳定性，建议不要双开。');
+            } else {
+                // Mark the page as open
+                localStorage.setItem(uniqueKey, 'open');
+
+                // Remove the marker when the page is closed or reloaded
+                window.addEventListener('beforeunload', () => {
+                    localStorage.removeItem(uniqueKey);
+                });
+            }
+        });
+
 kmr.addEventListener('click', clickKmr);
 refMinions();
 updateDisplays();
