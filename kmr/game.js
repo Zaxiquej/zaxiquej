@@ -1543,7 +1543,7 @@ function playVoice(minion,dam){
     voice = "kmr/voice/yiyaha/"+id+".mp3"
   }
   if (getBuffPower("inm").length > 0) {
-      let am = dam.fifthrt().pow(3).times(0.2);
+      let am = new Decimal.floor(dam.fifthrt().pow(3).times(0.2));
       raiseGrowth(minion,am);
       let r = getBuffPower("inm")[0];
       if (minion.name != minionsState[r].name){
