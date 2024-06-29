@@ -123,7 +123,7 @@ const minions = [
         id: 7,
         image: 'kmr/image/fox.png',
         voice: 'kmr/voice/fox.mp3',
-        description: '狐神太热爱szb了，我哭死',
+        description: '多年以后，面对szb的时空回溯，久远将会回想起，狐神带他去见识炽炎爆弹的那个遥远的下午',
         baseattack: 7,
         addattack: 6,
         attackSpeed: 2250, // in milliseconds
@@ -471,7 +471,7 @@ const minions = [
         enhancecost: 9.6,
         supEnhancecost: 4.8,
         skills: [
-            { level: 9, name: '乾坤一掷', effect: '攻击后，有2%概率附加2600点伤害；在此基础上，2%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害（不会低于原本伤害）。' },
+            { level: 9, name: '乾坤一掷', effect: '攻击后，有2%概率附加2600点伤害；在此基础上，2%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害（不会低于原本伤害）。这一伤害不会被任何因素翻倍。' },
             { level: 65, name: '终将降临的肃清', effect: '[乾坤一掷]中的任何一项触发失败后，30%概率重新判定一次。每次[乾坤一掷]重新判定依然失败，使该部分成功率增加0.2%。成功后，消除该部分的额外成功率。（每50级增加1%改判概率，最高100%）' }
         ]
     },
@@ -785,7 +785,7 @@ const minions = [
     },
     {
         name: '奶昔purinN',
-        id: 45,
+        id: 46,
         image: 'kmr/image/nx.png',
         voice: 'kmr/voice/nx.mp3',
         activeVoice: 'kmr/voice/nx_eff.mp3',
@@ -799,6 +799,41 @@ const minions = [
         skills: [
             { level: 5, name: 'D！D！K！', effect: '每当你获得一个光环（具有持续时长的效果），攻击一次，此次攻击如触发音效会播放DDK音效。' },
             { level: 67, name: '咿呀哈！', effect: '攻击时5%概率获得1点能量。<br>启动：消耗40点能量，接下来的31s内，每当一个倒计时技能触发后，使全部其他倒计时加快1秒，并播放一个咿呀哈语音。期间全部助战的常规音效将会转变为随机乌萨奇语音。<br>（溢出部分不会结算至下一循环，每秒每个倒计时技能依然只能触发最多1次。时间内再次触发改为延长时间）' , active: true}
+        ]
+    },
+    {
+        name: '铁血大教头m16',
+        id: 47,
+        image: 'kmr/image/tx.png',
+        voice: 'kmr/voice/tx.mp3',
+        activeVoice: 'kmr/voice/tx_eff.mp3',
+        description: '正在制作mod的inm作者.gb素材（不含使用例）【影之诗】',
+        baseattack: 14,
+        addattack: 11,
+        attackSpeed: 3200, // in milliseconds
+        basecost: 22,
+        enhancecost: 13,
+        supEnhancecost: 4.8,
+        skills: [
+            { level: 7, name: '牢大暴扣！', effect: '攻击时，4%根据当前攻击力首位触发特效：<br>奇数：此次攻击的伤害增加[成长位数]倍。<br>偶数：使1个随机其他助战增加[该助战攻击力/30]点攻击力，重复[成长位数]次。' },
+            { level: 92, name: '新主战者流出', effect: '习得与每个周目开始时，获得1点能量。<br>启动：消耗1点能量，解锁一个仅存在120s的临时助战。该助战不可主动升级，且基础能力与本助战相同，但具有一项随机特殊技能。', active: true }
+        ]
+    },
+    {
+        name: '奇稻田狐',
+        id: 48,
+        image: 'kmr/image/sfox.png',
+        voice: 'kmr/voice/sfox.mp3',
+        description: '前面忘了，而你就像是被大狐增幅过的小狐，后面忘了',
+        baseattack: 8,
+        addattack: 8,
+        attackSpeed: 2000, // in milliseconds
+        basecost: 25,
+        enhancecost: 11,
+        supEnhancecost: 4.4,
+        skills: [
+            { level: 7, name: '一尾狐', effect: '非额外攻击时，6%概率再攻击三次。' },
+            { level: 45, name: '沙雕视频放出', effect: '每当该助战发动额外攻击时，获得1点能量。<br>启动：如果你具有至少10点能量，消耗除个位外的全部能量，随机使一个助战接下来12s内，非额外攻击时，6%概率再攻击三次，重复X次，X为[消耗的能量/10]（复数触发改为延长时间）', active: true }
         ]
     }
 ];

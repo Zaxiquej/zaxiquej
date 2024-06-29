@@ -144,6 +144,14 @@ const bondData = [
         upgradeMinusCost: [0.05,5,0.5]
     },
     {
+        id: 1010,
+        name: '三个臭皮匠',
+        rarity: 'silver',
+        characters: ["Minsaw丨Scarlet","铁血大教头m16","英梨梨的男友"],
+        benefit: '每级使羁绊中角色升级消费金钱减少5%。（超过25%的部分将衰减）',
+        upgradeMinusCost: [0.05,5,0.5]
+    },
+    {
         id: 2001,
         name: '53赛季',
         rarity: 'gold',
