@@ -2046,7 +2046,7 @@ function getEff(skill,minion){
     case "魔咒":
       return skill.effect + "（目前最高连续失败次数为"+xxjjj+"）。";
     case "乾坤一掷":
-      return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck2*100)/100+"%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害。（不会低于原本伤害，目前最高单次伤害为"+formatNumber(maxdamZ)+");"
+      return "攻击后，有"+Math.floor(zheluck*100)/100+"%概率附加"+formatNumber(zhedam)+"点伤害；在此基础上，"+Math.floor(zheluck2*100)/100+"%概率将本技能的伤害转变为[kmr单次受到的最高伤害/11]点伤害。这一伤害不会被任何因素翻倍。（不会低于原本伤害，目前最高单次伤害为"+formatNumber(maxdamZ)+");"
     case "卓绝的契约":
       if (daZhaiQiYue){
         return "每局游戏仅限一次，主动将一个助战升到2级时，如果你的助战数为7以上，使其攻击速度永久减少20%，升级时攻击力增加量变为原本的^2，并且攻击力永久增加[该助战的攻击力]的数值。（契约已签订——"+daZhaiQiYue+"）";

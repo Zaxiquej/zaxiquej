@@ -72,6 +72,14 @@ const bondData = [
         extraDam: 0.2
     },
     {
+        id: 10,
+        name: '大狐小狐',
+        rarity: 'bronze',
+        characters: ["竹取玉白","奇稻田狐"],
+        benefit: '每级使羁绊中角色增加攻击力时的数值增加3%。',
+        extraAtkGain: 0.03
+    },
+    {
         id: 1001,
         name: '夫妻上阵',
         rarity: 'silver',
