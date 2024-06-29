@@ -2926,7 +2926,7 @@ function getBaseLog(x, y) {
 }
 
 function raiseGrowth(minion, amount, norepeat, fromUpgrade) {
-  minion.addattack = new Decimal(minion.addattack.plus(amount));
+  minion.addattack = Decimal.floor(minion.addattack.plus(amount));
   if (!autoing){
     if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
   }
