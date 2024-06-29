@@ -1005,9 +1005,10 @@ function damageKmr(dam, minion) {
 function isLocal() {
     return window.location.protocol === 'file:';
 }
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let audioContext;
 
 async function playDistortedSound(url) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audioBuffer = await fetchAudioBuffer(audioContext, url);
     playAndDistortAudio(audioContext, audioBuffer);
 }
