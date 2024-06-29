@@ -268,13 +268,16 @@ function loadGameState(encodedGameState){
   checkAutoUpgradeButton();
   for (let m of minionsState){
     m.attack = new Decimal(m.attack);
-    m.tempAtk = new Decimal(m.tempAtk);
+    if (m.tempAtk){
+      m.tempAtk = new Decimal(m.tempAtk);
+    }
     m.totalDamage = new Decimal(m.totalDamage);
     m.addattack = new Decimal(m.addattack);
   }
+
   for (let m of minionsState){
-  //  if (m.attack.isNaN()){ m.attack = new Decimal(0)}
-  //	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
+    if (m.attack.isNaN()){ m.attack = new Decimal(0)}
+  	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
   }
   if (coins.isNaN()){coins = new Decimal(0)}
   if (kmrHealthValue.isNaN()){
@@ -466,7 +469,7 @@ function addBuff(name,power,length,stackable,noMemorize){
           r += 1;
       }
       raiseGrowth(minionsState[r], Decimal.max(new Decimal(1), minion.addattack.div(15).toDecimalPlaces(0)) ); // 升级攻击力
-      minionAttack(minionsState[r], minion.master);
+      minionAttack(minionsState[r], minion);
       showSkillWord(minion, "守御之力");
       updateDisplays()
     }
@@ -602,7 +605,8 @@ function unlockAfter(minion){
 }
 
 function unlockMinionTX(minion) {
-  let subMinion = createdMinions[Math.floor(createdMinions.length * Math.random())];
+  let availMinions = createdMinions.filter((m) => !unlockedMinions.includes(m.name));
+  let subMinion = availMinions[Math.floor(availMinions.length * Math.random())];
   createdMinion = {
     ...subMinion
   }
@@ -966,9 +970,11 @@ function damageKmr(dam, minion) {
             }
         }
         if (m.learnedSkills.includes("雷维翁之力")) {
-            let raiseAmount = dam.div(dam.fifthrt()).times(0.02).toDecimalPlaces(0);
-            raiseAtk(minion, raiseAmount);
-            showSkillWord(m, "雷维翁之力");
+            if (dam.gt(0)){
+              let raiseAmount = dam.div(dam.fifthrt()).times(0.02).toDecimalPlaces(0);
+              raiseAtk(minion, raiseAmount);
+              showSkillWord(m, "雷维翁之力");
+            }
         }
     }
 
@@ -1543,6 +1549,7 @@ function playVoice(minion,dam){
     voice = "kmr/voice/yiyaha/"+id+".mp3"
   }
   if (getBuffPower("inm").length > 0) {
+    if (dam.gt(0)){
       let am = new Decimal.floor(dam.fifthrt().pow(3).times(0.2));
       raiseGrowth(minion,am);
       let r = getBuffPower("inm")[0];
@@ -1550,6 +1557,7 @@ function playVoice(minion,dam){
         raiseGrowth(minionsState[r],am);
       }
       showSkillWord(minionsState[r], "inm!");
+    }
       if (noHitVoice == 0 || thisStop){
         if (isLocal()) {
           const hitSound = new Audio(voice);
@@ -2004,7 +2012,11 @@ function showMinionDetails(index) {
 }
 
 function refreshMinionDetails() {
-  const minion = minionsState[rindex];
+  let minion = minionsState[rindex];
+  if (!minion){
+    rindex = 0;
+    minion = minionsState[rindex];
+  }
   const detailsContainer = document.getElementById('selected-minion-details');
   let code = "升级";
 
@@ -2232,12 +2244,12 @@ function zeroCountDown(c) {
         if (checkLuck(0.15)) {
             skilled = true;
             let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
-            if (r >= unlockedMinions.indexOf(minion.name)) {
+            if (r >= unlockedMinions.indexOf(m.name)) {
                 r += 1;
             }
-            raiseAtk(minionsState[r], minion.attack.div(5).toDecimalPlaces(0) ); // 升级攻击力
-            minionAttack(minionsState[r], minion.master);
-            showSkillWord(minion, "锋锐之力");
+            raiseAtk(minionsState[r], m.attack.div(5).toDecimalPlaces(0) ); // 升级攻击力
+            minionAttack(minionsState[r], m.master);
+            showSkillWord(m, "锋锐之力");
         }
     }
   }
@@ -2417,7 +2429,7 @@ function updateCounts() {
       if (m.livecount >= 120){
         m.livecount = zeroCountDown(120);
         clearInterval(m.intervalId);
-        minion.master.totalDamage = minion.master.totalDamage.plus(minion.totalDamage);
+        m.master.totalDamage = m.master.totalDamage.plus(m.totalDamage);
         let r = unlockedMinions.indexOf(m.name);
         minionsState.splice(r,1);
         unlockedMinions.splice(r,1);
@@ -2643,7 +2655,7 @@ function updateCounts() {
         m.count = zeroCountDown(40);
         let addatk = [];
         for (let mi of minionsState){
-          if (mi.name != m.name && new Decimal(mi.attack).comparedTo(m.attack) >= 0){
+          if (mi.name != m.name && new Decimal(mi.attack).comparedTo(m.attack) > 0){
             addatk.push(new Decimal(mi.attack).minus(m.attack).pow(0.9).times(0.1).toDecimalPlaces(0) );
           }
         }
@@ -3002,6 +3014,15 @@ function ActivateClick(index){
         showWord(x, y, "能量不足！");
         return;
       }
+      let availMinions = createdMinions.filter((m) => !unlockedMinions.includes(m.name));
+      if (availMinions.length == 0){
+        const mi = document.getElementById(`active-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "主战者已经全部公布！");
+        return;
+      }
       stopAllSounds();
       noHitVoice = 1;
       actSound = new Audio(minion.activeVoice);
@@ -3090,8 +3111,10 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  }
 
  if (minion.learnedSkills.includes("亚军传承")) {
-   raiseGrowth(minion, Decimal.floor(Decimal.max(amount.div(amount.fifthrt()).times(0.2),1 ) ));
-   showSkillWord(minion, "亚军传承");
+   if (amount.gt(0)){
+     raiseGrowth(minion, Decimal.floor(Decimal.max(amount.div(amount.fifthrt()).times(0.2),1 ) ));
+     showSkillWord(minion, "亚军传承");
+   }
  }
 
  // Recursively raise attack for marriage-related minions
