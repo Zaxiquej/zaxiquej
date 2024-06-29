@@ -1570,6 +1570,7 @@ function playVoice(minion,dam){
   }
   if (getBuffPower("inm").length > 0) {
     if (dam.gt(0)){
+      console.log(dam)
       let am = new Decimal.floor(dam.fifthrt().pow(3).times(0.2));
       raiseGrowth(minion,am);
       let r = getBuffPower("inm")[0];
