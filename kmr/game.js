@@ -1005,9 +1005,9 @@ function damageKmr(dam, minion) {
 function isLocal() {
     return window.location.protocol === 'file:';
 }
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 async function playDistortedSound(url) {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audioBuffer = await fetchAudioBuffer(audioContext, url);
     playAndDistortAudio(audioContext, audioBuffer);
 }
@@ -1019,6 +1019,12 @@ async function fetchAudioBuffer(audioContext, url) {
 }
 
 function playAndDistortAudio(audioContext, audioBuffer) {
+    // 停止当前正在播放的音频（如果有）
+    if (audioContext.state === 'running') {
+        audioContext.close();
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
     const source = audioContext.createBufferSource();
     source.buffer = audioBuffer;
 
@@ -1046,6 +1052,20 @@ function playAndDistortAudio(audioContext, audioBuffer) {
     pitchShifter.connect(audioContext.destination);
 
     source.start(0);
+}
+
+function makeDistortionCurve(amount) {
+    const k = typeof amount === 'number' ? amount : 50;
+    const n_samples = 44100;
+    const curve = new Float32Array(n_samples);
+    const deg = Math.PI / 180;
+    let i = 0;
+    let x;
+    for (i = 0; i < n_samples; ++i) {
+        x = (i * 2) / n_samples - 1;
+        curve[i] = ((3 + k) * x * 20 * deg) / (Math.PI + k * Math.abs(x));
+    }
+    return curve;
 }
 
 function makeDistortionCurve(amount) {
@@ -1539,7 +1559,7 @@ function playVoice(minion,dam){
     } else {
         audioObjects.shift();
     }
-}
+  }
   if (ddk){
     voice = "kmr/voice/ddk.mp3";
   }
@@ -1575,6 +1595,7 @@ function playVoice(minion,dam){
       }
   }
 }
+
 function minionAttack(minion, master, isNormalAttack) {
     if (firstAnnounce) return;
     if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
