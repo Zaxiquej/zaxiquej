@@ -217,14 +217,6 @@ const bondData = [
         moreEther: 0.1
     },
     {
-        id: 3006,
-        name: '最初的编年史',
-        rarity: 'rainbow',
-        characters: ["英梨梨的男友","永生的希望"],
-        benefit: '每级使[造谣]触发的次数+1。',
-        skillPlus: ['造谣',1]
-    },
-    {
         id: 3001,
         name: 'SNC2022',
         rarity: 'rainbow',
@@ -263,6 +255,14 @@ const bondData = [
         characters: ["真白","ZenX","天然呆的龙","艺の年"],
         benefit: '每级使你前进周目时，如果周目是3的倍数，直接获得1以太。',
         threeGainEther: 1
+    },
+    {
+        id: 3006,
+        name: '最初的编年史',
+        rarity: 'rainbow',
+        characters: ["英梨梨的男友","永生的希望"],
+        benefit: '每级使[造谣]触发的次数+1。',
+        skillPlus: ['造谣',1]
     }
     // 添加更多羁绊信息
 ];

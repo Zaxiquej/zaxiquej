@@ -1634,10 +1634,23 @@ function playVoice(minion,dam){
   }
 }
 
-function minionAttack(minion, master, isNormalAttack) {
+function minionAttack(minion, master, isNormalAttack, specialParam) {
     if (firstAnnounce) return;
     if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
     skilled = false;
+
+    if (minion.learnedSkills.includes("鳄龟up") && !isNormalAttack) {
+      skilled = true;
+      let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
+      if (r >= unlockedMinions.indexOf(minion.name)) {
+          r += 1;
+      }
+      raiseAtk(minionsState[r], minion.attack.div(15).toDecimalPlaces(0) ); // 升级攻击力
+      minionAttack(minionsState[r], minion, undefined, "鳄龟");
+      showSkillWord(minion, "鳄龟up");
+      return;
+    }
+
     let dam = getattack(minion, master); // 获取攻击力
     dam = dam.times(extraDamRatio(minion)); // 乘以额外伤害比例
     dam = dam.toDecimalPlaces(0); // 向下取整
@@ -1657,6 +1670,10 @@ function minionAttack(minion, master, isNormalAttack) {
       console.log(minion)
     }
     kmrTakeDam(dam); // 执行伤害
+
+    if (specialParam == "鳄龟"){
+      raiseGrowth(master, Decimal.floor(dam.sqrt()));
+    }
 
     if (master) {
         master.totalDamage = master.totalDamage.plus(dam); // 累加总伤害
@@ -2055,7 +2072,7 @@ function pickMinionClick(index, type){
 function unlockCost(p) {
   let filteredMS = minionsState.filter((m) => !m.noUpgrade);
   let n = filteredMS.length;
-  n -= p;
+  n += p;
   if (minions.length === filteredMS.length) {
     return Decimal(Infinity);
   }
