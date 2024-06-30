@@ -1016,7 +1016,7 @@ function damageKmr(dam, minion) {
     gainCoin(dam,minion);
 
     // 更新显示
-    updateDisplays();
+    needDisplay = true
 
     // 检查游戏胜利条件
     checkVictory();
@@ -1691,7 +1691,7 @@ function minionAttack(minion, master, isNormalAttack) {
       if (checkLuck(0.05)){
         gainEnergy(minion,1);
         showSkillWord(minion, "咿呀哈！");
-        need = true;
+        needDisplay = true;
       }
     }
     if (minion.learnedSkills.includes("大梦仙尊")) {
@@ -1814,7 +1814,7 @@ function minionAttack(minion, master, isNormalAttack) {
             minionAttack(minion);
           }
           showSkillWord(minion, "一尾狐");
-          need = true;
+          needDisplay = true;
         }
       }
       for (let i of getBuffPower("sfox")) {
@@ -1831,7 +1831,7 @@ function minionAttack(minion, master, isNormalAttack) {
       if (minion.learnedSkills.includes("沙雕视频放出")){
         showSkillWord(minion, "沙雕视频放出");
         minion.energy += 1;
-        need = true;
+        needDisplay = true;
       }
     }
 
@@ -1893,17 +1893,19 @@ function minionAttack(minion, master, isNormalAttack) {
     }
   }
 
-  updateDisplays();
   checkVictory();
 }
 
 function refMinions() {
     const minionsContainer = document.getElementById('minions-container');
     minionsContainer.innerHTML = ''; // 清空现有的小怪物信息
-    let minionsSubs = [];
+    const unlockButton = document.getElementById('unlockButton');
+    const unlockCostText = "抽取助战 (金币:" + formatNumber(unlockCost(0)) + ")";
+    unlockButton.textContent = unlockCostText;
+
+    let minionsHTML = '';
+
     minionsState.forEach((minion, index) => {
-        const minionElement = document.createElement('div');
-        minionElement.className = 'minion';
         const colors = [];
 
         if (marriage.includes(minion.name)) {
@@ -1919,16 +1921,16 @@ function refMinions() {
         }
 
         for (let i of getBuffPower("xuyu")) {
-            if (unlockedMinions.indexOf(minion.name) == i[0]){
-              colors.push('blue');
-              break;
+            if (unlockedMinions.indexOf(minion.name) == i[0]) {
+                colors.push('blue');
+                break;
             }
         }
 
         for (let i of getBuffPower("sfox")) {
-            if (unlockedMinions.indexOf(minion.name) == i[0]){
-              colors.push('purple');
-              break;
+            if (unlockedMinions.indexOf(minion.name) == i[0]) {
+                colors.push('purple');
+                break;
             }
         }
 
@@ -1939,42 +1941,22 @@ function refMinions() {
             nameStyle = `style="color: ${colors[0]}; font-weight: bold;"`;
         }
 
-        minionElement.innerHTML = `
-            <div id="eff-${index}" class="effect">
-            <img id="image-${index}" src="${minion.image}" alt="${minion.name}"></div>
-            <div ${nameStyle}>${minion.name}</div>
-            <div>等级: <span id="level-${index}">${minion.level}</span></div>
-            <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
-            <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed /1000).toFixed(1)}s</span></div>
+        minionsHTML += `
+            <div class="minion">
+                <div id="eff-${index}" class="effect">
+                    <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
+                </div>
+                <div ${nameStyle}>${minion.name}</div>
+                <div>等级: <span id="level-${index}">${minion.level}</span></div>
+                <div>攻击: <span id="attack-${index}">${formatNumber(minion.attack)}</span></div>
+                <div>攻速: <span id="attack-speed-${index}">${(minion.attackSpeed / 1000).toFixed(1)}s</span></div>
+                ${!minion.noUpgrade ? `<button id="cost-${index}" onclick="upgradeMinionClick(${index})">升级 (${formatNumber(mupgradeCost(minion))})</button>` : ''}
+                ${minion.reroll > 0 && unlockedMinions.length < minions.length ? `<button id="reroll-${index}" onclick="rerollMinion(${index})">重抽 (剩余${minion.reroll}次) (${formatNumber(rerollCost(unlockedMinions.length))})</button>` : ''}
+            </div>
         `;
-
-        if (!minion.noUpgrade){
-          minionElement.innerHTML += `
-              <button id="cost-${index}" onclick="upgradeMinionClick(${index})" >升级 (${formatNumber(mupgradeCost(minion))})</button>
-          `;
-        }
-
-
-        // 添加重抽按钮
-        if (minion.reroll > 0 && unlockedMinions.length < minions.length) {
-            minionElement.innerHTML += `<button id="reroll-${index}" onclick="rerollMinion(${index})" >重抽 (剩余${minion.reroll}次) (${formatNumber(rerollCost(unlockedMinions.length))})</button>`;
-        }
-
-        minionElement.addEventListener('click', () => {
-            showMinionDetails(index);
-        });
-        minionsContainer.appendChild(minionElement);
-
-                // 获取图像元素的父元素
-        const colorfulElement = document.getElementById(`eff-${index}`);
-
-        // 根据条件添加彩虹色效果
-      //  if (colorfulElement) {
-      //      colorfulElement.classList.add('colorful-effect');
-      //  }
     });
 
-    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(0)) + ")";
+    minionsContainer.innerHTML = minionsHTML;
 }
 
 function pickOne(title, type) {
@@ -2608,9 +2590,10 @@ function loglevel(level,base,thres,decayRate,max) {
     return reductionRate;
 }
 
+let needDisplay = false;
+
 function updateCounts() {
   if (new Decimal(kmrHealthValue).comparedTo(0) <= 0){ return; }
-  let need = false;
   let ref = false;
   buffCountDown();
   for (let m of minionsState){
@@ -2619,7 +2602,7 @@ function updateCounts() {
       if (burning >= 20){
         burning = zeroCountDown(20);
         raiseAtk(m, new Decimal(5).times(unlockedMinions.length).times(level+1));
-        need = true;
+        needDisplay = true;
         showSkillWord(m, "五种打法");
       }
     }
@@ -2636,7 +2619,7 @@ function updateCounts() {
         unlockedMinions.splice(r,1);
 
         showSkillWord(m, "临时造物");
-        need = true;
+        needDisplay = true;
         ref = true;
       }
     }
@@ -2647,7 +2630,7 @@ function updateCounts() {
         m.count = zeroCountDown(35);
         let remluck = Math.min(12, 2 + Math.floor(m.level / 100));
         showSkillWord(m, "操纵命运");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("鼙鼓时间！")){
@@ -2658,7 +2641,7 @@ function updateCounts() {
         m.count = zeroCountDown(time);
         addBuff("pigu", 5, 6, false);
         showSkillWord(m, "鼙鼓时间！");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("南梁的祝福")){
@@ -2673,7 +2656,7 @@ function updateCounts() {
           xuyuTarget = (xuyuTarget + 1) % (unlockedMinions.length);
         }
         showSkillWord(m, "南梁的祝福");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("魔咒")){
@@ -2683,7 +2666,7 @@ function updateCounts() {
         m.count = zeroCountDown(48);
         xxBuff = true;
         showSkillWord(m, "魔咒");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("汲取兄弟")){
@@ -2715,7 +2698,7 @@ function updateCounts() {
           }
           showSkillWord(m, "汲取兄弟");
           ref = true;
-          need = true;
+          needDisplay = true;
         }
       }
     }
@@ -2732,7 +2715,7 @@ function updateCounts() {
         minusLevel(m, Math.max(1,Math.floor(m.level*0.01)));
         showSkillWord(m, "成熟!");
         ref = true;
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("造谣")){
@@ -2753,7 +2736,7 @@ function updateCounts() {
         }
         showSkillWord(m, "造谣");
         ref = true;
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("每日饼之诗")){
@@ -2774,7 +2757,7 @@ function updateCounts() {
           }
         }
         showSkillWord(m, "每日饼之诗");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("inm剧场")){
@@ -2784,7 +2767,7 @@ function updateCounts() {
         m.count = zeroCountDown(40);
         gainEnergy(m,1);
         showSkillWord(m, "inm剧场");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("炎孕恐怖分子")){
@@ -2801,7 +2784,7 @@ function updateCounts() {
           }
         }
         showSkillWord(m, "炎孕恐怖分子");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("lqyy")){
@@ -2852,7 +2835,7 @@ function updateCounts() {
                 break;
         }
 
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("硬实力冠军")){
@@ -2870,7 +2853,7 @@ function updateCounts() {
           raiseAtk(m, a);
         }
         showSkillWord(m, "硬实力冠军");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("终轮常客")){
@@ -2892,7 +2875,7 @@ function updateCounts() {
           addBuff(b, binfo[0], binfo[1], binfo[2]);
         }
         showSkillWord(m, "记忆殿堂");
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("法神的宣告")){
@@ -2938,7 +2921,7 @@ function updateCounts() {
           showSkillWord(m, "虫法之王");
         }
         showSkillWord(m, `法神的宣告：X=${prob.X}, Y=${prob.Y}, Z=${prob.Z}`);
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("行为艺术")){
@@ -2960,7 +2943,7 @@ function updateCounts() {
           lostXYZ++;
         }
         showSkillWord(m, `行为艺术：X=${prob.X}, Y=${prob.Y}, Z=${prob.Z}`);
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("逆境被动")){
@@ -2988,7 +2971,7 @@ function updateCounts() {
           }
           showSkillWord(m, "逆境被动");
         }
-        need = true;
+        needDisplay = true;
       }
     }
     if (m.learnedSkills.includes("罕见")){
@@ -3008,7 +2991,7 @@ function updateCounts() {
            gainCoin(amount,m);
            skilled = true;
            showSkillWord(m, "罕见");
-           need = true;
+           needDisplay = true;
          }
        }
        if (m.learnedSkills.includes("无尽连击")){
@@ -3026,7 +3009,7 @@ function updateCounts() {
            }
            m.tempAtk = new Decimal(0);
            showSkillWord(m, "无尽连击");
-           need = true;
+           needDisplay = true;
            ref = true;
          }
        }
@@ -3132,19 +3115,20 @@ function updateCounts() {
              }
            }
            showSkillWord(m, "次元超越");
-           need = true;
+           needDisplay = true;
          }
 
        }
      }
-     if (ref){
-       refMinions();
-       refreshMinionDetails();
-     }
-     if (need){
-       updateDisplays();
-     }
+   if (ref){
+     refMinions();
+     refreshMinionDetails();
    }
+   if (needDisplay){
+     updateDisplays();
+   }
+   needDisplay = false;
+}
 
 
 function getBaseLog(x, y) {
@@ -3276,7 +3260,7 @@ function ActivateClick(index){
     default:
   }
   if (!autoing){
-    updateDisplays();
+    needDisplay = true
     refMinions();
     if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
   }
@@ -3457,12 +3441,11 @@ function autoupgradeMinion(max) {
 
     autoing = false;
     refMinions();
-    updateDisplays(); // 最后刷新一次界面
+    needDisplay = true // 最后刷新一次界面
     refreshMinionDetails();
     weakauto = false;
     return enough;
 }
-
 function sharkUpgradeFactor(){
   let factor = 1 * Math.pow(0.9,sharkcounts[0]);
   return factor;
@@ -3481,6 +3464,12 @@ function mupgradeCost(minion) {
     .plus(minion.level * minion.level * minion.supEnhancecost);
 
   let levelFactor = minion.level > 100 ? Math.floor(Math.pow(minion.level / 100, 0.5)) : 1;
+  if (minion.level > 1000){
+    levelFactor *= 1.25;
+  }
+  if (minion.level > 10000){
+    levelFactor *= 1.5;
+  }
   baseCost = baseCost.times(levelFactor);
   baseCost = baseCost.times(sharkUpgradeFactor());
 
@@ -3550,7 +3539,7 @@ function autoupgradeOneMinion(index){
         enough = upgradeMinion(index, true)
     }
     autoing = false;
-    updateDisplays();
+    needDisplay = true
     refMinions();
 }
 
@@ -3770,7 +3759,7 @@ function upgradeMinion(index, auto, free, noskill, givenCost) {
         }
 
         if (!auto && !noskill && !free) {
-            updateDisplays();
+            needDisplay = true
             showMinionDetails(index);
         }
 
@@ -4032,7 +4021,7 @@ function closeAnnounceModal() {
               }
             }
             updateCounts();
-            updateDisplays();
+            needDisplay = true
         }, 1000);
     }
 }
@@ -4064,5 +4053,5 @@ window.onclick = function(event) {
 
 kmr.addEventListener('click', clickKmr);
 refMinions();
-updateDisplays();
+needDisplay = true
 loadGame();
