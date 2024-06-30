@@ -1942,7 +1942,7 @@ function refMinions() {
         }
 
         minionsHTML += `
-            <div class="minion">
+            <div id="minion-${index}" class="minion">
                 <div id="eff-${index}" class="effect">
                     <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
                 </div>
@@ -1957,6 +1957,13 @@ function refMinions() {
     });
 
     minionsContainer.innerHTML = minionsHTML;
+
+    minionsState.forEach((_, index) => {
+        const minionElement = document.getElementById(`minion-${index}`);
+        minionElement.addEventListener('click', () => {
+            showMinionDetails(index);
+        });
+    });
 }
 
 function pickOne(title, type) {
