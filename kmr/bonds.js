@@ -140,7 +140,7 @@ const bondData = [
         name: '继承者',
         rarity: 'silver',
         characters: ["L_ost","大栗QAQ"],
-        benefit: '[太上皇]战队解散时，每级使L_ost获得[战队队员总攻击^0.9*0.1]点攻击力。',
+        benefit: '[太上皇]战队解散时，每级使技能持有者获得[战队队员总攻击^0.9*0.1]点攻击力。',
         skillPlus: ['太上皇',0.1]
     },
     {
@@ -205,8 +205,8 @@ const bondData = [
         name: '虫之羁绊',
         rarity: 'gold',
         characters: ["清鱼","达拉斯泰尔","艺の年"],
-        benefit: '每级使[虫虫咬他]还会在由于升级增加攻击力时，使成长永久增加[(增加的攻击力)^0.9的2%]点（至少1点）',
-        skillPlus: ['虫虫咬他',0.02]
+        benefit: '每级使[虫虫咬他]还会在由于升级增加攻击力时，使成长永久增加[(增加的攻击力)^0.9的1%]点（至少1点）',
+        skillPlus: ['虫虫咬他',0.01]
     },
     {
         id: 2007,
@@ -215,6 +215,14 @@ const bondData = [
         characters: ["Foyria","雪雪","一只小吾影"],
         benefit: '每级使[转生]获得的以太数增加10%。',
         moreEther: 0.1
+    },
+    {
+        id: 3006,
+        name: '最初的编年史',
+        rarity: 'rainbow',
+        characters: ["英梨梨的男友","永生的希望"],
+        benefit: '每级使[造谣]触发的次数+1。',
+        skillPlus: ['造谣',1]
     },
     {
         id: 3001,

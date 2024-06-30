@@ -462,6 +462,10 @@ function restoreIntervals() {
 function addBuff(name,power,length,stackable,noMemorize){
   let noPush = false;
   for (let minion of minionsState){
+    if (minion.learnedSkills.includes("双炮之子")){
+      if (!minion.count){minion.count = 0};
+      minion.count ++;
+    }
     if (minion.learnedSkills.includes("守御之力")){
       length += Math.floor(length*0.5);
       let r = Math.floor(Math.random() * (unlockedMinions.length - 1));
@@ -1666,6 +1670,17 @@ function minionAttack(minion, master, isNormalAttack) {
             refMinions();
         }
     }
+    if (minion.learnedSkills.includes("咲夜的怀表")){
+      if (checkLuck(0.02)) {
+        skilled = true;
+        let t = 2;
+        if (getBuffPower("saki").length > 0){
+          t = 4;
+        }
+        buffExtend(t);
+        showSkillWord(minion, "咲夜的怀表");
+      }
+    }
     if (minion.learnedSkills.includes("+1+1")) {
         if (checkLuck(0.06)) {
             skilled = true;
@@ -1942,6 +1957,14 @@ function unlockCost(p) {
 
   if (unlockedMinions.length >= 10) {
     cost = cost.times(unlockedMinions.length - 8);
+  }
+
+  if (unlockedMinions.length >= 25) {
+    cost = cost.times(cost.fifthrt());
+  }
+
+  if (unlockedMinions.length >= 45) {
+    cost = cost.times(cost.fifthrt());
   }
 
   for (let m of minionsState) {
@@ -2395,6 +2418,12 @@ function extraDamRatio(minion){
       dam *= 1 + bond.extraDamAll * obtainedBonds[bond.name].level;
     }
   }
+  for (let m of minionsState){
+    if (m.learnedSkills.includes("希望教") && getFirstDigit(minion.attack) == 4){
+      let ratio = 1 + Math.max(0.8, 0.2 + 0.01*Math.floor(m.level/100) );
+      dam *= ratio;
+    }
+  }
 
   return dam;
 }
@@ -2565,6 +2594,12 @@ function updateCounts() {
       if (m.count >= 14){
         m.count = zeroCountDown(14);
         let times = 1 + Math.floor(Math.pow(m.level,0.8) / 50);
+        for (let bond of bondData){
+          if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '造谣'){
+            let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
+            times += c;
+          }
+        }
         for (let t = 0; t < times; t++){
           let r = Math.floor(Math.random() * unlockedMinions.length);
           minionsState[r].attack = new Decimal(incrementRandomDigit(minionsState[r].attack));
@@ -2889,6 +2924,16 @@ function updateCounts() {
            let dam = m.attack.times(unlockedMinions.length).dividedBy(2).toDecimalPlaces(0);
            damageKmr(dam, m);
            showSkillWord(m, "一十九米肃清刀");
+         }
+       }
+       if (m.learnedSkills.includes("双炮之子")){
+         if (!m.count){m.count = 0};
+         m.count ++;
+         if (m.count >= 20){
+           m.count = zeroCountDown(20);
+           let dam = m.attack.times(1 + Math.pow(buffs.length,1.5)).toDecimalPlaces(0);
+           damageKmr(dam, m);
+           showSkillWord(m, "双炮之子");
          }
        }
        if (m.learnedSkills.includes("卡场绝杰")){
