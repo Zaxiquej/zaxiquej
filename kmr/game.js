@@ -1852,7 +1852,7 @@ function minionAttack(minion, master, isNormalAttack) {
         if (m.name != minion.name && m.learnedSkills.includes("迅袭之力")) {
             if (checkLuck(0.1)) {
                 minionAttack(m);
-                minion.attack = minion.attack.times(1.01).toDecimalPlaces(0);
+                m.attack = (m.attack.times(1.01)).toDecimalPlaces(0);
                 showSkillWord(m, "迅袭之力");
             }
         }
@@ -2438,7 +2438,7 @@ function zeroCountDown(c) {
                 r += 1;
             }
             raiseAtk(minionsState[r], m.attack.div(5).toDecimalPlaces(0) ); // 升级攻击力
-            minionAttack(minionsState[r], m.master);
+            minionAttack(minionsState[r], m);
             showSkillWord(m, "锋锐之力");
         }
     }
@@ -2775,8 +2775,8 @@ function updateCounts() {
     if (m.learnedSkills.includes("inm剧场")){
       if (!m.count){ m.count = 0; }
       m.count++;
-      if (m.count >= 48){
-        m.count = zeroCountDown(48);
+      if (m.count >= 40){
+        m.count = zeroCountDown(40);
         gainEnergy(m,1);
         showSkillWord(m, "inm剧场");
         need = true;
