@@ -852,5 +852,22 @@ const minions = [
         { level: 7, name: '双炮之子', effect: '每20s，造成[攻击力*(1+当前光环效果数^1.5)]点伤害。每当你获得一个光环（具有持续时长的效果），加快1s倒计时。（溢出部分不会结算至下一循环）' },
         { level: 45, name: '希望教', effect: '全部攻击力首位为4的角色造成的伤害增加20%。每100级，额外增加1%，上限80%。'}
     ]
-    }
+  },
+  {
+    name: '深海妻姬',
+    id: 50,
+    image: 'kmr/image/shqj.png',
+    voice: 'kmr/voice/shqj.mp3',
+    description: '如果你还不知道的话，我们已经完成了三费开门的伟业',
+    baseattack: 22,
+    addattack: 18,
+    attackSpeed: 3000, // in milliseconds
+    basecost: 28,
+    enhancecost: 18,
+    supEnhancecost: 4.8,
+    skills: [
+        { level: 5, name: '典狱长', effect: '你重抽一个助战时，如果这是最后一次重抽，改为从最多3个其他助战中挑选一个。' },
+        { level: 58, name: '杂技之王', effect: '每当你判定概率失败100次，造成[攻击力*8]点伤害，并使下一个概率低于10%的技能必定触发。每次触发，使倍率增加3。'}
+    ]
+  }
 ];

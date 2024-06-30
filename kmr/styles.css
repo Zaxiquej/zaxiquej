@@ -25,6 +25,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .minion {
@@ -40,6 +41,9 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Prevents overflow of content */
+    flex-shrink: 0; /* Prevent shrinking */
+    align-self: flex-start; /* Align each minion to the start */
 }
 
 .minion:hover {
@@ -409,11 +413,6 @@ p {
     font-weight: bold;
     font-size: 18px;
     color: #FF0000;
-}
-
-
-.minions-container {
-    margin-bottom: 20px;
 }
 
 button {
@@ -944,6 +943,29 @@ button:disabled {
     background-color: green; /* Background color when ON */
 }
 
+.upgrade-quantity {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 12px;
+}
+
+/* Style the dropdown arrow */
+.upgrade-quantity::-ms-expand {
+    display: none;
+}
+
+.upgrade-quantity:hover {
+    border-color: #0056b3;
+}
+
+.upgrade-quantity:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
 /* 定义彩虹色动态遮罩效果的样式 */
 .colorful-effect {
     position: relative;
@@ -1012,4 +1034,64 @@ button:disabled {
 @keyframes glow {
     from { transform: scale(1); }
     to { transform: scale(1.1); }
+}
+
+#pickModal {
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#pick-content {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 1200px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 5%; /* Adjust the vertical margin as needed */
+}
+
+#pick-minions-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    height: 600px; /* Set a fixed height */
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+#pick-selected-minion-details {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    height: 600px; /* Set a fixed height */
+    border-radius: 10px;
+    background-color: #e1e1e1;
+}
+
+.details-container2 {
+    margin-top: 20px;
+    width: 30%;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.minions-container2 {
+    margin: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    width: 70%;
+    max-height: 100vh;
+    overflow-y: auto;
 }

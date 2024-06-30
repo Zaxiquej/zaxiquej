@@ -78,6 +78,12 @@
               <button id='unlockButton' onclick="unlockRandMinion()"> 抽取助战 (金币: 10)</button>
             <button onclick="autoupgradeMinion()">一键升级</button>
             <button id="autoUpgradeButton" onclick="toggleAutoUpgrade()">自动升级：OFF</button>
+            <select id="upgradeQuantity">
+              <option value="1">1</option>
+              <option value="10">10</option>
+              <option value="100">100</option>
+              <option value="1000">1000</option>
+            </select>
             <div id="buttonContainer">
               <button id="softRsButton" onclick="softReset()">转生</button>
               <button id="bondsButton">羁绊</button>
@@ -93,6 +99,20 @@
             <!-- Selected minion details will be shown here -->
         </div>
     </div>
+
+    <div id="pickModal" class="modal">
+      <div class="modal-content" id = "pick-content">
+        <div class="minions-container2" id="pick-minions-container">
+
+        </div>
+        <div class="details-container2">
+            <div id="pick-selected-minion-details">
+                <!-- Selected minion details will be shown here -->
+            </div>
+        </div>
+      </div>
+    </div>
+
 
     <div id="victory-message" class="hidden">
         <h1>胜利！</h1>

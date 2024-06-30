@@ -64,6 +64,10 @@ let mscount = 0;
 let msgrowth = 30;
 let noHitVoice = 0;
 let ddk = undefined;
+let pickpool = [];
+let misfortune = 0;
+let qijiLuck = 0;
+let qijiLevel = 8;
 const audioObjects = [];
 
 let canAutoUpgrade = false;
@@ -146,7 +150,10 @@ function encodeGameState(){
       canAutoUpgrade,
       sharkcounts,
       mscount,
-      msgrowth
+      msgrowth,
+      misfortune,
+      qijiLuck,
+      qijiLevel
   };
 
   const gameStateStr = JSON.stringify(gameState);
@@ -262,6 +269,9 @@ function loadGameState(encodedGameState){
   if (gameState.sharkcounts != undefined) sharkcounts = gameState.sharkcounts;
   if (gameState.mscount != undefined) mscount = gameState.mscount;
   if (gameState.msgrowth != undefined) msgrowth = gameState.msgrowth;
+  if (gameState.misfortune != undefined) misfortune = gameState.misfortune;
+  if (gameState.qijiLuck != undefined) qijiLuck = gameState.qijiLuck;
+  if (gameState.qijiLevel != undefined) qijiLevel = gameState.qijiLevel;
   if (Number(zheluck)!== zheluck) zheluck = 2;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
   refreshBondCompletion();
@@ -386,6 +396,9 @@ function resetVars() {
   sharkcounts = [0,0];
   mscount = 0;
   msgrowth = 30;
+  misfortune = 0;
+  qijiLuck = 0;
+  qijiLevel = 8;
   ddk = undefined;
 }
 
@@ -565,8 +578,7 @@ function killBuff(name,power) {
   }
 }
 
-function unlockMinion(minion, temp) {
-  unlockedMinions.push(minion.name);
+function initializeMinion(minion){
   minion = {
     ...minion,
     level: 1,
@@ -577,6 +589,11 @@ function unlockMinion(minion, temp) {
     learnedSkills: [],
   }
   minion.addattack = new Decimal(minion.addattack);
+  return minion;
+}
+function unlockMinion(minion, temp) {
+  unlockedMinions.push(minion.name);
+  minion = initializeMinion(minion);
 
   let intervalId = setInterval(() => minionAttack(minion,undefined,true), minion.attackSpeed);
   minion.intervalId = intervalId;
@@ -728,7 +745,7 @@ function showSkillWord(minion, word) {
     return;
   }
 
-  // Initialize the wordEffectsCount for this minion if it doesn't exist
+  // initializeMinion the wordEffectsCount for this minion if it doesn't exist
   if (!wordEffectsCount[minion.name]) {
     wordEffectsCount[minion.name] = 0;
   }
@@ -1485,6 +1502,10 @@ function checkLuck(r, fromZhe) {
     let rand = new Decimal(Math.random());
     let pass = rand < r;
 
+    if (r < 0.1 && qijiLuck > 0) {
+        qijiLuck -= 1;
+        pass = true;
+    }
     if (r < 0.2 && remluck > 0) {
         remluck = remluck - 1;
         pass = rand < r*4;
@@ -1544,6 +1565,19 @@ function checkLuck(r, fromZhe) {
         }
         return true;
     } else {
+      for (let m of minionsState) {
+          if (m.learnedSkills.includes("杂技之王")) {
+            misfortune += 1;
+            if (misfortune >= 1000){
+              misfortune -= 1000;
+              let dam = m.attack.times(qijiLevel).toDecimalPlaces(0);
+              qijiLevel += 5;
+              qijiLuck += 5;
+              damageKmr(dam, m);
+              showSkillWord(m, "杂技之王");
+            }
+          }
+      }
         return false;
     }
 }
@@ -1944,6 +1978,92 @@ function refMinions() {
     document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(0)) + ")";
 }
 
+function pickOne(title, type) {
+   const modal = document.getElementById('pickModal');
+   modal.style.display = 'flex';
+
+   const minionsContainer = document.getElementById('pick-minions-container');
+//   minionsContainer.innerHTML = `<h2>${title}</h2>`; // 清空现有的小怪物信
+   let minionsSubs = [];
+   pickpool.forEach((minion, index) => {
+       const minionElement = document.createElement('div');
+       minionElement.className = 'minion';
+       minionElement.innerHTML = `
+           <img id="image-${index}" src="${minion.image}" alt="${minion.name}">
+           <div>${minion.name}</div>
+           <div>等级: <span>${minion.level}</span></div>
+           <div>攻击: <span>${formatNumber(minion.attack)}</span></div>
+           <div>攻速: <span>${(minion.attackSpeed /1000).toFixed(1)}s</span></div>
+       `;
+       minionElement.innerHTML += `
+           <button id="pick-${index}" >选择</button>
+       `;
+       minionElement.addEventListener('click', () => {
+           showPickMinionDetails(index);
+       });
+       minionsContainer.appendChild(minionElement);
+       document.getElementById('pick-'+index).addEventListener('click', () => {
+           pickMinionClick(index,type);
+       });
+   });
+   showPickMinionDetails(0);
+}
+
+function showPickMinionDetails(index) {
+  if (pickpool.length == 0){
+    return;
+  }
+  rindex = index;
+  let minion = pickpool[rindex];
+  if (!minion){
+    console.log("错误，挑选池溢出")
+    rindex = 0;
+    minion = pickpool[rindex];
+  }
+  const detailsContainer = document.getElementById('pick-selected-minion-details');
+
+  detailsContainer.innerHTML = `
+    <h3>${minion.name}</h3>
+    <img src="${minion.image}" alt="${minion.name}">
+    <p>${minion.description}</p>
+    <div>等级: ${minion.level}</div>
+    <div>攻击: ${formatNumber(minion.attack)}</div>
+    <div>攻速: ${(minion.attackSpeed / 1000).toFixed(1)}s</div>
+    <div>成长: ${formatNumber(minion.addattack)}</div>`
+
+    if (minion.activeSkill){
+      detailsContainer.innerHTML += `
+          <div>能量: ${(minion.energy)}</span></div>
+      `;
+    }
+    detailsContainer.innerHTML +=
+    `<h4>技能</h4>
+    <ul>
+      ${minion.skills.map(skill => `<li>等级 ${skill.level}: ${skill.name} - ${getEff(skill,minion)}</li>`).join('')}
+    </ul>`;
+}
+
+function pickMinionClick(index, type){
+  let pindex = type[1];
+  switch (type[0]) {
+    case "reroll":
+      let temp = minionsState[pindex].reroll;
+      clearInterval(minionsState[pindex].intervalId);
+      unlockedMinions.splice(pindex, 1);
+      minionsState.splice(pindex, 1);
+      unlockMinion(pickpool[index], temp);
+      pickpool = [];
+      const modal = document.getElementById('pickModal');
+      modal.style.display = 'none';
+      updateDisplays();
+      refreshMinionDetails();
+      break;
+    default:
+
+  }
+}
+
+
 function unlockCost(p) {
   let filteredMS = minionsState.filter((m) => !m.noUpgrade);
   let n = filteredMS.length;
@@ -2016,13 +2136,33 @@ function rerollMinion(index) {
       freeReroll--;
     }
     let temp = minionsState[index].reroll;
-    let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
     let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
-    clearInterval(minionsState[index].intervalId);
-    unlockedMinions.splice(index, 1);
-    minionsState.splice(index, 1);
-    unlockMinion(restMinions[r], temp);
-    updateDisplays();
+    let pickReroll = 0;
+    for (let m of minionsState) {
+      if (m.learnedSkills.includes("典狱长") && temp == 1) {
+        pickReroll = 3;
+      }
+    }
+
+    if (pickReroll > 0){
+      let num = pickReroll;
+      num = Math.min(num,restMinions.length);
+      for (let i = restMinions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [restMinions[i], restMinions[j]] = [restMinions[j], restMinions[i]];
+      }
+      pickpool = restMinions.slice(0, num).map(m => initializeMinion(m));
+
+      pickOne("选择一名助战：",["reroll",index])
+    } else {
+      let r = Math.floor(Math.random() * (restMinions.length));
+      clearInterval(minionsState[index].intervalId);
+      unlockedMinions.splice(index, 1);
+      minionsState.splice(index, 1);
+      unlockMinion(restMinions[r], temp);
+      updateDisplays();
+    }
+
   } else {
     const mi = document.getElementById(`reroll-${index}`);
     var position = mi.getBoundingClientRect();
@@ -2144,6 +2284,8 @@ function getEff(skill,minion){
     case "临时造物":
       if (!minion.livecount){minion.livecount = 0};
       return skill.effect + "（还剩"+(120 - minion.livecount)+"s！）";
+    case "杂技之王":
+      return "每当你判定概率失败1000次，造成[攻击力*"+qijiLevel+"]点伤害，并使下5个概率低于10%的技能必定触发。每次触发，使倍率增加5。"+ "（还剩"+(1000 - misfortune)+"个！）";
     default:
       return skill.effect;
   }
@@ -3877,7 +4019,10 @@ function closeAnnounceModal() {
             }
             kmrquickHit = 0;
             if (canAutoUpgrade){
-              if (!autoupgradeMinion(100)){
+              let upgradeQuantitySelect = document.getElementById('upgradeQuantity');
+              let selectedValue = upgradeQuantitySelect.value;
+              let selectedQuantity = parseInt(selectedValue);
+              if (!autoupgradeMinion(selectedQuantity)){
                 toggleAutoUpgrade();
               }
             }
