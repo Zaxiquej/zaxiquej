@@ -283,6 +283,9 @@ function loadGameState(encodedGameState){
     }
     m.totalDamage = new Decimal(m.totalDamage);
     m.addattack = new Decimal(m.addattack);
+    if (m.master && m.master instanceof Object){
+      m.master = m.master.name;
+    }
   }
 
   for (let m of minionsState){
@@ -640,7 +643,7 @@ function unlockMinionTX(minion) {
   for (let s of createdMinion.skills){
     createdMinion.learnedSkills.push(s.name);
   }
-  createdMinion.master = minion;
+  createdMinion.master = minion.name;
 
   let intervalId = setInterval(() => minionAttack(createdMinion,undefined,true), createdMinion.attackSpeed);
   createdMinion.intervalId = intervalId;
@@ -968,6 +971,8 @@ function damageKmr(dam, minion) {
     }
     // 扣除伤害
     kmrTakeDam(dam);
+    // 更新总伤害记录
+    minion.totalDamage = minion.totalDamage.plus(dam);
 
     // 处理其他技能效果
     for (let m of minionsState) {
@@ -994,8 +999,7 @@ function damageKmr(dam, minion) {
         }
     }
 
-    // 更新总伤害记录
-    minion.totalDamage = minion.totalDamage.plus(dam);
+
 
     // 显示伤害效果
     var position = kmr.getBoundingClientRect();
@@ -2623,9 +2627,10 @@ function updateCounts() {
       if (!m.livecount){ m.livecount = 0; }
       m.livecount++;
       if (m.livecount >= 120){
-        m.livecount = zeroCountDown(120);
+        //m.livecount = zeroCountDown(120);
         clearInterval(m.intervalId);
-        m.master.totalDamage = m.master.totalDamage.plus(m.totalDamage);
+        let mmaster = minionsState[unlockedMinions.indexOf(m.master)];
+        mmaster.totalDamage = mmaster.totalDamage.plus(m.totalDamage);
         let r = unlockedMinions.indexOf(m.name);
         minionsState.splice(r,1);
         unlockedMinions.splice(r,1);
