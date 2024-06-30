@@ -799,7 +799,7 @@ function updateDisplays() {
             .join('')}
     `;
     updateHealth(kmrHealthValue);
-    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) +")";
+    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(0)) +")";
     const etherContainer = document.getElementById('ether-container');
     if (totalEthers > 0) {
         etherContainer.style.display = 'block';
@@ -1926,11 +1926,14 @@ function refMinions() {
       //  }
     });
 
-    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(unlockedMinions.length)) + ")";
+    document.getElementById(`unlockButton`).textContent = "抽取助战 (金币:" + formatNumber(unlockCost(0)) + ")";
 }
 
-function unlockCost(n) {
-  if (minions.length === unlockedMinions.length) {
+function unlockCost(p) {
+  let filteredMS = minionsState.filter((m) => !m.noUpgrade);
+  let n = filteredMS.length;
+  n -= p;
+  if (minions.length === filteredMS.length) {
     return Decimal(Infinity);
   }
 
@@ -1963,7 +1966,7 @@ function rerollCost(n) {
     return Decimal(0);
   }
 
-  return unlockCost(n - 1).div(2).toDecimalPlaces(0);
+  return unlockCost(-1).div(2).toDecimalPlaces(0);
 }
 
 function rerollTime() {
@@ -2011,11 +2014,11 @@ function unlockRandMinion() {
     return;
   }
   burning = 0;
-  const uCost = new Decimal(unlockCost(unlockedMinions.length));
+  const uCost = new Decimal(unlockCost(0));
   if (coins.comparedTo(uCost) >= 0) {
     coins = coins.minus(uCost);
-    let r = Math.floor(Math.random() * (minions.length - unlockedMinions.length));
     let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+    let r = Math.floor(Math.random() * (restMinions.length));
     let n = new Decimal(rerollTime()).plus(1);
     unlockMinion(restMinions[r], n);
     updateDisplays();
