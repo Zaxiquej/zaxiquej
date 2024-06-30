@@ -486,7 +486,6 @@ function addBuff(name,power,length,stackable,noMemorize){
           r += 1;
       }
       raiseGrowth(minionsState[r], Decimal.max(new Decimal(1), minion.addattack.div(15).toDecimalPlaces(0)) ); // 升级攻击力
-      minionAttack(minionsState[r], minion);
       showSkillWord(minion, "守御之力");
       updateDisplays()
     }
@@ -929,10 +928,6 @@ function clickKmr() {
 
 function kmrTakeDam(dam) {
     dam = new Decimal(dam);
-    if (getBuffPower("huanghei").length > 0) {
-        let huanghei = getBuffPower("huanghei")[0];
-        dam = dam.times(1 + huanghei * 0.01).toDecimalPlaces(0); // 使用 Decimal 处理增益效果
-    }
 
     for (let m of minionsState) {
         if (m.learnedSkills.includes("素材奖励")) {
@@ -2439,6 +2434,7 @@ function zeroCountDown(c) {
             }
             raiseAtk(minionsState[r], m.attack.div(5).toDecimalPlaces(0) ); // 升级攻击力
             minionAttack(minionsState[r], m);
+            minionAttack(minionsState[r], m);
             showSkillWord(m, "锋锐之力");
         }
     }
@@ -2565,6 +2561,10 @@ function extraDamRatio(minion){
       let ratio = 1 + Math.max(0.8, 0.2 + 0.01*Math.floor(m.level/100) );
       dam *= ratio;
     }
+  }
+  if (getBuffPower("huanghei").length > 0) {
+      let huanghei = getBuffPower("huanghei")[0];
+      dam = dam*(1 + huanghei * 0.01); // 使用 Decimal 处理增益效果
   }
 
   return dam;
