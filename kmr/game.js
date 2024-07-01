@@ -2013,6 +2013,7 @@ function pickOne(title, type) {
        });
        minionsContainer.appendChild(minionElement);
        document.getElementById('pick-'+index).addEventListener('click', () => {
+          console.log(index,type)
            pickMinionClick(index,type);
        });
    });
@@ -2062,15 +2063,22 @@ function pickMinionClick(index, type){
       unlockedMinions.splice(pindex, 1);
       minionsState.splice(pindex, 1);
       unlockMinion(pickpool[index], temp);
-      pickpool = [];
-      const modal = document.getElementById('pickModal');
-      modal.style.display = 'none';
-      updateDisplays();
-      refreshMinionDetails();
+      break;
+    case "瞎到暴死":
+    let minion = minionsState[unlockedMinions.indexOf(pickpool[index].name)];
+      for (let i = 0; i < type[2]; i+=minion.attackSpeed/1000){
+        minionAttack(minion);
+      }
+
       break;
     default:
 
   }
+  pickpool = [];
+  const modal = document.getElementById('pickModal');
+  modal.style.display = 'none';
+  updateDisplays();
+  refreshMinionDetails();
 }
 
 
@@ -2147,6 +2155,7 @@ function rerollMinion(index) {
     }
     let temp = minionsState[index].reroll;
     let restMinions = minions.filter((m) => !unlockedMinions.includes(m.name));
+
     let pickReroll = 0;
     for (let m of minionsState) {
       if (m.learnedSkills.includes("典狱长") && temp == 1) {
@@ -2161,7 +2170,8 @@ function rerollMinion(index) {
           const j = Math.floor(Math.random() * (i + 1));
           [restMinions[i], restMinions[j]] = [restMinions[j], restMinions[i]];
       }
-      pickpool = restMinions.slice(0, num).map(m => initializeMinion(m));
+
+      pickpool = minionsState.slice(0, num).map(m => initializeMinion(m));
 
       pickOne("选择一名助战：",["reroll",index])
     } else {
@@ -2596,6 +2606,9 @@ function getAddattack(minion){
       if (m.learnedSkills.includes("鲨鱼之力")){
         let ratio = 1 + 0.1 + 0.1 * Math.floor(m.level/50);
         amount = amount.times(ratio);
+      }
+      if (m.learnedSkills.includes("瞎到暴死")){
+        m.energy += 1;
       }
     }
     amount = Decimal.floor(amount);
@@ -3200,6 +3213,9 @@ function ActivateClick(index){
     return;
   }
   let actSound;
+  let time;
+  let restMinions;
+  let num;
   switch (skillName) {
     case "inm剧场":
       if (minion.energy == 0){
@@ -3274,7 +3290,7 @@ function ActivateClick(index){
       noHitVoice = 1;
       actSound = new Audio(minion.activeVoice);
       actSound.play();
-      let time = Math.floor(minion.energy/10);
+      time = Math.floor(minion.energy/10);
       minion.energy -= time * 10;
       showSkillWord(minion, "沙雕视频放出");
       for (let i = 0; i < time; i++){
@@ -3285,11 +3301,37 @@ function ActivateClick(index){
         addBuff("sfox", [r,6], 12, false);
       }
       break;
+    case "瞎到暴死":
+      if (minion.energy < 10){
+        const mi = document.getElementById(`active-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "能量不足！");
+        return;
+      }
+      stopAllSounds();
+      noHitVoice = 1;
+      actSound = new Audio(minion.activeVoice);
+      actSound.play();
+      time = minion.energy;
+      minion.energy = 0;
+      showSkillWord(minion, "瞎到暴死");
 
+      restMinions = [...minionsState];
+      num = 3;
+      num = Math.min(num,restMinions.length);
+      for (let i = restMinions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [restMinions[i], restMinions[j]] = [restMinions[j], restMinions[i]];
+      }
+      pickpool = restMinions.slice(0, num);
+      pickOne("选择一名助战：",["瞎到暴死",index,time])
+      break;
     default:
   }
   if (!autoing){
-    needDisplay = true
+    needDisplay = true;
     refMinions();
     if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
   }

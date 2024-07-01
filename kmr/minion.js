@@ -824,6 +824,7 @@ const minions = [
         id: 48,
         image: 'kmr/image/sfox.png',
         voice: 'kmr/voice/sfox.mp3',
+        activeVoice: 'kmr/voice/sfox_eff.mp3',
         description: '前面忘了，而你就像是被大狐增幅过的小狐，后面忘了',
         baseattack: 8,
         addattack: 8,
@@ -868,6 +869,24 @@ const minions = [
     skills: [
         { level: 5, name: '典狱长', effect: '你重抽一个助战时，如果这是最后一次重抽，改为从最多3个其他助战中挑选一个。' },
         { level: 58, name: '杂技之王', effect: '每当你判定概率失败100次，造成[攻击力*8]点伤害，并使下一个概率低于10%的技能必定触发。每次触发，使倍率增加3。'}
+    ]
+  },
+  {
+    name: 'Afezeria',
+    id: 51,
+    image: 'kmr/image/xdbs.png',
+    voice: 'kmr/voice/xdbs.mp3',
+    activeVoice: 'kmr/voice/xdbs_eff.mp3',
+    description: '梦的开始，4费超越的传说',
+    baseattack: 19,
+    addattack: 14,
+    attackSpeed: 2000, // in milliseconds
+    basecost: 24,
+    enhancecost: 14,
+    supEnhancecost: 4.4,
+    skills: [
+        { level: 9, name: '鳄龟up', effect: '非主动攻击时，改为让一个随机其他助战攻击，伤害视为该助战造成，获得[此次伤害^0.5]的成长，并触发1次成长（获得等同于升级时成长提供的攻击力）。' },
+        { level: 54, name: '瞎到暴死', effect: '每当该助战触发成长时，获得1点能量。<br>启动：如果你具有至少10点能量，消耗全部能量。从你的最多3名助战中选择1名，令其攻击直到消耗的时间超过[消耗的能量]s。', active: true }
     ]
   }
 ];
