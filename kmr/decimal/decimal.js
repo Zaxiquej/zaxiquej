@@ -453,7 +453,6 @@
       return r;
   };
 
-
   /*
    * Return the number of decimal places of the value of this Decimal.
    *

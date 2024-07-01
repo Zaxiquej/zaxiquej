@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.1.1";
+let version = "3.1.2";
 let kmrHealthValue = new Decimal('500000');
 let level = 0;
 let coins = new Decimal('0');
@@ -363,7 +363,7 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.1.1";
+  version = "3.1.2";
   kmrHealthValue = new Decimal('500000');
   level = 0;
   coins = new Decimal('0');
@@ -629,9 +629,11 @@ function unlockAfter(minion){
   for (let m of minionsState) {
     if (m.learnedSkills.includes("中速导师")) {
       autoing = true;
+      let prevA = minion.attack;
       for (let i = 1; i < Math.floor(m.level / 2); i++) {
         upgradeMinion(minionsState.indexOf(minion), undefined, true, true);
       }
+
       autoing = false;
       minion.level = 1;
       refMinions();
@@ -974,13 +976,21 @@ function kmrTakeDam(dam) {
 
 function damageKmr(dam, minion) {
     if (kmrHealthValue.comparedTo(0) <= 0) return;
+    let voiceOn = false;
+    if (Math.random() < 0.1) {
+        voiceOn = true;
+    }
 
     // 处理护国神橙技能
     for (let m of minionsState) {
         if (m.learnedSkills.includes("护国神橙")) {
             dam = dam.times(1 + 0.2 + 0.01 * Math.floor(Math.pow(m.level, 0.6)));
         }
+        if (voiceOn && m.learnedSkills.includes("台词翻译")) {
+            dam = dam.times(1 + 0.1 + 0.01 * Math.floor(Math.pow(m.level, 0.75)));
+        }
     }
+
     if (!dam.isFinite()){
       console.log(minion,dam)
     }
@@ -1035,7 +1045,7 @@ function damageKmr(dam, minion) {
     showDamage(x, y, dam);
 
     // 播放声音
-    if (Math.random() < 0.1) {
+    if (voiceOn) {
         playVoice(minion,dam);
     }
     // 获得金币
@@ -1327,20 +1337,6 @@ function getattack(minion, master) {
         }
     }
 
-    if (minion.learnedSkills.includes("乾坤一掷")) {
-        if (checkLuck(zheluck*(0.01), 1)) {
-            extraDam = extraDam.plus(Decimal.floor(zhedam.div(extraDamRatio(minion))) );
-            skilled = true;
-            zheluck = 2;
-            showSkillWord(minion, "乾坤一掷");
-
-            if (checkLuck(zheluck2*(0.01), 2)) {
-                zhedam = Decimal.max(zhedam,(Math.floor(maxdamZ.div(11))) );
-                zheluck2 = 2;
-                showSkillWord(minion, "伤害提升！");
-            }
-        }
-    }
     if (minion.learnedSkills.includes("打个教先")){
        if (xxBuff && !master && minion.learnedSkills.includes("魔咒")){
          atk = atk.times(new Decimal(1).plus(Math.pow(xxjjj,2.5)));
@@ -1663,6 +1659,10 @@ function playVoice(minion,dam){
 function minionAttack(minion, master, isNormalAttack, specialParam) {
     if (firstAnnounce) return;
     if (kmrHealthValue.comparedTo(0) <= 0) return; // 使用 Decimal 的 lte 方法比较
+    let voiceOn = false;
+    if (Math.random() < 0.1) {
+        voiceOn = true;
+    }
     skilled = false;
 
     if (minion.learnedSkills.includes("鳄龟up") && !isNormalAttack) {
@@ -1678,7 +1678,33 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
     }
     let dam = getattack(minion, master); // 获取攻击力
     dam = dam.times(extraDamRatio(minion)); // 乘以额外伤害比例
+
     dam = dam.toDecimalPlaces(0); // 向下取整
+
+    for (let m of minionsState) {
+        if (m.learnedSkills.includes("护国神橙")) {
+            dam = dam.times(1 + 0.2 + 0.01 * Math.floor(Math.pow(m.level, 0.6)));
+        }
+        if (voiceOn && m.learnedSkills.includes("台词翻译")) {
+            dam = dam.times(1 + 0.1 + 0.01 * Math.floor(Math.pow(m.level, 0.75)));
+        }
+    }
+
+    if (minion.learnedSkills.includes("乾坤一掷")) {
+        if (checkLuck(zheluck*(0.01), 1)) {
+            dam = dam.plus(Decimal.floor(zhedam) );
+            skilled = true;
+            zheluck = 2;
+            showSkillWord(minion, "乾坤一掷");
+
+            if (checkLuck(zheluck2*(0.01), 2)) {
+                zhedam = Decimal.max(zhedam,(Math.floor(maxdamZ.div(11))) );
+                zheluck2 = 2;
+                showSkillWord(minion, "伤害提升！");
+            }
+        }
+    }
+
     let gainC = dam;
     if (minion.learnedSkills.includes("下饭")) {
         if (checkLuck(0.1)) {
@@ -1711,7 +1737,7 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
     showEffect(x, y, 'hit-effect'); // 显示效果
     showDamage(x, y, dam); // 显示伤害
 
-    if (Math.random() < 0.1) {
+    if (voiceOn) {
         playVoice(minion,dam);
     }
     if (master){
@@ -2018,7 +2044,7 @@ function pickOne(title, type) {
    modal.style.display = 'flex';
 
    const minionsContainer = document.getElementById('pick-minions-container');
-//   minionsContainer.innerHTML = `<h2>${title}</h2>`; // 清空现有的小怪物信
+   minionsContainer.innerHTML = ``; // 清空现有的小怪物信
    let minionsSubs = [];
    pickpool.forEach((minion, index) => {
        const minionElement = document.createElement('div');
@@ -2094,7 +2120,13 @@ function pickMinionClick(index, type){
       for (let i = 0; i < type[2]; i+=minion.attackSpeed/1000){
         minionAttack(minion);
       }
-
+      break;
+    case "分享精神":
+    let minion1 = minionsState[unlockedMinions.indexOf(pickpool[index].name)];
+    let minion2 = minionsState[type[1]];
+    let tempAtk = minion1.attack;
+    minion1.attack = minion2.attack;
+    minion2.attack = tempAtk;
       break;
     default:
 
@@ -2839,6 +2871,18 @@ function updateCounts() {
         needDisplay = true;
       }
     }
+    if (m.learnedSkills.includes("分享精神")){
+      if (!m.count){ m.count = 0; }
+      m.count++;
+      if (m.count >= 60){
+        m.count = zeroCountDown(60);
+        if (m.energy < 12){
+          gainEnergy(m,1);
+          showSkillWord(m, "分享精神");
+          needDisplay = true;
+        }
+      }
+    }
     if (m.learnedSkills.includes("炎孕恐怖分子")){
       if (!m.count){ m.count = 0; }
       m.count++;
@@ -3354,6 +3398,33 @@ function ActivateClick(index){
       }
       pickpool = restMinions.slice(0, num);
       pickOne("选择一名助战：",["瞎到暴死",index,time])
+      break;
+    case "分享精神":
+      if (minion.energy < 3){
+        const mi = document.getElementById(`active-${index}`);
+        var position = mi.getBoundingClientRect();
+        let x = position.left + (0.5 * position.width);
+        let y = position.top + (0.5 * position.height);
+        showWord(x, y, "能量不足！");
+        return;
+      }
+      stopAllSounds();
+      noHitVoice = 1;
+      actSound = new Audio(minion.activeVoice);
+      actSound.play();
+      minion.energy -= 3;
+      showSkillWord(minion, "分享精神");
+
+      restMinions = minionsState.filter((m) => m.name != minion.name);
+      console.log(restMinions)
+      num = 5;
+      num = Math.min(num,restMinions.length);
+      for (let i = restMinions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [restMinions[i], restMinions[j]] = [restMinions[j], restMinions[i]];
+      }
+      pickpool = restMinions.slice(0, num);
+      pickOne("选择一名助战：",["分享精神",index,time])
       break;
     default:
   }

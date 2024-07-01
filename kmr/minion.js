@@ -878,15 +878,33 @@ const minions = [
     voice: 'kmr/voice/xdbs.mp3',
     activeVoice: 'kmr/voice/xdbs_eff.mp3',
     description: '梦的开始，4费超越的传说',
-    baseattack: 19,
-    addattack: 14,
-    attackSpeed: 2000, // in milliseconds
+    baseattack: 28,
+    addattack: 16,
+    attackSpeed: 3300, // in milliseconds
     basecost: 24,
     enhancecost: 14,
     supEnhancecost: 4.4,
     skills: [
         { level: 9, name: '鳄龟up', effect: '非主动攻击时，改为让一个随机其他助战攻击，伤害视为该助战造成，获得[此次伤害^0.5]的成长，并触发1次成长（获得等同于升级时成长提供的攻击力）。' },
         { level: 54, name: '瞎到暴死', effect: '每当该助战触发成长时，获得1点能量。<br>启动：如果你具有至少10点能量，消耗全部能量。从你的最多3名助战中选择1名，令其攻击直到消耗的时间超过[消耗的能量]s。', active: true }
+    ]
+  },
+  {
+    name: '喵鲁汉化组',
+    id: 52,
+    image: 'kmr/image/ml.png',
+    voice: 'kmr/voice/ml.mp3',
+    activeVoice: 'kmr/voice/ml_eff.mp3',
+    description: '喵呼呼让我看上了影之诗F，喵呼呼我的超人',
+    baseattack: 12,
+    addattack: 8,
+    attackSpeed: 2000, // in milliseconds
+    basecost: 30,
+    enhancecost: 10,
+    supEnhancecost: 4.7,
+    skills: [
+        { level: 8, name: '台词翻译', effect: '触发语音的攻击伤害增加[10+等级^0.75]%。' },
+        { level: 84, name: '分享精神', effect: '每60s，获得1点能量，上限12点。<br>启动：消耗3点能量。从你的最多5名其他助战中选择1名，与其交换攻击力。', active: true }
     ]
   }
 ];
