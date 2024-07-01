@@ -910,7 +910,7 @@ function clickKmr() {
     dam = dam.toDecimalPlaces(0); // 将 Decimal 转换为整数值
     kmrTakeDam(dam); // 将 Decimal 转换为普通数值后应用伤害
     victory = false;
-    totalClickDamage = totalClickDamage + Decimal.floor(dam.toNumber()); // 使用 Decimal 累加总点击伤害
+    totalClickDamage = totalClickDamage + Math.floor(dam.toNumber()); // 使用 Decimal 累加总点击伤害
 
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random() * kmr.width);
