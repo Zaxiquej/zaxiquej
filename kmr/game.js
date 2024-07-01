@@ -294,8 +294,15 @@ function loadGameState(encodedGameState){
     if (m.attack.isNaN()){ m.attack = new Decimal(1)}
     if (m.addattack.isNaN()){ m.addattack = new Decimal(1)}
   	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(1)}
+    if (!m.attack.isFinite()){ m.attack = new Decimal(1)}
+    if (!m.addattack.isFinite()){ m.addattack = new Decimal(1)}
+  	if (!m.totalDamage.isFinite()){ m.totalDamage = new Decimal(1)}
+    if (m.attackSpeed == 0){
+      m.attackSpeed = 1145140000;
+    }
   }
   if (coins.isNaN()){coins = new Decimal(1)}
+  if (!coins.isFinite()){coins = new Decimal(1)}
   if (kmrHealthValue.isNaN()){
     kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level))
   }
