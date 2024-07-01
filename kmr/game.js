@@ -878,7 +878,7 @@ function gainCoin(c,minion){
   }
   if (getBuffPower("ykd").length > 0){
     let buffPower = new Decimal(getBuffPower("ykd")[0]);
-    c = c.times(buffPower).toDecimalPlaces(0) .toNumber();
+    c = c.times(buffPower).toDecimalPlaces(0);
   }
   coins = coins.plus(c);
 }
@@ -890,7 +890,7 @@ function clickKmr() {
     dam = dam.toDecimalPlaces(0); // 将 Decimal 转换为整数值
     kmrTakeDam(dam); // 将 Decimal 转换为普通数值后应用伤害
     victory = false;
-    totalClickDamage = totalClickDamage + dam.toNumber(); // 使用 Decimal 累加总点击伤害
+    totalClickDamage = totalClickDamage + Decimal.floor(dam); // 使用 Decimal 累加总点击伤害
 
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random() * kmr.width);
@@ -1363,7 +1363,7 @@ function getattack(minion, master) {
 
     if (minion.learnedSkills.includes("开播！")) {
         skilled = true;
-        atk = atk.plus(new Decimal(Math.floor(Math.pow(Math.abs(coins), 0.66) / 1000 * minion.level)));
+        atk = Decimal.floor(atk.plus(Decimal.abs(coins).cbrt().pow(2).div(1000).times(minion.level)));
     }
 
     if (minion.learnedSkills.includes("牢大暴扣！")) {
@@ -1475,7 +1475,7 @@ function incrementRandomDigit(num) {
 
     // 计算该位的值
     let factor = new Decimal(10).pow(randomIndex);
-    let currentDigit = absNum.dividedBy(factor).toDecimalPlaces(0) .mod(10).toNumber();
+    let currentDigit = absNum.dividedBy(factor).toDecimalPlaces(0).mod(10).toNumber();
 
     let result;
     if (randomIndex === numDigits - 1) {
@@ -1739,8 +1739,13 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
             document.getElementById(`attack-${unlockedMinions.indexOf(minion.name)}`).textContent = formatNumber(minion.attack);
             document.getElementById(`attack-speed-${unlockedMinions.indexOf(minion.name)}`).textContent = (minion.attackSpeed/(1000)).toFixed(1) + "s"; // 更新攻击速度
             clearInterval(minion.intervalId);
-            let intervalId = setInterval(() => minionAttack(minion,undefined,true), minion.attackSpeed);
-            minion.intervalId = intervalId;
+            if (minion.attackSpeed < 86400000){
+              let intervalId = setInterval(() => minionAttack(minion,undefined,true), minion.attackSpeed);
+              minion.intervalId = intervalId;
+            } else {
+              minion.intervalId = -2;
+            }
+
             showSkillWord(minion, "+1+1");
         }
     }
@@ -3053,7 +3058,7 @@ function updateCounts() {
          m.count ++;
          if (m.count >= 24){
            m.count = zeroCountDown(24);
-           let dam = m.attack.times(m.attackSpeed).dividedBy(1000).toDecimalPlaces(0);
+           let dam = (m.attack.times(m.attackSpeed).div(1000)).toDecimalPlaces(0);
            damageKmr(dam, m);
            showSkillWord(m, "饿龙咆哮");
          }
