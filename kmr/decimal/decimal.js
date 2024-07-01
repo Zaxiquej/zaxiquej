@@ -421,37 +421,80 @@
   };
 
   P.fifthRoot = P.fifthrt = function () {
-      var e, m, n, r, s, sd, t, x = this, Ctor = x.constructor;
+    var e, m, n, r, rep, s, sd, t, t5, t5plusx,
+      x = this,
+      Ctor = x.constructor;
 
-      if (!x.isFinite() || x.isZero()) return new Ctor(x);
-      external = false;
+    if (!x.isFinite() || x.isZero()) return new Ctor(x);
+    external = false;
 
-      // Initial estimate.
-      s = x.s * Math.pow(Math.abs(x), 1 / 5);
+    // Initial estimate.
+    s = x.s * mathpow(x.s * x, 1 / 5);
 
+    // Handle underflow/overflow and get initial approximation
+    if (!s || Math.abs(s) == 1 / 0) {
+      n = digitsToString(x.d);
+      e = x.e;
+
+      // Adjust n exponent so it is a multiple of 5 away from x exponent.
+      if (s = (e - n.length + 1) % 5) n += (s == 1 || s == -4 ? '0000' : s == 2 || s == -3 ? '000' : s == 3 || s == -2 ? '00' : '0');
+      s = mathpow(n, 1 / 5);
+
+      // Rarely, e may be one less than the result exponent value.
+      e = mathfloor((e + 1) / 5) - (e % 5 == (e < 0 ? -1 : 4));
+
+      if (s == 1 / 0) {
+        n = '5e' + e;
+      } else {
+        n = s.toExponential();
+        n = n.slice(0, n.indexOf('e') + 1) + e;
+      }
+
+      r = new Ctor(n);
+      r.s = x.s;
+    } else {
       r = new Ctor(s.toString());
-      sd = 1; // Precision to 1 decimal place
+    }
 
-      // Newton's method for fifth root.
-      for (;;) {
-        t = r;
-        var t4 = t.times(t).times(t).times(t); // t^4
-        var t5 = t4.times(t); // t^5
-        var t4x = t4.times(4);
-        r = t.minus(t5.minus(x).div(t4x.plus(t), sd + 2));
+    sd = (e = Ctor.precision) + 3;
 
-        // Check if the result is precise to 1 decimal place.
-        var t_str = t.toString();
-        var r_str = r.toString();
-        if (t_str.substring(0, t_str.indexOf('.') + 2) === r_str.substring(0, r_str.indexOf('.') + 2)) {
+    // Iteration using Halley's method.
+    for (;;) {
+      t = r;
+      t5 = t.times(t).times(t).times(t).times(t);
+      t5plusx = t5.plus(x);
+      r = divide(t5plusx.plus(x).times(t).times(4), t5plusx.plus(t5).times(5), sd + 2, 1);
+
+      // Check if we have achieved the required precision
+      if (digitsToString(t.d).slice(0, sd) === (n = digitsToString(r.d)).slice(0, sd)) {
+        n = n.slice(sd - 3, sd + 1);
+
+        if (n == '9999' || !rep && n == '4999') {
+          if (!rep) {
+            finalise(t, e + 1, 0);
+
+            if (t.times(t).times(t).times(t).times(t).eq(x)) {
+              r = t;
+              break;
+            }
+          }
+
+          sd += 4;
+          rep = 1;
+        } else {
+          if (!+n || !+n.slice(1) && n.charAt(0) == '5') {
+            finalise(r, e + 1, 1);
+            m = !r.times(r).times(r).times(r).times(r).eq(x);
+          }
           break;
         }
       }
+    }
 
-      external = true;
+    external = true;
 
-      return r;
-    };
+    return finalise(r, e, Ctor.rounding, m);
+  };
 
   /*
    * Return the number of decimal places of the value of this Decimal.

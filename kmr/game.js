@@ -274,6 +274,8 @@ function loadGameState(encodedGameState){
   if (gameState.qijiLevel != undefined) qijiLevel = gameState.qijiLevel;
   if (Number(zheluck)!== zheluck) zheluck = 2;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
+  if (!zhedam.isFinite()){zhedam = new Decimal(2600)};
+  if (!maxdamZ.isFinite()){maxdamz = new Decimal(1)};
   refreshBondCompletion();
   checkAutoUpgradeButton();
   for (let m of minionsState){
@@ -289,10 +291,10 @@ function loadGameState(encodedGameState){
   }
 
   for (let m of minionsState){
-    if (m.attack.isNaN()){ m.attack = new Decimal(0)}
-  	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(0)}
+    if (m.attack.isNaN()){ m.attack = new Decimal(1)}
+  	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(1)}
   }
-  if (coins.isNaN()){coins = new Decimal(0)}
+  if (coins.isNaN()){coins = new Decimal(1)}
   if (kmrHealthValue.isNaN()){
     kmrHealthValue = new Decimal('500000').times(new Decimal('10').pow(level))
   }
@@ -496,9 +498,17 @@ function addBuff(name,power,length,stackable,noMemorize){
   if (!stackable){
     for (let buff of buffs){
       if (buff[0] == name){
-        buff[2] += length;
-        noPush = true;
-        break;
+        if (Array.isArray(power)){
+          if (power[0] == buff[1][0]){
+            buff[2] += length;
+            noPush = true;
+            break;
+          }
+        } else {
+          buff[2] += length;
+          noPush = true;
+          break;
+        }
       }
     }
   }
@@ -890,7 +900,7 @@ function clickKmr() {
     dam = dam.toDecimalPlaces(0); // 将 Decimal 转换为整数值
     kmrTakeDam(dam); // 将 Decimal 转换为普通数值后应用伤害
     victory = false;
-    totalClickDamage = totalClickDamage + Decimal.floor(dam); // 使用 Decimal 累加总点击伤害
+    totalClickDamage = totalClickDamage + Decimal.floor(dam.toNumber()); // 使用 Decimal 累加总点击伤害
 
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random() * kmr.width);
@@ -963,11 +973,16 @@ function damageKmr(dam, minion) {
             dam = dam.times(1 + 0.2 + 0.01 * Math.floor(Math.pow(m.level, 0.6)));
         }
     }
-
+    if (!dam.isFinite()){
+      console.log(minion,dam)
+    }
     // 计算额外伤害比例
     dam = dam.times(extraDamRatio(minion)).toDecimalPlaces(0);
     if (dam.isNaN()){
       console.log(minion)
+    }
+    if (!dam.isFinite()){
+      console.log(minion,dam)
     }
     // 扣除伤害
     kmrTakeDam(dam);
@@ -1137,7 +1152,7 @@ function formatNumber(num) {
     const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
     const threshold = new Decimal(10000); // 万的阈值
 
-    if (num.comparedTo(threshold) < 0) {
+    if (Decimal.abs(num).comparedTo(threshold) < 0) {
         return num.toString(); // 小于万，直接返回数字的字符串形式
     }
 
@@ -1650,7 +1665,6 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
       showSkillWord(minion, "鳄龟up");
       return;
     }
-
     let dam = getattack(minion, master); // 获取攻击力
     dam = dam.times(extraDamRatio(minion)); // 乘以额外伤害比例
     dam = dam.toDecimalPlaces(0); // 向下取整
@@ -1667,7 +1681,7 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
         }
     }
     if (dam.isNaN()){
-      console.log(minion)
+      console.log(minion,master)
     }
     kmrTakeDam(dam); // 执行伤害
 
@@ -3426,7 +3440,11 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
        }
      }
      norepeat.push("上帝")
-     raiseAtk(m, Decimal.floor(Decimal.max(1, (amount.times(ratio))) ), norepeat);
+     let nA = Decimal.floor(Decimal.max(1, (amount.times(ratio))) );
+     raiseAtk(m, nA, norepeat);
+     if (m.attack.isNaN() || !m.attack.isFinite()){
+       console.log(minion, m, amount, norepeat, fromUpgrade, raiseAtk.caller)
+     }
      showSkillWord(m, "上帝");
    }
    if (upgrading && m.learnedSkills.includes("皇室荣耀")) {
@@ -3445,7 +3463,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
  for (let m of minionsState) {
   if (m.name != minion.name && m.learnedSkills.includes("虽强但弱") && !norepeat.includes("虽强但弱")) {
     let sortedMs = [...minionsState.filter(b => b.name != m.name)].sort((a, b) => b.attack.comparedTo(a.attack));
-
     if (minion.name == sortedMs[0].name){
        let ratio = new Decimal(0.18);
        norepeat.push("虽强但弱");
@@ -3540,6 +3557,9 @@ function mupgradeCost(minion) {
   }
   if (minion.level > 10000){
     levelFactor *= 1.5;
+  }
+  if (minion.level > 15000){
+    levelFactor *= Math.pow(2,Math.floor((minion.level-10000)/5000));
   }
   baseCost = baseCost.times(levelFactor);
   baseCost = baseCost.times(sharkUpgradeFactor());
