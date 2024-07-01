@@ -292,6 +292,7 @@ function loadGameState(encodedGameState){
 
   for (let m of minionsState){
     if (m.attack.isNaN()){ m.attack = new Decimal(1)}
+    if (m.addattack.isNaN()){ m.addattack = new Decimal(1)}
   	if (m.totalDamage.isNaN()){ m.totalDamage = new Decimal(1)}
   }
   if (coins.isNaN()){coins = new Decimal(1)}
@@ -1008,6 +1009,9 @@ function damageKmr(dam, minion) {
         if (m.learnedSkills.includes("雷维翁之力")) {
             if (dam.gt(0)){
               let raiseAmount = dam.div(dam.fifthrt()).times(0.02).toDecimalPlaces(0);
+              if (raiseAmount.isNaN() || !raiseAmount.isFinite()){
+                console.log(minion,raiseAmount,dam)
+              }
               raiseAtk(minion, raiseAmount);
               showSkillWord(m, "雷维翁之力");
             }
@@ -2386,7 +2390,7 @@ function refreshCangSkill() {
           r += 1;
         }
         s = minions[r].skills[Math.floor(Math.random() * 2)];
-        valid = !(["说书","不稳定的传送门","卓绝的契约","红娘"].includes(s.name));
+        valid = !(["说书","不稳定的传送门","卓绝的契约","红娘","+1+1","终将降临的肃清","魔咒"].includes(s.name));
       }
 
       m.learnedSkills.push(s.name);
@@ -2648,11 +2652,13 @@ function loglevel(level,base,thres,decayRate,max) {
 
 let needDisplay = false;
 
+//let globalM = 0;
 function updateCounts() {
   if (new Decimal(kmrHealthValue).comparedTo(0) <= 0){ return; }
   let ref = false;
   buffCountDown();
   for (let m of minionsState){
+  //  globalM = m.name;
     if (m.learnedSkills.includes("五种打法")){
       burning++;
       if (burning >= 20){
@@ -3350,7 +3356,7 @@ function ActivateClick(index){
     if (rindex == unlockedMinions.indexOf(minion.name)){refreshMinionDetails()}
   }
 }
-function raiseAtk(minion, amount, norepeat, fromUpgrade) {
+function raiseAtk(minion, amount, norepeat, fromUpgrade,rid) {
   if (!norepeat){
     norepeat = [];
   }
@@ -3442,9 +3448,6 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade) {
      norepeat.push("上帝")
      let nA = Decimal.floor(Decimal.max(1, (amount.times(ratio))) );
      raiseAtk(m, nA, norepeat);
-     if (m.attack.isNaN() || !m.attack.isFinite()){
-       console.log(minion, m, amount, norepeat, fromUpgrade, raiseAtk.caller)
-     }
      showSkillWord(m, "上帝");
    }
    if (upgrading && m.learnedSkills.includes("皇室荣耀")) {
