@@ -13,7 +13,7 @@ const totalTimeDisplay2 = document.getElementById('total-time2');
 const curLevelDisplay = document.getElementById('total-level');
 const finalStatsDisplay = document.getElementById('final-stats');
 
-let version = "3.1.0";
+let version = "3.1.1";
 let kmrHealthValue = new Decimal('500000');
 let level = 0;
 let coins = new Decimal('0');
@@ -353,7 +353,7 @@ function hardResetVars() {
 }
 
 function resetVars() {
-  version = "3.1.0";
+  version = "3.1.1";
   kmrHealthValue = new Decimal('500000');
   level = 0;
   coins = new Decimal('0');
