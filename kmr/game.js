@@ -2073,7 +2073,6 @@ function pickOne(title, type) {
        });
        minionsContainer.appendChild(minionElement);
        document.getElementById('pick-'+index).addEventListener('click', () => {
-          console.log(index,type)
            pickMinionClick(index,type);
        });
    });
@@ -3401,7 +3400,7 @@ function ActivateClick(index){
       showSkillWord(minion, "瞎到暴死");
 
       restMinions = [...minionsState];
-      num = 3;
+      num = 5;
       num = Math.min(num,restMinions.length);
       for (let i = restMinions.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
