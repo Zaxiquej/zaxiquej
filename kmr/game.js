@@ -2241,7 +2241,7 @@ function rerollMinion(index) {
           [restMinions[i], restMinions[j]] = [restMinions[j], restMinions[i]];
       }
 
-      pickpool = minionsState.slice(0, num).map(m => initializeMinion(m));
+      pickpool = restMinions.slice(0, num).map(m => initializeMinion(m));
 
       pickOne("选择一名助战：",["reroll",index])
     } else {
