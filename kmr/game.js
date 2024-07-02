@@ -508,12 +508,12 @@ function addBuff(name,power,length,stackable,noMemorize){
       if (buff[0] == name){
         if (Array.isArray(power)){
           if (power[0] == buff[1][0]){
-            buff[2] += length;
+            buff[2] += Math.floor(length);
             noPush = true;
             break;
           }
         } else {
-          buff[2] += length;
+          buff[2] += Math.floor(length);
           noPush = true;
           break;
         }
@@ -641,7 +641,7 @@ function unlockAfter(minion){
       showSkillWord(m, "中速导师");
     }
     if (m.learnedSkills.includes("知名皇黑")) {
-      addBuff("huanghei", 60, 30, false);
+      addBuff("huanghei", 60, 24, false);
       showSkillWord(m, "知名皇黑");
     }
   }
@@ -875,6 +875,7 @@ function createDamageNumber(damage) {
 }
 
 function gainCoin(c,minion){
+
   let runnerUpPlus = [0,0];
   for (let bond of bondData) {
       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.runnerUpPlus) {
@@ -974,6 +975,13 @@ function kmrTakeDam(dam) {
     }
 }
 
+function AddTotalDamage(minion, dam){
+  if (minion.name == "守御的创造物"){
+    console.log(minion.totalDamage, dam)
+  }
+  minion.totalDamage = minion.totalDamage.plus(dam);
+}
+
 function damageKmr(dam, minion) {
     if (kmrHealthValue.comparedTo(0) <= 0) return;
     let voiceOn = false;
@@ -1005,7 +1013,7 @@ function damageKmr(dam, minion) {
     // 扣除伤害
     kmrTakeDam(dam);
     // 更新总伤害记录
-    minion.totalDamage = minion.totalDamage.plus(dam);
+    AddTotalDamage(minion,dam);
 
     // 处理其他技能效果
     for (let m of minionsState) {
@@ -1173,7 +1181,10 @@ function formatNumber(num) {
     const units = ['万', '亿', '兆', '京', '垓', '秭', '穰', '沟', '涧', '正', '载', '极', '恒河沙', '阿僧祗', '那由他', '不可思议', '无量', '大数'];
     const threshold = new Decimal(10000); // 万的阈值
 
-    if (Decimal.abs(num).comparedTo(threshold) < 0) {
+    if (num.comparedTo(new Decimal(0)) < 0) {
+        return "-"+formatNumber(num.times(-1)); // 小于0，直接返回数字的字符串形式
+    }
+    if (num.comparedTo(threshold) < 0) {
         return num.toString(); // 小于万，直接返回数字的字符串形式
     }
 
@@ -1592,8 +1603,8 @@ function checkLuck(r, fromZhe) {
             if (misfortune >= 1000){
               misfortune -= 1000;
               let dam = m.attack.times(qijiLevel).toDecimalPlaces(0);
-              qijiLevel += 5;
-              qijiLuck += 5;
+              qijiLevel += 3;
+              qijiLuck += 3;
               damageKmr(dam, m);
               showSkillWord(m, "杂技之王");
             }
@@ -1727,9 +1738,9 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
     }
 
     if (master) {
-        master.totalDamage = master.totalDamage.plus(dam); // 累加总伤害
+        AddTotalDamage(master,dam);
     } else {
-        minion.totalDamage = minion.totalDamage.plus(dam); // 累加总伤害
+        AddTotalDamage(minion,dam);
     }
     var position = kmr.getBoundingClientRect();
     let x = position.left + (Math.random() * kmr.width);
@@ -1921,7 +1932,7 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
                 showSkillWord(m, "永失吾艾");
             }
         }
-        if (m.name != minion.name && m.learnedSkills.includes("迅袭之力")) {
+        if (isNormalAttack && m.name != minion.name && m.learnedSkills.includes("迅袭之力")) {
             if (checkLuck(0.1)) {
                 minionAttack(m);
                 m.attack = (m.attack.times(1.01)).toDecimalPlaces(0);
@@ -2117,9 +2128,11 @@ function pickMinionClick(index, type){
       break;
     case "瞎到暴死":
     let minion = minionsState[unlockedMinions.indexOf(pickpool[index].name)];
+    autoing = true;
       for (let i = 0; i < type[2]; i+=minion.attackSpeed/1000){
         minionAttack(minion);
       }
+      autoing = false;
       break;
     case "分享精神":
     let minion1 = minionsState[unlockedMinions.indexOf(pickpool[index].name)];
@@ -2362,7 +2375,7 @@ function getEff(skill,minion){
       if (!minion.livecount){minion.livecount = 0};
       return skill.effect + "（还剩"+(120 - minion.livecount)+"s！）";
     case "杂技之王":
-      return "每当你判定概率失败1000次，造成[攻击力*"+qijiLevel+"]点伤害，并使下5个概率低于10%的技能必定触发。每次触发，使倍率增加5。"+ "（还剩"+(1000 - misfortune)+"个！）";
+      return "每当你判定概率失败1000次，造成[攻击力*"+qijiLevel+"]点伤害，并使下5个概率低于10%的技能必定触发。每次触发，使倍率增加3。"+ "（还剩"+(1000 - misfortune)+"个！）";
     default:
       return skill.effect;
   }
@@ -2714,7 +2727,7 @@ function updateCounts() {
         //m.livecount = zeroCountDown(120);
         clearInterval(m.intervalId);
         let mmaster = minionsState[unlockedMinions.indexOf(m.master)];
-        mmaster.totalDamage = mmaster.totalDamage.plus(m.totalDamage);
+        AddTotalDamage(mmaster,m.totalDamage);
         let r = unlockedMinions.indexOf(m.name);
         minionsState.splice(r,1);
         unlockedMinions.splice(r,1);

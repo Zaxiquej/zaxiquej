@@ -25,7 +25,7 @@ const createdMinions = [{
     description: '【影之诗】第33弹卡包新主战者「迅袭的创造物」演示',
     skills: [
         { level: 1, name: '临时造物', effect: '该助战仅能存在120s，且不能主动升级。' },
-        { level: 1, name: '迅袭之力', effect: '10%概率在其他助战攻击时，直接攻击，随后将攻击力变为1.01倍。'}
+        { level: 1, name: '迅袭之力', effect: '10%概率在其他助战主动攻击时，直接攻击，随后将攻击力变为1.01倍。'}
     ]
 }
 ]
