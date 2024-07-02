@@ -650,7 +650,7 @@ function unlockAfter(minion){
 function unlockMinionTX(minion) {
   let availMinions = createdMinions.filter((m) => !unlockedMinions.includes(m.name));
   let subMinion = availMinions[Math.floor(availMinions.length * Math.random())];
-  createdMinion = {
+  let createdMinion = {
     ...subMinion
   }
   createdMinion.attack = minion.attack;
@@ -667,6 +667,7 @@ function unlockMinionTX(minion) {
 
   let intervalId = setInterval(() => minionAttack(createdMinion,undefined,true), createdMinion.attackSpeed);
   createdMinion.intervalId = intervalId;
+
   minionsState = minionsState.concat(createdMinion);
   unlockedMinions.push(createdMinion.name);
   createdMinion.reroll = 0;
@@ -976,9 +977,6 @@ function kmrTakeDam(dam) {
 }
 
 function AddTotalDamage(minion, dam){
-  if (minion.name == "守御的创造物"){
-    console.log(minion.totalDamage, dam)
-  }
   minion.totalDamage = minion.totalDamage.plus(dam);
 }
 
@@ -2168,11 +2166,11 @@ function unlockCost(p) {
   }
 
   if (unlockedMinions.length >= 25) {
-    cost = cost.times(cost.fifthrt());
+    cost = cost.times(cost.sqrt().sqrt().sqrt());
   }
 
   if (unlockedMinions.length >= 45) {
-    cost = cost.times(cost.fifthrt());
+    cost = cost.times(cost.sqrt().sqrt().sqrt());
   }
 
   for (let m of minionsState) {
