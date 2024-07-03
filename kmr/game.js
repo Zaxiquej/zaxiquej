@@ -2296,7 +2296,7 @@ function refreshMinionDetails() {
   const detailsContainer = document.getElementById('selected-minion-details');
   let code = "升级";
 
-  console.log(minion)
+  //console.log(minion)
   const mCost = new Decimal(mupgradeCost(minion));
 
   detailsContainer.innerHTML = `
@@ -2669,6 +2669,9 @@ function getAddattack(minion){
     for (let bond of bondData){
       if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upgradeExtraA && bond.characters.includes(minion.name)){
         amount = amount.plus(bond.upgradeExtraA * obtainedBonds[bond.name].level);
+      }
+      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.ActivateGrowthPlus && bond.characters.includes(minion.name)){
+        amount = amount.times(1 + bond.ActivateGrowthPlus* obtainedBonds[bond.name].level);
       }
     }
     for (let m of minionsState){
