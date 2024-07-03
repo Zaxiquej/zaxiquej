@@ -276,6 +276,7 @@ function loadGameState(encodedGameState){
   if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
   if (!zhedam.isFinite()){zhedam = new Decimal(2600)};
   if (!maxdamZ.isFinite()){maxdamz = new Decimal(1)};
+  if (typeof totalClickDamage === 'string'){totalClickDamage = 1};
   refreshBondCompletion();
   checkAutoUpgradeButton();
   for (let m of minionsState){
@@ -822,7 +823,7 @@ function updateHealth(health) {
     const healthElement = document.getElementById('kmr-health');
     const maxHealth = new Decimal('500000').times(Decimal(10).pow(level));
     kmrHealthValue = new Decimal(kmrHealthValue).toDecimalPlaces(0) ; // 确保 kmrHealthValue 为整数
-    const healthPercentage = kmrHealthValue.dividedBy(maxHealth).times(100);
+    const healthPercentage = kmrHealthValue.div(maxHealth).times(100);
     healthElement.style.width = healthPercentage.toFixed(2) + '%';
     healthElement.textContent = formatNumber2(health);
 }
@@ -958,8 +959,8 @@ function kmrTakeDam(dam) {
     for (let m of minionsState) {
         if (m.learnedSkills.includes("素材奖励")) {
             let maxHealth = new Decimal('500000').times(Decimal(10).pow(level)); // 使用 Decimal 处理最大生命值
-            let twoThirdsMaxHealth = maxHealth.times(2).dividedBy(3).toDecimalPlaces(0);
-            let oneThirdMaxHealth = maxHealth.dividedBy(3).toDecimalPlaces(0);
+            let twoThirdsMaxHealth = maxHealth.times(2).div(3).toDecimalPlaces(0);
+            let oneThirdMaxHealth = maxHealth.div(3).toDecimalPlaces(0);
 
             if (kmrHealthValue.comparedTo(twoThirdsMaxHealth) >= 0 && kmrHealthValue.minus(dam).comparedTo(twoThirdsMaxHealth) <= 0) {
                 refreshCangSkill();
@@ -1191,7 +1192,7 @@ function formatNumber(num) {
     let formattedNum = num;
 
     while (formattedNum.comparedTo(threshold) >= 0 && unitIndex < units.length) {
-        formattedNum = formattedNum.dividedBy(threshold);
+        formattedNum = formattedNum.div(threshold);
         unitIndex++;
     }
 
@@ -1507,7 +1508,7 @@ function incrementRandomDigit(num) {
 
     // 计算该位的值
     let factor = new Decimal(10).pow(randomIndex);
-    let currentDigit = absNum.dividedBy(factor).toDecimalPlaces(0).mod(10).toNumber();
+    let currentDigit = absNum.div(factor).toDecimalPlaces(0).mod(10).toNumber();
 
     let result;
     if (randomIndex === numDigits - 1) {
@@ -2597,7 +2598,9 @@ function generateXYZ(totalAllies) {
                 let n = unlockedMinions.indexOf(miN);
                 totalAtk = totalAtk.plus(minionsState[n].attack);
               }
-              totalAtk = totalAtk.div(totalAtk.fifthrt().sqrt());
+              if (totalAtk.gt(0)){
+                totalAtk = totalAtk.div(totalAtk.fifthrt().sqrt());
+              }
               let am = Decimal.floor(totalAtk.times(c * obtainedBonds[bond.name].level));
               raiseAtk(m, am, false, false);
             }
@@ -3131,7 +3134,7 @@ function updateCounts() {
            m.attack = Decimal.max(new Decimal(0), m.attack);
            let luck = 0.05 + 0.01 * Math.floor(m.level / 50);
            if (checkLuck(luck)) {
-             let atkIncrease = m.tempAtk.dividedBy(10).toDecimalPlaces(0);
+             let atkIncrease = m.tempAtk.div(10).toDecimalPlaces(0);
              //raiseAtk(m, atkIncrease);
              m.attack = m.attack.plus(atkIncrease);
            }
@@ -3179,7 +3182,7 @@ function updateCounts() {
          m.count ++;
          if (m.count >= 19){
            m.count = zeroCountDown(19);
-           let dam = m.attack.times(unlockedMinions.length).dividedBy(2).toDecimalPlaces(0);
+           let dam = m.attack.times(unlockedMinions.length).div(2).toDecimalPlaces(0);
            damageKmr(dam, m);
            showSkillWord(m, "一十九米肃清刀");
          }
@@ -3225,7 +3228,7 @@ function updateCounts() {
                dam = dam.plus(mi.attack.times(zPlus));
              }
            }
-           dam = Decimal.floor(dam.times(getDigit(m.attack)).dividedBy(2));
+           dam = Decimal.floor(dam.times(getDigit(m.attack)).div(2));
            damageKmr(dam, m);
            showSkillWord(m, "巨人");
          }
@@ -3483,7 +3486,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade,rid) {
  minion.attack = Decimal.floor(minion.attack.plus(amount));
 
  if (fromUpgrade) {
-   if (minion.learnedSkills.includes("虫虫咬他")) {
+   if (minion.learnedSkills.includes("虫虫咬他") && amount.gt(0)) {
      for (let bond of bondData) {
        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '虫虫咬他') {
          let c = bond.skillPlus[1];
@@ -3703,7 +3706,7 @@ function mupgradeCost(minion) {
   let finalCost = baseCost.times(bondDiscount).times(skillDiscount);
 
   for (let m of minionsState) {
-    if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴")) {
+    if (minion.description.includes("🐷") && m.learnedSkills.includes("管人痴") && finalCost.gt(0) ) {
       finalCost  = finalCost.div(finalCost.sqrt().sqrt().fifthrt());
     }
   }
