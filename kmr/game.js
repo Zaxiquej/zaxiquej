@@ -275,6 +275,7 @@ function loadGameState(encodedGameState){
   if (Number(zheluck)!== zheluck) zheluck = 2;
   if (Number(zheluck2)!== zheluck2) zheluck2 = 2;
   if (!zhedam.isFinite()){zhedam = new Decimal(2600)};
+  if (!yggdam.isFinite()){yggdam = new Decimal(322)};
   if (!maxdamZ.isFinite()){maxdamz = new Decimal(1)};
   if (typeof totalClickDamage === 'string'){totalClickDamage = 1};
   refreshBondCompletion();
@@ -1729,7 +1730,7 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
         }
     }
     if (dam.isNaN()){
-      console.log(minion,master)
+      console.log(minion,minion.attack,dam,extraDamRatio(minion))
     }
     kmrTakeDam(dam); // 执行伤害
 
