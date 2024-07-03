@@ -346,6 +346,7 @@ function importGame(event) {
         autoing = false;
     };
     reader.readAsText(file);
+    rindex = 0;
     refreshMinionDetails()
 }
 
@@ -2295,6 +2296,7 @@ function refreshMinionDetails() {
   const detailsContainer = document.getElementById('selected-minion-details');
   let code = "升级";
 
+  console.log(minion)
   const mCost = new Decimal(mupgradeCost(minion));
 
   detailsContainer.innerHTML = `
@@ -3631,6 +3633,9 @@ function sharkUpgradeFactor(){
 }
 
 function mupgradeCost(minion) {
+  if (!minion){
+    return new Decimal(0);
+  }
   if (minion.noUpgrade){
     return new Decimal(Infinity);
   }

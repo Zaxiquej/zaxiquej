@@ -80,6 +80,14 @@ const bondData = [
         extraAtkGain: 0.03
     },
     {
+        id: 11,
+        name: '限时狙击达拉斯泰尔！',
+        rarity: 'bronze',
+        characters: ["ZenX","达拉斯泰尔"],
+        benefit: '每级额外增加40%羁绊中角色造成的伤害。',
+        extraDam: 0.4
+    },
+    {
         id: 1001,
         name: '夫妻上阵',
         rarity: 'silver',
