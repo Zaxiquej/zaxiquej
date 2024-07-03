@@ -1000,9 +1000,6 @@ function damageKmr(dam, minion) {
         }
     }
 
-    if (!dam.isFinite()){
-      console.log(minion,dam)
-    }
     // 计算额外伤害比例
     dam = dam.times(extraDamRatio(minion)).toDecimalPlaces(0);
     if (dam.isNaN()){
@@ -3435,7 +3432,6 @@ function ActivateClick(index){
       showSkillWord(minion, "分享精神");
 
       restMinions = minionsState.filter((m) => m.name != minion.name);
-      console.log(restMinions)
       num = 5;
       num = Math.min(num,restMinions.length);
       for (let i = restMinions.length - 1; i > 0; i--) {
@@ -3456,6 +3452,9 @@ function ActivateClick(index){
 function raiseAtk(minion, amount, norepeat, fromUpgrade,rid) {
   if (!norepeat){
     norepeat = [];
+  }
+  if (amount.isNaN()){
+    console.log(minion,amount,norepeat,fromUpgrade)
   }
   //console.log(minion, amount)
  for (let m of minionsState) {
