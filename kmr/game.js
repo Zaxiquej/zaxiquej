@@ -3109,14 +3109,16 @@ function updateCounts() {
          if (m.count >= 50){
            m.count = zeroCountDown(50);
            let amount = coins.div(10);
+           amount = Decimal.min(maxdamZ, amount);
            for (let bond of bondData){
              if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '罕见'){
-               let c = bond.skillPlus[1] * obtainedBonds[bond.name].level;
-               amount = amount.times(1 + c);
+               let c = bond.skillPlus[1];
+               let addrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+               amount = amount.times(1 + addrate);
              }
            }
            amount = amount.toDecimalPlaces(0);
-           amount = Decimal.min(maxdamZ, amount);
+
            gainCoin(amount,m);
            skilled = true;
            showSkillWord(m, "罕见");
