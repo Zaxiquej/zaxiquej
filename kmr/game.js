@@ -1854,7 +1854,7 @@ function minionAttack(minion, master, isNormalAttack, specialParam) {
         for (let bond of bondData) {
             if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '理解不行') {
                 let c = bond.skillPlus[1];
-                luck = luck+(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+                luck = luck+(loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]));
             }
         }
         if (checkLuck(luck)) {
@@ -2181,7 +2181,7 @@ function unlockCost(p) {
   for (let bond of bondData) {
     if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.unlockMinusCost) {
       let c = bond.unlockMinusCost;
-      let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+      let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]);
       cost = cost.times(1 - minrate);
     }
   }
@@ -3113,7 +3113,7 @@ function updateCounts() {
            for (let bond of bondData){
              if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '罕见'){
                let c = bond.skillPlus[1];
-               let addrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+               let addrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]);
                amount = amount.times(1 + addrate);
              }
            }
@@ -3522,7 +3522,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade,rid) {
    for (let bond of bondData) {
      if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.upBond) {
        let c = bond.upBond;
-       let ratio = new Decimal(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+       let ratio = new Decimal(loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]));
        if (bond.characters[0] == minion.name) {
          raiseAtk(minionsState[unlockedMinions.indexOf(bond.characters[1])], Decimal.max(1, Decimal.floor(ratio.times(amount)) ));
        }
@@ -3540,7 +3540,7 @@ function raiseAtk(minion, amount, norepeat, fromUpgrade,rid) {
      for (let bond of bondData) {
        if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond) && bond.skillPlus && bond.skillPlus[0] == '上帝') {
          let c = bond.skillPlus[1];
-         ratio = ratio.plus(loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]));
+         ratio = ratio.plus(loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]));
        }
      }
      norepeat.push("上帝")
@@ -3685,12 +3685,12 @@ function mupgradeCost(minion) {
     if (Object.keys(obtainedBonds).includes(bond.name) && completedBond(bond)) {
       if (bond.upgradeMinusCost && bond.characters.includes(minion.name)) {
         let c = bond.upgradeMinusCost;
-        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]);
         bondDiscount = bondDiscount.times(1 - minrate);
       }
       if (bond.upgradeAllMinusCost) {
         let c = bond.upgradeAllMinusCost;
-        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], [2]);
+        let minrate = loglevel(obtainedBonds[bond.name].level, c[0], c[1], c[2]);
         bondDiscount = bondDiscount.times(1 - minrate);
       }
     }
