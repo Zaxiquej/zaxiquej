@@ -13,7 +13,10 @@ function runSimulation() {
         const deck2Strength = parseInt(playerDiv.querySelector('.deck2Strength').value);
         const skills = {
             badLuck: playerDiv.querySelector('#skill1').checked,
-            oneMoveAhead: playerDiv.querySelector('#skill2').checked
+            goodLuck: playerDiv.querySelector('#skill2').checked,
+            oneMoveAhead: playerDiv.querySelector('#skill3').checked,
+            goodFinale: playerDiv.querySelector('#skill4').checked,
+
         };
         specialPlayers.push({ name, deck1Strength, deck2Strength, skills });
     });
@@ -39,8 +42,12 @@ function addSpecialPlayer() {
         <div class="skills">
             <label for="skill1">倒霉蛋-第一轮必定落败</label>
             <input type="checkbox" id="skill1" name="skills" value="badLuck">
-            <label for="skill2">棋差一着-最后一轮必定落败</label>
-            <input type="checkbox" id="skill2" name="skills" value="oneMoveAhead">
+            <label for="skill2">开门红-第一轮必定获胜</label>
+            <input type="checkbox" id="skill2" name="skills" value="goodLuck">
+            <label for="skill3">棋差一着-最后一轮必定落败</label>
+            <input type="checkbox" id="skill3" name="skills" value="oneMoveAhead">
+            <label for="skill4">华丽谢幕-最后一轮必定获胜</label>
+            <input type="checkbox" id="skill4" name="skills" value="goodFinale">
         </div>
     `;
     specialPlayersDiv.appendChild(playerDiv);
@@ -73,6 +80,9 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
             players[index].decks = [player.deck1Strength, player.deck2Strength];
         });
 
+        // Shuffle players array
+        shuffleArray(players);
+
         for (let round = 0; round < numRounds; round++) {
             players.sort((a, b) => b.score - a.score);
             const matches = [];
@@ -104,20 +114,48 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                     }
 
                     // Check if special player has "Bad Luck" skill
-                    if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === player2Wins) {
-                        player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
-                    }
-                    if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === player2Wins) {
-                        player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                    if (round == 0){
+                      let endIf = false;
+                      if (!endIf){
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === player2Wins) {
+                            player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        }
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === player2Wins) {
+                            player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        }
+                      }
+                      if (!endIf){
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodLuck) && player1Wins === player2Wins) {
+                            player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        }
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodLuck) && player1Wins === player2Wins) {
+                            player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        }
+                      }
                     }
 
-                    // Check if special player has "One Move Ahead" skill
-                    if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
-                        player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                    if (round == numRounds - 1){
+                      let endIf = false;
+                      if (!endIf){
+                        // Check if special player has "One Move Ahead" skill
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
+                            player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        }
+                        if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
+                            player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        }
+                      }
+                      if (!endIf){
+                        // Check if special player has "One Move Ahead" skill
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodFinale) && player1Wins === player2Wins) {
+                            player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        }
+                        if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodFinale) && player1Wins === player2Wins) {
+                            player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        }
+                      }
                     }
-                    if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
-                        player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
-                    }
+
                 }
 
                 player1.gameWins += player1Wins;
@@ -179,6 +217,13 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
     }
 
     return { results, playerStats };
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 function calculateOpponentWinRate(opponents) {
