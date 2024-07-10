@@ -119,17 +119,19 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                       if (!endIf){
                         if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === 1) {
                             player2Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
-                        }
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === 1) {
-                            player1Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
+                        } else {
+                          if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player2Wins === 1) {
+                              player1Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
+                          }
                         }
                       }
                       if (!endIf){
-                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodLuck) && player1Wins === 1) {
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodLuck) && player2Wins === 1) {
                             player1Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
-                        }
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodLuck) && player1Wins === 1) {
-                            player2Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
+                        } else {
+                          if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodLuck) && player1Wins === 1) {
+                              player2Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
+                          }
                         }
                       }
                     }
@@ -138,20 +140,23 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                       let endIf = false;
                       if (!endIf){
                         // Check if special player has "One Move Ahead" skill
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
-                            player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
-                        }
-                        if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
-                            player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.oneMoveAhead) && player1Wins === 1) {
+                            player2Wins = 2; // Player 2 loses this round due to "One Move Ahead" skill
+                        } else {
+                          if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player2Wins === 1) {
+                              player1Wins = 2; // Player 2 loses this round due to "One Move Ahead" skill
+                          }
                         }
                       }
                       if (!endIf){
                         // Check if special player has "One Move Ahead" skill
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodFinale) && player1Wins === player2Wins) {
-                            player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                         if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodFinale) && player2Wins === 1) {
+                            player1Wins = 2; // Player 2 loses this round due to "One Move Ahead" skill
                         }
-                        if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodFinale) && player1Wins === player2Wins) {
-                            player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                        else {
+                          if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodFinale) && player1Wins === 1) {
+                              player2Wins = 2; // Player 2 loses this round due to "One Move Ahead" skill
+                          }
                         }
                       }
                     }
