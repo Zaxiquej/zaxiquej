@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士轮模拟器</title>
+</head>
+<body>
+    <h1>瑞士轮模拟器</h1>
+    <form id="simulator-form">
+        <label for="numPlayers">人数:</label>
+        <input type="number" id="numPlayers" name="numPlayers" value="24" required>
+        <br>
+        <label for="numRounds">轮数:</label>
+        <input type="number" id="numRounds" name="numRounds" value="6" required>
+        <br>
+        <label for="numQualifiers">出线人数:</label>
+        <input type="number" id="numQualifiers" name="numQualifiers" value="2" required>
+        <br>
+        <label for="gamesPerRound">每轮局数:</label>
+        <input type="number" id="gamesPerRound" name="gamesPerRound" value="3" required>
+        <br>
+        <label for="numSimulations">模拟比赛数:</label>
+        <input type="number" id="numSimulations" name="numSimulations" value="1" required>
+        <br>
+        <label for="calculateFirstRoundLoss">计算首轮输掉者出线率:</label>
+        <input type="checkbox" id="calculateFirstRoundLoss" name="calculateFirstRoundLoss">
+        <br>
+        <button type="button" onclick="runSimulation()">开始模拟</button>
+    </form>
+    <div id="results"></div>
+
+    <script src="swissSimulator.js"></script>
+</body>
+</html>

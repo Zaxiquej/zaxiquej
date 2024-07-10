@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士轮模拟器</title>
+    <link rel="stylesheet" href="swiss2.css">
+</head>
+<body>
+    <h1>瑞士轮模拟器</h1>
+    <form id="simulator-form">
+        <label for="numPlayers">人数:</label>
+        <input type="number" id="numPlayers" name="numPlayers" value="24" required>
+        <label for="numRounds">轮数:</label>
+        <input type="number" id="numRounds" name="numRounds" value="6" required>
+        <br>
+        <label for="numQualifiers">出线人数:</label>
+        <input type="number" id="numQualifiers" name="numQualifiers" value="2" required>
+
+        <label for="gamesPerRound">每轮局数:</label>
+        <input type="number" id="gamesPerRound" name="gamesPerRound" value="3" required>
+        <br>
+        <label for="numSimulations">模拟比赛数:</label>
+        <input type="number" id="numSimulations" name="numSimulations" value="1" required>
+
+        <br>
+        <label for="defaultDeckStrength">默认卡组硬实力:</label>
+        <input type="number" id="defaultDeckStrength" name="defaultDeckStrength" value="100" required>
+    </form>
+    <div id="special-players"></div>
+    <button type="button" onclick="addSpecialPlayer()">添加特殊玩家</button>
+
+    <br>
+    <button type="button" onclick="runSimulation()">开始模拟</button>
+
+    <div id="results"></div>
+
+    <script src="strengthSwissSimulator.js"></script>
+</body>
+</html>

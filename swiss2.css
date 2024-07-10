@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 480px;
+    margin: 20px auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#results {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.player-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.player-summary:hover {
+    background-color: #f1f1f1;
+}
+
+.toggle-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+
+.player-details {
+    background-color: #f4f4f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+/* 全局样式 */
+body {
+    font-size: 14px; /* 设置全局字体大小 */
+    font-family: Arial, sans-serif; /* 设置全局字体 */
+}
+
+/* 在特殊玩家框框起来添加特殊样式 */
+.special-player {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+/* 默认收起 .details */
+.details {
+    display: none;
+    margin-left: 20px; /* Indent the details for visual hierarchy */
+}
+
+/* 切换按钮样式 */
+.toggle-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+
+/* 调整数字框的布局 */
+#simulator-form input[type="number"],
+.special-player input[type="number"] {
+    width: 108px; /* 设置数字框宽度 */
+    margin-right: 10px; /* 设置数字框之间的间距 */
+}
+
+
+/* 调整数字框的布局 */
+#simulator-form label {
+    display: inline-block;
+    width: 100px; /* 设置标签宽度 */
+    text-align: right; /* 标签文字右对齐 */
+    margin-right: 10px; /* 右边距 */
+}
+
+#simulator-form input[type="number"] {
+    width: 90px; /* 设置数字框宽度 */
+    margin-right: 10px; /* 右边距 */
+}
