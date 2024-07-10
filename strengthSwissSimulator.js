@@ -117,19 +117,19 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                     if (round == 0){
                       let endIf = false;
                       if (!endIf){
-                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === player2Wins) {
-                            player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === 1) {
+                            player2Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
                         }
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === player2Wins) {
-                            player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === 1) {
+                            player1Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
                         }
                       }
                       if (!endIf){
-                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodLuck) && player1Wins === player2Wins) {
-                            player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.goodLuck) && player1Wins === 1) {
+                            player1Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
                         }
-                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodLuck) && player1Wins === player2Wins) {
-                            player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                        if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.goodLuck) && player1Wins === 1) {
+                            player2Wins = 2; // Player 1 loses this round due to "Bad Luck" skill
                         }
                       }
                     }
