@@ -11,12 +11,17 @@ function runSimulation() {
         const name = playerDiv.querySelector('.name').value;
         const deck1Strength = parseInt(playerDiv.querySelector('.deck1Strength').value);
         const deck2Strength = parseInt(playerDiv.querySelector('.deck2Strength').value);
-        specialPlayers.push({ name, deck1Strength, deck2Strength });
+        const skills = {
+            badLuck: playerDiv.querySelector('#skill1').checked,
+            oneMoveAhead: playerDiv.querySelector('#skill2').checked
+        };
+        specialPlayers.push({ name, deck1Strength, deck2Strength, skills });
     });
 
     const results = simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numSimulations, defaultDeckStrength, specialPlayers);
     displayResults(results, numSimulations);
 }
+
 
 function addSpecialPlayer() {
     const specialPlayersDiv = document.getElementById('special-players');
@@ -31,10 +36,15 @@ function addSpecialPlayer() {
         <input type="number" class="deck2Strength" value="100" required>
         <button type="button" onclick="removeSpecialPlayer(this)">移除</button>
         <br>
+        <div class="skills">
+            <label for="skill1">倒霉蛋-第一轮必定落败</label>
+            <input type="checkbox" id="skill1" name="skills" value="badLuck">
+            <label for="skill2">棋差一着-最后一轮必定落败</label>
+            <input type="checkbox" id="skill2" name="skills" value="oneMoveAhead">
+        </div>
     `;
     specialPlayersDiv.appendChild(playerDiv);
 }
-
 function removeSpecialPlayer(button) {
     button.parentElement.remove();
 }
@@ -54,7 +64,8 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
             opponents: [],
             gameWins: 0,
             gameLosses: 0,
-            decks: [defaultDeckStrength, defaultDeckStrength]
+            decks: [defaultDeckStrength, defaultDeckStrength],
+            participation: 0  // 新增参与次数统计
         }));
 
         specialPlayers.forEach((player, index) => {
@@ -91,6 +102,22 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                         player2Wins++;
                         player2Decks.splice(player2Decks.indexOf(player2Deck), 1);
                     }
+
+                    // Check if special player has "Bad Luck" skill
+                    if (player1.name && specialPlayers.find(sp => sp.name === player1.name && sp.skills.badLuck) && player1Wins === player2Wins) {
+                        player2Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                    }
+                    if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.badLuck) && player1Wins === player2Wins) {
+                        player1Wins++; // Player 1 loses this round due to "Bad Luck" skill
+                    }
+
+                    // Check if special player has "One Move Ahead" skill
+                    if (player2.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
+                        player1Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                    }
+                    if (player1.name && specialPlayers.find(sp => sp.name === player2.name && sp.skills.oneMoveAhead) && player1Wins === player2Wins) {
+                        player2Wins++; // Player 2 loses this round due to "One Move Ahead" skill
+                    }
                 }
 
                 player1.gameWins += player1Wins;
@@ -106,6 +133,10 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
 
                 player1.opponents.push(player2);
                 player2.opponents.push(player1);
+
+                // Increment participation count for both players
+                player1.participation++;
+                player2.participation++;
             });
         }
 

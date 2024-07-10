@@ -147,3 +147,18 @@ body {
     width: 90px; /* 设置数字框宽度 */
     margin-right: 10px; /* 右边距 */
 }
+
+/* 其他样式保持不变 */
+
+/* 技能区域样式 */
+.skills {
+    margin-top: 10px;
+}
+
+.skills label {
+    margin-right: 10px;
+}
+
+.skills input[type="checkbox"] {
+    margin-right: 5px;
+}
