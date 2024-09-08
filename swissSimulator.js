@@ -5,14 +5,19 @@ function runSimulation() {
     const gamesPerRound = parseInt(document.getElementById('gamesPerRound').value);
     const numSimulations = parseInt(document.getElementById('numSimulations').value);
     const calculateFirstRoundLoss = document.getElementById('calculateFirstRoundLoss').checked;
+    const calculateTwoRoundLoss = document.getElementById('calculateTwoRoundLoss').checked;
+    const calculateotoRoundLoss = document.getElementById('calculate1-1RoundLoss').checked;
 
-    const results = simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numSimulations, calculateFirstRoundLoss);
-    displayResults(results, numSimulations, calculateFirstRoundLoss);
+
+    const results = simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numSimulations, calculateFirstRoundLoss,calculateTwoRoundLoss,calculateotoRoundLoss);
+    displayResults(results, numSimulations, calculateFirstRoundLoss, calculateTwoRoundLoss,calculateotoRoundLoss);
 }
 
-function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numSimulations, calculateFirstRoundLoss) {
+function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numSimulations, calculateFirstRoundLoss, calculateTwoRoundLoss,calculateotoRoundLoss) {
     const results = {};
     const firstRoundLossResults = {};
+    const twoRoundLossResults = {};
+    const otoRoundLossResults = {};
 
     for (let sim = 0; sim < numSimulations; sim++) {
         const players = Array.from({ length: numPlayers }, (_, i) => ({
@@ -21,7 +26,9 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
             opponentScores: [],
             gameWins: 0,
             gameLosses: 0,
-            firstRoundLoss: false
+            firstRoundLoss: false,
+            twoRoundLoss: false,
+            otoRoundLoss: false,
         }));
 
         for (let round = 0; round < numRounds; round++) {
@@ -56,9 +63,13 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                 if (player1Wins > player2Wins) {
                     player1.score += 1;
                     if (round === 0) player2.firstRoundLoss = true;
+                    if (round === 1 && player2.firstRoundLoss) player2.twoRoundLoss = true;
+                    if (round === 1 && player1.firstRoundLoss) player1.otoRoundLoss = true;
                 } else {
                     player2.score += 1;
                     if (round === 0) player1.firstRoundLoss = true;
+                    if (round === 1 && player1.firstRoundLoss) player1.twoRoundLoss = true;
+                    if (round === 1 && player2.firstRoundLoss) player2.otoRoundLoss = true;
                 }
 
                 player1.opponentScores.push(player2.score);
@@ -92,6 +103,18 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                 }
                 firstRoundLossResults[player.score].qualifiers++;
             }
+            if (calculateTwoRoundLoss && player.twoRoundLoss) {
+                if (!twoRoundLossResults[player.score]) {
+                    twoRoundLossResults[player.score] = { total: 0, qualifiers: 0 };
+                }
+                twoRoundLossResults[player.score].qualifiers++;
+            }
+            if (calculateotoRoundLoss && player.otoRoundLoss) {
+                if (!otoRoundLossResults[player.score]) {
+                    otoRoundLossResults[player.score] = { total: 0, qualifiers: 0 };
+                }
+                otoRoundLossResults[player.score].qualifiers++;
+            }
         });
 
         players.forEach(player => {
@@ -106,16 +129,29 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
                 }
                 firstRoundLossResults[player.score].total++;
             }
+
+            if (calculateTwoRoundLoss && player.twoRoundLoss) {
+                if (!twoRoundLossResults[player.score]) {
+                    twoRoundLossResults[player.score] = { total: 0, qualifiers: 0 };
+                }
+                twoRoundLossResults[player.score].total++;
+            }
+            if (calculateotoRoundLoss && player.otoRoundLoss) {
+                if (!otoRoundLossResults[player.score]) {
+                    otoRoundLossResults[player.score] = { total: 0, qualifiers: 0 };
+                }
+                otoRoundLossResults[player.score].total++;
+            }
         });
     }
 
-    return { results, firstRoundLossResults };
+    return { results, firstRoundLossResults, twoRoundLossResults, otoRoundLossResults };
 }
 
-function displayResults(resultsData, numSimulations, calculateFirstRoundLoss) {
+function displayResults(resultsData, numSimulations, calculateFirstRoundLoss, calculateTwoRoundLoss, calculateotoRoundLoss) {
     const resultsDiv = document.getElementById('results');
     resultsDiv.innerHTML = '<h2>模拟结果</h2>';
-    const { results, firstRoundLossResults } = resultsData;
+    const { results, firstRoundLossResults, twoRoundLossResults, otoRoundLossResults } = resultsData;
 
     resultsDiv.innerHTML += '<h3>总体结果</h3>';
     for (const [score, data] of Object.entries(results)) {
@@ -127,6 +163,22 @@ function displayResults(resultsData, numSimulations, calculateFirstRoundLoss) {
     if (calculateFirstRoundLoss) {
         resultsDiv.innerHTML += '<h3>首轮输掉者的出线率</h3>';
         for (const [score, data] of Object.entries(firstRoundLossResults)) {
+            const { total, qualifiers } = data;
+            const percentage = (qualifiers / total * 100).toFixed(2);
+            resultsDiv.innerHTML += `<p>胜场数: ${score}, 总人数: ${total}, 出线人数: ${qualifiers}, 出线率: ${percentage}%</p>`;
+        }
+    }
+    if (calculateTwoRoundLoss) {
+        resultsDiv.innerHTML += '<h3>前两轮输掉者的出线率</h3>';
+        for (const [score, data] of Object.entries(twoRoundLossResults)) {
+            const { total, qualifiers } = data;
+            const percentage = (qualifiers / total * 100).toFixed(2);
+            resultsDiv.innerHTML += `<p>胜场数: ${score}, 总人数: ${total}, 出线人数: ${qualifiers}, 出线率: ${percentage}%</p>`;
+        }
+    }
+    if (calculateotoRoundLoss) {
+        resultsDiv.innerHTML += '<h3>1-1者的出线率</h3>';
+        for (const [score, data] of Object.entries(otoRoundLossResults)) {
             const { total, qualifiers } = data;
             const percentage = (qualifiers / total * 100).toFixed(2);
             resultsDiv.innerHTML += `<p>胜场数: ${score}, 总人数: ${total}, 出线人数: ${qualifiers}, 出线率: ${percentage}%</p>`;

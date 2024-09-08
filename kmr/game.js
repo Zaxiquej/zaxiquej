@@ -4246,6 +4246,10 @@ window.onclick = function(event) {
     }
 }
 
+if (window.gc) {
+  window.gc();
+}
+
 kmr.addEventListener('click', clickKmr);
 refMinions();
 needDisplay = true

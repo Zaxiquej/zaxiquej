@@ -86,10 +86,23 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
         for (let round = 0; round < numRounds; round++) {
             players.sort((a, b) => b.score - a.score);
             const matches = [];
+            const usedPlayers = new Set();
 
-            for (let i = 0; i < numPlayers; i += 2) {
-                if (i + 1 < numPlayers) {
-                    matches.push([players[i], players[i + 1]]);
+            for (let i = 0; i < numPlayers; i++) {
+                if (usedPlayers.has(players[i].id)) continue;
+
+                let opponentIndex = -1;
+                for (let j = i + 1; j < numPlayers; j++) {
+                    if (!usedPlayers.has(players[j].id) && !players[i].opponents.includes(players[j])) {
+                        opponentIndex = j;
+                        break;
+                    }
+                }
+
+                if (opponentIndex !== -1) {
+                    matches.push([players[i], players[opponentIndex]]);
+                    usedPlayers.add(players[i].id);
+                    usedPlayers.add(players[opponentIndex].id);
                 }
             }
 
@@ -223,6 +236,7 @@ function simulateSwiss(numPlayers, numRounds, numQualifiers, gamesPerRound, numS
 
     return { results, playerStats };
 }
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
