@@ -20,7 +20,7 @@
           padding: 20px;
           box-shadow: 0 0 10px rgba(0,0,0,0.1);
           text-align: center;
-          max-width: 800px;
+          max-width: 840px;
           width: 100%;
       }
       h1 {
@@ -53,7 +53,7 @@
           padding: 10px;
           border: 1px solid #ddd;
           border-radius: 5px;
-          width: 220px;
+          width: 230px;
       }
       .card img {
           width: 100%;
@@ -132,8 +132,6 @@
                         <h3>${result.title}</h3>
                         <img src="https://shadowverse-portal.com/image/card/phase2/common/C/C_${result.card.card_id}.png" alt="${result.card.card_name}">
                         <p><a href="https://shadowverse-portal.com/card/${result.card.card_id}?lang=zh-tw" target="_blank">${result.card.card_name}</a></p>
-                        <p>职业: ${getClanName(result.card.clan)}</p>
-                        <p>费用: ${result.card.cost}</p>
                     `;
                     resultDiv.appendChild(cardDiv);
                 } else {
