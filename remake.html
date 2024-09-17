@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你穿越到SZBF后会使用什么卡组？</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: #f0f0f0;
+          margin: 0;
+          padding: 20px;
+      }
+      .container {
+          background-color: white;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          text-align: center;
+          max-width: 800px;
+          width: 100%;
+      }
+      h1 {
+          color: #333;
+      }
+      input, button {
+          margin: 10px 0;
+          padding: 10px;
+          width: 100%;
+          box-sizing: border-box;
+      }
+      button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+      button:hover {
+          background-color: #45a049;
+      }
+      #result {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          margin-top: 20px;
+      }
+      .card {
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          width: 220px;
+      }
+      .card img {
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+      }
+      .card p {
+          margin: 5px 0;
+          font-size: 14px;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>你穿越到SZBF后会使用什么卡组？</h1>
+        <input type="text" id="playerName" placeholder="请输入你的名字">
+        <button onclick="drawCards()">Remake!</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="library/database.js"></script>
+    <script>
+        function drawCards() {
+            const playerName = document.getElementById('playerName').value;
+            if (!playerName) {
+                alert("请输入你的名字");
+                return;
+            }
+
+            const rng = new Math.seedrandom(playerName);
+
+            const aceCard = drawCard(rng, {rarity: 4, char_type: 1, notoken: 1}); // 金卡，char_type 1 表示随从
+            const companionCard = drawCard(rng, {rarity: [2, 3, 4], clan: aceCard.clan, char_type: 1, cost: {max: 5}, notoken: 1});
+            const opponentAceCard = drawCard(rng, {rarity: 4, clan: {not: aceCard.clan}, char_type: 1, notoken: 1});
+
+            displayResults([
+                {title: "卡组王牌", card: aceCard},
+                {title: "电子伙伴", card: companionCard},
+                {title: "对手王牌", card: opponentAceCard}
+            ]);
+        }
+
+        function drawCard(rng, criteria) {
+            const filteredCards = cardData.filter(card => {
+                return (
+                    (criteria.rarity ? (Array.isArray(criteria.rarity) ? criteria.rarity.includes(card.rarity) : card.rarity === criteria.rarity) : true) &&
+                    (criteria.clan ? (criteria.clan.not ? card.clan !== criteria.clan.not : card.clan === criteria.clan) : true) &&
+                    (criteria.char_type ? card.char_type === criteria.char_type : true) &&
+                    (criteria.cost ? (card.cost <= criteria.cost.max) : true) &&
+                    (criteria.notoken ? (card.card_set_id != 90000) : true)
+                );
+            });
+
+            if (filteredCards.length === 0) {
+                return null;
+            }
+
+            const randomIndex = Math.floor(rng() * filteredCards.length);
+            return filteredCards[randomIndex];
+        }
+
+        function displayResults(results) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+
+            results.forEach(result => {
+                if (result.card) {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'card';
+                    cardDiv.innerHTML = `
+                        <h3>${result.title}</h3>
+                        <img src="https://shadowverse-portal.com/image/card/phase2/common/C/C_${result.card.card_id}.png" alt="${result.card.card_name}">
+                        <p><a href="https://shadowverse-portal.com/card/${result.card.card_id}?lang=zh-tw" target="_blank">${result.card.card_name}</a></p>
+                        <p>职业: ${getClanName(result.card.clan)}</p>
+                        <p>费用: ${result.card.cost}</p>
+                    `;
+                    resultDiv.appendChild(cardDiv);
+                } else {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'card';
+                    errorDiv.innerHTML = `<h3>${result.title}</h3><p>未找到符合条件的卡片</p>`;
+                    resultDiv.appendChild(errorDiv);
+                }
+            });
+        }
+
+        function getClanName(clanId) {
+            const clanNames = {
+                0: "中立",
+                1: "精灵",
+                2: "皇家护卫",
+                3: "巫师",
+                4: "龙族",
+                5: "死灵法师",
+                6: "吸血鬼",
+                7: "主教",
+                8: "复仇者"
+            };
+            return clanNames[clanId] || "未知";
+        }
+    </script>
+</body>
+</html>
