@@ -100,11 +100,11 @@
         function drawCard(rng, criteria) {
             const filteredCards = cardData.filter(card => {
                 return (
-                    (criteria.rarity ? (Array.isArray(criteria.rarity) ? criteria.rarity.includes(card.rarity) : card.rarity === criteria.rarity) : true) &&
-                    (criteria.clan ? (criteria.clan.not ? card.clan !== criteria.clan.not : card.clan === criteria.clan) : true) &&
-                    (criteria.char_type ? card.char_type === criteria.char_type : true) &&
-                    (criteria.cost ? (card.cost <= criteria.cost.max) : true) &&
-                    (criteria.notoken ? (card.card_set_id != 90000) : true)
+                    (typeof criteria.rarity !== 'undefined' ? (Array.isArray(criteria.rarity) ? criteria.rarity.includes(card.rarity) : card.rarity === criteria.rarity) : true) &&
+                    (typeof criteria.clan !== 'undefined' ? (typeof criteria.clan.not !== 'undefined' ? card.clan !== criteria.clan.not : card.clan === criteria.clan) : true) &&
+                    (typeof criteria.char_type !== 'undefined' ? card.char_type === criteria.char_type : true) &&
+                    (typeof criteria.cost !== 'undefined' && typeof criteria.cost.max !== 'undefined' ? card.cost <= criteria.cost.max : true) &&
+                    (typeof criteria.notoken !== 'undefined' ? (card.card_set_id != 90000) : true)
                 );
             });
 
