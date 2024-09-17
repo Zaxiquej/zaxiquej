@@ -89,11 +89,15 @@
             const aceCard = drawCard(rng, {rarity: 4, char_type: 1, notoken: 1}); // 金卡，char_type 1 表示随从
             const companionCard = drawCard(rng, {rarity: [2, 3, 4], clan: aceCard.clan, char_type: 1, cost: {max: 5}, notoken: 1});
             const opponentAceCard = drawCard(rng, {rarity: 4, clan: {not: aceCard.clan}, char_type: 1, notoken: 1});
+            const spellCard = drawCard(rng, {clan: aceCard.clan, char_type: 4, notoken: 1});
+            const amuletCard = drawCard(rng, {clan: aceCard.clan, char_type: [2,3], notoken: 1});
 
             displayResults([
                 {title: "卡组王牌", card: aceCard},
                 {title: "电子伙伴", card: companionCard},
-                {title: "对手王牌", card: opponentAceCard}
+                {title: "对手王牌", card: opponentAceCard},
+                {title: "最喜爱的法术", card: spellCard},
+                {title: "最喜爱的护符", card: amuletCard}
             ]);
         }
 
@@ -102,7 +106,7 @@
                 return (
                     (typeof criteria.rarity !== 'undefined' ? (Array.isArray(criteria.rarity) ? criteria.rarity.includes(card.rarity) : card.rarity === criteria.rarity) : true) &&
                     (typeof criteria.clan !== 'undefined' ? (typeof criteria.clan.not !== 'undefined' ? card.clan !== criteria.clan.not : card.clan === criteria.clan) : true) &&
-                    (typeof criteria.char_type !== 'undefined' ? card.char_type === criteria.char_type : true) &&
+                    (typeof criteria.char_type !== 'undefined' ? (Array.isArray(criteria.char_type) ? criteria.char_type.includes(card.char_type) : card.char_type === criteria.char_type) : true) &&
                     (typeof criteria.cost !== 'undefined' && typeof criteria.cost.max !== 'undefined' ? card.cost <= criteria.cost.max : true) &&
                     (typeof criteria.notoken !== 'undefined' ? (card.card_set_id != 90000) : true)
                 );
