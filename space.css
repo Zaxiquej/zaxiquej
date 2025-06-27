@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0b3d91;
+    color: white;
+    text-align: center;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#players {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.player {
+    border: 2px solid white;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+.hand {
+    margin-top: 10px;
+}
+
+.card {
+    display: inline-block;
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#task-list {
+    margin-top: 20px;
+}
+
+#game-log {
+    margin-top: 20px;
+    height: 100px;
+    overflow-y: scroll;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.card {
+    display: inline-block;
+    margin: 2px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card[data-type="gold"] {
+    background-color: #ffd700;
+    border-color: #ffd700;
+}
+
+.card[data-type="silver"] {
+    background-color: #c0c0c0;
+    border-color: #c0c0c0;
+}
+
+.card[data-type="bronze"] {
+    background-color: #cd7f32;
+    border-color: #cd7f32;
+}
+
+.card[data-type="iron"] {
+    background-color: #a9a9a9;
+    border-color: #a9a9a9;
+}
+
+.card[data-type="rocket"] {
+    background-color: #ff6347;
+    border-color: #ff6347;
+    color: white;
+}

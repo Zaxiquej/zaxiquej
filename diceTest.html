@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骰盅探险 - 测试版</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b5a2b;
+        }
+
+        .game-info {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            position: relative;
+            width: 350px;
+            height: 300px;
+        }
+
+        .dice {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #8b5a2b;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #d2b48c;
+            position: absolute;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .dice:hover {
+            transform: scale(1.05);
+        }
+
+        .dice.revealed {
+            background-color: #f9f9f9;
+        }
+
+        .dice.empty {
+            background-color: #b7f0b7;
+        }
+
+        .dice.trap {
+            background-color: #f0b7b7;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .question-cards {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            padding: 10px;
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card.used {
+            background-color: #f0f0f0;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #8b5a2b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #a67c52;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 5px;
+            min-height: 40px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .question-ui {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>骰盅探险 - 测试版</h1>
+
+        <div class="game-info">
+            <p>环形摆放6个骰盅，编号1-6（1与6相邻）。</p>
+            <p>其中包含: 2个空骰盅(0)、3个单陷阱骰盅(1)、1个双陷阱骰盅(2)。</p>
+            <p>每局可以问3个问题，然后选择一个骰盅打开。</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div>回合</div>
+                <div id="round">1</div>
+            </div>
+            <div class="stat">
+                <div>生命值</div>
+                <div id="health">2</div>
+            </div>
+            <div class="stat">
+                <div>金币</div>
+                <div id="coins">0</div>
+            </div>
+            <div class="stat">
+                <div>剩余问题</div>
+                <div id="questions-left">3</div>
+            </div>
+        </div>
+
+        <div class="dice-container" id="dice-container">
+            <!-- 骰盅将通过JS动态生成 -->
+        </div>
+
+        <div class="message" id="message">
+            游戏开始！请选择使用问题卡或直接翻开骰盅。
+        </div>
+
+        <div class="question-cards">
+            <div class="card" id="card1" onclick="selectQuestionCard(1)">A和B中一共有多少陷阱筹码？</div>
+            <div class="card" id="card2" onclick="selectQuestionCard(2)">A和B的陷阱筹码数是否一样？</div>
+            <div class="card" id="card3" onclick="selectQuestionCard(3)">AB与CD两组，哪一组陷阱筹码更多？</div>
+            <div class="card" id="card4" onclick="selectQuestionCard(4)">AB是否存在2个其他骰盅，其和与AB的和相同？</div>
+            <div class="card" id="card5" onclick="selectQuestionCard(5)">A是否与一个数值相同的骰盅相邻？</div>
+            <div class="card" id="card6" onclick="selectQuestionCard(6)">A是否与一个数值相同的骰盅正对？</div>
+        </div>
+
+        <!-- 问题卡1的UI -->
+        <div class="question-ui" id="question1-ui">
+            <p>选择两个骰盅位置:</p>
+            <select id="q1-pos1">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <select id="q1-pos2">
+                <option value="1">位置1</option>
+                <option value="2" selected>位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion1()">询问</button>
+        </div>
+
+        <!-- 问题卡2的UI -->
+        <div class="question-ui" id="question2-ui">
+            <p>选择两个骰盅位置:</p>
+            <select id="q2-pos1">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <select id="q2-pos2">
+                <option value="1">位置1</option>
+                <option value="2" selected>位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion2()">询问</button>
+        </div>
+
+        <!-- 问题卡3的UI -->
+        <div class="question-ui" id="question3-ui">
+            <p>选择四个骰盅位置 (AB vs CD):</p>
+            <select id="q3-posA">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <select id="q3-posB">
+                <option value="1">位置1</option>
+                <option value="2" selected>位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            vs
+            <select id="q3-posC">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3" selected>位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <select id="q3-posD">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4" selected>位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion3()">询问</button>
+        </div>
+
+        <!-- 问题卡4的UI -->
+        <div class="question-ui" id="question4-ui">
+            <p>选择两个骰盅位置:</p>
+            <select id="q4-pos1">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <select id="q4-pos2">
+                <option value="1">位置1</option>
+                <option value="2" selected>位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion4()">询问</button>
+        </div>
+
+        <!-- 问题卡5的UI -->
+        <div class="question-ui" id="question5-ui">
+            <p>选择一个骰盅位置:</p>
+            <select id="q5-pos">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion5()">询问</button>
+        </div>
+
+        <!-- 问题卡6的UI -->
+        <div class="question-ui" id="question6-ui">
+            <p>选择一个骰盅位置:</p>
+            <select id="q6-pos">
+                <option value="1">位置1</option>
+                <option value="2">位置2</option>
+                <option value="3">位置3</option>
+                <option value="4">位置4</option>
+                <option value="5">位置5</option>
+                <option value="6">位置6</option>
+            </select>
+            <button onclick="askQuestion6()">询问</button>
+        </div>
+
+        <div class="controls">
+            <button id="new-game-btn" onclick="startNewGame()">开始新游戏</button>
+        </div>
+    </div>
+
+    <script>
+        // 游戏状态
+        let gameState = {
+            round: 1,
+            health: 2,
+            coins: 0,
+            questionsLeft: 3,
+            diceValues: [],
+            revealedDice: [],
+            gameOver: false
+        };
+
+        // 初始化游戏
+        function initGame() {
+            // 更新状态显示
+            document.getElementById('round').textContent = gameState.round;
+            document.getElementById('health').textContent = gameState.health;
+            document.getElementById('coins').textContent = gameState.coins;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 重置问题卡
+            document.getElementById('card1').classList.remove('used');
+            document.getElementById('card2').classList.remove('used');
+            document.getElementById('card3').classList.remove('used');
+            document.getElementById('card4').classList.remove('used');
+            document.getElementById('card5').classList.remove('used');
+            document.getElementById('card6').classList.remove('used');
+
+            // 隐藏所有问题UI
+            document.getElementById('question1-ui').style.display = 'none';
+            document.getElementById('question2-ui').style.display = 'none';
+            document.getElementById('question3-ui').style.display = 'none';
+            document.getElementById('question4-ui').style.display = 'none';
+            document.getElementById('question5-ui').style.display = 'none';
+            document.getElementById('question6-ui').style.display = 'none';
+
+            // 生成骰盅
+            createDiceCups();
+
+            // 重置消息
+            document.getElementById('message').textContent = '游戏开始！请选择使用问题卡或直接翻开骰盅。';
+        }
+
+        // 创建环形骰盅
+        function createDiceCups() {
+            const container = document.getElementById('dice-container');
+            container.innerHTML = '';
+
+            // 生成骰盅值：2个0，3个1，1个2
+            let values = [0, 0, 1, 1, 1, 2];
+            // 随机打乱
+            shuffleArray(values);
+            gameState.diceValues = values;
+            gameState.revealedDice = Array(6).fill(false);
+
+            // 计算环形位置
+            const radius = 120;
+            const center = { x: 175, y: 150 };
+
+            for (let i = 0; i < 6; i++) {
+                const angle = (i * Math.PI / 3) - Math.PI / 6; // 调整角度使其均匀分布
+                const x = center.x + radius * Math.cos(angle) - 35;
+                const y = center.y + radius * Math.sin(angle) - 35;
+
+                const dice = document.createElement('div');
+                dice.className = 'dice';
+                dice.id = `dice-${i+1}`;
+                dice.style.left = `${x}px`;
+                dice.style.top = `${y}px`;
+                dice.textContent = i + 1;
+                dice.addEventListener('click', () => revealDice(i+1));
+
+                container.appendChild(dice);
+            }
+        }
+
+        // 打乱数组
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // 选择问题卡
+        function selectQuestionCard(cardNumber) {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) {
+                return;
+            }
+
+            // 检查问题卡是否已使用
+            const cardElement = document.getElementById(`card${cardNumber}`);
+            if (cardElement.classList.contains('used')) {
+                return;
+            }
+
+            // 隐藏所有问题UI
+            document.getElementById('question1-ui').style.display = 'none';
+            document.getElementById('question2-ui').style.display = 'none';
+            document.getElementById('question3-ui').style.display = 'none';
+            document.getElementById('question4-ui').style.display = 'none';
+            document.getElementById('question5-ui').style.display = 'none';
+            document.getElementById('question6-ui').style.display = 'none';
+
+            // 显示选中的问题UI
+            document.getElementById(`question${cardNumber}-ui`).style.display = 'block';
+        }
+
+        // 问题1：A和B中一共多少骰子？
+        function askQuestion1() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const pos1 = parseInt(document.getElementById('q1-pos1').value) - 1;
+            const pos2 = parseInt(document.getElementById('q1-pos2').value) - 1;
+
+            if (pos1 === pos2) {
+                alert('请选择两个不同的位置！');
+                return;
+            }
+
+            const total = gameState.diceValues[pos1] + gameState.diceValues[pos2];
+            document.getElementById('message').textContent = `问题1回答：位置${pos1+1}和位置${pos2+1}一共有${total}个陷阱筹码。`;
+
+            // 标记问题卡为已使用
+            document.getElementById('card1').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question1-ui').style.display = 'none';
+        }
+
+        // 问题2：A和B的骰子数是否一样？
+        function askQuestion2() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const pos1 = parseInt(document.getElementById('q2-pos1').value) - 1;
+            const pos2 = parseInt(document.getElementById('q2-pos2').value) - 1;
+
+            if (pos1 === pos2) {
+                alert('请选择两个不同的位置！');
+                return;
+            }
+
+            const isSame = gameState.diceValues[pos1] === gameState.diceValues[pos2];
+            document.getElementById('message').textContent = `问题2回答：位置${pos1+1}和位置${pos2+1}的陷阱筹码数${isSame ? '相同' : '不同'}。`;
+
+            // 标记问题卡为已使用
+            document.getElementById('card2').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question2-ui').style.display = 'none';
+        }
+
+        // 问题3：AB与CD两组，哪一组骰子更多？
+        function askQuestion3() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const posA = parseInt(document.getElementById('q3-posA').value) - 1;
+            const posB = parseInt(document.getElementById('q3-posB').value) - 1;
+            const posC = parseInt(document.getElementById('q3-posC').value) - 1;
+            const posD = parseInt(document.getElementById('q3-posD').value) - 1;
+
+            // 检查是否有重复位置
+            const positions = [posA, posB, posC, posD];
+            if (new Set(positions).size !== 4) {
+                alert('请选择四个不同的位置！');
+                return;
+            }
+
+            const totalAB = gameState.diceValues[posA] + gameState.diceValues[posB];
+            const totalCD = gameState.diceValues[posC] + gameState.diceValues[posD];
+
+            let result;
+            if (totalAB > totalCD) {
+                result = `位置${posA+1}和${posB+1}的陷阱筹码更多`;
+            } else if (totalCD > totalAB) {
+                result = `位置${posC+1}和${posD+1}的陷阱筹码更多`;
+            } else {
+                result = '两组陷阱筹码数量相等';
+            }
+
+            document.getElementById('message').textContent = `问题3回答：${result}。`;
+
+            // 标记问题卡为已使用
+            document.getElementById('card3').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question3-ui').style.display = 'none';
+        }
+
+        // 问题4：AB是否存在2个其他骰盅，其和与AB的和相同？
+        function askQuestion4() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const pos1 = parseInt(document.getElementById('q4-pos1').value) - 1;
+            const pos2 = parseInt(document.getElementById('q4-pos2').value) - 1;
+
+            if (pos1 === pos2) {
+                alert('请选择两个不同的位置！');
+                return;
+            }
+
+            // AB的和
+            const sumAB = gameState.diceValues[pos1] + gameState.diceValues[pos2];
+
+            // 找出所有其他位置的组合
+            const otherPositions = [];
+            for (let i = 0; i < 6; i++) {
+                if (i !== pos1 && i !== pos2) {
+                    otherPositions.push(i);
+                }
+            }
+
+            // 检查是否存在两个其他位置的和等于AB的和
+            let found = false;
+            let foundPair = null;
+
+            for (let i = 0; i < otherPositions.length; i++) {
+                for (let j = i + 1; j < otherPositions.length; j++) {
+                    const sum = gameState.diceValues[otherPositions[i]] + gameState.diceValues[otherPositions[j]];
+                    if (sum === sumAB) {
+                        found = true;
+                        foundPair = [otherPositions[i] + 1, otherPositions[j] + 1];
+                        break;
+                    }
+                }
+                if (found) break;
+            }
+
+            if (found) {
+                document.getElementById('message').textContent = `问题4回答：存在2个骰盅（位置${foundPair[0]}和位置${foundPair[1]}），其陷阱筹码和与位置${pos1+1}和位置${pos2+1}的和相同。`;
+            } else {
+                document.getElementById('message').textContent = `问题4回答：不存在2个其他骰盅，其陷阱筹码和与位置${pos1+1}和位置${pos2+1}的和相同。`;
+            }
+
+            // 标记问题卡为已使用
+            document.getElementById('card4').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question4-ui').style.display = 'none';
+        }
+
+        // 问题5：A是否与一个数值相同的骰盅相邻？
+        function askQuestion5() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const pos = parseInt(document.getElementById('q5-pos').value) - 1;
+            const value = gameState.diceValues[pos];
+
+            // 获取相邻位置（注意1与6相邻）
+            const leftNeighbor = (pos === 0) ? 5 : pos - 1;
+            const rightNeighbor = (pos === 5) ? 0 : pos + 1;
+
+            const hasEqualNeighbor = (gameState.diceValues[leftNeighbor] === value) ||
+                                     (gameState.diceValues[rightNeighbor] === value);
+
+            document.getElementById('message').textContent = `问题5回答：位置${pos+1}${hasEqualNeighbor ? '有' : '没有'}与其陷阱筹码数相同的相邻骰盅。`;
+
+            // 标记问题卡为已使用
+            document.getElementById('card5').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question5-ui').style.display = 'none';
+        }
+
+        // 问题6：A是否与一个数值相同的骰盅正对？
+        function askQuestion6() {
+            if (gameState.questionsLeft <= 0 || gameState.gameOver) return;
+
+            const pos = parseInt(document.getElementById('q6-pos').value) - 1;
+            const value = gameState.diceValues[pos];
+
+            // 获取正对位置（1与4正对，2与5，3与6）
+            const oppositeMap = {0: 3, 1: 4, 2: 5, 3: 0, 4: 1, 5: 2};
+            const oppositePos = oppositeMap[pos];
+
+            const hasEqualOpposite = gameState.diceValues[oppositePos] === value;
+
+            document.getElementById('message').textContent = `问题6回答：位置${pos+1}${hasEqualOpposite ? '有' : '没有'}与其陷阱筹码数相同的正对骰盅。`;
+
+            // 标记问题卡为已使用
+            document.getElementById('card6').classList.add('used');
+            gameState.questionsLeft--;
+            document.getElementById('questions-left').textContent = gameState.questionsLeft;
+
+            // 隐藏问题UI
+            document.getElementById('question6-ui').style.display = 'none';
+        }
+
+        // 翻开骰盅
+        function revealDice(position) {
+            if (gameState.gameOver) return;
+
+            const index = position - 1;
+            if (gameState.revealedDice[index]) return; // 已经翻开的骰盅不能再翻
+
+            const diceElement = document.getElementById(`dice-${position}`);
+            const value = gameState.diceValues[index];
+
+            // 标记为已翻开
+            gameState.revealedDice[index] = true;
+            diceElement.classList.add('revealed');
+
+            if (value === 0) {
+                // 空骰盅，玩家获胜
+                diceElement.textContent = '空';
+                diceElement.classList.add('empty');
+                gameState.coins += 10;
+                document.getElementById('coins').textContent = gameState.coins;
+                document.getElementById('message').textContent = '恭喜！你找到了一个空骰盅，获得10金币。';
+
+                // 检查是否所有骰盅都已翻开
+                if (gameState.revealedDice.every(d => d)) {
+                    endRound(true);
+                }
+            } else {
+                // 有陷阱，玩家失败
+                diceElement.textContent = value;
+                diceElement.classList.add('trap');
+                gameState.health -= value;
+                document.getElementById('health').textContent = gameState.health;
+                document.getElementById('message').textContent = `糟糕！踩中了陷阱，损失${value}点生命值。`;
+
+                // 检查是否游戏结束
+                if (gameState.health <= 0) {
+                    gameState.gameOver = true;
+                    document.getElementById('message').textContent += ' 游戏结束！';
+                } else {
+                    // 开始新的一局
+                    setTimeout(() => startNewGame(), 2000);
+                }
+            }
+        }
+
+        // 结束回合
+        function endRound(win) {
+            gameState.gameOver = true;
+
+            let message = '回合结束！';
+            if (win) {
+                const bonus = gameState.health * 20;
+                gameState.coins += bonus + 20;
+                message += `获得基础奖励20金币和生命值奖励${bonus}金币。`;
+            }
+
+            document.getElementById('message').textContent = message;
+            document.getElementById('coins').textContent = gameState.coins;
+        }
+
+        // 开始新游戏
+        function startNewGame() {
+            // 保留玩家的金币和轮次进度
+            const previousCoins = gameState.coins;
+            const previousRound = gameState.round;
+
+            // 重置游戏状态
+            gameState = {
+                round: previousRound + 1,
+                health: 2, // 恢复生命值
+                coins: previousCoins,
+                questionsLeft: 3,
+                diceValues: [],
+                revealedDice: [],
+                gameOver: false
+            };
+
+            initGame();
+        }
+
+        // 初始化游戏
+        document.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图标转换工具</title>
+</head>
+<body>
+    <h2>上传你的图标文件</h2>
+    <input type="file" id="upload" accept="image/png">
+    <br>
+    <label>行数: <input type="number" id="rows" value="4" min="1"></label>
+    <label>列数: <input type="number" id="cols" value="8" min="1"></label>
+    <br>
+    <label>原始格子大小: <input type="number" id="smallSize" value="16" min="1"></label>
+    <label>新格子大小: <input type="number" id="largeSize" value="48" min="1"></label>
+    <br>
+    <button onclick="processImage()">转换</button>
+    <br>
+    <canvas id="outputCanvas"></canvas>
+    <a id="download" style="display: none;">下载转换后的图像</a>
+
+    <script>
+        function processImage() {
+            const file = document.getElementById('upload').files[0];
+            if (!file) return;
+
+            const img = new Image();
+            img.onload = function() {
+                const cols = parseInt(document.getElementById('cols').value, 10);
+                const rows = parseInt(document.getElementById('rows').value, 10);
+                const smallSize = parseInt(document.getElementById('smallSize').value, 10);
+                const largeSize = parseInt(document.getElementById('largeSize').value, 10);
+
+                const canvas = document.getElementById('outputCanvas');
+                canvas.width = cols * largeSize;
+                canvas.height = rows * largeSize;
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let y = 0; y < rows; y++) {
+                    for (let x = 0; x < cols; x++) {
+                        const sx = x * smallSize;
+                        const sy = y * smallSize;
+                        const dx = x * largeSize + (largeSize - smallSize) / 2;
+                        const dy = y * largeSize + (largeSize - smallSize) / 2;
+                        ctx.drawImage(img, sx, sy, smallSize, smallSize, dx, dy, smallSize, smallSize);
+                    }
+                }
+
+                const link = document.getElementById('download');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'resized_spritesheet.png';
+                link.style.display = 'block';
+                link.textContent = '下载转换后的图像';
+            };
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

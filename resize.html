@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素图放大与切割工具</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input, button, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .output-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .canvas-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        canvas {
+            border: 1px solid #ddd;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #555;
+        }
+
+        #errorMessage {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .algorithm-info {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+        }
+
+        .crop-options {
+            margin-left: 25px;
+            display: none;
+        }
+
+        .crop-options.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>像素图放大与切割工具</h1>
+
+    <div class="container">
+        <div class="input-section">
+            <h2>选择图片并设置参数</h2>
+            <div class="controls">
+                <input type="file" id="imageInput" accept="image/*">
+                <label for="scaleInput">放大比例:</label>
+                <input type="number" id="scaleInput" step="0.01" min="0.01" value="1.5" style="width: 80px;">
+                <label for="algorithmSelect">算法:</label>
+                <select id="algorithmSelect">
+                    <option value="nearest">最近邻插值</option>
+                    <option value="pixelPerfect">像素精确映射</option>
+                    <option value="fractional">分数映射</option>
+                </select>
+            </div>
+
+            <div class="checkbox-container" style="margin-top: 10px;">
+                <input type="checkbox" id="cropCheckbox">
+                <label for="cropCheckbox">放大时切割图像</label>
+            </div>
+
+            <div id="cropOptions" class="crop-options">
+                <label for="cropSideSelect">切割位置:</label>
+                <select id="cropSideSelect">
+                    <option value="left">左侧1/4</option>
+                    <option value="right">右侧1/4</option>
+                </select>
+            </div>
+
+            <button id="scaleButton" style="margin-top: 15px;">放大图像</button>
+
+            <div id="errorMessage"></div>
+            <div class="info">
+                <p>支持小数比例放大，优化了1-2倍之间的放大效果，减少锯齿。</p>
+                <p>不同算法说明:</p>
+                <ul>
+                    <li><strong>最近邻插值</strong>: 最适合1-2倍之间的放大，减少锯齿</li>
+                    <li><strong>像素精确映射</strong>: 适合所有比例，特别是大于2倍的整数倍放大</li>
+                    <li><strong>分数映射</strong>: 对于特殊比例(如1.25, 1.5, 1.75等)效果最佳</li>
+                </ul>
+                <p><strong>切割功能</strong>: 放大并切割图像的1/4部分，节省空间同时保持像素精确。</p>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h2>结果预览</h2>
+            <div class="canvas-container">
+                <div>
+                    <h3>原始图像</h3>
+                    <canvas id="originalCanvas"></canvas>
+                    <div id="originalInfo" class="info"></div>
+                </div>
+                <div>
+                    <h3>处理后图像</h3>
+                    <canvas id="scaledCanvas"></canvas>
+                    <div id="scaledInfo" class="info"></div>
+                </div>
+            </div>
+            <div class="algorithm-info" id="algorithmInfo"></div>
+            <button id="downloadButton" style="margin-top: 20px;">下载处理后图像</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInput = document.getElementById('imageInput');
+            const scaleInput = document.getElementById('scaleInput');
+            const algorithmSelect = document.getElementById('algorithmSelect');
+            const cropCheckbox = document.getElementById('cropCheckbox');
+            const cropOptions = document.getElementById('cropOptions');
+            const cropSideSelect = document.getElementById('cropSideSelect');
+            const scaleButton = document.getElementById('scaleButton');
+            const downloadButton = document.getElementById('downloadButton');
+            const originalCanvas = document.getElementById('originalCanvas');
+            const scaledCanvas = document.getElementById('scaledCanvas');
+            const originalInfo = document.getElementById('originalInfo');
+            const scaledInfo = document.getElementById('scaledInfo');
+            const errorMessage = document.getElementById('errorMessage');
+            const algorithmInfo = document.getElementById('algorithmInfo');
+
+            let originalImage = null;
+
+            // 隐藏下载按钮，直到有图像生成
+            downloadButton.style.display = 'none';
+
+            // 切割选项显示/隐藏控制
+            cropCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    cropOptions.classList.add('visible');
+                } else {
+                    cropOptions.classList.remove('visible');
+                }
+            });
+
+            imageInput.addEventListener('change', function(e) {
+                if (e.target.files.length === 0) return;
+
+                const file = e.target.files[0];
+                if (!file.type.match('image.*')) {
+                    errorMessage.textContent = '请选择有效的图片文件';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    originalImage = new Image();
+                    originalImage.onload = function() {
+                        drawOriginalImage();
+                    };
+                    originalImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+
+            function drawOriginalImage() {
+                // 设置原始Canvas大小
+                originalCanvas.width = originalImage.width;
+                originalCanvas.height = originalImage.height;
+
+                const originalCtx = originalCanvas.getContext('2d');
+                originalCtx.imageSmoothingEnabled = false; // 禁用平滑以保持像素清晰
+                originalCtx.drawImage(originalImage, 0, 0);
+
+                // 更新原始图像信息
+                originalInfo.textContent = `尺寸: ${originalImage.width} x ${originalImage.height} 像素`;
+
+                // 清除错误消息
+                errorMessage.textContent = '';
+            }
+
+            scaleButton.addEventListener('click', function() {
+                if (!originalImage) {
+                    errorMessage.textContent = '请先选择一张图片';
+                    return;
+                }
+
+                const scale = parseFloat(scaleInput.value);
+                if (isNaN(scale) || scale <= 0) {
+                    errorMessage.textContent = '请输入有效的放大比例（大于0的数字）';
+                    return;
+                }
+
+                const algorithm = algorithmSelect.value;
+                const shouldCrop = cropCheckbox.checked;
+                const cropSide = cropSideSelect.value;
+
+                processImage(scale, algorithm, shouldCrop, cropSide);
+                downloadButton.style.display = 'block';
+            });
+
+            function processImage(scale, algorithm, shouldCrop, cropSide) {
+                // 获取原始图像数据
+                const originalCtx = originalCanvas.getContext('2d');
+                const originalData = originalCtx.getImageData(0, 0, originalImage.width, originalImage.height);
+
+                // 确定处理后的尺寸
+                let sourceWidth = originalImage.width;
+                let sourceHeight = originalImage.height;
+                let sourceX = 0;
+                let sourceY = 0;
+
+                // 计算放大后的尺寸（精确到像素）
+                let destWidth = Math.round(sourceWidth * scale);
+                let destHeight = Math.round(sourceHeight * scale);
+
+                // 如果需要切割
+                if (shouldCrop) {
+                    const cropAmount = Math.floor(sourceWidth / 4); // 切割1/4宽度
+
+                    if (cropSide === 'left') {
+                        // 切割左侧
+                        sourceX = cropAmount;
+                        sourceWidth -= cropAmount;
+                    } else {
+                        // 切割右侧 - 不改变sourceX，只减少宽度
+                        sourceWidth -= cropAmount;
+                    }
+
+                    // 更新目标尺寸
+                    destWidth = Math.round(sourceWidth * scale);
+                }
+
+                // 设置缩放Canvas大小
+                scaledCanvas.width = destWidth;
+                scaledCanvas.height = destHeight;
+
+                const scaledCtx = scaledCanvas.getContext('2d');
+                scaledCtx.imageSmoothingEnabled = false; // 禁用平滑以保持像素清晰
+
+                // 如果需要切割，先裁剪原始图像
+                let processSourceData;
+                if (shouldCrop) {
+                    // 创建临时canvas来处理裁剪
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = sourceWidth;
+                    tempCanvas.height = sourceHeight;
+                    const tempCtx = tempCanvas.getContext('2d');
+                    tempCtx.imageSmoothingEnabled = false;
+
+                    // 绘制裁剪区域
+                    tempCtx.drawImage(originalCanvas, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, sourceWidth, sourceHeight);
+                    processSourceData = tempCtx.getImageData(0, 0, sourceWidth, sourceHeight);
+                } else {
+                    processSourceData = originalData;
+                }
+
+                // 创建目标图像数据
+                const scaledData = scaledCtx.createImageData(destWidth, destHeight);
+
+                // 根据选择的算法执行不同的缩放策略
+                let algoDescription = '';
+                switch(algorithm) {
+                    case 'nearest':
+                        // 最近邻插值 - 适合1-2倍之间的放大
+                        nearestNeighborScaling(processSourceData, scaledData, sourceWidth, sourceHeight, destWidth, destHeight);
+                        algoDescription = `使用了最近邻插值算法，该算法通过精确计算每个目标像素对应的源像素位置，减少了1-2倍放大时产生的锯齿。`;
+                        break;
+                    case 'pixelPerfect':
+                        // 原始的像素精确映射
+                        pixelPerfectScaling(processSourceData, scaledData, sourceWidth, sourceHeight, destWidth, destHeight, scale);
+                        algoDescription = `使用了像素精确映射算法，该算法通过数学映射确保每个源像素按比例精确放大，适合整数倍放大。`;
+                        break;
+                    case 'fractional':
+                        // 分数映射 - 对特定比例效果更好
+                        fractionalScaling(processSourceData, scaledData, sourceWidth, sourceHeight, destWidth, destHeight, scale);
+                        algoDescription = `使用了分数映射算法，该算法特别适合于1.25、1.5、1.75等特殊比例的放大，通过分析这些比例的几何特性进行优化。`;
+                        break;
+                    default:
+                        nearestNeighborScaling(processSourceData, scaledData, sourceWidth, sourceHeight, destWidth, destHeight);
+                }
+
+                // 处理切割信息
+                if (shouldCrop) {
+                    algoDescription += ` 同时，图像的${cropSide === 'left' ? '左侧' : '右侧'}1/4已被切割。`;
+                }
+
+                // 将处理后的数据放回Canvas
+                scaledCtx.putImageData(scaledData, 0, 0);
+
+                // 更新放大图像信息
+                scaledInfo.textContent = `尺寸: ${destWidth} x ${destHeight} 像素 (${scale}x)`;
+                if (shouldCrop) {
+                    scaledInfo.textContent += ` - 已切割${cropSide === 'left' ? '左侧' : '右侧'}1/4`;
+                }
+
+                // 更新算法信息
+                algorithmInfo.textContent = algoDescription;
+            }
+
+            // 最近邻插值算法 - 减少1-2倍放大时的锯齿
+            function nearestNeighborScaling(srcData, destData, srcWidth, srcHeight, destWidth, destHeight) {
+                // 遍历每个目标像素
+                for (let y = 0; y < destHeight; y++) {
+                    for (let x = 0; x < destWidth; x++) {
+                        // 计算精确的源像素位置（使用四舍五入而不是向下取整）
+                        const srcX = Math.round((x + 0.5) / destWidth * srcWidth - 0.5);
+                        const srcY = Math.round((y + 0.5) / destHeight * srcHeight - 0.5);
+
+                        // 确保在边界内
+                        const boundedSrcX = Math.max(0, Math.min(srcWidth - 1, srcX));
+                        const boundedSrcY = Math.max(0, Math.min(srcHeight - 1, srcY));
+
+                        // 计算源像素和目标像素的索引
+                        const srcIndex = (boundedSrcY * srcWidth + boundedSrcX) * 4;
+                        const destIndex = (y * destWidth + x) * 4;
+
+                        // 复制像素数据
+                        destData.data[destIndex] = srcData.data[srcIndex];         // R
+                        destData.data[destIndex + 1] = srcData.data[srcIndex + 1]; // G
+                        destData.data[destIndex + 2] = srcData.data[srcIndex + 2]; // B
+                        destData.data[destIndex + 3] = srcData.data[srcIndex + 3]; // A
+                    }
+                }
+            }
+
+            // 原始的像素精确映射算法
+            function pixelPerfectScaling(srcData, destData, srcWidth, srcHeight, destWidth, destHeight, scale) {
+                // 遍历每个目标像素
+                for (let y = 0; y < destHeight; y++) {
+                    for (let x = 0; x < destWidth; x++) {
+                        // 找到对应的源像素
+                        const srcX = Math.floor(x / scale);
+                        const srcY = Math.floor(y / scale);
+
+                        // 确保在边界内
+                        const boundedSrcX = Math.max(0, Math.min(srcWidth - 1, srcX));
+                        const boundedSrcY = Math.max(0, Math.min(srcHeight - 1, srcY));
+
+                        // 计算源像素位置
+                        const srcIndex = (boundedSrcY * srcWidth + boundedSrcX) * 4;
+
+                        // 计算目标像素位置
+                        const destIndex = (y * destWidth + x) * 4;
+
+                        // 复制像素数据
+                        destData.data[destIndex] = srcData.data[srcIndex];         // R
+                        destData.data[destIndex + 1] = srcData.data[srcIndex + 1]; // G
+                        destData.data[destIndex + 2] = srcData.data[srcIndex + 2]; // B
+                        destData.data[destIndex + 3] = srcData.data[srcIndex + 3]; // A
+                    }
+                }
+            }
+
+            // 分数映射算法 - 特别适合1.25, 1.5, 1.75等特殊比例
+            function fractionalScaling(srcData, destData, srcWidth, srcHeight, destWidth, destHeight, scale) {
+                // 检查是否为常见的分数比例
+                let numerator = 1;
+                let denominator = 1;
+
+                // 尝试将比例转换为分数表示
+                if (Math.abs(scale - 1.25) < 0.01) {
+                    numerator = 5;
+                    denominator = 4;
+                } else if (Math.abs(scale - 1.5) < 0.01) {
+                    numerator = 3;
+                    denominator = 2;
+                } else if (Math.abs(scale - 1.75) < 0.01) {
+                    numerator = 7;
+                    denominator = 4;
+                } else if (Math.abs(scale - 1.33) < 0.01 || Math.abs(scale - 4/3) < 0.01) {
+                    numerator = 4;
+                    denominator = 3;
+                } else if (Math.abs(scale - 1.67) < 0.01 || Math.abs(scale - 5/3) < 0.01) {
+                    numerator = 5;
+                    denominator = 3;
+                }
+
+                // 如果是识别的分数比例，使用特殊处理
+                if (numerator !== 1 || denominator !== 1) {
+                    // 为分数比例创建查找表
+                    const patternWidth = numerator;
+                    const patternHeight = numerator;
+                    const pattern = new Array(patternWidth * patternHeight);
+
+                    // 计算重复图案
+                    for (let py = 0; py < patternHeight; py++) {
+                        for (let px = 0; px < patternWidth; px++) {
+                            const srcPixelX = Math.floor(px / numerator * denominator);
+                            const srcPixelY = Math.floor(py / numerator * denominator);
+                            pattern[py * patternWidth + px] = srcPixelY * denominator + srcPixelX;
+                        }
+                    }
+
+                    // 使用模式映射进行放大
+                    for (let y = 0; y < destHeight; y++) {
+                        for (let x = 0; x < destWidth; x++) {
+                            // 计算在原始图像中的位置
+                            const baseX = Math.floor(x / numerator) * denominator;
+                            const baseY = Math.floor(y / numerator) * denominator;
+
+                            // 计算在模式中的相对位置
+                            const patternX = x % numerator;
+                            const patternY = y % numerator;
+
+                            // 获取模式映射的源像素偏移
+                            const patternOffset = pattern[patternY * patternWidth + patternX];
+                            const offsetX = patternOffset % denominator;
+                            const offsetY = Math.floor(patternOffset / denominator);
+
+                            // 计算最终的源像素坐标
+                            const srcX = baseX + offsetX;
+                            const srcY = baseY + offsetY;
+
+                            // 确保在边界内
+                            const boundedSrcX = Math.min(srcWidth - 1, Math.max(0, srcX));
+                            const boundedSrcY = Math.min(srcHeight - 1, Math.max(0, srcY));
+
+                            // 计算源像素和目标像素的索引
+                            const srcIndex = (boundedSrcY * srcWidth + boundedSrcX) * 4;
+                            const destIndex = (y * destWidth + x) * 4;
+
+                            // 复制像素数据
+                            destData.data[destIndex] = srcData.data[srcIndex];         // R
+                            destData.data[destIndex + 1] = srcData.data[srcIndex + 1]; // G
+                            destData.data[destIndex + 2] = srcData.data[srcIndex + 2]; // B
+                            destData.data[destIndex + 3] = srcData.data[srcIndex + 3]; // A
+                        }
+                    }
+                } else {
+                    // 如果不是特殊比例，回退到最近邻插值
+                    nearestNeighborScaling(srcData, destData, srcWidth, srcHeight, destWidth, destHeight);
+                }
+            }
+
+            downloadButton.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = '处理后像素图.png';
+                link.href = scaledCanvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
