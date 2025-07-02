@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影之诗·超凡世界 阶位模拟器</title>
+    <link rel="stylesheet" href="zhenqi.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>影之诗·超凡世界</h1>
+            <p>阶位分数分布模拟器</p>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="totalGames">总场数</label>
+                        <input type="number" id="totalGames" min="10" step="1" value="1000">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="baseWinRate">基础胜率 (%)</label>
+                        <input type="number" id="baseWinRate" min="10" max="90" step="1" value="50">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="startLevel">起始阶位</label>
+                        <select id="startLevel">
+                            <option value="emerald">绿宝石</option>
+                            <option value="topaz">黄宝石</option>
+                            <option value="ruby">红宝石</option>
+                            <option value="sapphire" selected>蓝宝石</option>
+                            <option value="diamond">钻石</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="advanced-settings">
+                    <button type="button" class="toggle-advanced" onclick="toggleAdvanced()">
+                        高级设置 ▼
+                    </button>
+
+                    <div class="advanced-content" id="advancedContent">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="levelAdjustment">阶位调整 (%)</label>
+                                <input type="number" id="levelAdjustment" min="0" max="20" step="1" value="5">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="emotionalToggle">情绪调整</label>
+                                <select id="emotionalToggle">
+                                    <option value="false">关闭</option>
+                                    <option value="true" selected>开启</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="emotionalStrength">情绪强度因子</label>
+                                <input type="number" id="emotionalStrength" min="10" step="10" value="100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="simulate-btn" onclick="runSimulation()">开始模拟</button>
+
+            <div class="results" id="results">
+                <h3>模拟结果</h3>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="zhenqi.js"></script>
+</body>
+</html>
