@@ -3,7 +3,7 @@ const RANKS = {
     topaz: { name: '黄宝石', multiplier: 1.2, index: 1, class: 'topaz' },
     ruby: { name: '红宝石', multiplier: 1.5, index: 2, class: 'ruby' },
     sapphire: { name: '蓝宝石', multiplier: 1.8, index: 3, class: 'sapphire' },
-    diamond: { name: '钻石', multiplier: 2.2, index: 4, class: 'diamond' }
+    diamond: { name: '钻石', multiplier: 2.0, index: 4, class: 'diamond' } // 修复：倍率改为2.0
 };
 
 const RANK_ORDER = ['emerald', 'topaz', 'ruby', 'sapphire', 'diamond'];
@@ -27,31 +27,79 @@ function getWinRate(rank, baseRate, adjustment, emotionalMod = 0) {
     return Math.max(0.1, Math.min(0.9, adjustedRate));
 }
 
+// 修复：升级判定逻辑，考虑最近N把游戏和最低胜场要求
 function shouldPromote(rank, recentGames) {
-    const wins = recentGames.filter(game => game === 'W').length;
     const total = recentGames.length;
+    const wins = recentGames.filter(game => game === 'W').length;
 
     switch(rank) {
-        case 'emerald': return total >= 10 && wins >= 6;
-        case 'topaz': return total >= 15 && wins >= 9;
-        case 'ruby': return total >= 20 && wins >= 12;
-        case 'sapphire': return total >= 20 && wins >= 13;
-        case 'diamond': return false; // 钻石不能升级
-        default: return false;
+        case 'emerald':
+            // 需要至少10把游戏，且最近10把中至少6胜
+            if (total < 10) return false;
+            const recent10 = recentGames.slice(-10);
+            return recent10.filter(game => game === 'W').length >= 6;
+
+        case 'topaz':
+            // 需要至少15把游戏，且最近15把中至少9胜
+            if (total < 15) return false;
+            const recent15 = recentGames.slice(-15);
+            return recent15.filter(game => game === 'W').length >= 9;
+
+        case 'ruby':
+            // 需要至少20把游戏，且最近20把中至少12胜
+            if (total < 20) return false;
+            const recent20 = recentGames.slice(-20);
+            return recent20.filter(game => game === 'W').length >= 12;
+
+        case 'sapphire':
+            // 需要至少20把游戏，且最近20把中至少13胜
+            if (total < 20) return false;
+            const recent20Sapphire = recentGames.slice(-20);
+            return recent20Sapphire.filter(game => game === 'W').length >= 13;
+
+        case 'diamond':
+            return false; // 钻石不能升级
+
+        default:
+            return false;
     }
 }
 
+// 修复：降级判定逻辑，考虑最近N把游戏和最低负场要求
 function shouldDemote(rank, recentGames) {
-    const losses = recentGames.filter(game => game === 'L').length;
     const total = recentGames.length;
+    const losses = recentGames.filter(game => game === 'L').length;
 
     switch(rank) {
-        case 'emerald': return false; // 绿宝石不能降级
-        case 'topaz': return total >= 15 && losses >= 12;
-        case 'ruby': return total >= 20 && losses >= 13;
-        case 'sapphire': return total >= 20 && losses >= 12;
-        case 'diamond': return total >= 20 && losses >= 11;
-        default: return false;
+        case 'emerald':
+            return false; // 绿宝石不能降级
+
+        case 'topaz':
+            // 需要至少15把游戏，且最近15把中至少12负
+            if (total < 15) return false;
+            const recent15 = recentGames.slice(-15);
+            return recent15.filter(game => game === 'L').length >= 12;
+
+        case 'ruby':
+            // 需要至少20把游戏，且最近20把中至少13负
+            if (total < 20) return false;
+            const recent20 = recentGames.slice(-20);
+            return recent20.filter(game => game === 'L').length >= 13;
+
+        case 'sapphire':
+            // 需要至少20把游戏，且最近20把中至少12负
+            if (total < 20) return false;
+            const recent20Sapphire = recentGames.slice(-20);
+            return recent20Sapphire.filter(game => game === 'L').length >= 12;
+
+        case 'diamond':
+            // 需要至少20把游戏，且最近20把中至少11负
+            if (total < 20) return false;
+            const recent20Diamond = recentGames.slice(-20);
+            return recent20Diamond.filter(game => game === 'L').length >= 11;
+
+        default:
+            return false;
     }
 }
 
@@ -115,22 +163,26 @@ function runSimulation() {
         const score = calculateScore(isWin, winStreak, currentRank);
         scoresByRank[currentRank] += score;
 
-        // 检查升级/降级
+        // 修复：检查升级/降级时使用当前段位开始后的所有游戏记录
         const recentGames = gameHistory.slice(rankStartIndex);
+
+        let rankChanged = false;
 
         if (shouldPromote(currentRank, recentGames)) {
             const currentIndex = RANK_ORDER.indexOf(currentRank);
             if (currentIndex < RANK_ORDER.length - 1) {
                 currentRank = RANK_ORDER[currentIndex + 1];
                 rankStartIndex = i + 1;
-                winStreak = 0;
+                rankChanged = true;
+                // 修复：升级/降级不会打断连胜，所以不重置winStreak
             }
         } else if (shouldDemote(currentRank, recentGames)) {
             const currentIndex = RANK_ORDER.indexOf(currentRank);
             if (currentIndex > 0) {
                 currentRank = RANK_ORDER[currentIndex - 1];
                 rankStartIndex = i + 1;
-                winStreak = 0;
+                rankChanged = true;
+                // 修复：升级/降级不会打断连胜，所以不重置winStreak
             }
         }
     }
