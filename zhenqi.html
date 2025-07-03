@@ -10,23 +10,41 @@
     <div class="container">
         <div class="header">
             <h1>影之诗·超凡世界</h1>
-            <p>阶位分数分布模拟器</p>
+            <p>阶位分数分布模拟器 - 增强版</p>
         </div>
-
         <div class="main-content">
             <div class="input-section">
+                <div class="simulation-mode">
+                    <h4 style="margin-bottom: 15px; color: #333;">模拟模式</h4>
+                    <div class="mode-selector">
+                        <div class="mode-option active" onclick="setSimulationMode('single')">
+                            单次模拟
+                        </div>
+                        <div class="mode-option" onclick="setSimulationMode('multi')">
+                            多次模拟分析
+                        </div>
+                    </div>
+                    <div class="multi-sim-controls" id="multiSimControls">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="simulationCount">模拟次数</label>
+                                <input type="number" id="simulationCount" min="10" max="10000" step="10" value="1000">
+                                <small style="color: #666; margin-top: 5px;">建议100-1000次，次数越多结果越稳定</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="input-row">
                     <div class="input-group">
-                        <label for="totalGames">总场数</label>
+                        <label for="totalGames">每次模拟场数</label>
                         <input type="number" id="totalGames" min="10" step="1" value="1000">
                     </div>
-
                     <div class="input-group">
                         <label for="baseWinRate">基础胜率 (%)</label>
                         <input type="number" id="baseWinRate" min="10" max="90" step="1" value="50">
                     </div>
                 </div>
-
                 <div class="input-row">
                     <div class="input-group">
                         <label for="startLevel">起始阶位</label>
@@ -39,19 +57,16 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="advanced-settings">
                     <button type="button" class="toggle-advanced" onclick="toggleAdvanced()">
                         高级设置 ▼
                     </button>
-
                     <div class="advanced-content" id="advancedContent">
                         <div class="input-row">
                             <div class="input-group">
                                 <label for="levelAdjustment">阶位调整 (%)</label>
                                 <input type="number" id="levelAdjustment" min="0" max="20" step="1" value="5">
                             </div>
-
                             <div class="input-group">
                                 <label for="emotionalToggle">情绪调整</label>
                                 <select id="emotionalToggle">
@@ -60,7 +75,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="input-row">
                             <div class="input-group">
                                 <label for="emotionalStrength">情绪强度因子</label>
@@ -71,11 +85,20 @@
                 </div>
             </div>
 
-            <button class="simulate-btn" onclick="runSimulation()">开始模拟</button>
+            <button class="simulate-btn" id="simulateBtn" onclick="startSimulation()">开始模拟</button>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
 
             <div class="results" id="results">
-                <h3>模拟结果</h3>
+                <h3 id="resultsTitle">模拟结果</h3>
                 <div id="resultContent"></div>
+                <div class="chart-container" id="chartContainer" style="display: none;">
+                    <div class="chart-title">阶位分数分布统计图</div>
+                    <div class="chart" id="chart">
+                        <div class="y-axis" id="yAxis"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

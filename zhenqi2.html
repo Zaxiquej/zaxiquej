@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影之诗·超凡世界 - 反向胜率分析器</title>
+    <style>
+        :root {
+            --emerald-color: #50c878;
+            --topaz-color: #ffc649;
+            --ruby-color: #e0115f;
+            --sapphire-color: #0f52ba;
+            --diamond-color: #b9f2ff;
+            --primary-color: #2e7d32;
+            --secondary-color: #388e3c;
+            --accent-color: #4caf50;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-background);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        .input-section {
+            background: var(--background-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .rank-input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .rank-input {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .rank-input:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .rank-input.emerald { border-color: var(--emerald-color); }
+        .rank-input.topaz { border-color: var(--topaz-color); }
+        .rank-input.ruby { border-color: var(--ruby-color); }
+        .rank-input.sapphire { border-color: var(--sapphire-color); }
+        .rank-input.diamond { border-color: var(--diamond-color); }
+
+        .rank-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .rank-name.emerald { color: var(--emerald-color); }
+        .rank-name.topaz { color: var(--topaz-color); }
+        .rank-name.ruby { color: var(--ruby-color); }
+        .rank-name.sapphire { color: var(--sapphire-color); }
+        .rank-name.diamond { color: var(--diamond-color); }
+
+        .analyze-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            min-width: 200px;
+        }
+
+        .analyze-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        .analyze-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .progress-container {
+            margin: 20px 0;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .results {
+            margin-top: 30px;
+            display: none;
+            background: var(--background-color);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid var(--border-color);
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .confidence-info {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #e57373;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .method-info {
+            background: #f3e5f5;
+            border: 1px solid #9c27b0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .method-info h4 {
+            color: #7b1fa2;
+            margin-bottom: 10px;
+        }
+
+        .toggle-advanced {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-advanced:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .advanced-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .advanced-content.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .rank-input-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 影之诗·超凡世界</h1>
+            <p>反向胜率分析器 - 从战绩数据推算真实胜率</p>
+        </div>
+
+        <div class="main-content">
+            <!-- 输入数据区域 -->
+            <div class="input-section">
+                <div class="section-title">
+                    📊 输入你的战绩数据
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div>
+                            <label for="startLevel">起始阶位:</label>
+                            <select id="startLevel">
+                                <option value="emerald">绿宝石</option>
+                                <option value="topaz">黄宝石</option>
+                                <option value="ruby">红宝石</option>
+                                <option value="sapphire">蓝宝石</option>
+                                <option value="diamond">钻石</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="totalWins">
+                                总胜场数:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">你在这段期间的总胜利场数</span>
+                                </span>
+                            </label>
+                            <input type="number" id="totalWins" value="150" min="1" max="10000">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>各阶位获得分数:</label>
+                    <div class="rank-input-grid">
+                        <div class="rank-input emerald">
+                            <div class="rank-name emerald">绿宝石</div>
+                            <input type="number" id="emeraldScore" value="15000" min="0" placeholder="分数">
+                        </div>
+                        <div class="rank-input topaz">
+                            <div class="rank-name topaz">黄宝石</div>
+                            <input type="number" id="topazScore" value="25000" min="0" placeholder="分数">
+                        </div>
+                        <div class="rank-input ruby">
+                            <div class="rank-name ruby">红宝石</div>
+                            <input type="number" id="rubyScore" value="30000" min="0" placeholder="分数">
+                        </div>
+                        <div class="rank-input sapphire">
+                            <div class="rank-name sapphire">蓝宝石</div>
+                            <input type="number" id="sapphireScore" value="20000" min="0" placeholder="分数">
+                        </div>
+                        <div class="rank-input diamond">
+                            <div class="rank-name diamond">钻石</div>
+                            <input type="number" id="diamondScore" value="10000" min="0" placeholder="分数">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="toggle-advanced" onclick="toggleAdvanced()">高级设置 ▼</button>
+                <div class="advanced-content" id="advancedContent">
+                    <div class="form-row">
+                        <div>
+                            <label for="simulationsPerTest">
+                                每次测试模拟次数:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">每个胜率点测试的模拟次数，越多越准确但耗时更长</span>
+                                </span>
+                            </label>
+                            <input type="number" id="simulationsPerTest" value="500" min="100" max="2000" step="100">
+                        </div>
+                        <div>
+                            <label for="confidenceSimulations">
+                                置信区间模拟次数:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">用于计算置信区间的模拟次数</span>
+                                </span>
+                            </label>
+                            <input type="number" id="confidenceSimulations" value="1000" min="500" max="5000" step="100">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="minWinRate">最小胜率范围 (%):</label>
+                            <input type="number" id="minWinRate" value="30" min="10" max="90" step="5">
+                        </div>
+                        <div>
+                            <label for="maxWinRate">最大胜率范围 (%):</label>
+                            <input type="number" id="maxWinRate" value="70" min="10" max="90" step="5">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="tolerance">
+                                误差容忍度:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">二分查找的精度，越小越精确</span>
+                                </span>
+                            </label>
+                            <input type="number" id="tolerance" value="0.001" min="0.0001" max="0.01" step="0.0001">
+                        </div>
+                        <div>
+                            <label for="confidenceLevel">
+                                置信水平 (%):
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">统计置信区间的置信水平</span>
+                                </span>
+                            </label>
+                            <select id="confidenceLevel">
+                                <option value="90">90%</option>
+                                <option value="95" selected>95%</option>
+                                <option value="99">99%</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="analyze-btn" id="analyzeBtn" onclick="startAnalysis()">
+                🔍 开始分析
+            </button>
+
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">准备中...</div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <!-- 结果显示区域 -->
+            <div class="results" id="results">
+                <div class="section-title">📈 分析结果</div>
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const RANKS = {
+        emerald: { name: '绿宝石', multiplier: 1.0, index: 0, class: 'emerald' },
+        topaz: { name: '黄宝石', multiplier: 1.2, index: 1, class: 'topaz' },
+        ruby: { name: '红宝石', multiplier: 1.5, index: 2, class: 'ruby' },
+        sapphire: { name: '蓝宝石', multiplier: 1.8, index: 3, class: 'sapphire' },
+        diamond: { name: '钻石', multiplier: 2.0, index: 4, class: 'diamond' }
+    };
+
+    const RANK_ORDER = ['emerald', 'topaz', 'ruby', 'sapphire', 'diamond'];
+    let isAnalyzing = false;
+
+    function toggleAdvanced() {
+        const content = document.getElementById('advancedContent');
+        const button = document.querySelector('.toggle-advanced');
+
+        if (content.classList.contains('show')) {
+            content.classList.remove('show');
+            button.textContent = '高级设置 ▼';
+        } else {
+            content.classList.add('show');
+            button.textContent = '高级设置 ▲';
+        }
+    }
+
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+
+    function updateProgress(percentage, text) {
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+
+        progressContainer.style.display = 'block';
+        progressFill.style.width = `${percentage}%`;
+        progressText.textContent = text;
+
+        if (percentage >= 100) {
+            setTimeout(() => {
+                progressContainer.style.display = 'none';
+            }, 1000);
+        }
+    }
+
+    function getWinRate(rank, baseRate, adjustment = 0) {
+        const rankIndex = RANKS[rank].index;
+        const adjustedRate = (baseRate / 100) + (4 - rankIndex) * (adjustment / 100);
+        return Math.max(0.1, Math.min(0.9, adjustedRate));
+    }
+
+    function shouldPromote(rank, recentGames) {
+        const total = recentGames.length;
+        const wins = recentGames.filter(game => game === 'W').length;
+
+        switch(rank) {
+            case 'emerald':
+                const recent10 = recentGames.slice(-10);
+                return recent10.filter(game => game === 'W').length >= 6;
+            case 'topaz':
+                const recent15 = recentGames.slice(-15);
+                return recent15.filter(game => game === 'W').length >= 9;
+            case 'ruby':
+                const recent20 = recentGames.slice(-20);
+                return recent20.filter(game => game === 'W').length >= 12;
+            case 'sapphire':
+                const recent20Sapphire = recentGames.slice(-20);
+                return recent20Sapphire.filter(game => game === 'W').length >= 13;
+            case 'diamond':
+                return false;
+            default:
+                return false;
+        }
+    }
+
+    function shouldDemote(rank, recentGames) {
+        const total = recentGames.length;
+        const losses = recentGames.filter(game => game === 'L').length;
+
+        switch(rank) {
+            case 'emerald':
+                return false;
+            case 'topaz':
+                const recent15 = recentGames.slice(-15);
+                return recent15.filter(game => game === 'L').length >= 12;
+            case 'ruby':
+                const recent20 = recentGames.slice(-20);
+                return recent20.filter(game => game === 'L').length >= 13;
+            case 'sapphire':
+                const recent20Sapphire = recentGames.slice(-20);
+                return recent20Sapphire.filter(game => game === 'L').length >= 12;
+            case 'diamond':
+                const recent20Diamond = recentGames.slice(-20);
+                return recent20Diamond.filter(game => game === 'L').length >= 11;
+            default:
+                return false;
+        }
+    }
+
+    function calculateScore(isWin, winStreak, rank) {
+        const baseScore = isWin ? 100 : 0;
+
+        let streakBonus = 0;
+        if (winStreak >= 2 && winStreak <= 5) streakBonus = 30;
+        else if (winStreak > 5 && winStreak <= 10) streakBonus = 60;
+        else if (winStreak > 10) streakBonus = 100;
+
+        const operationBonus = isWin ? 15 : 10;
+        const totalScore = (baseScore + streakBonus + operationBonus) * RANKS[rank].multiplier;
+        return totalScore;
+    }
+
+    function simulateWithWinRate(winRate, targetWins, startLevel, simulationCount) {
+        let totalError = 0;
+        let allResults = [];
+
+        for (let sim = 0; sim < simulationCount; sim++) {
+            let currentRank = startLevel;
+            let gameHistory = [];
+            let rankStartIndex = 0;
+            let winStreak = 0;
+            let wins = 0;
+            let losses = 0;
+            let scoresByRank = {
+                emerald: 0,
+                topaz: 0,
+                ruby: 0,
+                sapphire: 0,
+                diamond: 0
+            };
+
+            // 模拟到达目标胜场数
+            while (wins < targetWins) {
+                const currentWinRate = getWinRate(currentRank, winRate * 100, 5);
+                const isWin = Math.random() < currentWinRate;
+
+                gameHistory.push(isWin ? 'W' : 'L');
+
+                if (isWin) {
+                    winStreak++;
+                    wins++;
+                } else {
+                    winStreak = 0;
+                    losses++;
+                }
+
+                const score = calculateScore(isWin, winStreak, currentRank);
+                scoresByRank[currentRank] += score;
+
+                // 检查晋级降级
+                const recentGames = gameHistory.slice(rankStartIndex);
+
+                if (shouldPromote(currentRank, recentGames)) {
+                    const currentIndex = RANK_ORDER.indexOf(currentRank);
+                    if (currentIndex < RANK_ORDER.length - 1) {
+                        currentRank = RANK_ORDER[currentIndex + 1];
+                        rankStartIndex = gameHistory.length;
+                    }
+                } else if (shouldDemote(currentRank, recentGames)) {
+                    const currentIndex = RANK_ORDER.indexOf(currentRank);
+                    if (currentIndex > 0) {
+                        currentRank = RANK_ORDER[currentIndex - 1];
+                        rankStartIndex = gameHistory.length;
+                    }
+                }
+            }
+
+            allResults.push({ scoresByRank, wins, losses });
+        }
+        return allResults;
+    }
+
+    function calculateError(simulationResults, targetScores) {
+        const numSims = simulationResults.length;
+
+        // 计算每个阶位的平均分数
+        const avgScores = {
+            emerald: 0,
+            topaz: 0,
+            ruby: 0,
+            sapphire: 0,
+            diamond: 0
+        };
+
+        simulationResults.forEach(result => {
+            Object.keys(avgScores).forEach(rank => {
+                avgScores[rank] += result.scoresByRank[rank];
+            });
+        });
+
+        Object.keys(avgScores).forEach(rank => {
+            avgScores[rank] /= numSims;
+        });
+
+        // 计算加权平方误差，使用绝对差值的平方
+        let totalError = 0;
+        let totalWeight = 0;
+
+        Object.keys(targetScores).forEach(rank => {
+            const target = targetScores[rank];
+            const predicted = avgScores[rank];
+
+            if (target > 0) {
+                // 使用目标分数作为权重，避免相对误差问题
+                const weight = Math.sqrt(target); // 使用平方根减少大数值的过度影响
+                const squaredError = Math.pow(predicted - target, 2);
+                totalError += weight * squaredError;
+                totalWeight += weight;
+            }
+        });
+
+        // 返回加权均方根误差
+        return totalWeight > 0 ? Math.sqrt(totalError / totalWeight) : Infinity;
+    }
+
+    async function binarySearchOptimalWinRate(targetScores, targetWins, startLevel, settings) {
+        let low = settings.minWinRate / 100;
+        let high = settings.maxWinRate / 100;
+        let bestWinRate = (low + high) / 2;
+        let bestError = Infinity;
+        let iterations = 0;
+        const maxIterations = 30;
+
+        // 先进行粗略搜索找到大致范围
+        let coarseSearchResults = [];
+        const coarseSteps = 10;
+
+        updateProgress(10, '进行粗略搜索...');
+
+        for (let i = 0; i <= coarseSteps; i++) {
+            const testWinRate = low + (high - low) * i / coarseSteps;
+            const results = simulateWithWinRate(testWinRate, targetWins, startLevel, Math.max(100, settings.simulationsPerTest / 3));
+            const error = calculateError(results, targetScores);
+
+            coarseSearchResults.push({ winRate: testWinRate, error: error });
+
+            if (error < bestError) {
+                bestError = error;
+                bestWinRate = testWinRate;
+            }
+        }
+
+        // 找到最佳粗略结果附近的范围
+        coarseSearchResults.sort((a, b) => a.error - b.error);
+        const bestCoarseResult = coarseSearchResults[0];
+
+        // 重新设置搜索范围为最佳结果周围
+        const searchRange = (high - low) / coarseSteps;
+        low = Math.max(settings.minWinRate / 100, bestCoarseResult.winRate - searchRange);
+        high = Math.min(settings.maxWinRate / 100, bestCoarseResult.winRate + searchRange);
+
+        updateProgress(30, '开始精确二分查找...');
+
+        // 精确二分查找
+        while (high - low > settings.tolerance && iterations < maxIterations) {
+            iterations++;
+            const mid = (low + high) / 2;
+
+            updateProgress(
+                30 + (iterations / maxIterations) * 40,
+                `精确搜索中... 第${iterations}轮 (胜率: ${(mid * 100).toFixed(2)}%)`
+            );
+
+            // 在当前胜率下进行模拟
+            const results = simulateWithWinRate(mid, targetWins, startLevel, settings.simulationsPerTest);
+            const error = calculateError(results, targetScores);
+
+            if (error < bestError) {
+                bestError = error;
+                bestWinRate = mid;
+            }
+
+            // 三点法确定搜索方向
+            const leftResults = simulateWithWinRate(low, targetWins, startLevel, settings.simulationsPerTest);
+            const rightResults = simulateWithWinRate(high, targetWins, startLevel, settings.simulationsPerTest);
+
+            const leftError = calculateError(leftResults, targetScores);
+            const rightError = calculateError(rightResults, targetScores);
+
+            // 根据梯度调整搜索方向
+            if (leftError < rightError) {
+                high = mid;
+            } else {
+                low = mid;
+            }
+
+            // 让UI有时间更新
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+
+        // 最终验证：在最佳胜率附近进行更精细的搜索
+        const finalSearchRange = settings.tolerance * 10;
+        const finalSteps = 5;
+
+        for (let i = 0; i <= finalSteps; i++) {
+            const testWinRate = Math.max(0.1, Math.min(0.9,
+                bestWinRate - finalSearchRange + (2 * finalSearchRange * i / finalSteps)
+            ));
+
+            const results = simulateWithWinRate(testWinRate, targetWins, startLevel, settings.simulationsPerTest);
+            const error = calculateError(results, targetScores);
+
+            if (error < bestError) {
+                bestError = error;
+                bestWinRate = testWinRate;
+            }
+        }
+
+        return { winRate: bestWinRate, error: bestError, iterations: iterations };
+    }
+
+    function calculateConfidenceInterval(data, confidenceLevel) {
+        if (data.length === 0) return { lower: 0, upper: 0, mean: 0, std: 0 };
+
+        const sorted = [...data].sort((a, b) => a - b);
+        const mean = data.reduce((sum, val) => sum + val, 0) / data.length;
+
+        // 计算标准差
+        const variance = data.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / data.length;
+        const std = Math.sqrt(variance);
+
+        // 使用分位数方法计算置信区间
+        const alpha = (100 - confidenceLevel) / 100;
+        const lowerIndex = Math.floor(data.length * alpha / 2);
+        const upperIndex = Math.ceil(data.length * (1 - alpha / 2)) - 1;
+
+        return {
+            lower: sorted[lowerIndex] || sorted[0],
+            upper: sorted[upperIndex] || sorted[sorted.length - 1],
+            mean: mean,
+            std: std
+        };
+    }
+
+    async function calculateConfidenceIntervals(optimalWinRate, targetWins, startLevel, settings) {
+        updateProgress(70, '计算置信区间中...');
+
+        const results = simulateWithWinRate(
+            optimalWinRate,
+            targetWins,
+            startLevel,
+            settings.confidenceSimulations
+        );
+
+        // 提取各种统计数据
+        const netWinsData = results.map(r => r.wins - r.losses);
+        const totalGamesData = results.map(r => r.wins + r.losses);
+        const actualWinRatesData = results.map(r => (r.wins / (r.wins + r.losses)) * 100);
+
+        // 计算各阶位分数的置信区间
+        const rankScoreIntervals = {};
+        RANK_ORDER.forEach(rank => {
+            const rankScores = results.map(r => r.scoresByRank[rank]);
+            rankScoreIntervals[rank] = calculateConfidenceInterval(rankScores, settings.confidenceLevel);
+        });
+
+        return {
+            netWins: calculateConfidenceInterval(netWinsData, settings.confidenceLevel),
+            totalGames: calculateConfidenceInterval(totalGamesData, settings.confidenceLevel),
+            actualWinRates: calculateConfidenceInterval(actualWinRatesData, settings.confidenceLevel),
+            rankScores: rankScoreIntervals
+        };
+    }
+
+    function displayResults(optimalWinRate, confidenceIntervals, searchInfo, settings, targetData) {
+        const results = document.getElementById('results');
+        const resultContent = document.getElementById('resultContent');
+
+        const { netWins, totalGames, actualWinRates, rankScores } = confidenceIntervals;
+
+        // 计算拟合质量指标
+        const avgError = searchInfo.error;
+        const totalTargetScore = Object.values(targetData.scores).reduce((sum, score) => sum + score, 0);
+        const relativeError = (avgError / totalTargetScore) * 100;
+
+        let html = `
+            <div class="result-card">
+                <div class="result-title">🎯 推算的最优胜率</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">${(optimalWinRate * 100).toFixed(2)}%</div>
+                        <div class="stat-label">估计真实胜率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${searchInfo.iterations}</div>
+                        <div class="stat-label">搜索轮数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${avgError.toFixed(0)}</div>
+                        <div class="stat-label">平均绝对误差</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${relativeError.toFixed(2)}%</div>
+                        <div class="stat-label">相对误差</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">📊 ${settings.confidenceLevel}% 置信区间预测</div>
+                <div class="confidence-info">
+                    <strong>净胜场数预测:</strong><br>
+                    平均: ${netWins.mean.toFixed(1)} ± ${netWins.std.toFixed(1)} 场<br>
+                    ${settings.confidenceLevel}% 置信区间: ${netWins.lower.toFixed(1)} ~ ${netWins.upper.toFixed(1)} 场
+                </div>
+                <div class="confidence-info">
+                    <strong>总场数预测:</strong><br>
+                    平均: ${totalGames.mean.toFixed(1)} ± ${totalGames.std.toFixed(1)} 场<br>
+                    ${settings.confidenceLevel}% 置信区间: ${totalGames.lower.toFixed(1)} ~ ${totalGames.upper.toFixed(1)} 场
+                </div>
+                <div class="confidence-info">
+                    <strong>实际胜率分布:</strong><br>
+                    平均: ${actualWinRates.mean.toFixed(2)}% ± ${actualWinRates.std.toFixed(2)}%<br>
+                    ${settings.confidenceLevel}% 置信区间: ${actualWinRates.lower.toFixed(2)}% ~ ${actualWinRates.upper.toFixed(2)}%
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">📈 各阶位分数拟合情况</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    ${RANK_ORDER.map(rank => {
+                        const target = targetData.scores[rank];
+                        const predicted = rankScores[rank];
+                        const error = Math.abs(predicted.mean - target);
+                        const errorPercent = target > 0 ? (error / target * 100) : 0;
+
+                        return `
+                            <div style="background: white; padding: 10px; border-radius: 6px; border-left: 3px solid var(--${rank}-color);">
+                                <strong>${RANKS[rank].name}</strong><br>
+                                目标: ${target.toLocaleString()}<br>
+                                预测: ${predicted.mean.toFixed(0)}<br>
+                                误差: ${error.toFixed(0)} (${errorPercent.toFixed(1)}%)
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">🔬 分析方法说明</div>
+                <div class="method-info">
+                    <h4>改进的统计方法:</h4>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li><strong>两阶段搜索:</strong> 先粗略搜索确定范围，再精确二分查找</li>
+                        <li><strong>加权误差函数:</strong> 使用绝对误差的平方根，避免相对误差偏差</li>
+                        <li><strong>梯度导向搜索:</strong> 根据左右误差大小调整搜索方向</li>
+                        <li><strong>多点验证:</strong> 最终在最优点附近进行精细搜索确认</li>
+                        <li><strong>置信区间:</strong> 使用 ${settings.confidenceSimulations} 次模拟计算统计分布</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">📈 输入数据汇总</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <strong>起始阶位:</strong> ${RANKS[targetData.startLevel].name}<br>
+                        <strong>总胜场:</strong> ${targetData.totalWins} 场<br>
+                        <strong>总分数:</strong> ${targetData.totalScore.toLocaleString()} 分
+                    </div>
+                    <div>
+                        <strong>各阶位分数:</strong><br>
+                        ${RANK_ORDER.map(rank =>
+                            `${RANKS[rank].name}: ${targetData.scores[rank].toLocaleString()} 分`
+                        ).join('<br>')}
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-title">💡 结果解读</div>
+                <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3;">
+                    <h5 style="color: #1976d2; margin-bottom: 10px;">如何理解这些数据:</h5>
+                    <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.6;">
+                        <li><strong>推算胜率:</strong> 基于你的战绩数据，估计你的真实胜率约为 ${(optimalWinRate * 100).toFixed(1)}%</li>
+                        <li><strong>拟合精度:</strong> 相对误差 ${relativeError.toFixed(2)}% ${relativeError < 5 ? '(拟合优秀)' : relativeError < 10 ? '(拟合良好)' : '(拟合一般)'}</li>
+                        <li><strong>置信区间:</strong> 在 ${settings.confidenceLevel}% 的置信水平下，你未来的表现预期范围</li>
+                        <li><strong>标准差:</strong> 反映预测结果的稳定性，越小越稳定</li>
+                    </ul>
+
+                    <h5 style="color: #1976d2; margin: 15px 0 10px 0;">建议:</h5>
+                    <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.6;">
+                        ${optimalWinRate > 0.6 ?
+                            '<li style="color: #4caf50;">🎉 你的胜率相当不错！可以考虑冲击更高阶位</li>' :
+                            optimalWinRate > 0.5 ?
+                            '<li style="color: #ff9800;">📊 胜率处于平均水平，继续保持稳定发挥</li>' :
+                            '<li style="color: #f44336;">💪 胜率有提升空间，建议复盘战术和卡组搭配</li>'
+                        }
+                        ${relativeError > 15 ? '<li style="color: #ff5722;">⚠️ 拟合误差较大，建议增加模拟次数或检查数据</li>' : ''}
+                        <li>置信区间越窄说明预测越稳定可靠</li>
+                        <li>可以尝试调整高级设置中的参数获得更精确的结果</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+
+        resultContent.innerHTML = html;
+        results.classList.add('show');
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateInputData() {
+        const totalWins = parseInt(document.getElementById('totalWins').value);
+        const scores = {
+            emerald: parseInt(document.getElementById('emeraldScore').value) || 0,
+            topaz: parseInt(document.getElementById('topazScore').value) || 0,
+            ruby: parseInt(document.getElementById('rubyScore').value) || 0,
+            sapphire: parseInt(document.getElementById('sapphireScore').value) || 0,
+            diamond: parseInt(document.getElementById('diamondScore').value) || 0
+        };
+
+        const totalScore = Object.values(scores).reduce((sum, score) => sum + score, 0);
+
+        if (totalWins <= 0) {
+            throw new Error('总胜场数必须大于0');
+        }
+
+        if (totalScore <= 0) {
+            throw new Error('至少需要在一个阶位获得分数');
+        }
+
+        if (totalWins > 10000) {
+            throw new Error('总胜场数不能超过10000场（请分段分析）');
+        }
+
+        const minWinRate = parseInt(document.getElementById('minWinRate').value);
+        const maxWinRate = parseInt(document.getElementById('maxWinRate').value);
+
+        if (minWinRate >= maxWinRate) {
+            throw new Error('最小胜率必须小于最大胜率');
+        }
+
+        return {
+            totalWins,
+            scores,
+            startLevel: document.getElementById('startLevel').value,
+            totalScore
+        };
+    }
+
+    function getAnalysisSettings() {
+        return {
+            simulationsPerTest: parseInt(document.getElementById('simulationsPerTest').value),
+            confidenceSimulations: parseInt(document.getElementById('confidenceSimulations').value),
+            minWinRate: parseInt(document.getElementById('minWinRate').value),
+            maxWinRate: parseInt(document.getElementById('maxWinRate').value),
+            tolerance: parseFloat(document.getElementById('tolerance').value),
+            confidenceLevel: parseInt(document.getElementById('confidenceLevel').value)
+        };
+    }
+
+    async function startAnalysis() {
+        if (isAnalyzing) return;
+
+        try {
+            isAnalyzing = true;
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            analyzeBtn.disabled = true;
+            analyzeBtn.textContent = '🔍 分析中...';
+
+            // 隐藏之前的结果和错误消息
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('errorMessage').style.display = 'none';
+
+            // 验证输入数据
+            updateProgress(5, '验证输入数据...');
+            const targetData = validateInputData();
+            const settings = getAnalysisSettings();
+
+            // 开始二分查找最优胜率
+            const searchResult = await binarySearchOptimalWinRate(
+                targetData.scores,
+                targetData.totalWins,
+                targetData.startLevel,
+                settings
+            );
+
+            // 计算置信区间
+            updateProgress(70, '计算置信区间...');
+            const confidenceIntervals = await calculateConfidenceIntervals(
+                searchResult.winRate,
+                targetData.totalWins,
+                targetData.startLevel,
+                settings
+            );
+
+            // 显示结果
+            updateProgress(95, '生成分析报告...');
+            displayResults(searchResult.winRate, confidenceIntervals, searchResult, settings, targetData);
+
+            updateProgress(100, '分析完成！');
+
+        } catch (error) {
+            console.error('分析过程中出现错误:', error);
+            showError(error.message || '分析过程中出现未知错误，请检查输入参数');
+        } finally {
+            isAnalyzing = false;
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            analyzeBtn.disabled = false;
+            analyzeBtn.textContent = '🔍 开始分析';
+        }
+    }
+
+    // 页面加载完成后的初始化
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('影之诗反向胜率分析器已加载');
+
+        // 添加输入验证
+        const numericInputs = document.querySelectorAll('input[type="number"]');
+        numericInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value < 0) this.value = 0;
+            });
+        });
+
+        // 添加快捷键支持
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                startAnalysis();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
