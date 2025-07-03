@@ -650,7 +650,7 @@
         }
     }
 
-    function calculateScore(isWin, winStreak, rank) {
+    function calculateScore(isWin, winStreak, rank, currentTotal) {
         const baseScore = isWin ? 100 : 0;
 
         let streakBonus = 0;
@@ -658,7 +658,10 @@
         else if (winStreak > 5 && winStreak <= 10) streakBonus = 60;
         else if (winStreak > 10) streakBonus = 100;
 
-        const operationBonus = isWin ? 15 : 10;
+        let operationBonus = isWin ? 15 : 10;
+        if (currentTotal < 100000){
+          operationBonus *= 2
+        }
         const totalScore = (baseScore + streakBonus + operationBonus) * RANKS[rank].multiplier;
         return totalScore;
     }
@@ -681,6 +684,7 @@
                 sapphire: 0,
                 diamond: 0
             };
+            let currentTotal = 0;
 
             // 模拟到达目标胜场数
             while (wins < targetWins) {
@@ -697,8 +701,9 @@
                     losses++;
                 }
 
-                const score = calculateScore(isWin, winStreak, currentRank);
+                const score = calculateScore(isWin, winStreak, currentRank, currentTotal);
                 scoresByRank[currentRank] += score;
+                currentTotal += score;
 
                 // 检查晋级降级
                 const recentGames = gameHistory.slice(rankStartIndex);

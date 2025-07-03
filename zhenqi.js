@@ -92,7 +92,7 @@ const RANKS = {
             }
         }
 
-        function calculateScore(isWin, winStreak, rank) {
+        function calculateScore(isWin, winStreak, rank, currentTotal) {
             const baseScore = isWin ? 100 : 0;
 
             let streakBonus = 0;
@@ -100,7 +100,10 @@ const RANKS = {
             else if (winStreak > 5 && winStreak <= 10) streakBonus = 60;
             else if (winStreak > 10) streakBonus = 100;
 
-            const operationBonus = isWin ? 15 : 10;
+            let operationBonus = isWin ? 15 : 10;
+            if (currentTotal < 100000){
+              operationBonus *= 2
+            }
             const totalScore = (baseScore + streakBonus + operationBonus) * RANKS[rank].multiplier;
             return totalScore;
         }
@@ -126,6 +129,7 @@ const RANKS = {
                 sapphire: 0,
                 diamond: 0
             };
+            let currentTotal = 0;
 
             for (let i = 0; i < totalGames; i++) {
                 let emotionalMod = 0;
@@ -148,8 +152,9 @@ const RANKS = {
                     totalLosses++;
                 }
 
-                const score = calculateScore(isWin, winStreak, currentRank);
+                const score = calculateScore(isWin, winStreak, currentRank, currentTotal);
                 scoresByRank[currentRank] += score;
+                currentTotal += score;
 
                 const recentGames = gameHistory.slice(rankStartIndex);
                 let rankChanged = false;
