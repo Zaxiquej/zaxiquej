@@ -49,6 +49,16 @@ h1 {
     margin-bottom: 30px;
 }
 
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.input-col {
+    flex: 1;
+}
+
 label {
     display: block;
     margin-bottom: 10px;
@@ -104,6 +114,22 @@ input[type="number"]:focus {
     line-height: 1.4;
 }
 
+.comparison {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 0.85em;
+    opacity: 0.9;
+    line-height: 1.4;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.comparison-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
 .warning {
     background: #fff3cd;
     border: 1px solid #ffeaa7;
@@ -121,5 +147,10 @@ input[type="number"]:focus {
 
     h1 {
         font-size: 2em;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 10px;
     }
 }

@@ -3,35 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>虫虫概率计算器</title>
+    <title>Key牌概率计算器</title>
     <link rel="stylesheet" href="probs.css">
 </head>
 <body>
     <div class="container">
-        <h1>🐞我的虫虫呢？</h1>
-
+        <h1>❓ 我的虫虫/天宫/双姬/xxx呢？</h1>
         <div class="card-info">
             <h3>牌库设定</h3>
-            <p>总牌数：40张 | 虫卡数量：3张</p>
+            <p>总牌数：40张</p>
         </div>
-
         <div class="input-group">
-            <label for="remaining-cards">牌库剩余张数 (X)：</label>
-            <input type="number" id="remaining-cards" min="3" max="40" value="30"
-                   placeholder="输入牌库剩余张数">
+            <div class="input-row">
+                <div class="input-col">
+                    <label for="key-cards">Key牌数量：</label>
+                    <input type="number" id="key-cards" min="1" max="39" value="3"
+                           placeholder="输入Key牌数量">
+                </div>
+                <div class="input-col">
+                    <label for="remaining-cards">牌库剩余张数 (X)：</label>
+                    <input type="number" id="remaining-cards" min="1" max="40" value="30"
+                           placeholder="输入牌库剩余张数">
+                </div>
+            </div>
         </div>
-
         <div class="result" id="result">
-            <div>手牌中仍无虫的概率</div>
+            <div>手牌中仍无Key牌的概率</div>
             <div class="probability-value" id="probability">计算中...</div>
-            <div class="explanation" id="explanation">请输入有效的牌库张数</div>
+            <div class="explanation" id="explanation">请输入有效的参数</div>
+            <div class="comparison" id="comparison" style="display: none;">
+                <div class="comparison-title">📊 概率对比</div>
+                <div id="comparison-text">计算中...</div>
+            </div>
         </div>
-
         <div class="warning" id="warning">
-            ⚠️ 请输入3-40之间的有效数值
+            ⚠️ 请输入有效的数值范围
         </div>
     </div>
-
     <script src="probs.js"></script>
 </body>
 </html>
