@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影之诗大赛收益计算器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0d2b, #3d2352);
+            color: #f0e6ff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #b19cd9, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: rgba(45, 30, 66, 0.8);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(149, 117, 205, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: #d4c2ff;
+            font-size: 1.5rem;
+        }
+
+        .card-title i {
+            color: #b19cd9;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .input-container {
+            background: rgba(35, 20, 56, 0.6);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .slider-container {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #d4c2ff;
+        }
+
+        .value-display {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, #5d3f6a, #b19cd9);
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #ffd700;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .calculate-btn {
+            background: linear-gradient(to right, #8a6bbd, #6a4a9e);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            width: 100%;
+            max-width: 400px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 107, 189, 0.4);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(138, 107, 189, 0.6);
+        }
+
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: rgba(35, 20, 56, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #ffd700;
+        }
+
+        .result-label {
+            font-size: 1.1rem;
+            color: #b19cd9;
+        }
+
+        .result-subtitle {
+            font-size: 0.9rem;
+            color: #9e8bc2;
+            margin-top: 5px;
+        }
+
+        .chart-container {
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .summary {
+            background: rgba(55, 35, 85, 0.6);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 4px solid #8a6bbd;
+        }
+
+        .summary h3 {
+            margin-bottom: 15px;
+            color: #d4c2ff;
+        }
+
+        .summary p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .profit {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .loss {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .reward-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(45, 30, 66, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .reward-table th {
+            background: rgba(106, 74, 158, 0.8);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .reward-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(149, 117, 205, 0.2);
+        }
+
+        .reward-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .reward-table tr:nth-child(even) {
+            background: rgba(65, 45, 95, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #b19cd9;
+            font-size: 0.9rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            gap: 10px;
+        }
+
+        .toggle-label {
+            font-weight: bold;
+            color: #d4c2ff;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #5d3f6a;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #8a6bbd;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        @media (max-width: 768px) {
+            .results-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-crown"></i> 影之诗大赛收益计算器</h1>
+            <p class="subtitle">输入您的预估胜率以及计划参赛次数，计算您在影之诗大赛中的期望收益（金币与卡牌包）。参赛需要750金币入场费，比赛共5轮，根据您的胜场数获得相应奖励。</p>
+        </header>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-sliders-h"></i>
+                <h2>计算参数设置</h2>
+            </div>
+
+            <div class="input-group">
+                <div class="input-container">
+                    <div class="slider-container">
+                        <label for="winRate">胜率 (%)</label>
+                        <input type="range" id="winRate" min="0" max="100" value="50">
+                        <div class="value-display" id="winRateValue">50%</div>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <div class="slider-container">
+                        <label for="tournamentCount">参赛次数</label>
+                        <input type="range" id="tournamentCount" min="1" max="10000" value="100">
+                        <div class="value-display" id="tournamentCountValue">100 次</div>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <div class="slider-container">
+                        <label for="packValue">卡牌包价值 (金币)</label>
+                        <input type="range" id="packValue" min="0" max="1000" value="500">
+                        <div class="value-display" id="packValueValue">500 金币</div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="calculateBtn" class="calculate-btn">
+                <i class="fas fa-calculator"></i> 计算期望收益
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-trophy"></i>
+                <h2>大赛奖励详情</h2>
+            </div>
+
+            <table class="reward-table">
+                <thead>
+                    <tr>
+                        <th>胜场数</th>
+                        <th>基础金币奖励</th>
+                        <th>金币浮动范围</th>
+                        <th>卡牌包奖励</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5胜</td>
+                        <td>1000</td>
+                        <td>980 - 1020</td>
+                        <td>1 包</td>
+                    </tr>
+                    <tr>
+                        <td>4胜</td>
+                        <td>500</td>
+                        <td>480 - 520</td>
+                        <td>1 包</td>
+                    </tr>
+                    <tr>
+                        <td>3胜</td>
+                        <td>250</td>
+                        <td>230 - 270</td>
+                        <td>1 包</td>
+                    </tr>
+                    <tr>
+                        <td>2胜</td>
+                        <td>100</td>
+                        <td>80 - 120</td>
+                        <td>1 包</td>
+                    </tr>
+                    <tr>
+                        <td>1胜</td>
+                        <td>0</td>
+                        <td>-</td>
+                        <td>1 包</td>
+                    </tr>
+                    <tr>
+                        <td>0胜</td>
+                        <td>150</td>
+                        <td>130 - 170</td>
+                        <td>0 包</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-line"></i>
+                <h2>计算结果</h2>
+            </div>
+
+            <div class="toggle-container">
+                <span class="toggle-label">显示方式:</span>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="displayToggle">
+                    <span class="slider"></span>
+                </div>
+                <span class="toggle-label" id="displayLabel">总收益</span>
+            </div>
+
+            <div class="results-container">
+                <div class="result-card">
+                    <div class="result-label">净金币收益</div>
+                    <div class="result-value" id="netGold">0</div>
+                    <div class="result-subtitle" id="netGoldSub">(金币奖励 - 入场费)</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">获得卡牌包</div>
+                    <div class="result-value" id="totalPacks">0</div>
+                    <div class="result-subtitle" id="totalPacksSub">(总数量)</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">未折价收益</div>
+                    <div class="result-value" id="rawProfit">0</div>
+                    <div class="result-subtitle">(仅金币收益)</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">折价后收益</div>
+                    <div class="result-value" id="adjustedProfit">0</div>
+                    <div class="result-subtitle" id="adjustedProfitSub">(金币 + 卡包价值)</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+
+            <div class="summary">
+                <h3><i class="fas fa-lightbulb"></i> 收益分析</h3>
+                <p id="profitAnalysis">输入您的胜率并点击"计算期望收益"按钮查看分析结果。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>注：卡牌包价值可自定义设置 | 计算结果基于概率模拟，实际结果可能有所不同</p>
+            <p>影之诗大赛收益计算器 © 2023 | 为玩家提供决策参考</p>
+        </div>
+    </div>
+
+    <script>
+        // 获取DOM元素
+        const winRateSlider = document.getElementById('winRate');
+        const winRateValue = document.getElementById('winRateValue');
+        const tournamentCountSlider = document.getElementById('tournamentCount');
+        const tournamentCountValue = document.getElementById('tournamentCountValue');
+        const packValueSlider = document.getElementById('packValue');
+        const packValueValue = document.getElementById('packValueValue');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const netGoldEl = document.getElementById('netGold');
+        const totalPacksEl = document.getElementById('totalPacks');
+        const rawProfitEl = document.getElementById('rawProfit');
+        const adjustedProfitEl = document.getElementById('adjustedProfit');
+        const profitAnalysisEl = document.getElementById('profitAnalysis');
+        const displayToggle = document.getElementById('displayToggle');
+        const displayLabel = document.getElementById('displayLabel');
+        const netGoldSub = document.getElementById('netGoldSub');
+        const totalPacksSub = document.getElementById('totalPacksSub');
+        const adjustedProfitSub = document.getElementById('adjustedProfitSub');
+
+        // 初始化显示值
+        winRateValue.textContent = winRateSlider.value + '%';
+        tournamentCountValue.textContent = tournamentCountSlider.value + ' 次';
+        packValueValue.textContent = packValueSlider.value + ' 金币';
+
+        // 滑块事件监听
+        winRateSlider.addEventListener('input', () => {
+            winRateValue.textContent = winRateSlider.value + '%';
+        });
+
+        tournamentCountSlider.addEventListener('input', () => {
+            tournamentCountValue.textContent = tournamentCountSlider.value + ' 次';
+        });
+
+        packValueSlider.addEventListener('input', () => {
+            packValueValue.textContent = packValueSlider.value + ' 金币';
+        });
+
+        // 显示方式切换
+        displayToggle.addEventListener('change', () => {
+            if (displayToggle.checked) {
+                displayLabel.textContent = '平均收益';
+                netGoldSub.textContent = '(平均每次大赛)';
+                totalPacksSub.textContent = '(平均每次大赛)';
+                adjustedProfitSub.textContent = '(平均每次大赛)';
+            } else {
+                displayLabel.textContent = '总收益';
+                netGoldSub.textContent = '(金币奖励 - 入场费)';
+                totalPacksSub.textContent = '(总数量)';
+                adjustedProfitSub.textContent = '(金币 + 卡包价值)';
+            }
+            calculateExpectedRewards();
+        });
+
+        // 图表初始化
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        let resultsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['0胜', '1胜', '2胜', '3胜', '4胜', '5胜'],
+                datasets: [{
+                    label: '出现概率',
+                    data: [16.7, 16.7, 16.7, 16.7, 16.7, 16.7],
+                    backgroundColor: [
+                        'rgba(149, 117, 205, 0.7)',
+                        'rgba(106, 74, 158, 0.7)',
+                        'rgba(138, 107, 189, 0.7)',
+                        'rgba(177, 156, 217, 0.7)',
+                        'rgba(212, 194, 255, 0.7)',
+                        'rgba(255, 215, 0, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(149, 117, 205, 1)',
+                        'rgba(106, 74, 158, 1)',
+                        'rgba(138, 107, 189, 1)',
+                        'rgba(177, 156, 217, 1)',
+                        'rgba(212, 194, 255, 1)',
+                        'rgba(255, 215, 0, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#f0e6ff'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: '不同胜场概率分布',
+                        color: '#f0e6ff',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `概率: ${context.parsed.y.toFixed(1)}%`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            color: '#b19cd9',
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(149, 117, 205, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#d4c2ff'
+                        },
+                        grid: {
+                            color: 'rgba(149, 117, 205, 0.1)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // 计算按钮点击事件
+        calculateBtn.addEventListener('click', calculateExpectedRewards);
+
+        // 计算期望收益函数
+        function calculateExpectedRewards() {
+            const winRate = parseFloat(winRateSlider.value) / 100;
+            const tournamentCount = parseInt(tournamentCountSlider.value);
+            const packValue = parseInt(packValueSlider.value);
+
+            // 初始化统计变量
+            let totalNetGold = 0;
+            let totalPacks = 0;
+            const winCounts = [0, 0, 0, 0, 0, 0]; // 0-5胜
+
+            // 模拟大赛
+            for (let i = 0; i < tournamentCount; i++) {
+                // 模拟5场比赛
+                let wins = 0;
+                for (let j = 0; j < 5; j++) {
+                    if (Math.random() < winRate) {
+                        wins++;
+                    }
+                }
+
+                // 记录胜场数
+                winCounts[wins]++;
+
+                // 计算金币奖励（含浮动）
+                let goldReward = 0;
+                switch(wins) {
+                    case 0:
+                        goldReward = 150 + getGoldFluctuation();
+                        break;
+                    case 1:
+                        goldReward = 0; // 1胜没有金币奖励
+                        break;
+                    case 2:
+                        goldReward = 100 + getGoldFluctuation();
+                        break;
+                    case 3:
+                        goldReward = 250 + getGoldFluctuation();
+                        break;
+                    case 4:
+                        goldReward = 500 + getGoldFluctuation();
+                        break;
+                    case 5:
+                        goldReward = 1000 + getGoldFluctuation();
+                        break;
+                }
+
+                // 计算卡牌包奖励
+                const packReward = (wins >= 1 && wins <= 4) ? 1 : (wins === 5 ? 1 : 0);
+
+                // 净金币收益（减去入场费）
+                const netGold = goldReward - 750;
+
+                // 累加统计
+                totalNetGold += netGold;
+                totalPacks += packReward;
+            }
+
+            // 计算未折价收益（仅金币）
+            const rawProfit = totalNetGold;
+
+            // 计算折价后收益（金币 + 卡包价值）
+            const adjustedProfit = totalNetGold + (totalPacks * packValue);
+
+            // 计算平均值
+            const avgNetGold = totalNetGold / tournamentCount;
+            const avgPacks = totalPacks / tournamentCount;
+            const avgRawProfit = rawProfit / tournamentCount;
+            const avgAdjustedProfit = adjustedProfit / tournamentCount;
+
+            // 根据显示模式更新UI
+            if (displayToggle.checked) {
+                // 平均收益模式
+                netGoldEl.textContent = avgNetGold.toFixed(0);
+                totalPacksEl.textContent = avgPacks.toFixed(2);
+                rawProfitEl.textContent = avgRawProfit.toFixed(0);
+                adjustedProfitEl.textContent = avgAdjustedProfit.toFixed(0);
+            } else {
+                // 总收益模式
+                netGoldEl.textContent = totalNetGold.toFixed(0);
+                totalPacksEl.textContent = totalPacks;
+                rawProfitEl.textContent = rawProfit.toFixed(0);
+                adjustedProfitEl.textContent = adjustedProfit.toFixed(0);
+            }
+
+            // 添加符号
+            if (totalNetGold >= 0) netGoldEl.innerHTML = '+' + netGoldEl.textContent;
+            if (rawProfit >= 0) rawProfitEl.innerHTML = '+' + rawProfitEl.textContent;
+            if (adjustedProfit >= 0) adjustedProfitEl.innerHTML = '+' + adjustedProfitEl.textContent;
+
+            // 更新图表数据
+            const winPercentages = winCounts.map(count => (count / tournamentCount) * 100);
+            resultsChart.data.datasets[0].data = winPercentages;
+            resultsChart.update();
+
+            // 生成收益分析
+            generateProfitAnalysis(winRate, rawProfit, adjustedProfit, totalPacks, tournamentCount, packValue);
+        }
+
+        // 生成金币浮动值（-20, 0, +20）
+        function getGoldFluctuation() {
+            const fluctuation = Math.floor(Math.random() * 3); // 0, 1, 2
+            return (fluctuation - 1) * 20;
+        }
+
+        // 生成收益分析文本
+        function generateProfitAnalysis(winRate, rawProfit, adjustedProfit, totalPacks, tournamentCount, packValue) {
+            let analysis = '';
+
+            const avgRawProfit = rawProfit / tournamentCount;
+            const avgAdjustedProfit = adjustedProfit / tournamentCount;
+            const avgPacks = totalPacks / tournamentCount;
+
+            if (avgAdjustedProfit > 0) {
+                analysis = `<span class="profit">推荐参赛！</span> 在${(winRate*100).toFixed(0)}%的胜率下，`;
+            } else {
+                analysis = `<span class="loss">不建议参赛！</span> 在${(winRate*100).toFixed(0)}%的胜率下，`;
+            }
+
+            analysis += `您预计每次大赛可获得：`;
+            analysis += `<ul style="margin-top:10px; padding-left:20px;">`;
+            analysis += `<li>净金币收益：<span class="${avgRawProfit >= 0 ? 'profit' : 'loss'}">${avgRawProfit.toFixed(0)}</span>金币</li>`;
+            analysis += `<li>平均卡牌包：${avgPacks.toFixed(2)}包（按${packValue}金币/包估值）</li>`;
+            analysis += `<li>折价后收益：<span class="${avgAdjustedProfit >= 0 ? 'profit' : 'loss'}">${avgAdjustedProfit.toFixed(0)}</span>金币</li>`;
+            analysis += `</ul>`;
+
+            analysis += `<br><p>基于${tournamentCount}次大赛模拟：</p>`;
+            analysis += `<ul style="margin-top:10px; padding-left:20px;">`;
+            analysis += `<li>总金币收益：<span class="${rawProfit >= 0 ? 'profit' : 'loss'}">${rawProfit.toFixed(0)}</span>金币</li>`;
+            analysis += `<li>总卡牌包：${totalPacks}包（价值${(totalPacks * packValue).toFixed(0)}金币）</li>`;
+            analysis += `<li>总折价收益：<span class="${adjustedProfit >= 0 ? 'profit' : 'loss'}">${adjustedProfit.toFixed(0)}</span>金币</li>`;
+            analysis += `</ul>`;
+
+            profitAnalysisEl.innerHTML = analysis;
+        }
+
+        // 初始计算
+        calculateExpectedRewards();
+    </script>
+</body>
+</html>
