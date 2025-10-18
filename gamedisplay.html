@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏展览 - Game Gallery</title>
+    <link rel="stylesheet" href="gameDisplay.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title" data-zh="游戏展览" data-en="Game Gallery">游戏展览</h1>
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 游戏列表容器 -->
+    <main class="container">
+        <div class="games-list" id="gamesList">
+            <!-- 游戏项将通过JS动态生成 -->
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p data-zh="© 2025 Zaxiquej" data-en="© 2025 Zaxiquej">© 2025 Zaxiquej</p>
+    </footer>
+
+    <script src="gameDisplay.js"></script>
+</body>
+</html>

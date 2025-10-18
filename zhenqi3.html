@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影之诗·超凡世界 - 反向胜率分析器</title>
+    <title>影之诗·超凡世界 - 增强版胜率分析器</title>
     <style>
         :root {
             --emerald-color: #50c878;
@@ -18,6 +18,9 @@
             --card-background: #ffffff;
             --text-color: #333333;
             --border-color: #e0e0e0;
+            --improvement-color: #4caf50;
+            --decline-color: #f44336;
+            --volatility-color: #ff9800;
         }
 
         * {
@@ -48,6 +51,7 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
         }
 
         .header h1 {
@@ -59,6 +63,19 @@
         .header p {
             font-size: 1.1em;
             opacity: 0.9;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .main-content {
@@ -398,6 +415,87 @@
             opacity: 1;
         }
 
+        .winrate-chart-container {
+            margin: 20px 0;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--primary-color), var(--accent-color));
+            position: relative;
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .volatility-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .low-volatility {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--improvement-color);
+        }
+
+        .medium-volatility {
+            background-color: rgba(255, 152, 0, 0.2);
+            color: var(--volatility-color);
+        }
+
+        .high-volatility {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--decline-color);
+        }
+
+        .phase-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+
+        .learning-phase {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--improvement-color);
+        }
+
+        .meta-phase {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: #2196f3;
+        }
+
+        .decline-phase {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--decline-color);
+        }
+
+        .stability-phase {
+            background-color: rgba(158, 158, 158, 0.2);
+            color: #9e9e9e;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -430,7 +528,8 @@
     <div class="container">
         <div class="header">
             <h1>🎯 影之诗·超凡世界</h1>
-            <p>反向胜率分析器 - 从战绩数据推算真实胜率</p>
+            <p>增强版胜率分析器 - 考虑玩家水平波动</p>
+            <div class="badge">新：胜率波动模型</div>
         </div>
 
         <div class="main-content">
@@ -562,6 +661,34 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="volatilityLevel">
+                                胜率波动程度:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">玩家水平变化导致的胜率波动程度</span>
+                                </span>
+                            </label>
+                            <select id="volatilityLevel">
+                                <option value="low">低波动（稳定玩家）</option>
+                                <option value="medium" selected>中等波动（普通玩家）</option>
+                                <option value="high">高波动（实验性玩家）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="learningFactor">
+                                学习曲线强度:
+                                <span class="tooltip">ℹ️
+                                    <span class="tooltiptext">玩家随着时间进步的速度</span>
+                                </span>
+                            </label>
+                            <select id="learningFactor">
+                                <option value="low">缓慢进步</option>
+                                <option value="medium" selected>中等进步</option>
+                                <option value="high">快速进步</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -597,6 +724,14 @@
 
     const RANK_ORDER = ['emerald', 'topaz', 'ruby', 'sapphire', 'diamond'];
     let isAnalyzing = false;
+
+    // 高斯随机数生成器
+    function gaussianRandom(mean=0, stdev=1) {
+        const u = 1 - Math.random();
+        const v = Math.random();
+        const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        return z * stdev + mean;
+    }
 
     function toggleAdvanced() {
         const content = document.getElementById('advancedContent');
@@ -698,20 +833,67 @@
         else if (winStreak > 5 && winStreak <= 10) streakBonus = 60;
         else if (winStreak > 10) streakBonus = 100;
 
-        let isMaster = parseInt(document.getElementById('isMaster').value);
+        let isMaster = document.getElementById('isMaster').checked;
         let initialScore = parseInt(document.getElementById('initialScore').value);
 
         let operationBonus = isWin ? 15 : 10;
-        if (currentTotal < 100000-initialScore && !isMaster){
+        if (currentTotal < 100000 - initialScore && !isMaster){
           operationBonus *= 2
         }
         const totalScore = (baseScore + streakBonus + operationBonus) * RANKS[rank].multiplier;
         return totalScore;
     }
 
-    function simulateWithWinRate(winRate, targetWins, startLevel, simulationCount) {
-        let totalError = 0;
+    // 计算胜率波动
+    function getVolatilityFactor(volatilityLevel) {
+        switch(volatilityLevel) {
+            case 'low': return 0.03;
+            case 'medium': return 0.06;
+            case 'high': return 0.12;
+            default: return 0.06;
+        }
+    }
+
+    // 计算学习曲线因子
+    function getLearningFactor(learningLevel) {
+        switch(learningLevel) {
+            case 'low': return 0.002;
+            case 'medium': return 0.005;
+            case 'high': return 0.01;
+            default: return 0.005;
+        }
+    }
+
+    // 获取胜率阶段
+    function getWinRatePhase(gameIndex, totalGames, baseWinRate, volatilityFactor, learningFactor) {
+        const progress = gameIndex / totalGames;
+        let winRate = baseWinRate;
+
+        // 学习曲线：随着游戏场次增加而进步
+        winRate += learningFactor * totalGames * progress;
+
+        // 随机波动
+        winRate += gaussianRandom(0, volatilityFactor);
+
+        // 环境适应阶段：中期可能因环境变化而波动
+        if (progress > 0.3 && progress < 0.7) {
+            winRate += gaussianRandom(0, volatilityFactor * 1.5);
+        }
+
+        // 后期稳定性调整
+        if (progress > 0.7) {
+            winRate += gaussianRandom(0, volatilityFactor * 0.7);
+        }
+
+        return Math.max(0.1, Math.min(0.9, winRate));
+    }
+
+    function simulateWithWinRate(baseWinRate, targetWins, startLevel, simulationCount) {
         let allResults = [];
+        const volatilityLevel = document.getElementById('volatilityLevel').value;
+        const learningLevel = document.getElementById('learningFactor').value;
+        const volatilityFactor = getVolatilityFactor(volatilityLevel);
+        const learningFactor = getLearningFactor(learningLevel);
 
         for (let sim = 0; sim < simulationCount; sim++) {
             let currentRank = startLevel;
@@ -728,10 +910,24 @@
                 diamond: 0
             };
             let currentTotal = 0;
+            let phaseStats = {
+                learning: 0,
+                meta: 0,
+                decline: 0,
+                stability: 0
+            };
 
             // 模拟到达目标胜场数
             while (wins < targetWins) {
-                const currentWinRate = getWinRate(currentRank, winRate * 100, 5);
+                const gameIndex = wins + losses;
+                const currentWinRate = getWinRatePhase(
+                    gameIndex,
+                    targetWins * 2, // 估计总场次约为胜场的两倍
+                    baseWinRate,
+                    volatilityFactor,
+                    learningFactor
+                );
+
                 const isWin = Math.random() < currentWinRate;
 
                 gameHistory.push(isWin ? 'W' : 'L');
@@ -766,7 +962,12 @@
                 }
             }
 
-            allResults.push({ scoresByRank, wins, losses });
+            allResults.push({
+                scoresByRank,
+                wins,
+                losses,
+                phaseStats
+            });
         }
         return allResults;
     }
@@ -839,6 +1040,8 @@
                 bestError = error;
                 bestWinRate = testWinRate;
             }
+
+            updateProgress(10 + (i / coarseSteps * 20), `粗略搜索: ${(testWinRate * 100).toFixed(1)}%`);
         }
 
         // 找到最佳粗略结果附近的范围
@@ -905,6 +1108,8 @@
                 bestError = error;
                 bestWinRate = testWinRate;
             }
+
+            updateProgress(70 + (i / finalSteps * 5), `最终验证: ${(testWinRate * 100).toFixed(2)}%`);
         }
 
         return { winRate: bestWinRate, error: bestError, iterations: iterations };
@@ -963,11 +1168,67 @@
         };
     }
 
+    function displayWinRateChart(baseWinRate, volatilityLevel) {
+        const volatilityFactor = getVolatilityFactor(volatilityLevel);
+        const totalGames = 100;
+        let winRates = [];
+
+        for (let i = 0; i < totalGames; i++) {
+            winRates.push(getWinRatePhase(
+                i,
+                totalGames,
+                baseWinRate,
+                volatilityFactor,
+                0.005
+            ));
+        }
+
+        // 分组计算平均值
+        const groupSize = 10;
+        const groupCount = Math.ceil(totalGames / groupSize);
+        let groupAverages = [];
+
+        for (let i = 0; i < groupCount; i++) {
+            const start = i * groupSize;
+            const end = Math.min(start + groupSize, totalGames);
+            const group = winRates.slice(start, end);
+            const avg = group.reduce((sum, val) => sum + val, 0) / group.length;
+            groupAverages.push(avg * 100);
+        }
+
+        const maxValue = Math.max(...groupAverages, 80);
+        const minValue = Math.min(...groupAverages, 20);
+        const range = maxValue - minValue;
+
+        let chartHtml = `<div class="winrate-chart-container">`;
+
+        groupAverages.forEach((rate, index) => {
+            const height = ((rate - minValue) / range) * 100;
+            chartHtml += `
+                <div class="chart-bar" style="height: ${height}%">
+                    <div class="chart-label">${(index * groupSize) + 1}-${(index + 1) * groupSize}</div>
+                </div>
+            `;
+        });
+
+        chartHtml += `</div>`;
+
+        return chartHtml;
+    }
+
+    function getVolatilityClass(std) {
+        if (std < 2) return 'low-volatility';
+        if (std < 5) return 'medium-volatility';
+        return 'high-volatility';
+    }
+
     function displayResults(optimalWinRate, confidenceIntervals, searchInfo, settings, targetData) {
         const results = document.getElementById('results');
         const resultContent = document.getElementById('resultContent');
 
         const { netWins, totalGames, actualWinRates, rankScores } = confidenceIntervals;
+        const volatilityLevel = document.getElementById('volatilityLevel').value;
+        const volatilityClass = getVolatilityClass(actualWinRates.std);
 
         // 计算拟合质量指标
         const avgError = searchInfo.error;
@@ -976,23 +1237,32 @@
 
         let html = `
             <div class="result-card">
-                <div class="result-title">🎯 推算的最优胜率</div>
+                <div class="result-title">🎯 推算的最优胜率模型</div>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-value">${(optimalWinRate * 100).toFixed(2)}%</div>
-                        <div class="stat-label">估计钻石段位胜率</div>
+                        <div class="stat-label">基础胜率</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">${searchInfo.iterations}</div>
-                        <div class="stat-label">搜索轮数</div>
+                        <div class="stat-value">${actualWinRates.mean.toFixed(2)}%</div>
+                        <div class="stat-label">实际平均胜率</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value">${avgError.toFixed(0)}</div>
-                        <div class="stat-label">平均绝对误差</div>
+                        <div class="stat-value">${actualWinRates.std.toFixed(2)}%</div>
+                        <div class="stat-label ${volatilityClass}">胜率波动性</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value">${relativeError.toFixed(2)}%</div>
-                        <div class="stat-label">相对误差</div>
+                        <div class="stat-label">模型拟合误差</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <h4>胜率波动模拟:</h4>
+                    <p>基于您选择的波动程度(${volatilityLevel})，模拟了胜率随时间的变化：</p>
+                    ${displayWinRateChart(optimalWinRate, volatilityLevel)}
+                    <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
+                        游戏场次分段（每10场）
                     </div>
                 </div>
             </div>
@@ -1040,13 +1310,13 @@
             <div class="result-card">
                 <div class="result-title">🔬 分析方法说明</div>
                 <div class="method-info">
-                    <h4>改进的统计方法:</h4>
+                    <h4>增强的胜率波动模型:</h4>
                     <ul style="margin: 10px 0; padding-left: 20px;">
-                        <li><strong>两阶段搜索:</strong> 先粗略搜索确定范围，再精确二分查找</li>
-                        <li><strong>加权误差函数:</strong> 使用绝对误差的平方根，避免相对误差偏差</li>
-                        <li><strong>梯度导向搜索:</strong> 根据左右误差大小调整搜索方向</li>
-                        <li><strong>多点验证:</strong> 最终在最优点附近进行精细搜索确认</li>
-                        <li><strong>置信区间:</strong> 使用 ${settings.confidenceSimulations} 次模拟计算统计分布</li>
+                        <li><strong>学习曲线:</strong> 模拟玩家随着游戏时间逐渐进步的过程</li>
+                        <li><strong>环境适应:</strong> 中期因环境变化导致的胜率波动</li>
+                        <li><strong>分段模拟:</strong> 将游戏过程分为多个阶段，每个阶段有不同胜率特征</li>
+                        <li><strong>波动程度:</strong> 根据玩家类型设置不同的波动标准差</li>
+                        <li><strong>高斯模型:</strong> 使用正态分布模拟胜率的随机波动</li>
                     </ul>
                 </div>
             </div>
@@ -1065,31 +1335,40 @@
                             `${RANKS[rank].name}: ${targetData.scores[rank].toLocaleString()} 分`
                         ).join('<br>')}
                     </div>
+                    <div>
+                        <strong>波动模型:</strong> ${volatilityLevel}<br>
+                        <strong>学习曲线:</strong> ${document.getElementById('learningFactor').value}
+                    </div>
                 </div>
             </div>
 
             <div class="result-card">
-                <div class="result-title">💡 结果解读</div>
+                <div class="result-title">💡 结果解读与建议</div>
                 <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3;">
                     <h5 style="color: #1976d2; margin-bottom: 10px;">如何理解这些数据:</h5>
                     <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.6;">
-                        <li><strong>推算胜率:</strong> 基于你的战绩数据，估计你在钻石阶位的胜率约为 ${(optimalWinRate * 100).toFixed(1)}%</li>
+                        <li><strong>基础胜率:</strong> 这是您的长期平均胜率，考虑了所有波动后的中心值</li>
+                        <li><strong>实际胜率:</strong> 由于波动影响，您的实际胜率围绕基础胜率变化</li>
+                        <li><strong>胜率波动性:</strong> 标准差 ${actualWinRates.std.toFixed(2)}% 表示您胜率的稳定性</li>
                         <li><strong>拟合精度:</strong> 相对误差 ${relativeError.toFixed(2)}% ${relativeError < 5 ? '(拟合优秀)' : relativeError < 10 ? '(拟合良好)' : '(拟合一般)'}</li>
-                        <li><strong>置信区间:</strong> 在 ${settings.confidenceLevel}% 的置信水平下，你未来的表现预期范围</li>
-                        <li><strong>标准差:</strong> 反映预测结果的稳定性，越小越稳定</li>
                     </ul>
 
-                    <h5 style="color: #1976d2; margin: 15px 0 10px 0;">建议:</h5>
+                    <h5 style="color: #1976d2; margin: 15px 0 10px 0;">竞技建议:</h5>
                     <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.6;">
                         ${optimalWinRate > 0.6 ?
-                            '<li style="color: #4caf50;">🎉 你的胜率相当不错！你是高手！</li>' :
+                            '<li style="color: #4caf50;">🎉 您的基础胜率相当高！继续保持！</li>' :
                             optimalWinRate > 0.5 ?
-                            '<li style="color: #ff9800;">📊 胜率处于平均水平，继续保持稳定发挥</li>' :
-                            '<li style="color: #f44336;">💪 胜率有提升空间，吃饭了吗？</li>'
+                            '<li style="color: #ff9800;">📊 胜率处于平均水平，有提升空间</li>' :
+                            '<li style="color: #f44336;">💪 胜率有较大提升空间，建议研究主流卡组</li>'
                         }
-                        ${relativeError > 15 ? '<li style="color: #ff5722;">⚠️ 拟合误差较大，建议增加模拟次数或检查数据</li>' : ''}
-                        <li>置信区间越窄说明预测越稳定可靠</li>
-                        <li>可以尝试调整高级设置中的参数获得更精确的结果</li>
+                        ${actualWinRates.std > 7 ?
+                            '<li style="color: #ff5722;">⚠️ 您的胜率波动较大，建议保持卡组稳定性</li>' :
+                            '<li style="color: #4caf50;">✅ 您的胜率非常稳定，继续保持！</li>'
+                        }
+                        ${confidenceIntervals.actualWinRates.lower < 50 ?
+                            '<li>💡 在状态不佳时（胜率低于50%），建议休息调整</li>' : ''
+                        }
+                        <li>当胜率进入置信区间上限时，是冲击高排名的好时机</li>
                     </ul>
                 </div>
             </div>
@@ -1204,7 +1483,7 @@
 
     // 页面加载完成后的初始化
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('影之诗反向胜率分析器已加载');
+        console.log('影之诗增强版胜率分析器已加载');
 
         // 添加输入验证
         const numericInputs = document.querySelectorAll('input[type="number"]');

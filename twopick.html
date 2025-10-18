@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影之诗2P资源模拟器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .reward-table {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+
+        .reward-table h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .reward-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .reward-item {
+            background: linear-gradient(135deg, #fff 0%, #f1f3f4 100%);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .reward-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .input-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            margin-bottom: 30px;
+        }
+
+        .input-section h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #d4edda;
+        }
+
+        .stats h3 {
+            color: #155724;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .stat-item strong {
+            color: #155724;
+        }
+
+        .chart-container {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+        }
+
+        .chart-container h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chart {
+            width: 100%;
+            height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .results {
+                grid-template-columns: 1fr;
+            }
+            
+            .reward-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 影之诗2P资源模拟器</h1>
+        
+        <div class="reward-table">
+            <h3>💰 奖励表 (入场费：1000金币)</h3>
+            <div class="reward-grid">
+                <div class="reward-item">0胜：1包+100金币</div>
+                <div class="reward-item">1胜：1包+300金币</div>
+                <div class="reward-item">2胜：1包+500金币</div>
+                <div class="reward-item">3胜：1包+700金币</div>
+                <div class="reward-item">4胜：1包+850金币</div>
+                <div class="reward-item">5胜：1包+1000金币</div>
+                <div class="reward-item">6胜：1包+1250金币</div>
+                <div class="reward-item">7胜：2包+1500金币</div>
+            </div>
+            <p style="text-align: center; margin-top: 15px; color: #666;">💡 直接购买卡包：500金币/包</p>
+        </div>
+
+        <div class="input-section">
+            <h3>📊 资源消耗模拟</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="initial_coins">初始金币:</label>
+                    <input type="number" id="initial_coins" min="1000" step="100" value="10000" placeholder="至少1000金币">
+                </div>
+                <div class="form-group">
+                    <label for="winrate">胜率 (0-1):</label>
+                    <input type="number" id="winrate" min="0" max="1" step="0.01" value="0.6" placeholder="例如：0.6表示60%胜率">
+                </div>
+                <div class="form-group">
+                    <label for="simulations">模拟次数:</label>
+                    <input type="number" id="simulations" min="100" max="10000" value="1000" placeholder="建议100-1000次">
+                </div>
+            </div>
+            <button onclick="runSimulation()">🎯 开始模拟</button>
+        </div>
+
+        <div id="results" style="display: none;">
+            <div class="stats">
+                <h3>📈 统计结果</h3>
+                <div id="stats-content"></div>
+            </div>
+            <div class="chart-container">
+                <h3>📊 结果分布图</h3>
+                <canvas id="chart" class="chart"></canvas>
+            </div>
+        </div>
+
+        <div id="loading" style="display: none;">
+            <div class="loading">
+                <div class="spinner"></div>
+                正在模拟中，请稍候...
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        // 奖励表
+        const rewards = {
+            0: { packs: 1, coins: 100 },
+            1: { packs: 1, coins: 300 },
+            2: { packs: 1, coins: 500 },
+            3: { packs: 1, coins: 700 },
+            4: { packs: 1, coins: 850 },
+            5: { packs: 1, coins: 1000 },
+            6: { packs: 1, coins: 1250 },
+            7: { packs: 2, coins: 1500 }
+        };
+
+        const ENTRY_FEE = 1000;
+        const PACK_PRICE = 500;
+
+        let chart = null;
+
+        // 模拟单次2P游戏
+        function simulate2PGame(winRate) {
+            let wins = 0;
+            let losses = 0;
+
+            while (wins < 7 && losses < 2) {
+                if (Math.random() < winRate) {
+                    wins++;
+                } else {
+                    losses++;
+                }
+            }
+
+            return rewards[wins];
+        }
+
+        // 模拟单次完整资源消耗
+        function simulateResourceConsumption(initialCoins, winRate) {
+            let coins = initialCoins;
+            let totalPacks = 0;
+            let gamesPlayed = 0;
+
+            while (coins >= ENTRY_FEE && gamesPlayed < 10000) {
+                coins -= ENTRY_FEE;
+                gamesPlayed++;
+
+                const result = simulate2PGame(winRate);
+                totalPacks += result.packs;
+                coins += result.coins;
+            }
+
+            return {
+                totalPacks: totalPacks,
+                gamesPlayed: gamesPlayed,
+                finalCoins: coins,
+                isInfinite: gamesPlayed >= 10000
+            };
+        }
+
+        function runSimulation() {
+            const initialCoins = parseInt(document.getElementById('initial_coins').value);
+            const winRate = parseFloat(document.getElementById('winrate').value);
+            const simulations = parseInt(document.getElementById('simulations').value);
+
+            if (initialCoins < ENTRY_FEE) {
+                alert('初始金币必须至少1000');
+                return;
+            }
+
+            if (winRate < 0 || winRate > 1) {
+                alert('胜率必须在0-1之间');
+                return;
+            }
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+
+            setTimeout(() => {
+                const results = [];
+                let infiniteCount = 0;
+
+                for (let i = 0; i < simulations; i++) {
+                    const result = simulateResourceConsumption(initialCoins, winRate);
+                    if (result.isInfinite) {
+                        infiniteCount++;
+                    }
+                    results.push(result);
+                }
+
+                displayResults(initialCoins, winRate, simulations, results, infiniteCount);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results').style.display = 'grid';
+            }, 100);
+        }
+
+        function displayResults(initialCoins, winRate, simulations, results, infiniteCount) {
+            // 过滤掉无限循环的结果进行统计
+            const finiteResults = results.filter(r => !r.isInfinite);
+            
+            if (finiteResults.length === 0) {
+                // 全部都是无限循环
+                displayInfiniteResults(initialCoins, winRate, simulations, infiniteCount);
+                return;
+            }
+
+            // 统计数据
+            const totalPacks = finiteResults.map(r => r.totalPacks);
+            const gamesPlayed = finiteResults.map(r => r.gamesPlayed);
+            const finalCoins = finiteResults.map(r => r.finalCoins);
+
+            const avgPacks = totalPacks.reduce((a, b) => a + b, 0) / finiteResults.length;
+            const avgGames = gamesPlayed.reduce((a, b) => a + b, 0) / finiteResults.length;
+            const avgFinalCoins = finalCoins.reduce((a, b) => a + b, 0) / finiteResults.length;
+
+            const minPacks = Math.min(...totalPacks);
+            const maxPacks = Math.max(...totalPacks);
+            const minGames = Math.min(...gamesPlayed);
+            const maxGames = Math.max(...gamesPlayed);
+
+            const infiniteRate = (infiniteCount / simulations * 100).toFixed(1);
+
+            // 显示统计结果
+            const statsContent = document.getElementById('stats-content');
+            statsContent.innerHTML = `
+                <div class="stat-item">
+                    <strong>模拟设置:</strong> ${initialCoins.toLocaleString()}金币, ${(winRate * 100).toFixed(1)}%胜率, ${simulations}次模拟
+                </div>
+                <div class="stat-item">
+                    <strong>永动概率:</strong> ${infiniteRate}% (${infiniteCount}/${simulations})
+                </div>
+                <div class="stat-item">
+                    <strong>平均获得包数:</strong> ${avgPacks.toFixed(1)}包 (${minPacks}-${maxPacks})
+                </div>
+                <div class="stat-item">
+                    <strong>平均游戏场次:</strong> ${avgGames.toFixed(1)}场 (${minGames}-${maxGames})
+                </div>
+                <div class="stat-item">
+                    <strong>平均剩余金币:</strong> ${avgFinalCoins.toFixed(0)}金币
+                </div>
+                <div class="stat-item">
+                    <strong>平均总价值:</strong> ${(avgPacks * PACK_PRICE + avgFinalCoins).toFixed(0)}金币
+                    <br><small>${avgPacks * PACK_PRICE + avgFinalCoins >= initialCoins ? 
+                        `相比初始盈利${(avgPacks * PACK_PRICE + avgFinalCoins - initialCoins).toFixed(0)}金币` : 
+                        `相比初始亏损${(initialCoins - avgPacks * PACK_PRICE - avgFinalCoins).toFixed(0)}金币`}</small>
+                </div>
+            `;
+
+            // 创建分布图
+            createChart(totalPacks, infiniteCount, simulations);
+        }
+
+        function displayInfiniteResults(initialCoins, winRate, simulations, infiniteCount) {
+            const statsContent = document.getElementById('stats-content');
+            statsContent.innerHTML = `
+                <div class="stat-item">
+                    <strong>模拟设置:</strong> ${initialCoins.toLocaleString()}金币, ${(winRate * 100).toFixed(1)}%胜率, ${simulations}次模拟
+                </div>
+                <div class="stat-item">
+                    <strong>🎉 恭喜！100%概率永动赚钱！</strong>
+                    <br><small>在当前胜率下，所有模拟都能无限进行下去</small>
+                </div>
+            `;
+
+            // 显示永动图表
+            if (chart) {
+                chart.destroy();
+            }
+            const ctx = document.getElementById('chart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['永动'],
+                    datasets: [{
+                        data: [100],
+                        backgroundColor: ['#28a745'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '100%永动率'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createChart(totalPacks, infiniteCount, simulations) {
+            // 创建包数分布直方图
+            const packCounts = {};
+            totalPacks.forEach(packs => {
+                packCounts[packs] = (packCounts[packs] || 0) + 1;
+            });
+
+            const labels = Object.keys(packCounts).sort((a, b) => parseInt(a) - parseInt(b));
+            const data = labels.map(label => packCounts[label]);
+
+            // 添加永动数据
+            if (infiniteCount > 0) {
+                labels.push('永动');
+                data.push(infiniteCount);
+            }
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            const ctx = document.getElementById('chart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '次数',
+                        data: data,
+                        backgroundColor: labels.map((label, index) => 
+                            label === '永动' ? '#28a745' : `hsl(${200 + index * 10}, 70%, 60%)`
+                        ),
+                        borderColor: labels.map((label, index) => 
+                            label === '永动' ? '#1e7e34' : `hsl(${200 + index * 10}, 70%, 50%)`
+                        ),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '出现次数'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '获得包数'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '包数分布图'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // 页面加载完成
+        window.addEventListener('load', () => {
+            // 不自动运行模拟
+        });
+    </script>
+</body>
+</html>
