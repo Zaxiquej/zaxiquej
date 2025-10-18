@@ -1,5 +1,5 @@
 // 图片文件夹路径
-const imagePath = 'gameDisplay/';
+const imagePath = './gameDisplay/';
 
 // 游戏数据 - 只需要指定有多少张截图
 const gamesData = {
