@@ -143,7 +143,7 @@ const gamesData = {
               id: 12,
               title: "混沌时代",
               folder: "game12",
-              description: "中篇魔塔。过于古代，游戏中有不少古代游戏特有的卡道具和诡异美术，请做好心理准备。",
+              description: "中篇魔塔。过于古代，不推荐游玩。游戏中有不少古代游戏特有的卡道具和诡异美术，请做好心理准备。",
               releaseDate: "2015年7月",
               screenshotCount: 4,
               buttons: [
@@ -155,7 +155,7 @@ const gamesData = {
               id: 13,
               title: "噩梦",
               folder: "game13",
-              description: "未完成，仅有短篇篇幅。游戏中有不少古代游戏特有的卡道具。",
+              description: "未完成，仅有短篇篇幅。过于古代，不推荐游玩。游戏中有不少古代游戏特有的卡道具，墨迹操作和瞎眼美术。请做好心理准备。",
               releaseDate: "2016年2月",
               screenshotCount: 3,
               buttons: [
@@ -303,7 +303,7 @@ const gamesData = {
             id: 12,
             title: "Age of Chaos",
             folder: "game12",
-            description: "Medium-length magic tower. Too ancient, the game has many ancient game-specific card items and weird art, please be prepared.",
+            description: "Medium-length magic tower. Too ancient, the game has many ancient game-specific designs and weird art, please be prepared.",
             releaseDate: "July 2015",
             screenshotCount: 4,
             buttons: [
@@ -315,7 +315,7 @@ const gamesData = {
             id: 13,
             title: "Nightmare",
             folder: "game13",
-            description: "Unfinished, only a short story length. The game has many ancient game-specific card items.",
+            description: "Unfinished, only a short story length. The game has many ancient game-specific designs.",
             releaseDate: "February 2016",
             screenshotCount: 3,
             buttons: [
