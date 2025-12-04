@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表情包展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .mode-switch {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .mode-btn {
+            padding: 12px 30px;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .mode-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .folder {
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .folder:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .folder-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .folder-header:hover {
+            background: #e9ecef;
+        }
+
+        .folder-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .folder-toggle:hover {
+            background: #5568d3;
+            transform: scale(1.1);
+        }
+
+        .folder-info {
+            display: flex;
+            flex-direction: column;
+            margin-right: 15px;
+        }
+
+        .folder-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .folder-count {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .preview-images {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+            align-items: center;
+        }
+
+        .more-indicator {
+            font-size: 1.5em;
+            color: #999;
+            padding: 0 10px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: white;
+        }
+
+        .emoji-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .emoji-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .emoji-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .emoji-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(102, 126, 234, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .emoji-item:active::after {
+            opacity: 1;
+        }
+
+        .emoji-number {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 表情包收藏</h1>
+            <div class="mode-switch">
+                <button class="mode-btn active" data-mode="copy">📋 复制模式</button>
+                <button class="mode-btn" data-mode="download">💾 下载模式</button>
+            </div>
+        </div>
+
+        <div class="content" id="content">
+            <!-- 文件夹将在这里动态生成 -->
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ==================== 配置区域 ====================
+        // 在这里配置你的文件夹
+        const folders = [
+            {
+                name: "伊弥拉",
+                path: "表情包A",
+                count: 85,  // 这个文件夹有85张图片 (1.png 到 85.png)
+                ext: "png"  // 图片扩展名
+            }
+        ];
+        // ================================================
+
+        let currentMode = 'copy';
+        const content = document.getElementById('content');
+        const toast = document.getElementById('toast');
+
+        // 根据配置生成图片路径数组
+        function generateImagePaths(folder) {
+            const images = [];
+            for (let i = 1; i <= folder.count; i++) {
+                images.push(`${folder.path}/${i}.${folder.ext}`);
+            }
+            return images;
+        }
+
+        // 初始化
+        function init() {
+            renderFolders();
+            setupModeSwitch();
+        }
+
+        // 渲染文件夹
+        function renderFolders() {
+            content.innerHTML = '';
+            folders.forEach((folder, index) => {
+                const images = generateImagePaths(folder);
+                const previewCount = 5;
+                const previewImages = images.slice(0, previewCount);
+                const hasMore = images.length > previewCount;
+
+                const folderDiv = document.createElement('div');
+                folderDiv.className = 'folder';
+                folderDiv.innerHTML = `
+                    <div class="folder-header" onclick="toggleFolder(${index})">
+                        <button class="folder-toggle" id="toggle-${index}">+</button>
+                        <div class="folder-info">
+                            <span class="folder-name">${folder.name}</span>
+                            <span class="folder-count">共 ${images.length} 张</span>
+                        </div>
+                        <div class="preview-images">
+                            ${previewImages.map((img, idx) =>
+                                `<div class="emoji-item" style="width: 60px; height: 60px;" onclick="event.stopPropagation(); handleEmojiClick('${img}')">
+                                    <img src="${img}" alt="表情" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${idx + 1}%3C/text%3E%3C/svg%3E'">
+                                    <span class="emoji-number">#${idx + 1}</span>
+                                </div>`
+                            ).join('')}
+                            ${hasMore ? '<span class="more-indicator">...</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="emoji-grid hidden" id="grid-${index}">
+                        ${images.map((img, idx) =>
+                            `<div class="emoji-item" onclick="handleEmojiClick('${img}')">
+                                <img src="${img}" alt="表情" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${idx + 1}%3C/text%3E%3C/svg%3E'">
+                                <span class="emoji-number">#${idx + 1}</span>
+                            </div>`
+                        ).join('')}
+                    </div>
+                `;
+                content.appendChild(folderDiv);
+            });
+        }
+
+        // 切换文件夹展开/收起
+        function toggleFolder(index) {
+            const grid = document.getElementById(`grid-${index}`);
+            const toggle = document.getElementById(`toggle-${index}`);
+
+            if (grid.classList.contains('hidden')) {
+                grid.classList.remove('hidden');
+                toggle.textContent = '−';
+            } else {
+                grid.classList.add('hidden');
+                toggle.textContent = '+';
+            }
+        }
+
+        // 处理表情点击
+        async function handleEmojiClick(imagePath) {
+            if (currentMode === 'copy') {
+                await copyImage(imagePath);
+            } else {
+                downloadImage(imagePath);
+            }
+        }
+
+        // 复制图片到剪贴板
+        async function copyImage(imagePath) {
+            try {
+                const response = await fetch(imagePath);
+                if (!response.ok) {
+                    throw new Error('图片加载失败');
+                }
+                const blob = await response.blob();
+
+                // 检查浏览器是否支持clipboard API
+                if (!navigator.clipboard || !navigator.clipboard.write) {
+                    showToast('❌ 浏览器不支持复制功能,请使用下载模式');
+                    return;
+                }
+
+                await navigator.clipboard.write([
+                    new ClipboardItem({ [blob.type]: blob })
+                ]);
+                showToast('✅ 图片已复制到剪贴板');
+            } catch (err) {
+                console.error('复制失败:', err);
+                // 提供更详细的错误信息
+                if (err.name === 'NotAllowedError') {
+                    showToast('❌ 需要授予剪贴板权限');
+                } else if (err.message.includes('加载失败')) {
+                    showToast('❌ 图片文件不存在或路径错误');
+                } else {
+                    showToast('❌ 复制失败,建议使用下载模式');
+                }
+            }
+        }
+
+        // 下载图片
+        function downloadImage(imagePath) {
+            const link = document.createElement('a');
+            link.href = imagePath;
+            link.download = imagePath.split('/').pop();
+            link.click();
+            showToast('💾 开始下载图片');
+        }
+
+        // 显示提示
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // 设置模式切换
+        function setupModeSwitch() {
+            const modeBtns = document.querySelectorAll('.mode-btn');
+            modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentMode = btn.dataset.mode;
+                    showToast(currentMode === 'copy' ? '📋 已切换到复制模式' : '💾 已切换到下载模式');
+                });
+            });
+        }
+
+        // 启动应用
+        init();
+    </script>
+</body>
+</html>

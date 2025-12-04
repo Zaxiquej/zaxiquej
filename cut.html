@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能表情包拆分工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover, .upload-area.dragging {
+            border-color: #9333ea;
+            background: #f3e8ff;
+        }
+
+        .upload-area svg {
+            width: 48px;
+            height: 48px;
+            color: #9ca3af;
+            margin: 0 auto 1rem;
+        }
+
+        .upload-area p {
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-area small {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        #previewImage {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        #imageInfo {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input[type="number"]:focus {
+            outline: none;
+            border-color: #9333ea;
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 0.875rem;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.875rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #9333ea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #7e22ce;
+        }
+
+        .btn-primary:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+        }
+
+        .btn-success {
+            background: #16a34a;
+            color: white;
+            padding: 0.625rem 1.25rem;
+            width: auto;
+        }
+
+        .btn-success:hover {
+            background: #15803d;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .result-item {
+            position: relative;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .result-item:hover {
+            border-color: #9333ea;
+        }
+
+        .result-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .result-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .result-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .download-btn {
+            background: white;
+            color: #9333ea;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #9333ea;
+            color: white;
+        }
+
+        .result-item .index {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: #9ca3af;
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            opacity: 0.5;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path>
+                </svg>
+                智能表情包拆分工具
+            </h1>
+            <p>上传表情包图片，设置参数，一键拆分成单个表情</p>
+        </div>
+
+        <div class="main-grid">
+            <!-- 左侧控制面板 -->
+            <div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h2>📤 上传图片</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p>拖拽图片到这里</p>
+                        <small>或点击选择文件</small>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*">
+                    <img id="previewImage" alt="Preview">
+                    <p id="imageInfo"></p>
+                </div>
+
+                <div class="card">
+                    <h2>⚙️ 拆分设置</h2>
+                    <div class="form-group">
+                        <label for="rows">行数</label>
+                        <input type="number" id="rows" value="4" min="1" max="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cols">列数</label>
+                        <input type="number" id="cols" value="4" min="1" max="20">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="margin">边距裁剪 (像素)</label>
+                        <input type="number" id="margin" value="0" min="0">
+                        <small>表情之间的空隙宽度</small>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="doubleMargin">
+                        <label for="doubleMargin">中间空档双倍裁剪</label>
+                    </div>
+
+                    <button class="btn btn-primary" id="splitBtn" disabled>
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"></path>
+                        </svg>
+                        开始拆分
+                    </button>
+                </div>
+            </div>
+
+            <!-- 右侧结果展示 -->
+            <div class="card">
+                <div class="result-header">
+                    <h2>拆分结果 <span id="resultCount"></span></h2>
+                    <button class="btn btn-success" id="downloadAllBtn" style="display: none;">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        全部下载
+                    </button>
+                </div>
+
+                <div id="resultArea">
+                    <div class="empty-state">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 010 2H6v2a1 1 0 01-2 0V5zM4 13a1 1 0 011-1h2a1 1 0 010 2H5a1 1 0 01-1-1zm6-8a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM4 19a1 1 0 011-1h2a1 1 0 010 2H5a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 010 2h-2a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm0-6a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm-10 2a1 1 0 011-1h2a1 1 0 110 2H5a1 1 0 01-1-1z"></path>
+                        </svg>
+                        <p>上传图片并点击"开始拆分"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let uploadedImage = null;
+        let splitResults = [];
+
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewImage = document.getElementById('previewImage');
+        const imageInfo = document.getElementById('imageInfo');
+        const splitBtn = document.getElementById('splitBtn');
+        const resultArea = document.getElementById('resultArea');
+        const resultCount = document.getElementById('resultCount');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+
+        // 上传区域点击
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // 文件选择
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                handleImageUpload(file);
+            }
+        });
+
+        // 拖拽功能
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragging');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragging');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragging');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleImageUpload(file);
+            }
+        });
+
+        // 处理图片上传
+        function handleImageUpload(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    uploadedImage = img;
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                    imageInfo.textContent = `尺寸: ${img.width} × ${img.height}`;
+                    imageInfo.style.display = 'block';
+                    splitBtn.disabled = false;
+                    clearResults();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // 拆分图片
+        splitBtn.addEventListener('click', () => {
+            if (!uploadedImage) return;
+
+            const rows = parseInt(document.getElementById('rows').value);
+            const cols = parseInt(document.getElementById('cols').value);
+            const margin = parseInt(document.getElementById('margin').value);
+            const doubleMargin = document.getElementById('doubleMargin').checked;
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // 计算尺寸
+            const totalMarginWidth = margin * (cols + 1);
+            const totalMarginHeight = margin * (rows + 1);
+
+            let extraMarginWidth = 0;
+            let extraMarginHeight = 0;
+            if (doubleMargin && cols > 1) {
+                extraMarginWidth = margin * (cols - 1);
+            }
+            if (doubleMargin && rows > 1) {
+                extraMarginHeight = margin * (rows - 1);
+            }
+
+            const emojiWidth = (uploadedImage.width - totalMarginWidth - extraMarginWidth) / cols;
+            const emojiHeight = (uploadedImage.height - totalMarginHeight - extraMarginHeight) / rows;
+
+            canvas.width = emojiWidth;
+            canvas.height = emojiHeight;
+
+            splitResults = [];
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    let x = margin + col * (emojiWidth + margin);
+                    let y = margin + row * (emojiHeight + margin);
+
+                    if (doubleMargin) {
+                        if (col > 0) x += col * margin;
+                        if (row > 0) y += row * margin;
+                    }
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(uploadedImage, x, y, emojiWidth, emojiHeight, 0, 0, emojiWidth, emojiHeight);
+
+                    splitResults.push({
+                        dataUrl: canvas.toDataURL('image/png'),
+                        index: row * cols + col + 1
+                    });
+                }
+            }
+
+            displayResults();
+        });
+
+        // 显示结果
+        function displayResults() {
+            if (splitResults.length === 0) return;
+
+            resultCount.textContent = `(${splitResults.length}张)`;
+            downloadAllBtn.style.display = 'flex';
+
+            const grid = document.createElement('div');
+            grid.className = 'result-grid';
+
+            splitResults.forEach((item) => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+
+                const img = document.createElement('img');
+                img.src = item.dataUrl;
+                img.alt = `Emoji ${item.index}`;
+
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'download-btn';
+                downloadBtn.innerHTML = `<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>`;
+                downloadBtn.onclick = () => downloadSingle(item.dataUrl, item.index);
+
+                overlay.appendChild(downloadBtn);
+
+                const index = document.createElement('p');
+                index.className = 'index';
+                index.textContent = `#${item.index}`;
+
+                div.appendChild(img);
+                div.appendChild(overlay);
+                div.appendChild(index);
+                grid.appendChild(div);
+            });
+
+            resultArea.innerHTML = '';
+            resultArea.appendChild(grid);
+        }
+
+        // 下载单张
+        function downloadSingle(dataUrl, index) {
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = `emoji_${timestamp}_${index}.png`;
+            link.click();
+        }
+
+        // 下载全部
+        downloadAllBtn.addEventListener('click', () => {
+            splitResults.forEach((item, i) => {
+                setTimeout(() => {
+                    downloadSingle(item.dataUrl, item.index);
+                }, i * 200);
+            });
+        });
+
+        // 清除结果
+        function clearResults() {
+            splitResults = [];
+            resultCount.textContent = '';
+            downloadAllBtn.style.display = 'none';
+            resultArea.innerHTML = `
+                <div class="empty-state">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 010 2H6v2a1 1 0 01-2 0V5zM4 13a1 1 0 011-1h2a1 1 0 010 2H5a1 1 0 01-1-1zm6-8a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM4 19a1 1 0 011-1h2a1 1 0 010 2H5a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 010 2h-2a1 1 0 01-1-1zm6 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm0-6a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm-10 2a1 1 0 011-1h2a1 1 0 110 2H5a1 1 0 01-1-1z"></path>
+                    </svg>
+                    <p>上传图片并点击"开始拆分"</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
