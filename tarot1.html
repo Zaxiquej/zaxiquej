@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Stairgame</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #eee;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+#stairs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.stair {
+  border: 3px solid #444;
+  padding: 10px 10px 50px;
+  width: 160px;
+  min-height: 280px;
+  max-height: 380px;
+  position: relative;
+  background: linear-gradient(145deg, #2b2b2b, #1f1f1f);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.stair:hover {
+  border-color: #666;
+  transform: translateY(-2px);
+}
+
+.stair.selected {
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  transform: translateY(-4px);
+}
+
+.stair .label {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 13px;
+  color: #aaa;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.stair .collapseBtn {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  padding: 6px 12px;
+  background: linear-gradient(145deg, #c62828, #b71c1c);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.stair .collapseBtn:hover {
+  background: linear-gradient(145deg, #d32f2f, #c62828);
+  transform: translateX(-50%) scale(1.05);
+  z-index: 11;
+}
+
+.stairStack {
+  position: relative;
+  width: 135px;
+  height: 240px;
+  margin: auto;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card {
+  width: 135px;
+  height: 240px;
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.card.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.card.playable {
+  border-color: #4caf50;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+  transform: translateY(-5px);
+}
+
+.card.playable:hover {
+  border-color: #66bb6a;
+  box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
+}
+
+#hand {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+}
+
+#log {
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  padding: 12px;
+  height: 180px;
+  overflow-y: auto;
+  font-size: 13px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  line-height: 1.6;
+}
+
+#log::-webkit-scrollbar {
+  width: 8px;
+}
+
+#log::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#log::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+#aiHand {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.back {
+  width: 70px;
+  height: 120px;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 16px;
+  color: #bbb;
+  margin: 10px 0 5px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#cornerUI {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.cornerBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 3px solid #555;
+  font-size: 24px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.cornerBtn .deckCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.cornerBtn:hover {
+  transform: scale(1.1);
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.cornerBtn img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  background: linear-gradient(145deg, #2b2b2b, #1f1f1f);
+  padding: 24px;
+  border: 3px solid #ffd700;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #ffd700;
+  text-align: center;
+  font-size: 24px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.modal p {
+  line-height: 1.8;
+  margin: 12px 0;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.discardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.discardCell {
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid #444;
+  transition: all 0.2s ease;
+}
+
+.discardCell:hover {
+  border-color: #666;
+  transform: scale(1.05);
+}
+
+.discardCell img {
+  width: 55px;
+  height: 100px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+}
+
+.discardCell span {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  #stairs { gap: 12px; }
+  .stair { width: 140px; min-height: 260px; }
+  .card { width: 115px; height: 210px; }
+  h2 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div id="game">
+  <h2>🎴 塔罗阶梯 🎴</h2>
+
+  <div id="stairs"></div>
+
+  <div class="sectionTitle">🤖 AI 手牌</div>
+  <div id="aiHand"></div>
+
+  <div class="sectionTitle">🎯 你的手牌</div>
+  <div id="hand"></div>
+
+  <div id="log"></div>
+</div>
+
+<div id="cornerUI">
+  <div id="ruleBtn" class="cornerBtn">?</div>
+  <div id="discardBtn" class="cornerBtn">
+    <span class="deckCount" id="deckCount">0</span>
+  </div>
+</div>
+
+<div id="ruleModal" class="modal">
+  <div class="modalContent">
+    <h3>📖 游戏规则</h3>
+    <p><strong>🎴 牌组：</strong>使用两套塔罗大阿尔卡那（1-22），共 44 张牌。</p>
+    <p><strong>🎯 初始：</strong>翻开 4 张作为四条【阶梯】的起始牌，双方各抽 5 张手牌。</p>
+    <p><strong>⚡ 回合行动：</strong>必须选择一条阶梯执行其一：</p>
+    <p style="padding-left:20px;">
+      <strong>① 登阶：</strong>打出一张与顶牌"±1"的牌<br>
+      <em>（愚者=1 可视为任意牌）</em>
+    </p>
+    <p style="padding-left:20px;">
+      <strong>② 崩塌：</strong>弃掉该阶梯全部牌，从牌库或弃牌堆生成新起始牌，并摸 1 张
+    </p>
+    <p><strong>🏆 胜利条件：</strong>当你手牌为 0，或全部阶梯为空时，手牌更少者胜。</p>
+    <div class="closeBtn" onclick="ruleModal.style.display='none'">✖ 关闭</div>
+  </div>
+</div>
+
+<div id="discardModal" class="modal">
+  <div class="modalContent">
+    <h3>🗑️ 明牌统计（1-22）</h3>
+    <p style="text-align:center; color:#aaa; font-size:13px;">所有明牌 = 阶梯上的牌 + 弃牌堆中的牌</p>
+    <div id="discardGrid" class="discardGrid"></div>
+    <div class="closeBtn" onclick="discardModal.style.display='none'">✖ 关闭</div>
+  </div>
+</div>
+
+<script>
+const TAROT_COUNT = 22;
+let deck = [], discard = [], stairs = [], playerHand = [], aiHand = [], selectedStair = null, playerTurn = true;
+let aiBack = 1, playerBack = 1;
+const ruleModal = document.getElementById('ruleModal');
+const discardModal = document.getElementById('discardModal');
+const ruleBtn = document.getElementById('ruleBtn');
+const discardBtn = document.getElementById('discardBtn');
+
+ruleBtn.onclick = () => ruleModal.style.display = 'flex';
+discardBtn.onclick = () => { updateDiscardGrid(); discardModal.style.display = 'flex'; };
+
+function log(msg) {
+  const l = document.getElementById('log');
+  const time = new Date().toLocaleTimeString();
+  l.innerHTML += `<span style="color:#888">[${time}]</span> ${msg}<br>`;
+  l.scrollTop = l.scrollHeight;
+}
+
+function initDeck() {
+  deck = [];
+  for(let i = 1; i <= 2; i++)
+    for(let j = 1; j <= TAROT_COUNT; j++)
+      deck.push(j);
+  shuffle(deck);
+}
+
+function shuffle(arr) {
+  for(let i = arr.length - 1; i > 0; i--) {
+    const r = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[r]] = [arr[r], arr[i]];
+  }
+}
+
+function draw() {
+  return deck.length ? deck.pop() : null;
+}
+
+function initGame() {
+  aiBack = 1 + Math.floor(Math.random() * 4);
+  do {
+    playerBack = 1 + Math.floor(Math.random() * 4);
+  } while(playerBack === aiBack);
+
+  discardBtn.innerHTML = '<img src="tarot/back' + playerBack + '.png"><span class="deckCount" id="deckCount">0</span>';
+
+  initDeck();
+  discard = [];
+  playerHand = [];
+  aiHand = [];
+  stairs = [];
+
+  for(let i = 0; i < 4; i++) stairs.push([draw()]);
+  for(let i = 0; i < 5; i++) {
+    playerHand.push(draw());
+    aiHand.push(draw());
+  }
+
+  log('🎮 <strong>游戏开始</strong>');
+  log('🎴 卡背：<span style="color:#4caf50">你 ' + playerBack + '</span> / <span style="color:#f44336">AI ' + aiBack + '</span>');
+  render();
+}
+
+function canPlace(card, stair) {
+  const top = stair[stair.length - 1];
+  return card === 1 || top === 1 || Math.abs(card - top) === 1;
+}
+
+function updatePlayable() {
+  const handDiv = document.getElementById('hand');
+  let anyPlayable = false;
+
+  // 检查选中的阶梯是否为空
+  const selectedStairEmpty = selectedStair !== null && stairs[selectedStair].length === 0;
+
+  [...handDiv.children].forEach((el, i) => {
+    if(selectedStair !== null && !selectedStairEmpty && canPlace(playerHand[i], stairs[selectedStair]))
+      anyPlayable = true;
+  });
+
+  [...handDiv.children].forEach((el, i) => {
+    el.classList.remove('playable', 'disabled');
+    if(selectedStair === null || selectedStairEmpty || !anyPlayable) {
+      el.classList.add('disabled');
+      return;
+    }
+    if(canPlace(playerHand[i], stairs[selectedStair]))
+      el.classList.add('playable');
+    else
+      el.classList.add('disabled');
+  });
+}
+
+function onSelectStair(idx) {
+  if(!playerTurn) return;
+  [...document.getElementById('stairs').children].forEach(s => s.classList.remove('selected'));
+  selectedStair = idx;
+  document.getElementById('stairs').children[idx].classList.add('selected');
+  updatePlayable();
+}
+
+function onClickCard(idx) {
+  if(!playerTurn || selectedStair === null) return;
+  if(stairs[selectedStair].length === 0) return; // 不能向空阶梯打牌
+  if(!canPlace(playerHand[idx], stairs[selectedStair])) return;
+
+  const card = playerHand[idx];
+  stairs[selectedStair].push(card);
+  playerHand.splice(idx, 1);
+
+  log('✅ <span style="color:#4caf50">你登阶：' + card + ' → 阶梯 ' + (selectedStair + 1) + '</span>');
+  selectedStair = null;
+  render();
+  setTimeout(aiTurn, 600);
+}
+
+function collapseStair(idx) {
+  if(!playerTurn) return;
+  if(stairs[idx].length === 0) return; // 不能崩塌空阶梯
+
+  // 修复：确保所有牌都进入弃牌堆
+  const collapsedCards = [...stairs[idx]]; // 复制数组
+  collapsedCards.forEach(c => discard.push(c));
+
+  log('💥 <span style="color:#ff9800">你崩塌了阶梯 ' + (idx + 1) + '（' + collapsedCards.length + '张牌）</span>');
+
+  // 修复：只从牌库抽牌，没有牌就空着
+  const newBase = draw();
+  stairs[idx] = newBase ? [newBase] : [];
+
+  if(!newBase) {
+    log('⚠️ <span style="color:#ff5722">牌库已空，阶梯 ' + (idx + 1) + ' 保持空置</span>');
+  }
+
+  // 摸一张牌
+  const d = draw();
+  if(d) playerHand.push(d);
+
+  selectedStair = null;
+  render();
+  setTimeout(aiTurn, 600);
+}
+
+function aiTurn() {
+  playerTurn = false;
+  let moved = false;
+
+  for(let i = 0; i < aiHand.length; i++) {
+    for(let j = 0; j < stairs.length; j++) {
+      if(stairs[j].length > 0 && canPlace(aiHand[i], stairs[j])) {
+        stairs[j].push(aiHand[i]);
+        log('🤖 <span style="color:#f44336">AI 登阶：' + aiHand[i] + ' → 阶梯 ' + (j + 1) + '</span>');
+        aiHand.splice(i, 1);
+        moved = true;
+        break;
+      }
+    }
+    if(moved) break;
+  }
+
+  if(!moved) {
+    // 找到非空的阶梯
+    const nonEmptyStairs = stairs.map((s, i) => ({idx: i, len: s.length})).filter(s => s.len > 0);
+    if(nonEmptyStairs.length === 0) {
+      log('⚠️ <span style="color:#ff5722">AI 无法行动（所有阶梯为空）</span>');
+      playerTurn = true;
+      render();
+      return;
+    }
+
+    const target = nonEmptyStairs[Math.floor(Math.random() * nonEmptyStairs.length)];
+    const idx = target.idx;
+
+    // 修复：确保所有牌都进入弃牌堆
+    const collapsedCards = [...stairs[idx]]; // 复制数组
+    collapsedCards.forEach(c => discard.push(c));
+
+    log('💥 <span style="color:#ff5722">AI 崩塌了阶梯 ' + (idx + 1) + '（' + collapsedCards.length + '张牌）</span>');
+
+    // 修复：只从牌库抽牌，没有牌就空着
+    const newBase = draw();
+    stairs[idx] = newBase ? [newBase] : [];
+
+    if(!newBase) {
+      log('⚠️ <span style="color:#ff5722">牌库已空，阶梯 ' + (idx + 1) + ' 保持空置</span>');
+    }
+
+    const d = draw();
+    if(d) aiHand.push(d);
+  }
+
+  playerTurn = true;
+  render();
+}
+
+function checkWin() {
+  if(playerHand.length === 0 || stairs.every(s => s.length === 0)) {
+    if(playerHand.length < aiHand.length) {
+      log('🎉 <strong style="color:#4caf50">你获胜！</strong>');
+      setTimeout(() => alert('🎉 你获胜！手牌：你 ' + playerHand.length + ' vs AI ' + aiHand.length), 100);
+    } else if(playerHand.length > aiHand.length) {
+      log('😢 <strong style="color:#f44336">AI 获胜</strong>');
+      setTimeout(() => alert('😢 AI 获胜。手牌：你 ' + playerHand.length + ' vs AI ' + aiHand.length), 100);
+    } else {
+      log('🤝 <strong style="color:#ffd700">平局，后手胜</strong>');
+      setTimeout(() => alert('🤝 平局！手牌相同，后手胜'), 100);
+    }
+    setTimeout(initGame, 500);
+  }
+}
+
+// 优化：统计所有明牌（阶梯 + 弃牌堆）
+function updateDiscardGrid() {
+  const grid = document.getElementById('discardGrid');
+  grid.innerHTML = '';
+
+  // 收集所有明牌
+  const allVisible = [...discard];
+  stairs.forEach(stair => {
+    stair.forEach(card => allVisible.push(card));
+  });
+
+  for(let i = 1; i <= 22; i++) {
+    const count = allVisible.filter(x => x === i).length;
+    const cell = document.createElement('div');
+    cell.className = 'discardCell';
+
+    const img = document.createElement('img');
+    img.src = 'tarot/' + i + '.png';
+    cell.appendChild(img);
+
+    const txt = document.createElement('span');
+    txt.textContent = 'x' + count;
+    cell.appendChild(txt);
+
+    grid.appendChild(cell);
+  }
+}
+
+function render() {
+  const stairsDiv = document.getElementById('stairs');
+  stairsDiv.innerHTML = '';
+
+  stairs.forEach((stair, i) => {
+    const d = document.createElement('div');
+    d.className = 'stair';
+    d.onclick = () => onSelectStair(i);
+
+    const lab = document.createElement('div');
+    lab.className = 'label';
+    lab.textContent = '阶梯 ' + (i + 1);
+    d.appendChild(lab);
+
+    const btn = document.createElement('button');
+    btn.textContent = '崩塌';
+    btn.className = 'collapseBtn';
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      collapseStair(i);
+    };
+    // 如果阶梯为空，禁用崩塌按钮
+    if(stair.length === 0) {
+      btn.disabled = true;
+      btn.style.opacity = '0.3';
+      btn.style.cursor = 'not-allowed';
+    }
+    d.appendChild(btn);
+
+    const stack = document.createElement('div');
+    stack.className = 'stairStack';
+    stair.forEach((c, idx) => {
+      const img = document.createElement('img');
+      img.src = 'tarot/' + c + '.png';
+      img.style.position = 'absolute';
+      img.style.top = (idx * 12) + 'px';
+      img.style.left = '0px';
+      img.style.width = '135px';
+      img.style.height = '240px';
+      stack.appendChild(img);
+    });
+    d.appendChild(stack);
+    stairsDiv.appendChild(d);
+  });
+
+  const handDiv = document.getElementById('hand');
+  handDiv.innerHTML = '';
+  playerHand.forEach((c, i) => {
+    const d = document.createElement('div');
+    d.className = 'card';
+    const img = document.createElement('img');
+    img.src = 'tarot/' + c + '.png';
+    d.appendChild(img);
+    d.onclick = () => onClickCard(i);
+    handDiv.appendChild(d);
+  });
+
+  const aiDiv = document.getElementById('aiHand');
+  aiDiv.innerHTML = '';
+  aiHand.forEach(() => {
+    const d = document.createElement('div');
+    d.className = 'card back';
+    const img = document.createElement('img');
+    img.src = 'tarot/back' + aiBack + '.png';
+    d.appendChild(img);
+    aiDiv.appendChild(d);
+  });
+
+  // 更新牌库剩余数量
+  const deckCountEl = document.getElementById('deckCount');
+  if(deckCountEl) {
+    deckCountEl.textContent = deck.length;
+  }
+
+  updatePlayable();
+  checkWin();
+}
+
+initGame();
+</script>
+</body>
+</html>

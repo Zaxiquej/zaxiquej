@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>表情包Boss战挂机游戏</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+        .stats { display:flex; justify-content:center; gap:30px; margin-top:20px; flex-wrap:wrap; }
+        .stat-item { background: rgba(255,255,255,0.2); padding:15px 25px; border-radius:12px; backdrop-filter: blur(10px); }
+        .stat-label { font-size:0.9em; opacity:0.9; margin-bottom:5px; }
+        .stat-value { font-size:1.8em; font-weight:700; }
+
+        .boss-section { padding:30px; background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%); color:white; border-bottom:2px solid #e0e0e0; position:relative; overflow:hidden; }
+        .boss-section.overkill { animation: overkillPulse 0.5s infinite; }
+        @keyframes overkillPulse { 0%, 100% { background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 100%); } 50% { background: linear-gradient(to bottom, #ff6b6b 0%, #ee5a6f 100%); } }
+        .boss-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:15px; }
+        .boss-title { font-size:2em; font-weight:700; display:flex; align-items:center; gap:10px; }
+        .boss-timer { font-size:1.5em; padding:10px 20px; background: rgba(255,255,255,0.2); border-radius:12px; font-weight:700; }
+        .boss-timer.warning { background: rgba(255,107,107,0.5); animation: timerPulse 1s infinite; }
+        @keyframes timerPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .boss-display { display:flex; align-items:center; justify-content:center; gap:40px; margin-bottom:20px; }
+        .boss-image { font-size:180px; animation: bossFloat 3s ease-in-out infinite; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); }
+        @keyframes bossFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .boss-stats { flex:1; max-width:500px; }
+        .boss-hp-bar { height:40px; background: rgba(255,255,255,0.2); border-radius:20px; overflow:hidden; position:relative; margin-bottom:15px; }
+        .boss-hp-fill { height:100%; background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%); transition: width 0.3s ease; border-radius:20px; box-shadow: inset 0 2px 10px rgba(255,255,255,0.3); }
+        .boss-hp-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:700; font-size:1.1em; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .boss-info { display:flex; justify-content:space-between; font-size:1.1em; }
+        .overkill-banner { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:4em; font-weight:900; color:#FFD700; text-shadow: 0 0 20px #ff6b6b, 0 0 40px #ee5a6f; animation: overkillBounce 0.5s infinite; z-index:10; pointer-events:none; }
+        @keyframes overkillBounce { 0%, 100% { transform:translate(-50%,-50%) scale(1); } 50% { transform:translate(-50%,-50%) scale(1.2); } }
+
+        .showcase-section { padding:30px; border-bottom:2px solid #e0e0e0; background: linear-gradient(to bottom,#fff9f0 0%, white 100%); }
+        .showcase-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:15px; }
+        .showcase-title { font-size:1.8em; font-weight:700; color:#333; }
+        .unlock-slot-btn { padding:10px 20px; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; transition: all 0.3s ease; }
+        .unlock-slot-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .unlock-slot-btn:disabled { opacity:0.5; cursor:not-allowed; }
+        .showcase-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,140px)); gap:12px; margin-bottom:20px; justify-content:center; }
+        .showcase-slot { position:relative; border:3px dashed #ccc; border-radius:8px; background:#f8f9fa; cursor:pointer; transition: all 0.3s ease; }
+        .showcase-slot.has-meme { border-style: solid; background:white; padding:0; }
+        .showcase-slot.has-meme:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .showcase-slot-inner { position:relative; aspect-ratio:1; border-radius:6px; overflow:hidden; }
+        .showcase-slot img { width:100%; height:100%; object-fit:cover; }
+        .showcase-placeholder { aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:#999; font-size:2.5em; }
+        .showcase-slot-info { padding:6px; font-size:10px; color:#666; background:white; border-radius:0 0 6px 6px; line-height:1.3; }
+        .showcase-slot-info-row { display:flex; justify-content:space-between; margin-bottom:2px; }
+        .showcase-slot-skills { margin-top:3px; padding-top:3px; border-top:1px solid #e0e0e0; max-height:50px; overflow-y:auto; }
+        .showcase-slot-skill { font-size:8px; color:#9b59b6; margin-bottom:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .showcase-income { margin-top:15px; padding:15px; background: linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%); border-radius:12px; text-align:center; }
+        .showcase-income-item { font-size:1.2em; font-weight:600; color:#333; margin:5px 0; }
+
+        .draw-section { padding:30px; border-bottom:2px solid #e0e0e0; background: linear-gradient(to bottom, #f8f9fa 0%, white 100%); }
+        .draw-buttons { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; }
+        .draw-btn { padding:15px 35px; border:none; border-radius:50px; font-size:18px; font-weight:600; cursor:pointer; transition: all 0.3s ease; display:flex; align-items:center; gap:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+        .draw-btn:disabled { opacity:0.5; cursor:not-allowed; }
+        .draw-btn-single { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; }
+        .draw-btn-single:hover:not(:disabled) { transform: translateY(-2px); }
+        .draw-btn-multi { background: linear-gradient(135deg,#f093fb 0%,#f5576c 100%); color:white; }
+        .draw-btn-multi:hover:not(:disabled) { transform: translateY(-2px); }
+
+        .rate-boost-section { padding:15px; background: rgba(102,126,234,0.1); border-radius:12px; margin-top:15px; }
+        .rate-boost-title { font-size:1.2em; font-weight:600; margin-bottom:10px; color:#333; }
+        .rate-display { display:flex; gap:15px; flex-wrap:wrap; margin-bottom:10px; }
+        .rate-item { padding:8px 12px; background:white; border-radius:8px; font-size:12px; }
+        .rate-item.ur { color:#ff1493; font-weight:700; }
+        .boost-btn { padding:8px 16px; background: linear-gradient(135deg,#FFD700 0%,#FFA500 100%); color:#333; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; }
+        .boost-btn:disabled { opacity:0.5; cursor:not-allowed; }
+
+        .content { padding:30px; }
+        .collection-header { font-size:1.8em; font-weight:700; color:#333; margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+        .tag-bar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+        .tag-btn { padding:8px 14px; border-radius:999px; background:#f3f4f6; border:1px solid #e5e7eb; cursor:pointer; font-weight:600; color:#444; transition:all 0.2s; }
+        .tag-btn.active { background: white; border-color:#667eea; color:#667eea; box-shadow: 0 6px 16px rgba(102,126,234,0.08); transform: translateY(-2px); }
+        .sort-bar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
+        .sort-label { font-weight:600; color:#666; }
+        .sort-btn { padding:6px 12px; border-radius:999px; background:#f3f4f6; border:1px solid #e5e7eb; cursor:pointer; font-size:12px; }
+        .sort-btn.active { background:#667eea; color:white; border-color:#667eea; }
+        .emoji-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap:15px; padding:20px; background:white; }
+        .emoji-item { position:relative; cursor:pointer; transition: all 0.3s ease; background:#f5f5f5; border-radius:8px; }
+        .emoji-item:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .emoji-item-inner { position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; }
+        .emoji-item img { width:100%; height:100%; object-fit:cover; display:block; }
+        .emoji-rarity-border { position:absolute; inset:0; pointer-events:none; border-radius:8px; }
+        .emoji-favorite { position:absolute; top:4px; left:4px; background: rgba(0,0,0,0.6); color:#FFD700; padding:4px 8px; border-radius:50px; font-size:14px; z-index:5; cursor:pointer; }
+        .emoji-favorite:hover { transform:scale(1.2); }
+        .emoji-info { padding:8px; font-size:10px; color:#666; line-height:1.4; }
+        .emoji-info-row { display:flex; justify-content:space-between; margin-bottom:3px; }
+        .emoji-skills { margin-top:5px; padding-top:5px; border-top:1px solid #e0e0e0; max-height:60px; overflow-y:auto; }
+        .emoji-skill { font-size:9px; color:#9b59b6; margin-bottom:2px; }
+
+        .rarity-N { border: 2px solid #999; box-shadow: 0 0 8px rgba(153,153,153,0.5); }
+        .rarity-R { border: 2px solid #4a90e2; box-shadow: 0 0 8px rgba(74,144,226,0.5); }
+        .rarity-SR { border: 3px solid #9b59b6; box-shadow: 0 0 12px rgba(155,89,182,0.6); }
+        .rarity-SSR { border: 4px solid #f39c12; box-shadow: 0 0 16px rgba(243,156,18,0.8); }
+        .rarity-UR { border: 4px solid #dc143c; box-shadow: 0 0 18px rgba(220,20,60,0.9); animation: urGlow 2s infinite; }
+        @keyframes urGlow { 0%, 100% { box-shadow: 0 0 18px rgba(220,20,60,0.9); } 50% { box-shadow: 0 0 25px rgba(220,20,60,1); } }
+        .rarity-USR { border: 5px solid #e8e8e8; box-shadow: 0 0 20px rgba(232,232,232,1), 0 0 30px rgba(192,192,192,0.8); animation: usrGlow 1.5s infinite; }
+        @keyframes usrGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(232,232,232,1), 0 0 30px rgba(192,192,192,0.8); }
+            50% { box-shadow: 0 0 30px rgba(255,255,255,1), 0 0 40px rgba(192,192,192,1); }
+        }
+        .rarity-XR { border: 5px solid transparent; box-shadow: 0 0 25px rgba(255,20,147,1); animation: xrGlow 1s infinite;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3) border-box;
+        }
+        @keyframes xrGlow {
+            0% { box-shadow: 0 0 25px rgba(255,0,0,1); filter: hue-rotate(0deg); }
+            25% { box-shadow: 0 0 30px rgba(0,255,0,1); }
+            50% { box-shadow: 0 0 35px rgba(0,0,255,1); }
+            75% { box-shadow: 0 0 30px rgba(255,255,0,1); }
+            100% { box-shadow: 0 0 25px rgba(255,0,0,1); filter: hue-rotate(360deg); }
+        }
+
+        .draw-result-modal { position: fixed; inset: 0; display: none; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+        .draw-result-modal.show { display: flex; }
+        .draw-result-content { width: min(1100px, 98%); max-height: 90vh; overflow: auto; background: linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%); border-radius: 12px; padding: 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .draw-result-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .draw-result-title { font-size:1.5em; font-weight:700; }
+        .draw-result-close { width:36px; height:36px; border-radius:50%; background: rgba(0,0,0,0.2); color:#333; border:none; font-size:20px; cursor:pointer; }
+        .draw-result-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px,130px)); gap:12px; justify-content:center; }
+        .draw-result-item { position:relative; }
+        .draw-result-badge { position:absolute; top:-8px; right:-8px; background: linear-gradient(135deg,#FFD700 0%, #FFA500 100%); color:white; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:10; }
+        .draw-result-badge.upgrade { background: linear-gradient(135deg,#667eea 0%, #764ba2 100%); }
+
+        .game-over-modal { position: fixed; inset: 0; display: none; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
+        .game-over-modal.show { display: flex; }
+        .game-over-content { width: min(600px, 95%); background: linear-gradient(135deg, #434343 0%, #000000 100%); border-radius: 16px; padding: 30px; color:white; text-align:center; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .game-over-title { font-size:3em; margin-bottom:20px; color:#ff6b6b; }
+        .game-over-stats { margin:20px 0; font-size:1.2em; }
+        .game-over-stat { margin:10px 0; }
+        .game-over-reward { font-size:2em; color:#FFD700; margin:20px 0; font-weight:700; }
+        .game-over-btn { padding:15px 40px; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; border:none; border-radius:50px; font-size:18px; font-weight:600; cursor:pointer; margin-top:20px; }
+
+        .dust-boost-section { padding:20px; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color:white; border-radius:12px; margin:20px 30px; }
+        .dust-boost-title { font-size:1.3em; font-weight:700; margin-bottom:10px; }
+        .dust-boost-stats { display:flex; gap:20px; flex-wrap:wrap; }
+        .dust-boost-item { flex:1; min-width:150px; background:rgba(255,255,255,0.2); padding:10px; border-radius:8px; }
+
+        .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; padding:16px 32px; border-radius:50px; font-size:16px; opacity:0; transition:opacity 0.3s; z-index:1000; }
+        .toast.show { opacity:1; }
+        .control-btns { position:fixed; bottom:30px; right:30px; display:flex; flex-direction:column; gap:10px; z-index:100; }
+        .control-btn { padding:12px 24px; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; color:white; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+        .pause-btn { background: linear-gradient(135deg,#3498db 0%,#2980b9 100%); }
+        .reset-btn { background: linear-gradient(135deg,#e74c3c 0%,#c0392b 100%); }
+        .meme-in-showcase { opacity:0.5; }
+        .empty-state { text-align:center; padding:60px 20px; color:#999; }
+        .empty-state-icon { font-size:4em; margin-bottom:20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚔️ 表情包Boss战挂机游戏</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">💰 金币</div>
+                    <div class="stat-value" id="goldDisplay">500</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">✨ 奥术之尘</div>
+                    <div class="stat-value" id="dustDisplay">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">⚔️ 总攻击</div>
+                    <div class="stat-value" id="attackDisplay">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">💵 金币/秒</div>
+                    <div class="stat-value" id="incomeDisplay">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="boss-section" id="bossSection">
+            <div class="boss-header">
+                <div class="boss-title">
+                    <span id="bossName">🐲 Boss Lv.1</span>
+                </div>
+                <div class="boss-timer" id="bossTimer">120s</div>
+            </div>
+            <div class="boss-display">
+                <div class="boss-image" id="bossImage">👹</div>
+                <div class="boss-stats">
+                    <div class="boss-hp-bar">
+                        <div class="boss-hp-fill" id="bossHpFill" style="width: 100%"></div>
+                        <div class="boss-hp-text" id="bossHpText">5000 / 5000</div>
+                    </div>
+                    <div class="boss-info">
+                        <span>攻击: <span id="totalAttack">0</span>/s</span>
+                        <span>剩余时间: <span id="timeLeft">120</span>s</span>
+                    </div>
+                </div>
+            </div>
+            <div id="overkillBanner" class="overkill-banner" style="display:none;">⚡超杀时刻⚡</div>
+        </div>
+
+        <div class="dust-boost-section" id="dustBoostSection" style="display:none;">
+            <div class="dust-boost-title">✨ 奥术之尘加成</div>
+            <div class="dust-boost-stats">
+                <div class="dust-boost-item">
+                    <div>攻击加成: <span id="dustAttackBoost">0</span>%</div>
+                </div>
+                <div class="dust-boost-item">
+                    <div>金币加成: <span id="dustGoldBoost">0</span>%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="showcase-section">
+            <div class="showcase-header">
+                <div class="showcase-title">⭐ 战斗展示栏 (能力×2)</div>
+                <button class="unlock-slot-btn" id="unlockSlotBtn" onclick="unlockShowcaseSlot()">
+                    🔓 解锁位置 (💰<span id="slotCost">1000</span>)
+                </button>
+            </div>
+            <div class="showcase-grid" id="showcaseGrid"></div>
+            <div class="showcase-income">
+                <div class="showcase-income-item">⚔️ 展示栏攻击: <span id="showcaseAttack">0</span>/秒</div>
+                <div class="showcase-income-item">💰 展示栏金币: <span id="showcaseIncome">0</span>/秒</div>
+            </div>
+        </div>
+
+        <div class="draw-section">
+            <div class="draw-buttons">
+                <button class="draw-btn draw-btn-single" id="drawOne">
+                    🎲 单抽 (💰<span id="cost1">50</span>)
+                </button>
+                <button class="draw-btn draw-btn-multi" id="drawTen">
+                    🎰 十连 (💰<span id="cost10">500</span>)
+                </button>
+            </div>
+
+            <div class="rate-boost-section">
+                <div class="rate-boost-title">📊 当前概率</div>
+                <div class="rate-display">
+                    <div class="rate-item">N: <span id="rateN">70.0</span>%</div>
+                    <div class="rate-item">R: <span id="rateR">20.0</span>%</div>
+                    <div class="rate-item">SR: <span id="rateSR">8.0</span>%</div>
+                    <div class="rate-item">SSR: <span id="rateSSR">1.5</span>%</div>
+                    <div class="rate-item" style="color:#dc143c; font-weight:600;">UR: <span id="rateUR">0.4</span>%</div>
+                    <div class="rate-item" style="color:#c0c0c0; font-weight:700;">USR: <span id="rateUSR">0.08</span>%</div>
+                    <div class="rate-item" style="color:#ff1493; font-weight:700; text-shadow: 0 0 5px rgba(255,20,147,0.5);">XR: <span id="rateXR">0.02</span>%</div>
+                </div>
+                <button class="boost-btn" id="boostRateBtn" onclick="boostRates()">
+                    ⬆️ 提升高稀有度概率 (💰<span id="boostCost">2000</span>)
+                </button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="collection-header">
+                <div>📚 我的收藏 (<span id="collectionCount">0</span>)</div>
+            </div>
+            <div id="collectionContent"></div>
+        </div>
+    </div>
+
+    <div class="draw-result-modal" id="drawResultModal" onclick="closeDrawResult(event)">
+        <div class="draw-result-content" onclick="event.stopPropagation()">
+            <div class="draw-result-header">
+                <div class="draw-result-title" id="drawResultTitle">🎉 抽取结果</div>
+                <button class="draw-result-close" onclick="closeDrawResult()">×</button>
+            </div>
+            <div class="draw-result-grid" id="drawResultGrid"></div>
+        </div>
+    </div>
+
+    <div class="game-over-modal" id="gameOverModal">
+        <div class="game-over-content">
+            <div class="game-over-title">💀 挑战失败</div>
+            <div class="game-over-stats">
+                <div class="game-over-stat">收集表情包: <span id="finalMemeCount">0</span>个</div>
+                <div class="game-over-stat">平均等级: <span id="finalAvgLevel">0</span></div>
+                <div class="game-over-stat">最高稀有度: <span id="finalBestRarity">N</span></div>
+            </div>
+            <div class="game-over-reward">
+                获得 ✨<span id="dustReward">0</span> 奥术之尘
+            </div>
+            <button class="game-over-btn" onclick="restartGame()">🔄 重新开始</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="control-btns">
+        <button class="control-btn pause-btn" id="pauseBtn" onclick="togglePause()">⏸️ 暂停</button>
+        <button class="control-btn reset-btn" onclick="resetGame()">🗑️ 清除数据</button>
+    </div>
+
+    <script>
+        const FOLDERS = [
+          { name: "洛薇", path: "表情包E", count: 55 },
+          { name: "塔西娅", path: "表情包B", count: 92 },
+          { name: "莉德维娜", path: "表情包C", count: 103 },
+          { name: "柯莱娜", path: "表情包D", count: 81 },
+          { name: "伊弥拉", path: "表情包A", count: 109 }
+        ];
+
+        const RARITY_CONFIG = {
+            N: { name:'普通', color:'#999', weight:70, baseAttackRange:[1,3], baseIncomeRange:[1,3], growthRate:1.08, skillCount:1 },
+            R: { name:'稀有', color:'#4a90e2', weight:20, baseAttackRange:[2,5], baseIncomeRange:[2,5], growthRate:1.12, skillCount:1 },
+            SR: { name:'超稀有', color:'#9b59b6', weight:8, baseAttackRange:[4,8], baseIncomeRange:[4,8], growthRate:1.16, skillCount:2 },
+            SSR: { name:'超超稀有', color:'#f39c12', weight:1.5, baseAttackRange:[6,11], baseIncomeRange:[6,11], growthRate:1.20, skillCount:2 },
+            UR: { name:'究极稀有', color:'#dc143c', weight:0.4, baseAttackRange:[8,14], baseIncomeRange:[8,14], growthRate:1.24, skillCount:3 },
+            USR: { name:'超究极稀有', color:'#e8e8e8', weight:0.08, baseAttackRange:[10,17], baseIncomeRange:[10,17], growthRate:1.28, skillCount:3 },
+            XR: { name:'超限稀有', color:'#ff1493', weight:0.02, baseAttackRange:[12,20], baseIncomeRange:[12,20], growthRate:1.32, skillCount:4 }
+        };
+
+        const SKILL_TYPES = {
+            self_attack: { name:'自身攻击强化', desc:'自身攻击+', valueRange:{ N:[10,20], R:[18,28], SR:[25,38], SSR:[33,48], UR:[40,58], USR:[48,68], XR:[55,80] }, suffix:'%' },
+            self_income: { name:'自身金币强化', desc:'自身金币+', valueRange:{ N:[10,20], R:[18,28], SR:[25,38], SSR:[33,48], UR:[40,58], USR:[48,68], XR:[55,80] }, suffix:'%' },
+            self_both: { name:'自身双属性强化', desc:'自身攻击金币+', valueRange:{ N:[5,10], R:[8,14], SR:[12,20], SSR:[16,26], UR:[20,32], USR:[24,38], XR:[28,45] }, suffix:'%' },
+            adjacent_attack: { name:'相邻攻击加成', desc:'相邻攻击+', valueRange:{ N:[15,25], R:[22,34], SR:[30,45], SSR:[38,56], UR:[46,67], USR:[54,78], XR:[62,90] }, suffix:'%' },
+            adjacent_income: { name:'相邻金币加成', desc:'相邻金币+', valueRange:{ N:[15,25], R:[22,34], SR:[30,45], SSR:[38,56], UR:[46,67], USR:[54,78], XR:[62,90] }, suffix:'%' },
+            same_char_attack: { name:'同角色攻击', desc:'同角色攻击+', valueRange:{ N:[5,10], R:[8,15], SR:[12,21], SSR:[16,27], UR:[20,33], USR:[24,39], XR:[28,45] }, suffix:'%' },
+            same_char_income: { name:'同角色金币', desc:'同角色金币+', valueRange:{ N:[5,10], R:[8,15], SR:[12,21], SSR:[16,27], UR:[20,33], USR:[24,39], XR:[28,45] }, suffix:'%' },
+            global_attack: { name:'全体攻击加成', desc:'全体攻击+', valueRange:{ N:[3,5], R:[5,9], SR:[7,13], SSR:[9,17], UR:[11,21], USR:[13,25], XR:[15,30] }, suffix:'%' },
+            global_income: { name:'全体金币加成', desc:'全体金币+', valueRange:{ N:[3,5], R:[5,9], SR:[7,13], SSR:[9,17], UR:[11,21], USR:[13,25], XR:[15,30] }, suffix:'%' },
+            timed_attack_buff: { name:'定时攻击BUFF', desc:'每', valueRange:{ N:[35,45], R:[28,38], SR:[22,32], SSR:[17,27], UR:[13,23], USR:[10,20], XR:[8,18] }, suffix:'s攻击+50%' },
+            timed_income_buff: { name:'定时金币BUFF', desc:'每', valueRange:{ N:[35,45], R:[28,38], SR:[22,32], SSR:[17,27], UR:[13,23], USR:[10,20], XR:[8,18] }, suffix:'s金币+50%' }
+        };
+
+        let gameState = {
+            gold: 500,
+            arcaneDust: 0,
+            collection: {},
+            showcase: [null, null, null],
+            showcaseSlots: 3,
+            bossLevel: 1,
+            bossHp: 5000,
+            bossMaxHp: 5000,
+            bossTimer: 120,
+            bossMaxTimer: 120,
+            isOverkill: false,
+            overkillTimer: 0,
+            restTimer: 0,
+            drawCost: 50,
+            rateBoosts: 0,
+            favorites: {},
+            selectedTag: '全部',
+            sortBy: 'time',
+            isPaused: false,
+            bossStarted: false
+        };
+
+        let allMemes = [];
+        let gameInterval = null;
+
+        function init() {
+            FOLDERS.forEach(folder => {
+                for (let i = 1; i <= folder.count; i++) {
+                    allMemes.push({
+                        id: `${folder.name}_${i}`,
+                        folder: folder.name,
+                        path: `${folder.path}/${i}.png`
+                    });
+                }
+            });
+
+            loadGame();
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+
+            if (gameState.bossStarted) {
+                startGameLoop();
+            }
+
+            document.getElementById('drawOne').addEventListener('click', () => drawMeme(1));
+            document.getElementById('drawTen').addEventListener('click', () => drawMeme(10));
+        }
+
+        function startGameLoop() {
+            if (gameInterval) return;
+            gameState.bossStarted = true;
+            gameInterval = setInterval(gameLoop, 100);
+        }
+
+        function gameLoop() {
+            if (gameState.isPaused) return;
+
+            if (gameState.restTimer > 0) {
+                gameState.restTimer -= 0.1;
+                updateBossDisplay();
+                return;
+            }
+
+            if (gameState.isOverkill) {
+                gameState.overkillTimer -= 0.3;
+                if (gameState.overkillTimer <= 0) {
+                    startNextBoss();
+                }
+                const attack = calculateTotalAttack() * 3;
+                gameState.gold += attack * 0.3;
+                updateDisplay();
+                updateBossDisplay();
+                return;
+            }
+
+            const attack = calculateTotalAttack();
+            const income = calculateTotalIncome();
+
+            gameState.bossHp = Math.max(0, gameState.bossHp - attack * 0.1);
+            gameState.gold += income * 0.1;
+            gameState.bossTimer -= 0.1;
+
+            if (gameState.bossHp <= 0) {
+                bossDefeated();
+            } else if (gameState.bossTimer <= 0) {
+                gameOver();
+            }
+
+            updateDisplay();
+            updateBossDisplay();
+        }
+
+        function bossDefeated() {
+            gameState.isOverkill = true;
+            gameState.overkillTimer = gameState.bossTimer;
+            document.getElementById('bossSection').classList.add('overkill');
+            document.getElementById('overkillBanner').style.display = 'block';
+            showToast(`🎉 Boss击败！进入超杀时刻！`);
+        }
+
+        function startNextBoss() {
+            gameState.isOverkill = false;
+            gameState.restTimer = 10;
+            gameState.bossLevel++;
+            gameState.bossMaxHp = Math.floor(5000 * Math.pow(2, gameState.bossLevel - 1));
+            gameState.bossHp = gameState.bossMaxHp;
+            gameState.bossTimer = gameState.bossMaxTimer;
+
+            document.getElementById('bossSection').classList.remove('overkill');
+            document.getElementById('overkillBanner').style.display = 'none';
+
+            updateBossDisplay();
+            showToast(`⚔️ Boss Lv.${gameState.bossLevel} 出现！10秒休整时间`);
+            saveGame();
+        }
+
+        function gameOver() {
+            if (gameInterval) {
+                clearInterval(gameInterval);
+                gameInterval = null;
+            }
+
+            const memeCount = Object.keys(gameState.collection).length;
+            const avgLevel = memeCount > 0 ?
+                Object.values(gameState.collection).reduce((sum, m) => sum + m.level, 0) / memeCount : 0;
+            const rarities = Object.values(gameState.collection).map(m => m.rarity);
+            const bestRarity = rarities.includes('XR') ? 'XR' :
+                              rarities.includes('USR') ? 'USR' :
+                              rarities.includes('UR') ? 'UR' :
+                              rarities.includes('SSR') ? 'SSR' :
+                              rarities.includes('SR') ? 'SR' :
+                              rarities.includes('R') ? 'R' : 'N';
+
+            const dustReward = Math.floor(memeCount * 2 + avgLevel * 5 +
+                              (bestRarity === 'XR' ? 200 : bestRarity === 'USR' ? 150 :
+                               bestRarity === 'UR' ? 100 : bestRarity === 'SSR' ? 50 :
+                               bestRarity === 'SR' ? 20 : bestRarity === 'R' ? 5 : 0));
+
+            document.getElementById('finalMemeCount').textContent = memeCount;
+            document.getElementById('finalAvgLevel').textContent = avgLevel.toFixed(1);
+            document.getElementById('finalBestRarity').textContent = RARITY_CONFIG[bestRarity].name;
+            document.getElementById('dustReward').textContent = dustReward;
+
+            gameState.arcaneDust += dustReward;
+
+            document.getElementById('gameOverModal').classList.add('show');
+        }
+
+        function restartGame() {
+            gameState.gold = 500;
+            gameState.collection = {};
+            gameState.showcase = [null, null, null];
+            gameState.showcaseSlots = 3;
+            gameState.bossLevel = 1;
+            gameState.bossHp = 5000;
+            gameState.bossMaxHp = 5000;
+            gameState.bossTimer = 120;
+            gameState.isOverkill = false;
+            gameState.overkillTimer = 0;
+            gameState.restTimer = 0;
+            gameState.drawCost = 50;
+            gameState.rateBoosts = 0;
+            gameState.favorites = {};
+            gameState.bossStarted = false;
+
+            document.getElementById('gameOverModal').classList.remove('show');
+
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            updateBossDisplay();
+            saveGame();
+        }
+
+        function generateRarity() {
+            let weights = { ...RARITY_CONFIG };
+            const boostFactor = gameState.rateBoosts * 0.4;
+
+            weights.N.weight = Math.max(40, 70 - boostFactor * 10);
+            weights.R.weight = 20 + boostFactor * 2;
+            weights.SR.weight = 8 + boostFactor * 3;
+            weights.SSR.weight = 1.5 + boostFactor * 2;
+            weights.UR.weight = 0.4 + boostFactor * 1.5;
+            weights.USR.weight = 0.08 + boostFactor * 1;
+            weights.XR.weight = 0.02 + boostFactor * 0.5;
+
+            const total = Object.values(weights).reduce((sum, w) => sum + w.weight, 0);
+            const rand = Math.random() * total;
+            let cumulative = 0;
+
+            for (const [rarity, config] of Object.entries(weights)) {
+                cumulative += config.weight;
+                if (rand < cumulative) return rarity;
+            }
+            return 'N';
+        }
+
+        function generateSkills(rarity, folder) {
+            const config = RARITY_CONFIG[rarity];
+            const skillTypes = Object.keys(SKILL_TYPES);
+            const skills = [];
+
+            const shuffled = [...skillTypes].sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < config.skillCount; i++) {
+                const skillType = shuffled[i];
+                const skillConfig = SKILL_TYPES[skillType];
+                const range = skillConfig.valueRange[rarity];
+                const value = Math.floor(Math.random() * (range[1] - range[0] + 1)) + range[0];
+
+                skills.push({
+                    type: skillType,
+                    name: skillConfig.name,
+                    desc: skillConfig.desc,
+                    value: value,
+                    suffix: skillConfig.suffix,
+                    folder: folder
+                });
+            }
+
+            return skills;
+        }
+
+        function generateMemeStats(folder, rarity) {
+            const config = RARITY_CONFIG[rarity];
+            const baseAttack = Math.floor(Math.random() * (config.baseAttackRange[1] - config.baseAttackRange[0] + 1)) + config.baseAttackRange[0];
+            const baseIncome = Math.floor(Math.random() * (config.baseIncomeRange[1] - config.baseIncomeRange[0] + 1)) + config.baseIncomeRange[0];
+            return { baseAttack, baseIncome, growthRate: config.growthRate };
+        }
+
+        function drawMeme(count) {
+            const totalCost = gameState.drawCost * count;
+            if (gameState.gold < totalCost) {
+                showToast('❌ 金币不足！');
+                return;
+            }
+
+            if (!gameState.bossStarted && Object.keys(gameState.collection).length === 0) {
+                startGameLoop();
+            }
+
+            gameState.gold -= totalCost;
+            const draws = [];
+
+            for (let i = 0; i < count; i++) {
+                const randomMeme = allMemes[Math.floor(Math.random() * allMemes.length)];
+                const memeId = randomMeme.id;
+
+                if (gameState.collection[memeId]) {
+                    const existing = gameState.collection[memeId];
+                    const newRarity = generateRarity();
+                    const newStats = generateMemeStats(randomMeme.folder, newRarity);
+                    const newSkills = generateSkills(newRarity, randomMeme.folder);
+
+                    const rarityOrder = { N:1, R:2, SR:3, SSR:4, UR:5, USR:6, XR:7 };
+                    if (rarityOrder[newRarity] > rarityOrder[existing.rarity]) {
+                        existing.rarity = newRarity;
+                        existing.baseAttack = newStats.baseAttack;
+                        existing.baseIncome = newStats.baseIncome;
+                        existing.growthRate = newStats.growthRate;
+                        existing.skills = newSkills;
+                    } else if (rarityOrder[newRarity] === rarityOrder[existing.rarity]) {
+                        if (newStats.baseAttack > existing.baseAttack) existing.baseAttack = newStats.baseAttack;
+                        if (newStats.baseIncome > existing.baseIncome) existing.baseIncome = newStats.baseIncome;
+                    }
+
+                    existing.level += 1;
+
+                    gameState.showcase.forEach((m, idx) => {
+                        if (m && m.id === memeId) {
+                            gameState.showcase[idx] = existing;
+                        }
+                    });
+
+                    draws.push({ ...existing, isNew: false });
+                } else {
+                    const rarity = generateRarity();
+                    const stats = generateMemeStats(randomMeme.folder, rarity);
+                    const skills = generateSkills(rarity, randomMeme.folder);
+
+                    gameState.collection[memeId] = {
+                        id: memeId,
+                        folder: randomMeme.folder,
+                        path: randomMeme.path,
+                        level: 1,
+                        rarity: rarity,
+                        baseAttack: stats.baseAttack,
+                        baseIncome: stats.baseIncome,
+                        growthRate: stats.growthRate,
+                        skills: skills,
+                        obtainedAt: Date.now()
+                    };
+
+                    draws.push({ ...gameState.collection[memeId], isNew: true });
+                }
+            }
+
+            gameState.drawCost = Math.floor(50 + Object.keys(gameState.collection).length * 5);
+
+            showDrawResult(draws);
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+        }
+
+        function showDrawResult(draws) {
+            const title = document.getElementById('drawResultTitle');
+            const grid = document.getElementById('drawResultGrid');
+
+            title.textContent = draws.length === 1 ? '🎉 抽取结果' : '🎊 十连结果';
+
+            grid.innerHTML = draws.map(draw => {
+                const badge = draw.isNew ?
+                    '<div class="draw-result-badge">NEW!</div>' :
+                    `<div class="draw-result-badge upgrade">Lv.${draw.level}</div>`;
+
+                return `
+                    <div class="draw-result-item">
+                        ${badge}
+                        <div class="emoji-item">
+                            <div class="emoji-item-inner">
+                                <img src="${draw.path}" alt="${draw.folder}">
+                                <div class="emoji-rarity-border rarity-${draw.rarity}"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('drawResultModal').classList.add('show');
+        }
+
+        function closeDrawResult(event) {
+            if (!event || event.target === document.getElementById('drawResultModal')) {
+                document.getElementById('drawResultModal').classList.remove('show');
+            }
+        }
+
+        function boostRates() {
+            const cost = 2000 * Math.pow(2, gameState.rateBoosts);
+            if (gameState.gold < cost) {
+                showToast('❌ 金币不足！');
+                return;
+            }
+
+            gameState.gold -= cost;
+            gameState.rateBoosts++;
+            updateDisplay();
+            saveGame();
+            showToast('✨ 稀有度概率已提升！');
+        }
+
+        function unlockShowcaseSlot() {
+            const cost = 1000 * Math.pow(2, gameState.showcaseSlots - 3);
+            if (gameState.gold < cost) {
+                showToast('❌ 金币不足！');
+                return;
+            }
+            if (gameState.showcaseSlots >= 10) return;
+
+            gameState.gold -= cost;
+            gameState.showcase.push(null);
+            gameState.showcaseSlots++;
+
+            updateDisplay();
+            renderShowcase();
+            saveGame();
+            showToast('✅ 成功解锁新展示位！');
+        }
+
+        function calculateMemeStats(meme, inShowcase, showcaseIndex) {
+            const level = meme.level;
+            const dustBoost = 1 + gameState.arcaneDust * 0.01;
+
+            let attack = meme.baseAttack * Math.pow(meme.growthRate, level - 1) * dustBoost;
+            let income = meme.baseIncome * Math.pow(meme.growthRate, level - 1) * dustBoost;
+
+            if (inShowcase) {
+                let attackMult = 2;
+                let incomeMult = 2;
+
+                meme.skills.forEach(skill => {
+                    if (skill.type === 'self_attack') attackMult += skill.value / 100;
+                    if (skill.type === 'self_income') incomeMult += skill.value / 100;
+                    if (skill.type === 'self_both') {
+                        attackMult += skill.value / 100;
+                        incomeMult += skill.value / 100;
+                    }
+                });
+
+                const adjacent = getAdjacentMemes(showcaseIndex);
+                adjacent.forEach(adjMeme => {
+                    adjMeme.skills.forEach(skill => {
+                        if (skill.type === 'adjacent_attack') attackMult += skill.value / 100;
+                        if (skill.type === 'adjacent_income') incomeMult += skill.value / 100;
+                    });
+                });
+
+                gameState.showcase.forEach(m => {
+                    if (m && m.folder === meme.folder) {
+                        m.skills.forEach(skill => {
+                            if (skill.type === 'same_char_attack') attackMult += skill.value / 100;
+                            if (skill.type === 'same_char_income') incomeMult += skill.value / 100;
+                        });
+                    }
+                });
+
+                gameState.showcase.forEach(m => {
+                    if (m) {
+                        m.skills.forEach(skill => {
+                            if (skill.type === 'global_attack') attackMult += skill.value / 100;
+                            if (skill.type === 'global_income') incomeMult += skill.value / 100;
+                        });
+                    }
+                });
+
+                attack *= attackMult;
+                income *= incomeMult;
+            }
+
+            return { attack, income };
+        }
+
+        function getAdjacentMemes(index) {
+            const adjacent = [];
+            if (index > 0 && gameState.showcase[index - 1]) {
+                adjacent.push(gameState.showcase[index - 1]);
+            }
+            if (index < gameState.showcase.length - 1 && gameState.showcase[index + 1]) {
+                adjacent.push(gameState.showcase[index + 1]);
+            }
+            return adjacent;
+        }
+
+        function calculateTotalAttack() {
+            let total = 0;
+            gameState.showcase.forEach((meme, index) => {
+                if (meme) {
+                    const stats = calculateMemeStats(meme, true, index);
+                    total += stats.attack;
+                }
+            });
+            Object.values(gameState.collection).forEach(meme => {
+                const inShowcase = gameState.showcase.some(m => m && m.id === meme.id);
+                if (!inShowcase) {
+                    const stats = calculateMemeStats(meme, false, -1);
+                    total += stats.attack;
+                }
+            });
+            return total;
+        }
+
+        function calculateTotalIncome() {
+            let total = 0;
+            gameState.showcase.forEach((meme, index) => {
+                if (meme) {
+                    const stats = calculateMemeStats(meme, true, index);
+                    total += stats.income;
+                }
+            });
+            Object.values(gameState.collection).forEach(meme => {
+                const inShowcase = gameState.showcase.some(m => m && m.id === meme.id);
+                if (!inShowcase) {
+                    const stats = calculateMemeStats(meme, false, -1);
+                    total += stats.income;
+                }
+            });
+            return total;
+        }
+
+        function updateDisplay() {
+            document.getElementById('goldDisplay').textContent = Math.floor(gameState.gold);
+            document.getElementById('dustDisplay').textContent = gameState.arcaneDust;
+            document.getElementById('attackDisplay').textContent = calculateTotalAttack().toFixed(1);
+            document.getElementById('incomeDisplay').textContent = calculateTotalIncome().toFixed(1);
+            document.getElementById('collectionCount').textContent = Object.keys(gameState.collection).length;
+
+            document.getElementById('cost1').textContent = gameState.drawCost;
+            document.getElementById('cost10').textContent = gameState.drawCost * 10;
+
+            document.getElementById('drawOne').disabled = gameState.gold < gameState.drawCost;
+            document.getElementById('drawTen').disabled = gameState.gold < gameState.drawCost * 10;
+
+            const boostCost = 2000 * Math.pow(2, gameState.rateBoosts);
+            document.getElementById('boostCost').textContent = boostCost;
+            document.getElementById('boostRateBtn').disabled = gameState.gold < boostCost;
+
+            let weights = { ...RARITY_CONFIG };
+            const boostFactor = gameState.rateBoosts * 0.4;
+            weights.N.weight = Math.max(40, 70 - boostFactor * 10);
+            weights.R.weight = 20 + boostFactor * 2;
+            weights.SR.weight = 8 + boostFactor * 3;
+            weights.SSR.weight = 1.5 + boostFactor * 2;
+            weights.UR.weight = 0.4 + boostFactor * 1.5;
+            weights.USR.weight = 0.08 + boostFactor * 1;
+            weights.XR.weight = 0.02 + boostFactor * 0.5;
+            const total = Object.values(weights).reduce((sum, w) => sum + w.weight, 0);
+
+            document.getElementById('rateN').textContent = (weights.N.weight / total * 100).toFixed(1);
+            document.getElementById('rateR').textContent = (weights.R.weight / total * 100).toFixed(1);
+            document.getElementById('rateSR').textContent = (weights.SR.weight / total * 100).toFixed(1);
+            document.getElementById('rateSSR').textContent = (weights.SSR.weight / total * 100).toFixed(2);
+            document.getElementById('rateUR').textContent = (weights.UR.weight / total * 100).toFixed(2);
+            document.getElementById('rateUSR').textContent = (weights.USR.weight / total * 100).toFixed(3);
+            document.getElementById('rateXR').textContent = (weights.XR.weight / total * 100).toFixed(3);
+
+            const slotCost = 1000 * Math.pow(2, gameState.showcaseSlots - 3);
+            document.getElementById('slotCost').textContent = slotCost;
+            document.getElementById('unlockSlotBtn').disabled = gameState.gold < slotCost || gameState.showcaseSlots >= 10;
+
+            let showcaseAttack = 0;
+            let showcaseIncome = 0;
+            gameState.showcase.forEach((meme, index) => {
+                if (meme) {
+                    const stats = calculateMemeStats(meme, true, index);
+                    showcaseAttack += stats.attack;
+                    showcaseIncome += stats.income;
+                }
+            });
+            document.getElementById('showcaseAttack').textContent = showcaseAttack.toFixed(1);
+            document.getElementById('showcaseIncome').textContent = showcaseIncome.toFixed(1);
+
+            if (gameState.arcaneDust > 0) {
+                document.getElementById('dustBoostSection').style.display = 'block';
+                document.getElementById('dustAttackBoost').textContent = gameState.arcaneDust.toFixed(0);
+                document.getElementById('dustGoldBoost').textContent = gameState.arcaneDust.toFixed(0);
+            }
+        }
+
+        function updateBossDisplay() {
+            const bossEmojis = ['👹', '👺', '🐲', '👿', '💀', '🐉', '👻', '🤖', '👾', '🦖'];
+            const emoji = bossEmojis[gameState.bossLevel % bossEmojis.length];
+
+            document.getElementById('bossName').textContent = `${emoji} Boss Lv.${gameState.bossLevel}`;
+            document.getElementById('bossImage').textContent = emoji;
+
+            if (gameState.restTimer > 0) {
+                document.getElementById('bossTimer').textContent = `休整: ${gameState.restTimer.toFixed(1)}s`;
+                document.getElementById('bossTimer').classList.remove('warning');
+                document.getElementById('bossHpText').textContent = '准备中...';
+                document.getElementById('bossHpFill').style.width = '100%';
+            } else {
+                const hpPercent = (gameState.bossHp / gameState.bossMaxHp) * 100;
+                document.getElementById('bossHpFill').style.width = hpPercent + '%';
+                document.getElementById('bossHpText').textContent =
+                    `${Math.floor(gameState.bossHp)} / ${gameState.bossMaxHp}`;
+
+                if (gameState.isOverkill) {
+                    document.getElementById('bossTimer').textContent = `超杀: ${gameState.overkillTimer.toFixed(1)}s`;
+                    document.getElementById('bossTimer').classList.remove('warning');
+                } else {
+                    document.getElementById('bossTimer').textContent = `${gameState.bossTimer.toFixed(1)}s`;
+                    if (gameState.bossTimer < 30) {
+                        document.getElementById('bossTimer').classList.add('warning');
+                    } else {
+                        document.getElementById('bossTimer').classList.remove('warning');
+                    }
+                }
+            }
+
+            document.getElementById('totalAttack').textContent = calculateTotalAttack().toFixed(1);
+            document.getElementById('timeLeft').textContent = gameState.bossTimer.toFixed(1);
+        }
+
+        function addToShowcase(memeId, slotIndex) {
+            if (slotIndex >= gameState.showcaseSlots) return;
+            const meme = gameState.collection[memeId];
+            if (!meme) return;
+
+            const existingIndex = gameState.showcase.findIndex(m => m && m.id === memeId);
+            if (existingIndex !== -1) {
+                [gameState.showcase[slotIndex], gameState.showcase[existingIndex]] =
+                    [gameState.showcase[existingIndex], gameState.showcase[slotIndex]];
+            } else {
+                gameState.showcase[slotIndex] = meme;
+            }
+
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+        }
+
+        function removeFromShowcase(slotIndex) {
+            gameState.showcase[slotIndex] = null;
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+        }
+
+        function renderShowcase() {
+            const grid = document.getElementById('showcaseGrid');
+            grid.innerHTML = gameState.showcase.map((meme, index) => {
+                if (index >= gameState.showcaseSlots) return '';
+
+                if (!meme) {
+                    return `
+                        <div class="showcase-slot" onclick="selectMemeForShowcase(${index})"
+                             ondrop="drop(event, ${index})" ondragover="allowDrop(event)">
+                            <div class="showcase-placeholder">+</div>
+                        </div>
+                    `;
+                }
+
+                const stats = calculateMemeStats(meme, true, index);
+                return `
+                    <div class="showcase-slot has-meme" draggable="true"
+                         ondragstart="dragStart(event, '${meme.id}')"
+                         ondrop="drop(event, ${index})" ondragover="allowDrop(event)">
+                        <div class="showcase-slot-inner" onclick="removeFromShowcase(${index})">
+                            <img src="${meme.path}" alt="${meme.folder}">
+                            <div class="emoji-rarity-border rarity-${meme.rarity}"></div>
+                        </div>
+                        <div class="showcase-slot-info">
+                            <div class="showcase-slot-info-row">
+                                <span>Lv.${meme.level} ${meme.rarity}</span>
+                            </div>
+                            <div class="showcase-slot-info-row">
+                                <span>⚔️${stats.attack.toFixed(1)}</span>
+                                <span>💰${stats.income.toFixed(1)}</span>
+                            </div>
+                            <div class="showcase-slot-skills">
+                                ${meme.skills.map(s =>
+                                    `<div class="showcase-slot-skill">${s.desc}${s.value}${s.suffix}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCollection() {
+            const content = document.getElementById('collectionContent');
+            const collection = gameState.collection;
+            const allKeys = Object.keys(collection);
+
+            if (allKeys.length === 0) {
+                content.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎭</div>
+                        <div class="empty-state-text">还没有收集任何表情包</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const tagCounts = { '全部': allKeys.length };
+            Object.values(collection).forEach(m => {
+                tagCounts[m.folder] = (tagCounts[m.folder] || 0) + 1;
+            });
+
+            const tags = ['全部', ...FOLDERS.map(f => f.name)];
+            const tagBarHtml = `
+                <div class="tag-bar">
+                    ${tags.map(tag => {
+                        const active = gameState.selectedTag === tag ? 'active' : '';
+                        const count = tagCounts[tag] || 0;
+                        return `<button class="tag-btn ${active}" onclick="setSelectedTag('${tag}')">${tag} (${count})</button>`;
+                    }).join('')}
+                </div>
+            `;
+
+            const sortBarHtml = `
+                <div class="sort-bar">
+                    <span class="sort-label">排序:</span>
+                    <button class="sort-btn ${gameState.sortBy === 'level' ? 'active' : ''}" onclick="setSortBy('level')">等级</button>
+                    <button class="sort-btn ${gameState.sortBy === 'rarity' ? 'active' : ''}" onclick="setSortBy('rarity')">稀有度</button>
+                    <button class="sort-btn ${gameState.sortBy === 'attack' ? 'active' : ''}" onclick="setSortBy('attack')">攻击</button>
+                    <button class="sort-btn ${gameState.sortBy === 'income' ? 'active' : ''}" onclick="setSortBy('income')">金币</button>
+                </div>
+            `;
+
+            let memesToShow = Object.values(collection);
+            if (gameState.selectedTag !== '全部') {
+                memesToShow = memesToShow.filter(m => m.folder === gameState.selectedTag);
+            }
+
+            memesToShow.sort((a, b) => {
+                const aFav = gameState.favorites[a.id] ? 1 : 0;
+                const bFav = gameState.favorites[b.id] ? 1 : 0;
+                if (aFav !== bFav) return bFav - aFav;
+
+                const rarityOrder = { XR: 7, USR: 6, UR: 5, SSR: 4, SR: 3, R: 2, N: 1 };
+
+                switch (gameState.sortBy) {
+                    case 'level':
+                        return b.level - a.level;
+                    case 'rarity':
+                        return rarityOrder[b.rarity] - rarityOrder[a.rarity];
+                    case 'attack':
+                        const aAttack = calculateMemeStats(a, false, -1).attack;
+                        const bAttack = calculateMemeStats(b, false, -1).attack;
+                        return bAttack - aAttack;
+                    case 'income':
+                        const aIncome = calculateMemeStats(a, false, -1).income;
+                        const bIncome = calculateMemeStats(b, false, -1).income;
+                        return bIncome - aIncome;
+                    case 'time':
+                    default:
+                        return b.obtainedAt - a.obtainedAt;
+                }
+            });
+
+            const gridHtml = memesToShow.map(meme => {
+                const inShowcase = gameState.showcase.some(m => m && m.id === meme.id);
+                const stats = calculateMemeStats(meme, false, -1);
+                const isFav = gameState.favorites[meme.id];
+
+                return `
+                    <div class="emoji-item ${inShowcase ? 'meme-in-showcase' : ''}"
+                         draggable="${!inShowcase}"
+                         ondragstart="dragStart(event, '${meme.id}')">
+                        <div class="emoji-item-inner" onclick="${inShowcase ? '' : `selectMemeForShowcase(-1, '${meme.id}')`}">
+                            <img src="${meme.path}" alt="${meme.folder}">
+                            <div class="emoji-rarity-border rarity-${meme.rarity}"></div>
+                            <div class="emoji-favorite" onclick="toggleFavorite('${meme.id}', event)">${isFav ? '⭐' : '☆'}</div>
+                        </div>
+                        <div class="emoji-info">
+                            <div class="emoji-info-row">
+                                <span>Lv.${meme.level} ${meme.rarity}</span>
+                            </div>
+                            <div class="emoji-info-row">
+                                <span>⚔️${stats.attack.toFixed(1)}</span>
+                                <span>💰${stats.income.toFixed(1)}</span>
+                            </div>
+                            <div class="emoji-skills">
+                                ${meme.skills.map(s =>
+                                    `<div class="emoji-skill">${s.desc}${s.value}${s.suffix}</div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            content.innerHTML = tagBarHtml + sortBarHtml + `<div class="emoji-grid">${gridHtml}</div>`;
+        }
+
+        function setSelectedTag(tag) {
+            gameState.selectedTag = tag;
+            renderCollection();
+            saveGame();
+        }
+
+        function setSortBy(sortBy) {
+            gameState.sortBy = sortBy;
+            renderCollection();
+            saveGame();
+        }
+
+        function toggleFavorite(memeId, event) {
+            event.stopPropagation();
+            if (gameState.favorites[memeId]) {
+                delete gameState.favorites[memeId];
+            } else {
+                gameState.favorites[memeId] = true;
+            }
+            renderCollection();
+            saveGame();
+        }
+
+        let selectedMemeForShowcase = null;
+
+        function selectMemeForShowcase(slotIndex, memeId = null) {
+            if (memeId) selectedMemeForShowcase = memeId;
+            if (selectedMemeForShowcase) {
+                const firstEmpty = gameState.showcase.findIndex((m, i) => !m && i < gameState.showcaseSlots);
+                const targetSlot = slotIndex >= 0 ? slotIndex : firstEmpty;
+                if (targetSlot >= 0 && targetSlot < gameState.showcaseSlots) {
+                    addToShowcase(selectedMemeForShowcase, targetSlot);
+                    selectedMemeForShowcase = null;
+                }
+            }
+        }
+
+        function dragStart(event, memeId) {
+            try {
+                event.dataTransfer.setData('text/plain', memeId);
+            } catch (e) {
+                event.dataTransfer.setData('memeId', memeId);
+            }
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event, slotIndex) {
+            event.preventDefault();
+            let memeId = event.dataTransfer.getData('text/plain');
+            if (!memeId) memeId = event.dataTransfer.getData('memeId');
+            if (memeId) addToShowcase(memeId, slotIndex);
+        }
+
+        function togglePause() {
+            gameState.isPaused = !gameState.isPaused;
+            const btn = document.getElementById('pauseBtn');
+            btn.textContent = gameState.isPaused ? '▶️ 继续' : '⏸️ 暂停';
+            showToast(gameState.isPaused ? '⏸️ 游戏已暂停' : '▶️ 游戏继续');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function saveGame() {
+            try {
+                const saveData = {
+                    ...gameState,
+                    savedAt: Date.now()
+                };
+                localStorage.setItem('memeBossGame', JSON.stringify(saveData));
+            } catch (e) {
+                console.warn('保存失败', e);
+            }
+        }
+
+        function loadGame() {
+            const saved = localStorage.getItem('memeBossGame');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    Object.assign(gameState, data);
+
+                    if (!gameState.showcase) gameState.showcase = [null, null, null];
+                    if (!gameState.favorites) gameState.favorites = {};
+                    if (!gameState.selectedTag) gameState.selectedTag = '全部';
+                    if (!gameState.sortBy) gameState.sortBy = 'time';
+                    if (gameState.isPaused === undefined) gameState.isPaused = false;
+                    if (gameState.bossStarted === undefined) gameState.bossStarted = false;
+                } catch (e) {
+                    console.error('加载失败', e);
+                }
+            }
+        }
+
+        function resetGame() {
+            if (confirm('确定清除所有进度？此操作不可恢复！')) {
+                localStorage.removeItem('memeBossGame');
+                location.reload();
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

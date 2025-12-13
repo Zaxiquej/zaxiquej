@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>增强版塔罗占卜</title>
+  <style>
+    :root {
+      --card-w: 125px;
+      --card-h: 230px;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#0f1020, #141726);
+      color: #eef;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin: 20px 0 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 10px;
+    }
+    select,
+    button {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      color: #d1d5db; /* 优化：字体颜色更柔和 */
+      font-family: inherit;
+      font-size: 15px;
+    }
+    .board {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+    .card-slot {
+      width: var(--card-w);
+      height: var(--card-h);
+      perspective: 1000px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform-style: preserve-3d;
+      transition: transform 700ms cubic-bezier(.2, .8, .2, 1);
+      cursor: pointer;
+      transform: rotateY(0deg); /* 修复BUG：明确初始状态 */
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    .face {
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box; /* 修复BUG：确保边框和内边距不影响尺寸 */
+    }
+    .front {
+      transform: rotateY(180deg);
+      background: #fff;
+    }
+    .back {
+      background: #111;
+      border: 2px solid rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back img,
+    .front img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    label {
+      font-size: 14px;
+    }
+    .log {
+      margin-top: 14px;
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      min-height: 80px;
+      width: 90%;
+      max-width: 800px;
+      overflow-y: auto;
+      max-height: 30vh;
+    }
+    .hint {
+      color: #bcd;
+      opacity: .9;
+      font-size: 13px;
+    }
+    @keyframes shuffleMove {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(3deg);
+      }
+      100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+    }
+    .shuffling .card {
+      animation: shuffleMove .6s ease-in-out alternate infinite;
+    }
+    .controls .small {
+      font-size: 13px;
+      padding: 6px 8px;
+    }
+    .interpretation {
+      margin-top: 10px;
+    }
+    .interpretation-block {
+        padding: 8px 6px;
+        border-bottom: 1px dashed rgba(255,255,255,0.04);
+    }
+    .meta {
+      color: #9bb;
+      font-size: 13px;
+    }
+
+    /* 新增：复杂牌阵布局 */
+    .board.layout-celtic {
+        width: 600px;
+        height: 650px;
+        align-items: initial;
+        justify-content: initial;
+    }
+    .board.layout-hexagram {
+        width: 500px;
+        height: 550px;
+        align-items: initial;
+        justify-content: initial;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>增强版塔罗占卜</h1>
+
+  <div class="controls">
+    <label>牌阵
+      <select id="layoutSelect">
+        <option value="1">单张 (1张)</option>
+        <option value="3">三张 (过去·现在·未来)</option>
+        <option value="core">直指核心 (4张)</option>
+        <option value="hexagram">六芒星 (7张)</option>
+        <option value="celtic">凯尔特十字 (10张)</option>
+      </select>
+    </label>
+
+    <label>卡背
+      <select id="backSelect">
+        <option value="back1.png">背1</option>
+        <option value="back2.png">背2</option>
+        <option value="back3.png">背3</option>
+        <option value="back4.png">背4</option>
+      </select>
+    </label>
+
+    <button id="shuffleBtn">洗牌并发牌</button>
+    <button id="resetBtn" class="small">重置</button>
+    <div style="margin-left:8px" class="meta">提示：点击牌面翻开，逆位会倒置显示。</div>
+  </div>
+
+  <div id="board" class="board"></div>
+
+  <div class="log" id="log">
+    <div class="hint">操作说明：选择牌阵与卡背，点击“洗牌并发牌”。发牌后单击任意一张牌翻开。翻开后下方将显示基础解读。</div>
+    <div id="readout" class="interpretation"></div>
+  </div>
+
+  <script>
+    // --- 数据定义 ---
+    const TAROT_PATH = 'tarot';
+    const CARD_COUNT = 22;
+
+    // 新增：牌阵定义
+    const LAYOUTS = {
+      '1': {
+        name: '单张',
+        count: 1,
+        meanings: ['综合指引'],
+        placements: null
+      },
+      '3': {
+        name: '三张（过去·现在·未来）',
+        count: 3,
+        meanings: ['过去', '现在', '未来'],
+        placements: null
+      },
+      'core': {
+        name: '直指核心',
+        count: 4,
+        meanings: ['你的现状', '障碍或挑战', '给你的建议', '可能的结果'],
+        placements: null
+      },
+      'hexagram': {
+        name: '六芒星',
+        count: 7,
+        meanings: [
+            '过去的成因', '现在的状况', '未来的演变',
+            '你的态度', '环境的影响', '你的希望或恐惧', '最终的结果'
+        ],
+        placements: [
+          { top: '220px', left: '185px' }, // 过去
+          { top: '0px', left: '185px' },   // 现在
+          { top: '440px', left: '185px' }, // 未来
+          { top: '110px', left: '0px' },   // 态度
+          { top: '110px', left: '370px' }, // 环境
+          { top: '330px', left: '0px' },   // 希望/恐惧
+          { top: '330px', left: '370px' }, // 结果
+        ]
+      },
+      'celtic': {
+        name: '凯尔特十字',
+        count: 10,
+        meanings: [
+          '问题的核心/现状', '眼前的阻碍/挑战', '目标的最佳可能',
+          '问题的根基/过去', '刚过去的状态', '即将到来的未来',
+          '你自身的状态', '外界环境/他人影响', '你的希望或恐惧', '最终的结果'
+        ],
+        placements: [
+          { top: '220px', left: '150px' }, // 1
+          { top: '220px', left: '150px', transform: 'rotate(90deg)' }, // 2
+          { top: '0px', left: '150px' },   // 3
+          { top: '440px', left: '150px' }, // 4
+          { top: '220px', left: '0px' },   // 5
+          { top: '220px', left: '300px' }, // 6
+          { top: '0px', right: '0px' },    // 7
+          { top: '160px', right: '0px' },  // 8
+          { top: '320px', right: '0px' },  // 9
+          { top: '480px', right: '0px' },  // 10
+        ]
+      }
+    };
+
+    // 优化：更详细的解读
+    const TAROT = [
+        {name:'0 愚者',upright:'新的开始，无限可能，天真，自由，冒险。代表一段新旅程的起点，鼓励你凭直觉和信念迈出第一步。',reversed:'轻率，天真过头，冒险过度，不负责任。可能因缺乏计划而陷入困境，需要更谨慎地审视现状。'},
+        {name:'1 魔术师',upright:'创造力，意志力，沟通，万事俱备。你拥有实现目标所需的一切资源和能力，是时候采取行动了。',reversed:'欺骗，操纵，能力不足，目标不清。可能在滥用才能或感到资源分散，无法集中精力。'},
+        {name:'2 女祭司',upright:'直觉，潜意识，智慧，秘密。暗示着你需要倾听内心的声音，关注直觉和梦境带来的信息。',reversed:'秘密被揭露，直觉受阻，认知肤浅。可能忽略了内心的指引，或有隐藏的讯息需要被正视。'},
+        {name:'3 皇后',upright:'丰收，创造，母性，滋养，感性。代表着富足、舒适和创造力的蓬勃发展，享受生活的美好。',reversed:'创造力受阻，依赖，过度放纵。可能在情感或物质上过度付出，或感到内在的创造力停滞。'},
+        {name:'4 皇帝',upright:'权威，结构，秩序，领导力，稳定。代表建立秩序和规则，需要用理性和决心来掌控局面。',reversed:'专制，控制欲，缺乏自律，固执。可能过于严苛或滥用权力，导致局面僵化。'},
+        {name:'5 教皇',upright:'传统，教导，信仰，精神指引，规范。代表寻求知识和精神上的指引，遵循既定的规范和传统。',reversed:'挑战传统，打破常规，虚伪，教条主义。可能在质疑现有规则，或感到被僵化的教条所束缚。'},
+        {name:'6 恋人',upright:'选择，和谐，关系，结合，价值观。代表着重要的抉择，尤其是在人际关系和价值观方面。',reversed:'关系冲突，错误的选择，不和谐，失衡。可能面临关系破裂或做出了令自己后悔的决定。'},
+        {name:'7 战车',upright:'胜利，意志力，决心，掌控，前进。凭借强大的意志和决心，克服障碍，朝着目标奋力前进并取得胜利。',reversed:'失控，缺乏方向，冲动，障碍重重。可能因目标不明确或行动鲁莽而导致失败。'},
+        {name:'8 力量',upright:'内在力量，勇气，同情，耐心，掌控。代表用温柔和耐心驯服内心的野兽，以柔克刚的力量。',reversed:'软弱，自我怀疑，缺乏自信，能量失衡。可能在压抑自己的本能，或感到内在力量不足。'},
+        {name:'9 隐士',upright:'内省，独处，寻求真理，指引。代表着暂时脱离外界，向内心寻求智慧和答案的时期。',reversed:'孤立，退缩，迷失方向。可能过度孤立自己，或因害怕面对现实而逃避。'},
+        {name:'10 命运之轮',upright:'转机，命运，机会，循环。代表生命中的转折点和机遇，周期性的变化正在发生。',reversed:'厄运，抗拒改变，停滞，不可控。可能在经历一段不顺遂的时期，或因抗拒改变而错失良机。'},
+        {name:'11 正义',upright:'公平，真理，因果，法律，责任。代表着需要做出公正的决定，并为自己的行为承担后果。',reversed:'不公，偏见，逃避责任，失衡。可能面临不公平的待遇，或在逃避应负的责任。'},
+        {name:'12 倒吊人',upright:'牺牲，顺从，新的视角，等待。代表通过暂时的停滞或付出，换来不同的视角和领悟。',reversed:'无谓的牺牲，停滞不前，固执，错失时机。可能在做无用的牺牲，或因不愿改变而陷入僵局。'},
+        {name:'13 死亡',upright:'结束，转变，重生，告别。代表着一段时期的彻底结束，为新的开始扫清道路（通常是象征意义）。',reversed:'抗拒改变，停滞，恐惧结束。可能因害怕放下过去而阻碍了新的成长和机会。'},
+        {name:'14 节制',upright:'平衡，和谐，耐心，整合。代表着调和对立的元素，找到中庸之道，实现内在的和谐。',reversed:'失衡，极端，过度，冲突。可能在某方面过度放纵或压抑，导致生活失去平衡。'},
+        {name:'15 恶魔',upright:'束缚，成瘾，物质主义，欲望。代表被物质欲望、不良习惯或消极思想所束缚，失去了自由。',reversed:'挣脱束缚，觉醒，重获自由。代表意识到自身的束缚并开始努力摆脱它，是解放的开始。'},
+        {name:'16 塔',upright:'突变，灾难，颠覆，启示。代表突如其来的、颠覆性的变化，旧有结构被摧毁，以建立新的基础。',reversed:'逃避灾难，恐惧改变，缓慢的破坏。可能在抗拒必然的改变，导致问题持续存在并缓慢恶化。'},
+        {name:'17 星星',upright:'希望，治愈，灵感，平静。在经历混乱之后，重新找回希望和信念，得到精神上的指引和疗愈。',reversed:'失望，绝望，缺乏信念，迷失方向。可能暂时失去了希望，感到前路迷茫。'},
+        {name:'18 月亮',upright:'幻觉，恐惧，潜意识，迷茫。代表深入潜意识的领域，面对内心的不安和被隐藏的真相。',reversed:'迷雾散去，真相大白，清晰。长期以来的困惑和恐惧得到澄清，看清了事实的真相。'},
+        {name:'19 太阳',upright:'成功，喜悦，活力，清晰，乐观。代表着光明、成功和纯粹的快乐，一切都变得清晰明朗。',reversed:'短暂的成功，热情减退，过于乐观。可能取得了一些成就但无法持久，或因过于乐观而忽视了潜在问题。'},
+        {name:'20 审判',upright:'觉醒，审视，救赎，人生的转折点。代表着回顾过去，进行自我评估，并迎来人生的重要转折或重生。',reversed:'自我批评，逃避现实，悔恨。可能过于苛责自己，或因无法原谅过去而停滞不前。'},
+        {name:'21 世界',upright:'完成，整合，成就，圆满。代表一个周期的成功结束，达成了目标，享受着圆满和成就感。',reversed:'未完成，停滞，缺乏结尾。可能某个项目或人生阶段尚未完成，感觉被卡住，需要努力画上句号。'}
+    ];
+
+    let currentSlots = [];
+    const board = document.getElementById('board');
+    const layoutSelect = document.getElementById('layoutSelect');
+    const backSelect = document.getElementById('backSelect');
+    const shuffleBtn = document.getElementById('shuffleBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const readout = document.getElementById('readout');
+    const logContainer = document.getElementById('log');
+
+    function resetBoard() {
+      board.innerHTML = '';
+      currentSlots = [];
+      readout.innerHTML = '';
+      board.classList.remove('shuffling', 'layout-celtic', 'layout-hexagram');
+      board.style.width = '';
+      board.style.height = '';
+    }
+
+    function makeSlot(index) {
+      const slot = document.createElement('div');
+      slot.className = 'card-slot';
+      slot.dataset.index = index;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const back = document.createElement('div');
+      back.className = 'face back';
+      const backImg = document.createElement('img');
+      backImg.src = `${TAROT_PATH}/${backSelect.value}`;
+      back.appendChild(backImg);
+
+      const front = document.createElement('div');
+      front.className = 'face front';
+      const frontImg = document.createElement('img');
+      front.appendChild(frontImg);
+
+      card.appendChild(back);
+      card.appendChild(front);
+      slot.appendChild(card);
+
+      card.addEventListener('click', () => {
+        if (!slot.dataset.dealt) return;
+        if (card.classList.contains('flipped')) return;
+        card.classList.add('flipped');
+
+        if (slot.dataset.orientation === 'reversed') {
+          frontImg.style.transform = 'rotate(180deg)';
+        } else {
+          frontImg.style.transform = 'rotate(0deg)';
+        }
+        showInterpretation(slot);
+      });
+
+      return { slot, card, frontImg, backImg };
+    }
+
+    function drawCards(k) {
+      const pool = Array.from({ length: CARD_COUNT }, (_, i) => i);
+      const drawn = [];
+      for (let i = 0; i < k; i++) {
+        const j = Math.floor(Math.random() * pool.length);
+        drawn.push(pool.splice(j, 1)[0]);
+      }
+      return drawn;
+    }
+
+    async function deal() {
+      resetBoard();
+      const layoutKey = layoutSelect.value;
+      const layout = LAYOUTS[layoutKey];
+      if (!layout) return;
+
+      if (layout.placements) {
+        board.classList.add(`layout-${layoutKey}`);
+      }
+
+      for (let i = 0; i < layout.count; i++) {
+        const s = makeSlot(i);
+        if (layout.placements) {
+            s.slot.style.position = 'absolute';
+            Object.assign(s.slot.style, layout.placements[i]);
+        }
+        board.appendChild(s.slot);
+        currentSlots.push(s);
+      }
+
+      board.classList.add('shuffling');
+      await new Promise(r => setTimeout(r, 700));
+
+      const cards = drawCards(currentSlots.length);
+      const orientations = cards.map(() => Math.random() < 0.5 ? 'upright' : 'reversed');
+
+      currentSlots.forEach((s, i) => {
+        const id = cards[i];
+        s.frontImg.src = `${TAROT_PATH}/${id+1}.png`;
+        s.slot.dataset.cardId = id;
+        s.slot.dataset.orientation = orientations[i];
+        s.slot.dataset.dealt = '1';
+      });
+
+      await new Promise(r => setTimeout(r, 350));
+      board.classList.remove('shuffling');
+
+      if (!layout.placements) {
+        currentSlots.forEach((s, i) => {
+            const offset = (i - (currentSlots.length - 1) / 2) * 26;
+            s.slot.style.transform = `translateY(${Math.abs(offset/6)}px) rotate(${(Math.random()-0.5)*12}deg)`;
+        });
+      }
+
+      readout.innerHTML = '<div class="hint">发牌完成：点击任意一张牌翻开并查看解读。</div>';
+    }
+
+    function showInterpretation(slotEl) {
+      const id = Number(slotEl.dataset.cardId);
+      const orient = slotEl.dataset.orientation;
+      const info = TAROT[id] || { name: '未知', upright: '', reversed: '' };
+
+      const posName = orient === 'upright' ? '正位' : '逆位';
+      const text = `<strong>${info.name}</strong> (${posName})<div style="margin-top:6px">${orient === 'upright' ? info.upright : info.reversed}</div>`;
+
+      let extra = '';
+      const layoutKey = layoutSelect.value;
+      const layout = LAYOUTS[layoutKey];
+      if (layout) {
+        const idx = Number(slotEl.dataset.index);
+        const meaning = layout.meanings[idx];
+        if (meaning) {
+            extra = `<div class="meta" style="margin-top:6px"><strong>牌位含义：</strong>${meaning}</div>`;
+        }
+      }
+
+      const block = document.createElement('div');
+      block.className = 'interpretation-block';
+      block.innerHTML = text + extra;
+
+      // 清除初始提示
+      const initialHint = readout.querySelector('.hint');
+      if (initialHint) initialHint.remove();
+
+      readout.appendChild(block);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    shuffleBtn.addEventListener('click', deal);
+    resetBtn.addEventListener('click', resetBoard);
+
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space' && e.target.tagName !== 'SELECT' && e.target.tagName !== 'BUTTON') {
+        e.preventDefault();
+        deal();
+      }
+    });
+
+    window.addEventListener('error', (ev) => {
+      if (ev.target && ev.target.tagName === 'IMG') {
+        console.warn('图片加载错误，请确保文件结构正确。需要一个名为 "tarot" 的文件夹，其中包含 1.png 到 22.png 的卡牌图片，以及 back1.png 到 back4.png 的卡背图片。此HTML文件应与 "tarot" 文件夹位于同一目录。');
+        alert('图片资源加载失败！请检查文件路径或按 F12 查看控制台错误信息。');
+      }
+    }, true);
+
+    // 初始提示
+    resetBoard();
+  </script>
+</body>
+</html>

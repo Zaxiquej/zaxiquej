@@ -299,6 +299,19 @@
             width: 24px;
             height: 24px;
         }
+        #previewWrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        #gridCanvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 <body>
@@ -320,14 +333,18 @@
                     <h2>📤 上传图片</h2>
                     <div class="upload-area" id="uploadArea">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 003-3V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         <p>拖拽图片到这里</p>
                         <small>或点击选择文件</small>
                     </div>
                     <input type="file" id="fileInput" accept="image/*">
-                    <img id="previewImage" alt="Preview">
+                    <div id="previewWrapper">
+                        <img id="previewImage" alt="Preview">
+                        <canvas id="gridCanvas"></canvas>
+                    </div>
                     <p id="imageInfo"></p>
+
                 </div>
 
                 <div class="card">
@@ -343,14 +360,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="margin">边距裁剪 (像素)</label>
-                        <input type="number" id="margin" value="0" min="0">
-                        <small>表情之间的空隙宽度</small>
+                        <label for="borderCrop">四边裁剪 A (像素)</label>
+                        <input type="number" id="borderCrop" value="0" min="0">
+                        <small>从图片四边各裁剪 A 像素（左右合计裁剪 2×A）</small>
                     </div>
 
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="doubleMargin">
-                        <label for="doubleMargin">中间空档双倍裁剪</label>
+                    <div class="form-group">
+                        <label for="innerSpacing">中间表情包之间裁剪 B (像素)</label>
+                        <input type="number" id="innerSpacing" value="0" min="0">
+                        <small>每个相邻表情之间的空隙宽度（B 像素）</small>
                     </div>
 
                     <button class="btn btn-primary" id="splitBtn" disabled>
@@ -387,6 +405,7 @@
     </div>
 
     <script>
+
         let uploadedImage = null;
         let splitResults = [];
 
@@ -398,6 +417,14 @@
         const resultArea = document.getElementById('resultArea');
         const resultCount = document.getElementById('resultCount');
         const downloadAllBtn = document.getElementById('downloadAllBtn');
+
+        const gridCanvas = document.getElementById('gridCanvas');
+        const gridCtx = gridCanvas.getContext('2d');
+
+        ['rows', 'cols', 'borderCrop', 'innerSpacing'].forEach(id => {
+            document.getElementById(id).addEventListener('input', drawGrid);
+        });
+
 
         // 上传区域点击
         uploadArea.addEventListener('click', () => {
@@ -444,6 +471,7 @@
                     imageInfo.style.display = 'block';
                     splitBtn.disabled = false;
                     clearResults();
+                    drawGrid();
                 };
                 img.src = e.target.result;
             };
@@ -454,47 +482,47 @@
         splitBtn.addEventListener('click', () => {
             if (!uploadedImage) return;
 
-            const rows = parseInt(document.getElementById('rows').value);
-            const cols = parseInt(document.getElementById('cols').value);
-            const margin = parseInt(document.getElementById('margin').value);
-            const doubleMargin = document.getElementById('doubleMargin').checked;
+            const rows = Math.max(1, parseInt(document.getElementById('rows').value) || 1);
+            const cols = Math.max(1, parseInt(document.getElementById('cols').value) || 1);
+            const borderCrop = Math.max(0, parseInt(document.getElementById('borderCrop').value) || 0); // A
+            const innerSpacing = Math.max(0, parseInt(document.getElementById('innerSpacing').value) || 0); // B
 
+            // 检查裁剪是否过多导致负宽高
+            const effectiveWidth = uploadedImage.width - 2 * borderCrop;
+            const effectiveHeight = uploadedImage.height - 2 * borderCrop;
+            const totalInnerSpacingWidth = innerSpacing * (cols - 1);
+            const totalInnerSpacingHeight = innerSpacing * (rows - 1);
+
+            if (effectiveWidth <= totalInnerSpacingWidth || effectiveHeight <= totalInnerSpacingHeight) {
+                alert('裁剪参数过大，导致可拆分区域为负或为零，请减小 A/B 或增加行/列数。');
+                return;
+            }
+
+            const emojiWidth = (effectiveWidth - totalInnerSpacingWidth) / cols;
+            const emojiHeight = (effectiveHeight - totalInnerSpacingHeight) / rows;
+
+            // 使用整型像素尺寸时可能需要向下取整并调整最后一列/行以避免像素间隙 —— 这里使用浮点以保留精度
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
 
-            // 计算尺寸
-            const totalMarginWidth = margin * (cols + 1);
-            const totalMarginHeight = margin * (rows + 1);
-
-            let extraMarginWidth = 0;
-            let extraMarginHeight = 0;
-            if (doubleMargin && cols > 1) {
-                extraMarginWidth = margin * (cols - 1);
-            }
-            if (doubleMargin && rows > 1) {
-                extraMarginHeight = margin * (rows - 1);
-            }
-
-            const emojiWidth = (uploadedImage.width - totalMarginWidth - extraMarginWidth) / cols;
-            const emojiHeight = (uploadedImage.height - totalMarginHeight - extraMarginHeight) / rows;
-
-            canvas.width = emojiWidth;
-            canvas.height = emojiHeight;
+            canvas.width = Math.max(1, Math.round(emojiWidth));
+            canvas.height = Math.max(1, Math.round(emojiHeight));
 
             splitResults = [];
 
             for (let row = 0; row < rows; row++) {
                 for (let col = 0; col < cols; col++) {
-                    let x = margin + col * (emojiWidth + margin);
-                    let y = margin + row * (emojiHeight + margin);
-
-                    if (doubleMargin) {
-                        if (col > 0) x += col * margin;
-                        if (row > 0) y += row * margin;
-                    }
+                    // 计算源图上的坐标
+                    const x = borderCrop + col * (emojiWidth + innerSpacing);
+                    const y = borderCrop + row * (emojiHeight + innerSpacing);
 
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(uploadedImage, x, y, emojiWidth, emojiHeight, 0, 0, emojiWidth, emojiHeight);
+                    // 为了保持原始区域比例，使用浮点 source 长宽
+                    ctx.drawImage(
+                        uploadedImage,
+                        x, y, emojiWidth, emojiHeight,
+                        0, 0, canvas.width, canvas.height
+                    );
 
                     splitResults.push({
                         dataUrl: canvas.toDataURL('image/png'),
@@ -549,6 +577,54 @@
             resultArea.innerHTML = '';
             resultArea.appendChild(grid);
         }
+
+        function drawGrid() {
+            if (!uploadedImage || !previewImage.src) return;
+
+            const rows = Math.max(1, parseInt(document.getElementById('rows').value) || 1);
+            const cols = Math.max(1, parseInt(document.getElementById('cols').value) || 1);
+            const borderCrop = Math.max(0, parseInt(document.getElementById('borderCrop').value) || 0);
+            const innerSpacing = Math.max(0, parseInt(document.getElementById('innerSpacing').value) || 0);
+
+            const displayWidth = previewImage.clientWidth;
+            const displayHeight = previewImage.clientHeight;
+
+            gridCanvas.width = displayWidth;
+            gridCanvas.height = displayHeight;
+
+            gridCtx.clearRect(0, 0, displayWidth, displayHeight);
+            gridCtx.setLineDash([6, 4]);
+            gridCtx.lineWidth = 1;
+            gridCtx.strokeStyle = 'rgba(255,255,255,0.85)';
+
+            const scaleX = displayWidth / uploadedImage.width;
+            const scaleY = displayHeight / uploadedImage.height;
+
+            const effectiveWidth = uploadedImage.width - 2 * borderCrop;
+            const effectiveHeight = uploadedImage.height - 2 * borderCrop;
+
+            const cellW = (effectiveWidth - innerSpacing * (cols - 1)) / cols;
+            const cellH = (effectiveHeight - innerSpacing * (rows - 1)) / rows;
+
+            // 竖线
+            for (let c = 1; c < cols; c++) {
+                const x = borderCrop + c * cellW + (c - 0.5) * innerSpacing;
+                gridCtx.beginPath();
+                gridCtx.moveTo(x * scaleX, 0);
+                gridCtx.lineTo(x * scaleX, displayHeight);
+                gridCtx.stroke();
+            }
+
+            // 横线
+            for (let r = 1; r < rows; r++) {
+                const y = borderCrop + r * cellH + (r - 0.5) * innerSpacing;
+                gridCtx.beginPath();
+                gridCtx.moveTo(0, y * scaleY);
+                gridCtx.lineTo(displayWidth, y * scaleY);
+                gridCtx.stroke();
+            }
+        }
+
 
         // 下载单张
         function downloadSingle(dataUrl, index) {

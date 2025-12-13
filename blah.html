@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>渐变色粒子特效</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+/* ================================
+   一、基础配置区（你以后主要改这里）
+================================ */
+
+// 画布尺寸
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// 粒子整体参数
+const CONFIG = {
+  maxParticles: 300,        // 最大粒子数量
+  emitRate: 6,              // 每帧生成粒子数量
+  lifeMin: 40,              // 最短生命周期（帧）
+  lifeMax: 120,             // 最长生命周期（帧）
+  sizeMin: 2,               // 最小半径
+  sizeMax: 6,               // 最大半径
+  speedMin: 0.5,            // 最小速度
+  speedMax: 3.0,            // 最大速度
+
+  // ===========================
+  // 渐变颜色配置（核心调参区）
+  // ===========================
+  colorStart: { r: 255, g: 100, b: 0 },   // 初始颜色（橙色）
+  colorEnd:   { r: 50,  g: 150, b: 255 }, // 结束颜色（蓝色）
+
+  // 透明度变化
+  alphaStart: 1.0,          // 出生时透明度
+  alphaEnd:   0.0,          // 死亡时透明度
+
+  // 方向和物理
+  gravity: 0.05,            // 重力
+  wind: 0.01                // 风力（X 方向）
+};
+
+// 发射器中心
+let emitter = {
+  x: canvas.width / 2,
+  y: canvas.height / 2
+};
+
+// 存放粒子数组
+let particles = [];
+
+
+/* ================================
+   二、粒子类定义
+================================ */
+class Particle {
+  constructor() {
+    this.reset();
+  }
+
+  // 初始化或复用时重置
+  reset() {
+    this.x = emitter.x;
+    this.y = emitter.y;
+
+    const angle = Math.random() * Math.PI * 2;
+    const speed = rand(CONFIG.speedMin, CONFIG.speedMax);
+
+    this.vx = Math.cos(angle) * speed;
+    this.vy = Math.sin(angle) * speed;
+
+    this.life = randInt(CONFIG.lifeMin, CONFIG.lifeMax);
+    this.maxLife = this.life;
+
+    this.size = rand(CONFIG.sizeMin, CONFIG.sizeMax);
+
+    // 初始颜色 & 透明度
+    this.r = CONFIG.colorStart.r;
+    this.g = CONFIG.colorStart.g;
+    this.b = CONFIG.colorStart.b;
+    this.alpha = CONFIG.alphaStart;
+  }
+
+  update() {
+    // 位置更新
+    this.vx += CONFIG.wind;
+    this.vy += CONFIG.gravity;
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // 生命周期推进
+    this.life--;
+
+    // 生命周期进度（0~1）
+    const t = 1 - this.life / this.maxLife;
+
+    // ===== 颜色渐变插值 =====
+    this.r = lerp(CONFIG.colorStart.r, CONFIG.colorEnd.r, t);
+    this.g = lerp(CONFIG.colorStart.g, CONFIG.colorEnd.g, t);
+    this.b = lerp(CONFIG.colorStart.b, CONFIG.colorEnd.b, t);
+
+    // ===== 透明度渐变 =====
+    this.alpha = lerp(CONFIG.alphaStart, CONFIG.alphaEnd, t);
+
+    // 可选：粒子随时间缩小
+    this.size *= 0.99;
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${this.alpha})`;
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+
+/* ================================
+   三、工具函数
+================================ */
+
+// 线性插值（用于颜色 & 透明度过渡）
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function randInt(min, max) {
+  return Math.floor(rand(min, max));
+}
+
+
+/* ================================
+   四、粒子发射逻辑
+================================ */
+function emitParticles() {
+  for (let i = 0; i < CONFIG.emitRate; i++) {
+    if (particles.length < CONFIG.maxParticles) {
+      particles.push(new Particle());
+    }
+  }
+}
+
+
+/* ================================
+   五、主循环
+================================ */
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  emitParticles();
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.update();
+    p.draw();
+
+    // 生命周期结束后回收
+    if (p.life <= 0 || p.size <= 0.5) {
+      particles.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+update();
+
+
+/* ================================
+   六、交互（鼠标控制发射点）
+================================ */
+window.addEventListener("mousemove", e => {
+  emitter.x = e.clientX;
+  emitter.y = e.clientY;
+});
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+</body>
+</html>

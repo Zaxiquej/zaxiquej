@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>表情包放置游戏</title>
+    <style>
+        /*（保留你原来大量样式，这里为了便捷直接用原样式）*/
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+        .stats { display:flex; justify-content:center; gap:40px; margin-top:20px; flex-wrap:wrap; }
+        .stat-item { background: rgba(255,255,255,0.2); padding:15px 30px; border-radius:12px; backdrop-filter: blur(10px); }
+        .stat-label { font-size:0.9em; opacity:0.9; margin-bottom:5px; }
+        .stat-value { font-size:1.8em; font-weight:700; }
+        .stat-sub { font-size:0.8em; opacity:0.8; margin-top:3px; }
+        .showcase-section { padding:30px; border-bottom:2px solid #e0e0e0; background: linear-gradient(to bottom,#fff9f0 0%, white 100%); }
+        .showcase-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:15px; }
+        .showcase-title { font-size:1.8em; font-weight:700; color:#333; }
+        .unlock-slot-btn { padding:10px 20px; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; transition: all 0.3s ease; }
+        .unlock-slot-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+        .unlock-slot-btn:disabled { opacity:0.5; cursor:not-allowed; }
+        .showcase-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px,130px)); gap:12px; margin-bottom:20px; justify-content:center; }
+        .showcase-slot { position:relative; border:3px dashed #ccc; border-radius:8px; background:#f8f9fa; cursor:pointer; transition: all 0.3s ease; }
+        .showcase-slot.locked { opacity:0.5; cursor:not-allowed; }
+        .showcase-slot.has-meme { border-style: solid; background:white; padding:0; }
+        .showcase-slot.has-meme:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .showcase-slot-inner { position:relative; aspect-ratio:1; border-radius:6px; overflow:hidden; }
+        .showcase-slot img { width:100%; height:100%; object-fit:cover; }
+        .showcase-placeholder { aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:#999; font-size:2.5em; }
+        .showcase-slot-info { padding:5px; font-size:9px; color:#666; background:white; border-radius:0 0 6px 6px; line-height:1.3; }
+        .showcase-slot-info-row { display:flex; justify-content:space-between; margin-bottom:2px; }
+        .showcase-slot-traits { margin-top:3px; padding-top:3px; border-top:1px solid #e0e0e0; max-height:45px; overflow-y:auto; }
+        .showcase-slot-trait { font-size:8px; color:#9b59b6; margin-bottom:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .showcase-timer { position:absolute; bottom:2px; left:2px; right:2px; background: rgba(0,0,0,0.75); color:#FFD700; padding:2px 4px; border-radius:3px; font-size:9px; font-weight:600; text-align:center; z-index:10; }
+        .showcase-income { margin-top:15px; padding:15px; background: linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%); border-radius:12px; text-align:center; font-size:1.2em; font-weight:600; color:#333; }
+        .draw-section { padding:30px; border-bottom:2px solid #e0e0e0; background: linear-gradient(to bottom, #f8f9fa 0%, white 100%); }
+        .draw-buttons { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+        .draw-btn { padding:15px 35px; border:none; border-radius:50px; font-size:18px; font-weight:600; cursor:pointer; transition: all 0.3s ease; display:flex; align-items:center; gap:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+        .draw-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none !important; }
+        .draw-btn-single { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; }
+        .draw-btn-single:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,126,234,0.4); }
+        .draw-btn-multi { background: linear-gradient(135deg,#f093fb 0%,#f5576c 100%); color:white; }
+        .draw-btn-multi:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,87,108,0.4); }
+        .content { padding:30px; padding-bottom:200px; }
+        .collection-header { font-size:1.8em; font-weight:700; color:#333; margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+        /* 标签栏 */
+        .tag-bar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+        .tag-btn { padding:8px 14px; border-radius:999px; background:#f3f4f6; border:1px solid #e5e7eb; cursor:pointer; font-weight:600; color:#444; }
+        .tag-btn.active { background: white; border-color:#667eea; color:#667eea; box-shadow: 0 6px 16px rgba(102,126,234,0.08); transform: translateY(-2px); }
+        .emoji-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap:15px; padding:20px; background:white; }
+        .emoji-item { position:relative; cursor:pointer; transition: all 0.3s ease; background:#f5f5f5; border-radius:8px; overflow:visible; }
+        .emoji-item:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .emoji-item-inner { position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; }
+        .emoji-item img { width:100%; height:100%; object-fit:cover; display:block; }
+        .emoji-rarity-border { position:absolute; inset:0; pointer-events:none; border-radius:8px; }
+        .emoji-favorite { position:absolute; top:4px; left:4px; background: rgba(0,0,0,0.6); color:#FFD700; padding:4px 8px; border-radius:50px; font-size:14px; z-index:5; cursor:pointer; transition:transform 0.2s; }
+        .emoji-favorite:hover { transform:scale(1.2); }
+        .emoji-info { padding:8px; font-size:11px; color:#666; line-height:1.4; }
+        .emoji-info-row { display:flex; justify-content:space-between; margin-bottom:3px; }
+        .emoji-traits { margin-top:5px; padding-top:5px; border-top:1px solid #e0e0e0; }
+        .emoji-trait { font-size:10px; color:#9b59b6; margin-bottom:2px; }
+        .hidden { display:none; }
+        .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(100px); background:rgba(0,0,0,0.85); color:white; padding:16px 32px; border-radius:50px; font-size:16px; opacity:0; transition:all 0.3s ease; z-index:1000; max-width:90%; text-align:center; }
+        .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+        .reset-btn { position:fixed; bottom:30px; right:30px; padding:12px 24px; background:rgba(220,53,69,0.9); color:white; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(220,53,69,0.3); z-index:100; }
+        .reset-btn:hover { background:rgba(200,35,51,0.95); transform:translateY(-2px); }
+        .rebirth-btn { position:fixed; bottom:80px; right:30px; padding:12px 24px; background: linear-gradient(135deg,#9D50BB 0%,#6E48AA 100%); color:white; border:none; border-radius:50px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.3s ease; box-shadow:0 4px 12px rgba(157,80,187,0.3); z-index:100; display:none; }
+        .rebirth-btn:hover { transform:translateY(-2px); }
+        .cg-section { padding:30px; border-bottom:2px solid #e0e0e0; background: linear-gradient(to bottom,#fff9f0 0%, white 100%); display:none; }
+        .cg-section.unlocked { display:block; }
+        .cg-header { font-size:1.8em; font-weight:700; color:#333; margin-bottom:20px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; padding:10px; border-radius:8px; }
+        .cg-header:hover { background: rgba(157,80,187,0.05); }
+        .cg-toggle { width:32px; height:32px; border-radius:50%; background:#9D50BB; color:white; border:none; font-size:20px; cursor:pointer; margin-right:10px; }
+        .cg-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:15px; }
+        .cg-grid.collapsed { display:none; }
+        .cg-item { position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; cursor:pointer; transition:all 0.3s ease; border:3px solid transparent; box-shadow:0 4px 8px rgba(0,0,0,0.1); background:#f5f5f5; }
+        .cg-item:hover { transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.2); border-color:#9D50BB; }
+        .cg-item.locked { filter:grayscale(100%) brightness(0.5); cursor:default; }
+        .cg-item.locked:hover { transform:none; box-shadow:0 4px 8px rgba(0,0,0,0.1); border-color:transparent; }
+        .cg-lock { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:36px; color:white; }
+        .empty-state { text-align:center; padding:60px 20px; color:#999; }
+        .empty-state-icon { font-size:4em; margin-bottom:20px; }
+        .meme-in-showcase { opacity:0.5; pointer-events:none; }
+        .meme-in-showcase .emoji-favorite { pointer-events:auto; } /* 置入展示栏仍允许收藏/取消收藏 */
+        .meme-detail { position:absolute; bottom:4px; right:4px; background: rgba(0,0,0,0.75); color:white; padding:3px 6px; border-radius:4px; font-size:10px; font-weight:600; z-index:5; }
+
+        /* ------------- 修复点：把抽卡结果做成 modal 浮层 ------------- */
+        .draw-result-section {
+            position: fixed;
+            inset: 0;
+            display: none;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .draw-result-section.show {
+            display: flex;
+        }
+        .draw-result-content {
+            width: min(1100px, 98%);
+            max-height: 90vh;
+            overflow: auto;
+            background: linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .draw-result-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+        .draw-result-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(130px,130px)); gap:12px; justify-content:center; }
+        .draw-result-item { position:relative; }
+        .draw-result-badge { position:absolute; top:-8px; right:-8px; background: linear-gradient(135deg,#FFD700 0%, #FFA500 100%); color:white; padding:4px 10px; border-radius:12px; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.2); z-index:10; }
+        .draw-result-badge.upgrade { background: linear-gradient(135deg,#667eea 0%, #764ba2 100%); }
+        .draw-result-close { width:36px; height:36px; border-radius:50%; background: rgba(0,0,0,0.2); color:#333; border:none; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease; }
+        .draw-result-close:hover { transform: scale(1.05); background: rgba(0,0,0,0.3); }
+        /* small screen tweak */
+        @media (max-width:520px) {
+            .draw-result-grid { grid-template-columns: repeat(auto-fill, minmax(100px,1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 表情包放置游戏</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">💰 金币</div>
+                    <div class="stat-value" id="goldDisplay">50</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">✨ 奥数粉尘</div>
+                    <div class="stat-value" id="dustDisplay">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">📈 每秒收益</div>
+                    <div class="stat-value" id="incomeDisplay">0.0</div>
+                    <div class="stat-sub">/秒</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">🎨 收藏数</div>
+                    <div class="stat-value" id="collectionDisplay">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 展示栏 -->
+        <div class="showcase-section">
+            <div class="showcase-header">
+                <div class="showcase-title">✨ 表情包展示栏</div>
+                <button class="unlock-slot-btn" id="unlockSlotBtn" onclick="unlockShowcaseSlot()">
+                    🔓 解锁位置 (💰<span id="slotCost">0</span>)
+                </button>
+            </div>
+            <div class="showcase-grid" id="showcaseGrid"></div>
+            <div class="showcase-income" id="showcaseIncome">
+                展示栏收益: 0.0/秒 (×2倍率)
+            </div>
+        </div>
+
+        <div class="draw-section">
+            <div class="draw-buttons">
+                <button class="draw-btn draw-btn-single" id="drawOne">
+                    🎲 抽取表情包
+                    <span style="opacity: 0.8; font-size: 0.9em;">(💰<span id="cost1">50</span>)</span>
+                </button>
+                <button class="draw-btn draw-btn-multi" id="drawTen">
+                    🎰 表情包十连
+                    <span style="opacity: 0.8; font-size: 0.9em;">(💰<span id="cost10">500</span>)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 抽卡结果显示（已改为 modal 浮层，内容在 .draw-result-content） -->
+        <div class="draw-result-section" id="drawResultSection" onclick="closeDrawResultOnBackdrop(event)">
+            <div class="draw-result-content" id="drawResultContent" onclick="event.stopPropagation()">
+                <div class="draw-result-header">
+                    <div class="draw-result-title" id="drawResultTitle"></div>
+                    <button class="draw-result-close" onclick="closeDrawResult()">×</button>
+                </div>
+                <div class="draw-result-grid" id="drawResultGrid"></div>
+            </div>
+        </div>
+
+        <!-- CG收藏 -->
+        <div class="cg-section" id="cgSection">
+            <div class="cg-header" onclick="toggleCGSection()">
+                <div style="display:flex; align-items:center;">
+                    <button class="cg-toggle" id="cgToggle">+</button>
+                    <span>🖼️ CG收藏 (每张+50%基础收益)</span>
+                </div>
+                <button class="draw-btn" id="drawCG" onclick="event.stopPropagation(); drawCG();" style="background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%);">
+                    ✨ 抽取CG
+                    <span style="opacity: 0.8; font-size: 0.9em;">(💎<span id="cgCost">10</span>)</span>
+                </button>
+            </div>
+            <div class="cg-grid collapsed" id="cgGrid"></div>
+        </div>
+
+        <div class="content">
+            <div class="collection-header">
+                <div>📚 我的收藏</div>
+                <div style="font-size:0.9em; color:#666;">点击表情可放入展示栏，拖拽也可</div>
+            </div>
+
+            <!-- 标签栏 + 收藏内容 -->
+            <div id="collectionContent"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <button class="rebirth-btn" id="rebirthBtn" onclick="rebirth()">🔮 转生</button>
+    <button class="reset-btn" onclick="resetGame()">🔄 清除进度</button>
+
+    <script>
+        // ==================== 配置 ====================
+        const FOLDERS = [
+            { name: "洛薇", path: "表情包E", count: 55 },
+            { name: "塔西娅", path: "表情包B", count: 92 },
+            { name: "莉德维娜", path: "表情包C", count: 103 },
+            { name: "柯莱娜", path: "表情包D", count: 81 },
+            { name: "伊弥拉", path: "表情包A", count: 109 }
+        ];
+
+        const INITIAL_DRAW_COST = 50;
+        const CG_FOLDER = "cg+";
+        const CG_COUNT = 54;
+        const CG_INITIAL_COST = 10;
+        const CG_BASE_BOOST = 0.5;
+        const SHOWCASE_MULTIPLIER = 2;
+        const SLOT_BASE_COST = 500;
+
+        // 稀有度配置（保持不动）
+        const RARITY_CONFIG = {
+            R: { name:'稀有', color:'#4a90e2', weight:70, border:'2px solid #4a90e2', boxShadow:'0 0 8px rgba(74,144,226,0.5)', traitCount:1, baseIncomeRange:[1,3], growthRateRange:[1.05,1.15] },
+            SR: { name:'超稀有', color:'#9b59b6', weight:25, border:'3px solid #9b59b6', boxShadow:'0 0 12px rgba(155,89,182,0.6)', traitCount:2, baseIncomeRange:[2,4], growthRateRange:[1.10,1.20] },
+            SSR: { name:'超超稀有', color:'#f39c12', weight:5, border:'4px solid #f39c12', boxShadow:'0 0 16px rgba(243,156,18,0.8)', traitCount:3, baseIncomeRange:[3,5], growthRateRange:[1.15,1.25] }
+        };
+
+        const TRAIT_TYPES = {
+            adjacent_boost: { name:'相邻加成', desc:'相邻收益+', valueRange:{ R:[30,50], SR:[50,70], SSR:[70,100] }, suffix:'%', priority:1, requireShowcase:true },
+            same_char_boost: { name:'同角色加成', desc:'同角色+', valueRange:{ R:[3,6], SR:[6,9], SSR:[9,15] }, suffix:'%', priority:2, requireShowcase:true },
+            showcase_boost: { name:'展示加成', desc:'自身+', valueRange:{ R:[50,100], SR:[100,150], SSR:[150,250] }, suffix:'%', priority:3, requireShowcase:true },
+            global_boost: { name:'全局加成', desc:'展示栏全体+', valueRange:{ R:[5,10], SR:[10,15], SSR:[15,25] }, suffix:'%', priority:4, requireShowcase:true },
+            crit_chance: { name:'暴击概率', desc:'收益', valueRange:{ R:[1,3], SR:[3,5], SSR:[5,10] }, suffix:'%概率×10', priority:5, requireShowcase:true },
+            timed_bonus: { name:'定时奖励', desc:'每', valueRange:{ R:[60,90], SR:[45,60], SSR:[30,45] }, suffix:'s奖励', priority:6, requireShowcase:true, hasTimer:true },
+            stack_bonus: { name:'叠加奖励', desc:'每重复+', valueRange:{ R:[5,10], SR:[10,15], SSR:[15,25] }, suffix:'%', priority:7, requireShowcase:true },
+            level_boost: { name:'等级加成', desc:'每级+', valueRange:{ R:[2,5], SR:[5,8], SSR:[8,15] }, suffix:'%', priority:8, requireShowcase:true }
+        };
+
+        // ==================== 游戏状态 ====================
+        let gameState = {
+            gold: 50,
+            collection: {},
+            drawCost: INITIAL_DRAW_COST,
+            arcaneDust: 0,
+            cgCollection: {},
+            cgDrawCost: CG_INITIAL_COST,
+            rebirthCount: 0,
+            showcase: [null, null, null],
+            showcaseSlots: 3,
+            favorites: {},
+            timers: {},
+            selectedTag: '全部' // 当前标签（全部或角色名）
+        };
+
+        let allMemes = [];
+        let allCGs = [];
+        let timerIntervals = {};
+
+        // ==================== 初始化 ====================
+        function init() {
+            FOLDERS.forEach(folder => {
+                for (let i = 1; i <= folder.count; i++) {
+                    allMemes.push({
+                        id: `${folder.path}/${i}.png`,
+                        folder: folder.name,
+                        path: `${folder.path}/${i}.png`
+                    });
+                }
+            });
+
+            for (let i = 1; i <= CG_COUNT; i++) {
+                allCGs.push({
+                    id: i,
+                    path: `${CG_FOLDER}/${i}.png`
+                });
+            }
+
+            loadGame();
+            updateCGVisibility();
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            renderCGCollection();
+
+            startTimersForShowcase();
+
+            setInterval(generateIncome, 100);
+
+            document.getElementById('drawOne').addEventListener('click', () => drawMeme(1));
+            document.getElementById('drawTen').addEventListener('click', () => drawMeme(10));
+        }
+
+        // ==================== 稀有度和词条生成 ====================
+        function generateRarity() {
+            const rand = Math.random() * 100;
+            let cumulative = 0;
+            for (const [rarity, config] of Object.entries(RARITY_CONFIG)) {
+                cumulative += config.weight;
+                if (rand < cumulative) return rarity;
+            }
+            return 'R';
+        }
+
+        function generateTraits(rarity, folder) {
+            const traitCount = RARITY_CONFIG[rarity].traitCount;
+            const traits = [];
+            const traitKeys = Object.keys(TRAIT_TYPES);
+            const shuffledKeys = [...traitKeys].sort(() => Math.random() - 0.5);
+            for (let i = 0; i < traitCount; i++) {
+                const traitType = shuffledKeys[i];
+                const config = TRAIT_TYPES[traitType];
+                const range = config.valueRange[rarity];
+                const value = Math.floor(Math.random() * (range[1] - range[0] + 1)) + range[0];
+                traits.push({
+                    type: traitType,
+                    name: config.name,
+                    desc: config.desc,
+                    value: value,
+                    suffix: config.suffix,
+                    folder: folder,
+                    priority: config.priority
+                });
+            }
+            traits.sort((a,b) => a.priority - b.priority);
+            return traits;
+        }
+
+        function generateMemeStats(folder, rarity) {
+            const config = RARITY_CONFIG[rarity];
+            const baseIncome = Math.floor(Math.random() * (config.baseIncomeRange[1] - config.baseIncomeRange[0] + 1)) + config.baseIncomeRange[0];
+            const growthRate = Math.round((Math.random() * (config.growthRateRange[1] - config.growthRateRange[0]) + config.growthRateRange[0]) * 100) / 100;
+            return { baseIncome, growthRate };
+        }
+
+        // ==================== 计算函数 ====================
+        function calculateMemeIncome(meme, inShowcase = false, showcaseIndex = -1) {
+            const { baseIncome, growthRate, level } = meme;
+            let income = baseIncome * Math.pow(growthRate, level - 1);
+            const cgCount = Object.keys(gameState.cgCollection).length;
+            income *= (1 + cgCount * CG_BASE_BOOST);
+
+            if (inShowcase) {
+                let showcaseMultiplier = SHOWCASE_MULTIPLIER;
+                meme.traits.forEach(trait => {
+                    if (trait.type === 'showcase_boost') {
+                        showcaseMultiplier += trait.value / 100;
+                    }
+                    if (trait.type === 'level_boost') {
+                        showcaseMultiplier += (trait.value / 100) * level;
+                    }
+                });
+
+                const adjacent = getAdjacentMemes(showcaseIndex);
+                adjacent.forEach(adjMeme => {
+                    adjMeme.traits.forEach(trait => {
+                        if (trait.type === 'adjacent_boost') showcaseMultiplier += trait.value / 100;
+                    });
+                });
+
+                const sameCharMemes = gameState.showcase.filter(m => m && m.folder === meme.folder);
+                sameCharMemes.forEach(charMeme => {
+                    charMeme.traits.forEach(trait => {
+                        if (trait.type === 'same_char_boost') showcaseMultiplier += trait.value / 100;
+                    });
+                });
+
+                const sameIdCount = Object.values(gameState.collection).filter(m => m.folder === meme.folder).length;
+                meme.traits.forEach(trait => {
+                    if (trait.type === 'stack_bonus') showcaseMultiplier += (trait.value / 100) * sameIdCount;
+                });
+
+                gameState.showcase.forEach(m => {
+                    if (m) {
+                        m.traits.forEach(trait => {
+                            if (trait.type === 'global_boost') showcaseMultiplier += trait.value / 100;
+                        });
+                    }
+                });
+
+                income *= showcaseMultiplier;
+            }
+
+            return income;
+        }
+
+        function getAdjacentMemes(index) {
+            const adjacent = [];
+            if (index > 0 && gameState.showcase[index - 1]) adjacent.push(gameState.showcase[index - 1]);
+            if (index < gameState.showcase.length - 1 && gameState.showcase[index + 1]) adjacent.push(gameState.showcase[index + 1]);
+            return adjacent;
+        }
+
+        function calculateTotalIncome() {
+            let total = 0;
+            gameState.showcase.forEach((meme, index) => {
+                if (meme) total += calculateMemeIncome(meme, true, index);
+            });
+            Object.values(gameState.collection).forEach(meme => {
+                const inShowcase = gameState.showcase.some(m => m && m.id === meme.id);
+                if (!inShowcase) total += calculateMemeIncome(meme, false);
+            });
+            return total;
+        }
+
+        function calculateDrawCost() {
+            const totalCollected = Object.keys(gameState.collection).length;
+            if (totalCollected < 10) return INITIAL_DRAW_COST + Math.floor(totalCollected / 5) * 20;
+            else if (totalCollected < 30) return 70 + Math.floor((totalCollected - 10) / 3) * 50;
+            else return 400 + Math.floor((totalCollected - 30) / 2) * 100;
+        }
+
+        function calculateCGDrawCost() {
+            const totalCGs = Object.keys(gameState.cgCollection).length;
+            return CG_INITIAL_COST + Math.floor(totalCGs / 3) * 5;
+        }
+
+        function calculateArcaneDust() {
+            let dust = 0;
+            Object.values(gameState.collection).forEach(meme => {
+                if (meme.level === 1) dust += 0.1;
+                else dust += (meme.level - 1);
+            });
+            return Math.floor(dust * 10) / 10;
+        }
+
+        function calculateSlotCost() {
+            return SLOT_BASE_COST * Math.pow(2, gameState.showcaseSlots - 3);
+        }
+
+        // ==================== 游戏逻辑 ====================
+        function generateIncome() {
+            const income = calculateTotalIncome();
+            if (income > 0) {
+                let finalIncome = income / 10;
+                gameState.showcase.forEach(meme => {
+                    if (meme) {
+                        meme.traits.forEach(trait => {
+                            if (trait.type === 'crit_chance') {
+                                if (Math.random() * 100 < trait.value) {
+                                    finalIncome *= 10;
+                                    showToast('💥 暴击！收益×10！');
+                                }
+                            }
+                        });
+                    }
+                });
+
+                gameState.gold += finalIncome;
+                updateDisplay();
+            }
+        }
+
+        function drawMeme(count) {
+            const totalCost = gameState.drawCost * count;
+            if (gameState.gold < totalCost) { showToast('❌ 金币不足！'); return; }
+            gameState.gold -= totalCost;
+            const draws = [];
+
+            for (let i = 0; i < count; i++) {
+                const randomMeme = allMemes[Math.floor(Math.random() * allMemes.length)];
+                const memeId = randomMeme.id;
+
+                if (gameState.collection[memeId]) {
+                    const existingMeme = gameState.collection[memeId];
+                    const newRarity = generateRarity();
+                    const newStats = generateMemeStats(randomMeme.folder, newRarity);
+                    const newTraits = generateTraits(newRarity, randomMeme.folder);
+                    const rarityOrder = { R:1, SR:2, SSR:3 };
+                    if (rarityOrder[newRarity] > rarityOrder[existingMeme.rarity]) {
+                        existingMeme.rarity = newRarity;
+                        existingMeme.baseIncome = newStats.baseIncome;
+                        existingMeme.growthRate = newStats.growthRate;
+                        existingMeme.traits = newTraits;
+                    } else if (rarityOrder[newRarity] === rarityOrder[existingMeme.rarity]) {
+                        if (newStats.baseIncome > existingMeme.baseIncome) existingMeme.baseIncome = newStats.baseIncome;
+                        if (newStats.growthRate > existingMeme.growthRate) existingMeme.growthRate = newStats.growthRate;
+                        for (let j = 0; j < Math.min(existingMeme.traits.length, newTraits.length); j++) {
+                            if (newTraits[j].value > existingMeme.traits[j].value) existingMeme.traits[j].value = newTraits[j].value;
+                        }
+                    }
+                    existingMeme.level += 1;
+                    gameState.showcase.forEach((m, idx) => {
+                        if (m && m.id === memeId) gameState.showcase[idx] = existingMeme;
+                    });
+                    draws.push({ ...existingMeme, isNew:false });
+                } else {
+                    const rarity = generateRarity();
+                    const stats = generateMemeStats(randomMeme.folder, rarity);
+                    const traits = generateTraits(rarity, randomMeme.folder);
+                    gameState.collection[memeId] = {
+                        id: memeId,
+                        folder: randomMeme.folder,
+                        path: randomMeme.path,
+                        level: 1,
+                        rarity: rarity,
+                        baseIncome: stats.baseIncome,
+                        growthRate: stats.growthRate,
+                        traits: traits,
+                        obtainedAt: Date.now()
+                    };
+                    draws.push({ ...gameState.collection[memeId], isNew:true });
+                }
+            }
+
+            gameState.drawCost = calculateDrawCost();
+            showDrawResult(draws);
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            updateCGVisibility();
+            saveGame();
+
+            const newCount = draws.filter(d => d.isNew).length;
+            if (count === 1) {
+                const d = draws[0];
+                if (d.isNew) showToast(`✨ 获得 ${RARITY_CONFIG[d.rarity].name} 表情包！`);
+                else showToast(`⬆️ 表情包升级至 Lv.${d.level}！`);
+            } else {
+                showToast(`🎉 抽取完成！新获得 ${newCount} 个`);
+            }
+        }
+
+        function showDrawResult(draws) {
+            const section = document.getElementById('drawResultSection');
+            const title = document.getElementById('drawResultTitle');
+            const grid = document.getElementById('drawResultGrid');
+
+            title.textContent = draws.length === 1 ? '🎉 抽取结果' : `🎊 十连结果`;
+
+            grid.innerHTML = draws.map(draw => {
+                const rarityConfig = RARITY_CONFIG[draw.rarity];
+                const badge = draw.isNew ? '<div class="draw-result-badge">NEW!</div>' : `<div class="draw-result-badge upgrade">Lv.${draw.level}</div>`;
+
+                // ---------- 修复：合法 style 写法（避免把 border 文本直接放入 style） ----------
+                const borderStyle = rarityConfig.border || '';
+                const boxShadowStyle = rarityConfig.boxShadow || '';
+                return `
+                    <div class="draw-result-item">
+                        ${badge}
+                        <div class="emoji-item">
+                            <div class="emoji-item-inner">
+                                <img src="${draw.path}" alt="${draw.folder}">
+                                <div class="emoji-rarity-border" style="border: ${borderStyle}; box-shadow: inset ${boxShadowStyle};"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 显示 modal
+            section.classList.add('show');
+            // 把 focus/scroll 控制交给 modal 本身（不再滚动页面以致于布局闪烁）
+            // 可选：document.getElementById('drawResultContent').focus();
+        }
+
+        function closeDrawResult() {
+            const section = document.getElementById('drawResultSection');
+            section.classList.remove('show');
+        }
+
+        function closeDrawResultOnBackdrop(e) {
+            // 如果点击遮罩（即不是内容区域）则关闭
+            if (e.target === document.getElementById('drawResultSection')) closeDrawResult();
+        }
+
+        function drawCG() {
+            if (gameState.arcaneDust < gameState.cgDrawCost) { showToast('❌ 奥数粉尘不足！'); return; }
+            const unownedCGs = allCGs.filter(cg => !gameState.cgCollection[cg.id]);
+            if (unownedCGs.length === 0) { showToast('🎉 已收集全部CG！'); return; }
+            gameState.arcaneDust -= gameState.cgDrawCost;
+            const drawnCG = unownedCGs[Math.floor(Math.random() * unownedCGs.length)];
+            gameState.cgCollection[drawnCG.id] = { id: drawnCG.id, path: drawnCG.path, obtainedAt: Date.now() };
+            gameState.cgDrawCost = calculateCGDrawCost();
+            gameState.drawCost = calculateDrawCost();
+            updateDisplay();
+            renderCGCollection();
+            saveGame();
+            showToast(`✨ 获得新CG！基础收益+50%`);
+        }
+
+        function rebirth() {
+            const dust = calculateArcaneDust();
+            if (dust < 1) { showToast('❌ 需要至少1点奥数粉尘才能转生！'); return; }
+            const isFirst = gameState.rebirthCount === 0;
+            const msg = isFirst ? `确定转生吗？\n获得 ${dust} 奥数粉尘\n重置表情包和金币\n解锁CG系统！` : `确定转生吗？\n获得 ${dust} 奥数粉尘\n重置表情包和金币\nCG保留`;
+            if (!confirm(msg)) return;
+            gameState.arcaneDust += dust;
+            gameState.gold = 50;
+            gameState.collection = {};
+            gameState.drawCost = INITIAL_DRAW_COST;
+            gameState.rebirthCount += 1;
+            gameState.showcase = [null, null, null];
+            gameState.showcaseSlots = 3;
+            updateCGVisibility();
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+            showToast(isFirst ? `🔮 转生成功！解锁CG系统` : `🔮 转生成功！获得 ${dust} 奥数粉尘`);
+        }
+
+        function unlockShowcaseSlot() {
+            const cost = calculateSlotCost();
+            if (gameState.gold < cost) { showToast('❌ 金币不足！'); return; }
+            gameState.gold -= cost;
+            gameState.showcase.push(null);
+            gameState.showcaseSlots += 1;
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+            showToast('✅ 成功解锁新展示位！');
+        }
+
+        // ==================== 展示栏操作 ====================
+        function addToShowcase(memeId, slotIndex) {
+            if (slotIndex >= gameState.showcaseSlots) return;
+            const meme = gameState.collection[memeId];
+            if (!meme) return;
+
+            const existingIndex = gameState.showcase.findIndex(m => m && m.id === memeId);
+            if (existingIndex !== -1) {
+                // 交换位置
+                [gameState.showcase[slotIndex], gameState.showcase[existingIndex]] =
+                    [gameState.showcase[existingIndex], gameState.showcase[slotIndex]];
+            } else {
+                gameState.showcase[slotIndex] = meme;
+            }
+
+            // 启动定时器（注意：目前仍为简单重启逻辑；如需更稳健的 ID 绑定定时器可进一步改进）
+            startTimersForShowcase();
+
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+        }
+
+        function removeFromShowcase(slotIndex) {
+            gameState.showcase[slotIndex] = null;
+            startTimersForShowcase();
+            updateDisplay();
+            renderShowcase();
+            renderCollection();
+            saveGame();
+        }
+
+        // 定时器管理（保留你原先思路，但避免重复注册导致 bug）
+        function startTimersForShowcase() {
+            // 清除所有现有定时器
+            Object.values(timerIntervals).forEach(interval => clearInterval(interval));
+            timerIntervals = {};
+
+            // 为展示栏中有定时词条的表情包启动定时器
+            gameState.showcase.forEach((meme, index) => {
+                if (!meme) return;
+                meme.traits.forEach((trait, traitIndex) => {
+                    if (trait.type === 'timed_bonus') {
+                        const timerKey = `${index}-${traitIndex}`;
+                        if (!gameState.timers[timerKey]) {
+                            gameState.timers[timerKey] = { remaining: trait.value, total: trait.value };
+                        }
+                        timerIntervals[timerKey] = setInterval(() => {
+                            if (!gameState.timers[timerKey]) {
+                                clearInterval(timerIntervals[timerKey]);
+                                delete timerIntervals[timerKey];
+                                return;
+                            }
+                            gameState.timers[timerKey].remaining -= 1;
+                            if (gameState.timers[timerKey].remaining <= 0) {
+                                const bonusIncome = calculateMemeIncome(meme, true, index) * 1;
+                                gameState.gold += bonusIncome;
+                                showToast(`⏰ 定时奖励！+${bonusIncome.toFixed(1)}金币`);
+                                gameState.timers[timerKey].remaining = gameState.timers[timerKey].total;
+                            }
+                            renderShowcase();
+                            saveGameThrottled();
+                        }, 1000);
+                    }
+                });
+            });
+        }
+
+        // 节流保存，避免高频写入 localStorage
+        let lastSaveAt = 0;
+        function saveGameThrottled() {
+            const now = Date.now();
+            if (now - lastSaveAt > 3000) { saveGame(); lastSaveAt = now; }
+        }
+
+        function toggleFavorite(memeId, event) {
+            event.stopPropagation();
+            if (gameState.favorites[memeId]) delete gameState.favorites[memeId];
+            else gameState.favorites[memeId] = true;
+            renderCollection();
+            saveGame();
+        }
+
+        // ==================== 显示函数 ====================
+        function updateDisplay() {
+            document.getElementById('goldDisplay').textContent = Math.floor(gameState.gold);
+            document.getElementById('dustDisplay').textContent = gameState.arcaneDust.toFixed(1);
+            document.getElementById('incomeDisplay').textContent = calculateTotalIncome().toFixed(1);
+            document.getElementById('collectionDisplay').textContent = Object.keys(gameState.collection).length;
+            document.getElementById('cost1').textContent = gameState.drawCost;
+            document.getElementById('cost10').textContent = gameState.drawCost * 10;
+            document.getElementById('cgCost').textContent = gameState.cgDrawCost;
+
+            document.getElementById('drawOne').disabled = gameState.gold < gameState.drawCost;
+            document.getElementById('drawTen').disabled = gameState.gold < gameState.drawCost * 10;
+            const drawCGBtn = document.getElementById('drawCG');
+            if (drawCGBtn) drawCGBtn.disabled = gameState.arcaneDust < gameState.cgDrawCost;
+
+            const slotCost = calculateSlotCost();
+            document.getElementById('slotCost').textContent = slotCost;
+            const unlockBtn = document.getElementById('unlockSlotBtn');
+            unlockBtn.disabled = gameState.gold < slotCost || gameState.showcaseSlots >= 10;
+            if (gameState.showcaseSlots >= 10) {
+                unlockBtn.textContent = '✅ 已全部解锁';
+            } else {
+                unlockBtn.innerHTML = `🔓 解锁位置 (💰<span id="slotCost">${slotCost}</span>)`;
+            }
+
+            let showcaseIncome = 0;
+            gameState.showcase.forEach((meme, index) => {
+                if (meme) showcaseIncome += calculateMemeIncome(meme, true, index);
+            });
+            document.getElementById('showcaseIncome').textContent = `展示栏收益: ${showcaseIncome.toFixed(1)}/秒 (×2倍率)`;
+        }
+
+        function renderShowcase() {
+            const grid = document.getElementById('showcaseGrid');
+            grid.innerHTML = gameState.showcase.map((meme, index) => {
+                if (index >= gameState.showcaseSlots) return '';
+                if (!meme) {
+                    return `
+                        <div class="showcase-slot" onclick="selectMemeForShowcase(${index})"
+                             ondrop="drop(event, ${index})" ondragover="allowDrop(event)">
+                            <div class="showcase-placeholder">+</div>
+                        </div>
+                    `;
+                }
+                const income = calculateMemeIncome(meme, true, index);
+                const rarityConfig = RARITY_CONFIG[meme.rarity];
+                // 多个 timed_bonus 拼接显示
+                const timerDisplays = meme.traits.map((trait, traitIndex) => {
+                    if (trait.type === 'timed_bonus') {
+                        const timerKey = `${index}-${traitIndex}`;
+                        const timerState = gameState.timers[timerKey];
+                        if (timerState) return `<div class="showcase-timer">⏱ ${timerState.remaining}s</div>`;
+                    }
+                    return '';
+                }).join('');
+                const borderStyle = rarityConfig.border || '';
+                const boxShadowStyle = rarityConfig.boxShadow || '';
+                return `
+                    <div class="showcase-slot has-meme" draggable="true"
+                         ondragstart="dragStart(event, '${meme.id}')"
+                         ondrop="drop(event, ${index})" ondragover="allowDrop(event)">
+                        <div class="showcase-slot-inner" onclick="removeFromShowcase(${index})">
+                            <img src="${meme.path}" alt="${meme.folder}">
+                            <div class="emoji-rarity-border" style="border: ${borderStyle}; box-shadow: inset ${boxShadowStyle};"></div>
+                            ${timerDisplays}
+                        </div>
+                        <div class="showcase-slot-info">
+                            <div class="showcase-slot-info-row">
+                                <span>Lv.${meme.level}</span>
+                                <span>+${income.toFixed(1)}/s</span>
+                            </div>
+                            <div class="showcase-slot-traits">
+                                ${meme.traits.map(t => {
+                                    const text = `${t.desc}${t.value}${t.suffix}`;
+                                    return `<div class="showcase-slot-trait" title="${t.name}">${text}</div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==================== 收藏（改为标签筛选） ====================
+        function renderCollection() {
+            const content = document.getElementById('collectionContent');
+            const collection = gameState.collection;
+            const allKeys = Object.keys(collection);
+            if (allKeys.length === 0) {
+                content.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎭</div>
+                        <div class="empty-state-text">还没有收集任何表情包</div>
+                    </div>
+                `;
+                return;
+            }
+
+            // 计算每个标签计数（按 folder）
+            const tagCounts = { '全部': allKeys.length };
+            Object.values(collection).forEach(m => {
+                tagCounts[m.folder] = (tagCounts[m.folder] || 0) + 1;
+            });
+
+            // 标签栏（全部 + 每个角色）
+            const tags = ['全部', ...Object.keys(tagCounts).filter(k => k !== '全部')];
+            const tagBarHtml = `
+                <div class="tag-bar">
+                    ${tags.map(tag => {
+                        const active = (gameState.selectedTag === tag) ? 'active' : '';
+                        const count = tagCounts[tag] || 0;
+                        return `<button class="tag-btn ${active}" onclick="setSelectedTag('${tag}')">${tag} (${count})</button>`;
+                    }).join('')}
+                </div>
+            `;
+
+            // 筛选集合
+            const selectedTag = gameState.selectedTag || '全部';
+            let memesToShow = Object.values(collection);
+            if (selectedTag !== '全部') memesToShow = memesToShow.filter(m => m.folder === selectedTag);
+
+            // 排序：收藏的 > 等级高 > 稀有度高
+            memesToShow.sort((a,b) => {
+                const aFav = gameState.favorites[a.id] ? 1 : 0;
+                const bFav = gameState.favorites[b.id] ? 1 : 0;
+                if (aFav !== bFav) return bFav - aFav;
+                if (a.level !== b.level) return b.level - a.level;
+                const rarityOrder = { SSR:3, SR:2, R:1 };
+                return rarityOrder[b.rarity] - rarityOrder[a.rarity];
+            });
+
+            // 构建网格
+            const gridHtml = memesToShow.map(meme => {
+                const inShowcase = gameState.showcase.some(m => m && m.id === meme.id);
+                const income = calculateMemeIncome(meme, false);
+                const isFav = gameState.favorites[meme.id];
+                const borderStyle = RARITY_CONFIG[meme.rarity].border || '';
+                const boxShadowStyle = RARITY_CONFIG[meme.rarity].boxShadow || '';
+                return `
+                    <div class="emoji-item ${inShowcase ? 'meme-in-showcase' : ''}"
+                         draggable="${!inShowcase}"
+                         ondragstart="dragStart(event, '${meme.id}')">
+                        <div class="emoji-item-inner" onclick="${inShowcase ? '' : `selectMemeForShowcase(-1, '${meme.id}')`}">
+                            <img src="${meme.path}" alt="${meme.folder}">
+                            <div class="emoji-rarity-border" style="border: ${borderStyle}; box-shadow: inset ${boxShadowStyle};"></div>
+                            <div class="emoji-favorite" onclick="toggleFavorite('${meme.id}', event)">${isFav ? '⭐' : '☆'}</div>
+                        </div>
+                        <div class="emoji-info">
+                            <div class="emoji-info-row">
+                                <span>Lv.${meme.level} ${RARITY_CONFIG[meme.rarity].name}</span>
+                                <span>+${income.toFixed(1)}</span>
+                            </div>
+                            <div class="emoji-info-row">
+                                <span style="font-size:10px;">B:${meme.baseIncome} G:${meme.growthRate.toFixed(2)}</span>
+                            </div>
+                            <div class="emoji-traits">
+                                ${meme.traits.map(t => `<div class="emoji-trait" title="${t.name}">${t.desc}${t.value}${t.suffix}</div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            content.innerHTML = `
+                ${tagBarHtml}
+                <div class="emoji-grid">${gridHtml}</div>
+            `;
+        }
+
+        function setSelectedTag(tag) {
+            gameState.selectedTag = tag;
+            renderCollection();
+            saveGame();
+        }
+
+        // ==================== CG 列表 ====================
+        function renderCGCollection() {
+            const cgGrid = document.getElementById('cgGrid');
+            cgGrid.innerHTML = allCGs.map(cg => {
+                const owned = gameState.cgCollection[cg.id];
+                return `
+                    <div class="cg-item ${owned ? '' : 'locked'}" ${owned ? `onclick="copyImage('${cg.path}')"` : ''}>
+                        <img src="${cg.path}" alt="CG ${cg.id}">
+                        ${owned ? '' : '<div class="cg-lock">🔒</div>'}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleCGSection() {
+            const cgGrid = document.getElementById('cgGrid');
+            const cgToggle = document.getElementById('cgToggle');
+            if (cgGrid.classList.contains('collapsed')) {
+                cgGrid.classList.remove('collapsed');
+                cgToggle.textContent = '−';
+            } else {
+                cgGrid.classList.add('collapsed');
+                cgToggle.textContent = '+';
+            }
+        }
+
+        function updateCGVisibility() {
+            const hasLv2Plus = Object.values(gameState.collection).some(m => m.level >= 2);
+            document.getElementById('rebirthBtn').style.display = hasLv2Plus ? 'block' : 'none';
+            if (gameState.rebirthCount > 0) document.getElementById('cgSection').classList.add('unlocked');
+        }
+
+        // ==================== 拖拽操作 ====================
+        let selectedMemeForShowcase = null;
+
+        function selectMemeForShowcase(slotIndex, memeId = null) {
+            if (memeId) selectedMemeForShowcase = memeId;
+            if (selectedMemeForShowcase) {
+                const firstEmpty = gameState.showcase.findIndex((m, i) => !m && i < gameState.showcaseSlots);
+                const targetSlot = slotIndex >= 0 ? slotIndex : firstEmpty;
+                if (targetSlot >= 0 && targetSlot < gameState.showcaseSlots) {
+                    addToShowcase(selectedMemeForShowcase, targetSlot);
+                    selectedMemeForShowcase = null;
+                }
+            }
+        }
+
+        function dragStart(event, memeId) {
+            try { event.dataTransfer.setData('text/plain', memeId); } catch (e) { event.dataTransfer.setData('memeId', memeId); }
+        }
+
+        function allowDrop(event) { event.preventDefault(); }
+
+        function drop(event, slotIndex) {
+            event.preventDefault();
+            let memeId = event.dataTransfer.getData('text/plain');
+            if (!memeId) memeId = event.dataTransfer.getData('memeId');
+            if (memeId) addToShowcase(memeId, slotIndex);
+        }
+
+        // ==================== 工具函数 ====================
+        async function copyImage(imagePath) {
+            try {
+                const response = await fetch(imagePath);
+                const blob = await response.blob();
+                await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+                showToast('✅ 图片已复制');
+            } catch {
+                showToast('❌ 复制失败');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function saveGame() {
+            try {
+                localStorage.setItem('memeIdleGame', JSON.stringify(gameState));
+            } catch (e) {
+                console.warn('保存失败', e);
+            }
+        }
+
+        function loadGame() {
+            const saved = localStorage.getItem('memeIdleGame');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    Object.assign(gameState, data);
+                    if (!gameState.timers) gameState.timers = {};
+                    gameState.drawCost = calculateDrawCost();
+                    gameState.cgDrawCost = calculateCGDrawCost();
+                } catch (e) {
+                    console.error('加载失败', e);
+                }
+            }
+        }
+
+        function resetGame() {
+            if (confirm('确定清除所有进度？')) {
+                localStorage.removeItem('memeIdleGame');
+                location.reload();
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
