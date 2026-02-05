@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SET3 花牌游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #gameInfo {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #cardsContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            width: 150px;
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            padding: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .card.selected {
+            border: 4px solid #ffd700;
+            background: #fffacd;
+        }
+
+        .flower {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .petal-container {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .petal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: center;
+        }
+
+        /* 花瓣形状 */
+        .round {
+            width: 15px;
+            height: 20px;
+            border-radius: 50% 50% 50% 50%;
+        }
+
+        .slim {
+            width: 8px;
+            height: 25px;
+            border-radius: 50% 50% 50% 50%;
+        }
+
+        .medium {
+            width: 12px;
+            height: 22px;
+            border-radius: 50% 50% 50% 50%;
+        }
+
+        /* 花瓣颜色 */
+        .white { background: white; border: 2px solid #999; }
+        .red { background: #ff4757; }
+        .blue { background: #5352ed; }
+
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            border-radius: 50%;
+        }
+
+        #timeBarContainer {
+            width: 600px;
+            height: 30px;
+            background: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        #timeBar {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff4757 0%, #ffa502 50%, #26de81 100%);
+            transition: width 0.1s linear;
+        }
+
+        #controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+        }
+
+        #shuffleBtn {
+            background: #ffa502;
+            color: white;
+        }
+
+        #newGameBtn {
+            background: #26de81;
+            color: white;
+        }
+
+        #message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 1000;
+            display: none;
+        }
+
+        #message.success { color: #26de81; }
+        #message.error { color: #ff4757; }
+        #message.warning { color: #ffa502; }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌸 SET3 花牌游戏 🌸</h1>
+
+    <div id="gameInfo">
+        <div>分数: <span id="score">0</span></div>
+        <div>剩余牌数: <span id="remaining">69</span></div>
+    </div>
+
+    <div id="timeBarContainer">
+        <div id="timeBar"></div>
+    </div>
+
+    <div id="cardsContainer"></div>
+
+    <div id="controls">
+        <button id="shuffleBtn">🔄 洗牌</button>
+        <button id="newGameBtn">🎮 新游戏</button>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div id="message"></div>
+
+    <script>
+        class SET3Game {
+            constructor() {
+                this.shapes = ['round', 'slim', 'medium'];
+                this.petalCounts = [4, 5, 6];
+                this.flowerCounts = [1, 2, 3];
+                this.colors = ['white', 'red', 'blue'];
+
+                this.deck = [];
+                this.displayedCards = [];
+                this.selectedCards = [];
+                this.score = 0;
+                this.timeLeft = 100;
+                this.gameOver = false;
+                this.timerInterval = null;
+
+                this.initDeck();
+                this.initGame();
+            }
+
+            initDeck() {
+                this.deck = [];
+                for (let shape of this.shapes) {
+                    for (let petalCount of this.petalCounts) {
+                        for (let flowerCount of this.flowerCounts) {
+                            for (let color of this.colors) {
+                                this.deck.push({
+                                    shape, petalCount, flowerCount, color
+                                });
+                            }
+                        }
+                    }
+                }
+                this.shuffleDeck();
+            }
+
+            shuffleDeck() {
+                for (let i = this.deck.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [this.deck[i], this.deck[j]] = [this.deck[j], this.deck[i]];
+                }
+            }
+
+            initGame() {
+                this.displayedCards = [];
+                this.selectedCards = [];
+                this.score = 0;
+                this.timeLeft = 100;
+                this.gameOver = false;
+
+                for (let i = 0; i < 12 && this.deck.length > 0; i++) {
+                    this.displayedCards.push(this.deck.pop());
+                }
+
+                this.render();
+                this.startTimer();
+            }
+
+            startTimer() {
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                this.timerInterval = setInterval(() => {
+                    if (!this.gameOver) {
+                        this.timeLeft -= 0.1;
+                        document.getElementById('timeBar').style.width = this.timeLeft + '%';
+
+                        if (this.timeLeft <= 0) {
+                            this.endGame(false);
+                        }
+                    }
+                }, 100);
+            }
+
+            render() {
+                const container = document.getElementById('cardsContainer');
+                container.innerHTML = '';
+
+                this.displayedCards.forEach((card, index) => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'card';
+                    cardDiv.onclick = () => this.selectCard(index);
+
+                    for (let i = 0; i < card.flowerCount; i++) {
+                        const flowerDiv = document.createElement('div');
+                        flowerDiv.className = 'flower';
+                        flowerDiv.innerHTML = this.createFlower(card);
+                        cardDiv.appendChild(flowerDiv);
+                    }
+
+                    container.appendChild(cardDiv);
+                });
+
+                document.getElementById('score').textContent = this.score;
+                document.getElementById('remaining').textContent = this.deck.length;
+            }
+
+            createFlower(card) {
+                let html = '<div class="petal-container">';
+
+                const angleStep = 360 / card.petalCount;
+                for (let i = 0; i < card.petalCount; i++) {
+                    const angle = i * angleStep;
+                    html += `<div class="petal ${card.shape} ${card.color}"
+                             style="transform: translate(-50%, -50%) rotate(${angle}deg) translateY(-15px);"></div>`;
+                }
+
+                html += '<div class="center-circle"></div></div>';
+                return html;
+            }
+
+            selectCard(index) {
+                if (this.gameOver) return;
+
+                const cardDiv = document.getElementById('cardsContainer').children[index];
+                const selectedIndex = this.selectedCards.indexOf(index);
+
+                if (selectedIndex > -1) {
+                    this.selectedCards.splice(selectedIndex, 1);
+                    cardDiv.classList.remove('selected');
+                } else {
+                    if (this.selectedCards.length < 3) {
+                        this.selectedCards.push(index);
+                        cardDiv.classList.add('selected');
+
+                        if (this.selectedCards.length === 3) {
+                            setTimeout(() => this.checkSet(), 300);
+                        }
+                    }
+                }
+            }
+
+            checkSet() {
+                const cards = this.selectedCards.map(i => this.displayedCards[i]);
+                const errors = [];
+
+                const checkAttribute = (attr) => {
+                    const values = cards.map(c => c[attr]);
+                    const allSame = values.every(v => v === values[0]);
+                    const allDiff = new Set(values).size === 3;
+                    return allSame || allDiff;
+                };
+
+                const attrs = [
+                    { name: 'shape', label: '花瓣形状' },
+                    { name: 'petalCount', label: '花瓣数量' },
+                    { name: 'flowerCount', label: '花的数量' },
+                    { name: 'color', label: '花瓣颜色' }
+                ];
+
+                attrs.forEach(attr => {
+                    if (!checkAttribute(attr.name)) {
+                        errors.push(attr.label);
+                    }
+                });
+
+                if (errors.length === 0) {
+                    this.score += 10;
+                    this.timeLeft = Math.min(100, this.timeLeft + 5);
+                    this.showMessage('✅ 正确！+5秒', 'success');
+
+                    this.selectedCards.sort((a, b) => b - a);
+                    this.selectedCards.forEach(i => {
+                        this.displayedCards.splice(i, 1);
+                    });
+
+                    while (this.displayedCards.length < 12 && this.deck.length > 0) {
+                        this.displayedCards.push(this.deck.pop());
+                    }
+
+                    if (this.deck.length === 0 && !this.hasValidSet()) {
+                        this.endGame(true);
+                    }
+                } else {
+                    this.timeLeft = Math.max(0, this.timeLeft - 3);
+                    this.showMessage(`❌ 错误！-3秒\n不符合条件: ${errors.join(', ')}`, 'error');
+                }
+
+                this.selectedCards = [];
+                this.render();
+            }
+
+            hasValidSet() {
+                for (let i = 0; i < this.displayedCards.length - 2; i++) {
+                    for (let j = i + 1; j < this.displayedCards.length - 1; j++) {
+                        for (let k = j + 1; k < this.displayedCards.length; k++) {
+                            const cards = [this.displayedCards[i], this.displayedCards[j], this.displayedCards[k]];
+                            if (this.isValidSet(cards)) {
+                                return { valid: true, set: [i, j, k] };
+                            }
+                        }
+                    }
+                }
+                return { valid: false };
+            }
+
+            isValidSet(cards) {
+                const checkAttribute = (attr) => {
+                    const values = cards.map(c => c[attr]);
+                    const allSame = values.every(v => v === values[0]);
+                    const allDiff = new Set(values).size === 3;
+                    return allSame || allDiff;
+                };
+
+                return ['shape', 'petalCount', 'flowerCount', 'color'].every(checkAttribute);
+            }
+
+            shuffle() {
+                if (this.gameOver) return;
+
+                const result = this.hasValidSet();
+
+                if (!result.valid) {
+                    this.timeLeft = Math.min(100, this.timeLeft + 5);
+                    this.showMessage('✅ 确实没有组合！+5秒', 'success');
+                } else {
+                    this.timeLeft = Math.max(0, this.timeLeft - 5);
+                    const setCards = result.set.map(i => this.displayedCards[i]);
+                    this.showMessage(`❌ 有组合存在！-5秒\n组合在第 ${result.set.map(i => i+1).join(', ')} 张牌`, 'warning');
+                }
+
+                const temp = [...this.displayedCards];
+                this.displayedCards = [];
+                temp.forEach(card => this.deck.push(card));
+                this.shuffleDeck();
+
+                for (let i = 0; i < Math.min(12, this.deck.length); i++) {
+                    this.displayedCards.push(this.deck.pop());
+                }
+
+                this.selectedCards = [];
+                this.render();
+            }
+
+            showMessage(text, type) {
+                const msg = document.getElementById('message');
+                const overlay = document.getElementById('overlay');
+                msg.textContent = text;
+                msg.className = type;
+                msg.style.display = 'block';
+                overlay.style.display = 'block';
+
+                setTimeout(() => {
+                    msg.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 2000);
+            }
+
+            endGame(won) {
+                this.gameOver = true;
+                clearInterval(this.timerInterval);
+
+                if (won) {
+                    this.showMessage(`🎉 恭喜你赢了！\n最终分数: ${this.score}`, 'success');
+                } else {
+                    this.showMessage(`⏰ 时间到！游戏结束\n最终分数: ${this.score}`, 'error');
+                }
+            }
+        }
+
+        let game = new SET3Game();
+
+        document.getElementById('shuffleBtn').onclick = () => game.shuffle();
+        document.getElementById('newGameBtn').onclick = () => {
+            game = new SET3Game();
+        };
+    </script>
+</body>
+</html>

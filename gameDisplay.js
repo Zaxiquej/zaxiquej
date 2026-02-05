@@ -58,7 +58,7 @@ const gamesData = {
               releaseDate: "2017年10月",
               screenshotCount: 8,
               buttons: [
-                  { text: "游戏本体(提取码qsqr)", url: "https://pan.baidu.com/s/1XNUIcEOYVI1a2CKLlzLKdw?pwd=qsqr", type: "baidu" }
+                  { text: "游戏本体(提取码fgvt)", url: "https://pan.baidu.com/s/163iqn_pHblGW5ODWg13GUQ?pwd=fgvt", type: "baidu" }
               ]
           },
           {
