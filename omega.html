@@ -198,12 +198,17 @@ const OPTS = [
 ];
 
 function core(state) {
-    // 随机抽2个不重复的
-    let pool = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
-    [pool[0], pool[1]].forEach(i => {
-        if(state.log) state.logs.push(`<div class="log-entry">欧米伽奥提普${OPTS[i].txt}</div>`);
-        OPTS[i].f(state);
-    });
+    let pool = [0,1,2,3];
+    for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    for (let i = 0; i < 2; i++) {
+        if(state.log)
+            state.logs.push(`<div class="log-entry">欧米伽奥提普${OPTS[pool[i]].txt}</div>`);
+        OPTS[pool[i]].f(state);
+    }
 }
 
 function run(useBean, isLog) {
