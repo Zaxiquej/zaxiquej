@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>向欧米伽奥提普投降</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0c0e0e;
+            --panel: #151818;
+            --text: #d0d5c3;
+            --dim: #737a6a;
+            --accent: #2e4542;
+            --gold: #9ca351;
+            --border: #252a2a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", "PingFang SC", sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+
+        /* 标题区：图片置于文字后方 */
+        .header {
+            position: relative;
+            text-align: center;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .header-bg-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px; /* 缩小图片 */
+            opacity: 0.15; /* 变淡 */
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1 {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .flavor {
+            font-size: 0.85rem;
+            color: var(--dim);
+            line-height: 1.6;
+            margin-top: 15px;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        button {
+            background: var(--accent);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            border-color: var(--gold);
+            background: #395450;
+        }
+
+        #log-window {
+            height: 200px;
+            background: #090b0b;
+            border: 1px solid var(--border);
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .log-entry { border-bottom: 1px solid #141717; padding: 2px 0; }
+        .log-sys { color: var(--gold); font-weight: bold; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: #1c2121;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card div:first-child { font-size: 0.7rem; color: var(--dim); text-transform: uppercase; }
+        .stat-card div:last-child { font-size: 1.2rem; color: var(--gold); }
+
+        .chart-wrap { margin-top: 20px; height: 240px; }
+
+        .prob-list {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        input[type="number"] {
+            background: #000;
+            border: 1px solid var(--border);
+            color: var(--gold);
+            padding: 4px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://shadowverse-wb.com/uploads/card_image/chs/card/c6199f79cac0461eb60b9e2297e96770.png" class="header-bg-img">
+        <h1>向欧米伽奥提普投降</h1>
+        <div class="flavor">
+            高过天穹，星辰彼岸，黑暗之中，次元尽头。<br>
+            放眼望去是孕育疯狂的岩壁，侵蚀者们寄身其中。<br>
+            它们皆是拥有毁灭银河/天空/世界之力的异形。<br>
+            其非仆从，皆为王者。然而，畏惧一个存在。
+        </div>
+    </div>
+
+    <div class="controls">
+        <label style="cursor:pointer"><input type="checkbox" id="bean"> 使用超豆 (√)</label>
+        <button onclick="playOnce()">执行效果</button>
+        <span style="color:var(--border)">|</span>
+        <span>模拟:</span>
+        <input type="number" id="scount" value="1000">
+        <button onclick="playSim()">模拟统计</button>
+    </div>
+
+    <div id="log-window">
+        <div style="color:var(--dim)">等待欧米伽奥提普降临...</div>
+    </div>
+
+    <div id="stats-area" style="display:none">
+        <div class="stats-grid">
+            <div class="stat-card"><div>平均伤</div><div id="v-dmg">0</div></div>
+            <div class="stat-card"><div>最大伤</div><div id="v-max">0</div></div>
+            <div class="stat-card"><div>平均回费</div><div id="v-pp">0</div></div>
+            <div class="stat-card"><div>平均增益</div><div id="v-buff">0</div></div>
+        </div>
+        <div class="chart-wrap"><canvas id="myChart"></canvas></div>
+        <div class="prob-list" id="v-probs"></div>
+    </div>
+</div>
+
+<script>
+let chart = null;
+const OPTS = [
+    { id: 0, txt: "破坏了一个随机敌方随从。", f: s => s.k++ },
+    { id: 1, txt: "对敌方主战者造成2点伤害。", f: s => s.d += 2 },
+    { id: 2, txt: "回复2点PP。", f: s => s.p += 2 },
+    { id: 3, txt: "获得+4+4并重新执行一次。", f: s => { s.b += 4; s.r++; } }
+];
+
+function core(state) {
+    // 随机抽2个不重复的
+    let pool = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+    [pool[0], pool[1]].forEach(i => {
+        if(state.log) state.logs.push(`<div class="log-entry">欧米伽奥提普${OPTS[i].txt}</div>`);
+        OPTS[i].f(state);
+    });
+}
+
+function run(useBean, isLog) {
+    let s = { k:0, d:0, p:0, b:0, r:0, logs:[], log:isLog };
+    core(s);
+    if(useBean) {
+        if(isLog) s.logs.push(`<div class="log-entry log-sys">使用超豆</div>`);
+        core(s);
+    }
+    let safety = 0;
+    while(s.r > 0 && safety < 50) {
+        s.r--;
+        if(isLog) s.logs.push(`<div class="log-entry log-sys">重新执行</div>`);
+        core(s);
+        safety++;
+    }
+    return s;
+}
+
+function playOnce() {
+    const res = run(document.getElementById('bean').checked, true);
+    const win = document.getElementById('log-window');
+    win.innerHTML = res.logs.join('') +
+        `<div style="color:var(--gold); margin-top:10px">最终收益：${res.k}解 / ${res.d}伤 / 回${res.p}费 / +${res.b}身材</div>`;
+    win.scrollTop = win.scrollHeight;
+    document.getElementById('stats-area').style.display = 'none';
+}
+
+function playSim() {
+    const num = parseInt(document.getElementById('scount').value) || 1000;
+    const bean = document.getElementById('bean').checked;
+    const res = [];
+    let td=0, tp=0, tb=0, md=0, dist={};
+
+    for(let i=0; i<num; i++) {
+        const r = run(bean, false);
+        res.push(r);
+        td += r.d; tp += r.p; tb += r.b;
+        if(r.d > md) md = r.d;
+        dist[r.d] = (dist[r.d] || 0) + 1;
+    }
+
+    document.getElementById('stats-area').style.display = 'block';
+    document.getElementById('v-dmg').innerText = (td/num).toFixed(1);
+    document.getElementById('v-max').innerText = md;
+    document.getElementById('v-pp').innerText = (tp/num).toFixed(1);
+    document.getElementById('v-buff').innerText = '+' + (tb/num).toFixed(1);
+
+    const calc = (f) => (res.filter(f).length/num*100).toFixed(1) + '%';
+    document.getElementById('v-probs').innerHTML = `
+        <span>10伤以上概率: ${calc(r=>r.d>=10)}</span>
+        <span>4解以上概率: ${calc(r=>r.k>=4)}</span>
+        <span>回费4+概率: ${calc(r=>r.p>=4)}</span>
+        <span>+12身材以上概率: ${calc(r=>r.b>=12)}</span>
+    `;
+
+    updateChart(dist);
+}
+
+function updateChart(dist) {
+    const labels = Object.keys(dist).sort((a,b)=>a-b);
+    if(chart) chart.destroy();
+    chart = new Chart(document.getElementById('myChart'), {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '伤害分布频率',
+                data: labels.map(l => dist[l]),
+                backgroundColor: 'rgba(156, 163, 81, 0.5)',
+                borderColor: '#9ca351',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            scales: {
+                x: { ticks: { color: '#737a6a' } },
+                y: { ticks: { color: '#737a6a' }, grid: { color: '#252a2a' } }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+}
+</script>
+</body>
+</html>
