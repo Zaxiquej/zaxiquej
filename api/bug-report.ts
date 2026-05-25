@@ -53,7 +53,7 @@ export default async function handler(req, res) {
       from: "Cursed Ring <onboarding@resend.dev>",
       to: ["zaxiquej@gmail.com"],
       subject: "Cursed Ring Bug Report",
-      text: JSON.stringify(body, null, 2),
+      text: String(body.formatted_report ?? JSON.stringify(body, null, 2)).replace("玩家IP：由服务器记录", `玩家IP：${ip}`);
     }),
   });
 
