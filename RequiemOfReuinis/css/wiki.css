@@ -367,6 +367,19 @@ dialog::backdrop { background: rgba(3,5,7,.72); backdrop-filter: blur(6px); }
 .derived-effect-toggle button.active { color: #18140a; background: linear-gradient(#e4ca82,#b89342); font-weight: 800; }
 .derived-effect[hidden] { display: none; }
 .research-description { margin: 22px 0 0; color: #c5cccf; }
+.architect-toggle { display: grid; grid-template-columns: 38px minmax(0,1fr); align-items: center; gap: 12px; margin-top: 20px; padding: 13px 15px; border: 1px solid #4c4634; background: #171711; border-radius: 9px; cursor: pointer; }
+.architect-toggle input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.architect-switch { position: relative; width: 36px; height: 20px; border: 1px solid #545d62; background: #11181e; border-radius: 20px; transition: .16s ease; }
+.architect-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; background: #78848a; border-radius: 50%; transition: .16s ease; }
+.architect-toggle input:checked + .architect-switch { border-color: #a4843e; background: #352b18; }
+.architect-toggle input:checked + .architect-switch::after { left: 19px; background: var(--gold-bright); }
+.architect-toggle input:focus-visible + .architect-switch { outline: 2px solid #9dc9e9; outline-offset: 2px; }
+.architect-toggle > span:last-child { display: grid; gap: 3px; }
+.architect-toggle b { color: var(--gold-bright); font-size: 12px; }
+.architect-toggle small { color: var(--muted); font-size: 10px; line-height: 1.5; }
+.architect-result { margin-top: 3px; font-size: 10px; font-style: normal; }
+.architect-result.applied { color: #9ed6c8; }
+.architect-result.unaffected { color: #aab2b6; }
 .research-cost-calculator { margin-top: 22px; }
 .research-cost-tabs { display: grid; grid-template-columns: repeat(2,1fr); gap: 4px; padding: 4px; border: 1px solid var(--line-soft); background: #0b1015; border-radius: 9px; }
 .research-cost-tabs button { min-height: 34px; border: 0; color: var(--muted); background: transparent; border-radius: 7px; cursor: pointer; font-size: 11px; }

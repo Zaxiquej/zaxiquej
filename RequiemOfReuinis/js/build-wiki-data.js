@@ -617,6 +617,11 @@ const researchRaw = Object.keys(researchCases).map(Number).sort((a, b) => a - b)
   const description = localized('research', 'd' + id, '');
   const gainItems = safeExpression(block, 'gainItems') || [];
   const learnItem = Number(safeExpression(block, 'learnItem')) || 0;
+  const architectDoubles = max !== Infinity && Number.isFinite(Number(max)) &&
+    !safeExpression(block, 'fullUnlockBuilding') && !safeExpression(block, 'unlockResearch') &&
+    !safeExpression(block, 'addEquip') && !safeExpression(block, 'learnItem') &&
+    !safeExpression(block, 'extraSkill') && !safeExpression(block, 'relatedCommon') &&
+    !safeExpression(block, 'relatedVariable') && !safeExpression(block, 'infinity');
   for (const pair of Array.isArray(costs) ? costs : []) relateItem(id, Number(pair[0]));
   for (const pair of Array.isArray(gainItems) ? gainItems : []) relateItem(id, Number(Array.isArray(pair) ? pair[0] : pair.itemId || pair.id));
   if (learnItem) relateItem(id, learnItem);
@@ -625,6 +630,7 @@ const researchRaw = Object.keys(researchCases).map(Number).sort((a, b) => a - b)
     id: id, name: localized('research', 'n' + id, 'Research ' + id), description: description,
     icon: Number(safeExpression(block, 'icon')) || 0, type: safeExpression(block, 'type') || 'other',
     maxLevel: max === Infinity ? '\u221e' : (Number(max) || 1),
+    architectDoubles: architectDoubles,
     costs: Array.isArray(costs) ? costs.map(pair => ({ itemId: Number(pair[0]), amount: Number(pair[1]), name: itemName(Number(pair[0])), icon: itemIcon(Number(pair[0])) })) : [],
     unlockResearch: safeExpression(block, 'unlockResearch') || [],
     addEquip: Number(safeExpression(block, 'addEquip')) || 0,
