@@ -640,9 +640,15 @@ for (const record of researchRaw) {
   for (const child of record.unlockResearch) addResearchParent(child, record.id);
   for (const child of (commonEventResearch.get(record.relatedCommon) || [])) addResearchParent(child, record.id);
 }
+const researchChildren = new Map();
+for (const [child, parents] of researchParents) for (const parent of parents) {
+  if (!researchChildren.has(parent)) researchChildren.set(parent, new Set());
+  researchChildren.get(parent).add(child);
+}
 const supremeAlchemyIds = new Set([552, 553, 554, 555, 556]);
 const research = researchRaw.map(record => Object.assign({}, record, {
   prerequisites: [...(researchParents.get(record.id) || [])].sort((a, b) => a - b).map(id => ({ id: id, name: localized('research', 'n' + id, 'Research ' + id), icon: Number(safeExpression(researchCases[id], 'icon')) || 0 })),
+  unlocksResearch: [...(researchChildren.get(record.id) || [])].sort((a, b) => a - b).map(id => ({ id: id, name: localized('research', 'n' + id, 'Research ' + id), icon: Number(safeExpression(researchCases[id], 'icon')) || 0 })),
   unlockItems: [...(unlockItemsByResearch.get(record.id) || [])].sort((a, b) => a - b).map(id => ({ id: id, name: itemName(id), icon: itemIcon(id) })),
   initialUnlock: initialResearchIds.has(record.id),
   milestone: supremeAlchemyIds.has(record.id) ? { researchLevel: 3000 } : null,

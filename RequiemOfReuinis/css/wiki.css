@@ -343,7 +343,7 @@ dialog::backdrop { background: rgba(3,5,7,.72); backdrop-filter: blur(6px); }
 .level-picker label { color: var(--gold); font-size: 11px; letter-spacing: .1em; }
 .level-picker select,.level-picker input { width: 180px; margin-left: auto; }
 .cost-list,.reward-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
-.cost-list span,.reward-list span { display: flex; align-items: center; gap: 9px; min-height: 45px; padding: 7px 10px; border: 1px solid var(--line-soft); background: #10161c; border-radius: 7px; font-size: 11px; }
+.cost-list > span,.reward-list > span { display: flex; align-items: center; gap: 9px; min-height: 45px; padding: 7px 10px; border: 1px solid var(--line-soft); background: #10161c; border-radius: 7px; font-size: 11px; }
 .cost-list b { flex: 1; font-weight: 500; }
 .cost-list em { color: var(--gold-bright); font-style: normal; }
 .linked-list { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
