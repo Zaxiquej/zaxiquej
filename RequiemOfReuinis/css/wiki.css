@@ -202,6 +202,8 @@ main { min-width: 0; padding: 34px clamp(24px,4vw,64px) 70px; }
 .chip.red { color: #e99a93; border-color: #563432; }
 .chip.blue { color: #9dc9e9; border-color: #314c60; }
 .chip.teal { color: #8bd1c5; border-color: #31544e; }
+.research-cost-chip { gap: 5px; padding-left: 4px; }
+.research-cost-icon { display: inline-block; flex: 0 0 auto; width: 20px; height: 20px; overflow: hidden; background-color: #0e1318; background-image: url("../images/IconSet.png"); background-repeat: no-repeat; border-radius: 4px; }
 .statline { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin: 14px 0; }
 .statline span { padding: 7px; color: var(--muted); background: #10151a; border-radius: 6px; text-align: center; font-size: 10px; }
 .statline b { display: block; margin-top: 3px; color: var(--text); font-size: 12px; }
