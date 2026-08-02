@@ -919,6 +919,7 @@ const makeDerivedEquip = armorId => {
     kind: 'equipment', id: armorId, icon: data.iconIndex,
     name: localized('armorname', armorId, data.name),
     description: localized('armordesc', armorId, data.description),
+    upgradedDescription: localized('armordesc', 'U' + armorId, ''),
     slots: numberTag(parseTags(data.note), 'cost'),
     sourceKnown: Boolean(armorAcquisition[armorId])
   };
