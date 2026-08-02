@@ -214,6 +214,9 @@ main { min-width: 0; padding: 34px clamp(24px,4vw,64px) 70px; }
 .page-button:disabled { opacity: .35; cursor: default; }
 .page-nav { min-width: 72px; }
 .page-ellipsis { display: grid; place-items: center; width: 24px; height: 36px; color: var(--faint); }
+.page-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; margin-left: 8px; color: var(--faint); font-size: 11px; }
+.page-jump input { width: 58px; height: 34px; padding: 0 6px; border: 1px solid #3b4650; outline: 0; color: var(--gold-bright); background: #10151a; border-radius: 7px; text-align: center; font-size: 12px; }
+.page-jump input:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(216,183,109,.12); }
 .empty-state { padding: 70px 20px; color: var(--muted); text-align: center; }
 .empty-state span { color: var(--gold); font-size: 36px; }
 .empty-state h2 { margin: 10px 0 5px; color: var(--text); font: 600 22px Georgia, serif; }
