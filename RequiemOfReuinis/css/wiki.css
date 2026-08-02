@@ -337,6 +337,10 @@ dialog::backdrop { background: rgba(3,5,7,.72); backdrop-filter: blur(6px); }
 .detail-section h3 { margin: 0 0 13px; color: var(--gold); font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
 .detail-body,.game-text { color: #c5cccf; font-size: 13px; line-height: 1.85; }
 .game-text { margin: 0; white-space: normal; }
+.wiki-ruby { ruby-align: center; ruby-position: over; }
+.wiki-ruby rt { color: #aeb9bd; font-size: .5em; font-weight: 500; line-height: 1; }
+.card-head h2:has(.wiki-ruby),.derived-title h4:has(.wiki-ruby),.ability-card h4:has(.wiki-ruby) { padding-top: .55em; }
+.detail-header h2:has(.wiki-ruby) { padding-top: .45em; }
 .skill-card-icon { position: relative; width: 48px; height: 48px; }
 .actor-avatar-mini { position: absolute; right: -4px; bottom: -4px; width: 22px; height: 22px; border: 1px solid #77633a; border-radius: 50%; background: #10161c; object-fit: cover; }
 .detail-title-with-actor { display: flex; align-items: center; gap: 14px; }
