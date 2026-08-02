@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>修建魔塔 V6：逻辑大师编辑器</title>
+    <style>
+        :root { --floor: #f8f9fa; --wall: #2c3e50; --gem: #f1c40f; --guard: #e74c3c; --stairs: #3498db; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; display: flex; justify-content: center; background: #ced4da; margin: 0; padding: 20px; }
+        .main-layout { display: flex; gap: 20px; max-width: 1000px; width: 100%; }
+
+        /* 侧边栏设置 */
+        .sidebar { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 280px; flex-shrink: 0; }
+        h3 { margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .rule-item { margin: 8px 0; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+        /* 编辑区 */
+        .editor-zone { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); flex-grow: 1; }
+        .grid { display: grid; grid-template-columns: repeat(9, 42px); gap: 1px; background: #adb5bd; border: 3px solid #343a40; user-select: none; }
+        .cell { width: 42px; height: 42px; background: var(--floor); display: flex; align-items: center; justify-content: center; font-size: 22px; transition: 0.1s; }
+        .cell.wall { background: var(--wall); color: white; }
+        .cell.gem { background: var(--gem); }
+        .cell.guard { background: var(--guard); color: white; border-radius: 50%; transform: scale(0.8); }
+        .cell.stairs { background: var(--stairs); color: white; font-weight: bold; }
+        .cell.solution { box-shadow: inset 0 0 0 4px #e74c3c; background: #fff5f5; }
+
+        .palette { margin: 15px 0; display: flex; gap: 8px; }
+        .btn { padding: 8px 12px; cursor: pointer; border: 1px solid #ced4da; border-radius: 6px; background: white; flex-grow: 1; }
+        .btn.active { background: #343a40; color: white; }
+
+        #res-box { margin-top: 15px; padding: 12px; border-radius: 6px; font-size: 13px; line-height: 1.6; background: #f1f3f5; }
+        textarea { width: 100%; height: 60px; margin-top: 10px; font-family: monospace; font-size: 10px; resize: none; }
+        .nav-tools { display: flex; justify-content: space-between; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="main-layout">
+    <!-- 规则配置栏 -->
+    <div class="sidebar">
+        <h3>守卫规则约束</h3>
+        <div id="rule-container">
+            <label class="rule-item"><input type="checkbox" value="no_adj"> 互不相邻 (上下左右)</label>
+            <label class="rule-item"><input type="checkbox" value="all_adj"> 必须成群 (至少1个邻居)</label>
+            <label class="rule-item"><input type="checkbox" value="no_row"> 禁止同行</label>
+            <label class="rule-item"><input type="checkbox" value="no_col"> 禁止同列</label>
+            <label class="rule-item"><input type="checkbox" value="no_diag"> 禁止同斜线 (八皇后)</label>
+        </div>
+        <hr>
+        <div style="font-size: 14px;">
+            勇者破墙(B): <input type="number" id="bLim" value="1" min="0" style="width:40px"><br>
+            勇者炸弹(K): <input type="number" id="kLim" value="0" min="0" style="width:40px"><br>
+        </div>
+        <button id="solve-btn" class="btn" style="width:100%; margin-top:15px; background:#8e44ad; color:white;" onclick="runSolver()">开始深度求解</button>
+
+        <hr>
+        <h3>分享关卡</h3>
+        <button class="btn" onclick="exportLevel()">导出代码</button>
+        <button class="btn" onclick="importLevel()">导入代码</button>
+        <textarea id="levelCode" placeholder="在此粘贴关卡代码..."></textarea>
+    </div>
+
+    <!-- 主编辑区 -->
+    <div class="editor-zone">
+        <div class="palette" id="palette">
+            <button class="btn active" data-type="1">墙(W)</button>
+            <button class="btn" data-type="2">宝(G)</button>
+            <button class="btn" data-type="4">梯(S)</button>
+            <button class="btn" data-type="0">空</button>
+            <button class="btn" onclick="location.reload()">清空</button>
+        </div>
+
+        <div class="grid" id="grid"></div>
+
+        <div id="res-box">
+            <div id="status">就绪：支持拖拽涂色</div>
+            <div id="nav-area" class="nav-tools" style="display:none">
+                <button class="btn" onclick="changeSol(-1)">上个解</button>
+                <span id="sol-index">1/1</span>
+                <button class="btn" onclick="changeSol(1)">下个解</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SIZE = 9;
+    let grid = Array(SIZE).fill().map(() => Array(SIZE).fill(0));
+    let brush = 1;
+    let isDrawing = false;
+    let allSolutions = [];
+    let currentSolIdx = 0;
+
+    // --- 规则引擎设计 ---
+    const RULES = {
+        no_adj: (combo) => {
+            const set = new Set(combo);
+            for(let idx of combo) {
+                let r = Math.floor(idx/9), c = idx%9;
+                for(let [dr, dc] of [[0,1],[0,-1],[1,0],[-1,0]]) {
+                    if(set.has((r+dr)*9+(c+dc))) return false;
+                }
+            }
+            return true;
+        },
+        all_adj: (combo) => {
+            if(combo.length < 2) return true;
+            const set = new Set(combo);
+            for(let idx of combo) {
+                let r = Math.floor(idx/9), c = idx%9;
+                let foundNeighbor = false;
+                for(let [dr, dc] of [[0,1],[0,-1],[1,0],[-1,0]]) {
+                    if(set.has((r+dr)*9+(c+dc))) { foundNeighbor = true; break; }
+                }
+                if(!foundNeighbor) return false;
+            }
+            return true;
+        },
+        no_row: (combo) => new Set(combo.map(i => Math.floor(i/9))).size === combo.length,
+        no_col: (combo) => new Set(combo.map(i => i%9)).size === combo.length,
+        no_diag: (combo) => {
+            for(let i=0; i<combo.length; i++) {
+                for(let j=i+1; j<combo.length; j++) {
+                    let r1 = Math.floor(combo[i]/9), c1 = combo[i]%9;
+                    let r2 = Math.floor(combo[j]/9), c2 = combo[j]%9;
+                    if(Math.abs(r1-r2) === Math.abs(c1-c2)) return false;
+                }
+            }
+            return true;
+        }
+    };
+
+    // --- 初始化与交互 ---
+    function init() {
+        const el = document.getElementById('grid');
+        el.onmousedown = () => isDrawing = true;
+        window.onmouseup = () => isDrawing = false;
+
+        for(let i=0; i<81; i++) {
+            const d = document.createElement('div');
+            d.className = 'cell'; d.id = `c-${i}`;
+            d.onmousedown = (e) => { e.preventDefault(); paint(i); };
+            d.onmouseenter = () => { if(isDrawing) paint(i); };
+            el.appendChild(d);
+        }
+    }
+
+    function paint(i) {
+        grid[Math.floor(i/9)][i%9] = brush;
+        render();
+    }
+
+    function render(sol = null) {
+        const types = ['', 'wall', 'gem', 'guard', 'stairs'];
+        const icons = ['', '', '💎', '💀', 'S'];
+        for(let i=0; i<81; i++) {
+            const el = document.getElementById(`c-${i}`);
+            el.className = 'cell ' + types[grid[Math.floor(i/9)][i%9]];
+            el.innerText = icons[grid[Math.floor(i/9)][i%9]];
+            if(sol && sol.includes(i)) el.classList.add('solution');
+        }
+    }
+
+    document.getElementById('palette').onclick = (e) => {
+        if(e.target.dataset.type) {
+            document.querySelectorAll('.palette .btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            brush = parseInt(e.target.dataset.type);
+        }
+    };
+
+    // --- 核心逻辑 ---
+    function canHeroSteal(b, k, guards = new Set()) {
+        let starts = [], gems = [];
+        for(let i=0; i<81; i++) {
+            if(grid[Math.floor(i/9)][i%9] === 4) starts.push(i);
+            if(grid[Math.floor(i/9)][i%9] === 2) gems.push(i);
+        }
+        if(!starts.length || !gems.length) return false;
+
+        let q = starts.map(s => [Math.floor(s/9), s%9, b, k]);
+        let v = new Set();
+        while(q.length) {
+            let [r, c, curB, curK] = q.shift();
+            if(grid[r][c] === 2) return true;
+            let key = `${r},${c},${curB},${curK}`;
+            if(v.has(key)) continue; v.add(key);
+
+            for(let [dr, dc] of [[0,1],[0,-1],[1,0],[-1,0]]) {
+                let nr=r+dr, nc=c+dc;
+                if(nr<0||nr>=9||nc<0||nc>=9) continue;
+                let idx = nr*9+nc;
+                if(guards.has(idx)) {
+                    if(curK > 0) q.push([nr, nc, curB, curK-1]);
+                } else if(grid[nr][nc] === 1) {
+                    if(curB > 0) q.push([nr, nc, curB-1, curK]);
+                } else {
+                    q.push([nr, nc, curB, curK]);
+                }
+            }
+        }
+        return false;
+    }
+
+    async function runSolver() {
+        const bLimit = parseInt(document.getElementById('bLim').value);
+        const kLimit = parseInt(document.getElementById('kLim').value);
+        const selectedRules = Array.from(document.querySelectorAll('#rule-container input:checked')).map(i => i.value);
+
+        allSolutions = []; currentSolIdx = 0;
+        document.getElementById('status').innerText = "正在推演路径与规则过滤...";
+        document.getElementById('nav-area').style.display = "none";
+
+        if(!canHeroSteal(bLimit, kLimit)) {
+            document.getElementById('status').innerText = "当前关卡已经无法通过，无需守卫。";
+            render(); return;
+        }
+
+        // 路径修剪：只在勇者能走到的空地尝试
+        let candidates = [];
+        for(let i=0; i<81; i++) if(grid[Math.floor(i/9)][i%9] === 0) candidates.push(i);
+
+        let found = false;
+        for(let n=1; n<=4; n++) {
+            document.getElementById('status').innerText = `正在分析 ${n} 名守卫的可能方案...`;
+            await new Promise(r => setTimeout(r, 1));
+
+            let combos = getCombos(candidates, n);
+            for(let c of combos) {
+                // 先过规则检查（高性能），再过寻路检查（低性能）
+                let passRules = selectedRules.every(rKey => RULES[rKey](c));
+                if(passRules && !canHeroSteal(bLimit, kLimit, new Set(c))) {
+                    allSolutions.push(c);
+                }
+            }
+            if(allSolutions.length > 0) { found = true; break; }
+        }
+
+        if(found) {
+            document.getElementById('status').innerHTML = `找到解法！最少需要 ${allSolutions[0].length} 名守卫。<br>` +
+                (allSolutions.length === 1 ? "⭐ <b>唯一解！</b>逻辑严谨。" : `非唯一解：存在 ${allSolutions.length} 种方案。`);
+            if(allSolutions.length > 1) {
+                document.getElementById('nav-area').style.display = "flex";
+                updateNav();
+            }
+            render(allSolutions[0]);
+        } else {
+            document.getElementById('status').innerText = "4名守卫及规则限制下，无法阻止勇者。";
+        }
+    }
+
+    function getCombos(arr, n) {
+        let res = [];
+        function h(s, c) {
+            if(c.length === n) { res.push([...c]); return; }
+            for(let i=s; i<arr.length; i++) { c.push(arr[i]); h(i+1, c); c.pop(); }
+        }
+        h(0, []); return res;
+    }
+
+    function updateNav() { document.getElementById('sol-index').innerText = `${currentSolIdx+1} / ${allSolutions.length}`; }
+    function changeSol(dir) {
+        currentSolIdx = (currentSolIdx + dir + allSolutions.length) % allSolutions.length;
+        updateNav(); render(allSolutions[currentSolIdx]);
+    }
+
+    // --- 导出导入 ---
+    function exportLevel() {
+        const data = {
+            grid: grid,
+            b: document.getElementById('bLim').value,
+            k: document.getElementById('kLim').value,
+            rules: Array.from(document.querySelectorAll('#rule-container input:checked')).map(i => i.value)
+        };
+        document.getElementById('levelCode').value = btoa(JSON.stringify(data));
+    }
+
+    function importLevel() {
+        try {
+            const data = JSON.parse(atob(document.getElementById('levelCode').value));
+            grid = data.grid;
+            document.getElementById('bLim').value = data.b;
+            document.getElementById('kLim').value = data.k;
+            document.querySelectorAll('#rule-container input').forEach(i => {
+                i.checked = data.rules.includes(i.value);
+            });
+            render();
+        } catch(e) { alert("代码无效！"); }
+    }
+
+    init();
+</script>
+</body>
+</html>

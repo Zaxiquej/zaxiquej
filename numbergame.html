@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22数字博弈：生还者游戏</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1, h2 { color: #2c3e50; text-align: center; }
+        .tabs { display: flex; justify-content: center; margin-bottom: 20px; border-bottom: 2px solid #ddd; }
+        .tab { padding: 10px 20px; cursor: pointer; border: none; background: none; font-size: 16px; font-weight: bold; color: #7f8c8d; }
+        .tab.active { color: #3498db; border-bottom: 3px solid #3498db; }
+        .content { display: none; }
+        .content.active { display: block; }
+        .rule-box { background: #eef2f3; padding: 15px; border-radius: 8px; border-left: 5px solid #3498db; }
+        .btn { background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px; }
+        .btn:hover { background: #2980b9; }
+        .btn-danger { background: #e74c3c; }
+        .btn-success { background: #27ae60; }
+        .game-area { text-align: center; margin-top: 20px; padding: 20px; border: 1px dashed #ccc; }
+        .log { height: 200px; overflow-y: auto; background: #333; color: #fff; padding: 10px; font-family: monospace; border-radius: 5px; text-align: left; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .win { background-color: #d4edda; color: #155724; }
+        .lose { background-color: #f8d7da; color: #721c24; }
+        .stat-bar { height: 20px; background: #3498db; border-radius: 10px; transition: width 0.5s; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>22数字博弈游戏</h1>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('rules')">规则说明</button>
+        <button class="tab" onclick="showTab('human-player')">扮演玩家</button>
+        <button class="tab" onclick="showTab('human-host')">扮演主持人</button>
+        <button class="tab" onclick="showTab('sim')">胜率模拟</button>
+    </div>
+
+    <!-- (0) 规则说明 -->
+    <div id="rules" class="content active">
+        <h2>游戏规则</h2>
+        <div class="rule-box">
+            <ul>
+                <li><strong>目标：</strong>在1-22中猜出那个特殊数字。</li>
+                <li><strong>获胜轮次：</strong>第 <strong>1, 2, 3, 7, 8</strong> 次猜中，玩家胜。</li>
+                <li><strong>主持人获胜：</strong>第 <strong>4, 5, 6</strong> 次或 <strong>9次及以后</strong> 猜中，主持人胜。</li>
+                <li><strong>约束：</strong>玩家不能故意猜已知不可能的数字。</li>
+                <li><strong>策略点：</strong>玩家需要通过控制搜索范围，避开4-6轮的陷阱区。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- (1) 扮演玩家 -->
+    <div id="human-player" class="content">
+        <h2>你来猜，AI是主持人</h2>
+        <div class="game-area">
+            <p id="p-status">准备好了吗？我已经想好了一个1-22的数字。</p>
+            <input type="number" id="player-guess" min="1" max="22" placeholder="输入1-22">
+            <button class="btn" onclick="humanGuess()">提交猜测</button>
+            <div id="player-log" class="log"></div>
+        </div>
+    </div>
+
+    <!-- (1) 扮演主持人 -->
+    <div id="human-host" class="content">
+        <h2>AI猜，你来当主持人</h2>
+        <div class="game-area">
+            <p>请在心中想好一个1-22的数字。</p>
+            <h3 id="ai-guess-val">AI 第一次猜测: --</h3>
+            <p>第 <span id="ai-round">1</span> 轮</p>
+            <button class="btn" onclick="aiFeedback('low')">更大</button>
+            <button class="btn btn-success" onclick="aiFeedback('hit')">命中</button>
+            <button class="btn" onclick="aiFeedback('high')">更小</button>
+            <button class="btn btn-danger" onclick="resetAiHost()">重置</button>
+            <div id="host-log" class="log"></div>
+        </div>
+    </div>
+
+    <!-- (2) 胜率统计 -->
+    <div id="sim" class="content">
+        <h2>AI 策略对战模拟统计</h2>
+        <button class="btn" onclick="runSimulation()">运行 10,000 次模拟</button>
+        <div id="sim-result"></div>
+        <div id="sim-table-area"></div>
+    </div>
+</div>
+
+<script>
+    // --- 核心逻辑变量 ---
+    let targetNum = 0;
+    let currentRound = 0;
+    let minBound = 1;
+    let maxBound = 22;
+
+    // --- Tab 切换 ---
+    function showTab(tabId) {
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        if(tabId === 'human-player') resetHumanPlayer();
+        if(tabId === 'human-host') resetAiHost();
+    }
+
+    // --- (1) 人类玩家模式 ---
+    function resetHumanPlayer() {
+        targetNum = Math.floor(Math.random() * 22) + 1;
+        currentRound = 0;
+        minBound = 1;
+        maxBound = 22;
+        document.getElementById('player-log').innerHTML = "游戏开始！数字已就绪。";
+        document.getElementById('p-status').innerText = "请输入你的第一次猜测。";
+    }
+
+    function humanGuess() {
+        let guess = parseInt(document.getElementById('player-guess').value);
+        if (isNaN(guess) || guess < minBound || guess > maxBound) {
+            alert(`非法猜测！必须在当前有效范围 [${minBound}, ${maxBound}] 内。`);
+            return;
+        }
+        currentRound++;
+        let log = document.getElementById('player-log');
+        let res = "";
+        if (guess === targetNum) {
+            let win = [1,2,3,7,8].includes(currentRound);
+            res = `第${currentRound}轮猜中 ${guess}！ ${win ? "【你赢了！】" : "【主持人胜！】"}`;
+            alert(res);
+            resetHumanPlayer();
+        } else if (guess < targetNum) {
+            minBound = guess + 1;
+            res = `第${currentRound}轮: ${guess} -> 太小了。 (范围: ${minBound}-${maxBound})`;
+        } else {
+            maxBound = guess - 1;
+            res = `第${currentRound}轮: ${guess} -> 太大了。 (范围: ${minBound}-${maxBound})`;
+        }
+        log.innerHTML = res + "<br>" + log.innerHTML;
+        document.getElementById('p-status').innerText = `当前有效范围: ${minBound} - ${maxBound}`;
+    }
+
+    // --- (1) AI 玩家策略核心 ---
+    // 采用用户提供的策略：1-3轮边缘蚕食，4-6轮精准压缩
+    function getSmartAiGuess(low, high, round) {
+        if (round === 1) return low + 3; // 第一次猜4
+        if (round === 2) return low + 1; // 第二次猜6 (如果比4大)
+        if (round === 3) return low;     // 第三次尝试边界
+
+        // 4-6轮：二分法压缩，目标是在第7轮前剩下约3个数字
+        if (round <= 6) {
+            return Math.floor((low + high) / 2);
+        }
+        // 7-8轮：收割
+        return Math.floor((low + high) / 2);
+    }
+
+    // --- (1) AI 作为玩家模式 (由人类当主持人) ---
+    let aiLow = 1, aiHigh = 22, aiRound = 1, lastAiGuess = 0;
+
+    function resetAiHost() {
+        aiLow = 1; aiHigh = 22; aiRound = 1;
+        lastAiGuess = getSmartAiGuess(aiLow, aiHigh, aiRound);
+        updateAiHostUI();
+        document.getElementById('host-log').innerHTML = "AI 已就绪。";
+    }
+
+    function aiFeedback(type) {
+        if (type === 'hit') {
+            let win = [1,2,3,7,8].includes(aiRound);
+            alert(`AI 在第 ${aiRound} 轮猜中 ${lastAiGuess}。结果: ${win ? "AI 获胜！" : "你(主持人)获胜！"}`);
+            resetAiHost();
+            return;
+        }
+        if (type === 'low') aiLow = lastAiGuess + 1;
+        if (type === 'high') aiHigh = lastAiGuess - 1;
+
+        if (aiLow > aiHigh) {
+            alert("你给出的提示有矛盾！请诚信游戏。");
+            resetAiHost();
+            return;
+        }
+
+        aiRound++;
+        lastAiGuess = getSmartAiGuess(aiLow, aiHigh, aiRound);
+        updateAiHostUI();
+        let log = document.getElementById('host-log');
+        log.innerHTML = `第${aiRound-1}轮反馈: ${type === 'low' ? '更高' : '更低'}<br>` + log.innerHTML;
+    }
+
+    function updateAiHostUI() {
+        document.getElementById('ai-guess-val').innerText = `AI 猜测: ${lastAiGuess}`;
+        document.getElementById('ai-round').innerText = aiRound;
+    }
+
+    // --- (2) 模拟器逻辑 ---
+    function runSimulation() {
+        const totalSims = 10000;
+        let roundStats = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0 };
+        let matrix = Array.from({ length: 23 }, () => Array(10).fill(0));
+        let aiWins = 0;
+
+        for (let i = 0; i < totalSims; i++) {
+            let secret = Math.floor(Math.random() * 22) + 1;
+            let low = 1, high = 22, round = 1;
+            while (true) {
+                let guess = getSmartAiGuess(low, high, round);
+                if (guess === secret) {
+                    roundStats[round > 9 ? 9 : round]++;
+                    matrix[secret][round > 9 ? 9 : round]++;
+                    if ([1,2,3,7,8].includes(round)) aiWins++;
+                    break;
+                } else if (guess < secret) {
+                    low = guess + 1;
+                } else {
+                    high = guess - 1;
+                }
+                round++;
+                if (round > 20) break; // 防止死循环
+            }
+        }
+
+        displaySimResults(totalSims, aiWins, roundStats, matrix);
+    }
+
+    function displaySimResults(total, wins, stats, matrix) {
+        let winRate = ((wins / total) * 100).toFixed(2);
+        let html = `<h3>总模拟次数: ${total} | AI 玩家胜率: ${winRate}%</h3>`;
+        html += `<p>各轮猜中分布：</p><div style="display:flex; gap:5px; align-items:flex-end; height:100px; margin-bottom:20px;">`;
+        for (let r = 1; r <= 8; r++) {
+            let height = (stats[r] / total * 300).toFixed(0);
+            let isWin = [1,2,3,7,8].includes(r);
+            html += `<div style="flex:1; background:${isWin ? '#27ae60':'#e74c3c'}; height:${height}px; position:relative;" title="第${r}轮: ${stats[r]}次">
+                        <span style="font-size:10px; position:absolute; top:-15px;">${r}轮</span>
+                     </div>`;
+        }
+        html += `</div>`;
+
+        document.getElementById('sim-result').innerHTML = html;
+
+        // 详细矩阵
+        let tableHtml = `<h4>数字 vs 结束轮次 (详细热力图)</h4><table><tr><th>数字</th>`;
+        for(let r=1; r<=8; r++) tableHtml += `<th>第${r}轮${[1,2,3,7,8].includes(r)?'(胜)':''}</th>`;
+        tableHtml += `</tr>`;
+        for(let n=1; n<=22; n++) {
+            tableHtml += `<tr><td><b>${n}</b></td>`;
+            for(let r=1; r<=8; r++) {
+                let count = matrix[n][r];
+                let isWin = [1,2,3,7,8].includes(r);
+                tableHtml += `<td class="${count > 0 ? (isWin?'win':'lose') : ''}">${count}</td>`;
+            }
+            tableHtml += `</tr>`;
+        }
+        tableHtml += `</table>`;
+        document.getElementById('sim-table-area').innerHTML = tableHtml;
+    }
+</script>
+
+</body>
+</html>

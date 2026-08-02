@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>修建魔塔逻辑验证版</title>
+    <style>
+        :root {
+            --floor: #eee; --wall: #333; --gem: #f1c40f; --guard: #e74c3c; --stairs: #3498db;
+        }
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #f0f0f0; }
+        .controls { margin: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: repeat(9, 40px); gap: 2px; background: #ccc; border: 2px solid #333; }
+        .cell { width: 40px; height: 40px; background: var(--floor); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: 0.2s; }
+        .cell:hover { filter: brightness(0.9); }
+        .cell.wall { background: var(--wall); color: white; }
+        .cell.gem { background: var(--gem); }
+        .cell.guard { background: var(--guard); color: white; }
+        .cell.stairs { background: var(--stairs); color: white; }
+        .cell.path { box-shadow: inset 0 0 0 4px #2ecc71; background: #d5f5e3; }
+        .palette { margin-top: 15px; display: flex; gap: 10px; }
+        .btn { padding: 8px 15px; cursor: pointer; border: none; border-radius: 4px; background: #ddd; }
+        .btn.active { outline: 3px solid #2ecc71; font-weight: bold; }
+        #verify-btn { background: #2ecc71; color: white; font-weight: bold; margin-left: 20px; }
+        #msg { margin-top: 15px; font-weight: bold; color: #e67e22; }
+    </style>
+</head>
+<body>
+
+    <h2>修建魔塔：逻辑验证原型</h2>
+
+    <div class="controls">
+        <b>勇者能力设置：</b>
+        破墙次数 (Break): <input type="number" id="breakCount" value="1" min="0" style="width:40px">
+        炸怪次数 (Bomb): <input type="number" id="bombCount" value="1" min="0" style="width:40px">
+        <button id="verify-btn" onclick="verify()">点击验证关卡</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="palette" id="palette">
+        <button class="btn active" data-type="1">墙 (Wall)</button>
+        <button class="btn" data-type="2">宝物 (Gem)</button>
+        <button class="btn" data-type="3">守卫 (Guard)</button>
+        <button class="btn" data-type="4">楼梯 (Start)</button>
+        <button class="btn" data-type="0">地面 (Clear)</button>
+    </div>
+
+    <div id="msg">请布置地图，确保勇士无法拿到宝物。</div>
+
+    <script>
+        const GRID_SIZE = 9;
+        let gridData = Array(GRID_SIZE).fill().map(() => Array(GRID_SIZE).fill(0));
+        let currentBrush = 1;
+
+        // 初始化地图
+        const gridEl = document.getElementById('grid');
+        function initGrid() {
+            gridEl.innerHTML = '';
+            for(let r=0; r<GRID_SIZE; r++) {
+                for(let c=0; c<GRID_SIZE; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.id = `cell-${r}-${c}`;
+                    cell.onclick = () => setCell(r, c);
+                    gridEl.appendChild(cell);
+                }
+            }
+        }
+
+        // 画布操作
+        function setCell(r, c) {
+            gridData[r][c] = currentBrush;
+            renderGrid();
+        }
+
+        function renderGrid() {
+            const types = ['', 'wall', 'gem', 'guard', 'stairs'];
+            const icons = ['', 'W', '💎', '💀', 'S'];
+            for(let r=0; r<GRID_SIZE; r++) {
+                for(let c=0; c<GRID_SIZE; c++) {
+                    const el = document.getElementById(`cell-${r}-${c}`);
+                    el.className = 'cell ' + types[gridData[r][c]];
+                    el.innerText = icons[gridData[r][c]];
+                }
+            }
+        }
+
+        // 选择刷子
+        document.getElementById('palette').onclick = (e) => {
+            if(e.target.classList.contains('btn')) {
+                document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentBrush = parseInt(e.target.dataset.type);
+            }
+        };
+
+        // --- 核心逻辑：BFS 寻路验证 ---
+        function verify() {
+            renderGrid(); // 重置样式
+            const startLimitB = parseInt(document.getElementById('breakCount').value);
+            const startLimitK = parseInt(document.getElementById('bombCount').value);
+
+            let startPos = null;
+            for(let r=0; r<9; r++) for(let c=0; c<9; c++) if(gridData[r][c] === 4) startPos = {r, c};
+
+            if(!startPos) { alert("请放置楼梯(S)作为起点！"); return; }
+
+            // 状态保存：row, col, breaksLeft, bombsLeft
+            // queue: [ [r, c, b, k, path] ]
+            let queue = [[startPos.r, startPos.c, startLimitB, startLimitK, []]];
+            let visited = new Set();
+
+            let foundPath = null;
+
+            while(queue.length > 0) {
+                let [r, c, b, k, path] = queue.shift();
+                let stateKey = `${r}-${c}-${b}-${k}`;
+
+                if(visited.has(stateKey)) continue;
+                visited.add(stateKey);
+
+                // 到达宝物
+                if(gridData[r][c] === 2) {
+                    foundPath = path.concat([[r, c]]);
+                    break;
+                }
+
+                // 尝试四个方向
+                const dirs = [[0,1],[0,-1],[1,0],[-1,0]];
+                for(let [dr, dc] of dirs) {
+                    let nr = r + dr, nc = c + dc;
+                    if(nr>=0 && nr<9 && nc>=0 && nc<9) {
+                        let cellType = gridData[nr][nc];
+                        let nextB = b, nextK = k;
+                        let canPass = false;
+
+                        if(cellType === 0 || cellType === 4 || cellType === 2) {
+                            canPass = true;
+                        } else if(cellType === 1 && nextB > 0) { // 墙，需要破墙
+                            nextB--;
+                            canPass = true;
+                        } else if(cellType === 3 && nextK > 0) { // 怪，需要炸弹
+                            nextK--;
+                            canPass = true;
+                        }
+
+                        if(canPass) {
+                            queue.push([nr, nc, nextB, nextK, path.concat([[r, c]])]);
+                        }
+                    }
+                }
+            }
+
+            const msgEl = document.getElementById('msg');
+            if(foundPath) {
+                msgEl.innerText = "❌ 验证失败：勇者可以偷走宝物！(绿色标出路径)";
+                msgEl.style.color = "red";
+                foundPath.forEach(([pr, pc]) => {
+                    document.getElementById(`cell-${pr}-${pc}`).classList.add('path');
+                });
+            } else {
+                msgEl.innerText = "✅ 验证成功：此关卡逻辑严密，宝物无法被偷走。";
+                msgEl.style.color = "green";
+            }
+        }
+
+        initGrid();
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="《列乌尼斯的挽歌》装备、技能、研究、敌人与地图资料 Wiki。">
+  <title>列乌尼斯的挽歌 Wiki</title>
+  <link rel="stylesheet" href="RequiemOfReuinis/css/wiki.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">跳至内容</a>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#overview" data-route="overview" aria-label="返回首页">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>
+        <strong data-i18n="title">列乌尼斯的挽歌 Wiki</strong>
+        <small>REQUIEM OF REUINIS · ARCHIVE</small>
+      </span>
+    </a>
+    <div class="header-tools">
+      <label class="global-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="globalSearch" type="search" autocomplete="off" data-i18n-placeholder="globalSearch" placeholder="搜索全部资料…">
+        <kbd>/</kbd>
+      </label>
+      <div class="language-switch" aria-label="Language">
+        <button type="button" data-lang="zh" class="active">中</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja">日</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav id="mainNav" aria-label="Wiki">
+        <button type="button" class="nav-item active" data-route="overview"><span>⌂</span><b data-i18n="overview">总览</b></button>
+        <button type="button" class="nav-item" data-route="equipment"><span>⚔</span><b data-i18n="equipment">装备</b><em id="countEquipment">0</em></button>
+        <button type="button" class="nav-item" data-route="skills"><span>✦</span><b data-i18n="skills">技能</b><em id="countSkills">0</em></button>
+        <button type="button" class="nav-item" data-route="research"><span>⚗</span><b data-i18n="research">研究</b><em id="countResearch">0</em></button>
+        <button type="button" class="nav-item" data-route="enemies"><span>♞</span><b data-i18n="enemies">敌人</b><em id="countEnemies">0</em></button>
+        <button type="button" class="nav-item" data-route="statuses"><span>◈</span><b data-i18n="statuses">状态</b><em id="countStatuses">28</em></button>
+      </nav>
+      <div class="sidebar-note">
+        <span data-i18n="sourceLabel">资料来源</span>
+        <p data-i18n="sourceText">由当前游戏数据库与本地化文件生成。</p>
+        <time id="generatedAt"></time>
+      </div>
+    </aside>
+
+    <main id="content" tabindex="-1">
+      <section id="overviewView" class="view active" data-view="overview">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="archiveEyebrow">GAME DATABASE</p>
+            <h1 data-i18n="heroTitle">列乌尼斯的挽歌 Wiki</h1>
+            <p data-i18n="heroBody">装备、技能、研究与敌人资料库。</p>
+            <div class="hero-actions">
+              <button type="button" class="primary-action" data-route="equipment" data-i18n="browseEquipment">浏览装备</button>
+            </div>
+          </div>
+          <div class="hero-sigil" aria-hidden="true"><span>R</span></div>
+        </div>
+        <div id="statsGrid" class="stats-grid"></div>
+        <div class="overview-grid">
+          <article class="panel quick-panel">
+            <div class="panel-heading"><div><span class="eyebrow" data-i18n="quickFind">QUICK FIND</span><h2 data-i18n="browseArchive">浏览资料库</h2></div></div>
+            <div id="quickLinks" class="quick-links"></div>
+          </article>
+          <article class="panel guide-panel">
+            <div class="panel-heading"><div><span class="eyebrow" data-i18n="guide">GUIDE</span><h2 data-i18n="howToUse">如何使用</h2></div></div>
+            <ol>
+              <li data-i18n="guideOne">顶部搜索会同时检索所有分类，并自动跳转到最匹配的资料页。</li>
+              <li data-i18n="guideTwo">分类页可按格子数、施术者、材料、地图与能力标签继续筛选。</li>
+              <li data-i18n="guideThree">点击任意卡片查看完整数据；地图、敌人和研究前置可相互跳转。</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="statusesView" class="view" data-view="statuses">
+        <div class="page-heading">
+          <div><p class="eyebrow" data-i18n="statusEyebrow">STATE ARCHIVE</p><h1 data-i18n="statuses">状态</h1><p data-i18n="statusesIntro">查看28种玩家状态及其效果，并检查常规存档中尚未获得的状态。</p></div>
+          <div class="result-summary"><strong>28</strong><span data-i18n="statusCountLabel"> 种状态</span></div>
+        </div>
+        <div class="status-layout">
+          <aside class="status-checker panel">
+            <div class="panel-heading"><div><span class="eyebrow" data-i18n="saveCheckEyebrow">SAVE CHECK</span><h2 data-i18n="saveChecker">存档状态检查</h2></div></div>
+            <p data-i18n="saveCheckerIntro">选择常规存档 fileXXX.rpgsave，检查距离获得全部28种状态还缺少哪些。</p>
+            <label id="saveDropzone" class="save-dropzone" tabindex="0">
+              <input id="saveFileInput" type="file" accept=".rpgsave" hidden>
+              <span class="save-drop-icon" aria-hidden="true">⇧</span>
+              <strong data-i18n="selectSave">选择存档文件</strong>
+              <small data-i18n="dropSave">或将 fileXXX.rpgsave 拖到这里</small>
+            </label>
+            <p class="privacy-note" data-i18n="savePrivacy">文件只在当前浏览器中读取，不会上传或保存。</p>
+            <div id="saveCheckResult" class="save-check-result" aria-live="polite"></div>
+          </aside>
+          <section class="status-reference">
+            <label class="status-search"><span aria-hidden="true">⌕</span><input id="statusSearch" type="search" autocomplete="off" data-i18n-placeholder="statusSearch" placeholder="搜索状态名称或效果…"></label>
+            <div id="statusGrid" class="status-grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="listView" class="view" data-view="list">
+        <div class="page-heading">
+          <div><p id="sectionEyebrow" class="eyebrow"></p><h1 id="sectionTitle"></h1><p id="sectionIntro"></p></div>
+          <div class="result-summary"><strong id="resultCount">0</strong><span data-i18n="results"> 条结果</span></div>
+        </div>
+        <div class="catalog-layout">
+          <aside id="filters" class="filters panel"></aside>
+          <div>
+            <div class="sort-row">
+              <button id="mobileFilterButton" class="mobile-filter" type="button" data-i18n="filters">筛选</button>
+              <label><span data-i18n="sort">排序</span><select id="sortSelect"></select></label>
+            </div>
+            <div id="catalog" class="catalog-grid" aria-live="polite"></div>
+            <button id="loadMore" type="button" class="load-more" data-i18n="loadMore">显示更多</button>
+            <div id="emptyState" class="empty-state" hidden><span>∅</span><h2 data-i18n="noResults">没有找到匹配条目</h2><p data-i18n="tryFilters">尝试缩短关键词或清除部分筛选条件。</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="detailDialog">
+    <button id="closeDialog" class="dialog-close" type="button" aria-label="Close">×</button>
+    <div id="detailContent"></div>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="RequiemOfReuinis/js/lz-string.js"></script>
+  <script src="RequiemOfReuinis/js/wiki-data.js"></script>
+  <script src="RequiemOfReuinis/js/wiki.js"></script>
+</body>
+</html>

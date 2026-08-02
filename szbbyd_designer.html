@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>来测测你是影之诗·超凡世界里的谁吧！</title>
+    <link rel="stylesheet" href="szbbyd_designer.css">
+</head>
+
+<body>
+    <main class="designer-app">
+        <section class="intro">
+            <p class="eyebrow">Shadowverse: Worlds Beyond</p>
+            <h1>来测测你是影之诗·超凡世界里的谁吧！</h1>
+            <p>回答几个朴素但危险的问题，看看你的设计灵魂最后会落在哪张卡上。</p>
+        </section>
+
+        <form id="designerForm" class="question-list">
+            <fieldset class="question-card" data-question="follower">
+                <legend>我是随从吗？</legend>
+                <label><input type="radio" name="follower" value="A"> <span>A 当然，随从是随从</span></label>
+                <label><input type="radio" name="follower" value="B"> <span>B 随从不够酷，我不要随从</span></label>
+            </fieldset>
+
+            <fieldset class="question-card" data-question="summon">
+                <legend>我是否需要摇一面包车人？</legend>
+                <label><input type="radio" name="summon" value="A"> <span>A 当然，为什么不呢</span></label>
+                <label><input type="radio" name="summon" value="B"> <span>B 单打独斗才是对的</span></label>
+            </fieldset>
+
+            <fieldset class="question-card conditional" data-question="evolve" data-show-when="follower:A" hidden>
+                <legend>我是否需要一个进化时效果？</legend>
+                <label><input type="radio" name="evolve" value="A"> <span>A 当然要</span></label>
+                <label><input type="radio" name="evolve" value="B"> <span>B 不需要这种效果</span></label>
+            </fieldset>
+
+            <fieldset class="question-card" data-question="damage">
+                <legend>我是否需要伤害能力？</legend>
+                <label><input type="radio" name="damage" value="A"> <span>A 当然</span></label>
+                <label><input type="radio" name="damage" value="B"> <span>B 不，伤害是危险的设计</span></label>
+            </fieldset>
+
+            <fieldset class="question-card conditional" data-question="damageDetail" data-show-when="damage:A" hidden>
+                <legend>具体是什么伤害形式？</legend>
+                <label><input type="radio" name="damageDetail" value="A"> <span>A 疾驰走脸</span></label>
+                <label><input type="radio" name="damageDetail" value="B"> <span>B 直伤才是王道</span></label>
+            </fieldset>
+
+            <fieldset class="question-card" data-question="buff">
+                <legend>我是否需要buff效果？</legend>
+                <label><input type="radio" name="buff" value="A"> <span>A 当然，为什么不呢</span></label>
+                <label><input type="radio" name="buff" value="B"> <span>B 不需要，谢谢</span></label>
+            </fieldset>
+
+            <fieldset class="question-card" data-question="draw">
+                <legend>我是否需要过牌效果？</legend>
+                <label><input type="radio" name="draw" value="A"> <span>A 过牌多等于卡组稳定</span></label>
+                <label><input type="radio" name="draw" value="B"> <span>B 只有弱者才需要过牌</span></label>
+            </fieldset>
+
+            <fieldset class="question-card" data-question="clear">
+                <legend>我是否需要解场能力？</legend>
+                <label><input type="radio" name="clear" value="A"> <span>A 当然</span></label>
+                <label><input type="radio" name="clear" value="B"> <span>B 不，强者都需要场面交换</span></label>
+            </fieldset>
+
+            <fieldset class="question-card conditional" data-question="clearDetail" data-show-when="clear:A" hidden>
+                <legend>那具体是什么解场能力？</legend>
+                <label><input type="radio" name="clearDetail" value="A"> <span>A 单体去除</span></label>
+                <label><input type="radio" name="clearDetail" value="B"> <span>B AOE</span></label>
+            </fieldset>
+
+            <div class="actions">
+                <button type="button" id="previousButton">上一题</button>
+                <button type="button" id="nextButton">下一题</button>
+                <button type="submit" id="submitButton">查看结果</button>
+                <button type="button" id="resetButton">重开一局</button>
+            </div>
+        </form>
+
+        <section id="result" class="result-panel" hidden></section>
+    </main>
+
+    <script src="szbbyd_designer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>入场曲与进化时效果相似随从</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d8dee8;
+      --accent: #2563eb;
+      --partial: #b45309;
+      --shadow: 0 8px 22px rgba(31, 41, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 28px clamp(18px, 4vw, 48px) 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fafbfc;
+    }
+
+    main {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      padding: 24px clamp(14px, 3vw, 40px) 44px;
+    }
+
+    section + section {
+      margin-top: 34px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 720;
+      letter-spacing: 0;
+    }
+
+    .count {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+      gap: 18px 14px;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 536 / 698;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #eef1f5;
+    }
+
+    .name {
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 650;
+      overflow-wrap: anywhere;
+      text-align: center;
+    }
+
+    .id {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .same h2 {
+      color: var(--accent);
+    }
+
+    .partial h2 {
+      color: var(--partial);
+    }
+
+    footer {
+      padding: 18px clamp(18px, 4vw, 48px) 28px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>入场曲与进化时效果相似随从</h1>
+    <div class="summary">
+      <span class="pill">相同效果：30 张</span>
+      <span class="pill">部分相似：27 张</span>
+      <span class="pill">已剔除不相似：11 张</span>
+      <span class="pill">图片来源：svgdb.me</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="same" aria-labelledby="same-title">
+      <div class="section-heading">
+        <h2 id="same-title">相同效果</h2>
+        <span class="count">30 张</span>
+      </div>
+      <div class="grid" id="same-grid"></div>
+    </section>
+
+    <section class="partial" aria-labelledby="partial-title">
+      <div class="section-heading">
+        <h2 id="partial-title">部分相似</h2>
+        <span class="count">27 张</span>
+      </div>
+      <div class="grid" id="partial-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    明确不算相似的卡已从页面中去掉。
+  </footer>
+
+  <script>
+    const imageBase = "https://svgdb.me/assets/cards/en/C_";
+
+    const sameCards = [
+      { name: "高雅的盗贼", id: 126221020 },
+      { name: "妖精傀儡", id: 129811010 },
+      { name: "流浪指挥家", id: 123011010 },
+      { name: "浮华美人鱼", id: 130431020 },
+      { name: "欲杯诱惑者", id: 130621020 },
+      { name: "齿轮运行者·里希特", id: 113821010 },
+      { name: "聪慧的龙人织术师", id: 113431010 },
+      { name: "死门连结者", id: 120531020 },
+      { name: "均衡之光·马龙", id: 111731010 },
+      { name: "先导者妖精公主·阿丽雅", id: 107141010 },
+      { name: "铁扇精灵", id: 116131020 },
+      { name: "梅林", id: 101341020 },
+      { name: "笑眯眯的奇术师·萨米", id: 107321010 },
+      { name: "奇幻主教", id: 128331020 },
+      { name: "骨鞭死灵法师", id: 124511020 },
+      { name: "冥府中尉", id: 127521010 },
+      { name: "痛楚幽魂", id: 130511020 },
+      { name: "毒牙公主·美杜莎", id: 106641010 },
+      { name: "邪恶黑狮", id: 123621020 },
+      { name: "魔笛奏者·汉姆林", id: 113811020 },
+      { name: "环刃魔法师", id: 124311020 },
+      { name: "雷云炼金术师", id: 124331010 },
+      { name: "战装月兔妖", id: 130721020 },
+      { name: "复活之神", id: 128541030 },
+      { name: "狂诞的恶鬼", id: 125611030 },
+      { name: "冰霜巨魔", id: 127611030 },
+      { name: "开眼魔人", id: 130611020 },
+      { name: "龙之炎·吉尔尼特拉", id: 107441010 },
+      { name: "威震的半兽人", id: 104031030 },
+      { name: "吉尔尼特拉", id: 101441030 }
+    ];
+
+    const partialCards = [
+      { name: "天谴司祭", id: 125711010 },
+      { name: "一流厨师", id: 121031020 },
+      { name: "奋勉的公主·梅莉奥妮", id: 126131030 },
+      { name: "聪颖的猫头鹰", id: 125311010 },
+      { name: "雷维翁魔兽使", id: 116221030 },
+      { name: "爪牙的战斗兵", id: 121421010 },
+      { name: "热带美人鱼", id: 124421020 },
+      { name: "幸运人鱼", id: 131411030 },
+      { name: "不死者杀手", id: 130531020 },
+      { name: "芭伦·双生之念", id: 112631020 },
+      { name: "希望的残片·奇利烨", id: 129031010 },
+      { name: "小小优等生·镜华", id: 115331010 },
+      { name: "邪恶揭发者", id: 131521010 },
+      { name: "激愤的副总长", id: 127631010 },
+      { name: "救赎的圣女·贞德", id: 125741020 },
+      { name: "飓风天枪·格里姆尼尔", id: 129041020 },
+      { name: "蔷薇鹿人", id: 126121010 },
+      { name: "巨型胡蜂", id: 131121020 },
+      { name: "地狱君主·婕贝特", id: 111541010 },
+      { name: "统率的女王·芭比", id: 131141020 },
+      { name: "船长·达拉伍德", id: 126441020 },
+      { name: "焦土的不法者", id: 127431010 },
+      { name: "千雨长枪手", id: 103621030 },
+      { name: "神域的法王", id: 117731010 },
+      { name: "C_132031010", id: 132031010 },
+      { name: "C_132121010", id: 132121010 },
+      { name: "C_132541030", id: 132541030 }
+    ];
+
+    function renderCards(targetId, cards) {
+      const target = document.getElementById(targetId);
+      target.replaceChildren(...cards.map(card => {
+        const item = document.createElement("article");
+        item.className = "card";
+
+        const img = document.createElement("img");
+        img.src = `${imageBase}${card.id}.png`;
+        img.alt = card.name;
+        img.loading = "lazy";
+
+        const name = document.createElement("div");
+        name.className = "name";
+        name.textContent = card.name;
+
+        const id = document.createElement("div");
+        id.className = "id";
+        id.textContent = `C_${card.id}`;
+
+        item.append(img, name, id);
+        return item;
+      }));
+    }
+
+    renderCards("same-grid", sameCards);
+    renderCards("partial-grid", partialCards);
+  </script>
+</body>
+</html>
