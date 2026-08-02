@@ -43,6 +43,14 @@ const localized = (group, key, fallback) => {
   }
   return out;
 };
+const localizedSkillDescription = (baseId, tier, fallback) => {
+  const base = localized('mskill', 'd' + baseId, fallback);
+  if (!tier) return base;
+  const variant = localized('mskill', 'd' + baseId + '_' + tier, '');
+  for (const code of ['zh', 'en', 'ja']) if (!nonBlank(variant[code])) variant[code] = base[code];
+  return variant;
+};
+const localizedSkillUpgrade = (baseId, tier) => localized('mskill', 'u' + baseId + '_' + tier, '');
 const parseTags = note => {
   const tags = {};
   const regex = /<([^:>\r\n]+)(?::([^>\r\n]*))?>/g;
@@ -266,7 +274,7 @@ for (let id = 1; id <= 160; id++) {
       const value = numberTag(tags, key);
       if (value) costs[key] = value;
     }
-    return { id: variantId, tier: tier, icon: data.iconIndex || base.iconIndex, mpCost: data.mpCost || 0, pp: numberTag(tags, 'pp'), range: firstTag(tags, 'range'), target: firstTag(tags, 'target'), type: firstTag(tags, 'type'), costs: costs, tags: tags };
+    return { id: variantId, tier: tier, icon: data.iconIndex || base.iconIndex, mpCost: data.mpCost || 0, pp: numberTag(tags, 'pp'), range: firstTag(tags, 'range'), target: firstTag(tags, 'target'), type: firstTag(tags, 'type'), costs: costs, tags: tags, description: localizedSkillDescription(id, tier, data.description), upgradeDescription: tier ? localizedSkillUpgrade(id, tier) : { zh:'', en:'', ja:'' } };
   }).filter(Boolean);
   const tags = parseTags(base.note);
   const actorId = Number(firstTag(tags, 'actorIconId')) || 0;
@@ -902,7 +910,10 @@ for (let id = 1; id <= 160; id++) {
     if (!tags[key]) continue;
     for (const raw of String(tags[key]).split(',')) {
       const value = Number.parseInt(raw.trim());
-      if (value > 0 && value <= 160) derivedBaseIds.add(value);
+      if (value > 0 && value <= 160) {
+        if (key === 'Diy') for (let offset = 0; offset < 12; offset++) derivedBaseIds.add(value + offset);
+        else derivedBaseIds.add(value);
+      }
     }
   }
 }
@@ -910,10 +921,11 @@ const makeDerivedSkill = actualId => {
   const data = skillsDb[actualId];
   if (!data || !data.iconIndex) return null;
   const baseId = actualId <= 480 ? ((actualId - 1) % 160) + 1 : actualId;
+  const tier = actualId <= 480 ? Math.floor((actualId - 1) / 160) : 0;
   return {
     kind: 'skill', id: actualId, baseId: baseId, icon: data.iconIndex,
     name: localized('mskill', baseId, data.name),
-    description: localized('mskill', 'd' + baseId, data.description),
+    description: localizedSkillDescription(baseId, tier, data.description),
     tags: parseTags(data.note),
     sourceKnown: Boolean(skillAcquisition[baseId])
   };
@@ -969,7 +981,6 @@ for (const child of equipment) {
 for (const skill of skills) {
   skill.actorImage = 'images/actors/ActorCircle' + skill.actorId + '.png';
   for (const variant of skill.variants) {
-    variant.description = skill.description;
     variant.derived = [];
     const relationTags = parseTags(skillsDb[variant.id] && skillsDb[variant.id].note);
     const fallbackTags = parseTags(skillsDb[skill.id] && skillsDb[skill.id].note);
@@ -981,10 +992,17 @@ for (const skill of skills) {
       const relation = relationTags[key] || fallbackTags[key];
       if (!relation) continue;
       for (const raw of String(relation).split(',')) {
-        let actualId = Number.parseInt(raw.trim());
-        if (!actualId) continue;
-        if (actualId <= 160 && variant.tier > 0) actualId += variant.tier * 160;
-        pushDerived(variant.derived, skill.name, makeDerivedSkill(actualId));
+        const relationId = Number.parseInt(raw.trim());
+        if (!relationId) continue;
+        if (key === 'Diy') {
+          for (let offset = 0; offset < 12; offset++) {
+            pushDerived(variant.derived, skill.name, makeDerivedSkill(relationId + offset));
+          }
+        } else {
+          let actualId = relationId;
+          if (actualId <= 160 && variant.tier > 0) actualId += variant.tier * 160;
+          pushDerived(variant.derived, skill.name, makeDerivedSkill(actualId));
+        }
       }
     }
     const equipRelation = relationTags.eqLink || fallbackTags.eqLink;

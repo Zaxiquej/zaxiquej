@@ -9,7 +9,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="description" content="《列乌尼斯的挽歌》装备、技能、研究、敌人与地图资料 Wiki。">
   <title>列乌尼斯的挽歌 Wiki</title>
-  <link rel="stylesheet" href="RequiemOfReuinis/css/wiki.css?v=20260802-4">
+  <link rel="stylesheet" href="RequiemOfReuinis/css/wiki.css?v=20260802-8">
 </head>
 <body>
   <a class="skip-link" href="#content">跳至内容</a>
@@ -117,6 +117,19 @@
         <div class="catalog-layout">
           <aside id="filters" class="filters panel"></aside>
           <div>
+            <section id="catalogSaveChecker" class="catalog-save-checker panel" hidden>
+              <div class="catalog-save-copy">
+                <span class="eyebrow">SAVE CHECK</span>
+                <h2 id="catalogSaveTitle"></h2>
+                <p id="catalogSaveIntro"></p>
+              </div>
+              <label class="catalog-save-select">
+                <input id="catalogSaveFileInput" type="file" accept=".rpgsave" hidden>
+                <span aria-hidden="true">⇧</span>
+                <strong data-i18n="selectSave">选择存档文件</strong>
+              </label>
+              <div id="catalogSaveResult" class="catalog-save-result" aria-live="polite"></div>
+            </section>
             <div class="sort-row">
               <button id="mobileFilterButton" class="mobile-filter" type="button" data-i18n="filters">筛选</button>
               <label><span data-i18n="sort">排序</span><select id="sortSelect"></select></label>
@@ -136,8 +149,8 @@
   </dialog>
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <script src="RequiemOfReuinis/js/lz-string.js?v=20260802-4"></script>
-  <script src="RequiemOfReuinis/js/wiki-data.js?v=20260802-4"></script>
-  <script src="RequiemOfReuinis/js/wiki.js?v=20260802-4"></script>
+  <script src="RequiemOfReuinis/js/lz-string.js?v=20260802-8"></script>
+  <script src="RequiemOfReuinis/js/wiki-data.js?v=20260802-8"></script>
+  <script src="RequiemOfReuinis/js/wiki.js?v=20260802-8"></script>
 </body>
 </html>
