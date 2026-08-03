@@ -122,6 +122,11 @@ function acquisitionTerm(value, code) {
 const acquisitionQuote = (value, code) => code === 'en' ? '“' + value + '”' : '「' + value + '」';
 function translateAcquisition(text, code) {
   const sourceText = String(text || '').trim();
+  if (sourceText === '据点剧情开放市场时自动进货，之后在西风商会购买') return code === 'zh'
+    ? '市场开放时自动进货，之后在西风商会购买'
+    : code === 'en'
+      ? 'Automatically stocked when the market opens; purchase it from the Westwind Guild afterward.'
+      : '市場が解放されると自動的に入荷し、以後は西風商会で購入できる。';
   if (!sourceText || code === 'zh') return sourceText;
   const q = value => acquisitionTerm(value, code);
   const qt = value => acquisitionQuote(q(value), code);
@@ -161,10 +166,6 @@ function translateAcquisition(text, code) {
   if (m) return code === 'en'
     ? 'Trigger new stock for the ' + q(m[2]) + ' in ' + qt(m[1]) + ', then purchase it there.'
     : qt(m[1]) + 'で' + q(m[2]) + 'への入荷を発生させ、その店で購入する。';
-
-  if (sourceText === '据点剧情开放市场时自动进货，之后在西风商会购买') return code === 'en'
-    ? 'Automatically stocked when the market opens during the base story; purchase it from the Westwind Guild afterward.'
-    : '拠点の物語で市場が解放されると自動的に入荷し、以後は西風商会で購入できる。';
 
   if (sourceText === '在废弃矿坑与拾荒者交谈，开启拾荒者的物资并进货后购买') return code === 'en'
     ? "Speak with the Scavenger in “Abandoned Mine” to open the Scavenger's Supplies and stock the item, then purchase it."
@@ -235,7 +236,7 @@ function translateAcquisition(text, code) {
 
   throw new Error('Unsupported acquisition text: ' + sourceText);
 }
-const localizedAcquisition = text => ({ zh:String(text || '').trim(), en:translateAcquisition(text,'en'), ja:translateAcquisition(text,'ja') });
+const localizedAcquisition = text => ({ zh:translateAcquisition(text,'zh'), en:translateAcquisition(text,'en'), ja:translateAcquisition(text,'ja') });
 
 const itemName = id => { const item = itemsDb[id]; const raw = String(item && item.name || ''); const dot = raw.indexOf('.'); return raw.startsWith('#{') && raw.endsWith('}') && dot > 2 ? localized(raw.slice(2, dot), raw.slice(dot + 1, -1), raw) : localized('itemname', id, raw || 'Item ' + id); };
 const itemIcon = id => itemsDb[id] ? (itemsDb[id].iconIndex || 0) : 0;
