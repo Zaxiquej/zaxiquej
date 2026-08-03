@@ -9,7 +9,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="description" content="《列乌尼斯的挽歌》装备、技能、研究、敌人与地图资料 Wiki。">
   <title>列乌尼斯的挽歌 Wiki</title>
-  <link rel="stylesheet" href="RequiemOfReuinis/css/wiki.css?v=20260802-12">
+  <link rel="stylesheet" href="RequiemOfReuinis/css/wiki.css?v=20260802-18">
 </head>
 <body>
   <a class="skip-link" href="#content">跳至内容</a>
@@ -112,9 +112,31 @@
       <section id="listView" class="view" data-view="list">
         <div class="page-heading">
           <div><p id="sectionEyebrow" class="eyebrow"></p><h1 id="sectionTitle"></h1><p id="sectionIntro"></p></div>
-          <div class="result-summary"><strong id="resultCount">0</strong><span data-i18n="results"> 条结果</span></div>
+          <div class="page-heading-actions">
+            <button id="researchTreeToggle" class="research-tree-toggle" type="button" hidden></button>
+            <div class="result-summary"><strong id="resultCount">0</strong><span data-i18n="results"> 条结果</span></div>
+          </div>
         </div>
-        <div class="catalog-layout">
+        <section id="researchTreeView" class="research-tree-view" hidden>
+          <div class="research-tree-toolbar panel">
+            <div class="research-tree-legend" aria-label="Legend">
+              <span><i class="tree-legend-shape research"></i><b id="treeLegendResearch"></b></span>
+              <span><i class="tree-legend-shape material"></i><b id="treeLegendMaterial"></b></span>
+              <span><i class="tree-legend-shape map"></i><b id="treeLegendMap"></b></span>
+            </div>
+            <p id="treeInteractionHint"></p>
+            <div class="research-tree-controls">
+              <button id="researchTreeZoomOut" class="research-tree-zoom" type="button" aria-label="Zoom out">−</button>
+              <button id="researchTreeZoomIn" class="research-tree-zoom" type="button" aria-label="Zoom in">+</button>
+              <button id="researchTreeReset" type="button"></button>
+            </div>
+          </div>
+          <div id="researchTreeViewport" class="research-tree-viewport" tabindex="0">
+            <canvas id="researchTreeEdges" aria-hidden="true"></canvas>
+            <div id="researchTreeStage" class="research-tree-stage"></div>
+          </div>
+        </section>
+        <div id="catalogLayout" class="catalog-layout">
           <aside id="filters" class="filters panel"></aside>
           <div>
             <section id="catalogSaveChecker" class="catalog-save-checker panel" hidden>
@@ -131,7 +153,7 @@
               <div id="catalogSaveResult" class="catalog-save-result" aria-live="polite"></div>
             </section>
             <div class="sort-row">
-              <button id="mobileFilterButton" class="mobile-filter" type="button" data-i18n="filters">筛选</button>
+              <button id="mobileFilterButton" class="mobile-filter" type="button" data-i18n="filters" aria-controls="filters" aria-expanded="false">筛选</button>
               <label><span data-i18n="sort">排序</span><select id="sortSelect"></select></label>
             </div>
             <div id="catalog" class="catalog-grid" aria-live="polite"></div>
@@ -142,6 +164,7 @@
       </section>
     </main>
   </div>
+  <div id="mobileFilterBackdrop" class="mobile-filter-backdrop" hidden></div>
 
   <dialog id="detailDialog">
     <button id="closeDialog" class="dialog-close" type="button" aria-label="Close">×</button>
@@ -149,8 +172,8 @@
   </dialog>
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <script src="RequiemOfReuinis/js/lz-string.js?v=20260802-12"></script>
-  <script src="RequiemOfReuinis/js/wiki-data.js?v=20260802-12"></script>
-  <script src="RequiemOfReuinis/js/wiki.js?v=20260802-12"></script>
+  <script src="RequiemOfReuinis/js/lz-string.js?v=20260802-18"></script>
+  <script src="RequiemOfReuinis/js/wiki-data.js?v=20260802-18"></script>
+  <script src="RequiemOfReuinis/js/wiki.js?v=20260802-18"></script>
 </body>
 </html>
