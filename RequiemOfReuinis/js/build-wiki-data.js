@@ -262,6 +262,16 @@ const equipment = numericKeys(lang.zh.armorname)
     };
   });
 
+const spiritTreeEquipment = equipment.find(record => record.id === 325);
+if (spiritTreeEquipment) {
+  spiritTreeEquipment.specialDescription = {
+    type: 'spiritTree',
+    entries: [1, 2, 3, 4, 5].map(index => localized('armordesc', '325EX_' + index, '')),
+    mergedFinal: localized('armordesc', '325EX_5N', ''),
+    separator: localized('armordesc', '325EX_C', '')
+  };
+}
+
 const skills = [];
 for (let id = 1; id <= 160; id++) {
   const base = skillsDb[id];

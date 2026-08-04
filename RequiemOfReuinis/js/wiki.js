@@ -24,6 +24,18 @@ function browserPreferredLanguage(){
 let savedLang='';try{savedLang=localStorage.getItem('rorWikiLang')||'';}catch(e){}
 if(!['zh','en','ja'].includes(savedLang))savedLang=browserPreferredLanguage();
 const st={lang:savedLang,route:'overview',query:'',statusQuery:'',filters:{},sort:'idAsc',page:1,pageSize:30,results:[],enemyModifiers:{strong:false,thorns:false},saveCheck:null,architectMode:false,researchTree:false,treeTransform:{x:0,y:0,scale:1},treeInitialized:false};
+const SOCIAL_DEFAULTS={discord:91,qq:1074};
+let socialMemberTotal=SOCIAL_DEFAULTS.discord+SOCIAL_DEFAULTS.qq;
+let socialRefreshPromise=null;
+const socialJson=url=>fetch(url,{cache:'no-store'}).then(response=>{if(!response.ok)throw new Error('social data unavailable');return response.json()});
+function updateSocialMemberTotalNodes(){document.querySelectorAll('[data-social-member-total]').forEach(node=>{node.textContent=String(socialMemberTotal)})}
+function refreshSocialMemberTotal(){
+ if(socialRefreshPromise)return socialRefreshPromise;
+ const discord=socialJson('https://discord.com/api/v10/invites/Jq3va9JAyX?with_counts=true').then(data=>{const value=Number(data.approximate_member_count);return Number.isFinite(value)&&value>=0?value:SOCIAL_DEFAULTS.discord}).catch(()=>SOCIAL_DEFAULTS.discord);
+ const qq=socialJson('https://raw.githubusercontent.com/Zaxiquej/zaxiquej/master/RoRcommunity.json?t='+Date.now()).catch(()=>socialJson('https://cdn.jsdelivr.net/gh/Zaxiquej/zaxiquej@master/RoRcommunity.json?t='+Date.now())).then(data=>{const value=Number(data.qq_count);return Number.isFinite(value)&&value>=0?value:SOCIAL_DEFAULTS.qq}).catch(()=>SOCIAL_DEFAULTS.qq);
+ socialRefreshPromise=Promise.all([discord,qq]).then(values=>{socialMemberTotal=values[0]+values[1];updateSocialMemberTotalNodes();return socialMemberTotal});
+ return socialRefreshPromise;
+}
 const UI_TEXT={
  zh:{pagination:'分页',previousPage:'上一页',nextPage:'下一页',pageNumber:'页码',beforeUpgrade:'升级前',afterUpgrade:'升级后',unlocksResearch:'完成本研究后解锁',tierUpgrades:'等级提升',saveMissingEquipment:'装备缺失检查',saveMissingSkills:'技能缺失检查',equipmentSaveIntro:'选择常规存档，检查本存档尚未持有的装备；普通版与升级版视为同一件。',skillSaveIntro:'选择常规存档，检查本存档尚未学习的技能；未明之水银不计入。',obtainedEquipment:'已持有装备',missingEquipment:'缺少装备',learnedSkills:'已学习技能',missingSkills:'缺少技能',allEquipmentObtained:'这个存档已经持有 Wiki 中的全部装备。',allSkillsLearned:'这个存档已经学习 Wiki 中除未明之水银外的全部技能。',singleCost:'单级消耗',rangeCost:'区间总消耗',currentLevel:'当前等级',targetLevel:'目标等级',totalCost:'总消耗',invalidRange:'目标等级必须高于当前等级。',architect:'建筑师',architectDesc:'你的研究等级上限翻倍（如果可行）。',architectApplied:'本研究等级上限已翻倍',architectUnaffected:'本研究不受建筑师影响'},
  en:{pagination:'Pagination',previousPage:'Previous',nextPage:'Next',pageNumber:'Page',beforeUpgrade:'Before Upgrade',afterUpgrade:'After Upgrade',unlocksResearch:'Unlocks after completing this research',tierUpgrades:'Tier Upgrades',saveMissingEquipment:'Missing Equipment',saveMissingSkills:'Missing Skills',equipmentSaveIntro:'Choose a regular save to find equipment missing from this save. Base and upgraded forms count as the same item.',skillSaveIntro:'Choose a regular save to find unlearned skills. Unmanifested Quicksilver is excluded.',obtainedEquipment:'Equipment owned',missingEquipment:'Equipment missing',learnedSkills:'Skills learned',missingSkills:'Skills missing',allEquipmentObtained:'This save has all equipment listed in the Wiki.',allSkillsLearned:'This save has learned every Wiki skill except Unmanifested Quicksilver.',singleCost:'Single Level',rangeCost:'Level Range',currentLevel:'Current Level',targetLevel:'Target Level',totalCost:'Total Cost',invalidRange:'The target level must be higher than the current level.',architect:'Architect',architectDesc:'Your research level cap is doubled (if applicable).',architectApplied:'This research level cap is doubled',architectUnaffected:'This research is unaffected by Architect'},
@@ -100,6 +112,11 @@ function refIcon(kind,id){
  if(!ref)return esc(tr('none'));
  return '<span class="inline-ref"><span class="inline-icon" style="'+iconStyle(ref.icon,22)+'"></span>'+rubyHtml(loc(ref.name))+'</span>';
 }
+function formattedRefName(kind,id){
+ kind=String(kind||'').toUpperCase();const ref=kind==='II'?D.refs.items[id]:kind==='IA'?D.refs.armors[id]:kind==='IS'?D.refs.skills[id]:kind==='IB'?D.refs.buffs[id]:null;
+ return loc(kind==='IB'?ref:ref&&ref.name);
+}
+const searchableText=value=>plain(String(value||'').replace(/\\(II|IA|IS|IB)\[(\d+)\]/gi,(all,kind,id)=>' '+formattedRefName(kind,Number(id))+' '));
 function initialMacroValue(code,arg,ctx){
  const lower=String(code||'').toLowerCase(),tags=ctx&&ctx.tags||{};
  const n=()=>evalInitialExpression(arg,ctx);
@@ -128,7 +145,7 @@ function initialMacroValue(code,arg,ctx){
  if(lower==='mfdlp')return 1;
  if(lower==='zhuore')return ctx&&ctx.upgraded?8:7;
  if(lower==='mkeyday')return initialWord('dawn');
- if(lower==='mdiscordqq')return 1165;
+ if(lower==='mdiscordqq')return socialMemberTotal;
  if(lower==='mbat')return '100%';
  if(lower==='marrow')return st.lang==='en'?'(Maximum shots per exploration: 80.)':st.lang==='ja'?'（上限は80回。）':'（单次探索最多可进行80次射击。）';
  if(lower==='mfiveRing'.toLowerCase())return '(0/5)';
@@ -143,8 +160,14 @@ function initialMacroValue(code,arg,ctx){
  if(arg!==undefined&&arg!=='')return numberText(n());
  return 0;
 }
+function expandSpecialDescription(value,ctx){
+ const text=String(value||''),special=ctx&&ctx.specialDescription;
+ if(!special||special.type!=='spiritTree'||!text.includes('\\M325Rest'))return text;
+ const letters=['a','b','c','d','e'],entries=(special.entries||[]).map(loc).filter(Boolean);
+ return text.replace(/\\M325Rest/gi,entries.map((entry,index)=>'('+letters[index]+')'+entry).join('\\n'));
+}
 function gameText(value,ctx={}){
- const s=String(value||'');let out='',plainText='',colorOpen=false,i=0;
+ const s=expandSpecialDescription(value,ctx);let out='',plainText='',colorOpen=false,i=0;
  const flush=()=>{if(plainText){out+=esc(plainText).replace(/\r?\n/g,'<br>');plainText=''}};
  while(i<s.length){
   if(s[i]==='<'){const ruby=s.slice(i).match(/^<ruby=([^>]+)>([^<]*)<\/ruby>/i);if(ruby){flush();out+='<ruby class="wiki-ruby">'+esc(ruby[2])+'<rt>'+esc(ruby[1])+'</rt></ruby>';i+=ruby[0].length;continue}}
@@ -158,6 +181,8 @@ function gameText(value,ctx={}){
   i=j;flush();
   if(code==='n'){out+='<br>';if(arg!==undefined)plainText+='['+arg+']';continue}
   if(code.toLowerCase()==='c'){if(colorOpen){out+='</span>';colorOpen=false}const cn=Number(arg)||0;if(cn!==0){out+='<span class="game-color" style="color:'+(COLORS[cn]||COLORS[0])+'">';colorOpen=true}continue}
+  const lowerCode=code.toLowerCase();
+  if(lowerCode==='mdiscordqq'||(lowerCode==='meval'&&/\\MDiscordQQ/i.test(String(arg||'')))){out+='<span data-social-member-total>'+socialMemberTotal+'</span>';continue}
   if(['FSM','FSP','FS','FHA','fi','fiNORMAL','CUT'].includes(code)||/^M\d+(?:P?g)?$/i.test(code))continue;
   if(['II','IA','IS','IB','I'].includes(code)){out+=refIcon(code,Number(arg)||0);continue}
   if(code==='SKC'){out+='<kbd>'+esc(({1:'Z',2:'X',3:'C',4:'V'})[arg]||arg||'')+'</kbd>';continue}
@@ -175,7 +200,7 @@ const sectionData=k=>k==='all'?SECTIONS.flatMap(q=>D[q].map(x=>Object.assign({_k
  if(k==='skills')p.push(loc(x.actor),loc(x.flavor),...x.variants.flatMap(v=>v.derived.flatMap(d=>[loc(d.name),loc(d.description),loc(d.acquisition)])));
  if(k==='research')p.push(...(x.relatedItems||[]).map(c=>loc(c.name)),...(x.prerequisites||[]).map(v=>loc(v.name)),...(x.unlocksResearch||[]).map(v=>loc(v.name)),...(x.unlockItems||[]).map(v=>loc(v.name)),...(x.eventMaps||[]).map(v=>loc(v.name)));
  if(k==='enemies')p.push(...x.maps.map(v=>loc(v.name)),...x.abilities.flatMap(a=>[loc(a.name),loc(a.description)]));
- return plain(p.join(' ')).toLocaleLowerCase();
+ return searchableText(p.join(' ')).toLocaleLowerCase();
 }
 function filtered(k){
  const q=plain(st.query).toLocaleLowerCase(),f=st.filters;
@@ -414,5 +439,5 @@ $('#closeDialog').addEventListener('click',()=>$('#detailDialog').close());$('#d
 $('#researchTreeToggle').addEventListener('click',()=>setResearchTreeMode(!st.researchTree));$('#researchTreeReset').addEventListener('click',resetResearchTreeView);$('#researchTreeZoomIn').addEventListener('click',()=>changeResearchTreeZoom(1.25));$('#researchTreeZoomOut').addEventListener('click',()=>changeResearchTreeZoom(.8));$('#researchTreeStage').addEventListener('click',e=>{const node=e.target.closest('[data-research-tree-id]');if(node)openDetail('research',node.dataset.researchTreeId)});$('#researchTreeViewport').addEventListener('wheel',researchTreeWheel,{passive:false});$('#researchTreeViewport').addEventListener('pointerdown',researchTreePointerDown);$('#researchTreeViewport').addEventListener('pointermove',researchTreePointerMove);$('#researchTreeViewport').addEventListener('pointerup',researchTreePointerUp);$('#researchTreeViewport').addEventListener('pointercancel',researchTreePointerUp);
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();$('#globalSearch').focus()}if(e.key==='Escape'){if($('#detailDialog').open)$('#detailDialog').close();else setMobileFilters(false)}});
 window.addEventListener('resize',()=>{if(window.innerWidth>900)setMobileFilters(false)},{passive:true});
-const hash=location.hash.slice(1);if(ROUTES.includes(hash))st.route=hash;applyLanguage();setRoute(st.route);
+const hash=location.hash.slice(1);if(ROUTES.includes(hash))st.route=hash;applyLanguage();setRoute(st.route);refreshSocialMemberTotal();
 })();
