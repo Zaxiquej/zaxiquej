@@ -200,11 +200,21 @@ const sectionData=k=>k==='all'?SECTIONS.flatMap(q=>D[q].map(x=>Object.assign({_k
  if(k==='skills')p.push(loc(x.actor),loc(x.flavor),...x.variants.flatMap(v=>v.derived.flatMap(d=>[loc(d.name),loc(d.description),loc(d.acquisition)])));
  if(k==='research')p.push(...(x.relatedItems||[]).map(c=>loc(c.name)),...(x.prerequisites||[]).map(v=>loc(v.name)),...(x.unlocksResearch||[]).map(v=>loc(v.name)),...(x.unlockItems||[]).map(v=>loc(v.name)),...(x.eventMaps||[]).map(v=>loc(v.name)));
  if(k==='enemies')p.push(...x.maps.map(v=>loc(v.name)),...x.abilities.flatMap(a=>[loc(a.name),loc(a.description)]));
- return searchableText(p.join(' ')).toLocaleLowerCase();
+ return p.flatMap(value=>String(value||'').split(/\\n|\r?\n|[,，;；]/).map(searchableText).filter(Boolean)).join('\n').toLocaleLowerCase();
 }
+const searchKeywords=value=>plain(value).split(/\s+/).filter(Boolean);
+const escapeSearchRegExp=value=>String(value).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function matchesSearchKeyword(text,keyword){
+ if(!text||!keyword)return false;
+ const questionDelimiters=/[?？]/;
+ const pattern=questionDelimiters.test(keyword)?keyword.split(questionDelimiters).map(escapeSearchRegExp).join('[^\\n]*'):escapeSearchRegExp(keyword);
+ const regex=new RegExp(pattern,'i');
+ return String(text).split(/[\n,，;；]/).some(line=>regex.test(line));
+}
+const matchesSearchQuery=(text,keywords)=>keywords.every(keyword=>matchesSearchKeyword(text,keyword));
 function filtered(k){
- const q=plain(st.query).toLocaleLowerCase(),f=st.filters;
- let a=sectionData(k).filter(x=>{const z=x._kind||k;if(q&&!searchable(x,z).includes(q))return false;
+ const keywords=searchKeywords(st.query),f=st.filters;
+ let a=sectionData(k).filter(x=>{const z=x._kind||k;if(keywords.length&&!matchesSearchQuery(searchable(x,z),keywords))return false;
   if(z==='equipment'&&f.slots&&String(x.slots)!==f.slots)return false;
   if(z==='skills'&&f.actor!==undefined&&f.actor!==''&&String(x.actorId)!==f.actor)return false;
   const selectedMaterials=Array.isArray(f.materials)?f.materials:(f.material?[f.material]:[]);
@@ -239,8 +249,8 @@ const STATUS_PARAMETERS=['X','Y','Z','A','B','C','D'];
 function statusText(value){return gameText(String(value||'').replace(/%v(\d+)/gi,(_,n)=>STATUS_PARAMETERS[Number(n)-1]||('P'+n)))}
 function renderStatusGrid(){
  const target=$('#statusGrid');if(!target)return;
- const query=plain(st.statusQuery).toLocaleLowerCase();
- const rows=(D.statuses||[]).filter(status=>!query||plain(loc(status.name)+' '+loc(status.description)).toLocaleLowerCase().includes(query));
+ const keywords=searchKeywords(st.statusQuery);
+ const rows=(D.statuses||[]).filter(status=>!keywords.length||matchesSearchQuery([loc(status.name),loc(status.description)].flatMap(value=>String(value||'').split(/\\n|\r?\n|[,，;；]/).map(searchableText).filter(Boolean)).join('\n'),keywords));
  target.innerHTML=rows.map(status=>'<article class="status-card" data-status-id="'+status.id+'">'+statusIco(status.id)+'<div><div class="status-card-heading"><h2>'+esc(loc(status.name))+'</h2></div><p class="game-text">'+statusText(loc(status.description))+'</p></div></article>').join('');
 }
 function renderSaveCheckResult(){
