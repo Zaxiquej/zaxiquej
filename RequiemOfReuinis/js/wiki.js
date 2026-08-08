@@ -8,8 +8,11 @@ en:{title:'Requiem of Reuinis Wiki',overview:'Overview',equipment:'Equipment',sk
 ja:{title:'レウヌニウスの挽歌 Wiki',overview:'概要',equipment:'装備',skills:'スキル',research:'研究',enemies:'敵',statuses:'ステート',globalSearch:'名前・効果・入手方法を検索…',sourceLabel:'データソース',sourceText:'現在のゲームデータとローカライズファイルから生成。',archiveEyebrow:'GAME DATABASE',heroTitle:'レウヌニウスの挽歌 Wiki',heroBody:'装備、スキル、研究、敵の資料庫。',browseEquipment:'装備を見る',quickFind:'QUICK FIND',browseArchive:'資料庫を見る',guide:'GUIDE',howToUse:'使い方',guideOne:'検索対象は名前、効果、入手方法、正式な敵スキル説明のみです。',guideTwo:'装備枠、使用者、研究種類、素材、敵分類で結果を制限できます。',guideThree:'スキル段階、派生スキル、研究のレベル別データは詳細画面で確認できます。',results:' 件',filters:'制限',sort:'並び順',loadMore:'さらに表示',noResults:'一致する項目がありません',tryFilters:'検索語を短くするか、制限を解除してください。',clear:'クリア',all:'すべて',keyword:'検索',slots:'装備枠',source:'入手方法',actor:'使用者',type:'種類',target:'対象',material:'関連素材',category:'分類',appearance:'出現マップ',idAsc:'既定順',idDesc:'逆順',nameAsc:'名前',powerDesc:'主要数値',countDesc:'関連数',equipmentIntro:'装備効果、必要枠、入手方法。',skillsIntro:'メインスキルと強化効果。派生スキルはメインスキル詳細内のみ表示します。',researchIntro:'研究効果、上限、レベル別消費、前提研究、解放元。',enemiesIntro:'実際に登場する敵の画像、能力値、正式スキル説明、出現マップ。',searchResults:'検索結果',searchIntro:'装備、スキル、研究、敵の横断検索結果。',maxLevel:'レベル上限',initialCost:'消費',unlock:'解放方法',reward:'研究報酬',effect:'効果',flavor:'説明',acquisition:'入手方法',upgrade:'強化',fullUpgrade:'最大強化',skillLevel:'スキル段階',derived:'派生内容',hp:'HP',atk:'攻撃',def:'防御',gold:'お金',retreatTurns:'離脱ターン',abilities:'スキル',noDescription:'なし',base:'基本',plus:'強化',max:'最大強化',initialUnlock:'ゲーム開始時から解放',firstObtain:'初めて入手すると解放',mapEventUnlock:'記載エリアのイベントで解放',researchMilestone:'研究合計レベルが3000に達すると解放',unlockNotRecorded:'解放条件の記録なし',relatedMaterials:'関連素材',prereqUnlock:'以下の研究を完了すると解放',entries:'項目',tierCount:' 段階',boss:'ボス',elite:'エリート',common:'通常',summon:'召喚物',production:'生産',develop:'開発',exploration:'探索',creation:'創造',other:'その他',self:'自身',enemy:'敵',empty:'空きマス',damage:'ダメージ',recover:'回復',none:'なし',level:'レベル',levelCost:'このレベルの消費',noCost:'消費なし',uses:'使用回数',range:'射程',derivedEnemies:'派生する敵',derivedFromEnemies:'派生元',customEnemyModifiers:'カスタム補正',strongTrial:'試練',thornJourney:'いばらの旅',strongTrialDesc:'召喚物を除く全敵の初期HP、ATK、DEFを10%増加し、切り捨てます。',thornJourneyDesc:'召喚物を除く全敵の初期HPを1.08乗、ATKとDEFを1.04乗し、切り捨てます。',summonModifierExempt:'召喚物にはこの2つの補正が適用されません。',statusEyebrow:'STATE ARCHIVE',statusesIntro:'プレイヤーが得られる28種のステートと効果を確認し、通常セーブで未取得のものを調べられます。',statusCountLabel:' 種',saveCheckEyebrow:'SAVE CHECK',saveChecker:'セーブのステート確認',saveCheckerIntro:'通常セーブの fileXXX.rpgsave を選び、28種のうち未取得のステートを確認します。',selectSave:'セーブファイルを選択',dropSave:'または fileXXX.rpgsave をここにドロップ',savePrivacy:'ファイルはこのブラウザ内でのみ読み取られ、アップロードも保存もされません。',statusSearch:'ステート名・効果を検索…',saveWaiting:'セーブファイルを選ぶと、ここに結果が表示されます。',invalidSave:'有効な通常セーブファイルではありません。',invalidSaveDetail:'ゲームの save フォルダーにある file1～file9999.rpgsave を選んでください。クイックセーブ、自動セーブ、その他のファイルには対応していません。',saveReadFailed:'このセーブファイルを読み取れませんでした。',saveResult:'確認結果',obtainedStatuses:'取得記録',missingStatuses:'未取得',allStatusesObtained:'このセーブでは28種のステートをすべて取得済みです。',statusObtained:'取得済み',statusMissing:'未取得',fileLabel:'ファイル'}
 };
 U.ja.slots='装備スロット';
+Object.assign(U.zh,{rankings:'使用排行',rankingsEyebrow:'COMMUNITY DATA',rankingsIntro:'汇总玩家存档最新上报的装备携带、技能使用与携带，以及食物、道具和状态使用次数。',rankingTopLabel:' 项',rankingEquipmentCarry:'装备携带',rankingSkillUses:'技能使用',rankingSkillCarry:'技能携带',rankingFood:'食物',rankingItem:'道具',rankingBuff:'状态',rankingUses:'使用次数',rankingLoadoutUses:'探索携带',rankingLoading:'正在读取社区统计数据…',rankingProgress:'正在读取：{0} / {1}',rankingError:'统计数据暂时无法读取，请稍后重试。',rankingEmpty:'暂无有效的统计记录。',rankingRefresh:'刷新数据',rankingDataNote:'装备只按每日探索配置中的携带次数统计；技能的实际使用次数和探索携带次数分别排行。食物、道具和状态按实际使用次数统计。'});
+Object.assign(U.en,{rankings:'Usage Rankings',rankingsEyebrow:'COMMUNITY DATA',rankingsIntro:'Ranks equipment carried, skill uses and skill loadouts, plus food, item, and state uses reported by player saves.',rankingTopLabel:' entries',rankingEquipmentCarry:'Equipment Carried',rankingSkillUses:'Skill Uses',rankingSkillCarry:'Skills Carried',rankingFood:'Food',rankingItem:'Items',rankingBuff:'States',rankingUses:'Uses',rankingLoadoutUses:'Exploration loadouts',rankingLoading:'Loading community statistics…',rankingProgress:'Loading: {0} / {1}',rankingError:'Statistics are temporarily unavailable. Please try again later.',rankingEmpty:'No valid statistics are available yet.',rankingRefresh:'Refresh data',rankingDataNote:'Equipment is ranked only by inclusion in daily exploration loadouts. Skill uses and skill loadouts are ranked separately. Food, items, and states are ranked by actual uses.'});
+Object.assign(U.ja,{rankings:'使用ランキング',rankingsEyebrow:'COMMUNITY DATA',rankingsIntro:'セーブデータから装備の持込、スキルの使用と持込、食べ物・アイテム・ステートの使用回数を集計します。',rankingTopLabel:' 件',rankingEquipmentCarry:'装備持込',rankingSkillUses:'スキル使用',rankingSkillCarry:'スキル持込',rankingFood:'食べ物',rankingItem:'アイテム',rankingBuff:'ステート',rankingUses:'使用回数',rankingLoadoutUses:'探索時の持込',rankingLoading:'コミュニティ統計を読み込んでいます…',rankingProgress:'読み込み中：{0} / {1}',rankingError:'統計データを取得できませんでした。時間をおいて再度お試しください。',rankingEmpty:'有効な統計データはまだありません。',rankingRefresh:'データを更新',rankingDataNote:'装備は日ごとの探索構成への持込回数のみで集計します。スキルの実際の使用回数と持込回数は別々にランキング化します。食べ物・アイテム・ステートは実際の使用回数で集計します。'});
 const SECTIONS=['equipment','skills','research','enemies'];
-const ROUTES=[...SECTIONS,'statuses'];
+const ROUTES=[...SECTIONS,'statuses','rankings'];
 function browserPreferredLanguage(){
  const nav=typeof navigator==='undefined'?{}:navigator;
  const languages=Array.isArray(nav.languages)&&nav.languages.length?nav.languages:[nav.language||nav.userLanguage||''];
@@ -23,7 +26,13 @@ function browserPreferredLanguage(){
 }
 let savedLang='';try{savedLang=localStorage.getItem('rorWikiLang')||'';}catch(e){}
 if(!['zh','en','ja'].includes(savedLang))savedLang=browserPreferredLanguage();
-const st={lang:savedLang,route:'overview',query:'',statusQuery:'',filters:{},sort:'idAsc',page:1,pageSize:30,results:[],enemyModifiers:{strong:false,thorns:false},saveCheck:null,architectMode:false,researchTree:false,treeTransform:{x:0,y:0,scale:1},treeInitialized:false};
+const st={lang:savedLang,route:'overview',query:'',statusQuery:'',filters:{},sort:'idAsc',page:1,pageSize:30,results:[],enemyModifiers:{strong:false,thorns:false},saveCheck:null,architectMode:false,researchTree:false,treeTransform:{x:0,y:0,scale:1},treeInitialized:false,rankingType:'equipment'};
+const RANKING_TYPES=['equipment','skillUse','skillCarry','food','item','buff'];
+const RANKING_CACHE_TTL=60*60*1000;
+const RANKING_PAGE_SIZE=1000;
+const RANKING_SUPABASE_URL='https://usyzujsbegkqwdfbrxyj.supabase.co';
+const RANKING_SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeXp1anNiZWdrcXdkZmJyeHlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzNTgwMTcsImV4cCI6MjA5MDkzNDAxN30.QEz9wS9ovFwfMiWVq3azeSKTTWaxL8c26byWnWaesIU';
+const rankingMemory={usage:{},loadout:null,promises:{},renderToken:0};
 const SOCIAL_DEFAULTS={discord:91,qq:1074};
 let socialMemberTotal=SOCIAL_DEFAULTS.discord+SOCIAL_DEFAULTS.qq;
 let socialRefreshPromise=null;
@@ -226,22 +235,135 @@ function filtered(k){
  a.sort((x,y)=>st.sort==='idDesc'?y.id-x.id:st.sort==='nameAsc'?rubyBaseText(loc(x.name)).localeCompare(rubyBaseText(loc(y.name)),st.lang):st.sort==='powerDesc'?power(y,kind(y))-power(x,kind(x)):st.sort==='countDesc'?count(y,kind(y))-count(x,kind(x)):k==='all'&&SECTIONS.indexOf(kind(x))!==SECTIONS.indexOf(kind(y))?SECTIONS.indexOf(kind(x))-SECTIONS.indexOf(kind(y)):x.id-y.id);
  return a;
 }
+const rankingFormat=(key,...values)=>values.reduce((text,value,index)=>text.replace('{'+index+'}',String(value)),tr(key));
+const rankingTypeName=type=>type==='equipment'?tr('rankingEquipmentCarry'):type==='skillUse'?tr('rankingSkillUses'):type==='skillCarry'?tr('rankingSkillCarry'):type==='food'?tr('rankingFood'):type==='item'?tr('rankingItem'):tr('rankingBuff');
+const rankingDataType=type=>type==='skillUse'||type==='skillCarry'?'skill':type;
+const rankingCacheKey=kind=>'rorWikiRankingV1:'+kind;
+function readRankingCache(kind){
+ try{const value=JSON.parse(localStorage.getItem(rankingCacheKey(kind))||'null');if(value&&Number(value.at)>0&&Date.now()-Number(value.at)<RANKING_CACHE_TTL)return value.data}catch(error){}
+ return null;
+}
+function writeRankingCache(kind,data){try{localStorage.setItem(rankingCacheKey(kind),JSON.stringify({at:Date.now(),data:data}))}catch(error){}}
+function normalizeRankingId(type,value){
+ let id=Number(value);if(!Number.isInteger(id)||id<=0)return 0;
+ if(type==='equipment'&&id>500)id-=500;
+ if(type==='skill')id=((id-1)%160)+1;
+ return id;
+}
+function rankingReference(type,id){
+ if(type==='equipment'){const entry=(D.equipment||[]).find(value=>value.id===id);return entry?{id:id,name:entry.name,icon:entry.icon,kind:'equipment'}:null}
+ if(type==='skill'){const entry=(D.skills||[]).find(value=>value.id===id);return entry?{id:id,name:entry.name,icon:entry.icon,kind:'skills'}:null}
+ if(type==='food'||type==='item'){const entry=D.refs&&D.refs.items&&D.refs.items[id];return entry?{id:id,name:entry.name,icon:entry.icon,kind:''}:null}
+ if(type==='buff'){const entry=D.refs&&D.refs.buffs&&D.refs.buffs[id];return entry?{id:id,name:entry,icon:0,kind:''}:null}
+ return null;
+}
+function rankingHeaders(withCount){
+ const headers={apikey:RANKING_SUPABASE_KEY,Authorization:'Bearer '+RANKING_SUPABASE_KEY};
+ if(withCount)headers.Prefer='count=exact';
+ return headers;
+}
+async function fetchRankingPage(table,select,filters,offset,withCount){
+ const params=new URLSearchParams({select:select,limit:String(RANKING_PAGE_SIZE),offset:String(offset)});
+ Object.keys(filters||{}).forEach(key=>params.set(key,filters[key]));
+ const response=await fetch(RANKING_SUPABASE_URL+'/rest/v1/'+table+'?'+params.toString(),{headers:rankingHeaders(withCount),cache:'no-store'});
+ if(!response.ok)throw new Error('ranking request failed: '+response.status);
+ const rows=await response.json(),range=response.headers.get('content-range')||'',match=/\/(\d+)$/.exec(range);
+ return {rows:Array.isArray(rows)?rows:[],total:match?Number(match[1]):null};
+}
+async function fetchAllRankingRows(table,select,filters,onProgress){
+ const first=await fetchRankingPage(table,select,filters,0,true);let rows=first.rows.slice(),loaded=rows.length,total=first.total;
+ if(onProgress)onProgress(loaded,total);
+ if(Number.isFinite(total)&&total>loaded){
+  const offsets=[];for(let offset=RANKING_PAGE_SIZE;offset<total;offset+=RANKING_PAGE_SIZE)offsets.push(offset);
+  for(let index=0;index<offsets.length;index+=5){
+   const pages=await Promise.all(offsets.slice(index,index+5).map(offset=>fetchRankingPage(table,select,filters,offset,false)));
+   pages.forEach(page=>{rows=rows.concat(page.rows);loaded+=page.rows.length});if(onProgress)onProgress(loaded,total);
+  }
+ }else if(total===null){
+  let offset=RANKING_PAGE_SIZE,last=first.rows;
+  while(last.length===RANKING_PAGE_SIZE){const page=await fetchRankingPage(table,select,filters,offset,false);last=page.rows;rows=rows.concat(last);offset+=RANKING_PAGE_SIZE;if(onProgress)onProgress(rows.length,null)}
+ }
+ return rows;
+}
+function rankingArray(value){
+ if(Array.isArray(value))return value;
+ if(typeof value==='string'){try{const parsed=JSON.parse(value);return Array.isArray(parsed)?parsed:[]}catch(error){}}
+ return [];
+}
+async function loadLoadoutRanking(force,onProgress){
+ if(!force&&rankingMemory.loadout)return rankingMemory.loadout;
+ if(!force){const cached=readRankingCache('loadouts');if(cached){rankingMemory.loadout=cached;return cached}}
+ if(rankingMemory.promises.loadouts)return rankingMemory.promises.loadouts;
+ rankingMemory.promises.loadouts=fetchAllRankingRows('reuinis','skills,equipment',{order:'play_id.asc,day.asc'},onProgress).then(rows=>{
+  const result={equipment:{},skill:{}};
+  rows.forEach(row=>{
+   [['equipment',row.equipment],['skill',row.skills]].forEach(pair=>{
+    const type=pair[0],ids=new Set(rankingArray(pair[1]).map(value=>normalizeRankingId(type,value)).filter(Boolean));
+    ids.forEach(id=>{result[type][id]=(Number(result[type][id])||0)+1});
+   });
+  });
+  rankingMemory.loadout=result;writeRankingCache('loadouts',result);return result;
+ }).finally(()=>{delete rankingMemory.promises.loadouts});
+ return rankingMemory.promises.loadouts;
+}
+async function loadUsageRanking(type,force,onProgress){
+ if(!force&&rankingMemory.usage[type])return rankingMemory.usage[type];
+ if(!force){const cached=readRankingCache('usage:'+type);if(cached){rankingMemory.usage[type]=cached;return cached}}
+ const promiseKey='usage:'+type;if(rankingMemory.promises[promiseKey])return rankingMemory.promises[promiseKey];
+ rankingMemory.promises[promiseKey]=fetchAllRankingRows('reuinis_data','data_id,use_count',{data_type:'eq.'+type,order:'data_id.asc,play_id.asc'},onProgress).then(rows=>{
+  const totals={};rows.forEach(row=>{const id=normalizeRankingId(type,row.data_id),rawCount=Number(row.use_count),count=Number.isFinite(rawCount)&&rawCount>0?Math.floor(rawCount):0;if(id>0&&count>0)totals[id]=(Number(totals[id])||0)+count});
+  const result=Object.keys(totals).map(id=>({id:Number(id),count:totals[id]})).filter(item=>rankingReference(type,item.id)).sort((a,b)=>b.count-a.count||a.id-b.id).slice(0,50);
+  rankingMemory.usage[type]=result;writeRankingCache('usage:'+type,result);return result;
+ }).finally(()=>{delete rankingMemory.promises[promiseKey]});
+ return rankingMemory.promises[promiseKey];
+}
+function rankingLocale(){return st.lang==='ja'?'ja-JP':st.lang==='en'?'en-US':'zh-CN'}
+function loadoutRankingRows(loadout,type){
+ const counts=loadout&&loadout[type]||{};
+ return Object.keys(counts).map(id=>({id:Number(id),count:Number(counts[id])||0})).filter(item=>item.count>0&&rankingReference(type,item.id)).sort((a,b)=>b.count-a.count||a.id-b.id).slice(0,50);
+}
+function rankingRow(item,type,index,metricKey){
+ const ref=rankingReference(type,item.id);if(!ref)return '';
+ const icon=type==='buff'?statusIco(item.id,'ranking-status-icon',48):ico(ref.icon,'ranking-icon',48),name=rubyHtml(loc(ref.name)),count=Number(item.count).toLocaleString(rankingLocale());
+ const metrics='<span class="ranking-metrics"><span><small>'+esc(tr(metricKey))+'</small><strong>'+count+'</strong></span></span>';
+ const content='<span class="ranking-position">'+(index+1)+'</span>'+icon+'<span class="ranking-name">'+name+'</span>'+metrics;
+ return '<li class="ranking-entry rank-'+(index+1)+'">'+(ref.kind?'<button type="button" data-link-kind="'+ref.kind+'" data-link-id="'+ref.id+'">'+content+'</button>':'<div>'+content+'</div>')+'</li>';
+}
+async function renderRankings(force){
+ const tabs=$('#rankingTabs'),list=$('#rankingList'),status=$('#rankingStatus');if(!tabs||!list||!status)return;
+ const type=RANKING_TYPES.includes(st.rankingType)?st.rankingType:'equipment',token=++rankingMemory.renderToken;
+ tabs.innerHTML=RANKING_TYPES.map(value=>'<button type="button" data-ranking-type="'+value+'" role="tab" aria-selected="'+String(value===type)+'" class="'+(value===type?'active':'')+'">'+esc(rankingTypeName(value))+'</button>').join('');
+ status.className='ranking-status loading';status.textContent=tr('rankingLoading');list.innerHTML=Array.from({length:8},(_,index)=>'<li class="ranking-entry ranking-skeleton"><div><span class="ranking-position">'+(index+1)+'</span><i></i><b></b></div></li>').join('');
+ const onProgress=(loaded,total)=>{if(token!==rankingMemory.renderToken||st.route!=='rankings')return;status.textContent=total?rankingFormat('rankingProgress',Math.min(loaded,total).toLocaleString(rankingLocale()),total.toLocaleString(rankingLocale())):tr('rankingLoading')};
+ try{
+  const dataType=rankingDataType(type),isCarry=type==='equipment'||type==='skillCarry';
+  const rows=isCarry?loadoutRankingRows(await loadLoadoutRanking(!!force,onProgress),dataType):await loadUsageRanking(dataType,!!force,onProgress);
+  if(token!==rankingMemory.renderToken||st.route!=='rankings'||st.rankingType!==type)return;
+  const metricKey=isCarry?'rankingLoadoutUses':'rankingUses';status.className='ranking-status';status.textContent='';list.innerHTML=rows.length?rows.map((item,index)=>rankingRow(item,dataType,index,metricKey)).join(''):'<li class="ranking-empty">'+esc(tr('rankingEmpty'))+'</li>';
+ }catch(error){if(token!==rankingMemory.renderToken||st.route!=='rankings')return;status.className='ranking-status error';status.textContent=tr('rankingError');list.innerHTML=''}
+}
+function refreshRankings(){
+ const type=st.rankingType,dataType=rankingDataType(type),isCarry=type==='equipment'||type==='skillCarry';
+ if(isCarry)rankingMemory.loadout=null;else delete rankingMemory.usage[dataType];
+ try{if(isCarry)localStorage.removeItem(rankingCacheKey('loadouts'));else localStorage.removeItem(rankingCacheKey('usage:'+dataType))}catch(error){}
+ renderRankings(true);
+}
 function applyLanguage(){
  document.documentElement.lang=st.lang==='zh'?'zh-CN':st.lang==='ja'?'ja-JP':'en';document.title=tr('title');
  $$('[data-i18n]').forEach(n=>n.textContent=tr(n.dataset.i18n));$$('[data-i18n-placeholder]').forEach(n=>n.placeholder=tr(n.dataset.i18nPlaceholder));$$('[data-lang]').forEach(n=>n.classList.toggle('active',n.dataset.lang===st.lang));
- renderOverview();if(st.route==='statuses')renderStatuses();else if(st.route!=='overview')renderSection();
+ renderOverview();if(st.route==='statuses')renderStatuses();else if(st.route==='rankings')renderRankings(false);else if(st.route!=='overview')renderSection();
 }
 function setRoute(k,o={}){
  if(!['overview','all',...ROUTES].includes(k))k='overview';
  if(k!=='research')st.researchTree=false;
  st.route=k;st.page=1;st.filters=o.filters||{};if(o.query!==undefined){st.query=o.query;$('#globalSearch').value=st.query}
- $$('.view').forEach(v=>v.classList.remove('active'));if(k==='overview')$('#overviewView').classList.add('active');else if(k==='statuses'){$('#statusesView').classList.add('active');renderStatuses()}else{$('#listView').classList.add('active');renderSection()}
+ $$('.view').forEach(v=>v.classList.remove('active'));if(k==='overview')$('#overviewView').classList.add('active');else if(k==='statuses'){$('#statusesView').classList.add('active');renderStatuses()}else if(k==='rankings'){$('#rankingsView').classList.add('active');renderRankings(false)}else{$('#listView').classList.add('active');renderSection()}
  $$('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.route===k));if(location.hash!=='#'+k)history.replaceState(null,'','#'+k);window.scrollTo({top:0,behavior:'smooth'});
 }
 function renderOverview(){
  const q=D.summary,a=[['equipment',q.equipment,'⚔'],['skills',q.skills,'✦'],['research',q.research,'⚗'],['enemies',q.enemies,'♞'],['statuses',q.statuses||28,'◈']];
  $('#statsGrid').innerHTML=a.map(x=>'<button class="stat-card" data-route="'+x[0]+'"><span>'+esc(tr(x[0]))+'</span><strong>'+x[1]+'</strong><small>'+esc(tr('entries'))+'</small></button>').join('');
- $('#quickLinks').innerHTML=a.map(x=>'<button class="quick-link" data-route="'+x[0]+'"><span>'+x[2]+'</span><span><strong>'+esc(tr(x[0]))+'</strong><small>'+x[1]+' '+esc(tr('entries'))+'</small></span><b>›</b></button>').join('');
+ $('#quickLinks').innerHTML=a.map(x=>'<button class="quick-link" data-route="'+x[0]+'"><span>'+x[2]+'</span><span><strong>'+esc(tr(x[0]))+'</strong><small>'+x[1]+' '+esc(tr('entries'))+'</small></span><b>›</b></button>').join('')+'<button class="quick-link" data-route="rankings"><span>♛</span><span><strong>'+esc(tr('rankings'))+'</strong><small>TOP 50</small></span><b>›</b></button>';
  ['Equipment','Skills','Research','Enemies','Statuses'].forEach((x,i)=>$('#count'+x).textContent=a[i][1]);
  $('#generatedAt').textContent=new Date(q.generatedAt).toLocaleDateString(st.lang==='ja'?'ja-JP':st.lang==='en'?'en-US':'zh-CN');
 }
@@ -437,10 +559,10 @@ function enemyDetail(x){const portrait=x.sprite?'<canvas class="enemy-sprite ene
 function openDetail(kind,id,option){const x=(D[kind]||[]).find(v=>v.id===Number(id));if(!x)return;setMobileFilters(false);const body=kind==='equipment'?equipmentDetail(x):kind==='skills'?skillDetail(x,option):kind==='research'?researchDetail(x,option):enemyDetail(x),content=$('#detailContent');content.innerHTML=body;content.scrollTop=0;const dlg=$('#detailDialog');if(!dlg.open)dlg.showModal();requestAnimationFrame(drawEnemySprites)}
 let mobileFilterHome=null;
 function setMobileFilters(open){const filters=$('#filters'),backdrop=$('#mobileFilterBackdrop'),button=$('#mobileFilterButton'),mobile=window.matchMedia('(max-width: 900px)').matches,active=!!open&&mobile;if(mobile&&filters&&filters.parentNode!==document.body){mobileFilterHome={parent:filters.parentNode,next:filters.nextSibling};document.body.appendChild(filters)}else if(!mobile&&filters&&mobileFilterHome){const home=mobileFilterHome;if(home.parent){if(home.next&&home.next.parentNode===home.parent)home.parent.insertBefore(filters,home.next);else home.parent.appendChild(filters)}mobileFilterHome=null}if(filters)filters.classList.toggle('mobile-open',active);if(backdrop)backdrop.hidden=!active;if(button)button.setAttribute('aria-expanded',String(active));document.body.classList.toggle('mobile-filters-open',active)}
-document.addEventListener('click',e=>{const lang=e.target.closest('[data-lang]');if(lang){st.lang=lang.dataset.lang;try{localStorage.setItem('rorWikiLang',st.lang)}catch(err){}applyLanguage();return}const effect=e.target.closest('[data-derived-effect]');if(effect){const card=effect.closest('.derived-card'),mode=effect.dataset.derivedEffect;card.querySelectorAll('[data-derived-effect]').forEach(b=>{const active=b.dataset.derivedEffect===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});card.querySelectorAll('.derived-effect').forEach(p=>p.hidden=!p.classList.contains(mode));return}const material=e.target.closest('[data-material-filter]');if(material){const grid=material.closest('.material-filter-grid'),scroll=grid&&grid.scrollTop,id=material.dataset.materialFilter,selected=Array.isArray(st.filters.materials)?st.filters.materials.slice():[];st.filters.materials=selected.includes(id)?selected.filter(value=>value!==id):selected.concat(id);delete st.filters.material;st.page=1;renderSection();const next=$('.material-filter-grid');if(next)next.scrollTop=scroll||0;return}const researchMode=e.target.closest('[data-research-cost-mode]');if(researchMode){setResearchCostMode(researchMode.dataset.researchCostMode);return}const page=e.target.closest('[data-page]');if(page&&!page.disabled){st.page=Number(page.dataset.page)||1;renderSection();$('#sectionTitle').scrollIntoView({block:'start'});return}const tier=e.target.closest('[data-skill-tier]');if(tier){openDetail('skills',tier.dataset.skillId,tier.dataset.skillTier);return}const link=e.target.closest('[data-link-kind]');if(link){openDetail(link.dataset.linkKind,link.dataset.linkId);return}const route=e.target.closest('[data-route]');if(route){setMobileFilters(false);setRoute(route.dataset.route);return}const entry=e.target.closest('.entry-card');if(entry){openDetail(entry.dataset.kind,entry.dataset.id);return}const clear=e.target.closest('[data-clear]');if(clear){st.filters={};st.query='';st.page=1;$('#globalSearch').value='';renderSection();return}if(e.target.closest('[data-close-mobile-filters]')||e.target===$('#mobileFilterBackdrop')){setMobileFilters(false);return}if(e.target===$('#mobileFilterButton')){setMobileFilters(!$('#filters').classList.contains('mobile-open'));return}});
+document.addEventListener('click',e=>{const rankingType=e.target.closest('[data-ranking-type]');if(rankingType){st.rankingType=rankingType.dataset.rankingType;renderRankings(false);return}if(e.target.closest('#rankingRefresh')){refreshRankings();return}const lang=e.target.closest('[data-lang]');if(lang){st.lang=lang.dataset.lang;try{localStorage.setItem('rorWikiLang',st.lang)}catch(err){}applyLanguage();return}const effect=e.target.closest('[data-derived-effect]');if(effect){const card=effect.closest('.derived-card'),mode=effect.dataset.derivedEffect;card.querySelectorAll('[data-derived-effect]').forEach(b=>{const active=b.dataset.derivedEffect===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});card.querySelectorAll('.derived-effect').forEach(p=>p.hidden=!p.classList.contains(mode));return}const material=e.target.closest('[data-material-filter]');if(material){const grid=material.closest('.material-filter-grid'),scroll=grid&&grid.scrollTop,id=material.dataset.materialFilter,selected=Array.isArray(st.filters.materials)?st.filters.materials.slice():[];st.filters.materials=selected.includes(id)?selected.filter(value=>value!==id):selected.concat(id);delete st.filters.material;st.page=1;renderSection();const next=$('.material-filter-grid');if(next)next.scrollTop=scroll||0;return}const researchMode=e.target.closest('[data-research-cost-mode]');if(researchMode){setResearchCostMode(researchMode.dataset.researchCostMode);return}const page=e.target.closest('[data-page]');if(page&&!page.disabled){st.page=Number(page.dataset.page)||1;renderSection();$('#sectionTitle').scrollIntoView({block:'start'});return}const tier=e.target.closest('[data-skill-tier]');if(tier){openDetail('skills',tier.dataset.skillId,tier.dataset.skillTier);return}const link=e.target.closest('[data-link-kind]');if(link){openDetail(link.dataset.linkKind,link.dataset.linkId);return}const route=e.target.closest('[data-route]');if(route){setMobileFilters(false);setRoute(route.dataset.route);return}const entry=e.target.closest('.entry-card');if(entry){openDetail(entry.dataset.kind,entry.dataset.id);return}const clear=e.target.closest('[data-clear]');if(clear){st.filters={};st.query='';st.page=1;$('#globalSearch').value='';renderSection();return}if(e.target.closest('[data-close-mobile-filters]')||e.target===$('#mobileFilterBackdrop')){setMobileFilters(false);return}if(e.target===$('#mobileFilterButton')){setMobileFilters(!$('#filters').classList.contains('mobile-open'));return}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('[data-page-input]')){e.preventDefault();setPageFromInput(e.target)}});
 document.addEventListener('change',e=>{if(e.target.matches('[data-page-input]')){setPageFromInput(e.target);return}if(e.target===$('#saveFileInput')||e.target===$('#catalogSaveFileInput')){inspectSaveFile(e.target.files&&e.target.files[0]);e.target.value='';return}if(e.target.matches('[data-research-architect]')){const id=e.target.dataset.researchArchitect,level=$('[data-research-level]'),active=$('[data-research-cost-mode].active'),mode=active&&active.dataset.researchCostMode;st.architectMode=e.target.checked;openDetail('research',id,level&&level.value);if(mode==='range')setResearchCostMode('range');return}if(e.target.matches('[data-research-range-from],[data-research-range-to]')){updateResearchRange();return}if(e.target.matches('[data-enemy-modifier]')){st.enemyModifiers[e.target.dataset.enemyModifier]=e.target.checked;openDetail('enemies',e.target.dataset.enemyId);return}if(e.target.matches('[data-filter]')){st.filters[e.target.dataset.filter]=e.target.value;st.page=1;renderSection();return}if(e.target===$('#sortSelect')){st.sort=e.target.value;st.page=1;renderSection();return}if(e.target.matches('[data-research-level]'))openDetail('research',e.target.dataset.researchLevel,e.target.value)});
-document.addEventListener('input',e=>{if(e.target===$('#statusSearch')){st.statusQuery=e.target.value;renderStatusGrid();return}if(e.target===$('#globalSearch')){st.query=e.target.value;st.page=1;if(st.route!=='overview'&&st.route!=='statuses')renderSection();return}if(e.target.matches('[data-research-range-from],[data-research-range-to]')){updateResearchRange();return}if(e.target.matches('input[data-research-level]')){const id=e.target.dataset.researchLevel,value=e.target.value;if(value&&Number(value)>0)openDetail('research',id,value)}});
+document.addEventListener('input',e=>{if(e.target===$('#statusSearch')){st.statusQuery=e.target.value;renderStatusGrid();return}if(e.target===$('#globalSearch')){st.query=e.target.value;st.page=1;if(!['overview','statuses','rankings'].includes(st.route))renderSection();return}if(e.target.matches('[data-research-range-from],[data-research-range-to]')){updateResearchRange();return}if(e.target.matches('input[data-research-level]')){const id=e.target.dataset.researchLevel,value=e.target.value;if(value&&Number(value)>0)openDetail('research',id,value)}});
 $('#globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'&&st.query.trim())setRoute('all',{query:st.query})});
 document.addEventListener('dragover',e=>{const zone=e.target.closest&&e.target.closest('#saveDropzone');if(zone){e.preventDefault();zone.classList.add('dragging')}});
 document.addEventListener('dragleave',e=>{const zone=e.target.closest&&e.target.closest('#saveDropzone');if(zone)zone.classList.remove('dragging')});

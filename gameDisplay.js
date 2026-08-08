@@ -13,10 +13,11 @@ const gamesData = {
                   qq: "512766472",
                   discord: "https://discord.gg/Jq3va9JAyX"
               },
-              releaseDate: "2025年第二季度（Demo已公开！）",
+              releaseDate: "2026年7月15日",
               screenshotCount: 7,
               buttons: [
-                  { text: "Steam Demo", url: "https://store.steampowered.com/app/3377810", type: "steam" }
+                  { text: "Steam购买", url: "https://store.steampowered.com/app/3371260/Requiem_of_Reuinis/", type: "steam" },
+                  { text: "加入QQ群", url: "https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=npdlrfnrOBS8MUXESLfRz_nfRI9jQ4Bb&authKey=ziH92EgcDL9OKmTZln9wj893J%2FpeM0%2Bz3mV3c2dBESXv%2BsoOWipL4QA09Lgk7gbn&noverify=0&group_code=512766472", type: "qq" }
               ]
           },
           {
@@ -38,7 +39,7 @@ const gamesData = {
               id: 3,
               title: "晴空狂想曲",
               folder: "game3",
-              description: "具有复杂机制的魔塔游戏，建议已有部分魔塔经验的玩家游玩。\\n来自贫民窟的姐妹俩莉迪亚和乌娜为了生存，不得不前往下水道去消灭怪物探险。然而，她们没有想到的是，这个魔物丛生的世界，想要活下去，就必须踏进世界的谜团……",
+              description: "具有复杂机制的魔塔游戏，建议已有部分魔塔经验的玩家游玩。\\n来自贫民窟的姐妹俩莉迪亚和乌娜为了生存，不得不前往下水道去消灭怪物探险。然而，她们没有想到的是，这个魔物丛生的世界，想要活下去，就必须踏进世界的谜团……\\n由于网盘链接经常出错，请加入群聊获取游戏。",
               community: {
                   qq: "369562380"
               },
@@ -173,10 +174,11 @@ const gamesData = {
                 qq: "512766472",
                 discord: "https://discord.gg/Jq3va9JAyX"
             },
-            releaseDate: "Q2 2025 (Demo Available!)",
+            releaseDate: "July 15, 2026",
             screenshotCount: 7,
             buttons: [
-                { text: "Steam Demo", url: "https://store.steampowered.com/app/3377810", type: "steam" }
+                { text: "Buy on Steam", url: "https://store.steampowered.com/app/3371260/Requiem_of_Reuinis/", type: "steam" },
+                { text: "Join Discord", url: "https://discord.gg/Jq3va9JAyX", type: "discord" }
             ]
         },
         {
@@ -198,7 +200,7 @@ const gamesData = {
             id: 3,
             title: "Rhapsody of Wonder",
             folder: "game3",
-            description: "A magic tower game with complex mechanisms, recommended for players with some experience in magic tower games. Two sisters from the slums, Lydia and Una, have to venture into the sewers to eliminate monsters in order to survive. However, they never expected that in this monster-infested world, to survive, they must step into the mystery of the world...",
+            description: "A magic tower game with complex mechanisms, recommended for players with some experience in magic tower games. Two sisters from the slums, Lydia and Una, have to venture into the sewers to eliminate monsters in order to survive. However, they never expected that in this monster-infested world, to survive, they must step into the mystery of the world... Because Baidu Netdisk links often fail, please join the group chat to get the game.",
             community: {
                 qq: "369562380"
             },

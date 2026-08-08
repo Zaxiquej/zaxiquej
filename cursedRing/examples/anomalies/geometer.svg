@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="350" viewBox="0 0 700 350">
+<defs>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#000" flood-opacity=".45"/></filter>
+</defs>
+<rect width="700" height="350" rx="18" fill="#080706"/>
+<rect x="8" y="8" width="684" height="334" rx="16" fill="#14100c" stroke="#e6ad3b" stroke-width="2"/>
+<text x="22" y="34" fill="#e6ad3b" font-size="18" font-weight="700">几何学家：由诅咒饰品组成三角形</text>
+<text x="28" y="64" fill="#fff2cc" font-size="16" font-weight="700">A. 直角三角形</text>
+<g><rect x="52" y="86" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="79" y="111" fill="#fff" text-anchor="middle" font-size="17">1</text><text x="79" y="130" fill="#f07b83" text-anchor="middle" font-size="10">虚饰</text></g><g><rect x="220" y="86" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="247" y="111" fill="#fff" text-anchor="middle" font-size="17">4</text><text x="247" y="130" fill="#f07b83" text-anchor="middle" font-size="10">诅咒</text></g><g><rect x="52" y="202" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="79" y="227" fill="#fff" text-anchor="middle" font-size="17">9</text><text x="79" y="246" fill="#f07b83" text-anchor="middle" font-size="10">诅咒</text></g>
+<path d="M79 113 L247 113 L79 229 Z" fill="none" stroke="#f0bd45" stroke-width="4"/>
+<path d="M79 113 h24 v24" fill="none" stroke="#72c9ff" stroke-width="3"/>
+<text x="28" y="286" fill="#d8c7aa" text-anchor="start" font-size="14" font-weight="400">1、4、9号形成直角三角形，直角在1号，因此1号诅咒饰品</text><text x="28" y="306" fill="#d8c7aa" text-anchor="start" font-size="14" font-weight="400">虚饰。</text>
+<text x="360" y="64" fill="#fff2cc" font-size="16" font-weight="700">B. 等腰三角形</text>
+<g><rect x="388" y="86" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="415" y="111" fill="#fff" text-anchor="middle" font-size="17">1</text><text x="415" y="130" fill="#f07b83" text-anchor="middle" font-size="10">诅咒</text></g><g><rect x="500" y="86" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="527" y="111" fill="#fff" text-anchor="middle" font-size="17">3</text><text x="527" y="130" fill="#f07b83" text-anchor="middle" font-size="10">诅咒</text></g><g><rect x="444" y="210" width="54" height="54" rx="9" fill="#2a1010" stroke="#e94646" stroke-width="2"/><text x="471" y="235" fill="#fff" text-anchor="middle" font-size="17">10</text><text x="471" y="254" fill="#f07b83" text-anchor="middle" font-size="10">虚饰</text></g>
+<path d="M415 113 L527 113 L471 237 Z" fill="none" stroke="#f0bd45" stroke-width="4"/>
+<path d="M442 160 l20 9 M500 160 l-20 9" stroke="#72c9ff" stroke-width="3"/>
+<text x="356" y="286" fill="#d8c7aa" text-anchor="start" font-size="14" font-weight="400">1、3、10号形成等腰三角形，顶角在10号，因此10号诅</text><text x="356" y="306" fill="#d8c7aa" text-anchor="start" font-size="14" font-weight="400">咒饰品虚饰。</text>
+</svg>

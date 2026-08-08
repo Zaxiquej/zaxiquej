@@ -251,6 +251,26 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-qq {
+    background: #12b7f5;
+    color: white;
+}
+
+.btn-qq:hover {
+    background: #0f9fd4;
+    transform: translateY(-2px);
+}
+
+.btn-discord {
+    background: #5865f2;
+    color: white;
+}
+
+.btn-discord:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+}
+
 /* 页脚 */
 .footer {
     background: rgba(255, 255, 255, 0.95);
