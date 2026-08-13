@@ -17,6 +17,7 @@ const commonEvents = readJson('data/CommonEvents.json');
 const researchJs = fs.readFileSync(path.join(source, 'js/plugins/Research.js'), 'utf8');
 const buildingSetupJs = fs.readFileSync(path.join(source, 'js/plugins/BuildingSetup.js'), 'utf8');
 const fastTravelJs = fs.readFileSync(path.join(source, 'js/plugins/FastTravel.js'), 'utf8');
+const megaMapJs = fs.readFileSync(path.join(source, 'js/plugins/MegaMap.js'), 'utf8');
 const exStatSourceJs = fs.readFileSync(path.join(source, 'js/plugins/ExStat.js'), 'utf8');
 
 const numericKeys = object => Object.keys(object || {}).filter(key => /^\d+$/.test(key)).map(Number);
@@ -409,6 +410,8 @@ const commonEventResearch = new Map();
 for (const common of commonEvents.filter(Boolean)) commonEventResearch.set(common.id, researchIdsFromScript(scriptsForCommandList(common.list)));
 
 const enemyAppearances = new Map();
+const enemyEventLocations = new Map();
+const enemyFallbackEventLocations = new Map();
 const bossEnemyIds = new Set();
 const researchEventMaps = new Map();
 const mapRecords = [];
@@ -428,7 +431,13 @@ for (const info of mapInfos.filter(Boolean)) {
     const marker = String(event.name || '').match(/【([^】]+)】/);
     if (marker) markers[marker[1]] = (markers[marker[1]] || 0) + 1;
     const enemyMatch = String(event.name || '').match(/【敌人】\s*(\d+)/);
-    if (enemyMatch && !internal) localEnemyIds.add(Number(enemyMatch[1]));
+    if (enemyMatch) {
+      const enemyId = Number(enemyMatch[1]);
+      const locationStore = internal ? enemyFallbackEventLocations : enemyEventLocations;
+      if (!locationStore.has(enemyId)) locationStore.set(enemyId, []);
+      locationStore.get(enemyId).push({ mapId: info.id, x: Number(event.x) || 0, y: Number(event.y) || 0 });
+      if (!internal) localEnemyIds.add(enemyId);
+    }
     const script = scriptsForEvent(event);
     for (const match of script.matchAll(/addBossGauge\s*\(\s*(\d+)\s*\)/g)) {
       const bossEvent = mapEventById[Number(match[1])];
@@ -918,6 +927,53 @@ for (const enemy of enemies) {
   }
 }
 
+const worldMapBossMatch = /ReuinisCompletion\.worldMapBosses\s*=\s*ReuinisCompletion\.worldMapBosses\s*\|\|\s*\{/.exec(megaMapJs);
+let worldMapBosses = {};
+if (worldMapBossMatch) {
+  const openBrace = worldMapBossMatch.index + worldMapBossMatch[0].lastIndexOf('{');
+  const body = balancedBlock(megaMapJs, openBrace);
+  try { worldMapBosses = Function('"use strict"; return ({' + body + '});')(); } catch (error) { worldMapBosses = {}; }
+}
+const officialBossIds = new Set();
+const bossLocationFallbacks = new Map();
+for (const regionId of Object.keys(worldMapBosses)) {
+  for (const definition of worldMapBosses[regionId] || []) {
+    const ids = (definition.enemyIds || []).map(Number).filter(id => id > 0);
+    const groupLocations = ids.flatMap(id => enemyEventLocations.get(id) || []);
+    for (const id of ids) {
+      officialBossIds.add(id);
+      if (groupLocations.length) bossLocationFallbacks.set(id, groupLocations);
+    }
+  }
+}
+function publicBossLocations(enemyId) {
+  const own = enemyEventLocations.get(enemyId) || [];
+  const internalFallback = enemyFallbackEventLocations.get(enemyId) || [];
+  const raw = own.length ? own : (internalFallback.length ? internalFallback : (bossLocationFallbacks.get(enemyId) || []));
+  const seen = new Set(), result = [];
+  for (const point of raw) {
+    let record = mapById[point.mapId];
+    const visitedMaps = new Set();
+    while (record && !record.areaCode && record.parentId && !visitedMaps.has(record.id)) {
+      visitedMaps.add(record.id);
+      record = mapById[record.parentId];
+    }
+    if (!record || !record.areaCode) continue;
+    const key = [record.areaCode, point.x, point.y].join(':');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push({
+      areaId: Number(record.areaCode),
+      areaName: localized('mapdesc', 't' + record.areaCode + 'a', record.areaName && record.areaName.zh || ''),
+      x: point.x,
+      y: point.y
+    });
+  }
+  return result;
+}
+for (const enemy of enemies) if (officialBossIds.has(enemy.id)) enemy.bossLocations = publicBossLocations(enemy.id);
+const bosses = enemies.filter(enemy => officialBossIds.has(enemy.id));
+
 const relationKeys = ['chooseOne', 'trinity', 'skLink', 'Diy'];
 const derivedBaseIds = new Set();
 for (let id = 1; id <= 160; id++) {
@@ -1056,8 +1112,8 @@ const lzStringSource = path.join(source, 'js', 'libs', 'lz-string.js');
 if (fs.existsSync(lzStringSource)) fs.copyFileSync(lzStringSource, path.join(path.dirname(output), 'lz-string.js'));
 const summary = {
   generatedAt: new Date().toISOString(), equipment: visibleEquipment.length, skills: visibleSkills.length,
-  research: research.length, enemies: enemies.length, statuses: statuses.length
+  research: research.length, enemies: enemies.length, bosses: bosses.length, statuses: statuses.length
 };
-const data = { summary: summary, equipment: visibleEquipment, skills: visibleSkills, research: research, enemies: enemies, statuses: statuses, actors: actors, refs: refs };
+const data = { summary: summary, equipment: visibleEquipment, skills: visibleSkills, research: research, enemies: enemies, bosses: bosses, statuses: statuses, actors: actors, refs: refs };
 fs.writeFileSync(output, 'window.ROR_WIKI_DATA = ' + JSON.stringify(data) + ';\n', 'utf8');
 console.log(JSON.stringify(summary, null, 2));

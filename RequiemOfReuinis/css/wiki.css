@@ -388,6 +388,10 @@ dialog::backdrop { background: rgba(3,5,7,.72); backdrop-filter: blur(6px); }
 .skill-upgrade-compare > span { display: grid; place-items: center; color: var(--gold); font-size: 18px; }
 .derived-grid,.ability-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
 .derived-card,.ability-card { padding: 15px; border: 1px solid var(--line-soft); background: #0f151a; border-radius: 9px; }
+.boss-location-list { display: grid; gap: 10px; }
+.boss-location-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 14px; border: 1px solid rgba(219,184,111,.2); border-radius: 10px; background: rgba(219,184,111,.06); }
+.boss-location-row b { color: var(--gold-soft); }
+.boss-location-row span { color: var(--muted); font-variant-numeric: tabular-nums; }
 .derived-title { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
 .derived-title h4,.ability-card h4 { margin: 2px 0 0; color: #e4e8e9; font-size: 14px; }
 .derived-title small { color: var(--faint); font-size: 9px; }
@@ -616,7 +620,7 @@ button.research-tree-node:focus-visible > strong { color: #fff0c8; }
 @keyframes rankingPulse { to { background-position: -220% 0; } }
 @media (max-width: 1180px) { .ranking-list { grid-template-columns: 1fr; } }
 @media (max-width: 650px) {
- .sidebar nav { grid-template-columns: repeat(7,1fr); }
+ .sidebar nav { grid-template-columns: repeat(8,1fr); }
  .ranking-toolbar { align-items: stretch; flex-direction: column; }
  .ranking-tabs { display: grid; grid-template-columns: repeat(3,1fr); }
  .ranking-tabs button { min-width: 0; padding: 0 4px; font-size: 10px; }
@@ -627,4 +631,5 @@ button.research-tree-node:focus-visible > strong { color: #fff0c8; }
  .ranking-name { font-size: 12px; }
  .ranking-metrics { grid-column: 3; flex-wrap: wrap; }
  .ranking-metrics > span { flex: 1 1 94px; min-width: 0; text-align: left; }
+ .boss-location-row { align-items: flex-start; flex-direction: column; gap: 4px; }
 }
