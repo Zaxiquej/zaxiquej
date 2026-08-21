@@ -19,6 +19,7 @@ const buildingSetupJs = fs.readFileSync(path.join(source, 'js/plugins/BuildingSe
 const fastTravelJs = fs.readFileSync(path.join(source, 'js/plugins/FastTravel.js'), 'utf8');
 const megaMapJs = fs.readFileSync(path.join(source, 'js/plugins/MegaMap.js'), 'utf8');
 const exStatSourceJs = fs.readFileSync(path.join(source, 'js/plugins/ExStat.js'), 'utf8');
+const enemyAiJs = fs.readFileSync(path.join(source, 'js/plugins/EnemyAI.js'), 'utf8');
 
 const numericKeys = object => Object.keys(object || {}).filter(key => /^\d+$/.test(key)).map(Number);
 const nonBlank = value => value !== undefined && value !== null && String(value).trim() !== '';
@@ -171,6 +172,11 @@ function translateAcquisition(text, code) {
   if (sourceText === '在废弃矿坑与拾荒者交谈，开启拾荒者的物资并进货后购买') return code === 'en'
     ? "Speak with the Scavenger in “Abandoned Mine” to open the Scavenger's Supplies and stock the item, then purchase it."
     : '「廃鉱」でスカベンジャーと会話し、スカベンジャーの物資を開放して入荷させた後に購入する。';
+
+  m = sourceText.match(/^击败(.+)后加入拾荒者的物资$/);
+  if (m) return code === 'en'
+    ? "Added to the Scavenger's Supplies after defeating " + q(m[1]) + '.'
+    : q(m[1]) + 'を倒すとスカベンジャーの物資に入荷する。';
 
   m = sourceText.match(/^(.+)宝箱（击败(.+)后出现）$/);
   if (m) return code === 'en'
@@ -349,6 +355,19 @@ const areaCodeFor = name => {
   const result = areaRules.find(rule => rule.re.test(name || ''));
   return result ? result.code : '';
 };
+const inheritedAreaCodeForMap = (mapId, fallbackName) => {
+  const visited = new Set();
+  let currentId = Number(mapId) || 0;
+  while (currentId > 0 && !visited.has(currentId)) {
+    visited.add(currentId);
+    const info = mapInfos[currentId];
+    if (!info) break;
+    const code = officialAreaByMapId.get(currentId) || areaCodeFor(info.name || '');
+    if (code) return code;
+    currentId = Number(info.parentId) || 0;
+  }
+  return areaCodeFor(fallbackName || '');
+};
 const areaLocalizedName = (name, code) => code ? localized('mapdesc', 't' + code + 'a', name) : { zh: name, en: name, ja: name };
 const mapLocalizedName = (name, code) => {
   if (!code) return { zh: name, en: name, ja: name };
@@ -406,6 +425,29 @@ function researchIdsFromScript(script) {
 function scriptsForCommandList(list) {
   return scriptsForEvent({ pages: [{ list: list || [] }] });
 }
+
+// Some enemies only exist as templates on internal maps and are spawned by
+// enemy AI. Resolve literal SpawnEventAt calls back to their real enemy IDs so
+// they inherit the summoner's public area without exposing the template map.
+const scriptedEnemyReferences = new Map();
+const scriptedEnemyTemplateLocations = new Map();
+for (const match of enemyAiJs.matchAll(/if\s*\(\s*meta\.([A-Za-z0-9_]+)\s*\)\s*\{/g)) {
+  const tag = match[1];
+  const block = balancedBlock(enemyAiJs, match.index + match[0].lastIndexOf('{'));
+  for (const spawn of block.matchAll(/Yanfly\.SpawnEventAt\s*\(\s*(\d+)\s*,\s*(\d+)\s*,/g)) {
+    const templateMapId = Number(spawn[1]);
+    const templateEventId = Number(spawn[2]);
+    const templateMap = mapCache[templateMapId];
+    const templateEvent = templateMap && templateMap.events && templateMap.events[templateEventId];
+    const enemyMatch = templateEvent && String(templateEvent.name || '').match(/【敌人】\s*(\d+)/);
+    if (!enemyMatch) continue;
+    const enemyId = Number(enemyMatch[1]);
+    if (!scriptedEnemyReferences.has(tag)) scriptedEnemyReferences.set(tag, new Set());
+    scriptedEnemyReferences.get(tag).add(enemyId);
+    if (!scriptedEnemyTemplateLocations.has(enemyId)) scriptedEnemyTemplateLocations.set(enemyId, []);
+    scriptedEnemyTemplateLocations.get(enemyId).push({ mapId: templateMapId, eventId: templateEventId });
+  }
+}
 const commonEventResearch = new Map();
 for (const common of commonEvents.filter(Boolean)) commonEventResearch.set(common.id, researchIdsFromScript(scriptsForCommandList(common.list)));
 
@@ -421,7 +463,7 @@ for (const info of mapInfos.filter(Boolean)) {
   const internal = internalMapIds.has(info.id) || internalNamePattern.test(info.name || '');
   const root = rootMap(info.id);
   const combinedName = (info.name || '') + ' ' + (root && root.name || '');
-  const areaCode = officialAreaByMapId.get(info.id) || areaCodeFor(combinedName);
+  const areaCode = inheritedAreaCodeForMap(info.id, combinedName);
   const markers = {};
   const localEnemyIds = new Set();
   const researchIds = new Set();
@@ -502,6 +544,20 @@ const derivedEnemyReferenceIndexes = {
   upgrade: 2,
   deathDrop: 1
 };
+const directEnemyReferenceIds = tags => {
+  const ids = new Set();
+  for (const key of Object.keys(derivedEnemyReferenceIndexes)) {
+    if (!tags[key]) continue;
+    const values = String(tags[key]).split(',');
+    const id = Number.parseInt(values[derivedEnemyReferenceIndexes[key]]);
+    if (id > 0) ids.add(id);
+  }
+  for (const key of Object.keys(tags)) {
+    const scripted = scriptedEnemyReferences.get(key);
+    if (scripted) for (const id of scripted) ids.add(id);
+  }
+  return ids;
+};
 const enemyAppearanceQueue = [...enemyAppearances.keys()];
 const processedEnemyReferences = new Set();
 while (enemyAppearanceQueue.length) {
@@ -512,10 +568,7 @@ while (enemyAppearanceQueue.length) {
   if (!sourceEnemy) continue;
   const sourceMaps = enemyAppearances.get(sourceId) || new Set();
   const sourceTags = parseTags(sourceEnemy.note);
-  for (const key of Object.keys(derivedEnemyReferenceIndexes)) {
-    if (!sourceTags[key]) continue;
-    const values = String(sourceTags[key]).split(',');
-    const targetId = Number.parseInt(values[derivedEnemyReferenceIndexes[key]]);
+  for (const targetId of directEnemyReferenceIds(sourceTags)) {
     const targetEnemy = enemiesDb[targetId];
     if (!(targetId > 0) || !targetEnemy || !nonBlank(lang.zh.enemyname && lang.zh.enemyname[targetId]) || !(targetEnemy.params || []).some(Number)) continue;
     const targetMaps = enemyAppearances.get(targetId) || new Set();
@@ -746,6 +799,32 @@ for (const mapRecord of mapRecords) {
   }
 }
 
+for (const [enemyId, locations] of scriptedEnemyTemplateLocations) {
+  if (enemySpriteCandidates.has(enemyId)) continue;
+  for (const location of locations) {
+    const map = mapCache[location.mapId];
+    const event = map && map.events && map.events[location.eventId];
+    let image = null;
+    for (const page of event && event.pages || []) {
+      if (page.image && page.image.characterName) { image = page.image; break; }
+    }
+    if (!image) continue;
+    const characterName = String(image.characterName);
+    const sourceFile = path.join(source, 'img', 'characters', characterName + '.png');
+    if (!fs.existsSync(sourceFile)) continue;
+    if (!enemySpriteCandidates.has(enemyId)) enemySpriteCandidates.set(enemyId, []);
+    enemySpriteCandidates.get(enemyId).push({
+      image: image,
+      characterName: characterName,
+      sourceFile: sourceFile,
+      mapId: location.mapId,
+      areaCode: '',
+      officialArea: false,
+      order: enemySpriteOrder++
+    });
+  }
+}
+
 const chooseEnemySprite = enemy => {
   const candidates = enemySpriteCandidates.get(enemy.id) || [];
   if (!candidates.length) return null;
@@ -780,7 +859,7 @@ for (const enemy of enemies) {
   };
 }
 
-const exStatJs = fs.readFileSync(path.join(source, 'js', 'plugins', 'ExStat.js'), 'utf8');
+const exStatJs = exStatSourceJs;
 const chartFunction = exStatJs.indexOf('function atChart()');
 const chartReturn = exStatJs.indexOf('return', chartFunction);
 const chartStart = exStatJs.indexOf('{', chartReturn);
@@ -907,17 +986,10 @@ for (const enemy of enemies) {
 }
 
 const enemyById = new Map(enemies.map(enemy => [enemy.id, enemy]));
-const enemyRelationIndexes = derivedEnemyReferenceIndexes;
 const enemyLink = enemy => ({ id: enemy.id, name: enemy.name });
 for (const enemy of enemies) {
-  const targetIds = new Set();
-  for (const key of Object.keys(enemyRelationIndexes)) {
-    if (!enemy.tags[key]) continue;
-    const values = String(enemy.tags[key]).split(',');
-    const targetId = Number.parseInt(values[enemyRelationIndexes[key]]);
-    if (targetId > 0 && targetId !== enemy.id && enemyById.has(targetId)) targetIds.add(targetId);
-  }
-  enemy.derivedEnemies = [...targetIds].map(id => enemyLink(enemyById.get(id)));
+  const targetIds = directEnemyReferenceIds(enemy.tags);
+  enemy.derivedEnemies = [...targetIds].map(id => enemyById.get(id)).filter(target => target && target.id !== enemy.id).map(enemyLink);
   enemy.derivedFrom = [];
 }
 for (const enemy of enemies) {

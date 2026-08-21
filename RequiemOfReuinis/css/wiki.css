@@ -413,6 +413,13 @@ dialog::backdrop { background: rgba(3,5,7,.72); backdrop-filter: blur(6px); }
 .architect-result { margin-top: 3px; font-size: 10px; font-style: normal; }
 .architect-result.applied { color: #9ed6c8; }
 .architect-result.unaffected { color: #aab2b6; }
+.research-discount-control { display: grid; gap: 10px; margin-top: 10px; padding: 13px 15px; border: 1px solid #4c4634; background: #171711; border-radius: 9px; }
+.research-discount-control > span { display: grid; gap: 3px; }
+.research-discount-control b { color: var(--gold-bright); font-size: 12px; }
+.research-discount-control small { color: var(--muted); font-size: 10px; line-height: 1.5; }
+.research-discount-options { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 4px; padding: 4px; border: 1px solid var(--line-soft); background: #0b1015; border-radius: 8px; }
+.research-discount-options button { min-height: 32px; border: 0; color: var(--muted); background: transparent; border-radius: 6px; cursor: pointer; font-size: 11px; }
+.research-discount-options button.active { color: #18140a; background: linear-gradient(#e4ca82,#b89342); font-weight: 800; }
 .research-cost-calculator { margin-top: 22px; }
 .research-cost-tabs { display: grid; grid-template-columns: repeat(2,1fr); gap: 4px; padding: 4px; border: 1px solid var(--line-soft); background: #0b1015; border-radius: 9px; }
 .research-cost-tabs button { min-height: 34px; border: 0; color: var(--muted); background: transparent; border-radius: 7px; cursor: pointer; font-size: 11px; }
