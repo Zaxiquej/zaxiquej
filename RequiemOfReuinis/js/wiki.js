@@ -429,7 +429,7 @@ function regularSaveArchive(fileName,raw){
  const variables=jsonExArray(variableObject._data,data);if(!variables)return null;
  let record=resolveSaveReference(variables[626],data);if(record&&Array.isArray(record['@a']))record=record['@a'];
  const statusIds=[];for(let id=1;id<=28;id++)if(record&&Object.prototype.hasOwnProperty.call(record,id)&&record[id]!==null&&record[id]!==undefined&&Number(record[id])>0)statusIds.push(id);
- const armorObject=resolveSaveReference(party._armors,data)||{},equipmentIdSet=new Set(Object.keys(armorObject).filter(key=>/^\d+$/.test(key)&&Number(armorObject[key])>0).map(normalizeArmorId).filter(Boolean));
+ const armorObject=resolveSaveReference(party._armors,data)||{},armorKeys=Object.keys(armorObject).filter(key=>/^\d+$/.test(key)),legacyNullArmorIds=new Set([328,341]),nullArmorIds=armorKeys.filter(key=>armorObject[key]===null).map(normalizeArmorId),hasOnlyLegacyNullArmors=nullArmorIds.length>0&&nullArmorIds.every(id=>legacyNullArmorIds.has(id)),equipmentIdSet=new Set(armorKeys.filter(key=>Number(armorObject[key])>0||(hasOnlyLegacyNullArmors&&armorObject[key]===null&&legacyNullArmorIds.has(normalizeArmorId(key)))).map(normalizeArmorId).filter(Boolean));
  const actorData=jsonExArray(actors._data,data)||[];
  for(const actorEntry of actorData){const actor=resolveSaveReference(actorEntry,data);for(const equipEntry of jsonExArray(actor&&actor._equips,data)||[]){const equip=resolveSaveReference(equipEntry,data);if(equip&&equip._dataClass==='armor'&&Number(equip._itemId)>0)equipmentIdSet.add(normalizeArmorId(equip._itemId))}}
  for(const armorId of jsonExArray(system._reforgedArmorAcquisitions,data)||[])if(Number(armorId)>0)equipmentIdSet.add(normalizeArmorId(armorId));
