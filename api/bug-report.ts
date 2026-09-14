@@ -3,8 +3,8 @@ import { createHash } from 'node:crypto';
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REPORTS = 5;
 // Finish with a JSON receipt before the 60-second Vercel execution deadline.
-const SHEET_TIMEOUT_MS = 45000;
-// Best-effort per-instance throttling; the sheet receipt is the durable dedupe record.
+const MAIL_TIMEOUT_MS = 20000;
+// Best-effort per-instance throttling. Identical email retries use a Resend idempotency key.
 const buckets = new Map();
 function rateLimited(ip) {
   const now = Date.now();
@@ -42,34 +42,52 @@ export default async function handler(req, res) {
   const forwarded = req.headers['x-forwarded-for'];
   const ip = typeof forwarded === 'string' ? forwarded.split(',')[0].trim() : req.socket?.remoteAddress || 'unknown';
   if (rateLimited(ip)) return res.status(429).json({ ok: false, error: 'too_many_reports' });
-  const webhook = process.env.GOOGLE_SHEET_WEBHOOK_URL;
-  if (!webhook) return res.status(503).json({ ok: false, error: 'missing_webhook' });
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return res.status(503).json({ ok: false, error: 'missing_resend_key' });
+  const email = {
+    from: process.env.RESEND_FROM || 'Cursed Ring <onboarding@resend.dev>',
+    to: ['zaxiquej@gmail.com'],
+    subject: 'Cursed Ring Bug Report',
+    text: payload.formatted_report.replace('玩家IP：由服务器记录', `玩家IP：${ip}`) +
+      '\n\n现场数据 JSON：\n' + JSON.stringify({
+        report_id: reportId, player_id: payload.player_id, run_id: payload.run_id,
+        build_id: payload.build_id, version: payload.version, state: payload.state,
+      }, null, 2),
+  };
+  const emailBody = JSON.stringify(email);
+  const sendKey = 'bug-' + reportId + '-' + createHash('sha256').update(emailBody).digest('hex');
   const controller = new AbortController();
   const startedAt = Date.now();
-  const timeout = setTimeout(() => controller.abort(), SHEET_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), MAIL_TIMEOUT_MS);
   try {
-    const target = new URL(webhook);
-    if (process.env.TELEMETRY_SECRET) target.searchParams.set('secret', process.env.TELEMETRY_SECRET);
-    const eventId = 'bug:' + reportId;
-    // Preserve the existing report and structured scene; do not send it to an email service.
-    const response = await fetch(target, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: controller.signal,
-      body: JSON.stringify({ ...payload, report_id: reportId, event_id: eventId,
-        formatted_report: payload.formatted_report.replace('玩家IP：由服务器记录', `玩家IP：${ip}`) }),
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': sendKey },
+      signal: controller.signal, body: emailBody,
     });
     const receipt = await response.json().catch((error) => {
       if (controller.signal.aborted) throw error;
       return null;
     });
-    if (!response.ok || receipt?.ok !== true || receipt?.event_id !== eventId || receipt?.dataset !== 'bug_reports') {
-      console.error('bug-report: sheet did not acknowledge', { status: response.status, reportId, elapsedMs: Date.now() - startedAt });
-      return res.status(502).json({ ok: false, error: receipt?.error === 'busy' ? 'sheet_busy' : 'sheet_not_acknowledged' });
+    if (!response.ok || typeof receipt?.id !== 'string' || !receipt.id) {
+      const name = String(receipt?.name || '');
+      const providerCode = /^[a-z][a-z0-9_]{0,63}$/.test(name) ? name : 'unknown';
+      console.error('bug-report: resend rejected', {
+        status: response.status, providerCode, reportId, elapsedMs: Date.now() - startedAt,
+      });
+      return res.status(502).json({
+        ok: false, error: response.ok ? 'resend_invalid_receipt' : 'resend_rejected',
+        provider_code: providerCode, upstream_status: response.status,
+      });
     }
-    return res.status(200).json({ ok: true, report_id: reportId, duplicate: receipt.duplicate === true });
-  } catch {
+    return res.status(200).json({ ok: true, report_id: reportId });
+  } catch (error) {
     const timedOut = controller.signal.aborted;
-    console.error('bug-report: sheet request failed', { reportId, timedOut, elapsedMs: Date.now() - startedAt });
-    return res.status(timedOut ? 504 : 502).json({ ok: false, error: timedOut ? 'sheet_timeout' : 'sheet_unavailable' });
+    const cause = String(error?.cause?.code || error?.code || '');
+    const networkCode = /^[A-Z][A-Z0-9_]{0,63}$/.test(cause) ? cause : 'unknown';
+    console.error('bug-report: resend request failed', { reportId, timedOut, networkCode, elapsedMs: Date.now() - startedAt });
+    return res.status(timedOut ? 504 : 502).json({ ok: false, error: timedOut ? 'resend_timeout' : 'resend_unavailable' });
   } finally {
     clearTimeout(timeout);
   }
