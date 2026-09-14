@@ -58,15 +58,36 @@ export default async function handler(req, res) {
       body: JSON.stringify({ ...payload, report_id: reportId, event_id: eventId, delivery: 'email',
         formatted_report: payload.formatted_report.replace('玩家IP：由服务器记录', `玩家IP：${ip}`) }),
     });
-    const receipt = await response.json().catch((error) => {
-      if (controller.signal.aborted) throw error;
-      return null;
-    });
-    if (!response.ok || receipt?.ok !== true || receipt?.event_id !== eventId || receipt?.dataset !== 'bug_reports' || receipt?.delivery !== 'email') {
-      const allowed = ['busy', 'forbidden', 'missing_secret', 'write_failed', 'invalid_event',
-        'mail_quota_exceeded', 'mail_authorization_required', 'mail_send_uncertain'];
-      const code = allowed.includes(receipt?.error) ? receipt.error : 'mail_not_acknowledged';
-      console.error('bug-report: Apps Script rejected', { code, status: response.status, reportId, elapsedMs: Date.now() - startedAt });
+    const responseText = await response.text();
+    let receipt = null;
+    try { receipt = JSON.parse(responseText.replace(/^\uFEFF/, '')); } catch {}
+    const contentType = response.headers.get('content-type') || '';
+    const allowed = ['busy', 'forbidden', 'missing_secret', 'write_failed', 'invalid_event',
+      'mail_quota_exceeded', 'mail_authorization_required', 'mail_send_uncertain', 'event_identity_conflict'];
+    let code = '';
+    if (!response.ok) code = 'mail_upstream_http_' + response.status;
+    else if (!receipt || typeof receipt !== 'object' || Array.isArray(receipt)) {
+      code = /text\/html/i.test(contentType) || /^\s*</.test(responseText)
+        ? 'mail_receipt_html' : 'mail_receipt_not_json';
+    } else if (receipt.ok !== true) {
+      code = allowed.includes(receipt.error) ? receipt.error : 'mail_receipt_rejected';
+    } else if (typeof receipt.event_id !== 'string') code = 'mail_receipt_missing_event';
+    else if (receipt.event_id !== eventId) code = 'mail_receipt_wrong_event';
+    else if (receipt.dataset !== 'bug_reports') code = 'mail_receipt_wrong_dataset';
+    else if (receipt.delivery !== 'email') code = 'mail_receipt_missing_email';
+    if (code) {
+      // Never log the raw response, redirect URL query, secret or feedback contents.
+      let responseHost = '';
+      try { responseHost = new URL(response.url).hostname; } catch {}
+      console.error('bug-report: mail receipt diagnostic v2', {
+        code, status: response.status, reportId, elapsedMs: Date.now() - startedAt,
+        contentType, responseHost, redirected: response.redirected,
+        responseLength: responseText.length,
+        ok: receipt?.ok === true,
+        eventMatches: receipt?.event_id === eventId,
+        datasetMatches: receipt?.dataset === 'bug_reports',
+        emailConfirmed: receipt?.delivery === 'email',
+      });
       return res.status(502).json({ ok: false, error: code, upstream_status: response.status });
     }
     return res.status(200).json({ ok: true, report_id: reportId, duplicate: receipt.duplicate === true });
