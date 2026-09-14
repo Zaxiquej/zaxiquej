@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto';
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REPORTS = 5;
+// Finish with a JSON receipt before the 60-second Vercel execution deadline.
+const SHEET_TIMEOUT_MS = 45000;
 // Best-effort per-instance throttling; the sheet receipt is the durable dedupe record.
 const buckets = new Map();
 function rateLimited(ip) {
@@ -43,7 +45,8 @@ export default async function handler(req, res) {
   const webhook = process.env.GOOGLE_SHEET_WEBHOOK_URL;
   if (!webhook) return res.status(503).json({ ok: false, error: 'missing_webhook' });
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 18000);
+  const startedAt = Date.now();
+  const timeout = setTimeout(() => controller.abort(), SHEET_TIMEOUT_MS);
   try {
     const target = new URL(webhook);
     if (process.env.TELEMETRY_SECRET) target.searchParams.set('secret', process.env.TELEMETRY_SECRET);
@@ -54,15 +57,19 @@ export default async function handler(req, res) {
       body: JSON.stringify({ ...payload, report_id: reportId, event_id: eventId,
         formatted_report: payload.formatted_report.replace('玩家IP：由服务器记录', `玩家IP：${ip}`) }),
     });
-    const receipt = await response.json().catch(() => null);
+    const receipt = await response.json().catch((error) => {
+      if (controller.signal.aborted) throw error;
+      return null;
+    });
     if (!response.ok || receipt?.ok !== true || receipt?.event_id !== eventId || receipt?.dataset !== 'bug_reports') {
-      console.error('bug-report: sheet did not acknowledge', { status: response.status });
+      console.error('bug-report: sheet did not acknowledge', { status: response.status, reportId, elapsedMs: Date.now() - startedAt });
       return res.status(502).json({ ok: false, error: receipt?.error === 'busy' ? 'sheet_busy' : 'sheet_not_acknowledged' });
     }
     return res.status(200).json({ ok: true, report_id: reportId, duplicate: receipt.duplicate === true });
   } catch {
-    console.error('bug-report: sheet request failed');
-    return res.status(502).json({ ok: false, error: 'sheet_unavailable' });
+    const timedOut = controller.signal.aborted;
+    console.error('bug-report: sheet request failed', { reportId, timedOut, elapsedMs: Date.now() - startedAt });
+    return res.status(timedOut ? 504 : 502).json({ ok: false, error: timedOut ? 'sheet_timeout' : 'sheet_unavailable' });
   } finally {
     clearTimeout(timeout);
   }
