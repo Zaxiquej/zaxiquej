@@ -1,0 +1,37 @@
+{
+  "version": "4.33",
+  "total": 30000,
+  "coverage": {
+    "opponentHandCopy": 130,
+    "opponentCopyTransform": 61,
+    "opponentDeckCopy": 124
+  },
+  "types": [
+    "spell",
+    "follower",
+    "amulet"
+  ],
+  "timings": [
+    "法术",
+    "自己的回合结束时",
+    "超进化时",
+    "爆能强化",
+    "进化时",
+    "入场曲",
+    "谢幕曲",
+    "启动",
+    "攻击时"
+  ],
+  "amounts": [
+    1,
+    2,
+    3
+  ],
+  "mixed": 310,
+  "paidBodies": 10,
+  "examples": {
+    "opponentHandCopy": "对手复制233",
+    "opponentCopyTransform": "对手复制704",
+    "opponentDeckCopy": "对手复制1723"
+  }
+}

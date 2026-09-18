@@ -1,0 +1,43 @@
+{
+  "version": "4.26",
+  "dragons": 3736,
+  "ramp": 322,
+  "discard": 221,
+  "early": 318,
+  "discardEffects": [
+    "ramp",
+    "typeSearch",
+    "damage",
+    "heal",
+    "draw",
+    "tokenHand",
+    "tribeSupply",
+    "tribeEvolve",
+    "tokenSummon",
+    "aoe",
+    "selfCopy",
+    "destroy",
+    "face",
+    "buff",
+    "allyBuff",
+    "handCycleTutor",
+    "handCycle",
+    "banish",
+    "handRefresh",
+    "handRefill",
+    "splitDamage",
+    "selfEvolve",
+    "tribeBuff",
+    "teamBuff",
+    "keywordSearch",
+    "grantRush"
+  ],
+  "types": [
+    "follower",
+    "spell"
+  ],
+  "examples": {
+    "ramp": "龙族校准17",
+    "discard": "龙族校准17"
+  }
+}

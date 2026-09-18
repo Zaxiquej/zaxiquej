@@ -1,0 +1,75 @@
+{
+  "version": "4.38",
+  "counts": {
+    "follower": 35928,
+    "spell": 12024,
+    "amulet": 12048
+  },
+  "coverage": {
+    "faith": 118,
+    "selfCopy": 1549,
+    "storm": 2191,
+    "cheapStorm": 615,
+    "countdown": 4706,
+    "permanent": 7342,
+    "activation": 10071,
+    "paidAct": 8498,
+    "freeAct": 1573,
+    "breakAct": 4574,
+    "repeatAct": 5497,
+    "acceleration": 2660,
+    "actReplay": 34,
+    "spellMode": 1422,
+    "amuletMode": 1116,
+    "spellEnhance": 855,
+    "amuletEnhance": 207,
+    "spellboost": 113,
+    "spellEmblem": 316,
+    "amuletEngine": 1602,
+    "soil": 274,
+    "zeroAmulet": 233
+  },
+  "rates": {
+    "faith": 0.0032843464707192163,
+    "selfCopy": 0.043114005789356494,
+    "storm": 0.060983077265642394
+  },
+  "structures": {
+    "spell": 2993,
+    "amulet": 5951
+  },
+  "budgetUse": {
+    "spell": {
+      "mean": 0.9075240716925345,
+      "highCostBelowHalf": 0
+    },
+    "amulet": {
+      "mean": 0.8195619786254127,
+      "highCostBelowHalf": 0
+    }
+  },
+  "examples": {
+    "permanent": "全类型验证4",
+    "activation": "全类型验证4",
+    "paidAct": "全类型验证4",
+    "repeatAct": "全类型验证4",
+    "breakAct": "全类型验证5",
+    "amuletEngine": "全类型验证8",
+    "storm": "全类型验证10",
+    "cheapStorm": "全类型验证10",
+    "freeAct": "全类型验证21",
+    "spellMode": "全类型验证23",
+    "selfCopy": "全类型验证33",
+    "spellEnhance": "全类型验证35",
+    "countdown": "全类型验证36",
+    "acceleration": "全类型验证36",
+    "amuletMode": "全类型验证51",
+    "spellEmblem": "全类型验证62",
+    "zeroAmulet": "全类型验证188",
+    "spellboost": "全类型验证212",
+    "soil": "全类型验证226",
+    "faith": "全类型验证548",
+    "amuletEnhance": "全类型验证613",
+    "actReplay": "全类型验证832"
+  }
+}

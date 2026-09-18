@@ -1,0 +1,1378 @@
+{
+  "source": "https://shadowverse-wb.com/web/CardList/cardList",
+  "retrieved": "2026-09-18T00:27:23.510Z",
+  "mechanisms": {
+    "ward": {
+      "class": 6,
+      "followers": 2,
+      "cards": [
+        {
+          "id": 10162110,
+          "name": "煌枪魔兔·萨莉沙",
+          "type": 1,
+          "cost": 2,
+          "text": "自己的拥有【守护】的随从被破坏时，本随从+1/+1。\n\n【进化时】本随从获得【屏障】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10162110"
+        },
+        {
+          "id": 10262310,
+          "name": "神圣守护",
+          "type": 4,
+          "cost": 1,
+          "text": "选择自己的战场上的1个拥有【守护】的随从，使其+0/+1。对对手的战场上的随机1个随从造成X点伤害。X为选择的随从的生命值。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10262310"
+        },
+        {
+          "id": 10562210,
+          "name": "穹顶护甲",
+          "type": 2,
+          "cost": 2,
+          "text": "【启动】破坏本卡牌。抽取X张卡牌。X为自己的战场上的拥有【守护】的随从的张数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10562210"
+        },
+        {
+          "id": 10564110,
+          "name": "思念的《力量》·索菲娜",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】【模式】选择1个能力发动。\n（1）本随从进化。\n（2）使自己的战场上的随机1个「拥有【守护】的进化前的其他随从」进化，使其+1/+1。\n\n【守护】\n自己的回合结束时，若本随从为进化后，则使战场上的其他所有随从-1/-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10564110"
+        }
+      ]
+    },
+    "amulet": {
+      "class": 6,
+      "followers": 18,
+      "cards": [
+        {
+          "id": 10061210,
+          "name": "投影鸟像",
+          "type": 3,
+          "cost": 4,
+          "text": "【吟唱 2】\n【谢幕曲】召唤1个『壮丽大神隼』。\n\n费用2【启动】本护符的倒计数-2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10061210"
+        },
+        {
+          "id": 10062120,
+          "name": "神圣狮鹫",
+          "type": 1,
+          "cost": 8,
+          "text": "【守护】\n自己【启动】护符时，本随从获得【疾驰】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10062120"
+        },
+        {
+          "id": 10062210,
+          "name": "羽翼石像",
+          "type": 3,
+          "cost": 1,
+          "text": "【吟唱 4】\n【谢幕曲】召唤1个『神圣猎鹰』。\n\n费用1【启动】本护符的倒计数-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10062210"
+        },
+        {
+          "id": 10161110,
+          "name": "圣心光棱牧师",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】抽取1张护符。\n\n【进化时】选择自己的手牌中的1张护符，使其费用-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10161110"
+        },
+        {
+          "id": 10161140,
+          "name": "潜伏的曼纽",
+          "type": 1,
+          "cost": 2,
+          "text": "【灵气】\n自己【启动】护符时，回合结束前，本随从+1/+0。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10161140"
+        },
+        {
+          "id": 10161210,
+          "name": "祥和的教会",
+          "type": 3,
+          "cost": 1,
+          "text": "【吟唱 3】\n【谢幕曲】抽取2张卡牌。\n\n费用1【启动】本护符的倒计数-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10161210"
+        },
+        {
+          "id": 10162130,
+          "name": "大地守护神·米维",
+          "type": 1,
+          "cost": 7,
+          "text": "【守护】\n【谢幕曲】召唤随机1张与本次对战中被破坏的原始费用最大的自己的护符同名的护符。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10162130"
+        },
+        {
+          "id": 10163110,
+          "name": "终焉的白骨圣堂之主",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】破坏自己的战场上的所有护符。对对手的战场上的所有随从和对手的主战者造成X点伤害。X为因本能力破坏的张数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10163110"
+        },
+        {
+          "id": 10163210,
+          "name": "野兽公主的誓约",
+          "type": 3,
+          "cost": 2,
+          "text": "【吟唱 2】\n【谢幕曲】召唤1个『圣炎猛虎』。\n\n费用1【启动】本护符的倒计数-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10163210"
+        },
+        {
+          "id": 10164110,
+          "name": "裁决的安纳提玛·罗德欧",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】选择自己的1张手牌，舍弃该手牌。召唤随机3种自己的牌组中费用为3或以下的护符。\n\n【超进化时】破坏对手的战场上的随机1个攻击力最大的随从。对对手的战场上的所有随从造成1点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10164110"
+        },
+        {
+          "id": 10262110,
+          "name": "弹幕驱魔人·珂蕾特",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】发动1次「对对手的战场上的随机1个随从造成2点伤害」。若自己的战场上的护符的张数为2张或以上，则改为发动2次。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10262110"
+        },
+        {
+          "id": 10263110,
+          "name": "速断之刃·阿尼耶丝",
+          "type": 1,
+          "cost": 5,
+          "text": "【疾驰】\n【攻击时】若自己的战场上的护符的张数为2张或以上，则破坏对手的战场上的随机1个非交战对手的随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10263110"
+        },
+        {
+          "id": 10362210,
+          "name": "安息的神殿",
+          "type": 3,
+          "cost": 3,
+          "text": "【吟唱 4】\n【谢幕曲】回复自己的主战者2点生命值。使自己的主战者获得【屏障】。\n\n【启动】本护符的倒计数-X。X为自己的纹章数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10362210"
+        },
+        {
+          "id": 10362220,
+          "name": "羽翼狮子像",
+          "type": 3,
+          "cost": 3,
+          "text": "【吟唱 3】\n【谢幕曲】召唤1个『神圣猎鹰』和1个『圣炎猛虎』。\n\n费用1【启动】本护符的倒计数-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10362220"
+        },
+        {
+          "id": 10363210,
+          "name": "闪耀的失意",
+          "type": 3,
+          "cost": 4,
+          "text": "【吟唱 4】\n【谢幕曲】对对手的战场上的所有随从和对手的主战者分配4点伤害。回复自己的主战者4点生命值。\n\n【启动】本护符的倒计数-X。X为自己的纹章数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10363210"
+        },
+        {
+          "id": 10461110,
+          "name": "英雄幻视·托路",
+          "type": 1,
+          "cost": 3,
+          "text": "【疾驰】\n自己【启动】护符时，本随从获得【虹吸】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10461110"
+        },
+        {
+          "id": 10462210,
+          "name": "骑驰天空之艇",
+          "type": 2,
+          "cost": 4,
+          "text": "在手牌中发动。自己【启动】护符时，使本卡牌的费用-1。\n\n【启动】破坏本卡牌。选择自己的战场上的1个进化前的随从，使其进化。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10462210"
+        },
+        {
+          "id": 10463110,
+          "name": "魔杖傍身的外科医生·缇可",
+          "type": 1,
+          "cost": 1,
+          "text": "自己【启动】护符时，回复自己的主战者1点生命值。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10463110"
+        },
+        {
+          "id": 10661210,
+          "name": "污浊的圣水",
+          "type": 3,
+          "cost": 2,
+          "text": "【吟唱 3】\n【谢幕曲】抽取1张卡牌。破坏对手的战场上的随机1个随从。\n\n费用1【启动】本护符的倒计数-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10661210"
+        },
+        {
+          "id": 10661310,
+          "name": "天书授予",
+          "type": 4,
+          "cost": 3,
+          "text": "抽取2张护符。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10661310"
+        },
+        {
+          "id": 10662210,
+          "name": "救赎的圣典",
+          "type": 3,
+          "cost": 2,
+          "text": "【吟唱 4】\n【谢幕曲】抽取2张卡牌。对对手的战场上的所有随从造成2点伤害。回复自己的主战者2点生命值。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10662210"
+        },
+        {
+          "id": 10663210,
+          "name": "崇高的天书",
+          "type": 3,
+          "cost": 4,
+          "text": "【入场曲】选择战场上的1张其他卡牌，破坏该卡牌。若选择了自己的护符，则回复自己2点能量点。\n\n【吟唱 2】\n【谢幕曲】召唤随机1张与本次对战中被破坏的「原始费用为2或以下的拥有【谢幕曲】的自己的护符」同名的护符。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10663210"
+        },
+        {
+          "id": 10664110,
+          "name": "崇高的憎恶·康蒂玛",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】召唤随机2种与本次对战中被破坏的「原始费用为2或以下的拥有【谢幕曲】的自己的护符」同名的护符各1张。\n\n【超进化时】选择战场上的1张其他卡牌，破坏该卡牌。若选择了自己的护符，则对对手的战场上的所有随从造成3点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10664110"
+        },
+        {
+          "id": 10761110,
+          "name": "营利支援者",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】若自己的战场上的护符的张数为3张或以上，则召唤1个『营利支援者』。\n\n【突进】\n【谢幕曲】抽取1张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10761110"
+        },
+        {
+          "id": 10761120,
+          "name": "广域传教士",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】抽取2张护符。\n\n【进化时】对对手的战场上的所有随从造成X点伤害。X为自己的手牌中的护符的张数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10761120"
+        },
+        {
+          "id": 10762110,
+          "name": "神圣策划人",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】若自己的战场上的护符的张数为3张或以上，则选择对手的战场上的1个随从，对其造成5点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10762110"
+        },
+        {
+          "id": 10762120,
+          "name": "传言圣鸟",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】选择对手的战场上的1个随从，使其消失。若自己的战场上的护符的张数为3张或以上，则回复自己的主战者3点生命值。\n\n【疾驰】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10762120"
+        },
+        {
+          "id": 10763110,
+          "name": "审理的守卫",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】若自己的战场上的护符的张数为3张或以上，则本随从进化。本随从获得【屏障】。\n\n【守护】\n【谢幕曲】回复自己的主战者3点生命值。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10763110"
+        },
+        {
+          "id": 10764120,
+          "name": "崇拜经理人·伊尼西雅",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】选择对手的战场上的1个随从，使其消失。若自己的战场上的护符的张数为3张或以上，则回复自己的主战者3点生命值。\n\n【守护】\n【灵气】\n\n【超进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10764120"
+        },
+        {
+          "id": 10863210,
+          "name": "同窗好友",
+          "type": 3,
+          "cost": 2,
+          "text": "【吟唱 2】\n自己的回合结束时，抽取1张卡牌。若自己的战场上有进化后的随从，则回复自己的主战者1点生命值。若自己的战场上有超进化后的随从，则改为回复2点。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10863210"
+        },
+        {
+          "id": 10961210,
+          "name": "咆哮圣堂",
+          "type": 3,
+          "cost": 2,
+          "text": "【吟唱 3】\n【谢幕曲】召唤1个『圣炎猛虎』。对对手的战场上的随机1个随从造成4点伤害。\n\n费用3【启动】本护符的倒计数-3。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10961210"
+        },
+        {
+          "id": 10964120,
+          "name": "翼天的变貌·奥梅里欧",
+          "type": 1,
+          "cost": 6,
+          "text": "自己的护符被破坏时，按顺序发动以下1个能力。\n（1）对对手的战场上的随机2个随从造成3点伤害。\n（2）回复自己的主战者2点生命值。\n（3）召唤1个『神圣猎鹰』。\n\n【进化时】破坏自己的战场上的所有护符。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10964120"
+        }
+      ]
+    },
+    "artifactCopy": {
+      "class": 7,
+      "followers": 4,
+      "cards": [
+        {
+          "id": 10172320,
+          "name": "改境的重启",
+          "type": 4,
+          "cost": 5,
+          "text": "选择自己的手牌中的2张费用为5或以下的创造物·随从，召唤对应数量的复制随从，使其获得「对手的回合结束时，破坏本卡牌」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10172320"
+        },
+        {
+          "id": 10173140,
+          "name": "改境的天宫·阿洛艾特",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】将1张『未来核心』和1张『过往核心』加入手牌。\n\n【进化时】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10173140"
+        },
+        {
+          "id": 10174130,
+          "name": "增幅加速·洛拉米亚",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】选择自己的手牌中的3张费用为5或以下的创造物·随从，召唤对应数量的复制随从。\n\n【超进化时】使自己的战场上的所有创造物·随从+1/+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10174130"
+        },
+        {
+          "id": 10271210,
+          "name": "创造物弹射器",
+          "type": 2,
+          "cost": 1,
+          "text": "【入场曲】将1张『未来核心』和1张『过往核心』加入手牌。\n\n费用3【启动】破坏本卡牌。选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从，使其获得「对手的回合结束时，破坏本卡牌」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10271210"
+        },
+        {
+          "id": 10274120,
+          "name": "精神武艺·迦尔拉",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。\n\n【超进化时】本随从获得「1回合可以攻击2次」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10274120"
+        },
+        {
+          "id": 10572110,
+          "name": "新时代地理学者",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】将1张『毁灭创造物β』加入手牌。\n\n【超进化时】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10572110"
+        }
+      ]
+    },
+    "artifact": {
+      "class": 7,
+      "followers": 26,
+      "cards": [
+        {
+          "id": 10171120,
+          "name": "钢铁佣兵·迪尔克",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】召唤1个『城堡创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10171120"
+        },
+        {
+          "id": 10172110,
+          "name": "抗争领袖·露琪娜",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】将1张『未来核心』和1张『过往核心』加入手牌。\n\n【进化时】召唤1个『攻击创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10172110"
+        },
+        {
+          "id": 10172320,
+          "name": "改境的重启",
+          "type": 4,
+          "cost": 5,
+          "text": "选择自己的手牌中的2张费用为5或以下的创造物·随从，召唤对应数量的复制随从，使其获得「对手的回合结束时，破坏本卡牌」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10172320"
+        },
+        {
+          "id": 10173140,
+          "name": "改境的天宫·阿洛艾特",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】将1张『未来核心』和1张『过往核心』加入手牌。\n\n【进化时】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10173140"
+        },
+        {
+          "id": 10174130,
+          "name": "增幅加速·洛拉米亚",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】选择自己的手牌中的3张费用为5或以下的创造物·随从，召唤对应数量的复制随从。\n\n【超进化时】使自己的战场上的所有创造物·随从+1/+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10174130"
+        },
+        {
+          "id": 10271110,
+          "name": "引擎剑士",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】召唤1个『攻击创造物』。将1张『过往核心』加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10271110"
+        },
+        {
+          "id": 10271210,
+          "name": "创造物弹射器",
+          "type": 2,
+          "cost": 1,
+          "text": "【入场曲】将1张『未来核心』和1张『过往核心』加入手牌。\n\n费用3【启动】破坏本卡牌。选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从，使其获得「对手的回合结束时，破坏本卡牌」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10271210"
+        },
+        {
+          "id": 10272310,
+          "name": "伊卡洛斯的飞翔",
+          "type": 4,
+          "cost": 1,
+          "text": "选择自己的手牌中的1张创造物·随从，使其获得【突进】和「【谢幕曲】抽取1张卡牌」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10272310"
+        },
+        {
+          "id": 10273110,
+          "name": "暗狱的余晖·贾丝珀",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】将1张『过往核心』加入手牌。\n\n【进化时】选择自己的手牌中的1张创造物·随从，使其获得【守护】和「不会被能力破坏」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10273110"
+        },
+        {
+          "id": 10274120,
+          "name": "精神武艺·迦尔拉",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。\n\n【超进化时】本随从获得「1回合可以攻击2次」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10274120"
+        },
+        {
+          "id": 10371120,
+          "name": "音速飞行兵",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】召唤1个『毁灭创造物γ』。\n\n【进化时】选择自己的战场上的1个创造物·随从，使其+3/+3。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10371120"
+        },
+        {
+          "id": 10471130,
+          "name": "报恩工匠·艾萨克",
+          "type": 1,
+          "cost": 2,
+          "text": "【谢幕曲】将1张『攻击创造物』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10471130"
+        },
+        {
+          "id": 10473110,
+          "name": "向往天空的回归者·卡西乌斯",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】选择自己的手牌中的1张创造物·随从，对对手的战场上的所有随从造成X点伤害。X为选择的随从的攻击力。\n\n【谢幕曲】将1张『城堡创造物』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10473110"
+        },
+        {
+          "id": 10572110,
+          "name": "新时代地理学者",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】将1张『毁灭创造物β』加入手牌。\n\n【超进化时】选择自己的手牌中的1张费用为5或以下的创造物·随从，召唤对应数量的复制随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10572110"
+        },
+        {
+          "id": 10671120,
+          "name": "聪明的创造者",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】召唤1个『毁灭创造物α』，使其获得【毁灭】和【守护】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10671120"
+        },
+        {
+          "id": 10771110,
+          "name": "个性店主",
+          "type": 1,
+          "cost": 4,
+          "text": "自己的创造物·随从进入战场时，回复自己的主战者1点生命值。\n\n【进化时】召唤1个『神秘的创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10771110"
+        },
+        {
+          "id": 10771120,
+          "name": "炫酷舞者",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】召唤1个『炫酷舞者』。若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则改为召唤2个。\n\n【突进】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10771120"
+        },
+        {
+          "id": 10771310,
+          "name": "跑酷",
+          "type": 4,
+          "cost": 1,
+          "text": "【模式】选择1个能力发动。若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则改为发动所有能力。\n（1）将1张『解析的创造物』加入手牌。\n（2）将1张『古老的创造物』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10771310"
+        },
+        {
+          "id": 10772110,
+          "name": "悠然的滑手",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】将1张『古老的创造物』加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10772110"
+        },
+        {
+          "id": 10772120,
+          "name": "大胆的涂鸦师",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则召唤1个『古老的创造物』和1个『神秘的创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10772120"
+        },
+        {
+          "id": 10773110,
+          "name": "狂野播报员",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】召唤1个『解析的创造物』。\n【爆能强化 5】召唤1个『神秘的创造物』。\n\n自己的创造物·随从进入战场时，使其获得【突进】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10773110"
+        },
+        {
+          "id": 10773310,
+          "name": "瞬移斩击",
+          "type": 4,
+          "cost": 3,
+          "text": "对对手的战场上的所有随从造成X点伤害。X为本次对战中进入战场的自己的创造物·随从的种类。对对手的主战者造成1点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10773310"
+        },
+        {
+          "id": 10774110,
+          "name": "虚刻的安纳提玛·斯卡雷特",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】对对手的战场上的所有随从造成X点伤害。X为本次对战中进入战场的自己的创造物·随从的种类。\n\n【疾驰】\n【守护】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10774110"
+        },
+        {
+          "id": 10774120,
+          "name": "奋厉追赶·米乌",
+          "type": 1,
+          "cost": 4,
+          "text": "自己的创造物·随从进入战场时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】召唤1个『古老的创造物』。\n【超进化时】之后，若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则本随从获得【疾驰】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10774120"
+        },
+        {
+          "id": 10871130,
+          "name": "器械操纵者·吉尔克",
+          "type": 1,
+          "cost": 1,
+          "text": "【入场曲】将随机1张与本次对战中被破坏的自己的创造物·随从同名的卡牌以非公开形式加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10871130"
+        },
+        {
+          "id": 10872110,
+          "name": "人造的馈赠·蕾拉",
+          "type": 1,
+          "cost": 4,
+          "text": "【突进】\n【谢幕曲】将1张『古老的创造物』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10872110"
+        },
+        {
+          "id": 10872120,
+          "name": "门扉接续者·拉姿莉",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】将1张『绚烂的创造物』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10872120"
+        },
+        {
+          "id": 10873110,
+          "name": "知恩图报·米莉亚姆",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。召唤1个『绚烂的创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10873110"
+        },
+        {
+          "id": 10873310,
+          "name": "开辟未来",
+          "type": 4,
+          "cost": 3,
+          "text": "选择对手的战场上的1个随从，对其造成6点伤害。若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则回复自己1点进化点。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10873310"
+        },
+        {
+          "id": 10874120,
+          "name": "你的前辈·欧丝",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】将1张『解析的创造物』加入手牌。\n\n【进化时】选择自己的战场上的1个进化前的其他随从，使其进化。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10874120"
+        },
+        {
+          "id": 10971120,
+          "name": "双子无人机少女",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】召唤1个『解析的创造物』。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10971120"
+        },
+        {
+          "id": 10971310,
+          "name": "次元选定",
+          "type": 4,
+          "cost": 6,
+          "text": "【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从造成5点伤害。\n（2）召唤2个『神秘的创造物』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10971310"
+        },
+        {
+          "id": 10974120,
+          "name": "弹哭的变貌·艾兹伊甸",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】召唤1个『击针看守』。\n\n自己的创造物·随从进入战场时，破坏对手的战场上的随机1个随从。\n\n【超进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10974120"
+        }
+      ]
+    },
+    "lowHealth": {
+      "class": 5,
+      "followers": 1,
+      "cards": [
+        {
+          "id": 10954120,
+          "name": "伽罗塔德 对 泽特",
+          "type": 1,
+          "cost": 8,
+          "text": "在手牌中发动。自己的回合结束时，若自己的主战者的生命值为12或以下，则使本卡牌的费用-1。\n\n【入场曲】【模式】选择1个能力发动。\n（1）本随从获得【疾驰】。对自己的主战者造成2点伤害。\n（2）本随从获得【守护】。对对手的战场上的所有随从造成8点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10954120"
+        }
+      ]
+    },
+    "selfDamage": {
+      "class": 5,
+      "followers": 11,
+      "cards": [
+        {
+          "id": 10051120,
+          "name": "黑夜鬼人",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】对自己的主战者造成1点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10051120"
+        },
+        {
+          "id": 10151110,
+          "name": "午夜眷属·埃拉尔",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】召唤1个『蝙蝠』。\n\n自己的『蝙蝠』进入战场时，使其获得【疾驰】。对自己的主战者造成1点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10151110"
+        },
+        {
+          "id": 10151150,
+          "name": "禁约恶魔",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】抽取2张卡牌。对自己的主战者造成2点伤害。\n\n【进化时】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10151150"
+        },
+        {
+          "id": 10152120,
+          "name": "梦魇·维莉",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】对自己的主战者造成3点伤害。\n\n【进化时】回复自己的主战者5点生命值。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10152120"
+        },
+        {
+          "id": 10153310,
+          "name": "蛇神之怒",
+          "type": 4,
+          "cost": 2,
+          "text": "选择对手的战场上的1个随从或对手的主战者，对其造成3点伤害。对自己的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10153310"
+        },
+        {
+          "id": 10251110,
+          "name": "银色子弹·雷文",
+          "type": 1,
+          "cost": 5,
+          "text": "【毁灭】\n\n【进化时】选择对手的战场上的2个随从，破坏这些随从。对自己的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10251110"
+        },
+        {
+          "id": 10253120,
+          "name": "夜曲将军·艾瑟拉",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】本随从+X/+0。X为自己的战场上的其他随从的张数。对自己的主战者造成2点伤害。\n\n【疾驰】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10253120"
+        },
+        {
+          "id": 10351120,
+          "name": "泡沫鬼姬",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】选择对手的战场上的2个随从，破坏这些随从。对自己的主战者造成4点伤害。\n\n【疾驰】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10351120"
+        },
+        {
+          "id": 10451120,
+          "name": "不屈利刃·巴萨拉卡",
+          "type": 1,
+          "cost": 6,
+          "text": "【威慑】\n【谢幕曲】召唤1个『不屈利刃·巴萨拉卡』。对自己的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10451120"
+        },
+        {
+          "id": 10451310,
+          "name": "妖异利刃",
+          "type": 4,
+          "cost": 2,
+          "text": "对自己的主战者造成2点伤害。使自己获得『纹章：妖异利刃』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10451310"
+        },
+        {
+          "id": 10453110,
+          "name": "生与死之技·涅槃",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】使自己的战场上的所有进化前的随从进化。对自己的主战者造成2点伤害。\n\n【虹吸】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10453110"
+        },
+        {
+          "id": 10651110,
+          "name": "渴望的恶魔",
+          "type": 1,
+          "cost": 2,
+          "text": "【谢幕曲】抽取1张卡牌。对自己的主战者造成1点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10651110"
+        },
+        {
+          "id": 10954120,
+          "name": "伽罗塔德 对 泽特",
+          "type": 1,
+          "cost": 8,
+          "text": "在手牌中发动。自己的回合结束时，若自己的主战者的生命值为12或以下，则使本卡牌的费用-1。\n\n【入场曲】【模式】选择1个能力发动。\n（1）本随从获得【疾驰】。对自己的主战者造成2点伤害。\n（2）本随从获得【守护】。对对手的战场上的所有随从造成8点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10954120"
+        }
+      ]
+    },
+    "rally": {
+      "class": 2,
+      "followers": 3,
+      "cards": [
+        {
+          "id": 10224110,
+          "name": "静寂的安纳提玛·吉尔达利娅",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】【协作 20】本随从超进化。\n\n自己的其他随从进入战场时，对对手的战场上的所有随从造成1点伤害。\n\n本随从进化时，召唤2个『铁甲骑士』，使其获得【突进】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10224110"
+        },
+        {
+          "id": 10721310,
+          "name": "敌我的调律",
+          "type": 4,
+          "cost": 1,
+          "text": "选择对手的战场上的1个随从，对其造成3点伤害。【协作 10】对手的回合结束前，使其获得「无法攻击随从或主战者」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10721310"
+        },
+        {
+          "id": 10722310,
+          "name": "无音的包围",
+          "type": 4,
+          "cost": 1,
+          "text": "将1张『铁甲骑士』加入手牌，使其获得【突进】。【协作 10】改为2张。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10722310"
+        },
+        {
+          "id": 10723310,
+          "name": "带来静寂的拔刀",
+          "type": 4,
+          "cost": 3,
+          "text": "选择对手的战场上的1个随从，对其造成6点伤害。【协作 10】对对手的战场上的所有随从造成X点伤害。X为自己的战场上的随从的张数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10723310"
+        },
+        {
+          "id": 10724110,
+          "name": "统音的安纳提玛·吉尔达利娅",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】【协作 20】使自己获得『纹章：统音的安纳提玛·吉尔达利娅』。本随从进化。\n\n自己的其他随从进入战场时，若为自己的回合，则使其获得【突进】。\n\n本随从进化时，召唤2个『铁甲骑士』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10724110"
+        },
+        {
+          "id": 10824110,
+          "name": "天命的子弹·巴妮&巴隆",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】召唤1个『天命的子弹·巴妮&巴隆』。【协作 20】对对手的主战者造成4点伤害。\n\n【突进】\n\n【进化时】将1张『亡命者的枪击』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10824110"
+        }
+      ]
+    },
+    "spellboost": {
+      "class": 3,
+      "followers": 21,
+      "cards": [
+        {
+          "id": 10031110,
+          "name": "闪光魔法剑士",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】【模式】选择1个能力发动。\n（1）使自己的所有手牌发动2次魔力增幅。\n（2）【土之秘术 1】本随从+2/+2且获得【守护】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10031110"
+        },
+        {
+          "id": 10032120,
+          "name": "魔焰毁灭者",
+          "type": 1,
+          "cost": 10,
+          "text": "【魔力增幅时】使本卡牌的费用-1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10032120"
+        },
+        {
+          "id": 10131110,
+          "name": "符文剑操控师",
+          "type": 1,
+          "cost": 5,
+          "text": "【魔力增幅时】本随从+1/+1。\n\n【入场曲】选择对手的战场上的1个随从，对其造成X点伤害。X为本随从的攻击力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131110"
+        },
+        {
+          "id": 10131140,
+          "name": "追梦的企鹅魔法师",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】抽取2张卡牌。\n\n【进化时】使自己的所有手牌发动2次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131140"
+        },
+        {
+          "id": 10131310,
+          "name": "彩虹奇迹",
+          "type": 4,
+          "cost": 2,
+          "text": "选择自己的手牌中的1张拥有【魔力增幅时】的卡牌，使其发动1次魔力增幅。抽取1张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131310"
+        },
+        {
+          "id": 10131320,
+          "name": "暴风破",
+          "type": 4,
+          "cost": 1,
+          "text": "X起始为2。\n【魔力增幅时】使本卡牌的X+1。\n\n选择对手的战场上的1个随从，对其造成X点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131320"
+        },
+        {
+          "id": 10132110,
+          "name": "惹人怜爱的教师·米兰",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】使自己的所有手牌发动1次魔力增幅。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。使自己的所有手牌发动1次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10132110"
+        },
+        {
+          "id": 10132120,
+          "name": "奇迹女巫·爱蜜儿",
+          "type": 1,
+          "cost": 5,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n【进化时】召唤1个『泥尘巨像』。对对手的战场上的所有随从造成X点伤害。X为自己的战场上的巨像·随从的张数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10132120"
+        },
+        {
+          "id": 10132130,
+          "name": "玛纳利亚的学生·威廉",
+          "type": 1,
+          "cost": 6,
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。\n\n【入场曲】对对手的战场上的所有随从造成X点伤害。\n\n【进化时】使自己的所有手牌发动2次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10132130"
+        },
+        {
+          "id": 10132320,
+          "name": "雪人觉醒",
+          "type": 4,
+          "cost": 8,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n选择对手的战场上的1个随从，使其生命值变为1。对手的回合结束前，使其获得「无法攻击随从或主战者」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10132320"
+        },
+        {
+          "id": 10133310,
+          "name": "做作业啦！",
+          "type": 4,
+          "cost": 3,
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。之后，若X为5或以上，则本卡牌变身为『有所成长了！』。\n\n抽取2张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10133310"
+        },
+        {
+          "id": 10133320,
+          "name": "唤鬼术",
+          "type": 4,
+          "cost": 7,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n召唤1个『式神·暴鬼』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10133320"
+        },
+        {
+          "id": 10134120,
+          "name": "玛纳利亚密友·安&古蕾雅",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】召唤1个『安的巨大英灵』。使自己的所有手牌发动3次魔力增幅。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10134120"
+        },
+        {
+          "id": 10134310,
+          "name": "超越次元",
+          "type": 4,
+          "cost": 18,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n使自己的所有手牌返回牌组。抽取5张卡牌。使自己的所有手牌发动5次魔力增幅。回复自己的能量点至上限。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10134310"
+        },
+        {
+          "id": 10232310,
+          "name": "混沌赤焰",
+          "type": 4,
+          "cost": 3,
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。\n\n对对手的战场上的所有随从分配X点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10232310"
+        },
+        {
+          "id": 10233110,
+          "name": "玛纳利亚剑士·欧文",
+          "type": 1,
+          "cost": 3,
+          "text": "【守护】\n【交战时】使自己的所有手牌发动1次魔力增幅。\n\n【进化时】抽取2张随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10233110"
+        },
+        {
+          "id": 10431120,
+          "name": "流浪的家庭教师·斯芙拉玛尔",
+          "type": 1,
+          "cost": 1,
+          "text": "自己的回合结束时，使自己的所有手牌发动X次魔力增幅。X为本随从的攻击力。\n\n【进化时】本随从获得「无法攻击随从或主战者」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10431120"
+        },
+        {
+          "id": 10434110,
+          "name": "水之法则·瓦姆杜斯",
+          "type": 1,
+          "cost": 3,
+          "text": "【魔力增幅时】本随从+1/+1。\n\n【入场曲】使自己的所有手牌发动1次魔力增幅。\n\n【超进化时】【模式】选择1个能力发动。\n（1）使自己的战场上的其他所有随从获得【屏障】。\n（2）对对手的战场上的所有随从分配X点伤害。X为本随从的攻击力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10434110"
+        },
+        {
+          "id": 10531120,
+          "name": "流动控符师",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】对对手的战场上的随机3个随从造成3点伤害。使自己的所有手牌发动3次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10531120"
+        },
+        {
+          "id": 10532120,
+          "name": "余韵俳谐师",
+          "type": 1,
+          "cost": 6,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n【入场曲】抽取1张卡牌。\n\n【谢幕曲】使自己的所有手牌发动1次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10532120"
+        },
+        {
+          "id": 10534120,
+          "name": "明越花·阿罗",
+          "type": 1,
+          "cost": 10,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n【入场曲】选择对手的战场上的1个随从，对其造成10点伤害。\n\n【进化时】选择战场上的1个其他随从，使其变身为『壮丽大神隼』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10534120"
+        },
+        {
+          "id": 10632120,
+          "name": "冒险魔导书",
+          "type": 1,
+          "cost": 3,
+          "text": "【爆能强化 6】召唤2个『冒险魔导书』。\n\n【突进】\n【谢幕曲】使自己的所有手牌发动1次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10632120"
+        },
+        {
+          "id": 10831110,
+          "name": "森绿的恩惠·喵鲁&圆滚滚2号&吉娜",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成1点伤害。使自己的所有手牌发动1次魔力增幅。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10831110"
+        },
+        {
+          "id": 10831310,
+          "name": "暴风破",
+          "type": 4,
+          "cost": 1,
+          "text": "X起始为2。\n【魔力增幅时】使本卡牌的X+1。\n\n选择对手的战场上的1个随从，对其造成X点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10831310"
+        },
+        {
+          "id": 10832110,
+          "name": "快乐绽花·萨米&玛莉",
+          "type": 1,
+          "cost": 5,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n【入场曲】抽取2张卡牌。对手抽取1张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10832110"
+        },
+        {
+          "id": 10832310,
+          "name": "其乐融融的团聚",
+          "type": 4,
+          "cost": 2,
+          "text": "回复自己的主战者2点生命值。使自己的所有手牌发动1次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10832310"
+        },
+        {
+          "id": 10833310,
+          "name": "钢铁的小憩",
+          "type": 4,
+          "cost": 3,
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。\n\n抽取2张卡牌。若X为5或以上，则回复自己的主战者2点生命值。回复自己2点能量点。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10833310"
+        },
+        {
+          "id": 10834110,
+          "name": "恩爱的大地·坦忒拉&拉缇卡",
+          "type": 1,
+          "cost": 6,
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。\n\n【入场曲】若X为10或以上，则将1张『苍奏之四』加入手牌。若为20或以上，则将1张『宏大的回归』加入手牌。\n\n【疾驰】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10834110"
+        },
+        {
+          "id": 10834120,
+          "name": "灾难言灵·洋荷",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】召唤2个『守护者巨像』。\n\n自己的其他随从进入战场时，使其获得【突进】。使自己的所有手牌发动1次魔力增幅。\n\n【进化时】召唤1个『守护者巨像』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10834120"
+        },
+        {
+          "id": 10931120,
+          "name": "钥灵",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成7点伤害。对对手的主战者造成4点伤害。\n\n【进化时】选择自己的手牌中的1张拥有【魔力增幅时】的卡牌，使其发动4次魔力增幅。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10931120"
+        },
+        {
+          "id": 10934120,
+          "name": "破式的变貌·菲绫",
+          "type": 1,
+          "cost": 10,
+          "text": "【魔力增幅时】使本卡牌的费用-1。\n\n【毁灭】\n【守护】\n【灵气】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10934120"
+        }
+      ]
+    },
+    "earth": {
+      "class": 3,
+      "followers": 23,
+      "cards": [
+        {
+          "id": 10031110,
+          "name": "闪光魔法剑士",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】【模式】选择1个能力发动。\n（1）使自己的所有手牌发动2次魔力增幅。\n（2）【土之秘术 1】本随从+2/+2且获得【守护】。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10031110"
+        },
+        {
+          "id": 10031210,
+          "name": "魔女的炼金炉",
+          "type": 2,
+          "cost": 1,
+          "text": "【入场曲】抽取1张卡牌。\n\n【土之印】\n\n费用1【启动】使自己的战场上的土之印+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10031210"
+        },
+        {
+          "id": 10032110,
+          "name": "双面魔女·蕾米拉米",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】【土之秘术 1】召唤1个『守护者巨像』。\n\n【超进化时】选择自己的战场上的1个巨像·随从，使其进化，使其+3/+3。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10032110"
+        },
+        {
+          "id": 10032310,
+          "name": "魔爆",
+          "type": 4,
+          "cost": 4,
+          "text": "对战场上的所有随从造成2点伤害。【土之秘术 1】抽取1张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10032310"
+        },
+        {
+          "id": 10131120,
+          "name": "见习占星术师",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。使自己的战场上的土之印+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131120"
+        },
+        {
+          "id": 10131130,
+          "name": "唤枭士",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】使自己的战场上的土之印+1。\n\n【进化时】选择对手的战场上的1个随从，对其造成5点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10131130"
+        },
+        {
+          "id": 10132310,
+          "name": "理光的证明",
+          "type": 4,
+          "cost": 3,
+          "text": "【模式】选择1个能力发动。\n（1）使自己的战场上的土之印+4。\n（2）回复自己的主战者4点生命值。\n（3）【土之秘术 3】对对手的战场上的所有随从造成4点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10132310"
+        },
+        {
+          "id": 10133110,
+          "name": "黎明炼金术师·诺诺",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成X点伤害。X为自己的战场上的土之印数。\n\n【进化时】使自己获得『纹章：黎明炼金术师·诺诺』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10133110"
+        },
+        {
+          "id": 10133120,
+          "name": "魔法药剂师·佩内洛普",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】使自己的战场上的土之印+2。\n\n【超进化时】抽取2张卡牌。回复自己的主战者2点生命值。使自己的战场上的土之印+2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10133120"
+        },
+        {
+          "id": 10133130,
+          "name": "理光的天宫·艾德薇诗",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】【土之秘术 2】本随从进化。\n\n本随从进化时，对对手的战场上的随机1个随从造成4点伤害。回复自己2点能量点。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10133130"
+        },
+        {
+          "id": 10231110,
+          "name": "憧憬的魔女·梅薇",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】将1张『魔女的炼金炉』加入手牌。若自己的战场上有超进化后的随从，则使自己的战场上的土之印+2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10231110"
+        },
+        {
+          "id": 10231310,
+          "name": "冰锥穿击",
+          "type": 4,
+          "cost": 4,
+          "text": "选择对手的战场上的1个随从，破坏该随从。【土之秘术 1】对对手的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10231310"
+        },
+        {
+          "id": 10232120,
+          "name": "调香的魔法师",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成3点伤害。使自己的战场上的土之印+1。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10232120"
+        },
+        {
+          "id": 10233310,
+          "name": "帕梅拉的舞蹈",
+          "type": 4,
+          "cost": 2,
+          "text": "使自己的战场上的土之印+1。使自己获得『纹章：帕梅拉的舞蹈』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10233310"
+        },
+        {
+          "id": 10234110,
+          "name": "暴食的安纳提玛·拉拉安瑟姆",
+          "type": 1,
+          "cost": 8,
+          "text": "【灵气】\n【谢幕曲】【土之秘术 2】召唤1个『暴食的安纳提玛·拉拉安瑟姆』。\n\n【超进化时】选择对手的战场上的2个随从，破坏这些随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10234110"
+        },
+        {
+          "id": 10234120,
+          "name": "精金炼金术师·诺曼",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】【土之秘术 1】【模式】选择1个能力发动。\n（1）召唤1个『守护者巨像』，使其获得【屏障】。\n（2）抽取3张卡牌。\n（3）回复自己的主战者4点生命值。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10234120"
+        },
+        {
+          "id": 10432110,
+          "name": "报仇的占卜师·艾塞克莱因",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】选择对手的战场上的2个随从，对其造成4点伤害。使自己的战场上的土之印+2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10432110"
+        },
+        {
+          "id": 10432120,
+          "name": "荆棘旅途·米蕾耶&莉赛特",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】召唤1个『荆棘旅途·米蕾耶&莉赛特』。【土之秘术 2】该随从和本随从进化。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10432120"
+        },
+        {
+          "id": 10433310,
+          "name": "炼金炎爆",
+          "type": 4,
+          "cost": 2,
+          "text": "选择对手的战场上的1个随从，对其造成4点伤害。使自己的战场上的土之印+1。【奥义】对对手的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10433310"
+        },
+        {
+          "id": 10434120,
+          "name": "天才美少女炼金术士·卡莉奥丝特罗",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】使自己的战场上的土之印+2。将1张『伟大之术』加入手牌。【奥义】本随从进化。【解放奥义】使自己获得『纹章：天才美少女炼金术士·卡莉奥丝特罗』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10434120"
+        },
+        {
+          "id": 10531110,
+          "name": "创造魔法师",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】使自己的战场上的土之印+2。\n\n【超进化时】召唤2个『守护者巨像』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10531110"
+        },
+        {
+          "id": 10532310,
+          "name": "魔猫戏法",
+          "type": 4,
+          "cost": 1,
+          "text": "【土之秘术 2】从以下能力中随机发动2个能力。\n（1）召唤1个『泥尘巨像』。\n（2）回复自己的主战者2点生命值。\n（3）使自己的战场上的土之印+3。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10532310"
+        },
+        {
+          "id": 10533110,
+          "name": "元素支配者",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】召唤2个『守护者巨像』。\n\n自己的巨像·随从进入战场时，【土之秘术 1】使其进化。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10533110"
+        },
+        {
+          "id": 10731110,
+          "name": "小巧捕食者",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】【土之秘术 1】本随从进化。\n\n【守护】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10731110"
+        },
+        {
+          "id": 10731120,
+          "name": "小型怪兽",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成1点伤害。使自己的战场上的土之印+1。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10731120"
+        },
+        {
+          "id": 10731310,
+          "name": "召唤仆从",
+          "type": 4,
+          "cost": 4,
+          "text": "在手牌中发动。自己发动【土之秘术】时，使本卡牌的费用-1。\n\n抽取2张卡牌。使自己的战场上的土之印+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10731310"
+        },
+        {
+          "id": 10732110,
+          "name": "迷人怪兽",
+          "type": 1,
+          "cost": 3,
+          "text": "【突进】\n【谢幕曲】使自己的战场上的土之印+2。\n\n【超进化时】【土之秘术 2】召唤2个『迷人怪兽』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10732110"
+        },
+        {
+          "id": 10732120,
+          "name": "甜蜜猎食者",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】使自己的战场上的土之印+2。\n\n【守护】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10732120"
+        },
+        {
+          "id": 10732310,
+          "name": "暴食的零嘴",
+          "type": 4,
+          "cost": 2,
+          "text": "【模式】选择1个能力发动。\n（1）使自己的战场上的土之印+4。\n（2）【土之秘术 2】对对手的战场上的所有随从造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10732310"
+        },
+        {
+          "id": 10733110,
+          "name": "甜美存在",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】【土之秘术 1】【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从造成3点伤害。\n（2）抽取2张卡牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10733110"
+        },
+        {
+          "id": 10733310,
+          "name": "饕餮魔咒",
+          "type": 4,
+          "cost": 4,
+          "text": "在手牌中发动。自己发动【土之秘术】时，使本卡牌的费用-1。\n\n选择对手的战场上的1个随从，破坏该随从。使自己的战场上的土之印+2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10733310"
+        },
+        {
+          "id": 10734110,
+          "name": "万食的安纳提玛·拉拉安瑟姆",
+          "type": 1,
+          "cost": 7,
+          "text": "【入场曲】【土之秘术 1】使自己获得『纹章：万食的安纳提玛·拉拉安瑟姆』。\n\n【灵气】\n\n【进化时】【土之秘术 1】选择对手的战场上的1个随从，破坏该随从。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10734110"
+        },
+        {
+          "id": 10734120,
+          "name": "可爱杰作",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】对对手的战场上的所有随从造成6点伤害。\n\n【守护】\n【谢幕曲】【土之秘术 2】对对手的主战者造成3点伤害。\n\n【超进化时】召唤1个『可爱杰作』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10734120"
+        },
+        {
+          "id": 10832320,
+          "name": "伏地雷击",
+          "type": 4,
+          "cost": 5,
+          "text": "对对手的战场上的随机1个攻击力最大的随从造成8点伤害。对对手的主战者造成2点伤害。【土之秘术 2】将1张『伏地雷击』加入手牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10832320"
+        }
+      ]
+    },
+    "ramp": {
+      "class": 4,
+      "followers": 2,
+      "cards": [
+        {
+          "id": 10042310,
+          "name": "龙之启示",
+          "type": 4,
+          "cost": 3,
+          "text": "使自己的能量点最大值+1。之后，若自己的能量点最大值为10，则抽取1张卡牌。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10042310"
+        },
+        {
+          "id": 10143120,
+          "name": "荣弦的天宫·龙芙",
+          "type": 1,
+          "cost": 3,
+          "text": "【入场曲】若为【觉醒】，则本随从进化。\n\n本随从进化时，使自己的能量点最大值+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10143120"
+        },
+        {
+          "id": 10444120,
+          "name": "世界的伙伴·佐伊",
+          "type": 1,
+          "cost": 5,
+          "text": "【入场曲】使自己的能量点最大值+1。\n【爆能强化 10】本随从获得【疾驰】。使自己的主战者的生命值的最大值变为1。对手的回合结束前，使自己的主战者获得「受到的1点或以上的伤害变为0点」。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10444120"
+        },
+        {
+          "id": 10741310,
+          "name": "百无聊赖的睥睨",
+          "type": 4,
+          "cost": 4,
+          "text": "使自己的能量点最大值+1。使自己的手牌和自己的牌组中的所有『百无聊赖的睥睨』变身为『焦龙的午睡』。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10741310"
+        }
+      ]
+    }
+  }
+}

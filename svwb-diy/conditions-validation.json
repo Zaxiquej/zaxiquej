@@ -1,0 +1,69 @@
+{
+  "version": "4.20",
+  "stacked": 681,
+  "compound": 1349,
+  "means": {
+    "necromancy 4": {
+      "count": 529,
+      "mean": 6.385160680529293
+    },
+    "combo 2": {
+      "count": 288,
+      "mean": 4.102083333333336
+    },
+    "combo 3": {
+      "count": 426,
+      "mean": 5.768075117370896
+    },
+    "earth 1": {
+      "count": 532,
+      "mean": 4.614285714285721
+    },
+    "necromancy 6": {
+      "count": 237,
+      "mean": 9.121329113924052
+    },
+    "necromancy 2": {
+      "count": 266,
+      "mean": 3.866541353383455
+    },
+    "combo 4": {
+      "count": 133,
+      "mean": 7.6906015037594
+    },
+    "combo 5": {
+      "count": 112,
+      "mean": 10.175892857142857
+    },
+    "earth 2": {
+      "count": 245,
+      "mean": 7.671836734693881
+    },
+    "necromancy 10": {
+      "count": 42,
+      "mean": 14.657142857142855
+    },
+    "necromancy 8": {
+      "count": 60,
+      "mean": 11.77
+    },
+    "earth 3": {
+      "count": 34,
+      "mean": 11.582352941176469
+    }
+  },
+  "examples": {
+    "necromancy 4": "困难条件50",
+    "combo 2": "困难条件84",
+    "combo 3": "困难条件96",
+    "earth 1": "困难条件151",
+    "necromancy 6": "困难条件352",
+    "necromancy 2": "困难条件437",
+    "combo 4": "困难条件591",
+    "combo 5": "困难条件677",
+    "earth 2": "困难条件915",
+    "necromancy 10": "困难条件2244",
+    "necromancy 8": "困难条件2384",
+    "earth 3": "困难条件2800"
+  }
+}

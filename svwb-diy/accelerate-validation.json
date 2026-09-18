@@ -1,0 +1,68 @@
+{
+  "version": "4.16",
+  "coverage": {
+    "cards": 796,
+    "modes": 173,
+    "conditions": 155,
+    "tokens": 366,
+    "emblems": 24
+  },
+  "fees": {
+    "1": {
+      "count": 180,
+      "texts": 105,
+      "structures": 71,
+      "meanBudget": 4.037777777777776,
+      "meanSpent": 3.465611111111113
+    },
+    "2": {
+      "count": 251,
+      "texts": 202,
+      "structures": 146,
+      "meanBudget": 6.842231075697201,
+      "meanSpent": 6.3072908366533875
+    },
+    "3": {
+      "count": 202,
+      "texts": 187,
+      "structures": 160,
+      "meanBudget": 9.639603960396048,
+      "meanSpent": 9.08861386138614
+    },
+    "4": {
+      "count": 128,
+      "texts": 118,
+      "structures": 107,
+      "meanBudget": 12.440625000000006,
+      "meanSpent": 11.862890625000002
+    },
+    "5": {
+      "count": 35,
+      "texts": 35,
+      "structures": 35,
+      "meanBudget": 15.228571428571422,
+      "meanSpent": 14.602285714285715
+    }
+  },
+  "classStructures": [
+    76,
+    93,
+    74,
+    69,
+    83,
+    94,
+    43,
+    89
+  ],
+  "examples": {
+    "modes": "激奏重组381",
+    "tokens": "激奏重组381",
+    "fee1": "激奏重组381",
+    "fee4": "激奏重组469",
+    "emblems": "激奏重组494",
+    "fee5": "激奏重组494",
+    "conditions": "激奏重组698",
+    "fee3": "激奏重组698",
+    "fee2": "激奏重组725"
+  }
+}

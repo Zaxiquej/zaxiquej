@@ -1,0 +1,74 @@
+{
+  "version": "4.42",
+  "bronze": 2966,
+  "stats": {
+    "spell": [
+      {
+        "n": 1512,
+        "effects": 2732,
+        "length": 45546,
+        "high": 118,
+        "weak": 0
+      },
+      {
+        "n": 1179,
+        "effects": 2849,
+        "length": 53216,
+        "high": 78,
+        "weak": 0
+      },
+      {
+        "n": 837,
+        "effects": 2224,
+        "length": 44648,
+        "high": 45,
+        "weak": 0
+      },
+      {
+        "n": 440,
+        "effects": 1240,
+        "length": 25146,
+        "high": 28,
+        "weak": 0
+      }
+    ],
+    "amulet": [
+      {
+        "n": 1454,
+        "effects": 2868,
+        "length": 73334,
+        "high": 27,
+        "weak": 0
+      },
+      {
+        "n": 1198,
+        "effects": 3287,
+        "length": 85266,
+        "high": 31,
+        "weak": 0
+      },
+      {
+        "n": 828,
+        "effects": 2510,
+        "length": 63764,
+        "high": 20,
+        "weak": 0
+      },
+      {
+        "n": 464,
+        "effects": 1507,
+        "length": 39373,
+        "high": 11,
+        "weak": 0
+      }
+    ]
+  },
+  "examples": {
+    "spell": "非随从稀有度165",
+    "amulet": "非随从稀有度731"
+  },
+  "regression": [
+    "选择对手的战场上的1个随从，对其造成10点伤害。",
+    "抽取2张卡牌。"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "4.29",
+  "total": 40000,
+  "related": 957,
+  "byClass": {
+    "2": 261,
+    "3": 208,
+    "4": 236,
+    "5": 252
+  },
+  "coverage": {
+    "tribeBuff": 220,
+    "tribeEngine": 511,
+    "tribeSupply": 334,
+    "tribeEvolve": 50,
+    "tribeCountDamage": 55,
+    "tribeEnter": 23,
+    "tribeAttack": 4
+  },
+  "crestEffects": [
+    "supply",
+    "summon",
+    "heal",
+    "damage",
+    "tribeWard",
+    "tribeGrowth",
+    "tribeRush",
+    "draw",
+    "boost",
+    "buff",
+    "grave"
+  ],
+  "examples": {
+    "tribeBuff": "种族联动37",
+    "tribeEngine": "种族联动40",
+    "tribeSupply": "种族联动163",
+    "tribeEvolve": "种族联动497",
+    "tribeCountDamage": "种族联动651",
+    "tribeEnter": "种族联动1344",
+    "tribeAttack": "种族联动1380"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": "4.39",
+  "coverage": {
+    "permanentDeath": 670,
+    "highEvolutionWithKeyword": 133,
+    "modes": 2364,
+    "automatic": 10175,
+    "automaticRandom": 2295,
+    "wardDeath": 44
+  },
+  "examples": {
+    "permanentDeath": "阶段兼容9",
+    "evolution": "阶段兼容29",
+    "wardDeath": "阶段兼容182"
+  }
+}

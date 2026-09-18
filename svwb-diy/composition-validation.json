@@ -1,0 +1,23 @@
+{
+  "version": "4.31",
+  "seen": {
+    "earthOnly": 120,
+    "boostOnly": 84,
+    "together": 4,
+    "otherPairs": 185
+  },
+  "partners": [
+    "damage",
+    "summon",
+    "destroy",
+    "heal",
+    "aoe",
+    "draw",
+    "tutor"
+  ],
+  "examples": {
+    "earthOnly": "效果拆分113",
+    "together": "效果拆分116",
+    "boostOnly": "效果拆分515"
+  }
+}

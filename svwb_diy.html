@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>设计师模拟器</title>
+  <link rel="stylesheet" href="svwb-diy/style.css?v=4.43">
+  <script defer src="svwb-diy/calibration.js?v=4.43"></script>
+  <script defer src="svwb-diy/nonfollowers.js?v=4.43"></script>
+  <script defer src="svwb-diy/engine.js?v=4.43"></script>
+  <script defer src="svwb-diy/app.js?v=4.43"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>设计师模拟器</h1>
+    <form id="forge-form">
+      <label for="name">名称</label>
+      <div class="input-row"><input id="name" maxlength="48" required autocomplete="off" placeholder="请输入名称" value="设计师您辛苦了"><button type="submit">生成</button><button id="random" type="button" class="secondary">随机生成</button></div>
+      <fieldset class="random-filters">
+        <legend>随机筛选</legend>
+        <div class="filter-row">
+          <label for="filter-type">类型<select id="filter-type"><option value="">不限</option><option value="follower">只出现随从</option><option value="spell">只出现法术</option><option value="amulet">只出现护符</option></select></label>
+          <label for="filter-class">职业<select id="filter-class"><option value="">不限</option></select></label>
+          <label for="filter-rarity">稀有度<select id="filter-rarity"><option value="">不限</option></select></label>
+          <label for="filter-cost">费用段<select id="filter-cost"><option value="">不限</option><option value="0-3">0–3 费</option><option value="4-6">4–6 费</option><option value="7+">7+ 费</option></select></label>
+        </div>
+        <p class="filter-note">用于“随机生成”和“其他可能性”；输入名称后点“生成”仍可复现原卡。</p>
+      </fieldset>
+    </form>
+    <article id="card" class="result">
+      <h2 id="card-name"></h2>
+      <p id="class-rarity" class="card-meta"></p>
+      <div class="stats"><span>费用 <b id="cost"></b></span><span>攻击 <b id="attack"></b></span><span>生命 <b id="health"></b></span></div>
+      <div id="abilities"></div>
+    </article>
+    <section id="tokens" aria-label="附属卡"></section>
+    <section id="emblems" aria-label="纹章"></section>
+    <section id="faiths" aria-label="信仰"></section>
+    <section id="alternate-forms" aria-label="激奏与结晶"></section>
+    <div class="actions"><button id="copy" type="button" class="secondary">复制卡牌文本</button><span id="status" role="status" aria-live="polite"></span></div>
+    <footer><a href="https://shadowverse-wb.com/chs/deck/cardslist/" target="_blank" rel="noopener">官方卡牌图鉴</a></footer>
+    <button id="variant" type="button" class="secondary variant">不满意？看看其他可能性。</button>
+  </main>
+  <noscript>请启用 JavaScript 以生成卡牌。</noscript>
+</body>
+</html>

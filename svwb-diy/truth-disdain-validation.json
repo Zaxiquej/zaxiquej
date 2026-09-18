@@ -1,0 +1,77 @@
+{
+  "version": "4.37",
+  "total": 30000,
+  "coverage": {
+    "costChangedLink": 54,
+    "costChanged": 126,
+    "allyPing": 24,
+    "engine:costChanged": 45,
+    "allBoardDamage": 46,
+    "hurtLink": 76,
+    "handBuff": 99,
+    "engine:hurt": 44,
+    "handCostUp": 26,
+    "pairedHandChange": 7
+  },
+  "types": [
+    "follower",
+    "spell",
+    "amulet"
+  ],
+  "payoffs": {
+    "truth": [
+      "tokenSummon",
+      "draw",
+      "heal",
+      "selfEvolve",
+      "aoe",
+      "earth",
+      "damage",
+      "costChangedLink",
+      "face",
+      "handRefill",
+      "handCycleTutor",
+      "boost",
+      "typeSearch",
+      "buff",
+      "tokenHand",
+      "selfCopy",
+      "handCycle",
+      "crystalHandSupply",
+      "destroy",
+      "crystalHandSummon",
+      "banish",
+      "teamBuff",
+      "keywordSearch"
+    ],
+    "hurt": [
+      "tokenSummon",
+      "allyBuff",
+      "heal",
+      "draw",
+      "damage",
+      "typeSearch",
+      "tokenHand",
+      "face",
+      "handBuff",
+      "aoe",
+      "tribeSupply",
+      "handCycle",
+      "buff",
+      "teamBuff",
+      "handCycleTutor"
+    ]
+  },
+  "examples": {
+    "costChangedLink": "真理侮蔑4",
+    "costChanged": "真理侮蔑12",
+    "allyPing": "真理侮蔑35",
+    "engine:costChanged": "真理侮蔑77",
+    "allBoardDamage": "真理侮蔑138",
+    "hurtLink": "真理侮蔑217",
+    "handBuff": "真理侮蔑420",
+    "engine:hurt": "真理侮蔑555",
+    "handCostUp": "真理侮蔑1694",
+    "pairedHandChange": "真理侮蔑6545"
+  }
+}

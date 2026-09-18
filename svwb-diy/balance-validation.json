@@ -1,0 +1,14 @@
+{
+  "version": "4.20",
+  "sample": 12000,
+  "limits": {
+    "unlimited": 157,
+    "one": 126,
+    "two": 95
+  },
+  "stackedReplay": 75,
+  "chains": 5,
+  "highRarityMean": 26.74782064351853,
+  "highRarityP95": 39.62,
+  "previousP95": 46.2208
+}

@@ -1,0 +1,15 @@
+{
+  "version": "4.34",
+  "elves": 2466,
+  "bounce": 93,
+  "rate": 0.037712895377128956,
+  "cheap": 85,
+  "pure": 63,
+  "automatic": 1,
+  "spell": 5,
+  "mixed": 30,
+  "examples": {
+    "pure": "回手核查26",
+    "mixed": "回手核查251"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "4.36",
+  "followers": 7183,
+  "replays": 414,
+  "rarity": [
+    0,
+    209,
+    153,
+    52
+  ],
+  "rate": 0.057636085201169425,
+  "coexisting": 58,
+  "examples": {
+    "replay": "入场复用7",
+    "coexisting": "入场复用64"
+  }
+}

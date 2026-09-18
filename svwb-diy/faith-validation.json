@@ -1,0 +1,89 @@
+{
+  "version": "4.9",
+  "coverage": {
+    "cards": 151,
+    "compound": 28,
+    "emblem": 85,
+    "hand": 33,
+    "summon": 12,
+    "growth": 21,
+    "crystalHands": 15
+  },
+  "events": [
+    "draw",
+    "play",
+    "selfDamage",
+    "death",
+    "earth",
+    "attack",
+    "spell",
+    "fairy",
+    "enter",
+    "amuletDeath",
+    "crystalHands",
+    "evolve",
+    "mode",
+    "return",
+    "activate",
+    "heal",
+    "enhance"
+  ],
+  "classes": {
+    "1": [
+      "draw",
+      "play",
+      "death",
+      "fairy",
+      "return",
+      "spell",
+      "evolve"
+    ],
+    "2": [
+      "spell",
+      "enter",
+      "play",
+      "attack",
+      "evolve",
+      "enhance",
+      "draw"
+    ],
+    "3": [
+      "death",
+      "earth",
+      "crystalHands",
+      "spell",
+      "evolve",
+      "draw",
+      "play",
+      "attack"
+    ],
+    "5": [
+      "selfDamage",
+      "attack",
+      "spell",
+      "mode",
+      "play",
+      "death",
+      "draw",
+      "evolve"
+    ],
+    "6": [
+      "attack",
+      "spell",
+      "amuletDeath",
+      "death",
+      "evolve",
+      "activate",
+      "heal",
+      "play",
+      "draw"
+    ]
+  },
+  "examples": {
+    "growth": "信仰消费293",
+    "emblem": "信仰消费389",
+    "hand": "信仰消费778",
+    "crystalHands": "信仰消费778",
+    "summon": "信仰消费1275"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "version": "4.29",
+  "total": 20000,
+  "nightmare": 2478,
+  "zombies": 164,
+  "linked": 11,
+  "coverage": {
+    "hand": 87,
+    "summon": 102
+  },
+  "timings": [
+    "入场曲",
+    "法术",
+    "谢幕曲",
+    "超进化时",
+    "启动",
+    "爆能强化",
+    "进化时",
+    "本随从进化时",
+    "攻击时"
+  ],
+  "tribal": [
+    "tribeEngine",
+    "tribeBuff",
+    "tribeSupply",
+    "tribeCountDamage",
+    "tribeEvolve"
+  ],
+  "examples": {
+    "hand": "僵尸体系156",
+    "summon": "僵尸体系178",
+    "linked": "僵尸体系1219"
+  }
+}

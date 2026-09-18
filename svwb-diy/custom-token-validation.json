@@ -1,0 +1,52 @@
+{
+  "version": "4.30",
+  "total": 30000,
+  "custom": 197,
+  "withTokens": 15397,
+  "share": 0.01279470026628564,
+  "temporary": 33,
+  "hand": 94,
+  "roles": [
+    "intercept",
+    "damageCap",
+    "reduceDamage",
+    "doubleAttack"
+  ],
+  "events": [
+    "end",
+    "lastWords",
+    "enter",
+    "attack"
+  ],
+  "bodies": 68,
+  "texts": 83,
+  "examples": {
+    "intercept": "原创附属卡29",
+    "damageCap": "原创附属卡48",
+    "reduceDamage": "原创附属卡165",
+    "end:heal": "原创附属卡462",
+    "lastWords:heal": "原创附属卡592",
+    "end:support": "原创附属卡707",
+    "enter:support": "原创附属卡1197",
+    "attack:damage": "原创附属卡1291",
+    "enter:grow": "原创附属卡1862",
+    "enter:draw": "原创附属卡2228",
+    "attack:grow": "原创附属卡2650",
+    "end:damage": "原创附属卡2831",
+    "enter:heal": "原创附属卡3419",
+    "end:draw": "原创附属卡3598",
+    "doubleAttack": "原创附属卡3945",
+    "attack:heal": "原创附属卡4669",
+    "attack:draw": "原创附属卡5221",
+    "lastWords:damage": "原创附属卡5761",
+    "lastWords:draw": "原创附属卡7066",
+    "end:earth": "原创附属卡7385",
+    "enter:damage": "原创附属卡7876",
+    "lastWords:support": "原创附属卡10398",
+    "end:grow": "原创附属卡11654",
+    "lastWords:earth": "原创附属卡16876",
+    "end:grave": "原创附属卡21054",
+    "lastWords:boost": "原创附属卡28236",
+    "attack:grave": "原创附属卡28617"
+  }
+}
