@@ -6,9 +6,9 @@ for(let i=0;i<70000;i++){
   for(const id of ['selfEvolve','allyEvolve','teamEvolve','selfSuperEvolve','evolutionEvent'])if(a.ids.includes(id)){
    coverage[id]++;examples[id]??=c.name;
    if(id==='selfEvolve'||id==='selfSuperEvolve'){
-    assert(c.type==='follower');assert(['入场曲','爆能强化','自己的回合结束时'].includes(a.trigger));assert(c.cost>=2);
+    assert(c.type==='follower');assert(['入场曲','爆能强化','自己的回合结束时'].includes(a.trigger));assert((a.enhanceCost||c.cost)>=2);
     if(a.condition==='none')assert(c.cost>=5);
-    if(id==='selfSuperEvolve')assert(c.cost>=7&&c.rarity===3);
+    if(id==='selfSuperEvolve')assert((a.enhanceCost||c.cost)>=7&&c.rarity===3);
     assert(!c.abilities.some(v=>['进化时','超进化时'].includes(v.trigger)),'Do not confuse self-evolution with EP/SEP keyword triggers');
    }
    if(id==='allyEvolve'){assert(a.text.includes('进化前'));if(a.trigger==='谢幕曲')assert(!a.text.includes('选择'));}

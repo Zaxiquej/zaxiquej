@@ -1,0 +1,49 @@
+{
+  "version": "4.62",
+  "samples": 12000,
+  "seedPrefix": "高费方向",
+  "baselineVersion": "4.61",
+  "note": "before为修改前v4.61固定种子快照；after由本脚本重算。统计文本与印刷身材，不是对局胜率。官方样本的疾驰计数包含条件赋予。",
+  "officialHighCost": {
+    "n": 126,
+    "mentionsStorm": 23
+  },
+  "stats": {
+    "before": {
+      "n": 1583,
+      "storm": 96,
+      "guard": 284,
+      "threat": 38,
+      "impact": 1013,
+      "protection": 46,
+      "body": 23577,
+      "trade": 148,
+      "stormAttacks": {
+        "2": 31,
+        "3": 29,
+        "4": 27,
+        "5": 7,
+        "6": 2
+      }
+    },
+    "after": {
+      "n": 1583,
+      "storm": 337,
+      "guard": 682,
+      "threat": 307,
+      "impact": 1166,
+      "protection": 98,
+      "body": 21942,
+      "trade": 185,
+      "stormAttacks": {
+        "2": 6,
+        "3": 80,
+        "4": 116,
+        "5": 53,
+        "6": 57,
+        "7": 15,
+        "8": 10
+      }
+    }
+  }
+}

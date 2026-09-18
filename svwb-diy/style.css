@@ -28,10 +28,14 @@ h2 { margin: 0 0 4px; font-size: 23px; overflow-wrap: anywhere; }
 .rarity-0 { color: #946038; } .rarity-1 { color: #626f83; }
 .rarity-2 { color: #926900; } .rarity-3 { color: #914ca4; }
 .variant { display: block; width: 100%; margin-top: 24px; }
+.chaos-toggle { display: flex; align-items: center; gap: 8px; margin-top: 14px; cursor: pointer; }
+.mode-toggles { display: flex; flex-wrap: wrap; gap: 0 24px; }
+.chaos-toggle input { width: auto; flex: none; margin: 0; accent-color: #27638c; }
 .stats { display: flex; gap: 30px; padding-bottom: 12px; border-bottom: 1px solid #ddd; margin-bottom: 14px; }
 .stats b { font-size: 22px; margin-left: 6px; }
 .ability { margin: 10px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .ability b { color: #27638c; }
+.ability-divider { border: 0; border-top: 1px solid #d4dce0; margin: 16px 0; }
 #tokens h3, #emblems h3, #faiths h3, #alternate-forms h3 { font-size: 17px; margin: 22px 0 8px; }
 .token { padding: 12px 16px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
 .token h4 { font-size: 16px; margin: 0; overflow-wrap: anywhere; }

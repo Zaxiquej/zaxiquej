@@ -1,0 +1,15 @@
+{
+  "version": "4.68",
+  "samples": 12000,
+  "counts": {
+    "barrier": 43,
+    "cheap": 21,
+    "twoCost": 7,
+    "paidBody": 36,
+    "extraPayoff": 7,
+    "chaos": 12
+  },
+  "examples": {
+    "twoCost": "屏障定价3355"
+  }
+}

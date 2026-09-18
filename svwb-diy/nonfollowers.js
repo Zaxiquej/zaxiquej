@@ -2,11 +2,11 @@
   'use strict';
   function build(ctx){
     const {card,cost,cls,rarity,r,pick,weighted,profile,makeEffect,gate,composeEmblem,add,used,calibration,canChooseTarget}=ctx;
-    const spell=card.type==='spell',remaining=()=>card.budget-card.spent;
-    const alternate=!!ctx.alternate,spellLimit=Math.min(alternate?3:5,[2,3,4,5][rarity]);
-    const effectLimit=[2,3,4,5][rarity];
-    const helpers=new Set(['enhance','activate','lastWordsAct','countdownAct']);
-    const atoms=a=>a.kind==='keyword'?0:Math.max(a.kind==='emblem'||a.kind==='ongoing'?1:0,(a.ids||[]).filter(id=>!helpers.has(id)).length);
+    const spell=card.type==='spell',remaining=()=>card.budget-card.spent-(ctx.reserveProgress||0);
+    const alternate=!!ctx.alternate,spellLimit=Math.min(alternate?2:5,[2,3,4,5][rarity]);
+    const effectLimit=Math.min(alternate?2:5,[2,3,4,5][rarity]);
+    const helpers=new Set(['enhance','activate','lastWordsAct','countdownAct','discardTrigger','exhaustibleCycle','handLuck']);
+    const atoms=a=>a.kind==='keyword'?0:a.kind==='handTrigger'?1:Math.max(a.kind==='emblem'||a.kind==='ongoing'?1:0,(a.ids||[]).filter(id=>!helpers.has(id)).length);
     const effectCount=()=>card.abilities.reduce((n,a)=>n+atoms(a),0);
     card.effectLimit=effectLimit;
     const temp=(ids,fn)=>{const before=new Set(used);ids.forEach(id=>used.add(id));try{return fn();}finally{used.clear();before.forEach(id=>used.add(id));}};
@@ -32,20 +32,21 @@
       return e;
     }
     function emit(e,trigger,price,extra={}){
-      if(!e||price>remaining()+1e-8||effectCount()+atoms(e)>effectLimit)return false;
+      if(!e||card.abilities.length>=5||price>remaining()+1e-8||effectCount()+atoms(e)>effectLimit)return false;
+      if(cost>=7&&effectCount()+atoms(e)===effectLimit&&card.spent+price<card.budget*.55)return false;
       const prefix=trigger==='法术'?'':`【${trigger}】`;
       add({...e,kind:e.mode?'mode':'effect',trigger,condition:'none',price,bodyText:e.text,text:prefix+e.text,...extra});
       return true;
     }
     function crest(){
+      if(alternate)return;
       if(cost<2||rarity===0||r()>[0,.05,.13,.24][rarity])return;
       const duration=weighted(r,[[null,30],[2,24],[3,24],[4,14],[5,8]]),c=composeEmblem(duration,true);
       const raw=c.raw*(c.oneShot?1/(1+duration*.18):duration===null?1.4:({2:.82,3:1,4:1.12,5:1.22})[duration])+c.enabler.raw;
       if(raw>remaining()*.72)return;
       const emblem={id:(alternate?'accelerate-emblem-':'emblem-')+cls,name:`纹章：${card.name}${alternate?'的余辉':''}`,class:cls,kind:'emblem',custom:true,duration,engine:c.engine,eventId:c.eventId,conditionId:c.conditionId,limit:c.limit,effects:c.effects,supportTags:c.supportTags,text:(duration===null?'':`【吟唱 ${duration}】\n`)+c.text};
       const text=`使自己获得『${emblem.name}』。${c.enabler.text}`;
-      emit({text,raw,ids:['emblemGrant'],tokens:c.tokens},spell?'法术':'入场曲',raw,{kind:'emblem',emblemIds:[emblem.id]});
-      card.emblems.push(emblem);
+      if(emit({text,raw,ids:['emblemGrant'],tokens:c.tokens},spell?'法术':'入场曲',raw,{kind:'emblem',emblemIds:[emblem.id]}))card.emblems.push(emblem);
     }
     function enhancement(){
       if(alternate||rarity===0||effectCount()>=effectLimit)return;
@@ -56,9 +57,10 @@
       const price=Math.max(.4,e.raw-g.extra);
       emit(e,'爆能强化',price,{condition:'enhance',enhanceCost:g.fee,minPayoff:g.minRaw,text:g.text+e.text,bodyText:e.text,ids:[...e.ids,'enhance']});
     }
-    function extraConditional(trigger){
+    function extraConditional(trigger,preparedGate=null){
+      if(alternate)return false;
       if(rarity===0||effectCount()>=effectLimit)return false;
-      const g=gate(trigger);
+      const g=preparedGate||gate(trigger);
       if(g.id==='none')return false;
       const room=remaining(),limit=Math.min(26,room/g.factor+g.extra);
       const e=payload(limit,trigger,Math.max(g.minRaw||0,g.amount||0),g.id,Math.min(10,cost+(g.effectBoost||0)),false,{multiplier:g.factor,credit:g.extra});
@@ -69,16 +71,18 @@
     if(spell){
       card.archetype='modularSpell';
       // Spellboost changes only future use of this spell; it is not an evolution.
-      if(!alternate&&cls===3&&cost>=5&&(cost>=8||r()<.22)){
+      if(!used.has('handDiscount')&&!used.has('spellboostDiscount')&&!alternate&&cls===3&&cost>=5&&remaining()>=3&&(cost>=8||r()<.22)){
         add({kind:'static',trigger:'魔力增幅时',condition:'none',text:'【魔力增幅时】使本卡牌的费用-1。',raw:5,price:3,ids:['spellboostDiscount']});
       }
       crest();
-      const room=remaining(),desired=rarity===0?room:cost>=6?room*.72:room*.84;
+      const prepared=cost<=2&&rarity>=1&&!alternate&&r()<.4?gate('法术'):null;
+      const reservedGate=prepared?.id!=='none'?prepared:null;
+      const room=remaining(),desired=reservedGate?room*.52:rarity===0?room:cost>=6?room*.72:room*.84;
       let main=payload(desired,'法术',rarity===0?desired*.6:Math.min(desired*.6,cost>=6?10:6));
       if(!main)main=payload(room,'法术');
       if(main)emit(main,'法术',main.raw);
       enhancement();
-      if(remaining()>=.7&&card.abilities.length<spellLimit&&r()<.6)extraConditional('法术');
+      if(remaining()>=.7&&card.abilities.length<spellLimit&&(reservedGate||r()<.6))extraConditional('法术',reservedGate);
       // Expensive spells should spend their allowance on another useful effect.
       for(let i=0;i<3&&remaining()>=1.2&&card.abilities.length<spellLimit;i++){
         const extra=payload(remaining(),'法术',Math.min(remaining()*.55,6),'none',cost,false);
@@ -90,8 +94,8 @@
       }
     }else{
       const official=calibration.typeStats.amulets;
-      const soil=cls===3&&cost>=1&&r()<.2;
-      const countdown=cost>0&&!soil&&r()<(cls===6?.58:official.countdown/calibration.typeStats.counts.amulet);
+      const soil=cls===3&&cost>=1&&r()<.2&&remaining()>=.6;
+      const countdown=cost>0&&!soil&&!used.has('exhaustibleCycle')&&r()<(cls===6?.58:official.countdown/calibration.typeStats.counts.amulet);
       card.countdown=countdown?weighted(r,[[1,8],[2,30],[3,32],[4,23],[5,7]]):null;
       card.archetype=countdown?'countdownAmulet':'persistentAmulet';
       if(countdown)add({kind:'keyword',trigger:'',condition:'none',text:`【吟唱 ${card.countdown}】`,raw:0,price:0,ids:['countdown']});
@@ -125,15 +129,18 @@
         if(fan)emit(fan,'入场曲',fan.raw);
       }
       // Countdown acceleration pays for removing part of the Last Words delay.
-      if(death&&countdown&&r()<.7){
+      if(death&&countdown&&card.abilities.length<5&&r()<.7){
         const steps=pick([1,Math.min(2,card.countdown),Math.min(3,card.countdown)]),fee=Math.max(1,Math.ceil(steps*.8));
         const benefit=death.raw*(1-delay)*Math.min(1,steps/card.countdown);
         const price=Math.max(.25,benefit-fee*2.2);
         if(price<=remaining())add({kind:'activation',trigger:'启动',condition:'none',text:`费用${fee}【启动】本护符的倒计数-${steps}。`,bodyText:`本护符的倒计数-${steps}。`,raw:benefit,price,ids:['countdownAct'],activation:{fee,oncePerTurn:true,breaksSelf:false,countdownReduction:steps,credit:fee*2.2}});
       }
       const needsActivation=cost===0||(!death&&!used.has('amuletEngine'));
-      if(effectCount()<effectLimit&&!card.abilities.some(a=>a.trigger==='启动')&&(needsActivation||r()<(countdown?.25:.4))&&(remaining()>=.4||!card.abilities.some(a=>a.trigger))){
-        const breaksSelf=cost===0||(!countdown&&!death&&r()<.6);
+      if(card.abilities.length<5&&effectCount()<effectLimit&&!card.abilities.some(a=>a.trigger==='启动')&&(needsActivation||r()<(countdown?.25:.4))&&(remaining()>=.4||!card.abilities.some(a=>a.trigger))){
+        const rolledBreak=cost===0||(!countdown&&!death&&r()<.6);
+        // Earth Sigils are consumed by Earth Rite, never an activation self-break.
+        // A surviving activation must pay the recurring-effect price instead.
+        const breaksSelf=!soil&&rolledBreak;
         const fee=cost===0?pick([1,2]):weighted(r,[[0,breaksSelf?5:1],[1,4],[2,2],[3,1]]);
         const repeats=breaksSelf?1:countdown?Math.min(3,card.countdown):3.5;
         const limit=Math.min(18,remaining()/repeats+fee*2.2);
@@ -149,7 +156,7 @@
         }
       }
       // Permanent Last Words amulets already reserve their own destruction above.
-      if(!card.abilities.some(a=>['启动','谢幕曲','持续触发','自己的回合开始时','自己的回合结束时'].includes(a.trigger))&&!countdown){
+      if(!soil&&!card.abilities.some(a=>['启动','谢幕曲','持续触发','自己的回合开始时','自己的回合结束时'].includes(a.trigger))&&!countdown){
         const fee=1,raw=2.2,price=Math.max(0,Math.min(.4,remaining()));
         add({kind:'activation',trigger:'启动',condition:'none',text:'费用1【启动】破坏本卡牌。抽取1张卡牌。',bodyText:'破坏本卡牌。抽取1张卡牌。',raw,price,ids:['fallbackAct'],activation:{fee,oncePerTurn:true,breaksSelf:true,repeats:1,credit:2.2}});
       }
@@ -157,6 +164,7 @@
         const e=payload(remaining()/delay,'谢幕曲',0,'none',cost+2,false,{multiplier:delay,credit:0});
         if(e)emit(e,'谢幕曲',e.raw*delay,{delayFactor:delay});
       }
+      if(remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay')&&r()<.4)extraConditional('入场曲');
       for(let i=0;i<2&&remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay');i++){
         const e=payload(remaining(),'入场曲',Math.min(remaining()*.55,8),'none',cost,false);
         if(e)emit(e,'入场曲',e.raw);else break;

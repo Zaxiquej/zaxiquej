@@ -1,0 +1,61 @@
+{
+  "version": "4.77",
+  "samples": 18000,
+  "counts": {
+    "ahead": 124,
+    "behind": 151,
+    "highest": 16,
+    "lowest": 20,
+    "transforms": 118,
+    "spellTransform": 8,
+    "spellboost": 18,
+    "earth": 11,
+    "paidDraw2": 0,
+    "plainCheapSpells": 1736
+  },
+  "events": [
+    "artifacts",
+    "fusion",
+    "earth",
+    "play",
+    "enhance",
+    "amuletDeath",
+    "leaderHurt",
+    "deaths",
+    "discard",
+    "evolutions",
+    "hurt",
+    "spellboost",
+    "rally"
+  ],
+  "examples": {
+    "ahead": {
+      "name": "新机制核对14",
+      "chaos": false
+    },
+    "behind": {
+      "name": "新机制核对76",
+      "chaos": false
+    },
+    "lowest": {
+      "name": "新机制核对335",
+      "chaos": false
+    },
+    "spellTransform": {
+      "name": "新机制核对357",
+      "chaos": false
+    },
+    "earth": {
+      "name": "新机制核对357",
+      "chaos": false
+    },
+    "highest": {
+      "name": "新机制核对2472",
+      "chaos": false
+    },
+    "spellboost": {
+      "name": "新机制核对4244",
+      "chaos": false
+    }
+  }
+}

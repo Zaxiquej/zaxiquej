@@ -1,0 +1,35 @@
+{
+  "version": "4.76",
+  "samples": 14000,
+  "counts": {
+    "scaled": 32,
+    "bodyReserve": 2,
+    "rushBody": 1,
+    "plainBody": 1
+  },
+  "payoffs": [
+    "heal",
+    "damage",
+    "face",
+    "tokenHand",
+    "allyBuff"
+  ],
+  "examples": {
+    "repro": {
+      "name": "随机卡牌#94817342",
+      "chaos": false
+    },
+    "scaled": {
+      "name": "弃牌质量1135",
+      "chaos": false
+    },
+    "plainBody": {
+      "name": "弃牌质量1705",
+      "chaos": false
+    },
+    "rushBody": {
+      "name": "弃牌质量11108",
+      "chaos": false
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": "4.62",
+  "samples": 40000,
+  "counts": {
+    "silence": 766,
+    "setHealth": 722,
+    "exhaustibleCycle": 433,
+    "clearEmblems": 11,
+    "ignoreWard": 8,
+    "clearAmulets": 105,
+    "truthTransform": 29,
+    "handTransform": 59,
+    "emblemExtend": 37,
+    "leaderVulnerability": 15
+  },
+  "examples": {
+    "silence": {
+      "name": "金虹复查10",
+      "chaos": false
+    },
+    "setHealth": {
+      "name": "金虹复查60",
+      "chaos": true
+    },
+    "exhaustibleCycle": {
+      "name": "金虹复查69",
+      "chaos": true
+    },
+    "clearEmblems": {
+      "name": "金虹复查111",
+      "chaos": true
+    },
+    "ignoreWard": {
+      "name": "金虹复查159",
+      "chaos": true
+    },
+    "clearAmulets": {
+      "name": "金虹复查216",
+      "chaos": true
+    },
+    "truthTransform": {
+      "name": "金虹复查801",
+      "chaos": true
+    },
+    "handTransform": {
+      "name": "金虹复查807",
+      "chaos": true
+    },
+    "emblemExtend": {
+      "name": "金虹复查1773",
+      "chaos": true
+    },
+    "leaderVulnerability": {
+      "name": "金虹复查6594",
+      "chaos": true
+    }
+  },
+  "cycleVariants": 161
+}

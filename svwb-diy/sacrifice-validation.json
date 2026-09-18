@@ -1,0 +1,88 @@
+{
+  "version": "4.74",
+  "samples": 15000,
+  "counts": {
+    "evolution": 268,
+    "discardAll": 32,
+    "lowBody": 128,
+    "growth": 141,
+    "otherEvolution": 127,
+    "largeDraw": 16,
+    "largeDiscount": 1
+  },
+  "families": [
+    "draw",
+    "damage",
+    "tokenSummon",
+    "aoe",
+    "acquisitionDiscount",
+    "statDebuff",
+    "summonBane",
+    "tokenHand",
+    "reanimate"
+  ],
+  "examples": {
+    "lowBody": {
+      "name": "代价重组14",
+      "chaos": false,
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "text": [
+        "【进化时】本随从+6/+4。"
+      ]
+    },
+    "growth": {
+      "name": "代价重组14",
+      "chaos": false,
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "text": [
+        "【进化时】本随从+6/+4。"
+      ]
+    },
+    "discardAll": {
+      "name": "代价重组87",
+      "chaos": true,
+      "cost": 7,
+      "attack": 7,
+      "health": 10,
+      "text": [
+        "【入场曲】舍弃自己的所有手牌。抽取3张卡牌。选择对手的战场上的1个随从，对其造成10点伤害。"
+      ]
+    },
+    "otherEvolution": {
+      "name": "代价重组144",
+      "chaos": true,
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "text": [
+        "【进化时】选择对手的战场上的1个随从，使其消失。"
+      ]
+    },
+    "largeDraw": {
+      "name": "代价重组1070",
+      "chaos": false,
+      "cost": 6,
+      "attack": 10,
+      "health": 4,
+      "text": [
+        "【入场曲】舍弃自己的所有手牌。抽取8张卡牌。",
+        "【威慑】",
+        "【守护】"
+      ]
+    },
+    "largeDiscount": {
+      "name": "代价重组14592",
+      "chaos": true,
+      "cost": 8,
+      "attack": 8,
+      "health": 10,
+      "text": [
+        "【入场曲】舍弃自己的所有手牌。抽取2张卡牌。使以此抽取的卡牌的费用-8。"
+      ]
+    }
+  }
+}

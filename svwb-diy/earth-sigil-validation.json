@@ -1,0 +1,13 @@
+{
+  "version": "4.69",
+  "samples": 12000,
+  "counts": {
+    "soil": 57,
+    "activation": 48,
+    "chaos": 26,
+    "otherSelfBreak": 850
+  },
+  "examples": {
+    "soil": "土印启动129"
+  }
+}

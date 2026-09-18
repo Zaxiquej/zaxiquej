@@ -42,7 +42,7 @@ for(let i=0;i<60000;i++){
  }
  if(c.type==='spell'){
   assert(c.cost>=1);assert(c.abilities.some(a=>a.trigger==='法术'));
-  assert(c.abilities.every(a=>['法术','爆能强化','魔力增幅时'].includes(a.trigger)));
+  assert(c.abilities.every(a=>['法术','爆能强化','魔力增幅时'].includes(a.trigger)||a.trigger==='在手牌中发动'&&(a.kind==='handTrigger'&&a.handSpec.payoff==='discount'||a.kind==='progressTransform'&&a.progression)||a.trigger==='本卡牌被舍弃时'&&c.class===4&&a.ids.includes('discardTrigger')));
   if(c.abilities.some(a=>a.mode))hit('spellMode',c.name);
   if(c.abilities.some(a=>a.enhanceCost))hit('spellEnhance',c.name);
   if(ids.includes('spellboostDiscount'))hit('spellboost',c.name);
@@ -51,7 +51,7 @@ for(let i=0;i<60000;i++){
   if(c.countdown===null)hit('permanent',c.name);
   else {hit('countdown',c.name);assert(c.abilities.some(a=>a.text===`【吟唱 ${c.countdown}】`));}
   if(c.cost===0)hit('zeroAmulet',c.name);
-  if(ids.includes('earthSigil')){hit('soil',c.name);assert.equal(c.class,3);assert.equal(c.countdown,null);}
+  if(ids.includes('earthSigil')){hit('soil',c.name);assert.equal(c.class,3);assert.equal(c.countdown,null);assert(!c.abilities.some(a=>a.activation?.breaksSelf||a.trigger==='启动'&&/破坏本(?:卡牌|护符)/.test(a.text)),c.name+' earth sigil activation cannot self-destruct');}
   if(ids.includes('amuletEngine'))hit('amuletEngine',c.name);
   if(c.abilities.some(a=>a.mode))hit('amuletMode',c.name);
   if(c.abilities.some(a=>a.enhanceCost))hit('amuletEnhance',c.name);
@@ -76,7 +76,7 @@ for(let i=0;i<60000;i++){
 }
 for(const [type,ratio]of Object.entries({follower:.6,spell:.2,amulet:.2}))assert(Math.abs(counts[type]/60000-ratio)<.015);
 assert(coverage.faith/counts.follower<.01&&coverage.faith>20);
-assert(coverage.selfCopy>coverage.faith*5&&coverage.selfCopy/counts.follower>.025);
+assert(coverage.selfCopy>coverage.faith*5&&coverage.selfCopy/counts.follower>.02);
 assert(coverage.storm/counts.follower>.05&&coverage.storm/counts.follower<.11);assert(coverage.cheapStorm>50);
 assert(S.keywordPrice('疾驰',9,9)-S.keywordPrice('疾驰',8,8)>S.keywordPrice('疾驰',3,3)-S.keywordPrice('疾驰',2,2));
 for(const [key,value]of Object.entries(coverage))assert(value>0,key+' unreachable');

@@ -1,0 +1,10 @@
+{
+  "version": "4.74",
+  "samples": 6000,
+  "stats": {
+    "cards": 2073,
+    "conditional": 266,
+    "strong": 143,
+    "raw": 1107.5749999999996
+  }
+}

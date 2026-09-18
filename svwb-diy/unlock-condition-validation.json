@@ -1,0 +1,112 @@
+{
+  "version": "4.74",
+  "samples": 15000,
+  "counts": {
+    "superUnlocked": 414,
+    "evolutionUnlocked": 35,
+    "modifier": 451,
+    "evolutionHistory": 219,
+    "overflow": 67,
+    "ppFull": 26
+  },
+  "types": [
+    "follower",
+    "spell",
+    "amulet"
+  ],
+  "payoffs": [
+    "draw",
+    "statDebuff",
+    "heal",
+    "tokenHand",
+    "damage",
+    "amuletSearch",
+    "acquisitionDiscount",
+    "allyBuff",
+    "buff",
+    "selfEvolve",
+    "face",
+    "handRefill",
+    "handRefresh",
+    "tokenSummon",
+    "teamBuff",
+    "smallDestroy",
+    "typeSearch",
+    "summonBane",
+    "summonWard",
+    "handCycleTutor",
+    "summonDeathHeal",
+    "handCycle",
+    "earth",
+    "selfCopy",
+    "splitDamage",
+    "aoe",
+    "grantBarrier",
+    "bloodDraw",
+    "missingHealthDamage",
+    "tribeBuff",
+    "allyEvolve",
+    "destroy",
+    "artifactLink",
+    "reanimate",
+    "summonDrain",
+    "tribeSupply",
+    "summonRush",
+    "coinSupply",
+    "boost",
+    "hurtLink",
+    "allyPing",
+    "summonDeathDraw",
+    "setHealth",
+    "flagSummon",
+    "fusionArtifactSummon",
+    "wardLink",
+    "amuletLink",
+    "silence",
+    "recruit",
+    "handCostUp",
+    "crystalHandBuff",
+    "tribeEvolve",
+    "keywordSearch",
+    "transformEnemy",
+    "amuletBreak",
+    "enemyBounce",
+    "experimentSummon",
+    "crystalHandSupply",
+    "wardSearch",
+    "chargeGauge",
+    "grave",
+    "attackLock",
+    "treasureSupply",
+    "corePair",
+    "coreSupply",
+    "summonGrowth"
+  ],
+  "examples": {
+    "superUnlocked": {
+      "name": "解禁条件89",
+      "chaos": false,
+      "text": "【入场曲】若为超进化已解禁的回合，则【模式】选择1个能力发动。\n（1）抽取2张卡牌。\n（2）选择对手的战场上的1个随从，使其-0/-1。"
+    },
+    "follower": {
+      "name": "解禁条件89",
+      "chaos": false,
+      "text": "【入场曲】若为超进化已解禁的回合，则【模式】选择1个能力发动。\n（1）抽取2张卡牌。\n（2）选择对手的战场上的1个随从，使其-0/-1。"
+    },
+    "spell": {
+      "name": "解禁条件114",
+      "chaos": false,
+      "text": "若为超进化已解禁的回合，则抽取1张卡牌。"
+    },
+    "amulet": {
+      "name": "解禁条件396",
+      "chaos": true,
+      "text": "【入场曲】若为超进化已解禁的回合，则将2张『大海虎鲸』加入手牌。若为【觉醒】，则使以此加入手牌的卡牌的费用-1。"
+    },
+    "evolutionUnlocked": {
+      "name": "解禁条件639",
+      "chaos": false,
+      "text": "若为进化已解禁的回合，则对对手的主战者造成1点伤害。"
+    }
+  }
+}

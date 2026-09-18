@@ -47,7 +47,7 @@ for(let i=0;i<30000;i++) {
  distribution.bodySums.get(c.cost).add(c.attack+c.health);
  if(c.cost>=7){distribution.highCards++;if(c.bodyTrade)distribution.highTrades++;}
  if(c.bodyTrade){assert(c.bodyTrade.lost>=2);assert(c.bodyTrade.payoffRaw>=c.bodyTrade.lost+(c.cost<=3?0:2));assert(c.abilities.some(a=>a.kind==='bodyPayoff'&&a.trigger==='入场曲'&&a.raw===c.bodyTrade.payoffRaw));if(c.cost<=3)assert.equal(c.abilities.find(a=>a.kind==='bodyPayoff').ids.filter(id=>id!=='bodyPayoff').length,1);}
- if(c.cost===2&&!c.signature)assert(c.attack+c.health>=(c.zeroAttackTrade?1:c.boardBodyTrade||c.stormBodyTrade||c.bodyTrade||c.resourceBodyTrade?2:4));
+ if(c.cost===2&&!c.signature)assert(c.attack+c.health>=(c.zeroAttackTrade?1:c.handStormTrade||c.boardBodyTrade||c.stormBodyTrade||c.bodyTrade||c.resourceBodyTrade||c.discardSummonTrade||c.discountBodyTrade?.lost||c.barrierBodyTrade||c.evolutionBodyTrade?2:4));
  if(c.fusion){coverage.fusion++;assert(c.abilities.some(a=>a.kind==='fusion'&&a.text.includes(c.fusion.material)));examples.fusion||=c.name;}
  for(const f of c.alternateForms){assert(f.cost<c.cost);coverage[f.kind==='结晶'?'crystallize':'accelerate']++;assert(c.abilities.some(a=>a.kind==='alternate'));if(f.kind==='结晶'){assert(f.countdown>=2);assert(f.text.includes('【谢幕曲】召唤'));}examples[f.kind]||=c.name;}
  if(c.signature){signatures.add(c.archetype);assert(c.rarity===3&&c.cost>=7);examples[c.archetype]||=c.name;if(!assemblies.has(c.archetype))assemblies.set(c.archetype,new Set());assemblies.get(c.archetype).add(c.abilities.map(a=>a.text.replaceAll(c.name,'NAME')).join('\n'));}
@@ -60,7 +60,7 @@ for(let i=0;i<30000;i++) {
   else {assert([2,3,4,5].includes(e.duration));assert(e.text.startsWith(`【吟唱 ${e.duration}】`));}
  }
  for(const f of c.faiths){coverage.faith++;assert.equal(f.initial,0);assert.equal(f.start,'battle');assert([1,2,3,5,6].includes(c.class));assert(c.abilities.some(a=>a.faithIds?.includes(f.id)));assert(f.text.includes('信仰值+1'));examples.faith||=c.name;}
- if(c.archetype==='colossalRemoval'){coverage.colossal++;assert(c.attack+c.health+(c.stormBodyTrade?.attackLost||0)+(c.stormBodyTrade?.healthLost||0)>=20);examples.colossal||=c.name;}
+ if(c.archetype==='colossalRemoval'){coverage.colossal++;assert(c.attack+c.health+(c.stormBodyTrade?.attackLost||0)+(c.stormBodyTrade?.healthLost||0)+(c.discountBodyTrade?.lost||0)+(c.barrierBodyTrade?.lost||0)>=20);examples.colossal||=c.name;}
  if(c.abilities.some(a=>a.kind==='keyword'))coverage.keyword++;
  const ids=c.abilities.flatMap(a=>a.ids);
  assert.equal(ids.length,new Set(ids).size);
@@ -74,6 +74,7 @@ for(let i=0;i<30000;i++) {
   if(a.ids.some(id=>id.startsWith('crystalHand'))){coverage.crystalHands++;assert.equal(c.class,3);assert(c.tokens.some(t=>t.id===10631110));examples.crystalHands||=c.name;}
   if(a.ids.includes('crystalHandLink')){coverage.handLinks++;assert(c.abilities.some(b=>b.ids.includes('crystalHandSupply')||b.ids.includes('crystalHandSummon')));examples.handLink||=c.name;}
   if(a.ids.includes('crystalHandCostReduction')){coverage.handDiscount++;assert(c.cost>=7&&c.attack+c.health<=10);examples.handDiscount||=c.name;}
+  if(a.ids.includes('handDiscount')){coverage.handDiscount++;assert(a.handSpec?.payoff==='discount');examples.handDiscount||=c.name;}
   if(c.cost>=7)for(const m of a.text.matchAll(/抽取([123])张卡牌/g))distribution.highDraw[Number(m[1])]++;
   if(a.kind==='emblem')distribution.emblems[a.trigger]=(distribution.emblems[a.trigger]||0)+1;
   if(a.kind==='replay'){replays++;assert(c.abilities.some(b=>b.trigger==='入场曲'));}
@@ -107,7 +108,7 @@ for(let i=0;i<30000;i++) {
   for(const t of a.tokens||[])assert(c.tokens.some(x=>x.id===t.id));
  }
  // A single compound Fanfare can already summon two upgraded artifacts and draw two.
- if(c.cost>=6){assert(c.abilities.some(a=>a.major));assert(c.corePower>=8);}
+ if(c.cost>=6){assert(c.abilities.some(a=>a.major));assert(c.corePower>=8||ids.includes('疾驰'),'High attack Storm itself is a major payoff');}
  if(c.vanilla){blank++;assert(c.rarity===0&&c.cost<=4);}
  else assert(c.abilities.some(a=>a.trigger),'Non-vanilla must have a triggered effect');
  if(c.tokens.length)tokenCards++;
@@ -124,7 +125,8 @@ for(let i=0;i<30000;i++) {
  }
  rarities[c.rarity].n++;rarities[c.rarity].abilities+=c.abilities.length;
 }
-assert(blank>0&&blank<300);assert(modes>500&&replays>50&&enhance>100&&custom>100&&statics>20);
+// Original tokens remain rare; simplified bronze designs can reduce their count.
+assert(blank>0&&blank<300);assert(modes>500&&replays>50&&enhance>100&&custom>80&&statics>20);
 assert(customHandCards>20,'Generated hand rewards should remain obtainable');
 assert(custom/tokenCards<.15,'Existing tokens should be substantially more common');
 const enhanceMeans=enhanceBands.map(values=>{assert(values.length>20);return values.reduce((s,n)=>s+n,0)/values.length;});

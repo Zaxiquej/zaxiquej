@@ -1,0 +1,38 @@
+{
+  "version": "4.66",
+  "seeds": 8000,
+  "stats": {
+    "normal": {
+      "signature": 15,
+      "foreign": 0,
+      "rarities": [
+        3096,
+        2361,
+        1679,
+        864
+      ]
+    },
+    "chaos": {
+      "signature": 224,
+      "foreign": 0,
+      "rarities": [
+        965,
+        1820,
+        2527,
+        2688
+      ]
+    },
+    "blank": 17,
+    "body45": 451,
+    "royalSummon": 365,
+    "royalBuff": 76,
+    "asymmetric": 646,
+    "emblems": 703,
+    "handCondition": 18,
+    "accelerate": 166
+  },
+  "examples": {
+    "body45": "质量与混乱12",
+    "royalBuff": "质量与混乱117"
+  }
+}

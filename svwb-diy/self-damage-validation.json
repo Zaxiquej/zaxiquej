@@ -1,0 +1,73 @@
+{
+  "version": "4.45",
+  "stats": {
+    "nightmare": 2054,
+    "cards": 115,
+    "abilities": 115
+  },
+  "payoffs": [
+    "damage",
+    "keywordSearch",
+    "selfEvolve",
+    "handCycle",
+    "aoe",
+    "face",
+    "draw",
+    "handRefresh",
+    "tokenSummon",
+    "teamBuff",
+    "selfCopy",
+    "grave",
+    "missingHealthDamage",
+    "tribeSupply",
+    "buff",
+    "typeSearch",
+    "reanimate",
+    "destroy",
+    "tokenHand",
+    "allyBuff",
+    "splitDamage",
+    "banish"
+  ],
+  "types": [
+    "follower",
+    "spell"
+  ],
+  "examples": [
+    {
+      "name": "自伤代价49",
+      "cost": 3,
+      "text": [
+        "【入场曲】对自己的主战者造成1点伤害。然后，选择对手的战场上的1个随从，对其造成2点伤害。"
+      ]
+    },
+    {
+      "name": "自伤代价360",
+      "cost": 3,
+      "text": [
+        "对自己的主战者造成2点伤害。然后，从自己的牌组中随机将1张拥有【入场曲】的随从加入手牌。"
+      ]
+    },
+    {
+      "name": "自伤代价394",
+      "cost": 6,
+      "text": [
+        "【入场曲】对自己的主战者造成1点伤害。然后，若本随从为进化前，则本随从进化。"
+      ]
+    },
+    {
+      "name": "自伤代价477",
+      "cost": 2,
+      "text": [
+        "【入场曲】对自己的主战者造成2点伤害。然后，选择自己的1张手牌，使其返回牌组。抽取1张卡牌。对对手的战场上的所有随从造成1点伤害。"
+      ]
+    },
+    {
+      "name": "自伤代价674",
+      "cost": 2,
+      "text": [
+        "【入场曲】对自己的主战者造成1点伤害。然后，对对手的主战者造成1点伤害。"
+      ]
+    }
+  ]
+}

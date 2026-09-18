@@ -1,0 +1,133 @@
+{
+  "version": "4.75",
+  "samples": 15000,
+  "baseline": {
+    "version": "4.74",
+    "samples": 6000,
+    "stats": {
+      "cards": 2073,
+      "conditional": 266,
+      "strong": 143,
+      "raw": 1107.5749999999996
+    }
+  },
+  "stats": {
+    "cards": 2073,
+    "conditional": 449,
+    "strong": 272,
+    "raw": 1914.5634999999982
+  },
+  "counts": {
+    "evolvedBoard": 384,
+    "superEvolvedBoard": 290
+  },
+  "types": [
+    "follower",
+    "spell",
+    "amulet"
+  ],
+  "payoffs": [
+    "amuletSearch",
+    "damage",
+    "teamBuff",
+    "tokenHand",
+    "acquisitionDiscount",
+    "selfCopy",
+    "tokenSummon",
+    "handBuff",
+    "aoe",
+    "destroy",
+    "selfEvolve",
+    "typeSearch",
+    "buff",
+    "summonDeathHeal",
+    "draw",
+    "heal",
+    "earth",
+    "face",
+    "summonBane",
+    "allyBuff",
+    "summonWard",
+    "opponentHandCopy",
+    "handRefresh",
+    "missingHealthDamage",
+    "handCycle",
+    "flagSummon",
+    "handCycleTutor",
+    "summonGrowth",
+    "crystalHandSummon",
+    "setHealth",
+    "banish",
+    "summonDeathDraw",
+    "splitDamage",
+    "boost",
+    "summonRush",
+    "costChangedLink",
+    "grave",
+    "reanimate",
+    "keywordSearch",
+    "grantRush",
+    "fusionArtifactSummon",
+    "artifact",
+    "fusionArtifactHand",
+    "tribeSupply",
+    "handRefill",
+    "smallDestroy",
+    "ramp",
+    "massDebuff",
+    "statDebuff",
+    "amuletRevive",
+    "tribeBuff",
+    "silence",
+    "experimentSummon",
+    "transformEither",
+    "wardSearch",
+    "summonDrain",
+    "bloodDraw",
+    "artifactLink",
+    "summonDeathDamage",
+    "opponentDeckCopy",
+    "hurtLink",
+    "tribeCountDamage",
+    "recruit",
+    "transformEnemy"
+  ],
+  "examples": {
+    "superEvolvedBoard": {
+      "name": "低费条件5",
+      "chaos": false,
+      "cost": 2,
+      "text": "【超进化时】使自己的战场上的其他所有随从+2/+0。若自己的战场上有其他超进化后的随从，则【模式】选择1个能力发动。\n（1）抽取2张护符。\n（2）选择对手的战场上的1个随从，对其造成6点伤害。"
+    },
+    "follower": {
+      "name": "低费条件5",
+      "chaos": false,
+      "cost": 2,
+      "text": "【超进化时】使自己的战场上的其他所有随从+2/+0。若自己的战场上有其他超进化后的随从，则【模式】选择1个能力发动。\n（1）抽取2张护符。\n（2）选择对手的战场上的1个随从，对其造成6点伤害。"
+    },
+    "cheapStrong": {
+      "name": "低费条件5",
+      "chaos": false,
+      "cost": 2,
+      "text": "【超进化时】使自己的战场上的其他所有随从+2/+0。若自己的战场上有其他超进化后的随从，则【模式】选择1个能力发动。\n（1）抽取2张护符。\n（2）选择对手的战场上的1个随从，对其造成6点伤害。"
+    },
+    "evolvedBoard": {
+      "name": "低费条件16",
+      "chaos": false,
+      "cost": 2,
+      "text": "【谢幕曲】若自己的战场上有进化后的随从，则将2张『怨灵』加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。"
+    },
+    "spell": {
+      "name": "低费条件65",
+      "chaos": false,
+      "cost": 2,
+      "text": "若自己的战场上有进化后的随从，则召唤2个『妖精』。"
+    },
+    "amulet": {
+      "name": "低费条件190",
+      "chaos": false,
+      "cost": 1,
+      "text": "【入场曲】若自己的战场上有进化后的随从，则选择对手的战场上的1个随从，对其造成2点伤害。"
+    }
+  }
+}

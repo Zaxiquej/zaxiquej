@@ -11,7 +11,7 @@ for(const trigger of ['入场曲','进化时','超进化时']){
 const seen={earthOnly:0,boostOnly:0,together:0,otherPairs:0},partners=new Set(),examples={};
 for(const trigger of ['入场曲','进化时','超进化时']){
  const p=`【${trigger}】`;
- const awakened={trigger,condition:'awakening',text:p+'若为【觉醒】，则若本随从为进化前，则本随从进化。'};
+ const awakened={trigger,condition:'awakening',text:p+'若为【觉醒】，则本随从进化。'};
  const discard={trigger,condition:'discard',text:p+'随机舍弃自己的1张手牌。若以此舍弃了1张卡牌，则抽取2张卡牌。'};
  const free={trigger,condition:'none',text:p+'本随从+1/+1。'};
  const draw={trigger,condition:'none',text:p+'抽取1张卡牌。'};

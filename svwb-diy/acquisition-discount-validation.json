@@ -1,0 +1,69 @@
+{
+  "version": "4.77",
+  "samples": 22000,
+  "counts": {
+    "discount": 1324,
+    "draw": 804,
+    "obtain": 520,
+    "conditional": 860,
+    "unconditional": 464,
+    "nightmareCycle": 4,
+    "neutralCopy": 3
+  },
+  "transform": {
+    "transformEither": 20,
+    "transformEnemy": 127,
+    "transformAlly": 41,
+    "opponentCopyTransform": 33,
+    "truthTransform": 4,
+    "handTransform": 15,
+    "transformBound": 43
+  },
+  "examples": {
+    "transformEither": {
+      "name": "获牌减费216",
+      "chaos": true,
+      "text": "【进化时】选择战场上的1个其他随从，使其变身为『壮丽大神隼』。"
+    },
+    "transformEnemy": {
+      "name": "获牌减费234",
+      "chaos": true,
+      "text": "选择对手的战场上的1个随从，使其变身为『妖精』。"
+    },
+    "transformAlly": {
+      "name": "获牌减费655",
+      "chaos": false,
+      "text": "【入场曲】选择自己的战场上的1个随从，使其变身为『守护者巨像』。"
+    },
+    "opponentCopyTransform": {
+      "name": "获牌减费695",
+      "chaos": false,
+      "text": "【入场曲】若自己的牌组中没有重复随从，则选择自己的1张手牌，使其变身为对手的牌组中的随机1张卡牌的复制卡牌。将2张『哥布林』加入手牌。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。"
+    },
+    "truthTransform": {
+      "name": "获牌减费1078",
+      "chaos": false,
+      "text": "使自己的手牌中的随机1张法术变身为『绝尽的伪证』。"
+    },
+    "handTransform": {
+      "name": "获牌减费1218",
+      "chaos": true,
+      "text": "【进化时】使自己的手牌中的随机1张费用为2或以下的随从变身为『蔷薇之闪击』。"
+    },
+    "nightmareCycle": {
+      "name": "获牌减费1557",
+      "chaos": true,
+      "text": "【入场曲】【解放奥义】选择自己的1张手牌，使其返回牌组。抽取3张卡牌。若自己的主战者的生命值为12或以下，则使以此抽取的卡牌的费用-1。"
+    },
+    "transformBound": {
+      "name": "获牌减费2061",
+      "chaos": true,
+      "text": "【超进化时】使自己的战场上的所有『获牌减费2061的胚芽』变身为『获牌减费2061的化身』。"
+    },
+    "neutralCopy": {
+      "name": "获牌减费7569",
+      "chaos": true,
+      "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则将对手的牌组中的随机1张卡牌的复制卡牌各1张以非公开形式加入自己的手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。"
+    }
+  }
+}

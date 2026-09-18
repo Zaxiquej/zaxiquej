@@ -1,16 +1,18 @@
 {
-  "version": "4.39",
+  "version": "4.63",
   "coverage": {
-    "permanentDeath": 670,
-    "highEvolutionWithKeyword": 133,
-    "modes": 2364,
-    "automatic": 10175,
-    "automaticRandom": 2295,
-    "wardDeath": 44
+    "permanentDeath": 676,
+    "highEvolutionWithKeyword": 47,
+    "modes": 1740,
+    "automatic": 12601,
+    "automaticRandom": 2518,
+    "wardDeath": 38,
+    "multipleTargets": 394,
+    "handAndBoard": 369
   },
   "examples": {
     "permanentDeath": "阶段兼容9",
-    "evolution": "阶段兼容29",
-    "wardDeath": "阶段兼容182"
+    "evolution": "阶段兼容102",
+    "wardDeath": "阶段兼容283"
   }
 }

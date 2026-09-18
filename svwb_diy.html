@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>设计师模拟器</title>
-  <link rel="stylesheet" href="svwb-diy/style.css?v=4.43">
-  <script defer src="svwb-diy/calibration.js?v=4.43"></script>
-  <script defer src="svwb-diy/nonfollowers.js?v=4.43"></script>
-  <script defer src="svwb-diy/engine.js?v=4.43"></script>
-  <script defer src="svwb-diy/app.js?v=4.43"></script>
+  <link rel="stylesheet" href="svwb-diy/style.css?v=4.77">
+  <script defer src="svwb-diy/calibration.js?v=4.77"></script>
+  <script defer src="svwb-diy/nonfollowers.js?v=4.77"></script>
+  <script defer src="svwb-diy/engine.js?v=4.77"></script>
+  <script defer src="svwb-diy/app.js?v=4.77"></script>
 </head>
 <body>
   <main class="container">
@@ -26,17 +26,20 @@
         </div>
         <p class="filter-note">用于“随机生成”和“其他可能性”；输入名称后点“生成”仍可复现原卡。</p>
       </fieldset>
+      <div class="mode-toggles">
+        <label class="chaos-toggle" title="更容易生成金虹卡、复杂能力和强力组合，仍保留职业特色。"><input id="chaos" type="checkbox" aria-description="更容易生成金虹卡、复杂能力和强力组合，仍保留职业特色。">究极混乱</label>
+      </div>
     </form>
     <article id="card" class="result">
       <h2 id="card-name"></h2>
       <p id="class-rarity" class="card-meta"></p>
       <div class="stats"><span>费用 <b id="cost"></b></span><span>攻击 <b id="attack"></b></span><span>生命 <b id="health"></b></span></div>
+      <section id="alternate-forms" aria-label="激奏与结晶" hidden></section>
       <div id="abilities"></div>
     </article>
     <section id="tokens" aria-label="附属卡"></section>
     <section id="emblems" aria-label="纹章"></section>
     <section id="faiths" aria-label="信仰"></section>
-    <section id="alternate-forms" aria-label="激奏与结晶"></section>
     <div class="actions"><button id="copy" type="button" class="secondary">复制卡牌文本</button><span id="status" role="status" aria-live="polite"></span></div>
     <footer><a href="https://shadowverse-wb.com/chs/deck/cardslist/" target="_blank" rel="noopener">官方卡牌图鉴</a></footer>
     <button id="variant" type="button" class="secondary variant">不满意？看看其他可能性。</button>

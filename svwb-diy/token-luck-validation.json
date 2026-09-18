@@ -1,0 +1,88 @@
+{
+  "version": "4.63",
+  "samples": 40000,
+  "counts": {
+    "summon90061110": 185,
+    "summon90061130": 181,
+    "handLuck": 110,
+    "discountedHand90061110": 12,
+    "discountedHand90041120": 10,
+    "summon90041120": 396,
+    "transformEnemy": 247,
+    "babyDragon": 275,
+    "drawLuckEmblem": 217,
+    "tiger": 164,
+    "discountedHand90061130": 4,
+    "transformAlly": 78,
+    "transformEither": 42
+  },
+  "examples": {
+    "summon90061110": {
+      "name": "花签与变身23",
+      "chaos": false
+    },
+    "summon90061130": {
+      "name": "花签与变身45",
+      "chaos": true
+    },
+    "handLuck": {
+      "name": "花签与变身46",
+      "chaos": false
+    },
+    "discountedHand90061110": {
+      "name": "花签与变身68",
+      "chaos": false
+    },
+    "discountedHand90041120": {
+      "name": "花签与变身97",
+      "chaos": false
+    },
+    "summon90041120": {
+      "name": "花签与变身159",
+      "chaos": true
+    },
+    "transformEnemy": {
+      "name": "花签与变身198",
+      "chaos": true
+    },
+    "babyDragon": {
+      "name": "花签与变身202",
+      "chaos": false
+    },
+    "drawLuckEmblem": {
+      "name": "花签与变身247",
+      "chaos": false
+    },
+    "tiger": {
+      "name": "花签与变身365",
+      "chaos": false
+    },
+    "discountedHand90061130": {
+      "name": "花签与变身555",
+      "chaos": true
+    },
+    "transformAlly": {
+      "name": "花签与变身690",
+      "chaos": true
+    },
+    "transformEither": {
+      "name": "花签与变身1726",
+      "chaos": false
+    }
+  },
+  "patterns": 28,
+  "rewards": [
+    "damage",
+    "heal",
+    "tokenSummon",
+    "aoe",
+    "face",
+    "summonBane",
+    "summonRush",
+    "summonDeathDamage",
+    "summonDeathGrave",
+    "summonDeathDraw",
+    "summonWard",
+    "allyBuff"
+  ]
+}
