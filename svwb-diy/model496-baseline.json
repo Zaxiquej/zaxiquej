@@ -1,0 +1,5918 @@
+{
+  "version": "4.95",
+  "mid": [
+    {
+      "name": "模型审计496-43",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "emblem",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "text": "【谢幕曲】使自己获得『纹章：模型审计496-43』。",
+          "bodyText": "使自己获得『纹章：模型审计496-43』。",
+          "raw": 3.2352941176470593,
+          "price": 2.1029411764705888,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-6"
+          ],
+          "tokens": [],
+          "major": false
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon"
+          ],
+          "raw": 10.4,
+          "boardValue": 10.4,
+          "tokens": [
+            {
+              "id": 90061110,
+              "name": "神圣猎鹰",
+              "class": 6,
+              "cost": 3,
+              "attack": 2,
+              "health": 2,
+              "text": "【疾驰】"
+            }
+          ],
+          "text": "【融合】护符\n【入场曲】若已与本卡牌【融合】，则召唤X个『神圣猎鹰』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "cap": 2,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤X个『神圣猎鹰』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "price": 6.0600000000000005
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【威慑】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "威慑"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-188",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:draw"
+          ],
+          "raw": 2.2,
+          "boardValue": 0,
+          "text": "【融合】创造物·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，抽取1张卡牌。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "fusionPP",
+          "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，抽取1张卡牌。",
+          "price": 2.54,
+          "fusionEvent": {
+            "effects": [
+              "draw"
+            ],
+            "ppCost": 1,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 2.2,
+            "experiment": false
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】召唤1个『毁灭创造物β』。",
+          "bodyText": "召唤1个『毁灭创造物β』。",
+          "price": 3,
+          "raw": 12,
+          "ids": [
+            "coreSupport",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『毁灭创造物β』。",
+              "raw": 12
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90073120,
+              "name": "毁灭创造物β",
+              "class": 7,
+              "cost": 5,
+              "attack": 4,
+              "health": 4,
+              "text": "自己的回合结束时，对对手的主战者造成3点伤害。"
+            }
+          ],
+          "major": true
+        },
+        {
+          "ids": [
+            "teamBuff"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则使自己的战场上的其他所有随从+1/+1。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "artifactKinds",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 4,
+          "bodyText": "若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则使自己的战场上的其他所有随从+1/+1。",
+          "price": 3
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-587",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "draw",
+            "tokenSummon",
+            "allyBuff"
+          ],
+          "raw": 12,
+          "boardValue": 9.8,
+          "text": "【入场曲】若自己的牌组中没有重复随从，则抽取1张卡牌。召唤2个『哥布林』。选择自己的战场上的1个其他随从，使其+3/+2。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若自己的牌组中没有重复随从，则抽取1张卡牌。召唤2个『哥布林』。选择自己的战场上的1个其他随从，使其+3/+2。",
+          "price": 3.42
+        },
+        {
+          "ids": [
+            "smallDestroy"
+          ],
+          "raw": 3.5,
+          "boardValue": 0,
+          "text": "【入场曲】选择对手的战场上的1个费用为3或以下的随从，破坏该随从。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "选择对手的战场上的1个费用为3或以下的随从，破坏该随从。",
+          "price": 3.5
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-790",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "handTrigger",
+          "trigger": "在手牌中发动",
+          "condition": "none",
+          "text": "在手牌中发动。自己的随从超进化时，使本卡牌的费用-1。",
+          "bodyText": "在手牌中发动。自己的随从超进化时，使本卡牌的费用-1。",
+          "raw": 2.0999999999999996,
+          "price": 2.49,
+          "ids": [
+            "handTrigger",
+            "handDiscount"
+          ],
+          "handSpec": {
+            "eventId": "ownSuper",
+            "payoff": "discount",
+            "keyword": null,
+            "temporary": false,
+            "amount": 1,
+            "setCost": null,
+            "expectedDiscount": 1.4,
+            "discountValueFactor": 0.75,
+            "oncePerTurn": false
+          },
+          "tokens": []
+        },
+        {
+          "ids": [
+            "artifactBuff"
+          ],
+          "raw": 8,
+          "boardValue": 8,
+          "text": "【进化时】使自己的战场上的所有创造物·随从+1/+3。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 4.5,
+          "bodyText": "使自己的战场上的所有创造物·随从+1/+3。",
+          "price": 3.04
+        },
+        {
+          "ids": [
+            "teamBuff"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】使自己的战场上的其他所有随从+1/+1。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "使自己的战场上的其他所有随从+1/+1。",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-866",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon",
+            "typeSearch",
+            "acquisitionDiscount"
+          ],
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则召唤2个『哥布林』。从自己的牌组中随机将1张费用为5或以上的随从加入手牌。使以此加入手牌的卡牌的费用-1。",
+          "raw": 8.65,
+          "boardValue": 4.4,
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤2个『哥布林』。从自己的牌组中随机将1张费用为5或以上的随从加入手牌。使以此加入手牌的卡牌的费用-1。",
+          "price": 4.9225
+        },
+        {
+          "ids": [
+            "aoe"
+          ],
+          "raw": 15.2,
+          "boardValue": 0,
+          "text": "【入场曲】若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成4点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成4点伤害。",
+          "price": 4.636
+        },
+        {
+          "ids": [
+            "recoverFollower",
+            "handCycle",
+            "heal"
+          ],
+          "raw": 6.25,
+          "boardValue": 0,
+          "text": "【入场曲】若自己的牌组中没有重复随从，则将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。选择自己的2张手牌，使其返回牌组。抽取2张卡牌。回复自己的主战者1点生命值。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若自己的牌组中没有重复随从，则将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。选择自己的2张手牌，使其返回牌组。抽取2张卡牌。回复自己的主战者1点生命值。",
+          "price": 3.2775
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-940",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤3个『哥布林』。",
+          "bodyText": "召唤3个『哥布林』。",
+          "price": 6.6000000000000005,
+          "raw": 6.6000000000000005,
+          "ids": [
+            "coreAnchor",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤3个『哥布林』。",
+              "raw": 6.6000000000000005
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 2】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "ids": [
+            "aoe",
+            "tokenSummon"
+          ],
+          "raw": 12,
+          "boardValue": 4.4,
+          "text": "【入场曲】若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成2点伤害。召唤2个『哥布林』。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成2点伤害。召唤2个『哥布林』。",
+          "price": 3.42
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1049",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "teamBuff"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】使自己的战场上的其他所有随从+1/+1。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "使自己的战场上的其他所有随从+1/+1。",
+          "price": 5
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 9.6,
+          "boardValue": 9.6,
+          "text": "【超进化时】若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则召唤2个『改良型·悬丝傀儡』。",
+          "tokens": [
+            {
+              "id": 90071120,
+              "name": "改良型·悬丝傀儡",
+              "class": 7,
+              "cost": 1,
+              "attack": 3,
+              "health": 3,
+              "text": "【突进】\n对手的回合结束时，破坏本卡牌。"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "超进化时",
+          "condition": "artifactKinds",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 7.25,
+          "bodyText": "若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则召唤2个『改良型·悬丝傀儡』。",
+          "price": 1.92
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonWard"
+          ],
+          "raw": 4.8,
+          "boardValue": 4.8,
+          "text": "【入场曲】召唤1个『改良型·悬丝傀儡』。使这些随从获得【守护】。",
+          "tokens": [
+            {
+              "id": 90071120,
+              "name": "改良型·悬丝傀儡",
+              "class": 7,
+              "cost": 1,
+              "attack": 3,
+              "health": 3,
+              "text": "【突进】\n对手的回合结束时，破坏本卡牌。"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『改良型·悬丝傀儡』。",
+              "raw": 4.8
+            },
+            {
+              "id": "summonWard",
+              "text": "【守护】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90071120,
+            "count": 1,
+            "attack": 3,
+            "health": 3,
+            "attacks": 1,
+            "effectiveCost": 5,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonWard",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『改良型·悬丝傀儡』。使这些随从获得【守护】。",
+          "price": 4.8
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1072",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 1.875,
+          "raw": 7.5,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 11.399999999999999,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreSupport",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonRush"
+          ],
+          "raw": 3.4,
+          "boardValue": 3.4,
+          "text": "【入场曲】对自己的主战者造成1点伤害。然后，召唤2个『蝙蝠』。使这些随从获得【突进】。",
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤2个『蝙蝠』。",
+              "raw": 3.4
+            },
+            {
+              "id": "summonRush",
+              "text": "【突进】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90051120,
+            "count": 2,
+            "attack": 1,
+            "health": 1,
+            "attacks": 1,
+            "effectiveCost": 6,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonRush",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "selfDamage",
+          "resourceCost": 1,
+          "conditionAmount": 1,
+          "enhanceCost": 0,
+          "minPayoff": 2.2,
+          "bodyText": "对自己的主战者造成1点伤害。然后，召唤2个『蝙蝠』。使这些随从获得【突进】。",
+          "price": 2.5999999999999996
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1382",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】召唤1个『守护者巨像』。",
+          "bodyText": "召唤1个『守护者巨像』。",
+          "price": 2.2039999999999997,
+          "raw": 5.8,
+          "ids": [
+            "coreAnchor",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『守护者巨像』。",
+              "raw": 5.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90031120,
+              "name": "守护者巨像",
+              "class": 3,
+              "cost": 3,
+              "attack": 3,
+              "health": 3,
+              "text": "【守护】",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】抽取2张卡牌。",
+          "bodyText": "抽取2张卡牌。",
+          "price": 4.4,
+          "raw": 4.4,
+          "ids": [
+            "coreSupport",
+            "draw"
+          ],
+          "components": [
+            {
+              "id": "draw",
+              "text": "抽取2张卡牌。",
+              "raw": 4.4
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『天晶魔手』。",
+          "bodyText": "召唤1个『天晶魔手』。",
+          "raw": 1.8,
+          "price": 1.8,
+          "boardValue": 1.8,
+          "ids": [
+            "crystalHandSummon"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "kind": "static",
+          "trigger": "自己的『天晶魔手』进入战场时",
+          "condition": "none",
+          "text": "自己的『天晶魔手』进入战场时，回复自己的主战者1点生命值。",
+          "bodyText": "自己的『天晶魔手』进入战场时，回复自己的主战者1点生命值。",
+          "raw": 2.5,
+          "price": 2.5,
+          "ids": [
+            "crystalHandLink"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 5.8,
+          "boardValue": 5.8,
+          "text": "【入场曲】若本卡牌的费用不为6，则召唤1个『守护者巨像』。",
+          "tokens": [
+            {
+              "id": 90031120,
+              "name": "守护者巨像",
+              "class": 3,
+              "cost": 3,
+              "attack": 3,
+              "health": 3,
+              "text": "【守护】",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "costChanged",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 2,
+          "bodyText": "若本卡牌的费用不为6，则召唤1个『守护者巨像』。",
+          "price": 3.12
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1397",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:damage"
+          ],
+          "raw": 5,
+          "boardValue": 0,
+          "text": "【融合】财宝·卡牌\n与本卡牌【融合】时，对对手的战场上的随机1个随从造成4点伤害。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "none",
+          "bodyText": "与本卡牌【融合】时，对对手的战场上的随机1个随从造成4点伤害。",
+          "price": 10.9,
+          "fusionEvent": {
+            "effects": [
+              "damage"
+            ],
+            "ppCost": 0,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 5,
+            "experiment": false
+          }
+        },
+        {
+          "ids": [
+            "spellLink",
+            "damage"
+          ],
+          "raw": 1.25,
+          "boardValue": 0,
+          "text": "自己使用法术时，自己的每回合中可触发1次，对对手的战场上的随机1个随从造成1点伤害。",
+          "tokens": [],
+          "kind": "static",
+          "trigger": "自己使用法术时",
+          "condition": "none",
+          "bodyText": "对对手的战场上的随机1个随从造成1点伤害。",
+          "price": 2.5
+        },
+        {
+          "kind": "emblem",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己获得『纹章：模型审计496-1397』。",
+          "bodyText": "使自己获得『纹章：模型审计496-1397』。",
+          "raw": 3.2467532467532467,
+          "price": 3.2467532467532467,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-2"
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 1.4,
+          "boardValue": 1.4,
+          "text": "【入场曲】召唤1个『骑士』。",
+          "tokens": [
+            {
+              "id": 90021110,
+              "name": "骑士",
+              "class": 2,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『骑士』。",
+          "price": 1.4
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1423",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】选择对手的战场上的1个随从，对其造成5点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成5点伤害。",
+          "price": 2.375,
+          "raw": 6.25,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成5点伤害。",
+              "raw": 6.25
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】破坏对手的战场上的随机1个随从。",
+          "bodyText": "破坏对手的战场上的随机1个随从。",
+          "price": 4.535,
+          "raw": 7,
+          "ids": [
+            "coreSupport",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "破坏对手的战场上的随机1个随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon"
+          ],
+          "raw": 3.4,
+          "boardValue": 3.4,
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则召唤2个『蝙蝠』。",
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤2个『蝙蝠』。",
+          "price": 1.51
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "text": "1回合可以攻击2次。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "doubleAttack"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1605",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "cost",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择自己的1张手牌，使其返回牌组。",
+          "bodyText": "选择自己的1张手牌，使其返回牌组。",
+          "raw": 0,
+          "price": 0,
+          "ids": [
+            "shuffleCost"
+          ],
+          "tokens": []
+        },
+        {
+          "ids": [
+            "allyBuff"
+          ],
+          "raw": 3.6,
+          "boardValue": 3.6,
+          "text": "【入场曲】选择自己的战场上的1个其他随从，使其+3/+1。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "选择自己的战场上的1个其他随从，使其+3/+1。",
+          "price": 3.6
+        },
+        {
+          "ids": [
+            "damage"
+          ],
+          "raw": 5,
+          "boardValue": 0,
+          "text": "【进化时】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 4.5,
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 1.9
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1691",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "aoe"
+          ],
+          "raw": 11.399999999999999,
+          "boardValue": 0,
+          "text": "【谢幕曲】若自己的战场上有原始费用为6或以上的卡牌，则对对手的战场上的所有随从造成3点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "谢幕曲",
+          "condition": "havenHighCost",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 2,
+          "bodyText": "若自己的战场上有原始费用为6或以上的卡牌，则对对手的战场上的所有随从造成3点伤害。",
+          "price": 5.335199999999999
+        },
+        {
+          "ids": [
+            "selfCopy"
+          ],
+          "raw": 13.2,
+          "boardValue": 13.2,
+          "text": "【入场曲】【解放奥义】召唤1个『模型审计496-1691』。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "liberatedArt",
+          "resourceCost": 0,
+          "conditionAmount": 15,
+          "enhanceCost": 0,
+          "minPayoff": 5,
+          "bodyText": "【解放奥义】召唤1个『模型审计496-1691』。",
+          "price": 7.26
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1693",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:handBuff"
+          ],
+          "raw": 1.3,
+          "boardValue": 0,
+          "text": "【融合】卡牌\n与本卡牌【融合】时，使自己的手牌中的随机1张随从+2/+0。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "none",
+          "bodyText": "与本卡牌【融合】时，使自己的手牌中的随机1张随从+2/+0。",
+          "price": 2.7600000000000002,
+          "fusionEvent": {
+            "effects": [
+              "handBuff"
+            ],
+            "ppCost": 0,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 1.3,
+            "experiment": false
+          }
+        },
+        {
+          "kind": "handTrigger",
+          "trigger": "在手牌中发动",
+          "condition": "none",
+          "text": "在手牌中发动。自己的随从超进化时，每回合最多发动1次，本随从+1/+1。",
+          "bodyText": "在手牌中发动。自己的随从超进化时，每回合最多发动1次，本随从+1/+1。",
+          "raw": 2,
+          "price": 2.2399999999999998,
+          "ids": [
+            "handTrigger",
+            "handGrowth"
+          ],
+          "handSpec": {
+            "eventId": "ownSuper",
+            "payoff": "growth",
+            "keyword": null,
+            "temporary": false,
+            "amount": 1,
+            "setCost": null,
+            "expectedDiscount": 0,
+            "discountValueFactor": 1,
+            "oncePerTurn": true
+          },
+          "tokens": []
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 2.85,
+          "raw": 7.5,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己的所有手牌发动1次魔力增幅。",
+          "bodyText": "使自己的所有手牌发动1次魔力增幅。",
+          "price": 2,
+          "raw": 2,
+          "ids": [
+            "coreSupport",
+            "boost"
+          ],
+          "components": [
+            {
+              "id": "boost",
+              "text": "使自己的所有手牌发动1次魔力增幅。",
+              "raw": 2
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "teamBuff"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】使自己的战场上的其他所有随从+0/+2。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "使自己的战场上的其他所有随从+0/+2。",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-1911",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "ids": [
+            "handLuck",
+            "handRefresh",
+            "tokenSummon"
+          ],
+          "raw": 4.8,
+          "boardValue": 3.4,
+          "text": "【入场曲】使自己的所有手牌返回牌组。抽取X张卡牌。X为因本能力返回牌组的张数。之后，若自己的手牌中有4张或以上费用相同的卡牌，则召唤2个『蝙蝠』。",
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "kind": "handLuck",
+          "trigger": "入场曲",
+          "condition": "handCostPattern",
+          "price": 2.692,
+          "bodyText": "使自己的所有手牌返回牌组。抽取X张卡牌。X为因本能力返回牌组的张数。之后，若自己的手牌中有4张或以上费用相同的卡牌，则召唤2个『蝙蝠』。",
+          "major": false,
+          "luck": {
+            "kind": "handCostPattern",
+            "pattern": "same",
+            "threshold": 4,
+            "rounds": 1,
+            "successWeight": 0.38,
+            "payoffRaw": 3.4,
+            "reshuffle": true
+          }
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "bodyText": "本随从受到的伤害-1。",
+          "text": "本随从受到的伤害-1。",
+          "raw": 7.2,
+          "price": 7.2,
+          "ids": [
+            "reduceDamage"
+          ],
+          "tokens": []
+        },
+        {
+          "kind": "emblem",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】使自己获得『纹章：模型审计496-1911』。",
+          "bodyText": "使自己获得『纹章：模型审计496-1911』。",
+          "raw": 8.511999999999999,
+          "price": 2.1279999999999997,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-5"
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "text": "【谢幕曲】破坏对手的战场上的随机1个随从。",
+          "bodyText": "破坏对手的战场上的随机1个随从。",
+          "price": 4.55,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "破坏对手的战场上的随机1个随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "bloodDraw",
+            "reanimate"
+          ],
+          "raw": 7.7,
+          "boardValue": 4.5,
+          "text": "【谢幕曲】若自己的主战者的生命值为12或以下，则对自己的主战者造成2点伤害。抽取2张卡牌。发动【亡者召还 2】。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "谢幕曲",
+          "condition": "lowHealth",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 5.5,
+          "bodyText": "若自己的主战者的生命值为12或以下，则对自己的主战者造成2点伤害。抽取2张卡牌。发动【亡者召还 2】。",
+          "price": 1.5560999999999998
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2076",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:tokenSummon"
+          ],
+          "raw": 4.4,
+          "boardValue": 4.4,
+          "text": "【融合】随从\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『哥布林』。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "fusionPP",
+          "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『哥布林』。",
+          "price": 4.74,
+          "fusionEvent": {
+            "effects": [
+              "tokenSummon"
+            ],
+            "ppCost": 1,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 4.4,
+            "experiment": false
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 4.332,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreAnchor",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "handCycleTutor",
+            "tokenSummon"
+          ],
+          "raw": 6.6000000000000005,
+          "boardValue": 4.4,
+          "text": "【入场曲】【解放奥义】选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。召唤2个『哥布林』。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "liberatedArt",
+          "resourceCost": 0,
+          "conditionAmount": 15,
+          "enhanceCost": 0,
+          "minPayoff": 5,
+          "bodyText": "【解放奥义】选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。召唤2个『哥布林』。",
+          "price": 3.630000000000001
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2120",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 2.66,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤3个『蝙蝠』。使这些随从+1/+1。使这些随从获得【守护】。",
+          "bodyText": "召唤3个『蝙蝠』。使这些随从+1/+1。使这些随从获得【守护】。",
+          "price": 10.5,
+          "raw": 10.5,
+          "ids": [
+            "coreSupport",
+            "summon",
+            "summonWard"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤3个『蝙蝠』。",
+              "raw": 5.1
+            },
+            {
+              "id": "summonGrowth",
+              "text": "使这些随从+1/+1。",
+              "raw": 5.4
+            },
+            {
+              "id": "summonWard",
+              "text": "【守护】",
+              "raw": 0
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "major": true
+        },
+        {
+          "ids": [
+            "allyBuff"
+          ],
+          "raw": 1.8,
+          "boardValue": 1.8,
+          "text": "【入场曲】选择自己的战场上的1个其他随从，使其+2/+0。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "选择自己的战场上的1个其他随从，使其+2/+0。",
+          "price": 1.8
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2201",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 3.2,
+          "boardValue": 3.2,
+          "text": "【入场曲】若为超进化已解禁的回合，则召唤1个『铁甲骑士』。",
+          "tokens": [
+            {
+              "id": 90021120,
+              "name": "铁甲骑士",
+              "class": 2,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "superUnlocked",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 2,
+          "bodyText": "若为超进化已解禁的回合，则召唤1个『铁甲骑士』。",
+          "price": 2.8480000000000003
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2410",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己的战场上的其他所有随从+2/+1。",
+          "bodyText": "使自己的战场上的其他所有随从+2/+1。",
+          "price": 6,
+          "raw": 6,
+          "ids": [
+            "coreAnchor",
+            "teamBuff"
+          ],
+          "components": [
+            {
+              "id": "teamBuff",
+              "text": "使自己的战场上的其他所有随从+2/+1。",
+              "raw": 6
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 1】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 1.8,
+          "boardValue": 1.8,
+          "text": "【入场曲】召唤1个『妖精』。",
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『妖精』。",
+          "price": 1.8
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2532",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『守护者巨像』。",
+          "bodyText": "召唤1个『守护者巨像』。",
+          "price": 5.8,
+          "raw": 5.8,
+          "ids": [
+            "coreAnchor",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『守护者巨像』。",
+              "raw": 5.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90031120,
+              "name": "守护者巨像",
+              "class": 3,
+              "cost": 3,
+              "attack": 3,
+              "health": 3,
+              "text": "【守护】",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenHand"
+          ],
+          "raw": 2,
+          "boardValue": 0,
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "text": "【融合】法术\n【入场曲】若已与本卡牌【融合】，则将X张『天晶魔手』加入手牌。X为与本卡牌融合的卡牌张数（上限2）。",
+          "cap": 2,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则将X张『天晶魔手』加入手牌。X为与本卡牌融合的卡牌张数（上限2）。",
+          "price": 0.8
+        },
+        {
+          "ids": [
+            "crystalHandBuff"
+          ],
+          "raw": 9,
+          "boardValue": 9,
+          "text": "【入场曲】【土之秘术 2】使自己的战场上的所有『天晶魔手』+1/+3。",
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "earth",
+          "resourceCost": 2,
+          "conditionAmount": 2,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "【土之秘术 2】使自己的战场上的所有『天晶魔手』+1/+3。",
+          "price": 4.08
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2618",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 1.75,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 3.2,
+          "boardValue": 3.2,
+          "text": "【入场曲】召唤1个『铁甲骑士』。",
+          "tokens": [
+            {
+              "id": 90021120,
+              "name": "铁甲骑士",
+              "class": 2,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『铁甲骑士』。",
+          "price": 3.2
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-2893",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 4.6,
+          "boardValue": 4.6,
+          "text": "【入场曲】召唤1个『新绿的妖精』。",
+          "tokens": [
+            {
+              "id": 90011120,
+              "name": "新绿的妖精",
+              "class": 1,
+              "cost": 2,
+              "attack": 1,
+              "health": 1,
+              "text": "【守护】\n自己的回合结束时，本随从进化。",
+              "poolWeight": 1.2
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『新绿的妖精』。",
+          "price": 4.6
+        },
+        {
+          "ids": [
+            "damage"
+          ],
+          "raw": 5,
+          "boardValue": 0,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【守护】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "守护"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3076",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenHand"
+          ],
+          "raw": 2,
+          "boardValue": 0,
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则将X张『妖精』加入手牌。X为与本卡牌融合的卡牌张数（上限2）。",
+          "cap": 2,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则将X张『妖精』加入手牌。X为与本卡牌融合的卡牌张数（上限2）。",
+          "price": 0.8
+        },
+        {
+          "ids": [
+            "selfCopy"
+          ],
+          "raw": 13.2,
+          "boardValue": 13.2,
+          "text": "【入场曲】若本次对战中自己的随从的进化次数为7次或以上，则召唤1个『模型审计496-3076』。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "evolutionHistory",
+          "resourceCost": 0,
+          "conditionAmount": 7,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若本次对战中自己的随从的进化次数为7次或以上，则召唤1个『模型审计496-3076』。",
+          "price": 6.335999999999999
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 3.6,
+          "boardValue": 3.6,
+          "text": "【谢幕曲】若自己的战场上有进化后的随从，则召唤2个『妖精』。",
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "谢幕曲",
+          "condition": "evolvedBoard",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 2.5,
+          "bodyText": "若自己的战场上有进化后的随从，则召唤2个『妖精』。",
+          "price": 1.7550000000000001
+        },
+        {
+          "kind": "replay",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】发动与【入场曲】相同的能力。",
+          "price": 2.71168,
+          "raw": 15.2,
+          "timingFactor": 0.38,
+          "ids": [
+            "replay"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3495",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的随机1个随从造成7点伤害。",
+          "bodyText": "对对手的战场上的随机1个随从造成7点伤害。",
+          "price": 3.325,
+          "raw": 8.75,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "对对手的战场上的随机1个随从造成7点伤害。",
+              "raw": 8.75
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon"
+          ],
+          "raw": 3.4,
+          "boardValue": 3.4,
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则召唤X个『蝙蝠』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "cap": 2,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤X个『蝙蝠』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "price": 1.51
+        },
+        {
+          "ids": [
+            "draw",
+            "banish"
+          ],
+          "raw": 10.2,
+          "boardValue": 0,
+          "text": "【进化时】【唤灵 4】抽取1张卡牌。选择对手的战场上的1个随从，使其消失。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "necromancy",
+          "resourceCost": 4,
+          "conditionAmount": 4,
+          "enhanceCost": 0,
+          "minPayoff": 9.5,
+          "bodyText": "【唤灵 4】抽取1张卡牌。选择对手的战场上的1个随从，使其消失。",
+          "price": 4.832
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3522",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "handTrigger",
+          "trigger": "在手牌中发动",
+          "condition": "none",
+          "text": "在手牌中发动。自己通过【爆能强化】使用卡牌时，使本卡牌的费用-1。",
+          "bodyText": "在手牌中发动。自己通过【爆能强化】使用卡牌时，使本卡牌的费用-1。",
+          "raw": 4,
+          "price": 4.4,
+          "ids": [
+            "handTrigger",
+            "handDiscount"
+          ],
+          "handSpec": {
+            "eventId": "enhance",
+            "payoff": "discount",
+            "keyword": null,
+            "temporary": false,
+            "amount": 1,
+            "setCost": null,
+            "expectedDiscount": 2,
+            "discountValueFactor": 1,
+            "oncePerTurn": false
+          },
+          "tokens": []
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己的战场上的其他所有随从+2/+1。",
+          "bodyText": "使自己的战场上的其他所有随从+2/+1。",
+          "price": 6,
+          "raw": 6,
+          "ids": [
+            "coreAnchor",
+            "teamBuff"
+          ],
+          "components": [
+            {
+              "id": "teamBuff",
+              "text": "使自己的战场上的其他所有随从+2/+1。",
+              "raw": 6
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】破坏对手的战场上的随机1个随从。",
+          "bodyText": "破坏对手的战场上的随机1个随从。",
+          "price": 2.66,
+          "raw": 7,
+          "ids": [
+            "coreSupport",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "破坏对手的战场上的随机1个随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonGrowth"
+          ],
+          "raw": 6.4,
+          "boardValue": 6.4,
+          "text": "【入场曲】若自己的战场上有至少3个其他随从，则召唤2个『骑士』。使这些随从+2/+0。",
+          "tokens": [
+            {
+              "id": 90021110,
+              "name": "骑士",
+              "class": 2,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "raw": 2.8,
+              "text": "召唤2个『骑士』。"
+            },
+            {
+              "id": "summonGrowth",
+              "raw": 3.6,
+              "text": "使这些随从+2/+0。"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "board",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "若自己的战场上有至少3个其他随从，则召唤2个『骑士』。使这些随从+2/+0。",
+          "price": 4.4799999999999995
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3585",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 7.5,
+          "raw": 7.5,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】抽取1张卡牌。",
+          "bodyText": "抽取1张卡牌。",
+          "price": 2.2,
+          "raw": 2.2,
+          "ids": [
+            "coreSupport",
+            "draw"
+          ],
+          "components": [
+            {
+              "id": "draw",
+              "text": "抽取1张卡牌。",
+              "raw": 2.2
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon",
+            "summonWard"
+          ],
+          "raw": 14,
+          "boardValue": 14,
+          "text": "【融合】护符\n【入场曲】若与本卡牌融合的卡牌张数为2或以上，则召唤2个『圣炎猛虎』。使这些随从获得【守护】。",
+          "tokens": [
+            {
+              "id": 90061120,
+              "name": "圣炎猛虎",
+              "class": 6,
+              "cost": 4,
+              "attack": 4,
+              "health": 4,
+              "text": "【突进】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤2个『圣炎猛虎』。",
+              "raw": 14
+            },
+            {
+              "id": "summonWard",
+              "text": "【守护】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90061120,
+            "count": 2,
+            "attack": 4,
+            "health": 4,
+            "attacks": 1,
+            "effectiveCost": 7,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonWard",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若与本卡牌融合的卡牌张数为2或以上，则召唤2个『圣炎猛虎』。使这些随从获得【守护】。",
+          "price": 7.699999999999999
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【毁灭】",
+          "price": 0.1,
+          "raw": 0.1,
+          "ids": [
+            "毁灭"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3833",
+      "cost": 5,
+      "body": 13,
+      "abilities": [
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 2.5,
+          "boardValue": 2.5,
+          "text": "【入场曲】召唤1个『圣骑兵』。",
+          "tokens": [
+            {
+              "id": 90064110,
+              "name": "圣骑兵",
+              "class": 6,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": "【守护】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『圣骑兵』。",
+          "price": 2.5
+        },
+        {
+          "ids": [
+            "draw"
+          ],
+          "raw": 2.2,
+          "boardValue": 0,
+          "text": "【入场曲】抽取1张卡牌。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "抽取1张卡牌。",
+          "price": 2.2
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "text": "无法攻击随从或主战者。",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "cannotAttack"
+          ]
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 2.5,
+          "boardValue": 2.5,
+          "text": "自己的回合结束时，召唤1个『圣骑兵』。",
+          "tokens": [
+            {
+              "id": 90064110,
+              "name": "圣骑兵",
+              "class": 6,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": "【守护】"
+            }
+          ],
+          "kind": "static",
+          "trigger": "自己的回合结束时",
+          "condition": "none",
+          "bodyText": "召唤1个『圣骑兵』。",
+          "price": 5.5
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-3970",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的随机1个随从造成4点伤害。",
+          "bodyText": "对对手的战场上的随机1个随从造成4点伤害。",
+          "price": 1.9,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "对对手的战场上的随机1个随从造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 2】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "ids": [
+            "opponentDeckCopy",
+            "tokenSummon",
+            "summonDeathDraw"
+          ],
+          "raw": 9.88,
+          "boardValue": 7.48,
+          "text": "【入场曲】若自己的牌组中没有重复随从，则将对手的牌组中的随机1张卡牌的复制卡牌各1张以非公开形式加入自己的手牌。召唤2个『哥布林』。使这些随从获得「【谢幕曲】抽取1张卡牌。」。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若自己的牌组中没有重复随从，则将对手的牌组中的随机1张卡牌的复制卡牌各1张以非公开形式加入自己的手牌。召唤2个『哥布林』。使这些随从获得「【谢幕曲】抽取1张卡牌。」。",
+          "price": 2.6144000000000003
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-4089",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "selfCopy",
+            "enhance"
+          ],
+          "raw": 13.2,
+          "boardValue": 13.2,
+          "text": "【爆能强化 7】召唤1个『模型审计496-4089』。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "爆能强化",
+          "condition": "enhance",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 7,
+          "minPayoff": 8,
+          "bodyText": "【爆能强化 7】召唤1个『模型审计496-4089』。",
+          "price": 3.6499999999999986
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonRush"
+          ],
+          "raw": 2.5,
+          "boardValue": 2.5,
+          "text": "【入场曲】若本次对战中已有至少3张自己的护符被破坏，则召唤1个『圣骑兵』。使这些随从获得【突进】。",
+          "tokens": [
+            {
+              "id": 90064110,
+              "name": "圣骑兵",
+              "class": 6,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": "【守护】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『圣骑兵』。",
+              "raw": 2.5
+            },
+            {
+              "id": "summonRush",
+              "text": "【突进】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90064110,
+            "count": 1,
+            "attack": 1,
+            "health": 2,
+            "attacks": 1,
+            "effectiveCost": 5,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonRush",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "amuletHistory",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "若本次对战中已有至少3张自己的护符被破坏，则召唤1个『圣骑兵』。使这些随从获得【突进】。",
+          "price": 1.625
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【进化时】召唤2个『圣骑兵』。",
+          "tokens": [
+            {
+              "id": 90064110,
+              "name": "圣骑兵",
+              "class": 6,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": "【守护】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 4.5,
+          "bodyText": "召唤2个『圣骑兵』。",
+          "price": 1.9
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-4299",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "text": "【谢幕曲】发动【亡者召还 3】。",
+          "bodyText": "发动【亡者召还 3】。",
+          "price": 5.8500000000000005,
+          "raw": 9,
+          "ids": [
+            "coreAnchor",
+            "reanimate"
+          ],
+          "components": [
+            {
+              "id": "reanimate",
+              "text": "发动【亡者召还 3】。",
+              "raw": 9
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】对对手的战场上的所有随从造成2点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成2点伤害。",
+          "price": 1.9,
+          "raw": 7.6,
+          "ids": [
+            "coreSupport",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成2点伤害。",
+              "raw": 7.6
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonWard"
+          ],
+          "raw": 2.8,
+          "boardValue": 2.8,
+          "text": "【入场曲】【唤灵 2】召唤2个『骸骨士兵』。使这些随从获得【守护】。",
+          "tokens": [
+            {
+              "id": 90051110,
+              "name": "骸骨士兵",
+              "class": 5,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "亡者",
+              "tribeId": 6
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤2个『骸骨士兵』。",
+              "raw": 2.8
+            },
+            {
+              "id": "summonWard",
+              "text": "【守护】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90051110,
+            "count": 2,
+            "attack": 1,
+            "health": 1,
+            "attacks": 1,
+            "effectiveCost": 6,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonWard",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "necromancy",
+          "resourceCost": 2,
+          "conditionAmount": 2,
+          "enhanceCost": 0,
+          "minPayoff": 2.4,
+          "bodyText": "【唤灵 2】召唤2个『骸骨士兵』。使这些随从获得【守护】。",
+          "price": 1.4
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【突进】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "突进"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-4545",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "discardAllCost",
+            "draw",
+            "tokenSummon"
+          ],
+          "raw": 20.75,
+          "boardValue": 9.75,
+          "text": "【入场曲】舍弃自己的所有手牌。抽取5张卡牌。召唤1个『模型审计496-4545的旗卫』。",
+          "tokens": [
+            {
+              "id": "custom",
+              "name": "模型审计496-4545的旗卫",
+              "class": 2,
+              "cost": 3,
+              "attack": 3,
+              "health": 7,
+              "text": "【突进】\n本随从在1回合中可进行2次攻击。\n对手的回合结束时，破坏本卡牌。",
+              "custom": true,
+              "design": {
+                "temporary": true,
+                "parts": [
+                  {
+                    "id": "doubleAttack",
+                    "text": "本随从在1回合中可进行2次攻击。",
+                    "value": 3.75
+                  }
+                ]
+              }
+            }
+          ],
+          "kind": "sacrificePayoff",
+          "trigger": "入场曲",
+          "condition": "discardAll",
+          "orderedEffects": true,
+          "bodyText": "舍弃自己的所有手牌。抽取5张卡牌。召唤1个『模型审计496-4545的旗卫』。",
+          "price": 17.15,
+          "components": [
+            {
+              "id": "discardAllCost",
+              "text": "舍弃自己的所有手牌。",
+              "raw": -3.6000000000000005
+            },
+            {
+              "id": "draw",
+              "text": "抽取5张卡牌。召唤1个『模型审计496-4545的旗卫』。",
+              "raw": 20.75
+            }
+          ],
+          "major": true
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5046",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "emblem",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】使自己获得『纹章：模型审计496-5046』。",
+          "bodyText": "使自己获得『纹章：模型审计496-5046』。",
+          "raw": 18.840000000000003,
+          "price": 7.159200000000001,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-0"
+          ],
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "major": false
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 4.4,
+          "boardValue": 4.4,
+          "text": "【入场曲】召唤2个『哥布林』。",
+          "tokens": [
+            {
+              "id": 90001110,
+              "name": "哥布林",
+              "class": 0,
+              "cost": 1,
+              "attack": 1,
+              "health": 2,
+              "text": ""
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤2个『哥布林』。",
+          "price": 4.4
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【突进】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "突进"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5220",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 7.5,
+          "raw": 7.5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon"
+          ],
+          "raw": 2.8,
+          "boardValue": 2.8,
+          "tokens": [
+            {
+              "id": 90051110,
+              "name": "骸骨士兵",
+              "class": 5,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "亡者",
+              "tribeId": 6
+            }
+          ],
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则召唤X个『骸骨士兵』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "cap": 2,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤X个『骸骨士兵』。X为与本卡牌融合的卡牌张数（上限2）。",
+          "price": 1.1199999999999999
+        },
+        {
+          "ids": [
+            "tokenHand",
+            "heal"
+          ],
+          "raw": 1.9500000000000002,
+          "boardValue": 0,
+          "text": "【入场曲】【模式】选择1个能力发动。\n（1）将1张『骸骨士兵』加入手牌。\n（2）回复自己的主战者2点生命值。",
+          "tokens": [
+            {
+              "id": 90051110,
+              "name": "骸骨士兵",
+              "class": 5,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "亡者",
+              "tribeId": 6
+            }
+          ],
+          "kind": "mode",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "【模式】选择1个能力发动。\n（1）将1张『骸骨士兵』加入手牌。\n（2）回复自己的主战者2点生命值。",
+          "price": 1.9500000000000002
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5281",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 4.332,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreSupport",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonDeathGrave"
+          ],
+          "raw": 2.7,
+          "boardValue": 2.7,
+          "text": "【入场曲】召唤1个『蝙蝠』。使这些随从获得「【谢幕曲】使自己的墓场+2。」。",
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『蝙蝠』。",
+              "raw": 1.7
+            },
+            {
+              "id": "summonDeathGrave",
+              "text": "「【谢幕曲】使自己的墓场+2。」",
+              "raw": 1
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90051120,
+            "count": 1,
+            "attack": 1,
+            "health": 1,
+            "attacks": 1,
+            "effectiveCost": 6,
+            "extra": 1,
+            "grants": [
+              {
+                "id": "summonDeathGrave",
+                "raw": 1
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『蝙蝠』。使这些随从获得「【谢幕曲】使自己的墓场+2。」。",
+          "price": 2.7
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5284",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『壮丽大神隼』。",
+          "bodyText": "召唤1个『壮丽大神隼』。",
+          "price": 9.8,
+          "raw": 9.8,
+          "ids": [
+            "coreAnchor",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『壮丽大神隼』。",
+              "raw": 9.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90061130,
+              "name": "壮丽大神隼",
+              "class": 6,
+              "cost": 6,
+              "attack": 4,
+              "health": 4,
+              "text": "【疾驰】"
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】回复自己的主战者3点生命值。",
+          "bodyText": "回复自己的主战者3点生命值。",
+          "price": 1.9500000000000002,
+          "raw": 1.9500000000000002,
+          "ids": [
+            "coreSupport",
+            "heal"
+          ],
+          "components": [
+            {
+              "id": "heal",
+              "text": "回复自己的主战者3点生命值。",
+              "raw": 1.9500000000000002
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon",
+            "summonDeathHeal"
+          ],
+          "raw": 10.8,
+          "boardValue": 10.8,
+          "text": "【融合】护符\n【入场曲】若与本卡牌融合的卡牌张数为2或以上，则召唤1个『壮丽大神隼』。使这些随从获得「【谢幕曲】回复自己的主战者2点生命值。」。",
+          "tokens": [
+            {
+              "id": 90061130,
+              "name": "壮丽大神隼",
+              "class": 6,
+              "cost": 6,
+              "attack": 4,
+              "health": 4,
+              "text": "【疾驰】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『壮丽大神隼』。",
+              "raw": 9.8
+            },
+            {
+              "id": "summonDeathHeal",
+              "text": "「【谢幕曲】回复自己的主战者2点生命值。」",
+              "raw": 1
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90061130,
+            "count": 1,
+            "attack": 4,
+            "health": 4,
+            "attacks": 1,
+            "effectiveCost": 7,
+            "extra": 1,
+            "grants": [
+              {
+                "id": "summonDeathHeal",
+                "raw": 1
+              }
+            ]
+          },
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若与本卡牌融合的卡牌张数为2或以上，则召唤1个『壮丽大神隼』。使这些随从获得「【谢幕曲】回复自己的主战者2点生命值。」。",
+          "price": 5.620000000000001
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5294",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "text": "【谢幕曲】破坏对手的战场上的随机1个随从。",
+          "bodyText": "破坏对手的战场上的随机1个随从。",
+          "price": 4.55,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "破坏对手的战场上的随机1个随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的随机1个随从造成6点伤害。",
+          "bodyText": "对对手的战场上的随机1个随从造成6点伤害。",
+          "price": 2.85,
+          "raw": 7.5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "对对手的战场上的随机1个随从造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "destroy",
+            "tokenSummon",
+            "summonBane"
+          ],
+          "text": "【融合】随从\n【入场曲】若已与本卡牌【融合】，则选择对手的战场上的1个随从，破坏该随从。召唤1个『妖精』。使这些随从获得【毁灭】。",
+          "raw": 10.116,
+          "boardValue": 3.116,
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则选择对手的战场上的1个随从，破坏该随从。召唤1个『妖精』。使这些随从获得【毁灭】。",
+          "price": 5.8754
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【守护】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "守护"
+          ]
+        },
+        {
+          "kind": "replay",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】发动与【入场曲】相同的能力。",
+          "price": 4.121173428571429,
+          "raw": 10.116,
+          "timingFactor": 0.7014285714285714,
+          "ids": [
+            "replay"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5350",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "tokenHand"
+          ],
+          "raw": 1.5,
+          "boardValue": 0,
+          "text": "【入场曲】将1张『泥尘巨像』加入手牌。",
+          "tokens": [
+            {
+              "id": 90031110,
+              "name": "泥尘巨像",
+              "class": 3,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "tokenDelivery": {
+            "tokenId": 90031110,
+            "delivery": "hand",
+            "count": 1,
+            "discount": 0,
+            "unitPrice": 1.5
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "将1张『泥尘巨像』加入手牌。",
+          "price": 1.5
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonRush"
+          ],
+          "raw": 3.2,
+          "boardValue": 3.2,
+          "text": "【入场曲】召唤1个『泥尘巨像』。使这些随从获得【突进】。",
+          "tokens": [
+            {
+              "id": 90031110,
+              "name": "泥尘巨像",
+              "class": 3,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『泥尘巨像』。",
+              "raw": 3.2
+            },
+            {
+              "id": "summonRush",
+              "text": "【突进】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90031110,
+            "count": 1,
+            "attack": 2,
+            "health": 2,
+            "attacks": 1,
+            "effectiveCost": 5,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonRush",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『泥尘巨像』。使这些随从获得【突进】。",
+          "price": 3.2
+        },
+        {
+          "ids": [
+            "tokenHand"
+          ],
+          "raw": 3,
+          "boardValue": 0,
+          "text": "【交战时】【土之秘术 1】将2张『泥尘巨像』加入手牌。",
+          "tokens": [
+            {
+              "id": 90031110,
+              "name": "泥尘巨像",
+              "class": 3,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "tokenDelivery": {
+            "tokenId": 90031110,
+            "delivery": "hand",
+            "count": 2,
+            "discount": 0,
+            "unitPrice": 1.5
+          },
+          "kind": "effect",
+          "trigger": "交战时",
+          "condition": "earth",
+          "resourceCost": 1,
+          "conditionAmount": 1,
+          "enhanceCost": 0,
+          "minPayoff": 3,
+          "bodyText": "【土之秘术 1】将2张『泥尘巨像』加入手牌。",
+          "price": 2.3040000000000007
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5541",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "damage"
+          ],
+          "raw": 5,
+          "boardValue": 0,
+          "text": "【谢幕曲】对对手的战场上的随机1个随从造成4点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "对对手的战场上的随机1个随从造成4点伤害。",
+          "price": 3.25
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 1.8,
+          "boardValue": 1.8,
+          "text": "【入场曲】召唤1个『妖精』。",
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『妖精』。",
+          "price": 1.8
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-5918",
+      "cost": 6,
+      "body": 13,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『守护者巨像』。",
+          "bodyText": "召唤1个『守护者巨像』。",
+          "price": 5.8,
+          "raw": 5.8,
+          "ids": [
+            "coreAnchor",
+            "summon"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『守护者巨像』。",
+              "raw": 5.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90031120,
+              "name": "守护者巨像",
+              "class": 3,
+              "cost": 3,
+              "attack": 3,
+              "health": 3,
+              "text": "【守护】",
+              "tribe": "巨像",
+              "tribeId": 12
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】抽取1张卡牌。",
+          "bodyText": "抽取1张卡牌。",
+          "price": 2.2,
+          "raw": 2.2,
+          "ids": [
+            "coreSupport",
+            "draw"
+          ],
+          "components": [
+            {
+              "id": "draw",
+              "text": "抽取1张卡牌。",
+              "raw": 2.2
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤3个『天晶魔手』。",
+          "bodyText": "召唤3个『天晶魔手』。",
+          "raw": 5.4,
+          "price": 5.4,
+          "boardValue": 5.4,
+          "ids": [
+            "crystalHandSummon"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "kind": "static",
+          "trigger": "自己的『天晶魔手』攻击时",
+          "condition": "none",
+          "text": "自己的『天晶魔手』攻击时，使其+1/+0。",
+          "bodyText": "自己的『天晶魔手』攻击时，使其+1/+0。",
+          "raw": 3,
+          "price": 3,
+          "ids": [
+            "crystalHandLink"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "ids": [
+            "heal"
+          ],
+          "raw": 0.65,
+          "boardValue": 0,
+          "text": "【入场曲】回复自己的主战者1点生命值。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "回复自己的主战者1点生命值。",
+          "price": 0.65
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-6170",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "fusionPayoff",
+            "buff"
+          ],
+          "raw": 6,
+          "boardValue": 6,
+          "tokens": [],
+          "text": "【融合】护符\n【入场曲】若已与本卡牌【融合】，则本随从+X/+X。X为与本卡牌融合的卡牌张数（上限3）。",
+          "cap": 3,
+          "multiplier": 1,
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则本随从+X/+X。X为与本卡牌融合的卡牌张数（上限3）。",
+          "price": 3.2
+        },
+        {
+          "ids": [
+            "handCycle",
+            "destroy"
+          ],
+          "raw": 9.8,
+          "boardValue": 0,
+          "text": "【入场曲】若本次对战中自己的随从的进化次数为7次或以上，则选择自己的2张手牌，使其返回牌组。抽取2张卡牌。选择对手的战场上的1个随从，破坏该随从。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "evolutionHistory",
+          "resourceCost": 0,
+          "conditionAmount": 7,
+          "enhanceCost": 0,
+          "minPayoff": 6,
+          "bodyText": "若本次对战中自己的随从的进化次数为7次或以上，则选择自己的2张手牌，使其返回牌组。抽取2张卡牌。选择对手的战场上的1个随从，破坏该随从。",
+          "price": 4.704
+        },
+        {
+          "kind": "replay",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】发动与【入场曲】相同的能力。",
+          "price": 3.00352,
+          "raw": 15.8,
+          "timingFactor": 0.38,
+          "ids": [
+            "replay"
+          ]
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "text": "无法攻击随从或主战者。",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "cannotAttack"
+          ]
+        },
+        {
+          "ids": [
+            "heal"
+          ],
+          "raw": 1.3,
+          "boardValue": 0,
+          "text": "自己的回合开始时，回复自己的主战者2点生命值。",
+          "tokens": [],
+          "kind": "static",
+          "trigger": "自己的回合开始时",
+          "condition": "none",
+          "bodyText": "回复自己的主战者2点生命值。",
+          "price": 2.8600000000000003
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-6212",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "emblem",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己获得『纹章：模型审计496-6212』。",
+          "bodyText": "使自己获得『纹章：模型审计496-6212』。",
+          "raw": 7.015,
+          "price": 7.015,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-2"
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】使自己的战场上的其他所有随从+2/+1。",
+          "bodyText": "使自己的战场上的其他所有随从+2/+1。",
+          "price": 2.2800000000000002,
+          "raw": 6,
+          "ids": [
+            "coreAnchor",
+            "teamBuff"
+          ],
+          "components": [
+            {
+              "id": "teamBuff",
+              "text": "使自己的战场上的其他所有随从+2/+1。",
+              "raw": 6
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成4点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成4点伤害。",
+          "price": 5,
+          "raw": 5,
+          "ids": [
+            "coreSupport",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成4点伤害。",
+              "raw": 5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "teamBuff",
+            "tokenHand",
+            "acquisitionDiscount"
+          ],
+          "raw": 6.15,
+          "boardValue": 5,
+          "text": "【入场曲】若自己的战场上有至少3个其他随从，则【模式】选择1个能力发动。\n（1）使自己的战场上的其他所有随从+1/+1。\n（2）将2张『铁甲骑士』加入手牌。使以此加入手牌的卡牌的费用-1。",
+          "tokens": [
+            {
+              "id": 90021120,
+              "name": "铁甲骑士",
+              "class": 2,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "kind": "mode",
+          "trigger": "入场曲",
+          "condition": "board",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "若自己的战场上有至少3个其他随从，则【模式】选择1个能力发动。\n（1）使自己的战场上的其他所有随从+1/+1。\n（2）将2张『铁甲骑士』加入手牌。使以此加入手牌的卡牌的费用-1。",
+          "price": 4.305
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【守护】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "守护"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-6391",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:damage"
+          ],
+          "raw": 2.5,
+          "boardValue": 0,
+          "text": "【融合】创造物·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，对对手的战场上的随机1个随从造成2点伤害。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "fusionPP",
+          "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，对对手的战场上的随机1个随从造成2点伤害。",
+          "price": 2.54,
+          "fusionEvent": {
+            "effects": [
+              "damage"
+            ],
+            "ppCost": 2,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 2.5,
+            "experiment": false
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『攻击创造物』。使这些随从获得「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」。",
+          "bodyText": "召唤1个『攻击创造物』。使这些随从获得「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」。",
+          "price": 6.8,
+          "raw": 6.8,
+          "ids": [
+            "coreAnchor",
+            "summon",
+            "summonDeathDamage"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『攻击创造物』。",
+              "raw": 5
+            },
+            {
+              "id": "summonDeathDamage",
+              "text": "「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」",
+              "raw": 1.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90072110,
+              "name": "攻击创造物",
+              "class": 7,
+              "cost": 3,
+              "attack": 5,
+              "health": 1,
+              "text": "【融合】创造物·卡牌\n根据与本卡牌【融合】的卡牌的费用的合计而变身。\n1⇒『毁灭创造物α』\n2⇒『毁灭创造物β』\n3或以上⇒『毁灭创造物γ』\n\n【突进】",
+              "tribe": "创造物",
+              "tribeId": 14
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 2.8499999999999996,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreSupport",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】召唤1个『攻击创造物』。",
+          "tokens": [
+            {
+              "id": 90072110,
+              "name": "攻击创造物",
+              "class": 7,
+              "cost": 3,
+              "attack": 5,
+              "health": 1,
+              "text": "【融合】创造物·卡牌\n根据与本卡牌【融合】的卡牌的费用的合计而变身。\n1⇒『毁灭创造物α』\n2⇒『毁灭创造物β』\n3或以上⇒『毁灭创造物γ』\n\n【突进】",
+              "tribe": "创造物",
+              "tribeId": 14
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『攻击创造物』。",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-6745",
+      "cost": 6,
+      "body": 14,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 2.85,
+          "raw": 7.5,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreSupport",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 3.4,
+          "boardValue": 3.4,
+          "text": "【入场曲】【唤灵 2】召唤2个『蝙蝠』。",
+          "tokens": [
+            {
+              "id": 90051120,
+              "name": "蝙蝠",
+              "class": 5,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【虹吸】"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "necromancy",
+          "resourceCost": 2,
+          "conditionAmount": 2,
+          "enhanceCost": 0,
+          "minPayoff": 2.4,
+          "bodyText": "【唤灵 2】召唤2个『蝙蝠』。",
+          "price": 2
+        },
+        {
+          "ids": [
+            "allyBuff"
+          ],
+          "raw": 5.4,
+          "boardValue": 5.4,
+          "text": "【进化时】选择自己的战场上的1个其他随从，使其+3/+3。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 4.7,
+          "bodyText": "选择自己的战场上的1个其他随从，使其+3/+3。",
+          "price": 3.787714285714286
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-7353",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "leaderHealthBehind",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "minPayoff": 2.5,
+          "text": "【入场曲】若自己的主战者的生命值小于对手的主战者的生命值，则本随从进化。",
+          "bodyText": "若自己的主战者的生命值小于对手的主战者的生命值，则本随从进化。",
+          "raw": 6,
+          "price": 3.5999999999999996,
+          "ids": [
+            "selfEvolve"
+          ],
+          "tokens": []
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 7.5,
+          "raw": 7.5,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成6点伤害。",
+              "raw": 7.5
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤1个『骸骨士兵』。使这些随从+1/+0。使这些随从获得「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」。",
+          "bodyText": "召唤1个『骸骨士兵』。使这些随从+1/+0。使这些随从获得「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」。",
+          "price": 4.1,
+          "raw": 4.1,
+          "ids": [
+            "coreSupport",
+            "summon",
+            "summonDeathDamage"
+          ],
+          "components": [
+            {
+              "id": "summon",
+              "text": "召唤1个『骸骨士兵』。",
+              "raw": 1.4
+            },
+            {
+              "id": "summonGrowth",
+              "text": "使这些随从+1/+0。",
+              "raw": 0.9
+            },
+            {
+              "id": "summonDeathDamage",
+              "text": "「【谢幕曲】对对手的战场上的随机1个随从造成2点伤害。」",
+              "raw": 1.8
+            }
+          ],
+          "tokens": [
+            {
+              "id": 90051110,
+              "name": "骸骨士兵",
+              "class": 5,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "亡者",
+              "tribeId": 6
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "激奏",
+          "condition": "alternate",
+          "text": "【激奏 2】以法术形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.6,
+          "price": 1.6,
+          "ids": [
+            "accelerate"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonRush"
+          ],
+          "raw": 1.4,
+          "boardValue": 1.4,
+          "text": "【入场曲】召唤1个『骸骨士兵』。使这些随从获得【突进】。",
+          "tokens": [
+            {
+              "id": 90051110,
+              "name": "骸骨士兵",
+              "class": 5,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "亡者",
+              "tribeId": 6
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『骸骨士兵』。",
+              "raw": 1.4
+            },
+            {
+              "id": "summonRush",
+              "text": "【突进】",
+              "raw": 0
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90051110,
+            "count": 1,
+            "attack": 1,
+            "health": 1,
+            "attacks": 1,
+            "effectiveCost": 6,
+            "extra": 0,
+            "grants": [
+              {
+                "id": "summonRush",
+                "raw": 0
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『骸骨士兵』。使这些随从获得【突进】。",
+          "price": 1.4
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-7668",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 2.8499999999999996,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreAnchor",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreSupport",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "tokenSummon"
+          ],
+          "raw": 9.8,
+          "boardValue": 9.8,
+          "text": "【融合】护符\n【入场曲】若已与本卡牌【融合】，则召唤1个『壮丽大神隼』。",
+          "tokens": [
+            {
+              "id": 90061130,
+              "name": "壮丽大神隼",
+              "class": 6,
+              "cost": 6,
+              "attack": 4,
+              "health": 4,
+              "text": "【疾驰】"
+            }
+          ],
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若已与本卡牌【融合】，则召唤1个『壮丽大神隼』。",
+          "price": 5.670000000000001
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-7730",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "text": "【谢幕曲】破坏对手的战场上的随机1个随从。",
+          "bodyText": "破坏对手的战场上的随机1个随从。",
+          "price": 4.55,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "破坏对手的战场上的随机1个随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】对对手的战场上的所有随从造成3点伤害。",
+          "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+          "price": 4.332,
+          "raw": 11.399999999999999,
+          "ids": [
+            "coreSupport",
+            "aoe"
+          ],
+          "components": [
+            {
+              "id": "aoe",
+              "text": "对对手的战场上的所有随从造成3点伤害。",
+              "raw": 11.399999999999999
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "fusionPayoff",
+            "damage"
+          ],
+          "raw": 11.25,
+          "boardValue": 0,
+          "text": "【融合】随从\n【入场曲】若与本卡牌融合的卡牌张数为3或以上，则选择对手的战场上的1个随从，对其造成9点伤害。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "入场曲",
+          "condition": "fusion",
+          "bodyText": "若与本卡牌融合的卡牌张数为3或以上，则选择对手的战场上的1个随从，对其造成9点伤害。",
+          "price": 5.2125
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "summonStorm"
+          ],
+          "raw": 3.1,
+          "boardValue": 3.1,
+          "text": "【入场曲】召唤1个『妖精』。使这些随从获得【疾驰】。",
+          "tokens": [
+            {
+              "id": 90011110,
+              "name": "妖精",
+              "class": 1,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ],
+          "components": [
+            {
+              "id": "tokenSummon",
+              "text": "召唤1个『妖精』。",
+              "raw": 1.8
+            },
+            {
+              "id": "summonStorm",
+              "text": "【疾驰】",
+              "raw": 1.3
+            }
+          ],
+          "summonGrants": {
+            "tokenId": 90011110,
+            "count": 1,
+            "attack": 1,
+            "health": 1,
+            "attacks": 1,
+            "effectiveCost": 6,
+            "extra": 1.3,
+            "grants": [
+              {
+                "id": "summonStorm",
+                "raw": 1.3
+              }
+            ]
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤1个『妖精』。使这些随从获得【疾驰】。",
+          "price": 3.1
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-7886",
+      "cost": 5,
+      "body": 12,
+      "abilities": [
+        {
+          "ids": [
+            "teamBuff"
+          ],
+          "raw": 5,
+          "boardValue": 5,
+          "text": "【入场曲】使自己的战场上的其他所有随从+1/+1。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "使自己的战场上的其他所有随从+1/+1。",
+          "price": 5
+        },
+        {
+          "ids": [
+            "aoe",
+            "heal"
+          ],
+          "raw": 10.85,
+          "boardValue": 0,
+          "text": "【进化时】若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成2点伤害。回复自己的主战者5点生命值。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "singleton",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 10.5,
+          "bodyText": "若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成2点伤害。回复自己的主战者5点生命值。",
+          "price": 2.3864
+        },
+        {
+          "ids": [
+            "draw"
+          ],
+          "raw": 4.4,
+          "boardValue": 0,
+          "text": "【入场曲】抽取2张卡牌。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "抽取2张卡牌。",
+          "price": 4.4
+        }
+      ]
+    },
+    {
+      "name": "模型审计496-7907",
+      "cost": 6,
+      "body": 12,
+      "abilities": [
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】选择对手的战场上的1个随从，对其造成5点伤害。",
+          "bodyText": "选择对手的战场上的1个随从，对其造成5点伤害。",
+          "price": 2.375,
+          "raw": 6.25,
+          "ids": [
+            "coreAnchor",
+            "damage"
+          ],
+          "components": [
+            {
+              "id": "damage",
+              "text": "选择对手的战场上的1个随从，对其造成5点伤害。",
+              "raw": 6.25
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreSupport",
+            "destroy"
+          ],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤2个『天晶魔手』。",
+          "bodyText": "召唤2个『天晶魔手』。",
+          "raw": 3.6,
+          "price": 3.6,
+          "boardValue": 3.6,
+          "ids": [
+            "crystalHandSummon"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "kind": "static",
+          "trigger": "自己的『天晶魔手』攻击时",
+          "condition": "none",
+          "text": "自己的『天晶魔手』攻击时，使其+1/+0。",
+          "bodyText": "自己的『天晶魔手』攻击时，使其+1/+0。",
+          "raw": 3,
+          "price": 3,
+          "ids": [
+            "crystalHandLink"
+          ],
+          "tokens": [
+            {
+              "id": 10631110,
+              "name": "天晶魔手",
+              "class": 3,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "【突进】"
+            }
+          ]
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【突进】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "突进"
+          ]
+        }
+      ]
+    }
+  ],
+  "fusion": [
+    {
+      "name": "模型审计496-704",
+      "cost": 9,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 6.4,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 6.4,
+        "boardValue": 6.4,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『泥尘巨像』。",
+        "tokens": [
+          {
+            "id": 90031110,
+            "name": "泥尘巨像",
+            "class": 3,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "巨像",
+            "tribeId": 12
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『泥尘巨像』。",
+        "price": 4.300000000000001,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 6.4,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-1274",
+      "cost": 4,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 2.2,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 2.2,
+        "boardValue": 2.2,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，召唤1个『哥布林』。",
+        "tokens": [
+          {
+            "id": 90001110,
+            "name": "哥布林",
+            "class": 0,
+            "cost": 1,
+            "attack": 1,
+            "health": 2,
+            "text": ""
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤1个『哥布林』。",
+        "price": 4.74,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 2.2,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-1508",
+      "cost": 8,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.2,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.2,
+        "boardValue": 3.2,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，召唤1个『泥尘巨像』。",
+        "tokens": [
+          {
+            "id": 90031110,
+            "name": "泥尘巨像",
+            "class": 3,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "巨像",
+            "tribeId": 12
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤1个『泥尘巨像』。",
+        "price": 6.940000000000001,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.2,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-1967",
+      "cost": 6,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 2.5,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 2.5,
+        "boardValue": 2.5,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，召唤1个『圣骑兵』。",
+        "tokens": [
+          {
+            "id": 90064110,
+            "name": "圣骑兵",
+            "class": 6,
+            "cost": 1,
+            "attack": 1,
+            "health": 2,
+            "text": "【守护】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤1个『圣骑兵』。",
+        "price": 5.4,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 2.5,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-2076",
+      "cost": 6,
+      "fusion": {
+        "material": "随从",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 4.4,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 4.4,
+        "boardValue": 4.4,
+        "text": "【融合】随从\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『哥布林』。",
+        "tokens": [
+          {
+            "id": 90001110,
+            "name": "哥布林",
+            "class": 0,
+            "cost": 1,
+            "attack": 1,
+            "health": 2,
+            "text": ""
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『哥布林』。",
+        "price": 4.74,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 4.4,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-2450",
+      "cost": 7,
+      "fusion": {
+        "material": "随从",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.8,
+        "boardValue": 3.8,
+        "text": "【融合】随从\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『大海虎鲸』。",
+        "tokens": [
+          {
+            "id": 90041130,
+            "name": "大海虎鲸",
+            "class": 4,
+            "cost": 2,
+            "attack": 2,
+            "health": 2,
+            "text": "【突进】",
+            "tribe": "海洋",
+            "tribeId": 17
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『大海虎鲸』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-2608",
+      "cost": 7,
+      "fusion": {
+        "material": "法术",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.2,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.2,
+        "boardValue": 3.2,
+        "text": "【融合】法术\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『泥尘巨像』。",
+        "tokens": [
+          {
+            "id": 90031110,
+            "name": "泥尘巨像",
+            "class": 3,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "巨像",
+            "tribeId": 12
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『泥尘巨像』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.2,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-2934",
+      "cost": 8,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 1.7,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 1.7,
+        "boardValue": 1.7,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，召唤1个『悬丝傀儡』。",
+        "tokens": [
+          {
+            "id": 90071110,
+            "name": "悬丝傀儡",
+            "class": 7,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】\n对手的回合结束时，破坏本卡牌。"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤1个『悬丝傀儡』。",
+        "price": 3.64,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 1.7,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-3181",
+      "cost": 8,
+      "fusion": {
+        "material": "创造物·卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 5.2,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 5.2,
+        "boardValue": 5.2,
+        "text": "【融合】创造物·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『绚烂的创造物』。",
+        "tokens": [
+          {
+            "id": 90071160,
+            "name": "绚烂的创造物",
+            "class": 7,
+            "cost": 3,
+            "attack": 2,
+            "health": 2,
+            "text": "【疾驰】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『绚烂的创造物』。",
+        "price": 6.5,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 5.2,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4107",
+      "cost": 6,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 7.6,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 7.6,
+        "boardValue": 7.6,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『大海虎鲸』。",
+        "tokens": [
+          {
+            "id": 90041130,
+            "name": "大海虎鲸",
+            "class": 4,
+            "cost": 2,
+            "attack": 2,
+            "health": 2,
+            "text": "【突进】",
+            "tribe": "海洋",
+            "tribeId": 17
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『大海虎鲸』。",
+        "price": 11.78,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 7.6,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4237",
+      "cost": 7,
+      "fusion": {
+        "material": "财宝·卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 2.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 2.8,
+        "boardValue": 2.8,
+        "text": "【融合】财宝·卡牌\n与本卡牌【融合】时，召唤2个『骑士』。",
+        "tokens": [
+          {
+            "id": 90021110,
+            "name": "骑士",
+            "class": 2,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "",
+            "tribe": "士兵",
+            "tribeId": 2
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤2个『骑士』。",
+        "price": 6.06,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 2.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4344",
+      "cost": 4,
+      "fusion": {
+        "material": "随从",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.3,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.3,
+        "boardValue": 3.3,
+        "text": "【融合】随从\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『怨灵』。",
+        "tokens": [
+          {
+            "id": 90051130,
+            "name": "怨灵",
+            "class": 5,
+            "cost": 1,
+            "attack": 1,
+            "health": 1,
+            "text": "【疾驰】\n离场时，使本随从消失。\n自己的回合结束时，使本随从消失。",
+            "tribe": "亡者",
+            "tribeId": 6
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『怨灵』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.3,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4495",
+      "cost": 9,
+      "fusion": {
+        "material": "法术",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 1.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 1.8,
+        "boardValue": 1.8,
+        "text": "【融合】法术\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『天晶魔手』。",
+        "tokens": [
+          {
+            "id": 10631110,
+            "name": "天晶魔手",
+            "class": 3,
+            "cost": 1,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『天晶魔手』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 1.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4694",
+      "cost": 4,
+      "fusion": {
+        "material": "创造物·卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 1.7,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 1.7,
+        "boardValue": 1.7,
+        "text": "【融合】创造物·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『悬丝傀儡』。",
+        "tokens": [
+          {
+            "id": 90071110,
+            "name": "悬丝傀儡",
+            "class": 7,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】\n对手的回合结束时，破坏本卡牌。"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『悬丝傀儡』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 1.7,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4838",
+      "cost": 5,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.8,
+        "boardValue": 3.8,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『大海虎鲸』。",
+        "tokens": [
+          {
+            "id": 90041130,
+            "name": "大海虎鲸",
+            "class": 4,
+            "cost": 2,
+            "attack": 2,
+            "health": 2,
+            "text": "【突进】",
+            "tribe": "海洋",
+            "tribeId": 17
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『大海虎鲸』。",
+        "price": 3.4199999999999995,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4858",
+      "cost": 8,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.4,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.4,
+        "boardValue": 3.4,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『悬丝傀儡』。",
+        "tokens": [
+          {
+            "id": 90071110,
+            "name": "悬丝傀儡",
+            "class": 7,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】\n对手的回合结束时，破坏本卡牌。"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『悬丝傀儡』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.4,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4875",
+      "cost": 9,
+      "fusion": {
+        "material": "法术",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "crystalHandSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 1.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:crystalHandSummon"
+        ],
+        "raw": 1.8,
+        "boardValue": 1.8,
+        "text": "【融合】法术\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『天晶魔手』。",
+        "tokens": [
+          {
+            "id": 10631110,
+            "name": "天晶魔手",
+            "class": 3,
+            "cost": 1,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『天晶魔手』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "crystalHandSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 1.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-4891",
+      "cost": 6,
+      "fusion": {
+        "material": "随从",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 0,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 1.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 1.8,
+        "boardValue": 1.8,
+        "text": "【融合】随从\n与本卡牌【融合】时，召唤1个『妖精』。",
+        "tokens": [
+          {
+            "id": 90011110,
+            "name": "妖精",
+            "class": 1,
+            "cost": 1,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "none",
+        "bodyText": "与本卡牌【融合】时，召唤1个『妖精』。",
+        "price": 3.8600000000000003,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 0,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 1.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-5271",
+      "cost": 8,
+      "fusion": {
+        "material": "法术",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.8,
+        "boardValue": 3.8,
+        "text": "【融合】法术\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『式神·小纸人』。",
+        "tokens": [
+          {
+            "id": 90031130,
+            "name": "式神·小纸人",
+            "class": 3,
+            "cost": 2,
+            "attack": 2,
+            "health": 1,
+            "text": "【突进】\n【谢幕曲】使自己的所有手牌发动1次魔力增幅。",
+            "tribe": "式神",
+            "tribeId": 13,
+            "poolWeight": 1
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『式神·小纸人』。",
+        "price": 3.4199999999999995,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-5453",
+      "cost": 7,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 4.8,
+        "experiment": true,
+        "partner": {
+          "trigger": "入场曲",
+          "effects": [
+            "experimentSummon"
+          ],
+          "price": 4.8
+        }
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "experimentFusion",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 4.8,
+        "boardValue": 4.8,
+        "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『沉溺的实验体』。",
+        "tokens": [
+          {
+            "id": 10931110,
+            "name": "沉溺的实验体",
+            "class": 3,
+            "cost": 2,
+            "attack": 2,
+            "health": 2,
+            "text": "本随从进入战场时，若本次对战中进入战场的自己的其他『沉溺的实验体』的张数为5张或以上，则本随从+3/+3。\n\n【突进】"
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤1个『沉溺的实验体』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 4.8,
+          "experiment": true
+        }
+      }
+    },
+    {
+      "name": "模型审计496-6485",
+      "cost": 6,
+      "fusion": {
+        "material": "财宝·卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 3.2,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 3.2,
+        "boardValue": 3.2,
+        "text": "【融合】财宝·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『铁甲骑士』。",
+        "tokens": [
+          {
+            "id": 90021120,
+            "name": "铁甲骑士",
+            "class": 2,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "士兵",
+            "tribeId": 2
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤1个『铁甲骑士』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 3.2,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-7916",
+      "cost": 5,
+      "fusion": {
+        "material": "财宝·卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 2.8,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 2.8,
+        "boardValue": 2.8,
+        "text": "【融合】财宝·卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『骑士』。",
+        "tokens": [
+          {
+            "id": 90021110,
+            "name": "骑士",
+            "class": 2,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "",
+            "tribe": "士兵",
+            "tribeId": 2
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，召唤2个『骑士』。",
+        "price": 2.54,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 1,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 2.8,
+          "experiment": false
+        }
+      }
+    },
+    {
+      "name": "模型审计496-7984",
+      "cost": 8,
+      "fusion": {
+        "material": "法术",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "tokenSummon"
+        ],
+        "ppCost": 2,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 7.6,
+        "experiment": false
+      },
+      "ability": {
+        "ids": [
+          "fusionEvent",
+          "fusionEvent:tokenSummon"
+        ],
+        "raw": 7.6,
+        "boardValue": 7.6,
+        "text": "【融合】法术\n与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『式神·小纸人』。",
+        "tokens": [
+          {
+            "id": 90031130,
+            "name": "式神·小纸人",
+            "class": 3,
+            "cost": 2,
+            "attack": 2,
+            "health": 1,
+            "text": "【突进】\n【谢幕曲】使自己的所有手牌发动1次魔力增幅。",
+            "tribe": "式神",
+            "tribeId": 13,
+            "poolWeight": 1
+          }
+        ],
+        "kind": "fusion",
+        "trigger": "与本卡牌融合时",
+        "condition": "fusionPP",
+        "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为2或以上，则消耗2点能量点，召唤2个『式神·小纸人』。",
+        "price": 6.939999999999999,
+        "fusionEvent": {
+          "effects": [
+            "tokenSummon"
+          ],
+          "ppCost": 2,
+          "repeats": 2.2,
+          "materialCredit": 0.5,
+          "flexibility": 1,
+          "payoffRaw": 7.6,
+          "experiment": false
+        }
+      }
+    }
+  ],
+  "discount": {
+    "2": 106,
+    "3": 111,
+    "4": 89,
+    "5": 59,
+    "6": 42,
+    "7": 32,
+    "8": 35,
+    "9": 7,
+    "10": 6
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "version": "4.90",
+  "version": "4.94",
   "seeds": 6000,
   "before": {
     "storm": 1163,
@@ -8,9 +8,9 @@
     "handStormBoth": 0
   },
   "after": {
-    "storm": 1163,
-    "threat": 722,
-    "both": 9,
+    "storm": 515,
+    "threat": 342,
+    "both": 13,
     "handStormBoth": 0
   }
 }

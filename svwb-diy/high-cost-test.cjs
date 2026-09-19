@@ -21,10 +21,11 @@ for(let i=0;i<12000;i++){
  assert(c.spent+c.attack+c.health<=c.budget+.02);
 }
 assert(cheapStorm>10&&m.n>1000);
-assert(m.storm/m.n>.10&&m.storm/m.n<.30,'Storm remains present without dominating high-cost designs');
-assert(m.impact/m.n>.6&&m.guard/m.n>.2&&m.protection>30);
-assert(Object.keys(m.stormAttacks).length>=5,'Storm should retain several viable attack bands');
 const ref=require('./reference.json'),official=ref.cards.filter(c=>!c.token&&c.type===1&&c.cost>=7);
+const printedRate=k=>official.filter(c=>new RegExp('^【'+k+'】','m').test(c.text)).length/official.length;
+assert(Math.abs(m.storm/m.n-printedRate('疾驰'))<.06,'Storm differs from official printed rate: '+JSON.stringify(m));
+assert(m.impact/m.n>.6&&m.guard/m.n>printedRate('守护')*.6&&m.protection>30,JSON.stringify(m));
+assert(Object.keys(m.stormAttacks).length>=5,'Storm should retain several viable attack bands');
 const report={version:S.VERSION,samples:12000,seedPrefix:'高费方向',baselineVersion:previous.baselineVersion,
  note:'before为修改前v4.61固定种子快照；after由本脚本重算。统计文本与印刷身材，不是对局胜率。官方样本的疾驰计数包含条件赋予。',
  officialHighCost:{n:official.length,mentionsStorm:official.filter(c=>/【疾驰】/.test(c.text)).length},stats:{before:previous.stats.before,after:m}};

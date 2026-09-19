@@ -1,0 +1,31 @@
+{
+  "version": "4.94",
+  "seeds": 20000,
+  "evolutionOnly": 1013,
+  "report": [
+    {
+      "cost": "0–3",
+      "officialKeywordRate": 0.35064935064935066,
+      "generatedKeywordRate": 0.3709345409633594,
+      "damageMean": 2.7948568088836936,
+      "healMean": 2.6057529610829104,
+      "drawMean": 1.1524064171122994
+    },
+    {
+      "cost": "4–6",
+      "officialKeywordRate": 0.28820960698689957,
+      "generatedKeywordRate": 0.29856500321267937,
+      "damageMean": 3.6318163181631817,
+      "healMean": 3.7400756143667295,
+      "drawMean": 1.5553319919517103
+    },
+    {
+      "cost": "7+",
+      "officialKeywordRate": 0.4126984126984127,
+      "generatedKeywordRate": 0.4182673461387691,
+      "damageMean": 4.635570724307926,
+      "healMean": 4.775614754098361,
+      "drawMean": 1.6868686868686869
+    }
+  ]
+}

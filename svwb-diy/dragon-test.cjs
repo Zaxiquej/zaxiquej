@@ -9,7 +9,7 @@ for(let i=0;i<30000;i++){
    ramp++;if(c.cost<=6)early++;examples.ramp??=c.name;
    if(c.type==='follower'&&c.cost<=5&&a.trigger==='入场曲'&&a.condition==='none'){
     assert(c.attack+c.health<=({3:1,4:2,5:4})[c.cost],c.name+' immediate ramp gives too much body');
-    assert(c.rampBodyTrade);if(c.cost===3)assert.deepEqual([c.attack,c.health],[0,1]);
+    assert(c.rampBodyTrade); // A safety ceiling, not a required generated body.
    }
   }
   if(a.condition!=='discard')continue;discard++;types.add(c.type);a.ids.forEach(id=>discardIds.add(id));examples.discard??=c.name;

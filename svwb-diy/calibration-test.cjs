@@ -1,4 +1,4 @@
-const assert=require('node:assert/strict');
+const assert=require('node:assert/strict'),fs=require('node:fs');
 const S=require('./engine.js'),reference=require('./reference.json');
 const band=cost=>cost<=3?0:cost<=6?1:2;
 const basic=/^(?:【(?:守护|突进|疾驰|毁灭|虹吸|潜行|威慑|灵气|屏障)】\s*)+$/;
@@ -16,9 +16,14 @@ for(let i=0;i<20000;i++){
   // A card with multiple already-strong evolution effects need not get another
   // bonus if the remaining legal effect pool has no affordable candidate.
   assert(c.evolutionFocusBonus||active.reduce((s,a)=>s+a.raw,0)>=2*(3.5+c.cost*.2),'Evolution-only followers need a bonus or substantial combined payoff: '+c.name);
-  if(c.evolutionFocusBonus)assert(c.evolutionFocusBonus.raw>0&&c.evolutionFocusBonus.raw<=4.4);
+  if(c.evolutionFocusBonus)assert(c.evolutionFocusBonus.raw>0&&c.evolutionFocusBonus.price<=c.evolutionFocusBonus.allowance+.01);
   assert(c.attack+c.health+c.spent<=c.budget+.01);
- }else assert(!c.evolutionFocusBonus);
+ }
+ // Late hand transformation or high-cost repairs can follow the focus bonus.
+ if(c.evolutionFocusBonus){
+  assert(c.abilities.some(a=>a.trigger===c.evolutionFocusBonus.trigger));
+  assert(c.evolutionFocusBonus.price<=c.evolutionFocusBonus.allowance+.01);
+ }
  for(const a of c.abilities){
   for(const [key,re]of Object.entries({damage:/造成(\d+)点伤害/g,heal:/回复自己的主战者(\d+)点生命值/g,draw:/抽取(\d+)张卡牌/g})){
    for(const m of a.text.matchAll(re))b[key].push(Number(m[1]));
@@ -30,7 +35,7 @@ const report=samples.map((b,i)=>{
  const source=official[i],rate=source.filter(c=>c.text.split('\n').some(line=>basic.test(line))).length/source.length;
  const generated=b.keywords/b.cards;
  // Allow class mix, sparse-cohort smoothing, compatibility and oversized bodies.
- assert(Math.abs(rate-generated)<.06,'Printed keyword prevalence drifted at cost band '+i);
+ assert(Math.abs(rate-generated)<.06,'Printed keyword prevalence drifted at cost band '+i+': '+rate+' vs '+generated);
  return {cost:['0–3','4–6','7+'][i],officialKeywordRate:rate,generatedKeywordRate:generated,damageMean:mean(b.damage),healMean:mean(b.heal),drawMean:mean(b.draw)};
 });
 for(const key of ['damageMean','healMean','drawMean']){
@@ -40,3 +45,4 @@ for(const key of ['damageMean','healMean','drawMean']){
 assert(evolutionOnly>500);
 console.log('PASS: 20,000 seeds; official keyword prevalence, cost/quantity trends, evolution-only payoff.');
 console.log({evolutionOnly,example,report});
+fs.writeFileSync(__dirname+'/calibration-validation.json',JSON.stringify({version:S.VERSION,seeds:20000,evolutionOnly,report},null,2));

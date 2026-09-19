@@ -1,0 +1,405 @@
+{
+  "version": "4.95",
+  "snapshot": "2026-09-18T00:27:23.510Z",
+  "source": "https://shadowverse-wb.com/web/CardList/cardList",
+  "seeds": 12000,
+  "counts": {
+    "recoverFollower": 281,
+    "artifactRecover": 25,
+    "copperEP": 7,
+    "pp": {
+      "0": 77,
+      "2": 21,
+      "4": 22,
+      "5": 26
+    }
+  },
+  "examples": {
+    "pp0": "随机卡牌#60485455",
+    "recoverFollower": "随机卡牌#12563856",
+    "artifactRecover": "随机卡牌#63584759",
+    "pp5": "随机卡牌#24617952",
+    "pp2": "随机卡牌#40041712",
+    "pp4": "随机卡牌#87538795",
+    "copperEP": "随机卡牌#65018729"
+  },
+  "comparison": [
+    {
+      "cost": 1,
+      "officialCount": 24,
+      "generatedCount": 290,
+      "officialMedianBody": 2,
+      "generatedMedianBody": 2
+    },
+    {
+      "cost": 2,
+      "officialCount": 114,
+      "generatedCount": 1371,
+      "officialMedianBody": 4,
+      "generatedMedianBody": 4
+    },
+    {
+      "cost": 3,
+      "officialCount": 93,
+      "generatedCount": 1177,
+      "officialMedianBody": 5,
+      "generatedMedianBody": 6
+    },
+    {
+      "cost": 4,
+      "officialCount": 81,
+      "generatedCount": 1040,
+      "officialMedianBody": 6,
+      "generatedMedianBody": 9
+    },
+    {
+      "cost": 5,
+      "officialCount": 81,
+      "generatedCount": 969,
+      "officialMedianBody": 7,
+      "generatedMedianBody": 10
+    },
+    {
+      "cost": 6,
+      "officialCount": 67,
+      "generatedCount": 837,
+      "officialMedianBody": 9,
+      "generatedMedianBody": 12
+    },
+    {
+      "cost": 7,
+      "officialCount": 57,
+      "generatedCount": 705,
+      "officialMedianBody": 10,
+      "generatedMedianBody": 15
+    },
+    {
+      "cost": 8,
+      "officialCount": 38,
+      "generatedCount": 469,
+      "officialMedianBody": 12,
+      "generatedMedianBody": 16
+    },
+    {
+      "cost": 9,
+      "officialCount": 19,
+      "generatedCount": 220,
+      "officialMedianBody": 14,
+      "generatedMedianBody": 18
+    },
+    {
+      "cost": 10,
+      "officialCount": 12,
+      "generatedCount": 152,
+      "officialMedianBody": 14,
+      "generatedMedianBody": 20
+    }
+  ],
+  "cards": [
+    {
+      "id": 10042310,
+      "name": "龙之启示",
+      "class": 4,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10000,
+      "text": "使自己的能量点最大值+1。之后，若自己的能量点最大值为10，则抽取1张卡牌。",
+      "evolvedText": "",
+      "assessment": "跳费按增加最大能量点独立收费，不能与回复当前能量点混为一谈。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10042310"
+    },
+    {
+      "id": 10104110,
+      "name": "勇武的堕天使·奥莉薇",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 4,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10001,
+      "text": "【入场曲】抽取2张卡牌。回复自己的主战者2点生命值。回复自己2点能量点。\n\n【超进化时】选择自己的战场上的1张进化前的其他随从，使其超进化。",
+      "evolvedText": "【入场曲】抽取2张卡牌。回复自己的主战者2点生命值。回复自己2点能量点。\n\n【超进化时】选择自己的战场上的1张进化前的其他随从，使其超进化。",
+      "assessment": "抽牌、治疗、回复能量点分别收费；效果进化不视为消耗EP触发。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10104110"
+    },
+    {
+      "id": 10113110,
+      "name": "纯洁冰晶·莉莉",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 3,
+      "attack": 1,
+      "health": 3,
+      "token": false,
+      "set": 10001,
+      "text": "【入场曲】【连击 3】选择对手的战场上的1个随从，使其生命值变为1。\n\n【进化时】抽取1张卡牌。选择对手的战场上的1张随从，对其造成1点伤害。",
+      "evolvedText": "【入场曲】【连击 3】选择对手的战场上的1个随从，使其生命值变为1。\n\n【进化时】抽取1张卡牌。选择对手的战场上的1张随从，对其造成1点伤害。",
+      "assessment": "生命变1与进化伤害是独立原子，已有前后节点配合权重。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10113110"
+    },
+    {
+      "id": 10162130,
+      "name": "大地守护神·米维",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 2,
+      "attack": 5,
+      "health": 7,
+      "token": false,
+      "set": 10001,
+      "text": "【守护】\n【谢幕曲】召唤随机1张与本次对战中被破坏的原始费用最大的自己的护符同名的护符。",
+      "evolvedText": "【守护】\n【谢幕曲】召唤随机1张与本次对战中被破坏的原始费用最大的自己的护符同名的护符。",
+      "assessment": "已接入历史最高费用护符复活，要求较高费用并支付独立价格；不允许护符以自己的谢幕曲循环复活。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10162130"
+    },
+    {
+      "id": 10224120,
+      "name": "雷维翁超越者·尤里乌斯",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        4
+      ],
+      "cost": 8,
+      "rarity": 4,
+      "attack": 5,
+      "health": 7,
+      "token": false,
+      "set": 10002,
+      "text": "【入场曲】在对手的战场上召唤2个『骑士』。\n\n对手的随从进入战场时，对手的回合结束前，使其获得「无法攻击随从或主战者」。对对手的主战者造成1点伤害。回复自己的主战者1点生命值。",
+      "evolvedText": "【入场曲】在对手的战场上召唤2个『骑士』。\n\n对手的随从进入战场时，对手的回合结束前，使其获得「无法攻击随从或主战者」。对对手的主战者造成1点伤害。回复自己的主战者1点生命值。",
+      "assessment": "已接入敌方进场的伤害、治疗、攻击锁独立组合，向敌方召唤骑士获得更高联动权重；额外触发收益与敌方身材一起估值。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10224120"
+    },
+    {
+      "id": 10304120,
+      "name": "涸绝的显现·吉尔内莉莎",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 4,
+      "attack": 0,
+      "health": 3,
+      "token": false,
+      "set": 10003,
+      "text": "【入场曲】选择战场上的1个其他随从，使其+2/-2。若自己和对手的能量点最大值为10，则将1张『涸绝的甘露』加入手牌。\n\n【虹吸】\n\n【进化时】选择战场上的1个随从，使其+2/-2。",
+      "evolvedText": "【入场曲】选择战场上的1个其他随从，使其+2/-2。若自己和对手的能量点最大值为10，则将1张『涸绝的甘露』加入手牌。\n\n【虹吸】\n\n【进化时】选择战场上的1个随从，使其+2/-2。",
+      "assessment": "已接入双方可选的攻升血降原子；自动时点改随机，数值随费用变化并独立计价。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10304120"
+    },
+    {
+      "id": 10423310,
+      "name": "骁勇骑士",
+      "class": 2,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10004,
+      "text": "【模式】选择1个能力发动。\n（1）使自己的战场上的从左起的1个皇家护卫·随从获得「1回合可以攻击2次」。\n（2）使自己的战场上的所有皇家护卫·随从+1/+1且获得【屏障】。\n（3）回复自己2点能量点。回复自己1点进化点。\n（4）回复自己的主战者6点生命值。",
+      "evolvedText": "",
+      "assessment": "回复能量点并非龙族或中立专属，补入皇家；模式只支付较强分支及选择溢价。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10423310"
+    },
+    {
+      "id": 10464110,
+      "name": "土之法则·伽莱翁",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 4,
+      "attack": 5,
+      "health": 5,
+      "token": false,
+      "set": 10004,
+      "text": "【守护】\n无法攻击随从或主战者。\n自己的回合结束时，若为超进化已解禁的回合，则使自己的战场上的随机1个「本回合中没有进行过攻击的进化前的随从」进化。",
+      "evolvedText": "【守护】\n无法攻击随从或主战者。\n自己的回合结束时，若为超进化已解禁的回合，则使自己的战场上的随机1个「本回合中没有进行过攻击的进化前的随从」进化。",
+      "assessment": "已接入自身永久无法攻击，换取有限额的持续收益与身材补偿；排除疾驰、攻击时等冲突结构。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10464110"
+    },
+    {
+      "id": 10523110,
+      "name": "不动如山的将校",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 3,
+      "attack": 5,
+      "health": 6,
+      "token": false,
+      "set": 10005,
+      "text": "无法攻击随从或主战者。\n自己的回合结束时，召唤1个『铁甲骑士』。\n\n【超进化时】使自己的战场上的其他所有随从+3/+3。",
+      "evolvedText": "无法攻击随从或主战者。\n自己的回合结束时，召唤1个『铁甲骑士』。\n\n【超进化时】使自己的战场上的其他所有随从+3/+3。",
+      "assessment": "已接入攻击限制与持续召唤、治疗、伤害、增幅等独立收益组合，不绑定原卡整套效果。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10523110"
+    },
+    {
+      "id": 10572310,
+      "name": "苏生调律",
+      "class": 7,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10005,
+      "text": "选择自己的1张手牌，舍弃该手牌。将随机2种与本次对战中被破坏的自己的随从同名的卡牌各1张以非公开形式加入手牌。",
+      "evolvedText": "",
+      "assessment": "弃牌与回收分别重组；不把回收强制绑定到成功弃牌。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10572310"
+    },
+    {
+      "id": 10664110,
+      "name": "崇高的憎恶·康蒂玛",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 4,
+      "attack": 3,
+      "health": 3,
+      "token": false,
+      "set": 10006,
+      "text": "【入场曲】召唤随机2种与本次对战中被破坏的「原始费用为2或以下的拥有【谢幕曲】的自己的护符」同名的护符各1张。\n\n【超进化时】选择战场上的1张其他卡牌，破坏该卡牌。若选择了自己的护符，则对对手的战场上的所有随从造成3点伤害。",
+      "evolvedText": "【入场曲】召唤随机2种与本次对战中被破坏的「原始费用为2或以下的拥有【谢幕曲】的自己的护符」同名的护符各1张。\n\n【超进化时】选择战场上的1张其他卡牌，破坏该卡牌。若选择了自己的护符，则对对手的战场上的所有随从造成3点伤害。",
+      "assessment": "已有低费护符复活，并补入独立的历史最高费用护符复活；两者分开估值。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10664110"
+    },
+    {
+      "id": 10801120,
+      "name": "无尽旅途·蕾娜",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 1,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10008,
+      "text": "【入场曲】回复自己1点进化点。",
+      "evolvedText": "【入场曲】回复自己1点进化点。",
+      "assessment": "回复进化点本身并不复杂，解除铜卡简单效果白名单的误拦截。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10801120"
+    },
+    {
+      "id": 10803110,
+      "name": "遗忘的纯真·爱卡",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 3,
+      "attack": 2,
+      "health": 1,
+      "token": false,
+      "set": 10008,
+      "text": "【入场曲】将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "assessment": "补入被破坏随从的同名卡回收，和抽牌、牌库检索、亡者召还分别处理。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10803110"
+    },
+    {
+      "id": 10804120,
+      "name": "高洁的黑翼·奥莉薇",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 9,
+      "rarity": 4,
+      "attack": 7,
+      "health": 7,
+      "token": false,
+      "set": 10008,
+      "text": "【入场曲】回复自己2点超进化点。\n\n【守护】",
+      "evolvedText": "【入场曲】回复自己2点超进化点。\n\n【守护】",
+      "assessment": "已有高费回复超进化点；不能仅因本体身材较小就判定亏模。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10804120"
+    },
+    {
+      "id": 10854110,
+      "name": "出发的憧憬·苇剑&武津御",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 8,
+      "rarity": 4,
+      "attack": 6,
+      "health": 5,
+      "token": false,
+      "set": 10008,
+      "text": "【入场曲】【模式】选择1个能力发动。\n（1）对对手的主战者造成4点伤害。回复自己的主战者4点生命值。\n（2）对对手的战场上的所有随从造成5点伤害。回复自己1点进化点。\n\n【进化时】【模式】选择1个能力发动。\n（1）抽取2张卡牌。\n（2）回复自己2点能量点。",
+      "evolvedText": "【入场曲】【模式】选择1个能力发动。\n（1）对对手的主战者造成4点伤害。回复自己的主战者4点生命值。\n（2）对对手的战场上的所有随从造成5点伤害。回复自己1点进化点。\n\n【进化时】【模式】选择1个能力发动。\n（1）抽取2张卡牌。\n（2）回复自己2点能量点。",
+      "assessment": "梦魇也有回复能量点；补入可跨节点重组的独立模块。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10854110"
+    },
+    {
+      "id": 10871130,
+      "name": "器械操纵者·吉尔克",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 1,
+      "attack": 1,
+      "health": 1,
+      "token": false,
+      "set": 10008,
+      "text": "【入场曲】将随机1张与本次对战中被破坏的自己的创造物·随从同名的卡牌以非公开形式加入手牌。",
+      "evolvedText": "【入场曲】将随机1张与本次对战中被破坏的自己的创造物·随从同名的卡牌以非公开形式加入手牌。",
+      "assessment": "补入创造物限定回收；有历史要求，按手牌资源估值而非立即召唤。",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10871130"
+    }
+  ],
+  "limitation": "官方网页已检索，部分动态页面不返回卡文，数值与原文使用2026-09-18官方接口快照。此处16张人工结构核对，非904张完整语义审核。费用分组身材中位数仅用于发现异常，不控制效果、稀有度、职业，不能据此断言平衡。已知缺口如实保留；不复制整张官方设计。"
+}

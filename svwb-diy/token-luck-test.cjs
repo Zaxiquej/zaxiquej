@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),S=require('./engine'),R=require('./reference.json');
 const counts={},examples={},patterns=new Set(),rewards=new Set(),special=new Set([90041120,90061110,90061130]);
+const drawRules=new Set(),missKinds=new Set();
 function hit(id,c){counts[id]=(counts[id]||0)+1;examples[id]??={name:c.name,chaos:!!c.chaos};}
 for(const t of S.TOKENS){const o=R.cards.find(c=>c.id===t.id);for(const k of ['name','cost','attack','health','text','class'])assert.equal(t[k],o[k]);}
 for(let i=0;i<40000;i++){
@@ -26,9 +27,10 @@ for(let i=0;i<40000;i++){
   }
  }
  for(const e of c.emblems.filter(e=>e.luck?.kind==='drawCost')){
-  assert.equal(c.class,6);assert(e.luck.drawOnly);assert.equal(new Set([...e.luck.hitCosts,...e.luck.missCosts]).size,6);
+  drawRules.add(e.luck.rule.kind);missKinds.add(e.luck.missKind);
+  assert.equal(c.class,6);assert(e.luck.drawOnly);assert.equal(new Set([...e.luck.hitCosts,...e.luck.missCosts]).size,11);
   const immediate=e.text.replace(/获得「【谢幕曲】[^」]+」/g,'');
-  assert(!/抽取|加入手牌|\bX\b/.test(immediate),'Immediate draw payoff must not recursively draw or reference undefined X');
+  assert(!/抽取[\dX]+张|加入手牌|\bX\b/.test(immediate),'Immediate draw payoff must not recursively draw or reference undefined X');
   assert(e.text.includes('若为自己的回合'));assert(c.abilities.some(a=>a.emblemIds?.includes(e.id)));
   patterns.add(e.luck.hitCosts.join(','));rewards.add(e.effects[0].id);
  }
@@ -36,5 +38,6 @@ for(let i=0;i<40000;i++){
 for(const key of ['babyDragon','tiger','transformAlly','transformEnemy','transformEither','handLuck','drawLuckEmblem',...Array.from(special,id=>'discountedHand'+id)])assert(counts[key]>0,key+' unreachable');
 for(const id of special)assert(counts['summon'+id]>counts['discountedHand'+id]*2,'Summon should dominate delivery');
 assert(patterns.size>12&&rewards.size>3,'Predicates and payoffs must recombine');
-const report={version:S.VERSION,samples:40000,counts,examples,patterns:patterns.size,rewards:[...rewards]};
+assert.equal(drawRules.size,4);assert.equal(missKinds.size,3);
+const report={version:S.VERSION,samples:40000,counts,examples,patterns:patterns.size,rewards:[...rewards],drawRules:[...drawRules],missKinds:[...missKinds]};
 fs.writeFileSync(__dirname+'/token-luck-validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

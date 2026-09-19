@@ -1,5 +1,10 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),S=require('./engine');
 const ui=vm.createContext({});
+const formerlyWeak=S.generate('随机卡牌#32566305');
+assert.equal(formerlyWeak.cost,9);
+assert(!formerlyWeak.evolutionBodyTrade,'Ordinary high-cost evolution payoff must not shrink the body');
+assert(formerlyWeak.attack+formerlyWeak.health>=18,'Restore the normal nine-cost body');
+assert(formerlyWeak.abilities.some(a=>a.trigger==='入场曲'&&a.raw>=8),'Use normal high-cost generation after rejecting the trade');
 vm.runInContext(fs.readFileSync(__dirname+'/app.js','utf8').split('const tokenType=')[0],ui);
 const counts={evolution:0,discardAll:0,lowBody:0,growth:0,otherEvolution:0,largeDraw:0,largeDiscount:0},examples={},families=new Set();
 for(let i=0;i<15000;i++){
@@ -14,6 +19,9 @@ for(let i=0;i<15000;i++){
   assert(b.lost>=2);assert(c.attack+c.health<=b.target,c.name+' body trade paid');
   assert(!c.evolutionFocusBonus);assert.equal(a.raw,b.payoffRaw);assert(a.raw>=8);
   assert(Math.abs(a.price-a.raw*b.timing)<1e-8);
+  assert(b.paidValue>=b.lost,c.name+' timing-adjusted payoff must pay for the body lost');
+  assert(!a.ids.includes('selfCopy'),c.name+' cannot value copies against the discarded body');
+  if(c.cost>=6)assert(b.paidValue>b.baseAllowance,c.name+' ordinary high-cost effects need no body sacrifice');
   assert(!c.abilities.some(a=>a.ids.some(id=>['selfEvolve','selfSuperEvolve'].includes(id))));
   if(c.cost<=3){counts.lowBody++;example('lowBody');}
   const key=a.ids.includes('buff')?'growth':'otherEvolution';counts[key]++;example(key);

@@ -1,0 +1,572 @@
+{
+  "version": "4.96",
+  "rows": [
+    {
+      "name": "潜行审计304",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 10.17
+    },
+    {
+      "name": "潜行审计388",
+      "cost": 3,
+      "attack": 3,
+      "health": 3,
+      "spent": 4.61
+    },
+    {
+      "name": "潜行审计479",
+      "cost": 3,
+      "attack": 2,
+      "health": 2,
+      "spent": 7.3
+    },
+    {
+      "name": "潜行审计538",
+      "cost": 2,
+      "attack": 1,
+      "health": 3,
+      "spent": 1.26
+    },
+    {
+      "name": "潜行审计737",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 2.5
+    },
+    {
+      "name": "潜行审计827",
+      "cost": 6,
+      "attack": 6,
+      "health": 6,
+      "spent": 12.34
+    },
+    {
+      "name": "潜行审计844",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 5.71
+    },
+    {
+      "name": "潜行审计984",
+      "cost": 2,
+      "attack": 1,
+      "health": 2,
+      "spent": 2.4
+    },
+    {
+      "name": "潜行审计1283",
+      "cost": 5,
+      "attack": 5,
+      "health": 5,
+      "spent": 2.35
+    },
+    {
+      "name": "潜行审计1510",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 4.77
+    },
+    {
+      "name": "潜行审计1555",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "spent": 2.25
+    },
+    {
+      "name": "潜行审计1597",
+      "cost": 6,
+      "attack": 6,
+      "health": 6,
+      "spent": 10.13
+    },
+    {
+      "name": "潜行审计1949",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 2.35
+    },
+    {
+      "name": "潜行审计2014",
+      "cost": 5,
+      "attack": 6,
+      "health": 4,
+      "spent": 9.73
+    },
+    {
+      "name": "潜行审计2145",
+      "cost": 5,
+      "attack": 3,
+      "health": 7,
+      "spent": 8.65
+    },
+    {
+      "name": "潜行审计2274",
+      "cost": 4,
+      "attack": 3,
+      "health": 3,
+      "spent": 12.1
+    },
+    {
+      "name": "潜行审计2330",
+      "cost": 2,
+      "attack": 1,
+      "health": 3,
+      "spent": 1.57
+    },
+    {
+      "name": "潜行审计2382",
+      "cost": 4,
+      "attack": 3,
+      "health": 6,
+      "spent": 9.22
+    },
+    {
+      "name": "潜行审计2762",
+      "cost": 5,
+      "attack": 6,
+      "health": 4,
+      "spent": 2.45
+    },
+    {
+      "name": "潜行审计2767",
+      "cost": 4,
+      "attack": 5,
+      "health": 5,
+      "spent": 4.87
+    },
+    {
+      "name": "潜行审计2826",
+      "cost": 2,
+      "attack": 1,
+      "health": 2,
+      "spent": 2.4
+    },
+    {
+      "name": "潜行审计2845",
+      "cost": 4,
+      "attack": 3,
+      "health": 8,
+      "spent": 4.46
+    },
+    {
+      "name": "潜行审计2940",
+      "cost": 3,
+      "attack": 2,
+      "health": 4,
+      "spent": 6.4
+    },
+    {
+      "name": "潜行审计2946",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 4
+    },
+    {
+      "name": "潜行审计3096",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 0.92
+    },
+    {
+      "name": "潜行审计3097",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "spent": 1.31
+    },
+    {
+      "name": "潜行审计3128",
+      "cost": 5,
+      "attack": 6,
+      "health": 5,
+      "spent": 4.6
+    },
+    {
+      "name": "潜行审计3136",
+      "cost": 5,
+      "attack": 5,
+      "health": 5,
+      "spent": 9.28
+    },
+    {
+      "name": "潜行审计3438",
+      "cost": 3,
+      "attack": 2,
+      "health": 1,
+      "spent": 7.58
+    },
+    {
+      "name": "潜行审计3655",
+      "cost": 6,
+      "attack": 8,
+      "health": 7,
+      "spent": 9.85
+    },
+    {
+      "name": "潜行审计3690",
+      "cost": 2,
+      "attack": 2,
+      "health": 1,
+      "spent": 1.48
+    },
+    {
+      "name": "潜行审计3839",
+      "cost": 5,
+      "attack": 3,
+      "health": 7,
+      "spent": 2.15
+    },
+    {
+      "name": "潜行审计3851",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 1.5
+    },
+    {
+      "name": "潜行审计3963",
+      "cost": 3,
+      "attack": 2,
+      "health": 4,
+      "spent": 2.5
+    },
+    {
+      "name": "潜行审计4066",
+      "cost": 2,
+      "attack": 1,
+      "health": 2,
+      "spent": 2.4
+    },
+    {
+      "name": "潜行审计4135",
+      "cost": 5,
+      "attack": 4,
+      "health": 6,
+      "spent": 2.25
+    },
+    {
+      "name": "潜行审计4162",
+      "cost": 3,
+      "attack": 2,
+      "health": 2,
+      "spent": 8.34
+    },
+    {
+      "name": "潜行审计4169",
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "spent": 4.05
+    },
+    {
+      "name": "潜行审计4255",
+      "cost": 3,
+      "attack": 3,
+      "health": 3,
+      "spent": 2.87
+    },
+    {
+      "name": "潜行审计4266",
+      "cost": 2,
+      "attack": 2,
+      "health": 1,
+      "spent": 2.9
+    },
+    {
+      "name": "潜行审计4270",
+      "cost": 4,
+      "attack": 2,
+      "health": 2,
+      "spent": 14.14
+    },
+    {
+      "name": "潜行审计4371",
+      "cost": 5,
+      "attack": 8,
+      "health": 4,
+      "spent": 12.43
+    },
+    {
+      "name": "潜行审计4472",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 3.33
+    },
+    {
+      "name": "潜行审计4537",
+      "cost": 5,
+      "attack": 8,
+      "health": 4,
+      "spent": 2.75
+    },
+    {
+      "name": "潜行审计4778",
+      "cost": 6,
+      "attack": 5,
+      "health": 7,
+      "spent": 17.52
+    },
+    {
+      "name": "潜行审计4790",
+      "cost": 4,
+      "attack": 4,
+      "health": 4,
+      "spent": 2.9
+    },
+    {
+      "name": "潜行审计4910",
+      "cost": 2,
+      "attack": 2,
+      "health": 1,
+      "spent": 2.6
+    },
+    {
+      "name": "潜行审计4924",
+      "cost": 4,
+      "attack": 4,
+      "health": 1,
+      "spent": 12.8
+    },
+    {
+      "name": "潜行审计4940",
+      "cost": 6,
+      "attack": 6,
+      "health": 6,
+      "spent": 10.2
+    },
+    {
+      "name": "潜行审计5013",
+      "cost": 4,
+      "attack": 4,
+      "health": 5,
+      "spent": 1.25
+    },
+    {
+      "name": "潜行审计5116",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 3.84
+    },
+    {
+      "name": "潜行审计5862",
+      "cost": 5,
+      "attack": 4,
+      "health": 4,
+      "spent": 10.3
+    },
+    {
+      "name": "潜行审计5880",
+      "cost": 5,
+      "attack": 4,
+      "health": 6,
+      "spent": 12.23
+    },
+    {
+      "name": "潜行审计6133",
+      "cost": 3,
+      "attack": 2,
+      "health": 1,
+      "spent": 8
+    },
+    {
+      "name": "潜行审计6692",
+      "cost": 3,
+      "attack": 3,
+      "health": 3,
+      "spent": 2.76
+    },
+    {
+      "name": "潜行审计6693",
+      "cost": 2,
+      "attack": 1,
+      "health": 2,
+      "spent": 2.4
+    },
+    {
+      "name": "潜行审计7144",
+      "cost": 4,
+      "attack": 5,
+      "health": 5,
+      "spent": 2.35
+    },
+    {
+      "name": "潜行审计7146",
+      "cost": 6,
+      "attack": 7,
+      "health": 7,
+      "spent": 12.44
+    },
+    {
+      "name": "潜行审计7167",
+      "cost": 5,
+      "attack": 5,
+      "health": 5,
+      "spent": 2.35
+    },
+    {
+      "name": "潜行审计7250",
+      "cost": 3,
+      "attack": 3,
+      "health": 3,
+      "spent": 3.04
+    },
+    {
+      "name": "潜行审计7295",
+      "cost": 5,
+      "attack": 6,
+      "health": 4,
+      "spent": 5.44
+    },
+    {
+      "name": "潜行审计7300",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 3.47
+    },
+    {
+      "name": "潜行审计7304",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "spent": 0.95
+    },
+    {
+      "name": "潜行审计7503",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 3.5
+    },
+    {
+      "name": "潜行审计7637",
+      "cost": 2,
+      "attack": 2,
+      "health": 2,
+      "spent": 3.5
+    },
+    {
+      "name": "潜行审计7763",
+      "cost": 2,
+      "attack": 1,
+      "health": 2,
+      "spent": 3.1
+    },
+    {
+      "name": "潜行审计7842",
+      "cost": 7,
+      "attack": 7,
+      "health": 7,
+      "spent": 15.18
+    },
+    {
+      "name": "潜行审计7872",
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "spent": 2.28
+    },
+    {
+      "name": "潜行审计8311",
+      "cost": 4,
+      "attack": 1,
+      "health": 3,
+      "spent": 8.6
+    },
+    {
+      "name": "潜行审计8470",
+      "cost": 4,
+      "attack": 3,
+      "health": 4,
+      "spent": 9.8
+    },
+    {
+      "name": "潜行审计8727",
+      "cost": 6,
+      "attack": 3,
+      "health": 3,
+      "spent": 11.3
+    },
+    {
+      "name": "潜行审计9114",
+      "cost": 5,
+      "attack": 6,
+      "health": 6,
+      "spent": 2.6
+    },
+    {
+      "name": "潜行审计9262",
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "spent": 2.35
+    },
+    {
+      "name": "潜行审计9290",
+      "cost": 3,
+      "attack": 2,
+      "health": 4,
+      "spent": 3.2
+    },
+    {
+      "name": "潜行审计9491",
+      "cost": 5,
+      "attack": 5,
+      "health": 5,
+      "spent": 7.46
+    },
+    {
+      "name": "潜行审计9597",
+      "cost": 5,
+      "attack": 7,
+      "health": 3,
+      "spent": 2.55
+    },
+    {
+      "name": "潜行审计9635",
+      "cost": 2,
+      "attack": 1,
+      "health": 3,
+      "spent": 3.04
+    },
+    {
+      "name": "潜行审计9732",
+      "cost": 6,
+      "attack": 6,
+      "health": 6,
+      "spent": 13.45
+    },
+    {
+      "name": "潜行审计9757",
+      "cost": 5,
+      "attack": 4,
+      "health": 4,
+      "spent": 11.3
+    },
+    {
+      "name": "潜行审计9785",
+      "cost": 5,
+      "attack": 3,
+      "health": 6,
+      "spent": 14.3
+    },
+    {
+      "name": "潜行审计9992",
+      "cost": 5,
+      "attack": 7,
+      "health": 3,
+      "spent": 4.09
+    }
+  ]
+}

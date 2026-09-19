@@ -12,6 +12,10 @@ for(const name of baseline.names){
 assert(counts.both>0,'Rare combinations remain possible');
 assert(counts.both<baseline.counts.both*.3,'Forced stacking removed');
 assert(counts.both/counts.storm<.1,'Storm + Intimidate should be uncommon');
-assert(counts.storm>baseline.counts.storm*.9,'Keep Storm available');
-assert(counts.threat-counts.both>500,'Keep standalone Intimidate available');
+// v4.94 removes forced high-cost keywords; compare availability to official
+// printed rates rather than preserving the old inflated absolute counts.
+const official=require('./reference.json').cards.filter(c=>!c.token&&c.type===1&&c.cost>=7);
+const printedRate=k=>official.filter(c=>new RegExp('^【'+k+'】','m').test(c.text)).length/official.length;
+assert(Math.abs(counts.storm/baseline.names.length-printedRate('疾驰'))<.06,'Keep Storm near the official printed rate');
+assert(counts.threat-counts.both>baseline.names.length*printedRate('威慑')*.5,'Keep standalone Intimidate available');
 fs.writeFileSync(__dirname+'/offensive-keywords-validation.json',JSON.stringify({version:S.VERSION,seeds:baseline.names.length,before:baseline.counts,after:counts},null,2));console.log('PASS',counts);

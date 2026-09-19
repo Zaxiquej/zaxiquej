@@ -1,5 +1,5 @@
 {
-  "version": "4.90",
+  "version": "4.94",
   "samples": 12000,
   "seedPrefix": "高费方向",
   "baselineVersion": "4.61",
@@ -28,21 +28,21 @@
     },
     "after": {
       "n": 1583,
-      "storm": 324,
-      "guard": 688,
-      "threat": 177,
-      "impact": 1207,
-      "protection": 90,
-      "body": 23102,
-      "trade": 183,
+      "storm": 152,
+      "guard": 321,
+      "threat": 87,
+      "impact": 1328,
+      "protection": 105,
+      "body": 24210,
+      "trade": 242,
       "stormAttacks": {
-        "2": 5,
-        "3": 73,
-        "4": 113,
-        "5": 53,
-        "6": 55,
-        "7": 15,
-        "8": 10
+        "2": 6,
+        "3": 36,
+        "4": 52,
+        "5": 27,
+        "6": 22,
+        "7": 5,
+        "8": 4
       }
     }
   }

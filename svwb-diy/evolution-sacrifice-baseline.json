@@ -1,0 +1,61 @@
+{
+  "version": "4.92",
+  "name": "随机卡牌#32566305",
+  "seed": 3418002257,
+  "type": "follower",
+  "class": 1,
+  "rarity": 0,
+  "cost": 9,
+  "attack": 1,
+  "health": 5,
+  "abilities": [
+    {
+      "ids": [
+        "evolutionSacrifice",
+        "aoe"
+      ],
+      "raw": 19,
+      "boardValue": 0,
+      "text": "【超进化时】对对手的战场上的所有随从造成5点伤害。",
+      "tokens": [],
+      "kind": "evolutionSacrifice",
+      "trigger": "超进化时",
+      "condition": "none",
+      "bodyText": "对对手的战场上的所有随从造成5点伤害。",
+      "price": 4.75,
+      "major": true
+    },
+    {
+      "kind": "keyword",
+      "trigger": "",
+      "condition": "none",
+      "text": "【守护】",
+      "price": 0,
+      "raw": 0,
+      "ids": [
+        "守护"
+      ]
+    }
+  ],
+  "tokens": [],
+  "emblems": [],
+  "faiths": [],
+  "alternateForms": [],
+  "budget": 49.95285799466073,
+  "spent": 4.75,
+  "bodyAllowance": 6,
+  "theme": "森语 · 连击与回手",
+  "highRole": "defense",
+  "highCostBonus": 3.4000000000000004,
+  "simpleDesign": true,
+  "evolutionBodyTrade": {
+    "lost": 12,
+    "target": 6,
+    "trigger": "超进化时",
+    "payoffRaw": 19,
+    "timing": 0.25
+  },
+  "sacrificeDesign": "evolution",
+  "corePower": 19,
+  "vanilla": false
+}

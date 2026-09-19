@@ -1,64 +1,52 @@
 {
-  "version": "4.63",
+  "version": "4.96",
   "samples": 40000,
   "counts": {
-    "summon90061110": 185,
-    "summon90061130": 181,
+    "summon90041120": 365,
+    "summon90061110": 167,
     "handLuck": 110,
-    "discountedHand90061110": 12,
-    "discountedHand90041120": 10,
-    "summon90041120": 396,
-    "transformEnemy": 247,
-    "babyDragon": 275,
-    "drawLuckEmblem": 217,
-    "tiger": 164,
-    "discountedHand90061130": 4,
-    "transformAlly": 78,
-    "transformEither": 42
+    "babyDragon": 237,
+    "tiger": 187,
+    "transformEnemy": 241,
+    "drawLuckEmblem": 199,
+    "summon90061130": 179,
+    "transformAlly": 73,
+    "transformEither": 44,
+    "discountedHand90061130": 9,
+    "discountedHand90041120": 4,
+    "discountedHand90061110": 6
   },
   "examples": {
+    "summon90041120": {
+      "name": "花签与变身14",
+      "chaos": false
+    },
     "summon90061110": {
       "name": "花签与变身23",
       "chaos": false
-    },
-    "summon90061130": {
-      "name": "花签与变身45",
-      "chaos": true
     },
     "handLuck": {
       "name": "花签与变身46",
       "chaos": false
     },
-    "discountedHand90061110": {
-      "name": "花签与变身68",
+    "babyDragon": {
+      "name": "花签与变身77",
       "chaos": false
     },
-    "discountedHand90041120": {
-      "name": "花签与变身97",
-      "chaos": false
-    },
-    "summon90041120": {
-      "name": "花签与变身159",
+    "tiger": {
+      "name": "花签与变身162",
       "chaos": true
     },
     "transformEnemy": {
       "name": "花签与变身198",
       "chaos": true
     },
-    "babyDragon": {
-      "name": "花签与变身202",
-      "chaos": false
-    },
     "drawLuckEmblem": {
       "name": "花签与变身247",
       "chaos": false
     },
-    "tiger": {
-      "name": "花签与变身365",
-      "chaos": false
-    },
-    "discountedHand90061130": {
-      "name": "花签与变身555",
+    "summon90061130": {
+      "name": "花签与变身345",
       "chaos": true
     },
     "transformAlly": {
@@ -66,23 +54,45 @@
       "chaos": true
     },
     "transformEither": {
-      "name": "花签与变身1726",
+      "name": "花签与变身915",
+      "chaos": true
+    },
+    "discountedHand90061130": {
+      "name": "花签与变身3425",
+      "chaos": false
+    },
+    "discountedHand90041120": {
+      "name": "花签与变身5887",
+      "chaos": false
+    },
+    "discountedHand90061110": {
+      "name": "花签与变身12772",
       "chaos": false
     }
   },
-  "patterns": 28,
+  "patterns": 74,
   "rewards": [
     "damage",
     "heal",
-    "tokenSummon",
     "aoe",
+    "tokenSummon",
+    "summonWard",
     "face",
-    "summonBane",
-    "summonRush",
     "summonDeathDamage",
     "summonDeathGrave",
-    "summonDeathDraw",
-    "summonWard",
-    "allyBuff"
+    "summonRush",
+    "splitDamage",
+    "summonDeathDraw"
+  ],
+  "drawRules": [
+    "threshold",
+    "parity",
+    "set",
+    "range"
+  ],
+  "missKinds": [
+    "downside",
+    "own",
+    "none"
   ]
 }
