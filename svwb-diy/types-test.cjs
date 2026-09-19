@@ -7,7 +7,7 @@ for(let i=0;i<60000;i++){
  const c=S.generate('全类型验证'+i);counts[c.type]++;
  assert.deepEqual(c,S.generate(c.name),'Seed determinism');
  assert(c.abilities.length<=5&&c.spent<=c.budget+.011);
- const ids=c.abilities.flatMap(a=>a.ids);assert.equal(new Set(ids).size,ids.length,c.name+' duplicate effects');
+ const ids=c.abilities.flatMap(a=>a.ids);require('./assert-node-effects.cjs')(c);
  if(c.type==='follower'){
   assert(c.attack>=0&&c.health>=1);if(c.attack===0)assert(c.zeroAttackTrade&&c.cost<=3);
   if(c.faiths.length){hit('faith',c.name);assert.equal(c.rarity,3);}

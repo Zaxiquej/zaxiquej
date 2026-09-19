@@ -1,17 +1,17 @@
 {
-  "version": "4.40",
+  "version": "4.85",
   "seeds": 20000,
   "counts": {
-    "oneCost": 2052,
-    "immediateFollower": 6,
-    "deathFollower": 10,
-    "fullTokenSpell": 12,
-    "handSupply": 532,
-    "conditional": 106
+    "oneCost": 2051,
+    "immediateFollower": 4,
+    "deathFollower": 8,
+    "fullTokenSpell": 5,
+    "handSupply": 480,
+    "conditional": 119
   },
   "examples": {
     "deathFollower": "低费铺场673",
-    "fullTokenSpell": "低费铺场1971",
-    "immediateFollower": "低费铺场3491"
+    "fullTokenSpell": "低费铺场994",
+    "immediateFollower": "低费铺场4846"
   }
 }

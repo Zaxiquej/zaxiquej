@@ -6,7 +6,7 @@ for(let i=0;i<50000;i++){
  assert(f.cost>=1&&f.cost<=5);assert(f.spent<=f.budget+.011&&f.spent>0);assert(c.spent<=c.budget+.011);
  assert(f.abilities.length>=1&&f.abilities.length<=3);assert(f.abilities.every(a=>a.trigger==='法术'));
  assert(!/本随从|【进化时】|【超进化时】|【激奏|【结晶|【爆能强化|【魔力增幅时】/.test(f.text));
- const ids=f.abilities.flatMap(a=>a.ids);assert.equal(ids.length,new Set(ids).size);
+ const ids=f.abilities.flatMap(a=>a.ids);require('./assert-node-effects.cjs')(f);
  assert(!ids.includes('selfCopy'));assert.equal(f.text,f.abilities.map(a=>a.text).join('\n\n'));
  for(const a of f.abilities){
   assert(a.raw+1e-8>=(a.minPayoff||0));

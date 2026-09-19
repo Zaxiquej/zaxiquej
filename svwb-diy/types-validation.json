@@ -1,50 +1,50 @@
 {
-  "version": "4.77",
+  "version": "4.87",
   "counts": {
     "follower": 35928,
     "spell": 12024,
     "amulet": 12048
   },
   "coverage": {
-    "faith": 86,
-    "selfCopy": 818,
-    "storm": 3106,
-    "cheapStorm": 848,
+    "faith": 84,
+    "selfCopy": 728,
+    "storm": 3117,
+    "cheapStorm": 847,
     "countdown": 4668,
     "permanent": 7380,
-    "activation": 10111,
-    "paidAct": 8584,
-    "freeAct": 1527,
-    "breakAct": 4414,
-    "repeatAct": 5697,
-    "acceleration": 2519,
+    "activation": 8583,
+    "paidAct": 7009,
+    "freeAct": 1574,
+    "breakAct": 4411,
+    "repeatAct": 4172,
+    "acceleration": 579,
     "actReplay": 50,
-    "spellMode": 1248,
-    "amuletMode": 957,
-    "spellEnhance": 863,
-    "amuletEnhance": 199,
+    "spellMode": 1238,
+    "amuletMode": 937,
+    "spellEnhance": 866,
+    "amuletEnhance": 227,
     "spellboost": 106,
     "spellEmblem": 400,
-    "amuletEngine": 1385,
+    "amuletEngine": 1416,
     "soil": 277,
     "zeroAmulet": 233
   },
   "rates": {
-    "faith": 0.0023936762413716323,
-    "selfCopy": 0.022767757737697618,
-    "storm": 0.08645067913604988
+    "faith": 0.002338009352037408,
+    "selfCopy": 0.02026274771765754,
+    "storm": 0.0867568470273881
   },
   "structures": {
-    "spell": 3800,
-    "amulet": 6435
+    "spell": 3771,
+    "amulet": 5966
   },
   "budgetUse": {
     "spell": {
-      "mean": 0.9046343331862906,
+      "mean": 0.9055242740543419,
       "highCostBelowHalf": 0
     },
     "amulet": {
-      "mean": 0.8098532466852912,
+      "mean": 0.8388003190225899,
       "highCostBelowHalf": 0
     }
   },
@@ -63,13 +63,13 @@
     "selfCopy": "全类型验证41",
     "spellMode": "全类型验证48",
     "spellEmblem": "全类型验证62",
-    "acceleration": "全类型验证69",
+    "acceleration": "全类型验证113",
     "zeroAmulet": "全类型验证188",
     "spellEnhance": "全类型验证211",
     "spellboost": "全类型验证212",
     "faith": "全类型验证298",
     "soil": "全类型验证315",
     "actReplay": "全类型验证639",
-    "amuletEnhance": "全类型验证950"
+    "amuletEnhance": "全类型验证669"
   }
 }

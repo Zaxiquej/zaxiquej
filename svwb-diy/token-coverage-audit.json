@@ -1,0 +1,2241 @@
+{
+  "version": "4.92",
+  "source": "https://shadowverse-wb.com/web/CardList/cardList",
+  "snapshotRetrieved": "2026-09-18T00:27:23.510Z",
+  "totalCards": 904,
+  "totalTokens": 93,
+  "counts": {
+    "follower-pool": 38,
+    "deferred": 40,
+    "common-supply": 3,
+    "special-route": 10,
+    "related-definition": 2
+  },
+  "rows": [
+    {
+      "id": 90001110,
+      "name": "哥布林",
+      "class": 0,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10101310,
+          "name": "哥布林的偷袭"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90001110"
+    },
+    {
+      "id": 90004110,
+      "name": "沉默的魔将",
+      "class": 0,
+      "type": 1,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "特殊牌组衍生，遵照用户要求不接入牌组改写",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004110"
+    },
+    {
+      "id": 90004120,
+      "name": "深渊之主的仆从",
+      "class": 0,
+      "type": 1,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "特殊牌组衍生，遵照用户要求不接入牌组改写",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004120"
+    },
+    {
+      "id": 90004130,
+      "name": "边狱的邪祟",
+      "class": 0,
+      "type": 1,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "特殊牌组衍生，遵照用户要求不接入牌组改写",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004130"
+    },
+    {
+      "id": 90004310,
+      "name": "阿斯塔罗特的宣判",
+      "class": 0,
+      "type": 4,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "特殊牌组衍生，遵照用户要求不接入牌组改写",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004310"
+    },
+    {
+      "id": 90004320,
+      "name": "绝大的证明",
+      "class": 0,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10304110,
+          "name": "绝大的显现·麦哲佩恩"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004320"
+    },
+    {
+      "id": 90004330,
+      "name": "涸绝的甘露",
+      "class": 0,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10304120,
+          "name": "涸绝的显现·吉尔内莉莎"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90004330"
+    },
+    {
+      "id": 90011110,
+      "name": "妖精",
+      "class": 1,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10011110,
+          "name": "妖精驯服者"
+        },
+        {
+          "id": 10011210,
+          "name": "缭乱之庭"
+        },
+        {
+          "id": 10111120,
+          "name": "恋触妖精"
+        },
+        {
+          "id": 10111310,
+          "name": "妖精召集令"
+        },
+        {
+          "id": 10112120,
+          "name": "纯真的水之妖精"
+        },
+        {
+          "id": 10112210,
+          "name": "磷光辉岩"
+        },
+        {
+          "id": 10114110,
+          "name": "自然妖精公主·阿丽雅"
+        },
+        {
+          "id": 10212120,
+          "name": "妖精击剑士"
+        },
+        {
+          "id": 10213110,
+          "name": "森林骑士道·辛西亚"
+        },
+        {
+          "id": 10214110,
+          "name": "翅翼女王·提泰妮娅"
+        },
+        {
+          "id": 10312120,
+          "name": "树海的战士"
+        },
+        {
+          "id": 10511120,
+          "name": "森林羽子板工匠"
+        },
+        {
+          "id": 10511310,
+          "name": "虫风花的飞翔"
+        },
+        {
+          "id": 10513110,
+          "name": "引路船工"
+        },
+        {
+          "id": 10514120,
+          "name": "虫风花·魅禄"
+        },
+        {
+          "id": 10711120,
+          "name": "精灵陷阱师"
+        },
+        {
+          "id": 10811120,
+          "name": "异端隐士·西特拉斯"
+        },
+        {
+          "id": 10812110,
+          "name": "太古的妖精·露芙蕾"
+        },
+        {
+          "id": 10912110,
+          "name": "根延潜伏者"
+        },
+        {
+          "id": 10912310,
+          "name": "绿伞会两大招牌"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90011110"
+    },
+    {
+      "id": 90011120,
+      "name": "新绿的妖精",
+      "class": 1,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10611110,
+          "name": "慈育的森民"
+        },
+        {
+          "id": 10611310,
+          "name": "天枪授予"
+        },
+        {
+          "id": 10612110,
+          "name": "慈颜的拥趸"
+        },
+        {
+          "id": 10613110,
+          "name": "慈惠的心腹"
+        },
+        {
+          "id": 10613310,
+          "name": "慈爱的天枪"
+        },
+        {
+          "id": 10614110,
+          "name": "慈爱的凛华·奥尔提雅"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90011120"
+    },
+    {
+      "id": 90011310,
+      "name": "森林的奥秘",
+      "class": 1,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10112210,
+          "name": "磷光辉岩"
+        },
+        {
+          "id": 10112310,
+          "name": "薰交的思慕"
+        },
+        {
+          "id": 10312120,
+          "name": "树海的战士"
+        },
+        {
+          "id": 10714120,
+          "name": "冰界鹿王"
+        },
+        {
+          "id": 10912310,
+          "name": "绿伞会两大招牌"
+        }
+      ],
+      "dependencies": [],
+      "status": "common-supply",
+      "reason": "独立获得卡牌效果，只加入手牌",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90011310"
+    },
+    {
+      "id": 90014110,
+      "name": "冰晶剑士·伊芙",
+      "class": 1,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10814120,
+          "name": "永恒冰晶·蒂亚"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90014110"
+    },
+    {
+      "id": 90014310,
+      "name": "蔷薇之闪击",
+      "class": 1,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10114120,
+          "name": "丰丽的玫瑰皇后"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90014310"
+    },
+    {
+      "id": 90014320,
+      "name": "绝命的痛击",
+      "class": 1,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10314120,
+          "name": "绝命的显现·艾斯迪亚"
+        }
+      ],
+      "dependencies": [
+        "绝命的显现·艾斯迪亚"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90014320"
+    },
+    {
+      "id": 90014330,
+      "name": "天枪深渊",
+      "class": 1,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10614120,
+          "name": "古旧天枪·萨莎妮德"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90014330"
+    },
+    {
+      "id": 90021110,
+      "name": "骑士",
+      "class": 2,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10022110,
+          "name": "王室御用车夫"
+        },
+        {
+          "id": 10122110,
+          "name": "统率的鲁米那斯骑士"
+        },
+        {
+          "id": 10122130,
+          "name": "勇猛的鲁米那斯枪士"
+        },
+        {
+          "id": 10122310,
+          "name": "王断的威光"
+        },
+        {
+          "id": 10123110,
+          "name": "雷维翁之斧·杰诺"
+        },
+        {
+          "id": 10123130,
+          "name": "王断的天宫·斯塔奇乌姆"
+        },
+        {
+          "id": 10224120,
+          "name": "雷维翁超越者·尤里乌斯"
+        },
+        {
+          "id": 10522310,
+          "name": "温柔援军"
+        },
+        {
+          "id": 10721120,
+          "name": "传调联络兵"
+        },
+        {
+          "id": 10722110,
+          "name": "听略谍报兵"
+        },
+        {
+          "id": 10722120,
+          "name": "斩奏医护兵"
+        },
+        {
+          "id": 10723110,
+          "name": "响爪分队长"
+        },
+        {
+          "id": 10824120,
+          "name": "焦灼炎将·玛尔斯"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021110"
+    },
+    {
+      "id": 90021120,
+      "name": "铁甲骑士",
+      "class": 2,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10121130,
+          "name": "救援的鲁米那斯治疗师·莉拉拉"
+        },
+        {
+          "id": 10121310,
+          "name": "剑士的斩击"
+        },
+        {
+          "id": 10122120,
+          "name": "卓越的鲁米那斯法师"
+        },
+        {
+          "id": 10122310,
+          "name": "王断的威光"
+        },
+        {
+          "id": 10123140,
+          "name": "煌刃勇者·阿玛利亚"
+        },
+        {
+          "id": 10224110,
+          "name": "静寂的安纳提玛·吉尔达利娅"
+        },
+        {
+          "id": 10523110,
+          "name": "不动如山的将校"
+        },
+        {
+          "id": 10721120,
+          "name": "传调联络兵"
+        },
+        {
+          "id": 10722310,
+          "name": "无音的包围"
+        },
+        {
+          "id": 10724110,
+          "name": "统音的安纳提玛·吉尔达利娅"
+        },
+        {
+          "id": 10724120,
+          "name": "宽严的音帅·塞扎尔"
+        },
+        {
+          "id": 10821130,
+          "name": "悠久的骑士·莎夏"
+        },
+        {
+          "id": 10921310,
+          "name": "方阵"
+        },
+        {
+          "id": 10922120,
+          "name": "凶猛指挥官"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021120"
+    },
+    {
+      "id": 90021130,
+      "name": "娜哈特的私兵",
+      "class": 2,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10821110,
+          "name": "武力与治安·娜哈特·娜哈特&宾森特"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021130"
+    },
+    {
+      "id": 90021210,
+      "name": "令人战栗的海盗旗",
+      "class": 2,
+      "type": 3,
+      "sources": [
+        {
+          "id": 10921110,
+          "name": "海域斥候"
+        },
+        {
+          "id": 10922110,
+          "name": "漩涡炮手"
+        },
+        {
+          "id": 10923110,
+          "name": "波涛副船长"
+        },
+        {
+          "id": 10923310,
+          "name": "黄金时代"
+        },
+        {
+          "id": 10924110,
+          "name": "逆行的罪人·巴巴洛丝"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021210"
+    },
+    {
+      "id": 90021310,
+      "name": "黄金短剑",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10322110,
+          "name": "篡夺的祈祷者"
+        },
+        {
+          "id": 10322210,
+          "name": "篡夺的据点"
+        },
+        {
+          "id": 10323310,
+          "name": "奉还的剑闪"
+        },
+        {
+          "id": 10324120,
+          "name": "空绝的显现·奥克托丽丝"
+        },
+        {
+          "id": 10923110,
+          "name": "波涛副船长"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021310"
+    },
+    {
+      "id": 90021320,
+      "name": "黄金之杯",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10321110,
+          "name": "篡夺的肯定者"
+        },
+        {
+          "id": 10322210,
+          "name": "篡夺的据点"
+        },
+        {
+          "id": 10323110,
+          "name": "篡夺的团结者"
+        },
+        {
+          "id": 10922110,
+          "name": "漩涡炮手"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021320"
+    },
+    {
+      "id": 90021330,
+      "name": "黄金之靴",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10321110,
+          "name": "篡夺的肯定者"
+        },
+        {
+          "id": 10322210,
+          "name": "篡夺的据点"
+        },
+        {
+          "id": 10323110,
+          "name": "篡夺的团结者"
+        },
+        {
+          "id": 10921110,
+          "name": "海域斥候"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021330"
+    },
+    {
+      "id": 90021340,
+      "name": "黄金项链",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10322110,
+          "name": "篡夺的祈祷者"
+        },
+        {
+          "id": 10322210,
+          "name": "篡夺的据点"
+        },
+        {
+          "id": 10324120,
+          "name": "空绝的显现·奥克托丽丝"
+        },
+        {
+          "id": 10923110,
+          "name": "波涛副船长"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021340"
+    },
+    {
+      "id": 90021350,
+      "name": "闪耀的金币",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10521120,
+          "name": "烟管美玉"
+        },
+        {
+          "id": 10522120,
+          "name": "吉祥蛙"
+        },
+        {
+          "id": 10523310,
+          "name": "荣耀的丽金花"
+        },
+        {
+          "id": 10524120,
+          "name": "丽金花·云庆"
+        },
+        {
+          "id": 10822110,
+          "name": "越狱者·卡婕"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90021350"
+    },
+    {
+      "id": 90022110,
+      "name": "异形",
+      "class": 2,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10822310,
+          "name": "重历新生"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90022110"
+    },
+    {
+      "id": 90023110,
+      "name": "安静的女仆·诺嘉",
+      "class": 2,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10223120,
+          "name": "假日中的王女·普莉姆"
+        }
+      ],
+      "dependencies": [
+        "假日中的王女·普莉姆"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90023110"
+    },
+    {
+      "id": 90024310,
+      "name": "空绝的残光",
+      "class": 2,
+      "type": 4,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90024310"
+    },
+    {
+      "id": 90024320,
+      "name": "天剑深渊",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10624120,
+          "name": "古旧天剑·伊德梅塔"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90024320"
+    },
+    {
+      "id": 90024330,
+      "name": "亡命者的枪击",
+      "class": 2,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10824110,
+          "name": "天命的子弹·巴妮&巴隆"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90024330"
+    },
+    {
+      "id": 90031110,
+      "name": "泥尘巨像",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10031320,
+          "name": "召唤真理"
+        },
+        {
+          "id": 10132120,
+          "name": "奇迹女巫·爱蜜儿"
+        },
+        {
+          "id": 10332310,
+          "name": "双重创造"
+        },
+        {
+          "id": 10532310,
+          "name": "魔猫戏法"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031110"
+    },
+    {
+      "id": 90031120,
+      "name": "守护者巨像",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10032110,
+          "name": "双面魔女·蕾米拉米"
+        },
+        {
+          "id": 10234120,
+          "name": "精金炼金术师·诺曼"
+        },
+        {
+          "id": 10332310,
+          "name": "双重创造"
+        },
+        {
+          "id": 10531110,
+          "name": "创造魔法师"
+        },
+        {
+          "id": 10533110,
+          "name": "元素支配者"
+        },
+        {
+          "id": 10834120,
+          "name": "灾难言灵·洋荷"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031120"
+    },
+    {
+      "id": 90031130,
+      "name": "式神·小纸人",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10134110,
+          "name": "五行之巅·久苑"
+        },
+        {
+          "id": 10331120,
+          "name": "五行修行者"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031130"
+    },
+    {
+      "id": 90031140,
+      "name": "式神·暴鬼",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10133320,
+          "name": "唤鬼术"
+        },
+        {
+          "id": 10134110,
+          "name": "五行之巅·久苑"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031140"
+    },
+    {
+      "id": 90031210,
+      "name": "大地之魔片",
+      "class": 3,
+      "type": 2,
+      "sources": [],
+      "dependencies": [],
+      "status": "common-supply",
+      "reason": "独立获得卡牌效果，只加入手牌",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031210"
+    },
+    {
+      "id": 90031310,
+      "name": "玛纳利亚魔弹",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10831120,
+          "name": "玛纳利亚书记官·波比"
+        },
+        {
+          "id": 10833110,
+          "name": "玛纳利亚文书官·琪可"
+        }
+      ],
+      "dependencies": [],
+      "status": "common-supply",
+      "reason": "独立获得卡牌效果，只加入手牌",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90031310"
+    },
+    {
+      "id": 90032110,
+      "name": "洋葱军团兵",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10232110,
+          "name": "否定的咏唱·芭赛特"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90032110"
+    },
+    {
+      "id": 90033310,
+      "name": "有所成长了！",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10133310,
+          "name": "做作业啦！"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90033310"
+    },
+    {
+      "id": 90034110,
+      "name": "式神·天后",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10134110,
+          "name": "五行之巅·久苑"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034110"
+    },
+    {
+      "id": 90034120,
+      "name": "式神·贵人",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10134110,
+          "name": "五行之巅·久苑"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034120"
+    },
+    {
+      "id": 90034130,
+      "name": "安的巨大英灵",
+      "class": 3,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10134120,
+          "name": "玛纳利亚密友·安&古蕾雅"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034130"
+    },
+    {
+      "id": 90034310,
+      "name": "绝尽的伪证",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10334120,
+          "name": "绝尽的显现·莱奥"
+        }
+      ],
+      "dependencies": [],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034310"
+    },
+    {
+      "id": 90034320,
+      "name": "伟大之术",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10434120,
+          "name": "天才美少女炼金术士·卡莉奥丝特罗"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034320"
+    },
+    {
+      "id": 90034330,
+      "name": "天晶深渊",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10634120,
+          "name": "古旧天晶·卡卢基典瑟拉"
+        }
+      ],
+      "dependencies": [
+        "天晶魔手"
+      ],
+      "status": "deferred",
+      "reason": "需要专门的信仰关联",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034330"
+    },
+    {
+      "id": 90034340,
+      "name": "苍奏之四",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10834110,
+          "name": "恩爱的大地·坦忒拉&拉缇卡"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034340"
+    },
+    {
+      "id": 90034350,
+      "name": "宏大的回归",
+      "class": 3,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10834110,
+          "name": "恩爱的大地·坦忒拉&拉缇卡"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90034350"
+    },
+    {
+      "id": 90041110,
+      "name": "炽炎幼龙",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10141140,
+          "name": "育龙少女"
+        },
+        {
+          "id": 10941310,
+          "name": "幼龙闹脾气"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90041110"
+    },
+    {
+      "id": 90041120,
+      "name": "巨翼飞龙",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10042120,
+          "name": "咆哮的驭龙使"
+        },
+        {
+          "id": 10141110,
+          "name": "云海龙骑兵"
+        },
+        {
+          "id": 10143130,
+          "name": "惊涛龙骑士·扎哈尔"
+        },
+        {
+          "id": 10241110,
+          "name": "庇护的智龙"
+        },
+        {
+          "id": 10542110,
+          "name": "铁锤龙骑士"
+        },
+        {
+          "id": 10744120,
+          "name": "龙峪的古龙"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90041120"
+    },
+    {
+      "id": 90041130,
+      "name": "大海虎鲸",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10241310,
+          "name": "虎鲸的呼声"
+        },
+        {
+          "id": 10242120,
+          "name": "身经百战的鱼人"
+        },
+        {
+          "id": 10243110,
+          "name": "苍海的制裁·尼普顿"
+        },
+        {
+          "id": 10342120,
+          "name": "海洋骑手"
+        },
+        {
+          "id": 10541120,
+          "name": "水滴打拍者"
+        },
+        {
+          "id": 10542120,
+          "name": "水母舞姬"
+        },
+        {
+          "id": 10544120,
+          "name": "波摇花·夕夜"
+        },
+        {
+          "id": 10841130,
+          "name": "沧海之精"
+        },
+        {
+          "id": 10842110,
+          "name": "闪耀旋律·莉芙&萝萝"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90041130"
+    },
+    {
+      "id": 90043110,
+      "name": "乙姬近卫队",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10143210,
+          "name": "乙姬的宝扇"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90043110"
+    },
+    {
+      "id": 90044110,
+      "name": "霸道之金龙",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10144130,
+          "name": "龙人演义·卧龙"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90044110"
+    },
+    {
+      "id": 90044120,
+      "name": "霸道之银龙",
+      "class": 4,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10144130,
+          "name": "龙人演义·卧龙"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90044120"
+    },
+    {
+      "id": 90044310,
+      "name": "银冰吐息",
+      "class": 4,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10244110,
+          "name": "银冰龙少女·菲琳"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90044310"
+    },
+    {
+      "id": 90044320,
+      "name": "烈绝的灭牙",
+      "class": 4,
+      "type": 4,
+      "sources": [],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90044320"
+    },
+    {
+      "id": 90044330,
+      "name": "天刀深渊",
+      "class": 4,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10644120,
+          "name": "古旧天刀·波菈莱"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90044330"
+    },
+    {
+      "id": 90051110,
+      "name": "骸骨士兵",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10151130,
+          "name": "白骨少女"
+        },
+        {
+          "id": 10152110,
+          "name": "干练的死神·蜜诺"
+        },
+        {
+          "id": 10251310,
+          "name": "诅咒派对"
+        },
+        {
+          "id": 10552110,
+          "name": "制造麻烦的唤灵师"
+        },
+        {
+          "id": 10553110,
+          "name": "致命掠夺者"
+        },
+        {
+          "id": 10751120,
+          "name": "恶魔鼓手·拉兹"
+        },
+        {
+          "id": 10752110,
+          "name": "猫咪走绳师"
+        },
+        {
+          "id": 10752310,
+          "name": "讴歌青春"
+        },
+        {
+          "id": 10753110,
+          "name": "骸骨驯兽师"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90051110"
+    },
+    {
+      "id": 90051120,
+      "name": "蝙蝠",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10052110,
+          "name": "魅惑的魅魔·莉莉姆"
+        },
+        {
+          "id": 10151110,
+          "name": "午夜眷属·埃拉尔"
+        },
+        {
+          "id": 10151120,
+          "name": "无名恶魔"
+        },
+        {
+          "id": 10152130,
+          "name": "怪奇探索者·尤娜"
+        },
+        {
+          "id": 10252310,
+          "name": "使唤蝙蝠"
+        },
+        {
+          "id": 10653110,
+          "name": "渴命的破坏者"
+        },
+        {
+          "id": 10751110,
+          "name": "暗夜键盘手·露露米"
+        },
+        {
+          "id": 10752310,
+          "name": "讴歌青春"
+        },
+        {
+          "id": 10851120,
+          "name": "可爱恶魔·莉莉姆"
+        },
+        {
+          "id": 10851130,
+          "name": "兔耳恶魔·莉蜜儿"
+        },
+        {
+          "id": 10852110,
+          "name": "母爱恶魔·菲欧蕾"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90051120"
+    },
+    {
+      "id": 90051130,
+      "name": "怨灵",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10052120,
+          "name": "多情的唤灵师"
+        },
+        {
+          "id": 10152130,
+          "name": "怪奇探索者·尤娜"
+        },
+        {
+          "id": 10152210,
+          "name": "瞑地的陵园"
+        },
+        {
+          "id": 10153130,
+          "name": "瞑地的天宫·穆甘"
+        },
+        {
+          "id": 10251120,
+          "name": "怨恨的栽培者"
+        },
+        {
+          "id": 10251310,
+          "name": "诅咒派对"
+        },
+        {
+          "id": 10552110,
+          "name": "制造麻烦的唤灵师"
+        },
+        {
+          "id": 10651120,
+          "name": "逃避幽灵者"
+        },
+        {
+          "id": 10752310,
+          "name": "讴歌青春"
+        },
+        {
+          "id": 10951310,
+          "name": "恐怖惊遇"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90051130"
+    },
+    {
+      "id": 90051140,
+      "name": "腐臭的僵尸",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10251310,
+          "name": "诅咒派对"
+        },
+        {
+          "id": 10252120,
+          "name": "尸兵"
+        },
+        {
+          "id": 10552110,
+          "name": "制造麻烦的唤灵师"
+        },
+        {
+          "id": 10753110,
+          "name": "骸骨驯兽师"
+        },
+        {
+          "id": 10754120,
+          "name": "死亡主持人·马克米朗"
+        },
+        {
+          "id": 10951310,
+          "name": "恐怖惊遇"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90051140"
+    },
+    {
+      "id": 90054110,
+      "name": "守卫犬的右腕·米米",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10154110,
+          "name": "奔放的狱焰·凯尔贝洛斯"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054110"
+    },
+    {
+      "id": 90054120,
+      "name": "守卫犬的左腕·可可",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10154110,
+          "name": "奔放的狱焰·凯尔贝洛斯"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054120"
+    },
+    {
+      "id": 90054130,
+      "name": "一尾狐",
+      "class": 5,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10254110,
+          "name": "双轮夜行·吟雪&夕月"
+        }
+      ],
+      "dependencies": [
+        "双轮夜行·吟雪&夕月"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054130"
+    },
+    {
+      "id": 90054310,
+      "name": "绝叫的扩散",
+      "class": 5,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10354120,
+          "name": "绝叫与爱绝的显现·鲁鲁纳伊&巴娜蕾卡"
+        }
+      ],
+      "dependencies": [
+        "绝叫与爱绝的显现·鲁鲁纳伊&巴娜蕾卡"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054310"
+    },
+    {
+      "id": 90054320,
+      "name": "爱绝的飞翔",
+      "class": 5,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10354120,
+          "name": "绝叫与爱绝的显现·鲁鲁纳伊&巴娜蕾卡"
+        }
+      ],
+      "dependencies": [
+        "绝叫与爱绝的显现·鲁鲁纳伊&巴娜蕾卡"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054320"
+    },
+    {
+      "id": 90054330,
+      "name": "天眼深渊",
+      "class": 5,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10654120,
+          "name": "古旧天眼·比芭提"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90054330"
+    },
+    {
+      "id": 90061110,
+      "name": "神圣猎鹰",
+      "class": 6,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10062210,
+          "name": "羽翼石像"
+        },
+        {
+          "id": 10161310,
+          "name": "翎雨"
+        },
+        {
+          "id": 10362220,
+          "name": "羽翼狮子像"
+        },
+        {
+          "id": 10662120,
+          "name": "飞马骑手"
+        },
+        {
+          "id": 10964120,
+          "name": "翼天的变貌·奥梅里欧"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90061110"
+    },
+    {
+      "id": 90061120,
+      "name": "圣炎猛虎",
+      "class": 6,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10163210,
+          "name": "野兽公主的誓约"
+        },
+        {
+          "id": 10362220,
+          "name": "羽翼狮子像"
+        },
+        {
+          "id": 10961210,
+          "name": "咆哮圣堂"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90061120"
+    },
+    {
+      "id": 90061130,
+      "name": "壮丽大神隼",
+      "class": 6,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10061210,
+          "name": "投影鸟像"
+        },
+        {
+          "id": 10534120,
+          "name": "明越花·阿罗"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90061130"
+    },
+    {
+      "id": 90064110,
+      "name": "圣骑兵",
+      "class": 6,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10264120,
+          "name": "呜咽的圣骑士·维尔伯特"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90064110"
+    },
+    {
+      "id": 90064210,
+      "name": "月影指环",
+      "class": 6,
+      "type": 3,
+      "sources": [
+        {
+          "id": 10764110,
+          "name": "裁神的安纳提玛·罗德欧"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90064210"
+    },
+    {
+      "id": 90064310,
+      "name": "绝望的奔流",
+      "class": 6,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10364120,
+          "name": "绝望的显现·玛温"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90064310"
+    },
+    {
+      "id": 90064320,
+      "name": "天书深渊",
+      "class": 6,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10664120,
+          "name": "古旧天书·莲妥丝"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90064320"
+    },
+    {
+      "id": 90071110,
+      "name": "悬丝傀儡",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10072210,
+          "name": "人偶剧场"
+        },
+        {
+          "id": 10172120,
+          "name": "依恋的人偶师"
+        },
+        {
+          "id": 10172130,
+          "name": "杀意之丝·诺亚"
+        },
+        {
+          "id": 10271120,
+          "name": "猫偶"
+        },
+        {
+          "id": 10371310,
+          "name": "丝线突袭"
+        },
+        {
+          "id": 10571110,
+          "name": "舞台缔造者"
+        },
+        {
+          "id": 10972120,
+          "name": "刀线客"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071110"
+    },
+    {
+      "id": 90071120,
+      "name": "改良型·悬丝傀儡",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10071120,
+          "name": "人偶长矛手"
+        },
+        {
+          "id": 10171140,
+          "name": "自动机械刺客"
+        },
+        {
+          "id": 10171310,
+          "name": "人偶替身"
+        },
+        {
+          "id": 10173130,
+          "name": "疯狂的创造者·历亚姆"
+        },
+        {
+          "id": 10174120,
+          "name": "迈进之心·奥契丝"
+        },
+        {
+          "id": 10274110,
+          "name": "交响之心·枷薇"
+        },
+        {
+          "id": 10571110,
+          "name": "舞台缔造者"
+        },
+        {
+          "id": 10972120,
+          "name": "刀线客"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071120"
+    },
+    {
+      "id": 90071130,
+      "name": "解析的创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10771310,
+          "name": "跑酷"
+        },
+        {
+          "id": 10773110,
+          "name": "狂野播报员"
+        },
+        {
+          "id": 10874120,
+          "name": "你的前辈·欧丝"
+        },
+        {
+          "id": 10971120,
+          "name": "双子无人机少女"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071130"
+    },
+    {
+      "id": 90071140,
+      "name": "古老的创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10771310,
+          "name": "跑酷"
+        },
+        {
+          "id": 10772110,
+          "name": "悠然的滑手"
+        },
+        {
+          "id": 10772120,
+          "name": "大胆的涂鸦师"
+        },
+        {
+          "id": 10774120,
+          "name": "奋厉追赶·米乌"
+        },
+        {
+          "id": 10872110,
+          "name": "人造的馈赠·蕾拉"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071140"
+    },
+    {
+      "id": 90071150,
+      "name": "神秘的创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10771110,
+          "name": "个性店主"
+        },
+        {
+          "id": 10772120,
+          "name": "大胆的涂鸦师"
+        },
+        {
+          "id": 10773110,
+          "name": "狂野播报员"
+        },
+        {
+          "id": 10971310,
+          "name": "次元选定"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071150"
+    },
+    {
+      "id": 90071160,
+      "name": "绚烂的创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10872120,
+          "name": "门扉接续者·拉姿莉"
+        },
+        {
+          "id": 10873110,
+          "name": "知恩图报·米莉亚姆"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071160"
+    },
+    {
+      "id": 90071210,
+      "name": "未来核心",
+      "class": 7,
+      "type": 2,
+      "sources": [
+        {
+          "id": 10071110,
+          "name": "炮击猫兽人"
+        },
+        {
+          "id": 10071310,
+          "name": "来自异次元的枪击"
+        },
+        {
+          "id": 10171130,
+          "name": "永不停火的枪手"
+        },
+        {
+          "id": 10171320,
+          "name": "创造物充能"
+        },
+        {
+          "id": 10172110,
+          "name": "抗争领袖·露琪娜"
+        },
+        {
+          "id": 10173110,
+          "name": "决心之誓·米莉亚姆"
+        },
+        {
+          "id": 10173140,
+          "name": "改境的天宫·阿洛艾特"
+        },
+        {
+          "id": 10173210,
+          "name": "遗产的炮击"
+        },
+        {
+          "id": 10271210,
+          "name": "创造物弹射器"
+        }
+      ],
+      "dependencies": [
+        "攻击创造物"
+      ],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071210"
+    },
+    {
+      "id": 90071220,
+      "name": "过往核心",
+      "class": 7,
+      "type": 2,
+      "sources": [
+        {
+          "id": 10071310,
+          "name": "来自异次元的枪击"
+        },
+        {
+          "id": 10072110,
+          "name": "电鞭手"
+        },
+        {
+          "id": 10171110,
+          "name": "耀眼的发明家·伊莉斯"
+        },
+        {
+          "id": 10171320,
+          "name": "创造物充能"
+        },
+        {
+          "id": 10172110,
+          "name": "抗争领袖·露琪娜"
+        },
+        {
+          "id": 10172310,
+          "name": "生命的奔流"
+        },
+        {
+          "id": 10173110,
+          "name": "决心之誓·米莉亚姆"
+        },
+        {
+          "id": 10173140,
+          "name": "改境的天宫·阿洛艾特"
+        },
+        {
+          "id": 10271110,
+          "name": "引擎剑士"
+        },
+        {
+          "id": 10271210,
+          "name": "创造物弹射器"
+        },
+        {
+          "id": 10273110,
+          "name": "暗狱的余晖·贾丝珀"
+        }
+      ],
+      "dependencies": [
+        "城堡创造物"
+      ],
+      "status": "special-route",
+      "reason": "财宝／核心／变身等已有专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90071220"
+    },
+    {
+      "id": 90072110,
+      "name": "攻击创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10172110,
+          "name": "抗争领袖·露琪娜"
+        },
+        {
+          "id": 10271110,
+          "name": "引擎剑士"
+        },
+        {
+          "id": 10471130,
+          "name": "报恩工匠·艾萨克"
+        }
+      ],
+      "dependencies": [
+        "毁灭创造物α",
+        "毁灭创造物β",
+        "毁灭创造物γ"
+      ],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90072110"
+    },
+    {
+      "id": 90072120,
+      "name": "城堡创造物",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10171120,
+          "name": "钢铁佣兵·迪尔克"
+        },
+        {
+          "id": 10473110,
+          "name": "向往天空的回归者·卡西乌斯"
+        }
+      ],
+      "dependencies": [
+        "毁灭创造物α",
+        "毁灭创造物β",
+        "毁灭创造物γ"
+      ],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90072120"
+    },
+    {
+      "id": 90072130,
+      "name": "屠戮人偶",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10272110,
+          "name": "心灵屠戮者·菲亚"
+        }
+      ],
+      "dependencies": [
+        "心灵屠戮者·菲亚"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90072130"
+    },
+    {
+      "id": 90073110,
+      "name": "毁灭创造物α",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10671120,
+          "name": "聪明的创造者"
+        }
+      ],
+      "dependencies": [
+        "毁灭创造物β",
+        "毁灭创造物γ",
+        "卓越创造物Ω"
+      ],
+      "status": "related-definition",
+      "reason": "由关联 token 的融合等能力到达",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90073110"
+    },
+    {
+      "id": 90073120,
+      "name": "毁灭创造物β",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10572110,
+          "name": "新时代地理学者"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90073120"
+    },
+    {
+      "id": 90073130,
+      "name": "毁灭创造物γ",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10371120,
+          "name": "音速飞行兵"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90073130"
+    },
+    {
+      "id": 90074110,
+      "name": "卓越创造物Ω",
+      "class": 7,
+      "type": 1,
+      "sources": [],
+      "dependencies": [],
+      "status": "related-definition",
+      "reason": "由关联 token 的融合等能力到达",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074110"
+    },
+    {
+      "id": 90074120,
+      "name": "洛伊德",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10174120,
+          "name": "迈进之心·奥契丝"
+        },
+        {
+          "id": 10273310,
+          "name": "心有灵犀的共斗"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074120"
+    },
+    {
+      "id": 90074130,
+      "name": "维多利亚",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10273310,
+          "name": "心有灵犀的共斗"
+        },
+        {
+          "id": 10274110,
+          "name": "交响之心·枷薇"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074130"
+    },
+    {
+      "id": 90074140,
+      "name": "伊鞠的小鬼",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10573310,
+          "name": "诚心的尽小花"
+        },
+        {
+          "id": 10574120,
+          "name": "尽小花·伊鞠"
+        }
+      ],
+      "dependencies": [],
+      "status": "follower-pool",
+      "reason": "职业随从 token 池；手牌和召唤分别估值",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074140"
+    },
+    {
+      "id": 90074150,
+      "name": "击针看守",
+      "class": 7,
+      "type": 1,
+      "sources": [
+        {
+          "id": 10974120,
+          "name": "弹哭的变貌·艾兹伊甸"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074150"
+    },
+    {
+      "id": 90074210,
+      "name": "新约·白之章",
+      "class": 7,
+      "type": 3,
+      "sources": [
+        {
+          "id": 10373310,
+          "name": "歼灭的歌声"
+        },
+        {
+          "id": 10374120,
+          "name": "奏绝的显现·莉洁纳"
+        }
+      ],
+      "dependencies": [
+        "新约·黑之章"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074210"
+    },
+    {
+      "id": 90074220,
+      "name": "新约·黑之章",
+      "class": 7,
+      "type": 3,
+      "sources": [],
+      "dependencies": [
+        "新约·白之章"
+      ],
+      "status": "deferred",
+      "reason": "依赖指定原卡或连锁衍生，需要专门路径",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074220"
+    },
+    {
+      "id": 90074310,
+      "name": "奏绝的独唱",
+      "class": 7,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10374120,
+          "name": "奏绝的显现·莉洁纳"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074310"
+    },
+    {
+      "id": 90074320,
+      "name": "天斧深渊",
+      "class": 7,
+      "type": 4,
+      "sources": [
+        {
+          "id": 10674120,
+          "name": "古旧天斧·尤泽塔"
+        }
+      ],
+      "dependencies": [],
+      "status": "deferred",
+      "reason": "专属奖励；未混入通用池，待单独估值接入",
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=90074320"
+    }
+  ]
+}

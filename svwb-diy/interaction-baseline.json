@@ -1,0 +1,116 @@
+{
+  "version": "4.77",
+  "samples": 12000,
+  "stats": {
+    "pairs": 1,
+    "setHealth": 63,
+    "weakEvo": 49,
+    "aura": 2
+  },
+  "examples": {
+    "aura": {
+      "version": "4.77",
+      "name": "能力呼应120",
+      "seed": 380477271,
+      "type": "follower",
+      "class": 6,
+      "rarity": 1,
+      "cost": 1,
+      "attack": 1,
+      "health": 1,
+      "abilities": [
+        {
+          "ids": [
+            "heal",
+            "amuletLink"
+          ],
+          "raw": 0.65,
+          "boardValue": 0,
+          "text": "自己的护符被破坏时，回复自己的主战者1点生命值。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "自己的护符被破坏时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "回复自己的主战者1点生命值。",
+          "price": 1.4300000000000002
+        },
+        {
+          "ids": [
+            "damage"
+          ],
+          "raw": 3.75,
+          "boardValue": 0,
+          "text": "【进化时】若自己的战场上有其他进化后的随从，则选择对手的战场上的1个随从，对其造成3点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "evolvedBoard",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 3.7,
+          "bodyText": "若自己的战场上有其他进化后的随从，则选择对手的战场上的1个随从，对其造成3点伤害。",
+          "price": 1.1400000000000001
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 5.633225287124515,
+      "spent": 2.57,
+      "bodyAllowance": 2,
+      "theme": "圣祷 · 回复与护符",
+      "vanilla": false
+    },
+    "weakEvo": {
+      "version": "4.77",
+      "name": "能力呼应275",
+      "seed": 1272984756,
+      "type": "follower",
+      "class": 0,
+      "rarity": 0,
+      "cost": 2,
+      "attack": 1,
+      "health": 1,
+      "abilities": [
+        {
+          "text": "【进化时】本随从+4/+5。",
+          "raw": 9,
+          "ids": [
+            "evolutionSacrifice",
+            "buff"
+          ],
+          "tokens": [],
+          "kind": "evolutionSacrifice",
+          "trigger": "进化时",
+          "condition": "none",
+          "bodyText": "本随从+4/+5。",
+          "price": 3.42,
+          "major": true
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 10.177672866731882,
+      "spent": 3.42,
+      "bodyAllowance": 2,
+      "theme": "旅人 · 均衡与支援",
+      "evolutionBodyTrade": {
+        "lost": 2,
+        "target": 2,
+        "trigger": "进化时",
+        "payoffRaw": 9,
+        "timing": 0.38
+      },
+      "sacrificeDesign": "evolution",
+      "vanilla": false
+    }
+  }
+}

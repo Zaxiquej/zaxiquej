@@ -1,0 +1,316 @@
+[
+  {
+    "version": "4.86",
+    "name": "随机卡牌#37263937",
+    "seed": 1514328979,
+    "type": "follower",
+    "class": 1,
+    "rarity": 0,
+    "cost": 10,
+    "attack": 9,
+    "health": 13,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【守护】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "守护"
+        ]
+      },
+      {
+        "kind": "core",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "text": "【谢幕曲】对对手的战场上的所有随从造成4点伤害。",
+        "bodyText": "对对手的战场上的所有随从造成4点伤害。",
+        "raw": 15.2,
+        "price": 9.879999999999999,
+        "ids": [
+          "coreAnchor",
+          "aoe"
+        ],
+        "components": [
+          {
+            "id": "aoe",
+            "text": "对对手的战场上的所有随从造成4点伤害。",
+            "raw": 15.2
+          }
+        ],
+        "tokens": [],
+        "major": true
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 57.31458709221334,
+    "spent": 9.88,
+    "bodyAllowance": 22,
+    "theme": "森语 · 连击与回手",
+    "highRole": "defense",
+    "highCostBonus": 4.2,
+    "bodyHeadroom": 2,
+    "simpleDesign": true,
+    "archetype": "simpleHighCost",
+    "corePower": 15.2,
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#35215029",
+    "seed": 808835958,
+    "type": "follower",
+    "class": 1,
+    "rarity": 0,
+    "cost": 10,
+    "attack": 12,
+    "health": 8,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【守护】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "守护"
+        ]
+      },
+      {
+        "kind": "core",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "text": "【谢幕曲】对对手的战场上的所有随从造成4点伤害。",
+        "bodyText": "对对手的战场上的所有随从造成4点伤害。",
+        "raw": 15.2,
+        "price": 9.879999999999999,
+        "ids": [
+          "coreAnchor",
+          "aoe"
+        ],
+        "components": [
+          {
+            "id": "aoe",
+            "text": "对对手的战场上的所有随从造成4点伤害。",
+            "raw": 15.2
+          }
+        ],
+        "tokens": [],
+        "major": true
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 55.60355086829514,
+    "spent": 9.88,
+    "bodyAllowance": 20,
+    "theme": "森语 · 连击与回手",
+    "highRole": "defense",
+    "highCostBonus": 4.2,
+    "simpleDesign": true,
+    "archetype": "simpleHighCost",
+    "corePower": 15.2,
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#65728382",
+    "seed": 1983845540,
+    "type": "follower",
+    "class": 1,
+    "rarity": 0,
+    "cost": 9,
+    "attack": 12,
+    "health": 9,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【威慑】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "威慑"
+        ]
+      },
+      {
+        "kind": "core",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "text": "【谢幕曲】对对手的战场上的随机1个随从造成10点伤害。",
+        "bodyText": "对对手的战场上的随机1个随从造成10点伤害。",
+        "raw": 12.5,
+        "price": 8.125,
+        "ids": [
+          "coreAnchor",
+          "damage"
+        ],
+        "components": [
+          {
+            "id": "damage",
+            "text": "对对手的战场上的随机1个随从造成10点伤害。",
+            "raw": 12.5
+          }
+        ],
+        "tokens": [],
+        "major": true
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 51.6724801806733,
+    "spent": 8.13,
+    "bodyAllowance": 21,
+    "theme": "森语 · 连击与回手",
+    "highRole": "offense",
+    "highCostBonus": 3.4000000000000004,
+    "bodyHeadroom": 3,
+    "simpleDesign": true,
+    "archetype": "simpleHighCost",
+    "corePower": 12.5,
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#91437268",
+    "seed": 2931917055,
+    "type": "follower",
+    "class": 1,
+    "rarity": 0,
+    "cost": 9,
+    "attack": 6,
+    "health": 13,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【守护】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "守护"
+        ]
+      },
+      {
+        "kind": "core",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "text": "【谢幕曲】对对手的战场上的所有随从造成3点伤害。",
+        "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+        "raw": 11.399999999999999,
+        "price": 7.409999999999999,
+        "ids": [
+          "coreAnchor",
+          "aoe"
+        ],
+        "components": [
+          {
+            "id": "aoe",
+            "text": "对对手的战场上的所有随从造成3点伤害。",
+            "raw": 11.399999999999999
+          }
+        ],
+        "tokens": [],
+        "major": true
+      },
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【灵气】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "灵气"
+        ]
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 51.25150656811893,
+    "spent": 7.41,
+    "bodyAllowance": 19,
+    "theme": "森语 · 连击与回手",
+    "highRole": "defense",
+    "highCostBonus": 3.4000000000000004,
+    "bodyHeadroom": 1,
+    "simpleDesign": true,
+    "archetype": "simpleHighCost",
+    "corePower": 11.399999999999999,
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#37653572",
+    "seed": 3674637001,
+    "type": "follower",
+    "class": 1,
+    "rarity": 0,
+    "cost": 9,
+    "attack": 8,
+    "health": 10,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【守护】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "守护"
+        ]
+      },
+      {
+        "kind": "core",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "text": "【谢幕曲】对对手的战场上的所有随从造成3点伤害。",
+        "bodyText": "对对手的战场上的所有随从造成3点伤害。",
+        "raw": 11.399999999999999,
+        "price": 7.409999999999999,
+        "ids": [
+          "coreAnchor",
+          "aoe"
+        ],
+        "components": [
+          {
+            "id": "aoe",
+            "text": "对对手的战场上的所有随从造成3点伤害。",
+            "raw": 11.399999999999999
+          }
+        ],
+        "tokens": [],
+        "major": true
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 49.98149375207722,
+    "spent": 7.41,
+    "bodyAllowance": 18,
+    "theme": "森语 · 连击与回手",
+    "highRole": "defense",
+    "highCostBonus": 3.4000000000000004,
+    "simpleDesign": true,
+    "archetype": "simpleHighCost",
+    "corePower": 11.399999999999999,
+    "vanilla": false
+  }
+]

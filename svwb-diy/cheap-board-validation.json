@@ -1,0 +1,68 @@
+{
+  "version": "4.85",
+  "seeds": 16000,
+  "counts": {
+    "priced": 553,
+    "premium": 38,
+    "twoCostSmallPair": 48,
+    "threeCostGolemPair": 6,
+    "delayed": 421,
+    "hand": 1820
+  },
+  "examples": {
+    "smallPair": "铺场估值90",
+    "golemPair": "铺场估值5091"
+  },
+  "fixed": {
+    "version": "4.85",
+    "name": "随机卡牌#66121073",
+    "seed": 4218389163,
+    "type": "spell",
+    "class": 3,
+    "rarity": 0,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "ids": [
+          "splitDamage"
+        ],
+        "raw": 5.5,
+        "boardValue": 0,
+        "text": "对对手的战场上的所有随从分配5点伤害。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "法术",
+        "condition": "none",
+        "price": 5.5,
+        "bodyText": "对对手的战场上的所有随从分配5点伤害。"
+      },
+      {
+        "ids": [
+          "heal"
+        ],
+        "raw": 1.3,
+        "boardValue": 0,
+        "text": "回复自己的主战者2点生命值。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "法术",
+        "condition": "none",
+        "price": 1.3,
+        "bodyText": "回复自己的主战者2点生命值。"
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 7.343537604808807,
+    "spent": 6.8,
+    "bodyAllowance": 0,
+    "theme": "秘法 · 增幅与土印",
+    "effectLimit": 2,
+    "archetype": "modularSpell",
+    "vanilla": false
+  }
+}

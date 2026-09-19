@@ -1,0 +1,16 @@
+{
+  "version": "4.90",
+  "seeds": 6000,
+  "before": {
+    "storm": 1163,
+    "threat": 1193,
+    "both": 455,
+    "handStormBoth": 0
+  },
+  "after": {
+    "storm": 1163,
+    "threat": 722,
+    "both": 9,
+    "handStormBoth": 0
+  }
+}

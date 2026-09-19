@@ -1,0 +1,396 @@
+[
+  {
+    "version": "4.86",
+    "name": "随机卡牌#95314490",
+    "seed": 1168463664,
+    "type": "amulet",
+    "class": 4,
+    "rarity": 0,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【吟唱 2】",
+        "raw": 0,
+        "price": 0,
+        "ids": [
+          "countdown"
+        ]
+      },
+      {
+        "ids": [
+          "draw"
+        ],
+        "raw": 4.4,
+        "boardValue": 0,
+        "text": "【谢幕曲】抽取2张卡牌。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "price": 2.75,
+        "bodyText": "抽取2张卡牌。",
+        "delayFactor": 0.625
+      },
+      {
+        "ids": [
+          "tokenSummon",
+          "activate"
+        ],
+        "raw": 3.8,
+        "boardValue": 3.8,
+        "text": "费用2【启动】召唤1个『大海虎鲸』。",
+        "tokens": [
+          {
+            "id": 90041130,
+            "name": "大海虎鲸",
+            "class": 4,
+            "cost": 2,
+            "attack": 2,
+            "health": 2,
+            "text": "【突进】",
+            "tribe": "海洋",
+            "tribeId": 17
+          }
+        ],
+        "kind": "activation",
+        "trigger": "启动",
+        "condition": "none",
+        "bodyText": "召唤1个『大海虎鲸』。",
+        "price": 0.4,
+        "activation": {
+          "fee": 2,
+          "oncePerTurn": true,
+          "breaksSelf": false,
+          "repeats": 2,
+          "credit": 4.4
+        }
+      }
+    ],
+    "tokens": [
+      {
+        "id": 90041130,
+        "name": "大海虎鲸",
+        "class": 4,
+        "cost": 2,
+        "attack": 2,
+        "health": 2,
+        "text": "【突进】",
+        "tribe": "海洋",
+        "tribeId": 17
+      }
+    ],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 6.928254212532192,
+    "spent": 3.15,
+    "bodyAllowance": 0,
+    "theme": "龙鸣 · 觉醒与成长",
+    "effectLimit": 2,
+    "countdown": 2,
+    "archetype": "countdownAmulet",
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#59214585",
+    "seed": 3961347992,
+    "type": "amulet",
+    "class": 0,
+    "rarity": 1,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【吟唱 5】",
+        "raw": 0,
+        "price": 0,
+        "ids": [
+          "countdown"
+        ]
+      },
+      {
+        "ids": [
+          "draw",
+          "tokenHand"
+        ],
+        "raw": 3.3000000000000003,
+        "boardValue": 0,
+        "text": "【谢幕曲】抽取1张卡牌。将1张『哥布林』加入手牌。",
+        "tokens": [
+          {
+            "id": 90001110,
+            "name": "哥布林",
+            "class": 0,
+            "cost": 1,
+            "attack": 1,
+            "health": 2,
+            "text": ""
+          }
+        ],
+        "kind": "effect",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "price": 1.3200000000000003,
+        "bodyText": "抽取1张卡牌。将1张『哥布林』加入手牌。",
+        "delayFactor": 0.4
+      },
+      {
+        "ids": [
+          "grantRush",
+          "activate"
+        ],
+        "raw": 1.5,
+        "boardValue": 0,
+        "text": "费用2【启动】选择自己的战场上的1个随从，使其获得【突进】。",
+        "tokens": [],
+        "kind": "activation",
+        "trigger": "启动",
+        "condition": "none",
+        "bodyText": "选择自己的战场上的1个随从，使其获得【突进】。",
+        "price": 0.4,
+        "activation": {
+          "fee": 2,
+          "oncePerTurn": true,
+          "breaksSelf": false,
+          "repeats": 3,
+          "credit": 4.4
+        }
+      }
+    ],
+    "tokens": [
+      {
+        "id": 90001110,
+        "name": "哥布林",
+        "class": 0,
+        "cost": 1,
+        "attack": 1,
+        "health": 2,
+        "text": ""
+      }
+    ],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 6.5045976552180935,
+    "spent": 1.72,
+    "bodyAllowance": 0,
+    "theme": "旅人 · 均衡与支援",
+    "effectLimit": 3,
+    "countdown": 5,
+    "archetype": "countdownAmulet",
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#25880390",
+    "seed": 692775658,
+    "type": "amulet",
+    "class": 1,
+    "rarity": 1,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【吟唱 2】",
+        "raw": 0,
+        "price": 0,
+        "ids": [
+          "countdown"
+        ]
+      },
+      {
+        "ids": [
+          "handCycle",
+          "tokenHand",
+          "acquisitionDiscount"
+        ],
+        "raw": 5.3500000000000005,
+        "boardValue": 0,
+        "text": "【谢幕曲】使自己的随机1张手牌返回牌组。抽取1张卡牌。将2张『妖精』加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。",
+        "tokens": [
+          {
+            "id": 90011110,
+            "name": "妖精",
+            "class": 1,
+            "cost": 1,
+            "attack": 1,
+            "health": 1,
+            "text": "【突进】"
+          }
+        ],
+        "kind": "effect",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "price": 3.3437500000000004,
+        "bodyText": "使自己的随机1张手牌返回牌组。抽取1张卡牌。将2张『妖精』加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。",
+        "delayFactor": 0.625
+      }
+    ],
+    "tokens": [
+      {
+        "id": 90011110,
+        "name": "妖精",
+        "class": 1,
+        "cost": 1,
+        "attack": 1,
+        "health": 1,
+        "text": "【突进】"
+      }
+    ],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 7.317774982471018,
+    "spent": 3.34,
+    "bodyAllowance": 0,
+    "theme": "森语 · 连击与回手",
+    "effectLimit": 3,
+    "countdown": 2,
+    "archetype": "countdownAmulet",
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#39479011",
+    "seed": 291957533,
+    "type": "amulet",
+    "class": 5,
+    "rarity": 0,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【吟唱 4】",
+        "raw": 0,
+        "price": 0,
+        "ids": [
+          "countdown"
+        ]
+      },
+      {
+        "ids": [
+          "damage"
+        ],
+        "raw": 5,
+        "boardValue": 0,
+        "text": "【谢幕曲】对对手的战场上的随机1个随从造成4点伤害。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "price": 2.2727272727272725,
+        "bodyText": "对对手的战场上的随机1个随从造成4点伤害。",
+        "delayFactor": 0.45454545454545453
+      },
+      {
+        "ids": [
+          "heal"
+        ],
+        "raw": 0.65,
+        "boardValue": 0,
+        "text": "【入场曲】回复自己的主战者1点生命值。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "入场曲",
+        "condition": "none",
+        "price": 0.65,
+        "bodyText": "回复自己的主战者1点生命值。"
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 7.114273249823599,
+    "spent": 2.92,
+    "bodyAllowance": 0,
+    "theme": "幽夜 · 唤灵与谢幕",
+    "effectLimit": 2,
+    "countdown": 4,
+    "archetype": "countdownAmulet",
+    "vanilla": false
+  },
+  {
+    "version": "4.86",
+    "name": "随机卡牌#85494034",
+    "seed": 1087837628,
+    "type": "amulet",
+    "class": 0,
+    "rarity": 0,
+    "cost": 2,
+    "attack": null,
+    "health": null,
+    "abilities": [
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【吟唱 4】",
+        "raw": 0,
+        "price": 0,
+        "ids": [
+          "countdown"
+        ]
+      },
+      {
+        "ids": [
+          "damage"
+        ],
+        "raw": 5,
+        "boardValue": 0,
+        "text": "【谢幕曲】对对手的战场上的随机1个随从造成4点伤害。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "谢幕曲",
+        "condition": "none",
+        "price": 2.2727272727272725,
+        "bodyText": "对对手的战场上的随机1个随从造成4点伤害。",
+        "delayFactor": 0.45454545454545453
+      },
+      {
+        "ids": [
+          "heal"
+        ],
+        "raw": 1.3,
+        "boardValue": 0,
+        "text": "【入场曲】回复自己的主战者2点生命值。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "入场曲",
+        "condition": "none",
+        "price": 1.3,
+        "bodyText": "回复自己的主战者2点生命值。"
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 7.144490527920424,
+    "spent": 3.57,
+    "bodyAllowance": 0,
+    "theme": "旅人 · 均衡与支援",
+    "effectLimit": 2,
+    "countdown": 4,
+    "archetype": "countdownAmulet",
+    "vanilla": false
+  }
+]

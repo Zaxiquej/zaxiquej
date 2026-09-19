@@ -6,7 +6,7 @@ const counts={scaled:0,bodyReserve:0,rushBody:0,plainBody:0},payoffs=new Set(),e
 for(let i=0;i<14000;i++){
  const c=S.generate('弃牌质量'+i,{chaos:i%3===0});
  assert(c.spent+(c.type==='follower'?c.attack+c.health:0)<=c.budget+.02,c.name+' budget');
- const ids=c.abilities.flatMap(a=>a.ids);assert.equal(ids.length,new Set(ids).size,c.name+' duplicate effects');
+ const ids=c.abilities.flatMap(a=>a.ids);require('./assert-node-effects.cjs')(c);
  for(const a of c.abilities.filter(a=>a.discardScaling)){
   counts.scaled++;assert.equal(c.class,4);assert(c.cost>=4);assert.equal(a.trigger,'本卡牌被舍弃时');
   assert(!/选择|【模式】/.test(a.text));assert(a.raw>a.discardScaling.before);assert(a.raw<=a.discardScaling.ceiling+1e-8);assert(a.raw<=7);

@@ -1,0 +1,11 @@
+{
+  "version": "4.87",
+  "seeds": 4000,
+  "counts": {
+    "countdown": 1534,
+    "death": 1206,
+    "weak": 0,
+    "cheapSummon": 72,
+    "activation": 643
+  }
+}

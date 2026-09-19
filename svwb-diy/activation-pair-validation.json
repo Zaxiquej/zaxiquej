@@ -1,0 +1,87 @@
+{
+  "sample": 52,
+  "card": {
+    "version": "4.78",
+    "name": "随机卡牌#17363269",
+    "seed": 3070993126,
+    "type": "follower",
+    "class": 6,
+    "rarity": 2,
+    "cost": 5,
+    "attack": 4,
+    "health": 3,
+    "abilities": [
+      {
+        "ids": [
+          "bodyPayoff",
+          "activeAmuletSearch",
+          "tokenSummon"
+        ],
+        "raw": 8.2,
+        "boardValue": 5,
+        "text": "【入场曲】从自己的牌组中随机将1张拥有【启动】的护符加入手牌。召唤2个『圣骑兵』。",
+        "tokens": [
+          {
+            "id": 90064110,
+            "name": "圣骑兵",
+            "class": 6,
+            "cost": 1,
+            "attack": 1,
+            "health": 2,
+            "text": "【守护】"
+          }
+        ],
+        "kind": "bodyPayoff",
+        "trigger": "入场曲",
+        "condition": "none",
+        "bodyText": "从自己的牌组中随机将1张拥有【启动】的护符加入手牌。召唤2个『圣骑兵』。",
+        "price": 8.2,
+        "major": true
+      },
+      {
+        "ids": [
+          "heal",
+          "amuletLink"
+        ],
+        "raw": 2.6,
+        "boardValue": 0,
+        "text": "自己【启动】护符时，若自己的战场上有原始费用为6或以上的卡牌，则回复自己的主战者4点生命值。",
+        "tokens": [],
+        "kind": "effect",
+        "trigger": "自己【启动】护符时",
+        "condition": "havenHighCost",
+        "resourceCost": 0,
+        "conditionAmount": 0,
+        "enhanceCost": 0,
+        "minPayoff": 2,
+        "bodyText": "若自己的战场上有原始费用为6或以上的卡牌，则回复自己的主战者4点生命值。",
+        "price": 4.1184
+      }
+    ],
+    "tokens": [
+      {
+        "id": 90064110,
+        "name": "圣骑兵",
+        "class": 6,
+        "cost": 1,
+        "attack": 1,
+        "health": 2,
+        "text": "【守护】"
+      }
+    ],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 23.510520729981362,
+    "spent": 12.32,
+    "bodyAllowance": 7,
+    "theme": "圣祷 · 回复与护符",
+    "bodyHeadroom": 1,
+    "bodyTrade": {
+      "lost": 4,
+      "payoffRaw": 8.2
+    },
+    "corePower": 8.2,
+    "vanilla": false
+  }
+}

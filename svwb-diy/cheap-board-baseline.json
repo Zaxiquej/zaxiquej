@@ -1,0 +1,62 @@
+{
+  "version": "4.84",
+  "name": "随机卡牌#66121073",
+  "seed": 4218389163,
+  "type": "spell",
+  "class": 3,
+  "rarity": 0,
+  "cost": 2,
+  "attack": null,
+  "health": null,
+  "abilities": [
+    {
+      "ids": [
+        "tokenSummon"
+      ],
+      "raw": 6.4,
+      "boardValue": 6.4,
+      "text": "召唤2个『泥尘巨像』。",
+      "tokens": [
+        {
+          "id": 90031110,
+          "name": "泥尘巨像",
+          "class": 3,
+          "cost": 1,
+          "attack": 2,
+          "health": 2,
+          "text": "",
+          "tribe": "巨像",
+          "tribeId": 12
+        }
+      ],
+      "kind": "effect",
+      "trigger": "法术",
+      "condition": "none",
+      "price": 6.4,
+      "bodyText": "召唤2个『泥尘巨像』。"
+    }
+  ],
+  "tokens": [
+    {
+      "id": 90031110,
+      "name": "泥尘巨像",
+      "class": 3,
+      "cost": 1,
+      "attack": 2,
+      "health": 2,
+      "text": "",
+      "tribe": "巨像",
+      "tribeId": 12
+    }
+  ],
+  "emblems": [],
+  "faiths": [],
+  "alternateForms": [],
+  "budget": 7.343537604808807,
+  "spent": 6.4,
+  "bodyAllowance": 0,
+  "theme": "秘法 · 增幅与土印",
+  "effectLimit": 2,
+  "archetype": "modularSpell",
+  "vanilla": false
+}

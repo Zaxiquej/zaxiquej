@@ -8,7 +8,8 @@ for(let i=0;i<30000;i++){
   const g=groups[c.class];g.n++;g.texts.add(e.text);g.events.add(e.eventId);g.conditions.add(e.conditionId);
   const skeleton=e.eventId+'|'+e.conditionId+'|'+e.effects.map(p=>p.id).join('+');
   g.pairs.set(skeleton,(g.pairs.get(skeleton)||0)+1);
-  assert(e.effects.length>=1&&e.effects.length<=2);
+  // Last Words summons can carry separately priced granted abilities.
+  assert(e.effects.length>=1&&e.effects.length<=(e.eventId==='lastWords'?4:2));
   if(e.effects.length===2)compound++;
   if(e.duration===null){permanent++;assert(!/^【吟唱 \d+】/.test(e.text));}
   if(e.eventId==='lastWords'){

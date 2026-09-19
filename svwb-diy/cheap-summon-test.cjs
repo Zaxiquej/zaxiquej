@@ -27,8 +27,8 @@ for(let i=0;i<20000;i++){
  }
 }
 for(const [key,count]of Object.entries(counts))assert(count>0,key+' not covered');
-const oldSpell=S.generate('低费铺场3'),oldFollower=S.generate('低费铺场1766');
+const oldSpell=S.generate('低费铺场3'),oldFollower=S.generate(examples.deathFollower);
 assert(!oldSpell.abilities.some(a=>a.ids.includes('tokenSummon'))||oldSpell.abilities.filter(a=>a.price>0).length===1);
 assert(oldFollower.attack===0&&oldFollower.health===1&&oldFollower.abilities.some(a=>a.trigger==='谢幕曲'&&a.ids.includes('tokenSummon')));
-assert.deepEqual(S.generate('低费铺场1766'),oldFollower);
+assert.deepEqual(S.generate(oldFollower.name),oldFollower);
 fs.writeFileSync(__dirname+'/cheap-summon-validation.json',JSON.stringify({version:S.VERSION,seeds:20000,counts,examples},null,2));console.log('PASS',counts,examples);

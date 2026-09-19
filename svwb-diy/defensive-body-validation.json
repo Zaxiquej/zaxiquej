@@ -1,0 +1,20 @@
+{
+  "version": "4.84",
+  "samples": 10000,
+  "counts": {
+    "bane": 91,
+    "barrier": 141,
+    "barrierWard": 40,
+    "attackEngine": 6,
+    "zeroAttackTrigger": 11,
+    "zeroBane": 97,
+    "zeroBarrierWard": 52,
+    "lowBarrier": 160
+  },
+  "examples": {
+    "lowBarrier": "随机卡牌#60355537",
+    "zeroBane": "随机卡牌#97693748",
+    "zeroBarrierWard": "随机卡牌#05977682",
+    "zeroAttackTrigger": "随机卡牌#26662833"
+  }
+}

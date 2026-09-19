@@ -4,7 +4,7 @@ const eventClasses={evolutions:0,play:1,rally:2,enhance:2,spellboost:3,earth:3,h
 for(let i=0;i<18000;i++){
  const c=S.generate('新机制核对'+i),sample=key=>{examples[key]??={name:c.name,chaos:false};};
  assert(c.spent+(c.type==='follower'?c.attack+c.health:0)<=c.budget+.02,c.name+' budget');
- assert(c.abilities.length<=5);assert.equal(new Set(c.abilities.flatMap(a=>a.ids)).size,c.abilities.flatMap(a=>a.ids).length);
+ assert(c.abilities.length<=5);require('./assert-node-effects.cjs')(c);
  if(c.type==='spell'&&c.cost<=2)counts.plainCheapSpells++;
  for(const a of c.abilities){
   if(['leaderHealthAhead','leaderHealthBehind'].includes(a.condition)){

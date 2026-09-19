@@ -18,9 +18,10 @@ for(let i=0;i<30000;i++){
    if(!['入场曲','法术','进化时','超进化时','爆能强化','启动'].includes(a.trigger))assert(!a.text.includes('选择自己的'));
   }
   if(a.ids.includes('experimentFusion')){
-   assert.equal(c.fusion.mode,'event');assert.equal(c.fusion.ppCost,2);assert(c.fusion.oncePerTurn);
+   assert.equal(c.fusion.mode,'event');assert([0,1,2].includes(c.fusion.ppCost));assert(c.fusion.oncePerTurn);
    assert.equal(c.abilities.filter(a=>a.kind==='fusion').length,1);
-   assert.equal(c.type,'follower');assert.equal(c.fusion.material,'卡牌');
+   assert.equal(c.type,'follower');assert(['卡牌','法术'].includes(c.fusion.material));
+   assert(c.abilities.some(a=>a.fusionPartner&&a.ids.some(id=>id.startsWith('experiment'))));
   }
   if(a.trigger.includes('进入战场时'))assert(!a.ids.includes('experimentSummon'));
   if(c.cost===1&&a.trigger==='入场曲'&&a.condition==='none')assert(!a.ids.includes('experimentSummon'));

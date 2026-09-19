@@ -1,0 +1,27 @@
+{
+  "version": "4.78",
+  "samples": 24000,
+  "comparisonSamples": 12000,
+  "before": {
+    "pairs": 1,
+    "setHealth": 63,
+    "weakEvo": 49,
+    "aura": 2
+  },
+  "stats": {
+    "pairs": 3,
+    "setHealth": 68,
+    "weakEvo": 15,
+    "aura": 5,
+    "body02": 3,
+    "body03": 2,
+    "activationSupply": 25,
+    "activationPair": 0
+  },
+  "examples": {
+    "activationSupply": "能力呼应81",
+    "body02": "能力呼应120",
+    "pair": "能力呼应2051",
+    "body03": "能力呼应13982"
+  }
+}

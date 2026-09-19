@@ -2,6 +2,12 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),S=require('./en
 const example=S.generate('随机卡牌#01863457');
 assert.deepEqual([example.cost,example.attack,example.health],[2,1,1]);
 assert.equal(example.handTrigger.expectedDiscount,2);assert.equal(example.discountBodyTrade.lost,2);
+const slow=S.generate('随机卡牌#47439913');
+assert.deepEqual([slow.cost,slow.attack,slow.health],[2,2,2]);
+assert.equal(slow.handTrigger.eventId,'lowHealth');
+assert.equal(slow.discountBodyTrade.lost,0);
+assert(slow.abilities.find(a=>a.kind==='handTrigger').price<2);
+assert.equal(example.handTrigger.discountValueFactor,1,'Rapid same-turn discounts keep their cost');
 const counts={discount:0,paidBody:0,rebalanced:0,remainingExtreme:0,attackEnabledExtreme:0,delayed:0};
 for(let i=0;i<12000;i++){
  const c=S.generate('减费与身材'+i,{chaos:i%3===0});
@@ -13,6 +19,12 @@ for(let i=0;i<12000;i++){
   counts.discount++;const d=c.discountBodyTrade;
   assert(d.lost>=0&&d.lost<=d.targetLoss);if(d.lost)counts.paidBody++;
   if(c.handTrigger?.payoff==='discount'&&c.handTrigger.eventId==='ownSuper')counts.delayed++;
+  const h=c.handTrigger;
+  if(h?.payoff==='discount'){
+   if(c.cost>=7)assert.equal(h.discountValueFactor,1,'High-cost discount value retained');
+   if(c.cost<=2&&['lowHealth','combo','ownSuper','opponentSuper'].includes(h.eventId))assert.equal(d.targetLoss,0,'Slow cheap discounts do not consume the whole body');
+   if(['play','leave','earth','crystalHands','hurt','activate','amuletDeath','fusion'].includes(h.eventId))assert.equal(h.discountValueFactor,1,'Fast engine remains priced');
+  }
  }
  if(c.bodyBalance){counts.rebalanced++;assert(!aggressive);const b=c.bodyBalance;assert.equal(b.before[0]+b.before[1],b.after[0]+b.after[1]);assert(b.after[0]<b.before[0]);}
  if(c.attack>=c.health*1.6&&c.attack-c.health>=2)counts[aggressive?'attackEnabledExtreme':'remainingExtreme']++;

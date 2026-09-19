@@ -1,0 +1,51 @@
+{
+  "version": "4.83",
+  "samples": 6000,
+  "counts": {
+    "events": 344,
+    "experiment": 20,
+    "sameAtom": 1
+  },
+  "families": {
+    "draw": 57,
+    "tokenSummon": 112,
+    "damage": 58,
+    "heal": 44,
+    "crystalHandSummon": 10,
+    "boost": 24,
+    "earth": 5,
+    "experimentSummon": 2,
+    "tokenHand": 28,
+    "handBuff": 1,
+    "experimentSupply": 3
+  },
+  "fees": {
+    "0": 96,
+    "1": 143,
+    "2": 105
+  },
+  "classes": [
+    3,
+    5,
+    7,
+    6,
+    1,
+    0,
+    2,
+    4
+  ],
+  "examples": {
+    "draw": "随机卡牌#45455360",
+    "tokenSummon": "随机卡牌#03144438",
+    "damage": "随机卡牌#47023747",
+    "heal": "随机卡牌#36116439",
+    "crystalHandSummon": "随机卡牌#02597668",
+    "boost": "随机卡牌#95241162",
+    "earth": "随机卡牌#96268042",
+    "experimentSummon": "随机卡牌#56421031",
+    "experiment": "随机卡牌#56421031",
+    "tokenHand": "随机卡牌#96772187",
+    "handBuff": "随机卡牌#23119389",
+    "experimentSupply": "随机卡牌#27909879"
+  }
+}

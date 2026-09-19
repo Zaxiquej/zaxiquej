@@ -15,7 +15,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   const context=await browser.newContext({viewport:{width:1200,height:950},permissions:['clipboard-read','clipboard-write']});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto('http://127.0.0.1:4173/svwb_diy.html?qa=4');assert.equal(response.status(),200);
-  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='4.77');
+  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='4.92');
   assert.equal(await page.locator('#name').inputValue(),'设计师您辛苦了');
   assert.equal(await page.locator('#chaos').isChecked(),false);
   assert.equal(await page.locator('#overpowered').count(),0);
@@ -87,7 +87,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
    }
   }
   const historyExamples=require('./history-validation.json').examples;
-  for(const example of [...Object.values(require('./health-transform-validation.json').examples),...Object.values(require('./discard-quality-validation.json').examples),...Object.values(require('./low-cost-conditions-validation.json').examples),...Object.values(require('./unlock-condition-validation.json').examples),...Object.values(require('./sacrifice-validation.json').examples),...Object.values(require('./high-rarity-validation.json').examples),...Object.values(require('./token-luck-validation.json').examples),...[historyExamples.invocationReturn,historyExamples.invocationStay].map(name=>({name,chaos:false}))]){
+  for(const example of [...Object.values(require('./fusion-event-validation.json').examples).map(name=>({name,chaos:false})),...Object.values(require('./health-transform-validation.json').examples),...Object.values(require('./discard-quality-validation.json').examples),...Object.values(require('./low-cost-conditions-validation.json').examples),...Object.values(require('./unlock-condition-validation.json').examples),...Object.values(require('./sacrifice-validation.json').examples),...Object.values(require('./high-rarity-validation.json').examples),...Object.values(require('./token-luck-validation.json').examples),...[historyExamples.invocationReturn,historyExamples.invocationStay].map(name=>({name,chaos:false}))]){
    await page.setChecked('#chaos',example.chaos);await page.fill('#name',example.name);await page.click('button[type=submit]');
    const expected=S.generate(example.name,{chaos:example.chaos});
    assert.equal(await page.evaluate(()=>JSON.stringify(current)),JSON.stringify(expected));
@@ -97,6 +97,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
    for(const a of expected.abilities.filter(a=>a.orderedEffects))assert(text.includes(a.text),'Keep payment before reward in the page and clipboard');
    for(const e of expected.emblems.filter(e=>e.luck))assert(text.includes(e.text),'Copy both favorable and unfavorable draw branches');
    for(const a of expected.abilities.filter(a=>a.kind==='invocation'||a.kind==='invocationArrival'))assert(text.includes(a.text),'Keep invocation condition and return payoff visible');
+   for(const a of expected.abilities.filter(a=>a.fusionEvent))assert(text.includes(a.bodyText),'Keep fusion payment and reward together');
    for(const t of expected.tokens)assert(text.includes(t.name));
    if(expected.progressTransform){const formText=await page.evaluate(()=>tokenText(current.tokens.find(t=>t.upgrade)));assert(text.includes(formText));assert(text.includes('强化形态'));assert((await page.locator('#tokens').innerText()).includes('完成形'));}
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));

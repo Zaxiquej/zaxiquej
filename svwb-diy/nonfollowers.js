@@ -8,13 +8,16 @@
     const helpers=new Set(['enhance','activate','lastWordsAct','countdownAct','discardTrigger','exhaustibleCycle','handLuck']);
     const atoms=a=>a.kind==='keyword'?0:a.kind==='handTrigger'?1:Math.max(a.kind==='emblem'||a.kind==='ongoing'?1:0,(a.ids||[]).filter(id=>!helpers.has(id)).length);
     const effectCount=()=>card.abilities.reduce((n,a)=>n+atoms(a),0);
+    // Finite amulets pay a card, PP and a board slot now. Small delayed
+    // effects must not exhaust their complexity allowance while wasting PP.
+    const minimumSpend=()=>!spell&&cost>0&&card.countdown!=null?card.budget*.68:cost>=7?card.budget*.55:0;
     card.effectLimit=effectLimit;
-    const temp=(ids,fn)=>{const before=new Set(used);ids.forEach(id=>used.add(id));try{return fn();}finally{used.clear();before.forEach(id=>used.add(id));}};
+    const temp=ctx.withBlocked;
     // Effects are independent atoms; a mode buys its strongest branch, not both.
     function payload(limit,trigger,minimum=0,condition='none',effectiveCost=cost,modes=true,valuation={multiplier:1,credit:0}){
       const reserve=!spell&&card.countdown===null&&trigger==='入场曲'&&!card.abilities.some(a=>['启动','谢幕曲','持续触发','自己的回合开始时','自己的回合结束时'].includes(a.trigger))?1:0;
       const slots=effectLimit-effectCount()-reserve;if(slots<=0)return null;
-      const required=cost>=7?Math.max(0,(card.budget*.55-card.spent)/valuation.multiplier+valuation.credit):0;
+      const required=minimumSpend()>0?Math.max(0,(minimumSpend()-card.spent)/valuation.multiplier+valuation.credit):0;
       if(slots===1)minimum=Math.max(minimum,required);
       const complexity={simple:rarity===0,maxAtoms:rarity===0?1:slots};
       let e=makeEffect(limit,trigger,condition,minimum,true,effectiveCost,false,complexity);
@@ -33,7 +36,7 @@
     }
     function emit(e,trigger,price,extra={}){
       if(!e||card.abilities.length>=5||price>remaining()+1e-8||effectCount()+atoms(e)>effectLimit)return false;
-      if(cost>=7&&effectCount()+atoms(e)===effectLimit&&card.spent+price<card.budget*.55)return false;
+      if(effectCount()+atoms(e)===effectLimit&&card.spent+price+1e-8<minimumSpend())return false;
       const prefix=trigger==='法术'?'':`【${trigger}】`;
       add({...e,kind:e.mode?'mode':'effect',trigger,condition:'none',price,bodyText:e.text,text:prefix+e.text,...extra});
       return true;
@@ -104,7 +107,8 @@
       let death=null;
       if(cost>0&&!soil&&r()<(countdown?.8:.2)){
         const limit=Math.min(28,remaining()*.8/delay);
-        death=payload(limit,'谢幕曲',cost>=6?Math.min(12,limit*.6):Math.min(4,cost+1),'none',cost+(countdown?Math.min(3,card.countdown):1),false,{multiplier:delay,credit:0});
+        const minimum=countdown?Math.max(Math.min(4,cost+1),limit*.7):cost>=6?Math.min(12,limit*.6):Math.min(4,cost+1);
+        death=payload(limit,'谢幕曲',minimum,'none',cost+(countdown?Math.min(3,card.countdown):1),false,{multiplier:delay,credit:0});
         if(death){
           emit(death,'谢幕曲',death.raw*delay,{delayFactor:delay});
           if(!countdown){
@@ -129,11 +133,21 @@
         if(fan)emit(fan,'入场曲',fan.raw);
       }
       // Countdown acceleration pays for removing part of the Last Words delay.
-      if(death&&countdown&&card.abilities.length<5&&r()<.7){
-        const steps=pick([1,Math.min(2,card.countdown),Math.min(3,card.countdown)]),fee=Math.max(1,Math.ceil(steps*.8));
-        const benefit=death.raw*(1-delay)*Math.min(1,steps/card.countdown);
-        const price=Math.max(.25,benefit-fee*2.2);
-        if(price<=remaining())add({kind:'activation',trigger:'启动',condition:'none',text:`费用${fee}【启动】本护符的倒计数-${steps}。`,bodyText:`本护符的倒计数-${steps}。`,raw:benefit,price,ids:['countdownAct'],activation:{fee,oncePerTurn:true,breaksSelf:false,countdownReduction:steps,credit:fee*2.2}});
+      if(death&&countdown&&card.abilities.length<5&&r()<(cls===6?.78:.025)){
+        // Haven specializes in accelerating countdowns. Other crafts retain a
+        // rare roll. Fee and reduction are separate choices, not X = Y.
+        const choices=[];
+        for(let steps=1;steps<=Math.min(3,card.countdown);steps++){
+          const benefit=death.raw*(1-delay)*Math.min(1,steps/card.countdown);
+          for(let fee=1;fee<=Math.min(3,steps+1);fee++){
+            const price=Math.max(.25,benefit-fee*2.2);
+            if(price<=remaining())choices.push([{steps,fee,benefit,price},[0,4,4,2][steps]*[0,5,3,1][fee]]);
+          }
+        }
+        if(choices.length){
+          const {steps,fee,benefit,price}=weighted(r,choices);
+          add({kind:'activation',trigger:'启动',condition:'none',text:`费用${fee}【启动】本护符的倒计数-${steps}。`,bodyText:`本护符的倒计数-${steps}。`,raw:benefit,price,ids:['countdownAct'],activation:{fee,oncePerTurn:true,breaksSelf:false,countdownReduction:steps,credit:fee*2.2}});
+        }
       }
       const needsActivation=cost===0||(!death&&!used.has('amuletEngine'));
       if(card.abilities.length<5&&effectCount()<effectLimit&&!card.abilities.some(a=>a.trigger==='启动')&&(needsActivation||r()<(countdown?.25:.4))&&(remaining()>=.4||!card.abilities.some(a=>a.trigger))){
@@ -161,7 +175,7 @@
         add({kind:'activation',trigger:'启动',condition:'none',text:'费用1【启动】破坏本卡牌。抽取1张卡牌。',bodyText:'破坏本卡牌。抽取1张卡牌。',raw,price,ids:['fallbackAct'],activation:{fee,oncePerTurn:true,breaksSelf:true,repeats:1,credit:2.2}});
       }
       if(countdown&&!card.abilities.some(a=>a.trigger)){
-        const e=payload(remaining()/delay,'谢幕曲',0,'none',cost+2,false,{multiplier:delay,credit:0});
+        const e=payload(remaining()/delay,'谢幕曲',minimumSpend()/delay,'none',cost+2,false,{multiplier:delay,credit:0});
         if(e)emit(e,'谢幕曲',e.raw*delay,{delayFactor:delay});
       }
       if(remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay')&&r()<.4)extraConditional('入场曲');

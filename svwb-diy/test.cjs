@@ -63,7 +63,7 @@ for(let i=0;i<30000;i++) {
  if(c.archetype==='colossalRemoval'){coverage.colossal++;assert(c.attack+c.health+(c.stormBodyTrade?.attackLost||0)+(c.stormBodyTrade?.healthLost||0)+(c.discountBodyTrade?.lost||0)+(c.barrierBodyTrade?.lost||0)>=20);examples.colossal||=c.name;}
  if(c.abilities.some(a=>a.kind==='keyword'))coverage.keyword++;
  const ids=c.abilities.flatMap(a=>a.ids);
- assert.equal(ids.length,new Set(ids).size);
+ require('./assert-node-effects.cjs')(c);
  assert(!(ids.includes('疾驰')&&ids.includes('突进')));
  assert(!(ids.includes('疾驰')&&ids.includes('doubleAttack')));
  assert(!(ids.includes('潜行')&&ids.includes('守护')));
