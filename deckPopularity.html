@@ -6,6 +6,7 @@
   <title>影之诗 WB · 卡组合理性竞猜</title>
   <link rel="stylesheet" href="deck-popularity/style.css">
   <script defer src="deck-popularity/data.js"></script>
+  <script defer src="deck-popularity/full-data.js"></script>
   <script defer src="deck-popularity/engine.js"></script>
   <script defer src="deck-popularity/app.js"></script>
 </head>
@@ -17,13 +18,17 @@
     </header>
     <section id="intro">
       <h2>哪组出现在最多有记录的指定卡组中？</h2>
-      <p>比较卡牌组合，选出你认为最常出现的一组。通过前 10 轮后，可以跨职业比较。</p>
+      <p>比较卡牌组合，选出你认为最常出现的一组。通过前 12 轮后，可以跨职业比较。</p>
       <p><b>初始 5 血。答对 +1 分，进入下一轮；答错 −1 血，本轮重新出题。</b>血量归零后结算。</p>
       <p>每组可以是单卡或多张不同卡，组与组之间不会出现相同卡牌。可能有 0 套的组合，每题最多一组「1000+」。</p>
       <p class="muted">从 2 组单卡开始，第一名始终至少比第二名多 25%，且相差至少 50 套。</p>
       <div class="start-controls">
+        <label for="mode-select">模式</label>
+        <select id="mode-select"><option value="presence">普通模式</option><option value="full">满编模式（每种卡 ×3）</option></select>
         <button id="start" type="button" disabled>题库加载中…</button>
       </div>
+      <p id="mode-description" class="muted"></p>
+      <p id="mode-status" class="muted" hidden></p>
       <p id="best-intro" class="muted"></p>
     </section>
     <section id="game" hidden>
@@ -56,7 +61,8 @@
       <p id="bank-summary" class="muted"></p>
       <p id="data-description">正在读取本地题库。</p>
       <p>统计指定系列中公开发布的卡组记录，不代表天梯使用率；相同构筑的不同发布记录分别计数。「1000+」表示官网已截断数量，只有能够确定唯一赢家的题目才会出现。</p>
-      <p>每种卡只要求至少携带一张，暂不考查同卡多张。数量来自官网查询，或未超限查询下完整收集的卡组统计；0 套也是实际查询或完整数据核对的结果。数量按采集时的快照固定，游玩不实时联网。</p>
+      <p id="copy-rule"></p>
+      <p>数量来自官网查询，或未超限查询下完整收集的卡组统计；0 套也是实际查询或完整数据核对的结果。数量按采集时的快照固定，游玩不实时联网。</p>
     </details>
     <footer><a href="https://shadowverse-wb.com/chs/deck/search/" target="_blank" rel="noopener">官方卡组查询</a><span>卡图 © Cygames, Inc.</span></footer>
     <noscript><p>请启用 JavaScript 后游玩。</p></noscript>

@@ -11,17 +11,19 @@
   const commonCountForScore = score => Math.max(MIN_COMMON_COUNT, 100 - Math.floor(Math.max(0, score) / 5) * 10);
   // Increase either the number of options or the length cap, never both at once.
   const LEVELS = [
-    { from: 0, options: 2, maxCards: 1, minRatio: 1.5, targetMin: 2, targetMax: 4, crossClass: false },
-    { from: 3, options: 2, maxCards: 2, minRatio: 1.5, targetMin: 2, targetMax: 4, crossClass: false },
-    { from: 6, options: 3, maxCards: 2, minRatio: 1.5, targetMin: 1.8, targetMax: 3, crossClass: false },
-    { from: 10, options: 3, maxCards: 2, minRatio: 1.4, targetMin: 1.5, targetMax: 2.5, crossClass: true },
-    { from: 15, options: 3, maxCards: 3, minRatio: 4 / 3, targetMin: 1.4, targetMax: 2, crossClass: true },
-    { from: 20, options: 4, maxCards: 3, minRatio: 1.25, targetMin: 1.25, targetMax: 1.8, crossClass: true }
+    { from: 0, options: 2, maxCards: 1, minRatio: 2.5, targetMin: 3, targetMax: 6, crossClass: false },
+    { from: 4, options: 2, maxCards: 2, minRatio: 2, targetMin: 2.5, targetMax: 4.5, crossClass: false },
+    { from: 8, options: 3, maxCards: 2, minRatio: 1.6, targetMin: 2, targetMax: 3.5, crossClass: false },
+    { from: 12, options: 3, maxCards: 2, minRatio: 1.4, targetMin: 1.6, targetMax: 2.8, crossClass: true },
+    { from: 18, options: 3, maxCards: 3, minRatio: 4 / 3, targetMin: 1.4, targetMax: 2, crossClass: true },
+    { from: 24, options: 3, maxCards: 3, minRatio: 1.25, targetMin: 1.3, targetMax: 1.9, crossClass: true },
+    { from: 30, options: 4, maxCards: 3, minRatio: 1.25, targetMin: 1.25, targetMax: 1.8, crossClass: true }
   ];
   const requirements = cards => cards.reduce((result, id) => { result[id] = (result[id] || 0) + 1; return result; }, {});
   const contains = (deck, cards) => Object.entries(requirements(cards)).every(([id, count]) => (deck[id] || 0) >= count);
   const levelForScore = score => LEVELS.reduce((current, level, index) => score >= level.from ? index : current, 0);
-  const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), ...(score >= 20 ? { options: 4 + Math.floor((score - 20) / 10), targetMax: score >= 40 ? 1.5 : score >= 30 ? 1.65 : 1.8 } : {}) });
+  const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), extremesOnly: score >= 24, ...(score >= 30 ? { options: 4 + Math.floor((score - 30) / 10), targetMax: score >= 50 ? 1.5 : score >= 40 ? 1.65 : 1.8 } : {}) });
+  const showCount = (question, combo) => !question.extremesOnly || combo.id === question.winnerId || combo.count === Math.min(...question.options.map(c => c.count));
   function optionLabel(index) {
     let label = '';
     for (let n = index + 1; n > 0; n = Math.floor((n - 1) / 26)) label = String.fromCharCode(65 + (n - 1) % 26) + label;
@@ -41,9 +43,11 @@
   }
   function buildCatalog(data) {
     if (!data || data.schemaVersion !== 1 || !Array.isArray(data.combos)) throw Error('题库没有正确加载。');
+    if (data.mode === 'full' && data.copiesPerCard !== 3) throw Error('满编题库必须要求每种卡 3 张。');
     const groups = new Map();
     const unique = new Set();
     for (const combo of data.combos) {
+      if (data.mode === 'full' && (combo.copies !== 3 || combo.capped)) continue;
       if (!Array.isArray(combo.cards) || combo.cards.length < 1 || combo.cards.length > 4 || new Set(combo.cards).size !== combo.cards.length) continue;
       if (!Number.isInteger(combo.count) || combo.count < 0 || typeof combo.capped !== 'boolean') continue;
       if (combo.capped && combo.count !== 1000) continue;
@@ -104,14 +108,14 @@
       if (fresh.length && attempt < 900) candidates = fresh;
       const exact = candidates.filter(t => !t.winner.capped);
       // A capped value cannot establish how close two real totals are.
-      if (exact.length && ((score >= 10 && attempt < 900) || random() < 0.75)) candidates = exact;
+      if (exact.length && ((level.crossClass && attempt < 900) || random() < 0.75)) candidates = exact;
       const template = candidates[Math.floor(random() * candidates.length)];
       const top = template.winner.capped ? 1001 : template.winner.count;
       const lower = template.pool.positive.slice(0, template.positiveEnd).filter(c => distinct(template.winner, c));
       // Select the runner-up deliberately instead of letting numerous rare rows
       // dominate uniform sampling. Later rounds target narrower, still readable gaps.
       const common = lower.filter(c => c.count >= level.commonCount);
-      const challengers = score >= 6 && common.length ? common : lower;
+      const challengers = score >= 8 && common.length ? common : lower;
       const preferred = challengers.filter(c => top / c.count >= level.targetMin && top / c.count <= level.targetMax);
       if (!preferred.length && attempt < 300) continue;
       const choices = preferred.length ? preferred : challengers;
@@ -120,7 +124,7 @@
       // A larger collection of verified zeros should not make every round a zero-count quiz.
       if (lower.length < level.options - 1 || random() < 0.25) lower.push(...template.pool.zero.filter(c => distinct(template.winner, c)));
       const compatible = lower.filter(c => c.id !== challenger.id && c.count <= challenger.count && distinct(challenger, c));
-      const preferCommon = score >= 6 && random() < 0.8;
+      const preferCommon = score >= 8 && random() < 0.8;
       const others = (preferCommon ? pickDistractors(compatible.filter(c => c.count >= level.commonCount), level.options - 2, random) : null)
         || pickDistractors(compatible, level.options - 2, random);
       const remaining = others && [challenger, ...others];
@@ -128,7 +132,7 @@
       const options = shuffle([template.winner, ...remaining], random);
       const signature = options.map(c => c.id).sort().join('|');
       if (used.has(signature)) continue;
-      return { stage, classId: options.every(c => c.classId === chosenClass) ? chosenClass : 0, options, winnerId: template.winner.id, signature };
+      return { stage, extremesOnly: level.extremesOnly, classId: options.every(c => c.classId === chosenClass) ? chosenClass : 0, options, winnerId: template.winner.id, signature };
     }
     throw Error('这一局已用完当前难度下差异足够明显的题目，可以结算后再开一局。');
   }
@@ -157,5 +161,5 @@
     state.history.push({ question: state.question, selectedId: id, correct, round: state.round });
     return { correct, over: state.over };
   }
-  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, distinct, levelForScore, difficultyForScore, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
+  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, distinct, levelForScore, difficultyForScore, showCount, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
 });

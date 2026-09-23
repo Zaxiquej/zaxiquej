@@ -34,9 +34,10 @@ for (let i = 1; i < E.LEVELS.length; i++) {
   assert(!(b.options > a.options && b.maxCards > a.maxCards), 'Never increase option count and card limit together');
   assert(b.minRatio >= 1.25);
 }
-for (const [score, options, maxCards, crossClass] of [[0,2,1,false],[2,2,1,false],[3,2,2,false],[5,2,2,false],[6,3,2,false],[9,3,2,false],[10,3,2,true],[14,3,2,true],[15,3,3,true],[19,3,3,true],[20,4,3,true],[29,4,3,true],[30,5,3,true],[39,5,3,true],[40,6,3,true],[50,7,3,true],[100,12,3,true]]) {
+for (const [score, options, maxCards, crossClass] of [[0,2,1,false],[3,2,1,false],[4,2,2,false],[7,2,2,false],[8,3,2,false],[11,3,2,false],[12,3,2,true],[17,3,2,true],[18,3,3,true],[23,3,3,true],[24,3,3,true],[29,3,3,true],[30,4,3,true],[39,4,3,true],[40,5,3,true],[49,5,3,true],[50,6,3,true],[100,11,3,true]]) {
   const d = E.difficultyForScore(score);
   assert.deepEqual([d.options, d.maxCards, d.crossClass], [options, maxCards, crossClass]);
+  assert.equal(d.extremesOnly, score >= 24);
 }
 assert.equal(E.optionLabel(5), 'F');
 assert.equal(E.optionLabel(26), 'AA');
@@ -46,6 +47,9 @@ for (const [score, threshold] of [[0,100],[4,100],[5,90],[9,90],[10,80],[15,70],
 let generated = 0, capped = 0, zeros = 0, mixedLengths = 0, singles = 0, crossClassQuestions = 0;
 function validateQuestion(q, score) {
   const level = E.difficultyForScore(score);
+  assert.equal(q.extremesOnly, score >= 24);
+  const minimum = Math.min(...q.options.map(c => c.count));
+  for (const c of q.options) assert.equal(E.showCount(q, c), score < 24 || c.id === q.winnerId || c.count === minimum);
   assert.equal(q.options.length, level.options);
   assert.equal(new Set(q.options.map(c => c.id)).size, q.options.length);
   assert(q.options.every(c => (level.crossClass || c.classId === q.classId) && c.cards.length >= 1 && c.cards.length <= level.maxCards));
@@ -87,17 +91,19 @@ for (const score of [29, 30, 39, 40, 50, 70, 100, 240]) validateQuestion(E.creat
 function fixture(counts) {
   return E.buildCatalog({ schemaVersion: 1, cards: Object.fromEntries(counts.map((_, i) => [i + 1, { classId: 1 }])), combos: counts.map((count, i) => ({ id: `1:${i + 1}`, cards: [i + 1], classId: 1, count, capped: false })) });
 }
-const fair = E.createQuestion(fixture([400, 300, 200, 100]), 20, 0, new Set(), [], random);
+const fair = E.createQuestion(fixture([400, 300, 200, 100]), 30, 0, new Set(), [], random);
 assert.equal(fair.options.find(c => c.id === fair.winnerId).count, 400);
 assert(fair.options.some(c => c.count === 300));
-assert.throws(() => E.createQuestion(fixture([360, 355, 200, 100]), 20), /题目不足/);
-assert.throws(() => E.createQuestion(fixture([900, 840, 200, 100]), 20), /题目不足/);
+assert.throws(() => E.createQuestion(fixture([360, 355, 200, 100]), 30), /题目不足/);
+assert.throws(() => E.createQuestion(fixture([900, 840, 200, 100]), 30), /题目不足/);
+assert.throws(() => E.createQuestion(fixture([300, 150]), 0), /题目不足/, 'Early questions require at least a 2.5-fold gap');
+validateQuestion(E.createQuestion(fixture([300, 100]), 0), 0);
 assert.throws(() => E.createQuestion(fixture([99, 20]), 0), /题目不足/);
 const thresholdBank = fixture([90, 40]);
 assert.throws(() => E.createQuestion(thresholdBank, 4), /题目不足/);
 validateQuestion(E.createQuestion(thresholdBank, 5, 0, new Set(), [], random), 5);
 const distributions = [];
-for (const score of [0, 10, 20, 40]) {
+for (const score of [0, 12, 30, 50]) {
   const ratios = []; let commonRunner = 0;
   for (let i = 0; i < 200; i++) {
     const q = E.createQuestion(catalog, score, 0, new Set(), [], random);
@@ -111,11 +117,12 @@ for (const score of [0, 10, 20, 40]) {
   distributions.push({ score, medianRatio: ratios[Math.floor(ratios.length / 2)], commonRunner });
 }
 assert(distributions[3].medianRatio < distributions[0].medianRatio, 'Late leading pairs must actually get closer');
+assert(distributions[0].medianRatio >= 3, 'Opening questions should favor much larger gaps');
 assert(distributions[3].medianRatio >= 1.25 && distributions[3].medianRatio <= 1.5);
 assert(distributions[3].commonRunner >= 180, 'Late rounds should usually have at least two nonrare options');
 console.log('Leading-pair distribution:', JSON.stringify(distributions));
 assert(zeros > 0 && mixedLengths > 0 && singles > 0 && crossClassQuestions > 0);
-for (const boundary of [3, 6, 10, 15, 20, 30, 40]) {
+for (const boundary of [4, 8, 12, 18, 24, 30, 40, 50]) {
   const retry = E.newGame(7);
   retry.score = boundary - 1; retry.round = boundary - 1;
   E.nextQuestion(retry, catalog, random);
@@ -125,6 +132,7 @@ for (const boundary of [3, 6, 10, 15, 20, 30, 40]) {
   assert.equal(retry.round, boundary);
   validateQuestion(retry.question, boundary - 1);
   E.answer(retry, retry.question.winnerId);
+  assert.equal(retry.question.extremesOnly, boundary - 1 >= 24, 'Answering must not change the current reveal rule at the boundary');
   E.nextQuestion(retry, catalog, random);
   assert.equal(retry.round, boundary + 1);
   validateQuestion(retry.question, boundary);

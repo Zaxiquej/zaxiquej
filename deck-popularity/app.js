@@ -2,12 +2,14 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const E = window.DeckPopularity;
-  const data = window.DECK_POPULARITY_DATA;
+  const banks = { presence: window.DECK_POPULARITY_DATA, full: window.DECK_POPULARITY_FULL_DATA };
+  let mode = 'presence', data = banks.presence;
   let catalog, state;
   const letterFor = E.optionLabel;
   const questionClass = q => q.classId ? E.CLASSES[q.classId] : '跨职业';
   const number = value => value.toLocaleString('zh-CN');
   const countText = combo => combo.capped ? '1000+' : number(combo.count);
+  const scoreKey = classId => mode === 'full' ? 'wb-full-playset-v1-best' : `wb-reasonableness-v2-best-${classId}`;
   const el = (tag, className, text) => {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -15,18 +17,18 @@
     return element;
   };
   function bestScore(classId) {
-    try { return Math.max(0, Number(localStorage.getItem(`wb-reasonableness-v2-best-${classId}`)) || 0); }
+    try { return Math.max(0, Number(localStorage.getItem(scoreKey(classId))) || 0); }
     catch { return 0; }
   }
   function saveBest() {
     const best = Math.max(state.score, bestScore(state.classId));
-    try { localStorage.setItem(`wb-reasonableness-v2-best-${state.classId}`, String(best)); } catch { /* file:// or private mode */ }
+    try { localStorage.setItem(scoreKey(state.classId), String(best)); } catch { /* file:// or private mode */ }
     return best;
   }
   function showError(error) { $('error').textContent = error.message || String(error); $('error').hidden = false; }
   function clearError() { $('error').hidden = true; }
   function fullName(combo) {
-    return combo.cards.map(id => data.cards[id].name).join(' ＋ ');
+    return combo.cards.map(id => data.cards[id].name + (mode === 'full' ? ' ×3' : '')).join(' ＋ ');
   }
   function exampleLinks(combo) {
     const section = el('div', 'deck-examples');
@@ -72,7 +74,7 @@
     const q = state.question;
     renderScore();
     $('round-title').textContent = `第 ${state.round} 轮${q.classId ? ' · ' + E.CLASSES[q.classId] : ''}`;
-    $('round-hint').textContent = '哪组出现在最多有记录的指定卡组中？点卡图可放大。';
+    $('round-hint').textContent = '哪组出现在最多有记录的指定卡组中？' + (mode === 'full' ? '每种卡均需 3 张。' : '') + '点卡图可放大。';
     $('options').classList.toggle('many', q.options.length >= 3);
     $('options').replaceChildren();
     q.options.forEach((combo, index) => {
@@ -81,7 +83,7 @@
       const heading = el('div', 'option-head');
       heading.append(el('span', 'option-label', `组合 ${letterFor(index)}${q.classId ? '' : ' · ' + E.CLASSES[combo.classId]}`), el('span', 'answer-count', '？套'));
       const row = el('div', 'card-row');
-      const quantities = Object.entries(E.requirements(combo.cards));
+      const quantities = Object.entries(E.requirements(combo.cards)).map(([id, qty]) => [id, qty * (mode === 'full' ? 3 : 1)]);
       row.style.setProperty('--cards', quantities.length);
       for (const [id, qty] of quantities) {
         const card = data.cards[id];
@@ -96,6 +98,7 @@
         image.decoding = 'async';
         image.addEventListener('error', () => { image.alt = `${card.name}（卡图未加载）`; });
         zoom.append(image);
+        if (qty > 1) zoom.append(el('span', 'card-quantity', `×${qty}`));
         tile.append(zoom, el('p', 'card-name', card.name));
         row.append(tile);
       }
@@ -124,7 +127,7 @@
       const chosen = combo.id === id;
       option.classList.toggle('correct', winner);
       option.classList.toggle('wrong', chosen && !winner);
-      option.querySelector('.answer-count').textContent = `${countText(combo)} 套`;
+      option.querySelector('.answer-count').textContent = E.showCount(q, combo) ? `${countText(combo)} 套` : '？套';
       const button = option.querySelector('.choose');
       button.disabled = true;
       button.textContent = chosen ? `已选 ${letterFor(index)}` : `组合 ${letterFor(index)}`;
@@ -138,10 +141,11 @@
     $('feedback-title').textContent = result.correct ? '答对了！+1 分' : `答错了，−1 血${result.over ? '。本局结束' : ''}`;
     let explanation = `组合 ${letter} 最多，共 ${countText(winner)} 套。`;
     if (winner.capped) explanation += '其他选项均有精确数量且不超过 1000，因此仍能确定答案。';
-    else {
+    else if (!q.extremesOnly) {
       const runner = Math.max(...q.options.filter(c => c.id !== winner.id).map(c => c.count));
       explanation += `比第二名多 ${number(winner.count - runner)} 套。`;
     }
+    if (q.extremesOnly) explanation += ' 本阶段仅显示最大和最小数量，其余保留「？」。';
     if (!result.correct && !result.over) explanation += ' 本轮重新出题，分数和轮次不变。';
     $('feedback-text').textContent = explanation;
     $('next').textContent = result.over ? '查看结算' : result.correct ? '下一轮' : '重新挑战本轮';
@@ -206,8 +210,26 @@
       if (option) { event.preventDefault(); submit(option.id); }
     }
   });
-  try {
+  function selectMode() {
+   mode = $('mode-select').value === 'full' ? 'full' : 'presence';
+   data = banks[mode]; catalog = null;
+   clearError();
+   $('start').disabled = true;
+   $('mode-status').hidden = true;
+   $('mode-description').textContent = mode === 'full' ? '满编模式：每种卡都要带满 3 张，题库与最高分单独统计。' : '普通模式：每种卡至少携带 1 张。';
+   $('copy-rule').textContent = mode === 'full' ? '满编模式按实际卡组张数统计：组合中的每一种卡都至少携带 3 张。' : '普通模式每种卡只要求至少携带 1 张。';
+   updateBestIntro();
+   if (!data) {
+     $('start').textContent = '满编题库未就绪';
+     $('mode-status').textContent = '请双击网页同目录的 fetch-full-playset.bat 自动采集满编题库，完成后刷新本页。';
+     $('mode-status').hidden = false;
+     $('bank-summary').textContent = '满编题库尚未生成。';
+     $('data-description').textContent = '采集程序会完整核对卡组中每种卡的张数，生成独立的本地满编题库。';
+     return;
+   }
+   try {
     if (!E) throw Error('游戏脚本未能加载，请保留 deck-popularity 文件夹。');
+    if (mode === 'full' && (data.mode !== 'full' || data.copiesPerCard !== 3)) throw Error('满编题库格式不正确，请重新运行采集 BAT。');
     catalog = E.buildCatalog(data);
     if (catalog.stages.some(stage => !stage.length)) throw Error('题库不完整，暂时无法开始游戏。');
     const dates = data.combos.map(c => c.queriedAt).sort();
@@ -222,5 +244,8 @@
     $('start').disabled = false;
     $('start').textContent = '开始游戏';
     updateBestIntro();
-  } catch (error) { $('start').textContent = '题库未就绪'; showError(error); }
+   } catch (error) { $('start').textContent = '题库未就绪'; catalog = null; showError(error); }
+  }
+  $('mode-select').addEventListener('change', selectMode);
+  selectMode();
 })();
