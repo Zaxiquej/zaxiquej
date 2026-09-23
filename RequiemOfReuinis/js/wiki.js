@@ -194,6 +194,10 @@ function gameText(value,ctx={}){
   if(code==='n'){out+='<br>';if(arg!==undefined)plainText+='['+arg+']';continue}
   if(code.toLowerCase()==='c'){if(colorOpen){out+='</span>';colorOpen=false}const cn=Number(arg)||0;if(cn!==0){out+='<span class="game-color" style="color:'+(COLORS[cn]||COLORS[0])+'">';colorOpen=true}continue}
   const lowerCode=code.toLowerCase();
+  if(lowerCode==='mlawatk'||lowerCode==='mlawdef'){
+   const value=evalInitialExpression(arg,ctx);
+   out+=esc((value>=0?'+':'')+numberText(value));continue;
+  }
   if(lowerCode==='mdiscordqq'||(lowerCode==='meval'&&/\\MDiscordQQ/i.test(String(arg||'')))){out+='<span data-social-member-total>'+socialMemberTotal+'</span>';continue}
   if(['FSM','FSP','FS','FHA','fi','fiNORMAL','CUT'].includes(code)||/^M\d+(?:P?g)?$/i.test(code))continue;
   if(['II','IA','IS','IB','I'].includes(code)){out+=refIcon(code,Number(arg)||0);continue}

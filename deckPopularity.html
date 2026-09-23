@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>影之诗 WB · 卡组合理性竞猜</title>
+  <link rel="stylesheet" href="deck-popularity/style.css">
+  <script defer src="deck-popularity/data.js"></script>
+  <script defer src="deck-popularity/engine.js"></script>
+  <script defer src="deck-popularity/app.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>卡组合理性竞猜</h1>
+      <p class="subtitle">Shadowverse: Worlds Beyond</p>
+    </header>
+    <section id="intro">
+      <h2>哪组出现在最多有记录的指定卡组中？</h2>
+      <p>比较卡牌组合，选出你认为最常出现的一组。通过前 10 轮后，可以跨职业比较。</p>
+      <p><b>初始 5 血。答对 +1 分，进入下一轮；答错 −1 血，本轮重新出题。</b>血量归零后结算。</p>
+      <p>每组可以是单卡或多张不同卡，组与组之间不会出现相同卡牌。可能有 0 套的组合，每题最多一组「1000+」。</p>
+      <p class="muted">从 2 组单卡开始，第一名始终至少比第二名多 25%，且相差至少 50 套。</p>
+      <div class="start-controls">
+        <button id="start" type="button" disabled>题库加载中…</button>
+      </div>
+      <p id="best-intro" class="muted"></p>
+    </section>
+    <section id="game" hidden>
+      <div class="scoreboard">
+        <span>得分 <b id="score">0</b></span>
+        <span id="lives" class="lives" aria-label="剩余 5 血">♥♥♥♥♥</span>
+        <span>最高 <b id="best">0</b></span>
+      </div>
+      <div class="round-heading">
+        <h2 id="round-title" tabindex="-1"></h2>
+      </div>
+      <p id="round-hint" class="muted"></p>
+      <div id="options" class="options"></div>
+      <section id="feedback" class="feedback" aria-live="polite" hidden>
+        <h3 id="feedback-title"></h3>
+        <p id="feedback-text"></p>
+        <button id="next" type="button">下一轮</button>
+      </section>
+    </section>
+    <section id="summary" hidden>
+      <h2 id="summary-title">挑战结束</h2>
+      <p class="final-score"><b id="final-score">0</b> 分</p>
+      <p id="summary-text"></p>
+      <div class="actions"><button id="restart" type="button">再来一局</button><button id="home" type="button" class="secondary">返回开始页</button></div>
+      <details id="history"><summary>查看本局答题记录</summary><div id="history-list"></div></details>
+    </section>
+    <p id="error" class="error" role="alert" hidden></p>
+    <details class="data-note">
+      <summary>数据与统计口径</summary>
+      <p id="bank-summary" class="muted"></p>
+      <p id="data-description">正在读取本地题库。</p>
+      <p>统计指定系列中公开发布的卡组记录，不代表天梯使用率；相同构筑的不同发布记录分别计数。「1000+」表示官网已截断数量，只有能够确定唯一赢家的题目才会出现。</p>
+      <p>每种卡只要求至少携带一张，暂不考查同卡多张。数量来自官网查询，或未超限查询下完整收集的卡组统计；0 套也是实际查询或完整数据核对的结果。数量按采集时的快照固定，游玩不实时联网。</p>
+    </details>
+    <footer><a href="https://shadowverse-wb.com/chs/deck/search/" target="_blank" rel="noopener">官方卡组查询</a><span>卡图 © Cygames, Inc.</span></footer>
+    <noscript><p>请启用 JavaScript 后游玩。</p></noscript>
+  </main>
+  <dialog id="card-dialog" aria-labelledby="dialog-title">
+    <button id="close-card" class="secondary close-dialog" type="button">关闭</button>
+    <h2 id="dialog-title"></h2>
+    <img id="dialog-image" alt="">
+    <p id="dialog-text"></p>
+  </dialog>
+</body>
+</html>
