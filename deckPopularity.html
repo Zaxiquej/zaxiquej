@@ -23,11 +23,11 @@
       <p>每组可以是单卡或多张不同卡，组与组之间不会出现相同卡牌。可能有 0 套的组合，每题最多一组「1000+」。</p>
       <p class="muted">从 2 组单卡开始，第一名始终至少比第二名多 25%，且相差至少 50 套。</p>
       <div class="start-controls">
-        <label for="mode-select">模式</label>
-        <select id="mode-select"><option value="presence">普通模式</option><option value="full">满编模式（每种卡 ×3）</option></select>
+        <label id="mode-label" for="mode-select" hidden>模式</label>
+        <select id="mode-select" hidden><option value="presence">普通模式</option><option value="full">满编模式（每种卡 ×3）</option></select>
         <button id="start" type="button" disabled>题库加载中…</button>
       </div>
-      <p id="mode-description" class="muted"></p>
+      <p id="mode-description" class="muted" hidden></p>
       <p id="mode-status" class="muted" hidden></p>
       <p id="best-intro" class="muted"></p>
     </section>
@@ -41,6 +41,10 @@
         <h2 id="round-title" tabindex="-1"></h2>
       </div>
       <p id="round-hint" class="muted"></p>
+      <div class="count-hints" aria-label="本题数量提示">
+        <span class="count-hints-title">数量提示（从大到小，不对应选项顺序）</span>
+        <div id="count-hints-values" class="count-hints-values"></div>
+      </div>
       <div id="options" class="options"></div>
       <section id="feedback" class="feedback" aria-live="polite" hidden>
         <h3 id="feedback-title"></h3>

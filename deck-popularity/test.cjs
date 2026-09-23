@@ -48,8 +48,12 @@ let generated = 0, capped = 0, zeros = 0, mixedLengths = 0, singles = 0, crossCl
 function validateQuestion(q, score) {
   const level = E.difficultyForScore(score);
   assert.equal(q.extremesOnly, score >= 24);
-  const minimum = Math.min(...q.options.map(c => c.count));
-  for (const c of q.options) assert.equal(E.showCount(q, c), score < 24 || c.id === q.winnerId || c.count === minimum);
+  const originalOrder = q.options.map(c => c.id);
+  const sorted = [...q.options].sort((a,b)=>(b.capped?1001:b.count)-(a.capped?1001:a.count));
+  const hints = E.countHints(q);
+  assert.equal(hints.length, q.options.length);
+  for (let i = 0; i < hints.length; i++) assert.deepEqual(hints[i], score >= 24 && i > 0 && i < hints.length - 1 ? null : {count:sorted[i].count,capped:sorted[i].capped});
+  assert.deepEqual(q.options.map(c => c.id), originalOrder, 'Sorting hints must not reorder the answer options');
   assert.equal(q.options.length, level.options);
   assert.equal(new Set(q.options.map(c => c.id)).size, q.options.length);
   assert(q.options.every(c => (level.crossClass || c.classId === q.classId) && c.cards.length >= 1 && c.cards.length <= level.maxCards));
@@ -132,7 +136,7 @@ for (const boundary of [4, 8, 12, 18, 24, 30, 40, 50]) {
   assert.equal(retry.round, boundary);
   validateQuestion(retry.question, boundary - 1);
   E.answer(retry, retry.question.winnerId);
-  assert.equal(retry.question.extremesOnly, boundary - 1 >= 24, 'Answering must not change the current reveal rule at the boundary');
+  assert.equal(retry.question.extremesOnly, boundary - 1 >= 24, 'Answering must not change the current hint rule at the boundary');
   E.nextQuestion(retry, catalog, random);
   assert.equal(retry.round, boundary + 1);
   validateQuestion(retry.question, boundary);

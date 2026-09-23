@@ -23,7 +23,10 @@
   const contains = (deck, cards) => Object.entries(requirements(cards)).every(([id, count]) => (deck[id] || 0) >= count);
   const levelForScore = score => LEVELS.reduce((current, level, index) => score >= level.from ? index : current, 0);
   const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), extremesOnly: score >= 24, ...(score >= 30 ? { options: 4 + Math.floor((score - 30) / 10), targetMax: score >= 50 ? 1.5 : score >= 40 ? 1.65 : 1.8 } : {}) });
-  const showCount = (question, combo) => !question.extremesOnly || combo.id === question.winnerId || combo.count === Math.min(...question.options.map(c => c.count));
+  // Sorted anonymous totals give clues without identifying which option wins.
+  const countHints = question => [...question.options]
+    .sort((a, b) => (b.capped ? 1001 : b.count) - (a.capped ? 1001 : a.count))
+    .map((combo, index, sorted) => question.extremesOnly && index > 0 && index < sorted.length - 1 ? null : { count: combo.count, capped: combo.capped });
   function optionLabel(index) {
     let label = '';
     for (let n = index + 1; n > 0; n = Math.floor((n - 1) / 26)) label = String.fromCharCode(65 + (n - 1) % 26) + label;
@@ -161,5 +164,5 @@
     state.history.push({ question: state.question, selectedId: id, correct, round: state.round });
     return { correct, over: state.over };
   }
-  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, distinct, levelForScore, difficultyForScore, showCount, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
+  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, distinct, levelForScore, difficultyForScore, countHints, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
 });

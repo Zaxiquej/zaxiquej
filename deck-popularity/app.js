@@ -3,6 +3,7 @@
   const $ = id => document.getElementById(id);
   const E = window.DeckPopularity;
   const banks = { presence: window.DECK_POPULARITY_DATA, full: window.DECK_POPULARITY_FULL_DATA };
+  const fullReady = banks.full?.schemaVersion === 1 && banks.full.mode === 'full' && banks.full.copiesPerCard === 3 && Array.isArray(banks.full.combos) && banks.full.combos.length > 0;
   let mode = 'presence', data = banks.presence;
   let catalog, state;
   const letterFor = E.optionLabel;
@@ -75,6 +76,7 @@
     renderScore();
     $('round-title').textContent = `第 ${state.round} 轮${q.classId ? ' · ' + E.CLASSES[q.classId] : ''}`;
     $('round-hint').textContent = '哪组出现在最多有记录的指定卡组中？' + (mode === 'full' ? '每种卡均需 3 张。' : '') + '点卡图可放大。';
+    $('count-hints-values').replaceChildren(...E.countHints(q).map(hint => el('span', '', hint ? `${countText(hint)} 套` : '？')));
     $('options').classList.toggle('many', q.options.length >= 3);
     $('options').replaceChildren();
     q.options.forEach((combo, index) => {
@@ -127,7 +129,7 @@
       const chosen = combo.id === id;
       option.classList.toggle('correct', winner);
       option.classList.toggle('wrong', chosen && !winner);
-      option.querySelector('.answer-count').textContent = E.showCount(q, combo) ? `${countText(combo)} 套` : '？套';
+      option.querySelector('.answer-count').textContent = `${countText(combo)} 套`;
       const button = option.querySelector('.choose');
       button.disabled = true;
       button.textContent = chosen ? `已选 ${letterFor(index)}` : `组合 ${letterFor(index)}`;
@@ -141,11 +143,10 @@
     $('feedback-title').textContent = result.correct ? '答对了！+1 分' : `答错了，−1 血${result.over ? '。本局结束' : ''}`;
     let explanation = `组合 ${letter} 最多，共 ${countText(winner)} 套。`;
     if (winner.capped) explanation += '其他选项均有精确数量且不超过 1000，因此仍能确定答案。';
-    else if (!q.extremesOnly) {
+    else {
       const runner = Math.max(...q.options.filter(c => c.id !== winner.id).map(c => c.count));
       explanation += `比第二名多 ${number(winner.count - runner)} 套。`;
     }
-    if (q.extremesOnly) explanation += ' 本阶段仅显示最大和最小数量，其余保留「？」。';
     if (!result.correct && !result.over) explanation += ' 本轮重新出题，分数和轮次不变。';
     $('feedback-text').textContent = explanation;
     $('next').textContent = result.over ? '查看结算' : result.correct ? '下一轮' : '重新挑战本轮';
@@ -211,7 +212,8 @@
     }
   });
   function selectMode() {
-   mode = $('mode-select').value === 'full' ? 'full' : 'presence';
+   mode = fullReady && $('mode-select').value === 'full' ? 'full' : 'presence';
+   $('mode-select').value = mode;
    data = banks[mode]; catalog = null;
    clearError();
    $('start').disabled = true;
@@ -246,6 +248,10 @@
     updateBestIntro();
    } catch (error) { $('start').textContent = '题库未就绪'; catalog = null; showError(error); }
   }
+  $('mode-label').hidden = !fullReady;
+  $('mode-select').hidden = !fullReady;
+  $('mode-select').disabled = !fullReady;
+  $('mode-description').hidden = !fullReady;
   $('mode-select').addEventListener('change', selectMode);
   selectMode();
 })();

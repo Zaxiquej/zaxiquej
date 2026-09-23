@@ -32,6 +32,9 @@ a { color: #2476ad; }
 .round-heading { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .round-heading h2 { margin: 0; }
 .tag { padding: 2px 9px; background: #edf3f7; border-radius: 4px; font-size: 13px; color: #376381; }
+.count-hints { margin: 16px 0 12px; padding: 10px 14px; background: #f5f8fa; border-radius: 4px; }
+.count-hints-title { display: block; color: #6b7278; font-size: 13px; }
+.count-hints-values { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 4px; color: #445460; font-size: 18px; font-weight: bold; font-variant-numeric: tabular-nums; }
 .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
 .option { border: 1px solid #ced6dc; border-radius: 5px; padding: 14px; min-width: 0; display: flex; flex-direction: column; background: #fff; }
 .option-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
