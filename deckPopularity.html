@@ -21,7 +21,7 @@
       <p>比较卡牌组合，选出你认为最常出现的一组。通过前 12 轮后，可以跨职业比较。</p>
       <p><b>初始 5 血。答对 +1 分，进入下一轮；答错 −1 血，本轮重新出题。</b>血量归零后结算。</p>
       <p>每组可以是单卡或多张不同卡，组与组之间不会出现相同卡牌。可能有 0 套的组合，每题最多一组「1000+」。</p>
-      <p class="muted">从 2 组单卡开始，第一名始终至少比第二名多 25%，且相差至少 50 套。</p>
+      <p class="muted">从 2 组单卡开始，第一名始终比第二名多至少 25%，且相差至少 50 套。</p>
       <div class="start-controls">
         <label id="mode-label" for="mode-select" hidden>模式</label>
         <select id="mode-select" hidden><option value="presence">普通模式</option><option value="full">满编模式（每种卡 ×3）</option></select>
@@ -47,15 +47,11 @@
         <div id="count-hints-values" class="count-hints-values"></div>
       </div>
       <div id="options" class="options"></div>
-      <section id="feedback" class="feedback" aria-live="polite" hidden>
-        <h3 id="feedback-title"></h3>
-        <p id="feedback-text"></p>
-        <button id="next" type="button">下一轮</button>
-      </section>
       </div>
-      <div class="mobile-actions">
+      <div id="mobile-actions" class="mobile-actions">
         <span id="mobile-action-status" role="status">先选一组，再提交</span>
         <button id="mobile-action" type="button" disabled>请选择组合</button>
+        <button id="mobile-next" type="button" hidden>下一轮</button>
       </div>
     </section>
     <section id="summary" hidden>

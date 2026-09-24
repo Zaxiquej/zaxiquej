@@ -131,7 +131,7 @@ assert(distributions[3].commonRunner >= 180, 'Late rounds should usually have at
 console.log('Leading-pair distribution:', JSON.stringify(distributions));
 const compositionProfiles = [];
 for (const score of [4,8,12,18,24,30,50]) {
-  let sameLength = 0, singleMajority = 0, triples = 0;
+  let sameLength = 0, singleMajority = 0, triples = 0, oneDifferent = 0;
   const winningCounts = [], used = new Set();
   let recent = [];
   for (let i = 0; i < 200; i++) {
@@ -140,16 +140,19 @@ for (const score of [4,8,12,18,24,30,50]) {
     used.add(q.signature);
     recent = [...recent, ...q.options.map(c=>c.id)].slice(-30);
     if (new Set(q.options.map(c=>c.cards.length)).size === 1) sameLength++;
+    const lengths = q.options.map(c=>c.cards.length);
+    if ([1,2,3].some(n => lengths.filter(v=>v===n).length === lengths.length-1 && lengths.filter(v=>Math.abs(v-n)===1).length===1)) oneDifferent++;
     if (q.options.filter(c=>c.cards.length===1).length >= q.options.length / 2) singleMajority++;
     if (q.options.some(c=>c.cards.length===3)) triples++;
     const winner = q.options.find(c=>c.id===q.winnerId);
     winningCounts.push(winner.capped?1001:winner.count);
   }
   winningCounts.sort((a,b)=>a-b);
-  assert(sameLength >= 160, 'At least 80% of sampled questions should compare equal card counts');
+  assert(sameLength >= (score < 8 ? 160 : 130), 'Equal card counts should remain the majority');
+  if (score >= 8) assert(oneDifferent >= 30 && oneDifferent <= 70, '15–35% of sampled questions should have exactly one option differing by one card');
   if (score >= 8) assert(singleMajority <= 24, 'Midgame single-card majorities should stay below 12%');
   if (score >= 18) assert(triples >= 40, 'Three-card combinations must remain meaningfully represented');
-  compositionProfiles.push({score,sameLength,singleMajority,triples,minimumWinner:winningCounts[0],medianWinner:winningCounts[100]});
+  compositionProfiles.push({score,sameLength,oneDifferent,singleMajority,triples,minimumWinner:winningCounts[0],medianWinner:winningCounts[100]});
 }
 console.log('Composition profiles (200 questions each):', JSON.stringify(compositionProfiles));
 assert.throws(() => E.createQuestion(fixture([100,50,20]), 12), /题目不足/, 'Do not silently fall back to 100-deck midgame winners');

@@ -83,7 +83,7 @@
     });
     return { stages, groups, total: unique.size };
   }
-  function pickDistractors(candidates, count, random) {
+  function pickDistractors(candidates, count, random, lengthCounts = null) {
     // Randomized bounded backtracking: all cards disjoint; at most one zero option.
     let budget = 400;
     function search(remaining, chosen) {
@@ -91,6 +91,7 @@
       if (--budget <= 0 || remaining.length < count - chosen.length) return null;
       for (let i = 0; i < remaining.length && budget > 0; i++) {
         const c = remaining[i];
+        if (lengthCounts && chosen.filter(x => x.cards.length === c.cards.length).length >= (lengthCounts[c.cards.length] || 0)) continue;
         if (c.count === 0 && chosen.some(x => x.count === 0)) continue;
         const compatible = remaining.slice(i + 1).filter(other => distinct(c, other));
         const result = search(compatible, [...chosen, c]);
@@ -107,13 +108,20 @@
     if (!templates.length) throw Error('这个职业当前可用题目不足，请切换为随机职业。');
     const classes = [...new Set(templates.map(t => t.classId))];
     // Choose a composition for the whole question, not independently per option.
-    const sameLength = level.maxCards === 1 || random() < 0.9;
+    const oneDifferent = level.options >= 3 && random() < 0.25;
+    const sameLength = !oneDifferent && (level.options >= 3 || level.maxCards === 1 || random() < 0.9);
     const lengthRoll = random();
     const preferredLength = level.maxCards === 1 ? 1 : score < 8 ? (lengthRoll < 0.7 ? 2 : 1)
       : level.maxCards === 2 ? (lengthRoll < 0.95 ? 2 : 1) : lengthRoll < 0.03 ? 1 : lengthRoll < 0.58 ? 2 : 3;
+    const baseLength = Math.max(2, preferredLength);
+    const alternateLengths = [baseLength - 1, baseLength + 1].filter(n => n >= 1 && n <= level.maxCards);
+    const alternateLength = alternateLengths[Math.floor(random() * alternateLengths.length)];
     for (let attempt = 0; attempt < 1200; attempt++) {
       const chosenClass = classes[Math.floor(random() * classes.length)];
       let candidates = templates.filter(t => t.classId === chosenClass);
+      const variantActive = oneDifferent && attempt < 900;
+      const allowedLength = c => !variantActive || c.cards.length === baseLength || c.cards.length === alternateLength;
+      if (variantActive) candidates = candidates.filter(t => allowedLength(t.winner));
       // If a requested length cannot form a fair question, try other multi-card
       // lengths before relaxing composition. Never relax count/fairness floors.
       const length = sameLength && attempt < 900 ? (attempt < 400 ? preferredLength : score >= 8 ? 2 + Math.floor(random() * (level.maxCards - 1)) : preferredLength) : 0;
@@ -126,7 +134,7 @@
       if (exact.length && ((level.crossClass && attempt < 900) || random() < 0.75)) candidates = exact;
       const template = candidates[Math.floor(random() * candidates.length)];
       const top = template.winner.capped ? 1001 : template.winner.count;
-      const lower = template.pool.positive.slice(0, template.positiveEnd).filter(c => (!length || c.cards.length === length) && distinct(template.winner, c));
+      const lower = template.pool.positive.slice(0, template.positiveEnd).filter(c => allowedLength(c) && (!length || c.cards.length === length) && distinct(template.winner, c));
       // Select the runner-up deliberately instead of letting numerous rare rows
       // dominate uniform sampling. Later rounds target narrower, still readable gaps.
       const common = lower.filter(c => c.count >= level.commonCount);
@@ -136,15 +144,24 @@
       const choices = preferred.length ? preferred : challengers;
       if (!choices.length) continue;
       const challenger = choices[Math.floor(random() * choices.length)];
+      const lengthCounts = variantActive ? { [baseLength]: level.options - 1, [alternateLength]: 1 } : null;
+      if (lengthCounts) {
+        lengthCounts[template.winner.cards.length]--;
+        lengthCounts[challenger.cards.length]--;
+        if (Object.values(lengthCounts).some(n => n < 0)) continue;
+      }
       // A larger collection of verified zeros should not make every round a zero-count quiz.
-      if (lower.length < level.options - 1 || random() < 0.25) lower.push(...template.pool.zero.filter(c => (!length || c.cards.length === length) && distinct(template.winner, c)));
+      if (lower.length < level.options - 1 || random() < 0.25) lower.push(...template.pool.zero.filter(c => allowedLength(c) && (!length || c.cards.length === length) && distinct(template.winner, c)));
       const compatible = lower.filter(c => c.id !== challenger.id && c.count <= challenger.count && distinct(challenger, c));
       const preferCommon = score >= 8 && random() < 0.8;
-      const others = (preferCommon ? pickDistractors(compatible.filter(c => c.count >= level.commonCount), level.options - 2, random) : null)
-        || pickDistractors(compatible, level.options - 2, random);
+      const others = (preferCommon ? pickDistractors(compatible.filter(c => c.count >= level.commonCount), level.options - 2, random, lengthCounts) : null)
+        || pickDistractors(compatible, level.options - 2, random, lengthCounts);
       const remaining = others && [challenger, ...others];
       if (!remaining) continue;
       const options = shuffle([template.winner, ...remaining], random);
+      // Most options keep the same size; just one differs by exactly one card.
+      // Apply this to the whole question, allowing that option to win or lose.
+      if (oneDifferent && attempt < 900 && (options.filter(c => c.cards.length === baseLength).length !== options.length - 1 || options.filter(c => c.cards.length === alternateLength).length !== 1)) continue;
       if (score >= 8 && length !== 1 && attempt < 1000 && options.filter(c => c.cards.length === 1).length >= options.length / 2) continue;
       const signature = options.map(c => c.id).sort().join('|');
       if (used.has(signature)) continue;

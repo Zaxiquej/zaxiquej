@@ -80,10 +80,16 @@
   }
   function updateMobileAction() {
     const answered = state.answered;
+    const correct = state.selectedId === state.question.winnerId;
     const index = state.question.options.findIndex(c => c.id === pendingId);
+    $('mobile-actions').classList.toggle('answered', answered);
+    $('mobile-action').hidden = answered;
+    $('mobile-next').hidden = !answered && mobileLayout.matches;
+    $('mobile-next').disabled = !answered;
+    $('mobile-next').textContent = answered && state.over ? '查看结算' : answered && !correct ? '重新挑战本轮' : '下一轮';
     $('mobile-action').disabled = !answered && index < 0;
-    $('mobile-action').textContent = answered ? $('next').textContent : index < 0 ? '请选择组合' : `提交组合 ${letterFor(index)}`;
-    $('mobile-action-status').textContent = answered ? $('feedback-title').textContent : index < 0 ? '先选一组，再提交' : `已选 ${letterFor(index)}，可更改选择`;
+    $('mobile-action').textContent = index < 0 ? '请选择组合' : `提交组合 ${letterFor(index)}`;
+    $('mobile-action-status').textContent = answered ? (correct ? '答对了！+1 分' : `答错了，−1 血${state.over ? '。本局结束' : ''}`) : !mobileLayout.matches ? '点击选项作答' : index < 0 ? '先选一组，再提交' : `已选 ${letterFor(index)}，可更改选择`;
   }
   function chooseOption(id) {
     if (state.answered || state.over) return;
@@ -141,11 +147,9 @@
       option.append(heading, row, choose, label);
       $('options').append(option);
     });
-    $('feedback').hidden = true;
     updateMobileAction();
     $('game-scroll').scrollTop = 0;
     $('round-title').focus({ preventScroll: true });
-    if (!mobileLayout.matches) $('game').scrollIntoView({ block: 'start' });
   }
   function submit(id) {
     const result = E.answer(state, id);
@@ -169,21 +173,8 @@
       label.textContent = winner ? (chosen ? '选择正确' : '正确答案') : chosen ? '选择错误' : '';
       option.append(exampleLinks(combo));
     });
-    const winner = q.options.find(c => c.id === q.winnerId);
-    const letter = letterFor(q.options.indexOf(winner));
-    $('feedback-title').textContent = result.correct ? '答对了！+1 分' : `答错了，−1 血${result.over ? '。本局结束' : ''}`;
-    let explanation = `组合 ${letter} 最多，共 ${countText(winner)} 套。`;
-    if (winner.capped) explanation += '其他选项均有精确数量且不超过 1000，因此仍能确定答案。';
-    else {
-      const runner = Math.max(...q.options.filter(c => c.id !== winner.id).map(c => c.count));
-      explanation += `比第二名多 ${number(winner.count - runner)} 套。`;
-    }
-    if (!result.correct && !result.over) explanation += ' 本轮重新出题，分数和轮次不变。';
-    $('feedback-text').textContent = explanation;
-    $('next').textContent = result.over ? '查看结算' : result.correct ? '下一轮' : '重新挑战本轮';
-    $('feedback').hidden = false;
     updateMobileAction();
-    (mobileLayout.matches ? $('mobile-action') : $('next')).focus({ preventScroll: true });
+    $('mobile-next').focus({ preventScroll: true });
   }
   function start() {
     if (!catalog) return;
@@ -230,15 +221,16 @@
     updateBestIntro();
     $('start').focus();
   });
-  $('next').addEventListener('click', () => {
+  function advanceRound() {
     if (!state?.answered) return;
     if (state.over) { summary(); return; }
     try { if (E.nextQuestion(state, catalog)) renderQuestion(); }
     catch (error) { summary(true); showError(error); }
-  });
+  }
+  $('mobile-next').addEventListener('click', advanceRound);
+  mobileLayout.addEventListener('change', () => { if (state?.question && !$('game').hidden) updateMobileAction(); });
   $('mobile-action').addEventListener('click', () => {
-    if (state?.answered) $('next').click();
-    else if (pendingId) submit(pendingId);
+    if (!state?.answered && pendingId) submit(pendingId);
   });
   $('close-card').addEventListener('click', () => $('card-dialog').close());
   $('card-dialog').addEventListener('click', event => { if (event.target === $('card-dialog')) { const r = event.target.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.target.close(); } });
