@@ -27,7 +27,12 @@ a { color: #2476ad; }
 .start-controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 24px; }
 .scoreboard { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-block: 1px solid #e0e4e6; margin-bottom: 24px; }
 .scoreboard b { font-size: 23px; margin-left: 6px; color: #2c3e50; }
-.lives { color: #b94a48; font-size: 23px; letter-spacing: 3px; }
+.lives { display: inline-flex; gap: 3px; color: #b94a48; font-size: 23px; }
+.heart { position: relative; display: inline-block; width: 1em; text-align: center; }
+.heart-fragment { display: none; position: absolute; inset: 0; color: #b94a48; pointer-events: none; }
+.heart-fragment.left { clip-path: polygon(0 0, 55% 0, 43% 35%, 58% 53%, 45% 73%, 50% 100%, 0 100%); }
+.heart-fragment.right { clip-path: polygon(55% 0, 100% 0, 100% 100%, 50% 100%, 45% 73%, 58% 53%, 43% 35%); }
+.mobile-actions { display: none; }
 .lost { color: #d8dcde; }
 .round-heading { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .round-heading h2 { margin: 0; }
@@ -48,6 +53,7 @@ a { color: #2476ad; }
 .card-quantity { position: absolute; bottom: 5px; right: 5px; padding: 0 7px; background: #283c4d; color: #fff; border: 1px solid #fff; border-radius: 3px; font-size: 15px; font-weight: bold; line-height: 1.65; }
 .card-name { font-size: 12px; line-height: 1.55; margin: 6px 0 10px; overflow-wrap: anywhere; }
 .choose { display: block; width: 100%; margin-top: 8px; }
+.option.selected { border-color: #2476ad; box-shadow: inset 0 0 0 1px #2476ad; background: #f0f7fc; }
 .option.correct { border: 2px solid #458b64; padding: 13px; background: #f4faf6; }
 .option.wrong { border: 2px solid #b86b66; padding: 13px; background: #fcf6f5; }
 .option.correct .answer-count { color: #287548; }
@@ -86,16 +92,43 @@ dialog h2 { font-size: 18px; padding-top: 5px; }
   .container { padding: 20px 14px; }
   h1 { font-size: 23px; }
   h2 { font-size: 19px; }
-  .options { grid-template-columns: 1fr; gap: 14px; }
-  .option { padding: 12px; }
-  .option.correct, .option.wrong { padding: 11px; }
-  .card-row { max-width: 430px; width: 100%; margin: auto; }
-  .scoreboard { font-size: 14px; }
-  .scoreboard b { font-size: 21px; }
-  .lives { font-size: 19px; letter-spacing: 2px; white-space: nowrap; }
+  body.game-active { overflow: hidden; }
+  body.game-active .container > header, body.game-active .data-note, body.game-active footer { display: none; }
+  #game { position: fixed; inset: 0; z-index: 20; height: 100vh; height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: #fff; }
+  .game-scroll { overflow-y: auto; overscroll-behavior-y: contain; min-height: 0; padding: 12px max(10px, env(safe-area-inset-right)) 16px max(10px, env(safe-area-inset-left)); }
+  .options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0; }
+  .option { padding: 8px; }
+  .option.correct, .option.wrong { padding: 7px; }
+  .option-head { gap: 4px; margin-bottom: 6px; align-items: baseline; flex-wrap: wrap; }
+  .option-label, .answer-count { font-size: 13px; }
+  .card-row { width: 100%; gap: 4px; }
+  .card-image-button { max-width: 95px; }
+  .card-name { font-size: 11px; line-height: 1.4; margin: 4px 0 6px; }
+  .card-quantity { font-size: 11px; right: 2px; bottom: 2px; padding: 0 3px; }
+  .choose { font-size: 14px; padding: 6px; min-height: 40px; margin-top: 6px; }
+  .scoreboard { align-items: center; margin: 0; border-top: 0; padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) 10px max(12px, env(safe-area-inset-left)); font-size: 13px; gap: 8px; background: #fff; z-index: 1; }
+  .scoreboard b { font-size: 19px; margin-left: 3px; }
+  .lives { font-size: 21px; gap: 1px; white-space: nowrap; }
+  .mobile-actions { display: flex; align-items: center; gap: 10px; padding: 10px max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); border-top: 1px solid #dce2e6; background: #fff; }
+  #mobile-action-status { flex: 1; min-width: 0; font-size: 12px; line-height: 1.5; color: #52616c; }
+  #mobile-action { min-height: 44px; min-width: 134px; padding: 8px 12px; font-size: 15px; }
+  #next { display: none; }
+  #round-hint { font-size: 12px; margin: 6px 0; }
+  .count-hints { margin: 10px 0; padding: 7px 10px; }
+  .count-hints-title { font-size: 11px; }
+  .count-hints-values { gap: 4px 14px; font-size: 16px; }
+  .answer-label, .deck-examples { font-size: 12px; }
+  .deck-example-links { gap: 2px 10px; }
+  .feedback { margin-top: 12px; padding: 12px; }
   .round-heading { gap: 6px 10px; }
   .start-controls { gap: 10px; }
   .start-controls button { flex: 1; }
   footer { gap: 8px 15px; }
 }
-@media (prefers-reduced-motion: no-preference) { button { transition: background .12s; } }
+@media (prefers-reduced-motion: no-preference) {
+  button { transition: background .12s; }
+  .heart.breaking .heart-fragment { display: block; animation: heart-break-left .65s ease-out both; }
+  .heart.breaking .heart-fragment.right { animation-name: heart-break-right; }
+}
+@keyframes heart-break-left { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 30% { transform: translate(-3px, -4px) rotate(-12deg); opacity: 1; } 100% { transform: translate(-9px, 12px) rotate(-30deg); opacity: 0; } }
+@keyframes heart-break-right { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 30% { transform: translate(3px, -4px) rotate(12deg); opacity: 1; } 100% { transform: translate(9px, 12px) rotate(30deg); opacity: 0; } }

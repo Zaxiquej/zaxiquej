@@ -5,7 +5,8 @@
   const banks = { presence: window.DECK_POPULARITY_DATA, full: window.DECK_POPULARITY_FULL_DATA };
   const fullReady = banks.full?.schemaVersion === 1 && banks.full.mode === 'full' && banks.full.copiesPerCard === 3 && Array.isArray(banks.full.combos) && banks.full.combos.length > 0;
   let mode = 'presence', data = banks.presence;
-  let catalog, state;
+  let catalog, state, pendingId = null;
+  const mobileLayout = window.matchMedia('(max-width: 600px)');
   const letterFor = E.optionLabel;
   const questionClass = q => q.classId ? E.CLASSES[q.classId] : '跨职业';
   const number = value => value.toLocaleString('zh-CN');
@@ -64,15 +65,42 @@
     $('dialog-text').textContent = card.text;
     $('card-dialog').showModal();
   }
-  function renderScore() {
+  function renderScore(brokenHeart = -1) {
     $('score').textContent = state.score;
     $('best').textContent = Math.max(state.score, bestScore(state.classId));
     $('lives').replaceChildren();
-    for (let i = 0; i < E.INITIAL_LIVES; i++) $('lives').append(el('span', i < state.lives ? '' : 'lost', '♥'));
+    for (let i = 0; i < E.INITIAL_LIVES; i++) {
+      const heart = el('span', `heart${i < state.lives ? '' : ' lost'}${i === brokenHeart ? ' breaking' : ''}`);
+      heart.setAttribute('aria-hidden', 'true');
+      heart.append(el('span', 'heart-base', '♥'));
+      if (i === brokenHeart) heart.append(el('span', 'heart-fragment left', '♥'), el('span', 'heart-fragment right', '♥'));
+      $('lives').append(heart);
+    }
     $('lives').setAttribute('aria-label', `剩余 ${state.lives} 血`);
+  }
+  function updateMobileAction() {
+    const answered = state.answered;
+    const index = state.question.options.findIndex(c => c.id === pendingId);
+    $('mobile-action').disabled = !answered && index < 0;
+    $('mobile-action').textContent = answered ? $('next').textContent : index < 0 ? '请选择组合' : `提交组合 ${letterFor(index)}`;
+    $('mobile-action-status').textContent = answered ? $('feedback-title').textContent : index < 0 ? '先选一组，再提交' : `已选 ${letterFor(index)}，可更改选择`;
+  }
+  function chooseOption(id) {
+    if (state.answered || state.over) return;
+    if (!mobileLayout.matches) { submit(id); return; }
+    pendingId = id;
+    [...$('options').children].forEach((option, index) => {
+      const selected = state.question.options[index].id === id;
+      option.classList.toggle('selected', selected);
+      const button = option.querySelector('.choose');
+      button.setAttribute('aria-pressed', String(selected));
+      button.textContent = `${selected ? '已选' : '选'} ${letterFor(index)}`;
+    });
+    updateMobileAction();
   }
   function renderQuestion() {
     const q = state.question;
+    pendingId = null;
     renderScore();
     $('round-title').textContent = `第 ${state.round} 轮${q.classId ? ' · ' + E.CLASSES[q.classId] : ''}`;
     $('round-hint').textContent = '哪组出现在最多有记录的指定卡组中？' + (mode === 'full' ? '每种卡均需 3 张。' : '') + '点卡图可放大。';
@@ -107,26 +135,29 @@
       const choose = el('button', 'choose', `选 ${letterFor(index)}`);
       choose.type = 'button';
       choose.setAttribute('aria-label', `选择组合 ${letterFor(index)}：${fullName(combo)}`);
-      choose.addEventListener('click', () => submit(combo.id));
+      choose.addEventListener('click', () => chooseOption(combo.id));
       const label = el('div', 'answer-label');
       label.hidden = true;
       option.append(heading, row, choose, label);
       $('options').append(option);
     });
     $('feedback').hidden = true;
+    updateMobileAction();
+    $('game-scroll').scrollTop = 0;
     $('round-title').focus({ preventScroll: true });
-    $('game').scrollIntoView({ block: 'start' });
+    if (!mobileLayout.matches) $('game').scrollIntoView({ block: 'start' });
   }
   function submit(id) {
     const result = E.answer(state, id);
     if (!result) return;
     saveBest();
-    renderScore();
+    renderScore(result.correct ? -1 : state.lives);
     const q = state.question;
     [...$('options').children].forEach((option, index) => {
       const combo = q.options[index];
       const winner = combo.id === q.winnerId;
       const chosen = combo.id === id;
+      option.classList.remove('selected');
       option.classList.toggle('correct', winner);
       option.classList.toggle('wrong', chosen && !winner);
       option.querySelector('.answer-count').textContent = `${countText(combo)} 套`;
@@ -135,7 +166,7 @@
       button.textContent = chosen ? `已选 ${letterFor(index)}` : `组合 ${letterFor(index)}`;
       const label = option.querySelector('.answer-label');
       label.hidden = false;
-      label.textContent = winner ? (chosen ? '✓ 选对了 · 数量最多' : '✓ 正确答案 · 数量最多') : chosen ? '✕ 选错了 · 扣 1 血' : '';
+      label.textContent = winner ? (chosen ? '选择正确' : '正确答案') : chosen ? '选择错误' : '';
       option.append(exampleLinks(combo));
     });
     const winner = q.options.find(c => c.id === q.winnerId);
@@ -151,7 +182,8 @@
     $('feedback-text').textContent = explanation;
     $('next').textContent = result.over ? '查看结算' : result.correct ? '下一轮' : '重新挑战本轮';
     $('feedback').hidden = false;
-    $('next').focus({ preventScroll: true });
+    updateMobileAction();
+    (mobileLayout.matches ? $('mobile-action') : $('next')).focus({ preventScroll: true });
   }
   function start() {
     if (!catalog) return;
@@ -162,11 +194,13 @@
     $('intro').hidden = true;
     $('summary').hidden = true;
     $('game').hidden = false;
+    document.body.classList.add('game-active');
     renderQuestion();
   }
   function summary(exhausted = false) {
     state.over = true;
     $('game').hidden = true;
+    document.body.classList.remove('game-active');
     $('summary').hidden = false;
     $('summary-title').textContent = exhausted ? '本轮题库已完成' : '挑战结束';
     $('final-score').textContent = state.score;
@@ -202,13 +236,17 @@
     try { if (E.nextQuestion(state, catalog)) renderQuestion(); }
     catch (error) { summary(true); showError(error); }
   });
+  $('mobile-action').addEventListener('click', () => {
+    if (state?.answered) $('next').click();
+    else if (pendingId) submit(pendingId);
+  });
   $('close-card').addEventListener('click', () => $('card-dialog').close());
   $('card-dialog').addEventListener('click', event => { if (event.target === $('card-dialog')) { const r = event.target.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.target.close(); } });
   document.addEventListener('keydown', event => {
     if (event.repeat || $('card-dialog').open || $('game').hidden || /^(INPUT|SELECT|TEXTAREA)$/.test(event.target.tagName)) return;
     if (/^[1-9]$/.test(event.key) && !state.answered) {
       const option = state.question.options[Number(event.key) - 1];
-      if (option) { event.preventDefault(); submit(option.id); }
+      if (option) { event.preventDefault(); chooseOption(option.id); }
     }
   });
   function selectMode() {

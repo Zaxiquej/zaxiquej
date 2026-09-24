@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>影之诗 WB · 卡组合理性竞猜</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>影之诗 WB · 卡牌组合热门程度竞猜</title>
   <link rel="stylesheet" href="deck-popularity/style.css">
   <script defer src="deck-popularity/data.js"></script>
   <script defer src="deck-popularity/full-data.js"></script>
@@ -13,7 +13,7 @@
 <body>
   <main class="container">
     <header>
-      <h1>卡组合理性竞猜</h1>
+      <h1>卡牌组合热门程度竞猜</h1>
       <p class="subtitle">Shadowverse: Worlds Beyond</p>
     </header>
     <section id="intro">
@@ -37,6 +37,7 @@
         <span id="lives" class="lives" aria-label="剩余 5 血">♥♥♥♥♥</span>
         <span>最高 <b id="best">0</b></span>
       </div>
+      <div id="game-scroll" class="game-scroll">
       <div class="round-heading">
         <h2 id="round-title" tabindex="-1"></h2>
       </div>
@@ -51,6 +52,11 @@
         <p id="feedback-text"></p>
         <button id="next" type="button">下一轮</button>
       </section>
+      </div>
+      <div class="mobile-actions">
+        <span id="mobile-action-status" role="status">先选一组，再提交</span>
+        <button id="mobile-action" type="button" disabled>请选择组合</button>
+      </div>
     </section>
     <section id="summary" hidden>
       <h2 id="summary-title">挑战结束</h2>

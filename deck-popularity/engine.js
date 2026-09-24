@@ -9,6 +9,8 @@
   const MIN_DIFFERENCE = 50;
   const MIN_COMMON_COUNT = 40;
   const commonCountForScore = score => Math.max(MIN_COMMON_COUNT, 100 - Math.floor(Math.max(0, score) / 5) * 10);
+  // Rarity describes distractors; it must not also pull the winning count down.
+  const winnerMinimumForScore = score => score < 8 ? 500 : score < 12 ? 400 : score < 18 ? 300 : score < 30 ? 250 : score < 50 ? 200 : score < 70 ? 150 : 100;
   // Increase either the number of options or the length cap, never both at once.
   const LEVELS = [
     { from: 0, options: 2, maxCards: 1, minRatio: 2.5, targetMin: 3, targetMax: 6, crossClass: false },
@@ -22,7 +24,7 @@
   const requirements = cards => cards.reduce((result, id) => { result[id] = (result[id] || 0) + 1; return result; }, {});
   const contains = (deck, cards) => Object.entries(requirements(cards)).every(([id, count]) => (deck[id] || 0) >= count);
   const levelForScore = score => LEVELS.reduce((current, level, index) => score >= level.from ? index : current, 0);
-  const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), extremesOnly: score >= 24, ...(score >= 30 ? { options: 4 + Math.floor((score - 30) / 10), targetMax: score >= 50 ? 1.5 : score >= 40 ? 1.65 : 1.8 } : {}) });
+  const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), winnerMinimum: winnerMinimumForScore(score), extremesOnly: score >= 24, ...(score >= 30 ? { options: 4 + Math.floor((score - 30) / 10), targetMax: score >= 50 ? 1.5 : score >= 40 ? 1.65 : 1.8 } : {}) });
   // Sorted anonymous totals give clues without identifying which option wins.
   const countHints = question => [...question.options]
     .sort((a, b) => (b.capped ? 1001 : b.count) - (a.capped ? 1001 : a.count))
@@ -101,12 +103,22 @@
   function createQuestion(catalog, score, classId = 0, used = new Set(), recent = [], random = Math.random) {
     const stage = levelForScore(score);
     const level = difficultyForScore(score);
-    const templates = catalog.stages[stage].filter(t => (level.crossClass || !classId || t.classId === classId) && (t.winner.capped || t.winner.count >= level.commonCount) && t.positiveEnd + Math.min(1, t.pool.zero.length) >= level.options - 1);
+    const templates = catalog.stages[stage].filter(t => (level.crossClass || !classId || t.classId === classId) && (t.winner.capped || t.winner.count >= level.winnerMinimum) && t.positiveEnd + Math.min(1, t.pool.zero.length) >= level.options - 1);
     if (!templates.length) throw Error('这个职业当前可用题目不足，请切换为随机职业。');
     const classes = [...new Set(templates.map(t => t.classId))];
+    // Choose a composition for the whole question, not independently per option.
+    const sameLength = level.maxCards === 1 || random() < 0.9;
+    const lengthRoll = random();
+    const preferredLength = level.maxCards === 1 ? 1 : score < 8 ? (lengthRoll < 0.7 ? 2 : 1)
+      : level.maxCards === 2 ? (lengthRoll < 0.95 ? 2 : 1) : lengthRoll < 0.03 ? 1 : lengthRoll < 0.58 ? 2 : 3;
     for (let attempt = 0; attempt < 1200; attempt++) {
       const chosenClass = classes[Math.floor(random() * classes.length)];
       let candidates = templates.filter(t => t.classId === chosenClass);
+      // If a requested length cannot form a fair question, try other multi-card
+      // lengths before relaxing composition. Never relax count/fairness floors.
+      const length = sameLength && attempt < 900 ? (attempt < 400 ? preferredLength : score >= 8 ? 2 + Math.floor(random() * (level.maxCards - 1)) : preferredLength) : 0;
+      if (length) candidates = candidates.filter(t => t.winner.cards.length === length);
+      if (!candidates.length) continue;
       const fresh = candidates.filter(t => !recent.includes(t.winner.id));
       if (fresh.length && attempt < 900) candidates = fresh;
       const exact = candidates.filter(t => !t.winner.capped);
@@ -114,7 +126,7 @@
       if (exact.length && ((level.crossClass && attempt < 900) || random() < 0.75)) candidates = exact;
       const template = candidates[Math.floor(random() * candidates.length)];
       const top = template.winner.capped ? 1001 : template.winner.count;
-      const lower = template.pool.positive.slice(0, template.positiveEnd).filter(c => distinct(template.winner, c));
+      const lower = template.pool.positive.slice(0, template.positiveEnd).filter(c => (!length || c.cards.length === length) && distinct(template.winner, c));
       // Select the runner-up deliberately instead of letting numerous rare rows
       // dominate uniform sampling. Later rounds target narrower, still readable gaps.
       const common = lower.filter(c => c.count >= level.commonCount);
@@ -125,7 +137,7 @@
       if (!choices.length) continue;
       const challenger = choices[Math.floor(random() * choices.length)];
       // A larger collection of verified zeros should not make every round a zero-count quiz.
-      if (lower.length < level.options - 1 || random() < 0.25) lower.push(...template.pool.zero.filter(c => distinct(template.winner, c)));
+      if (lower.length < level.options - 1 || random() < 0.25) lower.push(...template.pool.zero.filter(c => (!length || c.cards.length === length) && distinct(template.winner, c)));
       const compatible = lower.filter(c => c.id !== challenger.id && c.count <= challenger.count && distinct(challenger, c));
       const preferCommon = score >= 8 && random() < 0.8;
       const others = (preferCommon ? pickDistractors(compatible.filter(c => c.count >= level.commonCount), level.options - 2, random) : null)
@@ -133,6 +145,7 @@
       const remaining = others && [challenger, ...others];
       if (!remaining) continue;
       const options = shuffle([template.winner, ...remaining], random);
+      if (score >= 8 && length !== 1 && attempt < 1000 && options.filter(c => c.cards.length === 1).length >= options.length / 2) continue;
       const signature = options.map(c => c.id).sort().join('|');
       if (used.has(signature)) continue;
       return { stage, extremesOnly: level.extremesOnly, classId: options.every(c => c.classId === chosenClass) ? chosenClass : 0, options, winnerId: template.winner.id, signature };

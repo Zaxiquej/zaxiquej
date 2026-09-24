@@ -44,6 +44,9 @@ assert.equal(E.optionLabel(26), 'AA');
 for (const [score, threshold] of [[0,100],[4,100],[5,90],[9,90],[10,80],[15,70],[20,60],[24,60],[25,50],[29,50],[30,40],[100,40],[1000,40]]) {
   assert.equal(E.difficultyForScore(score).commonCount, threshold, 'Rarity threshold gradually falls and stops at 40');
 }
+for (const [score, minimum] of [[0,500],[7,500],[8,400],[11,400],[12,300],[17,300],[18,250],[29,250],[30,200],[49,200],[50,150],[69,150],[70,100],[1000,100]]) {
+  assert.equal(E.difficultyForScore(score).winnerMinimum, minimum, 'Winning-count floor is independent of the rarity threshold');
+}
 let generated = 0, capped = 0, zeros = 0, mixedLengths = 0, singles = 0, crossClassQuestions = 0;
 function validateQuestion(q, score) {
   const level = E.difficultyForScore(score);
@@ -66,6 +69,7 @@ function validateQuestion(q, score) {
   assert(winner);
   const top = winner.capped ? 1001 : winner.count;
   assert(top >= level.commonCount, 'Never produce a question consisting entirely of rare combinations at the current threshold');
+  assert(top >= level.winnerMinimum, 'Respect the winning-count minimum for this round');
   for (const other of q.options.filter(c => c.id !== winner.id)) {
     assert(!other.capped);
     assert(top >= other.count * level.minRatio, 'Respect the relative gap for this stage');
@@ -100,12 +104,12 @@ assert.equal(fair.options.find(c => c.id === fair.winnerId).count, 400);
 assert(fair.options.some(c => c.count === 300));
 assert.throws(() => E.createQuestion(fixture([360, 355, 200, 100]), 30), /题目不足/);
 assert.throws(() => E.createQuestion(fixture([900, 840, 200, 100]), 30), /题目不足/);
-assert.throws(() => E.createQuestion(fixture([300, 150]), 0), /题目不足/, 'Early questions require at least a 2.5-fold gap');
-validateQuestion(E.createQuestion(fixture([300, 100]), 0), 0);
+assert.throws(() => E.createQuestion(fixture([500, 250]), 0), /题目不足/, 'Early questions require at least a 2.5-fold gap');
+validateQuestion(E.createQuestion(fixture([500, 100]), 0), 0);
 assert.throws(() => E.createQuestion(fixture([99, 20]), 0), /题目不足/);
-const thresholdBank = fixture([90, 40]);
-assert.throws(() => E.createQuestion(thresholdBank, 4), /题目不足/);
-validateQuestion(E.createQuestion(thresholdBank, 5, 0, new Set(), [], random), 5);
+const thresholdBank = fixture([400, 150, 100]);
+assert.throws(() => E.createQuestion(thresholdBank, 7), /题目不足/);
+validateQuestion(E.createQuestion(thresholdBank, 8, 0, new Set(), [], random), 8);
 const distributions = [];
 for (const score of [0, 12, 30, 50]) {
   const ratios = []; let commonRunner = 0;
@@ -125,8 +129,32 @@ assert(distributions[0].medianRatio >= 3, 'Opening questions should favor much l
 assert(distributions[3].medianRatio >= 1.25 && distributions[3].medianRatio <= 1.5);
 assert(distributions[3].commonRunner >= 180, 'Late rounds should usually have at least two nonrare options');
 console.log('Leading-pair distribution:', JSON.stringify(distributions));
+const compositionProfiles = [];
+for (const score of [4,8,12,18,24,30,50]) {
+  let sameLength = 0, singleMajority = 0, triples = 0;
+  const winningCounts = [], used = new Set();
+  let recent = [];
+  for (let i = 0; i < 200; i++) {
+    const q = E.createQuestion(catalog, score, 0, used, recent, random);
+    validateQuestion(q, score);
+    used.add(q.signature);
+    recent = [...recent, ...q.options.map(c=>c.id)].slice(-30);
+    if (new Set(q.options.map(c=>c.cards.length)).size === 1) sameLength++;
+    if (q.options.filter(c=>c.cards.length===1).length >= q.options.length / 2) singleMajority++;
+    if (q.options.some(c=>c.cards.length===3)) triples++;
+    const winner = q.options.find(c=>c.id===q.winnerId);
+    winningCounts.push(winner.capped?1001:winner.count);
+  }
+  winningCounts.sort((a,b)=>a-b);
+  assert(sameLength >= 160, 'At least 80% of sampled questions should compare equal card counts');
+  if (score >= 8) assert(singleMajority <= 24, 'Midgame single-card majorities should stay below 12%');
+  if (score >= 18) assert(triples >= 40, 'Three-card combinations must remain meaningfully represented');
+  compositionProfiles.push({score,sameLength,singleMajority,triples,minimumWinner:winningCounts[0],medianWinner:winningCounts[100]});
+}
+console.log('Composition profiles (200 questions each):', JSON.stringify(compositionProfiles));
+assert.throws(() => E.createQuestion(fixture([100,50,20]), 12), /题目不足/, 'Do not silently fall back to 100-deck midgame winners');
 assert(zeros > 0 && mixedLengths > 0 && singles > 0 && crossClassQuestions > 0);
-for (const boundary of [4, 8, 12, 18, 24, 30, 40, 50]) {
+for (const boundary of [4, 8, 12, 18, 24, 30, 40, 50, 70]) {
   const retry = E.newGame(7);
   retry.score = boundary - 1; retry.round = boundary - 1;
   E.nextQuestion(retry, catalog, random);
