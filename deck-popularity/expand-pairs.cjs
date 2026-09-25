@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const { state, save } = require('./collect.cjs');
 const { query } = require('./expand-small.cjs');
 const { attachExamples } = require('./examples.cjs');
+const E = require('./engine.js');
 const file = path.join(__dirname, 'data.js');
 const ctx = { window: {} };
 vm.runInNewContext(fs.readFileSync(file, 'utf8'), ctx);
@@ -16,9 +17,10 @@ function makeBatch() {
   for (let classId = 1; classId <= 7; classId++) {
     const pairs = new Map();
     for (const deck of Object.values(state.decks).filter(d => d.classId === classId)) {
-      const ids = deck.cards.filter(id => previous.cards[id]?.classId === classId).sort((a,b) => a-b);
+      const ids = deck.cards.filter(id => previous.cards[id]?.classId === classId || previous.cards[id]?.classId === 0).sort((a,b) => a-b);
       for (let i=0;i<ids.length;i++) for (let j=i+1;j<ids.length;j++) {
         const cards = [ids[i],ids[j]], id = keyFor(classId,cards);
+        if (!E.legalClassCombination(cards,classId,previous.cards)) continue;
         if (known.has(id)) continue;
         if (!pairs.has(id)) pairs.set(id,{id,classId,cards,frequency:0});
         pairs.get(id).frequency++;

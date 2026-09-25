@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { state, request, save } = require('./collect.cjs');
+const E = require('./engine.js');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'data.js'), 'utf8'), context);
 const previous = context.window.DECK_POPULARITY_DATA;
@@ -57,10 +58,10 @@ async function main() {
     save();
   }
   const combos = new Map(Object.values(state.combos)
-    .filter(c => c.method === 'search' && new Set(c.cards).size === c.cards.length && c.cards.every(id => previous.cards[id]))
+    .filter(c => c.method === 'search' && new Set(c.cards).size === c.cards.length && E.legalClassCombination(c.cards,c.classId,previous.cards))
     .map(c => [c.id, c]));
   for (const [poolKey, pool] of Object.entries(state.pools)) {
-    const ids = Object.values(previous.cards).filter(c => c.classId === pool.classId && !pool.baseCards.includes(c.id)).map(c => c.id);
+    const ids = Object.values(previous.cards).filter(c => (c.classId === pool.classId || c.classId === 0) && !pool.baseCards.includes(c.id)).map(c => c.id);
     const decks = pool.deckKeys.map(key => state.decks[key].quantities);
     if (decks.length !== pool.count || !decks.every(d => pool.baseCards.every(id => d[id] >= 1))) throw Error('Incomplete evidence pool');
     let positive = 0, zero = 0;
@@ -68,6 +69,7 @@ async function main() {
     for (const id of ids) candidates.push([...pool.baseCards, id]);
     if (pool.baseCards.length === 2) for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) candidates.push([...pool.baseCards, ids[i], ids[j]]);
     for (const cards of shuffle(candidates)) {
+      if (!E.legalClassCombination(cards,pool.classId,previous.cards)) continue;
       const count = decks.filter(d => cards.every(id => d[id] >= 1)).length;
       if ((count === 0 && zero >= 20) || (count > 0 && positive >= 100)) continue;
       const key = keyFor(pool.classId, cards);

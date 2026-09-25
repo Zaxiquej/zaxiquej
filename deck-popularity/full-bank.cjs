@@ -5,10 +5,10 @@ function buildBank(state, sourceCards) {
   const combos = new Map();
   const pools = Object.entries(state.pools).sort((a,b)=>b[1].queriedAt.localeCompare(a[1].queriedAt));
   for (const [key,p] of pools) {
-    if (!p.baseCards.length || p.baseCards.length > 3 || new Set(p.baseCards).size!==p.baseCards.length || p.baseCards.some(id=>sourceCards[id]?.classId!==p.classId)) continue;
+    if (!p.baseCards.length || p.baseCards.length > 3 || new Set(p.baseCards).size!==p.baseCards.length || !E.legalClassCombination(p.baseCards,p.classId,sourceCards)) continue;
     const decks = p.deckKeys.map(ref=>state.decks[ref]?.quantities);
     if(!Number.isInteger(p.count) || p.count<0 || decks.length!==p.count || new Set(p.deckKeys).size!==p.count || !decks.every(q=>q && p.baseCards.every(id=>q[id]>=1))) throw Error('Incomplete source pool: '+key);
-    const extra = Object.values(sourceCards).filter(c=>c.classId===p.classId && !p.baseCards.includes(c.id)).map(c=>c.id);
+    const extra = Object.values(sourceCards).filter(c=>(c.classId===p.classId || c.classId===0) && !p.baseCards.includes(c.id)).map(c=>c.id);
     const candidates = [[...p.baseCards]];
     if(p.baseCards.length<=2) for(const id of extra) candidates.push([...p.baseCards,id]);
     if(p.baseCards.length===1) for(let i=0;i<extra.length;i++) for(let j=i+1;j<extra.length;j++) candidates.push([...p.baseCards,extra[i],extra[j]]);
@@ -29,7 +29,7 @@ function validateBank(data,state) {
   if(data.mode!=='full'||data.copiesPerCard!==3) throw Error('Wrong full-playset schema');
   const ids=new Set();
   for(const c of data.combos) {
-    if(ids.has(c.id)||c.copies!==3||c.capped||c.cards.length<1||c.cards.length>3||new Set(c.cards).size!==c.cards.length||c.cards.some(id=>data.cards[id]?.classId!==c.classId)) throw Error('Invalid full combination');
+    if(ids.has(c.id)||c.copies!==3||c.capped||c.cards.length<1||c.cards.length>3||new Set(c.cards).size!==c.cards.length||!E.legalClassCombination(c.cards,c.classId,data.cards)) throw Error('Invalid full combination');
     ids.add(c.id);
     const p=state.pools[c.pool];
     if(!p||p.classId!==c.classId||!p.baseCards.length||p.deckKeys.length!==p.count||new Set(p.deckKeys).size!==p.count||!p.baseCards.every(id=>c.cards.includes(id))||!p.deckKeys.every(ref=>state.decks[ref]?.classId===p.classId&&p.baseCards.every(id=>state.decks[ref].quantities[id]>=1))) throw Error('Missing complete evidence');

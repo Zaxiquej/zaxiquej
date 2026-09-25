@@ -39,7 +39,6 @@ body.game-active .container > header, body.game-active .data-note, body.game-act
 .mobile-actions { display: flex; align-items: center; gap: 16px; padding: 12px 32px; border-top: 1px solid #dce2e6; background: #fff; }
 #mobile-action-status { flex: 1; min-width: 0; font-size: 14px; color: #52616c; }
 #mobile-next { min-width: 200px; min-height: 46px; font-size: 17px; font-weight: bold; }
-@media (min-width: 601px) { #mobile-action { display: none; } }
 .lost { color: #d8dcde; }
 .round-heading { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .round-heading h2 { margin: 0; }
@@ -60,7 +59,6 @@ body.game-active .container > header, body.game-active .data-note, body.game-act
 .card-quantity { position: absolute; bottom: 5px; right: 5px; padding: 0 7px; background: #283c4d; color: #fff; border: 1px solid #fff; border-radius: 3px; font-size: 15px; font-weight: bold; line-height: 1.65; }
 .card-name { font-size: 12px; line-height: 1.55; margin: 6px 0 10px; overflow-wrap: anywhere; }
 .choose { display: block; width: 100%; margin-top: 8px; }
-.option.selected { border-color: #2476ad; box-shadow: inset 0 0 0 1px #2476ad; background: #f0f7fc; }
 .option.correct { border: 2px solid #458b64; padding: 13px; background: #f4faf6; }
 .option.wrong { border: 2px solid #b86b66; padding: 13px; background: #fcf6f5; }
 .option.correct .answer-count { color: #287548; }
@@ -112,9 +110,9 @@ dialog h2 { font-size: 18px; padding-top: 5px; }
   .lives { font-size: 21px; gap: 1px; white-space: nowrap; }
   .mobile-actions { display: flex; align-items: center; gap: 10px; padding: 10px max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); border-top: 1px solid #dce2e6; background: #fff; }
   #mobile-action-status { flex: 1; min-width: 0; font-size: 12px; line-height: 1.5; color: #52616c; }
-  #mobile-action, #mobile-next { min-height: 44px; min-width: 134px; padding: 8px 12px; font-size: 15px; }
-  .mobile-actions.answered { flex-direction: column; gap: 6px; }
-  .mobile-actions.answered #mobile-action-status { flex: none; text-align: center; }
+  #mobile-next { min-height: 44px; min-width: 134px; padding: 8px 12px; font-size: 15px; }
+  .mobile-actions { flex-direction: column; gap: 6px; }
+  #mobile-action-status { flex: none; text-align: center; }
   #mobile-next { width: 100%; min-height: 48px; font-size: 17px; font-weight: bold; }
   #round-hint { font-size: 12px; margin: 6px 0; }
   .count-hints { margin: 10px 0; padding: 7px 10px; }

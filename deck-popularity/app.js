@@ -5,8 +5,8 @@
   const banks = { presence: window.DECK_POPULARITY_DATA, full: window.DECK_POPULARITY_FULL_DATA };
   const fullReady = banks.full?.schemaVersion === 1 && banks.full.mode === 'full' && banks.full.copiesPerCard === 3 && Array.isArray(banks.full.combos) && banks.full.combos.length > 0;
   let mode = 'presence', data = banks.presence;
-  let catalog, state, pendingId = null;
-  const mobileLayout = window.matchMedia('(max-width: 600px)');
+  let catalog, state;
+  window.DeckTapGuard.install($('game'), $('game-scroll'));
   const letterFor = E.optionLabel;
   const questionClass = q => q.classId ? E.CLASSES[q.classId] : '跨职业';
   const number = value => value.toLocaleString('zh-CN');
@@ -81,32 +81,17 @@
   function updateMobileAction() {
     const answered = state.answered;
     const correct = state.selectedId === state.question.winnerId;
-    const index = state.question.options.findIndex(c => c.id === pendingId);
     $('mobile-actions').classList.toggle('answered', answered);
-    $('mobile-action').hidden = answered;
-    $('mobile-next').hidden = !answered && mobileLayout.matches;
     $('mobile-next').disabled = !answered;
     $('mobile-next').textContent = answered && state.over ? '查看结算' : answered && !correct ? '重新挑战本轮' : '下一轮';
-    $('mobile-action').disabled = !answered && index < 0;
-    $('mobile-action').textContent = index < 0 ? '请选择组合' : `提交组合 ${letterFor(index)}`;
-    $('mobile-action-status').textContent = answered ? (correct ? '答对了！+1 分' : `答错了，−1 血${state.over ? '。本局结束' : ''}`) : !mobileLayout.matches ? '点击选项作答' : index < 0 ? '先选一组，再提交' : `已选 ${letterFor(index)}，可更改选择`;
+    $('mobile-action-status').textContent = answered ? (correct ? '答对了！+1 分' : `答错了，−1 血${state.over ? '。本局结束' : ''}`) : '点击选项作答';
   }
   function chooseOption(id) {
     if (state.answered || state.over) return;
-    if (!mobileLayout.matches) { submit(id); return; }
-    pendingId = id;
-    [...$('options').children].forEach((option, index) => {
-      const selected = state.question.options[index].id === id;
-      option.classList.toggle('selected', selected);
-      const button = option.querySelector('.choose');
-      button.setAttribute('aria-pressed', String(selected));
-      button.textContent = `${selected ? '已选' : '选'} ${letterFor(index)}`;
-    });
-    updateMobileAction();
+    submit(id);
   }
   function renderQuestion() {
     const q = state.question;
-    pendingId = null;
     renderScore();
     $('round-title').textContent = `第 ${state.round} 轮${q.classId ? ' · ' + E.CLASSES[q.classId] : ''}`;
     $('round-hint').textContent = '哪组出现在最多有记录的指定卡组中？' + (mode === 'full' ? '每种卡均需 3 张。' : '') + '点卡图可放大。';
@@ -161,7 +146,6 @@
       const combo = q.options[index];
       const winner = combo.id === q.winnerId;
       const chosen = combo.id === id;
-      option.classList.remove('selected');
       option.classList.toggle('correct', winner);
       option.classList.toggle('wrong', chosen && !winner);
       option.querySelector('.answer-count').textContent = `${countText(combo)} 套`;
@@ -228,10 +212,6 @@
     catch (error) { summary(true); showError(error); }
   }
   $('mobile-next').addEventListener('click', advanceRound);
-  mobileLayout.addEventListener('change', () => { if (state?.question && !$('game').hidden) updateMobileAction(); });
-  $('mobile-action').addEventListener('click', () => {
-    if (!state?.answered && pendingId) submit(pendingId);
-  });
   $('close-card').addEventListener('click', () => $('card-dialog').close());
   $('card-dialog').addEventListener('click', event => { if (event.target === $('card-dialog')) { const r = event.target.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) event.target.close(); } });
   document.addEventListener('keydown', event => {

@@ -1,7 +1,7 @@
 {
-  "version": "4.95",
+  "version": "4.99",
   "source": "https://shadowverse-wb.com/web/CardList/cardList",
-  "retrieved": "2026-09-18T00:27:23.510Z",
+  "retrieved": "2026-09-24T20:47:30.156Z",
   "count": 312,
   "note": "冻结快照的312张非token金／虹卡，不是实时全量保证。原文分句仅用于检查，绝不直接作为随机池。正则只能标记候选缺口，未命中也不能认定已覆盖。",
   "manuallyCompared": [
@@ -622,7 +622,12 @@
         "【进化时】召唤3个『妖精』。",
         "自己的妖精·随从进入战场时，使其获得【疾驰】。"
       ],
-      "identifiedModules": [],
+      "identifiedModules": [
+        {
+          "id": "fairyTribe",
+          "scope": "妖精种族供给、强化、进化、计数伤害、进场反应接入既有种族组合器"
+        }
+      ],
       "reviewFlags": [],
       "missingTokens": [],
       "status": "已扫描原文与关联纹章／信仰；不声明整卡完整支持"
@@ -674,7 +679,12 @@
         "【进化时】发动X次「对对手的战场上的随机1个随从造成1点伤害」。",
         "X为自己的手牌中的妖精·随从的张数。"
       ],
-      "identifiedModules": [],
+      "identifiedModules": [
+        {
+          "id": "fairyTribe",
+          "scope": "妖精种族供给、强化、进化、计数伤害、进场反应接入既有种族组合器"
+        }
+      ],
       "reviewFlags": [
         {
           "family": "数值历史计数",
@@ -1846,7 +1856,12 @@
         "【入场曲】召唤2个『妖精』。",
         "【进化时】使自己的战场上的所有妖精·随从+1/+0。"
       ],
-      "identifiedModules": [],
+      "identifiedModules": [
+        {
+          "id": "fairyTribe",
+          "scope": "妖精种族供给、强化、进化、计数伤害、进场反应接入既有种族组合器"
+        }
+      ],
       "reviewFlags": [],
       "missingTokens": [],
       "status": "已扫描原文与关联纹章／信仰；不声明整卡完整支持"
@@ -2089,7 +2104,12 @@
         "【谢幕曲】【土之秘术 2】召唤1个『暴食的安纳提玛·拉拉安瑟姆』。",
         "【超进化时】选择对手的战场上的2个随从，破坏这些随从。"
       ],
-      "identifiedModules": [],
+      "identifiedModules": [
+        {
+          "id": "resurrection",
+          "scope": "可持续自我复活独立模块：自伤、唤灵、土之秘术三类代价；最终身材与保留能力重新计价，不移除复活者的谢幕曲"
+        }
+      ],
       "reviewFlags": [],
       "missingTokens": [],
       "status": "已扫描原文与关联纹章／信仰；不声明整卡完整支持"
@@ -4212,7 +4232,12 @@
         "【进化时】发动与【入场曲】相同的能力。",
         "【超进化时】使自己的战场上的所有妖精·随从获得【毁灭】。"
       ],
-      "identifiedModules": [],
+      "identifiedModules": [
+        {
+          "id": "fairyTribe",
+          "scope": "妖精种族供给、强化、进化、计数伤害、进场反应接入既有种族组合器"
+        }
+      ],
       "reviewFlags": [],
       "missingTokens": [],
       "status": "已扫描原文与关联纹章／信仰；不声明整卡完整支持"
@@ -4800,7 +4825,7 @@
       "identifiedModules": [
         {
           "id": "drawCostLuck",
-          "scope": "主教抽牌费用集合与正负收益独立重组；仅真实抽牌触发，排除立即抽牌回环"
+          "scope": "主教抽牌费用集合／奇偶／阈值／区间与命中、未命中收益独立重组；未命中可为空、己方收益或负面，排除立即抽牌回环"
         }
       ],
       "reviewFlags": [],

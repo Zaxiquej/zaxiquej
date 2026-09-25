@@ -1,35 +1,49 @@
 {
-  "version": "4.76",
+  "version": "5.02",
   "samples": 14000,
   "counts": {
-    "scaled": 32,
-    "bodyReserve": 2,
-    "rushBody": 1,
-    "plainBody": 1
+    "ordinary": 116,
+    "low": 43,
+    "mid": 49,
+    "high": 24,
+    "heal": 12,
+    "damage": 40,
+    "draw": 23,
+    "bodyReserve": 0,
+    "rushBody": 0,
+    "plainBody": 0
   },
   "payoffs": [
-    "heal",
-    "damage",
-    "face",
     "tokenHand",
-    "allyBuff"
+    "damage",
+    "heal",
+    "allyBuff",
+    "typeSearch",
+    "draw",
+    "grantRush",
+    "keywordSearch",
+    "tokenSummon",
+    "acquisitionDiscount",
+    "tribeBuff",
+    "lowestLeaderDamage",
+    "face",
+    "tribeSupply",
+    "statDebuff",
+    "handBuff",
+    "summonWard"
   ],
   "examples": {
-    "repro": {
-      "name": "随机卡牌#94817342",
-      "chaos": false
+    "high": {
+      "name": "弃牌质量132",
+      "chaos": true
     },
-    "scaled": {
-      "name": "弃牌质量1135",
-      "chaos": false
+    "low": {
+      "name": "弃牌质量270",
+      "chaos": true
     },
-    "plainBody": {
-      "name": "弃牌质量1705",
-      "chaos": false
-    },
-    "rushBody": {
-      "name": "弃牌质量11108",
-      "chaos": false
+    "mid": {
+      "name": "弃牌质量588",
+      "chaos": true
     }
   }
 }

@@ -5,6 +5,9 @@ const E=require('./engine.js');
 global.fetch=()=>{throw Error('Offline tests must never access the network');};
 const card={id:101,classId:1,name:'Fixture'};
 const source=Object.fromEntries([101,102,103].map(id=>[id,{id,classId:1,name:'Fixture '+id}]));
+source[1000]={id:1000,classId:0,name:'Neutral one'};
+source[1001]={id:1001,classId:0,name:'Neutral two'};
+source[104]={id:104,classId:2,name:'Other class'};
 const blank=()=>({version:1,decks:{},pools:{},checked:{}});
 function deck(i){
   const quantities={101:i%3===0?3:2,102:i%2===0?3:1,103:1};
@@ -41,6 +44,11 @@ async function main(){
   assert.equal(count('101'),9,'Presence count 25 must not become full count');
   assert.equal(count('101,102'),5,'Both cards must have three copies');
   assert.equal(count('101,103'),0,'Present but never three copies is a genuine zero');
+  assert.equal(count('101,1000'),9,'Full neutral + class pair counts actual copies');
+  assert.equal(count('101,1000,1001'),9,'Two neutrals are allowed with a class anchor');
+  assert.ok(data.combos.every(c=>E.legalClassCombination(c.cards,c.classId,data.cards)));
+  const legalityRows=[[101,1000],[101,1000,1001],[1000],[1000,1001],[101,104],[101,9999]].map((cards,i)=>({id:'legality:'+i,classId:1,cards,count:500,capped:false}));
+  assert.equal(E.buildCatalog({schemaVersion:1,cards:source,combos:legalityRows}).total,2,'Reject neutral-only, mixed-class and unknown-card combinations');
   validateBank(data,state);
   assert.ok(data.combos.every(c=>c.copies===3&&!c.capped));
   const corrupt=structuredClone(data);corrupt.combos[0].count++;

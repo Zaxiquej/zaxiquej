@@ -1,0 +1,475 @@
+{
+  "counts": {
+    "进化时": 16,
+    "常驻": 46,
+    "超进化时": 38,
+    "疾驰": 2
+  },
+  "sampleSize": 3196,
+  "examples": {
+    "进化时": {
+      "version": "5.00",
+      "name": "随机卡牌#59857596",
+      "seed": 3337123285,
+      "type": "follower",
+      "class": 3,
+      "rarity": 3,
+      "cost": 9,
+      "attack": 5,
+      "health": 13,
+      "abilities": [
+        {
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己的牌组中的所有随从的费用-3。",
+          "bodyText": "使自己的牌组中的所有随从的费用-3。",
+          "raw": 21,
+          "price": 21,
+          "ids": [
+            "deckDiscount"
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "bodyText": "本随从获得「1回合可以攻击3次」。",
+          "text": "【进化时】本随从获得「1回合可以攻击3次」。",
+          "raw": 8.08,
+          "price": 5.656,
+          "ids": [
+            "tripleAttack"
+          ],
+          "tokens": [],
+          "repeatPremium": 0,
+          "keywordPremium": 0,
+          "weight": 2,
+          "attackValuation": {
+            "attack": 5,
+            "count": 3
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】回复自己的主战者4点生命值。",
+          "bodyText": "回复自己的主战者4点生命值。",
+          "price": 3.8,
+          "raw": 3.8,
+          "ids": [
+            "coreAnchor",
+            "heal"
+          ],
+          "components": [
+            {
+              "id": "heal",
+              "text": "回复自己的主战者4点生命值。",
+              "raw": 3.8
+            }
+          ],
+          "tokens": [],
+          "major": true
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 48.85178224518895,
+      "spent": 30.46,
+      "bodyAllowance": 18,
+      "theme": "秘法 · 增幅与土印",
+      "highRole": "flexible",
+      "highCostBonus": 3.4000000000000004,
+      "archetype": "modularCore",
+      "corePower": 32.879999999999995,
+      "vanilla": false
+    },
+    "常驻": {
+      "version": "5.00",
+      "name": "随机卡牌#99991271",
+      "seed": 2887485584,
+      "type": "follower",
+      "class": 5,
+      "rarity": 3,
+      "cost": 7,
+      "attack": 8,
+      "health": 6,
+      "abilities": [
+        {
+          "kind": "cost",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】选择自己的1张手牌，使其返回牌组。",
+          "bodyText": "选择自己的1张手牌，使其返回牌组。",
+          "raw": 0,
+          "price": 0,
+          "ids": [
+            "shuffleCost"
+          ],
+          "tokens": []
+        },
+        {
+          "ids": [
+            "bodyPayoff",
+            "damage"
+          ],
+          "raw": 7.5,
+          "boardValue": 0,
+          "text": "【入场曲】选择对手的战场上的1个随从，对其造成6点伤害。",
+          "tokens": [],
+          "kind": "bodyPayoff",
+          "trigger": "入场曲",
+          "condition": "none",
+          "bodyText": "选择对手的战场上的1个随从，对其造成6点伤害。",
+          "price": 7.5,
+          "major": true
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "bodyText": "1回合可以攻击3次。",
+          "text": "1回合可以攻击3次。",
+          "raw": 11.68,
+          "price": 11.68,
+          "ids": [
+            "tripleAttack"
+          ],
+          "tokens": [],
+          "repeatPremium": 0,
+          "keywordPremium": 0,
+          "weight": 2,
+          "attackValuation": {
+            "attack": 8,
+            "count": 3
+          }
+        },
+        {
+          "kind": "emblem",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】使自己获得『纹章：随机卡牌#99991271』。",
+          "bodyText": "使自己获得『纹章：随机卡牌#99991271』。",
+          "raw": 28.84,
+          "price": 7.21,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-5"
+          ],
+          "tokens": [],
+          "major": true
+        }
+      ],
+      "tokens": [],
+      "emblems": [
+        {
+          "id": "emblem-5",
+          "name": "纹章：随机卡牌#99991271",
+          "kind": "emblem",
+          "class": 5,
+          "custom": true,
+          "duration": null,
+          "eventId": "start",
+          "conditionId": "none",
+          "limit": null,
+          "effects": [
+            {
+              "id": "grave",
+              "raw": 1.4,
+              "produces": []
+            },
+            {
+              "id": "splitDamage",
+              "raw": 6.6000000000000005,
+              "produces": []
+            }
+          ],
+          "supportTags": [
+            "start",
+            "none"
+          ],
+          "text": "自己的回合开始时，使自己的墓场+2。对对手的战场上的所有随从分配6点伤害。"
+        }
+      ],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 41.176877670548855,
+      "spent": 26.39,
+      "bodyAllowance": 14,
+      "theme": "幽夜 · 唤灵与谢幕",
+      "highRole": "offense",
+      "highCostBonus": 1.8,
+      "bodyHeadroom": 2,
+      "handCostTrade": {
+        "kind": "shuffleCost",
+        "bodyBonus": 2,
+        "baseBudget": 39.176877670548855
+      },
+      "bodyTrade": {
+        "lost": 4,
+        "payoffRaw": 7.5
+      },
+      "corePower": 48.019999999999996,
+      "archetype": "modularCore",
+      "vanilla": false
+    },
+    "超进化时": {
+      "version": "5.00",
+      "name": "随机卡牌#57451705",
+      "seed": 2627357595,
+      "type": "follower",
+      "class": 5,
+      "rarity": 3,
+      "cost": 8,
+      "attack": 6,
+      "health": 11,
+      "abilities": [
+        {
+          "kind": "invocation",
+          "trigger": "在牌组中发动",
+          "condition": "invocationHistory",
+          "text": "在牌组中发动。自己的回合结束时，若本次对战中自己使用的卡牌张数为17张或以上，则【瞬念召唤】本卡牌。",
+          "bodyText": "在牌组中发动。自己的回合结束时，若本次对战中自己使用的卡牌张数为17张或以上，则【瞬念召唤】本卡牌。",
+          "raw": 7.4350000000000005,
+          "price": 7.4350000000000005,
+          "ids": [
+            "invocation"
+          ],
+          "tokens": [],
+          "invocationMode": "stay",
+          "valuation": {
+            "body": 13.600000000000001,
+            "cardAccess": 0,
+            "effects": 9.3,
+            "delivered": 22.900000000000002,
+            "retainedIds": [
+              "heal",
+              "damageCap"
+            ],
+            "mode": "stay",
+            "threshold": 17,
+            "history": "playedCards",
+            "difficulty": 22.900000000000002,
+            "targetPrice": 7.4350000000000005,
+            "shortfall": 0,
+            "trigger": "自己的回合结束时"
+          }
+        },
+        {
+          "ids": [
+            "heal"
+          ],
+          "raw": 1.9,
+          "boardValue": 0,
+          "text": "本卡牌被【瞬念召唤】时，回复自己的主战者2点生命值。",
+          "tokens": [],
+          "kind": "invocationArrival",
+          "trigger": "本卡牌被【瞬念召唤】时",
+          "condition": "none",
+          "bodyText": "回复自己的主战者2点生命值。",
+          "price": 1.9
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "bodyText": "本随从受到的超过3的伤害变为3。",
+          "text": "本随从受到的超过3的伤害变为3。",
+          "raw": 7.4,
+          "price": 7.4,
+          "ids": [
+            "damageCap"
+          ],
+          "tokens": []
+        },
+        {
+          "kind": "effect",
+          "trigger": "超进化时",
+          "condition": "none",
+          "bodyText": "本随从获得「1回合可以攻击3次」。",
+          "text": "【超进化时】本随从获得「1回合可以攻击3次」。",
+          "raw": 9.120000000000001,
+          "price": 4.5600000000000005,
+          "ids": [
+            "tripleAttack"
+          ],
+          "tokens": [],
+          "repeatPremium": 0,
+          "keywordPremium": 0,
+          "weight": 2,
+          "attackValuation": {
+            "attack": 6,
+            "count": 3
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】回复自己的主战者5点生命值。",
+          "bodyText": "回复自己的主战者5点生命值。",
+          "price": 4.75,
+          "raw": 4.75,
+          "ids": [
+            "coreAnchor",
+            "heal"
+          ],
+          "components": [
+            {
+              "id": "heal",
+              "text": "回复自己的主战者5点生命值。",
+              "raw": 4.75
+            }
+          ],
+          "tokens": [],
+          "major": true
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 43.47852556072176,
+      "spent": 26.05,
+      "bodyAllowance": 17,
+      "theme": "幽夜 · 唤灵与谢幕",
+      "highRole": "offense",
+      "highCostBonus": 2.6,
+      "bodyHeadroom": 1,
+      "archetype": "modularCore",
+      "corePower": 28.57,
+      "vanilla": false
+    },
+    "疾驰": {
+      "version": "5.00",
+      "name": "随机卡牌#99050731",
+      "seed": 2742000579,
+      "type": "follower",
+      "class": 3,
+      "rarity": 3,
+      "cost": 8,
+      "attack": 2,
+      "health": 5,
+      "abilities": [
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【疾驰】",
+          "price": 2.6999999999999997,
+          "raw": 2.6999999999999997,
+          "ids": [
+            "疾驰"
+          ],
+          "major": true
+        },
+        {
+          "ids": [
+            "silence"
+          ],
+          "raw": 3.8,
+          "boardValue": 0,
+          "text": "【进化时】选择对手的战场上的1个随从，使其失去所有能力。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "bodyText": "选择对手的战场上的1个随从，使其失去所有能力。",
+          "price": 1.444,
+          "major": false
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "bodyText": "1回合可以攻击3次。",
+          "text": "1回合可以攻击3次。",
+          "raw": 5.6,
+          "price": 5.6,
+          "ids": [
+            "tripleAttack"
+          ],
+          "tokens": [],
+          "repeatPremium": 0,
+          "keywordPremium": 2.7399999999999998,
+          "weight": 2,
+          "attackValuation": {
+            "attack": 2,
+            "count": 3
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】回复自己的主战者5点生命值。",
+          "bodyText": "回复自己的主战者5点生命值。",
+          "price": 1.864375,
+          "raw": 4.75,
+          "ids": [
+            "coreAnchor",
+            "heal"
+          ],
+          "components": [
+            {
+              "id": "heal",
+              "text": "回复自己的主战者5点生命值。",
+              "raw": 4.75
+            }
+          ],
+          "tokens": [],
+          "major": true
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 31.21,
+      "spent": 11.61,
+      "bodyAllowance": 7,
+      "theme": "秘法 · 增幅与土印",
+      "highRole": "offense",
+      "highCostBonus": 2.6,
+      "bodyHeadroom": 1,
+      "printedBody": [
+        3,
+        5
+      ],
+      "stormPlan": {
+        "attack": 3,
+        "health": 5,
+        "effectAllowance": 12.84
+      },
+      "archetype": "modularCore",
+      "corePower": 17.65,
+      "stormBodyTrade": {
+        "targetLoss": 0,
+        "preexistingLoss": 8,
+        "capLoss": 0,
+        "extraLoss": 1,
+        "attackLost": 1,
+        "healthLost": 0
+      },
+      "stormPackageTrade": {
+        "beforeAttack": 3,
+        "beforeHealth": 5,
+        "attackLost": 1,
+        "healthLost": 0,
+        "value": 7.822791666666667,
+        "effectValue": 1.1027916666666666,
+        "faceDamage": 0,
+        "attacks": 3,
+        "limit": 8
+      },
+      "vanilla": false
+    }
+  }
+}

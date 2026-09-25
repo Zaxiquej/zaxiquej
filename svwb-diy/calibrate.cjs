@@ -1,6 +1,7 @@
 // Compile auditable priors from the downloaded official snapshot, not generated cards.
 const fs=require('node:fs');
 const reference=require('./reference.json');
+const classIdentity=require('./class-identity.js').compile(reference);
 const keywords=['守护','突进','疾驰','毁灭','虹吸','潜行','威慑','灵气','屏障'];
 const triggers=['入场曲','进化时','超进化时','谢幕曲','攻击时','爆能强化','启动'];
 const patterns={draw:/抽取(\d+)张(?:卡牌|随从|法术|护符)/g,heal:/回复自己的主战者(\d+)点生命值/g,buff:/本随从\+(\d+)\/\+\d+/g,allyBuff:/使其\+(\d+)\/\+\d+/g,boost:/发动(\d+)次魔力增幅/g,earth:/土之印\+(\d+)/g,grave:/墓场\+(\d+)/g,tokenHand:/将(\d+)张『/g,tokenSummon:/召唤(\d+)个『/g,reanimate:/【亡者召还 (\d+)】/g,combo:/【连击 (\d+)】/g,necromancy:/【唤灵 (\d+)】/g};
@@ -35,6 +36,9 @@ const allRows=reference.cards.filter(c=>!c.token).map(c=>{
  for(const [id,re]of Object.entries({splitDamage:/分配\d+点伤害/,grantRush:/使其获得【突进】/,grantWard:/使其获得【守护】/,grantBarrier:/使其获得【屏障】/,recruit:/召唤.*牌组.*随从/,boardWipe:/破坏战场上的所有随从/}))if(re.test(c.text))effects.add(id);
  const systemEffects={wardSearch:/抽取.*守护|牌组.*守护/,wardBuff:/拥有【守护】.*\+/,amuletSearch:/抽取\d+张护符/,amuletRecruit:/召唤.*牌组.*护符/,amuletRevive:/召唤.*被破坏.*护符/,amuletBreak:/破坏自己的.*护符/,artifactCopy:/手牌中的.*创造物.*复制随从/,artifactBuff:/所有创造物.*\+/,bloodDraw:/抽取.*对自己的主战者造成/,missingHealthDamage:/生命值为\d+或以下/};
  for(const [id,re]of Object.entries(systemEffects))if(re.test(c.text))effects.add(id);
+ // Named engines must not disappear into the generic token/draw bucket.
+ const namedEffects={experimentSupply:/将\d+张『沉溺的实验体』/,experimentSummon:/召唤\d+[个张]『沉溺的实验体』/,experimentBuff:/『沉溺的实验体』[^。]*\+/,experimentGrant:/『沉溺的实验体』[^。]*获得【/,coreSupply:/将[^。]*(?:过往|未来).*核心/,corePair:/过往.*核心[^。]*未来.*核心/,fusionArtifactHand:/将[^。]*(?:城堡|进攻).*创造物/,fusionArtifactSummon:/召唤[^。]*(?:城堡|进攻).*创造物/,treasureSupply:/将[^。]*(?:财宝|黄金短剑|黄金项链)/,coinSupply:/将[^。]*金币/,flagSummon:/召唤[^。]*海盗旗/,flagAdvance:/海盗旗[^。]*倒计数-/,spellboostDiscount:/【魔力增幅时】使本卡牌的费用-/,handCostUp:/手牌[^。]*费用\+/,crystalHandBuff:/『天晶魔手』[^。]*\+/,tribeBuff:/(?:士兵|海洋|巨像|亡者|妖精)·随从[^。]*\+/,tribeSupply:/将[^。]*(?:士兵|海洋|巨像|亡者|妖精)·随从[^。]*加入手牌/};
+ for(const [id,re]of Object.entries(namedEffects))if(re.test(c.text))effects.add(id);
  for(const [kind,re]of Object.entries({destroy:/选择对手[^。\n]*随从[^。\n]*破坏|破坏对手[^。\n]*随从/,banish:/对手[^。\n]*随从[^。\n]*消失/,keywordSearch:/从自己的牌组[^。\n]*拥有【|抽取\d+张拥有【/,typeSearch:/抽取\d+张(?:随从|法术|护符)/,teamBuff:/所有随从\+\d/,bounce:/自己的[^。\n]*返回手牌/,enemyBounce:/对手的[^。\n]*返回手牌/,ramp:/能量点最大值\+\d/,amulet:/倒计数-\d/,artifact:/『解析的创造物』[^。\n]*加入手牌/,crystalHandSummon:/召唤\d+个『天晶魔手』/,crystalHandSupply:/将\d+张『天晶魔手』加入手牌/,crystalHandBuff:/所有『天晶魔手』\+\d/}))if(re.test(c.text))effects.add(kind);
  return {id:c.id,type:c.type===1?'follower':c.type===4?'spell':'amulet',cost:c.cost,band:band(c.cost),class:c.class,rarity:c.rarity-1,keywords:ks,triggers:ts,values,effects:[...effects]};
 });
@@ -44,13 +48,19 @@ function compileProfiles(rows){
 const profiles={};
 for(let b=0;b<3;b++)for(let cls=0;cls<8;cls++)for(let rarity=0;rarity<4;rarity++){
  const br=rows.filter(c=>c.band===b),cr=br.filter(c=>c.class===cls),rr=br.filter(c=>c.rarity===rarity);
- const estimate=test=>{
+ const local=cr.filter(c=>c.rarity===rarity);
+ const estimate=(test,classFocused=false)=>{
   const base=(br.filter(test).length+rate(rows,test)*8)/(br.length+8);
+  if(classFocused&&rows[0]?.type==='follower'&&cls!==0){
+    const own=(cr.filter(test).length+base*6)/(cr.length+6);
+    const joint=(local.filter(test).length+own*6)/(local.length+6);
+    return +(base*(rarity>=2?.15:.25)+own*.55+joint*(rarity>=2?.30:.20)).toFixed(5);
+  }
   return +(base*.45+(cr.filter(test).length+base*12)/(cr.length+12)*.35+(rr.filter(test).length+base*18)/(rr.length+18)*.2).toFixed(5);
  };
  const keywordCounts=Array.from({length:4},(_,n)=>estimate(c=>Math.min(3,c.keywords.length)===n));
  const effectKinds=[...new Set(rows.flatMap(c=>c.effects))];
- profiles[`${b}:${cls}:${rarity}`]={keywordCounts,keywords:Object.fromEntries(keywords.map(k=>[k,estimate(c=>c.keywords.includes(k))])),triggers:Object.fromEntries(triggers.map(t=>[t,estimate(c=>c.triggers.includes(t))])),effects:Object.fromEntries(effectKinds.map(k=>[k,estimate(c=>c.effects.includes(k))]))};
+ profiles[`${b}:${cls}:${rarity}`]={keywordCounts,keywords:Object.fromEntries(keywords.map(k=>[k,estimate(c=>c.keywords.includes(k))])),triggers:Object.fromEntries(triggers.map(t=>[t,estimate(c=>c.triggers.includes(t),true)])),effects:Object.fromEntries(effectKinds.map(k=>[k,estimate(c=>c.effects.includes(k),true)]))};
 }
 return profiles;
 }
@@ -88,8 +98,12 @@ const amulets=reference.cards.filter(c=>!c.token&&[2,3].includes(c.type));
 const faithIds=[...new Set(reference.specialEffects.filter(e=>e.type===4).flatMap(e=>e.sourceCardIds))].filter(id=>followers.some(c=>c.id===id));
 const typeAudit={source:reference.source,retrieved:reference.retrieved,counts:Object.fromEntries(['follower','spell','amulet'].map(t=>[t,allRows.filter(c=>c.type===t).length])),faithFollowerIds:faithIds,selfCopyIds:rows.filter(c=>c.effects.includes('selfCopy')).map(c=>c.id),stormFollowerIds:rows.filter(c=>c.keywords.includes('疾驰')).map(c=>c.id),amulets:{countdown:amulets.filter(c=>c.type===3).length,activation:amulets.filter(c=>c.text.includes('【启动】')).length,selfDestruct:amulets.filter(c=>/【启动】破坏本卡牌/.test(c.text)).length},cards:reference.cards.filter(c=>!c.token&&c.type!==1).map(c=>({id:c.id,name:c.name,class:c.class,cost:c.cost,type:c.type,text:c.text}))};
 fs.writeFileSync(__dirname+'/card-types-audit.json',JSON.stringify(typeAudit,null,2));
-const data={source:reference.source,retrieved:reference.retrieved,followers:rows.length,costPriors,excludedCosts,profiles,quantities,mechanisms:Object.fromEntries(Object.entries(mechanisms).map(([id,m])=>[id,{class:m.class,followers:m.followers,cards:m.cards.length}]))};
-Object.assign(data,{typeProfiles,typeQuantities,typeStats:{counts:typeAudit.counts,faithFollowers:faithIds.length,selfCopyFollowers:typeAudit.selfCopyIds.length,amulets:typeAudit.amulets}});
+const rarityPriors=Object.fromEntries(['follower','spell','amulet'].map(type=>[type,[0,1,2,3].map(r=>allRows.filter(c=>c.type===type&&c.rarity===r).length)]));
+const rushRows=rows.filter(c=>c.keywords.includes('突进'));
+const rushEvolutionRate=rate(rushRows,c=>c.triggers.some(t=>['进化时','超进化时'].includes(t)));
+const data={source:reference.source,retrieved:reference.retrieved,followers:rows.length,costPriors,rarityPriors,rushEvolutionRate,excludedCosts,profiles,quantities,mechanisms:Object.fromEntries(Object.entries(mechanisms).map(([id,m])=>[id,{class:m.class,followers:m.followers,cards:m.cards.length}]))};
+Object.assign(data,{classIdentityProfiles:classIdentity.profiles,typeProfiles,typeQuantities,typeStats:{counts:typeAudit.counts,faithFollowers:faithIds.length,selfCopyFollowers:typeAudit.selfCopyIds.length,amulets:typeAudit.amulets}});
+fs.writeFileSync(__dirname+'/class-identity-official.json',JSON.stringify(classIdentity,null,2));
 fs.writeFileSync(__dirname+'/mechanisms-audit.json',JSON.stringify({source:reference.source,retrieved:reference.retrieved,mechanisms},null,2));
 fs.writeFileSync(__dirname+'/calibration.js',`// Generated by calibrate.cjs from reference.json.\n(function(root){const data=${JSON.stringify(data)};if(typeof module!=='undefined'&&module.exports)module.exports=data;else root.SVWBCalibration=data;})(typeof globalThis!=='undefined'?globalThis:this);\n`);
 const report={source:reference.source,retrieved:reference.retrieved,followers:rows.length,bands:[0,1,2].map(b=>{const rs=rows.filter(c=>c.band===b);return {band:['0-3','4-6','7+'][b],cards:rs.length,keywords:Object.fromEntries(keywords.map(k=>[k,rs.filter(c=>c.keywords.includes(k)).length])),anyKeyword:rs.filter(c=>c.keywords.length).length,triggers:Object.fromEntries(triggers.map(t=>[t,rs.filter(c=>c.triggers.includes(t)).length]))};}),numericSamples:Object.fromEntries(kinds.map(k=>[k,rows.reduce((sum,c)=>sum+c.values.filter(v=>v.kind===k).length,0)]))};

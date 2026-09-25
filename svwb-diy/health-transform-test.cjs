@@ -26,9 +26,9 @@ for(let i=0;i<18000;i++){
  const a=c.abilities.find(a=>a.kind==='progressTransform'),t=c.tokens.find(t=>t.id===p.targetId);
  assert(t?.upgrade&&t.custom);assert.equal(t.class,c.class);assert.equal(t.type,c.type);assert.equal(t.cost,c.cost-p.discount);assert(t.cost>=1);
  assert.equal(p.baseText,c.abilities.filter(a=>a.kind!=='progressTransform').map(a=>a.text).join('\n\n'));
- assert(t.text.startsWith(p.baseText+'\n\n'));assert(!t.text.includes(`变身为『${t.name}』`),'No transformation loop');
+ assert.equal(t.text,t.abilities.map(a=>a.text).join('\n\n'));assert(['augment','amplify','promote','engine'].includes(p.style));assert(!t.text.includes(`变身为『${t.name}』`),'No transformation loop');
  if(c.type==='follower')assert.deepEqual([t.attack,t.health],[c.attack,c.health]);
- assert.equal(a.price,(p.discountRaw+p.bonusRaw*p.replayMultiplier)*p.factor);
+ assert(Math.abs(a.price-(p.discountRaw+p.bonusRaw*p.replayMultiplier)*p.factor)<1e-8);
  assert(a.text.includes('X起始为0。'));assert(a.text.includes(`若X为${p.threshold}或以上`));
  assert.deepEqual(c,S.generate(c.name));
 }

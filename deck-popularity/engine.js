@@ -23,6 +23,9 @@
   ];
   const requirements = cards => cards.reduce((result, id) => { result[id] = (result[id] || 0) + 1; return result; }, {});
   const contains = (deck, cards) => Object.entries(requirements(cards)).every(([id, count]) => (deck[id] || 0) >= count);
+  const legalClassCombination = (cards, classId, cardData) => Number.isInteger(classId) && classId >= 1 && classId <= 7
+    && cards.some(id => cardData[id]?.classId === classId)
+    && cards.every(id => cardData[id]?.classId === classId || cardData[id]?.classId === 0);
   const levelForScore = score => LEVELS.reduce((current, level, index) => score >= level.from ? index : current, 0);
   const difficultyForScore = score => ({ ...LEVELS[levelForScore(score)], commonCount: commonCountForScore(score), winnerMinimum: winnerMinimumForScore(score), extremesOnly: score >= 24, ...(score >= 30 ? { options: 4 + Math.floor((score - 30) / 10), targetMax: score >= 50 ? 1.5 : score >= 40 ? 1.65 : 1.8 } : {}) });
   // Sorted anonymous totals give clues without identifying which option wins.
@@ -56,7 +59,7 @@
       if (!Array.isArray(combo.cards) || combo.cards.length < 1 || combo.cards.length > 4 || new Set(combo.cards).size !== combo.cards.length) continue;
       if (!Number.isInteger(combo.count) || combo.count < 0 || typeof combo.capped !== 'boolean') continue;
       if (combo.capped && combo.count !== 1000) continue;
-      if (combo.cards.some(id => data.cards[id]?.classId !== combo.classId)) continue;
+      if (!legalClassCombination(combo.cards, combo.classId, data.cards)) continue;
       const signature = `${combo.classId}:${[...combo.cards].sort((a, b) => a - b)}`;
       if (unique.has(signature)) continue;
       unique.add(signature);
@@ -194,5 +197,5 @@
     state.history.push({ question: state.question, selectedId: id, correct, round: state.round });
     return { correct, over: state.over };
   }
-  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, distinct, levelForScore, difficultyForScore, countHints, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
+  return { CLASSES, INITIAL_LIVES, MIN_DIFFERENCE, MIN_COMMON_COUNT, commonCountForScore, LEVELS, requirements, contains, legalClassCombination, distinct, levelForScore, difficultyForScore, countHints, optionLabel, shuffle, buildCatalog, createQuestion, newGame, nextQuestion, answer };
 });

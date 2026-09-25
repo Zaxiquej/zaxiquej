@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "abilityDestructionImmune": 232,
+    "combatDestroy": 104,
+    "tripleAttack": 9,
+    "damageCap": 109,
+    "reduceDamage": 101
+  },
+  "examples": {
+    "reduceDamage": "虹卡拆解2",
+    "abilityDestructionImmune": "虹卡拆解6",
+    "combatDestroy": "虹卡拆解244",
+    "damageCap": "虹卡拆解255",
+    "tripleAttack": "虹卡拆解1739"
+  },
+  "combinations": 494,
+  "attackTimings": [
+    "",
+    "超进化时",
+    "进化时"
+  ],
+  "attackCombinations": 9,
+  "stormTriples": 2,
+  "chaosTriples": 66
+}

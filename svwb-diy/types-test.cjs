@@ -16,7 +16,7 @@ for(let i=0;i<60000;i++){
    const a=c.abilities.find(a=>a.ids.includes('疾驰'));
    assert(a.price+1e-8>=S.keywordPrice('疾驰',c.attack,c.health),'Storm must pay for actual attack');
   }
-  if(ids.includes('selfCopy')){
+  if(ids.includes('selfCopy')||ids.includes('resurrectSelf')){
    hit('selfCopy',c.name);
    for(const a of c.abilities.filter(a=>a.ids.includes('selfCopy'))){
     assert(a.text.includes(`『${c.name}』`));

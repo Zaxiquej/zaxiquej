@@ -1,75 +1,75 @@
 {
-  "version": "4.87",
+  "version": "4.99",
   "counts": {
     "follower": 35928,
     "spell": 12024,
     "amulet": 12048
   },
   "coverage": {
-    "faith": 84,
-    "selfCopy": 728,
-    "storm": 3117,
-    "cheapStorm": 847,
-    "countdown": 4668,
-    "permanent": 7380,
-    "activation": 8583,
-    "paidAct": 7009,
-    "freeAct": 1574,
-    "breakAct": 4411,
-    "repeatAct": 4172,
-    "acceleration": 579,
-    "actReplay": 50,
-    "spellMode": 1238,
-    "amuletMode": 937,
-    "spellEnhance": 866,
-    "amuletEnhance": 227,
-    "spellboost": 106,
-    "spellEmblem": 400,
-    "amuletEngine": 1416,
-    "soil": 277,
-    "zeroAmulet": 233
+    "faith": 86,
+    "selfCopy": 832,
+    "storm": 2189,
+    "cheapStorm": 932,
+    "countdown": 4689,
+    "permanent": 7359,
+    "activation": 8735,
+    "paidAct": 7139,
+    "freeAct": 1596,
+    "breakAct": 4541,
+    "repeatAct": 4194,
+    "acceleration": 600,
+    "actReplay": 48,
+    "spellMode": 1206,
+    "amuletMode": 988,
+    "spellEnhance": 882,
+    "amuletEnhance": 391,
+    "spellboost": 85,
+    "spellEmblem": 312,
+    "amuletEngine": 1153,
+    "soil": 273,
+    "zeroAmulet": 234
   },
   "rates": {
-    "faith": 0.002338009352037408,
-    "selfCopy": 0.02026274771765754,
-    "storm": 0.0867568470273881
+    "faith": 0.0023936762413716323,
+    "selfCopy": 0.023157425963037187,
+    "storm": 0.06092741037630817
   },
   "structures": {
-    "spell": 3771,
-    "amulet": 5966
+    "spell": 3660,
+    "amulet": 6450
   },
   "budgetUse": {
     "spell": {
-      "mean": 0.9055242740543419,
+      "mean": 0.8942763603832766,
       "highCostBelowHalf": 0
     },
     "amulet": {
-      "mean": 0.8388003190225899,
+      "mean": 0.8345624223963217,
       "highCostBelowHalf": 0
     }
   },
   "examples": {
     "permanent": "全类型验证4",
+    "amuletMode": "全类型验证4",
     "activation": "全类型验证4",
     "paidAct": "全类型验证4",
     "repeatAct": "全类型验证4",
     "breakAct": "全类型验证5",
     "amuletEngine": "全类型验证8",
-    "amuletMode": "全类型验证9",
     "storm": "全类型验证10",
     "cheapStorm": "全类型验证10",
+    "spellEmblem": "全类型验证12",
     "freeAct": "全类型验证21",
+    "spellMode": "全类型验证23",
     "countdown": "全类型验证36",
-    "selfCopy": "全类型验证41",
-    "spellMode": "全类型验证48",
-    "spellEmblem": "全类型验证62",
-    "acceleration": "全类型验证113",
+    "spellEnhance": "全类型验证76",
+    "selfCopy": "全类型验证101",
+    "acceleration": "全类型验证121",
     "zeroAmulet": "全类型验证188",
-    "spellEnhance": "全类型验证211",
     "spellboost": "全类型验证212",
+    "soil": "全类型验证226",
     "faith": "全类型验证298",
-    "soil": "全类型验证315",
-    "actReplay": "全类型验证639",
-    "amuletEnhance": "全类型验证669"
+    "amuletEnhance": "全类型验证644",
+    "actReplay": "全类型验证1573"
   }
 }

@@ -27,9 +27,9 @@
         if(!e)return null;
       }
       if(modes&&canChooseTarget(trigger)&&rarity>=1&&e.ids.length<slots&&r()<[0,.15,.25,.35][rarity]){
-        const other=temp(e.ids,()=>makeEffect(limit-.55,trigger,condition,minimum,true,effectiveCost,false,{...complexity,maxAtoms:slots-e.ids.length}));
+        const other=ctx.withModeChoice(()=>temp(e.ids,()=>makeEffect(limit-.55,trigger,condition,minimum,true,effectiveCost,false,{...complexity,maxAtoms:slots-e.ids.length})));
         if(other&&Math.max(e.raw,other.raw)+.55<=limit&&(e.ids.length+other.ids.length<slots||Math.max(e.raw,other.raw)+.55>=required)){
-          e={ids:[...e.ids,...other.ids],raw:Math.max(e.raw,other.raw)+.55,text:`【模式】选择1个能力发动。\n（1）${e.text}\n（2）${other.text}`,tokens:[...e.tokens,...other.tokens],mode:true};
+          e={ids:[...e.ids,...other.ids],raw:Math.max(e.raw,other.raw)+.55,text:`【模式】选择1个能力发动。\n（1）${e.text}\n（2）${other.text}`,tokens:[...e.tokens,...other.tokens],mode:true,modeBranches:[e,other]};
         }
       }
       return e;
@@ -87,13 +87,13 @@
       enhancement();
       if(remaining()>=.7&&card.abilities.length<spellLimit&&(reservedGate||r()<.6))extraConditional('法术',reservedGate);
       // Expensive spells should spend their allowance on another useful effect.
-      for(let i=0;i<3&&remaining()>=1.2&&card.abilities.length<spellLimit;i++){
+      for(let i=0;i<1&&remaining()>=1.2&&card.spent<card.budget*.82&&card.abilities.length<spellLimit;i++){
         const extra=payload(remaining(),'法术',Math.min(remaining()*.55,6),'none',cost,false);
         if(!extra)break;emit(extra,'法术',extra.raw);
       }
       if(!card.abilities.some(a=>a.trigger==='法术')){
-        const raw=cost<=3?2.8:2.2;
-        emit({text:'抽取1张卡牌。',raw,ids:['draw'],tokens:[]},'法术',raw);
+        const e=payload(remaining(),'法术',0,'none',cost,false);
+        if(e)emit(e,'法术',e.raw);
       }
     }else{
       const official=calibration.typeStats.amulets;
@@ -171,15 +171,17 @@
       }
       // Permanent Last Words amulets already reserve their own destruction above.
       if(!soil&&!card.abilities.some(a=>['启动','谢幕曲','持续触发','自己的回合开始时','自己的回合结束时'].includes(a.trigger))&&!countdown){
-        const fee=1,raw=2.2,price=Math.max(0,Math.min(.4,remaining()));
-        add({kind:'activation',trigger:'启动',condition:'none',text:'费用1【启动】破坏本卡牌。抽取1张卡牌。',bodyText:'破坏本卡牌。抽取1张卡牌。',raw,price,ids:['fallbackAct'],activation:{fee,oncePerTurn:true,breaksSelf:true,repeats:1,credit:2.2}});
+        const fee=1,e=payload(remaining()+2.2,'启动',.7,'none',Math.max(1,cost+1),false);
+        if(e){const price=Math.max(0,e.raw-2.2),text='破坏本卡牌。'+e.text;
+          add({...e,kind:'activation',trigger:'启动',condition:'none',text:'费用1【启动】'+text,bodyText:text,price,ids:[...e.ids,'fallbackAct'],activation:{fee,oncePerTurn:true,breaksSelf:true,repeats:1,credit:2.2}});
+        }
       }
       if(countdown&&!card.abilities.some(a=>a.trigger)){
         const e=payload(remaining()/delay,'谢幕曲',minimumSpend()/delay,'none',cost+2,false,{multiplier:delay,credit:0});
         if(e)emit(e,'谢幕曲',e.raw*delay,{delayFactor:delay});
       }
       if(remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay')&&r()<.4)extraConditional('入场曲');
-      for(let i=0;i<2&&remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay');i++){
+      for(let i=0;i<1&&remaining()>=1&&card.spent<card.budget*.82&&card.abilities.length<5&&!used.has('activationReplay');i++){
         const e=payload(remaining(),'入场曲',Math.min(remaining()*.55,8),'none',cost,false);
         if(e)emit(e,'入场曲',e.raw);else break;
       }

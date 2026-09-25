@@ -1,0 +1,51 @@
+{
+  "version": "4.99",
+  "samples": 18000,
+  "counts": {
+    "resurrection": 71,
+    "fairy": 73,
+    "existing": 120,
+    "evolutionTrade": 106,
+    "protectedStart": 14,
+    "endCycle": 142,
+    "rainbow": 1792,
+    "identity": 1752
+  },
+  "evolutionFamilies": [
+    "evolutionSacrifice",
+    "tokenHand",
+    "damage",
+    "face",
+    "recoverFollower",
+    "draw",
+    "banish",
+    "tokenSummon",
+    "aoe",
+    "bloodDraw",
+    "heal",
+    "typeSearch",
+    "allBoardDamage",
+    "handCycleTutor",
+    "handCycle",
+    "statDebuff",
+    "keywordSearch",
+    "acquisitionDiscount",
+    "ramp",
+    "commonSupply",
+    "reanimate",
+    "lowestLeaderDamage",
+    "artifactBuff",
+    "tribeSupply",
+    "tribeCountDamage",
+    "massDebuff",
+    "activeAmuletSearch",
+    "destroy",
+    "experimentSummon",
+    "allyBuff"
+  ],
+  "resurrectionCosts": [
+    "selfDamage",
+    "earth",
+    "necromancy"
+  ]
+}

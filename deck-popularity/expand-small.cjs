@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const { execFileSync } = require('node:child_process');
 const { state, request, save } = require('./collect.cjs');
 const { attachExamples } = require('./examples.cjs');
+const E = require('./engine.js');
 const root = __dirname;
 const ctx = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8'), ctx);
@@ -13,7 +14,7 @@ const keyFor = (classId, ids) => `${classId}:${[...ids].sort((a, b) => a - b).jo
 state.smallExpansion ||= { pools: {}, plans: {} };
 state.exampleQueries ||= {};
 function availableCards() {
-  return { ...previous.cards, ...Object.fromEntries(Object.values(state.cards).filter(c => c.classId >= 1 && c.classId <= 7 && fs.existsSync(path.join(root, `images/${c.id}.webp`))).map(({ imageHash, ...c }) => [c.id, { ...c, image: `images/${c.id}.webp` }])) };
+  return { ...previous.cards, ...Object.fromEntries(Object.values(state.cards).filter(c => c.classId >= 0 && c.classId <= 7 && fs.existsSync(path.join(root, `images/${c.id}.webp`))).map(({ imageHash, ...c }) => [c.id, { ...c, image: `images/${c.id}.webp` }])) };
 }
 async function query(classId, ids) {
   const id = keyFor(classId, ids);
@@ -29,7 +30,7 @@ async function query(classId, ids) {
 function rememberCards(detail) {
   for (const entry of Object.values(detail.card_details || {})) {
     const c = entry.common;
-    if (!c || c.is_token || c.class < 1 || c.class > 7) continue;
+    if (!c || c.is_token || c.class < 0 || c.class > 7) continue;
     state.cards[c.card_id] ||= { id: c.card_id, name: c.name, classId: c.class, cost: c.cost, image: `images/${c.card_id}.webp`, imageHash: c.card_image_hash,
       text: (c.skill_text || '').replace(/<hr\s*\/?\s*>/g, '\n').replace(/<[^>]*>/g, '').replace(/_/g, ' ') };
   }
@@ -84,11 +85,11 @@ async function addSinglePool(classId) {
   for (const base of candidates) if (await collectSinglePool(base)) return;
   console.log(`Class ${classId}: no further eligible single-card pools`);
 }
-async function images() {
+async function images(classFilter = null) {
   const manifestPath = path.join(root, 'images/manifest.json');
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   let added = 0;
-  for (const c of Object.values(state.cards).filter(c => c.classId >= 1 && c.classId <= 7)) {
+  for (const c of Object.values(state.cards).filter(c => c.classId >= 0 && c.classId <= 7 && (classFilter === null || c.classId === classFilter))) {
     const target = path.join(root, `images/${c.id}.webp`);
     if (fs.existsSync(target)) continue;
     const png = path.join(root, `.cache/png/${c.imageHash}.png`);
@@ -111,12 +112,12 @@ async function images() {
 }
 async function querySingles() {
   let done = 0;
-  for (const c of Object.values(availableCards())) if (!state.combos[keyFor(c.classId,[c.id])]) { await query(c.classId, [c.id]); done++; }
+  for (const c of Object.values(availableCards()).filter(c => c.classId >= 1)) if (!state.combos[keyFor(c.classId,[c.id])]) { await query(c.classId, [c.id]); done++; }
   if (done) console.log(`Verified ${done} additional single cards`);
 }
 function buildExpanded() {
   const cards = availableCards();
-  const combos = new Map(Object.values(state.combos).filter(c => c.method === 'search' && c.cards.length <= 3 && new Set(c.cards).size === c.cards.length && c.cards.every(id => cards[id]?.classId === c.classId)).map(c => [c.id,c]));
+  const combos = new Map(Object.values(state.combos).filter(c => c.method === 'search' && c.cards.length <= 3 && new Set(c.cards).size === c.cards.length && E.legalClassCombination(c.cards,c.classId,cards)).map(c => [c.id,c]));
   // Preserve already verified playable rows, including their zero results.
   for (const c of previous.combos) if (c.cards.length <= 3 && !combos.has(c.id)) combos.set(c.id, c);
   const retainedZeros = new Map();
@@ -126,10 +127,10 @@ function buildExpanded() {
     else retainedZeros.set(c.pool,n+1);
   }
   for (const [poolKey,p] of Object.entries(state.pools)) {
-    if (p.baseCards.length >= 3) continue;
+    if (p.baseCards.length >= 3 || !E.legalClassCombination(p.baseCards,p.classId,cards)) continue;
     const deckRows = p.deckKeys.map(key => state.decks[key].quantities);
     if (deckRows.length !== p.count || !deckRows.every(d => p.baseCards.every(id => d[id] > 0))) throw Error('Incomplete evidence');
-    const ids = Object.values(cards).filter(c => c.classId === p.classId && !p.baseCards.includes(c.id)).map(c => c.id);
+    const ids = Object.values(cards).filter(c => (c.classId === p.classId || c.classId === 0) && !p.baseCards.includes(c.id)).map(c => c.id);
     const candidates = ids.map(id => [...p.baseCards,id]);
     if (p.baseCards.length === 1) for (let i=0;i<ids.length;i++) for (let j=i+1;j<ids.length;j++) candidates.push([...p.baseCards,ids[i],ids[j]]);
     let zeros = [...combos.values()].filter(c => c.pool === poolKey && c.count === 0).length;
@@ -166,5 +167,5 @@ async function main() {
   }
   exportExpanded();
 }
-module.exports={main,buildExpanded,exportExpanded,query,availableCards};
+module.exports={main,buildExpanded,exportExpanded,query,availableCards,images};
 if(require.main===module) main().catch(e=>{save();console.error(e);process.exitCode=1;});

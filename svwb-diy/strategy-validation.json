@@ -1,18 +1,17 @@
 {
-  "version": "4.66",
+  "version": "5.03",
   "samples": 20000,
   "counts": {
-    "alternate": 228,
-    "themed": 67,
-    "shared": 8,
-    "utility": 58,
-    "disconnected": 1,
+    "alternate": 291,
+    "themed": 88,
+    "shared": 19,
+    "utility": 69,
+    "disconnected": 0,
     "tokenConflict": 0,
-    "multiPlan": 949
+    "multiPlan": 696
   },
   "examples": {
-    "utility": "体系衔接16",
-    "shared": "体系衔接1067",
-    "disconnected": "体系衔接16567"
+    "utility": "体系衔接6",
+    "shared": "体系衔接753"
   }
 }

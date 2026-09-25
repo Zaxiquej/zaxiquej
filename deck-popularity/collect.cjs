@@ -3,6 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
+const E = require('./engine.js');
 const root = __dirname;
 const cacheDir = path.join(root, '.cache');
 const imageDir = path.join(root, 'images');
@@ -80,14 +81,15 @@ async function collectClass(classId) {
       sources.push(state.decks[deckKey]);
     }
   }
-  // Cards must actually be main-deck cards of this class, not neutral or generated cards.
-  const classDecks = sources.map(d => d.cards.filter(id => state.cards[id]?.classId === classId));
+  // Include neutral main-deck cards, but every combination needs a class card.
+  const classDecks = sources.map(d => d.cards.filter(id => state.cards[id]?.classId === classId || state.cards[id]?.classId === 0));
   for (const size of [2, 3]) {
     const candidates = new Map();
     for (let pass = 0; pass < 500 && candidates.size < (size === 2 ? 32 : 24); pass++) {
       const deck = classDecks[pass % classDecks.length];
       if (deck.length < size) continue;
       const ids = shuffle(deck).slice(0, size).sort((a, b) => a - b);
+      if (!E.legalClassCombination(ids,classId,state.cards)) continue;
       const key = `${classId}:${ids.join(',')}`;
       candidates.set(key, ids);
     }

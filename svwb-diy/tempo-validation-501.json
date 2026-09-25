@@ -1,0 +1,16 @@
+{
+  "version": "5.01",
+  "samples": 10000,
+  "counts": {
+    "midCores": 650,
+    "crestGrants": 704,
+    "lateCrests": 104,
+    "scaledTargets": 21,
+    "chaos": 2000
+  },
+  "examples": {
+    "mid": "收益回归501-1",
+    "crest": "收益回归501-231",
+    "targets": "收益回归501-636"
+  }
+}

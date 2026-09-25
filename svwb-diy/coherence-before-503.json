@@ -1,0 +1,15 @@
+{
+  "version": "5.02",
+  "counts": {
+    "cards": 6000,
+    "witch": 778,
+    "named": 126,
+    "namedConflict": 2,
+    "namedOtherEngine": 43,
+    "alternateConflict": 0
+  },
+  "examples": [
+    "体系聚焦503-1345",
+    "体系聚焦503-1365"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "version": "5.04",
+  "samples": 8000,
+  "method": "Generated class-appropriate effects or mechanics; optional modes count as useful class support, not conflicting mandatory requirements.",
+  "groups": {
+    "3:goldRainbow": {
+      "cards": 278,
+      "featured": 183,
+      "features": {
+        "boost": 71,
+        "hands": 38,
+        "earth": 73,
+        "experiment": 22,
+        "truth": 16
+      }
+    },
+    "5:goldRainbow": {
+      "cards": 265,
+      "featured": 155,
+      "features": {
+        "blood": 73,
+        "death": 101
+      }
+    },
+    "7:goldRainbow": {
+      "cards": 269,
+      "featured": 129,
+      "features": {
+        "copy": 13,
+        "artifact": 82,
+        "high": 27,
+        "singleton": 9,
+        "puppet": 23
+      }
+    },
+    "2:bronzeSilver": {
+      "cards": 357,
+      "featured": 200,
+      "features": {
+        "treasure": 28,
+        "board": 163,
+        "buff": 36,
+        "enhance": 28,
+        "rally": 19
+      }
+    },
+    "6:goldRainbow": {
+      "cards": 267,
+      "featured": 175,
+      "features": {
+        "amulet": 105,
+        "heal": 65,
+        "ward": 61,
+        "banish": 3
+      }
+    },
+    "1:goldRainbow": {
+      "cards": 242,
+      "featured": 120,
+      "features": {
+        "return": 3,
+        "combo": 84,
+        "supply": 54
+      }
+    },
+    "4:goldRainbow": {
+      "cards": 255,
+      "featured": 173,
+      "features": {
+        "discard": 74,
+        "overflow": 42,
+        "ocean": 72,
+        "hurt": 36,
+        "ramp": 7
+      }
+    },
+    "2:goldRainbow": {
+      "cards": 251,
+      "featured": 176,
+      "features": {
+        "enhance": 68,
+        "treasure": 32,
+        "board": 115,
+        "buff": 37,
+        "rally": 17
+      }
+    },
+    "1:bronzeSilver": {
+      "cards": 361,
+      "featured": 151,
+      "features": {
+        "supply": 114,
+        "combo": 51,
+        "return": 3
+      }
+    },
+    "6:bronzeSilver": {
+      "cards": 376,
+      "featured": 200,
+      "features": {
+        "amulet": 104,
+        "ward": 85,
+        "heal": 47,
+        "banish": 11
+      }
+    },
+    "7:bronzeSilver": {
+      "cards": 347,
+      "featured": 131,
+      "features": {
+        "high": 29,
+        "puppet": 36,
+        "artifact": 70,
+        "singleton": 8,
+        "copy": 17
+      }
+    },
+    "3:bronzeSilver": {
+      "cards": 321,
+      "featured": 133,
+      "features": {
+        "boost": 58,
+        "earth": 35,
+        "experiment": 17,
+        "hands": 29,
+        "truth": 21
+      }
+    },
+    "4:bronzeSilver": {
+      "cards": 353,
+      "featured": 156,
+      "features": {
+        "ocean": 72,
+        "discard": 66,
+        "overflow": 17,
+        "hurt": 25,
+        "ramp": 4
+      }
+    },
+    "5:bronzeSilver": {
+      "cards": 387,
+      "featured": 201,
+      "features": {
+        "death": 175,
+        "blood": 47
+      }
+    }
+  }
+}

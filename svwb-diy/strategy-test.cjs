@@ -17,7 +17,7 @@ for(let i=0;i<20000;i++){
  for(const f of c.alternateForms.filter(f=>f.kind==='激奏')){
   counts.alternate++;assert.deepEqual(f.strategyContext,context,'Alternate must see final main-body abilities');
   assert.equal(f.budget,f.cost*2.4+.4);assert(f.spent<=f.budget+.01);
-  const own=tags(f.abilities.flatMap(a=>a.ids),f.tokens),affinity=S.strategyAffinity(context,own,true);
+  const own=S.strategyTags({abilities:f.abilities}),affinity=S.strategyAffinity(context,own,true);
   if(!context.length)continue;counts.themed++;
   const kind=!own.length?'utility':affinity>=1?'shared':'disconnected';counts[kind]++;examples[kind]??=c.name;
   if(context.includes('experiment')&&own.includes('crystalHands')||context.includes('crystalHands')&&own.includes('experiment'))counts.tokenConflict++;

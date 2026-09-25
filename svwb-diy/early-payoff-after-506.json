@@ -1,0 +1,15 @@
+{
+  "version": "5.06",
+  "samples": 8000,
+  "counts": {
+    "low": 1888,
+    "superOnly": 8,
+    "earth": 35,
+    "earth2": 19,
+    "earthBody": 149
+  },
+  "examples": {
+    "superOnly": "低费启动506-63",
+    "earth2": "低费启动506-593"
+  }
+}

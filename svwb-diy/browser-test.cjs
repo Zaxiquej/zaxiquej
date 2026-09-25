@@ -15,7 +15,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   const context=await browser.newContext({viewport:{width:1200,height:950},permissions:['clipboard-read','clipboard-write']});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto('http://127.0.0.1:4173/svwb_diy.html?qa=4');assert.equal(response.status(),200);
-  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='4.98');
+  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='5.13');
   assert.equal(await page.locator('#name').inputValue(),'设计师您辛苦了');
   assert.equal(await page.locator('#chaos').isChecked(),false);
   assert.equal(await page.locator('#overpowered').count(),0);

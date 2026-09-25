@@ -19,7 +19,7 @@ for (const c of data.combos) {
   assert.equal(new Set(c.examples).size, c.examples.length, 'No repeated example deck');
   assert(c.examples.every(ref => /^1:\d+:\d+$/.test(ref)), 'Only designated-format deck references');
   assert(c.count === 0 || c.examples.length > 0, 'Every nonzero combination has a real example');
-  assert(c.cards.every(id => data.cards[id]?.classId === c.classId));
+  assert(E.legalClassCombination(c.cards,c.classId,data.cards));
   if (c.method === 'complete-subset') {
     const p = evidence[c.pool];
     assert(p && !c.capped);
@@ -47,7 +47,7 @@ for (const [score, threshold] of [[0,100],[4,100],[5,90],[9,90],[10,80],[15,70],
 for (const [score, minimum] of [[0,500],[7,500],[8,400],[11,400],[12,300],[17,300],[18,250],[29,250],[30,200],[49,200],[50,150],[69,150],[70,100],[1000,100]]) {
   assert.equal(E.difficultyForScore(score).winnerMinimum, minimum, 'Winning-count floor is independent of the rarity threshold');
 }
-let generated = 0, capped = 0, zeros = 0, mixedLengths = 0, singles = 0, crossClassQuestions = 0;
+let generated = 0, capped = 0, zeros = 0, mixedLengths = 0, singles = 0, crossClassQuestions = 0, neutralQuestions = 0, neutralWinners = 0;
 function validateQuestion(q, score) {
   const level = E.difficultyForScore(score);
   assert.equal(q.extremesOnly, score >= 24);
@@ -67,6 +67,13 @@ function validateQuestion(q, score) {
   assert(q.options.filter(c => c.count === 0).length <= 1);
   const winner = q.options.find(c => c.id === q.winnerId);
   assert(winner);
+  const hasNeutral = c => c.cards.some(id => data.cards[id]?.classId === 0);
+  if (q.options.some(hasNeutral)) {
+    neutralQuestions++;
+    assert(score >= 4, 'Neutral cards must never appear in single-card opening rounds');
+    assert(q.options.filter(hasNeutral).every(c=>E.legalClassCombination(c.cards,c.classId,data.cards)));
+  }
+  if (hasNeutral(winner)) neutralWinners++;
   const top = winner.capped ? 1001 : winner.count;
   assert(top >= level.commonCount, 'Never produce a question consisting entirely of rare combinations at the current threshold');
   assert(top >= level.winnerMinimum, 'Respect the winning-count minimum for this round');
@@ -157,6 +164,7 @@ for (const score of [4,8,12,18,24,30,50]) {
 console.log('Composition profiles (200 questions each):', JSON.stringify(compositionProfiles));
 assert.throws(() => E.createQuestion(fixture([100,50,20]), 12), /题目不足/, 'Do not silently fall back to 100-deck midgame winners');
 assert(zeros > 0 && mixedLengths > 0 && singles > 0 && crossClassQuestions > 0);
+assert(neutralQuestions > 0 && neutralWinners > 0, 'Neutral/class combinations must actually appear and can be winners');
 for (const boundary of [4, 8, 12, 18, 24, 30, 40, 50, 70]) {
   const retry = E.newGame(7);
   retry.score = boundary - 1; retry.round = boundary - 1;
@@ -207,12 +215,15 @@ assert(state.over);
 assert.equal(E.nextQuestion(state, catalog, random), false);
 assert.equal(E.answer(state, state.question.winnerId), null);
 for (const card of Object.values(data.cards)) {
-  assert(data.combos.some(c => c.classId === card.classId && c.cards.length === 1 && c.cards[0] === card.id), 'Every collected card has a single-card query');
+  if (card.classId === 0) {
+    assert(data.combos.some(c=>c.cards.includes(card.id)&&c.cards.length>=2), 'Every neutral is used with class cards');
+    assert(!data.combos.some(c=>c.cards.length===1&&c.cards[0]===card.id), 'Never offer a neutral single');
+  } else assert(data.combos.some(c => c.classId === card.classId && c.cards.length === 1 && c.cards[0] === card.id), 'Every class card has a single-card query');
   const file = path.join(__dirname, card.image);
   assert(fs.existsSync(file), `Missing image: ${card.image}`);
   const bytes = fs.readFileSync(file);
   assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
   assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
 }
-console.log(JSON.stringify({ combinations: data.combos.length, generatedQuestions: generated, cappedQuestions: capped, zeroQuestions: zeros, mixedLengthQuestions: mixedLengths, singleCardQuestions: singles }, null, 2));
+console.log(JSON.stringify({ combinations: data.combos.length, generatedQuestions: generated, cappedQuestions: capped, zeroQuestions: zeros, mixedLengthQuestions: mixedLengths, singleCardQuestions: singles, neutralQuestions, neutralWinners }, null, 2));
 console.log('PASS: evidence counts, examples, no all-rare questions, progressively closer leading pairs, 25% / 50-deck minimum gap, five lives and same-round retries.');

@@ -8,6 +8,7 @@
   <script defer src="deck-popularity/data.js"></script>
   <script defer src="deck-popularity/full-data.js"></script>
   <script defer src="deck-popularity/engine.js"></script>
+  <script defer src="deck-popularity/tap-guard.js"></script>
   <script defer src="deck-popularity/app.js"></script>
 </head>
 <body>
@@ -49,9 +50,8 @@
       <div id="options" class="options"></div>
       </div>
       <div id="mobile-actions" class="mobile-actions">
-        <span id="mobile-action-status" role="status">先选一组，再提交</span>
-        <button id="mobile-action" type="button" disabled>请选择组合</button>
-        <button id="mobile-next" type="button" hidden>下一轮</button>
+        <span id="mobile-action-status" role="status">点击选项作答</span>
+        <button id="mobile-next" type="button" disabled>下一轮</button>
       </div>
     </section>
     <section id="summary" hidden>

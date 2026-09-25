@@ -10,7 +10,7 @@ for(let i=0;i<18000;i++){
  for(const a of c.abilities){
   if(a.ids.includes('discardTrigger')){record('discardTrigger',c);assert.equal(c.class,4);assert.equal(a.trigger,'本卡牌被舍弃时');assert(!/选择(?:自己|对手)的|【模式】|本随从\+/.test(a.text));a.ids.filter(id=>id!=='discardTrigger').forEach(id=>discardPayoffs.add(id));
    if(a.ids.includes('discardReturn')){record('discardReturn',c);assert.equal(c.type,'spell');assert(a.text.includes(`若本卡牌的费用为${c.cost}`));assert(a.text.includes(`费用变为${c.cost-2}`));}
-   else if(!a.ids.includes('discardSelfSummon'))assert(a.raw<=(a.discardScaling?Math.min(7,2+c.cost*.7):3.5));
+   else if(!a.ids.includes('discardSelfSummon'))assert(a.raw<=3.5);assert(!a.discardScaling);
   }
   if(['portalHighCost','havenHighCost'].includes(a.condition)){record(a.condition,c);const portal=a.condition==='portalHighCost';assert.equal(c.class,portal?7:6);assert(a.text.includes(`原始费用为${portal?5:6}或以上的${portal?'随从':'卡牌'}`));}
   if(a.trigger.includes('原始费用为5或以上')){record('portalEvent',c);assert.equal(c.class,7);}
