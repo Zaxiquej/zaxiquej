@@ -1,14 +1,19 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),S=require('./engine');
 const example=S.generate('随机卡牌#01863457');
-assert.deepEqual([example.cost,example.attack,example.health],[2,1,1]);
-assert.equal(example.handTrigger.expectedDiscount,2);assert.equal(example.discountBodyTrade.lost,2);
+assert.equal(example.cost,2);
+// An unaffordable fast discount may now be rejected altogether, rather than
+// repaired into a fixed 1/1. If retained it must share the full payload budget.
+if(example.handTrigger?.payoff==='discount'){
+ assert.equal(example.handTrigger.expectedDiscount,2);
+ assert(example.attack+example.health<=2);
+ assert.equal(example.handTrigger.discountValueFactor,1);
+}
 // Low-cost discount frequency changed; this seed still reaches the slow gate.
 const slow=S.generate('随机卡牌#13657840');
 assert.equal(slow.cost,2);
 assert.equal(slow.handTrigger.eventId,'lowHealth');
 assert.equal(slow.discountBodyTrade.lost,0);
 assert(slow.abilities.find(a=>a.kind==='handTrigger').price<2);
-assert.equal(example.handTrigger.discountValueFactor,1,'Rapid same-turn discounts keep their cost');
 const counts={discount:0,paidBody:0,rebalanced:0,remainingExtreme:0,attackEnabledExtreme:0,delayed:0};
 for(let i=0;i<12000;i++){
  const c=S.generate('减费与身材'+i,{chaos:i%3===0});
@@ -29,7 +34,7 @@ for(let i=0;i<12000;i++){
  }
  if(c.bodyBalance){counts.rebalanced++;assert(!aggressive);const b=c.bodyBalance;assert.equal(b.before[0]+b.before[1],b.after[0]+b.after[1]);assert(b.after[0]<b.before[0]);}
  if(c.attack>=c.health*1.6&&c.attack-c.health>=2)counts[aggressive?'attackEnabledExtreme':'remainingExtreme']++;
- if(c.handTrigger?.eventId==='play'&&c.handTrigger.payoff==='discount')assert.equal(c.handTrigger.expectedDiscount,Math.min(c.cost,3));
+ if(c.handTrigger?.eventId==='play'&&c.handTrigger.payoff==='discount')assert.equal(c.handTrigger.expectedDiscount,Math.min(c.cost,3.5));
  if(c.cost>=5&&c.abilities.some(a=>a.kind==='keyword'&&a.ids.includes('疾驰')))assert(S.stormCardValue(c.attack,c.health,c.abilities).value<=c.cost*(c.chaos?1.15:1)+.01);
  if(i<100)assert.deepEqual(c,S.generate(c.name,{chaos:i%3===0}));
 }

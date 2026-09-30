@@ -55,3 +55,25 @@ textarea { width: 100%; min-height: 180px; }
 @media (max-width: 520px) { .input-row { flex-wrap: wrap; } .input-row input { flex-basis: 100%; } }
 @media (max-width: 520px) { .filter-row { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 520px) { body { padding: 12px; } .container { padding: 20px 16px; } h1 { font-size: 21px; } .result { padding: 15px; } .stats { gap: 20px; } button { padding: 9px 17px; } }
+
+#inspector { width: min(760px, calc(100% - 24px)); max-height: 90vh; padding: 22px; border: 1px solid #bbcbd6; border-radius: 8px; color: #333; }
+#inspector::backdrop { background: rgb(25 40 50 / 35%); }
+.inspector-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+#inspector h2 { font-size: 21px; }
+#inspector textarea { min-height: 76px; padding: 8px; margin: 0; }
+#inspector input:not([type=checkbox]) { display: block; width: 100%; }
+#inspector-chips { display: grid; gap: 6px; margin: 12px 0; }
+#inspector-chips details { padding: 6px 0; }
+.inspector-chip-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+#inspector-chips button { padding: 3px 9px; font-size: 12px; }
+#inspector .filter-row { margin: 12px 0; }
+#inspector-progress { width: 100%; height: 10px; }
+#inspector-status { font-size: 13px; color: #555; }
+.inspector-result { border-top: 1px solid #ddd; padding: 14px 0; }
+.inspector-result strong { overflow-wrap: anywhere; min-width: 0; }
+.inspector-result button { flex-shrink: 0; }
+.inspector-result p { margin: 4px 0; }
+.inspector-result details { border: 0; padding-top: 4px; }
+.inspector-result pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; }
+button:disabled { opacity: .5; cursor: default; }
+@media (max-width: 520px) { #inspector { padding: 14px; } #inspector .actions { gap: 8px; } }

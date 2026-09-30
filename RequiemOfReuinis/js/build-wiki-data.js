@@ -7,7 +7,7 @@ const output = path.resolve(process.argv[3] || path.join(__dirname, 'wiki-data.j
 const readJson = rel => { let value = fs.readFileSync(path.join(source, rel), 'utf8'); if (value.charCodeAt(0) === 0xFEFF) value = value.slice(1); return JSON.parse(value); };
 const exists = rel => fs.existsSync(path.join(source, rel));
 
-const lang = { zh: readJson('ch.json'), en: readJson('en.json'), ja: readJson('jp.json') };
+const lang = { zh: readJson('ch.json'), en: readJson('en.json'), ja: readJson('jp.json'), ru: readJson('ru.json') };
 const armors = readJson('data/Armors.json');
 const skillsDb = readJson('data/Skills.json');
 const enemiesDb = readJson('data/Enemies.json');
@@ -39,9 +39,18 @@ const resolveLanguageText = (code, value, seen) => {
 };
 const localized = (group, key, fallback) => {
   const out = {};
-  for (const code of ['zh', 'en', 'ja']) {
+  for (const code of ['zh', 'en', 'ja', 'ru']) {
     const value = lang[code] && lang[code][group] && lang[code][group][key];
-    out[code] = resolveLanguageText(code, nonBlank(value) ? value : rawFallback(fallback || ''));
+    const translatedFallback = code === 'ru' && lang.en[group] && lang.en[group][key];
+    out[code] = resolveLanguageText(code, nonBlank(value) ? value : nonBlank(translatedFallback) ? translatedFallback : rawFallback(fallback || ''));
+  }
+  // Some unused database slots retain Chinese editor labels in ru.json.
+  // Do not expose those labels as Russian names; upgraded references reuse
+  // the translated base name when the upgrade slot has no translated name.
+  if (out.ru && /[\u4e00-\u9fff]/.test(out.ru) && !nonBlank(out.zh)) {
+    const baseName = group === 'armorname' && Number(key) > 500 ? lang.ru.armorname[Number(key) - 500] : '';
+    out.ru = nonBlank(baseName) && !/[\u4e00-\u9fff]/.test(baseName) ? baseName + ' +' :
+      nonBlank(out.en) && !/[\u4e00-\u9fff]/.test(out.en) ? out.en : '';
   }
   return out;
 };
@@ -49,7 +58,7 @@ const localizedSkillDescription = (baseId, tier, fallback) => {
   const base = localized('mskill', 'd' + baseId, fallback);
   if (!tier) return base;
   const variant = localized('mskill', 'd' + baseId + '_' + tier, '');
-  for (const code of ['zh', 'en', 'ja']) if (!nonBlank(variant[code])) variant[code] = base[code];
+  for (const code of ['zh', 'en', 'ja', 'ru']) if (!nonBlank(variant[code])) variant[code] = base[code];
   return variant;
 };
 const localizedSkillUpgrade = (baseId, tier) => localized('mskill', 'u' + baseId + '_' + tier, '');
@@ -88,13 +97,13 @@ const armorAcquisition = parseAcquisition('装备获取方式清单.txt');
 const skillAcquisition = parseAcquisition('技能获取方式清单.txt');
 
 const acquisitionNameGroups = ['armorname','itemname','mskill','research','enemyname','bossShow','mapdesc','extraGame','actorname'];
-const acquisitionNameLookup = { en: new Map(), ja: new Map() };
+const acquisitionNameLookup = { en: new Map(), ja: new Map(), ru: new Map() };
 for (const group of acquisitionNameGroups) {
   const sourceGroup = lang.zh[group] || {};
   for (const key of Object.keys(sourceGroup)) {
     const zhText = resolveLanguageText('zh', sourceGroup[key]).trim();
     if (!zhText || zhText.includes('\\') || zhText.includes('#{')) continue;
-    for (const code of ['en','ja']) {
+    for (const code of ['en','ja','ru']) {
       const targetGroup = lang[code][group] || {};
       const target = resolveLanguageText(code, targetGroup[key]).trim();
       if (target && !target.includes('#{') && (!acquisitionNameLookup[code].has(zhText) || target !== zhText)) {
@@ -104,6 +113,7 @@ for (const group of acquisitionNameGroups) {
   }
 }
 const acquisitionFixedTerms = {
+  ru: {'西风商会':'Гильдия западного ветра','月桂商路':'Лавровый торговый путь','拾荒者的物资':'Припасы Мусорщика','春节':'Лунный Новый год','金币':'деньги','雕像':'Статуя','研究点':'точка исследований','玫瑰':'роза','瓶装物品':'предмет в бутылке'},
   en: {
     '西风商会':'Westwind Guild','月桂商路':'Laurel Trade Route','拾荒者的物资':"Scavenger's Supplies",
     '春节':'Lunar New Year','金币':'money','雕像':'Statue','研究点':'research point','玫瑰':'a rose','瓶装物品':'a bottled item'
@@ -118,11 +128,57 @@ function acquisitionTerm(value, code) {
   if (acquisitionFixedTerms[code][text]) return acquisitionFixedTerms[code][text];
   if (acquisitionNameLookup[code].has(text)) return acquisitionNameLookup[code].get(text);
   const equip = text.match(/^装备：(.+)$/);
-  if (equip) return (code === 'en' ? 'Equipment: ' : '装備：') + acquisitionTerm(equip[1], code);
+  if (equip) return (code === 'ru' ? 'Экипировка: ' : code === 'en' ? 'Equipment: ' : '装備：') + acquisitionTerm(equip[1], code);
   return text;
 }
 const acquisitionQuote = (value, code) => code === 'en' ? '“' + value + '”' : '「' + value + '」';
+// Russian acquisition templates use the same source patterns as the other languages.
+function translateRussianAcquisition(text) {
+  const q = value => '«' + acquisitionTerm(value, 'ru') + '»';
+  const equipment = value => q('装备：' + value);
+  const shop = '«Гильдия западного ветра»';
+  const rules = [
+    [/^首次获得(.+)和(.+)，分别完成「(.+)」「(.+)」→「(.+)」→「(.+)」，解锁并完成「装备：(.+)」$/, m => `Впервые получите ${q(m[1])} и ${q(m[2])}; завершите ${q(m[3])} и ${q(m[4])}, затем ${q(m[5])} и ${q(m[6])}; откройте и завершите исследование ${equipment(m[7])}.`],
+    [/^完成开局已解锁的「(.+)」，再完成随之解锁的「装备：(.+)」$/, m => `Завершите доступное с начала игры исследование ${q(m[1])}, затем открывшееся исследование ${equipment(m[2])}.`],
+    [/^首次获得(.+)，完成「(.+)」，再完成随之解锁的「装备：(.+)」$/, m => `Впервые получите ${q(m[1])}, завершите ${q(m[2])}, затем открывшееся исследование ${equipment(m[3])}.`],
+    [/^首次获得(.+)时解锁「装备：(.+)」，再完成该研究$/, m => `Впервые получите ${q(m[1])}, чтобы открыть исследование ${equipment(m[2])}, затем завершите его.`],
+    [/^在「(.+)」的研究点解锁「装备：(.+)」，再完成该研究$/, m => `Откройте исследование ${equipment(m[2])} в точке исследований области ${q(m[1])}, затем завершите его.`],
+    [/^在「(.+)」取得并完成「(.+)」研究后，(.+)进货并可购买$/, m => `Получите и завершите исследование ${q(m[2])} в области ${q(m[1])}. После этого предмет появится в продаже: ${q(m[3])}.`],
+    [/^在「(.+)」触发(.+)进货，之后在该商店购买$/, m => `В области ${q(m[1])} откройте новые товары магазина ${q(m[2])}, затем купите предмет.`],
+    [/^击败(.+)后加入拾荒者的物资$/, m => `Появляется среди припасов Мусорщика после победы над противником ${q(m[1])}.`],
+    [/^(.+)宝箱（击败(.+)后出现）$/, m => `Сундук в области ${q(m[1])}, появляющийся после победы над противником ${q(m[2])}.`],
+    [/^(.+)宝箱$/, m => `Сундук в области ${q(m[1])}.`],
+    [/^(.+)区域谜题奖励$/, m => `Награда за загадку в области ${q(m[1])}.`],
+    [/^战胜(.+)奖励$/, m => `Награда за победу над противником ${q(m[1])}.`],
+    [/^收藏家收集(\d+)件装备奖励$/, m => `Награда Коллекционера за сбор экипировки: ${m[1]} шт.`],
+    [/^食火者(\d+)次火焰奖励$/, m => `Награда за активации пламени Пожирателя огня: ${m[1]}.`],
+    [/^解锁收藏家并持有至少(\d+)金币后加入西风商会商店$/, m => `Появляется в магазине ${shop} после открытия Коллекционера, если у вас есть не менее ${m[1]} денег.`],
+    [/^到达(.+)并持有至少(\d+)金币后加入西风商会商店$/, m => `Появляется в магазине ${shop}, когда вы достигнете области ${q(m[1])} и будете иметь не менее ${m[2]} денег.`],
+    [/^持有至少(\d+)金币后加入西风商会商店$/, m => `Появляется в магазине ${shop}, если у вас есть не менее ${m[1]} денег.`],
+    [/^在「(.+)」触发事件，之后在雕像学习$/, m => `Активируйте событие в области ${q(m[1])}, затем изучите навык у статуи.`],
+    [/^在「(.+)」的剧情中习得$/, m => `Изучается по сюжету в области ${q(m[1])}.`],
+    [/^在「(.+)」取得「(.+)」后，在雕像学习$/, m => `Получите ${q(m[2])} в области ${q(m[1])}, затем изучите навык у статуи.`],
+    [/^装备收集数达到(\d+)后，从收藏家处领取装备收藏奖励$/, m => `Соберите ${m[1]} предметов экипировки и получите награду у Коллекционера.`],
+    [/^解锁「(.+)」时随剧情习得$/, m => `Изучается по сюжету при открытии ${q(m[1])}.`],
+    [/^在「(.+)」战胜(.+)后习得$/, m => `Изучается после победы над противником ${q(m[2])} в области ${q(m[1])}.`],
+    [/^解锁并启用额外模式「(.+)」后，在游戏开始时习得$/, m => `Откройте и включите дополнительный режим ${q(m[1])}, чтобы изучить навык в начале игры.`],
+    [/^(?!装备收集数达到)(.+)奖励$/, m => `Награда: ${q(m[1])}.`]
+  ];
+  const fixed = {
+    '据点剧情开放市场时自动进货，之后在西风商会购买': `Появляется в продаже при открытии рынка. Затем можно купить в магазине ${shop}.`,
+    '在废弃矿坑与拾荒者交谈，开启拾荒者的物资并进货后购买': `Поговорите с Мусорщиком в области ${q('废弃矿坑')}, чтобы открыть его припасы и новые товары, затем купите предмет.`,
+    '春节期间加入西风商会商店': `Появляется в магазине ${shop} во время Лунного Нового года.`,
+    '佩戴剧毒蛛眼、玫瑰与瓶装物品，完成对应谜题': `Наденьте ${q('剧毒蛛眼')}, ${q('玫瑰')} и ${q('瓶装物品')}, затем решите соответствующую загадку.`,
+    '开局剧情中自动习得': 'Автоматически изучается во вступлении.'
+  };
+  if (!text) return '';
+  if (fixed[text]) return fixed[text];
+  for (const [pattern, render] of rules) { const match = text.match(pattern); if (match) return render(match); }
+  throw new Error('Untranslated Russian acquisition: ' + text);
+}
+
 function translateAcquisition(text, code) {
+  if (code === 'ru') return translateRussianAcquisition(String(text || '').trim());
   const sourceText = String(text || '').trim();
   if (sourceText === '据点剧情开放市场时自动进货，之后在西风商会购买') return code === 'zh'
     ? '市场开放时自动进货，之后在西风商会购买'
@@ -243,7 +299,7 @@ function translateAcquisition(text, code) {
 
   throw new Error('Unsupported acquisition text: ' + sourceText);
 }
-const localizedAcquisition = text => ({ zh:translateAcquisition(text,'zh'), en:translateAcquisition(text,'en'), ja:translateAcquisition(text,'ja') });
+const localizedAcquisition = text => ({ zh:translateAcquisition(text,'zh'), en:translateAcquisition(text,'en'), ja:translateAcquisition(text,'ja'), ru:translateAcquisition(text,'ru') });
 
 const itemName = id => { const item = itemsDb[id]; const raw = String(item && item.name || ''); const dot = raw.indexOf('.'); return raw.startsWith('#{') && raw.endsWith('}') && dot > 2 ? localized(raw.slice(2, dot), raw.slice(dot + 1, -1), raw) : localized('itemname', id, raw || 'Item ' + id); };
 const itemIcon = id => itemsDb[id] ? (itemsDb[id].iconIndex || 0) : 0;
@@ -264,7 +320,7 @@ const equipment = numericKeys(lang.zh.armorname)
       params: { hp: armor.params && armor.params[0] || 0, mp: armor.params && armor.params[1] || 0, atk: armor.params && armor.params[2] || 0, def: armor.params && armor.params[3] || 0 },
       tags: tags,
       tagNames: Object.keys(tags),
-      acquisition: armorAcquisition[id] ? localizedAcquisition(armorAcquisition[id].text) : { zh:'', en:'', ja:'' },
+      acquisition: armorAcquisition[id] ? localizedAcquisition(armorAcquisition[id].text) : { zh:'', en:'', ja:'', ru:'' },
       sourceKnown: Boolean(armorAcquisition[id])
     };
   });
@@ -292,7 +348,7 @@ for (let id = 1; id <= 160; id++) {
       const value = numberTag(tags, key);
       if (value) costs[key] = value;
     }
-    return { id: variantId, tier: tier, icon: data.iconIndex || base.iconIndex, mpCost: data.mpCost || 0, pp: numberTag(tags, 'pp'), range: firstTag(tags, 'range'), target: firstTag(tags, 'target'), type: firstTag(tags, 'type'), costs: costs, tags: tags, description: localizedSkillDescription(id, tier, data.description), upgradeDescription: tier ? localizedSkillUpgrade(id, tier) : { zh:'', en:'', ja:'' } };
+    return { id: variantId, tier: tier, icon: data.iconIndex || base.iconIndex, mpCost: data.mpCost || 0, pp: numberTag(tags, 'pp'), range: firstTag(tags, 'range'), target: firstTag(tags, 'target'), type: firstTag(tags, 'type'), costs: costs, tags: tags, description: localizedSkillDescription(id, tier, data.description), upgradeDescription: tier ? localizedSkillUpgrade(id, tier) : { zh:'', en:'', ja:'', ru:'' } };
   }).filter(Boolean);
   const tags = parseTags(base.note);
   const actorId = Number(firstTag(tags, 'actorIconId')) || 0;
@@ -308,7 +364,7 @@ for (let id = 1; id <= 160; id++) {
     target: firstTag(tags, 'target') || 'other',
     range: firstTag(tags, 'range') || '',
     variants: variants,
-    acquisition: skillAcquisition[id] ? localizedAcquisition(skillAcquisition[id].text) : { zh:'', en:'', ja:'' },
+    acquisition: skillAcquisition[id] ? localizedAcquisition(skillAcquisition[id].text) : { zh:'', en:'', ja:'', ru:'' },
     sourceKnown: Boolean(skillAcquisition[id]),
     tags: tags,
     tagNames: Object.keys(tags)
@@ -368,19 +424,19 @@ const inheritedAreaCodeForMap = (mapId, fallbackName) => {
   }
   return areaCodeFor(fallbackName || '');
 };
-const areaLocalizedName = (name, code) => code ? localized('mapdesc', 't' + code + 'a', name) : { zh: name, en: name, ja: name };
+const areaLocalizedName = (name, code) => code ? localized('mapdesc', 't' + code + 'a', name) : { zh: name, en: name, ja: name, ru: name };
 const mapLocalizedName = (name, code) => {
-  if (!code) return { zh: name, en: name, ja: name };
+  if (!code) return { zh: name, en: name, ja: name, ru: name };
   const official = localized('mapdesc', 't' + code + 'a', name);
   const base = String(lang.zh.mapdesc && lang.zh.mapdesc['t' + code + 'a'] || '');
   const normalizedName = String(name || '').replace(/的/g, '');
   const normalizedBase = base.replace(/的/g, '');
   const at = normalizedBase ? normalizedName.indexOf(normalizedBase) : -1;
-  if (at < 0) return { zh: name, en: name, ja: name };
+  if (at < 0) return { zh: name, en: name, ja: name, ru: name };
   const suffix = normalizedName.slice(at + normalizedBase.length).trim();
-  return { zh: name, en: official.en + (suffix ? ' · ' + suffix : ''), ja: official.ja + (suffix ? '・' + suffix : '') };
+  return { zh: name, en: official.en + (suffix ? ' · ' + suffix : ''), ja: official.ja + (suffix ? '・' + suffix : ''), ru: official.ru + (suffix ? ' · ' + suffix : '') };
 };
-const areaDescription = code => code ? localized('mapdesc', code, '') : { zh: '', en: '', ja: '' };
+const areaDescription = code => code ? localized('mapdesc', code, '') : { zh: '', en: '', ja: '', ru: '' };
 
 const mapCache = {};
 for (const info of mapInfos.filter(Boolean)) {
@@ -698,7 +754,7 @@ const researchRaw = Object.keys(researchCases).map(Number).sort((a, b) => a - b)
   for (const pair of Array.isArray(costs) ? costs : []) relateItem(id, Number(pair[0]));
   for (const pair of Array.isArray(gainItems) ? gainItems : []) relateItem(id, Number(Array.isArray(pair) ? pair[0] : pair.itemId || pair.id));
   if (learnItem) relateItem(id, learnItem);
-  for (const code of ['zh', 'en', 'ja']) for (const match of String(description[code] || '').matchAll(/\\II\[(\d+)\]/g)) relateItem(id, Number(match[1]));
+  for (const code of ['zh', 'en', 'ja', 'ru']) for (const match of String(description[code] || '').matchAll(/\\II\[(\d+)\]/g)) relateItem(id, Number(match[1]));
   return {
     id: id, name: localized('research', 'n' + id, 'Research ' + id), description: description,
     icon: Number(safeExpression(block, 'icon')) || 0, type: safeExpression(block, 'type') || 'other',
@@ -958,7 +1014,7 @@ const buildEnemyAbility = (key, value) => {
     return bossAbilityKeys(abilityId).map(spec => {
       const name = {};
       const description = {};
-      for (const code of ['zh', 'en', 'ja']) {
+      for (const code of ['zh', 'en', 'ja', 'ru']) {
         const strings = lang[code].eskill || {};
         name[code] = resolveNestedText(code, strings[spec.nameKey] || lang.zh.eskill[spec.nameKey] || '');
         const template = strings[spec.descriptionKey] || lang.zh.eskill[spec.descriptionKey] || '';
@@ -969,7 +1025,7 @@ const buildEnemyAbility = (key, value) => {
   }
   const name = {};
   const description = {};
-  for (const code of ['zh', 'en', 'ja']) {
+  for (const code of ['zh', 'en', 'ja', 'ru']) {
     name[code] = resolveNestedText(code, lang[code].eskill && lang[code].eskill[abilityId] || key);
     let template = lang[code].eskill && lang[code].eskill['d' + abilityId] || '';
     const args = enemyAbilityArgs(key, value, code);
@@ -1090,7 +1146,8 @@ const makeDerivedEquip = armorId => {
 const derivedAcquisition = parentName => ({
   zh: String(parentName.zh || '') + '\u7684\u884d\u751f',
   en: 'Derived from ' + String(parentName.en || parentName.zh || ''),
-  ja: String(parentName.ja || parentName.zh || '') + '\u306e\u6d3e\u751f'
+  ja: String(parentName.ja || parentName.zh || '') + '\u306e\u6d3e\u751f',
+  ru: 'Производное от «' + String(parentName.ru || parentName.en || '') + '»'
 });
 function pushDerived(target, parentName, entry) {
   if (!entry || entry.sourceKnown || target.some(item => item.kind === entry.kind && item.id === entry.id)) return;

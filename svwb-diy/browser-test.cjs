@@ -15,7 +15,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   const context=await browser.newContext({viewport:{width:1200,height:950},permissions:['clipboard-read','clipboard-write']});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto('http://127.0.0.1:4173/svwb_diy.html?qa=4');assert.equal(response.status(),200);
-  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='5.13');
+  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='5.16');
   assert.equal(await page.locator('#name').inputValue(),'设计师您辛苦了');
   assert.equal(await page.locator('#chaos').isChecked(),false);
   assert.equal(await page.locator('#overpowered').count(),0);
@@ -23,14 +23,14 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   await page.check('#chaos');assert(await page.evaluate(()=>current.chaos&&cardText(current).includes('究极混乱')));
   await page.click('#copy');assert((await page.evaluate(()=>navigator.clipboard.readText())).includes('究极混乱'));
   await page.uncheck('#chaos');assert.equal(await page.evaluate(()=>JSON.stringify(current)),ordinary);
-  await page.fill('#name',fixtures.zero);await page.click('button[type=submit]');
+  await page.fill('#name',fixtures.zero);await page.click('#forge-form button[type=submit]');
   assert.equal(await page.locator('#attack').textContent(),'0');assert.equal(await page.locator('#health').textContent(),'1');
   await page.click('#copy');assert((await page.evaluate(()=>navigator.clipboard.readText())).includes('1费 0/1'));
   for(const type of ['spell','amulet','follower']){
    await page.selectOption('#filter-type',type);await page.click('#random');
    const data=await page.evaluate(()=>({type:current.type,name:current.name,hidden:document.getElementById('attack').parentElement.hidden,text:cardText(current),data:JSON.stringify(current)}));
    assert.equal(data.type,type);assert.equal(data.hidden,type!=='follower');assert.match(data.name,/^随机卡牌#\d{8}$/);assert(!data.text.includes('null'));
-   await page.click('button[type=submit]');assert.equal(await page.evaluate(()=>JSON.stringify(current)),data.data);
+   await page.click('#forge-form button[type=submit]');assert.equal(await page.evaluate(()=>JSON.stringify(current)),data.data);
    await page.click('#copy');assert.equal((await page.evaluate(()=>navigator.clipboard.readText())).replace(/\r\n/g,'\n'),data.text);
   }
   await page.selectOption('#filter-type','amulet');await page.selectOption('#filter-class','6');await page.selectOption('#filter-rarity','3');await page.selectOption('#filter-cost','7+');
@@ -47,7 +47,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   }
   await page.uncheck('#chaos');
   for(const [name,chaos] of [['召唤赋予回归272',false],['召唤赋予回归274',false],['召唤赋予回归57',true],['手牌事件回归113',false],['手牌事件回归138',true],['手牌事件回归46',false],['核心创造物回归173',false],['核心创造物回归1170',true],['核心创造物回归1780',false],['核心创造物回归3559',false],['实验体回归113',false],['实验体回归124',false],['扩展机制32',false],['扩展机制44',false],['扩展机制46',false],['扩展机制1563',true]]){
-   await page.setChecked('#chaos',chaos);await page.fill('#name',name);await page.click('button[type=submit]');
+   await page.setChecked('#chaos',chaos);await page.fill('#name',name);await page.click('#forge-form button[type=submit]');
    const c=await page.evaluate(()=>current);
    for(const t of c.tokens.filter(t=>t.type&&t.type!=='follower')){
     const box=page.locator('#tokens .token').filter({has:page.getByRole('heading',{name:t.name,exact:true})});
@@ -58,13 +58,13 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   }
   await page.uncheck('#chaos');
   // Manual entry remains independent of filters, including HTML-like names.
-  await page.fill('#name','<b>设计师</b>#2026');await page.click('button[type=submit]');assert.equal(await page.locator('#card-name').textContent(),'<b>设计师</b>#2026');assert.equal(await page.locator('#card-name b').count(),0);
+  await page.fill('#name','<b>设计师</b>#2026');await page.click('#forge-form button[type=submit]');assert.equal(await page.locator('#card-name').textContent(),'<b>设计师</b>#2026');assert.equal(await page.locator('#card-name b').count(),0);
   for(const width of [1200,375]){
    await page.setViewportSize({width,height:950});
    const faithExamples=fixtures.faith;
    const accelerateExamples=[...fixtures.accelerate,...fixtures.crystallize];
    for(const name of ['对手复制233','对手复制704','对手复制1723','原创附属卡29','原创附属卡3945','原创附属卡1291','全类型验证1343','全类型验证11','全类型验证129','校验种子200',...faithExamples,...new Set(accelerateExamples)]){
-    await page.fill('#name',name);await page.click('button[type=submit]');
+    await page.fill('#name',name);await page.click('#forge-form button[type=submit]');
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${width}px overflow: ${name}`);
     assert(await page.locator('#variant').isVisible());
     if(faithExamples.includes(name)){
@@ -88,7 +88,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   }
   const historyExamples=require('./history-validation.json').examples;
   for(const example of [...Object.values(require('./fusion-event-validation.json').examples).map(name=>({name,chaos:false})),...Object.values(require('./health-transform-validation.json').examples),...Object.values(require('./discard-quality-validation.json').examples),...Object.values(require('./low-cost-conditions-validation.json').examples),...Object.values(require('./unlock-condition-validation.json').examples),...Object.values(require('./sacrifice-validation.json').examples),...Object.values(require('./high-rarity-validation.json').examples),...Object.values(require('./token-luck-validation.json').examples),...[historyExamples.invocationReturn,historyExamples.invocationStay].map(name=>({name,chaos:false}))]){
-   await page.setChecked('#chaos',example.chaos);await page.fill('#name',example.name);await page.click('button[type=submit]');
+   await page.setChecked('#chaos',example.chaos);await page.fill('#name',example.name);await page.click('#forge-form button[type=submit]');
    const expected=S.generate(example.name,{chaos:example.chaos});
    assert.equal(await page.evaluate(()=>JSON.stringify(current)),JSON.stringify(expected));
    const text=await page.evaluate(()=>cardText(current));await page.click('#copy');
@@ -102,7 +102,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
    if(expected.progressTransform){const formText=await page.evaluate(()=>tokenText(current.tokens.find(t=>t.upgrade)));assert(text.includes(formText));assert(text.includes('强化形态'));assert((await page.locator('#tokens').innerText()).includes('完成形'));}
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   }
-  await page.uncheck('#chaos');await page.fill('#name','全类型验证1343');await page.click('button[type=submit]');
+  await page.uncheck('#chaos');await page.fill('#name','全类型验证1343');await page.click('#forge-form button[type=submit]');
   await page.screenshot({path:'C:/Users/29327/.codex/visualizations/2026/09/17/01a0b13a-8ee6-7e01-9c6e-e20bb5c5d64b/svwb-v4-mobile.png',fullPage:true});
   assert.deepEqual(errors,[]);console.log('PASS: desktop/mobile, type filters, combined filters, name replay, clipboard, variants, safe text, hidden stats, no overflow or script errors.');
  }finally{await browser.close();}

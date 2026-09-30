@@ -1,12 +1,12 @@
 {
-  "version": "4.96",
+  "version": "5.16",
   "samples": 12000,
   "counts": {
-    "discount": 514,
-    "paidBody": 371,
-    "rebalanced": 965,
-    "remainingExtreme": 177,
-    "attackEnabledExtreme": 248,
+    "discount": 449,
+    "paidBody": 95,
+    "rebalanced": 959,
+    "remainingExtreme": 201,
+    "attackEnabledExtreme": 221,
     "delayed": 97
   }
 }

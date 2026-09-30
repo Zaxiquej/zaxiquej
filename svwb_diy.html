@@ -4,12 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>设计师模拟器</title>
-  <link rel="stylesheet" href="svwb-diy/style.css?v=5.13">
-  <script defer src="svwb-diy/calibration.js?v=5.13"></script>
-  <script defer src="svwb-diy/nonfollowers.js?v=5.13"></script>
-  <script defer src="svwb-diy/class-identity.js?v=5.13"></script>
-  <script defer src="svwb-diy/engine.js?v=5.13"></script>
-  <script defer src="svwb-diy/app.js?v=5.13"></script>
+  <link rel="stylesheet" href="svwb-diy/style.css?v=5.16">
+  <script defer src="svwb-diy/calibration.js?v=5.16"></script>
+  <script defer src="svwb-diy/nonfollowers.js?v=5.16"></script>
+  <script defer src="svwb-diy/class-identity.js?v=5.16"></script>
+  <script defer src="svwb-diy/token-delivery.js?v=5.16"></script>
+  <script defer src="svwb-diy/engine.js?v=5.16"></script>
+  <script defer src="svwb-diy/app.js?v=5.16"></script>
+  <script defer src="svwb-diy/inspector-search.js?v=5.16"></script>
+  <script defer src="svwb-diy/inspector.js?v=5.16"></script>
 </head>
 <body>
   <main class="container">
@@ -45,6 +48,31 @@
     <footer><a href="https://shadowverse-wb.com/chs/deck/cardslist/" target="_blank" rel="noopener">官方卡牌图鉴</a></footer>
     <button id="variant" type="button" class="secondary variant">不满意？看看其他可能性。</button>
   </main>
+  <dialog id="inspector" aria-labelledby="inspector-title">
+    <div class="inspector-heading"><h2 id="inspector-title">模型检索</h2><button id="inspector-close" class="secondary" type="button">关闭</button></div>
+    <form id="inspector-form">
+      <label for="inspector-query">包含词条或卡文</label>
+      <textarea id="inspector-query" rows="2" maxlength="1000" placeholder="例如：守护，谢幕曲&#10;或：天晶魔手，召唤"></textarea>
+      <p class="filter-note">多个条件用逗号或换行分隔。词条按完整标签匹配，普通卡文按片段匹配；也可输入 id:crystalHandBuff。</p>
+      <div class="filter-row" id="inspector-filters"></div>
+      <label>快捷条件添加到<select id="inspector-chip-target"><option value="inspector-query">包含条件</option><option value="inspector-exclude">排除条件</option></select></label>
+      <p class="filter-note">展开分类选择条件。职业机制与衍生卡随下方职业筛选变化；切换职业会保留已输入条件。</p>
+      <div id="inspector-chips" aria-label="添加检索条件"></div>
+      <div class="filter-row">
+        <label>匹配方式<select id="inspector-mode"><option value="all">全部包含</option><option value="any">任意包含</option></select></label>
+        <label>搜索范围<select id="inspector-scope"><option value="main">只查本体能力</option><option value="all">包含附属卡与纹章</option></select></label>
+        <label>检查种子上限<select id="inspector-limit"><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="100000">100,000</option><option value="1000000">1,000,000</option></select></label>
+        <label>结果上限<select id="inspector-count"><option value="10">10 张</option><option value="20" selected>20 张</option><option value="50">50 张</option><option value="100">100 张</option></select></label>
+      </div>
+      <label for="inspector-exclude">排除词条或卡文<input id="inspector-exclude" maxlength="1000" placeholder="例如：疾驰，超进化时"></label>
+      <label class="chaos-toggle"><input id="inspector-chaos" type="checkbox">究极混乱</label>
+      <div class="actions"><button id="inspector-start" type="submit">开始检索</button><button id="inspector-stop" type="button" class="secondary" disabled>停止</button><button id="inspector-export" type="button" class="secondary" disabled>导出 JSON</button></div>
+    </form>
+    <p class="filter-note">扫描正常生成结果，不改变词条或模型。未找到只表示本次范围内没有命中；多个条件可能位于不同能力或模式分支。</p>
+    <progress id="inspector-progress" max="10000" value="0" aria-label="检索进度"></progress>
+    <p id="inspector-status" role="status" aria-live="polite">等待检索。</p>
+    <div id="inspector-results"></div>
+  </dialog>
   <noscript>请启用 JavaScript 以生成卡牌。</noscript>
 </body>
 </html>
