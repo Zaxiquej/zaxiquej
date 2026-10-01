@@ -1,6 +1,6 @@
 (function (root) {
   'use strict';
-  const VERSION = '5.16';
+  const VERSION = '5.17';
   const TRIBAL_SYNERGY = 3; // Selection preference only; never discounts the payoff.
   const SEED_VERSION = '4.5'; // Keep existing cards stable while correcting low-cost bodies.
   const CALIBRATION=typeof module!=='undefined'&&module.exports?require('./calibration.js'):root.SVWBCalibration;
@@ -154,6 +154,33 @@
     }
     return weight;
   }
+  const DESIGN_ROLES={
+    board:/^(summon|tokenSummon|selfCopy|reanimate|recruit|artifactCopy|fusionArtifactSummon|crystalHandSummon|experimentSummon|allyBuff|teamBuff|tribeBuff|wardBuff|artifactBuff|crystalHandBuff|experimentBuff|experimentGrant|allyEvolve|teamEvolve)/,
+    control:/^(damage|aoe|splitDamage|destroy|banish|smallDestroy|statDebuff|massDebuff|setHealth|attackLock|enemyBounce|transformEnemy|transformEither|combatDestroy)/,
+    pressure:/^(face|疾驰|handStorm|doubleAttack|tripleAttack|ignoreWard|leaderVulnerability)/,
+    sustain:/^(heal|虹吸|ward|damageCap|reduceDamage|abilityDestructionImmune|屏障)/,
+    resource:/^(draw|tutor|keywordSearch|typeSearch|handCycle|handRefill|tokenHand|commonSupply|recoverFollower|artifactRecover|opponent.*Copy|treasureSupply|coinSupply)/
+  };
+  function designRoles(node){
+    if(node.modeBranches||node.mode||node.kind==='mode'||node.kind==='alternate'||node.kind==='cost')return [];
+    return Object.entries(DESIGN_ROLES).filter(([,re])=>(node.ids||[]).some(id=>re.test(id))).map(([id])=>id);
+  }
+  function focusWeight(abilities,candidate){
+    const incoming=designRoles(candidate);if(!incoming.length)return 1;
+    const existing=abilities.filter(a=>a.kind!=='keyword').flatMap(designRoles);
+    if(!existing.length)return 1;
+    if(incoming.some(id=>existing.includes(id)))return incoming.every(id=>id==='resource')?.85:1.65;
+    // Utility is a useful bridge, but a fourth independent axis usually makes
+    // the design noisier. Modes are deliberately excluded from this preference.
+    if(incoming.every(id=>id==='resource'))return 1;
+    const axes=new Set(existing.filter(id=>id!=='resource'));
+    return axes.size>=2?.32:.8;
+  }
+  function focusedDesignQuality(card){
+    const meaningful=card.abilities.filter(a=>a.kind!=='keyword'&&Math.max(a.price||0,(a.raw||0)*.4)>=3);
+    const axes=new Set(meaningful.flatMap(designRoles).filter(id=>id!=='resource'));
+    return axes.size<=3;
+  }
   const trimName=(value,limit=48)=>String(value).normalize('NFC').trim().slice(0,limit).replace(/[\uD800-\uDBFF]$/,'');
   function nextVariant(input,random=Math.random) {
     const name=String(input).normalize('NFC').trim()||'设计师您辛苦了';
@@ -283,7 +310,8 @@
     const cap=(curve(effectiveCost)+2-growth*.65)*(chaos?1.18:1);
     const bodyCap=type!=='follower'?0:payoff==='growth'?Math.max(2,Math.floor(BODY[cost]-growth*2)):null;
     const bodySoftCap=type==='follower'&&payoff==='discount'&&!slow?Math.max(2,Math.round(2*(cost-saving*.8))):null;
-    return {eventId,payoff,slow,temporary,expected:saving,growth,effectiveCost,budgetCap:slow?null:cap,bodyCap,bodySoftCap};
+    const rapid=payoff==='discount'&&['spellboost','leave','play','crystalHands','hurt','activate','amuletDeath'].includes(eventId);
+    return {eventId,payoff,slow,temporary,rapid,expected:saving,growth,effectiveCost,landingCost:Math.max(0,cost-saving),budgetCap:slow?null:cap,bodyCap,bodySoftCap};
   }
   function scalingBodyCap(plan,available){
     // Large bodies are possible when they replace other payoffs (10-PP 8/6
@@ -294,7 +322,7 @@
   }
   function scalingStormValue(card){
     const engines=card.abilities.filter(a=>a.scaling),growth=engines.reduce((n,a)=>n+a.scaling.growth,0);
-    const saving=engines.reduce((n,a)=>n+a.scaling.expected*(a.scaling.slow?.25:a.scaling.temporary?.6:.7),0);
+    const saving=engines.reduce((n,a)=>n+a.scaling.expected*(a.scaling.rapid?1:a.scaling.slow?.25:a.scaling.temporary?.6:.7),0);
     // Engine acquisition is already paid through the smaller total budget.
     // Here measure the actual attack package after holding/boosting the card.
     const effects=card.abilities.filter(a=>!a.scaling&&!a.ids.includes('handStorm'));
@@ -529,7 +557,7 @@
     {id:'tribeEvolve',price:5,weight:2,classes:[1,2,3,4,5],exclusive:true,max:1,text:()=> '选择自己的战场上的1个进化前的$TRIBE·随从，使其进化。'},
     {id:'tribeCountDamage',price:7.6,weight:2,classes:[1,2,3,4,5],exclusive:true,max:1,text:()=> '对对手的战场上的所有随从造成X点伤害。X为自己的战场上的$TRIBE·随从的张数。'},
     {id:'selfCopy',price:6,weight:7,classes:[],max:2,types:['follower'],text:n=>`召唤${n}个『$SELF』。`},
-    {id:'splitDamage',price:1.1,weight:5,classes:[],max:16,types:['spell','amulet'],text:n=>`对对手的战场上的所有随从分配${n}点伤害。`},
+    {id:'splitDamage',price:1.1,weight:5,classes:[],max:16,types:['follower','spell','amulet'],text:n=>`对对手的战场上的所有随从分配${n}点伤害。`},
     ...[['grantRush','突进',1.5],['grantWard','守护',1.2],['grantBarrier','屏障',2.5]].map(([id,k,price])=>({id,price,weight:3,classes:[],max:1,types:['spell','amulet'],text:()=>`选择自己的战场上的1个随从，使其获得【${k}】。`})),
     {id:'recruit',price:4.8,weight:3,classes:[],max:3,types:['spell','amulet'],text:n=>`从自己的牌组中随机召唤${n}张费用为2或以下的随从。`},
     {id:'boardWipe',price:14,weight:2,classes:[],max:1,types:['spell','amulet'],text:()=> '破坏战场上的所有随从。'}
@@ -606,7 +634,7 @@
     let card=generateCard(input,null,options);
     // Resample the design, not the class/cost/rarity, rather than append a
     // stock "legendary bonus" to a mundane card. The seed remains deterministic.
-    const playable=c=>lowSuperEvolutionQuality(c)&&evolutionOnlyQuality(c)&&namedSupportQuality(c)&&lateGameQuality(c);
+    const playable=c=>lowSuperEvolutionQuality(c)&&evolutionOnlyQuality(c)&&namedSupportQuality(c)&&lateGameQuality(c)&&focusedDesignQuality(c);
     if(card.rarity===3&&!designIdentity(card)||!playable(card)){
       let earlyFallback=null;
       const evolutionBound=card.type==='follower'&&card.abilities.every(a=>a.kind==='keyword'||['进化时','超进化时'].includes(a.trigger));
@@ -841,7 +869,8 @@
           else if(ids.some(id=>['tokenHand','crystalHandSupply','experimentSupply'].includes(id)))namedWeight=Math.max(namedWeight,2);
         }
       }
-      const affinity=strategyWeight({ids,tokens},strategyTags({abilities:[{trigger,condition}]}))*tempoWeight*classWeight*setupWeight*summonWeight*namedWeight;
+      const focus=modeChoiceDepth?1:focusWeight(card.abilities,{ids,trigger});
+      const affinity=strategyWeight({ids,tokens},strategyTags({abilities:[{trigger,condition}]}))*tempoWeight*classWeight*setupWeight*summonWeight*namedWeight*focus;
       const continuity=continuityWeight(card.abilities,ids,trigger);
       if(used.has('drawLuckEmblem')&&ids.some(id=>['draw','handCycle','handRefresh','handRefill'].includes(id)))return Math.max(1.8,continuity)*affinity;
       const is=(...keys)=>keys.some(k=>ids.includes(k));
@@ -938,7 +967,13 @@
       if(rarity>=1){
         if(!t.text.includes('【毁灭】'))offer('summonBane','【毁灭】',keywordPrice('毁灭',attack,health,{rush:true}),2);
         if(!t.text.includes('【虹吸】'))offer('summonDrain','【虹吸】',keywordPrice('虹吸',attack,health,{attacks})+attack*attacks*.25,cls===5?3:1);
-        if(attackWindow&&effectiveCost>=5&&count*attack*attacks<=effectiveCost*(chaos?1.2:1)&&!t.text.includes('【疾驰】'))offer('summonStorm','【疾驰】',keywordPrice('疾驰',attack,health,{attacks})+attack*attacks*.75,2);
+        if(attackWindow&&effectiveCost>=5&&count*attack*attacks<=effectiveCost*(chaos?1.2:1)&&!t.text.includes('【疾驰】')){
+          // The 2026-09-29 Eld Crystals change is a warning about cheap,
+          // flexible buffed Storm production, not a blanket token stat nerf.
+          const pressure=count*attack*attacks;
+          const synergy=(pressure*pressure*.08+(increase?Number(increase[1]):0)*count*.6)/count;
+          offer('summonStorm','【疾驰】',keywordPrice('疾驰',attack,health,{attacks})+attack*attacks*.75+synergy,2);
+        }
         if(effectiveCost>=3){
           offer('summonDeathDraw','「【谢幕曲】抽取1张卡牌。」',drawValue(effectiveCost,1)*.7,cls===5?4:1);
           offer('summonDeathHeal','「【谢幕曲】回复自己的主战者2点生命值。」',healValue(effectiveCost,2)*.7,cls===6?3:1);
@@ -983,6 +1018,7 @@
     case 'damage':return atom(`${target}造成${n}点伤害。`,n*1.25);
     case 'destroy':return atom(automatic?'破坏对手的战场上的随机1个随从。':'选择对手的战场上的1个随从，破坏该随从。',7);
     case 'aoe':{const x=rollAmount('aoe',cost>=7?4:2,Math.min(8,Math.max(3,cost>=7?cost-1:Math.floor(cost/2))),trigger);return atom(`对对手的战场上的所有随从造成${x}点伤害。`,x*3.8);}
+    case 'splitDamage':{const x=rollAmount('splitDamage',Math.max(1,cost),Math.max(1,Math.min(16,cost*2)),trigger);return atom(`对对手的战场上的所有随从分配${x}点伤害。`,x*1.1);}
     case 'draw':{const x=rollAmount('draw',1,3,trigger);return atom(`抽取${x}张卡牌。`,drawValue(cost,x));}
     case 'heal':{const x=rollAmount('heal',Math.max(1,Math.floor(cost*(highRole==='defense'?.85:.55))),Math.min(12,cost+2),trigger);return atom(`回复自己的主战者${x}点生命值。`,healValue(cost,x));}
     case 'face':{const x=rollAmount('face',cost>=7?3:2,Math.min(7,Math.max(2,Math.ceil(cost*.65))),trigger);return atom(`对对手的主战者造成${x}点伤害。`,x*2.7);}
@@ -1000,7 +1036,7 @@
       alignTribeToken();
       if(r()<.35){const mixed=mixedSummon(Math.min(24,cost*2.5),cost,null,trigger);if(mixed)return {...mixed,kind:'summon',ids:['summon','mixedSummon']};}
       const t=TRIBAL_SYNERGY>1&&hasTribePayoff()?tribeToken:cls===4?TOKENS[10]:cls===6?pick([TOKENS[6],TOKENS[13],TOKENS[14]]):token;
-      const count=t.attack>=4?1:rollAmount('tokenSummon',1,Math.min(3,Math.max(1,Math.floor(10/tokenValue(t)))),trigger);
+      const count=t.attack>=4?1:rollAmount('tokenSummon',1,Math.min(cost>=7?4:3,Math.max(1,Math.floor(cost*2/tokenValue(t)))),trigger);
       // Small armies may get an upgrade as part of the summon, never an unbound aura.
       const upgrade=(t.attack===1||cls===2&&t.tribeId===2)&&r()<.65;
       const [a,h]=growth(cost>=8?2:1,'core-summon');
@@ -1011,7 +1047,7 @@
   }
 }
 function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') {
-  const entries=[['damage',3],['destroy',1],['aoe',[3,4].includes(cls)?4:1],['draw',3],['heal',cls===6?5:1],['tutor',2],['summon',[1,2,7].includes(cls)?5:2]];
+  const entries=[['damage',3],['destroy',1],['aoe',[3,4].includes(cls)?2:1],['splitDamage',2],['draw',3],['heal',cls===6?5:1],['tutor',2],['summon',[1,2,7].includes(cls)?5:2]];
   if([0,4,5].includes(cls))entries.push(['face',2]);
   // Olivia establishes neutral PP recovery. Restoring spendable PP is not
   // raising the maximum; restrict it to deliberate own-turn resolution.
@@ -1021,13 +1057,20 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
   if([1,2].includes(cls))entries.push(['teamBuff',4]);
   const atoms=entries.filter(([k])=>!exclude.includes(k)&&effectAvailable(k,trigger)).map(([k,w])=>[modularAtom(k,automatic,trigger),w]);
   const eligible=atoms.filter(([a])=>a.raw<=limit&&a.raw>=minRaw).map(([a,w])=>[a,w,1]);
+  if(rarity>=1&&cost>=6&&['入场曲','进化时','超进化时'].includes(trigger)){
+    // Complex high-cost cards use the same paid atoms as the general pool.
+    // This avoids a separate small list that collapses all late cores to AoE.
+    const advanced=['massDebuff','transformEnemy','artifactCopy','amuletRecruit','amuletRevive','crystalHandSummon','experimentSummon','teamEvolve','selfCopy'].filter(id=>!exclude.includes(id));
+    const effect=makeEffect(limit,trigger,'none',minRaw,false,cost,automatic,{maxAtoms:1},advanced);
+    if(effect)eligible.push([{...effect,kind:effect.ids[0],components:effect.components||[{id:effect.ids[0],text:effect.text,raw:effect.raw}]},3,1]);
+  }
   // Earth and spellboost are separate atoms, eligible alone or with any other atom.
   if(cls===3)for(let i=0;i<atoms.length;i++)for(let j=i+1;j<atoms.length;j++){
     const [a,aw]=atoms[i],[b,bw]=atoms[j],raw=a.raw+b.raw;
     if(![a.kind,b.kind].some(k=>k==='earth'||k==='boost')||raw<minRaw||raw>limit)continue;
     eligible.push([{kind:a.kind,ids:[...a.ids,...b.ids],text:a.text+b.text,raw,tokens:[...a.tokens,...b.tokens],components:[...a.components,...b.components]},Math.sqrt(aw*bw),.2]);
   }
-  return eligible.length?weighted(r,eligible.map(([a,w,scale])=>[a,scale*effectWeight(a.kind==='summon'?'tokenSummon':a.kind==='tutor'?'keywordSearch':a.kind,w)*synergyWeight(a.ids,a.tokens,trigger)*(phaseHasTarget(trigger)&&targeted(a.text)?EXTRA_TARGET_WEIGHT:1)])):null;
+  return eligible.length?weighted(r,eligible.map(([a,w,scale])=>[a,scale*Math.sqrt(w*effectWeight(a.kind==='summon'?'tokenSummon':a.kind==='tutor'?'keywordSearch':a.kind,w))*synergyWeight(a.ids,a.tokens,trigger)*(phaseHasTarget(trigger)&&targeted(a.text)?EXTRA_TARGET_WEIGHT:1)])):null;
 }
     function signatureCore() {
   if(['疾驰','exhaustibleCycle','handTrigger','invocation','deckDiscount','enemyEmblem','drawLuckEmblem','handLuck','treasureLink','spellLink','discardSelfSummon','enemyEntry','amuletReviveHighest','resurrectSelf'].some(id=>used.has(id)))return false;
@@ -2570,15 +2613,15 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         card.abilities=card.abilities.filter(a=>!removed.includes(a));card.spent-=removed.reduce((s,a)=>s+a.price,0);refreshUsed();
         const remaining=Math.max(simpleDesign?8:0,target-highCostReadiness({...card,attack:null,bodyAllowance:floor}));
         const room=budget-floor-card.spent;
-        const kinds=['damage','aoe','destroy','summon',...(highRole==='defense'?['heal']:[])];
+        const kinds=['damage','aoe','splitDamage','destroy','summon','heal',...([0,4,5].includes(cls)?['face']:[]),...(cls===5?['reanimate']:[])];
         const readiness=a=>highCostReadiness({...card,abilities:[{...a,kind:'core',trigger:'入场曲',condition:'none'}],attack:null,bodyAllowance:floor});
         const options=card.abilities.length<5?kinds.filter(id=>effectAvailable(id,'入场曲')).map(id=>modularAtom(id,false,'入场曲')).filter(a=>readiness(a)>=remaining&&a.raw<=room):[];
         if(!options.length&&card.abilities.length<5){
-          const fallback=makeEffect(Math.min(room,cost*2),'入场曲','none',remaining,false,cost,false,{simple:true,maxAtoms:1},['damage','aoe','destroy','heal','tokenSummon']);
+          const fallback=makeEffect(Math.min(room,cost*2),'入场曲','none',remaining,false,cost,false,{simple:simpleDesign,maxAtoms:1},['damage','aoe','splitDamage','destroy','heal','tokenSummon',...(!simpleDesign?['massDebuff','artifactCopy','amuletRecruit','amuletRevive','teamEvolve','selfCopy']:[])]);
           if(fallback&&readiness(fallback)>=remaining)options.push(fallback);
         }
         if(options.length){
-          const a=weighted(r,options.map(a=>[a,effectWeight(a.kind==='summon'?'tokenSummon':a.kind||a.ids[0],1)]));
+          const a=weighted(r,options.map(a=>[a,Math.sqrt(effectWeight(a.kind==='summon'?'tokenSummon':a.kind||a.ids[0],1))*synergyWeight(a.ids,a.tokens,'入场曲')]));
           add({...a,kind:'core',trigger:'入场曲',condition:'none',bodyText:a.text,text:'【入场曲】'+a.text,price:a.raw,ids:['highCostFloor',...(simpleDesign?['coreAnchor']:[]),...a.ids],major:true});
           card.highCostFloor={before,target,after:highCostReadiness({...card,attack:null,bodyAllowance:floor}),replaced:removed.map(a=>a.text)};
           const removedTokenIds=new Set(removed.flatMap(a=>(a.tokens||[]).map(t=>t.id)));
@@ -3018,7 +3061,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     card.vanilla=card.abilities.length===0;
     return card;
   }
-  const api={header:(name,options)=>{const c=initialRoll(name,options);return {name:c.name,class:c.cls,rarity:c.rarity,cost:c.cost,type:c.type};},generate,nextVariant,randomName,randomMatchingName,tokenValue,tokenHandOffer,keywordPrice,healValue,multipleAttackPrice,designIdentity,stormCardValue,scalingPlan,scalingBodyCap,scalingStormValue,ambushCardValue,invocationValue,strategyTags,strategyAffinity,interactionWeight,continuityWeight,highCostReadiness,immediateBoardValue,discountFrequency,earthUnitValue,lowSuperEvolutionQuality,evolutionOnlyQuality,lateGameQuality,transformationTaskValue,CLASSES,RARITIES,THEMES,TOKENS,SUPPORT_CARDS,RELATED_CARDS,TYPES,VERSION};
+  const api={header:(name,options)=>{const c=initialRoll(name,options);return {name:c.name,class:c.cls,rarity:c.rarity,cost:c.cost,type:c.type};},generate,nextVariant,randomName,randomMatchingName,tokenValue,tokenHandOffer,keywordPrice,healValue,multipleAttackPrice,designRoles,focusWeight,focusedDesignQuality,designIdentity,stormCardValue,scalingPlan,scalingBodyCap,scalingStormValue,ambushCardValue,invocationValue,strategyTags,strategyAffinity,interactionWeight,continuityWeight,highCostReadiness,immediateBoardValue,discountFrequency,earthUnitValue,lowSuperEvolutionQuality,evolutionOnlyQuality,lateGameQuality,transformationTaskValue,CLASSES,RARITIES,THEMES,TOKENS,SUPPORT_CARDS,RELATED_CARDS,TYPES,VERSION};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else root.SVWB=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

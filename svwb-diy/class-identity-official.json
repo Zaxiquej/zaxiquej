@@ -1,6 +1,6 @@
 {
   "source": "https://shadowverse-wb.com/web/CardList/cardList",
-  "retrieved": "2026-09-24T20:47:30.156Z",
+  "retrieved": "2026-10-01T03:38:25.296Z",
   "method": "Non-token follower text; overlapping features, six-card local shrinkage within each class; counts are design priors, not deck inclusion rates.",
   "classes": {
     "1": {
@@ -684,60 +684,60 @@
       "rally": 0.00529
     },
     "1:2:0": {
-      "board": 0.35139,
-      "buff": 0.16681,
-      "enhance": 0.06768,
-      "treasure": 0.05592,
-      "rally": 0.0358
+      "board": 0.34631,
+      "buff": 0.16449,
+      "enhance": 0.07649,
+      "treasure": 0.05456,
+      "rally": 0.03493
     },
     "1:2:1": {
-      "board": 0.49425,
-      "buff": 0.23824,
-      "enhance": 0.13911,
-      "treasure": 0.05592,
-      "rally": 0.0358
+      "board": 0.48916,
+      "buff": 0.23591,
+      "enhance": 0.14791,
+      "treasure": 0.05456,
+      "rally": 0.03493
     },
     "1:2:2": {
-      "board": 0.65996,
-      "buff": 0.36128,
-      "enhance": 0.1623,
-      "treasure": 0.23191,
-      "rally": 0.04177
+      "board": 0.60372,
+      "buff": 0.33098,
+      "enhance": 0.23621,
+      "treasure": 0.2126,
+      "rally": 0.03761
     },
     "1:2:3": {
-      "board": 0.49497,
-      "buff": 0.14596,
-      "enhance": 0.24672,
-      "treasure": 0.17393,
-      "rally": 0.21883
+      "board": 0.49052,
+      "buff": 0.14392,
+      "enhance": 0.25442,
+      "treasure": 0.17274,
+      "rally": 0.21806
     },
     "2:2:0": {
-      "board": 0.48171,
-      "buff": 0.16713,
-      "enhance": 0.07899,
-      "treasure": 0.10976,
-      "rally": 0.01164
+      "board": 0.49869,
+      "buff": 0.17509,
+      "enhance": 0.04704,
+      "treasure": 0.11498,
+      "rally": 0.0122
     },
     "2:2:1": {
-      "board": 0.31707,
-      "buff": 0.14856,
-      "enhance": 0.07021,
-      "treasure": 0.20867,
-      "rally": 0.01035
+      "board": 0.33217,
+      "buff": 0.15563,
+      "enhance": 0.04181,
+      "treasure": 0.21332,
+      "rally": 0.01084
     },
     "2:2:2": {
-      "board": 0.5393,
-      "buff": 0.25967,
-      "enhance": 0.18133,
-      "treasure": 0.09756,
-      "rally": 0.01035
+      "board": 0.62369,
+      "buff": 0.30009,
+      "enhance": 0.04704,
+      "treasure": 0.11498,
+      "rally": 0.0122
     },
     "2:2:3": {
-      "board": 0.57114,
-      "buff": 0.27809,
-      "enhance": 0.05266,
-      "treasure": 0.1565,
-      "rally": 0.00776
+      "board": 0.58246,
+      "buff": 0.28339,
+      "enhance": 0.03136,
+      "treasure": 0.15999,
+      "rally": 0.00813
     },
     "0:3:0": {
       "boost": 0.22881,

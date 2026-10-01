@@ -1,5 +1,5 @@
 'use strict';
-importScripts('calibration.js?v=5.16','nonfollowers.js?v=5.16','class-identity.js?v=5.16','token-delivery.js?v=5.16','engine.js?v=5.16','inspector-search.js?v=5.16');
+importScripts('calibration.js?v=5.17','nonfollowers.js?v=5.17','class-identity.js?v=5.17','token-delivery.js?v=5.17','engine.js?v=5.17','inspector-search.js?v=5.17');
 let cancel=null;
 self.onmessage=({data})=>{
   if(cancel)cancel();

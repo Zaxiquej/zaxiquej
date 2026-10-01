@@ -7,6 +7,10 @@ const packageAt=(cost,a,h,payoff)=>S.scalingStormValue({cost,attack:a,health:h,a
 let p=packageAt(8,7,5,'discount');assert(p.value>p.limit);
 p=packageAt(8,2,2,'discount');assert(p.value<p.limit);
 p=packageAt(3,2,2,'growth');assert(p.value>p.limit);
+const fastTen=S.scalingPlan(10,'follower','spellboost','discount');
+assert(fastTen.rapid&&fastTen.landingCost<=5,'Rapid 10-PP discount is evaluated as an early play');
+p=packageAt(10,5,5,'discount');assert(p.value>p.limit,'Large Storm cannot use the 10-PP allowance when played much earlier');
+assert.equal(p.limit,fastTen.landingCost+1,'Pressure check uses attainable PP, not the more generous setup-adjusted budget');
 assert(S.keywordPrice('疾驰',7,5)>S.keywordPrice('疾驰',2,2)*3);
 // Slow conditional end-step discounts must not receive the fast-engine cap.
 assert.equal(S.scalingPlan(8,'follower','lowHealth','discount',2).budgetCap,null);
