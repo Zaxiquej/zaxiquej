@@ -136,7 +136,7 @@ const enhanceMeans=enhanceBands.map(values=>{assert(values.length>0,'Each paid-c
 assert(enhanceMeans[0]<enhanceMeans[1]&&enhanceMeans[1]<enhanceMeans[2],'Enhancement payoff should grow with the actual paid cost');
 assert(compoundEnhance>50,'Expensive enhancement should include compound effects');
 for(const [k,n]of Object.entries(coverage))assert(n>0,k+' missing');
-assert.equal(emblemClasses.size,8);assert.equal(signatures.size,5);
+assert.equal(emblemClasses.size,8);assert.equal(signatures.size,4);
 for(const duration of [null,2,3,4,5])assert(emblemDurations.get(duration)>0);
 const permanentShare=emblemDurations.get(null)/coverage.emblems;
 assert(permanentShare>.15&&permanentShare<.6,'Both permanent and countdown emblems must remain obtainable');

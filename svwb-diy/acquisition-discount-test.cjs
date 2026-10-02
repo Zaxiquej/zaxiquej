@@ -6,7 +6,7 @@ for(let i=0;i<22000;i++){
  assert(c.spent+(c.type==='follower'?c.attack+c.health:0)<=c.budget+.02,c.name+' budget');
  assert(!c.overpowered);assert(c.abilities.length<=5);
  for(const a of [...c.abilities,...c.alternateForms.flatMap(f=>f.abilities||[])]){
-  for(const id of ['transformAlly','transformEnemy','transformEither','opponentCopyTransform','handTransform','truthTransform','transformBound'])if(a.ids.includes(id)){transform[id]=(transform[id]||0)+1;examples[id]??={name:c.name,chaos:!!c.chaos,text:a.text};}
+  for(const id of ['transformAlly','transformEnemy','transformEither','opponentCopyTransform','handTransform','truthTransform'])if(a.ids.includes(id)){transform[id]=(transform[id]||0)+1;examples[id]??={name:c.name,chaos:!!c.chaos,text:a.text};}
   const d=a.acquisitionDiscount;if(!d)continue;
   counts.discount++;counts[d.source]++;counts[d.condition==='none'?'unconditional':'conditional']++;
   assert(a.ids.includes('acquisitionDiscount'));assert(d.discount>=1&&d.discount<=(a.condition==='discardAll'?8:3));assert(d.count>=1);

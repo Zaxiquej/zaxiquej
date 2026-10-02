@@ -10,6 +10,9 @@ for(let i=0;i<6000;i++){
  if(f?.mode!=='event')continue;
  counts.events++;classes.add(c.class);fees[f.ppCost]=(fees[f.ppCost]||0)+1;
  const a=c.abilities.find(a=>a.fusionEvent);assert(a);assert.equal(c.type,'follower');assert(c.cost>=3);assert(f.oncePerTurn);
+ assert(f.payoffRaw>=f.minimum&&f.minimum>=f.ppCost*2.2+.3);
+ if(f.ppCost===2)assert(!/抽取1张卡牌。$/.test(a.bodyText));
+ if(f.effects.some(id=>['damage','heal','grave'].includes(id)))assert(f.payoffRaw>=2.6+f.ppCost*.6);
  assert.equal(a.price,f.flexibility+Math.max(.7,f.payoffRaw-f.ppCost*2.2-f.materialCredit)*f.repeats);
  assert(!/选择|本随从\+|NaN|undefined|\$/.test(a.bodyText),name+' invalid in-hand event');
  if(f.ppCost)assert(a.text.includes(`若自己的剩余能量点为${f.ppCost}或以上，则消耗${f.ppCost}点能量点，`));

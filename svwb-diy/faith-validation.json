@@ -1,89 +1,95 @@
 {
-  "version": "4.9",
+  "version": "5.19.4",
   "coverage": {
-    "cards": 151,
-    "compound": 28,
-    "emblem": 85,
-    "hand": 33,
-    "summon": 12,
-    "growth": 21,
-    "crystalHands": 15
+    "cards": 108,
+    "compound": 20,
+    "upgrade": 13,
+    "emblem": 25,
+    "hand": 23,
+    "summon": 10,
+    "growth": 37,
+    "crystalHands": 6
   },
   "events": [
-    "draw",
-    "play",
-    "selfDamage",
-    "death",
-    "earth",
-    "attack",
     "spell",
-    "fairy",
-    "enter",
-    "amuletDeath",
-    "crystalHands",
-    "evolve",
-    "mode",
-    "return",
     "activate",
-    "heal",
-    "enhance"
+    "amuletDeath",
+    "return",
+    "crystalHands",
+    "enter",
+    "play",
+    "attack",
+    "death",
+    "enhance",
+    "evolve",
+    "earth",
+    "fairy",
+    "mode",
+    "selfDamage",
+    "draw",
+    "heal"
   ],
   "classes": {
     "1": [
-      "draw",
-      "play",
-      "death",
-      "fairy",
       "return",
+      "evolve",
       "spell",
-      "evolve"
+      "fairy",
+      "draw",
+      "death",
+      "play",
+      "attack"
     ],
     "2": [
-      "spell",
       "enter",
       "play",
       "attack",
-      "evolve",
+      "spell",
+      "death",
       "enhance",
       "draw"
     ],
     "3": [
-      "death",
-      "earth",
       "crystalHands",
+      "earth",
       "spell",
+      "attack",
       "evolve",
-      "draw",
       "play",
-      "attack"
+      "death",
+      "draw"
     ],
     "5": [
+      "spell",
+      "play",
+      "mode",
       "selfDamage",
       "attack",
-      "spell",
-      "mode",
-      "play",
-      "death",
-      "draw",
       "evolve"
     ],
     "6": [
-      "attack",
       "spell",
+      "activate",
       "amuletDeath",
       "death",
-      "evolve",
-      "activate",
-      "heal",
       "play",
-      "draw"
+      "heal"
     ]
   },
+  "royalTokens": {
+    "铁甲骑士": 3,
+    "骑士": 4,
+    "黄金之杯": 2,
+    "黄金短剑": 2,
+    "闪耀的金币": 2,
+    "黄金之靴": 1
+  },
   "examples": {
-    "growth": "信仰消费293",
-    "emblem": "信仰消费389",
-    "hand": "信仰消费778",
-    "crystalHands": "信仰消费778",
-    "summon": "信仰消费1275"
+    "growth": "信仰消费338",
+    "emblem": "信仰消费1958",
+    "crystalHands": "信仰消费3926",
+    "upgrade": "信仰消费4223",
+    "hand": "信仰消费8495",
+    "summon": "信仰消费8715"
   }
 }

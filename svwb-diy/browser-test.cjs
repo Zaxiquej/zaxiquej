@@ -15,7 +15,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   const context=await browser.newContext({viewport:{width:1200,height:950},permissions:['clipboard-read','clipboard-write']});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto('http://127.0.0.1:4173/svwb_diy.html?qa=4');assert.equal(response.status(),200);
-  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='5.17');
+  await page.waitForFunction(()=>typeof SVWB!=='undefined'&&SVWB.VERSION==='5.19.3');
   assert.equal(await page.locator('#name').inputValue(),'设计师您辛苦了');
   assert.equal(await page.locator('#chaos').isChecked(),false);
   assert.equal(await page.locator('#overpowered').count(),0);
@@ -62,7 +62,7 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
   for(const width of [1200,375]){
    await page.setViewportSize({width,height:950});
    const faithExamples=fixtures.faith;
-   const accelerateExamples=[...fixtures.accelerate,...fixtures.crystallize];
+   const accelerateExamples=[...fixtures.accelerate,...fixtures.crystallize,'结晶估值278','结晶估值5514','结晶估值10052'];
    for(const name of ['对手复制233','对手复制704','对手复制1723','原创附属卡29','原创附属卡3945','原创附属卡1291','全类型验证1343','全类型验证11','全类型验证129','校验种子200',...faithExamples,...new Set(accelerateExamples)]){
     await page.fill('#name',name);await page.click('#forge-form button[type=submit]');
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${width}px overflow: ${name}`);
@@ -85,6 +85,16 @@ assert(fixtures.zero&&fixtures.faith.length===2&&fixtures.accelerate.length===2)
      for(const token of form.tokens||[])assert(copied.includes(token.name));
     }
    }
+  }
+  for(const example of Object.values(require('./enemy-curse-validation.json').examples)){
+   await page.setChecked('#chaos',example.chaos);await page.fill('#name',example.name);await page.click('#forge-form button[type=submit]');
+   const expected=S.generate(example.name,{chaos:example.chaos});
+   assert.equal(await page.evaluate(()=>JSON.stringify(current)),JSON.stringify(expected));
+   await page.click('#copy');const copied=(await page.evaluate(()=>navigator.clipboard.readText())).replace(/\r\n/g,'\n');
+   for(const a of expected.abilities.filter(a=>a.ids.includes('enemyCurse'))){
+    const quote=a.text.match(/「[^」]*」/)[0];assert(copied.includes(quote));assert((await page.locator('#abilities').textContent()).includes(quote));
+   }
+   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   }
   const historyExamples=require('./history-validation.json').examples;
   for(const example of [...Object.values(require('./fusion-event-validation.json').examples).map(name=>({name,chaos:false})),...Object.values(require('./health-transform-validation.json').examples),...Object.values(require('./discard-quality-validation.json').examples),...Object.values(require('./low-cost-conditions-validation.json').examples),...Object.values(require('./unlock-condition-validation.json').examples),...Object.values(require('./sacrifice-validation.json').examples),...Object.values(require('./high-rarity-validation.json').examples),...Object.values(require('./token-luck-validation.json').examples),...[historyExamples.invocationReturn,historyExamples.invocationStay].map(name=>({name,chaos:false}))]){

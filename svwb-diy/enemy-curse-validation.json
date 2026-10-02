@@ -1,0 +1,39 @@
+{
+  "version": "5.18.2",
+  "generated": 2898,
+  "counts": {
+    "cards": 46,
+    "automatic": 6,
+    "multiple": 2,
+    "compound": 10
+  },
+  "events": [
+    "ownEnd",
+    "attack",
+    "lastWords",
+    "end"
+  ],
+  "payloads": [
+    "leaderDamage",
+    "selfDamage",
+    "attackDecay"
+  ],
+  "examples": {
+    "ownEnd": {
+      "name": "敌方附加1155",
+      "chaos": true
+    },
+    "attack": {
+      "name": "敌方附加6695",
+      "chaos": true
+    },
+    "lastWords": {
+      "name": "敌方附加9149",
+      "chaos": true
+    },
+    "end": {
+      "name": "敌方附加14960",
+      "chaos": false
+    }
+  }
+}

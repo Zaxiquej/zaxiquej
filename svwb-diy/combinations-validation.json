@@ -1,0 +1,45 @@
+{
+  "before": {
+    "version": "5.20.0",
+    "n": 3000,
+    "paired": 15,
+    "counts": {
+      "matchingEntryEngine": 9,
+      "spellSupplyBoost": 1,
+      "handArtifactDeploy": 1,
+      "graveReserve": 1,
+      "armyThenBuff": 1,
+      "earthReserve": 2
+    },
+    "examples": {
+      "matchingEntryEngine": "合理组合64",
+      "spellSupplyBoost": "合理组合500",
+      "handArtifactDeploy": "合理组合1216",
+      "graveReserve": "合理组合1343",
+      "armyThenBuff": "合理组合1520",
+      "earthReserve": "合理组合1973"
+    }
+  },
+  "after": {
+    "version": "5.21.0",
+    "n": 3000,
+    "paired": 19,
+    "counts": {
+      "matchingEntryEngine": 11,
+      "spellSupplyBoost": 1,
+      "armyThenBuff": 2,
+      "graveReserve": 1,
+      "cheapCardsCombo": 2,
+      "earthReserve": 2
+    },
+    "examples": {
+      "matchingEntryEngine": "合理组合64",
+      "spellSupplyBoost": "合理组合500",
+      "armyThenBuff": "合理组合746",
+      "graveReserve": "合理组合1343",
+      "cheapCardsCombo": "合理组合1900",
+      "earthReserve": "合理组合1973"
+    }
+  },
+  "note": "Only ten newly classified relations, not all useful card synergies. Before used incomplete artifact metadata; do not treat before/after as a controlled overall synergy or win-rate comparison."
+}

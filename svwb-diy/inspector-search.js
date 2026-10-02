@@ -19,6 +19,7 @@
       group('触发时点与能力结构',['入场曲','谢幕曲','进化时','超进化时','攻击时','交战时','融合','模式','启动','爆能强化','激奏','结晶','瞬念召唤','奥义','解放奥义','自己的回合开始时','自己的回合结束时','对手的回合结束时','完成形','纹章','信仰']),
       group('效果与条件',['召唤','抽取','回复','破坏','消失','返回手牌','舍弃','复制','变身','伤害','能量点','手牌','牌堆','战场','墓场','主战者','本次对战中','本回合','进化已解禁','超进化已解禁'])];
     const classes=cls==null?Object.keys(classTerms).map(Number):[Number(cls)];
+    groups[2].items.push({label:'附加敌方负面能力',term:'id:enemyCurse'});
     for(const id of classes)if(classTerms[id])groups.push(group(engine.CLASSES[id]+'机制',classTerms[id],cls!=null));
     const tokens=[...(engine.TOKENS||[]),...(engine.SUPPORT_CARDS||[])].filter(t=>cls==null||t.class===0||t.class===Number(cls));
     groups.push({label:'衍生卡（Token）',open:cls!=null,items:[...new Set(tokens.map(t=>t.name))].map(name=>({label:name,term:'『'+name+'』'}))});

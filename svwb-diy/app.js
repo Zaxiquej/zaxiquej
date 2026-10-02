@@ -13,7 +13,14 @@ function displayAbilities(c){
   function effectParts(text){
     // Split independent effects, keeping quoted card names, conditional tails,
     // and follow-up references together so sorting cannot detach their scope.
-    const sentences=text.match(/(?:『[^』]*』|[^。])+。?/g)||[],parts=[];
+    const sentences=[],parts=[],quotes=[];let start=0;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(ch==='「'||ch==='『')quotes.push(ch==='「'?'」':'』');
+      else if(ch===quotes[quotes.length-1])quotes.pop();
+      if(ch==='。'&&!quotes.length){sentences.push(text.slice(start,i+1));start=i+1;}
+    }
+    if(start<text.length)sentences.push(text.slice(start));
     for(let i=0;i<sentences.length;i++){
       const sentence=sentences[i].trimStart();
       if(parts.length&&/^若(?:以此|因本能力)/.test(sentence)){

@@ -97,12 +97,22 @@
       }
     }else{
       const official=calibration.typeStats.amulets;
-      const soil=cls===3&&cost>=1&&r()<.2&&remaining()>=.6;
+      const soil=cls===3&&cost>=1&&r()<.2&&remaining()>=1&&card.abilities.length<=3&&effectCount()<effectLimit;
       const countdown=cost>0&&!soil&&!used.has('exhaustibleCycle')&&r()<(cls===6?.58:official.countdown/calibration.typeStats.counts.amulet);
       card.countdown=countdown?weighted(r,[[1,8],[2,30],[3,32],[4,23],[5,7]]):null;
       card.archetype=countdown?'countdownAmulet':'persistentAmulet';
       if(countdown)add({kind:'keyword',trigger:'',condition:'none',text:`【吟唱 ${card.countdown}】`,raw:0,price:0,ids:['countdown']});
       if(soil)add({kind:'keyword',trigger:'',condition:'none',text:'【土之印】',raw:1,price:.6,ids:['earthSigil']});
+      if(soil){
+        // Reserve the sigil's defining activation before optional effects spend
+        // its slots/budget. It creates soil and never destroys its own carrier.
+        const fee=weighted(r,[[1,7],[2,3],[3,1]]),amount=fee>=2&&cost>=2&&r()<.45?2:1,repeats=3.5;
+        const base=amount*1.6,limit=Math.min(8,remaining()*.65/repeats+fee*2.2);
+        const extra=rarity>=1&&fee>=2&&effectCount()+2<=effectLimit&&r()<.6?temp(['earth'],()=>makeEffect(Math.max(0,limit-base),'启动','none',0,true,Math.max(1,cost+fee),false,{maxAtoms:1})):null;
+        const raw=base+(extra?.raw||0),price=Math.max(.4,(raw-fee*2.2)*repeats);
+        const body=`使自己的战场上的土之印+${amount}。`+(extra?.text||'');
+        if(price<=remaining())add({kind:'activation',trigger:'启动',condition:'none',text:`费用${fee}【启动】`+body,bodyText:body,raw,price,ids:['earth',...(extra?.ids||[]),'activate'],tokens:extra?.tokens||[],activation:{fee,oncePerTurn:true,breaksSelf:false,repeats,credit:fee*2.2,earthAmount:amount}});
+      }
       const delay=countdown?1/(1+card.countdown*.3):.8;
       let death=null;
       if(cost>0&&!soil&&r()<(countdown?.8:.2)){
