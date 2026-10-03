@@ -14,7 +14,7 @@ function apply(D,I){
  ];
  for(const c of spells){c.type='spell';c.keywords=[];D.spells.push(c);D.byId[c.id]=c;}
  D.archetypes.dragon.routes[0]=['受伤育龙','半龙人魔法师提供龙之翼击，指定下场受伤对象；火焰蜥蜴开战点燃，龙技达人攻击后持续刺激相邻龙族。驯龙师与勒哈布养成战场，赤怒蛇把受伤转成酒馆成长。',['dragon19','dragonWing','dragon3','dragon16','dragon4','dragon13','dragon18','dragon5']];
- D.archetypes.blood.support='蠢动的恶鬼与莉莉姆提供入场自伤；购买鲜血的吻唇、血之契约也会自伤。恶夜魔羊在实际失血后治疗，1 生命时不会空触发。血之契约只生成法术，不返还金币。';
+ D.archetypes.blood.support='蠢动的恶鬼与莉莉姆提供入场自伤；购买鲜血的吻唇、血之契约也会自伤。恶夜魔羊在场时自伤免伤，仍累计自伤并触发收益；悚惧气息提供本回合的临时免伤。血之契约只生成法术，不返还金币。';
  D.rulesVersion='12.1';return D;
 }
 root.TavernInjury={apply};if(typeof module!=='undefined')module.exports={apply};

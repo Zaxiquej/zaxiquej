@@ -5,12 +5,12 @@ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cards=()=>[...document.querySelectorAll('.card[data-card]:not(.fx-ghost)')];
 const key=el=>el.dataset.area+':'+el.dataset.card;
 function captureDOM(){return new Map(cards().map(el=>[key(el),{rect:el.getBoundingClientRect(),node:el.cloneNode(true)}]));}
-function capture(s){return {dom:captureDOM(),discards:s.stats?.discards||0,amulets:new Map(s.amulets.map(c=>[c.uid,{...c}])),prayers:s.progress?.prayers||0,shop:new Map(s.shop.map(c=>[c.uid,{...c}])),board:new Map(s.board.map(c=>[c.uid,{...c,keywords:[...c.keywords]}])),hand:new Set(s.hand.map(c=>c.uid)),gold:s.gold,hp:s.hp,blood:s.bloodDamage||0};}
+function capture(s){return {dom:captureDOM(),units:new Map([...s.board,...s.hand,...s.shop].map(c=>[c.uid,{...c}])),feasts:s.feasts?.length||0,discards:s.stats?.discards||0,amulets:new Map(s.amulets.map(c=>[c.uid,{...c}])),prayers:s.progress?.prayers||0,shop:new Map(s.shop.map(c=>[c.uid,{...c}])),board:new Map(s.board.map(c=>[c.uid,{...c,keywords:[...c.keywords]}])),hand:new Set(s.hand.map(c=>c.uid)),gold:s.gold,hp:s.hp,blood:s.bloodDamage||0};}
 function motion(el,frames,duration=460){if(!el||reduced())return;el.animate(frames,{duration,easing:'cubic-bezier(.2,.7,.3,1)'});}
 function float(el,text,kind='gain',duration=650){if(!el||!text)return;const tag=document.createElement('span');tag.className='fx-number '+kind;tag.textContent=text;el.append(tag);if(!reduced())tag.animate([{opacity:0,transform:'translate(-50%,8px) scale(.85)'},{opacity:1,transform:'translate(-50%,-10px) scale(1.08)',offset:.25},{opacity:0,transform:'translate(-50%,-38px) scale(1)'}],{duration,easing:'ease-out'});setTimeout(()=>tag.remove(),duration);}
 const sign=n=>(n>0?'+':'')+n;
 function recruit(before,s,type,args){
- if(type==='fight'||type==='continue')return;
+ if(type==='fight')return;
  for(const el of cards()){
   const area=el.dataset.area,uid=+el.dataset.card,prior=before.dom.get(key(el))||before.dom.get('shop:'+uid)||before.dom.get('hand:'+uid),rect=el.getBoundingClientRect();
   if(prior&&['hand','board'].includes(area)){const dx=prior.rect.x-rect.x,dy=prior.rect.y-rect.y;if(Math.abs(dx)+Math.abs(dy)>4)motion(el,[{transform:`translate(${dx}px,${dy}px) scale(.86)`,opacity:.6},{transform:'translate(0,0) scale(1)',opacity:1}],380);}
@@ -72,5 +72,27 @@ function battle(event,oldDOM,speed){
   animation.onfinish=()=>{departures.delete(ghost);ghost.remove();};
  }
 }
-root.TavernFX={capture,captureDOM,recruit,battle,reset};
+function mergedCards(before,s){return s.hand.filter(c=>c.golden&&!before.units.has(c.uid)&&[...before.units.values()].some(x=>x.id===c.id&&!x.golden));}
+const hasTriple=(before,s)=>mergedCards(before,s).length>0;
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function fly(saved,target,duration=560){
+ if(!saved||!target||reduced())return;
+ const rect=target.getBoundingClientRect(),ghost=saved.node;
+ ghost.querySelectorAll('.fx-number').forEach(x=>x.remove());ghost.removeAttribute('data-card');ghost.removeAttribute('data-area');ghost.inert=true;ghost.setAttribute('aria-hidden','true');ghost.classList.add('fx-ghost');
+ Object.assign(ghost.style,{position:'fixed',left:saved.rect.x+'px',top:saved.rect.y+'px',width:saved.rect.width+'px',height:saved.rect.height+'px',opacity:'0',animation:'none',transition:'none',zIndex:35});document.body.append(ghost);departures.add(ghost);
+ const animation=ghost.animate([{opacity:.9,transform:'translate(0,0) scale(1)'},{opacity:0,transform:`translate(${rect.x+rect.width/2-saved.rect.x-saved.rect.width/2}px,${rect.y+rect.height/2-saved.rect.y-saved.rect.height/2}px) scale(.2)`}],{duration,easing:'ease-in',fill:'both'});
+ animation.onfinish=()=>{departures.delete(ghost);ghost.remove();};
+}
+async function triples(before,s){
+ for(const c of mergedCards(before,s)){const target=document.querySelector(`.card[data-area="hand"][data-card="${c.uid}"]`);const current=new Set([...s.hand,...s.board,...s.shop].map(c=>c.uid));let count=0;
+ for(const [key,saved] of before.dom){const old=before.units.get(+key.split(':')[1]);if(old?.id===c.id&&!old.golden&&!current.has(old.uid)&&count++<3)fly(saved,target);}
+ motion(target,[{filter:'brightness(2)',transform:'scale(.85)'},{filter:'brightness(1.7)',transform:'scale(1.12)',offset:.7},{filter:'brightness(1)',transform:'scale(1)'}],680);float(target,'三连 · 金色回手','resource',800);}
+ await pause(reduced()?120:720);
+}
+async function endStep(before,s,frame){
+ const source=document.querySelector(`.card[data-area="board"][data-card="${frame.source}"]`);if(source)motion(source,[{filter:'brightness(1)'},{filter:'brightness(1.8)',offset:.4},{filter:'brightness(1)'}],500);
+ for(const f of (s.feasts||[]).slice(before.feasts)){const target=document.querySelector(`.card[data-area="board"][data-card="${f.source}"]`);fly(before.dom.get('shop:'+f.food.uid),target,620);float(target,'吞噬','gain',700);}
+ await pause(reduced()?100:760);
+}
+root.TavernFX={capture,captureDOM,recruit,battle,reset,hasTriple,triples,endStep};
 })(window);

@@ -1,0 +1,133 @@
+{
+  "version": "24.0",
+  "cards": 221,
+  "dual": 10,
+  "rows": [
+    {
+      "tribe": "forest",
+      "name": "妖精",
+      "primary": 25,
+      "eligible": 25,
+      "stars": [
+        2,
+        2,
+        6,
+        6,
+        6,
+        3
+      ]
+    },
+    {
+      "tribe": "royal",
+      "name": "皇家护卫",
+      "primary": 25,
+      "eligible": 25,
+      "stars": [
+        2,
+        3,
+        5,
+        6,
+        5,
+        4
+      ]
+    },
+    {
+      "tribe": "dragon",
+      "name": "龙族",
+      "primary": 25,
+      "eligible": 27,
+      "stars": [
+        2,
+        5,
+        4,
+        5,
+        6,
+        3
+      ]
+    },
+    {
+      "tribe": "night",
+      "name": "死灵",
+      "primary": 26,
+      "eligible": 27,
+      "stars": [
+        2,
+        5,
+        6,
+        5,
+        5,
+        3
+      ]
+    },
+    {
+      "tribe": "rune",
+      "name": "巫师",
+      "primary": 24,
+      "eligible": 28,
+      "stars": [
+        2,
+        4,
+        4,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "tribe": "haven",
+      "name": "主教",
+      "primary": 25,
+      "eligible": 26,
+      "stars": [
+        2,
+        4,
+        6,
+        2,
+        7,
+        4
+      ]
+    },
+    {
+      "tribe": "blood",
+      "name": "吸血鬼",
+      "primary": 25,
+      "eligible": 26,
+      "stars": [
+        2,
+        4,
+        6,
+        4,
+        5,
+        4
+      ]
+    },
+    {
+      "tribe": "artifact",
+      "name": "造物",
+      "primary": 25,
+      "eligible": 26,
+      "stars": [
+        3,
+        3,
+        5,
+        5,
+        5,
+        4
+      ]
+    },
+    {
+      "tribe": "neutral",
+      "name": "中立",
+      "primary": 21,
+      "eligible": 21,
+      "stars": [
+        2,
+        2,
+        4,
+        6,
+        5,
+        2
+      ]
+    }
+  ]
+}

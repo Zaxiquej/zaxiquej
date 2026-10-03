@@ -32,6 +32,16 @@ Object.assign(ids,{"neutral14":106041010,"neutral15":101031010,"neutral16":10704
 Object.assign(ids,{"smallWard":101014020,"tierBlessing":119014010,"grandBlessing":126034010,"battleChorus":101014010,"teamFeast":129024010,"menagerieBlessing":128024010,"marketMeal":114034010,"marketLegacy":121014010,"recruitNovice":116024010,"seekRecruit":125014010,"mirrorRecruit":105024010});
 Object.assign(ids,{forest15:127141030,forest16:125141020,rune19:129321010,royal20:126221020,royal21:121211030,coin:900214050,coinVault:110732010,egg:113433010});
 Object.assign(ids,{rune20:103331030});
+Object.assign(ids,{"forest21":105141020,"royal22":121241010,"royal23":101211020,"royal24":103221030,"rune21":106341010,"night19":122521020,"night20":108511010,"night21":109541030,"haven19":102711010,"haven20":109731010,"haven21":123741010,"blood20":104611020,"blood21":101631020,"artifact20":100811070,"artifact21":116841010});
+Object.assign(ids,{"forest22":101111020,"forest23":100111020,"forest24":101111070,"dragon22":102411040,"dragon23":107421010,"dragon24":106441020,"rune22":104321020,"rune23":101311040,"rune24":105341020,"night22":107531020,"night23":101511020,"night24":103521030,"haven22":105731020,"haven23":101721080,"haven24":106731010,"blood22":104621020,"blood23":101621070,"blood24":104631030,"artifact22":107811130,"artifact23":107811020,"artifact24":100821020,"neutral18":116011010,"neutral19":900041080,"neutral20":101611020,"holyGuardian":900741030,"holyWisp":900711130,"mining":126824010,"mine":900512020});
+Object.assign(ids,{night25:127531030});
+Object.assign(ids,{"forest23":127141020,"forest24":125141030,"night24":126541020,"haven23":124741030,"haven24":129731020,"blood24":123631020,"artifact22":120831020,"artifact23":121811020,"artifact24":125831020});
+// Reforged identities
+Object.assign(ids,{"forest24":101111070,"night11":121511020,"night21":123531020,"dragon8":102411010,"dragon12":107411010,"blood5":124621010,"blood24":124641030,"artifact19":127811030});
+Object.assign(ids,{blood23:111641010});
+Object.assign(ids,{blood21:108631010});
+Object.assign(ids,{night22:120641020});
+Object.assign(ids,{bloodImmunity:900644080});
 const trinkets={seed:101122020,purse:900214020,bone:102533020,quill:106312010,bud:108013010,crest:104222010,worldtree:108141010,crown:101232010,mirror:115332010,relic:126713010,moon:101032010,prism:126732010};
 const leaders={forest:[121141030,'亚里莎'],royal:[121241030,'艾莉卡'],dragon:[121441030,'罗文'],night:[121541030,'露娜'],rune:[121341030,'伊莎贝尔'],haven:[121741030,'伊莉丝']};
 leaders.blood=[121641030,'尤里亚斯'];leaders.artifact=[113841030,'奥契丝'];

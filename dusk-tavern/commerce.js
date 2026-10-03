@@ -38,7 +38,7 @@ function apply(D,I){
  D.cards.push(recruiter);D.byId.royal21=recruiter;
  rule('royal21',m=>`入场曲：发现 ${m} 个皇家随从，不高于当前酒馆星级。`);
  D.fanfareIds.push('royal21');D.abilityIds.fanfare.push('royal21');
- const discoveryPool=D.discoveryPool;D.discoveryPool=(s,d)=>d.discoverKind==='royal'?D.cards.filter(c=>c.tribe==='royal'&&!c.retired&&c.tier<=s.tier&&(s.activeTribes||D.tribeIds).includes('royal')):discoveryPool(s,d);
+ const discoveryPool=D.discoveryPool;D.discoveryPool=(s,d)=>d.discoverKind==='royal'?D.cards.filter(c=>D.isTribe(c,'royal')&&!c.retired&&c.tier<=s.tier&&(c.poolTribes||[c.tribe]).some(t=>(s.activeTribes||D.tribeIds).includes(t))):discoveryPool(s,d);
  set('royal14',{effect:'cryChampion',signature:'入场指挥'});
  rule('royal14',m=>`每当其他友方触发入场曲，自身永久 +${4*m}/+${4*m}。`);
  set('royal12',{signature:'屏障援护'});

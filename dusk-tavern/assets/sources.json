@@ -2730,6 +2730,646 @@
       "imageSource": "https://svgdb.me/assets/fullart/1033310300.png",
       "originalType": 1,
       "originalClan": 3
+    },
+    {
+      "name": "妖精龙",
+      "sourceName": "妖精龙",
+      "sourceId": 105141020,
+      "art": "dusk-tavern/assets/105141020.webp",
+      "sourceUrl": "https://svgdb.me/cards/105141020",
+      "imageSource": "https://svgdb.me/assets/fullart/1051410200.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "光耀导引·米丝特莉娜与贝里昂",
+      "sourceName": "光耀导引·米丝特莉娜与贝里昂",
+      "sourceId": 121241010,
+      "art": "dusk-tavern/assets/121241010.webp",
+      "sourceUrl": "https://svgdb.me/cards/121241010",
+      "imageSource": "https://svgdb.me/assets/fullart/1212410100.png",
+      "originalType": 1,
+      "originalClan": 2
+    },
+    {
+      "name": "不屈的士兵",
+      "sourceName": "不屈的士兵",
+      "sourceId": 101211020,
+      "art": "dusk-tavern/assets/101211020.webp",
+      "sourceUrl": "https://svgdb.me/cards/101211020",
+      "imageSource": "https://svgdb.me/assets/fullart/1012110200.png",
+      "originalType": 1,
+      "originalClan": 2
+    },
+    {
+      "name": "骑士团副队长·格尔德",
+      "sourceName": "骑士团副队长·格尔德",
+      "sourceId": 103221030,
+      "art": "dusk-tavern/assets/103221030.webp",
+      "sourceUrl": "https://svgdb.me/cards/103221030",
+      "imageSource": "https://svgdb.me/assets/fullart/1032210300.png",
+      "originalType": 1,
+      "originalClan": 2
+    },
+    {
+      "name": "观星魔女·丝特拉",
+      "sourceName": "观星魔女·丝特拉",
+      "sourceId": 106341010,
+      "art": "dusk-tavern/assets/106341010.webp",
+      "sourceUrl": "https://svgdb.me/cards/106341010",
+      "imageSource": "https://svgdb.me/assets/fullart/1063410100.png",
+      "originalType": 1,
+      "originalClan": 3
+    },
+    {
+      "name": "静谧的守墓者",
+      "sourceName": "静谧的守墓者",
+      "sourceId": 122521020,
+      "art": "dusk-tavern/assets/122521020.webp",
+      "sourceUrl": "https://svgdb.me/cards/122521020",
+      "imageSource": "https://svgdb.me/assets/fullart/1225210200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "骸骨的代言者",
+      "sourceName": "骸骨的代言者",
+      "sourceId": 108511010,
+      "art": "dusk-tavern/assets/108511010.webp",
+      "sourceUrl": "https://svgdb.me/cards/108511010",
+      "imageSource": "https://svgdb.me/assets/fullart/1085110100.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "格莫瑞",
+      "sourceName": "格莫瑞",
+      "sourceId": 109541030,
+      "art": "dusk-tavern/assets/109541030.webp",
+      "sourceUrl": "https://svgdb.me/cards/109541030",
+      "imageSource": "https://svgdb.me/assets/fullart/1095410300.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "天界的忠犬",
+      "sourceName": "天界的忠犬",
+      "sourceId": 102711010,
+      "art": "dusk-tavern/assets/102711010.webp",
+      "sourceUrl": "https://svgdb.me/cards/102711010",
+      "imageSource": "https://svgdb.me/assets/fullart/1027110100.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "圣光牧师·萝蕾娜",
+      "sourceName": "圣光牧师·萝蕾娜",
+      "sourceId": 109731010,
+      "art": "dusk-tavern/assets/109731010.webp",
+      "sourceUrl": "https://svgdb.me/cards/109731010",
+      "imageSource": "https://svgdb.me/assets/fullart/1097310100.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "光灿圣骑士·维尔伯特",
+      "sourceName": "光灿圣骑士·维尔伯特",
+      "sourceId": 123741010,
+      "art": "dusk-tavern/assets/123741010.webp",
+      "sourceUrl": "https://svgdb.me/cards/123741010",
+      "imageSource": "https://svgdb.me/assets/fullart/1237410100.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "蛛网恶魔",
+      "sourceName": "蛛网恶魔",
+      "sourceId": 104611020,
+      "art": "dusk-tavern/assets/104611020.webp",
+      "sourceUrl": "https://svgdb.me/cards/104611020",
+      "imageSource": "https://svgdb.me/assets/fullart/1046110200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "恶魔司令·萝拉",
+      "sourceName": "恶魔司令·萝拉",
+      "sourceId": 101631020,
+      "art": "dusk-tavern/assets/101631020.webp",
+      "sourceUrl": "https://svgdb.me/cards/101631020",
+      "imageSource": "https://svgdb.me/assets/fullart/1016310200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "魔铁狂狮",
+      "sourceName": "魔铁狂狮",
+      "sourceId": 100811070,
+      "art": "dusk-tavern/assets/100811070.webp",
+      "sourceUrl": "https://svgdb.me/cards/100811070",
+      "imageSource": "https://svgdb.me/assets/fullart/1008110700.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "音速机械·洛菈米亚",
+      "sourceName": "音速机械·洛菈米亚",
+      "sourceId": 116841010,
+      "art": "dusk-tavern/assets/116841010.webp",
+      "sourceUrl": "https://svgdb.me/cards/116841010",
+      "imageSource": "https://svgdb.me/assets/fullart/1168410100.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "妖精勇者",
+      "sourceName": "妖精勇者",
+      "sourceId": 101111020,
+      "art": "dusk-tavern/assets/101111020.webp",
+      "sourceUrl": "https://svgdb.me/cards/101111020",
+      "imageSource": "https://svgdb.me/assets/fullart/1011110200.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "妖精语森林使者",
+      "sourceName": "妖精语森林使者",
+      "sourceId": 100111020,
+      "art": "dusk-tavern/assets/100111020.webp",
+      "sourceUrl": "https://svgdb.me/cards/100111020",
+      "imageSource": "https://svgdb.me/assets/fullart/1001110200.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "神奇的精灵法师",
+      "sourceName": "神奇的精灵法师",
+      "sourceId": 101111070,
+      "art": "dusk-tavern/assets/101111070.webp",
+      "sourceUrl": "https://svgdb.me/cards/101111070",
+      "imageSource": "https://svgdb.me/assets/fullart/1011110700.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "暴虐的龙少女",
+      "sourceName": "暴虐的龙少女",
+      "sourceId": 102411040,
+      "art": "dusk-tavern/assets/102411040.webp",
+      "sourceUrl": "https://svgdb.me/cards/102411040",
+      "imageSource": "https://svgdb.me/assets/fullart/1024110400.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "艳丽龙人·玛利翁",
+      "sourceName": "艳丽龙人·玛利翁",
+      "sourceId": 107421010,
+      "art": "dusk-tavern/assets/107421010.webp",
+      "sourceUrl": "https://svgdb.me/cards/107421010",
+      "imageSource": "https://svgdb.me/assets/fullart/1074210100.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "培冬",
+      "sourceName": "培冬",
+      "sourceId": 106441020,
+      "art": "dusk-tavern/assets/106441020.webp",
+      "sourceUrl": "https://svgdb.me/cards/106441020",
+      "imageSource": "https://svgdb.me/assets/fullart/1064410200.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "学院新生·露",
+      "sourceName": "学院新生·露",
+      "sourceId": 104321020,
+      "art": "dusk-tavern/assets/104321020.webp",
+      "sourceUrl": "https://svgdb.me/cards/104321020",
+      "imageSource": "https://svgdb.me/assets/fullart/1043210200.png",
+      "originalType": 1,
+      "originalClan": 3
+    },
+    {
+      "name": "符文守卫",
+      "sourceName": "符文守卫",
+      "sourceId": 101311040,
+      "art": "dusk-tavern/assets/101311040.webp",
+      "sourceUrl": "https://svgdb.me/cards/101311040",
+      "imageSource": "https://svgdb.me/assets/fullart/1013110400.png",
+      "originalType": 1,
+      "originalClan": 3
+    },
+    {
+      "name": "被唤醒的禁忌",
+      "sourceName": "被唤醒的禁忌",
+      "sourceId": 105341020,
+      "art": "dusk-tavern/assets/105341020.webp",
+      "sourceUrl": "https://svgdb.me/cards/105341020",
+      "imageSource": "https://svgdb.me/assets/fullart/1053410200.png",
+      "originalType": 1,
+      "originalClan": 3
+    },
+    {
+      "name": "骷髅王子",
+      "sourceName": "骷髅王子",
+      "sourceId": 107531020,
+      "art": "dusk-tavern/assets/107531020.webp",
+      "sourceUrl": "https://svgdb.me/cards/107531020",
+      "imageSource": "https://svgdb.me/assets/fullart/1075310200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "亡骨寡妇",
+      "sourceName": "亡骨寡妇",
+      "sourceId": 101511020,
+      "art": "dusk-tavern/assets/101511020.webp",
+      "sourceUrl": "https://svgdb.me/cards/101511020",
+      "imageSource": "https://svgdb.me/assets/fullart/1015110200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "蹒跚的活尸",
+      "sourceName": "蹒跚的活尸",
+      "sourceId": 103521030,
+      "art": "dusk-tavern/assets/103521030.webp",
+      "sourceUrl": "https://svgdb.me/cards/103521030",
+      "imageSource": "https://svgdb.me/assets/fullart/1035210300.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "赤枝圣骑士·诺榭",
+      "sourceName": "赤枝圣骑士·诺榭",
+      "sourceId": 105731020,
+      "art": "dusk-tavern/assets/105731020.webp",
+      "sourceUrl": "https://svgdb.me/cards/105731020",
+      "imageSource": "https://svgdb.me/assets/fullart/1057310200.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "圣光法师",
+      "sourceName": "圣光法师",
+      "sourceId": 101721080,
+      "art": "dusk-tavern/assets/101721080.webp",
+      "sourceUrl": "https://svgdb.me/cards/101721080",
+      "imageSource": "https://svgdb.me/assets/fullart/1017210800.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "安朵美达",
+      "sourceName": "安朵美达",
+      "sourceId": 106731010,
+      "art": "dusk-tavern/assets/106731010.webp",
+      "sourceUrl": "https://svgdb.me/cards/106731010",
+      "imageSource": "https://svgdb.me/assets/fullart/1067310100.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "巴风特",
+      "sourceName": "巴风特",
+      "sourceId": 104621020,
+      "art": "dusk-tavern/assets/104621020.webp",
+      "sourceUrl": "https://svgdb.me/cards/104621020",
+      "imageSource": "https://svgdb.me/assets/fullart/1046210200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "黑暗召唤师",
+      "sourceName": "黑暗召唤师",
+      "sourceId": 101621070,
+      "art": "dusk-tavern/assets/101621070.webp",
+      "sourceUrl": "https://svgdb.me/cards/101621070",
+      "imageSource": "https://svgdb.me/assets/fullart/1016210700.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "爱之恶魔·加列德",
+      "sourceName": "爱之恶魔·加列德",
+      "sourceId": 104631030,
+      "art": "dusk-tavern/assets/104631030.webp",
+      "sourceUrl": "https://svgdb.me/cards/104631030",
+      "imageSource": "https://svgdb.me/assets/fullart/1046310300.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "恶魔的祭文",
+      "sourceName": "恶魔的祭文",
+      "sourceId": 107811130,
+      "art": "dusk-tavern/assets/107811130.webp",
+      "sourceUrl": "https://svgdb.me/cards/107811130",
+      "imageSource": "https://svgdb.me/assets/fullart/1078111300.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "熊偶少女",
+      "sourceName": "熊偶少女",
+      "sourceId": 107811020,
+      "art": "dusk-tavern/assets/107811020.webp",
+      "sourceUrl": "https://svgdb.me/cards/107811020",
+      "imageSource": "https://svgdb.me/assets/fullart/1078110200.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "白黑双翼·涅克丝",
+      "sourceName": "白黑双翼·涅克丝",
+      "sourceId": 100821020,
+      "art": "dusk-tavern/assets/100821020.webp",
+      "sourceUrl": "https://svgdb.me/cards/100821020",
+      "imageSource": "https://svgdb.me/assets/fullart/1008210200.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "浪漫寻宝家",
+      "sourceName": "浪漫寻宝家",
+      "sourceId": 116011010,
+      "art": "dusk-tavern/assets/116011010.webp",
+      "sourceUrl": "https://svgdb.me/cards/116011010",
+      "imageSource": "https://svgdb.me/assets/fullart/1160110100.png",
+      "originalType": 1,
+      "originalClan": 0
+    },
+    {
+      "name": "贪欲的毒蝎",
+      "sourceName": "贪欲的毒蝎",
+      "sourceId": 900041080,
+      "art": "dusk-tavern/assets/900041080.webp",
+      "sourceUrl": "https://svgdb.me/cards/900041080",
+      "imageSource": "https://svgdb.me/assets/fullart/9000410800.png",
+      "originalType": 1,
+      "originalClan": 0
+    },
+    {
+      "name": "毒牙眼镜蛇",
+      "sourceName": "毒牙眼镜蛇",
+      "sourceId": 101611020,
+      "art": "dusk-tavern/assets/101611020.webp",
+      "sourceUrl": "https://svgdb.me/cards/101611020",
+      "imageSource": "https://svgdb.me/assets/fullart/1016110200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "圣骑兵",
+      "sourceName": "圣骑兵",
+      "sourceId": 900741030,
+      "art": "dusk-tavern/assets/900741030.webp",
+      "sourceUrl": "https://svgdb.me/cards/900741030",
+      "imageSource": "https://svgdb.me/assets/fullart/9007410300.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "圣盾天狮",
+      "sourceName": "圣盾天狮",
+      "sourceId": 900711130,
+      "art": "dusk-tavern/assets/900711130.webp",
+      "sourceUrl": "https://svgdb.me/cards/900711130",
+      "imageSource": "https://svgdb.me/assets/fullart/9007111300.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "发掘遗物",
+      "sourceName": "发掘遗物",
+      "sourceId": 126824010,
+      "art": "dusk-tavern/assets/126824010.webp",
+      "sourceUrl": "https://svgdb.me/cards/126824010",
+      "imageSource": "https://svgdb.me/assets/fullart/1268240100.png",
+      "originalType": 4,
+      "originalClan": 8
+    },
+    {
+      "name": "被藏匿的财宝",
+      "sourceName": "被藏匿的财宝",
+      "sourceId": 900512020,
+      "art": "dusk-tavern/assets/900512020.webp",
+      "sourceUrl": "https://svgdb.me/cards/900512020",
+      "imageSource": "https://svgdb.me/assets/fullart/9005120200.png",
+      "originalType": 2,
+      "originalClan": 5
+    },
+    {
+      "name": "死魂射手",
+      "sourceName": "死魂射手",
+      "sourceId": 127531030,
+      "art": "dusk-tavern/assets/127531030.webp",
+      "sourceUrl": "https://svgdb.me/cards/127531030",
+      "imageSource": "https://svgdb.me/assets/fullart/1275310300.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "香风执行者·威默尔",
+      "sourceName": "香风执行者·威默尔",
+      "sourceId": 127141020,
+      "art": "dusk-tavern/assets/127141020.webp",
+      "sourceUrl": "https://svgdb.me/cards/127141020",
+      "imageSource": "https://svgdb.me/assets/fullart/1271410200.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "圣绿的光辉·宝石兽",
+      "sourceName": "圣绿的光辉·宝石兽",
+      "sourceId": 125141030,
+      "art": "dusk-tavern/assets/125141030.webp",
+      "sourceUrl": "https://svgdb.me/cards/125141030",
+      "imageSource": "https://svgdb.me/assets/fullart/1251410300.png",
+      "originalType": 1,
+      "originalClan": 1
+    },
+    {
+      "name": "高贵的灵使·忒露雪菈",
+      "sourceName": "高贵的灵使·忒露雪菈",
+      "sourceId": 126541020,
+      "art": "dusk-tavern/assets/126541020.webp",
+      "sourceUrl": "https://svgdb.me/cards/126541020",
+      "imageSource": "https://svgdb.me/assets/fullart/1265410200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "金刚拳圣",
+      "sourceName": "金刚拳圣",
+      "sourceId": 124741030,
+      "art": "dusk-tavern/assets/124741030.webp",
+      "sourceUrl": "https://svgdb.me/cards/124741030",
+      "imageSource": "https://svgdb.me/assets/fullart/1247410300.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "沉醉的大恶魔",
+      "sourceName": "沉醉的大恶魔",
+      "sourceId": 123631020,
+      "art": "dusk-tavern/assets/123631020.webp",
+      "sourceUrl": "https://svgdb.me/cards/123631020",
+      "imageSource": "https://svgdb.me/assets/fullart/1236310200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "创造物飞船",
+      "sourceName": "创造物飞船",
+      "sourceId": 120831020,
+      "art": "dusk-tavern/assets/120831020.webp",
+      "sourceUrl": "https://svgdb.me/cards/120831020",
+      "imageSource": "https://svgdb.me/assets/fullart/1208310200.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "线圈发明家",
+      "sourceName": "线圈发明家",
+      "sourceId": 121811020,
+      "art": "dusk-tavern/assets/121811020.webp",
+      "sourceUrl": "https://svgdb.me/cards/121811020",
+      "imageSource": "https://svgdb.me/assets/fullart/1218110200.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "外界审判者·诺伦",
+      "sourceName": "外界审判者·诺伦",
+      "sourceId": 125831020,
+      "art": "dusk-tavern/assets/125831020.webp",
+      "sourceUrl": "https://svgdb.me/cards/125831020",
+      "imageSource": "https://svgdb.me/assets/fullart/1258310200.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "玉兔治疗师",
+      "sourceName": "玉兔治疗师",
+      "sourceId": 129731020,
+      "art": "dusk-tavern/assets/129731020.webp",
+      "sourceUrl": "https://svgdb.me/cards/129731020",
+      "imageSource": "https://svgdb.me/assets/fullart/1297310200.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    {
+      "name": "灵魂指挥者",
+      "sourceName": "灵魂指挥者",
+      "sourceId": 121511020,
+      "art": "dusk-tavern/assets/121511020.webp",
+      "sourceUrl": "https://svgdb.me/cards/121511020",
+      "imageSource": "https://svgdb.me/assets/fullart/1215110200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "食魂者",
+      "sourceName": "食魂者",
+      "sourceId": 123531020,
+      "art": "dusk-tavern/assets/123531020.webp",
+      "sourceUrl": "https://svgdb.me/cards/123531020",
+      "imageSource": "https://svgdb.me/assets/fullart/1235310200.png",
+      "originalType": 1,
+      "originalClan": 5
+    },
+    {
+      "name": "铁鳞龙人",
+      "sourceName": "铁鳞龙人",
+      "sourceId": 102411010,
+      "art": "dusk-tavern/assets/102411010.webp",
+      "sourceUrl": "https://svgdb.me/cards/102411010",
+      "imageSource": "https://svgdb.me/assets/fullart/1024110100.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "游龙少女",
+      "sourceName": "游龙少女",
+      "sourceId": 107411010,
+      "art": "dusk-tavern/assets/107411010.webp",
+      "sourceUrl": "https://svgdb.me/cards/107411010",
+      "imageSource": "https://svgdb.me/assets/fullart/1074110100.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "客房服务的恶魔",
+      "sourceName": "客房服务的恶魔",
+      "sourceId": 124621010,
+      "art": "dusk-tavern/assets/124621010.webp",
+      "sourceUrl": "https://svgdb.me/cards/124621010",
+      "imageSource": "https://svgdb.me/assets/fullart/1246210100.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "蹂躏的凶王",
+      "sourceName": "蹂躏的凶王",
+      "sourceId": 124641030,
+      "art": "dusk-tavern/assets/124641030.webp",
+      "sourceUrl": "https://svgdb.me/cards/124641030",
+      "imageSource": "https://svgdb.me/assets/fullart/1246410300.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "遗迹拟态兵",
+      "sourceName": "遗迹拟态兵",
+      "sourceId": 127811030,
+      "art": "dusk-tavern/assets/127811030.webp",
+      "sourceUrl": "https://svgdb.me/cards/127811030",
+      "imageSource": "https://svgdb.me/assets/fullart/1278110300.png",
+      "originalType": 1,
+      "originalClan": 8
+    },
+    {
+      "name": "狄亚波罗斯·究极",
+      "sourceName": "狄亚波罗斯·究极",
+      "sourceId": 111641010,
+      "art": "dusk-tavern/assets/111641010.webp",
+      "sourceUrl": "https://svgdb.me/cards/111641010",
+      "imageSource": "https://svgdb.me/assets/fullart/1116410100.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "血脉之王",
+      "sourceName": "血脉之王",
+      "sourceId": 108631010,
+      "art": "dusk-tavern/assets/108631010.webp",
+      "sourceUrl": "https://svgdb.me/cards/108631010",
+      "imageSource": "https://svgdb.me/assets/fullart/1086310100.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "永劫的吸血鬼·亚瑞札特",
+      "sourceName": "永劫的吸血鬼·亚瑞札特",
+      "sourceId": 120641020,
+      "art": "dusk-tavern/assets/120641020.webp",
+      "sourceUrl": "https://svgdb.me/cards/120641020",
+      "imageSource": "https://svgdb.me/assets/fullart/1206410200.png",
+      "originalType": 1,
+      "originalClan": 6
+    },
+    {
+      "name": "悚惧气息",
+      "sourceName": "悚惧气息",
+      "sourceId": 900644080,
+      "art": "dusk-tavern/assets/900644080.webp",
+      "sourceUrl": "https://svgdb.me/cards/900644080",
+      "imageSource": "https://svgdb.me/assets/fullart/9006440800.png",
+      "originalType": 4,
+      "originalClan": 6
     }
   ]
 }
