@@ -1,8 +1,8 @@
 (function(root){
 'use strict';
-const read=s=>({mining:s?.progress?.mining||0,totalPlayed:s?.progress?.totalPlayed??Math.max(s?.played||0,s?.spells||0),constructTypes:[...(s?.progress?.constructTypes||[])],fairy:s?.progress?.fairy||0,arms:s?.progress?.arms||0,prayers:s?.progress?.prayers||0,spellcraft:s?.progress?.spellcraft||0,devotion:s?.progress?.devotion||0,buffs:s?.progress?.buffs||0,battleEntries:s?.progress?.battleEntries||0,legionAttack:s?.progress?.legionAttack||0,tavernAttack:s?.progress?.tavernAttack||0,tavernHealth:s?.progress?.tavernHealth||0});
+const read=s=>({goldCapBonus:s?.progress?.goldCapBonus??Math.floor((s?.progress?.mining||0)/3),totalPlayed:s?.progress?.totalPlayed??Math.max(s?.played||0,s?.spells||0),constructTypes:[...(s?.progress?.constructTypes||[])],fairy:s?.progress?.fairy||0,arms:s?.progress?.arms||0,prayers:s?.progress?.prayers||0,spellcraft:s?.progress?.spellcraft||0,devotion:s?.progress?.devotion||0,buffs:s?.progress?.buffs||0,battleEntries:s?.progress?.battleEntries||0,legionAttack:s?.progress?.legionAttack||0,tavernAttack:s?.progress?.tavernAttack||0,tavernHealth:s?.progress?.tavernHealth||0});
 const selfHarmImmune=s=>!!s?.bloodImmunity||(s?.board||[]).some(c=>c.id==='blood11');
-const goldCap=s=>10+Math.floor(read(s).mining/3);
+const goldCap=s=>10+read(s).goldCapBonus;
 const tavern=s=>({attack:read(s).tavernAttack,health:read(s).tavernHealth});
 const fairy=s=>read(s).fairy,bat=s=>Math.floor((s?.bloodDamage||0)/2);
 const weapon=s=>{const n=Math.floor(read(s).arms/3);return {attack:1+n,health:2+n};};
@@ -18,7 +18,7 @@ const shieldCount=c=>c?.keywords?.includes('shield')?Math.max(1,c.shieldLayers??
 function syncShieldAura(board){const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null),active=board.some(c=>D.byId[c.id]?.effect==='shieldAura');for(const c of board){if(active)c.shieldAura=true;else delete c.shieldAura;}}
 function addShield(c){if(!c)return;c.shieldLayers=canStackShield(c)?shieldCount(c)+1:Math.max(1,shieldCount(c));if(!c.keywords.includes('shield'))c.keywords.push('shield');}
 function summary(s){const p=read(s),w=weapon(s);return [
- {tribe:'neutral',label:'采掘',value:p.mining+'点 · 收入上限 '+goldCap(s),detail:'每累计3点采掘，基础金币上限提高1；随后各回合多获得1金币。铸币与出售收入可以超过这个基础上限。'},
+ {tribe:'neutral',label:'金币上限',value:String(goldCap(s)),detail:'上限加成 +'+p.goldCapBonus+'，每回合收入同时增加。铸币与出售收入可超过上限。'},
  {tribe:'forest',label:'整局出牌',value:p.totalPlayed+'张',detail:'实际从手牌打出的随从、法术、护符各计一次；召唤与重复入场曲不计。'},
  {tribe:'artifact',label:'造物图谱',value:p.constructTypes.length+'种',detail:'本局实际打出过的不同造物衍生随从。'},
  {tribe:'forest',label:'妖精军团',value:'+'+p.fairy+'/+'+p.fairy,detail:'妖精衍生物开战及召唤时获得军团身材。魔法精灵公主通过召唤妖精、莉莎通过衍生随从攻击推进军团；辛西亚通过连携强化队伍，维尔达与远古树精负责军团收益。'},
@@ -29,7 +29,7 @@ function summary(s){const p=read(s),w=weapon(s);return [
  {tribe:'rune',label:'法术研习',value:'+'+p.spellcraft+' · '+(s?.spells||0)+'次施法',detail:'法术研习 '+p.spellcraft+'：后续法术的非零属性增益各额外增加此值；不增加金币、资源数量或关键词。每次施法持续累积。雷光射手固定发射两束雷光，施法数提高单束伤害，秘银巨像在每个己方随从攻击前按施法总数轰击。'},
  {tribe:'haven',label:'护符共鸣',value:'+'+prayer(s),detail:'护符培育 '+p.devotion+'，已完成 '+p.prayers+' 次倒数。共鸣 = 培育 + 倒数次数÷3（向下取整）；增加护符非零属性增益与衍生物身材，不增加资源张数。'},
  {tribe:'blood',label:'血翼军团',value:'+'+bat(s)+'/+'+bat(s),detail:'累计自伤'+(s?.bloodDamage||0)+'；每2点自伤强化所有蝙蝠的开战与召唤身材。女王按蝙蝠完整攻击炮击，女帝按累计自伤强化全队。'},
- {tribe:'artifact',label:'武装 / 残骸',value:'+'+w.attack+'/+'+w.health+' · '+(s?.scrap||0),detail:'武装研习'+p.arms+'点，每3点提高后续武装基础身材；施放武装与机械降神均可积累。残骸'+(s?.scrap||0)+'：重构造物为'+artifactBody(s)+'/'+artifactBody(s)+'，创造主开战加成+'+growthAmount(s,'artifactLord')+'/+'+(s?.scrap||0)+'。'}
+ {tribe:'artifact',label:'武装 / 残骸',value:'+'+w.attack+'/+'+w.health+' · '+(s?.scrap||0),detail:'武装研习'+p.arms+'点，每3点提高后续武装基础身材；施放武装与机械降神均可积累。残骸'+(s?.scrap||0)+'：重构造物为'+artifactBody(s)+'/'+artifactBody(s)+'，创造主开战加成+'+growthAmount(s,'artifactLord')+'/+'+growthAmount(s,'artifactLord')+'。'}
 ];}
 // Recruitment spell previews share the same nonzero-stat amplification rule as cast().
 function spellView(s,d){
@@ -57,13 +57,13 @@ function spellView(s,d){
  if(d.effect==='randomRecruit')short='随机 1 星随从 ×1';
  if(d.effect==='copyRecruit')short='复制友方 · 普通基础卡';
  if(d.effect==='pilfer')short='随机偷取随从 ×1';
- if(d.effect==='discoverSpell'){const label={fanfare:'入场曲',lastWords:'谢幕曲',endRecruit:'备战结束',amulet:'护符'}[d.discoverKind];short='发现'+label+' · ≤'+(s?.tier||1)+'★';text='从本局牌池中发现一'+(d.discoverKind==='amulet'?'张护符':'名拥有'+label+'效果的随从')+'，最高 '+(s?.tier||1)+' 星。';}
- if(d.effect==='discoverSpell'&&d.discoverKind==='minion'){short='发现随从 · 恰好 '+(s?.tier||1)+'★';text='发现一个本局牌池中恰好 '+(s?.tier||1)+' 星的随从。';}
+ if(d.effect==='discardEcho')short=s?.discardEcho?'本回合被弃效果双倍 · 已生效':'本回合被弃效果双倍';
+ if(d.effect==='discoverSpell'){const cap=Math.min(6,(s?.tier||1)+(d.discoverKind==='amulet'?0:1)),label={fanfare:'入场曲随从',lastWords:'谢幕曲随从',endRecruit:'备战结束随从',amulet:'护符',minion:'随从',majority:'优势种族随从'}[d.discoverKind]||'随从';short='发现'+label+' · '+(d.exactTier?'':'≤')+cap+'★';text=d.discoverKind==='majority'?'发现一个你场上数量最多的种族的随从，最高 '+cap+' 星。并列时合并这些种族。':'发现一'+(d.discoverKind==='amulet'?'张':'个')+label+'，'+(d.exactTier?'恰好 ':'最高 ')+cap+' 星。';}
  if(d.effect==='bones')short='墓场 +5';
  if(d.effect==='removeGuard')short='移除守护 · 指定友方';
  if(d.effect==='clock')short='所有护符倒数 −1';
  if(d.effect==='bloodImmunity')short=s?.bloodImmunity?'本回合自伤免伤 · 已生效':'本回合自伤免伤';
- if(d.effect==='mining')short='采掘 +3 · 收入上限 +1';
+ if(d.effect==='mining')short='金币上限 +1';
  if(d.effect==='coin')short='金币 +1';
  if(d.effect==='deferGold')short='下回合金币 +2';
  if(d.effect==='bloodContract')short='购入自伤2 · 获得吻唇×2';
@@ -99,7 +99,7 @@ function amuletView(s,d){
  magicField:`攻击最低两名 +${body(power)}/+${body(4+Math.floor(p.spellcraft/2))}`,
  dragonCanyon:power?`酒馆永久 +${body(power)}/+${body(power)}`:'没有龙族：无酒馆增益',
  deathBanquet:'墓场 +6；死灵军势永久 +6 攻击',
- coinVault:'获得铸币 ×3',mine:'采掘 +6 · 基础金币上限 +2',
+ coinVault:'获得铸币 ×3',mine:'金币上限 +2',
  boneRing:`最左侧随从 +${body(power)}/+${body(power)}`,
  bloodMoon:`自伤 1 → 最低生命随从 +${body(4)} 生命，三次`,
  discardRite:'在场弃牌：酒馆 +1/+1；归零获得龙之斗气',
@@ -119,10 +119,11 @@ function formulaText(s,c,text){
  if(['forest1','forest4'].includes(c.id)){const next=(Math.floor((s.played||0)/3)+1)*3;value=pair(comboPower(s,c,next)*(c.effectScale||1));label=`下次第 ${next} 张`;if(c.id==='forest1')anchor=/本回合已打出牌数\s*×\s*\d+/;}
  if(c.id==='forest3')value=`+${p.fairy*m} 攻击`;
  if(e==='forestStart')value=pair((tribe('forest').length*4+p.fairy)*m);
- if(['careerVanguard','careerChorus'].includes(e))value=pair(Math.floor(p.totalPlayed/(e==='careerVanguard'?3:6))*m);
+ if(['careerVanguard','careerChorus'].includes(e))value=pair(p.totalPlayed*m);
  if(e==='constructUnity')value=pair(p.constructTypes.length*(1+Math.floor(p.arms/6))*m);
  if(e==='pydon'){value=pair((p.tavernAttack+4*m)*m,(p.tavernHealth+4*m)*m);label='下次结算相邻增益';}
  if(e==='graveNourish')value=pair((3+Math.floor(p.battleEntries/5))*m);
+ if(e==='spellReserve'){value='获得 '+m+' 张 '+Math.min(6,1+(s.spellNamesThisRound||[]).length)+' 星法术';label='本回合已使用 '+(s.spellNamesThisRound||[]).length+' 种';}
  if(e==='entryCannon')value=`${p.battleEntries*m} 点伤害`;
  if(e==='legionHealth')value='+'+(6+2*p.legionAttack)*m+' 生命';
  if(e==='guardVitals')value='+'+Math.floor(Math.max(0,...board.map(x=>x.health))/3)*m+' 生命';
@@ -148,8 +149,8 @@ function formulaText(s,c,text){
  if(e==='shieldMarshal')value=pair(board.reduce((n,x)=>n+shieldCount(x),0)*2*m);
  if(e==='comboHarvest')value=pair((s.played||0)*2*m);
  if(e==='bloodVein')value=`+${(2+Math.floor((s.bloodDamage||0)/5))*m} 生命`;
- if(e==='bloodEmpress')value=pair((s.bloodDamage||0)*m);
- if(e==='artifactLord')value=pair(growthAmount(s,e,c)*m,(s.scrap||0)*m);
+ if(e==='bloodEmpress')value=pair((s.bloodDamage||0)*2*m);
+ if(e==='artifactLord')value=pair(growthAmount(s,e,c)*m);
  if(c.id==='artifact9')value=`+${(s.scrap||0)*m} 攻击`;
  if(e==='scrapVeteran')value=pair((2+Math.floor((s.scrap||0)/5))*m);
  if(['dragonStart','radiantLast'].includes(e)){value=`${e==='dragonStart'?a:a*m} 点伤害`;if(e==='radiantLast')anchor=/自身攻击\s*×\s*\d+/;}
@@ -187,7 +188,7 @@ function growthAmount(s,e,c={}){const p=read(s);switch(e){
  case 'guardWitness':return 2+Math.floor((c.startHealth??c.health??0)/12);
  case 'batQueen':return 1+Math.floor((s.bloodDamage||0)/20);
  case 'moduleRally':return 4+Math.floor(p.arms/3);
- case 'artifactLord':return (s.scrap||0)*(1+Math.floor((s.scrap||0)/30));
+ case 'artifactLord':return (s.scrap||0)*(1+Math.floor((s.scrap||0)/20));
  case 'discardRally':return 2+Math.floor((s.stats?.discards||0)/3);
  default:return 0;}}
 const S={selfHarmImmune,goldCap,growthAmount,echoCount,batAvengeBody,canStackShield,syncShieldAura,formulaText,comboPower,amuletPower,amuletView,spellView,tavern,shieldCount,addShield,read,fairy,bat,weapon,artifactBody,prayer,spell,summary};root.TavernScaling=S;if(typeof module!=='undefined')module.exports=S;

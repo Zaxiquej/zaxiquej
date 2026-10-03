@@ -174,5 +174,6 @@ const D={tribes,cards,spells,amulets,trinkets,heroes,tokens,byId,opponentNames};
 (root.TavernReinforcements||(typeof require!=='undefined'?require('./reinforcements.js'):null)).apply(D,I);
 (root.TavernExpedition||(typeof require!=='undefined'?require('./expedition.js'):null)).apply(D,I);
 (root.TavernReforged||(typeof require!=='undefined'?require('./reforged.js'):null)).apply(D);
+(root.TavernRenewal||(typeof require!=='undefined'?require('./renewal.js'):null)).apply(D,I);
 root.TavernData=D;if(typeof module!=='undefined')module.exports=D;
 })(typeof globalThis!=='undefined'?globalThis:this);

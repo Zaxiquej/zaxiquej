@@ -152,7 +152,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
  for(let side=0;side<2;side++){
   for(const c of [...sides[side]]){if(c.health<=0)continue;const e=def(c).effect,m=mult(c),friends=alive(side);
    if(e==='batRebirth')for(const x of friends.filter(x=>x.id==='bat')){const before=x.rebornCharges||0;grantBatRebirth(x,c);if(x.rebornCharges!==before)snap(def(c).name+' · 不息血脉：丛林蝙蝠获得 '+m+' 次额外复生。',c.battleId,x.battleId,'reborn');}
-   if(['careerVanguard','careerChorus'].includes(e)){const n=Math.floor(progress[side].totalPlayed/(e==='careerVanguard'?3:6))*m;for(const x of e==='careerVanguard'?[c]:friends.filter(x=>x.battleId!==c.battleId))buff(x,n,n);snap(def(c).name+' · 整局出牌 '+progress[side].totalPlayed+' 张：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
+   if(['careerVanguard','careerChorus'].includes(e)){const n=progress[side].totalPlayed*m;for(const x of e==='careerVanguard'?[c]:friends.filter(x=>x.battleId!==c.battleId))buff(x,n,n);snap(def(c).name+' · 整局出牌 '+progress[side].totalPlayed+' 张：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
    if(e==='healthAvatar'){const n=c.health*m;buff(c,n,0);snap(def(c).name+' · 生命化身：本场 +'+n+' 攻击。',null,c.battleId,'grow');}
    if(c.id==='night2'){const n=progress[side].battleEntries*m;buff(c,0,n);snap(def(c).name+' · 万骨之王：本场 +'+n+' 生命。',null,c.battleId,'grow');}
    if(e==='rebornGrant')for(const x of friends.filter(x=>x!==c&&!x.reborn).slice(0,2*m)){x.reborn=true;snap(def(c).name+' · 招魂仪式：'+def(x).name+' 获得复生。',c.battleId,x.battleId,'reborn');}
@@ -160,8 +160,8 @@ function run(s,left,right,metaL={},metaR={},helpers){
    if(c.id==='artifact9')buff(c,scrap[side]*m,0);
    if(c.id==='blood10'){const x=[...alive(1-side)].sort((a,b)=>b.attack-a.attack)[0];if(x){buff(x,-(m>=2?x.attack:x.attack-Math.floor(x.attack/2)),0);snap(def(c).name+' · 毒牙凝视：削弱 '+def(x).name+' 的攻击。',c.battleId,x.battleId,'effect');}}
    if(c.id==='forest3')buff(c,progress[side].fairy*m,0);
-   if(c.id==='blood7'){const n=(meta[side].bloodDamage||0)*m;friends.filter(x=>D.isTribe(x,'blood')).forEach(x=>buff(x,n,n));snap(def(c).name+' · 狂乱加冕：吸血鬼军团获得强化。',null,c.battleId,'grow');}
-   if(c.id==='artifact7'){const n=S.growthAmount(growthContext(side),'artifactLord')*m,h=scrap[side]*m;friends.filter(x=>D.isTribe(x,'artifact')).forEach(x=>buff(x,n,h));snap(def(c).name+' · 创造主领域：残骸 '+scrap[side]+'，造物 +'+n+'/+'+h+'。',null,c.battleId,'grow');}
+   if(c.id==='blood7'){const n=(meta[side].bloodDamage||0)*2*m;friends.forEach(x=>buff(x,n,n));snap(def(c).name+' · 狂乱加冕：吸血鬼军团获得强化。',null,c.battleId,'grow');}
+   if(c.id==='artifact7'){const n=S.growthAmount(growthContext(side),'artifactLord')*m,h=n;friends.forEach(x=>buff(x,n,h));snap(def(c).name+' · 创造主领域：残骸 '+scrap[side]+'，造物 +'+n+'/+'+h+'。',null,c.battleId,'grow');}
    if(e==='forestStart'){const n=(friends.filter(x=>D.isTribe(x,'forest')).length*4+progress[side].fairy)*m;friends.filter(x=>x.battleId!==c.battleId&&D.isTribe(x,'forest')).forEach(x=>buff(x,n,n));}
    if(e==='royalStart'){friends.filter(x=>x.battleId!==c.battleId&&D.isTribe(x,'royal')).forEach(x=>buff(x,8*m,8*m));adjacent(c).filter(x=>D.isTribe(x,'royal')).forEach(x=>{for(let i=0;i<m;i++)addShield(x);});}
    if(e==='blast'){for(let hit=0;hit<2;hit++)adjacent(c).forEach(x=>damage(x,1));snap(def(c).name+' · 炽焰点燃：相邻友方各受到两次 1 点伤害。',null,c.battleId,'effect');}

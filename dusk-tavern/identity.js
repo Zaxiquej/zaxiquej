@@ -2989,6 +2989,26 @@
       "imageSource": "https://svgdb.me/assets/fullart/9006440800.png",
       "originalType": 4,
       "originalClan": 6
+    },
+    "seekMajority": {
+      "name": "格萝德的搜索",
+      "sourceName": "格萝德的搜索",
+      "sourceId": 129014010,
+      "art": "dusk-tavern/assets/129014010.webp",
+      "sourceUrl": "https://svgdb.me/cards/129014010",
+      "imageSource": "https://svgdb.me/assets/fullart/1290140100.png",
+      "originalType": 4,
+      "originalClan": 0
+    },
+    "discardEcho": {
+      "name": "龙的智慧",
+      "sourceName": "龙的智慧",
+      "sourceId": 102414030,
+      "art": "dusk-tavern/assets/102414030.webp",
+      "sourceUrl": "https://svgdb.me/cards/102414030",
+      "imageSource": "https://svgdb.me/assets/fullart/1024140300.png",
+      "originalType": 4,
+      "originalClan": 4
     }
   },
   "trinkets": {

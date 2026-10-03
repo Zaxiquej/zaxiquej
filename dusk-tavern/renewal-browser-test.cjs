@@ -1,0 +1,21 @@
+'use strict';
+const {chromium}=require('playwright'),A=require('node:assert/strict'),fs=require('node:fs'),E=require('./engine'),Echo=require('./echoes');
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});try{
+ const p=await b.newPage({viewport:{width:1280,height:900}}),errors=[];p.setDefaultTimeout(15000);p.on('pageerror',e=>errors.push(e.message));
+ await p.addInitScript(()=>localStorage.clear());await p.goto('http://127.0.0.1:8765/sv_tavern.html');
+ A.equal(await p.evaluate(()=>TavernData.rulesVersion),'25.0');
+ await p.getByRole('button',{name:'浏览图鉴',exact:true}).click();await p.locator('#catalog-search').fill('镜之世界');A.equal(await p.locator('.catalog-entry').count(),0);
+ await p.locator('#catalog-search').fill('格萝德的搜索');await p.locator('.catalog-entry').click();A.match(await p.locator('.catalog-rules').innerText(),/数量最多/);A(await p.locator('.catalog-art').evaluate(async img=>{await img.decode();return img.naturalWidth>0}));
+ await p.locator('.modal-close').click();await p.locator('.modal-close').click();await p.locator('[data-action="start"]').click();await p.locator('[data-action="menu"]').click();
+ const tribes=['forest','rune','dragon','blood'],s=E.create('angel',72635,'hard',tribes);s.echoRunId='browser-current';s.board=[E.make(s,'neutral1',{attack:100,health:100})];s.hand=[];s.shop=[];s.opponents.forEach(o=>{if(o.id!==s.opponent)o.hp=0;});
+ await p.locator('#save-file').setInputFiles({name:'fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(s))});await p.locator('.modal').waitFor({state:'detached'});
+ const past=E.create('angel',72635,'hard',tribes);past.echoRunId='browser-history';past.board=[E.make(past,'neutral0')];E.endRecruit(past);const archive=Echo.create({getItem:()=>null,setItem:()=>{}});A(archive.capture(past));
+ await p.locator('[data-action="menu"]').click();await p.locator('[data-action="echo-import"]').click();await p.locator('#echo-file').setInputFiles({name:'echo.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(archive.export()))});await p.waitForFunction(()=>document.querySelector('.echo-controls')?.textContent.includes('已记录 1 份'));
+ await p.locator('[data-action="echo-toggle"]').click();A.match(await p.locator('[data-action="echo-toggle"]').innerText(),/已开启/);
+ const download=p.waitForEvent('download');await p.locator('[data-action="echo-export"]').click();const file=await download;const exported=JSON.parse(fs.readFileSync(await file.path()));A.equal(exported.records.length,1);
+ await p.getByRole('button',{name:'返回游戏',exact:true}).click();await p.evaluate(()=>{TavernAI.prepare=()=>{throw Error('Historical opponent must skip AI recruitment');};});await p.locator('[data-action="fight"]').click();
+ await p.waitForFunction(()=>TavernUI.getState()?.phase==='result',null,{timeout:15000});const result=await p.evaluate(()=>TavernUI.getState());A(result.result.echoSource);A.match(result.result.opponent,/历史阵容/);
+ const saved=await p.evaluate(()=>JSON.parse(localStorage.getItem('sv_tavern_echoes_v1')));A.equal(saved.records.length,2);A.equal(saved.records.find(r=>r.run==='browser-history').uses,1);A.equal(saved.records.find(r=>r.run==='browser-current').uses,0);
+ if(await p.locator('[data-action="skip"]').count())await p.locator('[data-action="skip"]').click();await p.locator('[data-action="menu"]').click();await p.screenshot({timeout:15000,path:'dusk-tavern/qa/renewal-history-menu.png'});A.deepEqual(errors,[]);
+ console.log('PASS current HTML, retired/new spell catalog and embedded art, history import/export/toggle, precombat capture and fixed historical battle with AI recruitment disabled');
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});
