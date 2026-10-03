@@ -1,0 +1,745 @@
+{
+  "version": "8.1",
+  "method": "Same-tier single purchase, resolve available hand cards and first end turn, then each pair fights on four seeds. Support cards lack a developed board; economy/grave/upgrade value is recorded separately. This is an opening-combat diagnostic, not an overall card score or match win rate.",
+  "rows": [
+    {
+      "id": "forest0",
+      "name": "水之妖精",
+      "tier": 1,
+      "score": 0.444,
+      "board": [
+        [
+          "forest0",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "royal0",
+      "name": "鲁米那斯骑士",
+      "tier": 1,
+      "score": 0.917,
+      "board": [
+        [
+          "royal0",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon0",
+      "name": "银白幼龙",
+      "tier": 1,
+      "score": 0.639,
+      "board": [
+        [
+          "dragon0",
+          3,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "night0",
+      "name": "骸骨兽",
+      "tier": 1,
+      "score": 0.528,
+      "board": [
+        [
+          "night0",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "night1",
+      "name": "灵魂向导",
+      "tier": 1,
+      "score": 0.417,
+      "board": [
+        [
+          "night1",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 4,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "rune0",
+      "name": "睿智的术士",
+      "tier": 1,
+      "score": 0.417,
+      "board": [
+        [
+          "rune0",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "rune1",
+      "name": "企鹅魔法师",
+      "tier": 1,
+      "score": 0.278,
+      "board": [
+        [
+          "rune1",
+          5,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "haven0",
+      "name": "充满热诚的修女",
+      "tier": 1,
+      "score": 0.417,
+      "board": [
+        [
+          "haven0",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "neutral0",
+      "name": "哥布林",
+      "tier": 1,
+      "score": 0.417,
+      "board": [
+        [
+          "neutral0",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "blood0",
+      "name": "蠢动的恶鬼",
+      "tier": 1,
+      "score": 0.819,
+      "board": [
+        [
+          "blood0",
+          2,
+          3
+        ],
+        [
+          "bat",
+          1,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "blood1",
+      "name": "嗜血魔狼",
+      "tier": 1,
+      "score": 0.833,
+      "board": [
+        [
+          "blood1",
+          3,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "artifact0",
+      "name": "机械技师",
+      "tier": 1,
+      "score": 0.597,
+      "board": [
+        [
+          "artifact0",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "artifact1",
+      "name": "机械犬",
+      "tier": 1,
+      "score": 0.625,
+      "board": [
+        [
+          "artifact1",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "forest12",
+      "name": "妖精引路人",
+      "tier": 1,
+      "score": 0.431,
+      "board": [
+        [
+          "forest12",
+          2,
+          2
+        ],
+        [
+          "fairy",
+          1,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "royal11",
+      "name": "迅捷的剑士",
+      "tier": 1,
+      "score": 0.444,
+      "board": [
+        [
+          "royal11",
+          2,
+          2
+        ],
+        [
+          "knight",
+          1,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon11",
+      "name": "龙人召唤师",
+      "tier": 1,
+      "score": 0.417,
+      "board": [
+        [
+          "dragon11",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "night11",
+      "name": "骷髅战将",
+      "tier": 1,
+      "score": 0.493,
+      "board": [
+        [
+          "night11",
+          2,
+          1
+        ],
+        [
+          "skeleton",
+          2,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "haven11",
+      "name": "蛇神女祭司",
+      "tier": 1,
+      "score": 0.056,
+      "board": [
+        [
+          "haven11",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": [
+        "bell"
+      ]
+    },
+    {
+      "id": "artifact11",
+      "name": "机械女仆",
+      "tier": 1,
+      "score": 0.313,
+      "board": [
+        [
+          "artifact11",
+          1,
+          2
+        ],
+        [
+          "analyzer",
+          2,
+          2
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "royal1",
+      "name": "勇猛的骑士",
+      "tier": 2,
+      "score": 0.893,
+      "board": [
+        [
+          "royal1",
+          4,
+          4
+        ],
+        [
+          "knight",
+          1,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon1",
+      "name": "龙骑士·艾拉",
+      "tier": 2,
+      "score": 0.286,
+      "board": [
+        [
+          "dragon1",
+          3,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon2",
+      "name": "远古飞龙",
+      "tier": 2,
+      "score": 0.762,
+      "board": [
+        [
+          "dragon2",
+          3,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "rune2",
+      "name": "宝石巨像",
+      "tier": 2,
+      "score": 0.19,
+      "board": [
+        [
+          "rune2",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "haven1",
+      "name": "见习修女",
+      "tier": 2,
+      "score": 0.482,
+      "board": [
+        [
+          "haven1",
+          2,
+          6
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "neutral1",
+      "name": "圣盾天使",
+      "tier": 2,
+      "score": 0.286,
+      "board": [
+        [
+          "neutral1",
+          3,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "artifact2",
+      "name": "机巧枪手",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "artifact2",
+          2,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "forest8",
+      "name": "妖精舞蹈家",
+      "tier": 2,
+      "score": 0.815,
+      "board": [
+        [
+          "forest8",
+          3,
+          3
+        ],
+        [
+          "fairy",
+          1,
+          1
+        ],
+        [
+          "fairy",
+          1,
+          1
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "royal8",
+      "name": "战地铁骑兵",
+      "tier": 2,
+      "score": 0.476,
+      "board": [
+        [
+          "royal8",
+          4,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon8",
+      "name": "水龙神巫女",
+      "tier": 2,
+      "score": 0.762,
+      "board": [
+        [
+          "dragon8",
+          3,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "night8",
+      "name": "安德雷斐斯",
+      "tier": 2,
+      "score": 0.762,
+      "board": [
+        [
+          "night8",
+          3,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "rune8",
+      "name": "魔法猫头鹰",
+      "tier": 2,
+      "score": 0.19,
+      "board": [
+        [
+          "rune8",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "blood8",
+      "name": "吸血贵公子·拜特",
+      "tier": 2,
+      "score": 0.833,
+      "board": [
+        [
+          "blood8",
+          2,
+          3
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "artifact8",
+      "name": "被赋生者·米莉亚姆",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "artifact8",
+          3,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "forest13",
+      "name": "精灵吟游诗人",
+      "tier": 2,
+      "score": 0.19,
+      "board": [
+        [
+          "forest13",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "royal12",
+      "name": "剑术教官",
+      "tier": 2,
+      "score": 0.19,
+      "board": [
+        [
+          "royal12",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "dragon12",
+      "name": "育龙者·玛蒂达",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "dragon12",
+          3,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "night12",
+      "name": "怪犬的守墓人",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "night12",
+          2,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 4,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "rune12",
+      "name": "见习炼金术师",
+      "tier": 2,
+      "score": 0.19,
+      "board": [
+        [
+          "rune12",
+          2,
+          4
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "haven12",
+      "name": "圣护的女修士",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "haven12",
+          2,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "blood12",
+      "name": "莉莉姆",
+      "tier": 2,
+      "score": 0.976,
+      "board": [
+        [
+          "blood12",
+          5,
+          6
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    },
+    {
+      "id": "blood13",
+      "name": "银锁的使徒",
+      "tier": 2,
+      "score": 0.452,
+      "board": [
+        [
+          "blood13",
+          2,
+          5
+        ]
+      ],
+      "discount": 0,
+      "grave": 0,
+      "gold": 0,
+      "hand": []
+    }
+  ]
+}

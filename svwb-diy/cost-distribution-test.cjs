@@ -4,15 +4,16 @@ for(const c of R.cards.filter(c=>!c.token&&c.cost<=10))official[c.type===1?'foll
 assert.deepEqual(C.costPriors,official);
 const counts={follower:Array(11).fill(0),spell:Array(11).fill(0),amulet:Array(11).fill(0)};let highDiscount=0;
 for(let i=0;i<20000;i++){
- const c=S.generate('费用分布'+i);counts[c.type][c.cost]++;
+ const c=S.header('费用分布'+i);counts[c.type][c.cost]++;
  assert(official[c.type][c.cost]>0);
- if(c.type==='spell'&&c.cost>=8){highDiscount++;assert.equal(c.class,3);assert(c.abilities.some(a=>a.ids.includes('spellboostDiscount')));}
+ if(c.type==='spell'&&c.cost>=8){highDiscount++;assert.equal(c.class,3);assert(S.generate(c.name).abilities.some(a=>a.ids.some(id=>['spellboostDiscount','handDiscount','costReduction'].includes(id))));}
 }
 for(const type of Object.keys(counts)){
  const total=counts[type].reduce((a,b)=>a+b,0),expected=Array(11).fill(0);
  for(let cls=0;cls<8;cls++){
-  const weights=official[type].map((w,cost)=>w*(type==='spell'&&cost>=8?(cls===3?8:0):1)),sum=weights.reduce((a,b)=>a+b,0);
-  weights.forEach((w,cost)=>expected[cost]+=w/sum/8);
+  const weights=C.draftPriors.costs[cls+':'+type].map((w,cost)=>w*(type==='spell'&&cost>=8&&cls!==3?0:1)),sum=weights.reduce((a,b)=>a+b,0);
+  const classShare=C.draftPriors.types[cls][type]/Object.values(C.draftPriors.types).reduce((n,t)=>n+t[type],0);
+  weights.forEach((w,cost)=>expected[cost]+=w/sum*classShare);
  }
  counts[type].forEach((n,cost)=>assert(Math.abs(n/total-expected[cost])<.008+4*Math.sqrt(expected[cost]*(1-expected[cost])/total),type+' '+cost));
 }

@@ -1,0 +1,310 @@
+{
+  "version": "5.27.0",
+  "counts": {
+    "cards": 3000,
+    "capture": 2,
+    "silentDamage": 142
+  },
+  "examples": {
+    "silentDamage": {
+      "version": "5.27.0",
+      "name": "关联目标回归267",
+      "seed": 1259947235,
+      "type": "follower",
+      "class": 7,
+      "rarity": 3,
+      "cost": 6,
+      "attack": 7,
+      "health": 3,
+      "abilities": [
+        {
+          "ids": [
+            "fusionEvent",
+            "fusionEvent:draw"
+          ],
+          "raw": 2.8,
+          "boardValue": 0,
+          "text": "【融合】卡牌\n与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，抽取1张卡牌。",
+          "tokens": [],
+          "kind": "fusion",
+          "trigger": "与本卡牌融合时",
+          "condition": "fusionPP",
+          "bodyText": "与本卡牌【融合】时，若自己的剩余能量点为1或以上，则消耗1点能量点，抽取1张卡牌。",
+          "price": 2.54,
+          "fusionEvent": {
+            "effects": [
+              "draw"
+            ],
+            "ppCost": 1,
+            "repeats": 2.2,
+            "materialCredit": 0.5,
+            "flexibility": 1,
+            "payoffRaw": 2.8,
+            "minimum": 2.5,
+            "experiment": false,
+            "ceiling": 4,
+            "boardCap": 3,
+            "boardValueCap": 2.8,
+            "summon": null
+          }
+        },
+        {
+          "ids": [
+            "silence",
+            "damage"
+          ],
+          "raw": 13.149999999999999,
+          "boardValue": 0,
+          "text": "【超进化时】选择对手的战场上的1个随从，使其失去所有能力，对其造成7点伤害。",
+          "tokens": [],
+          "components": [
+            {
+              "id": "silence",
+              "text": "选择对手的战场上的1个随从，使其失去所有能力。",
+              "raw": 3.8
+            },
+            {
+              "id": "damage",
+              "text": "对其造成7点伤害。",
+              "raw": 9.35
+            }
+          ],
+          "targetChain": {
+            "baseId": "silence",
+            "followupId": "damage",
+            "baseRaw": 3.8,
+            "extraRaw": 9.35,
+            "targetCount": 1,
+            "damage": 7,
+            "interactionPremium": 0.6
+          },
+          "kind": "effect",
+          "trigger": "超进化时",
+          "condition": "none",
+          "bodyText": "选择对手的战场上的1个随从，使其失去所有能力，对其造成7点伤害。",
+          "price": 3.2874999999999996,
+          "major": true
+        },
+        {
+          "kind": "emblem",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】使自己获得『纹章：关联目标回归267』。将1张『解析的创造物』加入手牌。",
+          "bodyText": "使自己获得『纹章：关联目标回归267』。将1张『解析的创造物』加入手牌。",
+          "raw": 6.588596562499999,
+          "price": 6.588596562499999,
+          "ids": [
+            "emblemGrant"
+          ],
+          "emblemIds": [
+            "emblem-7"
+          ],
+          "tokens": [
+            {
+              "id": 90071130,
+              "name": "解析的创造物",
+              "class": 7,
+              "cost": 1,
+              "attack": 1,
+              "health": 1,
+              "text": "本随从进入战场时，抽取1张卡牌。"
+            }
+          ],
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "text": "【入场曲】召唤自己的手牌中的随机1张费用为5或以下的创造物·随从的复制随从。",
+          "bodyText": "召唤自己的手牌中的随机1张费用为5或以下的创造物·随从的复制随从。",
+          "price": 7,
+          "raw": 7,
+          "ids": [
+            "coreAnchor",
+            "artifactCopy"
+          ],
+          "components": [
+            {
+              "id": "artifactCopy",
+              "text": "召唤自己的手牌中的随机1张费用为5或以下的创造物·随从的复制随从。",
+              "raw": 7
+            }
+          ],
+          "tokens": [],
+          "major": true
+        }
+      ],
+      "tokens": [
+        {
+          "id": 90071130,
+          "name": "解析的创造物",
+          "class": 7,
+          "cost": 1,
+          "attack": 1,
+          "health": 1,
+          "text": "本随从进入战场时，抽取1张卡牌。"
+        }
+      ],
+      "emblems": [
+        {
+          "id": "emblem-7",
+          "name": "纹章：关联目标回归267",
+          "kind": "emblem",
+          "class": 7,
+          "custom": true,
+          "duration": 2,
+          "eventId": "artifact",
+          "conditionId": "artifact",
+          "limit": 1,
+          "effects": [
+            {
+              "id": "damage",
+              "raw": 3.75,
+              "produces": []
+            }
+          ],
+          "supportTags": [
+            "artifact"
+          ],
+          "deliveryValue": 2.028046875,
+          "usableValue": 5.75609375,
+          "oneShot": false,
+          "text": "【吟唱 2】\n自己的创造物·随从进入战场时，每回合最多发动1次，若本次对战中进入战场的自己的创造物·随从的种类为3种或以上，则对对手的战场上的随机1个随从造成3点伤害。"
+        }
+      ],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 32.46574455145746,
+      "spent": 19.42,
+      "bodyAllowance": 10,
+      "theme": "机巧 · 傀儡与创造物",
+      "bodyHeadroom": 2,
+      "fusion": {
+        "material": "卡牌",
+        "count": "cards",
+        "oncePerTurn": true,
+        "mode": "event",
+        "effects": [
+          "draw"
+        ],
+        "ppCost": 1,
+        "repeats": 2.2,
+        "materialCredit": 0.5,
+        "flexibility": 1,
+        "payoffRaw": 2.8,
+        "minimum": 2.5,
+        "experiment": false,
+        "ceiling": 4,
+        "boardCap": 3,
+        "boardValueCap": 2.8,
+        "summon": null
+      },
+      "effectBodyReservation": {
+        "offered": 2,
+        "restored": 1
+      },
+      "archetype": "modularCore",
+      "corePower": 29.538596562499997,
+      "midBoardTrade": {
+        "boardValue": 7,
+        "combinedCap": 17,
+        "cap": 10,
+        "before": 13,
+        "lost": 3,
+        "drawbackCredit": 0
+      },
+      "vanilla": false
+    },
+    "capture": {
+      "version": "5.27.0",
+      "name": "关联目标回归1863",
+      "seed": 3591988216,
+      "type": "follower",
+      "class": 5,
+      "rarity": 2,
+      "cost": 4,
+      "attack": 5,
+      "health": 4,
+      "abilities": [
+        {
+          "ids": [
+            "bloodDraw",
+            "pp"
+          ],
+          "raw": 5.1,
+          "boardValue": 0,
+          "text": "【入场曲】若自己的主战者的生命值小于对手的主战者的生命值，则对自己的主战者造成1点伤害。抽取1张卡牌。回复自己1点能量点。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "leaderHealthBehind",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 2.5,
+          "bodyText": "若自己的主战者的生命值小于对手的主战者的生命值，则对自己的主战者造成1点伤害。抽取1张卡牌。回复自己1点能量点。",
+          "price": 3.0599999999999996
+        },
+        {
+          "ids": [
+            "destroy",
+            "capturedCopy"
+          ],
+          "raw": 10.4,
+          "boardValue": 0,
+          "text": "【进化时】选择对手的战场上的1个随从，破坏该随从，将1张与该随从同名的卡牌加入自己的手牌。",
+          "tokens": [],
+          "components": [
+            {
+              "id": "destroy",
+              "text": "选择对手的战场上的1个随从，破坏该随从。",
+              "raw": 7
+            },
+            {
+              "id": "capturedCopy",
+              "text": "将1张与该随从同名的卡牌加入自己的手牌。",
+              "raw": 3.4
+            }
+          ],
+          "targetChain": {
+            "baseId": "destroy",
+            "followupId": "capturedCopy",
+            "baseRaw": 7,
+            "extraRaw": 3.4,
+            "targetCount": 1
+          },
+          "kind": "effect",
+          "trigger": "进化时",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 5,
+          "bodyText": "选择对手的战场上的1个随从，破坏该随从，将1张与该随从同名的卡牌加入自己的手牌。",
+          "price": 3.9520000000000004
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【毁灭】",
+          "price": 0.30000000000000004,
+          "raw": 0.30000000000000004,
+          "ids": [
+            "毁灭"
+          ]
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 18.15713312122971,
+      "spent": 7.31,
+      "bodyAllowance": 9,
+      "theme": "幽夜 · 唤灵与谢幕",
+      "vanilla": false
+    }
+  }
+}

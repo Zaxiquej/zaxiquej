@@ -1,0 +1,13 @@
+PASS new games and golden merges contain no evolution state and retain existing bonuses
+PASS retired evolve action is rejected without spending or modifying any state
+PASS normalization preserves legacy recruit stats, cards, and progress and is idempotent
+PASS normalization reaches AI cards, every battle replay frame, and survivors without altering combat
+PASS round transitions and AI preparation through round twelve never restore evolution
+PASS the old Light path card id now buffs the whole board without a target or energy
+PASS Olivia buffs other allies on entry and no longer has a separate end trigger
+PASS Olivia remains a useful repeatable royal battlecry without granting evolution resources
+PASS initiates give blessing and immediately expire only the lowest countdown amulet
+PASS golden initiate applies its full reduction to one surviving target and empty racks remain playable
+PASS current rules and normal/golden card descriptions never advertise retired evolution
+
+11 no-evolution regression groups passed.

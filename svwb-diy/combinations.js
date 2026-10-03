@@ -36,6 +36,47 @@
   for(const a of abilities)if(links(a,candidate).length)best=Math.max(best,2.4);
   return best;
  }
- const api={links,weight};
+ function targetFollowups(base,ctx){
+  // One selection, several operations on that exact follower. Keep the chain
+  // in one sentence so display sorting cannot separate a pronoun from its target.
+  const {cls,rarity,trigger,effectCost,maxPrice,minRaw=0,maxAtoms=Infinity,simple=false,available=()=>true}=ctx;
+  if(simple||rarity<2||base.ids.length!==1||maxAtoms<2||
+   !['入场曲','法术','进化时','超进化时','爆能强化','启动'].includes(trigger)||
+   !base.text.startsWith('选择对手的战场上的1个随从，'))return [];
+  const variants=[];
+  function offer(id,tail,extraRaw,detail={}){
+   if(!available(id))return;
+   const raw=base.raw+extraRaw;
+   if(raw>maxPrice+1e-8||raw<minRaw)return;
+   variants.push({...base,ids:[...base.ids,id],raw,text:base.text.replace(/。$/,'，')+tail,
+    components:[{id:base.ids[0],text:base.text,raw:base.raw},{id,text:tail,raw:extraRaw}],
+    targetChain:{baseId:base.ids[0],followupId:id,baseRaw:base.raw,extraRaw,targetCount:1,...detail}});
+  }
+  if(base.ids[0]==='destroy'&&cls===5){
+   // A chosen, visible card is more valuable than a random hidden copy.
+   offer('capturedCopy','将1张与该随从同名的卡牌加入自己的手牌。',3.4);
+   const discount=effectCost>=7?2:effectCost>=5?1:0;
+   if(discount&&maxAtoms>=3&&available('acquisitionDiscount')){
+    const before=variants.length;
+    offer('capturedCopy',`将1张与该随从同名的卡牌加入自己的手牌，并使其费用-${discount}。`,3.4+discount*1.25,{discount});
+    if(variants.length>before){
+     const v=variants[variants.length-1];v.ids.push('acquisitionDiscount');
+     v.acquisitionDiscount={source:'obtain',count:1,discount,condition:'none',factor:1,baseRaw:base.raw+3.4,extraRaw:discount*1.25};
+     v.components[1]={id:'capturedCopy',text:'将1张与该随从同名的卡牌加入自己的手牌。',raw:3.4};
+     v.components.push({id:'acquisitionDiscount',text:`使其费用-${discount}。`,raw:discount*1.25});
+    }
+   }
+  }
+  if(base.ids[0]==='silence'&&[3,7].includes(cls)){
+   const evolved=['进化时','超进化时'].includes(trigger);
+   const cap=Math.min(10,effectCost+1+(evolved?1:0),Math.floor((maxPrice-base.raw-.6)/1.25));
+   const floor=evolved?Math.max(2,Math.min(8,effectCost+1)):effectCost>=7?4:effectCost>=4?3:2;
+   // The premium pays for bypassing defensive text before resolving damage.
+   for(const damage of [...new Set([floor,Math.min(cap,floor+2),cap])])
+    if(damage>=floor&&damage<=cap)offer('damage',`对其造成${damage}点伤害。`,damage*1.25+.6,{damage,interactionPremium:.6});
+  }
+  return variants;
+ }
+ const api={links,weight,targetFollowups};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SVWBCombinations=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -1,0 +1,21 @@
+PASS all eight tribes have nineteen or twenty minions, six tiers, two supported main paths and a secondary role
+PASS all 70 four-tribe combinations: 82–84 minion pool, every shop tier and freeze refresh stay legal
+PASS random pools are seeded, contain no neutral slot, and selected hero belongs to the pool
+PASS triple discovery and both random amulets never produce excluded tribes
+PASS AI only recruits from the four-tribe pool across all tiers
+PASS legacy saves remain playable with their original six tribes
+PASS corrupt pool identifiers, counts, progress values and duplicates are rejected
+PASS self-damage triggers team growth; one health prevents cost-free payoffs
+PASS golden blood fanfare pays its cost once and doubles its reward
+PASS every point of cumulative self-damage strengthens the opening formation and survives healing
+PASS bats inherit their parent and each death produces a visible full-attack volley
+PASS lifesteal requires health damage and can heal beyond six as settlement healing
+PASS weapon restrictions reject invalid hand and direct-shop play without spending
+PASS every weapon triggers golden adjacent echoes and stronger weapon quality
+PASS artifact deaths increment lifetime scrap and reconstruct scaled real tokens
+PASS Spinaria rewards original units permanently after more than six allied deaths
+PASS scrap is applied once, persists in saves, and powers the next battle
+PASS neutral support is not a fifth tribe for menagerie and Bahamut opening growth
+PASS one-health blood power does not spend gold; neutral units cannot trigger distinct-tribe rewards
+PASS Merlin copies the blood spell payload, not separate self-damage growth triggers
+20 pool and new-tribe groups passed.

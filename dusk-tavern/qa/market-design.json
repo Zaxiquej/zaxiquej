@@ -1,0 +1,150 @@
+{
+  "version": "12.0",
+  "changedFollowers": [
+    {
+      "id": "dragon1",
+      "name": "龙骑士·艾拉",
+      "tier": 2,
+      "text": "谢幕曲：本局酒馆随从永久 +1/+1。战后更新当前商店。",
+      "goldenText": "谢幕曲：本局酒馆随从永久 +2/+2。战后更新当前商店。"
+    },
+    {
+      "id": "dragon8",
+      "name": "水龙神巫女",
+      "tier": 2,
+      "text": "备战结束：若本随从生命至少为 10，为英雄恢复 4 生命。",
+      "goldenText": "备战结束：若本随从生命至少为 10，为英雄恢复 8 生命。"
+    },
+    {
+      "id": "dragon9",
+      "name": "黑龙骑士·法露特",
+      "tier": 4,
+      "text": "连击。每次攻击后若存活，永久获得「2 + 入场时生命÷10」× 1 攻击（向下取整）。",
+      "goldenText": "连击。每次攻击后若存活，永久获得「2 + 入场时生命÷10」× 2 攻击（向下取整）。"
+    },
+    {
+      "id": "dragon11",
+      "name": "龙人召唤师",
+      "tier": 1,
+      "text": "入场曲：当前商店中的随从 +1/+1（不影响后续刷新）。",
+      "goldenText": "入场曲：当前商店中的随从 +2/+2（不影响后续刷新）。"
+    },
+    {
+      "id": "dragon12",
+      "name": "育龙者·玛蒂达",
+      "tier": 3,
+      "text": "备战结束：获得 1 张龙之启示。",
+      "goldenText": "备战结束：获得 2 张龙之启示。"
+    },
+    {
+      "id": "dragon13",
+      "name": "赤怒蛇",
+      "tier": 5,
+      "text": "每当自身受到伤害并存活，本局酒馆随从永久 +2/+3。战后更新当前商店。",
+      "goldenText": "每当自身受到伤害并存活，本局酒馆随从永久 +4/+6。战后更新当前商店。"
+    },
+    {
+      "id": "dragon14",
+      "name": "龙剑少女·艾拉",
+      "tier": 3,
+      "text": "入场曲：本局酒馆随从永久 +2/+2。",
+      "goldenText": "入场曲：本局酒馆随从永久 +4/+4。"
+    },
+    {
+      "id": "dragon15",
+      "name": "龙人织术师",
+      "tier": 4,
+      "text": "每当你打出一个龙族随从，本局酒馆随从永久 +2/+2（包括自身）。",
+      "goldenText": "每当你打出一个龙族随从，本局酒馆随从永久 +4/+4（包括自身）。"
+    },
+    {
+      "id": "dragon17",
+      "name": "元祖驭龙使",
+      "tier": 5,
+      "text": "备战结束：吞噬商店中生命最高的随从，使相邻友方龙族永久获得其攻击与生命 × 1。没有相邻龙族时不吞噬。",
+      "goldenText": "备战结束：吞噬商店中生命最高的随从，使相邻友方龙族永久获得其攻击与生命 × 2。没有相邻龙族时不吞噬。"
+    },
+    {
+      "id": "dragon18",
+      "name": "勒哈布",
+      "tier": 6,
+      "text": "每当友方龙族受到伤害并存活，使其永久获得「6 + 入场时生命÷10」× 1 攻击，以及两倍该数值的生命（向下取整）。",
+      "goldenText": "每当友方龙族受到伤害并存活，使其永久获得「6 + 入场时生命÷10」× 2 攻击，以及两倍该数值的生命（向下取整）。"
+    },
+    {
+      "id": "blood9",
+      "name": "血腥玛丽",
+      "tier": 5,
+      "text": "备战结束：若有可吞噬的随从，自伤 2；成功后吞噬商店中攻击最高的随从，自身永久获得其攻击与生命 × 1。",
+      "goldenText": "备战结束：若有可吞噬的随从，自伤 2；成功后吞噬商店中攻击最高的随从，自身永久获得其攻击与生命 × 2。"
+    },
+    {
+      "id": "blood13",
+      "name": "银锁的使徒",
+      "tier": 3,
+      "text": "每次招募自伤成功后，本局酒馆随从永久 +1/+1。",
+      "goldenText": "每次招募自伤成功后，本局酒馆随从永久 +2/+2。"
+    }
+  ],
+  "spell": {
+    "id": "dragon",
+    "name": "龙之启示",
+    "tier": 2,
+    "cost": 2,
+    "effect": "tavernSpell",
+    "attack": 0,
+    "health": 0,
+    "text": "使本局酒馆随从永久 +2/+2。当前与未来刷新的随从均受益，法术研习可提高数值。",
+    "tribe": "dragon",
+    "target": false,
+    "type": "spell",
+    "art": "dusk-tavern/assets/100414010.webp",
+    "sourceName": "龙之启示",
+    "sourceId": 100414010,
+    "sourceUrl": "https://svgdb.me/cards/100414010",
+    "imageSource": "https://svgdb.me/assets/fullart/1004140100.png",
+    "originalType": 4,
+    "originalClan": 4
+  },
+  "hero": {
+    "id": "dragon",
+    "name": "罗文",
+    "subtitle": "使当前与未来的商店随从成长。",
+    "power": "龙巢培育",
+    "cost": 1,
+    "text": "使本局酒馆随从永久 +1/+1。",
+    "art": "dusk-tavern/assets/121441030.webp",
+    "sourceName": "龙枪战士·罗文",
+    "sourceId": 121441030,
+    "sourceUrl": "https://svgdb.me/cards/121441030",
+    "imageSource": "https://svgdb.me/assets/fullart/1214410300.png",
+    "originalType": 1,
+    "originalClan": 4,
+    "tribe": "dragon",
+    "armor": 10,
+    "target": false
+  },
+  "semantics": {
+    "offers": "Permanent tavern attack/health apply to current and future offers; freeze and continuation never double-apply. Fresh refill only.",
+    "purchase": "Keep actual card stats; future growth does not change bought cards. Triples sum earned stats.",
+    "exclusions": "Discoveries, generated cards and combat summons receive no tavern growth.",
+    "consume": "Remove one real offer, no coins/hand/copy/keyword/death/battlecry/sell triggers; no double consumption. Blood harm resolves before food stats are read.",
+    "counter": "New offer base bonus is not a new royal buff event; growing current offers counts actual recipient buffs.",
+    "migration": "Old history starts at zero, existing card stats retained."
+  },
+  "verification": {
+    "mechanicGroups": 17,
+    "randomCombats": 800,
+    "completeGames": 70,
+    "aiGroups": 16,
+    "equalBudget": {
+      "games": 48,
+      "wins": 7,
+      "averageRank": 4,
+      "maxRound": 21
+    },
+    "browser": "Drag purchase/spell; current/future growth; freeze/reload; visible consumed art/stats; twelve normal/golden cards; desktop and 360/390 px; fully offline.",
+    "followup": "Additional focused tests verify low-health feast budget and non-target spell drag excludes target-only synergies."
+  },
+  "benchmark": "market-after.json: four seeds, 16 real recruitment routes, no PvP eliminations; diagnostic, not live win rates."
+}

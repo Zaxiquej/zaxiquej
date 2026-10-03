@@ -1,0 +1,24 @@
+PASS 169 minions, 22 unique leaders, 13 spells, no equipment; all identities and signatures exist
+PASS every leader works with a four-tribe pool, validates and survives a save roundtrip
+PASS new leader powers have distinct permanent and resource outcomes
+PASS hero cost failures preserve gold, power and state
+PASS removed equipment migrates without deleting real minion rewards or earned stats
+PASS retired blanket spells never appear in any new random pool; owned legacy cards still work
+PASS investment spends one gold now and pays two exactly once next round, including AI persistence
+PASS blood spell self-damages on purchase, buff applies only on play, no double charge
+PASS invalid direct purchases never self-damage or spend; one HP cannot be used as a free purchase cost
+PASS self-damage triggers healers after real payment, and golden healing can overflow into Tenko
+PASS spending reserves next-round fairies without same-turn resource feedback
+PASS one-shot fairy supply and higher-tier Cynthia support repeated large combos
+PASS new battlecries scale normally and with General repetition; Arthur observes each actual trigger
+PASS owl, Dorothy and Merlin resolve spell growth while keeping guard and shield targeted
+PASS new end-of-turn tools restore life, pay graves and create blessings with golden scaling
+PASS amulets grow one front line and a chosen strongest body without granting any guard
+PASS Mary no longer grants an additional team attack aura on self-harm
+PASS new combat payoffs resolve on both sides with exact golden effects and no permanent input mutation
+PASS new cards triple normally and preserve extra stats, with fresh higher tier discoveries
+PASS 300 mixed expanded-roster combats stay deterministic, bounded and do not mutate their input
+  full games: 22, victories: 1
+PASS all 22 heroes complete a full game with legal AI-assisted player decisions
+
+21 version 6.1 groups passed.

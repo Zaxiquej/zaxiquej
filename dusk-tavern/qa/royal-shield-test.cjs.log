@@ -1,0 +1,7 @@
+PASS shield spell is shared by royal and haven pools without opening a fifth follower tribe
+PASS flag bearer gives playable shield spells, with golden quantity and correct preview
+PASS avenge shields only living other royal allies without shields, normal one / golden two on both sides
+PASS replacement shields can break again and trigger knight plus Emilia permanent growth
+PASS no-target avenge is a no-op and a dead relay cannot observe simultaneous deaths
+PASS relay can replenish multiple times across successive death waves
+6 shield support groups passed.

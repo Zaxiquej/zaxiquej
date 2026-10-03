@@ -1,0 +1,16 @@
+{
+  "version": "16.0",
+  "amulets": 20,
+  "catalogEntries": 243,
+  "offlineBytes": 21839162,
+  "previewMatches": true,
+  "sha256": "ff597c21aee2c25f19d54e986f6a9e13bd9d878900db75b8db5229eb8cc66c2e",
+  "rules": {
+    "amuletGroups": 15,
+    "functionalSpellGroups": 14,
+    "necromancyGroups": 16
+  },
+  "browser": "amulet-browser-test.cjs passed: offline art, catalog, drag placement, countdown, reload, discoveries, previews, animations, 360/390px layouts",
+  "aiGamesRun": 0,
+  "remainingUsagePercent": 88
+}

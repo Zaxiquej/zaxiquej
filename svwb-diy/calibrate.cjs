@@ -51,6 +51,13 @@ for(let b=0;b<3;b++)for(let cls=0;cls<8;cls++)for(let rarity=0;rarity<4;rarity++
  const local=cr.filter(c=>c.rarity===rarity);
  const estimate=(test,classFocused=false)=>{
   const base=(br.filter(test).length+rate(rows,test)*8)/(br.length+8);
+  // Neutral is its own design population, not the average of seven crafts.
+  // Shrink sparse cost/rarity cells toward neutral cards of the same type.
+  if(cls===0){
+    const neutral=rows.filter(c=>c.class===0);
+    const own=(cr.filter(test).length+rate(neutral,test)*5)/(cr.length+5);
+    return +((local.filter(test).length+own*5)/(local.length+5)).toFixed(5);
+  }
   if(classFocused&&rows[0]?.type==='follower'&&cls!==0){
     const own=(cr.filter(test).length+base*6)/(cr.length+6);
     const joint=(local.filter(test).length+own*6)/(local.length+6);
@@ -99,9 +106,22 @@ const faithIds=[...new Set(reference.specialEffects.filter(e=>e.type===4).flatMa
 const typeAudit={source:reference.source,retrieved:reference.retrieved,counts:Object.fromEntries(['follower','spell','amulet'].map(t=>[t,allRows.filter(c=>c.type===t).length])),faithFollowerIds:faithIds,selfCopyIds:rows.filter(c=>c.effects.includes('selfCopy')).map(c=>c.id),stormFollowerIds:rows.filter(c=>c.keywords.includes('疾驰')).map(c=>c.id),amulets:{countdown:amulets.filter(c=>c.type===3).length,activation:amulets.filter(c=>c.text.includes('【启动】')).length,selfDestruct:amulets.filter(c=>/【启动】破坏本卡牌/.test(c.text)).length},cards:reference.cards.filter(c=>!c.token&&c.type!==1).map(c=>({id:c.id,name:c.name,class:c.class,cost:c.cost,type:c.type,text:c.text}))};
 fs.writeFileSync(__dirname+'/card-types-audit.json',JSON.stringify(typeAudit,null,2));
 const rarityPriors=Object.fromEntries(['follower','spell','amulet'].map(type=>[type,[0,1,2,3].map(r=>allRows.filter(c=>c.type===type&&c.rarity===r).length)]));
+// Joint craft/type/cost/rarity priors; do not duplicate starter or token cards.
+const draftPriors={classes:Array.from({length:8},(_,cls)=>allRows.filter(c=>c.class===cls).length),types:{},costs:{},rarities:{}};
+for(let cls=0;cls<8;cls++){
+ draftPriors.types[cls]=Object.fromEntries(['follower','spell','amulet'].map(t=>[t,allRows.filter(c=>c.class===cls&&c.type===t).length]));
+ for(const t of ['follower','spell','amulet']){
+  const own=allRows.filter(c=>c.class===cls&&c.type===t&&c.cost<=10),global=allRows.filter(c=>c.type===t&&c.cost<=10);
+  draftPriors.costs[`${cls}:${t}`]=Array.from({length:11},(_,cost)=>own.filter(c=>c.cost===cost).length+3*rate(global,c=>c.cost===cost));
+  for(let cost=0;cost<=10;cost++){
+   const local=own.filter(c=>c.cost===cost),near=own.filter(c=>band(c.cost)===band(cost)),parent=near.length?near:own.length?own:global;
+   draftPriors.rarities[`${cls}:${t}:${cost}`]=[0,1,2,3].map(r=>local.filter(c=>c.rarity===r).length+3*rate(parent,c=>c.rarity===r));
+  }
+ }
+}
 const rushRows=rows.filter(c=>c.keywords.includes('突进'));
 const rushEvolutionRate=rate(rushRows,c=>c.triggers.some(t=>['进化时','超进化时'].includes(t)));
-const data={source:reference.source,retrieved:reference.retrieved,followers:rows.length,costPriors,rarityPriors,rushEvolutionRate,excludedCosts,profiles,quantities,mechanisms:Object.fromEntries(Object.entries(mechanisms).map(([id,m])=>[id,{class:m.class,followers:m.followers,cards:m.cards.length}]))};
+const data={source:reference.source,retrieved:reference.retrieved,followers:rows.length,costPriors,rarityPriors,draftPriors,rushEvolutionRate,excludedCosts,profiles,quantities,mechanisms:Object.fromEntries(Object.entries(mechanisms).map(([id,m])=>[id,{class:m.class,followers:m.followers,cards:m.cards.length}]))};
 Object.assign(data,{classIdentityProfiles:classIdentity.profiles,typeProfiles,typeQuantities,typeStats:{counts:typeAudit.counts,faithFollowers:faithIds.length,selfCopyFollowers:typeAudit.selfCopyIds.length,amulets:typeAudit.amulets}});
 fs.writeFileSync(__dirname+'/class-identity-official.json',JSON.stringify(classIdentity,null,2));
 fs.writeFileSync(__dirname+'/mechanisms-audit.json',JSON.stringify({source:reference.source,retrieved:reference.retrieved,mechanisms},null,2));

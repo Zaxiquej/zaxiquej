@@ -1,0 +1,201 @@
+{
+  "version": "12.1",
+  "changes": [
+    {
+      "id": "forest4",
+      "type": "minion",
+      "tribe": "forest",
+      "tier": 5,
+      "name": "精灵骑士·辛西亚",
+      "attack": 5,
+      "health": 7,
+      "effect": "forestEnd",
+      "text": "连携：其他友方妖精族随从永久 +8/+8。",
+      "keywords": [],
+      "art": "dusk-tavern/assets/102131010.webp",
+      "cost": 3,
+      "sourceName": "精灵骑士·辛西亚",
+      "sourceId": 102131010,
+      "sourceUrl": "https://svgdb.me/cards/102131010",
+      "imageSource": "https://svgdb.me/assets/fullart/1021310100.png",
+      "originalType": 1,
+      "originalClan": 1,
+      "signature": "女王的号令",
+      "goldenText": "连携：其他友方妖精族随从永久 +16/+16。"
+    },
+    {
+      "id": "dragon16",
+      "type": "minion",
+      "tribe": "dragon",
+      "tier": 4,
+      "attack": 6,
+      "health": 7,
+      "effect": "dragonDrill",
+      "text": "每次攻击后若存活，使相邻友方龙族永久 +3/+6，随后分别对其造成 1 次 1 点伤害。",
+      "goldenText": "每次攻击后若存活，使相邻友方龙族永久 +6/+12，随后分别对其造成 2 次 1 点伤害。",
+      "keywords": [],
+      "cost": 3,
+      "synergy": true,
+      "name": "龙技达人",
+      "sourceName": "龙技达人",
+      "sourceId": 105421020,
+      "art": "dusk-tavern/assets/105421020.webp",
+      "sourceUrl": "https://svgdb.me/cards/105421020",
+      "imageSource": "https://svgdb.me/assets/fullart/1054210200.png",
+      "originalType": 1,
+      "originalClan": 4
+    },
+    {
+      "name": "半龙人魔法师",
+      "sourceName": "半龙人魔法师",
+      "sourceId": 101431040,
+      "art": "dusk-tavern/assets/101431040.webp",
+      "sourceUrl": "https://svgdb.me/cards/101431040",
+      "imageSource": "https://svgdb.me/assets/fullart/1014310400.png",
+      "originalType": 1,
+      "originalClan": 4,
+      "id": "dragon19",
+      "type": "minion",
+      "tribe": "dragon",
+      "tier": 3,
+      "cost": 3,
+      "attack": 4,
+      "health": 4,
+      "keywords": [],
+      "effect": "wingGift",
+      "synergy": true,
+      "text": "入场曲：获得一张龙之翼击。",
+      "goldenText": "入场曲：获得两张龙之翼击。",
+      "related": [
+        {
+          "id": "dragonWing",
+          "count": 1,
+          "scaleCount": true,
+          "when": "入场曲加入手牌"
+        }
+      ]
+    },
+    {
+      "name": "龙之翼击",
+      "sourceName": "龙之翼击",
+      "sourceId": 101414010,
+      "art": "dusk-tavern/assets/101414010.webp",
+      "sourceUrl": "https://svgdb.me/cards/101414010",
+      "imageSource": "https://svgdb.me/assets/fullart/1014140100.png",
+      "originalType": 4,
+      "originalClan": 4,
+      "id": "dragonWing",
+      "tribe": "dragon",
+      "effect": "dragonWing",
+      "tier": 3,
+      "cost": 1,
+      "target": true,
+      "attack": 2,
+      "health": 2,
+      "text": "使一个友方随从永久 +2/+2。下一场战斗开始时，对其造成三次 1 点伤害；多张可累积，受伤后存活才触发受伤效果。",
+      "type": "spell",
+      "keywords": []
+    },
+    {
+      "id": "blood12",
+      "type": "minion",
+      "tribe": "blood",
+      "tier": 2,
+      "attack": 2,
+      "health": 3,
+      "effect": "pactPainGift",
+      "text": "入场曲：自伤 1；成功后获得 1 张鲜血的吻唇。",
+      "goldenText": "入场曲：自伤 1；成功后获得 2 张鲜血的吻唇。",
+      "keywords": [],
+      "cost": 3,
+      "synergy": true,
+      "name": "莉莉姆",
+      "sourceName": "莉莉姆",
+      "sourceId": 101611010,
+      "art": "dusk-tavern/assets/101611010.webp",
+      "sourceUrl": "https://svgdb.me/cards/101611010",
+      "imageSource": "https://svgdb.me/assets/fullart/1016110100.png",
+      "originalType": 1,
+      "originalClan": 6,
+      "related": [
+        {
+          "id": "bloodPact",
+          "count": 1,
+          "scaleCount": true,
+          "when": "入场曲加入手牌"
+        }
+      ]
+    },
+    {
+      "name": "血之契约",
+      "sourceName": "血之契约",
+      "sourceId": 100614010,
+      "art": "dusk-tavern/assets/100614010.webp",
+      "sourceUrl": "https://svgdb.me/cards/100614010",
+      "imageSource": "https://svgdb.me/assets/fullart/1006140100.png",
+      "originalType": 4,
+      "originalClan": 6,
+      "id": "bloodContract",
+      "tribe": "blood",
+      "effect": "bloodContract",
+      "tier": 3,
+      "cost": 2,
+      "target": false,
+      "attack": 0,
+      "health": 0,
+      "purchaseSelfHarm": 2,
+      "text": "购买时：自伤 2（最低保留 1 生命）。使用时：获得两张鲜血的吻唇。生成的吻唇不触发购买自伤。",
+      "related": [
+        {
+          "id": "bloodPact",
+          "count": 2,
+          "when": "使用后加入手牌"
+        }
+      ],
+      "type": "spell",
+      "keywords": []
+    }
+  ],
+  "semantics": {
+    "dragonWing": "Permanent +2/+2 amplified by spell research; three one-damage hits queued for next combat before normal opening effects. Real shields, surviving-injury triggers and per-hit deaths. Marks sum through triples, do not multiply for golden, do not replay after resurrection, and clear next round.",
+    "bloodContract": "Purchase-time actual hero health loss only. Cost two gold, generates two bloodPact spells on cast, generated spells do not cause purchase self-harm.",
+    "economy": "No immediate gold refund, repeatable free resource engine or new per-turn trigger quota."
+  },
+  "verification": {
+    "focusedInjuryGroups": 15,
+    "randomCombats": 800,
+    "fullGames": 70,
+    "aiRouteSimulations": 96,
+    "equalBudgetGames": {
+      "games": 48,
+      "wins": 9,
+      "averageRank": 4.1,
+      "maxRound": 20
+    },
+    "browserSuites": [
+      "injury",
+      "catalog",
+      "market"
+    ],
+    "otherSuites": [
+      "market",
+      "archetypes",
+      "v5-recruit",
+      "v5-combat",
+      "v7",
+      "royal",
+      "constructs",
+      "heroes",
+      "shield",
+      "tuning",
+      "economy-loop",
+      "spell-economy",
+      "v6",
+      "ai"
+    ],
+    "offlineImages": 208,
+    "catalogEntries": 220,
+    "previewMatchesBuild": true,
+    "note": "Regression and deterministic simulation checks, not a claim of balanced live win rates."
+  }
+}

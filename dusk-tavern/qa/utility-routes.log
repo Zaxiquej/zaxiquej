@@ -1,0 +1,16 @@
+{"tribe":"forest","route":0,"cores":5}
+{"tribe":"forest","route":1,"cores":4.333333333333333}
+{"tribe":"royal","route":0,"cores":3.3333333333333335}
+{"tribe":"royal","route":1,"cores":3.1666666666666665}
+{"tribe":"dragon","route":0,"cores":4.5}
+{"tribe":"dragon","route":1,"cores":3.6666666666666665}
+{"tribe":"night","route":0,"cores":4}
+{"tribe":"night","route":1,"cores":4}
+{"tribe":"rune","route":0,"cores":4.666666666666667}
+{"tribe":"rune","route":1,"cores":4}
+{"tribe":"haven","route":0,"cores":3.6666666666666665}
+{"tribe":"haven","route":1,"cores":4.666666666666667}
+{"tribe":"blood","route":0,"cores":4.333333333333333}
+{"tribe":"blood","route":1,"cores":4.666666666666667}
+{"tribe":"artifact","route":0,"cores":5.166666666666667}
+{"tribe":"artifact","route":1,"cores":2.5}

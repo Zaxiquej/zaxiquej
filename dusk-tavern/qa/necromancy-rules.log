@@ -1,0 +1,17 @@
+PASS names, roles, identities and legal pools are consistent
+PASS initial boards and recruitment do not count as battle entries
+PASS actual summons count once, independently on either side and for golden sources
+PASS failed summons at seven slots grant neither a counter nor army growth
+PASS Cerberus creates two visible reborn tokens with real last words
+PASS reborn retains exactly one army bonus and never permanently copies it to the board
+PASS one-time grave resurrection counts and does not refill reborn or army bonuses
+PASS bone prince upgrades the persistent faction army, including through deathrattle echo
+PASS legion engine responds to every tribe, but buffs only necromancers
+PASS reborn lord cannot witness its own entry; existing lords can
+PASS bone king converts historical entries to temporary health, gold doubles the payoff
+PASS soulcaller grants distinct leftmost eligible allies reborn, never herself or neutral units
+PASS Ferry snapshots the count once per deathrattle; army is added once without golden doubling
+PASS grave spending and permanent body growth remain separate from the new army
+PASS settling, next round, old saves and opponent progress preserve exact counters
+PASS tripling and selling neither multiply nor erase global army and entry records
+16 focused necromancy groups passed; no AI games or random battle simulations.

@@ -1,0 +1,179 @@
+{
+  "version": "15.0",
+  "spells": [
+    {
+      "name": "哥布林的奇袭",
+      "sourceName": "哥布林的奇袭",
+      "sourceId": 123024010,
+      "art": "dusk-tavern/assets/123024010.webp",
+      "sourceUrl": "https://svgdb.me/cards/123024010",
+      "imageSource": "https://svgdb.me/assets/fullart/1230240100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "pilfer",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 2,
+      "cost": 2,
+      "effect": "pilfer",
+      "discoverKind": null,
+      "text": "随机偷取商店中的一个随从，保留其属性与关键词，加入手牌。商店中没有随从时不能使用。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false
+    },
+    {
+      "name": "侦探的调查",
+      "sourceName": "侦探的调查",
+      "sourceId": 109014010,
+      "art": "dusk-tavern/assets/109014010.webp",
+      "sourceUrl": "https://svgdb.me/cards/109014010",
+      "imageSource": "https://svgdb.me/assets/fullart/1090140100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "seekCry",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 3,
+      "cost": 3,
+      "effect": "discoverSpell",
+      "discoverKind": "fanfare",
+      "text": "发现一个拥有入场曲的随从。来自本局牌池，不高于当前酒馆星级。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false,
+      "related": [
+        {
+          "pool": "functionalDiscover",
+          "when": "从以下牌池发现一张"
+        }
+      ]
+    },
+    {
+      "name": "记忆的轨迹",
+      "sourceName": "记忆的轨迹",
+      "sourceId": 120014010,
+      "art": "dusk-tavern/assets/120014010.webp",
+      "sourceUrl": "https://svgdb.me/cards/120014010",
+      "imageSource": "https://svgdb.me/assets/fullart/1200140100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "seekLast",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 3,
+      "cost": 3,
+      "effect": "discoverSpell",
+      "discoverKind": "lastWords",
+      "text": "发现一个拥有谢幕曲的随从。来自本局牌池，不高于当前酒馆星级。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false,
+      "related": [
+        {
+          "pool": "functionalDiscover",
+          "when": "从以下牌池发现一张"
+        }
+      ]
+    },
+    {
+      "name": "造访乐园",
+      "sourceName": "造访乐园",
+      "sourceId": 124034010,
+      "art": "dusk-tavern/assets/124034010.webp",
+      "sourceUrl": "https://svgdb.me/cards/124034010",
+      "imageSource": "https://svgdb.me/assets/fullart/1240340100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "seekEnd",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 4,
+      "cost": 3,
+      "effect": "discoverSpell",
+      "discoverKind": "endRecruit",
+      "text": "发现一个拥有备战结束效果的随从。来自本局牌池，不高于当前酒馆星级。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false,
+      "related": [
+        {
+          "pool": "functionalDiscover",
+          "when": "从以下牌池发现一张"
+        }
+      ]
+    },
+    {
+      "name": "藏宝图",
+      "sourceName": "藏宝图",
+      "sourceId": 107024010,
+      "art": "dusk-tavern/assets/107024010.webp",
+      "sourceUrl": "https://svgdb.me/cards/107024010",
+      "imageSource": "https://svgdb.me/assets/fullart/1070240100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "seekAmulet",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 2,
+      "cost": 2,
+      "effect": "discoverSpell",
+      "discoverKind": "amulet",
+      "text": "发现一张护符。来自本局牌池，不高于当前酒馆星级。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false,
+      "related": [
+        {
+          "pool": "functionalDiscover",
+          "when": "从以下牌池发现一张"
+        }
+      ]
+    },
+    {
+      "name": "荒野中的憩息",
+      "sourceName": "荒野中的憩息",
+      "sourceId": 114014010,
+      "art": "dusk-tavern/assets/114014010.webp",
+      "sourceUrl": "https://svgdb.me/cards/114014010",
+      "imageSource": "https://svgdb.me/assets/fullart/1140140100.png",
+      "originalType": 4,
+      "originalClan": 0,
+      "id": "rest",
+      "type": "spell",
+      "tribe": "neutral",
+      "poolTribe": "neutral",
+      "tier": 2,
+      "cost": 1,
+      "effect": "rest",
+      "discoverKind": null,
+      "text": "为你的英雄恢复 5 生命，不超过生命上限。不恢复护甲。",
+      "attack": 0,
+      "health": 0,
+      "keywords": [],
+      "target": false
+    }
+  ],
+  "verification": {
+    "functionalRuleGroups": 14,
+    "necromancyRegressionGroups": 16,
+    "browser": "Passed: drag stealing and animation, actual offer attributes, four discover pools, full-hand discard, pending amulet reload, triple accounting, catalog and six matching illustrations, 360/390px, atomic failed casts and zero network requests.",
+    "aiSimulation": false,
+    "randomCombatSimulation": false,
+    "offlineImages": 222,
+    "spellCount": 19,
+    "catalogEntries": 233,
+    "previewMatchesBuild": true,
+    "htmlSha256": "8e857d5030c5c9428d17c78f6ab474c616fc51414c9cd7a46f5b1991e380ecb0"
+  }
+}

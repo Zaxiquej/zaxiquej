@@ -1,0 +1,16 @@
+{
+  "card": "天使的加护",
+  "sourceId": 122014010,
+  "tier": 2,
+  "cost": 1,
+  "tribe": "neutral",
+  "effect": "removeGuard",
+  "sourceArtEmbedded": true,
+  "guardRemovalPersists": true,
+  "canRegainGuard": true,
+  "targetedGroups": 9,
+  "regressionGroups": 52,
+  "browserCheck": "unguard-browser-test.cjs passed",
+  "previewMatches": true,
+  "aiGamesRun": 0
+}

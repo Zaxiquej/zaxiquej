@@ -1,0 +1,237 @@
+{
+  "version": "13.0",
+  "changes": {
+    "newNeutralCards": [
+      {
+        "name": "叮咚天使",
+        "sourceName": "叮咚天使",
+        "sourceId": 101021010,
+        "art": "dusk-tavern/assets/101021010.webp",
+        "sourceUrl": "https://svgdb.me/cards/101021010",
+        "imageSource": "https://svgdb.me/assets/fullart/1010210100.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral6",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 1,
+        "cost": 3,
+        "attack": 0,
+        "health": 4,
+        "effect": "bellLast",
+        "keywords": [
+          "taunt",
+          "cannotAttack"
+        ],
+        "text": "守护。无法攻击（仍会反击）。谢幕曲：随机友方 +2/+2（仅本场）。",
+        "goldenText": "守护。无法攻击（仍会反击）。谢幕曲：随机友方 +4/+4（仅本场）。"
+      },
+      {
+        "name": "治愈天使",
+        "sourceName": "治愈天使",
+        "sourceId": 101011040,
+        "art": "dusk-tavern/assets/101011040.webp",
+        "sourceUrl": "https://svgdb.me/cards/101011040",
+        "imageSource": "https://svgdb.me/assets/fullart/1010110400.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral7",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 2,
+        "cost": 3,
+        "attack": 3,
+        "health": 3,
+        "effect": "healCry",
+        "keywords": [],
+        "text": "入场曲：为英雄恢复 4 生命。",
+        "goldenText": "入场曲：为英雄恢复 8 生命。"
+      },
+      {
+        "name": "乌列尔",
+        "sourceName": "乌列尔",
+        "sourceId": 103031010,
+        "art": "dusk-tavern/assets/103031010.webp",
+        "sourceUrl": "https://svgdb.me/cards/103031010",
+        "imageSource": "https://svgdb.me/assets/fullart/1030310100.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral8",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 4,
+        "cost": 3,
+        "attack": 4,
+        "health": 5,
+        "effect": "amuletGift",
+        "keywords": [],
+        "text": "入场曲：获得 1 张随机护符（来自本局牌池，不高于酒馆星级）。",
+        "goldenText": "入场曲：获得 2 张随机护符（来自本局牌池，不高于酒馆星级）。",
+        "related": [
+          {
+            "pool": "amulet",
+            "when": "入场曲随机获得"
+          }
+        ]
+      },
+      {
+        "name": "懒散的天使·艾菲梅拉",
+        "sourceName": "懒散的天使·艾菲梅拉",
+        "sourceId": 105011010,
+        "art": "dusk-tavern/assets/105011010.webp",
+        "sourceUrl": "https://svgdb.me/cards/105011010",
+        "imageSource": "https://svgdb.me/assets/fullart/1050110100.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral9",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 4,
+        "cost": 3,
+        "attack": 3,
+        "health": 6,
+        "effect": "ambushSupport",
+        "keywords": [
+          "stealth"
+        ],
+        "text": "潜行。每当相邻友方攻击，使该随从 +4/+2（仅本场）。",
+        "goldenText": "潜行。每当相邻友方攻击，使该随从 +8/+4（仅本场）。"
+      },
+      {
+        "name": "奥丁",
+        "sourceName": "奥丁",
+        "sourceId": 102041020,
+        "art": "dusk-tavern/assets/102041020.webp",
+        "sourceUrl": "https://svgdb.me/cards/102041020",
+        "imageSource": "https://svgdb.me/assets/fullart/1020410200.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral10",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 6,
+        "cost": 3,
+        "attack": 1,
+        "health": 4,
+        "effect": "",
+        "keywords": [
+          "destruction"
+        ],
+        "text": "毁灭：攻击对主目标造成未被屏障阻挡的伤害时，摧毁目标。不作用于反击或技能伤害。",
+        "goldenText": "毁灭：攻击对主目标造成未被屏障阻挡的伤害时，摧毁目标。不作用于反击或技能伤害。"
+      },
+      {
+        "name": "禁忌魔像",
+        "sourceName": "禁忌魔像",
+        "sourceId": 102031030,
+        "art": "dusk-tavern/assets/102031030.webp",
+        "sourceUrl": "https://svgdb.me/cards/102031030",
+        "imageSource": "https://svgdb.me/assets/fullart/1020310300.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral11",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 3,
+        "cost": 3,
+        "attack": 4,
+        "health": 10,
+        "effect": "",
+        "keywords": [
+          "taunt",
+          "cannotAttack"
+        ],
+        "text": "守护。无法攻击，但受攻击时仍以自身攻击力反击。",
+        "goldenText": "守护。无法攻击，但受攻击时仍以自身攻击力反击。"
+      },
+      {
+        "name": "纯真的歌唱者",
+        "sourceName": "纯真的歌唱者",
+        "sourceId": 106021020,
+        "art": "dusk-tavern/assets/106021020.webp",
+        "sourceUrl": "https://svgdb.me/cards/106021020",
+        "imageSource": "https://svgdb.me/assets/fullart/1060210200.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral12",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 3,
+        "cost": 3,
+        "attack": 3,
+        "health": 4,
+        "effect": "smallSpellGift",
+        "keywords": [],
+        "text": "入场曲：获得 1 张随机法术（来自本局牌池，最高 2 星）。",
+        "goldenText": "入场曲：获得 2 张随机法术（来自本局牌池，最高 2 星）。",
+        "related": [
+          {
+            "pool": "spell",
+            "maxTier": 2,
+            "when": "入场曲随机获得"
+          }
+        ]
+      },
+      {
+        "name": "徬徨的诗人·艾尔塔",
+        "sourceName": "徬徨的诗人·艾尔塔",
+        "sourceId": 104021030,
+        "art": "dusk-tavern/assets/104021030.webp",
+        "sourceUrl": "https://svgdb.me/cards/104021030",
+        "imageSource": "https://svgdb.me/assets/fullart/1040210300.png",
+        "originalType": 1,
+        "originalClan": 0,
+        "id": "neutral13",
+        "type": "minion",
+        "tribe": "neutral",
+        "tier": 4,
+        "cost": 3,
+        "attack": 4,
+        "health": 6,
+        "effect": "clockCry",
+        "keywords": [],
+        "text": "入场曲：所有友方护符倒数减少 1，归零时立即结算。",
+        "goldenText": "入场曲：所有友方护符倒数减少 2，归零时立即结算。"
+      }
+    ],
+    "shield": "Retired shield spell; external follower shield grants limited to royal15 and royal7. Self-shield and Athena hero power retained.",
+    "liveSpellValues": "Shop, hand and detail use the same stat calculation as casting; catalog retains base values.",
+    "keywords": {
+      "stealth": "潜行：首次攻击前不被选为攻击目标；敌方只剩潜行随从时仍可攻击。潜行中的守护不生效，随机、群体伤害和顺劈仍可命中。",
+      "destruction": "毁灭：攻击主目标造成未被屏障阻挡的正数伤害时，直接摧毁目标；反击、顺劈和技能不触发。摧毁会正常触发谢幕曲、复生与复仇。",
+      "cannotAttack": "无法攻击：不会主动攻击，即使获得攻击力或连击也不会；受攻击时照常反击。"
+    }
+  },
+  "verification": {
+    "focusedUtilityGroups": 21,
+    "randomCombats": 1300,
+    "completedHeroGames": 22,
+    "aiRouteSimulations": 96,
+    "additional48GameAiRun": "Stopped at user request; not counted as passed or completed.",
+    "browserSuites": [
+      "utility",
+      "catalog",
+      "injury"
+    ],
+    "otherPassedSuites": [
+      "injury",
+      "market",
+      "archetypes",
+      "v5-recruit",
+      "v5-combat",
+      "v7",
+      "royal",
+      "shield",
+      "constructs",
+      "heroes",
+      "tuning",
+      "economy-loop",
+      "spell-economy",
+      "v6"
+    ],
+    "offlineImages": 216,
+    "catalogEntries": 227,
+    "previewMatchesBuild": true,
+    "note": "Rule, UI and regression verification; not a claim of balanced live win rates."
+  }
+}

@@ -1,0 +1,66 @@
+(function(root){
+'use strict';
+function apply(D){
+ // Starter gains stay small; repeatable economy and effect multipliers require upgrades.
+ const p=D.tuning={dragonHurt:1,dragonTrainer:2,starterSpell:1,royalRecruit:1,bloodStarter:1,golemHealth:1,owlAttack:2,moduleBonus:1,neutralEntry:1,neutralMass:6,graveEntry:4,nightAvenge:3};
+ const changes=[];
+ function card(id,stats,rule){const c=D.byId[id],before={tier:c.tier,attack:c.attack,health:c.health,text:c.text};Object.assign(c,stats);if(rule){c.text=rule(1);c.goldenText=rule(2);}changes.push({id,name:c.name,before,after:{tier:c.tier,attack:c.attack,health:c.health,text:c.text}});}
+ card('forest1',{tier:3,attack:2,health:4});
+ card('forest2',{tier:4,attack:3,health:6,effect:'tokenArmy',related:[]},m=>`招募阶段每打出一个衍生随从，本局妖精军团 +${m}/+${m}。`);
+ D.fanfareIds=D.fanfareIds.filter(id=>id!=='forest2');
+ card('forest4',{tier:4,attack:4,health:6});
+ card('forest8',{attack:3,health:3},m=>`入场曲：获得 ${2*m} 张妖精。`);
+ D.fairySpendCost=6;
+ card('forest11',{tier:4,attack:4,health:5},m=>`在场时每花费 ${D.fairySpendCost} 金币，预存 ${m} 张妖精，下回合开始获得；消费进度跨回合保留。`);
+ D.byId.forest11.related=[{id:'fairy',count:1,scaleCount:true,when:'每花费 6 金币预存，下回合开始加入手牌'}];
+ card('forest12',{attack:2,health:2});
+ card('royal1',{tier:2,attack:2,health:3,effect:'royalRecruit',related:[]},m=>`招募阶段打出其他皇家随从时，自身永久 +${p.royalRecruit*m}/+${p.royalRecruit*m}。`);
+ D.fanfareIds=D.fanfareIds.filter(id=>id!=='royal1');
+ D.archetypes.royal.routes[1][2]=D.archetypes.royal.routes[1][2].filter(id=>id!=='royal1');
+ card('royal2',{tier:4,attack:3,health:7});
+ card('royal3',{tier:5,attack:4,health:6});
+ card('royal11',{health:2});
+ card('dragon0',{attack:2,health:2},m=>`备战结束：永久获得 +${m}/+${m}。`);
+ card('dragon1',{tier:2,attack:3,health:3,effect:'discountLast'},m=>`谢幕曲：本次酒馆升级费用减少 ${m}。`);
+ D.fanfareIds=D.fanfareIds.filter(id=>id!=='dragon1');
+ card('dragon2',{health:4},m=>`守护。受到伤害且存活时，永久 +${p.dragonHurt*m}/+${p.dragonHurt*m}。`);
+ card('dragon4',{},m=>`友方龙族受到伤害且存活时，另一个随机友方龙族永久 +${p.dragonTrainer*m}/+${p.dragonTrainer*m}。`);
+ card('dragon13',{tier:5,attack:5,health:8},m=>`每次受到伤害并存活，永久获得「酒馆星级 × ${m}」攻击与生命。`);
+ card('night1',{attack:2,health:3},m=>`入场曲：获得 ${p.graveEntry*m} 墓场。`);
+ card('night2',{tier:4,attack:4,health:6},m=>`复生。复仇（2）：永久 +${p.nightAvenge*m}/+${p.nightAvenge*m}。`);
+ card('night4',{tier:5,attack:3,health:7});
+ card('night8',{health:5});
+ card('night10',{tier:5,attack:8,health:10});
+ card('rune0',{},m=>`每施放一个法术，自身永久 +${p.starterSpell*m}/+${p.starterSpell*m}。`);
+ card('rune2',{health:4},m=>`守护。每施放一个法术，自身永久获得 +${p.golemHealth*m} 生命与屏障。`);
+ card('rune8',{health:4},m=>`每当你施放法术，使攻击最低的其他友方永久 +${p.owlAttack*m}/+${m}。`);
+ card('rune16',{},m=>`入场曲：获得 ${4*m} 张智慧之光。`);
+ D.byId.rune16.related[0].count=4;
+ card('haven0',{attack:2,health:3});
+ card('haven1',{tier:2});
+ card('haven2',{tier:3});
+ card('haven8',{tier:3,attack:3,health:5});
+ card('haven11',{attack:2,health:2});
+ card('haven10',{},m=>`每当己方护符倒数归零，使生命最高的友方永久获得「6 + 护符共鸣」× ${m} 攻击，以及两倍该数值的生命。`);
+ card('blood1',{},m=>`每次招募自伤成功后，自身永久 +${p.bloodStarter*m}/+${p.bloodStarter*m}。备战结束：自伤 1。`);
+ card('blood2',{tier:4,attack:4,health:6});
+ card('blood3',{},m=>`入场曲：自伤 2，成功后下回合额外获得 ${3*m} 金币。`);
+ card('blood4',{tier:4,attack:4,health:7});
+ card('blood8',{attack:2,health:3},m=>`谢幕曲：召唤两个 ${2*m}/${m} 丛林蝙蝠。`);
+ D.byId.blood8.related=[{id:'bat',attack:2,health:1,count:2,scale:true,when:'谢幕曲召唤'}];
+ card('blood10',{},m=>`开战：使攻击最高的敌方${m===1?'攻击减半（向下取整）':'攻击降至 0'}。`);
+ card('blood12',{tier:2,health:3});
+ card('artifact0',{attack:1,health:2});
+ card('artifact2',{attack:2,health:5},m=>`守护。每次对自身使用武装时，额外永久 +${p.moduleBonus*m}/+${p.moduleBonus*m}。`);
+ card('artifact4',{tier:4,health:6});
+ card('artifact12',{tier:3,attack:3,health:4});
+ card('neutral1',{health:3},m=>`入场曲：相邻友方永久 +${p.neutralEntry*m}/+${p.neutralEntry*m}。`);
+ card('neutral4',{},m=>`入场曲：其他友方永久 +${p.neutralMass*m}/+${p.neutralMass*m}。`);
+ D.archetypes.forest.support='低星妖精负责一次性资源；破魔虫在三星承接连携，四星辛西亚、魔法精灵公主与柏尔嘉组成持续经营体系。';
+ D.archetypes.royal.support='低星以小幅成长和单次入场增益过渡；四星补盾、五星入场曲翻倍，接入高星军团养成。';
+ D.archetypes.dragon.support='艾拉用谢幕曲辅助升级，飞龙只作早期受伤成长；五星赤怒蛇与元祖驭龙使承接高星身材。';
+ D.archetypes.night.support='低星积累墓场；四星骨骸王承接复生，五星命忒放大谢幕曲，莫迪凯提供完整生命复生的载体。';
+ D.balanceChanges=changes;D.rulesVersion='8.1';return D;
+}
+root.TavernTuning={apply};if(typeof module!=='undefined')module.exports={apply};
+})(typeof globalThis!=='undefined'?globalThis:this);

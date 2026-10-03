@@ -1,0 +1,10 @@
+PASS six real artifact identities have distinct functions and all thirteen tokens triple without entering shops
+PASS new deathrattle pairs have exact golden bodies, shields/guards and functional token effects on both sides
+PASS reborn token returns once at one health and ancient token attacks twice without mutating recruits
+PASS Miriam gives recruitable replicas and golden battlecry repetition respects hand and triple rules
+PASS Erika reserves exactly one extra battlecry, stacks additively with General and expires unused next round
+PASS Forte and Snow are temporary, reject redundant targets without payment, and survive triples and saves
+PASS Roland gives guard; Angel separates healing from armor and spends real gold
+PASS Deus cycles all six tokens deterministically, persists through saves and rejects full hands transactionally
+PASS AI carries hero state across turns and selects legal temporary combat targets
+9 construct and hero groups passed.

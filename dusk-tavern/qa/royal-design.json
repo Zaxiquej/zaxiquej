@@ -1,0 +1,96 @@
+{
+  "rulesVersion": "11.0",
+  "mechanics": {
+    "stacking": "Royal only; one layer per positive hit; keyword-only legacy cards count as one. Recruitment stacks persist; battle additions do not.",
+    "buffs": "One event per positive stat application per recipient, temporary combat included, zero/negative-only/triple/base summon excluded, ledger settlement excluded.",
+    "migration": "Old saves start with zero buff history; existing stats and shield keyword retained."
+  },
+  "cards": [
+    {
+      "id": "royal9",
+      "name": "不灭英杰·罗兰",
+      "tier": 4,
+      "text": "守护。战斗开始：本局每完成 5 次属性强化，自身获得 +1/+1（仅限本场战斗）。",
+      "goldenText": "守护。战斗开始：本局每完成 5 次属性强化，自身获得 +2/+2（仅限本场战斗）。"
+    },
+    {
+      "id": "royal18",
+      "name": "天空指挥官·榭莉亚",
+      "tier": 6,
+      "text": "回合结束：本局每完成 20 次属性强化，使其他皇家护卫永久获得 +1/+1（触发时统一计算）。",
+      "goldenText": "回合结束：本局每完成 20 次属性强化，使其他皇家护卫永久获得 +2/+2（触发时统一计算）。"
+    },
+    {
+      "id": "royal17",
+      "name": "船团长·莉夏",
+      "tier": 5,
+      "text": "回合结束：每有一层友方屏障，使所有皇家护卫永久 +2/+2。",
+      "goldenText": "回合结束：每有一层友方屏障，使所有皇家护卫永久 +4/+4。"
+    },
+    {
+      "id": "royal15",
+      "name": "白银圣骑士",
+      "tier": 4,
+      "text": "复仇（2）：为另一名皇家护卫叠加 1 层屏障，优先选择层数较少者。",
+      "goldenText": "复仇（2）：为至多两名其他皇家护卫叠加 1 层屏障，优先选择层数较少者。"
+    },
+    {
+      "id": "royal7",
+      "name": "海底都市霸主·乙姬",
+      "tier": 6,
+      "text": "屏障。战斗开始：使其他皇家护卫获得 +8/+8，并叠加 1 层屏障。",
+      "goldenText": "屏障。战斗开始：使其他皇家护卫获得 +16/+16，并叠加 2 层屏障。"
+    }
+  ],
+  "benchmark": {
+    "method": "16 routes with a fixed base hero for each tribe, normal AI recruitment, rotating round-robin fights for 16 rounds. No PvP damage/elimination; actual self-harm/healing and combat resources/permanent growth persist. Neutral probes are separate copies with seven equal-body minions, two shields and two guards. Not a live-game win-rate claim.",
+    "seeds": 4,
+    "changes": [
+      {
+        "route": "层叠屏障",
+        "before": {
+          "body": 1601.25,
+          "wins": 27,
+          "draws": 2,
+          "games": 60
+        },
+        "after": {
+          "body": 2189.75,
+          "wins": 40,
+          "draws": 2,
+          "games": 60
+        }
+      },
+      {
+        "route": "强化军团",
+        "before": {
+          "body": 2053.25,
+          "wins": 21,
+          "draws": 7,
+          "games": 60
+        },
+        "after": {
+          "body": 1920.25,
+          "wins": 36,
+          "draws": 4,
+          "games": 60
+        }
+      }
+    ]
+  },
+  "verification": {
+    "targetedGroups": 13,
+    "randomCombats": 800,
+    "heroGames": 22,
+    "browser": "drag stacking, layer animation, count preview, save reload, normal/golden catalog, 360/390 px layouts, blocked layer popup, offline assets",
+    "completeGames": 70,
+    "aiGroups": 16,
+    "equalBudgetGames": {
+      "games": 48,
+      "wins": 9,
+      "averageRank": 3.85,
+      "maxRound": 22
+    },
+    "previewMatchesBuild": true
+  }
+}

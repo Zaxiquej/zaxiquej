@@ -1,0 +1,13 @@
+PASS four deterministic unique eligible offers; all six flexible heroes can occur with every pool
+PASS all heroes and seven AI start with assigned armor; neutral never occupies a tribe slot
+PASS neutral powers pay real costs, work across tribes, persist gains and cannot be reused
+PASS invalid hero targeting or empty wind board does not consume gold or activation
+PASS armor absorbs repeated losses, overflows to health and cannot prevent lethal after depletion
+PASS real player loss and real AI loss use armor and expose exact result breakdown
+PASS AI-vs-AI damage also consumes armor rather than health
+PASS blood purchase self-harm bypasses armor and healing does not refill it
+PASS fatigue bypasses armor on player and AI
+PASS legacy saves start at zero armor, depleted saves never refill, malformed values are rejected
+PASS AI retains each flexible hero and spent armor across recruitment and uses its power
+
+11 hero draft and armor groups passed.

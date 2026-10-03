@@ -1,0 +1,27 @@
+PASS every card and hero has a verified matching Shadowverse identity and local art
+PASS drag purchase and placement validate before any spending; ordered insertion
+PASS Cerberus summons both real tokens and triggers their separate death effects
+PASS catalog: all 160 minions, six tiers, complete images/effects
+PASS seeded shop and invalid purchase are deterministic and transactional
+PASS buy, play, battlecry, sell economy
+PASS targeted spell refuses invalid target without consuming the hand
+PASS board and hand limits; free sell path when board is full
+PASS triple merges across board/hand, retains buffs, and discovers higher tier
+PASS full hand cannot deadlock a triple reward
+PASS Light Path strengthens the entire formation without an extra resource
+PASS freeze preserves unsold cards for one round; fresh budget and discount
+PASS amulet acceleration resolves and leaves its slot
+PASS legacy relic no longer doubles amulet payload
+PASS forest combo triggers once on each third played card
+PASS combat attacks simultaneously, shield blocks and taunt is respected
+PASS combat never mutates permanent stats, temporary buffs or keywords
+PASS deathrattle, reborn, grave, and board cap
+PASS combat handles empty boards and zero-attack stalemates
+PASS all spells and all heroes are actionable
+PASS all amulets resolve without state corruption
+PASS round four and eight no longer grant equipment
+PASS damaged or wrong-shaped saves are rejected without throwing
+{"easy":{"games":64,"wins":0,"averageRank":7.27,"maxRound":16},"normal":{"games":64,"wins":0,"averageRank":7.31,"maxRound":13},"hard":{"games":64,"wins":0,"averageRank":7.25,"maxRound":11}}
+PASS 192 full seeded games finish, preserve invariants, cover all heroes/difficulties
+
+24 test groups passed.

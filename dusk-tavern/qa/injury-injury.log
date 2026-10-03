@@ -1,0 +1,16 @@
+PASS new identities, pool restrictions, art and exact rules
+PASS Cynthia grants 8/8 or 16/16 each combo, no army/resource/end reward
+PASS wing spell buffs now, queues three hits; research and Merlin do not multiply markers
+PASS wing resolves exact surviving injuries on both sides without mutating recruitment board
+PASS lethal pings stop; no injury growth on death, no repeats on reborn
+PASS queued red-serpent growth feeds current/future shop only after settlement
+PASS three hits use entry health for Lehab and every third injury restores Leviathan shield
+PASS wing markers survive save/triple, sum instead of doubling; clear from hand and board next round
+PASS dragon mage supplies one/two genuine spells; battlecry repeat pays no gold
+PASS dragon master buffs adjacent dragons then actually damages them, including golden triggers
+PASS dead dragon master and foreign neighbors do not receive or generate training
+PASS blood contract harms at purchase, heals after actual loss, no cast harm or immediate economy
+PASS one hp cannot buy self-harm contracts or trigger Lilim, full hand purchase is atomic
+PASS Lilim actual self-harm, golden resource multiplier and healing; repeats never print coins
+PASS AI targets injury payoffs, uses new supply, and reserves health for purchases
+Passed 15 injury and combo groups.

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "v7-test.cjs",
+    "status": 0,
+    "stdout": "PASS 160 verified followers: eight added per tribe, no duplicate identity or accidental effect collision\nPASS every token triples across hand and board, preserves buffs and keywords, discovers legal next-tier minions\nPASS large token gifts merge repeatedly without burning reward slots or mutating combat summons\nPASS tier-one shield knight has 2/2 stats and gains one permanent attack and health per broken shield\nPASS spell research buffs only nonzero spell attributes and does not create free coins, shields or resources\nPASS research applies once before Merlin spreads the actual boosted payload\nPASS research entry is repeatable and golden; cries train both followers and later spells\nPASS third-spell research and payoff counters persist through end turn and save/load\nPASS combo research, fairy rally and resource-selling connect without generating cards from nothing\nPASS high-tier dragons train spells and the brood from actual tavern tier and attack\nPASS grave expenditure feeds research or team growth; insufficient grave gives no reward\nPASS amulet cultivation and echo scale payloads, but count expiration and copies only once\nPASS paid self-harm trains spells and health, even with healing; zero actual damage cannot trigger it\nPASS module research has separate shared spell and weapon axes, with a scrap payoff\nPASS damage records raw simultaneous hits, shield blocks, injury-growth and overkill without mutating inputs\nPASS new combat engines apply equally on both sides and golden deathrattles show inherited bodies\nPASS dragon injury mentor, attack trainer and token-death growth create permanent ledgers\nPASS AI uses real research cards and persists new counters with no special stats\nPASS legacy progress migrates and new corrupted research/replay counters are rejected\n19 v7 rules groups passed.\n",
+    "stderr": ""
+  },
+  {
+    "file": "pools-test.cjs",
+    "status": 0,
+    "stdout": "PASS all eight tribes have nineteen or twenty minions, six tiers, two supported main paths and a secondary role\nPASS all 70 four-tribe combinations: 82–84 minion pool, every shop tier and freeze refresh stay legal\nPASS random pools are seeded, contain no neutral slot, and selected hero belongs to the pool\nPASS triple discovery and both random amulets never produce excluded tribes\nPASS AI only recruits from the four-tribe pool across all tiers\nPASS legacy saves remain playable with their original six tribes\nPASS corrupt pool identifiers, counts, progress values and duplicates are rejected\nPASS self-damage triggers team growth; one health prevents cost-free payoffs\nPASS golden blood fanfare pays its cost once and doubles its reward\nPASS every point of cumulative self-damage strengthens the opening formation and survives healing\nPASS bats inherit their parent and each death produces a visible full-attack volley\nPASS lifesteal requires health damage and can heal beyond six as settlement healing\nPASS weapon restrictions reject invalid hand and direct-shop play without spending\nPASS every weapon triggers golden adjacent echoes and stronger weapon quality\nPASS artifact deaths increment lifetime scrap and reconstruct scaled real tokens\nPASS Spinaria rewards original units permanently after more than six allied deaths\nPASS scrap is applied once, persists in saves, and powers the next battle\nPASS neutral support is not a fifth tribe for menagerie and Bahamut opening growth\nPASS one-health blood power does not spend gold; neutral units cannot trigger distinct-tribe rewards\nPASS Merlin copies the blood spell payload, not separate self-damage growth triggers\n20 pool and new-tribe groups passed.\n",
+    "stderr": ""
+  },
+  {
+    "file": "no-evolution-test.cjs",
+    "status": 0,
+    "stdout": "PASS new games and golden merges contain no evolution state and retain existing bonuses\nPASS retired evolve action is rejected without spending or modifying any state\nPASS normalization preserves legacy recruit stats, cards, and progress and is idempotent\nPASS normalization reaches AI cards, every battle replay frame, and survivors without altering combat\nPASS round transitions and AI preparation through round twelve never restore evolution\nPASS the old Light path card id now buffs the whole board without a target or energy\nPASS Olivia buffs other allies on entry and no longer has a separate end trigger\nPASS Olivia remains a useful repeatable royal battlecry without granting evolution resources\nPASS initiates give blessing and immediately expire only the lowest countdown amulet\nPASS golden initiate applies its full reduction to one surviving target and empty racks remain playable\nPASS current rules and normal/golden card descriptions never advertise retired evolution\n\n11 no-evolution regression groups passed.\n",
+    "stderr": ""
+  },
+  {
+    "file": "shield-test.cjs",
+    "status": 0,
+    "stdout": "PASS shield spell is shared by royal and haven pools without opening a fifth follower tribe\nPASS flag bearer gives playable shield spells, with golden quantity and correct preview\nPASS avenge shields only living other royal allies without shields, normal one / golden two on both sides\nPASS replacement shields can break again and trigger knight plus Emilia permanent growth\nPASS no-target avenge is a no-op and a dead relay cannot observe simultaneous deaths\nPASS relay can replenish multiple times across successive death waves\n6 shield support groups passed.\n",
+    "stderr": ""
+  },
+  {
+    "file": "spell-economy-test.cjs",
+    "status": 0,
+    "stdout": "PASS Sammy is a four-star 4/6 sale engine, not a repeatable battlecry\nPASS Sammy cannot be bought at tiers one through three; three-star triples may discover it early\nPASS Penguin alone retains immediate entry and sale spells; Sammy turns it into a three-spell cycle\nPASS all tribes and tokens trigger sales, normal/golden copies stack and no per-round quota exists\nPASS self-sale, discard, merge and combat death never fabricate sale rewards\nPASS full hands cap generation; invalid sale cannot trigger a resource or spend gold\nPASS generated spells really trigger growth, combo and research without counting generation as casts\nPASS alchemist produces three/six casts; dessert wizard produces two/four dual-stat spells\nPASS AI retains a useful Sammy and plays its sale-generated spells during recruitment\n9 spell-economy groups passed.\n",
+    "stderr": ""
+  },
+  {
+    "file": "heroes-test.cjs",
+    "status": 0,
+    "stdout": "PASS four deterministic unique eligible offers; all six flexible heroes can occur with every pool\nPASS all heroes and seven AI start with assigned armor; neutral never occupies a tribe slot\nPASS neutral powers pay real costs, work across tribes, persist gains and cannot be reused\nPASS invalid hero targeting or empty wind board does not consume gold or activation\nPASS armor absorbs repeated losses, overflows to health and cannot prevent lethal after depletion\nPASS real player loss and real AI loss use armor and expose exact result breakdown\nPASS AI-vs-AI damage also consumes armor rather than health\nPASS blood purchase self-harm bypasses armor and healing does not refill it\nPASS fatigue bypasses armor on player and AI\nPASS legacy saves start at zero armor, depleted saves never refill, malformed values are rejected\nPASS AI retains each flexible hero and spent armor across recruitment and uses its power\n\n11 hero draft and armor groups passed.\n",
+    "stderr": ""
+  }
+]

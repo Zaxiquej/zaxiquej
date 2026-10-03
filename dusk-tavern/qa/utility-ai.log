@@ -1,0 +1,16 @@
+PASS AI uses exported recruitment lifecycle and all sixteen route plans
+PASS recruitment is deterministic and leaves the player formation and resources alone
+PASS all difficulties share the same opening economy and gain no hidden stats
+PASS only the declared late economy bonus depends on difficulty
+PASS generated end-of-turn spells persist and are really played next round
+PASS module production, persistent progress without trinket milestones survive turns
+PASS a heavily grown carry is retained instead of blindly replaced by a higher tier
+PASS triple offers are bought, merged and their discover reward is resolved
+PASS low-health blood AI reserves life for mandatory triggers instead of chaining optional self-harm
+PASS low-health AI can deploy the reworked bat summoner without inventing a self-damage cost
+PASS grave spending values the full ritual payload while reserving revival costs
+PASS legacy opponents receive no equipment and pending minion discoveries survive migration
+PASS an established fairy army makes summon and opening engines worth replacing large vanilla bodies
+PASS forest combo opens a fuel slot without selling its existing growth and cleave engines
+[{"tribe":"forest","route":0,"cores":5,"golden":0.8,"spells":30.8,"power":2249.7},{"tribe":"forest","route":1,"cores":4.3,"golden":1.3,"spells":31.5,"power":1176.8},{"tribe":"royal","route":0,"cores":3.3,"golden":0.5,"spells":33,"power":1120.5},{"tribe":"royal","route":1,"cores":3.2,"golden":0.7,"spells":32.7,"power":1610},{"tribe":"dragon","route":0,"cores":4.5,"golden":0.7,"spells":20.8,"power":895.5},{"tribe":"dragon","route":1,"cores":3.8,"golden":0.5,"spells":25.3,"power":1136.2},{"tribe":"night","route":0,"cores":4,"golden":1.2,"spells":31,"power":1107.5},{"tribe":"night","route":1,"cores":4,"golden":1.3,"spells":28.2,"power":1187.2},{"tribe":"rune","route":0,"cores":4.7,"golden":1.8,"spells":83.3,"power":5200.5},{"tribe":"rune","route":1,"cores":4,"golden":0.7,"spells":75.5,"power":2492},{"tribe":"haven","route":0,"cores":3.7,"golden":1,"spells":26.7,"power":3104},{"tribe":"haven","route":1,"cores":4.7,"golden":0.7,"spells":25.7,"power":1864.3},{"tribe":"blood","route":0,"cores":4.3,"golden":1.5,"spells":39.8,"power":2955.5},{"tribe":"blood","route":1,"cores":4.7,"golden":2,"spells":36.7,"power":1263.3},{"tribe":"artifact","route":0,"cores":5.2,"golden":0.7,"spells":49.2,"power":1601},{"tribe":"artifact","route":1,"cores":3.3,"golden":0.7,"spells":45,"power":1358.8}]
+PASS late decisions respect the four-tribe pool, form coherent boards, and converge in bounded operations

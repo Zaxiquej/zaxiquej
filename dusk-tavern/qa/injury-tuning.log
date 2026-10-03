@@ -1,0 +1,12 @@
+PASS tier gates separate starter resources, persistent economy and five-star multipliers
+PASS Brave Knight requires outside fuel and has no battlecry or generated-card preview
+PASS Aiela has no entry income; actual death grants permanent tavern growth
+PASS flyer gains exactly one per surviving hit, preserves the gain, and cannot shrug off equal-tier attacks
+PASS starter growth has smaller exact normal and golden payoffs
+PASS dancer is a one-shot supplier and no longer amplifies every token played
+PASS five-star red serpent turns surviving hits into golden-scaled tavern growth
+PASS low-tier buff and high-tier buff have different budgets; Craig gives four/eight actual spells
+PASS Brodia scales on resolved amulet resonance, on the strongest health target only
+PASS Medusa halves an enemy carry instead of subtracting a negligible fixed body; golden sets zero
+PASS high-tier resource engines cannot leak into low-tier shops or discoveries
+11 tier balance groups passed.

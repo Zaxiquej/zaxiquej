@@ -1,0 +1,271 @@
+{
+  "version": "9.0",
+  "changedCards": 42,
+  "roster": 160,
+  "routes": [
+    {
+      "tribe": "forest",
+      "route": 0,
+      "name": "连携养成",
+      "core": [
+        "forest8",
+        "forest11",
+        "forest4",
+        "forest2",
+        "forest3",
+        "forest16"
+      ],
+      "before": 0.63,
+      "after": 0.59
+    },
+    {
+      "tribe": "forest",
+      "route": 1,
+      "name": "战斗召唤",
+      "core": [
+        "forest13",
+        "forest9",
+        "forest5",
+        "forest6",
+        "forest10",
+        "forest17",
+        "forest19"
+      ],
+      "before": 0.82,
+      "after": 0.59
+    },
+    {
+      "tribe": "royal",
+      "route": 0,
+      "name": "屏障军团",
+      "core": [
+        "royal13",
+        "royal15",
+        "royal2",
+        "royal6",
+        "royal5",
+        "royal17"
+      ],
+      "before": 0.24,
+      "after": 0.48
+    },
+    {
+      "tribe": "royal",
+      "route": 1,
+      "name": "入场曲军团",
+      "core": [
+        "royal11",
+        "royal14",
+        "royal3",
+        "royal10",
+        "royal18",
+        "royal16"
+      ],
+      "before": 0.31,
+      "after": 0.43
+    },
+    {
+      "tribe": "dragon",
+      "route": 0,
+      "name": "逆鳞养成",
+      "core": [
+        "dragon3",
+        "dragon2",
+        "dragon4",
+        "dragon5",
+        "dragon13",
+        "dragon18"
+      ],
+      "before": 0.16,
+      "after": 0.17
+    },
+    {
+      "tribe": "dragon",
+      "route": 1,
+      "name": "升星巨兽",
+      "core": [
+        "dragon1",
+        "dragon14",
+        "dragon15",
+        "dragon17",
+        "dragon6",
+        "dragon10",
+        "dragon7"
+      ],
+      "before": 0.25,
+      "after": 0.48
+    },
+    {
+      "tribe": "night",
+      "route": 0,
+      "name": "谢幕曲军团",
+      "core": [
+        "night0",
+        "night14",
+        "night5",
+        "night4",
+        "night16",
+        "night18"
+      ],
+      "before": 0.57,
+      "after": 0.3
+    },
+    {
+      "tribe": "night",
+      "route": 1,
+      "name": "复生墓场",
+      "core": [
+        "night8",
+        "night12",
+        "night17",
+        "night10",
+        "night7",
+        "night15"
+      ],
+      "before": 0.39,
+      "after": 0.43
+    },
+    {
+      "tribe": "rune",
+      "route": 0,
+      "name": "施法军团",
+      "core": [
+        "rune3",
+        "rune11",
+        "rune6",
+        "rune4",
+        "rune7",
+        "rune8"
+      ],
+      "before": 0.65,
+      "after": 0.56
+    },
+    {
+      "tribe": "rune",
+      "route": 1,
+      "name": "研习强化",
+      "core": [
+        "rune12",
+        "rune13",
+        "rune17",
+        "rune5",
+        "rune15",
+        "rune18"
+      ],
+      "before": 0.68,
+      "after": 0.76
+    },
+    {
+      "tribe": "haven",
+      "route": 0,
+      "name": "护符培育",
+      "core": [
+        "haven14",
+        "haven13",
+        "haven5",
+        "haven17",
+        "haven18",
+        "haven15"
+      ],
+      "before": 0.88,
+      "after": 0.7
+    },
+    {
+      "tribe": "haven",
+      "route": 1,
+      "name": "治疗传承",
+      "core": [
+        "haven8",
+        "haven4",
+        "haven16",
+        "haven9",
+        "haven6",
+        "haven7",
+        "haven10"
+      ],
+      "before": 0.58,
+      "after": 0.17
+    },
+    {
+      "tribe": "blood",
+      "route": 0,
+      "name": "自伤养成",
+      "core": [
+        "blood1",
+        "blood4",
+        "blood9",
+        "blood15",
+        "blood18",
+        "blood11"
+      ],
+      "before": 0.38,
+      "after": 0.54
+    },
+    {
+      "tribe": "blood",
+      "route": 1,
+      "name": "蝙蝠军团",
+      "core": [
+        "blood8",
+        "blood16",
+        "blood2",
+        "blood17",
+        "blood6",
+        "blood19"
+      ],
+      "before": 0.34,
+      "after": 0.36
+    },
+    {
+      "tribe": "artifact",
+      "route": 0,
+      "name": "武装锻造",
+      "core": [
+        "artifact3",
+        "artifact13",
+        "artifact15",
+        "artifact6",
+        "artifact17",
+        "artifact2"
+      ],
+      "before": 0.53,
+      "after": 0.71
+    },
+    {
+      "tribe": "artifact",
+      "route": 1,
+      "name": "残骸重构",
+      "core": [
+        "artifact1",
+        "artifact16",
+        "artifact4",
+        "artifact18",
+        "artifact9",
+        "artifact7",
+        "artifact5"
+      ],
+      "before": 0.59,
+      "after": 0.75
+    }
+  ],
+  "method": "16 routes with a fixed base hero for each tribe, normal AI recruitment, rotating round-robin fights for 16 rounds. No PvP damage/elimination; actual self-harm/healing and combat resources/permanent growth persist. Neutral probes are separate copies with seven equal-body minions, two shields and two guards. Not a live-game win-rate claim.",
+  "caveats": [
+    "Four seeds per route are diagnostic only, not a live player win rate.",
+    "Production AI changes accompany the rules changes; this is not an isolated card-value experiment.",
+    "Injury dragons and healing haven remain weak in this small sample.",
+    "Existing saved buffs are preserved; start a fresh game to evaluate the revised economy."
+  ],
+  "verification": {
+    "archetypeRuleGroups": 11,
+    "randomCombats": 800,
+    "completedGames": 70,
+    "aiGroups": 16,
+    "offlineBrowser": true,
+    "changedCardNormalGoldenPreviews": 42,
+    "dragAndDamageAnimations": true,
+    "mobileWidths": [
+      360,
+      390
+    ]
+  }
+}

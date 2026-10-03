@@ -1,0 +1,16 @@
+{
+  "previewMatches": true,
+  "sha256": "a3f3ac3cda4c2378e2b1df2343df446f6741cc62e277300a8e6304979e6adfe3",
+  "stackingCards": [
+    "royal2"
+  ],
+  "newLossEffects": [
+    "shieldMentor",
+    "shieldChampion",
+    "shieldResearch"
+  ],
+  "targetedGroups": 10,
+  "regressionGroups": 40,
+  "browserCheck": "barriers-browser-test.cjs passed",
+  "aiGamesRun": 0
+}

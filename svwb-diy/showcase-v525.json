@@ -1,0 +1,537 @@
+{
+  "version": "5.25.0",
+  "chaos": false,
+  "seedsReviewed": 3500,
+  "selection": "人工从实际生成样本中精选，未手工修改卡文，不代表全体平均质量。",
+  "cards": [
+    {
+      "reason": "简单而完整：两次解场都需要土之印，进化复读没有省略第二次资源支付。",
+      "card": {
+        "version": "5.25.0",
+        "name": "星潮#000001",
+        "seed": 1039335695,
+        "type": "follower",
+        "class": 3,
+        "rarity": 2,
+        "cost": 2,
+        "attack": 2,
+        "health": 2,
+        "abilities": [
+          {
+            "ids": [
+              "damage"
+            ],
+            "raw": 5,
+            "boardValue": 0,
+            "text": "【入场曲】【土之秘术 1】选择对手的战场上的1个随从，对其造成4点伤害。",
+            "tokens": [],
+            "kind": "effect",
+            "trigger": "入场曲",
+            "condition": "earth",
+            "resourceCost": 1,
+            "conditionAmount": 1,
+            "enhanceCost": 0,
+            "minPayoff": 3,
+            "bodyText": "【土之秘术 1】选择对手的战场上的1个随从，对其造成4点伤害。",
+            "price": 3.04
+          },
+          {
+            "kind": "replay",
+            "trigger": "进化时",
+            "condition": "none",
+            "text": "【进化时】发动与【入场曲】相同的能力。",
+            "price": 1.1552,
+            "raw": 5,
+            "timingFactor": 0.38,
+            "ids": [
+              "replay"
+            ]
+          }
+        ],
+        "tokens": [],
+        "emblems": [],
+        "faiths": [],
+        "alternateForms": [],
+        "budget": 8.546695058979093,
+        "spent": 4.2,
+        "bodyAllowance": 4,
+        "theme": "秘法 · 增幅与土印",
+        "bodyBalance": {
+          "before": [
+            3,
+            1
+          ],
+          "after": [
+            2,
+            2
+          ]
+        },
+        "vanilla": false,
+        "earlyDesignAttempt": 1,
+        "identityAttempt": 1
+      }
+    },
+    {
+      "reason": "小本体换取解场与模式选择；铁甲骑士争场，海盗旗偏向延迟伤害，进化时还可重新选择。",
+      "card": {
+        "version": "5.25.0",
+        "name": "星潮#000244",
+        "seed": 387556130,
+        "type": "follower",
+        "class": 2,
+        "rarity": 2,
+        "cost": 4,
+        "attack": 1,
+        "health": 1,
+        "abilities": [
+          {
+            "ids": [
+              "bodyPayoff",
+              "destroy"
+            ],
+            "raw": 7,
+            "boardValue": 0,
+            "text": "【入场曲】选择对手的战场上的1个随从，破坏该随从。",
+            "tokens": [],
+            "kind": "bodyPayoff",
+            "trigger": "入场曲",
+            "condition": "none",
+            "bodyText": "选择对手的战场上的1个随从，破坏该随从。",
+            "price": 7,
+            "major": true
+          },
+          {
+            "ids": [
+              "flagSummon",
+              "tokenSummon"
+            ],
+            "raw": 4.65,
+            "boardValue": 3.2,
+            "text": "【入场曲】【模式】选择1个能力发动。\n（1）召唤1张『令人战栗的海盗旗』。\n（2）召唤1个『铁甲骑士』。",
+            "tokens": [
+              {
+                "id": 90021210,
+                "name": "令人战栗的海盗旗",
+                "class": 2,
+                "type": "amulet",
+                "cost": 1,
+                "attack": 0,
+                "health": 0,
+                "text": "【吟唱 7】\n自己使用法术时，本护符的倒计数-1。\n【谢幕曲】对对手的主战者造成2点伤害。"
+              },
+              {
+                "id": 90021120,
+                "name": "铁甲骑士",
+                "class": 2,
+                "cost": 1,
+                "attack": 2,
+                "health": 2,
+                "text": "",
+                "tribe": "士兵",
+                "tribeId": 2
+              }
+            ],
+            "modeBranches": [
+              {
+                "ids": [
+                  "flagSummon"
+                ],
+                "raw": 4,
+                "boardValue": 0,
+                "text": "召唤1张『令人战栗的海盗旗』。",
+                "tokens": [
+                  {
+                    "id": 90021210,
+                    "name": "令人战栗的海盗旗",
+                    "class": 2,
+                    "type": "amulet",
+                    "cost": 1,
+                    "attack": 0,
+                    "health": 0,
+                    "text": "【吟唱 7】\n自己使用法术时，本护符的倒计数-1。\n【谢幕曲】对对手的主战者造成2点伤害。"
+                  }
+                ]
+              },
+              {
+                "ids": [
+                  "tokenSummon"
+                ],
+                "raw": 3.2,
+                "boardValue": 3.2,
+                "text": "召唤1个『铁甲骑士』。",
+                "tokens": [
+                  {
+                    "id": 90021120,
+                    "name": "铁甲骑士",
+                    "class": 2,
+                    "cost": 1,
+                    "attack": 2,
+                    "health": 2,
+                    "text": "",
+                    "tribe": "士兵",
+                    "tribeId": 2
+                  }
+                ],
+                "summonDelivery": {
+                  "tokenId": 90021120,
+                  "count": 1,
+                  "stats": 4
+                }
+              }
+            ],
+            "kind": "mode",
+            "trigger": "入场曲",
+            "condition": "none",
+            "resourceCost": 0,
+            "conditionAmount": 0,
+            "enhanceCost": 0,
+            "minPayoff": 0,
+            "bodyText": "【模式】选择1个能力发动。\n（1）召唤1张『令人战栗的海盗旗』。\n（2）召唤1个『铁甲骑士』。",
+            "price": 4.65
+          },
+          {
+            "kind": "keyword",
+            "trigger": "",
+            "condition": "none",
+            "text": "【守护】",
+            "price": 0,
+            "raw": 0,
+            "ids": [
+              "守护"
+            ]
+          },
+          {
+            "kind": "replay",
+            "trigger": "进化时",
+            "condition": "none",
+            "text": "【进化时】发动与【入场曲】相同的能力。",
+            "price": 4.4270000000000005,
+            "raw": 11.65,
+            "timingFactor": 0.38,
+            "ids": [
+              "replay"
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "id": 90021210,
+            "name": "令人战栗的海盗旗",
+            "class": 2,
+            "type": "amulet",
+            "cost": 1,
+            "attack": 0,
+            "health": 0,
+            "text": "【吟唱 7】\n自己使用法术时，本护符的倒计数-1。\n【谢幕曲】对对手的主战者造成2点伤害。"
+          },
+          {
+            "id": 90021120,
+            "name": "铁甲骑士",
+            "class": 2,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "士兵",
+            "tribeId": 2
+          }
+        ],
+        "emblems": [],
+        "faiths": [],
+        "alternateForms": [],
+        "budget": 18.722768642008305,
+        "spent": 16.08,
+        "bodyAllowance": 2,
+        "theme": "王旗 · 铺场与爆能",
+        "effectBodyReservation": {
+          "offered": 3,
+          "restored": 0
+        },
+        "bodyTrade": {
+          "lost": 4,
+          "payoffRaw": 7
+        },
+        "corePower": 7,
+        "midBoardTrade": {
+          "boardValue": 3.2,
+          "combinedCap": 11,
+          "cap": 2,
+          "before": 2,
+          "lost": 0,
+          "drawbackCredit": 0
+        },
+        "vanilla": false
+      }
+    },
+    {
+      "reason": "亡者光环、亡者数量伤害、条件供给亡者围绕同一体系；要先准备场面，后面的召唤不会追溯增加前一段伤害。",
+      "card": {
+        "version": "5.25.0",
+        "name": "星潮#000504",
+        "seed": 86849543,
+        "type": "follower",
+        "class": 5,
+        "rarity": 3,
+        "cost": 4,
+        "attack": 3,
+        "health": 2,
+        "abilities": [
+          {
+            "kind": "static",
+            "trigger": "自己的其他亡者·随从进入战场时",
+            "condition": "none",
+            "text": "自己的其他亡者·随从进入战场时，使其+1/+1。",
+            "bodyText": "使其+1/+1。",
+            "raw": 4,
+            "price": 4,
+            "ids": [
+              "tribeEngine"
+            ],
+            "tribe": "亡者",
+            "tribeEffect": "growth",
+            "tokens": []
+          },
+          {
+            "ids": [
+              "bodyPayoff",
+              "tribeCountDamage"
+            ],
+            "raw": 7.6,
+            "boardValue": 0,
+            "text": "【入场曲】对对手的战场上的所有随从造成X点伤害。X为自己的战场上的亡者·随从的张数。",
+            "tokens": [],
+            "kind": "bodyPayoff",
+            "trigger": "入场曲",
+            "condition": "none",
+            "bodyText": "对对手的战场上的所有随从造成X点伤害。X为自己的战场上的亡者·随从的张数。",
+            "price": 7.6,
+            "major": true
+          },
+          {
+            "ids": [
+              "tribeSupply",
+              "tokenSummon"
+            ],
+            "raw": 3.6,
+            "boardValue": 2.8,
+            "text": "【入场曲】若自己的战场上有其他进化后的随从，则将1张『骸骨士兵』加入手牌。召唤1个『骸骨士兵』。",
+            "tokens": [
+              {
+                "id": 90051110,
+                "name": "骸骨士兵",
+                "class": 5,
+                "cost": 0,
+                "attack": 1,
+                "health": 1,
+                "text": "",
+                "tribe": "亡者",
+                "tribeId": 6
+              },
+              {
+                "id": 90051110,
+                "name": "骸骨士兵",
+                "class": 5,
+                "cost": 0,
+                "attack": 1,
+                "health": 1,
+                "text": "",
+                "tribe": "亡者",
+                "tribeId": 6
+              }
+            ],
+            "kind": "effect",
+            "trigger": "入场曲",
+            "condition": "evolvedBoard",
+            "resourceCost": 0,
+            "conditionAmount": 0,
+            "enhanceCost": 0,
+            "minPayoff": 2.5,
+            "bodyText": "若自己的战场上有其他进化后的随从，则将1张『骸骨士兵』加入手牌。召唤1个『骸骨士兵』。",
+            "price": 2.7
+          }
+        ],
+        "tokens": [
+          {
+            "id": 90051110,
+            "name": "骸骨士兵",
+            "class": 5,
+            "cost": 0,
+            "attack": 1,
+            "health": 1,
+            "text": "",
+            "tribe": "亡者",
+            "tribeId": 6
+          }
+        ],
+        "emblems": [],
+        "faiths": [],
+        "alternateForms": [],
+        "budget": 19.893257060274482,
+        "spent": 14.3,
+        "bodyAllowance": 5,
+        "theme": "幽夜 · 唤灵与谢幕",
+        "bodyHeadroom": 2,
+        "tribalTheme": "亡者",
+        "effectBodyReservation": {
+          "offered": 2,
+          "restored": 0
+        },
+        "bodyTrade": {
+          "lost": 4,
+          "payoffRaw": 7.6
+        },
+        "corePower": 7.6,
+        "midBoardTrade": {
+          "boardValue": 2.0999999999999996,
+          "combinedCap": 11,
+          "cap": 5,
+          "before": 5,
+          "lost": 0,
+          "drawbackCredit": 0
+        },
+        "vanilla": false
+      }
+    },
+    {
+      "reason": "三只带守护的突进猛虎是明确的爆发回报；吟唱四和额外启动费用形成等待与加速的取舍。",
+      "card": {
+        "version": "5.25.0",
+        "name": "星潮#000080",
+        "seed": 1289720052,
+        "type": "amulet",
+        "class": 6,
+        "rarity": 2,
+        "cost": 4,
+        "attack": null,
+        "health": null,
+        "abilities": [
+          {
+            "kind": "keyword",
+            "trigger": "",
+            "condition": "none",
+            "text": "【吟唱 4】",
+            "raw": 0,
+            "price": 0,
+            "ids": [
+              "countdown"
+            ]
+          },
+          {
+            "ids": [
+              "tokenSummon",
+              "summonWard"
+            ],
+            "raw": 21,
+            "boardValue": 21,
+            "text": "【谢幕曲】召唤3个『圣炎猛虎』。使这些随从获得【守护】。",
+            "tokens": [
+              {
+                "id": 90061120,
+                "name": "圣炎猛虎",
+                "class": 6,
+                "cost": 4,
+                "attack": 4,
+                "health": 4,
+                "text": "【突进】"
+              }
+            ],
+            "summonDelivery": {
+              "tokenId": 90061120,
+              "count": 3,
+              "stats": 24
+            },
+            "components": [
+              {
+                "id": "tokenSummon",
+                "text": "召唤3个『圣炎猛虎』。",
+                "raw": 21
+              },
+              {
+                "id": "summonWard",
+                "text": "【守护】",
+                "raw": 0
+              }
+            ],
+            "summonGrants": {
+              "trigger": "谢幕曲",
+              "tokenId": 90061120,
+              "count": 3,
+              "attack": 4,
+              "health": 4,
+              "attacks": 1,
+              "effectiveCost": 7,
+              "extra": 0,
+              "grants": [
+                {
+                  "id": "summonWard",
+                  "raw": 0
+                }
+              ]
+            },
+            "kind": "effect",
+            "trigger": "谢幕曲",
+            "condition": "none",
+            "price": 9.545454545454545,
+            "bodyText": "召唤3个『圣炎猛虎』。使这些随从获得【守护】。",
+            "delayFactor": 0.45454545454545453
+          },
+          {
+            "ids": [
+              "handCycle"
+            ],
+            "raw": 1.4000000000000001,
+            "boardValue": 0,
+            "text": "【入场曲】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。",
+            "tokens": [],
+            "kind": "effect",
+            "trigger": "入场曲",
+            "condition": "none",
+            "price": 1.4000000000000001,
+            "bodyText": "选择自己的1张手牌，使其返回牌组。抽取1张卡牌。"
+          },
+          {
+            "kind": "activation",
+            "trigger": "启动",
+            "condition": "none",
+            "text": "费用1【启动】本护符的倒计数-1。",
+            "bodyText": "本护符的倒计数-1。",
+            "raw": 2.8636363636363633,
+            "price": 0.6636363636363631,
+            "ids": [
+              "countdownAct"
+            ],
+            "activation": {
+              "fee": 1,
+              "oncePerTurn": true,
+              "breaksSelf": false,
+              "countdownReduction": 1,
+              "credit": 2.2
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "id": 90061120,
+            "name": "圣炎猛虎",
+            "class": 6,
+            "cost": 4,
+            "attack": 4,
+            "health": 4,
+            "text": "【突进】"
+          }
+        ],
+        "emblems": [],
+        "faiths": [],
+        "alternateForms": [],
+        "budget": 12.879853850230573,
+        "spent": 11.61,
+        "bodyAllowance": 0,
+        "theme": "圣祷 · 回复与护符",
+        "effectLimit": 4,
+        "countdown": 4,
+        "archetype": "countdownAmulet",
+        "vanilla": false
+      }
+    }
+  ]
+}

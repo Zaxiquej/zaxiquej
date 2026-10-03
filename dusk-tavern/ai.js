@@ -1,0 +1,337 @@
+(function(root){
+'use strict';
+const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null);
+const S=root.TavernScaling||(typeof require!=='undefined'?require('./scaling.js'):null);
+// Each list contains an engine, its payoffs, and useful supporting pieces.
+// These preferences change decisions; they never grant cards or hidden stats.
+const plans={
+ forest:[['forest4','forest16','forest1','forest2','forest3','forest11','forest15','forest8','forest12','forest18','forest14','forest7'],['forest6','forest17','forest5','forest10','forest19','forest13','forest9','forest0','forest7','forest2']],
+ royal:[['royal15','royal6','royal2','royal12','royal16','royal7','royal5','royal17','royal0','royal4'],['royal14','royal10','royal21','royal3','royal18','royal20','royal9','royal19','royal11','royal8','royal13','neutral4','royal1']],
+ dragon:[['dragon4','dragon18','dragon13','dragon3','dragon2','dragon5','dragon16','dragon19','dragon9','dragon15'],['dragon15','dragon17','dragon12','dragon6','dragon7','dragon14','dragon1','dragon10','dragon11','dragon9']],
+ night:[['night17','night13','night5','night4','night18','night14','night2','night12','night15','night0','night3'],['night7','night16','night9','night10','night8','night15','night4','night12','night6','night1','night13']],
+ rune:[['rune6','rune11','rune3','rune1','rune0','rune8','rune4','rune7','rune14','rune16','rune2'],['rune15','rune18','rune13','rune17','rune5','rune12','rune11','rune14','rune20','rune16','rune10','rune2']],
+ haven:[['haven5','haven13','haven17','haven18','haven15','haven14','haven1','haven0','haven11','haven3'],['haven4','haven16','haven7','haven8','haven9','haven6','haven10','haven3','haven2','haven12','haven14','haven11']],
+ blood:[['blood4','blood18','blood9','blood11','blood15','blood1','blood7','blood13','blood14','blood3','blood5'],['blood6','blood2','blood17','blood19','blood16','blood8','blood5','blood1','blood7','blood0']],
+ artifact:[['artifact6','artifact17','artifact13','artifact15','artifact3','artifact12','artifact2','artifact0','artifact10'],['artifact4','artifact18','artifact7','artifact9','artifact5','artifact14','artifact16','artifact1','artifact8','artifact11','artifact17']]
+};
+for(const [tribe,route,ids] of [['forest',0,['neutral14']],['forest',1,['neutral15']],['royal',1,['neutral14']],['dragon',1,['neutral16']],['night',0,['neutral15']],['night',1,['neutral15']],['rune',0,['neutral14','neutral16']],['haven',0,['neutral17','neutral16']],['haven',1,['neutral16']],['blood',0,['neutral16']],['blood',1,['neutral15']],['artifact',1,['neutral15']]])plans[tribe][route].push(...ids);
+const def=c=>D.byId[c.id],mul=c=>c.golden?2:1;
+const normalCopies=(a,id)=>[...a.board,...a.hand].filter(c=>c.id===id&&!c.golden).length;
+const count=(a,id)=>a.board.filter(c=>c.id===id).reduce((n,c)=>n+mul(c),0);
+const tribeCount=(a,t)=>a.board.filter(c=>def(c).tribe===t).length;
+function pendingSelfHarm(a){const end=1+S.echoCount(a,'endEcho'),amulet=1+S.echoCount(a,'prayerEcho');return a.board.filter(c=>['bloodGrow','pactEnd'].includes(def(c).effect)).length*end+(a.amulets.filter(c=>def(c).effect==='bloodGarden'&&c.count<=1).length*2+a.amulets.filter(c=>def(c).effect==='bloodMoon'&&c.count<=1).length*3)*amulet+Math.min(a.board.filter(c=>def(c).effect==='bloodFeast').length*end,a.shop.filter(c=>def(c).type==='minion').length)*2;}
+function bloodReserve(a){return 6+pendingSelfHarm(a);}
+function canPayBattlecry(a,c){const n=def(c).effect==='bloodGold'?2:['bloodGift','pactPainGift'].includes(def(c).effect)?1:0;if(!n)return true;return a.hp-n*(1+S.echoCount(a,'fanfareEcho')+(a.heroCry?1:0))>=bloodReserve(a);}
+function carry(c){if(c.keywords.includes('cannotAttack'))return .45;return def(c).effect==='cleave'?3:c.heroWindfury||def(c).effect==='double'||['forest1','forest3','royal5','dragon9'].includes(c.id)?1.8:1;}
+function power(c){return Math.sqrt(Math.max(1,c.attack)*Math.max(1,c.health))*1.8*Math.sqrt(carry(c))+Math.sqrt(S.shieldCount(c))*Math.min(30,c.attack*.5+c.health*.15)+(c.keywords.includes('taunt')?1:0)+(def(c).effect==='reborn'?5:0)+(c.keywords.includes('destruction')?35:0)+(c.keywords.includes('stealth')?6:0);}
+const army=a=>a.progress?.fairy||0;
+const expectedPlays=a=>Math.max(a.played||0,Math.min(9,a.previousPlayed||3));
+const forestSummons=a=>a.board.reduce((n,c)=>n+(def(c).brood?.id==='fairy'?def(c).brood.count:c.id==='forest0'?1:c.id==='forest5'?2:c.id==='forest19'?3:0),0);
+function comboValue(a){
+ const forest=tribeCount(a,'forest'),strength=army(a);
+ // Amortize one three-card sequence; generated cards can complete it for little gold.
+ return ((a.hero==='forest'?a.board.length*2:0)+a.board.filter(c=>c.id==='forest1').reduce((n,c)=>n+S.comboPower(a,c,(Math.floor((a.played||0)/3)+1)*3)*2,0)+a.board.filter(c=>c.id==='forest4').reduce((n,c)=>n+S.comboPower(a,c,(Math.floor((a.played||0)/3)+1)*3)*2,0)*Math.max(0,forest-1))/3;
+}
+function protectedForestPiece(a,c){
+ if(a.board.some(x=>x.uid!==c.uid&&x.id===c.id))return false;
+ if(plans[a.tribe]?.[a.route]?.slice(0,3).includes(c.id)&&tribeCount(a,a.tribe)>=2)return true;
+ if(a.tribe==='royal'&&tribeCount(a,'royal')>=2&&(a.route===0?['royal15','royal7']:['royal3','royal10','royal14']).includes(c.id))return true;
+ if(a.tribe==='dragon'&&a.route===0){if(c.id==='dragon3')return a.board.some(x=>['dragon4','dragon13','dragon18'].includes(x.id));if(['dragon2','dragon13'].includes(c.id)&&a.board.some(x=>x.id==='dragon3')&&a.board.filter(x=>['dragon2','dragon13'].includes(x.id)).length===1)return true;}
+ if(a.tribe!=='forest')return false;
+ if(c.id==='forest4')return a.route===0;
+ if(c.id==='forest3')return a.route===0&&army(a)>=8&&count(a,'forest4')>0;
+ if(c.id==='forest6')return forestSummons(a)>=1;
+ if(c.id==='forest5')return count(a,'forest6')>0||army(a)>=8;
+ if(c.id==='forest7')return army(a)>=8&&tribeCount(a,'forest')>=3;
+ return (c.id==='forest0'||def(c).brood?.id==='fairy')&&a.route===1&&count(a,'forest6')>0&&forestSummons(a)<=2;
+}
+function cycleBudget(a,gain){return gain*(a.tribe==='royal'&&(S.echoCount(a,'fanfareEcho')||count(a,'royal10'))?3:a.tribe==='forest'&&count(a,'forest4')?2:1.2);}
+function resurrectionValue(a,source){let grave=a.grave,value=0;for(const c of a.board.filter(x=>x.id!=='night7'&&!def(x).token).sort((x,y)=>power(y)-power(x))){if(grave<def(c).tier)continue;grave-=def(c).tier;value+=power(c)*.85;}return value*(a.board.some(c=>c.uid!==source.uid&&c.id==='night7')?.15:1);}
+function graveReserve(a){return (count(a,'night16')?6*(1+S.echoCount(a,'lastWordsEcho')):0)+(count(a,'night7')?a.board.filter(c=>c.id!=='night7'&&!def(c).token).reduce((n,c)=>n+def(c).tier,0):0);}
+function synergyValue(a,c){
+ const effect=def(c).effect;
+ if(effect==='fanfareEcho'){const cries=a.board.filter(x=>D.fanfareIds.includes(x.id)).length+a.hand.filter(x=>D.fanfareIds.includes(x.id)).length;return cries?Math.max(2,expectedPlays(a))*cries*7*mul(c):0;}
+ if(effect==='lastWordsEcho')return a.board.filter(x=>x.uid!==c.uid&&D.abilityIds.lastWords.includes(x.id)).reduce((n,x)=>n+12+power(x)*.4,0)*mul(c);
+ if(effect==='endEcho')return a.board.filter(x=>x.uid!==c.uid&&D.endRecruitEffects.includes(def(x).effect)).reduce((n,x)=>n+Math.max(4,synergyValue(a,x)),0)*mul(c);
+
+ const utility={bellLast:4*mul(c),vitalityCry:Math.min(2,a.board.length)*3*mul(c),amuletGift:a.amulets.length<2?14*mul(c):3,smallSpellGift:8*mul(c)+comboValue(a),clockCry:a.amulets.reduce((n,x)=>n+(x.count<=mul(c)?15:5),0),ambushSupport:Math.min(2,a.board.filter(x=>x.uid!==c.uid&&!x.keywords.includes('cannotAttack')&&x.attack>0).length)*12*mul(c)};if(Object.hasOwn(utility,def(c).effect))return utility[def(c).effect];
+ const m=mul(c),all=a.board.length,tribe=tribeCount(a,def(c).tribe),shields=a.board.filter(x=>x.keywords.includes('shield')).length;
+ const strength=army(a),summons=forestSummons(a),plays=expectedPlays(a),forest=tribeCount(a,'forest'),spellPlays=Math.max(2,a.previousSpellsThisRound||2);
+ const summonedBonus=0,tokenBase=(c.id==='forest5'?3:1)*m+strength+summonedBonus;
+ // Discount summon value for board space and losing its support before the deathrattle.
+ const fairyBody=c.id==='forest5'?Math.sqrt((tokenBase+Math.floor(c.attack/2))*(tokenBase+Math.floor(c.health/2)))*1.8:tokenBase*1.8;
+ const batArmy=S.bat(a),batAttack=2*m+Math.floor(c.attack/2)+batArmy+summonedBonus,batHealth=m+Math.floor(c.health/2)+batArmy+summonedBonus;
+ const batVolley=a.board.filter(x=>x.id==='blood2').reduce((n,x)=>n+2*(2*mul(x)+Math.floor(x.attack/2)+batArmy+summonedBonus),0);
+ const values={forest11:5+comboValue(a),forest2:plays*2+forestSummons(a)*4,blood11:a.hp<(a.maxHp||40)?30:10,forest8:2+comboValue(a)*2,forest9:0,forest10:summons*c.attack,royal8:Math.min(2,all-1)*4,royal9:Math.floor(S.read(a).buffs/5)*1.8,royal10:tribe*20,dragon8:c.health>=10&&tribe>1?10:2,dragon9:(2+Math.floor(c.health/10))*5,dragon10:(Math.floor(c.attack/4)+Math.floor(c.health/4))*2.5,night8:count(a,'night7')*8+count(a,'night9')*5,night9:a.grave>=3?tribe*8:0,night10:power(c)*.8,rune8:spellPlays*(D.tuning.owlAttack+1),rune9:spellPlays*5,rune10:(1+Math.floor(a.spells/3))*spellPlays*2,haven8:tribe>1?6:0,haven4:Math.max(0,tribe-1)*(2+Math.floor(c.health/4))*1.5,haven9:power(c)*.2,haven10:a.amulets.length*(6+S.prayer(a))*3,blood8:(2+batArmy)*2+(1+batArmy)*2,blood9:a.hp>1?foodBody(a,'bloodFeast')*1.5:0,blood10:20+a.round*3,artifact8:tribe*3,artifact9:a.scrap,artifact10:tribe*8,forest0:fairyBody*.7/m,forest1:3*Math.max(1,Math.floor(plays/3))*(Math.max(1,Math.floor(plays/3))+1)*.8,
+  forest3:(power({...c,attack:c.attack+strength*m})-power(c))/m,
+  forest4:(6+1.5*(Math.max(1,Math.floor(plays/3))+1))*Math.max(0,all-1)*2*Math.max(1,Math.floor(plays/3))*1.25,
+  forest5:fairyBody*2*.8/m,
+  forest6:summons*3*(Math.max(2,summons)*2+2)*.75,
+  forest7:(forest*4+strength)*Math.max(1,forest-1)*.7,
+  royal1:plays*tribe/Math.max(1,all)*2*D.tuning.royalRecruit,royal3:plays*(4+Math.floor(S.read(a).buffs/10))*2*tribe/Math.max(1,all),royal6:(shields+count(a,'royal15')*3+count(a,'royal7')*2)*tribe*4,royal7:tribe*(a.tribe==='royal'&&a.route===0?16:8)+Math.min(2,Math.max(0,tribe-1))*(a.tribe==='royal'&&a.route===0?28+count(a,'royal6')*10:10),night4:a.board.filter(x=>x.uid!==c.uid&&(def(x).effect==='reborn'||x.heroReborn||['night5','night7','night15'].includes(x.id))).length*Math.max(1,tribe)*6,night7:resurrectionValue(a,c),
+  dragon7:c.attack*3.5,rune3:3*Math.max(0,spellValue(a,D.byId.mana)),rune4:2*(2+Math.floor(a.spells/4))*.55,
+  rune5:Math.min(2,Math.max(0,all-1))*4*spellPlays,rune6:all*4*spellPlays,rune7:a.spells*1.3,
+  haven5:a.amulets.length?16+(a.progress?.prayers||0)*1.5:0,haven7:a.board.filter(x=>x.uid!==c.uid).reduce((n,x)=>n+power(x),0)*.35,
+  blood4:2*tribe*Math.max(1,count(a,'blood1'))*2,
+  blood2:Math.sqrt(batAttack*batHealth)*1.8*2*.75/m,blood6:batVolley*.8,blood7:(a.bloodDamage||0)*tribe*1.3,
+  artifact3:(S.weapon(a).attack+S.weapon(a).health)*2*1.5,artifact4:S.artifactBody(a)*1.8*2*.75,artifact5:tribe*4,artifact7:a.scrap*tribe*.8};
+ const march=S.read(a).battleEntries,legion=S.read(a).legionAttack;
+ values.night2=march*.8+legion;values.night12=4+legion*.6;values.night5=28+legion*2;
+ const study=S.spell(a),resonance=S.prayer(a),scrap=a.scrap||0,grave=a.grave||0;
+ const extra={discoverHighSpell:20+study*4,discoverRoyal:16+count(a,'royal14')*8+count(a,'royal10')*10,coinGift:5,constructPair:20+count(a,'artifact5')*10,replicaGift:5,radiantLast:c.attack, researchLast:9,fairyGift:4,forestTrade:7,comboStudy:plays*3,fairyEnd:12,fairyRally:Math.min(2,Math.max(0,all-1))*8,fairyMemorial:summons*forest*4,comboHarvest:plays*4,fairyCrown:(c.attack+c.health/2+strength*2)*1.2,
+ layeredGuard:10+count(a,'royal15')*12+count(a,'royal7')*6,shieldMentor:shields*8,shieldChampion:(shields+count(a,'royal15')*2)*8,shieldResearch:(shields+count(a,'royal15'))*10,knightGift:4,guardCry:8,guardSupply:10+S.spell(a)*2,cryChampion:plays*8,shieldRelay:Math.max(0,Math.min(2,tribe-1))*(16+count(a,'royal6')*tribe*4),royalStudy:18,shieldMarshal:a.board.reduce((n,c)=>n+S.shieldCount(c),0)*tribe*4,buffCommander:Math.floor(S.read(a).buffs/20)*Math.max(0,tribe-1)*4,cryAcademy:plays*6,
+ shopCry:a.shop.filter(c=>def(c).type==='minion').length*2,tavernCry:24,tavernLast:14,tavernSupply:18+study*3,tavernFury:45+count(a,'dragon3')*20,tavernPlay:expectedPlays(a)*12,dragonFeast:foodBody(a,'dragonFeast')*Math.min(2,Math.max(0,tribe-1))*1.5,dragonDrill:18,dragonVitality:(6+a.board.filter(c=>def(c).tribe==='dragon').reduce((n,c)=>n+c.health,0)/Math.max(1,tribe)/10)*tribe*7,
+ legionLast:Math.max(2,tribe)*9,legionEngine:Math.max(2,count(a,'night5')*4+count(a,'night14')*2+count(a,'night12'))*Math.max(2,tribe)*2,rebornGrant:Math.max(0,...a.board.filter(x=>x.uid!==c.uid&&def(x).effect!=='reborn'&&!x.heroReborn).map(x=>power(x)+legion))*0.8,marchArmy:Math.max(1,march)*3+legion, skeletonGift:4,graveEnd:8,deathStudy:18,graveSupply:grave>=3?10:0,graveStudy:grave>=6?25:4,graveLegacy:grave>=6?24*tribe:0,graveLord:grave>=6?(3+Math.floor((grave-6)/5))*tribe*3:0,graveArmy:(c.attack+c.health+grave*4)*.9,
+ spellTrade:Math.max(1,Math.floor(plays/3))*Math.max(0,spellValue(a,D.byId.mana)),studyCry:12,thirdStudy:spellPlays*7,growthSupply:2*Math.max(0,spellValue(a,D.byId.doubleGrowth)),studyEcho:Math.ceil(study/2)*spellPlays*4,manaBundle:16+study*4,studyEnd:48,studyRally:Math.max(study,3)*all*spellPlays*.8,
+ bellGift:5,guardNurse:tribe>1?a.amulets.length*6+count(a,'haven3')*5:0,prayerStudy:a.amulets.length*18,clockSupply:a.amulets.length*12,prayerCry:25,prayerGiant:resonance*4,healthAvatar:c.health,guardWitness:a.board.filter(x=>x.uid!==c.uid&&x.keywords.includes('taunt')).length*15,bloodEdge:8,prayerChoir:(4+resonance)*tribe*a.amulets.length*2,prayerEcho:a.amulets.length*(15+resonance*all*2),healthReliquary:a.amulets.length*c.health*Math.max(0,tribe-1),
+ wingGift:Math.max(0,spellValue(a,D.byId.dragonWing)),pactPainGift:6+count(a,'blood4')*tribeCount(a,'blood')*4,pactGift:6,bloodTavern:Math.max(1,count(a,'blood1')+count(a,'blood9'))*20,bloodBud:count(a,'blood1')*4+3,pactEnd:8+study*2,bloodStudy:Math.max(1,count(a,'blood1'))*16,batSupply:batArmy*4+10,batMemorial:tribe*Math.max(1,count(a,'blood2')*2+count(a,'blood19')*3)*5,bloodVein:tribe*(2+Math.floor((a.bloodDamage||0)/5))*Math.max(1,count(a,'blood1')),batAvenge:(S.batAvengeBody(a,m)+batArmy)*Math.max(1,Math.floor((all-1)/2))*1.4/m,
+ analyzerGift:4,moduleBundle:(S.weapon(a).attack+S.weapon(a).health+study*2)*2,moduleStudy:spellPlays*8,scrapVeteran:(2+Math.floor(scrap/5))*tribe*3,forgeEnd:32,scrapCry:tribe*6,moduleRally:4*tribe*spellPlays*2,scrapCrown:(c.attack+c.health+scrap*4)*.9};
+ if(def(c).brood){const b=def(c).brood,n=b.id==='fairy'?strength:b.id==='bat'?batArmy:0,atk=b.attack*m+n+(D.byId[b.id].tribe==='night'?legion:0),hp=b.health*m+n+(b.inheritHealth?Math.floor(c.health/2):0);return Math.sqrt(atk*hp)*1.8*b.count*.8+(b.id==='fairy'?count(a,'forest6')*b.count*6+count(a,'forest10')*b.count*10:b.id==='bat'?count(a,'blood6')*atk*b.count:count(a,'artifact5')*b.count*6);}
+ const e=def(c).effect,base={summonBuff:3,shieldBuff:2,rallyCry:5,legionEngine:1,graveLegacy:12,spellHealth:2,guardWitness:2,batQueen:1,moduleRally:4,artifactLord:Math.max(1,a.scrap||0)}[e];
+ return (values[c.id]||extra[e]||0)*(base?S.growthAmount(a,e,c)/base:1)*m;
+}
+function unitValue(a,c,plan){
+ const d=def(c),rank=plan.indexOf(c.id),same=d.tribe===a.tribe;
+ // A foreign engine has less reliable support in a fixed-route shopping plan.
+ let value=power(d.tribe==='night'?{...c,attack:c.attack+S.read(a).legionAttack}:c)+d.tier*2+(same?4:0)+synergyValue(a,c)*(same||d.tribe==='neutral'?1:.6);
+ if(d.effect==='activeForge')value+=12+count(a,'dragon21')*tribeCount(a,'dragon')*5;
+ if(d.effect==='activeResearch')value+=same?18:6;
+ if(d.effect==='discardRally')value+=tribeCount(a,'dragon')*(count(a,'dragon20')+1)*6;
+ if(d.effect==='modalCry')value+=Math.max(4,tribeCount(a,d.tribe)*(c.id==='forest20'?4:6))*mul(c);
+ if(rank>=0)value+=(rank<3?45:25)*(a.round<5?.55:1);
+ if(c.golden)value+=12;
+ // A second engine is valuable, but diversifying into its payoff is better.
+ const others=a.board.filter(x=>x.uid!==c.uid&&x.id===c.id);
+ if(others.length)value-=others.some(x=>x.golden)?15:others.length*5;
+ if(d.token)value-=7;
+ return value;
+}
+function weakest(a,plan){const replaceable=a.board.filter(c=>!protectedForestPiece(a,c));return [...(replaceable.length?replaceable:a.board)].sort((x,y)=>unitValue(a,x,plan)-unitValue(a,y,plan))[0];}
+function cycleSlot(a,plan){return a.board.filter(c=>!protectedForestPiece(a,c)&&!plan.slice(0,3).includes(c.id)).sort((x,y)=>unitValue(a,x,plan)-unitValue(a,y,plan))[0];}
+function canCycle(a,c){
+ if(c.golden)return 0;
+ let gain=0;
+ if(def(c).effect==='modalCry')gain=Math.max(4,tribeCount(a,def(c).tribe)*(c.id==='forest20'?4:6));
+ if((def(c).synergy||['vitalityCry','amuletGift','smallSpellGift','clockCry'].includes(def(c).effect))&&D.fanfareIds.includes(c.id))gain=synergyValue(a,c);
+ if(c.id==='forest8')gain=4;
+ if(c.id==='royal8')gain=Math.min(2,a.board.length)*4;
+ if(c.id==='artifact8')gain=5+count(a,'artifact5')*3;
+ if(c.id==='rune9')gain=2*(8+count(a,'rune6')*a.board.length*S.growthAmount(a,'spellHealth')*2+count(a,'rune10')*(1+Math.floor(a.spells/3))*2);
+ if(c.id==='neutral1')gain=Math.min(2,a.board.length)*2*D.tuning.neutralEntry;
+ if(c.id==='neutral4')gain=a.board.length*2*D.tuning.neutralMass;
+ if(c.id==='rune1')gain=4+count(a,'rune6')*a.board.length*8+count(a,'rune5')*8;
+ if(c.id==='artifact0')gain=Math.max(0,spellValue(a,D.byId.module));
+ if(def(c).token)gain+=count(a,'forest2')*2;
+ if(c.id==='forest0')gain=2;
+ if(c.id==='haven1')gain=3+(a.amulets.length?7+count(a,'haven5')*5:0);
+ if(c.id==='blood3'&&a.hp>bloodReserve(a)+2)gain=5+count(a,'blood4')*tribeCount(a,'blood')*4;
+ if(c.id==='blood0'&&a.hp>10)gain=count(a,'blood4')*8;
+ 
+ if(def(c).tribe==='royal')gain+=a.board.filter(x=>x.id==='royal1'&&x.uid!==c.uid).reduce((n,x)=>n+mul(x),0)*2*D.tuning.royalRecruit;
+ if(c.id==='night1')gain=count(a,'night7')*3;
+ const fuel=c.id==='forest8'?3:['forest0','royal11','blood0'].includes(c.id)?2:c.id==='rune1'?3:1;
+ gain+=comboValue(a)*fuel;
+ if(D.fanfareIds.includes(c.id)){gain+=count(a,'royal10')*tribeCount(a,'royal')*10;gain*=1+S.echoCount(a,'fanfareEcho');}
+ gain+=a.board.filter(x=>x.uid!==c.uid&&def(x).effect==='spellTrade').reduce((n,x)=>n+mul(x),0)*Math.max(0,spellValue(a,D.byId.mana));
+ return gain;
+}
+function guardRemovalValue(a,c){if(!c.keywords.includes('taunt'))return -100;const protectedEffect=['healthChoir','prayerBastion','prayerChoir','prayerEcho','amuletEnd','dragonVitality','spellHealth','studyEcho','studyRally','summonBuff','fairyMentor','fairyMemorial','batMemorial','legionEngine','nightStart','havenStart'].includes(def(c).effect),anotherGuard=a.board.some(x=>x.uid!==c.uid&&x.keywords.includes('taunt'));return protectedEffect?18+(anotherGuard?10:0):carry(c)>1&&anotherGuard?10:-100;}
+function spellTarget(a,d){
+ let targets=a.board;
+ if(d.effect==='removeGuard')targets=targets.filter(c=>guardRemovalValue(a,c)>0);
+ if(d.effect==='dragonWing')targets=targets.filter(c=>c.health+2+S.spell(a)>(c.dragonPings||0)+3||def(c).tribe==='dragon'&&(count(a,'dragon18')||c.id==='dragon2'));
+ if(d.effect==='module')targets=targets.filter(c=>def(c).tribe==='artifact');
+ if(d.effect==='shield')targets=targets.filter(c=>S.canStackShield(c)||!c.keywords.includes('shield'));
+ if(!targets.length)return null;
+ return [...targets].sort((x,y)=>targetValue(a,y,d)-targetValue(a,x,d))[0];
+}
+function targetValue(a,c,d){
+ if(d.effect==='removeGuard')return guardRemovalValue(a,c);
+ if(d.effect==='copyRecruit')return (normalCopies(a,c.id)>=2?100:0)+def(c).tier*10+(plans[a.tribe]?.[a.route]?.includes(c.id)?30:0);
+ let n=power(c)*.12+carry(c)*8;
+ if(d.effect==='module')n+=c.id==='artifact6'?24:c.id==='artifact2'?18:0;
+ if(['forest5','night5','blood2','forest19'].includes(c.id))n+=12;
+ if(c.id==='forest10')n+=forestSummons(a)*12;
+ if(c.id==='dragon7')n+=24;
+ if(c.id==='rune7')n+=(a.spells||0)*.15;
+ if(d.effect==='guard')n+=c.keywords.includes('taunt')?12:c.health*.1;
+ if(d.effect==='shield')n+=(c.attack*.45+carry(c)*8)/(1+S.shieldCount(c))+(def(c).tribe==='royal'?count(a,'royal17')*8+count(a,'royal6')*5:0);
+ if(d.effect==='dragon'&&def(c).tribe==='dragon')n+=10;
+ if(d.effect==='dragonWing'){n+=def(c).tribe==='dragon'?count(a,'dragon4')*20+count(a,'dragon18')*35:0;n+=c.id==='dragon13'?65:c.id==='dragon2'?18:0;n-=S.shieldCount(c)*12+(c.dragonPings||0)*2;}
+ if(d.effect==='bloodPact'&&c.id==='blood5')n+=6;
+ if(count(a,'rune5')){const i=a.board.indexOf(c);n+=(a.board[i-1]?6+carry(a.board[i-1]):0)+(a.board[i+1]?6+carry(a.board[i+1]):0);}
+ return n;
+}
+function spellValue(a,d){
+ if(d.target&&!spellTarget(a,d))return -100;
+ if(d.effect==='removeGuard')return guardRemovalValue(a,spellTarget(a,d));
+ if(d.effect==='modalSpell')return Math.max((3+S.spell(a))*6,tribeCount(a,'dragon')*(6+S.spell(a)));
+ if(d.effect==='discardExchange')return a.hand.some(c=>c.id!==d.id)||a.hand.filter(c=>c.id===d.id).length>1?8+count(a,'dragon21')*tribeCount(a,'dragon')*5:-100;
+ 
+ if(d.effect==='randomRecruit'){const pool=D.discoveryPool(a,d);return pool.length?pool.reduce((n,c)=>n+handValue(a,{...c,uid:-1,golden:false},plans[a.tribe][a.route]),0)/pool.length*.4+comboValue(a):-100;}
+ if(d.effect==='copyRecruit'){const c=spellTarget(a,d);return handValue(a,{...def(c),uid:-1,golden:false},plans[a.tribe][a.route])*.6+(normalCopies(a,c.id)>=2?60:0)+comboValue(a);}
+ if(d.effect==='marketBuff'){const n=a.shop.filter(c=>def(c).type==='minion').length;return n?(d.attack+d.health+S.spell(a)*2)*Math.min(3,n)+comboValue(a):-100;}
+ if(d.effect==='pilfer'){const offers=a.shop.filter(c=>def(c).type==='minion');return offers.length&&a.hand.length<10?offers.reduce((n,c)=>n+unitValue(a,c,plans[a.tribe][a.route]),0)/offers.length*.45+comboValue(a):-100;}
+ if(d.effect==='discoverSpell'){const pool=D.discoveryPool(a,d);if(!pool.length||a.hand.length>=10)return -100;const ranked=pool.map(c=>handValue(a,{...c,uid:-1,golden:false},plans[a.tribe][a.route])).sort((x,y)=>y-x);return ranked.slice(0,Math.max(1,Math.ceil(ranked.length/3))).reduce((n,v)=>n+v,0)/Math.max(1,Math.ceil(ranked.length/3))*.5+comboValue(a);}
+ if(d.effect==='bloodContract')return a.hand.length>=9?-100:2*Math.max(0,spellValue(a,D.byId.bloodPact))+comboValue(a);
+ if(d.effect==='tavernSpell')return ((d.attack||2)+(d.health||2)+S.spell(a)*2)*(2+count(a,'dragon17')*2+count(a,'blood9'))+comboValue(a);
+ if(d.effect==='coin')return 5+comboValue(a);
+ if(d.effect==='deferGold')return a.round<16?4+comboValue(a):0;
+ if(d.effect==='clock'&&!a.amulets.length)return -100;
+ if(d.effect==='ritual'&&(!a.grave||(graveReserve(a)&&a.grave<Math.max(12,graveReserve(a))*3)))return -100;
+ if(d.effect==='bones'&&!tribeCount(a,'night'))return -100;
+ const engine=count(a,'rune6')*a.board.length*S.growthAmount(a,'spellHealth')*2+count(a,'rune0')*2*D.tuning.starterSpell;
+ let effect=d.attack+d.health;
+ if(d.effect==='tierBuff')effect=(a.tier+S.spell(a))*2;
+ if(d.effect==='teamBuff')effect=a.board.length*((d.attack?d.attack+S.spell(a):0)+(d.health?d.health+S.spell(a):0));
+ if(d.effect==='menagerieBuff')effect=new Set(a.board.map(c=>def(c).tribe).filter(t=>t!=='neutral')).size*(d.attack+d.health+S.spell(a)*2);
+ if(d.effect==='team'||d.effect==='fortify')effect=a.board.length*(d.effect==='team'?4:3);
+ if(d.effect==='shield')effect=8+power(spellTarget(a,d))*.2;
+ if(d.effect==='guard')effect=6;
+ if(d.effect==='dragon')effect=10;
+ if(d.effect==='ritual')effect=a.grave*2;
+ if(d.effect==='bones')effect=2+count(a,'night7')*(a.grave<graveReserve(a)?12:3);
+ if(d.effect==='clock')effect=5+a.amulets.filter(c=>c.count===1).length*6+count(a,'haven5')*5;
+ if(d.effect==='bloodPact')effect=6;
+ if(d.effect==='dragonWing'){const c=spellTarget(a,d);effect=1+(c.id==='dragon13'?36:0)+(c.id==='dragon2'?6:0)+(def(c).tribe==='dragon'?count(a,'dragon4')*24+count(a,'dragon18')*60:0);}
+ if(d.effect==='module'){effect=S.weapon(a).attack+S.weapon(a).health;const target=spellTarget(a,d);if(target?.id==='artifact2')effect+=2*D.tuning.moduleBonus*mul(target);if(target?.id==='artifact6'){const i=a.board.indexOf(target),adj=[a.board[i-1],a.board[i+1]].filter(c=>c&&def(c).tribe==='artifact').length;effect*=1+adj*mul(target);}}
+ if(['buff','guard','dragon','ritual','bloodPact','dragonWing','module','fortify','team'].includes(d.effect))effect+=S.spell(a)*(d.effect==='buff'?(d.attack>0?1:0)+(d.health>0?1:0):2);
+ if(d.effect==='buff')effect*=d.buffRepeats||1;
+ if(d.target)effect*=1+Math.min(2,Math.max(0,a.board.length-1))*count(a,'rune5');
+ return effect+engine+comboValue(a);
+}
+function amuletValue(a,d){
+ if(a.amulets.length>=2)return -100;
+ if(['bloodGarden','bloodMoon'].includes(d.effect)&&a.hp<=bloodReserve(a)+3)return -100;
+ let n=5+a.board.length*1.2;
+ if(d.tribe===a.tribe)n+=8;
+ if(a.tribe==='haven')n+=8+count(a,'haven5')*8+count(a,'haven0')*4;
+ if(d.effect==='library')n+=8+count(a,'rune6')*8+count(a,'rune5')*4;
+ if(d.effect==='accelerator')n+=count(a,'artifact3')*5;
+ if(d.effect==='bell')n+=a.board.length*2;
+ const p=S.read(a),amp=S.prayer(a),t=tribeCount(a,d.tribe);
+ if(d.effect==='egg')n+=24+count(a,'dragon15')*10+count(a,'blood9')*8;
+ if(d.effect==='temple')n+=18+a.board.length*4;
+ if(d.effect==='discardRite')n+=count(a,'dragon20')*10+count(a,'dragon21')*6;
+ if(d.effect==='fairyGlade')n+=comboValue(a)*2+count(a,'forest16')*8;
+ if(d.effect==='fairyRealm')n+=forestSummons(a)*12;
+ if(d.effect==='coinVault')n+=15;
+ if(d.effect==='frontline')n+=a.board.length*6+(count(a,'royal9')+count(a,'royal16'))*6;
+ if(d.effect==='magicField')n+=Math.min(2,a.board.length)*(12+p.spellcraft+Math.floor(p.spellcraft/2))*.7;
+ if(d.effect==='dragonCanyon')n+=tribeCount(a,'dragon')*12;
+ if(d.effect==='deathBanquet')n+=tribeCount(a,'night')*8+(count(a,'night5')+count(a,'night18')+count(a,'night0'))*12;
+ if(d.effect==='boneRing')n+=a.board.length?Math.floor(p.battleEntries/2)*1.5:0;
+ if(d.effect==='bloodMoon')n+=a.hp>1?(count(a,'blood4')*tribeCount(a,'blood')*10+count(a,'blood1')*6+count(a,'blood11')*4):0;
+ if(d.effect==='ancientAmplifier')n+=t*(3+Math.floor(a.scrap/2));
+ if(d.effect==='summit'){const c=a.board[0];n+=c?c.health*.9:0;}
+ if(['dragonCanyon','ancientAmplifier'].includes(d.effect)&&!t)return -30;
+ return (n+amp*a.board.length*1.5+count(a,'haven18')*12+count(a,'haven13')*8)/(1+(d.count-1)*.2);
+}
+function handValue(a,c,plan){const d=def(c);if(d.type==='spell')return spellValue(a,d);if(d.type==='amulet')return amuletValue(a,d);return unitValue(a,c,plan)+(normalCopies(a,c.id)>=2?25:0);}
+function modeChoice(a,q,E){return E.modeOptions(a,q).map(m=>{let score=0;if(m.kind==='gift')score=a.hand.length>=10?-100:Math.min(m.count,10-a.hand.length)*(m.card==='fairy'?4+comboValue(a):5);if(m.kind==='tribeBuff')score=tribeCount(a,m.tribe)*(m.attack+m.health);if(m.kind==='tavern')score=(m.attack+m.health)*3;return {id:m.id,score};}).sort((x,y)=>y.score-x.score)[0].id;}
+function discardScore(a,c,plan){const d=def(c);return d.effect==='discardScrap'?-30:d.token?0:d.type==='minion'?power(c)+(plan.includes(c.id)?25:0)+(normalCopies(a,c.id)>=2?30:0):d.tier*3+d.cost*2;}
+function discardChoice(a,plan,options=a.hand.map(c=>String(c.uid))){return [...a.hand].filter(c=>options.includes(String(c.uid))).sort((x,y)=>discardScore(a,x,plan)-discardScore(a,y,plan))[0];}
+function activationArgs(a,c,plan){const d=def(c);if(!d.activation||c.activatedRound===a.round||a.gold<d.activation.cost)return null;if(d.activation.discard){const fuel=discardChoice(a,plan);return fuel&&(discardScore(a,fuel,plan)<14||a.hand.length>=8)?{uid:c.uid,discardUid:fuel.uid}:null;}return a.board.length>=3||a.gold>=4?{uid:c.uid}:null;}
+function foodOffer(a,e){const key=e==='dragonFeast'?'health':'attack',other=key==='health'?'attack':'health';return [...a.shop].filter(c=>def(c).type==='minion').sort((x,y)=>y[key]-x[key]||y[other]-x[other]||x.uid-y.uid)[0];}
+function foodBody(a,e){const c=foodOffer(a,e),b=S.tavern(a);return c?c.attack+c.health:6+b.attack+b.health;}
+function reserveFood(a,c,plan){if(def(c).type!=='minion'||normalCopies(a,c.id)>=2||(plan.slice(0,3).includes(c.id)&&!a.board.some(x=>x.id===c.id)))return false;const temp={...a,shop:[...a.shop]};for(const x of a.board){const e=def(x).effect;if(e==='bloodFeast'&&a.hp>1||e==='dragonFeast'&&tribeCount(a,'dragon')>1){const food=foodOffer(temp,e);if(food?.uid===c.uid)return true;if(food)temp.shop=temp.shop.filter(y=>y.uid!==food.uid);}}return false;}
+function shopValue(a,c,plan){
+ const d=def(c);if(d.cost>a.gold||a.hand.length>=10)return -100;
+ if(d.purchaseSelfHarm&&a.hp<=1)return -100;if(d.purchaseSelfHarm&&a.hp-d.purchaseSelfHarm+a.board.filter(c=>c.id==='blood11').reduce((n,c)=>n+mul(c),0)<bloodReserve(a))return -100;
+ if(d.type==='spell')return spellValue(a,d)/Math.max(1,d.cost)+(d.purchaseSelfHarm?(count(a,'blood4')*tribeCount(a,'blood')*2+count(a,'blood9')*tribeCount(a,'blood')*3):0);
+ if(d.type==='amulet')return amuletValue(a,d)/Math.max(1,d.cost);
+ if(!canPayBattlecry(a,c))return -100;
+ if(reserveFood(a,c,plan))return -100;const copies=normalCopies(a,c.id),v=unitValue(a,c,plan);
+ if(copies>=2)return 65+v*.25;
+ if(a.board.length<7)return 16+v*.4+(copies?7:0);
+ const w=weakest(a,plan),improvement=v-unitValue(a,w,plan);
+ if(copies===1&&plan.includes(c.id)&&!a.board.some(x=>x.id===c.id&&x.golden))return 12+v*.16;
+ if(improvement>3)return 12+improvement*.4;
+ const cycle=canCycle(a,c),slot=cycleSlot(a,plan);
+ if(cycle>0&&(a.board.length<7||(slot&&power(slot)<cycleBudget(a,cycle))))return 4+cycle*.35;
+ return -100;
+}
+function arrange(a,plan,E,doAct){
+ // Front-load attackers/deathrattles and protect the engines that must survive.
+ const engineIds=new Set(['forest6','forest7','royal6','royal7','night4','night7','blood6','artifact5','artifact7','haven7','forest10','royal10','artifact10','neutral14','neutral15','neutral16','neutral17']);
+ for(const c of D.cards.filter(c=>c.synergy&&!D.fanfareIds.includes(c.id)&&!['constructPair','battleBrood','undyingHounds','legionLast','marchArmy','fairyCrown','graveLegacy','graveArmy','batCrown','scrapCrown','dragonDrill'].includes(c.effect)))engineIds.add(c.id);
+ const score=c=>(c.keywords.includes('cannotAttack')?-35:c.keywords.includes('stealth')?-25:0)+carry(c)*12+(c.keywords.includes('shield')?5:0)+(def(c).effect.toLowerCase().includes('death')||['battleBrood','constructPair','undyingHounds','legionLast','marchArmy'].includes(def(c).effect)||['night5','night6','forest0','forest5'].includes(c.id)?15:0)-(engineIds.has(c.id)?40:0);
+ const order=[...a.board].sort((x,y)=>score(y)-score(x));
+ const swapInto=(id,position)=>{const i=order.findIndex(c=>c.id===id);if(i>=0){const [c]=order.splice(i,1);order.splice(Math.min(position,order.length),0,c);}};
+ if(order.some(c=>c.id==='dragon3')){swapInto('dragon3',1);swapInto('dragon2',0);swapInto('dragon4',2);}
+ if(order.some(c=>c.id==='dragon3')&&order.some(c=>c.id==='dragon13'))swapInto('dragon13',0);
+ if(order.some(c=>c.id==='dragon16'))swapInto('dragon16',Math.min(1,order.length-1));
+ const feeder=order.find(c=>c.id==='dragon17');if(feeder){const receivers=order.filter(c=>def(c).tribe==='dragon'&&c.uid!==feeder.uid&&c.id!=='dragon17').sort((x,y)=>carry(y)*power(y)-carry(x)*power(x)).slice(0,2);const pack=receivers.length?[receivers[0],feeder,...receivers.slice(1)]:[feeder];order.splice(0,order.length,...pack,...order.filter(c=>!pack.includes(c)));}
+ if(order.some(c=>c.id==='rune15'))swapInto('rune15',Math.min(1,order.length-1));
+ if(order.some(c=>c.id==='neutral9'))swapInto('neutral9',Math.max(1,order.length-2));
+ if(order.some(c=>c.id==='royal2'))swapInto('royal2',Math.min(1,order.length-1));
+ if(order.some(c=>c.id==='haven6'))swapInto('haven6',Math.min(1,order.length-1));
+ if(order.some(c=>c.id==='haven7')&&order.length>1){const receiver=[...order].filter(c=>c.id!=='haven7').sort((x,y)=>carry(y)-carry(x)||power(y)-power(x))[0];order.splice(order.indexOf(receiver),1);order.push(receiver);}
+ for(let i=0;i<order.length;i++)if(a.board[i]?.uid!==order[i].uid)doAct('moveTo',{uid:order[i].uid,index:i});
+}
+// Upgrade from a viable board; leave rebuilding money when behind.
+function shouldUpgrade(a,E){
+ const desired=[1,2,5,7,9,11].filter(r=>r<=a.round).length,cost=E.upgradeCost(a);
+ if(a.tier>=desired||!a.board.length||cost>a.gold)return false;
+ if(a.round===2&&a.tier===1)return true;
+ const thin=a.board.length<Math.min(5,a.round-1),critical=a.hp+(a.armor||0)<=12;
+ const reserve=critical?6:thin?3:0;
+ return cost<=a.gold-reserve;
+}
+function prepare(s,o,E,options={}){
+ if(o.hp<=0)return;
+ if(s.activeTribes&&!s.activeTribes.includes(o.tribe)){o.tribe=s.activeTribes[(Number.isInteger(o.id)?o.id:0)%4];}
+ if(!D.heroes.some(h=>h.id===(o.hero||o.tribe)&&(h.tribe==='neutral'||h.tribe===o.tribe)))o.hero=o.tribe;
+ if(o.route!==0&&o.route!==1)o.route=Math.floor(o.id/4)%2;
+ const plan=plans[o.tribe][o.route],previousStats=o.stats||{triples:0,spells:0};
+ const a={version:1,seed:s.seed,uid:s.uid,hero:o.hero||o.tribe,tribe:o.tribe,route:o.route,difficulty:'hard',phase:'recruit',round:s.round,
+  hp:o.hp,armor:o.armor||0,maxHp:40,tier:o.tier||1,discount:o.discount??-1,grave:o.grave||0,spells:o.spells||0,spellsThisRound:o.spellsThisRound||0,bloodDamage:o.bloodDamage||0,scrap:o.scrap||0,
+  progress:o.progress||{},board:o.board||[],hand:o.hand||[],shop:o.shop||[],amulets:o.amulets||[],trinkets:[],discover:(o.discover||[]).filter(q=>['minion','amulet','spell','mode','discard'].includes(q.type)),pendingGold:o.pendingGold||0,pendingFairies:o.pendingFairies||0,
+  activeTribes:s.activeTribes,opponents:s.opponents,log:[],stats:previousStats,frozen:o.frozen||false,powerUsed:o.powerUsed||false,heroCry:o.heroCry||false,constructIndex:o.constructIndex||0,played:o.played||0,previousPlayed:o.played||0,previousSpellsThisRound:o.spellsThisRound||0,gold:o.gold||0,wins:0,losses:0};
+ const previousSpells=a.spells,previousTriples=a.stats.triples||0;
+ if(!options.started)E.startRound(a);
+ // Fixed, visible late-game economy; all opponents use the same rules.
+ const bonus=options.bonusGold===false?0:s.round>=7?4:0;a.gold+=bonus;
+ const summary={routeName:D.archetypes[o.tribe].routes[o.route][0],budget:a.gold,bonusGold:bonus,goldSpent:0,cardsBought:0,spellsCast:0,triples:0,turns:s.round,actions:0,upgraded:false,bought:[]};
+ const doAct=(type,arg={})=>{const card=type==='buy'?a.shop.find(c=>c.uid===arg.uid):null;const cost=type==='buy'?def(card).cost:type==='refresh'?1:type==='upgrade'?E.upgradeCost(a):type==='power'?D.heroes.find(h=>h.id===a.hero).cost:type==='activate'?def(a.board.find(c=>c.uid===arg.uid)).activation.cost:0;const r=E.act(a,type,arg);if(r.ok){summary.actions++;summary.goldSpent+=cost;if(card){summary.cardsBought++;summary.bought.push(card.id);}if(type==='upgrade')summary.upgraded=true;}return r.ok;};
+ const chooseRewards=()=>{while(a.discover.length){const q=a.discover[0];if(q.type==='mode'){if(!doAct('choose',{id:modeChoice(a,q,E)}))break;continue;}if(q.type==='discard'){const c=discardChoice(a,plan,q.options);if(!c||!doAct('choose',{id:String(c.uid)}))break;continue;}if(a.hand.length>=10){const c=[...a.hand].sort((x,y)=>handValue(a,x,plan)-handValue(a,y,plan))[0];if(!doAct('discard',{uid:c.uid}))break;}const id=[...q.options].sort((x,y)=>handValue(a,{...D.byId[y],uid:-2,golden:false},plan)-handValue(a,{...D.byId[x],uid:-1,golden:false},plan))[0];if(!doAct('choose',{id}))break;}};
+ const flushHand=()=>{let changed=false,passes=0;while(passes++<30){chooseRewards();let did=false;for(const c of [...a.hand]){const d=def(c);if(d.type==='spell'){if(spellValue(a,d)<0)continue;const t=d.target?spellTarget(a,d):null;if(doAct('play',{uid:c.uid,target:t?.uid})){did=changed=true;break;}}
+   if(d.type==='amulet'){if(amuletValue(a,d)<0)continue;if(doAct('play',{uid:c.uid})){did=changed=true;break;}}
+   if(d.type==='minion'){if(!canPayBattlecry(a,c))continue;let cycle=false;if(a.board.length>=7){const w=weakest(a,plan),improvement=unitValue(a,c,plan)-unitValue(a,w,plan),benefit=canCycle(a,c),slot=cycleSlot(a,plan);if(improvement>2){if(!doAct('sell',{uid:w.uid}))continue;}else if(benefit>0&&slot&&power(slot)<cycleBudget(a,benefit)){if(!doAct('sell',{uid:slot.uid}))continue;cycle=true;}else continue;}
+    // A generated token is useful fuel once the six permanent pieces are in place.
+    if(a.board.length===6&&((d.token&&a.tribe==='forest')||(D.fanfareIds.includes(c.id)&&canCycle(a,c)>0&&power(c)<35&&!plan.slice(0,3).includes(c.id)&&s.round>=7)))cycle=true;
+    if(doAct('play',{uid:c.uid,index:c.id==='neutral1'?Math.min(1,a.board.length):a.board.length})){did=changed=true;if(cycle&&a.board.some(x=>x.uid===c.uid))doAct('sell',{uid:c.uid});break;}}
+  }if(!did)break;}return changed;};
+ const useActivations=()=>{chooseRewards();for(const c of [...a.board]){const args=activationArgs(a,c,plan);if(args)doAct('activate',args);}};
+ chooseRewards();flushHand();
+ if(shouldUpgrade(a,E))doAct('upgrade');
+ useActivations();flushHand();
+ const powerTarget=()=>{let pool=a.board;if(a.hero==='forte')pool=pool.filter(c=>!c.keywords.includes('cannotAttack')&&!c.heroWindfury&&def(c).effect!=='double'&&!['forest1','dragon6','dragon9'].includes(c.id));if(a.hero==='snow')pool=pool.filter(c=>!c.heroReborn&&def(c).effect!=='reborn');return spellTarget({...a,board:pool},{effect:a.hero==='athena'?'shield':a.hero==='roland'?'guard':'buff'});};
+ const usePower=()=>{if(a.powerUsed)return;const h=D.heroes.find(h=>h.id===a.hero);if(a.gold<h.cost)return;if(['blood','medusa'].includes(a.hero)&&a.hp<=bloodReserve(a)+3)return;if(a.hero==='windgod'&&!a.board.length)return;if(a.hero==='goblin'&&a.hp+a.armor<=5)return;if(a.hero==='ceres'&&a.grave<3)return;if(a.hero==='dorothy'&&a.hand.length>8)return;const target=powerTarget();if(h.target&&!target)return;if(a.hero==='royal'&&!a.hand.some(c=>D.fanfareIds.includes(c.id))&&!a.shop.some(c=>D.fanfareIds.includes(c.id)&&a.gold>=D.byId[c.id].cost+h.cost))return;
+ if(a.hero==='deus'&&a.hand.length>=10)return;if(a.hero==='artifact'&&!tribeCount(a,'artifact'))return;if(['forest','night','blood'].includes(a.hero)&&a.board.length>=7&&a.hand.length>=6)return;if(doAct('power',{target:target?.uid}))flushHand();};
+ // Hero powers start after the opening purchases so one-gold spells do not delay a first unit.
+ if(s.round>=4)usePower();
+ let loops=0,refreshes=0;const limit=100;
+ while(loops++<limit){chooseRewards();useActivations();flushHand();if(a.gold<=0)break;
+  if(a.hand.length>=9){const blocked=[...a.hand].sort((x,y)=>handValue(a,x,plan)-handValue(a,y,plan))[0];if(blocked)doAct('discard',{uid:blocked.uid});}
+  const offers=a.shop.map(c=>({c,value:shopValue(a,c,plan)})).sort((x,y)=>y.value-x.value);
+  const top=offers[0];if(top&&top.value>0){if(doAct('buy',{uid:top.c.uid}))continue;}
+  if(a.gold>=1&&a.hand.length<10){if(doAct('refresh')){refreshes++;continue;}}break;
+ }
+ chooseRewards();flushHand();
+ // Close the cycling slot before combat if a remaining real card can fill it.
+ while(a.board.length<7){const c=a.hand.filter(c=>def(c).type==='minion'&&canPayBattlecry(a,c)).sort((x,y)=>unitValue(a,y,plan)-unitValue(a,x,plan))[0];if(!c||!doAct('play',{uid:c.uid}))break;chooseRewards();}
+ // Preserve a promising unaffordable offer rather than paying to lose it next turn.
+ if(!a.frozen&&a.shop.some(c=>def(c).type==='minion'&&(normalCopies(a,c.id)>=2||(plan.slice(0,3).includes(c.id)&&!a.board.some(x=>x.id===c.id)))))doAct('freeze');
+ arrange(a,plan,E,doAct);
+ for(const c of [...a.amulets])if(['bloodGarden','bloodMoon'].includes(def(c).effect)&&c.count<=1&&a.hp-pendingSelfHarm(a)<6)doAct('removeAmulet',{uid:c.uid});
+ usePower();useActivations();flushHand();
+ if(!options.deferEnd)E.endRecruit(a);
+ summary.spellsCast=a.spells-previousSpells;summary.triples=(a.stats.triples||0)-previousTriples;summary.played=a.played;summary.goldLeft=a.gold;
+ summary.coreCount=a.board.filter(c=>plan.includes(c.id)).length;summary.tier=a.tier;summary.refreshes=refreshes;summary.boardPower=Math.round(a.board.reduce((n,c)=>n+c.attack+c.health,0));
+ // Persist generated cards from end-of-turn effects for the next recruitment.
+ for(const key of ['board','hand','shop','amulets','trinkets','discover','tier','discount','grave','spells','spellsThisRound','bloodDamage','scrap','progress','stats','hp','maxHp','armor','frozen','gold','pendingGold','pendingFairies','played','powerUsed','heroCry','constructIndex','feasts'])o[key]=a[key];
+ o.aiSummary=summary;s.seed=a.seed;s.uid=a.uid;
+}
+const AI={synergyValue,shouldUpgrade,spellTarget,spellValue,prepare,plans,amuletValue,modeChoice,discardChoice,activationArgs};root.TavernAI=AI;if(typeof module!=='undefined')module.exports=AI;
+})(typeof globalThis!=='undefined'?globalThis:this);

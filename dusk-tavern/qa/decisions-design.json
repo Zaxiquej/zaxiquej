@@ -1,0 +1,55 @@
+{
+  "version": "17.0",
+  "minions": 175,
+  "spells": 21,
+  "amulets": 21,
+  "catalogEntries": 252,
+  "newCards": [
+    {
+      "id": "forest20",
+      "name": "爱之妖精·宝菈"
+    },
+    {
+      "id": "royal19",
+      "name": "篡夺的使徒"
+    },
+    {
+      "id": "dragon20",
+      "name": "龙人工匠"
+    },
+    {
+      "id": "rune19",
+      "name": "精通咒法的女巫"
+    },
+    {
+      "id": "dragon21",
+      "name": "帝国龙骑士"
+    },
+    {
+      "id": "artifact19",
+      "name": "废弃物"
+    },
+    {
+      "id": "dragonResolve",
+      "name": "龙之斗气"
+    },
+    {
+      "id": "newDestiny",
+      "name": "崭新的命运"
+    },
+    {
+      "id": "dragonRite",
+      "name": "龙女巫的仪式"
+    }
+  ],
+  "offlineBytes": 22836900,
+  "previewMatches": true,
+  "sha256": "e083cb7b58e982e04d9e98e85018ffffaaab361e3b1cfc9a74c2fc749cc480b9",
+  "rules": {
+    "decisionGroups": 21,
+    "functionalSpellGroups": 14,
+    "amuletGroups": 15
+  },
+  "browser": "decisions-browser-test.cjs passed: modes, discard and activation interactions; pending choice reload; activation persistence and cancellation; full hand; offline art and catalog; 360/390px dialogs",
+  "aiGamesRun": 0
+}

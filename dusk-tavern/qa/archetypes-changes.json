@@ -1,0 +1,677 @@
+{
+  "version": "9.0",
+  "changes": [
+    {
+      "id": "forest1",
+      "name": "破魔虫",
+      "before": {
+        "tier": 3,
+        "attack": 2,
+        "health": 4,
+        "text": "连击。连携：永久获得「4 + 妖精军团÷2」× 1 的攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 2,
+        "health": 4,
+        "text": "连击。连携：自身永久 +3/+3。"
+      }
+    },
+    {
+      "id": "forest3",
+      "name": "森林游侠·维尔达",
+      "before": {
+        "tier": 3,
+        "attack": 5,
+        "health": 3,
+        "text": "顺劈。开战：本回合每打出一张牌，获得「1 + 妖精军团」× 1 的攻击。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 6,
+        "text": "顺劈。开战：获得等同「妖精军团 × 1」的攻击（仅本场）。"
+      }
+    },
+    {
+      "id": "forest4",
+      "name": "精灵骑士·辛西亚",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 6,
+        "text": "守护。连携：妖精军团永久 +2/+2，其他妖精族随从永久获得「2 + 更新后军团÷4」× 1 的攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 7,
+        "text": "连携：其他友方妖精族随从永久 +4/+4。"
+      }
+    },
+    {
+      "id": "forest13",
+      "name": "精灵吟游诗人",
+      "before": {
+        "tier": 2,
+        "attack": 2,
+        "health": 4,
+        "text": "出售时，获得 2 张大自然的导引。"
+      },
+      "after": {
+        "tier": 2,
+        "attack": 2,
+        "health": 3,
+        "text": "谢幕曲：召唤 2 个 1/1 妖精。"
+      }
+    },
+    {
+      "id": "forest9",
+      "name": "远古精灵",
+      "before": {
+        "tier": 4,
+        "attack": 5,
+        "health": 7,
+        "text": "守护。入场曲：本回合每已打出一张牌，自身永久 +3/+3。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "守护。谢幕曲：召唤 2 个 2/2 妖精。"
+      }
+    },
+    {
+      "id": "forest15",
+      "name": "花漾公主",
+      "before": {
+        "tier": 3,
+        "attack": 4,
+        "health": 4,
+        "text": "备战结束：获得 2 张妖精。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 6,
+        "text": "备战结束：获得 2 张妖精。"
+      }
+    },
+    {
+      "id": "forest16",
+      "name": "妖精使役者",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "每当你打出妖精，使其他友方妖精族永久 +2/+3。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "每当你打出妖精，使相邻友方妖精族永久 +2/+2。"
+      }
+    },
+    {
+      "id": "forest6",
+      "name": "森之女王·莉莎",
+      "before": {
+        "tier": 5,
+        "attack": 5,
+        "health": 8,
+        "text": "战斗中每召唤一个友方妖精族随从，妖精军团永久 +2/+2。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 8,
+        "text": "战斗中每召唤一个友方妖精族随从，妖精军团永久 +3/+3。"
+      }
+    },
+    {
+      "id": "forest17",
+      "name": "邱贝雷",
+      "before": {
+        "tier": 4,
+        "attack": 5,
+        "health": 6,
+        "text": "每当友方妖精衍生物死亡，使友方妖精族永久 +3/+1。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 6,
+        "text": "每当友方妖精衍生物死亡，使存活的友方妖精族永久 +2/+2。"
+      }
+    },
+    {
+      "id": "forest18",
+      "name": "大自然的教师·阿蕾雅",
+      "before": {
+        "tier": 5,
+        "attack": 6,
+        "health": 8,
+        "text": "备战结束：本回合每打出一张牌，自身永久 +2/+2。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 5,
+        "health": 7,
+        "text": "备战结束：本回合每打出一张牌，自身永久 +2/+2。"
+      }
+    },
+    {
+      "id": "forest10",
+      "name": "先导者妖精公主·阿丽雅",
+      "before": {
+        "tier": 6,
+        "attack": 8,
+        "health": 10,
+        "text": "战斗中，每当你召唤妖精衍生物，使其获得等同本随从一半攻击 的攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 8,
+        "text": "战斗中，每当你召唤妖精衍生物，使其获得等同本随从一半攻击 的攻击与生命（向下取整）。"
+      }
+    },
+    {
+      "id": "forest19",
+      "name": "舞夜妖精",
+      "before": {
+        "tier": 6,
+        "attack": 9,
+        "health": 10,
+        "text": "谢幕曲：召唤两个妖精，各继承本随从 1 倍攻击和一半最大生命（向下取整）。"
+      },
+      "after": {
+        "tier": 6,
+        "attack": 9,
+        "health": 10,
+        "text": "谢幕曲：召唤三个妖精，各继承本随从 1 倍攻击和一半最大生命（向下取整）。"
+      }
+    },
+    {
+      "id": "royal2",
+      "name": "守护骑士",
+      "before": {
+        "tier": 4,
+        "attack": 3,
+        "health": 7,
+        "text": "守护。每次被攻击时，相邻友方获得屏障和 +2 生命。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 3,
+        "health": 7,
+        "text": "守护。受到攻击后若存活，使 一个没有屏障的相邻友方皇家获得屏障。"
+      }
+    },
+    {
+      "id": "royal5",
+      "name": "雷维翁剑士·阿尔贝尔",
+      "before": {
+        "tier": 4,
+        "attack": 6,
+        "health": 5,
+        "text": "屏障。连击。攻击击杀目标后，恢复自身屏障。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 6,
+        "health": 7,
+        "text": "连击。攻击击杀目标后，恢复自身屏障。"
+      }
+    },
+    {
+      "id": "royal14",
+      "name": "沉默的炎将·玛尔斯",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 6,
+        "text": "每当其他友方触发入场曲，自身永久 +3/+3。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 6,
+        "text": "每当其他友方触发入场曲，自身永久 +4/+4。"
+      }
+    },
+    {
+      "id": "royal10",
+      "name": "骑士王·亚瑟",
+      "before": {
+        "tier": 6,
+        "attack": 8,
+        "health": 9,
+        "text": "每当其他友方触发入场曲，全体友方皇家永久 +3/+3。"
+      },
+      "after": {
+        "tier": 6,
+        "attack": 8,
+        "health": 9,
+        "text": "每当其他友方触发入场曲，全体友方皇家永久 +5/+5。"
+      }
+    },
+    {
+      "id": "royal18",
+      "name": "天空指挥官·榭莉亚",
+      "before": {
+        "tier": 6,
+        "attack": 7,
+        "health": 10,
+        "text": "每当其他友方触发入场曲，本局法术研习 +2。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 8,
+        "text": "每当其他友方触发入场曲，本局法术研习 +2。"
+      }
+    },
+    {
+      "id": "dragon3",
+      "name": "火焰蜥蜴",
+      "before": {
+        "tier": 3,
+        "attack": 5,
+        "health": 5,
+        "text": "开战：对相邻友方各造成两次 1 点伤害。"
+      },
+      "after": {
+        "tier": 2,
+        "attack": 3,
+        "health": 4,
+        "text": "开战：对相邻友方各造成两次 1 点伤害。"
+      }
+    },
+    {
+      "id": "dragon4",
+      "name": "驯龙师",
+      "before": {
+        "tier": 3,
+        "attack": 4,
+        "health": 6,
+        "text": "友方龙族受到伤害且存活时，另一个随机友方龙族永久 +2/+2。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "友方龙族受到伤害且存活时，另一个随机友方龙族永久 +4/+4。"
+      }
+    },
+    {
+      "id": "dragon16",
+      "name": "龙技达人",
+      "before": {
+        "tier": 4,
+        "attack": 6,
+        "health": 7,
+        "text": "每次攻击后若存活，相邻友方龙族永久获得「酒馆星级 + 本随从攻击÷10」× 1 攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 6,
+        "health": 7,
+        "text": "每次攻击后若存活，相邻友方龙族永久 +3/+6。"
+      }
+    },
+    {
+      "id": "dragon10",
+      "name": "贾巴沃克",
+      "before": {
+        "tier": 6,
+        "attack": 10,
+        "health": 12,
+        "text": "谢幕曲：使最左侧的友方龙族获得本随从攻击与最大生命的 1 倍（仅本场）。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 8,
+        "health": 10,
+        "text": "谢幕曲：使最左侧的友方龙族获得本随从攻击与最大生命的 1 倍（仅本场）。"
+      }
+    },
+    {
+      "id": "night14",
+      "name": "冥河引导者",
+      "before": {
+        "tier": 3,
+        "attack": 4,
+        "health": 5,
+        "text": "入场曲：消耗 3 墓场，获得 2 张灵魂转移。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "谢幕曲：召唤 2 个 2/2 骷髅士兵。"
+      }
+    },
+    {
+      "id": "night16",
+      "name": "暮光女皇",
+      "before": {
+        "tier": 4,
+        "attack": 5,
+        "health": 6,
+        "text": "谢幕曲：全体友方梦魇永久获得「2 + 墓场÷5」× 1 攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 7,
+        "text": "谢幕曲：消耗 6 墓场，使存活的友方梦魇永久 +12/+12。"
+      }
+    },
+    {
+      "id": "rune4",
+      "name": "雷光射手",
+      "before": {
+        "tier": 3,
+        "attack": 5,
+        "health": 4,
+        "text": "开战：发射「2 + 本局施法数÷10」束雷光，每束对随机敌方造成「2 + 本局施法数÷2」× 1 伤害（除法向下取整）。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 5,
+        "health": 4,
+        "text": "开战：发射两束雷光，每束对随机敌方造成「2 + 本局施法数÷4」× 1 伤害（向下取整）。"
+      }
+    },
+    {
+      "id": "rune13",
+      "name": "神秘探求者·克拉克",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "在场时每施放 3 个法术，本局法术研习 +2；进度跨回合保留。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 3,
+        "health": 6,
+        "text": "在场时每施放 3 个法术，本局法术研习 +2；进度跨回合保留。"
+      }
+    },
+    {
+      "id": "rune15",
+      "name": "圣魔法教师·费洛",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "每当你施放法术，相邻友方永久获得等同「法术研习 × 1」的攻击与生命。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 7,
+        "text": "每当你施放法术，相邻友方永久获得「法术研习÷2」× 1 攻击与生命（向上取整）。"
+      }
+    },
+    {
+      "id": "rune17",
+      "name": "魔法始祖·马纳历亚",
+      "before": {
+        "tier": 5,
+        "attack": 6,
+        "health": 8,
+        "text": "备战结束：本局法术研习 +3。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 8,
+        "text": "备战结束：本局法术研习 +6。"
+      }
+    },
+    {
+      "id": "haven4",
+      "name": "天狐",
+      "before": {
+        "tier": 3,
+        "attack": 4,
+        "health": 5,
+        "text": "备战结束：英雄恢复 3 生命。每点过量治疗使全体友方永久获得 +1 生命。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 7,
+        "text": "过量治疗时，全体友方主教永久获得「过量治疗点数 × 1」攻击与生命。"
+      }
+    },
+    {
+      "id": "haven8",
+      "name": "兔耳治愈师",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "备战结束：获得 1 张「慈爱福音」。"
+      },
+      "after": {
+        "tier": 2,
+        "attack": 2,
+        "health": 4,
+        "text": "备战结束：为英雄恢复 3 生命。"
+      }
+    },
+    {
+      "id": "haven5",
+      "name": "高阶牧师",
+      "before": {
+        "tier": 4,
+        "attack": 5,
+        "health": 7,
+        "text": "每当己方护符倒数归零，获得 1 张该护符的复制，其初始倒数为 1。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 5,
+        "health": 8,
+        "text": "每当己方护符倒数归零，获得 1 张该护符的复制，保留其原始倒数。"
+      }
+    },
+    {
+      "id": "haven13",
+      "name": "宝石巫女",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 6,
+        "text": "每当己方护符倒数归零，本局护符培育 +2。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 3,
+        "health": 6,
+        "text": "每当己方护符倒数归零，本局护符培育 +1。"
+      }
+    },
+    {
+      "id": "haven9",
+      "name": "白雪公主",
+      "before": {
+        "tier": 4,
+        "attack": 6,
+        "health": 7,
+        "text": "屏障。复生：首次死亡后以 1 生命复活。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 4,
+        "health": 5,
+        "text": "屏障。复生：首次死亡后以 1 生命复活。"
+      }
+    },
+    {
+      "id": "haven16",
+      "name": "疯狂的魔神像",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 9,
+        "text": "备战结束：自身永久获得「护符共鸣 × 2」攻击与生命。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 4,
+        "health": 9,
+        "text": "备战结束：为英雄恢复「2 + 自身攻击÷5」× 1 生命（向下取整）。"
+      }
+    },
+    {
+      "id": "blood4",
+      "name": "雷维翁公爵·尤里乌斯",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "每次招募自伤成功后，全体友方吸血鬼永久获得「1 + 累计自伤÷7」× 1 的攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 7,
+        "text": "每次招募自伤成功后，全体友方吸血鬼永久 +2/+2。"
+      }
+    },
+    {
+      "id": "blood11",
+      "name": "恶夜魔羊",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "每次招募自伤成功后，为你的英雄恢复 1 生命。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 3,
+        "health": 6,
+        "text": "每次招募自伤成功后，为你的英雄恢复 1 生命。"
+      }
+    },
+    {
+      "id": "blood16",
+      "name": "午夜的吸血鬼",
+      "before": {
+        "tier": 4,
+        "attack": 4,
+        "health": 8,
+        "text": "备战结束：获得 2 张丛林蝙蝠。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 3,
+        "health": 5,
+        "text": "守护。谢幕曲：召唤 1 个 2/1 丛林蝙蝠，额外继承本体一半最大生命（向下取整）。"
+      }
+    },
+    {
+      "id": "artifact6",
+      "name": "远古双剑士·戴恩",
+      "before": {
+        "tier": 5,
+        "attack": 8,
+        "health": 8,
+        "text": "顺劈。每次对自身使用武装时，将该武装的基础属性强化额外施加给相邻友方造物 1 次。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 8,
+        "health": 8,
+        "text": "每次对自身使用武装时，将该武装的属性强化额外施加给相邻友方造物 1 次。"
+      }
+    },
+    {
+      "id": "artifact9",
+      "name": "被赋生的兽人·纱妃拉",
+      "before": {
+        "tier": 4,
+        "attack": 6,
+        "health": 7,
+        "text": "连击。开战：获得「本局残骸 × 3」攻击。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 7,
+        "text": "顺劈。开战：获得「本局残骸 × 1」攻击（仅本场）。"
+      }
+    },
+    {
+      "id": "artifact13",
+      "name": "清新的枪械设计师·库库璐",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 6,
+        "text": "每当你施放武装，武装研习额外 +2。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 3,
+        "health": 7,
+        "text": "每当你施放武装，武装研习额外 +2。"
+      }
+    },
+    {
+      "id": "artifact14",
+      "name": "钢铁破坏者",
+      "before": {
+        "tier": 3,
+        "attack": 3,
+        "health": 7,
+        "text": "每当其他友方造物死亡，自身永久获得「2 + 残骸÷5」× 1 攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 4,
+        "attack": 4,
+        "health": 8,
+        "text": "每当其他友方造物死亡，自身永久获得「2 + 残骸÷5」× 1 攻击与生命（向下取整）。"
+      }
+    },
+    {
+      "id": "artifact17",
+      "name": "坚立的钢之战士·四郎",
+      "before": {
+        "tier": 5,
+        "attack": 6,
+        "health": 9,
+        "text": "每当你施放武装，使其他友方造物永久获得「2 + 残骸÷3」× 1 攻击与生命（向下取整）。"
+      },
+      "after": {
+        "tier": 5,
+        "attack": 6,
+        "health": 9,
+        "text": "每当你施放武装，使其他友方造物永久 +4/+4。"
+      }
+    },
+    {
+      "id": "artifact16",
+      "name": "博识的史学家",
+      "before": {
+        "tier": 4,
+        "attack": 5,
+        "health": 6,
+        "text": "入场曲：获得 6 残骸。"
+      },
+      "after": {
+        "tier": 3,
+        "attack": 3,
+        "health": 4,
+        "text": "谢幕曲：召唤 2 个 2/2 解析的创造物。"
+      }
+    }
+  ]
+}

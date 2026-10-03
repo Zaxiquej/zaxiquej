@@ -1,0 +1,27 @@
+{
+  "version": "19.0",
+  "sha256": "ed36b91fe9f4477d22d3f19e9f29f433f865db1b602c0ddda05f6ff4f5759a2a",
+  "previewMatches": true,
+  "counts": {
+    "minions": 175,
+    "spells": 21,
+    "amulets": 21,
+    "tokens": 13,
+    "heroes": 22
+  },
+  "onlyHeroHealingCards": [
+    "blood11"
+  ],
+  "targetedGroups": 77,
+  "browserChecks": [
+    "resonance-browser-test",
+    "amulet-browser-test",
+    "vitality-browser-test"
+  ],
+  "aiGamesRun": 0,
+  "combo12": {
+    "roachOwn": 30,
+    "cynthiaPerOtherForest": 54
+  },
+  "amuletsBuffed": 17
+}

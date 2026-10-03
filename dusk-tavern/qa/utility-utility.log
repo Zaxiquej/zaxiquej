@@ -1,0 +1,23 @@
+PASS eight neutral tools and shield retirement are reflected in every random pool
+PASS legacy shield hands migrate to guard spells, shop removes them, existing shield stacks survive
+PASS flag bearer gives guard instead of shields; banner buffs both stats without shields
+PASS Otohime shields only adjacent royal allies on either side and in both qualities
+PASS forest opener gives larger stats without shields; surviving guardian grows neighbor health
+PASS healing battlecry normal/golden, overflow cap and hero repetition
+PASS neutral spell/amulet gifts obey tier and four-tribe pools with golden quantity
+PASS neutral countdown battlecry resolves expiring amulets once per expiry
+PASS cannot-attack units never initiate even buffed with windfury, but retaliate
+PASS Dingdong death buff is battle-only and repeats through last-word support
+PASS stealth avoids attack targeting and suppresses its guard until all targets are hidden
+PASS stealth reveals at attack, random/AOE effects still hit it, original state is untouched
+PASS stealth support buffs adjacent attacks including windfury, never itself or recruitment stats
+PASS destruction kills huge health, still takes simultaneous retaliation, both sides and qualities
+PASS shields block destruction; destroyed dragon never triggers survived-injury growth
+PASS destruction still triggers last words and reborn rather than banishing
+PASS destruction does not apply to retaliation, zero damage or cleave neighbors
+PASS spell preview equals actual stat payload across research, weapons and grave values
+PASS new keywords survive golden merge, save validation and native stealth after reborn
+PASS AI can deploy healing and support tools without inventing income or attacks
+  random combats: 500, max frames: 70
+PASS 500 new-roster combats are deterministic, preserve inputs, bounded and valid to save
+21 utility groups passed.

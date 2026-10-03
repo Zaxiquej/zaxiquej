@@ -1,8 +1,8 @@
 (function (root) {
   'use strict';
-  const VERSION = '5.21.2';
+  const VERSION = '5.27.0';
   const TRIBAL_SYNERGY = 3; // Selection preference only; never discounts the payoff.
-  const SEED_VERSION = '4.5'; // Keep existing cards stable while correcting low-cost bodies.
+  const SEED_VERSION = '4.5'; // Seed namespace; versioned generation rules may change a card.
   const CALIBRATION=typeof module!=='undefined'&&module.exports?require('./calibration.js'):root.SVWBCalibration;
   const NONFOLLOWERS=typeof module!=='undefined'&&module.exports?require('./nonfollowers.js'):root.SVWBNonfollowers;
   const CLASS_IDENTITY=typeof module!=='undefined'&&module.exports?require('./class-identity.js'):root.SVWBClassIdentity;
@@ -42,9 +42,6 @@
   const TYPES={follower:'随从',spell:'法术',amulet:'护符'};
   const CLASSES = ['中立','妖精','皇家护卫','巫师','龙族','梦魇','主教','超越者'];
   const RARITIES = ['铜卡','银卡','金卡','虹卡'];
-  // Official snapshot (2026-10-01): 125 non-token followers costing 7+ PP.
-  // Late finishers are much more often legendary than the overall card pool.
-  const HIGH_COST_RARITIES=[17,21,17,70];
   const THEMES = ['旅人 · 均衡与支援','森语 · 连击与回手','王旗 · 铺场与爆能','秘法 · 增幅与土印','龙鸣 · 觉醒与成长','幽夜 · 唤灵与谢幕','圣祷 · 回复与护符','机巧 · 傀儡与创造物'];
   function hash(text) { let h=2166136261; for(const c of text) {h^=c.codePointAt(0);h=Math.imul(h,16777619);} return h>>>0; }
   function rng(seed) {let a=seed; return ()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
@@ -260,25 +257,13 @@
     const name=trimName(input);
     if(!name)throw Error('请输入随从名称。');
     const seed=hash(SEED_VERSION+'|'+name),r=rng(seed);
-    let cls=Math.floor(r()*8);
-    // Neutral : each craft = 0.8 : 1. Only redistribute some former neutral
-    // rolls; preserve all existing craft rolls and the remaining random stream.
-    if(cls===0){
-      const classRoll=rng(hash(seed+'|neutral-weight'));
-      if(classRoll()<1-8*.8/7.8)cls=1+Math.floor(classRoll()*7);
-    }
-    let rarity=weighted(r,chaos?[[0,12],[1,22],[2,32],[3,34]]:[[0,38],[1,30],[2,21],[3,11]]);
-    const type=weighted(r,[['follower',6],['spell',2],['amulet',2]]);
-    if(type!=='follower'){
-      const counts=CALIBRATION.rarityPriors[type],total=counts.reduce((s,n)=>s+n,0);
-      // Keep original rainbow spells/amulets possible, but genuinely exceptional.
-      rarity=weighted(rng(hash(seed+'|type-rarity')),counts.map((n,i)=>[i,Math.max(n/total,i===3?.005:.01)*(chaos?[.55,1,1.5,4][i]:1)]));
-    }
-    // Preserve the requested 6:2:2 type mix, then sample official printed costs.
-    // The snapshot's only supported 8+ PP spell is a spellboost-discount spell.
-    // Concentrate that rare weight in Witch instead of creating unplayable copies.
-    const cost=weighted(r,CALIBRATION.costPriors[type].map((weight,n)=>[n,weight*(n>=7?.85:1)*(type==='spell'&&n>=8?(cls===3?7.8:0):1)]).filter(([,weight])=>weight>0));
-    if(type==='follower'&&cost>=7)rarity=weighted(rng(hash(seed+'|late-rarity')),HIGH_COST_RARITIES.map((n,i)=>[i,n*(chaos?[.55,.8,1.2,1.5][i]:1)]));
+    const priors=CALIBRATION.draftPriors;
+    const cls=weighted(r,priors.classes.map((n,i)=>[i,n]));
+    const type=weighted(r,Object.entries(priors.types[cls]));
+    const cost=weighted(r,priors.costs[cls+':'+type].map((n,c)=>[c,n*(type==='spell'&&c>=8&&cls!==3?0:1)]).filter(([,n])=>n>0));
+    const counts=priors.rarities[cls+':'+type+':'+cost],total=counts.reduce((n,v)=>n+v,0);
+    // Sparse original gold/rainbow designs remain possible, not a uniform prior.
+    const rarity=weighted(r,counts.map((n,i)=>[i,Math.max(n/total,i===3&&type!=='follower'?.005:.002)*(chaos?[.45,.75,1.5,2.5][i]:1)]));
     return {name,seed,r,cls,rarity,cost,type};
   }
   function randomMatchingName(filters={}, {variantOf,excludeName,random=Math.random,chaos=false}={}) {
@@ -393,7 +378,10 @@
   }
   const RAMP_VALUE = 9; // About a full 3-PP spell, before timing/resource discounts.
   const drawValue=(cost,n)=>cost<=2?2.8*n+1.5*n*(n-1):cost===3?2.8*n+.5*n*(n-1):2.2*n;
-  const healValue=(cost,n)=>n*(cost<=2?1.55:cost<=4?1.4:.95)+Math.max(0,n-(cost<=2?2:5))**2*.15;
+  // Large heals compete with removal/board development. Printed high cost
+  // does not make each point suddenly cheap; outliers such as 4 PP heal 10
+  // carry a separate ten-damage drawback in the official card pool.
+  const healValue=(cost,n)=>n*(cost<=2?1.65:cost<=4?1.5:1.35)+Math.max(0,n-(cost<=2?2:4))**2*.22;
   const multipleAttackPrice=(attack,count,trigger='')=>(count-1)*(2+attack*.4+Math.max(0,attack-4)**2*.04)*(trigger==='超进化时'?.5:trigger==='进化时'?.7:1);
   function keywordPrice(k,attack,health,context={}) {
     const attacks=context.attacks||1;
@@ -571,7 +559,7 @@
     ['earth',1.6,5,[3],n=>`使自己的战场上的土之印+${n}。`,2,'exclusive'],
     ['ramp',RAMP_VALUE,3,[4],()=> '使自己的能量点最大值+1。',1,'exclusive'],
     ['grave',0.7,5,[5],n=>`使自己的墓场+${n}。`,4,'exclusive'],
-    ['reanimate',4.5,3,[5],n=> `发动【亡者召还 ${n+1}】。`,5,'exclusive'],
+    ['reanimate',4.5,3,[0,5],n=> `发动【亡者召还 ${n+1}】。`,5,'exclusive'],
     ['amulet',1.7,5,[6],n=>`使自己的战场上的所有拥有【吟唱】的护符的倒计数-${n}。`,2,'exclusive'],
     ['coreSupply',1.1,6,[7],n=>`将${n}张『$CORE』加入手牌。`,2,'exclusive'],
     ['corePair',2.1,4,[7],()=> '将1张『未来核心』和1张『过往核心』加入手牌。',1,'exclusive'],
@@ -616,7 +604,7 @@
     {id:'clearAmulets',price:9,weight:4,classes:[0,6],exclusive:true,max:1,text:()=> '使战场上的所有护符消失。'},
     {id:'emblemExtend',price:5,weight:4,classes:[4,6],exclusive:true,max:2,text:n=>`使自己的『$OWNCREST』的倒计数+${n}。`},
     {id:'attackLock',price:2.4,weight:6,classes:[],max:1,text:()=> '选择对手的战场上的1个随从，对手的回合结束前，使其获得「无法攻击随从或主战者」。'},
-    {id:'enemyCurse',price:3,weight:2,classes:[1,5,7],exclusive:true,max:1},
+    {id:'enemyCurse',price:3,weight:2,classes:[0,1,5,7],exclusive:true,max:1},
     {id:'statDebuff',price:2.2,weight:5,classes:[],max:6,text:n=>`选择对手的战场上的1个随从，使其-${Math.max(0,n-1)}/-${n}。`},
     {id:'massDebuff',price:4.5,weight:3,classes:[1,4,5,6],exclusive:true,max:4,text:n=>`使对手的战场上的所有随从-${Math.max(0,n-1)}/-${n}。`},
     {id:'treasureSupply',price:1.7,weight:7,classes:[2],exclusive:true,max:2,text:n=>`将${n}张『$TREASURE』加入手牌。`},
@@ -698,24 +686,37 @@
     const effects=card.abilities.filter(a=>a.kind!=='keyword'&&a.kind!=='alternate');
     if(effects.length&&effects.every(a=>!a.modeBranches&&a.ids.some(id=>NAMED_BOARD_PAYOFFS[id])&&
       a.ids.every(id=>NAMED_BOARD_PAYOFFS[id]||['evolutionSacrifice','bodyPayoff'].includes(id))))return false;
-    return card.abilities.some(a=>['mode','signature','emblem','faithPayoff','fusion','invocation','handTrigger','progressTransform','cycle','ongoing','resurrection'].includes(a.kind)||
-      a.condition&&a.condition!=='none'&&a.raw>=3||
-      a.ids.some(id=>/^(tribe|artifact|spellboost|damageCap|reduceDamage|combatDestroy|doubleAttack|tripleAttack|enemyEntry|enemyCurse|treasureLink|handTransform|truthTransform|transform|setHealth|leaderVulnerability|resurrectSelf)/.test(id)||
-        /^(experiment|crystalHand)/.test(id)&&(effects.length>1||/Link|Fusion/.test(id)))||
-      a.kind==='activation'&&!a.activation?.breaksSelf&&a.raw>=2);
+    // A condition, a crest label or a modal label alone is not a legendary
+    // identity. Look for changed resolution, a resource engine, a linked
+    // payoff, or combat rules that actually work together.
+    const ids=effects.flatMap(a=>a.ids||[]),has=id=>ids.includes(id);
+    if(effects.some(a=>['signature','faithPayoff','invocation','progressTransform','cycle','resurrection'].includes(a.kind)))return true;
+    if(ids.some(id=>/^(handTransform|truthTransform|leaderVulnerability|resurrectSelf|deckDiscount|enemyEntry|enemyCurse|enemyEmblem|drawLuckEmblem|scopeUpgrade)$/.test(id)))return true;
+    const engine=effects.some(a=>/进入战场时|被破坏时|自己使用|自己【启动】|受到伤害且/.test(a.trigger||'')&&a.raw>=4);
+    if(engine&&effects.length>=2)return true;
+    if(effects.some(a=>a.kind==='fusion')&&effects.some(a=>a.kind!=='fusion'&&/融合|召唤|魔力增幅/.test(a.text)))return true;
+    if(effects.some(a=>a.modeBranches)&&has('replay'))return true;
+    const combat=ids.filter(id=>['damageCap','reduceDamage','combatDestroy','doubleAttack','tripleAttack','abilityDestructionImmune'].includes(id));
+    if(new Set(combat).size>=2)return true;
+    if((has('spellboostDiscount')||has('handDiscount')||has('spellboostGrowth'))&&effects.some(a=>a.ids.some(id=>/summon|Summon|transform|Transform|reanimate|resurrect|artifactCopy/.test(id))))return true;
+    if((card.emblems||[]).some(e=>e.effects?.some(p=>!['draw','heal','damage','buff','splitDamage'].includes(p.id)))&&effects.length>=2)return true;
+    if(effects.some(a=>a.kind==='activation'&&!a.activation?.breaksSelf&&a.raw>=5))return true;
+    // This is descriptive only. A compact, ordinary legend is still valid;
+    // generation must not reroll it merely for lacking an unusual structure.
+    return false;
   }
   function generate(input,options={}) {
     let card=generateCard(input,null,options);
-    // Resample the design, not the class/cost/rarity, rather than append a
-    // stock "legendary bonus" to a mundane card. The seed remains deterministic.
-    const playable=c=>lowSuperEvolutionQuality(c)&&evolutionOnlyQuality(c)&&namedSupportQuality(c)&&lateGameQuality(c)&&focusedDesignQuality(c);
-    if(card.rarity===3&&!designIdentity(card)||!playable(card)){
+    // Resample unusable designs, retaining class/cost/rarity. Novelty is a
+    // sampling preference, never a requirement imposed on every legendary.
+    const playable=c=>lowSuperEvolutionQuality(c)&&evolutionOnlyQuality(c)&&namedSupportQuality(c)&&lateGameQuality(c)&&focusedDesignQuality(c)&&NONFOLLOWERS.quality(c);
+    if(!playable(card)){
       let earlyFallback=null;
       const evolutionBound=card.type==='follower'&&card.abilities.every(a=>a.kind==='keyword'||['进化时','超进化时'].includes(a.trigger));
       for(let attempt=1;attempt<=24;attempt++){
         const candidate=generateCard(input,null,{...options,designAttempt:attempt,earlyPlayFocus:attempt>8&&(!playable(card)||evolutionBound)});
         if(!playable(card)&&playable(candidate)&&!earlyFallback){earlyFallback=candidate;earlyFallback.earlyDesignAttempt=attempt;}
-        if((candidate.rarity!==3||designIdentity(candidate))&&playable(candidate)){card=candidate;card.identityAttempt=attempt;break;}
+        if(playable(candidate)){card=candidate;card.qualityAttempt=attempt;break;}
       }
       // A rare identity search may exhaust its attempts. Prefer a usable early
       // design over restoring the original weak, SEP-only card in that case.
@@ -751,9 +752,9 @@
     const tribeToken=tribal?weighted(r,TOKENS.filter(t=>t.tribeId===tribe.id).map(t=>[t,t.cost<=1?3:1])):null;
     const profile=(type==='follower'?CALIBRATION.profiles:CALIBRATION.typeProfiles[type])[`${cost<=3?0:cost<=6?1:2}:${cls}:${rarity}`];
     let keywordQuota=weighted(r,profile.keywordCounts.map((weight,n)=>[n,weight]));
-    const oversized=type==='follower'&&cost>=7&&cls===4&&r()<.23;
+    const oversized=type==='follower'&&cost>=7&&cls===4&&r()<.12;
     // Raise the upper body range without raising every card or its effect budget.
-    const bodyHeadroom=type==='follower'&&cost>=4&&!oversized?weighted(rng(hash(seed+'|body-headroom')),cost<=6?[[0,55],[1,30],[2,15]]:[[0,40],[1,20],[2,25],[3,15]]):0;
+    const bodyHeadroom=type==='follower'&&cost>=4&&!oversized?weighted(rng(hash(seed+'|body-headroom')),cost<=6?[[0,55],[1,30],[2,15]]:[[0,60],[1,25],[2,10],[3,5]]):0;
     let floor=type==='follower'?(oversized?2*(cost+3):BODY[cost])+bodyHeadroom:0;
     const chaosBody=chaos&&type==='follower'&&cost>=2?1+Math.floor(cost/5):0;
     const chaosPower=chaos&&!alternateConfig?1.18:1;
@@ -813,7 +814,19 @@
       return weighted(g,[[[n,n],3],[[n+1,Math.max(0,n-1)],2],[[Math.max(0,n-1),n+1],2],[[n,Math.max(0,n-1)],1],[[Math.max(0,n-1),n],1]]);
     }
     const rushEvolutionRoll=rng(hash(seed+'|rush-evolution'))()<CALIBRATION.rushEvolutionRate;
-    const triggerWeight=trigger=>(profile.triggers[trigger]||0)*(trigger==='超进化时'?earlySuperWeight:1)*(trigger==='谢幕曲'?(cls===5?2.55:1.5):1)*(trigger==='超进化时'&&cost<=3&&!card.abilities.some(a=>['入场曲','谢幕曲','进化时'].includes(a.trigger))?.3:1)*(['进化时','超进化时'].includes(trigger)?(options.earlyPlayFocus?0:card.abilities.some(a=>a.kind!=='keyword'&&!['进化时','超进化时'].includes(a.trigger))?1:.45)*(used.has('突进')&&!rushEvolutionRoll?.08:1)*(card.abilities.some(a=>a.trigger==='入场曲'&&a.ids.includes('setHealth'))?1.7:1):1);
+    const triggerWeight=trigger=>{
+      let weight=profile.triggers[trigger]||0;
+      if(trigger==='谢幕曲')weight*=cls===5?1.6:1.05;
+      if(trigger==='超进化时')weight*=earlySuperWeight*[.8,1,1.5,2.5][rarity];
+      if(trigger==='超进化时'&&cost<=3&&!card.abilities.some(a=>['入场曲','谢幕曲','进化时'].includes(a.trigger)))weight*=.3;
+      if(['进化时','超进化时'].includes(trigger)){
+        const early=card.abilities.some(a=>a.kind!=='keyword'&&!['进化时','超进化时'].includes(a.trigger));
+        weight*=options.earlyPlayFocus?0:early?1:trigger==='进化时'&&rarity===0?.9:.45;
+        if(used.has('突进')&&!rushEvolutionRoll)weight*=.08;
+        if(card.abilities.some(a=>a.trigger==='入场曲'&&a.ids.includes('setHealth')))weight*=1.7;
+      }
+      return weight;
+    };
     const requiresChoice=text=>/选择(?:(?:自己|对手)的(?:(?:战场上|手牌中)的)?|战场上的)[1-9][个张]/.test(text);
     // Choosing a card from hand is not a battlefield target.
     const targeted=text=>requiresChoice(text.replace(/选择(?:自己|对手)的(?:手牌中的[1-9]张[^，。]*|[1-9]张手牌)/g,''));
@@ -854,7 +867,14 @@
     // The 125 official 7+ PP followers include 17 AoE and eight self-summon
     // designs. Both remain possible, but are not generic late-game defaults.
     const lateEffectWeight=id=>type!=='follower'||cost<7?1:id==='selfCopy'?.35:['aoe','allBoardDamage','boardWipe','massDebuff'].includes(id)?.4:id==='splitDamage'?.45:1;
-    function effectWeight(id,fallback=3){return lateEffectWeight(id)*roleWeight(id)*Math.max(.001,(profile.effects[id]||profile.effects[effectPriorAlias[id]]*.5||(id==='pp'?ppPrior:0))*.85+fallback/150*.15)*(id==='ramp'?(cost<=6?5:cost<=8?2:.5):id==='bounce'?(cost<=3?2:1.2):id==='tokenSummon'&&cls===2?2.5:id.startsWith('tribe')?30:['treasureSupply','coinSupply','flagSummon'].includes(id)?3:id==='flagAdvance'?5:1);}
+    function effectWeight(id,fallback=3){
+      const drawWeight=type==='spell'?(rarity===0?1.8:.65):rarity===1?.45:rarity===3?.6:.8;
+      // Class-specific supply atoms must share the same prior as generic supply.
+      // Otherwise adding another token family silently increases total supply.
+      const supplyId=['tokenHand','commonSupply','artifact','coreSupply','corePair','fusionArtifactHand','experimentSupply','crystalHandSupply','treasureSupply','coinSupply','tribeSupply'].includes(id);
+      const spellWeight=type!=='spell'?1:id==='boost'&&cls===3?2:id==='aoe'?.65:supplyId?.5:1;
+      return (id==='heal'?.65:id==='draw'?drawWeight:1)*spellWeight*(cls===0?(id==='tokenSummon'?.4:id==='heal'?.5:id==='aoe'?.6:id==='reanimate'?(type==='spell'?.5:.08):1):1)*lateEffectWeight(id)*roleWeight(id)*Math.max(.001,(profile.effects[id]||profile.effects[effectPriorAlias[id]]*.5||(id==='pp'?ppPrior:0))*.85+fallback/150*.15)*(id==='ramp'?(cost<=6?5:cost<=8?2:.5):id==='bounce'?(cost<=3?2:1.2):id==='tokenSummon'&&cls===2?1.6:id.startsWith('tribe')?30:['treasureSupply','coinSupply','flagSummon'].includes(id)?3:id==='flagAdvance'?5:1);
+    }
     function quantityWeight(id,n,trigger='其他',effectCost=cost) {
       const aliases={recoverFollower:'draw',artifactRecover:'tokenHand',coreSupply:'tokenHand',corePair:'tokenHand',fusionArtifactHand:'tokenHand',fusionArtifactSummon:'tokenSummon',handCycle:'draw',handRefill:'draw',tribeSupply:'draw',tribeBuff:'allyBuff',wardSearch:'draw',amuletSearch:'draw',bloodDraw:'draw',missingHealthDamage:'damage',artifactCopy:'tokenSummon',amuletRecruit:'tokenSummon',wardBuff:'allyBuff',artifactBuff:'allyBuff'};
       const kind=aliases[id]||(['keywordSearch','typeSearch'].includes(id)?'draw':id.startsWith('experiment')?(id==='experimentSupply'?'tokenHand':id==='experimentSummon'?'tokenSummon':'allyBuff'):id.startsWith('crystalHand')?(id==='crystalHandSupply'?'tokenHand':id==='crystalHandSummon'?'tokenSummon':'allyBuff'):id);
@@ -868,6 +888,9 @@
       if(searchIds.has(id))weight*=n===1?1:n===2?(effectCost<=3?.12:effectCost<=6?.35:.7):(effectCost<7?.02:.25);
       if(['recoverFollower','artifactRecover'].includes(id)&&n>1)weight*=.25;
       if(copyIds.has(id))weight*=n===1?1:n===2?.3:.08;
+      // Official healing is mostly 1–4, even at high printed costs. A rare
+      // large heal must still pay its nonlinear value and timing/condition cost.
+      if(kind==='heal')weight*=Math.exp(-Math.max(0,n-4)*.62);
       if(['damage','face','aoe','splitDamage'].includes(kind)&&effectCost>=4){
         const burst=['入场曲','进化时','超进化时','谢幕曲','爆能强化','法术','本随从进化时','本卡牌被舍弃时'].includes(trigger);
         const target=1+effectCost*({damage:.7,face:.28,aoe:.32,splitDamage:.9})[kind]+(trigger==='超进化时'&&kind!=='face'?1:0);
@@ -1103,7 +1126,7 @@
     case 'aoe':{const x=rollAmount('aoe',cost>=7?4:2,Math.min(8,Math.max(3,cost>=7?cost-1:Math.floor(cost/2))),trigger);return atom(`对对手的战场上的所有随从造成${x}点伤害。`,x*3.8);}
     case 'splitDamage':{const x=rollAmount('splitDamage',Math.max(1,cost),Math.max(1,Math.min(16,cost*2)),trigger);return atom(`对对手的战场上的所有随从分配${x}点伤害。`,x*1.1);}
     case 'draw':{const x=rollAmount('draw',1,3,trigger);return atom(`抽取${x}张卡牌。`,drawValue(cost,x));}
-    case 'heal':{const x=rollAmount('heal',Math.max(1,Math.floor(cost*(highRole==='defense'?.85:.55))),Math.min(12,cost+2),trigger);return atom(`回复自己的主战者${x}点生命值。`,healValue(cost,x));}
+    case 'heal':{const x=rollAmount('heal',1,Math.min(10,cost+2),trigger);return atom(`回复自己的主战者${x}点生命值。`,healValue(cost,x));}
     case 'face':{const x=rollAmount('face',cost>=7?3:2,Math.min(7,Math.max(2,Math.ceil(cost*.65))),trigger);return atom(`对对手的主战者造成${x}点伤害。`,x*2.7);}
     case 'pp':{
       const max=cost>=8?3:cost>=5?2:1;
@@ -1165,26 +1188,74 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     const [a,aw]=atoms[i],[b,bw]=atoms[j],ks=[a.kind,b.kind],raw=a.raw+b.raw;
     if(!complementaryLateAtoms(ks)||raw<minRaw||raw>limit)continue;
     const combined=pairAtoms(a,b);
-    eligible.push([combined,Math.sqrt(aw*bw),.4]);
+    const supportFrequency=ks.includes('heal')?(cls===6?.65:.3):ks.includes('draw')?.5:1;
+    eligible.push([combined,Math.sqrt(aw*bw),.4*supportFrequency]);
   }
-  return eligible.length?weighted(r,eligible.map(([a,w,scale])=>[a,scale*Math.sqrt(w*effectWeight(a.kind==='summon'?'tokenSummon':a.kind==='tutor'?'keywordSearch':a.kind,w))*synergyWeight(a.ids,a.tokens,trigger)*interactionPreference(a,trigger)*(phaseHasTarget(trigger)&&targeted(a.text)?EXTRA_TARGET_WEIGHT:1)])):null;
+  const combinedPrior=(a,w)=>{
+    const kinds=[...new Set((a.components||[]).map(c=>c.id))];
+    if(!kinds.length)kinds.push(a.kind);
+    // Every atom contributes to selection frequency as well as its paid cost.
+    return Math.exp(kinds.reduce((sum,id)=>sum+Math.log(effectWeight(id==='summon'?'tokenSummon':id==='tutor'?'keywordSearch':id,w)),0)/kinds.length);
+  };
+  return eligible.length?weighted(r,eligible.map(([a,w,scale])=>[a,scale*Math.sqrt(w*combinedPrior(a,w))*synergyWeight(a.ids,a.tokens,trigger)*interactionPreference(a,trigger)*(phaseHasTarget(trigger)&&targeted(a.text)?EXTRA_TARGET_WEIGHT:1)])):null;
 }
+    function scopeArchitecture() {
+      // One effect, two resolutions: the upgraded use widens its target set.
+      // Amounts, effect family, PP investment and replay are composed separately.
+      // Unlike two unrelated Fanfare effects, the upgraded use REPLACES the base.
+      if(type!=='follower'||rarity!==3||cost<4||cost>7||card.abilities.length||vanilla||oversized)return false;
+      const sr=rng(hash(seed+'|scope-architecture|'+(options.designAttempt||0)));
+      if(sr()>(chaos?.38:.2))return false;
+      const fee=Math.min(10,cost+weighted(sr,[[2,4],[3,5],[4,2]]));
+      const n=weighted(sr,[[Math.max(2,cost-2),3],[cost-1,5],[cost,2]]);
+      const pool=[{id:'damage',base:`选择对手的战场上的1个随从，对其造成${n}点伤害。`,all:`对对手的战场上的所有随从造成${n}点伤害。`,single:n*1.25,total:n*3.8,tokens:[]}];
+      if([6,7].includes(cls))pool.push({id:'banish',base:'选择对手的战场上的1个随从，使其消失。',all:'使对手的战场上的所有随从消失。',single:8,total:24,tokens:[]});
+      if([1,3].includes(cls))pool.push({id:'transformEnemy',base:`选择对手的战场上的1个随从，使其变身为『${enemyTransformToken.name}』。`,all:`使对手的战场上的所有随从变身为『${enemyTransformToken.name}』。`,single:5.5,total:18,tokens:[enemyTransformToken]});
+      if([1,2].includes(cls)){
+        const attack=weighted(sr,[[1,4],[2,3],[3,1]]),health=weighted(sr,[[1,3],[2,4],[3,1]]);
+        pool.push({id:'allyBuff',base:`选择自己的战场上的1个其他随从，使其+${attack}/+${health}。`,all:`使自己的战场上的其他所有随从+${attack}/+${health}。`,single:attack+health,total:(attack+health)*3,tokens:[]});
+      }
+      if([4,5,7].includes(cls))pool.push({id:'statDebuff',base:`选择对手的战场上的1个随从，使其-${Math.max(1,n-1)}/-${n}。`,all:`使对手的战场上的所有随从-${Math.max(1,n-1)}/-${n}。`,single:n*2.2,total:n*5.2,tokens:[]});
+      const room=budget-floor-card.spent;
+      const payable=pool.map(p=>({...p,credit:(fee-cost)*2.4,reserve:.8+Math.max(0,p.total-p.single-(fee-cost)*2.4)*.4})).filter(p=>p.single+p.reserve<=room);
+      if(!payable.length)return false;
+      const p=payable[Math.floor(sr()*payable.length)];
+      add({kind:'signature',trigger:'入场曲',condition:'none',text:'【入场曲】'+p.base,bodyText:p.base,raw:p.single,price:p.single,ids:[p.id],tokens:p.tokens,major:true});
+      const text=`【爆能强化 ${fee}】由原本的指定1个转变为全部。`;
+      add({kind:'signature',trigger:'爆能强化',condition:'enhance',text,bodyText:text,raw:Math.max(0,p.total-p.single),price:p.reserve,enhanceCost:fee,ids:['scopeUpgrade','enhance'],tokens:[],major:true,scopeUpgrade:{effectId:p.id,base:p.base,expanded:p.all,baseRaw:p.single,expandedRaw:p.total,credit:p.credit,replacesBase:true}});
+      const timing=evolutionTiming('进化时'),replayPrice=p.single*timing;
+      if(sr()<.7&&replayPrice<=budget-floor-card.spent){
+        add({kind:'signature',trigger:'进化时',condition:'none',text:'【进化时】发动与【入场曲】相同的能力（爆能强化除外）。',bodyText:'发动与【入场曲】相同的能力（爆能强化除外）。',raw:p.single,price:replayPrice,timingFactor:timing,ids:['replay'],tokens:[]});
+      }
+      card.signature=true;card.scopeDesign={effectId:p.id,fee,replacesBase:true};card.archetype='assembled-scope';
+      return true;
+    }
     function signatureCore() {
+  if(scopeArchitecture())return true;
   if(['疾驰','exhaustibleCycle','handTrigger','invocation','deckDiscount','enemyEmblem','drawLuckEmblem','handLuck','treasureLink','spellLink','discardSelfSummon','enemyEntry','amuletReviveHighest','resurrectSelf'].some(id=>used.has(id)))return false;
   if((chaos?rarity<1:rarity!==3)||cost<7||r()>Math.min(.9,(.14+(cost-7)*.13)*(chaos?2.3:1)))return false;
   const capacity=budget-floor;
   const wrapper=weighted(r,[['phase',cls===4?7:2],['cascade',cls===0?7:2],['volley',cls===2?7:2],['return',cls===5?7:1]]);
   const put=(id,trigger,text,raw,price,tokens=[])=>add({kind:'signature',trigger,condition:'none',text:trigger.includes('回合')?`${trigger}，${text}`:`【${trigger}】${text}`,bodyText:text,raw,price,ids:[id],tokens,major:true});
   if(wrapper==='phase') {
-    const before=pickAtom(Math.min(12,capacity*.62),[],true,5,'自己的回合结束时');
-    const after=pickAtom(Math.min(14,capacity*.62),before.ids,true,5,'自己的回合结束时');
-    put('phaseSwitch','自己的回合结束时',`若本随从为进化前，则${before.text}若为进化后，则${after.text}`,Math.max(before.raw,after.raw),Math.max(before.raw,after.raw)*1.1,[...before.tokens,...after.tokens]);
+    // Stances are a tactical choice, not two independently selected utility
+    // atoms with a fixed tiny cap. Commit to defense before evolution and a
+    // different pressure payoff afterwards; value the recurring resolution.
+    const stanceLimit=Math.min(28,(capacity-card.spent-.8)/1.25);
+    const minimum=Math.min(10,Math.max(5,cost));
+    const before=makeEffect(stanceLimit,'自己的回合结束时','none',minimum,false,cost,true,{maxAtoms:1},['heal','aoe','massDebuff','attackLock']);
+    if(!before)return false;
+    const pressure=[...([0,4,5].includes(cls)?['face']:[]),...([1,2].includes(cls)?['teamBuff']:[]),'tokenSummon'].filter(id=>!before.ids.includes(id));
+    const after=makeEffect(stanceLimit,'自己的回合结束时','none',minimum,false,cost,true,{maxAtoms:1},pressure);
+    if(!after)return false;
+    put('phaseSwitch','自己的回合结束时',`若本随从为进化前，则${before.text}若为进化后，则${after.text}`,Math.max(before.raw,after.raw),Math.max(before.raw,after.raw)*1.25+.8,[...before.tokens,...after.tokens]);
+    card.stanceDesign={before:{ids:before.ids,raw:before.raw},after:{ids:after.ids,raw:after.raw},exclusive:true};
     const timing=evolutionTiming('进化时'),bonusLimit=Math.min(14,(capacity-card.spent)/timing),bonusMinimum=evolutionPayoffFloor('进化时',cost);
     const bonus=pickAtom(bonusLimit,[...before.ids,...after.ids],true,bonusMinimum)||makeEffect(bonusLimit,'进化时','none',bonusMinimum);
     if(bonus)put('phaseEvolve','进化时',bonus.text,bonus.raw,bonus.raw*timing,bonus.tokens);
   } else if(wrapper==='cascade') {
     const parts=[];
-    for(let i=0;i<3;i++)parts.push(pickAtom(10,parts.flatMap(a=>a.ids)));
+    for(let i=0;i<3;i++){const part=pickAtom(10,parts.flatMap(a=>a.ids));if(!part)return false;parts.push(part);}
     const repeat=r()<.65;
     const growth=pick([2,3]);
     const tail=repeat?`本随从+${growth}/+${growth}。再次发动本随从的【入场曲】。`:`回复自己的主战者${cost}点生命值。本随从获得【屏障】。`;
@@ -1204,9 +1275,9 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     const trigger=pick(['超进化时','自己的回合结束时']);
     const a=pickAtom(capacity*.7/repeats,[],true,Math.max(8,5.5+cost*.35)/repeats,trigger);
     if(!a)return false;
-    const timing=trigger==='超进化时'?.3:.85;
+    const timing=trigger==='超进化时'?.3:1.2;
     const gamble=a.ids.length===1&&a.kind==='damage'&&r()<.5;
-    const shot=gamble?`随机对战场上的1个其他随从或任意一方的主战者造成${Math.min(8,cost-1)}点伤害。`:a.text;
+    const shot=gamble?`随机对战场上的1个其他随从或任意一方的主战者造成${Number(a.text.match(/造成(\d+)点伤害/)?.[1]||1)}点伤害。`:a.text;
     put('repeatPayload',trigger,`发动${repeats}次“${shot}”`,a.raw*repeats,a.raw*repeats*timing,a.tokens);
     const b=pickAtom(capacity-card.spent,a.ids,false);
     if(b)put('volleyOpening','入场曲',b.text,b.raw,b.raw,b.tokens);
@@ -1322,7 +1393,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     }
     function addEmblem() {
       if(card.abilities.length>=5)return;
-      if(card.signature||rarity===0||cost<2||r()>[0,.1,.28,.42][rarity]*synergyWeight(['emblem'+cls])*(chaos?1.5:1))return;
+      if(card.signature||rarity===0||cost<2||r()>[0,.035,.07,.30][rarity]*synergyWeight(['emblem'+cls])*(chaos?1.5:1))return;
       const duration=weighted(r,[[null,rarity===3?45:rarity===2?35:22],[2,22],[3,22],[4,12],[5,6]]);
       const config=composeEmblem(duration,true);
       const lifetimeValue=config.oneShot?1/(1+duration*.18):duration===null?1.4:({2:.82,3:1,4:1.12,5:1.22})[duration];
@@ -1446,7 +1517,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     return;
   }
   const autoEvolution=used.has('selfEvolve')||used.has('selfSuperEvolve');
-  const mainTrigger=oversized||autoEvolution?'入场曲':weighted(r,['入场曲','进化时','超进化时','谢幕曲'].map(t=>[t,triggerWeight(t)*(t==='入场曲'?3:t==='谢幕曲'?.7:.3)]));
+  const mainTrigger=oversized||autoEvolution?'入场曲':weighted(r,['入场曲','进化时','超进化时','谢幕曲'].map(t=>[t,triggerWeight(t)*(t==='入场曲'?2:t==='谢幕曲'?.7:t==='超进化时'?.7:.3)]));
   const mainTiming=['进化时','超进化时'].includes(mainTrigger)?evolutionTiming(mainTrigger):mainTrigger==='谢幕曲'?.65:1;
   const mainMinimum=Math.max(evolutionPayoffFloor(mainTrigger,cost),6+Math.max(0,cost-6)*1.8);
   const main=pickAtom(capacity*.92/mainTiming,['draw','tutor','pp','boost','earth'],mainTrigger==='谢幕曲',mainMinimum,mainTrigger)||pickAtom(capacity/mainTiming,[],mainTrigger==='谢幕曲',mainMinimum,mainTrigger);
@@ -1527,7 +1598,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     function addSpecialMechanic() {
       if(card.fusion||card.signature||vanilla||rarity===0||card.abilities.length>=4)return;
       const remaining=budget-floor-card.spent;
-      if(cost>=3&&remaining>=3.5&&r()<(chaos?.3:.13)) {
+      if(cost>=3&&remaining>=3.5&&r()<(chaos?.3:.13)*[0,.08,.35,.35][rarity]) {
         const material=cls===2?'财宝·卡牌':cls===3?'法术':cls===6?'护符':cls===7?'创造物·卡牌':'随从';
         const scaled=r()<.55;
         const threshold=scaled?1:weighted(r,[[1,6],[2,3],[3,cost>=6?2:1]]);
@@ -1661,7 +1732,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         const id=liberated?'liberatedArt':'secretArt',repeats=card.abilities.filter(a=>a.condition===id).length;
         return {id,text:liberated?'【解放奥义】':'【奥义】',requirement:liberated?15:10,factor:1-(1-(liberated?.55:.72))/(1+repeats),extra:0,minRaw:liberated?5:3,difficult:true,effectBoost:liberated?3:1};
       }
-      if(r()>(cost<=2?[.34,.48,.60,.70]:[.2,.33,.45,.55])[rarity])return {id:'none',text:'',factor:1,extra:0};
+      if(r()>Math.min(.95,(cost<=2?[.34,.48,.60,.70]:[.2,.33,.45,.55])[rarity]*(cls===1?1.65:1)))return {id:'none',text:'',factor:1,extra:0};
       const fallback=[0,7].includes(cls)?{id:'singleton',text:'若自己的牌组中没有重复随从，则',factor:.38,extra:3,minRaw:6,effectBoost:2,difficult:true}:{id:'none',text:'',factor:1};
       const lowHealth=()=>{const threshold=pick([10,12]);return {id:'lowHealth',text:`若自己的主战者的生命值为${threshold}或以下，则`,threshold,factor:threshold===10?.32:.42,extra:threshold===10?3:2,minRaw:threshold===10?7:5.5,effectBoost:threshold===10?2:1,difficult:true};};
       const discard=()=>{const amount=weighted(r,[[1,8],[2,cost>=4?2:0]]),manual=trigger==='入场曲',credit=amount*(manual?.7:.9);return {id:'discard',text:manual?`选择自己的${amount}张手牌，将其舍弃。`:`随机舍弃自己的${amount}张手牌。`,factor:1,amount,difficult:false,extra:credit,minRaw:2+credit,effectBoost:0};};
@@ -1774,6 +1845,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         !(e.id==='amuletReviveHighest'&&(effectCost<5||repeating||type==='amulet'&&trigger==='谢幕曲'))&&
         !(e.id==='mixedStats'&&(effectCost<2||rarity===0))&&
         !(e.id==='enemySupply'&&(!card.enemyEntry||repeating||trigger==='谢幕曲'))&&
+        !(cls===0&&e.id==='reanimate'&&(rarity<2||type!=='spell'&&rarity<3))&&
         !(e.id==='enemyCurse'&&(rarity<2||effectCost<3||repeating||rng(hash(seed+'|enemy-curse'))()>(chaos?.32:.2)))&&
         !(condition==='leaderHealthAhead'&&e.id==='highestLeaderDamage')&&
         !(condition==='leaderHealthBehind'&&e.id==='lowestLeaderDamage')&&
@@ -1824,7 +1896,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         !(repeating&&['ramp','artifactCopy','amuletRecruit','activeAmuletRecruit','amuletRevive'].includes(e.id))&&
         !(condition==='ppFull'&&e.id==='ramp')&&
         !(effectCost<4&&['artifactCopy','amuletRecruit','activeAmuletRecruit','amuletRevive'].includes(e.id)&&!['进化时','超进化时'].includes(trigger))&&
-        !(effectCost<4&&['destroy','banish','reanimate'].includes(e.id)&&condition!=='necromancy'&&!['进化时','超进化时'].includes(trigger))&&
+        !(effectCost<4&&['destroy','banish','reanimate'].includes(e.id)&&!(cls===0&&e.id==='reanimate'&&type==='spell'&&cost>=2)&&condition!=='necromancy'&&!['进化时','超进化时'].includes(trigger))&&
         !(e.id==='ramp'&&(effectCost<3||(cost<3&&trigger!=='爆能强化'))));
       const options=[];
       if(pool.some(e=>e.id==='tokenSummon')){
@@ -1934,7 +2006,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         if(price+overhead>maxPrice)continue;
         const evolved=trigger==='进化时'||trigger==='超进化时';
         const buffCap=trigger==='爆能强化'?Math.floor(effectCost/2)+1:Math.ceil(effectCost/3)+(evolved?1:0);
-        const numericCaps={coreSupply:effectCost<=3?1:2,fusionArtifactHand:effectCost<=3?1:2,fusionArtifactSummon:effectCost<=3?1:effectCost<=6?2:3,experimentSupply:effectCost<=3?1:effectCost<=6?2:3,experimentSummon:effectCost<=3?1:effectCost<=6?2:3,experimentBuff:buffCap,coinSupply:effectCost<=3?1:2,treasureSupply:effectCost<=3?1:2,flagSummon:effectCost<6?1:2,statDebuff:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),massDebuff:Math.max(1,Math.floor(effectCost/3))+(evolved?1:0),damage:type==='follower'?effectCost+1+(evolved?1:0)+(condition!=='none'?1:0):2*effectCost+1,splitDamage:effectCost*2+2,selfCopy:effectCost>=6?2:1,missingHealthDamage:effectCost+2,artifactCopy:effectCost>=7?2:1,amuletRecruit:effectCost>=7?2:1,face:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),aoe:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),heal:effectCost+2+(evolved?1:0),buff:buffCap,allyBuff:buffCap};
+        const numericCaps={reanimate:cls===0?1:5,coreSupply:effectCost<=3?1:2,fusionArtifactHand:effectCost<=3?1:2,fusionArtifactSummon:effectCost<=3?1:effectCost<=6?2:3,experimentSupply:effectCost<=3?1:effectCost<=6?2:3,experimentSummon:effectCost<=3?1:effectCost<=6?2:3,experimentBuff:buffCap,coinSupply:effectCost<=3?1:2,treasureSupply:effectCost<=3?1:2,flagSummon:effectCost<6?1:2,statDebuff:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),massDebuff:Math.max(1,Math.floor(effectCost/3))+(evolved?1:0),damage:type==='follower'?effectCost+1+(evolved?1:0)+(condition!=='none'?1:0):2*effectCost+1,splitDamage:effectCost*2+2,selfCopy:effectCost>=6?2:1,missingHealthDamage:effectCost+2,artifactCopy:effectCost>=7?2:1,amuletRecruit:effectCost>=7?2:1,face:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),aoe:Math.max(1,Math.ceil(effectCost/2))+(evolved?1:0),heal:effectCost+2+(evolved?1:0),buff:buffCap,allyBuff:buffCap};
         const maximum=e.id==='draw'&&condition==='discardAll'?Math.min(8,effectCost):e.id==='tokenSummon'&&cls===2?Math.min(4,Math.max(1,Math.floor(effectCost/2))):type!=='follower'&&e.id==='tokenSummon'?Math.min(5,Math.floor(effectCost/2)+1):e.max;
         let max=Math.min(maximum,numericCaps[e.id]||Infinity,Math.floor((maxPrice-overhead)/price));
         if(freeHandBody&&effectCost<=1&&condition==='none'&&['入场曲','法术'].includes(trigger))max=Math.min(max,1);
@@ -2033,6 +2105,15 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         if(specialHandOffer)candidate.tokenDelivery={tokenId:tokens[0].id,delivery:'hand',count:n,discount:specialHandOffer.discount,unitPrice:specialHandOffer.unitPrice};
         if(e.id==='commonSupply')candidate.tokenDelivery={tokenId:commonSupply.id,delivery:'hand',count:n,discount:0,unitPrice:price};
         if(e.id==='tribeSupply')candidate.tokenDelivery={tokenId:tribeToken.id,delivery:'hand',count:n,discount:tribeHandOffer.discount,unitPrice:tribeHandOffer.unitPrice};
+        const targetChains=COMBINATIONS.targetFollowups(candidate,{cls,rarity,trigger,effectCost,maxPrice,minRaw,
+          maxAtoms:complexity?.maxAtoms,simple:simpleDesign||complexity?.simple,available:id=>effectAvailable(id,trigger)});
+        for(const variant of targetChains){
+          // Allocate one weight per family, not per numeric variant, so adding
+          // outcomes does not crowd out ordinary removal or resource effects.
+          const weight=(additionalTarget?EXTRA_TARGET_WEIGHT:1)*effectWeight(e.id,e.weight)*
+            synergyWeight(variant.ids,variant.tokens,trigger,condition)*interactionPreference(variant,trigger,condition)*.6/targetChains.length;
+          options.push([variant,weight]);
+        }
         const canDiscount=['draw','handCycle','handRefill','handCycleTutor','keywordSearch','typeSearch','wardSearch','amuletSearch','activeAmuletSearch','tutor','opponentHandCopy','opponentDeckCopy','tokenHand','tribeSupply','artifact','experimentSupply','crystalHandSupply'].includes(e.id);
         if(canDiscount&&!used.has('acquisitionDiscount')&&!candidate.tokenDelivery?.discount&&(!tokens.length||tokens.every(t=>t.cost>0))&&(!complexity||complexity.maxAtoms>=2)){
           const dr=rng(hash(seed+'|acquisition-discount|'+e.id+'|'+trigger+'|'+card.abilities.length));
@@ -2094,7 +2175,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
       if(used.has('突进')&&!rushEvolutionRoll||card.abilities.some(a=>['进化时','超进化时'].includes(a.trigger)))return;
       const roll=rng(hash(seed+'|mid-evolution-core'));
       if(roll()>.18+rarity*.035)return;
-      const trigger=weighted(roll,[['进化时',3],['超进化时',(cost<=3?.8:2)*earlySuperWeight]]),timing=evolutionTiming(trigger);
+      const trigger=weighted(roll,[['进化时',3],['超进化时',(cost<=3?.8:rarity===3?5:rarity===2?3:2)*earlySuperWeight]]),timing=evolutionTiming(trigger);
       const room=budget-floor-card.spent,min=evolutionPayoffFloor(trigger,cost);
       const allowed=[...BOARD_EFFECTS];
       if(card.abilities.some(a=>a.trigger==='入场曲'&&a.ids.some(id=>['summon','tokenSummon','experimentSummon','crystalHandSummon','reanimate'].includes(id))))allowed.push('allyBuff','teamBuff','tribeBuff','artifactBuff','experimentBuff');
@@ -2178,7 +2259,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
       }
     }
     function addProgressTransform(){
-      if(skipProgression||alternateConfig||type==='amulet'||cost<2||cost>7||rarity===0||card.abilities.length>=5||card.alternateForms.length||card.emblems.length||card.faiths.length||card.fusion||card.handTrigger)return;
+      if(skipProgression||alternateConfig||card.scopeDesign||type==='amulet'||cost<2||cost>7||rarity===0||card.abilities.length>=5||card.alternateForms.length||card.emblems.length||card.faiths.length||card.fusion||card.handTrigger)return;
       if(card.abilities.some(a=>/X|Y|本卡牌的费用/.test(a.text)||a.ids.some(id=>['疾驰','selfCopy','discardSelfSummon','invocation','evolutionSacrifice','resurrectSelf'].includes(id))))return;
       const pr=rng(hash(seed+'|progress-transform'));
       if(pr()>(cls===3?.16:.055)*(chaos?1.4:1))return;
@@ -2287,7 +2368,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
       }else if(growing){
         raw=2;price=Math.min(5,raw*event.expected*.8);payload='本随从+1/+1。';payoff='growth';
       }else{
-        if(rng(hash(seed+'|discount-cost-frequency'))()>discountFrequency(cost))return;
+        if(rng(hash(seed+'|discount-cost-frequency'))()>discountFrequency(cost)*(type==='follower'?(cls===3?.75:.45):1))return;
         raw=expectedDiscount*2*discountValueFactor;price=(.8+expectedDiscount*(temporary?1.55:1.8)+(expectedDiscount===cost?.7:0))*discountValueFactor;
         payload=(temporary?'回合结束前，':'')+(setCost?'使本卡牌的费用变为1。':'使本卡牌的费用-'+amount+'。');payoff='discount';
       }
@@ -2473,7 +2554,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     }
     function addExhaustibleCycle(){
       if(vanilla||alternateConfig||rarity<2||cost<4||type==='spell'||card.abilities.length>=3)return;
-      const cr=rng(hash(seed+'|exhaustible-cycle'));if(cr()>(chaos?.09:.045))return;
+      const cr=rng(hash(seed+'|exhaustible-cycle'+(type==='amulet'&&options.designAttempt?'|'+options.designAttempt:'')));if(cr()>(chaos?.09:.045))return;
       const limit=Math.min(7,(budget-floor-card.spent)/2.4),parts=[];
       // Final protection valuation may move follower cycles from start to end.
       // Pick payloads usable at either timing before selecting the final trigger.
@@ -2497,7 +2578,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     function addFusionEvent(){
       if(card.fusion||type!=='follower'||rarity<1||cost<3||card.abilities.length>3)return;
       const fr=rng(hash(seed+'|experiment-fusion'));
-      if(fr()>(cls===3?.1:.035)*(chaos?1.3:1))return;
+      if(fr()>(cls===3?.1:.035)*(chaos?1.3:1)*[0,.08,.35,.35][rarity])return;
       const room=budget-floor-card.spent;if(room<4)return;
       const ppCost=weighted(fr,[[0,3],[1,4],[2,3]]),repeats=2.2,materialCredit=.5,flexibility=1;
       const priceOf=raw=>flexibility+Math.max(.7,raw-ppCost*2.2-materialCredit)*repeats;
@@ -2608,6 +2689,16 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
           const body=(e?.text||'')+(mode==='return'?'本卡牌返回手牌。':'');
           add({...(e||{}),kind:'invocationArrival',trigger:'本卡牌被【瞬念召唤】时',condition:'none',text:'本卡牌被【瞬念召唤】时，'+body,bodyText:body,raw:e?.raw||0,price:e?.raw||0,ids:[...(e?.ids||[]),...(mode==='return'?['invocationReturn']:[])],tokens:e?.tokens||[]});
         }
+      }
+    }
+    // Offer part of a mid/late body's allowance to its existing effect slots.
+    // Any unspent reservation is restored below: a small effect never justifies
+    // shrinking a body merely to imitate an official mean stat line.
+    if(cost>=4&&!vanilla&&!oversized&&!card.handTrigger&&!card.abilities.some(a=>a.scaling)){
+      const br=rng(hash(seed+'|effect-body-reservation'));
+      if(br()<.6){
+        const offered=Math.min(floor-Math.max(4,cost),weighted(br,cost<=6?[[2,5],[3,4],[4,1]]:[[3,4],[4,4],[5,2]]));
+        if(offered>0){floor-=offered;card.bodyAllowance=floor;card.effectBodyReservation={offered,restored:0};}
       }
     }
     if(!options.skipStorm&&!used.has('handStorm')&&!vanilla&&keywordQuota>0&&r()<Math.min(.75,(highRole==='offense'?1:highRole==='defense'?.4:1)*profile.keywords['疾驰']/Math.max(.05,1-profile.keywordCounts[0])*1.9)){
@@ -2763,7 +2854,8 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     const replayPrice=fanfares.reduce((s,a)=>s+a.price,0)*replayTiming;
     const replayRaw=fanfares.reduce((s,a)=>s+a.raw,0);
     const replaySearch=fanfares.reduce((s,a)=>s+searchCount(a.text),0)+card.abilities.filter(a=>phase(a.trigger)==='evolve').reduce((s,a)=>s+searchCount(a.text),0);
-    if(!signature&&!used.has('selfEvolve')&&!used.has('selfSuperEvolve')&&replaySearch<=searchCap('进化时')&&rarity>=1&&replayRaw>=(cost<=3?3:3.5+cost*.2)&&fanfares.some(a=>!a.emblemIds)&&card.abilities.length<5&&r()<.65*(fanfares.some(a=>targeted(a.text))&&phaseHasTarget('进化时')?EXTRA_TARGET_WEIGHT:1)&&replayPrice<=budget-floor-card.spent) {
+    const bronzeReplay=rarity===0&&cost>=2&&cost<=5&&fanfares.length===1&&fanfares[0].condition==='none'&&!fanfares[0].modeBranches&&fanfares[0].ids.length<=2;
+    if(!signature&&!used.has('selfEvolve')&&!used.has('selfSuperEvolve')&&replaySearch<=searchCap('进化时')&&(rarity>=1||bronzeReplay)&&replayRaw>=(bronzeReplay?2.2:cost<=3?3:3.5+cost*.2)&&fanfares.some(a=>!a.emblemIds)&&card.abilities.length<5&&r()<[.55,.4,.6,.65][rarity]*(fanfares.some(a=>targeted(a.text))&&phaseHasTarget('进化时')?EXTRA_TARGET_WEIGHT:1)&&replayPrice<=budget-floor-card.spent) {
       const exception=card.abilities.some(a=>a.trigger==='爆能强化')?'（【爆能强化】除外）':'';
       add({kind:'replay',trigger:'进化时',condition:'none',text:`【进化时】发动与【入场曲】相同的能力${exception}。`,price:replayPrice,raw:fanfares.reduce((s,a)=>s+a.raw,0),timingFactor:replayTiming,ids:['replay']});
     }
@@ -2827,7 +2919,43 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
         }else{card.abilities=saved;card.spent=spent;refreshUsed();}
       }
     }
-    let printedFloor=card.signature?Math.max(8,BODY[cost]-(card.bodyCompensation||0)):floor;
+    if(card.effectBodyReservation&&!card.signature&&!card.printedBody){
+      const restored=Math.min(card.effectBodyReservation.offered,Math.max(0,Math.floor(budget-card.spent-floor)));
+      floor+=restored;card.bodyAllowance=floor;card.effectBodyReservation.restored=restored;
+    }
+    // Mid/late followers need not keep a near-vanilla body while their one
+    // defining effect stays small. Reallocate to the SAME immediate atom;
+    // never append a canned bonus or pay for a future evo with today's body.
+    if(cost>=4&&!vanilla&&!card.signature&&!card.sacrificeDesign&&!card.bodyTrade&&!oversized&&!card.printedBody&&!['疾驰','潜行','handStorm','handDiscount','spellboostDiscount','selfCopy'].some(id=>used.has(id))){
+      const br=rng(hash(seed+'|body-core-reallocation'));
+      const transferable=new Set(['damage','aoe','splitDamage','tokenSummon','crystalHandSummon','experimentSummon','fusionArtifactSummon','teamBuff','allyBuff','massDebuff','statDebuff']);
+      const candidates=card.abilities.filter(a=>a.trigger==='入场曲'&&a.condition==='none'&&!a.modeBranches&&!a.emblemIds&&!a.summonGrants&&a.ids.filter(id=>transferable.has(id)).length===1&&a.ids.every(id=>transferable.has(id)||['coreAnchor','coreSupport','highCostFloor','bodyPayoff'].includes(id)));
+      const loss=Math.min(Math.floor(floor*.3),cost<=6?3:4),spare=Math.max(0,budget-floor-card.spent);
+      if(loss>=2&&floor-loss>=Math.max(4,cost)&&candidates.length&&br()<.65){
+        const target=candidates[Math.floor(br()*candidates.length)],actualIds=target.ids.filter(id=>transferable.has(id));
+        const replays=card.abilities.filter(a=>a.ids.includes('replay'));
+        const replayFactor=1+replays.reduce((s,a)=>s+(a.timingFactor||.38),0);
+        const saved=card.abilities;card.abilities=saved.filter(a=>a!==target);refreshUsed();
+        const stronger=makeEffect(target.raw+(loss+spare*.5)/replayFactor,target.trigger,'none',target.raw+(spare+1.5)/replayFactor,false,cost,false,{maxAtoms:1},actualIds);
+        card.abilities=saved;refreshUsed();
+        if(stronger&&stronger.raw>target.raw){
+          const delta=stronger.raw-target.raw,paid=Math.ceil(Math.max(0,delta*replayFactor-spare)-1e-8);
+          if(paid>=1&&paid<=loss){
+            const oldTokens=target.tokens||[],rawBefore=target.raw,bodyBefore=floor,helpers=target.ids.filter(id=>!transferable.has(id));
+            const index=card.abilities.indexOf(target);
+            card.abilities[index]={...stronger,kind:target.kind,trigger:target.trigger,condition:'none',text:'【入场曲】'+stronger.text,bodyText:stronger.text,price:stronger.raw,ids:[...helpers,...stronger.ids],major:target.major};
+            for(const replay of replays){replay.raw+=delta;replay.price+=delta*(replay.timingFactor||.38);}
+            card.spent+=delta*replayFactor;floor-=paid;card.bodyAllowance=floor;
+            card.bodyCoreReallocation={lost:paid,bodyBefore,rawBefore,rawAfter:stronger.raw,replayFactor,ids:actualIds};
+            card.tokens=card.tokens.filter(t=>!oldTokens.some(v=>v.id===t.id)||card.abilities.some(a=>(a.tokens||[]).some(v=>v.id===t.id)));
+            for(const t of stronger.tokens)if(!card.tokens.some(v=>v.id===t.id))card.tokens.push({...t});
+            refreshUsed();
+          }
+        }
+      }
+    }
+    let printedFloor=card.scopeDesign?floor:card.signature?Math.max(8,BODY[cost]-(card.bodyCompensation||0)):floor;
+    if(card.signature&&card.effectBodyReservation)printedFloor=Math.min(printedFloor,floor);
     if(vanilla){printedFloor=[0,3,5,9,10][cost];card.bodyAllowance=printedFloor;}
     if(cost>=2&&cost<=3&&!card.signature&&!card.sacrificeDesign){
       const early=card.abilities.filter(a=>a.kind!=='keyword'&&a.kind!=='alternate'&&!['进化时','超进化时'].includes(a.trigger));
@@ -3263,7 +3391,7 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     card.vanilla=card.abilities.length===0;
     return card;
   }
-  const api={HISTORY_TASKS,historyTaskGate,rollHistoryTask,rollProgressThreshold,header:(name,options)=>{const c=initialRoll(name,options);return {name:c.name,class:c.cls,rarity:c.rarity,cost:c.cost,type:c.type};},generate,nextVariant,randomName,randomMatchingName,tokenValue,tokenHandOffer,keywordPrice,healValue,multipleAttackPrice,designRoles,focusWeight,focusedDesignQuality,designIdentity,stormCardValue,scalingPlan,scalingBodyCap,scalingStormValue,ambushCardValue,invocationValue,strategyTags,strategyAffinity,interactionWeight,continuityWeight,highCostReadiness,immediateBoardValue,discountFrequency,earthUnitValue,lowSuperEvolutionQuality,evolutionOnlyQuality,lateGameQuality,transformationTaskValue,faithEngineProfile,CLASSES,RARITIES,THEMES,TOKENS,SUPPORT_CARDS,RELATED_CARDS,TYPES,VERSION};
+  const api={amuletReadiness:NONFOLLOWERS.readiness,amuletQuality:NONFOLLOWERS.quality,HISTORY_TASKS,historyTaskGate,rollHistoryTask,rollProgressThreshold,header:(name,options)=>{const c=initialRoll(name,options);return {name:c.name,class:c.cls,rarity:c.rarity,cost:c.cost,type:c.type};},generate,nextVariant,randomName,randomMatchingName,tokenValue,tokenHandOffer,keywordPrice,healValue,multipleAttackPrice,designRoles,focusWeight,focusedDesignQuality,designIdentity,stormCardValue,scalingPlan,scalingBodyCap,scalingStormValue,ambushCardValue,invocationValue,strategyTags,strategyAffinity,interactionWeight,continuityWeight,highCostReadiness,immediateBoardValue,discountFrequency,earthUnitValue,lowSuperEvolutionQuality,evolutionOnlyQuality,lateGameQuality,transformationTaskValue,faithEngineProfile,CLASSES,RARITIES,THEMES,TOKENS,SUPPORT_CARDS,RELATED_CARDS,TYPES,VERSION};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else root.SVWB=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

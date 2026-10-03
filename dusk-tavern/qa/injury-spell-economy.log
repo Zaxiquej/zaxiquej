@@ -1,0 +1,10 @@
+PASS Sammy is a four-star 4/6 sale engine, not a repeatable battlecry
+PASS Sammy cannot be bought at tiers one through three; three-star triples may discover it early
+PASS Penguin alone retains immediate entry and sale spells; Sammy turns it into a three-spell cycle
+PASS all tribes and tokens trigger sales, normal/golden copies stack and no per-round quota exists
+PASS self-sale, discard, merge and combat death never fabricate sale rewards
+PASS full hands cap generation; invalid sale cannot trigger a resource or spend gold
+PASS generated spells really trigger growth, combo and research without counting generation as casts
+PASS alchemist produces three/six casts; dessert wizard produces two/four dual-stat spells
+PASS AI retains a useful Sammy and plays its sale-generated spells during recruitment
+9 spell-economy groups passed.

@@ -1,0 +1,39 @@
+{
+  "version": "5.24.0",
+  "headers": 60000,
+  "cards": 2850,
+  "counts": {
+    "types": {
+      "spell": 12954,
+      "follower": 43342,
+      "amulet": 3704
+    },
+    "classes": [
+      4994,
+      7686,
+      7753,
+      7717,
+      8122,
+      7795,
+      7877,
+      8056
+    ],
+    "rarities": [
+      19356,
+      17773,
+      12179,
+      10692
+    ]
+  },
+  "chaos": [
+    9578,
+    13648,
+    17113,
+    19661
+  ],
+  "amulets": 811,
+  "withDeath": 227,
+  "underfilled": 1,
+  "neutral": 290,
+  "neutralSummon": 16
+}

@@ -1,0 +1,37 @@
+PASS fairy and bat armies are isolated by side and leave original formations unchanged
+PASS Roach has windfury without a play threshold; ranger attack uses the full army multiplier
+PASS fairy princess has one inheriting last word, without an extra avenge summon
+PASS Liza grows only army quality; each new fairy uses the previous quality
+PASS Liza and the blood queen trigger on more than six and eight summons/deaths respectively
+PASS ancient tree shields and strengthens only other starting forest minions
+PASS knight shield breaks permanently grow both attributes, with exact golden scaling
+PASS guardian shields eligible royal neighbors after surviving an attack
+PASS Albert restores a shield after every kill beyond normal and golden historical limits
+PASS Emilia trains every living royal on every shield break beyond six triggers
+PASS Otohime has one starting royal shield buff and no avenge knight generation
+PASS injury dragons grow permanently and Leviathan regenerates shields beyond the old cap
+PASS fire lizard only hurts neighbors twice; Fafnir uses its entire attack for the opening
+PASS many trainers fully resolve beyond eight triggers while sharing compact replay frames
+PASS skeleton beast has no grave opening buff; spirit guide has no recurring reborn income
+PASS bone king avenge triggers past three times; reaper keeps all death growth permanently
+PASS Minthe repeats every allied last word beyond two and doubles the extra repetitions when gold
+PASS Nephthys revives more than two originals, spends their tiers, and cannot reset an origin
+PASS Nephthys pays no grave when the tier is unaffordable or last words fill the board
+PASS rune volley scales two beams by spell count and stops when no target remains
+PASS Mithril has one uncapped pre-attack beam and no opening team attack buff
+PASS haven guardian keeps recovering shields after the second avenge trigger
+PASS Jeanne grants adjacent inheriting vows and has no separate self last word
+PASS Lapis transfers every other death with exact half/full bodies, without old opening buffs
+PASS Vampy inherits its body into bats; the queen has no extra summon aura
+PASS blood queen fires the full bat attack, including zero, and gold multiplies damage once
+PASS lifesteal has no six-heal cap and requires an unblocked damaging attack
+PASS blood empress uses all self damage for one team buff and no longer has windfury
+PASS artifact reconstruction consumes the full current scrap value, including its own death
+PASS Spinaria grows original artifacts after more than six deaths without affecting original inputs
+PASS artifact lord has only its full-scrap opening team buff and no summon aura
+PASS Bahamut breaks shields and gives four stats per real tribe, without four-tribe windfury
+PASS fight applies permanent combat growth exactly once across replay and save continuation
+  500 combats: maximum 65 replay frames, 32 attack steps
+PASS mixed golden combat fuzz preserves determinism, original stats, board bounds, and save-size limits
+
+34 v5 combat groups passed; 0 failed.

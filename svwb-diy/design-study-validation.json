@@ -1,0 +1,20 @@
+{
+  "version": "5.26.0",
+  "counts": {
+    "cards": 6000,
+    "counter": 26,
+    "counterSingle": 20,
+    "counterSplit": 6,
+    "reserved": 1372,
+    "reservationReturned": 990,
+    "bodyReallocated": 11,
+    "bronzeReplay": 79,
+    "super": 572
+  },
+  "examples": {
+    "bronzeReplay": "纵向设计回归17",
+    "damage": "纵向设计回归27",
+    "body": "纵向设计回归493",
+    "splitDamage": "纵向设计回归1126"
+  }
+}

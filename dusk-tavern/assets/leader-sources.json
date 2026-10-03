@@ -1,0 +1,213 @@
+{
+  "catalog": "https://svgdb.me/api/leaders",
+  "leaders": {
+    "rune": {
+      "name": "伊莎贝尔",
+      "art": "dusk-tavern/assets/leader-1903.webp",
+      "leaderId": "1903",
+      "sourceName": "Isabelle",
+      "sourceUrl": "https://svgdb.me/leaders/1903",
+      "imageSource": "https://svgdb.me/assets/leader/class_1903_profile.png",
+      "originalClan": 3
+    },
+    "forest": {
+      "name": "亚里莎",
+      "art": "dusk-tavern/assets/leader-1901.webp",
+      "leaderId": "1901",
+      "sourceName": "Arisa",
+      "sourceUrl": "https://svgdb.me/leaders/1901",
+      "imageSource": "https://svgdb.me/assets/leader/class_1901_profile.png",
+      "originalClan": 1
+    },
+    "dragon": {
+      "name": "罗文",
+      "art": "dusk-tavern/assets/leader-1904.webp",
+      "leaderId": "1904",
+      "sourceName": "Rowen",
+      "sourceUrl": "https://svgdb.me/leaders/1904",
+      "imageSource": "https://svgdb.me/assets/leader/class_1904_profile.png",
+      "originalClan": 4
+    },
+    "royal": {
+      "name": "艾莉卡",
+      "art": "dusk-tavern/assets/leader-1902.webp",
+      "leaderId": "1902",
+      "sourceName": "Erika",
+      "sourceUrl": "https://svgdb.me/leaders/1902",
+      "imageSource": "https://svgdb.me/assets/leader/class_1902_profile.png",
+      "originalClan": 2
+    },
+    "artifact": {
+      "name": "奥契丝",
+      "art": "dusk-tavern/assets/leader-808.webp",
+      "leaderId": "808",
+      "sourceName": "Orchis",
+      "sourceUrl": "https://svgdb.me/leaders/808",
+      "imageSource": "https://svgdb.me/assets/leader/class_808_profile.png",
+      "originalClan": 8
+    },
+    "haven": {
+      "name": "伊莉丝",
+      "art": "dusk-tavern/assets/leader-1907.webp",
+      "leaderId": "1907",
+      "sourceName": "Eris",
+      "sourceUrl": "https://svgdb.me/leaders/1907",
+      "imageSource": "https://svgdb.me/assets/leader/class_1907_profile.png",
+      "originalClan": 7
+    },
+    "blood": {
+      "name": "尤里亚斯",
+      "art": "dusk-tavern/assets/leader-1906.webp",
+      "leaderId": "1906",
+      "sourceName": "Urias",
+      "sourceUrl": "https://svgdb.me/leaders/1906",
+      "imageSource": "https://svgdb.me/assets/leader/class_1906_profile.png",
+      "originalClan": 6
+    },
+    "night": {
+      "name": "露娜",
+      "art": "dusk-tavern/assets/leader-1905.webp",
+      "leaderId": "1905",
+      "sourceName": "Luna",
+      "sourceUrl": "https://svgdb.me/leaders/1905",
+      "imageSource": "https://svgdb.me/assets/leader/class_1905_profile.png",
+      "originalClan": 5
+    },
+    "aria": {
+      "name": "阿丽雅",
+      "art": "dusk-tavern/assets/leader-401.webp",
+      "leaderId": "401",
+      "sourceName": "Aria",
+      "sourceUrl": "https://svgdb.me/leaders/401",
+      "imageSource": "https://svgdb.me/assets/leader/class_401_profile.png",
+      "originalClan": 1
+    },
+    "roland": {
+      "name": "雷瑟姆",
+      "art": "dusk-tavern/assets/leader-102.webp",
+      "leaderId": "102",
+      "sourceName": "Latham",
+      "sourceUrl": "https://svgdb.me/leaders/102",
+      "imageSource": "https://svgdb.me/assets/leader/class_102_profile.png",
+      "originalClan": 2,
+      "power": "钢铁阵线"
+    },
+    "forte": {
+      "name": "法露特",
+      "art": "dusk-tavern/assets/leader-104.webp",
+      "leaderId": "104",
+      "sourceName": "Forte",
+      "sourceUrl": "https://svgdb.me/leaders/104",
+      "imageSource": "https://svgdb.me/assets/leader/class_104_profile.png",
+      "originalClan": 4
+    },
+    "ceres": {
+      "name": "凯尔贝洛斯",
+      "art": "dusk-tavern/assets/leader-405.webp",
+      "leaderId": "405",
+      "sourceName": "Cerberus",
+      "sourceUrl": "https://svgdb.me/leaders/405",
+      "imageSource": "https://svgdb.me/assets/leader/class_405_profile.png",
+      "originalClan": 5,
+      "power": "冥府邀约"
+    },
+    "dorothy": {
+      "name": "桃乐丝",
+      "art": "dusk-tavern/assets/leader-403.webp",
+      "leaderId": "403",
+      "sourceName": "Daria",
+      "sourceUrl": "https://svgdb.me/leaders/403",
+      "imageSource": "https://svgdb.me/assets/leader/class_403_profile.png",
+      "originalClan": 3
+    },
+    "snow": {
+      "name": "拉米娜",
+      "art": "dusk-tavern/assets/leader-407.webp",
+      "leaderId": "407",
+      "sourceName": "Ramina",
+      "sourceUrl": "https://svgdb.me/leaders/407",
+      "imageSource": "https://svgdb.me/assets/leader/class_407_profile.png",
+      "originalClan": 7,
+      "power": "月兔归来"
+    },
+    "medusa": {
+      "name": "美杜莎",
+      "art": "dusk-tavern/assets/leader-806.webp",
+      "leaderId": "806",
+      "sourceName": "Medusa",
+      "sourceUrl": "https://svgdb.me/leaders/806",
+      "imageSource": "https://svgdb.me/assets/leader/class_806_profile.png",
+      "originalClan": 6
+    },
+    "deus": {
+      "name": "丝碧涅",
+      "art": "dusk-tavern/assets/leader-408.webp",
+      "leaderId": "408",
+      "sourceName": "Spinaria",
+      "sourceUrl": "https://svgdb.me/leaders/408",
+      "imageSource": "https://svgdb.me/assets/leader/class_408_profile.png",
+      "originalClan": 8,
+      "power": "创造物编织"
+    },
+    "angel": {
+      "name": "赛莉娜",
+      "art": "dusk-tavern/assets/leader-2607.webp",
+      "leaderId": "2607",
+      "sourceName": "Selena",
+      "sourceUrl": "https://svgdb.me/leaders/2607",
+      "imageSource": "https://svgdb.me/assets/leader/class_2607_profile.png",
+      "originalClan": 7,
+      "power": "圣堂庇护"
+    },
+    "goblin": {
+      "name": "邦妮",
+      "art": "dusk-tavern/assets/leader-2602.webp",
+      "leaderId": "2602",
+      "sourceName": "Bunny",
+      "sourceUrl": "https://svgdb.me/leaders/2602",
+      "imageSource": "https://svgdb.me/assets/leader/class_2602_profile.png",
+      "originalClan": 2,
+      "power": "赏金预支"
+    },
+    "athena": {
+      "name": "布罗蒂娅",
+      "art": "dusk-tavern/assets/leader-807.webp",
+      "leaderId": "807",
+      "sourceName": "Alexiel",
+      "sourceUrl": "https://svgdb.me/leaders/807",
+      "imageSource": "https://svgdb.me/assets/leader/class_807_profile.png",
+      "originalClan": 7,
+      "power": "神盾庇护"
+    },
+    "windgod": {
+      "name": "塞尔温",
+      "art": "dusk-tavern/assets/leader-101.webp",
+      "leaderId": "101",
+      "sourceName": "Selwyn",
+      "sourceUrl": "https://svgdb.me/leaders/101",
+      "imageSource": "https://svgdb.me/assets/leader/class_101_profile.png",
+      "originalClan": 1,
+      "power": "鹰眼号令"
+    },
+    "bahamut": {
+      "name": "伊昂",
+      "art": "dusk-tavern/assets/leader-1908.webp",
+      "leaderId": "1908",
+      "sourceName": "Yuwan",
+      "sourceUrl": "https://svgdb.me/leaders/1908",
+      "imageSource": "https://svgdb.me/assets/leader/class_1908_profile.png",
+      "originalClan": 8,
+      "power": "次元威压"
+    },
+    "olivia": {
+      "name": "奥兹国的大魔女",
+      "art": "dusk-tavern/assets/leader-803.webp",
+      "leaderId": "803",
+      "sourceName": "Wizardess of Oz",
+      "sourceUrl": "https://svgdb.me/leaders/803",
+      "imageSource": "https://svgdb.me/assets/leader/class_803_profile.png",
+      "originalClan": 3,
+      "power": "禁书研习"
+    }
+  }
+}

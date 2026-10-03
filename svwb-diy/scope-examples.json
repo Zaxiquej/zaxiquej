@@ -1,0 +1,508 @@
+[
+  {
+    "version": "5.26.0",
+    "name": "虹卡架构回归13",
+    "seed": 4206899410,
+    "type": "follower",
+    "class": 7,
+    "rarity": 3,
+    "cost": 5,
+    "attack": 4,
+    "health": 5,
+    "abilities": [
+      {
+        "kind": "signature",
+        "trigger": "入场曲",
+        "condition": "none",
+        "text": "【入场曲】选择对手的战场上的1个随从，对其造成5点伤害。",
+        "bodyText": "选择对手的战场上的1个随从，对其造成5点伤害。",
+        "raw": 6.25,
+        "price": 6.25,
+        "ids": [
+          "damage"
+        ],
+        "tokens": [],
+        "major": true
+      },
+      {
+        "kind": "signature",
+        "trigger": "爆能强化",
+        "condition": "enhance",
+        "text": "【爆能强化 7】由原本的指定1个转变为全部。",
+        "bodyText": "【爆能强化 7】由原本的指定1个转变为全部。",
+        "raw": 12.75,
+        "price": 3.9800000000000004,
+        "enhanceCost": 7,
+        "ids": [
+          "scopeUpgrade",
+          "enhance"
+        ],
+        "tokens": [],
+        "major": true,
+        "scopeUpgrade": {
+          "effectId": "damage",
+          "base": "选择对手的战场上的1个随从，对其造成5点伤害。",
+          "expanded": "对对手的战场上的所有随从造成5点伤害。",
+          "baseRaw": 6.25,
+          "expandedRaw": 19,
+          "credit": 4.8,
+          "replacesBase": true
+        }
+      },
+      {
+        "kind": "signature",
+        "trigger": "进化时",
+        "condition": "none",
+        "text": "【进化时】发动与【入场曲】相同的能力（爆能强化除外）。",
+        "bodyText": "发动与【入场曲】相同的能力（爆能强化除外）。",
+        "raw": 6.25,
+        "price": 2.375,
+        "timingFactor": 0.38,
+        "ids": [
+          "replay"
+        ],
+        "tokens": []
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 24.657035466097295,
+    "spent": 12.61,
+    "bodyAllowance": 9,
+    "theme": "机巧 · 傀儡与创造物",
+    "bodyHeadroom": 1,
+    "effectBodyReservation": {
+      "offered": 2,
+      "restored": 0
+    },
+    "signature": true,
+    "scopeDesign": {
+      "effectId": "damage",
+      "fee": 7,
+      "replacesBase": true
+    },
+    "archetype": "assembled-scope",
+    "vanilla": false,
+    "identityAttempt": 1
+  },
+  {
+    "version": "5.26.0",
+    "name": "虹卡架构回归35",
+    "seed": 2293956654,
+    "type": "follower",
+    "class": 7,
+    "rarity": 3,
+    "cost": 6,
+    "attack": 7,
+    "health": 6,
+    "abilities": [
+      {
+        "kind": "signature",
+        "trigger": "入场曲",
+        "condition": "none",
+        "text": "【入场曲】选择对手的战场上的1个随从，使其-4/-5。",
+        "bodyText": "选择对手的战场上的1个随从，使其-4/-5。",
+        "raw": 11,
+        "price": 11,
+        "ids": [
+          "statDebuff"
+        ],
+        "tokens": [],
+        "major": true
+      },
+      {
+        "kind": "signature",
+        "trigger": "爆能强化",
+        "condition": "enhance",
+        "text": "【爆能强化 9】由原本的指定1个转变为全部。",
+        "bodyText": "【爆能强化 9】由原本的指定1个转变为全部。",
+        "raw": 15,
+        "price": 3.920000000000001,
+        "enhanceCost": 9,
+        "ids": [
+          "scopeUpgrade",
+          "enhance"
+        ],
+        "tokens": [],
+        "major": true,
+        "scopeUpgrade": {
+          "effectId": "statDebuff",
+          "base": "选择对手的战场上的1个随从，使其-4/-5。",
+          "expanded": "使对手的战场上的所有随从-4/-5。",
+          "baseRaw": 11,
+          "expandedRaw": 26,
+          "credit": 7.199999999999999,
+          "replacesBase": true
+        }
+      },
+      {
+        "kind": "signature",
+        "trigger": "进化时",
+        "condition": "none",
+        "text": "【进化时】发动与【入场曲】相同的能力（爆能强化除外）。",
+        "bodyText": "发动与【入场曲】相同的能力（爆能强化除外）。",
+        "raw": 11,
+        "price": 4.18,
+        "timingFactor": 0.38,
+        "ids": [
+          "replay"
+        ],
+        "tokens": []
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 32.27276524789632,
+    "spent": 19.1,
+    "bodyAllowance": 13,
+    "theme": "机巧 · 傀儡与创造物",
+    "bodyHeadroom": 1,
+    "signature": true,
+    "scopeDesign": {
+      "effectId": "statDebuff",
+      "fee": 9,
+      "replacesBase": true
+    },
+    "archetype": "assembled-scope",
+    "bodyBalance": {
+      "before": [
+        9,
+        4
+      ],
+      "after": [
+        7,
+        6
+      ]
+    },
+    "corePower": 37,
+    "vanilla": false,
+    "identityAttempt": 2
+  },
+  {
+    "version": "5.26.0",
+    "name": "虹卡架构回归335",
+    "seed": 3311817139,
+    "type": "follower",
+    "class": 2,
+    "rarity": 3,
+    "cost": 4,
+    "attack": 3,
+    "health": 3,
+    "abilities": [
+      {
+        "kind": "signature",
+        "trigger": "入场曲",
+        "condition": "none",
+        "text": "【入场曲】选择自己的战场上的1个其他随从，使其+1/+2。",
+        "bodyText": "选择自己的战场上的1个其他随从，使其+1/+2。",
+        "raw": 3,
+        "price": 3,
+        "ids": [
+          "allyBuff"
+        ],
+        "tokens": [],
+        "major": true
+      },
+      {
+        "kind": "signature",
+        "trigger": "爆能强化",
+        "condition": "enhance",
+        "text": "【爆能强化 7】由原本的指定1个转变为全部。",
+        "bodyText": "【爆能强化 7】由原本的指定1个转变为全部。",
+        "raw": 6,
+        "price": 0.8,
+        "enhanceCost": 7,
+        "ids": [
+          "scopeUpgrade",
+          "enhance"
+        ],
+        "tokens": [],
+        "major": true,
+        "scopeUpgrade": {
+          "effectId": "allyBuff",
+          "base": "选择自己的战场上的1个其他随从，使其+1/+2。",
+          "expanded": "使自己的战场上的其他所有随从+1/+2。",
+          "baseRaw": 3,
+          "expandedRaw": 9,
+          "credit": 7.199999999999999,
+          "replacesBase": true
+        }
+      },
+      {
+        "kind": "signature",
+        "trigger": "进化时",
+        "condition": "none",
+        "text": "【进化时】发动与【入场曲】相同的能力（爆能强化除外）。",
+        "bodyText": "发动与【入场曲】相同的能力（爆能强化除外）。",
+        "raw": 3,
+        "price": 1.1400000000000001,
+        "timingFactor": 0.38,
+        "ids": [
+          "replay"
+        ],
+        "tokens": []
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 18.055930383317172,
+    "spent": 4.94,
+    "bodyAllowance": 6,
+    "theme": "王旗 · 铺场与爆能",
+    "effectBodyReservation": {
+      "offered": 3,
+      "restored": 0
+    },
+    "signature": true,
+    "scopeDesign": {
+      "effectId": "allyBuff",
+      "fee": 7,
+      "replacesBase": true
+    },
+    "archetype": "assembled-scope",
+    "midBoardTrade": {
+      "boardValue": 3,
+      "combinedCap": 11,
+      "cap": 6,
+      "before": 6,
+      "lost": 0,
+      "drawbackCredit": 0
+    },
+    "vanilla": false,
+    "identityAttempt": 2
+  },
+  {
+    "version": "5.26.0",
+    "name": "虹卡架构回归560",
+    "seed": 21865831,
+    "type": "follower",
+    "class": 7,
+    "rarity": 3,
+    "cost": 6,
+    "attack": 9,
+    "health": 5,
+    "abilities": [
+      {
+        "kind": "signature",
+        "trigger": "入场曲",
+        "condition": "none",
+        "text": "【入场曲】选择对手的战场上的1个随从，使其消失。",
+        "bodyText": "选择对手的战场上的1个随从，使其消失。",
+        "raw": 8,
+        "price": 8,
+        "ids": [
+          "banish"
+        ],
+        "tokens": [],
+        "major": true
+      },
+      {
+        "kind": "signature",
+        "trigger": "爆能强化",
+        "condition": "enhance",
+        "text": "【爆能强化 10】由原本的指定1个转变为全部。",
+        "bodyText": "【爆能强化 10】由原本的指定1个转变为全部。",
+        "raw": 16,
+        "price": 3.3600000000000003,
+        "enhanceCost": 10,
+        "ids": [
+          "scopeUpgrade",
+          "enhance"
+        ],
+        "tokens": [],
+        "major": true,
+        "scopeUpgrade": {
+          "effectId": "banish",
+          "base": "选择对手的战场上的1个随从，使其消失。",
+          "expanded": "使对手的战场上的所有随从消失。",
+          "baseRaw": 8,
+          "expandedRaw": 24,
+          "credit": 9.6,
+          "replacesBase": true
+        }
+      },
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【屏障】",
+        "price": 2.88,
+        "raw": 2.88,
+        "ids": [
+          "屏障"
+        ]
+      },
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【毁灭】",
+        "price": 0.1,
+        "raw": 0.1,
+        "ids": [
+          "毁灭"
+        ]
+      },
+      {
+        "kind": "keyword",
+        "trigger": "",
+        "condition": "none",
+        "text": "【突进】",
+        "price": 0,
+        "raw": 0,
+        "ids": [
+          "突进"
+        ]
+      }
+    ],
+    "tokens": [],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 37.5076828590259,
+    "spent": 14.34,
+    "bodyAllowance": 14,
+    "theme": "机巧 · 傀儡与创造物",
+    "bodyHeadroom": 1,
+    "chaos": true,
+    "chaosPower": {
+      "baseBudget": 32.07430750764907,
+      "bodyBonus": 2,
+      "effectMultiplier": 1.18
+    },
+    "signature": true,
+    "scopeDesign": {
+      "effectId": "banish",
+      "fee": 10,
+      "replacesBase": true
+    },
+    "archetype": "assembled-scope",
+    "barrierBodyTrade": {
+      "cap": 14,
+      "extra": 0,
+      "lost": 1,
+      "before": [
+        9,
+        6
+      ]
+    },
+    "corePower": 26.98,
+    "vanilla": false,
+    "identityAttempt": 1
+  },
+  {
+    "version": "5.26.0",
+    "name": "虹卡架构回归605",
+    "seed": 2772133839,
+    "type": "follower",
+    "class": 3,
+    "rarity": 3,
+    "cost": 7,
+    "attack": 4,
+    "health": 10,
+    "abilities": [
+      {
+        "kind": "signature",
+        "trigger": "入场曲",
+        "condition": "none",
+        "text": "【入场曲】选择对手的战场上的1个随从，使其变身为『泥尘巨像』。",
+        "bodyText": "选择对手的战场上的1个随从，使其变身为『泥尘巨像』。",
+        "raw": 5.5,
+        "price": 5.5,
+        "ids": [
+          "transformEnemy"
+        ],
+        "tokens": [
+          {
+            "id": 90031110,
+            "name": "泥尘巨像",
+            "class": 3,
+            "cost": 1,
+            "attack": 2,
+            "health": 2,
+            "text": "",
+            "tribe": "巨像",
+            "tribeId": 12
+          }
+        ],
+        "major": true
+      },
+      {
+        "kind": "signature",
+        "trigger": "爆能强化",
+        "condition": "enhance",
+        "text": "【爆能强化 10】由原本的指定1个转变为全部。",
+        "bodyText": "【爆能强化 10】由原本的指定1个转变为全部。",
+        "raw": 12.5,
+        "price": 2.920000000000001,
+        "enhanceCost": 10,
+        "ids": [
+          "scopeUpgrade",
+          "enhance"
+        ],
+        "tokens": [],
+        "major": true,
+        "scopeUpgrade": {
+          "effectId": "transformEnemy",
+          "base": "选择对手的战场上的1个随从，使其变身为『泥尘巨像』。",
+          "expanded": "使对手的战场上的所有随从变身为『泥尘巨像』。",
+          "baseRaw": 5.5,
+          "expandedRaw": 18,
+          "credit": 7.199999999999999,
+          "replacesBase": true
+        }
+      },
+      {
+        "kind": "signature",
+        "trigger": "进化时",
+        "condition": "none",
+        "text": "【进化时】发动与【入场曲】相同的能力（爆能强化除外）。",
+        "bodyText": "发动与【入场曲】相同的能力（爆能强化除外）。",
+        "raw": 5.5,
+        "price": 2.09,
+        "timingFactor": 0.38,
+        "ids": [
+          "replay"
+        ],
+        "tokens": []
+      }
+    ],
+    "tokens": [
+      {
+        "id": 90031110,
+        "name": "泥尘巨像",
+        "class": 3,
+        "cost": 1,
+        "attack": 2,
+        "health": 2,
+        "text": "",
+        "tribe": "巨像",
+        "tribeId": 12
+      }
+    ],
+    "emblems": [],
+    "faiths": [],
+    "alternateForms": [],
+    "budget": 37.350757703743874,
+    "spent": 10.51,
+    "bodyAllowance": 14,
+    "theme": "秘法 · 增幅与土印",
+    "highRole": "flexible",
+    "highCostBonus": 1.8,
+    "signature": true,
+    "scopeDesign": {
+      "effectId": "transformEnemy",
+      "fee": 10,
+      "replacesBase": true
+    },
+    "archetype": "assembled-scope",
+    "corePower": 23.5,
+    "vanilla": false
+  }
+]

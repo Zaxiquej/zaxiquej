@@ -1,0 +1,20 @@
+PASS 169 verified followers: eight added per tribe, no duplicate identity or accidental effect collision
+PASS every token triples across hand and board, preserves buffs and keywords, discovers legal next-tier minions
+PASS large token gifts merge repeatedly without burning reward slots or mutating combat summons
+PASS tier-one shield knight has 2/2 stats and gains one permanent attack and health per broken shield
+PASS spell research buffs only nonzero spell attributes and does not create free coins, shields or resources
+PASS research applies once before Merlin spreads the actual boosted payload
+PASS research entry is repeatable and golden; cries train followers and research entry repeats; commander no longer adds spell research
+PASS third-spell research and payoff counters persist through end turn and save/load
+PASS combo research and adjacent fairy rally do not turn the new combat summoner into recruitment resources
+PASS high-tier dragon brood consumes actual shop stats without depending on tavern tier
+PASS grave expenditure feeds research or team growth; insufficient grave gives no reward
+PASS amulet cultivation and echo scale payloads, but count expiration and copies only once
+PASS paid self-harm trains spells and health, even with healing; zero actual damage cannot trigger it
+PASS module research has separate shared spell and weapon axes, with a scrap payoff
+PASS damage records raw simultaneous hits, shield blocks, injury-growth and overkill without mutating inputs
+PASS new combat engines apply equally on both sides and golden deathrattles show inherited bodies
+PASS dragon injury mentor, attack trainer and token-death growth create permanent ledgers
+PASS AI uses real research cards and persists new counters with no special stats
+PASS legacy progress migrates and new corrupted research/replay counters are rejected
+19 v7 rules groups passed.

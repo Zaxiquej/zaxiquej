@@ -74,7 +74,8 @@ for(let i=0;i<60000;i++){
  spending[c.type][0]+=c.spent/c.budget;spending[c.type][1]++;
  if(c.cost>=7&&c.spent/c.budget<.5)spending[c.type][2]++;
 }
-for(const [type,ratio]of Object.entries({follower:.6,spell:.2,amulet:.2}))assert(Math.abs(counts[type]/60000-ratio)<.015);
+const officialTypes=require('./calibration').typeStats.counts,totalOfficial=Object.values(officialTypes).reduce((a,b)=>a+b,0);
+for(const [type,n]of Object.entries(officialTypes))assert(Math.abs(counts[type]/60000-n/totalOfficial)<.015);
 assert(coverage.faith/counts.follower<.01&&coverage.faith>20);
 assert(coverage.selfCopy>coverage.faith*5&&coverage.selfCopy/counts.follower>.02);
 assert(coverage.storm/counts.follower>.05&&coverage.storm/counts.follower<.11);assert(coverage.cheapStorm>50);

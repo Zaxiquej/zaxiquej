@@ -5,7 +5,7 @@ function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefine
 function rich(text){const p=el('p',undefined,'ability');text.split(/(【[^】]+】)/g).forEach(t=>p.append(el(t.startsWith('【')?'b':'span',t)));return p;}
 function displayAbilities(c){
   const order={'与本卡牌融合时':-.5,'法术':2,'入场曲':2,'爆能强化':2.5,'启动':3,'攻击时':3,'交战时':3.1,'在牌组中发动':1.1,'本卡牌被【瞬念召唤】时':1.2,'谢幕曲':4,'进化时':5,'本随从进化时':5.1,'超进化时':6};
-  const rank=a=>a.kind==='fusion'?-1:a.kind==='keyword'?0:!a.trigger?1:(order[a.trigger]??4.5);
+  const rank=a=>a.kind==='fusion'?-1:a.kind==='keyword'?0:a.ids?.includes('spellboostCounter')?1:!a.trigger?1:(order[a.trigger]??4.5);
   // Move complete clauses, retaining conditions and mode branches as one unit.
   // This presentation is shared by the page and clipboard; seeded data stays intact.
   const targeted=a=>/选择[^。\n]*?(?:随从|护符|卡牌|手牌|主战者)/.test(a.text);

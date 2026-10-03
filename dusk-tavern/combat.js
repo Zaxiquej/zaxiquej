@@ -1,0 +1,185 @@
+(function(root){
+'use strict';
+const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null);
+const S=root.TavernScaling||(typeof require!=='undefined'?require('./scaling.js'):null);
+function run(s,left,right,metaL={},metaR={},helpers){
+ const {copy,make,pick,rand,damageCap=15}=helpers,def=c=>D.byId[c.id],mult=c=>(c.golden?2:1)*(c.effectScale||1);
+ const sides=[copy(left),copy(right)],meta=[metaL,metaR],progress=[S.read(metaL),S.read(metaR)],events=[],deadCount=[0,0],grave=[metaL.grave||0,metaR.grave||0],scrap=[metaL.scrap||0,metaR.scrap||0],healing=[0,0],permanent=[{},{}],discount=[0,0],counters=new Map(),revivedOrigins=new Set(),impacts=[];let serial=100000,steps=0;
+ const growthContext=side=>({...meta[side],progress:progress[side],grave:grave[side],scrap:scrap[side]});
+ const alive=i=>sides[i].filter(c=>c.health>0);
+ const snap=(text,from=null,to=null,kind='effect')=>events.push({text,from,to,kind,impacts:impacts.splice(0),grave:[...grave],scrap:[...scrap],progress:copy(progress),boards:copy(sides)});
+ const buff=(c,a,h)=>{if(c){if(a>0||h>0)progress[c.side].buffs++;c.attack=Math.max(0,c.attack+a);c.health+=h;c.maxHealth+=h;}};
+ const adjacent=c=>{const i=sides[c.side].indexOf(c);return i<0?[]:[sides[c.side][i-1],sides[c.side][i+1]].filter(x=>x&&x.health>0);};
+ const bump=(c,key)=>{const k=c.side+':'+(c.originUid||c.battleId)+':'+key,n=(counters.get(k)||0)+1;counters.set(k,n);return n;};
+ const addShield=c=>S.addShield(c);
+ const addGuard=c=>{if(c&&!c.keywords.includes('taunt'))c.keywords.push('taunt');};
+ function grow(c,a,h){if(!c)return;buff(c,a,h);if(c.originUid){const ledger=permanent[c.side][c.originUid]||(permanent[c.side][c.originUid]={attack:0,health:0});ledger.attack+=a;ledger.health+=h;}}
+ sides.forEach((side,i)=>side.forEach(c=>{c.battleId=++serial;c.side=i;c.originUid=c.uid;c.maxHealth=c.health;c.startHealth=c.health;c.reborn=def(c).effect==='reborn'||!!c.heroReborn;c.resurrected=false;c.vow=0;c.legionApplied=0;}));
+ function applyLegion(c){if(def(c).tribe!=='night')return;const n=progress[c.side].legionAttack-(c.legionApplied||0);if(n)buff(c,n,0);c.legionApplied=progress[c.side].legionAttack;}
+ function growLegion(side,n,source){progress[side].legionAttack+=n;alive(side).forEach(applyLegion);snap(def(source).name+' · 死灵军势永久 +'+n+' 攻击（累计 +'+progress[side].legionAttack+'）。',null,source.battleId,'grow');}
+ function breakShield(c,all=false){
+  if(!S.shieldCount(c))return;c.shieldLayers=all?0:S.shieldCount(c)-1;if(!c.shieldLayers)c.keywords=c.keywords.filter(k=>k!=='shield');
+  if(c.id==='royal0'){grow(c,mult(c),mult(c));snap(def(c).name+' · 不屈之光：永久 +'+mult(c)+'/+'+mult(c)+'。',null,c.battleId,'grow');}
+  let royalTriggers=0,royalSource=null;
+  for(const x of alive(c.side)){
+   if(x.id==='royal6'){const n=S.growthAmount(growthContext(c.side),'shieldBuff')*mult(x);alive(c.side).filter(y=>def(y).tribe==='royal').forEach(y=>grow(y,n,n));royalTriggers++;royalSource=royalSource||x;}
+   if(def(x).effect==='shieldMentor'&&x.battleId!==c.battleId){const m=mult(x);grow(c,2*m,2*m);snap(def(x).name+' · 屏障援护：'+def(c).name+' 永久 +'+2*m+'/+'+2*m+'。',x.battleId,c.battleId,'grow');}
+   if(def(x).effect==='shieldChampion'){const m=mult(x);grow(x,4*m,4*m);snap(def(x).name+' · 不屈战意：永久 +'+4*m+'/+'+4*m+'。',null,x.battleId,'grow');}
+   if(def(x).effect==='shieldResearch'){const n=2*mult(x);progress[c.side].spellcraft+=n;snap(def(x).name+' · 魔导回收：法术研习 +'+n+'。',null,x.battleId,'grow');}
+   if(x.id==='neutral3')adjacent(c).forEach(y=>buff(y,2*mult(x),2*mult(x)));
+  }
+  if(royalTriggers)snap(def(royalSource).name+' · 白银传承：'+royalTriggers+' 次皇家军团永久养成。',null,royalSource.battleId,'grow');
+ }
+ function damage(c,n,destroy=false){
+  if(!c||c.health<=0||n<=0)return;impacts.push({target:c.battleId,amount:n,blocked:c.keywords.includes('shield')});if(c.keywords.includes('shield')){breakShield(c);return;}
+  c.health-=n;if(c.health<=0)return;if(destroy){c.health=0;impacts.at(-1).destroyed=true;snap('毁灭 · '+def(c).name+' 被摧毁。',null,c.battleId,'destroy');return;}const m=mult(c);
+  if(c.id==='dragon2')grow(c,D.tuning.dragonHurt*m,D.tuning.dragonHurt*m);
+  if(def(c).effect==='tavernFury'){progress[c.side].tavernAttack+=2*m;progress[c.side].tavernHealth+=3*m;snap(def(c).name+' · 赤怒培育：酒馆永久 +'+2*m+'/+'+3*m+'。',null,c.battleId,'grow');}if(def(c).tribe==='dragon')for(const x of alive(c.side).filter(x=>def(x).effect==='dragonVitality')){const n=(6+Math.floor((c.startHealth||c.maxHealth)/10))*mult(x);grow(c,n,2*n);}
+  if(c.id==='dragon5'&&bump(c,'injuries')%3===0){addShield(c);snap(def(c).name+' · 深海龙鳞：重新获得屏障。',null,c.battleId,'shield');}
+  let dragonTriggers=0,dragonGain=0,dragonTarget=null;
+  if(def(c).tribe==='dragon')for(const x of alive(c.side)){
+   if(x.id==='dragon4'){const target=pick(s,alive(c.side).filter(y=>y.battleId!==c.battleId&&def(y).tribe==='dragon'));if(target){const gain=D.tuning.dragonTrainer*mult(x);grow(target,gain,gain);dragonTriggers++;dragonGain+=gain;dragonTarget=dragonTarget||target;}}
+  }
+  // One damage can trigger many trainers. Resolve every trigger, then store one
+  // complete board frame so long growth chains remain readable and saveable.
+  if(dragonTriggers)snap('龙血培育：'+dragonTriggers+' 次触发，龙族永久合计 +'+dragonGain+'/+'+dragonGain+'。',null,dragonTarget.battleId,'grow');
+  else if(c.id==='dragon2')snap(def(c).name+' · 逆鳞：永久 +'+(D.tuning.dragonHurt*m)+'/+'+(D.tuning.dragonHurt*m)+'。',null,c.battleId,'grow');
+ }
+ function summon(side,id,a,h,index,extra={},original=null,reason='summon'){
+  if(sides[side].length>=7)return null;
+  const entryWitnesses=[...alive(side)];
+  const c=original?copy(original):make(s,id,{attack:a,health:h});Object.assign(c,{attack:a,health:h,maxHealth:h,battleId:++serial,side,reborn:false},extra);
+  if(!original){delete c.originUid;c.resurrected=false;c.vow=0;}
+  if(original&&def(c).keywords?.includes('stealth')&&!c.keywords.includes('stealth'))c.keywords.push('stealth');
+  if(original&&!extra.keepShield){c.keywords=c.keywords.filter(k=>k!=='shield');c.shieldLayers=0;}
+  
+  if(c.id==='fairy')buff(c,progress[side].fairy,progress[side].fairy);
+  if(c.id==='bat'){const n=S.bat(meta[side]);buff(c,n,n);}
+  if(extra.grantShield)addShield(c);sides[side].splice(Math.min(index,sides[side].length),0,c);
+  progress[side].battleEntries++;applyLegion(c);
+  for(const x of entryWitnesses){if(def(x).effect==='legionEngine')growLegion(side,S.growthAmount(growthContext(side),'legionEngine')*mult(x),x);if(def(x).effect==='rebirthLegion'&&['reborn','revive'].includes(reason))growLegion(side,3*mult(x),x);}
+  if(c.id==='fairy')for(const x of alive(side).filter(x=>x.id==='forest10')){const n=Math.floor(x.attack/2)*mult(x);buff(c,n,n);}
+  if(!original)c.startHealth=c.maxHealth;
+
+
+  snap((reason==='reborn'?'复生 ':reason==='revive'?'复活 ':'召唤 ')+def(c).name+'（'+c.attack+'/'+c.health+'）'+(def(c).effect==='mimi'?' · 谢幕曲：随机敌方受到 '+(2*mult(c))+' 点伤害':def(c).effect==='coco'?' · 谢幕曲：随机友方 +'+(2*mult(c))+'/+'+(2*mult(c)):''),null,c.battleId,'summon');return c;
+ }
+ const hasLastWords=c=>D.lastWordEffects.includes(def(c).effect)||c.id==='dragon1'||c.vow>0;
+ function lastWords(c,index){const side=c.side,e=def(c).effect,m=mult(c);
+  if(e==='legionLast')growLegion(side,3*m,c);
+  if(e==='undyingHounds')for(const [i,id]of ['hound','coco'].entries())summon(side,id,4*m,4*m,index+i,{reborn:true,effectScale:m});
+  if(e==='marchArmy'){const n=Math.max(1,progress[side].battleEntries*m);for(let i=0;i<2;i++)summon(side,'skeleton',n,n,index+i);}
+  if(e==='bellLast'){const target=pick(s,alive(side));if(target){buff(target,2*m,2*m);snap(def(c).name+' · 余音：友方 +'+2*m+'/+'+2*m+'。',null,target.battleId,'grow');}}
+  if(e==='constructPair')for(const [i,id]of ['mysticArtifact','spinariaArtifact'].entries()){const d=D.byId[id];summon(side,id,d.attack*m,d.health*m,index+i,{effectScale:m});}
+  if(e==='radiantLast'){const target=pick(s,alive(1-side));if(target){const n=c.attack*m;damage(target,n);snap(def(c).name+' · 谢幕炮击：'+n+' 点伤害。',c.battleId,target.battleId,'spell');}}
+  if(e==='researchLast'){progress[side].arms+=3*m;snap(def(c).name+' · 遗存研究：武装研习 +'+(3*m)+'。',null,c.battleId,'grow');}
+  if(e==='battleBrood'){const b=def(c).brood;for(let i=0;i<b.count;i++)summon(side,b.id,b.attack*m,b.health*m+(b.inheritHealth?Math.floor(c.maxHealth/2):0),index+i,{effectScale:m});}
+  if(e==='graveLegacy'&&grave[side]>=6){const n=S.growthAmount(growthContext(side),'graveLegacy')*m;grave[side]-=6;alive(side).filter(x=>def(x).tribe==='night').forEach(x=>grow(x,n,n));snap(def(c).name+' · 墓场传承：死灵永久 +'+n+'/+'+n+'。');}
+  if(['fairyCrown','graveArmy','batCrown','scrapCrown'].includes(e)){
+   const id=e==='fairyCrown'?'fairy':e==='graveArmy'?'skeleton':e==='batCrown'?'bat':'ancientArtifact',bonus=e==='graveArmy'?grave[side]:e==='scrapCrown'?scrap[side]:0;
+   const a=(Math.floor(c.attack/(e==='fairyCrown'?1:2))+bonus)*m,h=Math.max(1,(Math.floor(c.maxHealth/2)+bonus)*m);
+   for(let i=0;i<(['batCrown','fairyCrown'].includes(e)?3:2);i++)summon(side,e==='scrapCrown'?['radiantArtifact','mysticArtifact'][i]:id,a,h,index+i,e==='scrapCrown'?{effectScale:m}:{});
+  }
+  if(e==='graveLast'){grave[side]+=6*m;snap(def(c).name+' · 死者书页：墓场 +'+(6*m)+'。');}
+  if(e==='tavernLegacy'){const a=Math.floor(c.attack/4)*m,h=Math.floor(c.maxHealth/4)*m;progress[side].tavernAttack+=a;progress[side].tavernHealth+=h;snap(def(c).name+' · 龙骸沃土：酒馆永久 +'+a+'/+'+h+'。',null,c.battleId,'grow');}
+  if(e==='batNest')for(let i=0;i<2;i++)summon(side,'bat',2*m,m,index+i);
+  if(e==='batDeath')for(let i=0;i<2;i++)summon(side,'bat',2*m+Math.floor(c.attack/2),m+Math.floor(c.maxHealth/2),index+i);
+  if(e==='analyzerDeath')summon(side,'analyzer',2*m,2*m,index,{effectScale:m});
+  if(e==='artifactDeath'){const n=S.artifactBody({scrap:scrap[side]},m);for(let i=0;i<2;i++)summon(side,'ancientArtifact',n,n,index+i);}
+  if(e==='analyzerLast'){const target=pick(s,alive(side).filter(x=>def(x).tribe==='artifact'));if(target){buff(target,m,m);snap(def(c).name+' · 解析谢幕：友方造物 +'+m+'/+'+m+'。',null,target.battleId,'grow');}}
+  if(e==='fairy')summon(side,'fairy',m,m,index);
+  if(e==='skeleton')summon(side,'skeleton',2*m,m,index);
+  if(e==='fairy2')for(let n=0;n<2;n++)summon(side,'fairy',3*m+Math.floor(c.attack/2),3*m+Math.floor(c.maxHealth/2),index+n);
+  if(e==='hounds'){summon(side,'hound',2*m+Math.floor(c.attack/2),m,index,{effectScale:m});summon(side,'coco',m,2*m+Math.floor(c.maxHealth/2),index+1,{effectScale:m});}
+  if(e==='mimi'){const target=pick(s,alive(1-side));damage(target,2*m);if(target)snap(def(c).name+' 的谢幕曲对 '+def(target).name+' 造成 '+(2*m)+' 点伤害。',null,target.battleId,'effect');}
+  if(e==='coco'){const target=pick(s,alive(side));buff(target,2*m,2*m);if(target)snap(def(c).name+' 的谢幕曲使 '+def(target).name+' 获得 +'+(2*m)+'/+'+(2*m)+'。',null,target.battleId,'grow');}
+  if(e==='deathBlast'){const victims=alive(1-side).sort((a,b)=>b.attack-a.attack).slice(0,m);victims.forEach(x=>x.health=1);snap(def(c).name+' · 魔眼终幕：最高攻击的敌方生命化为 1。',null,victims[0]?.battleId,'effect');alive(1-side).forEach(x=>damage(x,5*m));}
+  if(e==='tavernLast'){progress[side].tavernAttack+=m;progress[side].tavernHealth+=m;snap(def(c).name+' · 龙魂培育：酒馆永久 +'+m+'/+'+m+'。',null,c.battleId,'grow');}
+  if(c.vow){const x=pick(s,alive(side));if(x){buff(x,Math.floor(c.attack/2)*c.vow,Math.floor(c.maxHealth/2)*c.vow);snap(def(c).name+' 的圣女遗愿强化了 '+def(x).name+'。',null,x.battleId,'grow');}}
+ }
+ function deaths(){let safety=0;while(sides.some(a=>a.some(c=>c.health<=0))&&safety++<100){const fallen=[];
+  for(let side=0;side<2;side++){sides[side].forEach((c,index)=>{if(c.health<=0)fallen.push({c,index});});sides[side]=sides[side].filter(c=>c.health>0);}
+  for(const {c,index} of fallen){const side=c.side;deadCount[side]++;grave[side]++;
+   if(def(c).tribe==='artifact')scrap[side]++;
+   // Capture live observers now; removed cards cannot observe this death.
+   const witnesses=[...alive(side)];
+   for(const x of witnesses){const m=mult(x);
+    if(def(x).effect==='fairyMemorial'&&c.id==='fairy')alive(side).filter(y=>def(y).tribe==='forest').forEach(y=>grow(y,2*m,2*m));
+    if(def(x).effect==='batMemorial'&&c.id==='bat')alive(side).filter(y=>def(y).tribe==='blood').forEach(y=>grow(y,3*m,2*m));
+    if(def(x).effect==='scrapVeteran'&&def(c).tribe==='artifact'){const n=(2+Math.floor(scrap[side]/5))*m;grow(x,n,n);}
+    if(x.id==='artifact10'&&def(c).tribe==='artifact'){progress[side].arms+=3*m;snap(def(x).name+' · 创造循环：武装研习 +'+(3*m)+'。',null,x.battleId,'grow');}
+    if(x.id==='artifact5'&&def(c).tribe==='artifact'){const target=pick(s,alive(side).filter(y=>y.originUid&&y.battleId!==x.battleId&&def(y).tribe==='artifact'));if(target){grow(target,3*m,3*m);snap(def(x).name+' · 遗物传承：'+def(target).name+' 永久成长。',null,target.battleId,'grow');}}
+    if(x.id==='blood6'&&c.id==='bat'){const target=pick(s,alive(1-side));if(target){const n=c.attack*S.growthAmount(growthContext(side),'batQueen')*m;damage(target,n);snap(def(x).name+' · 血翼夜宴：蝙蝠谢幕造成 '+n+' 点伤害。',x.battleId,target.battleId,'spell');}}
+    if(x.id==='night3')grow(x,2*m,2*m);
+    if(x.id==='haven7'){const target=alive(side).at(-1);if(target){buff(target,Math.floor(c.attack*m/2),Math.floor(c.maxHealth*m/2));snap(def(x).name+' · 炽天使传承：'+def(target).name+' 继承阵亡者身材。',null,target.battleId,'grow');}}
+   }
+   if(c.reborn)summon(side,c.id,c.attack,c.id==='night10'?c.maxHealth*mult(c):c.id==='royal4'?Math.max(1,Math.ceil(c.maxHealth/2)):1,index,{grantShield:c.id==='royal4'},c,'reborn');
+   if(hasLastWords(c)){lastWords(c,index);for(const x of witnesses)if(def(x).effect==='lastWordsEcho'&&x.health>0){snap(def(x).name+' · 冥府回声：再次触发 '+def(c).name+' 的谢幕曲。',null,x.battleId,'echo');for(let n=0;n<mult(x);n++)lastWords(c,index);}}
+   const reviveKey=side+':'+(c.originUid||c.uid);if(!def(c).token&&!c.resurrected&&!revivedOrigins.has(reviveKey))for(const x of witnesses)if(x.id==='night7'&&x.health>0&&sides[side].length<7&&grave[side]>=def(c).tier){grave[side]-=def(c).tier;revivedOrigins.add(reviveKey);summon(side,c.id,c.attack,Math.max(1,c.maxHealth*mult(x)),index,{resurrected:true},c,'revive');break;}
+   for(const x of witnesses){if(x.health<=0)continue;const m=mult(x),n=bump(x,'avenge');
+    if(def(x).effect==='batAvenge'&&n%2===0){const body=S.batAvengeBody(meta[side],m);summon(side,'bat',body,body,sides[side].indexOf(x)+1);}
+    if(def(x).effect==='deathStudy'&&n%2===0)progress[side].spellcraft+=2*m;
+   if(x.id==='haven2'&&n%2===0){addShield(x);snap(def(x).name+' · 圣堂壁垒：复仇恢复屏障。',null,x.battleId,'shield');}
+    if(def(x).effect==='shieldRelay'&&n%2===0){const candidates=alive(side).filter(y=>y.battleId!==x.battleId&&def(y).tribe==='royal'&&(!S.shieldCount(y)||S.canStackShield(y)));for(let i=0;i<m&&candidates.length;i++){
+     const min=Math.min(...candidates.map(S.shieldCount)),target=pick(s,candidates.filter(y=>S.shieldCount(y)===min));candidates.splice(candidates.indexOf(target),1);
+     addShield(target);snap(def(x).name+' · 复仇：为 '+def(target).name+' 补充屏障。',x.battleId,target.battleId,'shield');
+    }}
+   }
+  }
+  snap(fallen.map(x=>def(x.c).name).join('、')+' 退场，谢幕与复仇结算完毕。',null,null,'death');
+ }}
+ for(let side=0;side<2;side++)for(const c of sides[side]){applyLegion(c);const n=c.id==='fairy'?progress[side].fairy:c.id==='bat'?S.bat(meta[side]):0;if(n)buff(c,n,n);}
+ snap('双方入场，开战效果准备触发。');
+ // Consume preparation marks once, before ordinary opening abilities. Each hit
+ // resolves real shields, surviving-injury payoffs and deaths independently.
+ for(let side=0;side<2;side++)for(const c of [...sides[side]]){const hits=c.dragonPings||0;delete c.dragonPings;for(let i=0;i<hits&&c.health>0&&sides[side].includes(c);i++){damage(c,1);snap('龙之翼击 · '+def(c).name+' 受到 1 点伤害（'+(i+1)+'/'+hits+'）。',null,c.battleId,'spell');deaths();}}
+ for(let side=0;side<2;side++){
+  for(const c of [...sides[side]]){if(c.health<=0)continue;const e=def(c).effect,m=mult(c),friends=alive(side);
+   if(e==='healthAvatar'){const n=c.health*m;buff(c,n,0);snap(def(c).name+' · 生命化身：本场 +'+n+' 攻击。',null,c.battleId,'grow');}
+   if(c.id==='night2'){const n=progress[side].battleEntries*m;buff(c,0,n);snap(def(c).name+' · 万骨之王：本场 +'+n+' 生命。',null,c.battleId,'grow');}
+   if(e==='rebornGrant')for(const x of friends.filter(x=>x!==c&&!x.reborn).slice(0,m)){x.reborn=true;snap(def(c).name+' · 招魂仪式：'+def(x).name+' 获得复生。',c.battleId,x.battleId,'reborn');}
+   if(e==='buffVanguard'){const n=Math.floor(progress[side].buffs/5)*m;buff(c,n,n);snap(def(c).name+' · 强化战阵：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
+   if(c.id==='artifact9')buff(c,scrap[side]*m,0);
+   if(c.id==='blood10'){const x=[...alive(1-side)].sort((a,b)=>b.attack-a.attack)[0];if(x){buff(x,-(m>=2?x.attack:x.attack-Math.floor(x.attack/2)),0);snap(def(c).name+' · 毒牙凝视：削弱 '+def(x).name+' 的攻击。',c.battleId,x.battleId,'effect');}}
+   if(c.id==='forest3')buff(c,progress[side].fairy*m,0);
+   if(c.id==='blood7'){const n=(meta[side].bloodDamage||0)*m;friends.filter(x=>def(x).tribe==='blood').forEach(x=>buff(x,n,n));snap(def(c).name+' · 狂乱加冕：吸血鬼军团获得强化。',null,c.battleId,'grow');}
+   if(c.id==='artifact7'){const n=S.growthAmount(growthContext(side),'artifactLord')*m,h=scrap[side]*m;friends.filter(x=>def(x).tribe==='artifact').forEach(x=>buff(x,n,h));snap(def(c).name+' · 创造主领域：残骸 '+scrap[side]+'，造物 +'+n+'/+'+h+'。',null,c.battleId,'grow');}
+   if(e==='forestStart'){const n=(friends.filter(x=>def(x).tribe==='forest').length*4+progress[side].fairy)*m;friends.filter(x=>x.battleId!==c.battleId&&def(x).tribe==='forest').forEach(x=>buff(x,n,n));}
+   if(e==='royalStart'){friends.filter(x=>x.battleId!==c.battleId&&def(x).tribe==='royal').forEach(x=>buff(x,8*m,8*m));adjacent(c).filter(x=>def(x).tribe==='royal').forEach(x=>{for(let i=0;i<m;i++)addShield(x);});}
+   if(e==='blast'){for(let hit=0;hit<2;hit++)adjacent(c).forEach(x=>damage(x,1));snap(def(c).name+' · 炽焰点燃：相邻友方各受到两次 1 点伤害。',null,c.battleId,'effect');}
+   if(e==='dragonStart')alive(1-side).forEach(x=>damage(x,c.attack*m));
+   if(e==='spellBlast')for(let i=0;i<2;i++){const target=pick(s,alive(1-side));if(!target)break;const n=(2+Math.floor((meta[side].spells||0)/4))*m;damage(target,n);snap(def(c).name+' · 雷光弹幕：'+n+' 点伤害。',c.battleId,target.battleId,'spell');}
+   if(c.id==='haven6')adjacent(c).forEach(x=>x.vow=(x.vow||0)+m);
+   if(e==='menagerieStart'){alive(1-side).filter(x=>x.keywords.includes('shield')).forEach(x=>breakShield(x,true));const n=new Set(friends.map(x=>def(x).tribe).filter(t=>t!=='neutral')).size*4*m;friends.forEach(x=>buff(x,n,n));snap(def(c).name+' · 终焉降临：摧毁敌方屏障。',null,c.battleId,'shatter');}
+  }
+ }
+ snap('开战效果结算完成。');deaths();
+ let side=sides[0].length===sides[1].length?(rand(s)<.5?0:1):(sides[0].length>sides[1].length?0:1);const acted=[new Set(),new Set()];
+ const windfury=c=>c.heroWindfury||def(c).effect==='double'||c.id==='dragon6'||c.id==='forest1'||c.id==='dragon9' ;
+ while(alive(0).length&&alive(1).length&&steps<160){steps++;
+  let attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack')&&!acted[side].has(c.battleId));if(!attackers.length){acted[side].clear();attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack'));}const attacker=attackers[0];
+  if(!attacker){if(!alive(1-side).some(c=>c.attack>0&&!c.keywords.includes('cannotAttack')))break;side=1-side;continue;}acted[side].add(attacker.battleId);const hits=windfury(attacker)?2:1;
+  for(let hit=0;hit<hits&&attacker.health>0&&alive(1-side).length;hit++){
+   if(attacker.id==='rune7'){const target=pick(s,alive(1-side)),n=(meta[side].spells||0)*mult(attacker);damage(target,n);snap(def(attacker).name+' · 秘银轰击：'+n+' 点伤害。',attacker.battleId,target.battleId,'spell');deaths();if(attacker.health<=0||!alive(1-side).length)break;}
+   if(attacker.keywords.includes('stealth')){attacker.keywords=attacker.keywords.filter(k=>k!=='stealth');snap(def(attacker).name+' 发起攻击，解除潜行。',attacker.battleId,attacker.battleId,'reveal');}
+   if(def(attacker).token)for(const x of alive(side).filter(x=>x.id==='forest6')){const n=S.growthAmount(growthContext(side),'summonBuff')*mult(x);progress[side].fairy+=n;buff(attacker,n,n);snap(def(x).name+' · 妖精进军：攻击者本场 +'+n+'/+'+n+'，妖精军团永久 +'+n+'/+'+n+'。',x.battleId,attacker.battleId,'grow');}
+   for(const x of adjacent(attacker).filter(c=>def(c).effect==='ambushSupport')){buff(attacker,4*mult(x),2*mult(x));snap(def(x).name+' · 暗中支援：攻击者本场 +'+4*mult(x)+'/+'+2*mult(x)+'。',x.battleId,attacker.battleId,'grow');}
+   const foes=alive(1-side),visible=foes.filter(c=>!c.keywords.includes('stealth')),pool=visible.length?visible:foes,guards=pool.filter(c=>c.keywords.includes('taunt')&&!c.keywords.includes('stealth')),target=pick(s,def(attacker).effect==='artifactHunter'?pool.filter(c=>c.attack===Math.max(...pool.map(x=>x.attack))):guards.length?guards:pool);
+   
+   const a=attacker.attack,b=target.attack,neighbors=adjacent(target),blocked=target.keywords.includes('shield');damage(target,a,attacker.keywords.includes('destruction'));damage(attacker,b);if(def(attacker).effect==='cleave')neighbors.forEach(c=>damage(c,a));
+
+   if(def(attacker).effect==='bloodEdge'&&!blocked&&a>0&&attacker.health>0){const n=2*mult(attacker);grow(attacker,n,n);snap(def(attacker).name+' · 绯色锋刃：永久 +'+n+'/+'+n+'。',null,attacker.battleId,'grow');}
+   if(def(attacker).effect==='dragonDrill'&&attacker.health>0){const m=mult(attacker);for(const x of adjacent(attacker).filter(x=>def(x).tribe==='dragon')){grow(x,3*m,6*m);for(let i=0;i<m&&x.health>0;i++)damage(x,1);snap(def(attacker).name+' · 龙技锤炼：'+def(x).name+' 永久 +'+3*m+'/+'+6*m+'，随后受到 '+m+' 次 1 点伤害。',attacker.battleId,x.battleId,'spell');}}
+   if(attacker.id==='dragon9'&&attacker.health>0){const n=(2+Math.floor(attacker.startHealth/10))*mult(attacker);grow(attacker,n,0);snap(def(attacker).name+' · 漆黑突袭：永久攻击 +'+n+'。',null,attacker.battleId,'grow');}
+   if(attacker.id==='royal5'&&attacker.health>0&&target.health<=0)addShield(attacker);
+   snap(def(attacker).name+' 攻击 '+def(target).name+'（'+a+' ↔ '+b+'）'+(hits>1?' · 连击 '+(hit+1)+'/2':''),attacker.battleId,target.battleId,'attack');
+   if(target.keywords.includes('taunt')&&!target.keywords.includes('stealth'))for(const x of alive(target.side).filter(x=>x.battleId!==target.battleId&&def(x).effect==='guardWitness')){const receiver=alive(target.side).filter(y=>def(y).tribe==='haven').sort((a,b)=>a.health-b.health)[0];if(receiver){const n=S.growthAmount(growthContext(target.side),'guardWitness',x)*mult(x);grow(receiver,n,2*n);snap(def(x).name+' · 守护援护：'+def(receiver).name+' 永久 +'+n+'/+'+2*n+'。',x.battleId,receiver.battleId,'grow');}}
+   deaths();
+  }side=1-side;
+ }
+ const winner=sides[0].length&&!sides[1].length?0:sides[1].length&&!sides[0].length?1:-1;
+ const rawDamage=winner<0?0:(meta[winner].tier||1)+sides[winner].reduce((n,c)=>n+(def(c).token?1:def(c).tier),0),damageDone=damageCap===null?rawDamage:Math.min(damageCap,rawDamage);
+ return {winner,damageCap,damage:damageDone,events,survivors:copy(sides),grave,scrap,healing,deadCount,steps,permanent,discount,progress,meta:meta.map(x=>({tier:x.tier||1,played:x.played||0,spells:x.spells||0,grave:x.grave||0,bloodDamage:x.bloodDamage||0,scrap:x.scrap||0,progress:S.read(x)}))};
+}
+root.TavernCombat={run};if(typeof module!=='undefined')module.exports={run};
+})(typeof globalThis!=='undefined'?globalThis:this);

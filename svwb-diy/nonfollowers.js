@@ -1,5 +1,54 @@
 (function(root){
   'use strict';
+  // Estimate useful delivery, independently of how much budget was charged.
+  // Paid activations are valued net of their extra PP; turn-start engines do
+  // not help on entry. Long countdowns and extra conditions reduce readiness.
+  function readiness(card){
+    const cost=Math.min(card.cost,...card.abilities.filter(a=>a.scaling?.payoff==='discount').map(a=>a.scaling.effectiveCost));
+    let score=0;
+    const accelerator=card.abilities.find(a=>a.activation?.countdownReduction);
+    const breakAct=card.abilities.find(a=>a.activation?.breaksSelf);
+    const value=a=>{
+      if(a.modeBranches?.length)return Math.max(...a.modeBranches.map(value));
+      if(a.components?.length)return a.components.reduce((s,p)=>s+value(p),0);
+      const ids=a.ids||[a.id],raw=Math.max(0,a.raw||0);
+      if(ids.includes('clearEmblems')||ids.includes('clearAmulets'))return raw*.35;
+      if(ids.includes('enemyCurse'))return raw*.45;
+      if(ids.filter(id=>!['activate','fallbackAct'].includes(id)).every(id=>['damage','destroy','smallDestroy'].includes(id)))return Math.min(7,raw);
+      return raw;
+    };
+    for(const a of card.abilities){
+      if(a.kind==='alternate'||a.kind==='handTrigger'||a.kind==='keyword')continue;
+      if(a.trigger==='入场曲'){
+        if(a.kind==='emblem')score+=(card.emblems||[]).filter(e=>a.emblemIds?.includes(e.id)).reduce((s,e)=>s+(e.deliveryValue??Math.min(6,(e.effects||[]).reduce((n,p)=>n+p.raw,0)))*1.65,0);
+        else score+=value(a)*Math.min(1,a.raw>0?(a.price||0)/a.raw:0);
+      }
+      else if(a.kind==='ongoing'){
+        const e=a.engineSpec,raw=e?.effects?.reduce((s,p)=>s+p.raw,0)||0;
+        const rate=e?.eventRate??(['start','end'].includes(e?.eventId)?1:.8);
+        const horizon=e?.eventId==='start'?.8:e?.eventId==='end'?1.65:1.2;
+        score+=raw*(e?.conditionFactor??(a.condition==='none'?1:.75))*rate*horizon;
+      }else if(a.kind==='cycle'){
+        const branches=a.cycle?.branches||[];
+        score+=branches.reduce((s,b)=>s+b.raw,0)/Math.max(1,branches.length)*(a.trigger==='自己的回合开始时'?.8:1.65);
+      }else if(a.trigger==='谢幕曲'){
+        const wait=card.countdown==null?0:Math.max(0,card.countdown-(accelerator?.activation.countdownReduction||0));
+        const fee=(accelerator||breakAct)?.activation?.fee||0;
+        score+=Math.max(0,value(a)-fee*2.2)/(1+wait*.4);
+      }else if(a.kind==='activation'&&!a.ids.some(id=>['countdownAct','lastWordsAct'].includes(id))){
+        const net=Math.max(0,value(a)-(a.activation?.credit||0));
+        score+=net*(a.activation?.breaksSelf?1:1.65);
+      }
+    }
+    return {score:+score.toFixed(2),minimum:card.cost<4?0:cost*1.55,effectiveCost:cost};
+  }
+  function quality(card){
+    // A cheap scaling removal spell may invest most of its value in growth;
+    // a more expensive one still needs an adequate present-day payload.
+    if(card.type==='spell'&&card.spellboostCounter&&card.cost>=3&&card.spent<card.cost*2)return false;
+    if(card.type!=='amulet'||card.cost<4)return true;
+    const r=readiness(card);return r.score>=r.minimum;
+  }
   function build(ctx){
     const {card,cost,cls,rarity,r,pick,weighted,profile,makeEffect,gate,composeEmblem,add,used,calibration,canChooseTarget}=ctx;
     const spell=card.type==='spell',remaining=()=>card.budget-card.spent-(ctx.reserveProgress||0);
@@ -47,7 +96,7 @@
       const duration=weighted(r,[[null,30],[2,24],[3,24],[4,14],[5,8]]),c=composeEmblem(duration,true);
       const raw=c.raw*(c.oneShot?1/(1+duration*.18):duration===null?1.4:({2:.82,3:1,4:1.12,5:1.22})[duration])+c.enabler.raw;
       if(raw>remaining()*.72)return;
-      const emblem={id:(alternate?'accelerate-emblem-':'emblem-')+cls,name:`纹章：${card.name}${alternate?'的余辉':''}`,class:cls,kind:'emblem',custom:true,duration,engine:c.engine,eventId:c.eventId,conditionId:c.conditionId,limit:c.limit,effects:c.effects,supportTags:c.supportTags,text:(duration===null?'':`【吟唱 ${duration}】\n`)+c.text};
+      const emblem={id:(alternate?'accelerate-emblem-':'emblem-')+cls,name:`纹章：${card.name}${alternate?'的余辉':''}`,class:cls,kind:'emblem',custom:true,duration,engine:c.engine,eventId:c.eventId,conditionId:c.conditionId,limit:c.limit,effects:c.effects,deliveryValue:c.deliveryValue,supportTags:c.supportTags,text:(duration===null?'':`【吟唱 ${duration}】\n`)+c.text};
       const text=`使自己获得『${emblem.name}』。${c.enabler.text}`;
       if(emit({text,raw,ids:['emblemGrant'],tokens:c.tokens},spell?'法术':'入场曲',raw,{kind:'emblem',emblemIds:[emblem.id]}))card.emblems.push(emblem);
     }
@@ -78,11 +127,28 @@
         add({kind:'static',trigger:'魔力增幅时',condition:'none',text:'【魔力增幅时】使本卡牌的费用-1。',raw:5,price:3,ids:['spellboostDiscount']});
       }
       crest();
+      // Spellboost is not synonymous with discounting or transformation.
+      // A counter can scale a normal damage atom while the card is in hand.
+      // Keep face damage out of this unbounded engine; split damage shares a
+      // total between followers rather than multiplying X by board size.
+      let counterMain=false;
+      if(!alternate&&cls===3&&cost>=1&&cost<=5&&(cost<=3||rarity>=2)&&(rarity<=1||cost>=3)&&!card.abilities.length&&r()<.18){
+        const split=rarity<=1&&cost>=2&&r()<.3;
+        const initial=split?weighted(r,[[0,5],[1,3],[2,1]]):weighted(r,[[1,3],[2,6],[3,cost>=3?2:0]]);
+        const unit=split?1.1:1.25,expectedBoosts=4,setupPrice=1+cost*.3;
+        const basePrice=split?Math.max(initial*unit,remaining()*.76-setupPrice):initial*unit;
+        if(basePrice+setupPrice<=remaining()&&effectCount()+2<=effectLimit){
+          add({kind:'static',trigger:'魔力增幅时',condition:'none',text:'X起始为'+initial+'。\n【魔力增幅时】使本卡牌的X+1。',bodyText:'使本卡牌的X+1。',raw:expectedBoosts*unit,price:setupPrice,ids:['spellboostCounter'],tokens:[]});
+          const text=split?'对对手的战场上的所有随从分配X点伤害。':'选择对手的战场上的1个随从，对其造成X点伤害。';
+          counterMain=emit({ids:[split?'splitDamage':'damage'],text,raw:basePrice,tokens:[]},'法术',basePrice,{scalesWith:'spellboostCounter'});
+          card.spellboostCounter={initial,increment:1,expectedBoosts,setupPrice,basePrice,effectId:split?'splitDamage':'damage'};
+        }
+      }
       const prepared=cost<=2&&rarity>=1&&!alternate&&r()<.4?gate('法术'):null;
       const reservedGate=prepared?.id!=='none'?prepared:null;
       const room=remaining(),desired=reservedGate?room*.52:rarity===0?room:cost>=6?room*.72:room*.84;
-      let main=payload(desired,'法术',rarity===0?desired*.6:Math.min(desired*.6,cost>=6?10:6));
-      if(!main)main=payload(room,'法术');
+      let main=counterMain?null:payload(desired,'法术',rarity===0?desired*.6:Math.min(desired*.6,cost>=6?10:6));
+      if(!main&&!counterMain)main=payload(room,'法术');
       if(main)emit(main,'法术',main.raw);
       enhancement();
       if(remaining()>=.7&&card.abilities.length<spellLimit&&(reservedGate||r()<.6))extraConditional('法术',reservedGate);
@@ -97,6 +163,8 @@
       }
     }else{
       const official=calibration.typeStats.amulets;
+      // Fanfare is a design choice, not mandatory filler for unused allowance.
+      const fanfarePlan=r()<Math.min(.65,Math.max(.18,profile.triggers['入场曲']||1/3));
       const soil=cls===3&&cost>=1&&r()<.2&&remaining()>=1&&card.abilities.length<=3&&effectCount()<effectLimit;
       const countdown=cost>0&&!soil&&!used.has('exhaustibleCycle')&&r()<(cls===6?.58:official.countdown/calibration.typeStats.counts.amulet);
       card.countdown=countdown?weighted(r,[[1,8],[2,30],[3,32],[4,23],[5,7]]):null;
@@ -106,7 +174,7 @@
       if(soil){
         // Reserve the sigil's defining activation before optional effects spend
         // its slots/budget. It creates soil and never destroys its own carrier.
-        const fee=weighted(r,[[1,7],[2,3],[3,1]]),amount=fee>=2&&cost>=2&&r()<.45?2:1,repeats=3.5;
+        const fee=weighted(r,[[1,7],[2,3],[3,1]]),amount=fee>=2&&cost>=2&&r()<.45?2:1,repeats=cost>=4?2:3.5;
         const base=amount*1.6,limit=Math.min(8,remaining()*.65/repeats+fee*2.2);
         const extra=rarity>=1&&fee>=2&&effectCount()+2<=effectLimit&&r()<.6?temp(['earth'],()=>makeEffect(Math.max(0,limit-base),'启动','none',0,true,Math.max(1,cost+fee),false,{maxAtoms:1})):null;
         const raw=base+(extra?.raw||0),price=Math.max(.4,(raw-fee*2.2)*repeats);
@@ -115,9 +183,12 @@
       }
       const delay=countdown?1/(1+card.countdown*.3):.8;
       let death=null;
-      if(cost>0&&!soil&&r()<(countdown?.8:.2)){
+      if(cost>0&&!soil&&r()<(countdown?.48:.1)){
         const limit=Math.min(28,remaining()*.8/delay);
-        const minimum=countdown?Math.max(Math.min(4,cost+1),limit*.7):cost>=6?Math.min(12,limit*.6):Math.min(4,cost+1);
+        const baseMinimum=countdown?Math.max(Math.min(4,cost+1),limit*.7):cost>=6?Math.min(12,limit*.6):Math.min(4,cost+1);
+        // Without an entry payload, the delayed/activation payoff must carry
+        // the card's cost itself instead of relying on a filler draw afterward.
+        const minimum=Math.max(baseMinimum,fanfarePlan?0:(card.budget*.68-card.spent)/delay);
         death=payload(limit,'谢幕曲',minimum,'none',cost+(countdown?Math.min(3,card.countdown):1),false,{multiplier:delay,credit:0});
         if(death){
           emit(death,'谢幕曲',death.raw*delay,{delayFactor:delay});
@@ -134,10 +205,10 @@
         const c=composeEmblem(card.countdown,false,rarity===0);
         const price=c.raw*(countdown?.4+.12*card.countdown:1.05);
         if(price<=remaining()*.85){
-          add({kind:'ongoing',trigger:c.eventId==='start'?'自己的回合开始时':c.eventId==='end'?'自己的回合结束时':'持续触发',condition:c.conditionId,text:c.text,bodyText:c.text,raw:c.raw,price,ids:['amuletEngine'],tokens:c.tokens.filter(t=>c.text.includes(`『${t.name}』`)),engineSpec:{eventId:c.eventId,limit:c.limit,effects:c.effects}});
+          add({kind:'ongoing',trigger:c.eventId==='start'?'自己的回合开始时':c.eventId==='end'?'自己的回合结束时':'持续触发',condition:c.conditionId,text:c.text,bodyText:c.text,raw:c.raw,price,ids:['amuletEngine'],tokens:c.tokens.filter(t=>c.text.includes(`『${t.name}』`)),engineSpec:{eventId:c.eventId,limit:c.limit,effects:c.effects,eventRate:c.eventRate,conditionFactor:c.conditionFactor}});
         }
       }
-      if(cost>0&&remaining()>2.2&&r()<.42){
+      if(fanfarePlan&&cost>0&&remaining()>2.2){
         const limit=remaining()*(rarity===0&&cost>=6?1:.45);
         const fan=payload(limit,'入场曲',cost>=6?limit*.6:0,'none',cost,true);
         if(fan)emit(fan,'入场曲',fan.raw);
@@ -166,13 +237,14 @@
         // A surviving activation must pay the recurring-effect price instead.
         const breaksSelf=!soil&&rolledBreak;
         const fee=cost===0?pick([1,2]):weighted(r,[[0,breaksSelf?5:1],[1,4],[2,2],[3,1]]);
-        const repeats=breaksSelf?1:countdown?Math.min(3,card.countdown):3.5;
-        const limit=Math.min(18,remaining()/repeats+fee*2.2);
+        const repeats=breaksSelf?1:countdown?Math.min(cost>=4?2:3,card.countdown):cost>=4?2:3.5;
+        const limit=Math.min(26,remaining()/repeats+fee*2.2);
         const effectiveCost=Math.max(1,cost+fee);
         const fanfares=card.abilities.filter(a=>a.trigger==='入场曲');
         const fanRaw=fanfares.reduce((s,a)=>s+a.raw,0);
         const replay=breaksSelf&&fanfares.length>0&&(card.spent+Math.max(.4,fanRaw-fee*2.2))>=card.budget*.7&&r()<.16;
-        let e=replay?{text:'发动与【入场曲】相同的能力。',raw:fanRaw,ids:['activationReplay'],tokens:[]}:payload(limit,'启动',cost>=6?limit*.5:0,'none',effectiveCost,true,{multiplier:repeats,credit:fee*2.2});
+        const minimum=cost>=4?Math.max(fee*2.2+.8,cost>=6?limit*.5:0):0;
+        let e=replay?{text:'发动与【入场曲】相同的能力。',raw:fanRaw,ids:['activationReplay'],tokens:[]}:payload(limit,'启动',minimum,'none',effectiveCost,true,{multiplier:repeats,credit:fee*2.2});
         if(e){
           const price=Math.max(.4,(e.raw-fee*2.2)*repeats);
           const body=(breaksSelf?'破坏本卡牌。':'')+e.text;
@@ -190,8 +262,8 @@
         const e=payload(remaining()/delay,'谢幕曲',minimumSpend()/delay,'none',cost+2,false,{multiplier:delay,credit:0});
         if(e)emit(e,'谢幕曲',e.raw*delay,{delayFactor:delay});
       }
-      if(remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay')&&r()<.4)extraConditional('入场曲');
-      for(let i=0;i<1&&remaining()>=1&&card.spent<card.budget*.82&&card.abilities.length<5&&!used.has('activationReplay');i++){
+      if(fanfarePlan&&remaining()>=1&&card.abilities.length<5&&!used.has('activationReplay')&&r()<.4)extraConditional('入场曲');
+      for(let i=0;fanfarePlan&&i<1&&remaining()>=1&&card.spent<card.budget*.82&&card.abilities.length<5&&!used.has('activationReplay');i++){
         const e=payload(remaining(),'入场曲',Math.min(remaining()*.55,8),'none',cost,false);
         if(e)emit(e,'入场曲',e.raw);else break;
       }
@@ -200,6 +272,6 @@
     card.spent=+card.spent.toFixed(2);card.vanilla=false;
     return card;
   }
-  const api={build};
+  const api={build,readiness,quality};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.SVWBNonfollowers=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

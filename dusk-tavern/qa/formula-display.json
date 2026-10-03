@@ -1,0 +1,10 @@
+{
+  "previewMatches": true,
+  "sha256": "e2611416a32765390443a86fcaef9da3c0b9fee21d8533552d6cb473ba698ea0",
+  "browserCheck": "formula-browser-test.cjs passed",
+  "normalAndGolden": true,
+  "liveUpdates": true,
+  "mobile": true,
+  "aiGamesRun": 0,
+  "rulesChanged": false
+}

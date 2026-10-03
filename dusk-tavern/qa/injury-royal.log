@@ -1,0 +1,14 @@
+PASS royal shields stack without increasing low-tier body; other tribes refresh one layer
+PASS each hit spends exactly one layer and triggers growth once on either side
+PASS royal triples sum saved layers without inventing new base shields or buff events
+PASS banner amulet grants and stacks shields through the same layer bookkeeping
+PASS golden Otohime adds two temporary layers and does not change recruitment shields
+PASS relay can add to shielded allies, prioritizes lowest layers, golden targets are distinct
+PASS rebirth discards saved stacks and gains only its explicit fresh shield
+PASS Bahamut removes every layer but triggers each target once
+PASS buff counter counts recipients and effects, never stat magnitude or zero payload
+PASS marshal counts layers; commander snapshots its threshold before buffing recipients
+PASS Roland payoff uses each side history, scales gold, remains temporary and counts once
+PASS old saves migrate from zero history; new layers/history survive reload and reject invalid values
+PASS battle settlement does not recount the permanent ledger and AI uses stacked shield spells
+13 royal groups passed.

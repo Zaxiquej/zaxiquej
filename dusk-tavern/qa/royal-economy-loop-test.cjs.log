@@ -1,0 +1,9 @@
+PASS six real gold reserves one fairy, golden two; purchase, refresh, power and upgrade count
+PASS seven golden bards cannot turn six gold of refreshes into same-turn resources
+PASS princess trains the fairy army, never grants gold or an entry spell
+PASS banked fairies survive selling the source and reload, pay next round once and can triple
+PASS full hand loses unpaid overflow without an unbounded delivery loop
+PASS healing plus repeated blood battlecries cannot pay back same-turn purchases
+PASS pending counters migrate and reject invalid player or AI data
+PASS AI retains deferred fairies across recruitment and receives them only next round
+8 economy loop groups passed.

@@ -1,0 +1,18 @@
+PASS dragon roster replaces star-scaled gains and only dragon/blood get tavern engines
+PASS hero updates current offers of every tribe, not spells/hand/board; refresh applies exactly once
+PASS temporary shop cry survives freeze but resets on refresh, permanent bonus does not duplicate
+PASS research amplifies tavern spell once; gold and normal permanent entry scale and generals repeat
+PASS dropping a non-targeted tavern spell on a follower cannot invent Dorothy or Merlin target triggers
+PASS play engine includes itself, counts dragon plays once and ignores repeated cries/non-dragons
+PASS purchased stats survive deployment and triples; generating and discovering never use tavern bonuses
+PASS death and surviving-injury growth are side-local, golden, and do not directly buff the fighter
+PASS combat updates frozen offers once and stores history for future refreshes
+PASS dragon feeder removes highest-health offer, buffs neighbors only, never gets resources/keywords
+PASS empty/no-recipient feasts are no-ops; duplicate feeders cannot eat the same offer twice
+PASS blood feeds after self-harm and its tavern triggers; sheep can heal but one hp cannot cheat
+PASS body payoffs use entry-health snapshot rather than tavern tier; healer uses own health
+PASS old save history defaults to zero and current-state imports reject invalid tavern counters
+PASS AI preserves real food, positions dragon receivers and uses Rowan at six stars
+PASS blood AI reserves health for its mandatory end-turn feast before buying optional self-harm
+PASS actual fight records visible feasts and applies enemy and player shop growth with valid saves
+17 market groups passed.
