@@ -18,4 +18,17 @@ test('power growth uses integers, rounds base gains up, and doubles golden gains
 test('temple preview matches integer devotion and prayer boundary',()=>{for(const prayers of [2,3]){const s=fresh(),c=E.make(s,'neutral0');s.board=[c];s.progress.prayers=prayers;const view=S.amuletView(s,D.byId.temple),a=c.attack,h=c.health;s.amulets=[{...E.make(s,'temple'),count:1}];E.endRecruit(s);A.equal(c.attack-a,4+view.amp);A.equal(c.health-h,6+view.amp);A.equal(s.progress.devotion,2);A(E.validate(s));}});
 test('Aether adds slots without accelerating; leaving retains existing amulets and blocks further placement',()=>{for(const golden of [false,true]){const s=fresh(),c=E.make(s,'haven25',{golden});s.board=[c];A.equal(S.amuletCapacity(s),golden?4:3);s.amulets=Array.from({length:S.amuletCapacity(s)},()=>({...E.make(s,'garden'),count:3}));const ended=JSON.parse(JSON.stringify(s));E.endRecruit(ended);A(ended.amulets.every(c=>c.count===2));A.equal(ended.hand.length,0);act(s,'sell',{uid:c.uid});A.equal(S.amuletCapacity(s),2);A(E.validate(JSON.parse(JSON.stringify(s))));const extra=E.make(s,'bell');s.hand=[extra];A.equal(E.act(s,'play',{uid:extra.uid}).ok,false);A.equal(s.hand.length,1);}const s=fresh();s.board=[E.make(s,'haven25'),E.make(s,'haven5'),E.make(s,'neutral16')];s.amulets=[{...E.make(s,'garden'),count:1}];E.endRecruit(s);A.equal(s.progress.prayers,1);A.equal(s.hand.length,1);A.equal(s.hand[0].id,'garden');});
 test('current discover lists and finite AI values cover replacement roles',()=>{const s=fresh();s.tribe='haven';s.route=0;s.board=[E.make(s,'haven8'),E.make(s,'haven20'),E.make(s,'haven6')];for(const id of ['haven8','haven20','haven25','neutral4','neutral12','haven23'])A(Number.isFinite(AI.synergyValue(s,E.make(s,id))),id);A(D.abilityIds.lastWords.includes('neutral21'));A(D.abilityIds.lastWords.includes('neutral12'));A(D.fanfareIds.includes('neutral4'));A(!D.abilityIds.endRecruit.includes('haven8'));A(!D.abilityIds.endRecruit.includes('haven5'));A(!D.abilityIds.endRecruit.includes('haven25'));A.equal(D.byId.mine.tier,5);A.equal(S.growthAmount(s,'rallyCry'),2);});
+
+test('avatar snapshots health for both stats; adjacent memory retains both, including golden and repeated rounds',()=>{
+ for(const golden of [false,true])for(const memory of [null,false,true]){
+  const s=fresh(),c=quiet(s,'haven16',{health:80,golden}),aura=memory===null?null:quiet(s,'haven20',{golden:memory}),board=aura?[c,aura]:[c];
+  for(let round=0;round<2;round++){
+   const before=E.copy(c),n=c.health*(golden?2:1),r=E.combat(s,board,[quiet(s,'neutral0')]),event=r.events.find(e=>e.text.includes('生命化身')),body=event.boards[0].find(x=>x.originUid===c.uid);
+   A.equal(body.attack,c.attack+n);A.equal(body.health,c.health+n);A.equal(body.maxHealth,c.health+n);A.deepEqual(c,before);
+   if(memory===null)A.equal(r.permanent[0][c.uid],undefined);
+   else{const m=memory?2:1;A.deepEqual(r.permanent[0][c.uid],{attack:n*m,health:n*m});c.attack+=n*m;c.health+=n*m;}
+  }
+ }
+ const s=fresh(),c=quiet(s,'haven16',{health:80}),r=E.combat(s,[c,quiet(s,'neutral0'),quiet(s,'haven20')],[quiet(s,'neutral0')]);A.equal(r.permanent[0][c.uid],undefined);
+});
 console.log(total+' inheritance groups passed; fixed scenarios, no AI games.');

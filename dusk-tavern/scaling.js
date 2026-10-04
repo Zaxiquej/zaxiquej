@@ -133,7 +133,7 @@ function formulaText(s,c,text){
  if(e==='healthReliquary')value=`+${h*m} 生命`;
  if(e==='healthChoir')value=`+${(2+Math.floor(h/4))*m} 生命`;
  if(e==='royalStart')value=pair((8+Math.floor(p.buffs/10))*m);
- if(e==='healthAvatar'){value=`+${h*m} 攻击`;anchor=/自身当时生命\s*×\s*\d+/;}
+ if(e==='healthAvatar'){value=pair(h*m);anchor=/自身当时生命\s*×\s*\d+/;}
  if(c.id==='night2')value=`+${p.battleEntries*m} 生命`;
  if(e==='prayerBastion'){const n=(6+prayer(s))*m;value=pair(n,2*n);}
  if(e==='prayerChoir')value=pair((4+prayer(s))*m);
@@ -171,7 +171,7 @@ function formulaText(s,c,text){
  }
  if(c.id==='royal4'){value=`${Math.max(1,Math.ceil(max/2))} 生命`;anchor=/一半最大生命/;}
  if(e==='menagerieStart')value=pair(new Set(board.filter(x=>x.health>0).map(x=>D.byId[x.id].tribe).filter(t=>t!=='neutral')).size*4*m);
- if(['dragonFeast','bloodFeast'].includes(e)){const key=e==='dragonFeast'?'health':'attack',other=key==='health'?'attack':'health',food=[...(s.shop||[])].filter(x=>D.byId[x.id].type==='minion').sort((a,b)=>b[key]-a[key]||b[other]-a[other]||a.uid-b.uid)[0];value=food?pair(food.attack*m,food.health*m):'暂无可吞噬随从';label='当前吞噬候选';}
+ if(['dragonFeast','bloodFeast','painFeast'].includes(e)){const key=e==='dragonFeast'?'health':'attack',other=key==='health'?'attack':'health',food=[...(s.shop||[])].filter(x=>D.byId[x.id].type==='minion').sort((a,b)=>b[key]-a[key]||b[other]-a[other]||a.uid-b.uid)[0];value=food?pair(food.attack*m,food.health*m):'暂无可吞噬随从';label='当前吞噬候选';}
  if(e==='vowAura'){const i=board.findIndex(same);value=(i<0?[]:[board[i-1],board[i+1]]).filter(x=>x&&x.health>0).map(x=>D.byId[x.id].name+' '+pair(Math.floor(x.attack/2)*m,Math.floor((x.maxHealth??x.health)/2)*m)).join('；')||'暂无相邻随从';label='当前遗愿';}
  if(e==='havenStart'){value=board.filter(x=>!same(x)&&x.health>0).map(x=>D.byId[x.id].name+' '+pair(Math.floor(x.attack*m/2),Math.floor((x.maxHealth??x.health)*m/2))).join('；')||'暂无其他随从';label='各随从当前传承';}
  if(d.type==='amulet'){value=amuletView(s,d).short;label='下次结算';anchor=/$/;}
@@ -192,7 +192,7 @@ function growthAmount(s,e,c={}){const p=read(s);switch(e){
  case 'batQueen':return 1+Math.floor((s.bloodDamage||0)/20);
  case 'moduleRally':return 4+Math.floor(p.arms/3);
  case 'artifactLord':return (s.scrap||0)*(1+Math.floor((s.scrap||0)/20));
- case 'discardRally':return 2+Math.floor((s.stats?.discards||0)/3);
+ case 'discardRally':return 2+(s.stats?.discards||0);
  default:return 0;}}
 const amuletCapacity=s=>2+(s.board||[]).filter(c=>(root.TavernData||require('./data')).byId[c.id]?.effect==='amuletCapacity').reduce((n,c)=>n+(c.golden?2:1),0);
 const S={amuletCapacity,powerGain,selfHarmImmune,goldCap,growthAmount,echoCount,batAvengeBody,canStackShield,syncShieldAura,formulaText,comboPower,amuletPower,amuletView,spellView,tavern,shieldCount,addShield,read,fairy,bat,weapon,artifactBody,prayer,spell,summary};root.TavernScaling=S;if(typeof module!=='undefined')module.exports=S;

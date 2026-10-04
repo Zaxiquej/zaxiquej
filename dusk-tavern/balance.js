@@ -62,7 +62,7 @@ function apply(D){const b=D.byId,rules={
  artifact1:m=>`谢幕曲：召唤一个 ${2*m}/${2*m} 解析的创造物。`,
  artifact2:m=>`守护。每次对自身使用武装时，额外永久 +${2*m}/+${3*m}。`,
  artifact3:m=>`备战结束：获得 ${2*m} 张「机械的解放」。`,
- artifact4:m=>`谢幕曲：召唤两个古老的创造物，身材各为「3 + 本局残骸」× ${m}。`,
+ artifact4:m=>`谢幕曲：召唤 ${m} 个古老的创造物，身材各为「3 + 本局残骸」× ${m}。`,
  artifact5:m=>`其他友方造物死亡时，一个其他存活的初始造物永久 +${3*m}/+${3*m}。`,
  artifact6:m=>`顺劈。每次对自身使用武装时，将该武装的基础属性强化额外施加给相邻友方造物 ${m} 次。`,
  artifact7:m=>`开战：全体友方造物获得「本局残骸 × ${m}」攻击与生命。`,
@@ -87,7 +87,7 @@ function apply(D){const b=D.byId,rules={
  b.rune3.related=[{id:'mana',count:3,scaleCount:true,when:'备战结束加入手牌'}];
  b.artifact3.related=[{id:'module',count:2,scaleCount:true,when:'备战结束加入手牌'}];
  b.haven5.related=[{pool:'amulet',when:'每次倒数归零后复制，初始倒数1'}];
- b.artifact4.related=[{id:'ancientArtifact',count:2,dynamic:'scrap',scale:true,when:'谢幕曲召唤，按当前残骸预览；本体死亡也计入残骸'}];
+ b.artifact4.related=[{id:'ancientArtifact',count:1,scaleCount:true,dynamic:'scrap',scale:true,when:'谢幕曲召唤，按当前残骸预览；本体死亡也计入残骸'}];
  b.ritual.text='消耗全部墓场，使一个友方永久获得等量的攻击与生命。';
  b.module.text='武装：使一个友方造物永久获得当前武装品质的攻击与生命。';
  b.fairy.text='军团。衍生随从。';b.bat.text='血翼军团。衍生随从。';

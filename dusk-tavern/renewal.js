@@ -93,7 +93,18 @@ function apply(D,I){
  set('haven18',{},m=>`每当己方护符倒数归零，使迦楼罗以外的友方主教永久获得「本随从生命 × ${m}」生命。`);
  D.byId.rune24.tier=4;
  D.byId.haven10.tier=5;
- D.rulesVersion='27.3';
+ for(const d of D.amulets.filter(c=>c.tier<=3&&c.count===1)){d.count=2;d.text=d.text.replace('倒数 1','倒数 2');}
+ Object.assign(D.heroes.find(h=>h.id==='night'),{armor:6});
+ Object.assign(D.heroes.find(h=>h.id==='dragon'),{text:'本回合下次刷新免费，最左侧随从替换为高于酒馆 1 星的随机随从（最高 6 星）。',subtitle:'免费刷新，寻找更高星级的随从。'});
+ D.byId.artifact24.tier=4;
+ D.byId.haven7.keywords=D.byId.haven7.keywords.filter(k=>k!=='taunt');
+ D.byId.haven7.text=D.byId.haven7.text.replace('守护。','');D.byId.haven7.goldenText=D.byId.haven7.goldenText.replace('守护。','');
+ set('dragon21',{},m=>`每当你弃掉一张手牌，全体友方龙族永久获得「2 + 本局弃牌数」× ${m} 攻击，以及「3 + 本局弃牌数」× ${m} 生命。`);
+ set('blood13',{},m=>`每次招募自伤成功后，本局酒馆随从永久 +${m}/+${2*m}。`);
+ set('blood9',{effect:'feastBanquet',signature:'绯红盛宴'},m=>`备战结束：依次吞噬攻击最高的两个商店随从，自身永久获得其 ${m} 倍攻击与生命。`);
+ set('blood24',{effect:'painFeast',signature:'嗜血暴食'},m=>`每次招募自伤成功后，吞噬攻击最高的一个商店随从，自身永久获得其 ${m} 倍攻击与生命。`);
+ D.abilityIds.endRecruit=D.cards.filter(c=>D.endRecruitEffects.includes(c.effect)).map(c=>c.id);
+ D.rulesVersion='27.9';
 }
 root.TavernRenewal={apply};if(typeof module!=='undefined')module.exports={apply};
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -101,7 +101,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
   if(e==='batNest')for(let i=0;i<2;i++)summon(side,'bat',2*m,m,index+i);
   if(e==='batDeath')for(let i=0;i<2;i++)summon(side,'bat',2*m+Math.floor(c.attack/2),m+Math.floor(c.maxHealth/2),index+i);
   if(e==='analyzerDeath')summon(side,'analyzer',2*m,2*m,index,{effectScale:m});
-  if(e==='artifactDeath'){const n=S.artifactBody({scrap:scrap[side]},m);for(let i=0;i<2;i++)summon(side,'ancientArtifact',n,n,index+i);}
+  if(e==='artifactDeath'){const n=S.artifactBody({scrap:scrap[side]},m);for(let i=0;i<m;i++)summon(side,'ancientArtifact',n,n,index+i);}
   if(e==='analyzerLast'){const target=pick(s,alive(side).filter(x=>D.isTribe(x,'artifact')));if(target){buff(target,m,m);snap(def(c).name+' · 解析谢幕：友方造物 +'+m+'/+'+m+'。',null,target.battleId,'grow');}}
   if(e==='fairy')summon(side,'fairy',m,m,index);
   if(e==='skeleton')summon(side,'skeleton',2*m,m,index);
@@ -157,7 +157,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
   for(const c of [...sides[side]]){if(c.health<=0)continue;const e=def(c).effect,m=mult(c),friends=alive(side);
    if(e==='batRebirth')for(const x of friends.filter(x=>x.id==='bat')){const before=x.rebornCharges||0;grantBatRebirth(x,c);if(x.rebornCharges!==before)snap(def(c).name+' · 不息血脉：丛林蝙蝠获得 '+m+' 次额外复生。',c.battleId,x.battleId,'reborn');}
    if(['careerVanguard','careerChorus'].includes(e)){const n=progress[side].totalPlayed*m;for(const x of e==='careerVanguard'?[c]:friends.filter(x=>x.battleId!==c.battleId))buff(x,n,n);snap(def(c).name+' · 整局出牌 '+progress[side].totalPlayed+' 张：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
-   if(e==='healthAvatar'){const n=c.health*m;buff(c,n,0);snap(def(c).name+' · 生命化身：本场 +'+n+' 攻击。',null,c.battleId,'grow');}
+   if(e==='healthAvatar'){const n=c.health*m;buff(c,n,n);snap(def(c).name+' · 生命化身：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
    if(c.id==='night2'){const n=progress[side].battleEntries*m;buff(c,0,n);snap(def(c).name+' · 万骨之王：本场 +'+n+' 生命。',null,c.battleId,'grow');}
    if(e==='rebornGrant')for(const x of friends.filter(x=>x!==c&&!x.reborn).slice(0,2*m)){x.reborn=true;snap(def(c).name+' · 招魂仪式：'+def(x).name+' 获得复生。',c.battleId,x.battleId,'reborn');}
    if(e==='buffVanguard'){const n=Math.floor(progress[side].buffs/3)*m;buff(c,n,n);snap(def(c).name+' · 强化战阵：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
