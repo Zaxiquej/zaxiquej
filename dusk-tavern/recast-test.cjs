@@ -1,0 +1,15 @@
+'use strict';
+const A=require('node:assert/strict'),D=require('./data'),E=require('./engine');let groups=0;
+const test=(name,fn)=>{fn();console.log('PASS '+name);groups++;};
+function fresh(){const s=E.create('olivia',24681,'hard',['forest','rune','dragon','blood']);s.board=[E.make(s,'neutral1')];s.hand=[];s.shop=[];s.gold=20;return s;}
+function act(s,type,args={}){const r=E.act(s,type,args);A(r.ok,r.message);A(E.validate(s));}
+function play(s,id,target){const c=E.make(s,id);s.hand.push(c);act(s,'play',{uid:c.uid,target:target??s.board[0]?.uid});}
+test('majority spell costs four and hero describes double casting',()=>{A.equal(D.byId.seekMajority.cost,4);A.match(D.heroes.find(h=>h.id==='olivia').text,/施放两次/);});
+test('double cast consumes one card, adds two spell triggers, and plays one card',()=>{const s=fresh();s.board=[E.make(s,'rune0')];const c=s.board[0],a=c.attack,h=c.health;act(s,'power');play(s,'growth');A.equal(c.attack-a,4+2*D.tuning.starterSpell);A.equal(c.health-h,4+2*D.tuning.starterSpell);A.equal(s.spells,2);A.equal(s.played,1);A.equal(s.spellNamesThisRound.length,1);A.equal(s.hand.length,0);A(!s.heroSpellCopy);play(s,'coin');A.equal(s.spells,3);});
+test('invalid cast preserves charge and ordinary minions and amulets do not consume it',()=>{const s=fresh();act(s,'power');const spell=E.make(s,'growth');s.hand.push(spell);A(!E.act(s,'play',{uid:spell.uid}).ok);A(s.heroSpellCopy);play(s,'neutral0');play(s,'garden');A(s.heroSpellCopy);const t=E.normalize(E.copy(s));A(t.heroSpellCopy);act(t,'play',{uid:spell.uid,target:t.board[0].uid});A.equal(t.spells,2);E.startRound(s);A(!s.heroSpellCopy);});
+test('resource spell resolves twice without generating a duplicate card',()=>{const s=fresh();act(s,'power');const gold=s.gold;play(s,'coin');A.equal(s.gold,gold+2);A.equal(s.hand.length,0);});
+test('stealing the only shop minion safely leaves second cast without a target',()=>{const s=fresh();s.shop=[E.make(s,'neutral0')];act(s,'power');play(s,'pilfer');A.equal(s.hand.length,1);A.equal(s.shop.length,0);A.equal(s.spells,2);});
+test('double discovery offers two independent choices',()=>{const s=fresh();act(s,'power');play(s,'seekRecruit');A.equal(s.discover.length,2);while(s.discover.length)act(s,'choose',{id:s.discover[0].options[0]});A.equal(s.hand.length,2);});
+test('double discard can select newly generated cards, with valid saves between choices',()=>{const s=fresh();s.hand=[E.make(s,'coin')];act(s,'power');play(s,'newDestiny');A.equal(s.discover.length,2);act(s,'choose',{id:s.discover[0].options[0]});A.equal(s.hand.length,2);A.deepEqual(s.discover[0].options,s.hand.map(c=>String(c.uid)));act(s,'choose',{id:s.discover[0].options[0]});A.equal(s.hand.length,3);A.equal(s.stats.discards,2);A.equal(s.spells,2);});
+test('double choice spell allows both mode decisions',()=>{const s=fresh();act(s,'power');play(s,'dragonResolve');A.equal(s.discover.length,2);while(s.discover.length)act(s,'choose',{id:s.discover[0].options[0]});A.equal(s.spells,2);});
+console.log(groups+' recast groups passed; no AI simulations.');

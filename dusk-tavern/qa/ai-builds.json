@@ -1,0 +1,344 @@
+{
+  "version": "27.3",
+  "builds": {
+    "forest": [
+      {
+        "id": "forest-combo",
+        "name": "连携养成",
+        "route": 0,
+        "core": [
+          "forest4",
+          "forest18",
+          "forest1"
+        ],
+        "support": [
+          "forest2",
+          "forest15",
+          "forest24",
+          "forest23",
+          "neutral14"
+        ],
+        "style": "cycle"
+      },
+      {
+        "id": "forest-fairies",
+        "name": "妖精召唤",
+        "route": 1,
+        "core": [
+          "forest6",
+          "forest10",
+          "forest19"
+        ],
+        "support": [
+          "forest5",
+          "forest17",
+          "forest7",
+          "forest2",
+          "neutral15"
+        ],
+        "style": "summon"
+      }
+    ],
+    "royal": [
+      {
+        "id": "royal-barriers",
+        "name": "屏障军团",
+        "route": 0,
+        "core": [
+          "royal6",
+          "royal22",
+          "royal15"
+        ],
+        "support": [
+          "royal2",
+          "royal7",
+          "royal17",
+          "royal5",
+          "neutral21"
+        ],
+        "style": "combat"
+      },
+      {
+        "id": "royal-rally",
+        "name": "入场曲军团",
+        "route": 1,
+        "core": [
+          "royal10",
+          "royal18",
+          "royal24"
+        ],
+        "support": [
+          "royal3",
+          "royal14",
+          "royal21",
+          "royal23",
+          "neutral14"
+        ],
+        "style": "cycle"
+      }
+    ],
+    "dragon": [
+      {
+        "id": "dragon-injury",
+        "name": "受伤养成",
+        "route": 0,
+        "core": [
+          "dragon18",
+          "dragon13",
+          "dragon3"
+        ],
+        "support": [
+          "dragon4",
+          "dragon16",
+          "dragon9",
+          "forest21"
+        ],
+        "style": "combat"
+      },
+      {
+        "id": "dragon-tavern",
+        "name": "酒馆吞噬",
+        "route": 1,
+        "core": [
+          "dragon24",
+          "dragon17",
+          "dragon10"
+        ],
+        "support": [
+          "dragon15",
+          "dragon6",
+          "dragon7",
+          "dragon13",
+          "neutral16"
+        ],
+        "style": "cycle"
+      },
+      {
+        "id": "dragon-discard",
+        "name": "弃牌养成",
+        "route": 1,
+        "core": [
+          "dragon21",
+          "dragon12",
+          "dragon20"
+        ],
+        "support": [
+          "dragon8",
+          "dragon22",
+          "dragon23",
+          "dragon24",
+          "neutral16"
+        ],
+        "style": "cycle"
+      }
+    ],
+    "night": [
+      {
+        "id": "night-march",
+        "name": "入场军势",
+        "route": 0,
+        "core": [
+          "night17",
+          "night24",
+          "night25"
+        ],
+        "support": [
+          "night5",
+          "night18",
+          "night4",
+          "night15",
+          "neutral15"
+        ],
+        "style": "summon"
+      },
+      {
+        "id": "night-revival",
+        "name": "谢幕复活",
+        "route": 1,
+        "core": [
+          "night7",
+          "night16",
+          "night4"
+        ],
+        "support": [
+          "night10",
+          "night15",
+          "night21",
+          "neutral15",
+          "neutral21"
+        ],
+        "style": "summon"
+      }
+    ],
+    "rune": [
+      {
+        "id": "rune-casting",
+        "name": "施法成长",
+        "route": 0,
+        "core": [
+          "rune6",
+          "rune7",
+          "rune3"
+        ],
+        "support": [
+          "rune11",
+          "rune5",
+          "rune10",
+          "rune16",
+          "neutral14"
+        ],
+        "style": "cycle"
+      },
+      {
+        "id": "rune-study",
+        "name": "研习增幅",
+        "route": 1,
+        "core": [
+          "rune18",
+          "rune17",
+          "rune15"
+        ],
+        "support": [
+          "rune13",
+          "rune19",
+          "rune3",
+          "rune5",
+          "neutral16"
+        ],
+        "style": "cycle"
+      }
+    ],
+    "haven": [
+      {
+        "id": "haven-prayer",
+        "name": "护符共鸣",
+        "route": 0,
+        "core": [
+          "haven5",
+          "haven18",
+          "haven17"
+        ],
+        "support": [
+          "haven25",
+          "haven13",
+          "haven14",
+          "haven10",
+          "neutral17"
+        ],
+        "style": "amulet"
+      },
+      {
+        "id": "haven-vitality",
+        "name": "守护与生命",
+        "route": 1,
+        "core": [
+          "haven24",
+          "haven20",
+          "haven16"
+        ],
+        "support": [
+          "haven3",
+          "haven21",
+          "haven7",
+          "haven8",
+          "haven23",
+          "neutral16"
+        ],
+        "style": "combat"
+      }
+    ],
+    "blood": [
+      {
+        "id": "blood-pain",
+        "name": "自伤养成",
+        "route": 0,
+        "core": [
+          "blood11",
+          "blood18",
+          "blood7"
+        ],
+        "support": [
+          "blood4",
+          "blood1",
+          "blood9",
+          "blood15",
+          "neutral16"
+        ],
+        "style": "cycle"
+      },
+      {
+        "id": "blood-bats",
+        "name": "蝙蝠复生",
+        "route": 1,
+        "core": [
+          "blood6",
+          "blood19",
+          "blood21"
+        ],
+        "support": [
+          "blood2",
+          "blood17",
+          "blood7",
+          "blood16",
+          "neutral15"
+        ],
+        "style": "summon"
+      },
+      {
+        "id": "blood-feast",
+        "name": "酒馆吞噬",
+        "route": 0,
+        "core": [
+          "blood24",
+          "blood23",
+          "blood9"
+        ],
+        "support": [
+          "blood11",
+          "blood22",
+          "dragon24",
+          "neutral16"
+        ],
+        "style": "combat"
+      }
+    ],
+    "artifact": [
+      {
+        "id": "artifact-modules",
+        "name": "武装养成",
+        "route": 0,
+        "core": [
+          "artifact17",
+          "artifact6",
+          "artifact13"
+        ],
+        "support": [
+          "artifact3",
+          "artifact21",
+          "artifact15",
+          "artifact23",
+          "artifact10"
+        ],
+        "style": "cycle"
+      },
+      {
+        "id": "artifact-relics",
+        "name": "造物连携",
+        "route": 1,
+        "core": [
+          "artifact24",
+          "artifact7",
+          "artifact18"
+        ],
+        "support": [
+          "artifact4",
+          "artifact16",
+          "artifact22",
+          "artifact23",
+          "neutral15"
+        ],
+        "style": "summon"
+      }
+    ]
+  }
+}

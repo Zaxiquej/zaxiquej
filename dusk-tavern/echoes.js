@@ -6,7 +6,7 @@ const fields=['tier','grave','spells','played','bloodDamage','scrap','progress',
 const unitFields=['id','attack','health','golden','keywords','shieldLayers','heroWindfury','heroReborn','dragonPings','guardRemoved'];
 const copy=x=>JSON.parse(JSON.stringify(x)),integer=(n,max=1e10)=>Number.isSafeInteger(n)&&n>=0&&n<=max;
 function valid(r){
- if(!r||typeof r.id!=='string'||r.id.length>140||typeof r.run!=='string'||r.run.length>100||r.version!==D.rulesVersion||!integer(r.round,100)||r.round<1||!integer(r.uses,MAX_USES)||!integer(r.tier,6)||r.tier<1||!D.heroes.some(h=>h.id===r.hero))return false;
+ if(!r||typeof r.id!=='string'||r.id.length>140||typeof r.run!=='string'||r.run.length>100||r.version!==D.rulesVersion||!integer(r.round,Number.MAX_SAFE_INTEGER)||r.round<1||!integer(r.uses,MAX_USES)||!integer(r.tier,6)||r.tier<1||!D.heroes.some(h=>h.id===r.hero))return false;
  if(!Array.isArray(r.tribes)||r.tribes.length!==4||new Set(r.tribes).size!==4||!r.tribes.every(t=>D.tribeIds.includes(t)))return false;
  if(!Array.isArray(r.board)||!r.board.length||r.board.length>7||!r.board.every(c=>D.byId[c.id]?.type==='minion'&&!D.byId[c.id].retired&&integer(c.attack)&&integer(c.health)&&c.health>0&&typeof c.golden==='boolean'&&Array.isArray(c.keywords)&&c.keywords.every(k=>['taunt','shield','stealth','destruction','cannotAttack'].includes(k))&&['shieldLayers','dragonPings'].every(k=>c[k]===undefined||integer(c[k]))&&['heroWindfury','heroReborn','guardRemoved'].every(k=>c[k]===undefined||typeof c[k]==='boolean')))return false;
  if(!['grave','spells','played','bloodDamage','scrap'].every(k=>integer(r[k])))return false;

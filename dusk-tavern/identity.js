@@ -3009,6 +3009,36 @@
       "imageSource": "https://svgdb.me/assets/fullart/1024140300.png",
       "originalType": 4,
       "originalClan": 4
+    },
+    "seekSpell": {
+      "name": "魔法书的解析",
+      "sourceName": "魔法书的解析",
+      "sourceId": 102014040,
+      "art": "dusk-tavern/assets/102014040.webp",
+      "sourceUrl": "https://svgdb.me/cards/102014040",
+      "imageSource": "https://svgdb.me/assets/fullart/1020140400.png",
+      "originalType": 4,
+      "originalClan": 0
+    },
+    "haven25": {
+      "name": "白翼守护神·埃忒耳",
+      "sourceName": "白翼守护神·埃忒耳",
+      "sourceId": 106741010,
+      "art": "dusk-tavern/assets/106741010.webp",
+      "sourceUrl": "https://svgdb.me/cards/106741010",
+      "imageSource": "https://svgdb.me/assets/fullart/1067410100.png",
+      "originalType": 1,
+      "originalClan": 7
+    },
+    "neutral21": {
+      "name": "天界的尖兵",
+      "sourceName": "天界的尖兵",
+      "sourceId": 108031020,
+      "art": "dusk-tavern/assets/108031020.webp",
+      "sourceUrl": "https://svgdb.me/cards/108031020",
+      "imageSource": "https://svgdb.me/assets/fullart/1080310200.png",
+      "originalType": 1,
+      "originalClan": 0
     }
   },
   "trinkets": {

@@ -37,8 +37,9 @@ test('AI-vs-AI damage also consumes armor rather than health',()=>{
 test('blood purchase self-harm bypasses armor and healing does not refill it',()=>{
  const s=E.create('blood',7321);s.armor=7;s.hp=30;s.board=[E.make(s,'blood11')];s.shop=[E.make(s,'bloodPact')];act(s,'buy',{uid:s.shop[0].uid});A.equal(s.bloodDamage,1);A.equal(s.hp,30);A.equal(s.armor,7);s.board=[];s.powerUsed=false;act(s,'power');A.equal(s.hp,29);A.equal(s.armor,7);
 });
-test('fatigue bypasses armor on player and AI',()=>{
- const s=E.create('angel',333,'normal',['royal','forest','dragon','artifact']);s.round=16;s.armor=100;for(const o of s.opponents){o.armor=100;o.hero='angel';}act(s,'fight');A.equal(s.result.fatigue,2);A.equal(s.hp,38);A(s.armor>0);A(s.opponents.every(o=>o.hp===38&&o.armor>0));
+test('late rounds do not apply passive damage to player or AI',()=>{
+ const prepare=AI.prepare;AI.prepare=()=>{};
+ try{for(const round of [15,16,30,101]){const s=E.create('angel',333,'hard',['royal','forest','dragon','artifact']);s.round=round;s.board=[];s.armor=100;for(const o of s.opponents){o.board=[];o.armor=100;}act(s,'fight');A.equal(s.result.fatigue,0);A.equal(s.hp,40);A.equal(s.armor,100);A(s.opponents.every(o=>o.hp===40&&o.armor===100));A(E.validate(s));}}finally{AI.prepare=prepare;}
 });
 test('legacy saves start at zero armor, depleted saves never refill, malformed values are rejected',()=>{
  const s=E.create('angel',923);delete s.armor;for(const o of s.opponents)delete o.armor;A(E.validate(s));E.normalize(s);A.equal(s.armor,0);A(s.opponents.every(o=>o.armor===0));E.normalize(s);A.equal(s.armor,0);s.armor=3;A.equal(E.normalize(E.copy(s)).armor,3);
