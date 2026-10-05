@@ -36,12 +36,14 @@ test('wing markers survive save/triple, sum instead of doubling; clear from hand
 test('dragon mage supplies one/two genuine spells; battlecry repeat pays no gold',()=>{
  for(const golden of [false,true]){const s=state();s.heroCry=true;const gold=s.gold;play(s,'dragon19',null,{golden});A.equal(s.hand.filter(c=>c.id==='dragonWing').length,golden?4:2);A.equal(s.gold,gold);A(!s.heroCry);A(D.fanfareIds.includes('dragon19'));}
 });
-test('dragon master buffs adjacent dragons then actually damages them, including golden triggers',()=>{
- for(const side of [0,1])for(const golden of [false,true]){const s=state(),m=golden?2:1,a=E.make(s,'dragon2',{attack:0,health:10,keywords:[]}),c=E.make(s,'dragon16',{attack:1,health:100,golden}),b=E.make(s,'dragon13',{attack:0,health:10}),foe=E.make(s,'neutral0',{attack:0,health:1}),r=side?E.combat(s,[foe],[a,c,b]):E.combat(s,[a,c,b],[foe]);A.deepEqual(gain(r,side,a),{attack:4*m,health:7*m});A.deepEqual(gain(r,side,b),{attack:3*m,health:6*m});A.equal(r.progress[side].tavernAttack,2*m);A.equal(r.progress[side].tavernHealth,3*m);A.equal(r.events.filter(e=>e.text.includes('龙技锤炼')).length,2);}
+test('dragon master death pulses damage both armies and trigger injuries for either side',()=>{
+ for(const side of [0,1])for(const golden of [false,true]){const s=state(),n=golden?4:2,a=E.make(s,'dragon2',{attack:0,health:10,keywords:['cannotAttack']}),c=E.make(s,'dragon16',{attack:0,health:1,golden,dragonPings:1}),b=E.make(s,'dragon13',{attack:0,health:10,keywords:['cannotAttack']}),foe=E.make(s,'neutral0',{attack:0,health:100,keywords:['cannotAttack']}),r=side?E.combat(s,[foe],[a,c,b]):E.combat(s,[a,c,b],[foe]);A.deepEqual(gain(r,side,a),{attack:D.tuning.dragonHurt*n,health:D.tuning.dragonHurt*n});A.equal(r.progress[side].tavernAttack,2*n);A.equal(r.progress[side].tavernHealth,3*n);A.equal(r.events.filter(e=>e.text.includes('谢幕震击')).length,n);A.equal(r.survivors[1-side][0].health,100-n);}
 });
-test('dead dragon master and foreign neighbors do not receive or generate training',()=>{
- const s=state(),a=E.make(s,'blood0',{attack:0,health:10}),c=E.make(s,'dragon16',{attack:1,health:1}),f=E.make(s,'neutral0',{attack:100,health:1}),r=E.combat(s,[a,c],[f]);A.deepEqual(r.permanent[0],{});A(!r.events.some(e=>e.text.includes('龙技锤炼')));
+
+test('dragon master pulses also damage non-dragon friendly minions without granting training',()=>{
+ const s=state(),a=E.make(s,'blood0',{attack:0,health:10,keywords:['cannotAttack']}),c=E.make(s,'dragon16',{attack:0,health:1,dragonPings:1}),f=E.make(s,'neutral0',{attack:0,health:100}),r=E.combat(s,[a,c],[f]);A.deepEqual(r.permanent[0],{});A.equal(r.survivors[0][0].health,8);A(!r.events.some(e=>e.text.includes('龙技锤炼')));
 });
+
 test('blood contract harms at purchase, heals after actual loss, no cast harm or immediate economy',()=>{
  const s=state();s.hp=20;s.gold=10;const core=add(s,'blood4');add(s,'blood11');add(s,'blood13');const c=E.make(s,'bloodContract');s.shop=[c];const old=body(core);A(E.act(s,'buy',{uid:c.uid}).ok);A.equal(s.gold,8);A.equal(s.hp,19);A.equal(s.bloodDamage,2);A.deepEqual(body(core),old.map(n=>n+2));A.equal(s.progress.tavernAttack,1);A(E.act(s,'play',{uid:c.uid}).ok);A.deepEqual(s.hand.map(x=>x.id),['bloodPact','bloodPact']);A.equal(s.hp,19);A.equal(s.bloodDamage,2);for(const x of [...s.hand])A(E.act(s,'play',{uid:x.uid,target:core.uid}).ok);A.equal(s.hp,19);A.equal(s.bloodDamage,2);A.equal(s.gold,8);A.equal(s.spells,3);
 });

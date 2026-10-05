@@ -2,7 +2,7 @@
 'use strict';
 function apply(D){
  const set=(id,fields,rule)=>Object.assign(D.byId[id],fields,{text:rule(1),goldenText:rule(2)});
- set('dragon1',{effect:'tavernLast'},m=>`谢幕曲：本局酒馆随从永久 +${m}/+${m}。战后更新当前商店。`);
+ set('dragon1',{effect:'tavernLast'},m=>`谢幕曲：本局酒馆随从永久 +${m}/+${m}。`);
  set('dragon8',{effect:'bodyMend'},m=>`备战结束：若本随从生命至少为 10，为英雄恢复 ${4*m} 生命。`);
  set('dragon9',{},m=>`连击。每次攻击后若存活，永久获得「2 + 入场时生命÷10」× ${m} 攻击（向下取整）。`);
  set('dragon11',{attack:2,health:2,effect:'shopCry'},m=>`入场曲：当前商店中的随从 +${m}/+${m}（不影响后续刷新）。`);

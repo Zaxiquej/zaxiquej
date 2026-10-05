@@ -32,7 +32,7 @@ function apply(D){
  card('night8',{health:5});
  card('night10',{tier:5,attack:8,health:10});
  card('rune0',{},m=>`每施放一个法术，自身永久 +${p.starterSpell*m}/+${p.starterSpell*m}。`);
- card('rune2',{health:4},m=>`守护。每施放一个法术，自身永久获得 +${p.golemHealth*m} 生命与屏障。`);
+ card('rune2',{health:4},m=>`守护。每施放一个法术，自身永久获得 +${p.golemHealth*m} 生命，并获得屏障，持续到下回合开始。`);
  card('rune8',{health:4},m=>`每当你施放法术，使攻击最低的其他友方永久 +${p.owlAttack*m}/+${m}。`);
  card('rune16',{},m=>`入场曲：获得 ${4*m} 张智慧之光。`);
  D.byId.rune16.related[0].count=4;

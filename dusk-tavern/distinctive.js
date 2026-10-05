@@ -3,7 +3,7 @@
 function apply(D){
  const set=(id,fields,rule)=>Object.assign(D.byId[id],fields,{text:rule(1),goldenText:rule(2)});
  set('artifact9',{effect:'artifactHunter',signature:'残骸突击'},m=>`攻击时无视守护，优先攻击可被选中的攻击力最高的敌方。开战：获得「本局残骸 × ${m}」攻击（仅本场）。`);
- set('dragon10',{effect:'tavernLegacy',signature:'龙骸沃土'},m=>`谢幕曲：酒馆随从永久获得「本随从攻击与最大生命各四分之一 × ${m}」（先向下取整）。`);
+ set('dragon10',{effect:'tavernLegacy',signature:'龙骸沃土'},m=>`谢幕曲：酒馆随从永久获得「本随从攻击与最大生命各八分之一 × ${m}」（先向下取整）。`);
  set('blood19',{effect:'batAvenge',signature:'血裔再临',related:[{id:'bat',count:1,dynamic:'blood',when:'复仇（2）召唤'}]},m=>`复仇（2）：召唤一个蝙蝠，基础攻击和生命均为「（4 + 本局累计自伤）× ${m}」，再获得蝙蝠军团加成。`);
  D.lastWordEffects=D.lastWordEffects.filter(e=>!['dragonLegacy','batCrown'].includes(e));D.lastWordEffects.push('tavernLegacy');
  D.abilityIds.lastWords=D.cards.filter(c=>D.lastWordEffects.includes(c.effect)||c.id==='dragon1').map(c=>c.id);

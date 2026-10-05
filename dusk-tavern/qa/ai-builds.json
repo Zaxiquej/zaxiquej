@@ -1,5 +1,5 @@
 {
-  "version": "27.9",
+  "version": "28.4",
   "builds": {
     "forest": [
       {
@@ -26,13 +26,13 @@
         "route": 1,
         "core": [
           "forest6",
-          "forest10",
+          "forest7",
           "forest19"
         ],
         "support": [
           "forest5",
           "forest17",
-          "forest7",
+          "forest10",
           "forest2",
           "neutral15"
         ],
@@ -214,13 +214,13 @@
         "name": "护符共鸣",
         "route": 0,
         "core": [
-          "haven5",
           "haven18",
-          "haven17"
+          "haven17",
+          "haven13"
         ],
         "support": [
+          "haven5",
           "haven25",
-          "haven13",
           "haven14",
           "haven10",
           "neutral17"

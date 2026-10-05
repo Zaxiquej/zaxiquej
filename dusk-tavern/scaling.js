@@ -17,7 +17,9 @@ const comboPower=(s,c,played=s.played||0)=>(played+(c.id==='forest4'?6:0))*(c.go
 const canStackShield=c=>!!c&&(c.shieldAura||(root.TavernData||(typeof require!=='undefined'?require('./data.js'):null))?.byId[c.id]?.stackShield===true);
 const shieldCount=c=>c?.keywords?.includes('shield')?Math.max(1,c.shieldLayers??((c.initialShields||1)*(c.golden&&c.initialShields?2:1))):0;
 function syncShieldAura(board){const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null),active=board.some(c=>D.byId[c.id]?.effect==='shieldAura');for(const c of board){if(active)c.shieldAura=true;else delete c.shieldAura;}}
-function addShield(c){if(!c)return;c.shieldLayers=canStackShield(c)?shieldCount(c)+1:Math.max(1,shieldCount(c));if(!c.keywords.includes('shield'))c.keywords.push('shield');}
+function addShield(c,temporary=false){if(!c)return;const before=shieldCount(c);c.shieldLayers=canStackShield(c)?before+1:Math.max(1,before);if(!c.keywords.includes('shield'))c.keywords.push('shield');if(temporary){const added=c.shieldLayers-before;if(added)c.temporaryShields=(c.temporaryShields||0)+added;}else if(!canStackShield(c)&&c.temporaryShields)delete c.temporaryShields;}
+function removeShieldLayer(c,all=false){const n=shieldCount(c);if(!n)return;c.shieldLayers=all?0:n-1;if(c.temporaryShields){c.temporaryShields=all?0:Math.max(0,c.temporaryShields-1);if(!c.temporaryShields)delete c.temporaryShields;}if(!c.shieldLayers)c.keywords=c.keywords.filter(k=>k!=='shield');}
+function expireShields(c){if(!c.temporaryShields)return;c.shieldLayers=Math.max(0,shieldCount(c)-c.temporaryShields);delete c.temporaryShields;if(!c.shieldLayers)c.keywords=c.keywords.filter(k=>k!=='shield');}
 function summary(s){const p=read(s),w=weapon(s);return [
  {tribe:'neutral',label:'金币上限',value:String(goldCap(s)),detail:'上限加成 +'+p.goldCapBonus+'，每回合收入同时增加。铸币与出售收入可超过上限。'},
  {tribe:'forest',label:'整局出牌',value:p.totalPlayed+'张',detail:'实际从手牌打出的随从、法术、护符各计一次；召唤与重复入场曲不计。'},
@@ -38,7 +40,7 @@ function spellView(s,d){
  let a=0,h=0,text=d.text,short='';
  if(d.effect==='buff'){a=d.attack;h=d.health;}
  if(d.effect==='tierBuff')a=h=s?.tier||1;
- if(d.effect==='guard'){a=1;h=3;}
+ if(d.effect==='guard'){a=d.attack;h=d.health;}
  if(d.effect==='bloodPact'){a=3;h=3;}
  if(d.effect==='dragonWing'){a=2;h=2;}
  if(d.effect==='module'){const w=weapon(s);a=w.attack;h=w.health;}
@@ -60,7 +62,7 @@ function spellView(s,d){
  if(d.effect==='copyRecruit')short='复制友方 · 普通基础卡';
  if(d.effect==='pilfer')short='随机偷取随从 ×1';
  if(d.effect==='discardEcho')short=s?.discardEcho?'本回合被弃效果双倍 · 已生效':'本回合被弃效果双倍';
- if(d.effect==='discoverSpell'){const cap=Math.min(6,(s?.tier||1)+(['amulet','spell'].includes(d.discoverKind)?0:1)),label={fanfare:'入场曲随从',lastWords:'谢幕曲随从',endRecruit:'备战结束随从',amulet:'护符',spell:'酒馆法术',minion:'随从',majority:'优势种族随从'}[d.discoverKind]||'随从';short='发现'+label+' · '+(d.exactTier?'':'≤')+cap+'★';text=d.discoverKind==='majority'?'发现一个你场上数量最多的种族的随从，最高 '+cap+' 星。并列时合并这些种族。':'发现一'+(['amulet','spell'].includes(d.discoverKind)?'张':'个')+label+'，'+(d.exactTier?'恰好 ':'最高 ')+cap+' 星。';}
+ if(d.effect==='discoverSpell'){const cap=['amulet','spell'].includes(d.discoverKind)?Math.min(6,s?.tier||1):(root.TavernData||require('./data.js')).discoverTier({tier:s?.tier||1}),label={fanfare:'入场曲随从',lastWords:'谢幕曲随从',endRecruit:'备战结束随从',amulet:'护符',spell:'酒馆法术',minion:'随从',majority:'优势种族随从'}[d.discoverKind]||'随从';short='发现'+label+' · '+(d.exactTier?'':'≤')+cap+'★';text=d.discoverKind==='majority'?'发现一个你场上数量最多的种族的随从，最高 '+cap+' 星。并列时合并这些种族。':'发现一'+(['amulet','spell'].includes(d.discoverKind)?'张':'个')+label+'，'+(d.exactTier?'恰好 ':'最高 ')+cap+' 星。';}
  if(d.effect==='bones')short='墓场 +5';
  if(d.effect==='removeGuard')short='移除守护 · 指定友方';
  if(d.effect==='clock')short='所有护符倒数 −1';
@@ -120,6 +122,7 @@ function formulaText(s,c,text){
  let value='',label='当前',anchor=/「[^」]+」(?:\s*×\s*\d+)?/;
  if(['forest1','forest4'].includes(c.id)){const next=(Math.floor((s.played||0)/3)+1)*3;value=pair(comboPower(s,c,next)*(c.effectScale||1));label=`下次第 ${next} 张`;if(c.id==='forest1')anchor=/本回合已打出牌数\s*×\s*\d+/;}
  if(c.id==='forest3')value=`+${p.fairy*m} 攻击`;
+ if(e==='fairyBulwark')value=pair(p.fairy*m);
  if(e==='forestStart')value=pair((tribe('forest').length*8+p.fairy*2)*m);
  if(['careerVanguard','careerChorus'].includes(e))value=pair(p.totalPlayed*m);
  if(e==='constructUnity')value=pair(p.constructTypes.length*(1+Math.floor(p.arms/6))*m);
@@ -128,9 +131,9 @@ function formulaText(s,c,text){
  if(e==='spellReserve'){value='获得 '+m+' 张 '+Math.min(6,1+(s.spellNamesThisRound||[]).length)+' 星法术';label='本回合已使用 '+(s.spellNamesThisRound||[]).length+' 种';}
  if(e==='entryCannon')value=`${p.battleEntries*m} 点伤害`;
  if(e==='legionHealth')value='+'+(6+2*p.legionAttack)*m+' 生命';
- if(e==='guardVitals')value='+'+Math.floor(Math.max(0,...board.map(x=>x.health))/3)*m+' 生命';
+ if(e==='guardVitals')value='+'+Math.floor((s.guardVitalsBaseHealth??Math.max(0,...board.map(x=>x.health)))/3)*m+' 生命';
  if(e==='royalDrill')value=pair((6+Math.floor(p.buffs/10))*m);
- if(e==='healthReliquary')value=`+${h*m} 生命`;
+ if(e==='healthReliquary')value=`+${Math.floor(h/3)*m} 生命`;
  if(e==='healthChoir')value=`+${(2+Math.floor(h/4))*m} 生命`;
  if(e==='royalStart')value=pair((8+Math.floor(p.buffs/10))*m);
  if(e==='healthAvatar'){value=pair(h*m);anchor=/自身当时生命\s*×\s*\d+/;}
@@ -163,11 +166,12 @@ function formulaText(s,c,text){
  if(['fairyCrown','batCrown','scrapCrown','graveArmy'].includes(e)){const bonus=e==='scrapCrown'?(s.scrap||0):e==='graveArmy'?(s.grave||0):0;value=body((Math.floor(a/(e==='fairyCrown'?1:2))+bonus)*m,Math.max(1,(Math.floor(max/2)+bonus)*m));label='按当前值的基础身材';}
  if(['fairy2','batDeath'].includes(e)){value=body((e==='fairy2'?3:2)*m+Math.floor(a/2),(e==='fairy2'?3:1)*m+Math.floor(max/2));label='基础身材';}
  if(e==='battleBrood'&&d.brood?.inheritHealth){value=body(d.brood.attack*m,d.brood.health*m+Math.floor(max/2));label='基础身材';}
- if(e==='tavernLegacy')value=pair(Math.floor(a/4)*m,Math.floor(max/4)*m);
+ if(e==='tavernLegacy')value=pair(Math.floor(a/8)*m,Math.floor(max/8)*m);
+ if(e==='tavernPlay'){value=pair((1+(c.tavernWeaves||0))*m);label='下次酒馆增益';}
  if(e==='batAvenge'){value=body(batAvengeBody(s,m)+bat(s));label='含军团的召唤身材';}
  if(['summonBuff','shieldBuff','rallyCry','legionEngine','graveLegacy','spellHealth','guardWitness','batQueen','moduleRally','discardRally'].includes(e)){
   const context=e==='spellHealth'?{...s,spells:(s.spells||0)+1}:e==='legionEngine'?{...s,progress:{...p,battleEntries:p.battleEntries+1}}:e==='moduleRally'?{...s,progress:{...p,arms:p.arms+1}}:e==='discardRally'?{...s,stats:{...s.stats,discards:(s.stats?.discards||0)+1}}:s,n=growthAmount(context,e,c)*m;
-  value=e==='batQueen'?'蝙蝠攻击 × '+n:e==='legionEngine'?'军势 +'+n+' 攻击':pair(n,e==='guardWitness'?2*n:e==='discardRally'?n+m:n);label=['spellHealth','moduleRally','discardRally','legionEngine'].includes(e)?'下次触发':'当前';
+  value=e==='summonBuff'?pair(n)+'；军团 '+pair(Math.floor(n/(3*m))*m):e==='batQueen'?'蝙蝠攻击 × '+n:e==='legionEngine'?'军势 +'+n+' 攻击':pair(n,e==='guardWitness'?2*n:e==='discardRally'?n+m:n);label=['spellHealth','moduleRally','discardRally','legionEngine'].includes(e)?'下次触发':'当前';
  }
  if(c.id==='royal4'){value=`${Math.max(1,Math.ceil(max/2))} 生命`;anchor=/一半最大生命/;}
  if(e==='menagerieStart')value=pair(new Set(board.filter(x=>x.health>0).map(x=>D.byId[x.id].tribe).filter(t=>t!=='neutral')).size*4*m);
@@ -195,5 +199,5 @@ function growthAmount(s,e,c={}){const p=read(s);switch(e){
  case 'discardRally':return 2+(s.stats?.discards||0);
  default:return 0;}}
 const amuletCapacity=s=>2+(s.board||[]).filter(c=>(root.TavernData||require('./data')).byId[c.id]?.effect==='amuletCapacity').reduce((n,c)=>n+(c.golden?2:1),0);
-const S={amuletCapacity,powerGain,selfHarmImmune,goldCap,growthAmount,echoCount,batAvengeBody,canStackShield,syncShieldAura,formulaText,comboPower,amuletPower,amuletView,spellView,tavern,shieldCount,addShield,read,fairy,bat,weapon,artifactBody,prayer,spell,summary};root.TavernScaling=S;if(typeof module!=='undefined')module.exports=S;
+const S={expireShields,removeShieldLayer,amuletCapacity,powerGain,selfHarmImmune,goldCap,growthAmount,echoCount,batAvengeBody,canStackShield,syncShieldAura,formulaText,comboPower,amuletPower,amuletView,spellView,tavern,shieldCount,addShield,read,fairy,bat,weapon,artifactBody,prayer,spell,summary};root.TavernScaling=S;if(typeof module!=='undefined')module.exports=S;
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -10,7 +10,7 @@ function apply(D){
  set('night20',{tier:3,attack:3,health:4},m=>`每当友方复生或复活，使其他友方随从永久 +${m}/+${2*m}。`);
  set('night8',{attack:2,health:2,reborn:true},m=>`复生。谢幕曲：获得 ${3*m} 墓场。`);
  D.byId.night8.graveYield=3;
- set('night15',{},m=>`开战：使最左侧 ${2*m} 名其他未拥有复生的友方随从获得复生。`);
+ set('night15',{},m=>`开战：使最左侧 ${m} 名其他未拥有复生的友方随从获得复生。`);
  set('night24',{},m=>`每当其他友方死灵在战斗中被召唤、复生或复活，使其获得「6 + 死灵军势 × 2」×${m} 生命（仅本场）。`);
  set('night7',{},m=>`其他非衍生友方死亡时，消耗 3 墓场，在其复生与谢幕曲之前，以 ${m} 倍最大生命复活它。每个本体每场限一次。`);
  set('night21',{tier:4,attack:4,health:6,effect:'graveNourish',signature:'噬魂供养'},m=>`备战结束：消耗 4 墓场，使相邻随从永久获得「3 + 本局战斗入场次数÷5」×${m} 攻击与生命（向下取整）。`);

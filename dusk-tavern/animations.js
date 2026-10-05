@@ -5,7 +5,7 @@ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cards=()=>[...document.querySelectorAll('.card[data-card]:not(.fx-ghost)')];
 const key=el=>el.dataset.area+':'+el.dataset.card;
 function captureDOM(){return new Map(cards().map(el=>[key(el),{rect:el.getBoundingClientRect(),node:el.cloneNode(true)}]));}
-function capture(s){return {dom:captureDOM(),units:new Map([...s.board,...s.hand,...s.shop].map(c=>[c.uid,{...c}])),feasts:s.feasts?.length||0,discards:s.stats?.discards||0,amulets:new Map(s.amulets.map(c=>[c.uid,{...c}])),prayers:s.progress?.prayers||0,shop:new Map(s.shop.map(c=>[c.uid,{...c}])),board:new Map(s.board.map(c=>[c.uid,{...c,keywords:[...c.keywords]}])),hand:new Set(s.hand.map(c=>c.uid)),gold:s.gold,hp:s.hp,blood:s.bloodDamage||0};}
+function capture(s){return {dom:captureDOM(),units:new Map([...s.board,...s.hand,...s.shop,...(s.pendingTriples||[]).map(x=>x.card)].map(c=>[c.uid,{...c}])),feasts:s.feasts?.length||0,discards:s.stats?.discards||0,amulets:new Map(s.amulets.map(c=>[c.uid,{...c}])),prayers:s.progress?.prayers||0,shop:new Map(s.shop.map(c=>[c.uid,{...c}])),board:new Map(s.board.map(c=>[c.uid,{...c,keywords:[...c.keywords]}])),hand:new Set(s.hand.map(c=>c.uid)),gold:s.gold,hp:s.hp,blood:s.bloodDamage||0};}
 function motion(el,frames,duration=460){if(!el||reduced())return;el.animate(frames,{duration,easing:'cubic-bezier(.2,.7,.3,1)'});}
 function float(el,text,kind='gain',duration=650){if(!el||!text)return;const tag=document.createElement('span');tag.className='fx-number '+kind;tag.textContent=text;el.append(tag);if(!reduced())tag.animate([{opacity:0,transform:'translate(-50%,8px) scale(.85)'},{opacity:1,transform:'translate(-50%,-10px) scale(1.08)',offset:.25},{opacity:0,transform:'translate(-50%,-38px) scale(1)'}],{duration,easing:'ease-out'});setTimeout(()=>tag.remove(),duration);}
 const sign=n=>(n>0?'+':'')+n;
@@ -72,7 +72,7 @@ function battle(event,oldDOM,speed){
   animation.onfinish=()=>{departures.delete(ghost);ghost.remove();};
  }
 }
-function mergedCards(before,s){return s.hand.filter(c=>c.golden&&!before.units.has(c.uid)&&[...before.units.values()].some(x=>x.id===c.id&&!x.golden));}
+function mergedCards(before,s){return [...s.hand,...(s.pendingTriples||[]).map(x=>x.card)].filter(c=>c.golden&&!before.units.has(c.uid)&&[...before.units.values()].some(x=>x.id===c.id&&!x.golden));}
 const hasTriple=(before,s)=>mergedCards(before,s).length>0;
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 function fly(saved,target,duration=560){
@@ -84,9 +84,9 @@ function fly(saved,target,duration=560){
  animation.onfinish=()=>{departures.delete(ghost);ghost.remove();};
 }
 async function triples(before,s){
- for(const c of mergedCards(before,s)){const target=document.querySelector(`.card[data-area="hand"][data-card="${c.uid}"]`);const current=new Set([...s.hand,...s.board,...s.shop].map(c=>c.uid));let count=0;
+ for(const c of mergedCards(before,s)){const target=document.querySelector(`.card[data-area="hand"][data-card="${c.uid}"]`)||document.querySelector(`[data-pending-triple="${c.uid}"]`);const current=new Set([...s.hand,...s.board,...s.shop].map(c=>c.uid));let count=0;
  for(const [key,saved] of before.dom){const old=before.units.get(+key.split(':')[1]);if(old?.id===c.id&&!old.golden&&!current.has(old.uid)&&count++<3)fly(saved,target);}
- motion(target,[{filter:'brightness(2)',transform:'scale(.85)'},{filter:'brightness(1.7)',transform:'scale(1.12)',offset:.7},{filter:'brightness(1)',transform:'scale(1)'}],680);float(target,'三连 · 金色回手','resource',800);}
+ motion(target,[{filter:'brightness(2)',transform:'scale(.85)'},{filter:'brightness(1.7)',transform:'scale(1.12)',offset:.7},{filter:'brightness(1)',transform:'scale(1)'}],680);float(target,s.hand.some(x=>x.uid===c.uid)?'三连 · 金色回手':'三连 · 暂存','resource',800);}
  await pause(reduced()?120:720);
 }
 async function endStep(before,s,frame){

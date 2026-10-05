@@ -1,0 +1,176 @@
+{
+  "version": "28.7",
+  "scope": "Two fixed recruitment turns; all cores present; only initial forest12 body differs. No full matches.",
+  "results": [
+    {
+      "case": "base_fuel",
+      "before": {
+        "board": [
+          {
+            "id": "forest4",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest18",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest1",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest2",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest15",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest23",
+            "attack": 100,
+            "health": 100
+          }
+        ],
+        "hand": [
+          {
+            "id": "forest12",
+            "attack": 2,
+            "health": 2
+          },
+          {
+            "id": "forest20",
+            "attack": 3,
+            "health": 4
+          }
+        ],
+        "cycleValue": 76
+      },
+      "played": 4,
+      "actions": 14,
+      "phase": "operate",
+      "remainingHand": [],
+      "summary": {
+        "routeName": "连携养成",
+        "budget": 0,
+        "bonusGold": 0,
+        "goldSpent": 3,
+        "cardsBought": 0,
+        "spellsCast": 0,
+        "triples": 0,
+        "turns": 14,
+        "actions": 14,
+        "upgraded": false,
+        "bought": [],
+        "luckyRefreshes": 0,
+        "cycleSales": 3,
+        "openingDecision": null,
+        "played": 4,
+        "goldLeft": 0,
+        "buildId": "forest-combo",
+        "buildName": "连携养成",
+        "buildPhase": "operate",
+        "targetCore": [
+          "forest4",
+          "forest18",
+          "forest1"
+        ],
+        "missingCore": [],
+        "coreCount": 6,
+        "tier": 6,
+        "refreshes": 3,
+        "boardPower": 1310
+      }
+    },
+    {
+      "case": "grown_fuel",
+      "before": {
+        "board": [
+          {
+            "id": "forest4",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest18",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest1",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest2",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest15",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest23",
+            "attack": 100,
+            "health": 100
+          }
+        ],
+        "hand": [
+          {
+            "id": "forest12",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest20",
+            "attack": 3,
+            "health": 4
+          }
+        ],
+        "cycleValue": 76
+      },
+      "played": 4,
+      "actions": 14,
+      "phase": "operate",
+      "remainingHand": [],
+      "summary": {
+        "routeName": "连携养成",
+        "budget": 0,
+        "bonusGold": 0,
+        "goldSpent": 3,
+        "cardsBought": 0,
+        "spellsCast": 0,
+        "triples": 0,
+        "turns": 14,
+        "actions": 14,
+        "upgraded": false,
+        "bought": [],
+        "luckyRefreshes": 0,
+        "cycleSales": 3,
+        "openingDecision": null,
+        "played": 4,
+        "goldLeft": 0,
+        "buildId": "forest-combo",
+        "buildName": "连携养成",
+        "buildPhase": "operate",
+        "targetCore": [
+          "forest4",
+          "forest18",
+          "forest1"
+        ],
+        "missingCore": [],
+        "coreCount": 6,
+        "tier": 6,
+        "refreshes": 3,
+        "boardPower": 1310
+      }
+    }
+  ]
+}

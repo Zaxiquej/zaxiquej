@@ -31,7 +31,7 @@ function apply(D,I){
   if(d.discoverKind==='highSpell')return D.spells.filter(c=>available(c)&&c.tier>=4&&c.tier<=6);
   if(d.discoverKind==='majority'){const tribes=D.majorityTribes(s);return D.cards.filter(c=>available(c)&&c.tier<=top&&D.tribesOf(c).some(t=>tribes.includes(t)));}
   if(d.discoverKind==='graveDiscovery')return D.cards.filter(c=>available(c)&&c.tier<=top&&D.abilityIds.lastWords.includes(c.id));
-  if(d.discoverKind==='royal')return D.cards.filter(c=>available(c)&&c.tier<=top&&D.isTribe(c,'royal'));
+  if(d.discoverKind==='royal')return D.cards.filter(c=>c.id!==d.id&&available(c)&&c.tier<=top&&D.isTribe(c,'royal'));
   if(['fanfare','lastWords','endRecruit'].includes(d.discoverKind))return D.cards.filter(c=>available(c)&&c.tier<=top&&D.abilityIds[d.discoverKind].includes(c.id));
   if(d.discoverKind==='minion'&&!d.fixedTier)return D.cards.filter(c=>available(c)&&c.tier===top);
   return oldPool(s,d);
@@ -40,7 +40,7 @@ function apply(D,I){
  D.byId.seekCry.tier=4;D.byId.seekLast.tier=4;
  D.byId.seekRecruit.text='发现一个恰好等于当前酒馆星级的随从。';
  set('night11',{},m=>`入场曲：消耗 3 墓场，发现 ${m} 个谢幕曲随从，最高为当前酒馆星级。`);
- set('royal21',{},m=>`入场曲：发现 ${m} 个皇家随从，最高为当前酒馆星级。`);
+ set('royal21',{tier:4},m=>`入场曲：发现 ${m} 个其他皇家随从，最高为当前酒馆星级。`);
  // Remove redundant pool-language in player-facing card text and generated previews.
  const clean=t=>typeof t==='string'?t.replace(/来自本局牌池[，,]?/g,'').replace(/本局牌池中的?/g,'').replace(/从本局牌池中/g,'').replace(/本局牌池/g,'').replace(/本局牌组/g,''):t;
  for(const d of [...D.cards,...D.spells,...D.amulets,...D.tokens,...D.heroes]){d.text=clean(d.text);if(d.goldenText)d.goldenText=clean(d.goldenText);for(const r of d.related||[])r.when=clean(r.when);}
@@ -104,7 +104,58 @@ function apply(D,I){
  set('blood9',{effect:'feastBanquet',signature:'绯红盛宴'},m=>`备战结束：依次吞噬攻击最高的两个商店随从，自身永久获得其 ${m} 倍攻击与生命。`);
  set('blood24',{effect:'painFeast',signature:'嗜血暴食'},m=>`每次招募自伤成功后，吞噬攻击最高的一个商店随从，自身永久获得其 ${m} 倍攻击与生命。`);
  D.abilityIds.endRecruit=D.cards.filter(c=>D.endRecruitEffects.includes(c.effect)).map(c=>c.id);
- D.rulesVersion='27.9';
+ const yuwan=D.heroes.find(h=>h.id==='bahamut');yuwan.cost=0;yuwan.subtitle=yuwan.text;
+ const hero=(id,fields)=>{const h=D.heroes.find(h=>h.id===id);Object.assign(h,fields);h.subtitle=h.text;};
+ hero('forte',{cost:0,armor:4,text:'使一个友方在下一场战斗获得连击与一层屏障。连击不与已有连击叠加。'});
+ hero('snow',{cost:0,armor:5});
+ hero('forest',{armor:4});
+ hero('night',{cost:1,armor:12,target:true,power:'谢幕回响',text:'选择一个具有谢幕曲的友方随从：下一场战斗中，其首次谢幕曲额外触发一次。',related:[]});
+ hero('blood',{cost:1,armor:8,power:'嗜血追猎',text:'自伤 1，获得本回合两次免费刷新。',related:[]});
+ hero('aria',{cost:0,armor:10,target:true,power:'林间回返',text:'将一个友方随从收回手牌，保留其附加属性。',related:[]});
+ for(const [id,leaderId,name,power,cost,armor,text]of [
+  ['filene','804','菲琳','冰封宝藏',1,12,'选择一个商店随从，将其移出商店。两个回合开始后获得该随从，并使其永久 +4/+4。'],
+  ['erasmus','103','艾拉斯姆斯','秘法集市',1,10,'将整个商店刷新为不高于酒馆星级的随机酒馆法术。'],
+  ['albert','402','阿尔贝尔','悬赏征集',0,12,'本回合接下来出售 3 个不同名随从后，下回合额外获得 3 金币。']
+ ])D.heroes.push({id,leaderId,name,power,cost,armor,text,subtitle:text,tribe:'neutral',target:false,art:'dusk-tavern/assets/leader-'+leaderId+'.webp',sourceUrl:'https://svgdb.me/leaders/'+leaderId,imageSource:'https://svgdb.me/assets/leader/class_'+leaderId+'_profile.png',sourceName:({filene:'Filene',erasmus:'Erasmus',albert:'Albert'})[id],related:[]});
+ set('forest7',{effect:'fairyBulwark'},m=>`守护。每当你召唤一个妖精，自身与最左侧其他友方随从永久获得「妖精军团 × ${m}」的攻击与生命。`);
+ D.archetypes.forest.support='妖精军团由魔法精灵公主与莉莎培育；远古树精将每次妖精召唤转化为自身与最左侧其他友方的永久成长。';
+ set('forest6',{},m=>`每当友方衍生随从攻击前，使其本场获得「3 + 本回合打牌数÷3」× ${m} 的攻击与生命；妖精军团永久获得「1 + 本回合打牌数÷9」× ${m} 的攻击与生命（均向下取整）。`);
+ set('dragon16',{effect:'deathPulse'},m=>`谢幕曲：对所有随从造成 1 点伤害，重复 ${2*m} 次。`);
+ D.lastWordEffects.push('deathPulse');
+ D.abilityIds.lastWords=D.cards.filter(c=>D.lastWordEffects.includes(c.effect)||c.id==='dragon1').map(c=>c.id);
+ D.archetypes.dragon.routes[0][1]=D.archetypes.dragon.routes[0][1].replace('龙技达人攻击后持续刺激相邻龙族','龙技达人谢幕时连续震击全场，触发友方受伤收益并破除敌方屏障');
+ set('haven5',{tier:3,effect:'amuletReserve',signature:'圣物储备'},m=>`备战结束：获得 ${m} 张随机护符。`);
+ D.byId.haven5.related=[{pool:'amulet',when:'备战结束获得'}];
+ D.endRecruitEffects.push('amuletReserve');D.abilityIds.endRecruit=D.cards.filter(c=>D.endRecruitEffects.includes(c.effect)).map(c=>c.id);
+ set('haven18',{},m=>`每当己方护符倒数归零，使迦楼罗以外的友方主教永久获得「本随从生命÷3」×${m} 生命（向下取整）。`);
+ // Broaden the opening spell pool without adding duplicate stat spells.
+ Object.assign(D.byId.mana,{token:true,cost:0});
+ D.spells=D.spells.filter(c=>c.id!=='mana');
+ if(!D.tokens.some(c=>c.id==='mana'))D.tokens.push(D.byId.mana);
+ for(const id of ['growth','guard','marketMeal','rest'])Object.assign(D.byId[id],{tier:1,cost:1,tribe:'neutral',poolTribe:'neutral'});
+ Object.assign(D.byId.rich,{tier:2,cost:1});
+ Object.assign(D.byId.coin,{tier:1,cost:1,token:false,poolTribe:'neutral'});
+ D.tokens=D.tokens.filter(c=>c.id!=='coin');
+ if(!D.spells.some(c=>c.id==='coin'))D.spells.push(D.byId.coin);
+ Object.assign(D.byId.guard,{attack:0,health:3,text:'使一个友方随从永久 +3 生命，并赋予守护。'});
+ set('dragon15',{},m=>`每当你打出一个龙族随从（包括自身），本局酒馆随从永久 +${m}/+${m}，然后使本随从此效果的增益永久提高 +${m}/+${m}。`);
+ for(const [id,name,sourceId,tier,attack,health,effect] of [
+  ['dragon25','水龙神巫女',104441010,4,4,6,'discardTavern'],
+  ['dragon26','育龙者·玛蒂达',106411010,4,3,4,'tavernSupply']
+ ]){const c={id,name,sourceName:name,sourceId,sourceUrl:'https://svgdb.me/cards/'+sourceId,imageSource:'https://svgdb.me/assets/fullart/'+sourceId+'0.png',art:'dusk-tavern/assets/'+sourceId+'.webp',originalType:1,originalClan:4,type:'minion',tribe:'dragon',tier,cost:3,attack,health,effect,synergy:true,keywords:[]};D.cards.push(c);D.byId[id]=c;}
+ set('dragon25',{signature:'弃牌育龙'},m=>`每当你弃掉一张手牌，本局酒馆随从永久 +${2*m}/+${2*m}。`);
+ set('dragon26',{signature:'龙巢启示',related:[{id:'dragon',count:1,scaleCount:true,when:'备战结束加入手牌'}]},m=>`备战结束：获得 ${m} 张龙之启示。`);
+ D.abilityIds.endRecruit=D.cards.filter(c=>D.endRecruitEffects.includes(c.effect)).map(c=>c.id);
+ D.archetypes.dragon.routes[1]=['酒馆成长与吞噬','织术师随打出龙族不断提高酒馆增益，玛蒂达补充龙之启示；水龙神巫女把弃牌转为酒馆成长，贾巴沃克贡献自身八分之一身材。元祖驭龙使与培冬把酒馆属性传给战场。',['dragon15','dragon26','dragon25','dragon10','dragon17','dragon24','dragon21','dragon12']];
+ D.tuning.dragonHurtHealth=2;D.tuning.dragonTrainer=5;D.tuning.serpentAttack=4;D.tuning.serpentHealth=6;
+ set('dragon2',{},m=>`守护。受到伤害且存活时，永久 +${D.tuning.dragonHurt*m}/+${D.tuning.dragonHurtHealth*m}。`);
+ set('dragon4',{},m=>`友方龙族受到伤害且存活时，另一个随机友方龙族永久 +${D.tuning.dragonTrainer*m}/+${D.tuning.dragonTrainer*m}。`);
+ set('dragon13',{},m=>`每当自身受到伤害并存活，本局酒馆随从永久 +${D.tuning.serpentAttack*m}/+${D.tuning.serpentHealth*m}。`);
+ set('haven4',{},m=>`备战结束：使天狐以外的友方主教永久获得「2 + 自身生命÷4」×${m} 生命（向下取整）。`);
+ set('haven24',{},m=>`备战结束：使所有友方守护随从永久获得「备战结束前友方最高生命÷3」×${m} 生命（向下取整；本轮额外触发使用相同基数）。`);
+ const challengePortrait=(root.TavernLeaderPortraits||(typeof require!=='undefined'?require('./leader-portraits.js'):null)).portraits.challenge;
+ D.heroes.push({...challengePortrait,id:'challenge',tribe:'neutral',power:'不朽试炼',armor:0,cost:0,target:false,passive:true,challenge:true,upgradeTax:1,text:'被动：升本价格始终 +1 金币。',subtitle:'挑战主战者'});
+ D.rulesVersion='28.12';
 }
 root.TavernRenewal={apply};if(typeof module!=='undefined')module.exports={apply};
 })(typeof globalThis!=='undefined'?globalThis:this);

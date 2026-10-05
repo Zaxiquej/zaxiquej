@@ -1,0 +1,185 @@
+{
+  "version": "28.4",
+  "scope": "Two fixed recruitment turns; all cores present; only initial forest12 body differs. No full matches.",
+  "results": [
+    {
+      "case": "base_fuel",
+      "before": {
+        "board": [
+          {
+            "id": "forest4",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest18",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest1",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest2",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest15",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest23",
+            "attack": 100,
+            "health": 100
+          }
+        ],
+        "hand": [
+          {
+            "id": "forest12",
+            "attack": 2,
+            "health": 2
+          },
+          {
+            "id": "forest20",
+            "attack": 3,
+            "health": 4
+          }
+        ],
+        "cycleValue": 40
+      },
+      "played": 5,
+      "actions": 15,
+      "phase": "operate",
+      "remainingHand": [],
+      "summary": {
+        "routeName": "连携养成",
+        "budget": 0,
+        "bonusGold": 0,
+        "goldSpent": 4,
+        "cardsBought": 1,
+        "spellsCast": 0,
+        "triples": 0,
+        "turns": 14,
+        "actions": 15,
+        "upgraded": false,
+        "bought": [
+          "forest2"
+        ],
+        "luckyRefreshes": 0,
+        "openingDecision": null,
+        "played": 5,
+        "goldLeft": 0,
+        "buildId": "forest-combo",
+        "buildName": "连携养成",
+        "buildPhase": "operate",
+        "targetCore": [
+          "forest4",
+          "forest18",
+          "forest1"
+        ],
+        "missingCore": [],
+        "coreCount": 7,
+        "tier": 6,
+        "refreshes": 1,
+        "boardPower": 1317
+      }
+    },
+    {
+      "case": "grown_fuel",
+      "before": {
+        "board": [
+          {
+            "id": "forest4",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest18",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest1",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest2",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest15",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest23",
+            "attack": 100,
+            "health": 100
+          }
+        ],
+        "hand": [
+          {
+            "id": "forest12",
+            "attack": 100,
+            "health": 100
+          },
+          {
+            "id": "forest20",
+            "attack": 3,
+            "health": 4
+          }
+        ],
+        "cycleValue": 40
+      },
+      "played": 1,
+      "actions": 4,
+      "phase": "operate",
+      "remainingHand": [
+        {
+          "id": "forest20",
+          "name": "爱之妖精·宝菈"
+        },
+        {
+          "id": "fairy",
+          "name": "妖精"
+        }
+      ],
+      "summary": {
+        "routeName": "连携养成",
+        "budget": 0,
+        "bonusGold": 0,
+        "goldSpent": 0,
+        "cardsBought": 0,
+        "spellsCast": 0,
+        "triples": 0,
+        "turns": 14,
+        "actions": 4,
+        "upgraded": false,
+        "bought": [],
+        "luckyRefreshes": 0,
+        "openingDecision": null,
+        "played": 1,
+        "goldLeft": 0,
+        "buildId": "forest-combo",
+        "buildName": "连携养成",
+        "buildPhase": "operate",
+        "targetCore": [
+          "forest4",
+          "forest18",
+          "forest1"
+        ],
+        "missingCore": [],
+        "coreCount": 7,
+        "tier": 6,
+        "refreshes": 0,
+        "boardPower": 1400
+      }
+    }
+  ]
+}

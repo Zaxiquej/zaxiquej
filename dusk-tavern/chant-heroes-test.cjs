@@ -13,7 +13,7 @@ for(let tier=1;tier<=6;tier++)for(const doubled of [false,true]){
  A(!E.act(s,'choose',{id:'neutral4'}).ok);
 }
 console.log('PASS 冒险之梦六个星级、双重施放与旧奖励均只能获得同星随从');
-A.equal(state('night').armor,6);
+A.equal(state('night').armor,12);
 for(let tier=1;tier<=6;tier++){
  const s=state();s.tier=tier;s.gold=1;
  A(E.act(s,'power').ok);A.equal(s.gold,0);A.equal(E.refreshCost(s),0);
@@ -25,7 +25,7 @@ for(let tier=1;tier<=6;tier++){
 {
  const s=state();A(E.act(s,'power').ok);s.round++;E.startRound(s);A.equal(E.refreshCost(s),1);
 }
-console.log('PASS 露娜 6 甲；罗文一次免费刷新、零金币使用、存档与到期');
+console.log('PASS 露娜 12 甲；罗文一次免费刷新、零金币使用、存档与到期');
 for(const d of D.amulets.filter(c=>c.tier<=3)){
  A.equal(d.count,2,d.id);const s=state();s.hand=[E.make(s,d.id)];A(E.act(s,'play',{uid:s.hand[0].uid}).ok);
  A.equal(s.amulets[0].count,2);E.endRecruit(s);A.equal(s.amulets[0].count,1);
