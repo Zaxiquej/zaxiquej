@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),A=require('node:assert/strict'),fs=requir
 (async()=>{const b=await chromium.launch({channel:'chrome',headless:true});try{
  const p=await b.newPage({viewport:{width:1280,height:900}}),errors=[];p.setDefaultTimeout(15000);p.on('pageerror',e=>errors.push(e.message));
  await p.addInitScript(()=>localStorage.clear());await p.goto('http://127.0.0.1:8765/sv_tavern.html');
- A.equal(await p.evaluate(()=>TavernData.rulesVersion),'28.12');
+ A.equal(await p.evaluate(()=>TavernData.rulesVersion),'28.15');
  await p.getByRole('button',{name:'浏览图鉴',exact:true}).click();await p.locator('#catalog-search').fill('镜之世界');A.equal(await p.locator('.catalog-entry').count(),0);
  await p.locator('#catalog-search').fill('格萝德的搜索');await p.locator('.catalog-entry').click();A.match(await p.locator('.catalog-rules').innerText(),/数量最多/);A(await p.locator('.catalog-art').evaluate(async img=>{await img.decode();return img.naturalWidth>0}));
  await p.locator('.modal-close').click();await p.locator('.modal-close').click();await p.locator('[data-action="start"]').click();await p.locator('[data-action="menu"]').click();

@@ -10,4 +10,4 @@ A.equal(deaths.length,r.deadCount[0]+r.deadCount[1]);A.equal(new Set(deaths.map(
 A(deaths.filter(v=>v.id==='night12').length>=2,'reborn is a separate death');A(deaths.some(v=>v.id==='fairy'),'summoned token has death voice');
 for(const event of r.events){const attacks=event.voices.filter(v=>v.kind==='attack');if(event.kind==='attack'){A.equal(attacks.length,1);A.equal(attacks[0].battleId,event.from);A.equal(attacks[0].id,event.boards.flat().find(c=>c.battleId===event.from).id);}else A.equal(attacks.length,0);}
 s.phase='result';s.result={...r,opponent:'Test',round:s.round,fatigue:0};A(E.validate(s));A(E.validate(JSON.parse(JSON.stringify(s))));const legacy=E.copy(s);legacy.result.events.forEach(e=>delete e.voices);A(E.validate(legacy));const invalid=E.copy(s);invalid.result.events[0].voices={bad:true};A(!E.validate(invalid));
-console.log('PASS all 241 follower mappings / 723 assets; attack routing; simultaneous, token and reborn death cues exactly once; new/legacy replay save validation.');
+console.log('PASS all 242 follower mappings / 726 assets; attack routing; simultaneous, token and reborn death cues exactly once; new/legacy replay save validation.');

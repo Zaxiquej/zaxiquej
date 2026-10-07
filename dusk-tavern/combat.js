@@ -4,7 +4,7 @@ const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null
 const S=root.TavernScaling||(typeof require!=='undefined'?require('./scaling.js'):null);
 function run(s,left,right,metaL={},metaR={},helpers){
  const {copy,make,pick,rand,damageCap=15,record=true}=helpers,def=c=>D.byId[c.id],mult=c=>(c.golden?2:1)*(c.effectScale||1);
- const sides=[copy(left),copy(right)],meta=[metaL,metaR],progress=[S.read(metaL),S.read(metaR)],events=[],generated=[[],[]],deadCount=[0,0],grave=[metaL.grave||0,metaR.grave||0],scrap=[metaL.scrap||0,metaR.scrap||0],healing=[0,0],permanent=[{},{}],discount=[0,0],counters=new Map(),revivedOrigins=new Set(),impacts=[],voiceCues=[];let serial=100000,steps=0,retainEnabled=false;
+ const sides=[copy(left),copy(right)],meta=[metaL,metaR],progress=[S.read(metaL),S.read(metaR)],events=[],generated=[[],[]],deadCount=[0,0],grave=[metaL.grave||0,metaR.grave||0],scrap=[metaL.scrap||0,metaR.scrap||0],healing=[0,0],permanent=[{},{}],discount=[0,0],counters=new Map(),revivedOrigins=new Set(),impacts=[],voiceCues=[];let serial=100000,steps=0,retainEnabled=false,deathDepth=0,forcedRunning=false;const forcedAttacks=[];
  const growthContext=side=>({...meta[side],progress:progress[side],grave:grave[side],scrap:scrap[side]});
  const alive=i=>sides[i].filter(c=>c.health>0);
  const snap=(text,from=null,to=null,kind='effect',voices=[])=>{if(record)events.push({text,from,to,kind,voices:[...voiceCues.splice(0),...voices],impacts:impacts.splice(0),grave:[...grave],scrap:[...scrap],progress:copy(progress),boards:copy(sides)});else{voiceCues.length=0;impacts.length=0;}};
@@ -55,7 +55,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
   delete c.killedBy;delete c.venomSpent;if(!original){delete c.originUid;c.resurrected=false;c.vow=0;}
   if(original&&def(c).keywords?.includes('stealth')&&!c.keywords.includes('stealth'))c.keywords.push('stealth');
   if(original&&!extra.keepShield){c.keywords=c.keywords.filter(k=>k!=='shield');c.shieldLayers=0;delete c.temporaryShields;}
-  
+
   if(c.id==='fairy')buff(c,progress[side].fairy,progress[side].fairy,true,false);
   if(c.id==='bat'&&!original){const n=S.bat(meta[side]);buff(c,n,n,true,false);}
   if(extra.grantShield)addShield(c);sides[side].splice(Math.min(index,sides[side].length),0,c);
@@ -107,7 +107,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
   if(e==='graveLast'){const n=(def(c).graveYield||6)*m;grave[side]+=n;snap(def(c).name+' · 死者书页：墓场 +'+n+'。');}
   if(e==='relicSalvage'){scrap[side]+=2*m;progress[side].arms+=m;snap(def(c).name+' · 残骸 +'+2*m+'，武装研习 +'+m+'。',null,c.battleId,'grow');}
   if(e==='tavernLegacy'){const a=Math.floor(c.attack/8)*m,h=Math.floor(c.maxHealth/8)*m;progress[side].tavernAttack+=a;progress[side].tavernHealth+=h;snap(def(c).name+' · 龙骸沃土：酒馆永久 +'+a+'/+'+h+'。',null,c.battleId,'grow');}
-  if(e==='batNest')for(let i=0;i<2;i++)summon(side,'bat',2*m,m,index+i);
+  if(e==='batNest')for(let i=0;i<2;i++)summon(side,'bat',3*m,2*m,index+i);
   if(e==='batDeath')for(let i=0;i<2;i++)summon(side,'bat',2*m+Math.floor(c.attack/2),m+Math.floor(c.maxHealth/2),index+i);
   if(e==='analyzerDeath')summon(side,'analyzer',2*m,2*m,index,{effectScale:m});
   if(e==='artifactDeath'){const n=S.artifactBody({scrap:scrap[side]},m);for(let i=0;i<m;i++)summon(side,'ancientArtifact',n,n,index+i);}
@@ -122,7 +122,28 @@ function run(s,left,right,metaL={},metaR={},helpers){
   if(e==='tavernLast'){progress[side].tavernAttack+=m;progress[side].tavernHealth+=m;snap(def(c).name+' · 龙魂培育：酒馆永久 +'+m+'/+'+m+'。',null,c.battleId,'grow');}
   if(c.vow){const x=pick(s,alive(side));if(x){buff(x,Math.floor(c.attack/2)*c.vow,Math.floor(c.maxHealth/2)*c.vow);snap(def(c).name+' 的圣女遗愿强化了 '+def(x).name+'。',null,x.battleId,'grow');}}
  }
- function deaths(){let safety=0;while(sides.some(a=>a.some(c=>c.health<=0))&&safety++<100){const fallen=[];
+ function strike(attacker,hits=1){const side=attacker.side;
+  for(let hit=0;hit<hits&&attacker.health>0&&alive(1-side).length;hit++){
+   for(const source of alive(side).filter(c=>c.id==='rune7')){if(attacker.health<=0||!alive(1-side).length)break;if(source.health<=0)continue;const target=pick(s,alive(1-side)),n=(meta[side].spells||0)*mult(source);damage(target,n);snap(def(source).name+' · '+def(attacker).name+' 攻击前，秘银轰击：'+n+' 点伤害。',source.battleId,target.battleId,'spell');deaths();}
+   if(attacker.health<=0||!alive(1-side).length)break;
+   if(attacker.keywords.includes('stealth')){attacker.keywords=attacker.keywords.filter(k=>k!=='stealth');snap(def(attacker).name+' 发起攻击，解除潜行。',attacker.battleId,attacker.battleId,'reveal');}
+   if(D.isTribe(attacker,'forest')||D.isTribe(attacker,'dragon'))for(const x of alive(side).filter(x=>x.battleId!==attacker.battleId&&def(x).effect==='fairyGuardian')){grow(x,2*mult(x),3*mult(x));snap(def(x).name+' · 妖精龙成长。',attacker.battleId,x.battleId,'grow');}
+   if(def(attacker).token)for(const x of alive(side).filter(x=>x.id==='forest6')){const base=S.growthAmount(growthContext(side),'summonBuff'),n=base*mult(x),army=Math.floor(base/3)*mult(x);progress[side].fairy+=army;buff(attacker,n,n);snap(def(x).name+' · 妖精进军：攻击者本场 +'+n+'/+'+n+'，妖精军团永久 +'+army+'/+'+army+'。',x.battleId,attacker.battleId,'grow');}
+   for(const x of adjacent(attacker).filter(c=>def(c).effect==='ambushSupport')){buff(attacker,4*mult(x),2*mult(x));snap(def(x).name+' · 暗中支援：攻击者本场 +'+4*mult(x)+'/+'+2*mult(x)+'。',x.battleId,attacker.battleId,'grow');}
+   const foes=alive(1-side),visible=foes.filter(c=>!c.keywords.includes('stealth')),pool=visible.length?visible:foes,guards=pool.filter(c=>c.keywords.includes('taunt')&&!c.keywords.includes('stealth')),target=pick(s,def(attacker).effect==='artifactHunter'?pool.filter(c=>c.attack===Math.min(...pool.map(x=>x.attack))):guards.length?guards:pool);
+
+   // The selected guard gains its combat-only stats before attack/retaliation snapshots.
+   if(target.keywords.includes('taunt'))for(const x of alive(target.side).filter(x=>x.battleId!==target.battleId&&def(x).effect==='guardWitness')){const n=S.growthAmount(growthContext(target.side),'guardWitness',x)*mult(x);buff(target,n,2*n);snap(def(x).name+' · 守护援护：'+def(target).name+' 本场 +'+n+'/+'+2*n+'。',x.battleId,target.battleId,'grow');}
+   const a=attacker.attack,b=target.attack,neighbors=adjacent(target),blocked=target.keywords.includes('shield'),retaliations=target.keywords.includes('taunt')?alive(target.side).filter(x=>def(x).effect==='guardRetribution').map(x=>({source:x,n:Math.max(1,Math.floor(x.health/5))*mult(x)})):[];const poison=(c,victim,n)=>{const e=def(c).effect;if(n<=0||victim.keywords.includes('shield'))return false;if(e==='venomOnce'){if(c.venomSpent)return false;c.venomSpent=true;return true;}return c.keywords.includes('destruction');};const lethalA=poison(attacker,target,a),lethalB=poison(target,attacker,b);damage(target,a,lethalA);if(target.health<=0)target.killedBy=attacker.battleId;damage(attacker,b,lethalB);for(const r of retaliations){damage(attacker,r.n);snap(def(r.source).name+' · 守护反击：'+r.n+' 点伤害。',r.source.battleId,attacker.battleId,'spell');}if(def(attacker).effect==='cleave')neighbors.forEach(c=>damage(c,a));
+
+   if(def(attacker).effect==='bloodEdge'&&!blocked&&a>0&&attacker.health>0){const n=2*mult(attacker);grow(attacker,n,n);snap(def(attacker).name+' · 绯色锋刃：永久 +'+n+'/+'+n+'。',null,attacker.battleId,'grow');}
+   if(attacker.id==='dragon9'&&attacker.health>0){const n=(2+Math.floor(attacker.startHealth/10))*mult(attacker);grow(attacker,n,0);snap(def(attacker).name+' · 漆黑突袭：永久攻击 +'+n+'。',null,attacker.battleId,'grow');}
+   if(attacker.id==='royal5'&&attacker.health>0&&target.health<=0)addShield(attacker);
+   snap(def(attacker).name+' 攻击 '+def(target).name+'（'+a+' ↔ '+b+'）'+(hits>1?' · 连击 '+(hit+1)+'/2':''),attacker.battleId,target.battleId,'attack',[{id:attacker.id,kind:'attack',battleId:attacker.battleId}]);
+   deaths();
+  }
+ }
+ function deaths(){deathDepth++;let safety=0;while(sides.some(a=>a.some(c=>c.health<=0))&&safety++<100){const fallen=[];
   for(let side=0;side<2;side++){sides[side].forEach((c,index)=>{if(c.health<=0)fallen.push({c,index});});sides[side]=sides[side].filter(c=>c.health>0);}
   voiceCues.push(...fallen.map(({c})=>({id:c.id,kind:'death',battleId:c.battleId})));
   for(const {c,index} of fallen){const side=c.side;deadCount[side]++;grave[side]++;for(const x of alive(side))if(x.battleId!==c.battleId&&def(x).effect==='graveKeeper')grave[side]+=mult(x);
@@ -131,10 +152,10 @@ function run(s,left,right,metaL={},metaR={},helpers){
    const witnesses=[...alive(side)];
    for(const x of witnesses){const m=mult(x);
     if(def(x).effect==='fairyMemorial'&&c.id==='fairy')alive(side).filter(y=>D.isTribe(y,'forest')).forEach(y=>grow(y,2*m,2*m));
-    if(def(x).effect==='batMemorial'&&c.id==='bat')alive(side).filter(y=>D.isTribe(y,'blood')).forEach(y=>grow(y,3*m,2*m));
+    if(def(x).effect==='batMemorial'&&c.id==='bat')alive(side).filter(y=>D.isTribe(y,'blood')).forEach(y=>grow(y,3*m,3*m));
     if(def(x).effect==='scrapVeteran'&&D.isTribe(c,'artifact')){const n=(2+Math.floor(scrap[side]/5))*m;grow(x,n,n);}
     if(def(x).effect==='forgeLegacy'&&D.isTribe(c,'artifact')){progress[side].arms+=6*m;snap(def(x).name+' · 创造循环：武装研习 +'+(6*m)+'。',null,x.battleId,'grow');}
-    if(x.id==='artifact5'&&D.isTribe(c,'artifact')){const target=pick(s,alive(side).filter(y=>y.originUid&&y.battleId!==x.battleId&&D.isTribe(y,'artifact')));if(target){grow(target,3*m,3*m);snap(def(x).name+' · 遗物传承：'+def(target).name+' 永久成长。',null,target.battleId,'grow');}}
+
     if(x.id==='blood6'&&c.id==='bat'){const target=pick(s,alive(1-side));if(target){const n=c.attack*S.growthAmount(growthContext(side),'batQueen')*m;damage(target,n);snap(def(x).name+' · 血翼夜宴：蝙蝠谢幕造成 '+n+' 点伤害。',x.battleId,target.battleId,'spell');}}
     if(x.id==='night3')grow(x,2*m,2*m);
     if(x.id==='haven7'){const target=alive(side).at(-1);if(target){buff(target,Math.floor(c.attack*m/2),Math.floor(c.maxHealth*m/2));snap(def(x).name+' · 炽天使传承：'+def(target).name+' 继承阵亡者身材。',null,target.battleId,'grow');}}
@@ -144,6 +165,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
    if(hasLastWords(c)){lastWords(c,index);if(c.heroDeathEcho&&bump(c,'heroDeathEcho')===1){lastWords(c,index);snap('谢幕回响：'+def(c).name+' 的首次谢幕曲额外触发。',null,c.battleId,'echo');}for(const x of witnesses)if(def(x).effect==='lastWordsEcho'&&x.health>0){snap(def(x).name+' · 冥府回声：再次触发 '+def(c).name+' 的谢幕曲。',null,x.battleId,'echo');for(let n=0;n<mult(x);n++)lastWords(c,index);}}
 
    for(const x of witnesses){if(x.health<=0)continue;const m=mult(x),n=bump(x,'avenge');
+    if(def(x).effect==='artifactAvenger'&&n%5===0){const w=S.weapon(growthContext(side)),token=summon(side,'spinariaArtifact',(1+w.attack)*m,(3+w.health)*m,sides[side].indexOf(x)+1,{effectScale:m});if(token)forcedAttacks.push(token);}
     if(def(x).effect==='entryCannon'&&n%2===0){const target=pick(s,alive(1-side));if(target){const shot=progress[side].battleEntries*m;damage(target,shot);snap(def(x).name+' · 复仇炮击：'+shot+' 点伤害（本局战斗入场 '+progress[side].battleEntries+' 次）。',x.battleId,target.battleId,'spell');}}
     if(def(x).effect==='boneAvenger'&&n%3===0){grow(x,5*m,5*m);snap(def(x).name+' · 复仇：永久 +'+5*m+'/+'+5*m+'。',null,x.battleId,'grow');}
     if(def(x).effect==='batAvenge'&&n%2===0){const body=S.batAvengeBody(meta[side],m);summon(side,'bat',body,body,sides[side].indexOf(x)+1);}
@@ -156,7 +178,12 @@ function run(s,left,right,metaL={},metaR={},helpers){
    }
   }
   snap(fallen.map(x=>def(x.c).name).join('、')+' 退场，谢幕与复仇结算完毕。',null,null,'death');
- }}
+ }
+ deathDepth--;
+ // Resolve forced attacks after the current death batch, before the next normal
+ // turn. A queue prevents nested deaths from attacking with already-dead tokens.
+ if(!deathDepth&&!forcedRunning){forcedRunning=true;while(forcedAttacks.length&&steps<160){const token=forcedAttacks.shift();if(token.health>0&&sides[token.side].includes(token)&&alive(1-token.side).length){steps++;strike(token);}}forcedRunning=false;}
+ }
  for(let side=0;side<2;side++)for(const c of sides[side]){applyLegion(c);const n=c.id==='fairy'?progress[side].fairy:c.id==='bat'?S.bat(meta[side]):0;if(n)buff(c,n,n);}
  retainEnabled=true;
  snap('双方入场，开战效果准备触发。');
@@ -167,7 +194,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
   for(const c of [...sides[side]]){if(c.health<=0)continue;const e=def(c).effect,m=mult(c),friends=alive(side);
    if(e==='batRebirth')for(const x of friends.filter(x=>x.id==='bat')){const before=x.rebornCharges||0;grantBatRebirth(x,c);if(x.rebornCharges!==before)snap(def(c).name+' · 不息血脉：丛林蝙蝠获得 '+m+' 次额外复生。',c.battleId,x.battleId,'reborn');}
    if(['careerVanguard','careerChorus'].includes(e)){const n=progress[side].totalPlayed*m;for(const x of e==='careerVanguard'?[c]:friends.filter(x=>x.battleId!==c.battleId))buff(x,n,n);snap(def(c).name+' · 整局出牌 '+progress[side].totalPlayed+' 张：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
-   if(e==='healthAvatar'){const n=c.health*m;buff(c,n,n);snap(def(c).name+' · 生命化身：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
+   if(e==='healthAvatar'){const n=c.health*m;buff(c,n,0);snap(def(c).name+' · 生命化身：本场 +'+n+' 攻击。',null,c.battleId,'grow');}
    if(c.id==='night2'){const n=progress[side].battleEntries*m;buff(c,0,n);snap(def(c).name+' · 万骨之王：本场 +'+n+' 生命。',null,c.battleId,'grow');}
    if(e==='rebornGrant')for(const x of friends.filter(x=>x!==c&&!x.reborn).slice(0,m)){x.reborn=true;snap(def(c).name+' · 招魂仪式：'+def(x).name+' 获得复生。',c.battleId,x.battleId,'reborn');}
    if(e==='buffVanguard'){const n=Math.floor(progress[side].buffs/3)*m;buff(c,n,n);snap(def(c).name+' · 强化战阵：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
@@ -187,28 +214,11 @@ function run(s,left,right,metaL={},metaR={},helpers){
  }
  snap('开战效果结算完成。');deaths();
  let side=sides[0].length===sides[1].length?(rand(s)<.5?0:1):(sides[0].length>sides[1].length?0:1);const acted=[new Set(),new Set()];
- const windfury=c=>c.heroWindfury||def(c).effect==='double'||c.id==='dragon6'||c.id==='forest1'||c.id==='dragon9' ;
+ const windfury=c=>c.heroWindfury||def(c).windfury||def(c).effect==='double'||c.id==='dragon6'||c.id==='forest1'||c.id==='dragon9' ;
  while(alive(0).length&&alive(1).length&&steps<160){steps++;
   let attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack')&&!acted[side].has(c.battleId));if(!attackers.length){acted[side].clear();attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack'));}const attacker=attackers[0];
   if(!attacker){if(!alive(1-side).some(c=>c.attack>0&&!c.keywords.includes('cannotAttack')))break;side=1-side;continue;}acted[side].add(attacker.battleId);const hits=windfury(attacker)?2:1;
-  for(let hit=0;hit<hits&&attacker.health>0&&alive(1-side).length;hit++){
-   for(const source of alive(side).filter(c=>c.id==='rune7')){if(attacker.health<=0||!alive(1-side).length)break;if(source.health<=0)continue;const target=pick(s,alive(1-side)),n=(meta[side].spells||0)*mult(source);damage(target,n);snap(def(source).name+' · '+def(attacker).name+' 攻击前，秘银轰击：'+n+' 点伤害。',source.battleId,target.battleId,'spell');deaths();}
-   if(attacker.health<=0||!alive(1-side).length)break;
-   if(attacker.keywords.includes('stealth')){attacker.keywords=attacker.keywords.filter(k=>k!=='stealth');snap(def(attacker).name+' 发起攻击，解除潜行。',attacker.battleId,attacker.battleId,'reveal');}
-   if(D.isTribe(attacker,'forest')||D.isTribe(attacker,'dragon'))for(const x of alive(side).filter(x=>x.battleId!==attacker.battleId&&def(x).effect==='fairyGuardian')){grow(x,2*mult(x),3*mult(x));snap(def(x).name+' · 妖精龙成长。',attacker.battleId,x.battleId,'grow');}
-   if(def(attacker).token)for(const x of alive(side).filter(x=>x.id==='forest6')){const base=S.growthAmount(growthContext(side),'summonBuff'),n=base*mult(x),army=Math.floor(base/3)*mult(x);progress[side].fairy+=army;buff(attacker,n,n);snap(def(x).name+' · 妖精进军：攻击者本场 +'+n+'/+'+n+'，妖精军团永久 +'+army+'/+'+army+'。',x.battleId,attacker.battleId,'grow');}
-   for(const x of adjacent(attacker).filter(c=>def(c).effect==='ambushSupport')){buff(attacker,4*mult(x),2*mult(x));snap(def(x).name+' · 暗中支援：攻击者本场 +'+4*mult(x)+'/+'+2*mult(x)+'。',x.battleId,attacker.battleId,'grow');}
-   const foes=alive(1-side),visible=foes.filter(c=>!c.keywords.includes('stealth')),pool=visible.length?visible:foes,guards=pool.filter(c=>c.keywords.includes('taunt')&&!c.keywords.includes('stealth')),target=pick(s,def(attacker).effect==='artifactHunter'?pool.filter(c=>c.attack===Math.max(...pool.map(x=>x.attack))):guards.length?guards:pool);
-   
-   const a=attacker.attack,b=target.attack,neighbors=adjacent(target),blocked=target.keywords.includes('shield'),retaliations=target.keywords.includes('taunt')?alive(target.side).filter(x=>def(x).effect==='guardRetribution').map(x=>({source:x,n:Math.max(1,Math.floor(x.health/5))*mult(x)})):[];const poison=(c,victim,n)=>{const e=def(c).effect;if(n<=0||victim.keywords.includes('shield'))return false;if(e==='venomOnce'){if(c.venomSpent)return false;c.venomSpent=true;return true;}return c.keywords.includes('destruction');};const lethalA=poison(attacker,target,a),lethalB=poison(target,attacker,b);damage(target,a,lethalA);if(target.health<=0)target.killedBy=attacker.battleId;damage(attacker,b,lethalB);for(const r of retaliations){damage(attacker,r.n);snap(def(r.source).name+' · 守护反击：'+r.n+' 点伤害。',r.source.battleId,attacker.battleId,'spell');}if(def(attacker).effect==='cleave')neighbors.forEach(c=>damage(c,a));
-
-   if(def(attacker).effect==='bloodEdge'&&!blocked&&a>0&&attacker.health>0){const n=2*mult(attacker);grow(attacker,n,n);snap(def(attacker).name+' · 绯色锋刃：永久 +'+n+'/+'+n+'。',null,attacker.battleId,'grow');}
-   if(attacker.id==='dragon9'&&attacker.health>0){const n=(2+Math.floor(attacker.startHealth/10))*mult(attacker);grow(attacker,n,0);snap(def(attacker).name+' · 漆黑突袭：永久攻击 +'+n+'。',null,attacker.battleId,'grow');}
-   if(attacker.id==='royal5'&&attacker.health>0&&target.health<=0)addShield(attacker);
-   snap(def(attacker).name+' 攻击 '+def(target).name+'（'+a+' ↔ '+b+'）'+(hits>1?' · 连击 '+(hit+1)+'/2':''),attacker.battleId,target.battleId,'attack',[{id:attacker.id,kind:'attack',battleId:attacker.battleId}]);
-   if(target.keywords.includes('taunt')&&!target.keywords.includes('stealth'))for(const x of alive(target.side).filter(x=>x.battleId!==target.battleId&&def(x).effect==='guardWitness')){const receiver=target;if(receiver){const n=S.growthAmount(growthContext(target.side),'guardWitness',x)*mult(x);grow(receiver,n,2*n);snap(def(x).name+' · 守护援护：'+def(receiver).name+' 永久 +'+n+'/+'+2*n+'。',x.battleId,receiver.battleId,'grow');}}
-   deaths();
-  }side=1-side;
+  strike(attacker,hits);side=1-side;
  }
  const winner=sides[0].length&&!sides[1].length?0:sides[1].length&&!sides[0].length?1:-1;
  const rawDamage=winner<0?0:(meta[winner].tier||1)+sides[winner].reduce((n,c)=>n+(def(c).token?1:def(c).tier),0),damageDone=damageCap===null?rawDamage:Math.min(damageCap,rawDamage);

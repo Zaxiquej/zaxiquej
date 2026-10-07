@@ -1352,6 +1352,12 @@
       "attack": "vo_106411010_2.mp3",
       "death": "vo_106411010_4.mp3"
     },
+    "blood25": {
+      "sourceId": 121641030,
+      "play": "vo_121641030_1.mp3",
+      "attack": "vo_121641030_2.mp3",
+      "death": "vo_121641030_4.mp3"
+    },
     "rune23": {
       "sourceId": 101311040,
       "play": "vo_101311040_1.mp3",
@@ -1449,8 +1455,8 @@
       "death": "vo_900711130_4.mp3"
     }
   },
-  "files": 723,
-  "bytes": 20262592,
+  "files": 726,
+  "bytes": 20345138,
   "missing": [],
   "errors": []
 }

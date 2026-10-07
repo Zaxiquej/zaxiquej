@@ -23,7 +23,7 @@ for(const [name,id,taunt] of [['two golden foxes','haven4',false],['two golden g
 }
 {
  const s=fresh(),avatar=quiet(s,'haven16'),memory=quiet(s,'haven20'),r=E.combat(s,[avatar,memory],[]);
- A.deepEqual(r.permanent[0][avatar.uid],{attack:100,health:100});audit.push({name:'avatar + normal memory aura',startHealth:100,permanentHealth:200});
+ A.deepEqual(r.permanent[0][avatar.uid],{attack:100,health:0});audit.push({name:'avatar + normal memory aura',startHealth:100,permanentHealth:100});
 }
 {
  const s=fresh(),a=quiet(s,'royal24'),b=quiet(s,'royal24'),w=quiet(s,'royal23');s.board=[a,b,w];const spell=E.make(s,'growth');s.hand=[spell];A(E.act(s,'play',{uid:spell.uid,target:a.uid}).ok);A(E.validate(s));A(s.board.every(c=>c.health<110));

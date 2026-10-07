@@ -66,11 +66,11 @@ function spellView(s,d){
  if(d.effect==='bones')short='墓场 +5';
  if(d.effect==='removeGuard')short='移除守护 · 指定友方';
  if(d.effect==='clock')short='所有护符倒数 −1';
- if(d.effect==='bloodImmunity')short=s?.bloodImmunity?'本回合自伤免伤 · 已生效':'本回合自伤免伤';
+ if(d.effect==='bloodImmunity')short='本回合自伤免伤 → 自伤1';
  if(d.effect==='mining')short='金币上限 +1';
  if(d.effect==='coin')short='金币 +1';
  if(d.effect==='deferGold')short='下回合金币 +2';
- if(d.effect==='bloodContract')short='购入自伤2 · 获得吻唇×2';
+ if(d.effect==='bloodContract')short='购入自伤1×2 · 获得吻唇×2';
  if(d.effect==='modalSpell'){short=`抉择：酒馆 +${3+amp}/+${3+amp} / 龙族 +${6+amp} 生命`;text=`抉择：使本局酒馆永久 +${3+amp}/+${3+amp}；或使所有友方龙族永久 +${6+amp} 生命。`;}
  if(d.effect==='discardExchange'){short='弃一张手牌 → 随机法术 ×2';text=d.text;}
  return {attack:a,health:h,text,short:short||text};
@@ -95,7 +95,7 @@ function amuletView(s,d){
  bell:`全体随从 +${body(3)} 生命`,
  temple:`培育 +2；全体 +${body(4)}/+${body(6)}`,
  hourglass:`随机获得 ${Math.min(6,(s.tier||1)+1)} 星随从 ×1`,
- bloodGarden:`自伤 2；全体 +${body(3)}/+${body(3)}；${body(1)}/${body(1)} 蝙蝠 ×1`,
+ bloodGarden:`自伤 1×2；全体 +${body(3)}/+${body(3)}；${body(1)}/${body(1)} 蝙蝠 ×1`,
  accelerator:`武装 ×2；造物 +${body(1)}/+${body(2)}`,
  fairyGlade:`获得 ${body(1)}/${body(1)} 妖精 ×2`,
  fairyRealm:'妖精军团永久 +6/+6',
@@ -136,7 +136,7 @@ function formulaText(s,c,text){
  if(e==='healthReliquary')value=`+${Math.floor(h/3)*m} 生命`;
  if(e==='healthChoir')value=`+${(2+Math.floor(h/4))*m} 生命`;
  if(e==='royalStart')value=pair((8+Math.floor(p.buffs/10))*m);
- if(e==='healthAvatar'){value=pair(h*m);anchor=/自身当时生命\s*×\s*\d+/;}
+ if(e==='healthAvatar'){value='+'+h*m+' 攻击';anchor=/自身当时生命\s*×\s*\d+/;}
  if(c.id==='night2')value=`+${p.battleEntries*m} 生命`;
  if(e==='prayerBastion'){const n=(6+prayer(s))*m;value=pair(n,2*n);}
  if(e==='prayerChoir')value=pair((4+prayer(s))*m);
@@ -167,6 +167,8 @@ function formulaText(s,c,text){
  if(['fairy2','batDeath'].includes(e)){value=body((e==='fairy2'?3:2)*m+Math.floor(a/2),(e==='fairy2'?3:1)*m+Math.floor(max/2));label='基础身材';}
  if(e==='battleBrood'&&d.brood?.inheritHealth){value=body(d.brood.attack*m,d.brood.health*m+Math.floor(max/2));label='基础身材';}
  if(e==='tavernLegacy')value=pair(Math.floor(a/8)*m,Math.floor(max/8)*m);
+ if(e==='forgeEnd'){value='武装研习 +'+((1+(c.forgeUpgrades||0))*m);label='备战结束';}
+ if(e==='artifactAvenger'){const w=weapon(s);value='召唤 '+((1+w.attack)*m)+'/'+((3+w.health)*m)+' 并立即攻击';label='当前';}
  if(e==='tavernPlay'){value=pair((1+(c.tavernWeaves||0))*m);label='下次酒馆增益';}
  if(e==='batAvenge'){value=body(batAvengeBody(s,m)+bat(s));label='含军团的召唤身材';}
  if(['summonBuff','shieldBuff','rallyCry','legionEngine','graveLegacy','spellHealth','guardWitness','batQueen','moduleRally','discardRally'].includes(e)){
