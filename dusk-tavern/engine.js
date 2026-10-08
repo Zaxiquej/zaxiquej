@@ -3,13 +3,29 @@
 const D=root.TavernData||(typeof require!=='undefined'?require('./data.js'):null);
 const S=root.TavernScaling||(typeof require!=='undefined'?require('./scaling.js'):null);
 const copy=x=>JSON.parse(JSON.stringify(x));
+// Seat identity is independent of the owner of a matched historical formation.
+function repairEchoIdentities(s){
+ const pool=D.heroes.filter(h=>!h.challenge&&heroAvailable(h,activeTribes(s))),byId=id=>pool.find(h=>h.id===id),used=new Set([s.hero]),assigned=new Map(),counts=new Map();
+ for(const o of s.opponents||[])counts.set(o.hero,(counts.get(o.hero)||0)+1);
+ const assign=(o,id,tribe)=>{const h=byId(id);if(!h||used.has(id))return false;const t=h.tribe==='neutral'?(activeTribes(s).includes(tribe)?tribe:activeTribes(s)[o.id%activeTribes(s).length]):h.tribe;assigned.set(o,{hero:id,tribe:t});used.add(id);return true;};
+ for(const o of s.opponents||[])if(o.initialHero)assign(o,o.initialHero,o.initialTribe);
+ for(const o of s.opponents||[])if(!assigned.has(o)&&!o.echoRecord&&o.echoRound===undefined&&counts.get(o.hero)===1)assign(o,o.hero,o.tribe);
+ for(const o of s.opponents||[]){if(assigned.has(o))continue;for(const row of [...s.roundHistory||[]].sort((a,b)=>a.round-b.round)){const old=row.players?.find(p=>p.id===o.id);if(old&&!old.echoSourceHero&&assign(o,old.hero,old.tribe))break;}}
+ for(const o of s.opponents||[])if(!assigned.has(o))assign(o,o.hero,o.tribe);
+ for(const o of s.opponents||[])if(!assigned.has(o)){const h=pool.find(h=>!used.has(h.id)&&h.tribe===o.tribe)||pool.find(h=>!used.has(h.id));if(h)assign(o,h.id,o.tribe);}
+ for(const o of s.opponents||[]){const identity=assigned.get(o);if(!identity)continue;if(o.hero!==identity.hero&&o.echoRound===s.round&&!o.echoSourceHero)o.echoSourceHero=o.hero;Object.assign(o,identity,{initialHero:identity.hero,initialTribe:identity.tribe});o.name=D.heroes.find(h=>h.id===o.hero).name+(o.echoSeries?.status==='history'||o.echoRound===s.round?' · 历史阵容':o.echoSeries?.status==='ai'?' · AI接管':'');}
+ return s;
+}
 // Compatibility cleanup keeps existing stats, including buffs from older saves.
 function normalize(s){
+ repairEchoIdentities(s);
+ if(!s.preemptiveRulesVersion){for(const p of [s,...s.opponents||[]])for(const c of [...p.board||[],...p.hand||[],...p.shop||[],...(p.pendingTriples||[]).map(x=>x.card),...(p.dormant||[]).map(x=>x.card).filter(Boolean)])if(c.id==='neutral20')c.keywords=c.keywords.filter(k=>k!=='destruction');s.preemptiveRulesVersion=1;}
  for(const p of [s,...s.opponents||[]])for(const c of [...p.board||[],...p.hand||[],...p.shop||[],...(p.pendingTriples||[]).map(x=>x.card),...(p.dormant||[]).map(x=>x.card).filter(Boolean)])if(c.id==='blood21'&&!c.keywords.includes('stealth'))c.keywords.push('stealth');
  if(!s.lepisRulesVersion){for(const p of [s,...s.opponents||[]])for(const c of [...p.board||[],...p.hand||[],...p.shop||[]])if(c.id==='haven7')c.keywords=c.keywords.filter(k=>k!=='taunt');s.lepisRulesVersion=1;}
  if(!s.expeditionRulesVersion){for(const p of [s,...s.opponents||[]])for(const c of [...p.board||[],...p.hand||[],...p.shop||[]]){if(c.id==='rune3'&&!S.shieldCount(c))S.addShield(c);if(c.id==='neutral10')c.keywords=c.keywords.filter(k=>k!=='destruction');}s.expeditionRulesVersion=1;}
  s.difficulty='hard';const previousMax=s.maxHp||30;for(const p of [s,...s.opponents||[]]){const oldMax=p.maxHp||previousMax;if(p.hp>0)p.hp=Math.min(40,p.hp+Math.max(0,40-oldMax));p.maxHp=40;}
- for(const o of s.opponents||[]){const h=D.heroes.find(h=>h.id===o.hero);if(h)o.name=h.name;}
+ for(const o of s.opponents||[]){const h=D.heroes.find(h=>h.id===o.hero);if(h)o.name=h.name+(o.echoSeries?.status==='history'||o.echoRound===s.round?' · 历史阵容':o.echoSeries?.status==='ai'?' · AI接管':'');}
+ for(const p of [s,...s.opponents||[]])p.graveSearchUses=p.graveSearchUses??0;
  s.armor=s.armor??0;for(const o of s.opponents||[])o.armor=o.armor??0;
  s.trinkets=[];s.discover=s.discover.filter(q=>q.type!=='trinket');for(const o of s.opponents||[]){if(o.trinkets)o.trinkets=[];if(o.discover)o.discover=o.discover.filter(q=>q.type!=='trinket');}
  for(const p of [s,...s.opponents||[]])if(p.stats)p.stats.discards=p.stats.discards||0;
@@ -73,9 +89,10 @@ function give(s,c,protect=false){if(claimTriples(s))triples(s);if(s.hand.length>
  if(def(c).type==='minion'&&(protect||!c.golden&&copies%3===2)){(s.pendingTriples||(s.pendingTriples=[])).push({card:c,reward:null});triples(s);if(s.pendingTriples.length)log(s,def(c).name+' 已保留在三连暂存区。');return true;}
  resolveDiscard(s,c,true);return false;}s.hand.push(c);triples(s);return true;}
 function raiseGoldCap(s,n){s.progress=S.read(s);s.progress.goldCapBonus+=n;log(s,'金币上限 +'+n+' · 当前 '+S.goldCap(s)+'，下回合起增加收入。');}
-function recruitSummon(s,c){if(c.id==='fairy'){for(const x of [...s.board]){if(x.id==='forest2'){s.progress=S.read(s);s.progress.fairy+=mul(x);}if(def(x).effect==='fairyRally')neighbors(s.board,x).forEach(y=>buff(s,y,2*mul(x),2*mul(x)));}for(const x of s.board.filter(x=>def(x).effect==='fairyBulwark')){const n=S.read(s).fairy*mul(x);buff(s,x,n,n);buff(s,s.board.find(y=>y.uid!==x.uid),n,n);}}}
+function recruitSummon(s,c){if(c.id==='fairy'){for(const x of [...s.board]){if(x.id==='forest2'){s.progress=S.read(s);s.progress.fairy+=mul(x);}if(def(x).effect==='fairyRally')neighbors(s.board,x).forEach(y=>buff(s,y,2*mul(x),2*mul(x)));}for(const x of s.board.filter(x=>def(x).effect==='fairyBulwark')){const n=S.fairy(s)*mul(x);buff(s,x,n,n);buff(s,s.board.find(y=>y.uid!==x.uid),n,n);}}}
 function targetCards(s,q){const list=['feast','dormant'].includes(q.kind)?s.shop.filter(c=>def(c).type==='minion'):q.kind==='health'?s.board:s.hand.filter(c=>def(c).type==='minion'&&!c.golden&&eligiblePool(s,D.cards).some(d=>d.tier===def(c).tier&&d.id!==c.id));return list.filter(c=>q.options.includes(String(c.uid)));}
-function queueTarget(s,kind,source,scale=1){const share=kind==='feast'&&source&&def(source).effect==='chosenFeast';if(share&&!s.board.some(c=>c.uid!==source.uid))return;const list=kind==='feast'?s.shop.filter(c=>def(c).type==='minion'):kind==='health'?s.board:s.hand.filter(c=>def(c).type==='minion'&&!c.golden&&eligiblePool(s,D.cards).some(d=>d.tier===def(c).tier&&d.id!==c.id));if(!list.length)return;const titles={feast:'选择吞噬的商店随从',health:'选择生命转攻击的随从',shift:'选择重构的手牌随从'};s.discover.push({type:'targetChoice',source:'ability',kind,owner:source?.uid||null,card:source?.id||null,hero:source?null:s.hero,scale,title:titles[kind],text:kind==='feast'?(share?'自伤 2，使随机一名其他友方吞噬所选随从，永久获得其 '+scale+' 倍攻击与生命。':'自伤 2，吞噬所选随从并获得其属性。'):kind==='health'?'攻击与生命永久提高至两者中较高值'+(scale===2?'的两倍':'')+'。':'变为同星级的另一随从，保留附加攻击与生命。',options:list.map(c=>String(c.uid))});}
+function queueTarget(s,kind,source,scale=1){const share=kind==='feast'&&source&&def(source).effect==='chosenFeast';if(share&&!s.board.some(c=>c.uid!==source.uid))return;const list=kind==='feast'?s.shop.filter(c=>def(c).type==='minion'):kind==='health'?s.board:s.hand.filter(c=>def(c).type==='minion'&&!c.golden&&eligiblePool(s,D.cards).some(d=>d.tier===def(c).tier&&d.id!==c.id));if(!list.length)return;const titles={feast:'选择吞噬的商店随从',health:'选择强化的友方随从',shift:'选择重构的手牌随从'};s.discover.push({type:'targetChoice',source:'ability',kind,owner:source?.uid||null,card:source?.id||null,hero:source?null:s.hero,scale,title:titles[kind],text:kind==='feast'?(share?'自伤 2，使随机一名其他友方吞噬所选随从，永久获得其 '+scale+' 倍攻击与生命。':'自伤 2，吞噬所选随从并获得其属性。'):kind==='health'?'攻击与生命永久提高至两者中较高值'+(scale===2?'的两倍':'')+'。':'变为同星级的另一随从，保留附加攻击与生命。',options:list.map(c=>String(c.uid))});}
+function heroGraveCost(s){return 3+3*(s.graveSearchUses||0);}
 function heroPool(s,id){if(id==='ceres')return eligiblePool(s,D.cards).filter(d=>d.tier<=D.discoverTier(s)&&D.abilityIds.lastWords.includes(d.id));if(id==='windgod')return [...new Set((s.opponents.find(o=>o.id===s.lastOpponent)?.board||[]).filter(c=>!def(c).token&&def(c).tier<=D.discoverTier(s)&&available(s,def(c))).map(c=>c.id))].map(id=>D.byId[id]);return [];}
 function removeShield(s,c){S.removeShieldLayer(c);if(c.id==='royal0')buff(s,c,mul(c),mul(c));for(const x of [...s.board]){const e=def(x).effect,m=mul(x);if(x.id==='royal6'){const n=S.growthAmount(s,'shieldBuff')*m;s.board.filter(y=>D.isTribe(y,'royal')).forEach(y=>buff(s,y,n,n));}if(e==='shieldMentor'&&x.uid!==c.uid)buff(s,c,2*m,2*m);if(e==='shieldResearch')S.powerGain(s.progress,'spellcraft',2,m);if(x.id==='neutral3')neighbors(s.board,c).forEach(y=>buff(s,y,2*m,2*m));}}
 function chosenFeast(s,c,food,m,share=false){if(!c||!food||!s.shop.includes(food)||(s.hp<=1&&!S.selfHarmImmune(s)))return;const target=share?pick(s,s.board.filter(x=>x.uid!==c.uid)):c;if(!target)return;const foodIndex=s.shop.indexOf(food);s.shop.splice(foodIndex,1);if(!selfHarm(s,2)){s.shop.splice(foodIndex,0,food);return;}buff(s,target,food.attack*m,food.health*m);synergies(s,'feast',food);const text=(share?def(c).name+' 使 ':'')+def(target).name+' 吞噬 '+def(food).name+'，永久 +'+food.attack*m+'/+'+food.health*m+'。';log(s,text);(s.feasts||(s.feasts=[])).push({text,source:c.uid,targets:[target.uid],food:{id:food.id,uid:food.uid,attack:food.attack,health:food.health}});}
@@ -89,7 +106,7 @@ function resolveDiscard(s,c,overflow=false){
  s.stats=s.stats||{};s.stats.discards=(s.stats.discards||0)+1;
  for(const x of [...s.board])if(def(x).effect==='discardRally'){const n=S.growthAmount(s,'discardRally')*mul(x);s.board.filter(y=>D.isTribe(y,'dragon')).forEach(y=>buff(s,y,n,n+mul(x)));}
  for(const x of [...s.board])if(def(x).effect==='discardTavern')growTavern(s,2*mul(x),2*mul(x));
- for(const a of s.amulets||[])if(def(a).effect==='discardRite')growTavern(s,1,1);
+ for(const a of s.amulets||[])if(def(a).effect==='discardRite'){const n=S.discardRitePower(s);growTavern(s,n,n);}
  log(s,(overflow?'手牌已满，弃掉：':'弃牌：')+def(c).name+'。');departureReward(s,c,true);if(def(c).effect==='discardScrap')s.scrap=(s.scrap||0)+3*mul(c)*(s.discardEcho?2:1);refreshTargetQueues(s);
 }
 function queueMode(s,d,scale=1){s.discover.push({type:'mode',source:'ability',card:d.id,scale,title:d.name+' · 抉择',text:'选择一种效果。每次抉择只结算所选项。',options:d.modes.map(m=>m.id)});}
@@ -105,7 +122,7 @@ function boostOffers(s,a,h){for(const c of s.shop||[])if(def(c).type==='minion')
 function growTavern(s,a,h){s.progress=Object.assign(s.progress||{},S.read(s));s.progress.tavernAttack+=a;s.progress.tavernHealth+=h;boostOffers(s,a,h);}
 function offer(s,id){const c=make(s,id),b=S.tavern(s);if(def(c).type==='minion')buff(null,c,b.attack,b.health);return c;}
 function settleProgress(s,p){const before=S.tavern(s);s.progress=copy(p);boostOffers(s,s.progress.tavernAttack-before.attack,s.progress.tavernHealth-before.health);}
-function feastTarget(s,kind){const key=kind==='dragonFeast'?'health':'attack',other=key==='health'?'attack':'health';return [...(s.shop||[])].filter(c=>def(c).type==='minion').sort((a,b)=>b[key]-a[key]||b[other]-a[other]||a.uid-b.uid)[0];}
+function feastTarget(s,kind){const key=['dragonFeast','activeDiscard'].includes(kind)?'health':'attack',other=key==='health'?'attack':'health';return [...(s.shop||[])].filter(c=>def(c).type==='minion').sort((a,b)=>b[key]-a[key]||b[other]-a[other]||a.uid-b.uid)[0];}
 function feast(s,c){const e=def(c).effect,targets=e==='dragonFeast'?neighbors(s.board,c).filter(x=>D.isTribe(x,'dragon')):[c];if(!targets.length||!feastTarget(s,e))return;
  if(['bloodFeast','smallFeast'].includes(e)&&!selfHarm(s,e==='smallFeast'?1:2))return;const food=feastTarget(s,e);if(!food)return;const m=mul(c),a=(e==='smallFeast'?Math.ceil(food.attack/2):food.attack)*m,h=(e==='smallFeast'?Math.ceil(food.health/2):food.health)*m;s.shop.splice(s.shop.indexOf(food),1);for(const x of targets)buff(s,x,a,h);
  synergies(s,'feast',food);const text=def(c).name+' 吞噬 '+def(food).name+'（'+food.attack+'/'+food.health+'），'+targets.map(x=>def(x).name).join('、')+' 永久 +'+a+'/+'+h+'。';log(s,text);(s.feasts||(s.feasts=[])).push({text,source:c.uid,targets:targets.map(x=>x.uid),food:{id:food.id,uid:food.uid,attack:food.attack,health:food.health}});
@@ -140,14 +157,14 @@ function startRound(s){
  log(s,'第 '+s.round+' 回合 · 获得 '+s.gold+' 金币。');
 }
 function create(hero='forest',seed=Date.now(),difficulty='hard',tribes=null){
- const s={version:1,openingPoolRulesVersion:2,lepisRulesVersion:1,discoveryRulesVersion:1,expeditionRulesVersion:1,barrierRulesVersion:1,seed:(seed>>>0)||12345,uid:0,hero,difficulty:'hard',phase:'recruit',round:1,hp:40,maxHp:40,tier:1,gold:3,discount:-1,grave:0,spells:0,played:0,board:[],hand:[],shop:[],amulets:[],trinkets:[],discover:[],log:[],frozen:false,powerUsed:false,wins:0,losses:0,opponents:[],lastOpponent:null,stats:{triples:0,spells:0,discards:0}};
+ const s={version:1,preemptiveRulesVersion:1,openingPoolRulesVersion:2,lepisRulesVersion:1,discoveryRulesVersion:1,expeditionRulesVersion:1,barrierRulesVersion:1,seed:(seed>>>0)||12345,uid:0,hero,difficulty:'hard',phase:'recruit',round:1,hp:40,maxHp:40,tier:1,gold:3,discount:-1,grave:0,spells:0,played:0,board:[],hand:[],shop:[],amulets:[],trinkets:[],discover:[],log:[],frozen:false,powerUsed:false,wins:0,losses:0,opponents:[],lastOpponent:null,stats:{triples:0,spells:0,discards:0}};
  const leader=heroDef(s);if(!leader)throw Error('无效主战者。');const heroTribe=leader.tribe;
  s.activeTribes=tribes?[...tribes]:heroTribe==='neutral'?sample(s,D.tribeIds,4):[heroTribe,...sample(s,D.tribeIds.filter(t=>t!==heroTribe),3)];
  s.armor=leader.armor;
  if(s.activeTribes.length!==4||new Set(s.activeTribes).size!==4||!s.activeTribes.every(t=>D.tribeIds.includes(t))||!heroAvailable(leader,s.activeTribes))throw Error('每局需要四个有效种族，并包含所选主战者。');
  s.bloodDamage=0;s.scrap=0;s.progress=Object.assign(s.progress||{},S.read(s));
  const usedHeroes=new Set([hero]);
- for(let i=0;i<7;i++){const tribe=s.activeTribes[i%4],candidates=D.heroes.filter(h=>!h.challenge&&!usedHeroes.has(h.id)&&(h.tribe===tribe||h.tribe==='neutral')),h=pick(s,candidates);usedHeroes.add(h.id);s.opponents.push({id:i,name:h.name,tribe,hero:h.id,hp:40,maxHp:40,armor:h.armor,tier:1,board:[],grave:0,spells:0,bloodDamage:0,scrap:0,progress:S.read()});}
+ for(let i=0;i<7;i++){const tribe=s.activeTribes[i%4],candidates=D.heroes.filter(h=>!h.challenge&&!usedHeroes.has(h.id)&&(h.tribe===tribe||h.tribe==='neutral')),h=pick(s,candidates);usedHeroes.add(h.id);s.opponents.push({id:i,name:h.name,tribe,hero:h.id,initialHero:h.id,initialTribe:tribe,hp:40,maxHp:40,armor:h.armor,tier:1,board:[],grave:0,spells:0,bloodDamage:0,scrap:0,progress:S.read()});}
  startRound(s);return s;
 }
 function amuletEffect(s,a){
@@ -190,6 +207,7 @@ function battlecry(s,c){const e=def(c).effect,m=mul(c);
  if(e==='discoverHighSpell'){const pool=D.discoveryPool(s,def(c));for(let i=0;i<m&&pool.length;i++)s.discover.push({type:'spell',source:'fanfare',card:c.id,title:'发现高星法术',text:'选择一张 4～6 星酒馆法术',options:sample(s,pool,3).map(d=>d.id)});}
  if(e==='discoverRoyal'){const pool=D.discoveryPool(s,def(c));for(let i=0;i<m&&pool.length;i++)s.discover.push({type:'minion',source:'fanfare',card:c.id,title:'发现皇家随从',text:'选择一个皇家随从 · 最高 '+D.discoverTier(s)+' 星',options:sample(s,pool,3).map(d=>d.id)});}
  s.progress=Object.assign(s.progress||{},S.read(s));
+ if(def(c).fairyCry){const n=def(c).fairyCry*m;s.progress.fairy+=n;log(s,def(c).name+' · 妖精军团永久 +'+n+'/+'+n+'。');}
  if(def(c).legionCry){const n=def(c).legionCry*m;s.progress.legionAttack+=n;log(s,def(c).name+' · 死灵军势永久 +'+n+' 攻击。');}
  if(e==='healthGift')buff(s,s.board.filter(x=>x.uid!==c.uid).sort((a,b)=>a.health-b.health)[0],0,6*m);
  if(e==='massCry')s.board.filter(x=>x.uid!==c.uid).forEach(x=>buff(s,x,6*m,6*m));
@@ -285,6 +303,7 @@ function synergies(s,event,source=null,only=null,endContext=null){
   if(event==='minion'&&!own&&D.isTribe(source,'royal')&&e==='royalDrill'){const n=(6+Math.floor(p.buffs/10))*m;buff(s,source,n,n);}
   if(event==='minion'&&D.isTribe(source,'dragon')&&e==='tavernPlay'){const n=(1+(c.tavernWeaves||0))*m;growTavern(s,n,n);c.tavernWeaves=(c.tavernWeaves||0)+1;}
   if(event==='hurt'){if(e==='painFeast')feast(s,c);if(e==='bloodTavern')growTavern(s,m,2*m);if(e==='bloodBud')buff(s,c,m,2*m);if(e==='bloodStudy')S.powerGain(p,'spellcraft',m);if(e==='bloodVein')team('blood',0,(2+Math.floor(s.bloodDamage/5))*m);}
+  if(event==='spellPlayed'&&e==='fairySpell'){p.fairy+=m;log(s,def(c).name+' · 妖精军团永久 +'+m+'/+'+m+'。');}
   if(event==='spell'){
    if(e==='thirdStudy'||e==='studyRally'){c.spellTicks=(c.spellTicks||0)+1;if(c.spellTicks>=3){c.spellTicks-=3;if(e==='thirdStudy')S.powerGain(p,'spellcraft',2,m);else s.board.forEach(x=>buff(s,x,p.spellcraft*m,p.spellcraft*m));}}
    if(e==='studyEcho')neighbors(s.board,c).forEach(x=>buff(s,x,Math.ceil(p.spellcraft/2)*m,Math.ceil(p.spellcraft/2)*m));
@@ -342,12 +361,12 @@ function endRecruit(s,record=false){
 function battleDamageCap(s){return Array.isArray(s.opponents)&&s.opponents.filter(o=>o.hp>0).length+(s.hp>0?1:0)<=4?null:15;}
 function combat(s,left,right,metaL={},metaR={},{damageCap=battleDamageCap(s),record=true}={}){return (root.TavernCombat||(typeof require!=='undefined'?require('./combat.js'):null)).run(s,left,right,metaL,metaR,{copy,make,pick,rand,damageCap,record});}
 function applyBattleGrowth(board,result,side){for(const c of board){const gain=result.permanent?.[side]?.[c.uid];if(gain)buff(null,c,gain.attack,gain.health);}}
-function aiPrepare(s,o){if(o.echoRound===s.round)return;delete o.echoRound;delete o.echoRecord;o.name=D.heroes.find(h=>h.id===(o.hero||o.tribe))?.name||o.name;return (root.TavernAI||(typeof require!=='undefined'?require('./ai.js'):null)).prepare(s,o,E);}
+function aiPrepare(s,o){if(o.echoRound===s.round)return;delete o.echoRound;delete o.echoRecord;delete o.echoSourceHero;o.name=(D.heroes.find(h=>h.id===(o.hero||o.tribe))?.name||o.name)+(o.echoSeries?.status==='ai'?' · AI接管':'');return (root.TavernAI||(typeof require!=='undefined'?require('./ai.js'):null)).prepare(s,o,E);}
 function battleCards(s,p,ids){p.hand=p.hand||[];p.discover=p.discover||[];p.log=p.log||[];p.deferTriples=true;for(const id of ids||[]){p.uid=s.uid;const c=make(p,id);if(give(p,c))log(p,'战后获得 '+def(c).name+'。');s.uid=p.uid;}}
 function captureRound(s){
  s.roundHistory=s.roundHistory||[];
  if(s.roundHistory.some(r=>r.round===s.round))return;
- const players=[{id:'you',p:s},...s.opponents.filter(p=>p.hp>0).map(p=>({id:p.id,p}))].map(({id,p})=>({id,name:D.heroes.find(h=>h.id===(p.hero||p.tribe))?.name||p.name||'你',hero:p.hero||p.tribe,tribe:p.tribe||D.heroes.find(h=>h.id===p.hero)?.tribe||'neutral',tier:p.tier,hp:p.hp,armor:p.armor||0,board:copy(p.board),amulets:copy(p.amulets||[]),progress:copy(S.read(p)),grave:p.grave||0,scrap:p.scrap||0,spells:p.spells||0,played:p.played||0,bloodDamage:p.bloodDamage||0}));
+ const players=[{id:'you',p:s},...s.opponents.filter(p=>p.hp>0).map(p=>({id:p.id,p}))].map(({id,p})=>({id,echoSourceHero:p.echoRound===s.round?p.echoSourceHero:undefined,name:D.heroes.find(h=>h.id===(p.hero||p.tribe))?.name||p.name||'你',hero:p.hero||p.tribe,tribe:p.tribe||D.heroes.find(h=>h.id===p.hero)?.tribe||'neutral',tier:p.tier,hp:p.hp,armor:p.armor||0,board:copy(p.board),amulets:copy(p.amulets||[]),progress:copy(S.read(p)),grave:p.grave||0,scrap:p.scrap||0,spells:p.spells||0,played:p.played||0,bloodDamage:p.bloodDamage||0}));
  s.roundHistory.push({round:s.round,players});
 }
 function fight(s){
@@ -390,11 +409,12 @@ function act(s,type,arg={}){
   const c=s.board.find(c=>c.uid===arg.uid),d=c&&def(c);if(!d?.activation)return error('该随从没有启动能力。');
   if(c.activatedRound===s.round)return error('该随从本回合已经启动。');if(s.gold<d.activation.cost)return error('启动所需金币不足。');
   if(d.activation.grave&&s.grave<d.activation.grave)return error('需要 '+d.activation.grave+' 墓场。');
+  if(d.effect==='activeDiscard'&&!feastTarget(s,d.effect))return error('商店中没有可以吞噬的随从。');
   if(d.activation.discard&&!s.hand.some(x=>x.uid===arg.discardUid))return error('请选择一张手牌作为启动代价。');
   c.activatedRound=s.round;spend(s,d.activation.cost);s.progress=Object.assign(s.progress||{},S.read(s));
   if(d.activation.discard)discardCard(s,arg.discardUid);
   if(d.effect==='graveWorkshop'){s.grave-=d.activation.grave;for(let i=0;i<2*mul(c);i++)give(s,make(s,'skeleton'));}
-  if(d.effect==='activeDiscard')buff(s,c,3*mul(c),3*mul(c));
+  if(d.effect==='activeDiscard')feast(s,c);
   if(d.effect==='activeForge')growTavern(s,3*mul(c),3*mul(c));
   if(d.effect==='activeResearch')S.powerGain(s.progress,'spellcraft',4,mul(c));
   log(s,'启动 '+d.name+'。');return {ok:true};
@@ -421,16 +441,18 @@ function act(s,type,arg={}){
   s.hand.splice(i,1);if(claimTriples(s))triples(s);
   if(d.type==='minion'){const index=Number.isInteger(arg.index)?Math.max(0,Math.min(s.board.length,arg.index)):s.board.length;s.board.splice(index,0,c);S.syncShieldAura(s.board);battlecry(s,c);
    if(s.heroCry&&D.fanfareIds.includes(c.id)){s.heroCry=false;battlecry(s,c);log(s,'战术重奏：再次触发 '+d.name+' 的入场曲。');}
-   for(const x of [...s.board]){const m=mul(x);if(x.id==='royal1'&&x.uid!==c.uid&&D.isTribe(d,'royal'))buff(s,x,D.tuning.royalRecruit*m,D.tuning.royalRecruit*m);if(def(x).effect==='fanfareEcho'&&x.uid!==c.uid&&D.fanfareIds.includes(c.id)){for(let k=0;k<m;k++)battlecry(s,c);log(s,def(x).name+' 再次触发 '+d.name+' 的入场曲。');}}
+   for(const x of [...s.board]){const m=mul(x);if(def(x).effect==='fanfareEcho'&&x.uid!==c.uid&&D.fanfareIds.includes(c.id)){for(let k=0;k<m;k++)battlecry(s,c);log(s,def(x).name+' 再次触发 '+d.name+' 的入场曲。');}}
   }
   if(d.type==='amulet'){s.amulets.push({...c,count:Math.max(1,(c.initialCount||d.count))});s.board.filter(x=>x.id==='haven0').forEach(x=>buff(s,x,2*mul(x),2*mul(x)));}
   if(d.type==='spell'){
    // Keep the saved flag name for existing games; consume it before either cast.
    const repeat=s.heroSpellCopy;s.heroSpellCopy=false;cast(s,d,target);
    if(repeat){log(s,'秘法重奏：再次施放 '+d.name+'。');cast(s,d,target);}
+   synergies(s,'spellPlayed',d);
   }
   if(d.type==='minion'){recruitSummon(s,c);if(d.token&&D.isTribe(d,'artifact')){s.progress=S.read(s);if(!s.progress.constructTypes.includes(c.id))s.progress.constructTypes.push(c.id);s.constructsThisRound=s.constructsThisRound||[];if(!s.constructsThisRound.includes(c.id)){s.constructsThisRound.push(c.id);synergies(s,'constructNovel',c);}}synergies(s,'minion',c);}
   if(d.type==='minion'&&d.token)synergies(s,'token',c);if(d.type==='amulet')synergies(s,'place',c);
+  if(D.isTribe(d,'royal'))for(const x of s.board.filter(x=>x.id==='royal1'&&x.uid!==c.uid)){const n=D.tuning.royalRecruit*mul(x);buff(s,x,n,n);}
   playCount(s);triples(s);log(s,'使用 '+d.name+'。');
  }else if(type==='sell'){
   const i=s.board.findIndex(c=>c.uid===arg.uid);if(i<0)return error('随从不存在。');const c=s.board.splice(i,1)[0],gain=Math.max(1+(c.id==='neutral0'?mul(c):0),s.heroSalvage?def(c).tier:0);s.heroSalvage=false;s.gold+=gain;departureReward(s,c);if(c.id==='forest0'||c.id==='rune1')for(let j=0;j<mul(c);j++)give(s,make(s,c.id==='forest0'?'fairy':'mana'));if(def(c).effect==='forestTrade')for(let j=0;j<2*mul(c);j++)give(s,make(s,'growth'));if(s.heroBounty&&!s.bountyNames.some(id=>D.byId[id].name===def(c).name)){s.bountyNames.push(c.id);if(s.bountyNames.length===3){s.pendingGold=(s.pendingGold||0)+3;s.heroBounty=false;log(s,'悬赏征集完成：下回合 +3 金币。');}}S.syncShieldAura(s.board);synergies(s,'sell',c);triples(s);log(s,'出售 '+def(c).name+'，获得 '+gain+' 金币。');
@@ -447,7 +469,7 @@ function act(s,type,arg={}){
   if(['blood','medusa'].includes(s.hero)&&s.hp<=1&&!S.selfHarmImmune(s))return error('生命不足，无法支付自伤。');
   if(s.hero==='forte'&&(target.heroWindfury||def(target).effect==='double'||def(target).windfury||['forest1','dragon6','dragon9'].includes(target.id)))return error('该随从已拥有连击。');
   if(s.hero==='snow'&&(target.heroReborn||def(target).effect==='reborn'||def(target).reborn))return error('该随从已拥有复生。');
-  if(s.hero==='ceres'&&s.grave<3)return error('需要 3 墓场。');
+  if(s.hero==='ceres'&&s.grave<heroGraveCost(s))return error('需要 '+heroGraveCost(s)+' 墓场。');
   
   
   if(['ceres','windgod'].includes(s.hero)&&!heroPool(s,s.hero).length)return error('没有可发现的随从。');
@@ -462,7 +484,7 @@ function act(s,type,arg={}){
   s.progress=Object.assign(s.progress||{},S.read(s));
   if(s.hero==='goblin')s.pendingGold=(s.pendingGold||0)+2;
   if(s.hero==='angel')buff(s,target,1,5);
-  if(['windgod','ceres'].includes(s.hero)){if(s.hero==='ceres')s.grave-=3;s.discover.push({type:'minion',source:'hero',hero:s.hero,title:h.power,text:'选择一个随从的普通基础复制。',options:sample(s,heroPool(s,s.hero),3).map(d=>d.id)});}
+  if(['windgod','ceres'].includes(s.hero)){if(s.hero==='ceres'){s.grave-=heroGraveCost(s);s.graveSearchUses=(s.graveSearchUses||0)+1;}s.discover.push({type:'minion',source:'hero',hero:s.hero,title:h.power,text:'选择一个随从的普通基础复制。',options:sample(s,heroPool(s,s.hero),3).map(d=>d.id)});}
   if(s.hero==='athena'){removeShield(s,target);neighbors(s.board,target).forEach(c=>shield(c,s));}
   if(s.hero==='olivia')s.heroSpellCopy=true;
   if(s.hero==='bahamut')queueTarget(s,'shift');
@@ -492,7 +514,7 @@ function act(s,type,arg={}){
 function validate(s){
  try{
   const num=n=>Number.isSafeInteger(n)&&Math.abs(n)<1e12;
-  const progress=p=>p===undefined||(p&&typeof p==='object'&&!Array.isArray(p)&&['goldCapBonus','mining','totalPlayed','fairy','arms','prayers','spellcraft','devotion','buffs','battleEntries','legionAttack','tavernAttack','tavernHealth'].every(k=>p[k]===undefined||(num(p[k])&&p[k]>=0)));
+  const progress=p=>p===undefined||(p&&typeof p==='object'&&!Array.isArray(p)&&['goldCapBonus','mining','totalPlayed','fairy','batDeaths','arms','prayers','spellcraft','devotion','buffs','battleEntries','legionAttack','tavernAttack','tavernHealth'].every(k=>p[k]===undefined||(num(p[k])&&p[k]>=0)));
   const card=c=>c&&D.byId[c.id]&&num(c.uid)&&num(c.attack)&&num(c.health)&&c.attack>=0&&Array.isArray(c.keywords)&&c.keywords.every(k=>['taunt','shield','stealth','destruction','cannotAttack'].includes(k))&&typeof c.golden==='boolean'&&(c.guardRemoved===undefined||typeof c.guardRemoved==='boolean')&&(c.activatedRound===undefined||(num(c.activatedRound)&&c.activatedRound>=0&&c.activatedRound<=s.round))&&(c.shieldLayers===undefined||(num(c.shieldLayers)&&c.shieldLayers>=0&&(c.shieldLayers>0)===c.keywords.includes('shield')))&&(c.temporaryShields===undefined||(num(c.temporaryShields)&&c.temporaryShields>=0&&c.temporaryShields<=S.shieldCount(c)))&&(c.heroWindfury===undefined||typeof c.heroWindfury==='boolean')&&(c.heroReborn===undefined||typeof c.heroReborn==='boolean')&&['heroShield','heroDeathEcho'].every(k=>c[k]===undefined||typeof c[k]==='boolean')&&(c.forgeUpgrades===undefined||(Number.isSafeInteger(c.forgeUpgrades)&&c.forgeUpgrades>=0))&&(c.tavernWeaves===undefined||(Number.isSafeInteger(c.tavernWeaves)&&c.tavernWeaves>=0))&&(c.dragonPings===undefined||(num(c.dragonPings)&&c.dragonPings>=0))&&(c.spellTicks===undefined||(num(c.spellTicks)&&c.spellTicks>=0&&c.spellTicks<3))&&(c.spentGold===undefined||(num(c.spentGold)&&c.spentGold>=0&&c.spentGold<Math.max(6,D.fairySpendCost)));
   if([s,...s.opponents||[]].some(p=>(p.heroRefreshes!==undefined&&(!num(p.heroRefreshes)||p.heroRefreshes<0||p.heroRefreshes>2))||(p.heroBounty!==undefined&&typeof p.heroBounty!=='boolean')||(p.bountyNames!==undefined&&(!Array.isArray(p.bountyNames)||p.bountyNames.length>3||new Set(p.bountyNames).size!==p.bountyNames.length||!p.bountyNames.every(id=>D.byId[id]?.type==='minion')))||(p.dormant!==undefined&&(!Array.isArray(p.dormant)||p.dormant.length>2||!p.dormant.every(x=>x&&card(x.card)&&def(x.card).type==='minion'&&[1,2].includes(x.turns))))))return false;
   if(!s||s.version!==1||!D.heroes.some(h=>h.id===s.hero)||!['easy','normal','hard'].includes(s.difficulty)||!['recruit','result','finished'].includes(s.phase))return false;
@@ -507,6 +529,10 @@ function validate(s){
   if(s.activeTribes!==undefined&&(!Array.isArray(s.activeTribes)||s.activeTribes.length!==4||new Set(s.activeTribes).size!==4||!s.activeTribes.every(t=>D.tribeIds.includes(t))||!heroAvailable(heroDef(s),s.activeTribes)))return false;
   if([s,...s.opponents].some(o=>(o.discardEcho!==undefined&&typeof o.discardEcho!=='boolean')||(o.goldSpentThisRound!==undefined&&(!num(o.goldSpentThisRound)||o.goldSpentThisRound<0))||(o.spellNamesThisRound!==undefined&&(!Array.isArray(o.spellNamesThisRound)||o.spellNamesThisRound.length>100||new Set(o.spellNamesThisRound).size!==o.spellNamesThisRound.length||!o.spellNamesThisRound.every(n=>typeof n==='string'&&n.length<100)))))return false;
   if([s,...s.opponents].some(o=>o.bloodImmunity!==undefined&&typeof o.bloodImmunity!=='boolean'))return false;
+  if([s,...s.opponents].some(o=>o.graveSearchUses!==undefined&&(!num(o.graveSearchUses)||o.graveSearchUses<0)))return false;
+  if(s.echoBindingComplete!==undefined&&typeof s.echoBindingComplete!=='boolean')return false;
+  if(s.opponents.some(o=>o.echoSeries!==undefined&&!(root.TavernEchoes||(typeof require!=='undefined'?require('./echoes.js'):null)).validSeries(o.echoSeries,s,o)))return false;
+  if(s.opponents.some(o=>(o.initialHero!==undefined&&!D.heroes.some(h=>h.id===o.initialHero&&!h.challenge))||(o.initialTribe!==undefined&&!D.tribeIds.includes(o.initialTribe))||(o.echoSourceHero!==undefined&&!D.heroes.some(h=>h.id===o.echoSourceHero))))return false;
   if([s,...s.opponents].some(o=>o.armor!==undefined&&(!num(o.armor)||o.armor<0)))return false;
   if([s,...s.opponents].some(o=>['pendingGold','pendingFairies'].some(k=>o[k]!==undefined&&(!num(o[k])||o[k]<0))))return false;
   if(['deferTriples','recruitEnded'].some(k=>s[k]!==undefined&&typeof s[k]!=='boolean'))return false;
@@ -548,5 +574,5 @@ function validate(s){
   return true;
  }catch{return false;}
 }
-const E={captureRound,targetCards,heroPool,damageCap:battleDamageCap,modeOptions,settleProgress,feastTarget,create,act,normalize,rollTribes,rollHeroes,heroAvailable,heroDamage,activeTribes,available,pool:eligiblePool,combat,battleCards,make,offer,copy,rand,pick,def,upgradeCost,refreshCost,validate,aiPrepare,triples,startRound,endRecruit,scaling:S};root.TavernEngine=E;if(typeof module!=='undefined')module.exports=E;
+const E={repairEchoIdentities,captureRound,targetCards,heroPool,heroGraveCost,damageCap:battleDamageCap,modeOptions,settleProgress,feastTarget,create,act,normalize,rollTribes,rollHeroes,heroAvailable,heroDamage,activeTribes,available,pool:eligiblePool,combat,battleCards,make,offer,copy,rand,pick,def,upgradeCost,refreshCost,validate,aiPrepare,triples,startRound,endRecruit,scaling:S};root.TavernEngine=E;if(typeof module!=='undefined')module.exports=E;
 })(typeof globalThis!=='undefined'?globalThis:this);

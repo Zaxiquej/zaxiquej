@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>影之诗2猜卡 · 超凡世界</title>
+  <link rel="stylesheet" href="svwb-guess/style.css">
+  <script defer src="SimpTrad.js"></script>
+  <script defer src="svwb-guess/data.js"></script>
+  <script defer src="svwb-guess/semantics.js"></script>
+  <script defer src="svwb-guess/engine.js"></script>
+  <script defer src="svwb-guess/app.js"></script>
+  <script defer src="svwb-guess/debug.js"></script>
+</head>
+<body>
+<main>
+  <header><h1>影之诗2猜卡</h1><p>Shadowverse: Worlds Beyond · 超凡世界</p></header>
+  <section id="start-panel" class="panel">
+    <h2>从一张卡，慢慢猜到答案。</h2>
+    <p>输入卡牌名字，查看它与答案的相似度和接近名次。第 1 名就是答案。</p>
+    <form id="start-form">
+      <div class="seed-row"><label for="seed">谜题种子</label><input id="seed" maxlength="100" placeholder="留空随机生成"><button type="button" id="daily" class="secondary">今日种子</button></div>
+      <div class="checks"><label><input type="checkbox" id="rotation">指定卡池及其关联卡</label><label><input type="checkbox" id="no-tokens" checked>不包含衍生卡</label></div>
+      <p id="pool-info" class="muted"></p>
+      <button id="start" type="submit">开始游戏</button>
+    </form>
+  </section>
+  <section id="game" hidden>
+    <div class="game-header"><div><h2 id="game-title">猜出这张卡</h2><p id="game-seed" class="muted"></p></div><button id="restart" class="secondary">新谜题</button></div>
+    <div class="stats"><span id="guess-count">猜测 0 次</span><span id="best-rank">最佳名次 —</span><span id="hint-count">提示 0 次</span></div>
+    <p id="benchmarks" class="muted benchmarks"></p>
+    <div id="answer" class="answer" hidden></div>
+    <section class="panel search-panel">
+      <form id="guess-form"><label for="guess-input">输入卡牌名称</label><div class="input-row"><input id="guess-input" autocomplete="off" maxlength="100" placeholder="完整卡名或部分名字" aria-describedby="search-help"><button id="guess-button" type="submit">猜测</button></div></form>
+      <p id="search-help" class="muted">点击备选卡名直接猜测；点“详情”只查看卡牌。</p>
+      <details id="advanced"><summary>高级搜索</summary><div class="filters">
+        <label>职业<select id="class-filter"><option value="">不限</option></select></label>
+        <label>种类<select id="type-filter"><option value="">不限</option><option value="1">随从</option><option value="amulet">护符（含吟唱）</option><option value="4">法术</option></select></label>
+        <div class="cost-field"><label for="cost-filter">费用</label><div class="cost-controls"><select id="cost-comparison" aria-label="费用比较方式"><option value="equal">等于 =</option><option value="greater">以上 ≥</option><option value="less">以下 ≤</option></select><input id="cost-filter" type="number" min="0" max="99" placeholder="不限"></div></div>
+        <label>稀有度<select id="rarity-filter"><option value="">不限</option><option value="1">铜</option><option value="2">银</option><option value="3">金</option><option value="4">虹</option></select></label>
+        <label>机制<select id="mechanic-filter"><option value="">不限</option><option>超进化时</option><option>进化时</option><option>启动</option><option>纹章</option><option>信仰</option><option>连击</option><option>土之秘术</option><option>魔力增幅</option><option>唤灵</option><option>模式</option><option>屏障</option><option>融合</option><option>奥义</option><option>激奏</option><option>结晶</option></select></label>
+        <label>效果包含<input id="text-filter" placeholder="如：抽取 创造物（全部包含）"></label>
+        <label>效果排除<input id="exclude-filter" placeholder="如：谢幕曲 启动（任一命中即排除）"></label>
+      </div><p class="muted">多个效果用空格分隔：包含项须全部满足，排除项命中任意一个就过滤。</p><button type="button" id="clear-filters" class="secondary small">清空筛选</button></details>
+      <p id="search-status" class="muted" aria-live="polite"></p>
+      <div id="suggestions" class="suggestions"></div>
+      <button id="more" class="secondary small" hidden>显示更多</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+    <div class="history-heading"><h2>猜测记录</h2><label>其余记录 <select id="sort"><option value="rank">接近名次</option><option value="recent">最近猜测</option></select></label></div>
+    <div class="table-wrap"><table><thead><tr><th>次数</th><th>卡牌</th><th>相似度</th><th>名次</th></tr></thead><tbody id="history"></tbody></table><p id="empty-history" class="muted">还没有猜测，先试一张熟悉的卡吧。</p></div>
+    <div class="actions"><button id="hint" class="secondary">给我一张更接近的卡</button><button id="reveal" class="secondary">揭晓答案</button><button id="top" class="secondary" hidden>查看前 20 名</button><button id="extra" hidden>继续猜前 20 名</button></div>
+  </section>
+  <details class="rules"><summary>玩法、相似度与数据</summary>
+    <p>不限猜测次数。输入完整卡名后点击猜测或按回车；部分名字会列出备选，点击备选卡名即提交猜测。同名卡需要点击具体备选。支持简繁转换和忽略间隔符；不同地区译名不保证相同。高级搜索的效果包含与排除均可用空格分隔多个词：全部包含、任一排除。</p>
+    <p>基础属性、机制、效果文字分别占 20%、60%、20%。机制区分进化与超进化、启动费用、触发时点、作用对象和数值；纹章、信仰、激奏与结晶的附属效果也参与比较。普通进化前后重复的文字只计算一次。</p>
+    <p>作用相近的效果也会获得部分相似分，例如回手、破坏与消失，抽牌与检索，以及进化时与超进化时。敌方回手既与敌方解场接近，也与己方回手有一定关联；目标、范围和触发条件的区别仍会影响排名。</p>
+    <p>这是基于规则与文字的相似度，不是强度评价或完整对战模拟。名字与背景故事不参与计分；关联卡的名称提供少量加分，但不会无限递归展开所有衍生卡。</p>
+    <p>除答案固定为第 1 名、100 分外，完全同分按卡牌 ID 排序。排名基于本局整个卡池，不会随高级搜索筛选变化。提示会记录一张更接近且尚未猜过的卡，单独计数。</p>
+    <p>同一数据版本、相同种子和卡池选项会得到相同答案。指定卡池包含指定卡与可关联出的卡；“不包含衍生卡”会再排除衍生卡。纹章等附属效果并入来源卡，不作为独立谜底。</p>
+    <p id="data-info">正在加载本地卡池…</p>
+  </details>
+  <footer><a href="guess.html">一代猜卡</a><a href="https://shadowverse-wb.com/chs/deck/cardslist/" target="_blank" rel="noopener noreferrer">官方卡查</a><span>卡牌资料与卡图 © Cygames, Inc.</span></footer>
+</main>
+<dialog id="card-dialog" aria-labelledby="card-title"><button class="dialog-close secondary" id="close-card" aria-label="关闭卡牌详情">×</button><h2 id="card-title"></h2><div id="card-content"></div></dialog>
+<dialog id="top-dialog" aria-labelledby="top-title"><button class="dialog-close secondary" id="close-top" aria-label="关闭前 20 名">×</button><h2 id="top-title">最接近的 20 张卡</h2><p class="muted">查看后将结束“猜前 20 名”挑战。</p><div id="top-content"></div></dialog>
+<dialog id="debug-dialog" aria-labelledby="debug-title">
+  <button class="dialog-close secondary" id="close-debug" aria-label="关闭测试面板">×</button><h2 id="debug-title">相似度测试</h2>
+  <p class="muted">独立查看任意卡牌的前 100 名（含自身），不改变当前谜题或猜测记录。分项均为原始分，总分按基础 20%、机制 60%、文字 20% 计算。</p>
+  <div class="debug-controls"><label>查找卡牌<input id="debug-search" placeholder="卡名或卡牌 ID"></label><label>测试卡牌<select id="debug-card"></select></label><label>比较卡池<select id="debug-pool"><option value="standard">非衍生卡（含测试目标）</option><option value="all">全部卡牌</option></select></label></div>
+  <div class="debug-nav"><button id="debug-prev" class="secondary small">上一张</button><span id="debug-position" class="muted"></span><button id="debug-next" class="secondary small">下一张</button></div>
+  <p id="debug-status" role="status"></p><details id="debug-target"><summary id="debug-target-title">测试卡牌效果与识别结果</summary><div id="debug-target-content"></div></details>
+  <div class="debug-table-wrap"><table class="debug-table"><thead><tr><th>名次</th><th>卡牌（展开详情）</th><th>总分</th><th>基础</th><th>机制</th><th>文字</th></tr></thead><tbody id="debug-results"></tbody></table></div>
+</dialog>
+</body></html>

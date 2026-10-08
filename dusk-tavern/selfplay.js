@@ -3,7 +3,7 @@
 const E=root.TavernEngine||(typeof require!=='undefined'?require('./engine'):null),D=root.TavernData||(typeof require!=='undefined'?require('./data'):null),AI=root.TavernAI||(typeof require!=='undefined'?require('./ai'):null);
 const copy=E.copy;
 function shuffle(s,list){const out=[...list];for(let i=out.length-1;i>0;i--){const j=Math.floor(E.rand(s)*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;}
-function snapshot(p){const fields=['id','name','hero','tribe','hp','armor','tier','board','hand','shop','amulets','progress','grave','scrap','spells','played','bloodDamage','gold','stats','aiSummary','wins','losses','draws','rank','eliminatedRound','ghosts'];return copy(Object.fromEntries(fields.filter(k=>p[k]!==undefined).map(k=>[k,p[k]])));}
+function snapshot(p){const fields=['id','name','hero','tribe','hp','armor','tier','board','hand','shop','amulets','progress','grave','graveSearchUses','scrap','spells','played','bloodDamage','gold','stats','aiSummary','wins','losses','draws','rank','eliminatedRound','ghosts'];return copy(Object.fromEntries(fields.filter(k=>p[k]!==undefined).map(k=>[k,p[k]])));}
 function create(options={}){
  const seed=Number(options.seed??Date.now())>>>0,s={seed:seed||1,uid:0,round:0,activeTribes:options.tribes?[...options.tribes]:E.rollTribes(seed),opponents:[]};
  if(s.activeTribes.length!==4||new Set(s.activeTribes).size!==4||!s.activeTribes.every(t=>D.tribeIds.includes(t)))throw Error('需要四个不同的有效种族');

@@ -127,3 +127,6 @@
 .history-resources{font-size:13px;line-height:1.8;color:#b9c9da;margin-bottom:14px}.history-controls button{white-space:nowrap}@media(max-width:650px){.history-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}.history-controls label{min-width:0}}
 .challenge-choice{display:flex;align-items:center;gap:12px;width:100%;padding:8px 12px;margin:12px 0;border:1px solid #765868;background:#211c2a;text-align:left}.challenge-choice img{width:46px;height:52px;object-fit:cover;border-radius:5px}.challenge-choice span{flex:1;min-width:0}.challenge-choice b{display:block;font-size:14px;color:#e8d3bb}.challenge-choice small{display:block;margin-top:5px;font-size:12px;color:#b6adc2}.challenge-choice em{font-size:12px;font-style:normal;color:#dbc190}.challenge-choice.active{border-color:#e0b96e;box-shadow:0 0 0 1px #e0b96e55;background:#302735}.power-btn:disabled{cursor:default}
 #modal-root .overlay{z-index:30}
+
+/* Target prompts stay in their card row; no overlay can intercept the first slot. */
+.target-banner{position:relative;top:auto;z-index:auto;gap:8px;line-height:1.5;margin:8px 0}.target-banner small{font-size:10px;color:#a9cdb8}.targetable{touch-action:manipulation}

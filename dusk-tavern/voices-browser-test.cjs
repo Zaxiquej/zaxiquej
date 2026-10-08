@@ -4,7 +4,7 @@ const {chromium}=require('playwright'),A=require('node:assert/strict'),{pathToFi
 const p=await browser.newPage({viewport:{width:390,height:844}}),errors=[],external=[];p.on('pageerror',e=>errors.push(e.message));p.on('request',r=>{if(/^https?:/.test(r.url()))external.push(r.url());});
 p.setDefaultTimeout(12000);
 await p.addInitScript(()=>{window.voiceStarts=[];window.liveVoices=new Set();const start=AudioBufferSourceNode.prototype.start;AudioBufferSourceNode.prototype.start=function(...args){window.voiceStarts.push({duration:this.buffer?.duration,time:performance.now()});window.liveVoices.add(this);this.addEventListener('ended',()=>window.liveVoices.delete(this));return start.apply(this,args);};});
-await p.goto(pathToFileURL(path.resolve(__dirname,'../sv_tavern.html')).href);A.equal(await p.evaluate(()=>TavernData.rulesVersion),'28.15');
+await p.goto(pathToFileURL(path.resolve(__dirname,'../sv_tavern.html')).href);A.equal(await p.evaluate(()=>TavernData.rulesVersion),'28.20');
 const welcome=await p.locator('.welcome-modal').innerText();for(const text of ['位英雄','位随从','每族 2 条主线','共用此牌池','SVGDB 图源'])A(!welcome.includes(text),text);A.equal(await p.locator('.hero-card').count(),4);
 for(const hero of await p.locator('.hero-card').all()){await hero.click();A(await p.locator('.welcome-modal').evaluate(el=>el.scrollHeight<=el.clientHeight+1),'compact mobile lobby should fit');const box=await p.locator('[data-action="start"]').boundingBox();A(box.y+box.height<=844);}
 await p.screenshot({path:path.join(__dirname,'qa/voices-lobby-mobile.png')});await p.locator('[data-action="start"]').click();

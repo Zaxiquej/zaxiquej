@@ -19,6 +19,7 @@ function recruit(before,s,type,args){
   if(area==='hand'&&!before.hand.has(uid)){if(!prior)el.classList.add('summoned');float(el,type==='buy'&&uid===args.uid?'购入':before.shop.has(uid)?'偷取':'获得','resource');}
  }
  if(s.gold!==before.gold)float(document.querySelector('.hud-gold'),sign(s.gold-before.gold)+' ◈','resource');
+ if(type==='activate')for(const f of (s.feasts||[]).slice(before.feasts)){const target=document.querySelector(`.card[data-area="board"][data-card="${f.source}"]`);fly(before.dom.get('shop:'+f.food.uid),target,620);float(target,'吞噬','gain',700);}
  if(type==='activate')float(document.querySelector(`.card[data-area="board"][data-card="${args.uid}"]`),'启动','resource',1000);
  if((s.stats?.discards||0)>before.discards)float(document.querySelector('.hand-area'),'弃牌 ×'+((s.stats.discards||0)-before.discards),'resource',1000);
  for(const c of s.amulets){const old=before.amulets.get(c.uid),el=document.querySelector(`.amulet-item[data-card="${c.uid}"]`);if(!old){motion(el,[{opacity:0,transform:'scale(.8)'},{opacity:1,transform:'scale(1)'}]);float(el,'放置','resource');}else if(c.count<old.count)float(el,'倒数 −'+(old.count-c.count),'resource');}

@@ -15,9 +15,17 @@ function run(s,left,right,metaL={},metaR={},helpers){
  const addShield=c=>{S.syncShieldAura(alive(c.side));S.addShield(c);};
  const addGuard=c=>{if(c&&!c.keywords.includes('taunt'))c.keywords.push('taunt');};
  function grow(c,a,h,react=true){if(!c)return;buff(c,a,h,react,false);if(c.originUid){const ledger=permanent[c.side][c.originUid]||(permanent[c.side][c.originUid]={attack:0,health:0});ledger.attack+=a;ledger.health+=h;}}
- sides.forEach((side,i)=>side.forEach(c=>{c.battleId=++serial;c.side=i;c.originUid=c.uid;c.maxHealth=c.health;c.startHealth=c.health;c.reborn=def(c).effect==='reborn'||!!def(c).reborn||!!c.heroReborn;c.rebornCharges=0;c.batRebirthSources=[];c.resurrected=false;c.vow=0;c.legionApplied=0;}));
+ sides.forEach((side,i)=>side.forEach(c=>{c.battleId=++serial;c.side=i;c.originUid=c.uid;c.maxHealth=c.health;c.startHealth=c.health;c.reborn=def(c).effect==='reborn'||!!def(c).reborn||!!c.heroReborn;c.rebornCharges=0;c.batRebirthSources=[];c.resurrected=false;c.vow=0;c.legionApplied=0;c.fairyArmyApplied=0;c.batArmyApplied=0;}));
  sides.forEach(side=>{S.syncShieldAura(side);for(const c of side)if(c.heroShield)S.addShield(c);});
  function applyLegion(c){if(!D.isTribe(c,'night'))return;const n=progress[c.side].legionAttack-(c.legionApplied||0);if(n)buff(c,n,0,true,false);c.legionApplied=progress[c.side].legionAttack;}
+ function applyTokenArmy(c,original=false){
+  if(!['fairy','bat'].includes(c.id))return;
+  const key=c.id==='fairy'?'fairyArmyApplied':'batArmyApplied',n=c.id==='fairy'?S.fairy(growthContext(c.side)):S.bat(growthContext(c.side)),delta=Math.max(0,n-(c[key]||0));
+  // A reborn unit retains its already buffed attack, but must return at 1 health.
+  // Apply only the newly earned attack; never add the entire army a second time.
+  if(delta)buff(c,delta,original?0:delta,true,false);c[key]=n;
+ }
+ function attackCount(c){return Math.max(c.heroWindfury||def(c).windfury||def(c).effect==='double'||['dragon6','forest1','dragon9'].includes(c.id)?2:1,c.id==='fairy'?Math.max(1,...alive(c.side).filter(x=>def(x).effect==='fairyCommander').map(x=>1+mult(x))):1);}
  function growLegion(side,n,source){progress[side].legionAttack+=n;alive(side).forEach(applyLegion);snap(def(source).name+' · 死灵军势永久 +'+n+' 攻击（累计 +'+progress[side].legionAttack+'）。',null,source.battleId,'grow');}
  function breakShield(c,all=false){
   if(!S.shieldCount(c))return;S.removeShieldLayer(c,all);
@@ -56,17 +64,16 @@ function run(s,left,right,metaL={},metaR={},helpers){
   if(original&&def(c).keywords?.includes('stealth')&&!c.keywords.includes('stealth'))c.keywords.push('stealth');
   if(original&&!extra.keepShield){c.keywords=c.keywords.filter(k=>k!=='shield');c.shieldLayers=0;delete c.temporaryShields;}
 
-  if(c.id==='fairy')buff(c,progress[side].fairy,progress[side].fairy,true,false);
-  if(c.id==='bat'&&!original){const n=S.bat(meta[side]);buff(c,n,n,true,false);}
+  applyTokenArmy(c,!!original);
   if(extra.grantShield)addShield(c);sides[side].splice(Math.min(index,sides[side].length),0,c);
   S.syncShieldAura(alive(side));progress[side].battleEntries++;applyLegion(c);
   if(['reborn','revive'].includes(reason))for(const x of entryWitnesses)if(def(x).effect==='rebornChoir')for(const y of alive(side))if(y.battleId!==c.battleId)grow(y,mult(x),2*mult(x));
   for(const x of entryWitnesses){if(def(x).effect==='legionEngine')growLegion(side,S.growthAmount(growthContext(side),'legionEngine')*mult(x),x);if(def(x).effect==='rebirthLegion'&&['reborn','revive'].includes(reason))growLegion(side,3*mult(x),x);}
   if(c.id==='fairy')for(const x of entryWitnesses){if(x.id==='forest2')progress[side].fairy+=mult(x);if(def(x).effect==='fairyRally')adjacent(x).forEach(y=>grow(y,2*mult(x),2*mult(x)));}
-  if(c.id==='fairy')for(const x of entryWitnesses.filter(x=>def(x).effect==='fairyBulwark')){const n=progress[side].fairy*mult(x);grow(x,n,n);grow(alive(side).find(y=>y.battleId!==x.battleId),n,n);snap(def(x).name+' · 军团庇护：永久 +'+n+'/+'+n+'。',null,x.battleId,'grow');}
+  if(c.id==='fairy')for(const x of entryWitnesses.filter(x=>def(x).effect==='fairyBulwark')){const n=S.fairy(growthContext(side))*mult(x);grow(x,n,n);grow(alive(side).find(y=>y.battleId!==x.battleId),n,n);snap(def(x).name+' · 军团庇护：永久 +'+n+'/+'+n+'。',null,x.battleId,'grow');}
   for(const x of entryWitnesses){if(def(x).effect==='legionHealth'&&D.isTribe(c,'night'))buff(c,0,(6+2*progress[side].legionAttack)*mult(x));if(def(x).effect==='constructUnity'&&def(c).token&&D.isTribe(c,'artifact')){const n=progress[side].constructTypes.length*(1+Math.floor(progress[side].arms/6))*mult(x);grow(c,n,n);grow(alive(side).find(y=>y.battleId!==c.battleId),n,n);}}
   if(c.id==='bat'&&!original)for(const x of entryWitnesses)if(def(x).effect==='batRebirth')grantBatRebirth(c,x);
-  if(c.id==='fairy')for(const x of alive(side).filter(x=>x.id==='forest10')){const n=Math.floor(x.attack/2)*mult(x);buff(c,n,n);}
+  if(c.id==='fairy'&&!original){for(const x of entryWitnesses.filter(x=>x.id==='forest10')){const n=Math.floor(x.attack/2)*mult(x);buff(c,n,n);}if(entryWitnesses.some(x=>def(x).effect==='fairyCommander'))forcedAttacks.push(c);}
   if(!original)c.startHealth=c.maxHealth;
 
 
@@ -74,6 +81,7 @@ function run(s,left,right,metaL={},metaR={},helpers){
  }
  const hasLastWords=c=>D.lastWordEffects.includes(def(c).effect)||c.id==='dragon1'||c.vow>0;
  function lastWords(c,index){const side=c.side,e=def(c).effect,m=mult(c);
+  if(def(c).fairyLast){const n=def(c).fairyLast*m;progress[side].fairy+=n;snap(def(c).name+' · 妖精军团永久 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
   if(e==='deathPulse')for(let hit=0;hit<2*m;hit++){
    const targets=[...alive(0),...alive(1)];if(!targets.length)break;
    targets.forEach(x=>damage(x,1));
@@ -129,6 +137,8 @@ function run(s,left,right,metaL={},metaR={},helpers){
    if(attacker.keywords.includes('stealth')){attacker.keywords=attacker.keywords.filter(k=>k!=='stealth');snap(def(attacker).name+' 发起攻击，解除潜行。',attacker.battleId,attacker.battleId,'reveal');}
    if(D.isTribe(attacker,'forest')||D.isTribe(attacker,'dragon'))for(const x of alive(side).filter(x=>x.battleId!==attacker.battleId&&def(x).effect==='fairyGuardian')){grow(x,2*mult(x),3*mult(x));snap(def(x).name+' · 妖精龙成长。',attacker.battleId,x.battleId,'grow');}
    if(def(attacker).token)for(const x of alive(side).filter(x=>x.id==='forest6')){const base=S.growthAmount(growthContext(side),'summonBuff'),n=base*mult(x),army=Math.floor(base/3)*mult(x);progress[side].fairy+=army;buff(attacker,n,n);snap(def(x).name+' · 妖精进军：攻击者本场 +'+n+'/+'+n+'，妖精军团永久 +'+army+'/+'+army+'。',x.battleId,attacker.battleId,'grow');}
+   if(def(attacker).fairyAttack){const n=def(attacker).fairyAttack*mult(attacker);progress[side].fairy+=n;snap(def(attacker).name+' · 先驱进军：妖精军团永久 +'+n+'/+'+n+'。',attacker.battleId,attacker.battleId,'grow');}
+   if(attacker.id==='bat')for(const x of alive(side).filter(x=>def(x).batAssault)){const n=S.bat(growthContext(side))*mult(x);buff(attacker,n,n);snap(def(x).name+' · 血翼进击：攻击者本场 +'+n+'/+'+n+'。',x.battleId,attacker.battleId,'grow');}
    for(const x of adjacent(attacker).filter(c=>def(c).effect==='ambushSupport')){buff(attacker,4*mult(x),2*mult(x));snap(def(x).name+' · 暗中支援：攻击者本场 +'+4*mult(x)+'/+'+2*mult(x)+'。',x.battleId,attacker.battleId,'grow');}
    const foes=alive(1-side),visible=foes.filter(c=>!c.keywords.includes('stealth')),pool=visible.length?visible:foes,guards=pool.filter(c=>c.keywords.includes('taunt')&&!c.keywords.includes('stealth')),target=pick(s,def(attacker).effect==='artifactHunter'?pool.filter(c=>c.attack===Math.min(...pool.map(x=>x.attack))):guards.length?guards:pool);
 
@@ -139,20 +149,22 @@ function run(s,left,right,metaL={},metaR={},helpers){
    if(def(attacker).effect==='bloodEdge'&&!blocked&&a>0&&attacker.health>0){const n=2*mult(attacker);grow(attacker,n,n);snap(def(attacker).name+' · 绯色锋刃：永久 +'+n+'/+'+n+'。',null,attacker.battleId,'grow');}
    if(attacker.id==='dragon9'&&attacker.health>0){const n=(2+Math.floor(attacker.startHealth/10))*mult(attacker);grow(attacker,n,0);snap(def(attacker).name+' · 漆黑突袭：永久攻击 +'+n+'。',null,attacker.battleId,'grow');}
    if(attacker.id==='royal5'&&attacker.health>0&&target.health<=0)addShield(attacker);
-   snap(def(attacker).name+' 攻击 '+def(target).name+'（'+a+' ↔ '+b+'）'+(hits>1?' · 连击 '+(hit+1)+'/2':''),attacker.battleId,target.battleId,'attack',[{id:attacker.id,kind:'attack',battleId:attacker.battleId}]);
+   snap(def(attacker).name+' 攻击 '+def(target).name+'（'+a+' ↔ '+b+'）'+(hits>1?' · 连击 '+(hit+1)+'/'+hits:''),attacker.battleId,target.battleId,'attack',[{id:attacker.id,kind:'attack',battleId:attacker.battleId}]);
    deaths();
   }
  }
  function deaths(){deathDepth++;let safety=0;while(sides.some(a=>a.some(c=>c.health<=0))&&safety++<100){const fallen=[];
   for(let side=0;side<2;side++){sides[side].forEach((c,index)=>{if(c.health<=0)fallen.push({c,index});});sides[side]=sides[side].filter(c=>c.health>0);}
+  // Record the entire simultaneous death batch once, before rebirth/last words.
+  for(let side=0;side<2;side++){const n=fallen.filter(x=>x.c.side===side&&x.c.id==='bat').length;if(n){progress[side].batDeaths+=n;alive(side).filter(c=>c.id==='bat').forEach(c=>applyTokenArmy(c));}}
   voiceCues.push(...fallen.map(({c})=>({id:c.id,kind:'death',battleId:c.battleId})));
   for(const {c,index} of fallen){const side=c.side;deadCount[side]++;grave[side]++;for(const x of alive(side))if(x.battleId!==c.battleId&&def(x).effect==='graveKeeper')grave[side]+=mult(x);
    if(D.isTribe(c,'artifact'))scrap[side]++;
    // Capture live observers now; removed cards cannot observe this death.
    const witnesses=[...alive(side)];
    for(const x of witnesses){const m=mult(x);
-    if(def(x).effect==='fairyMemorial'&&c.id==='fairy')alive(side).filter(y=>D.isTribe(y,'forest')).forEach(y=>grow(y,2*m,2*m));
     if(def(x).effect==='batMemorial'&&c.id==='bat')alive(side).filter(y=>D.isTribe(y,'blood')).forEach(y=>grow(y,3*m,3*m));
+
     if(def(x).effect==='scrapVeteran'&&D.isTribe(c,'artifact')){const n=(2+Math.floor(scrap[side]/5))*m;grow(x,n,n);}
     if(def(x).effect==='forgeLegacy'&&D.isTribe(c,'artifact')){progress[side].arms+=6*m;snap(def(x).name+' · 创造循环：武装研习 +'+(6*m)+'。',null,x.battleId,'grow');}
 
@@ -182,11 +194,24 @@ function run(s,left,right,metaL={},metaR={},helpers){
  deathDepth--;
  // Resolve forced attacks after the current death batch, before the next normal
  // turn. A queue prevents nested deaths from attacking with already-dead tokens.
- if(!deathDepth&&!forcedRunning){forcedRunning=true;while(forcedAttacks.length&&steps<160){const token=forcedAttacks.shift();if(token.health>0&&sides[token.side].includes(token)&&alive(1-token.side).length){steps++;strike(token);}}forcedRunning=false;}
+ if(!deathDepth&&!forcedRunning){forcedRunning=true;while(forcedAttacks.length&&steps<160){const token=forcedAttacks.shift();if(token.health>0&&sides[token.side].includes(token)&&alive(1-token.side).length){steps++;strike(token,attackCount(token));}}forcedRunning=false;}
  }
- for(let side=0;side<2;side++)for(const c of sides[side]){applyLegion(c);const n=c.id==='fairy'?progress[side].fairy:c.id==='bat'?S.bat(meta[side]):0;if(n)buff(c,n,n);}
+ for(let side=0;side<2;side++)for(const c of sides[side]){applyLegion(c);applyTokenArmy(c);}
  retainEnabled=true;
  snap('双方入场，开战效果准备触发。');
+ // Preemptive attacks are extra real attacks, before ordinary opening effects.
+ // Snapshot original units: resurrection cannot restart an opener indefinitely.
+ const openers=sides.map(side=>side.filter(c=>def(c).effect==='openingStrike'));
+ if(openers.some(a=>a.length)){
+  const first=openers[0].length&&openers[1].length?(rand(s)<.5?0:1):openers[0].length?0:1;
+  for(let i=0;i<Math.max(...openers.map(a=>a.length));i++)for(const side of [first,1-first]){
+   const c=openers[side][i];if(!c)continue;
+   for(let n=0;n<mult(c)&&c.health>0&&sides[side].includes(c)&&alive(1-side).length&&steps<160;n++){
+    if(c.attack<=0||c.keywords.includes('cannotAttack'))break;
+    snap(def(c).name+' · 先制突袭：立即发起攻击。',c.battleId,null,'effect');steps++;strike(c,attackCount(c));
+   }
+  }
+ }
  // Consume preparation marks once, before ordinary opening abilities. Each hit
  // resolves real shields, surviving-injury payoffs and deaths independently.
  for(let side=0;side<2;side++)for(const c of [...sides[side]]){const hits=c.dragonPings||0;delete c.dragonPings;for(let i=0;i<hits&&c.health>0&&sides[side].includes(c);i++){damage(c,1);snap('龙之翼击 · '+def(c).name+' 受到 1 点伤害（'+(i+1)+'/'+hits+'）。',null,c.battleId,'spell');deaths();}}
@@ -200,10 +225,10 @@ function run(s,left,right,metaL={},metaR={},helpers){
    if(e==='buffVanguard'){const n=Math.floor(progress[side].buffs/3)*m;buff(c,n,n);snap(def(c).name+' · 强化战阵：本场 +'+n+'/+'+n+'。',null,c.battleId,'grow');}
    if(c.id==='artifact9')buff(c,scrap[side]*m,0);
    if(c.id==='blood10'){const x=[...alive(1-side)].sort((a,b)=>b.attack-a.attack)[0];if(x){buff(x,-(m>=2?x.attack:x.attack-Math.floor(x.attack/2)),0);snap(def(c).name+' · 毒牙凝视：削弱 '+def(x).name+' 的攻击。',c.battleId,x.battleId,'effect');}}
-   if(c.id==='forest3')buff(c,progress[side].fairy*m,0);
+   if(c.id==='forest3')buff(c,S.fairy(growthContext(side))*m,0);
    if(c.id==='blood7'){const n=(meta[side].bloodDamage||0)*2*m;friends.forEach(x=>buff(x,n,n));snap(def(c).name+' · 狂乱加冕：吸血鬼军团获得强化。',null,c.battleId,'grow');}
    if(c.id==='artifact7'){const n=S.growthAmount(growthContext(side),'artifactLord')*m,h=n;friends.forEach(x=>buff(x,n,h));snap(def(c).name+' · 创造主领域：残骸 '+scrap[side]+'，造物 +'+n+'/+'+h+'。',null,c.battleId,'grow');}
-   if(e==='forestStart'){const n=(friends.filter(x=>D.isTribe(x,'forest')).length*8+progress[side].fairy*2)*m;friends.filter(x=>x.battleId!==c.battleId).forEach(x=>buff(x,n,n));}
+   if(e==='forestStart'){const n=(friends.filter(x=>D.isTribe(x,'forest')).length*8+S.fairy(growthContext(side))*2)*m;friends.filter(x=>x.battleId!==c.battleId).forEach(x=>buff(x,n,n));}
    if(e==='royalStart'){const n=(8+Math.floor(progress[side].buffs/10))*m;friends.filter(x=>x.battleId!==c.battleId&&D.isTribe(x,'royal')).forEach(x=>buff(x,n,n));adjacent(c).filter(x=>D.isTribe(x,'royal')).forEach(x=>{for(let i=0;i<m;i++)addShield(x);});}
    if(e==='blast'){for(let hit=0;hit<2;hit++)adjacent(c).forEach(x=>damage(x,1));snap(def(c).name+' · 炽焰点燃：相邻友方各受到两次 1 点伤害。',null,c.battleId,'effect');}
    if(e==='dragonStart'){const pool=[...alive(1-side)],targets=[];while(pool.length&&targets.length<2*m){const target=pick(s,pool);pool.splice(pool.indexOf(target),1);targets.push(target);}const amount=c.attack;targets.forEach(x=>damage(x,amount));}
@@ -214,10 +239,10 @@ function run(s,left,right,metaL={},metaR={},helpers){
  }
  snap('开战效果结算完成。');deaths();
  let side=sides[0].length===sides[1].length?(rand(s)<.5?0:1):(sides[0].length>sides[1].length?0:1);const acted=[new Set(),new Set()];
- const windfury=c=>c.heroWindfury||def(c).windfury||def(c).effect==='double'||c.id==='dragon6'||c.id==='forest1'||c.id==='dragon9' ;
+
  while(alive(0).length&&alive(1).length&&steps<160){steps++;
   let attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack')&&!acted[side].has(c.battleId));if(!attackers.length){acted[side].clear();attackers=alive(side).filter(c=>c.attack>0&&!c.keywords.includes('cannotAttack'));}const attacker=attackers[0];
-  if(!attacker){if(!alive(1-side).some(c=>c.attack>0&&!c.keywords.includes('cannotAttack')))break;side=1-side;continue;}acted[side].add(attacker.battleId);const hits=windfury(attacker)?2:1;
+  if(!attacker){if(!alive(1-side).some(c=>c.attack>0&&!c.keywords.includes('cannotAttack')))break;side=1-side;continue;}acted[side].add(attacker.battleId);const hits=attackCount(attacker);
   strike(attacker,hits);side=1-side;
  }
  const winner=sides[0].length&&!sides[1].length?0:sides[1].length&&!sides[0].length?1:-1;

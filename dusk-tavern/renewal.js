@@ -179,7 +179,39 @@ function apply(D,I){
  D.byId.dragon20.tier=3;
  set('artifact9',{windfury:true},m=>`连击。攻击时无视守护，优先攻击可被选中的攻击力最低的敌方。开战：获得「本局残骸 × ${m}」攻击（仅本场）。`);
  D.archetypes.artifact.routes[1][1]='机械犬与史学家提供战斗召唤，诺伦强化不同造物的连携，丝碧涅通过复仇召唤武装造物并立即攻击；伊卡洛斯与遗物承接残骸，纱妃拉连击切入低攻击目标。';
- D.rulesVersion='28.15';
+ const armorBalance={goblin:6,roland:6,albert:8,royal:12,rune:16,artifact:12,deus:16,bahamut:16,angel:20,windgod:18,erasmus:14,dorothy:8,dragon:14,haven:12,blood:10,medusa:10};
+ for(const h of D.heroes)if(armorBalance[h.id]!==undefined)h.armor=armorBalance[h.id];
+ Object.assign(D.heroes.find(h=>h.id==='ceres'),{text:'消耗 3 墓场，发现一个不高于当前酒馆星级的谢幕曲随从。每次使用后，墓场消耗永久增加 3。',subtitle:'递增墓场消耗 · 谢幕发现'});
+ const tierBodies={blood10:[5,6],rune24:[4,6],artifact24:[4,6],haven5:[3,5],night10:[5,7],haven10:[5,9],night24:[5,8],dragon20:[3,4],royal21:[4,5],forest14:[4,6],haven23:[6,9],rune16:[5,7],rune13:[3,5]};
+ for(const [id,[attack,health]] of Object.entries(tierBodies))Object.assign(D.byId[id],{attack,health});
+ D.tuning.royalRecruit=2;
+ set('royal1',{attack:3,health:4},m=>`每当你使用一张其他皇家牌，自身永久 +${2*m}/+${2*m}。`);
+ set('dragon8',{},m=>`启动（0 金币，每回合一次）：弃掉一张手牌，吞噬商店中生命最高的随从，自身永久获得其攻击与生命 ×${m}。`);
+ Object.assign(D.byId.royal0,{attack:2,health:1});
+ Object.assign(D.byId.dragon26,{attack:4,health:6});
+ D.archetypes.dragon.routes[1][1]+=' 铁鳞龙人以弃牌启动吞噬，将酒馆属性转为自身永久成长。';
+ D.byId.dragonRite.text='在场时：每当你弃掉一张手牌，使本局酒馆永久获得「1 + 护符共鸣」攻击与生命。倒数 2：获得一张龙之斗气。';
+ // Army growth needs a card source: cheap, finite setup feeds late attack engines.
+ set('forest12',{attack:2,health:2,effect:'fairyTraining',fairyCry:2,related:[]},m=>`入场曲：妖精军团永久 +${2*m}/+${2*m}。`);
+ set('forest13',{fairyLast:1},m=>`谢幕曲：妖精军团永久 +${m}/+${m}，召唤一个 ${m}/${m} 妖精。`);
+ set('forest9',{attack:4,health:6,fairyAttack:3},m=>`守护。攻击前：妖精军团永久 +${3*m}/+${3*m}。谢幕曲：召唤一个 ${2*m}/${2*m} 妖精。`);
+ for(const id of ['forest13','forest9']){D.byId[id].brood.count=1;for(const r of D.byId[id].related||[])if(r.id==='fairy')r.count=1;}
+ set('forest17',{effect:'fairySpell',signature:'丰饶祈咏'},m=>`每当你使用一张法术，妖精军团永久 +${m}/+${m}。`);
+ delete D.byId.forest17.fairyCry;delete D.byId.forest17.fairyLast;
+ Object.assign(D.byId.forest2,{tier:3,attack:3,health:5});
+ set('forest19',{effect:'fairyCommander',related:[],signature:'舞夜进军'},m=>`你的妖精在战斗中每次攻击连续攻击 ${1+m} 次；战斗中新召唤的妖精立即攻击。`);
+ set('blood19',{batAssault:true},m=>`复仇（2）：召唤一个基础身材为「（4 + 本局累计自伤）× ${m}」的蝙蝠。每当友方蝙蝠攻击前，使其本场获得「血翼军团 × ${m}」的攻击与生命。`);
+ D.byId.fairy.text='妖精军团：开战与新召唤时获得军团加成。';
+ D.byId.bat.text='血翼军团：累计自伤 + 本局蝙蝠战斗阵亡数 ×（1 + 累计自伤÷20），向下取整。';
+ D.lastWordEffects=D.lastWordEffects.filter(e=>e!=='fairyLegacy');D.fanfareIds=D.fanfareIds.filter(id=>id!=='forest17');
+ D.fanfareIds=[...new Set([...D.fanfareIds,...D.cards.filter(c=>c.fairyCry).map(c=>c.id)])];
+ D.abilityIds.fanfare=[...D.fanfareIds];D.abilityIds.lastWords=D.cards.filter(c=>D.lastWordEffects.includes(c.effect)||c.id==='dragon1').map(c=>c.id);
+ D.archetypes.forest.routes[1]=['军团突击','引路人入场、吟游诗人谢幕、远古精灵攻击提供前期军团；邱贝雷通过使用法术、三星公主通过召唤妖精继续培养，舞夜妖精提供连击和立即攻击，莉莎与远古树精承接成长。',['forest12','forest13','forest9','forest17','forest6','forest19','forest7']];
+ D.archetypes.forest.routes[0][1]=D.archetypes.forest.routes[0][1].replace('魔法精灵公主单独积累军团','军团可由入场、谢幕与战斗攻击积累');
+ D.archetypes.forest.support='前期通过具体随从的入场曲、谢幕曲与攻击积累军团；六星舞夜妖精统领连续进攻。';
+ D.archetypes.blood.routes[1]=['血翼军团','蝙蝠战斗阵亡永久积累军团，自伤放大整局阵亡收益；六星暗夜公主在蝙蝠攻击前追加军团身材，血脉之王用复生创造再次进攻，女王负责炮击。',['blood8','blood16','blood17','blood21','blood6','blood19']];
+ set('neutral20',{attack:6,health:4,effect:'openingStrike',keywords:[],signature:'先制突袭'},m=>`开战：在其他开战效果前，立即发起 ${m} 次攻击。`);
+ D.rulesVersion='28.27';
 }
 root.TavernRenewal={apply};if(typeof module!=='undefined')module.exports={apply};
 })(typeof globalThis!=='undefined'?globalThis:this);
