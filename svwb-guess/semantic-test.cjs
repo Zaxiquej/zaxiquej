@@ -44,6 +44,9 @@ const samples={
   heal:make('【入场曲】回复自己的主战者3点生命值。'),
   shield:make('【入场曲】使自己的主战者获得【屏障】。'),
   storm:make('【疾驰】'),rush:make('【突进】'),
+  selfStorm:make('【入场曲】本随从获得【疾驰】。'),
+  conditionalStorm:make('【入场曲】【解放奥义】本随从获得【疾驰】。'),
+  allyStorm:make('【入场曲】选择自己的战场上的1个随从，使其获得【疾驰】。'),
   immune:make('本随从不会被能力破坏。'),passive:make('自己的随从被破坏时，抽取1张卡牌。'),
   removeWard:make('使对手的随从失去【守护】。')
 };
@@ -87,6 +90,10 @@ assert(related('draw','tutor')>related('draw','generate'));assert(related('gener
 assert(related('summon','reanimate')>related('generate','summon'));
 assert(related('ramp','restore')>0);assert(related('restore','discount')>0);
 assert(related('heal','shield')>0);assert(related('storm','rush')>0);
+assert.equal(related('storm','selfStorm'),.85,'Innate versus self-gained keywords retain a modest acquisition difference');
+assert(related('storm','conditionalStorm')<related('storm','selfStorm'),'Keyword acquisition affinity must not erase unlock requirements');
+assert(related('storm','conditionalStorm')>related('storm','rush'));
+assert(related('storm','selfStorm')>related('storm','allyStorm'));
 assert(!sem.immune.some(e=>e.action==='破坏'));assert(!sem.passive.some(e=>e.action==='破坏'));
 assert(!sem.removeWard.some(e=>e.action==='守护'));
 assert.equal(sem.bounce[0].object,'随从');assert.equal(sem.bounce[0].zone,'战场');
@@ -97,6 +104,16 @@ for(const a of Object.values(sem))for(const b of Object.values(sem)){
   assert(Math.abs(x-S.similarity([...a].reverse(),[...b].reverse()))<1e-9);
 }
 const engine=E.createEngine(Object.values(samples));
+assert(engine.compare(samples.storm,samples.selfStorm).skill>engine.compare(samples.storm,samples.allyStorm).skill,'Self-gained keywords are closer to innate abilities than granting them to another card');
+assert(engine.compare(samples.storm,samples.selfStorm).skill>engine.compare(samples.storm,samples.conditionalStorm).skill,'Conditions must still distinguish otherwise identical self abilities');
+assert(engine.compare(samples.storm,samples.storm).skill>engine.compare(samples.storm,samples.selfStorm).skill);
+const drawExtra=make('【超进化时】抽取2张卡牌。回复自己的主战者2点生命值。');
+const drawExtraTwo=make('【超进化时】抽取2张卡牌。回复自己的主战者2点生命值。使自己的能量点最大值+1。');
+const overlapEngine=E.createEngine([samples.draw,drawExtra,drawExtraTwo]);
+assert(overlapEngine.compare(samples.draw,drawExtra).skill>overlapEngine.compare(samples.draw,drawExtraTwo).skill,'Additional unrelated effects still reduce similarity');
+for(const a of Object.values(samples))for(const b of Object.values(samples)){
+  const x=engine.compare(a,b).score;assert(x>=0&&x<=100);assert(Math.abs(x-engine.compare(b,a).score)<1e-9);
+}
 const damageScores=['damageCopy','damageThree','damageTwo','damageOne'].map(key=>engine.compare(samples.damage,samples[key]));
 for(let i=1;i<damageScores.length;i++){
   assert(damageScores[i-1].score>damageScores[i].score);
@@ -116,6 +133,11 @@ assert(engine.compare(samples.damage,samples.multiDamage).score>engine.compare(s
 assert(engine.compare(samples.damage,samples.damageCopy).score>engine.compare(samples.damage,samples.conditionalDamage).score);
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/data.js','utf8'),ctx);
 const cards=JSON.parse(JSON.stringify(ctx.window.SVWB_GUESS_DATA.cards)),real=E.createEngine(cards),pool=E.poolFor(cards);
+const bubble=cards.find(c=>c.name==='泡沫鬼姬'),bubbleRanks=real.rank(bubble,pool);
+const infinite=bubbleRanks.find(r=>r.card.name==='淳朴的钢铁之躯·无限');
+assert(infinite.rank<=4,'Matching storm plus two-target destruction should remain near the top');
+for(const name of ['人马骑士','魔狼首领','咆哮狼人'])assert(infinite.rank<bubbleRanks.find(r=>r.card.name===name).rank,'The shared removal/storm structure should beat a lone storm keyword');
+console.log('Bubble princess regression:',{infiniteRank:infinite.rank,infiniteScore:infinite.score.toFixed(2)});
 const erin=cards.find(c=>c.name==='霜寒冰晶·艾琳'),solitude=cards.find(c=>c.name==='宁静的孤独'),gatekeeper=cards.find(c=>c.name==='豪龙守门人');
 const solitudeScore=real.compare(erin,solitude).score,gatekeeperScore=real.compare(erin,gatekeeper).score;
 assert(solitudeScore>65&&Math.abs(gatekeeperScore-solitudeScore)<5,'The identical spell payload must not suffer the former 22-point timing gap');

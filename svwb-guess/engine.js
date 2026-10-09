@@ -47,7 +47,10 @@
           const line=part.slice(0,m.index).split('\n').pop()+part.slice(m.index).split('\n')[0];
           const keywordTiming=Semantics.keywordActions.includes(m[1])&&line.trim()===m[0]?'常驻':timing;
           const family=(Semantics.conditionNames.includes(m[1])?'条件:':'效果:')+m[1];
-          put(prefix+granted+m[1],2*factor,m[2]?[m[2]]:[],'',family);
+          // Gaining a keyword on this card shares its base ability with an innate keyword.
+          // Keep the original granted/innate distinction in the timed feature below.
+          const selfGranted=Semantics.keywordActions.includes(m[1])&&/(?:本随从|本卡牌)(?:获得|拥有)[^，。；\n]*$/.test(part.slice(0,m.index));
+          put(prefix+(selfGranted?'能力:':granted)+m[1],2*factor,m[2]?[m[2]]:[],'',family);
           put(prefix+effectTiming(keywordTiming)+':'+granted+m[1],1.4*factor,m[2]?[m[2]]:[],'',family);
         }
         for(const term of ['纹章','信仰','超进化','进化','土之印','魔力增幅','连击','协作','融合','奥义槽','创造物','人偶','妖精','亡者','葬送']){
@@ -116,9 +119,10 @@
     return result;
   }
   function featureSimilarity(a,b){
-    let shared=0,total=0;
+    let shared=0,total=0,extra=0;
     for(const k of new Set([...a.keys(),...b.keys()])){
       const x=a.get(k),y=b.get(k);total+=Math.max(x?.w||0,y?.w||0);
+      if(!x||!y)extra+=(x||y).w;
       if(x&&y){let numerical=1;
         // Damage amounts affect shared removal purpose, but cannot be compared to a banish/destroy count.
         const comparable=!x.numberKind||!y.numberKind||x.numberKind===y.numberKind;
@@ -129,7 +133,8 @@
         shared+=Math.min(x.w,y.w)*numerical;
       }
     }
-    return total?shared/total:1;
+    // Extra abilities count at 75%; mismatched amounts on shared abilities retain their full penalty.
+    return total?shared/(total-.25*extra):1;
   }
   function textTokens(card){
     const texts=[clean(card.text)];

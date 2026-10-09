@@ -145,7 +145,10 @@
     if(a.zone!==b.zone)return 0;
     if(a.action!==b.action&&(removal.has(a.action)||removal.has(b.action))&&(a.object==='主战者'||b.object==='主战者'))return 0;
     const object=a.object===b.object?1:a.object==='卡牌'||b.object==='卡牌'?.75:.25;
-    const timing=timingSimilarity(a.timing,b.timing);
+    // Innate and self-gained keywords have the same eventual capability; acquisition is a modest distinction.
+    // Conditions, events and sources below still apply, and granting another object is not covered.
+    const innateToSelfGain=keywordActions.includes(a.action)&&keywordActions.includes(b.action)&&a.recipient==='本体'&&b.recipient==='本体'&&((a.timing==='常驻')!==(b.timing==='常驻'));
+    const timing=innateToSelfGain?.85:timingSimilarity(a.timing,b.timing);
     const scope=a.scope===b.scope?1:a.scope==='全体'||b.scope==='全体'?.3:a.scope==='多体'||b.scope==='多体'?.65:.75;
     const recipient=a.recipient===b.recipient?1:.5;
     const condition=a.condition===b.condition?1:!a.condition||!b.condition?.75:.85;
