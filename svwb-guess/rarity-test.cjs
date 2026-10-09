@@ -1,0 +1,36 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const E=require('./engine.js'),S=require('./semantics.js');
+let id=0;const card=text=>({id:++id,name:'测试'+id,type:1,class:0,cost:3,rarity:2,attack:2,health:2,tribes:[],text,evolvedText:text,effects:[]});
+assert(S.conditionFamilies('若自己的牌组中没有重复卡牌，则抽取1张卡牌。').includes('宇宙条件'));
+assert(S.conditionFamilies('若自己的牌组中的卡牌名称各不相同，则抽取1张卡牌。').includes('宇宙条件'));
+assert(!S.conditionFamilies('使自己的牌组中的重复卡牌消失并只保留1张。').includes('宇宙条件'));
+assert(!S.conditionFamilies('将1张与本随从同名的卡牌加入牌组。').includes('宇宙条件'));
+assert(!S.conditionFamilies('若自己的手牌中没有重复卡牌，则抽取1张卡牌。').includes('宇宙条件'));
+const damage='对对手的主战者造成2点伤害。',ramp='使自己的能量点最大值+1。';
+const target=card(ramp+damage),rare=card(ramp),common=card(damage);
+const corpus=[target,rare,common,...Array.from({length:20},(_,i)=>card(`【入场曲】对对手的主战者造成${i+1}点伤害。\n\n【进化时】对对手的主战者造成1点伤害。`))];
+const engine=E.createEngine(corpus);
+assert.equal(engine.rarityFor('效果:伤害').count,22,'Amounts and repeated/evolved effects do not split or multiply per-card frequency');
+assert.equal(engine.rarityFor('效果:跳费').count,2);
+assert(engine.compare(target,rare).skill>engine.compare(target,common).skill,'The rarer shared effect should contribute more than common damage');
+const feature=key=>engine.explain(target).features.find(f=>f.key===key);
+assert(feature('作用:跳费').w>feature('作用:伤害').w);
+for(const text of ['【入场曲】【唤灵 4】抽取1张卡牌。','【入场曲】若为【觉醒】，则抽取1张卡牌。','【入场曲】若自己的牌组中没有重复卡牌，则抽取1张卡牌。']){
+  const f=[...E.features(card(text)).values()].filter(x=>x.family.startsWith('条件:'));
+  assert.equal(f.length,1,'Condition label/trigger/condition text must not triple-count the same requirement');assert.equal(f[0].w,2);
+}
+const withTokens=E.createEngine([...corpus,...Array.from({length:30},()=>({...card(ramp),token:true}))]);
+assert.deepEqual(withTokens.rarityFor('效果:跳费'),engine.rarityFor('效果:跳费'),'Token quantity must not distort collectible-card effect rarity');
+assert.deepEqual(E.createEngine([...corpus].reverse()).rarityFor('效果:伤害'),engine.rarityFor('效果:伤害'));
+const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/data.js','utf8'),ctx);
+const cards=JSON.parse(JSON.stringify(ctx.window.SVWB_GUESS_DATA.cards)),real=E.createEngine(cards);
+const cosmosDamage=S.extract(cards.find(c=>c.name==='青锈小卒')).find(e=>e.action==='伤害');
+assert.equal(cosmosDamage.zone,'战场');assert.equal(cosmosDamage.side,'敌');assert.equal(cosmosDamage.object,'随从');
+const stats=['效果:伤害','效果:跳费','条件:宇宙条件','条件:觉醒','条件:唤灵'].map(f=>real.rarityFor(f));
+assert(stats[1].multiplier>stats[0].multiplier);assert(stats[2].multiplier>stats[3].multiplier);assert(stats[2].multiplier>stats[4].multiplier);
+for(const stat of stats)assert(stat.multiplier>=1&&stat.multiplier<=3.5);
+const samePool=E.poolFor(cards),a=cards.find(c=>c.name==='龙之启示');
+assert.equal(real.rank(a,samePool)[0].card.id,a.id);
+const after=real.rarityFor('效果:跳费');real.rank(a,cards.slice(0,40));assert.deepEqual(real.rarityFor('效果:跳费'),after,'Ranking filters must not recalculate rarity');
+console.log('PASS: rare-effect rewards, canonical family counts, highlander detection, token exclusion, stable pool weights and bounds.');
+console.table(stats);

@@ -40,13 +40,23 @@
         score+=net*(a.activation?.breaksSelf?1:1.65);
       }
     }
-    return {score:+score.toFixed(2),minimum:card.cost<4?0:cost*1.55,effectiveCost:cost};
+    return {score:+score.toFixed(2),minimum:cost*(card.cost<4?1.45:1.55),effectiveCost:cost};
   }
   function quality(card){
     // A cheap scaling removal spell may invest most of its value in growth;
     // a more expensive one still needs an adequate present-day payload.
-    if(card.type==='spell'&&card.spellboostCounter&&card.cost>=3&&card.spent<card.cost*2)return false;
-    if(card.type!=='amulet'||card.cost<4)return true;
+    if(card.type==='spell'&&card.spellboostCounter){
+      const p=card.spellboostCounter;
+      if(card.cost>=3&&card.spent<card.cost*2)return false;
+      // Compare like-for-like: a single-target +1-per-boost spell needs a
+      // better starting payload as its cost rises, or a separate useful effect.
+      // Split damage is a different delivery and must not inherit this floor.
+      const extra=card.abilities.some(a=>!a.ids.includes('spellboostCounter')&&!a.scalesWith&&a.raw>=1.5);
+      if(p.effectId==='damage'&&!extra&&p.initial<card.cost*2)return false;
+    }
+    if(card.type!=='amulet')return true;
+    const finite=card.countdown!=null||card.abilities.some(a=>a.activation?.breaksSelf);
+    if(card.cost<4&&!finite)return true;
     const r=readiness(card);return r.score>=r.minimum;
   }
   function build(ctx){
@@ -134,8 +144,8 @@
       let counterMain=false;
       if(!alternate&&cls===3&&cost>=1&&cost<=5&&(cost<=3||rarity>=2)&&(rarity<=1||cost>=3)&&!card.abilities.length&&r()<.18){
         const split=rarity<=1&&cost>=2&&r()<.3;
-        const initial=split?weighted(r,[[0,5],[1,3],[2,1]]):weighted(r,[[1,3],[2,6],[3,cost>=3?2:0]]);
-        const unit=split?1.1:1.25,expectedBoosts=4,setupPrice=1+cost*.3;
+        const initial=split?weighted(r,[[0,5],[1,3],[2,1]]):weighted(r,[[2,3],[Math.max(2,cost*2-1),3],[cost*2,6]]);
+        const unit=split?1.1:1.25,expectedBoosts=4,setupPrice=split?1+cost*.3:.6+Math.max(0,cost-1)*.4;
         const basePrice=split?Math.max(initial*unit,remaining()*.76-setupPrice):initial*unit;
         if(basePrice+setupPrice<=remaining()&&effectCount()+2<=effectLimit){
           add({kind:'static',trigger:'魔力增幅时',condition:'none',text:'X起始为'+initial+'。\n【魔力增幅时】使本卡牌的X+1。',bodyText:'使本卡牌的X+1。',raw:expectedBoosts*unit,price:setupPrice,ids:['spellboostCounter'],tokens:[]});
@@ -243,7 +253,8 @@
         const fanfares=card.abilities.filter(a=>a.trigger==='入场曲');
         const fanRaw=fanfares.reduce((s,a)=>s+a.raw,0);
         const replay=breaksSelf&&fanfares.length>0&&(card.spent+Math.max(.4,fanRaw-fee*2.2))>=card.budget*.7&&r()<.16;
-        const minimum=cost>=4?Math.max(fee*2.2+.8,cost>=6?limit*.5:0):0;
+        const minimum=Math.max(cost>=4?Math.max(fee*2.2+.8,cost>=6?limit*.5:0):0,
+          breaksSelf?Math.max(0,card.budget*.68-card.spent)+fee*2.2:0);
         let e=replay?{text:'发动与【入场曲】相同的能力。',raw:fanRaw,ids:['activationReplay'],tokens:[]}:payload(limit,'启动',minimum,'none',effectiveCost,true,{multiplier:repeats,credit:fee*2.2});
         if(e){
           const price=Math.max(.4,(e.raw-fee*2.2)*repeats);

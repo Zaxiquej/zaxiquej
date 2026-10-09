@@ -1,6 +1,6 @@
 (function (root) {
   'use strict';
-  const VERSION = '5.27.0';
+  const VERSION = '5.28.0';
   const TRIBAL_SYNERGY = 3; // Selection preference only; never discounts the payoff.
   const SEED_VERSION = '4.5'; // Seed namespace; versioned generation rules may change a card.
   const CALIBRATION=typeof module!=='undefined'&&module.exports?require('./calibration.js'):root.SVWBCalibration;
@@ -738,7 +738,7 @@
     const chaos=options.chaos===true;
     if(chaos)roll.r=rng(hash(roll.seed+'|ultimate-chaos'));
     if(options.designAttempt)roll.r=rng(hash(roll.seed+'|design-attempt|'+options.designAttempt+'|'+chaos));
-    if(alternateConfig)Object.assign(roll,{type:alternateConfig.type||'spell',cost:alternateConfig.cost,cls:alternateConfig.cls,rarity:alternateConfig.rarity,r:rng(hash(roll.seed+'|'+(alternateConfig.type==='amulet'?'crystallize':'accelerate')+'|'+alternateConfig.cost))});
+    if(alternateConfig)Object.assign(roll,{type:alternateConfig.type||'spell',cost:alternateConfig.cost,cls:alternateConfig.cls,rarity:alternateConfig.rarity,r:rng(hash(roll.seed+'|'+(alternateConfig.type==='amulet'?'crystallize':'accelerate')+'|'+alternateConfig.cost+(alternateConfig.attempt?'|attempt'+alternateConfig.attempt:'')))});
     const {name,seed,r,cls,rarity,cost,type}=roll,pick=a=>a[Math.floor(r()*a.length)];
     const earlySuperWeight=cost<=3&&options.earlyPlayFocus?0:1;
 
@@ -3374,8 +3374,20 @@ function pickAtom(limit,exclude=[],automatic=true,minRaw=0,trigger='入场曲') 
     // late evolution, faith and emblem engines. Its PP budget stays independent.
     for(const form of card.alternateForms.filter(f=>f.kind==='激奏'||f.kind==='结晶'&&f.route==='amulet')){
       const context=strategyTags(card);
-      const spell=generateCard(name,{type:form.kind==='结晶'?'amulet':'spell',cost:form.cost,cls,rarity,token,strategyContext:context},options);
-      Object.assign(form,{text:spell.abilities.map(a=>a.text).join('\n\n'),abilities:spell.abilities,countdown:spell.countdown??null,budget:spell.budget,spent:spell.spent,tokens:spell.tokens,emblemIds:spell.emblems.map(e=>e.id),strategyContext:context});
+      let spell=null,attempt=0;
+      for(;attempt<12;attempt++){
+        const candidate=generateCard(name,{type:form.kind==='结晶'?'amulet':'spell',cost:form.cost,cls,rarity,token,strategyContext:context,attempt},options);
+        if(candidate.abilities.some(a=>a.trigger)&&NONFOLLOWERS.quality(candidate)){spell=candidate;break;}
+      }
+      if(!spell){
+        // An optional play mode must stand on its own. Do not sell a weak
+        // alternate merely because the follower's other mode is strong.
+        card.alternateForms=card.alternateForms.filter(f=>f!==form);
+        const ability=card.abilities.find(a=>a.kind==='alternate'&&a.trigger===form.kind);
+        if(ability){card.spent-=ability.price;card.abilities=card.abilities.filter(a=>a!==ability);refreshUsed();}
+        continue;
+      }
+      Object.assign(form,{text:spell.abilities.map(a=>a.text).join('\n\n'),abilities:spell.abilities,countdown:spell.countdown??null,budget:spell.budget,spent:spell.spent,tokens:spell.tokens,emblemIds:spell.emblems.map(e=>e.id),strategyContext:context,qualityAttempt:attempt});
       card.emblems.push(...spell.emblems);
       const ability=card.abilities.find(a=>a.kind==='alternate'&&a.trigger===form.kind);
       if(ability){ability.tokens=spell.tokens;ability.emblemIds=form.emblemIds;}

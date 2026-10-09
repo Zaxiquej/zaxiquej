@@ -1,0 +1,358 @@
+{
+  "version": "5.28.0",
+  "counts": {
+    "followers": 1500,
+    "spells": 650,
+    "amulets": 350,
+    "alternate": 138,
+    "crystallize": 39,
+    "accelerate": 99,
+    "retried": 6,
+    "counters": 59,
+    "singleCounter": 51,
+    "splitCounter": 8
+  },
+  "examples": {
+    "reported": {
+      "version": "5.28.0",
+      "name": "真卡#437213",
+      "seed": 1436210751,
+      "type": "follower",
+      "class": 5,
+      "rarity": 2,
+      "cost": 8,
+      "attack": 8,
+      "health": 8,
+      "abilities": [
+        {
+          "kind": "handTrigger",
+          "trigger": "在手牌中发动",
+          "condition": "none",
+          "text": "在手牌中发动。自己的随从超进化时，使本卡牌的费用-3。",
+          "bodyText": "在手牌中发动。自己的随从超进化时，使本卡牌的费用-3。",
+          "raw": 8.399999999999999,
+          "price": 8.36,
+          "ids": [
+            "handTrigger",
+            "handDiscount"
+          ],
+          "handSpec": {
+            "eventId": "ownSuper",
+            "payoff": "discount",
+            "keyword": null,
+            "temporary": false,
+            "amount": 3,
+            "setCost": null,
+            "expectedDiscount": 4.199999999999999,
+            "discountValueFactor": 1,
+            "oncePerTurn": false
+          },
+          "tokens": [],
+          "scaling": {
+            "eventId": "ownSuper",
+            "payoff": "discount",
+            "slow": true,
+            "temporary": false,
+            "rapid": false,
+            "expected": 4.199999999999999,
+            "growth": 0,
+            "effectiveCost": 6.95,
+            "landingCost": 3.8000000000000007,
+            "budgetCap": null,
+            "bodyCap": null,
+            "bodySoftCap": null
+          }
+        },
+        {
+          "kind": "core",
+          "trigger": "超进化时",
+          "condition": "none",
+          "text": "【超进化时】召唤1个『真卡#437213』。",
+          "bodyText": "召唤1个『真卡#437213』。",
+          "price": 4.574999999999999,
+          "raw": 18.299999999999997,
+          "ids": [
+            "coreAnchor",
+            "selfCopy"
+          ],
+          "components": [
+            {
+              "id": "selfCopy",
+              "text": "召唤1个『真卡#437213』。",
+              "raw": 18.299999999999997
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 3】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【守护】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "守护"
+          ]
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [
+        {
+          "id": "alternate",
+          "kind": "结晶",
+          "cost": 3,
+          "type": "护符",
+          "route": "amulet",
+          "text": "【启动】破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
+          "abilities": [
+            {
+              "ids": [
+                "splitDamage",
+                "activate"
+              ],
+              "raw": 6.6000000000000005,
+              "boardValue": 0,
+              "text": "【启动】破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
+              "tokens": [],
+              "kind": "activation",
+              "trigger": "启动",
+              "condition": "none",
+              "bodyText": "破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
+              "price": 6.6000000000000005,
+              "activation": {
+                "fee": 0,
+                "oncePerTurn": true,
+                "breaksSelf": true,
+                "repeats": 1,
+                "credit": 0
+              }
+            }
+          ],
+          "countdown": null,
+          "budget": 7.6,
+          "spent": 6.6,
+          "tokens": [],
+          "emblemIds": [],
+          "strategyContext": [],
+          "qualityAttempt": 0
+        }
+      ],
+      "budget": 44.99797732420266,
+      "spent": 14.13,
+      "bodyAllowance": 16,
+      "theme": "幽夜 · 唤灵与谢幕",
+      "highRole": "offense",
+      "highCostBonus": 2.6,
+      "bodyHeadroom": 2,
+      "handTrigger": {
+        "eventId": "ownSuper",
+        "payoff": "discount",
+        "keyword": null,
+        "temporary": false,
+        "amount": 3,
+        "setCost": null,
+        "expectedDiscount": 4.199999999999999,
+        "discountValueFactor": 1,
+        "oncePerTurn": false
+      },
+      "archetype": "modularCore",
+      "corePower": 27.899999999999995,
+      "discountBodyTrade": {
+        "expected": 4.199999999999999,
+        "valueFactor": 1,
+        "targetLoss": 2,
+        "alreadyPaid": 0,
+        "lost": 2
+      },
+      "scalingTrade": {
+        "before": [
+          8,
+          8
+        ],
+        "bodyCap": 30,
+        "budgetCap": 44.99797732420266,
+        "after": [
+          8,
+          8
+        ]
+      },
+      "vanilla": false
+    },
+    "damage": {
+      "version": "5.28.0",
+      "name": "低费兑现回归365",
+      "seed": 2516215814,
+      "type": "spell",
+      "class": 3,
+      "rarity": 1,
+      "cost": 1,
+      "attack": null,
+      "health": null,
+      "abilities": [
+        {
+          "kind": "static",
+          "trigger": "魔力增幅时",
+          "condition": "none",
+          "text": "X起始为2。\n【魔力增幅时】使本卡牌的X+1。",
+          "bodyText": "使本卡牌的X+1。",
+          "raw": 5,
+          "price": 0.6,
+          "ids": [
+            "spellboostCounter"
+          ],
+          "tokens": []
+        },
+        {
+          "ids": [
+            "damage"
+          ],
+          "text": "选择对手的战场上的1个随从，对其造成X点伤害。",
+          "raw": 2.5,
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "法术",
+          "condition": "none",
+          "price": 2.5,
+          "bodyText": "选择对手的战场上的1个随从，对其造成X点伤害。",
+          "scalesWith": "spellboostCounter"
+        },
+        {
+          "ids": [
+            "boost"
+          ],
+          "raw": 2,
+          "boardValue": 0,
+          "text": "若为超进化已解禁的回合，则使自己的所有手牌发动1次魔力增幅。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "法术",
+          "condition": "superUnlocked",
+          "price": 1,
+          "bodyText": "若为超进化已解禁的回合，则使自己的所有手牌发动1次魔力增幅。",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "minPayoff": 2
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 5.388239510154351,
+      "spent": 4.1,
+      "bodyAllowance": 0,
+      "theme": "秘法 · 增幅与土印",
+      "chaos": true,
+      "chaosPower": {
+        "baseBudget": 4.5663046696223315,
+        "bodyBonus": 0,
+        "effectMultiplier": 1.18
+      },
+      "effectLimit": 3,
+      "archetype": "modularSpell",
+      "spellboostCounter": {
+        "initial": 2,
+        "increment": 1,
+        "expectedBoosts": 4,
+        "setupPrice": 0.6,
+        "basePrice": 2.5,
+        "effectId": "damage"
+      },
+      "vanilla": false
+    },
+    "splitDamage": {
+      "version": "5.28.0",
+      "name": "低费兑现回归1316",
+      "seed": 4008346185,
+      "type": "spell",
+      "class": 3,
+      "rarity": 1,
+      "cost": 2,
+      "attack": null,
+      "health": null,
+      "abilities": [
+        {
+          "kind": "static",
+          "trigger": "魔力增幅时",
+          "condition": "none",
+          "text": "X起始为0。\n【魔力增幅时】使本卡牌的X+1。",
+          "bodyText": "使本卡牌的X+1。",
+          "raw": 4.4,
+          "price": 1.6,
+          "ids": [
+            "spellboostCounter"
+          ],
+          "tokens": []
+        },
+        {
+          "ids": [
+            "splitDamage"
+          ],
+          "text": "对对手的战场上的所有随从分配X点伤害。",
+          "raw": 3.8923094749301668,
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "法术",
+          "condition": "none",
+          "price": 3.8923094749301668,
+          "bodyText": "对对手的战场上的所有随从分配X点伤害。",
+          "scalesWith": "spellboostCounter"
+        },
+        {
+          "ids": [
+            "damage"
+          ],
+          "raw": 3.75,
+          "boardValue": 0,
+          "text": "若自己的战场上有超进化后的随从，则选择对手的战场上的1个随从，对其造成3点伤害。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "法术",
+          "condition": "superEvolvedBoard",
+          "price": 1.5749999999999997,
+          "bodyText": "若自己的战场上有超进化后的随从，则选择对手的战场上的1个随从，对其造成3点伤害。",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "minPayoff": 3.5
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 7.226722993329167,
+      "spent": 7.07,
+      "bodyAllowance": 0,
+      "theme": "秘法 · 增幅与土印",
+      "effectLimit": 3,
+      "archetype": "modularSpell",
+      "spellboostCounter": {
+        "initial": 0,
+        "increment": 1,
+        "expectedBoosts": 4,
+        "setupPrice": 1.6,
+        "basePrice": 3.8923094749301668,
+        "effectId": "splitDamage"
+      },
+      "vanilla": false
+    }
+  }
+}

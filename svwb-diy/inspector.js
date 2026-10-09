@@ -62,7 +62,7 @@
     $('inspector-status').textContent='正在扫描…';$('inspector-start').disabled=true;$('inspector-stop').disabled=false;$('inspector-export').disabled=true;
     function beginScan(local=location.protocol==='file:'){
      try{
-      const active=local?localWorker():new Worker('svwb-diy/inspector-worker.js?v=5.27.0');worker=active;
+      const active=local?localWorker():new Worker('svwb-diy/inspector-worker.js?v=5.28.0');worker=active;
       active.onmessage=({data})=>{
         if(worker!==active)return;
         if(data.error){stop(null);$('inspector-status').textContent='检索失败：'+data.error;return;}

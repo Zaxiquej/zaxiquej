@@ -14,6 +14,18 @@
   const affinities=new Map(links.flatMap(([a,b,n])=>[[a+'|'+b,n],[b+'|'+a,n]]));
   const removal=new Set(['破坏','消失','回手','回牌组','伤害']);
   const keywordActions=['疾驰','突进','屏障','守护','潜行','灵气','威慑'];
+  const conditionNames=['觉醒','唤灵','连击','土之秘术','协作','奥义','解放奥义','爆能强化'];
+  function conditionFamilies(text){
+    const value=String(text||'');
+    const result=conditionNames.filter(name=>new RegExp('【'+name+'(?:\\s+[^】]*)?】').test(value));
+    // Highlander deck requirements, not ordinary same-name references or removing duplicates.
+    if(value.split(/[。\n；]/).some(sentence=>/牌组/.test(sentence)&&(
+      /(?:没有|不存在|不含|不包含)[^，。,]{0,10}(?:重复|同名|相同名称|名称相同)/.test(sentence)||
+      /(?:卡牌(?:的)?名称|名称)(?:均|皆|全部|都|各|互相|各自)?(?:不相同|不同)/.test(sentence)||
+      /(?:同名|相同名称)[^，。,]{0,10}(?:各只有|各仅有|最多有)1张/.test(sentence)
+    )))result.push('宇宙条件');
+    return [...new Set(result)];
+  }
   // Effect amounts differ both in absolute distance and proportion (1 vs 4 is not 10 vs 13).
   function numberSimilarity(a,b){
     if(String(a)===String(b))return 1;
@@ -23,14 +35,20 @@
     const ratio=(Math.min(Math.abs(x),Math.abs(y))+1)/(Math.max(Math.abs(x),Math.abs(y))+1);
     return Math.sqrt(ratio)/(1+Math.abs(x-y)*.55);
   }
+  function effectBody(sentence){return sentence.trim().replace(/^(?:之后[，,]\s*)?若[\s\S]*?则[，,]?/,'');}
+  function generatedProducts(sentence){
+    if(!/加入(?:自己的)?手牌/.test(sentence))return [];
+    return [...effectBody(sentence).matchAll(/([\dXYZ]+)张『([^』]+)』/g)].map(m=>({name:m[2],amount:m[1]}));
+  }
   function scopeOf(sentence){
+    sentence=effectBody(sentence);
     if(/所有|全体/.test(sentence))return '全体';
     if(/随机/.test(sentence))return '随机';
     if([...sentence.matchAll(/(\d+)(?:个(?:随从|护符)|张卡牌)/g)].some(m=>+m[1]>1))return '多体';
     return '单体';
   }
   function conditionOf(sentence){
-    const named=sentence.match(/【(?:连击|土之秘术|唤灵|协作|奥义|解放奥义)(?:\s*[^】]*)?】/);
+    const named=sentence.match(/【(?:觉醒|连击|土之秘术|唤灵|协作|奥义|解放奥义|爆能强化)(?:\s*[^】]*)?】/);
     const explicit=sentence.match(/若(.+?)(?:，?则|，)/);
     return (named?.[0]||explicit?.[0]||'').replace(/\s+/g,'');
   }
@@ -85,7 +103,7 @@
             if(action==='进化'&&m[0].includes('超进化'))continue;
             const op=action==='抽牌'&&m[2]&&!/^卡牌/.test(m[2])?'检索':action;
             // Destination words must not overwrite the selected card's location/type.
-            const targetText=sentence.replace(/(?:使其)?返回(?:手牌|牌组)/g,'').replace(/『[^』]*』/g,'');
+            const targetText=effectBody(sentence).replace(/(?:使其)?返回(?:手牌|牌组)/g,'').replace(/『[^』]*』/g,'');
             let side=/对手/.test(targetText)?'敌':'己';
             let object=/主战者/.test(targetText)?'主战者':/随从/.test(targetText)?'随从':/护符/.test(targetText)?'护符':/战场|卡牌/.test(targetText)?'卡牌':'随从';
             let zone=/手牌/.test(targetText)?'手牌':/牌组/.test(targetText)?'牌组':'战场';
@@ -100,7 +118,10 @@
             const numbers=(op==='抽牌'||op==='检索'?m.slice(1,2):m.slice(1)).filter(x=>x!==undefined&&/^[\dXYZ]+$/.test(x)).map(String);
             const condition=conditionOf(sentence),upgrade=isUpgrade(sentence);
             const item={action:op,side,object,zone,scope,timing:effectTiming,event,source,weight:weight*(upgrade?.5:1),numbers,recipient,condition,upgrade};
-            const key=JSON.stringify([op,side,object,zone,scope,effectTiming,event,source,numbers,recipient,condition]);items.set(key,item);
+            const products=op==='生成手牌'?generatedProducts(sentence):[];
+            for(const effect of products.length?products.map(p=>({...item,product:p.name,numbers:[p.amount]})):[item]){
+              const key=JSON.stringify([op,side,object,zone,scope,effectTiming,event,source,effect.numbers,recipient,condition,effect.product]);items.set(key,effect);
+            }
           }
         }
       }
@@ -109,7 +130,7 @@
     for(const e of card.effects||[])parse(e.text,'附属'+e.type,.7);
     return [...items.values()];
   }
-  function affinity(a,b){
+  function affinity(a,b,compareProducts){
     const relation=a.action===b.action?1:affinities.get(a.action+'|'+b.action)||0;
     if(!relation)return 0;
     const side=a.side===b.side?1:a.action===b.action&&['回手','回牌组'].includes(a.action)?.3:a.action===b.action&&['破坏','消失'].includes(a.action)?.12:0;
@@ -123,18 +144,19 @@
     const recipient=a.recipient===b.recipient?1:.5;
     const condition=a.condition===b.condition?1:!a.condition||!b.condition?.75:.85;
     const reference=a.reference===b.reference?1:.5;
+    const product=a.action===b.action&&a.action==='生成手牌'?(a.product===b.product?1:!a.product||!b.product?.65:compareProducts?compareProducts(a.product,b.product):.35):1;
     const source=a.source===b.source?1:.6,event=a.event===b.event?1:.7;
     let amount=1;
     // Numeric values are comparable only for the same operation (damage is not a removal count).
     if(a.action===b.action){const length=Math.max(a.numbers.length,b.numbers.length);if(length){let sum=0;
       for(let i=0;i<length;i++)sum+=numberSimilarity(a.numbers[i],b.numbers[i]);amount=sum/length;
     }}
-    return relation*side*object*timing*scope*source*event*amount*recipient*condition*reference;
+    return relation*side*object*timing*scope*source*event*amount*recipient*condition*reference*product;
   }
   // Maximum-weight one-to-one matching: one effect cannot explain several different effects.
-  function similarity(a,b){
+  function similarity(a,b,compareProducts){
     if(!a.length||!b.length)return 0;
-    const n=Math.max(a.length,b.length),matrix=Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>a[i]&&b[j]?affinity(a[i],b[j])*Math.min(a[i].weight,b[j].weight):0));
+    const n=Math.max(a.length,b.length),matrix=Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>a[i]&&b[j]?affinity(a[i],b[j],compareProducts)*Math.min(a[i].weight,b[j].weight):0));
     const u=Array(n+1).fill(0),v=Array(n+1).fill(0),p=Array(n+1).fill(0),way=Array(n+1).fill(0);
     for(let i=1;i<=n;i++){
       p[0]=i;let j0=0;const min=Array(n+1).fill(Infinity),used=Array(n+1).fill(false);
@@ -147,5 +169,5 @@
     let matched=0;for(let j=1;j<=n;j++)matched+=matrix[p[j]-1][j-1];
     return Math.max(0,Math.min(1,2*matched/(a.reduce((s,x)=>s+x.weight,0)+b.reduce((s,x)=>s+x.weight,0))));
   }
-  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity};
+  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts};
 });
