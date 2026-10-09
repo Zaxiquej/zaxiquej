@@ -10,6 +10,8 @@ const samples={
   aoe:make('【超进化时】使对手的战场上的所有随从消失。'),
   ordinary:make('【进化时】选择对手的战场上的1个随从，使其消失。'),
   enter:make('【入场曲】选择对手的战场上的1个随从，使其消失。'),
+  spellBanish:make('选择对手的战场上的1个随从，使其消失。',{type:4}),
+  deathBanish:make('【谢幕曲】选择对手的战场上的1个随从，使其消失。'),
   superCopy:make('【超进化时】选择对手的战场上的1个随从，使其消失。'),
   damage:make('【超进化时】选择对手的战场上的1个随从，对其造成4点伤害。'),
   aoeDamage:make('【超进化时】对对手的战场上的所有随从造成4点伤害。'),
@@ -74,6 +76,13 @@ assert.equal(related('handBuff','boardBuff'),0);
 assert(related('bounce','banish')>related('bounce','ordinary'));
 assert(related('banish','superCopy')>related('banish','ordinary'));
 assert(related('banish','ordinary')>related('banish','enter'));
+assert.equal(sem.spellBanish[0].timing,'使用时');
+assert.equal(sem.storm[0].timing,'常驻');
+assert.equal(related('spellBanish','enter'),.9);
+assert(related('spellBanish','enter')>related('spellBanish','deathBanish'));
+assert(related('enter','enter')>related('spellBanish','enter'));
+assert.equal(S.extract(make('',{effects:[{type:3,text:'抽取1张卡牌。'}]}))[0].timing,'使用时');
+assert.equal(S.extract(make('',{type:4,effects:[{type:1,text:'自己的回合结束时，抽取1张卡牌。'}]}))[0].timing,'常驻');
 assert(related('draw','tutor')>related('draw','generate'));assert(related('generate','summon')>0);
 assert(related('summon','reanimate')>related('generate','summon'));
 assert(related('ramp','restore')>0);assert(related('restore','discount')>0);
@@ -102,10 +111,16 @@ assert(engine.compare(samples.bounce,samples.banish).score>engine.compare(sample
 assert(engine.compare(samples.bounce,samples.banish).score>engine.compare(samples.bounce,samples.selfBounce).score);
 assert(engine.compare(samples.banish,samples.superCopy).score>engine.compare(samples.banish,samples.ordinary).score);
 assert(engine.compare(samples.banish,samples.ordinary).score>engine.compare(samples.banish,samples.enter).score);
+assert(engine.compare(samples.spellBanish,samples.enter).skill>engine.compare(samples.spellBanish,samples.deathBanish).skill);
 assert(engine.compare(samples.damage,samples.multiDamage).score>engine.compare(samples.damage,samples.aoeDamage).score);
 assert(engine.compare(samples.damage,samples.damageCopy).score>engine.compare(samples.damage,samples.conditionalDamage).score);
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/data.js','utf8'),ctx);
 const cards=JSON.parse(JSON.stringify(ctx.window.SVWB_GUESS_DATA.cards)),real=E.createEngine(cards),pool=E.poolFor(cards);
+const erin=cards.find(c=>c.name==='霜寒冰晶·艾琳'),solitude=cards.find(c=>c.name==='宁静的孤独'),gatekeeper=cards.find(c=>c.name==='豪龙守门人');
+const solitudeScore=real.compare(erin,solitude).score,gatekeeperScore=real.compare(erin,gatekeeper).score;
+assert(solitudeScore>65&&Math.abs(gatekeeperScore-solitudeScore)<5,'The identical spell payload must not suffer the former 22-point timing gap');
+assert.equal(S.extract(solitude)[0].timing,'使用时');
+console.log('Erin regression:',{solitude:solitudeScore.toFixed(2),gatekeeper:gatekeeperScore.toFixed(2)});
 const selwyn=cards.find(c=>c.name==='音速射手·塞尔文');assert(selwyn);
 const alf=cards.find(c=>c.name==='激动的欢喜·阿尔菲德');
 const alfRanks=real.rank(alf,pool),lookup=name=>alfRanks.find(r=>r.card.name===name);

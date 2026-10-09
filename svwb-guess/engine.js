@@ -7,6 +7,7 @@
   const normalize=s=>clean(s).toLowerCase().replace(/[\s·・‧，。！？、：；「」『』【】()（）\-]/g,'');
   const near=(a,b)=>1/(1+Math.abs(Number(a)-Number(b))*.55);
   const trigger=/((?:费用\s*\d+\s*)?【(?:入场曲|谢幕曲|超进化时|进化时|攻击时|交战时|魔力增幅时|启动)】)/g;
+  const effectTiming=timing=>timing.replace(/^(?:使用时|入场曲)(?=>|$)/,'打出时');
   const actions=[
     ['伤害',/造成([\dXYZ]+)点伤害/g],['回复生命',/回复[^。]*?([\dXYZ]+)点生命值/g],
     ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤([\dXYZ]+)个/g],
@@ -26,8 +27,9 @@
   function features(card){
     const result=new Map();
     function put(k,w,values=[],numberKind='',family=''){const old=result.get(k);if(!old||old.w<w)result.set(k,{w,values,numberKind,family});}
-    function parse(text,prefix='',factor=1){
-      let timing='常驻';
+    function parse(text,prefix='',factor=1,initialTiming=card.type===4?'使用时':'常驻'){
+      let timing=initialTiming;
+      if(timing==='使用时'&&clean(text))put(prefix+'时点:使用时',1.5*factor);
       for(const name of Semantics.conditionFamilies(text)){
         const value=String(text||'').match(new RegExp('【'+name+'\\s+([\\dXYZ]+)】'))?.[1];
         put(prefix+'条件类别:'+name,2*factor,value?[value]:[],'','条件:'+name);
@@ -46,7 +48,7 @@
           const keywordTiming=Semantics.keywordActions.includes(m[1])&&line.trim()===m[0]?'常驻':timing;
           const family=(Semantics.conditionNames.includes(m[1])?'条件:':'效果:')+m[1];
           put(prefix+granted+m[1],2*factor,m[2]?[m[2]]:[],'',family);
-          put(prefix+keywordTiming+':'+granted+m[1],1.4*factor,m[2]?[m[2]]:[],'',family);
+          put(prefix+effectTiming(keywordTiming)+':'+granted+m[1],1.4*factor,m[2]?[m[2]]:[],'',family);
         }
         for(const term of ['纹章','信仰','超进化','进化','土之印','魔力增幅','连击','协作','融合','奥义槽','创造物','人偶','妖精','亡者','葬送']){
           // Ordinary evolution must not be inferred from the substring in super-evolution.
@@ -69,7 +71,7 @@
               if(products.length){
                 put(prefix+'作用:生成手牌',2*effectFactor,[],'','效果:生成手牌');
                 for(const product of products){
-                  put(prefix+context+':'+target+':生成手牌:'+product.name,3*effectFactor,[product.amount],'','效果:生成手牌');
+                  put(prefix+effectTiming(context)+':'+target+':生成手牌:'+product.name,3*effectFactor,[product.amount],'','效果:生成手牌');
                   put(prefix+'产物:生成手牌:'+product.name,3*effectFactor,[product.amount],'','效果:生成手牌');
                 }
                 continue;
@@ -78,10 +80,10 @@
               const scoped=['伤害','破坏','消失','回手','回牌组','加身材','减身材','自动进化','自动超进化'].includes(action);
               const scope=scoped?':'+Semantics.scopeOf(sentence):'';
               const location=['加身材','减身材','自动进化','自动超进化'].includes(action)?':'+(/本随从|本卡牌/.test(body)?'本体':/手牌/.test(body)?'手牌':/牌组/.test(body)?'牌组':'其他对象'):'';
-              put(prefix+context+':'+target+scope+location+':'+action,3*effectFactor*(condition?.75:1),values,'','效果:'+action);
+              put(prefix+effectTiming(context)+':'+target+scope+location+':'+action,3*effectFactor*(condition?.75:1),values,'','效果:'+action);
             }
           }
-          if(/所有|随机|选择/.test(sentence))put(prefix+context+':范围:'+Semantics.scopeOf(sentence),.8*effectFactor);
+          if(/所有|随机|选择/.test(sentence))put(prefix+effectTiming(context)+':范围:'+Semantics.scopeOf(sentence),.8*effectFactor);
           for(const m of sentence.matchAll(/『([^』]+)』/g)){
             if(!m[1].startsWith('纹章')&&!m[1].includes(card.name)&&!Semantics.generatedProducts(sentence).some(p=>p.name===m[1]))put(prefix+'关联对象:'+m[1],1.2*factor);
           }
@@ -91,7 +93,7 @@
     parse(card.text);
     // Most WB evo text repeats base text; do not double-count it.
     if(normalize(card.evolvedText)!==normalize(card.text))parse(card.evolvedText,'进化后/',.7);
-    for(const e of card.effects||[]){const label=effectTypes[e.type]||'附属效果';put('附属:'+label,3);parse(e.text,label+'/',.7);}
+    for(const e of card.effects||[]){const label=effectTypes[e.type]||'附属效果';put('附属:'+label,3);parse(e.text,label+'/',.7,e.type===3?'使用时':'常驻');}
     // Recognize the resulting ability without erasing how or when it is obtained.
     const semantic=Semantics.extract(card),generated=new Map();
     for(const e of semantic){

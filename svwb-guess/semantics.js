@@ -40,6 +40,12 @@
     if(!/加入(?:自己的)?手牌/.test(sentence))return [];
     return [...effectBody(sentence).matchAll(/([\dXYZ]+)张『([^』]+)』/g)].map(m=>({name:m[2],amount:m[1]}));
   }
+  function timingSimilarity(a,b){
+    if(a===b)return 1;
+    if(['使用时','入场曲'].includes(a)&&['使用时','入场曲'].includes(b))return .9;
+    if(['进化时','超进化时'].includes(a)&&['进化时','超进化时'].includes(b))return .8;
+    return .6;
+  }
   function scopeOf(sentence){
     sentence=effectBody(sentence);
     if(/所有|全体/.test(sentence))return '全体';
@@ -84,12 +90,12 @@
   }
   function extract(card){
     const items=new Map();
-    function parse(text,source='本体',weight=1){
+    function parse(text,source='本体',weight=1,initialTiming=card.type===4?'使用时':'常驻'){
       for(const repeat of repeatedTriggers(text)){
         const item={action:'重复触发',side:'己',object:'能力',zone:'能力',scope:'单体',...repeat,event:'',source,weight:weight*.35,numbers:[],recipient:'',condition:'',upgrade:false};
         items.set(JSON.stringify(['重复触发',source,repeat.timing,repeat.reference]),item);
       }
-      let timing='常驻';
+      let timing=initialTiming;
       for(const part of expandText(text).split(triggers).filter(Boolean)){
         if(/^(?:费用\s*\d+\s*)?【(?:入场曲|谢幕曲|超进化时|进化时|攻击时|交战时|魔力增幅时|启动)】$/.test(part)){timing=part.match(/【([^】]+)】/)[1];continue;}
         for(const sentence of part.split(/[。\n；]/).filter(Boolean)){
@@ -127,7 +133,7 @@
       }
     }
     parse(card.text);if(trim(card.evolvedText)!==trim(card.text))parse(card.evolvedText,'进化后',.7);
-    for(const e of card.effects||[])parse(e.text,'附属'+e.type,.7);
+    for(const e of card.effects||[])parse(e.text,'附属'+e.type,.7,e.type===3?'使用时':'常驻');
     return [...items.values()];
   }
   function affinity(a,b,compareProducts){
@@ -139,7 +145,7 @@
     if(a.zone!==b.zone)return 0;
     if(a.action!==b.action&&(removal.has(a.action)||removal.has(b.action))&&(a.object==='主战者'||b.object==='主战者'))return 0;
     const object=a.object===b.object?1:a.object==='卡牌'||b.object==='卡牌'?.75:.25;
-    const timing=a.timing===b.timing?1:['进化时','超进化时'].includes(a.timing)&&['进化时','超进化时'].includes(b.timing)?.8:.6;
+    const timing=timingSimilarity(a.timing,b.timing);
     const scope=a.scope===b.scope?1:a.scope==='全体'||b.scope==='全体'?.3:a.scope==='多体'||b.scope==='多体'?.65:.75;
     const recipient=a.recipient===b.recipient?1:.5;
     const condition=a.condition===b.condition?1:!a.condition||!b.condition?.75:.85;
@@ -169,5 +175,5 @@
     let matched=0;for(let j=1;j<=n;j++)matched+=matrix[p[j]-1][j-1];
     return Math.max(0,Math.min(1,2*matched/(a.reduce((s,x)=>s+x.weight,0)+b.reduce((s,x)=>s+x.weight,0))));
   }
-  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts};
+  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts,timingSimilarity};
 });
