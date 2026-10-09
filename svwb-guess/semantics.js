@@ -35,7 +35,27 @@
     const ratio=(Math.min(Math.abs(x),Math.abs(y))+1)/(Math.max(Math.abs(x),Math.abs(y))+1);
     return Math.sqrt(ratio)/(1+Math.abs(x-y)*.55);
   }
+  const effectFamily=e=>'效果:'+(e.action==='伤害'&&e.side==='己'&&e.object==='主战者'?'自伤':e.action);
+  function effectNumberSimilarity(a,b,family){
+    const numeric=numberSimilarity(a,b);
+    // Self-damage primarily matches the life-payment mechanism; its amount is a smaller component.
+    return family==='效果:自伤'&&a!==undefined&&b!==undefined?.7+.3*numeric:numeric;
+  }
   function effectBody(sentence){return sentence.trim().replace(/^(?:之后[，,]\s*)?若[\s\S]*?则[，,]?/,'');}
+  function targetRestrictionOf(sentence,action){
+    if(!removal.has(action))return '';
+    // Target qualifiers are distinct from damage amounts and from conditions that enable the effect.
+    const m=effectBody(sentence).match(/(生命值|攻击力|原始费用|费用)(?:为|是)?([\dXYZ]+)(?:点)?(?:或)?(以下|以上)?的(?:随从|护符|卡牌)/);
+    return m?m[1]+(m[3]==='以下'?'<=':m[3]==='以上'?'>=':'=')+m[2]:'';
+  }
+  function targetRestrictionSimilarity(a='',b=''){
+    if(a===b)return 1;
+    if(!a||!b)return .55;
+    const parse=s=>s.match(/^(.+?)(<=|>=|=)([\dXYZ]+)$/),x=parse(a),y=parse(b);
+    if(!x||!y||x[1]!==y[1])return .4;
+    if(x[2]!==y[2])return .5;
+    return .5+.5*numberSimilarity(x[3],y[3]);
+  }
   function generatedProducts(sentence){
     if(!/加入(?:自己的)?手牌/.test(sentence))return [];
     return [...effectBody(sentence).matchAll(/([\dXYZ]+)张『([^』]+)』/g)].map(m=>({name:m[2],amount:m[1]}));
@@ -123,10 +143,11 @@
             const recipient=[...keywordActions,'加身材','进化','超进化'].includes(op)?innate||/本随从|本卡牌/.test(targetText)?'本体':'对象':'';
             const numbers=(op==='抽牌'||op==='检索'?m.slice(1,2):m.slice(1)).filter(x=>x!==undefined&&/^[\dXYZ]+$/.test(x)).map(String);
             const condition=conditionOf(sentence),upgrade=isUpgrade(sentence);
-            const item={action:op,side,object,zone,scope,timing:effectTiming,event,source,weight:weight*(upgrade?.5:1),numbers,recipient,condition,upgrade};
+            const targetRestriction=targetRestrictionOf(sentence,op);
+            const item={action:op,side,object,zone,scope,timing:effectTiming,event,source,weight:weight*(upgrade?.5:1),numbers,recipient,condition,upgrade,targetRestriction};
             const products=op==='生成手牌'?generatedProducts(sentence):[];
             for(const effect of products.length?products.map(p=>({...item,product:p.name,numbers:[p.amount]})):[item]){
-              const key=JSON.stringify([op,side,object,zone,scope,effectTiming,event,source,effect.numbers,recipient,condition,effect.product]);items.set(key,effect);
+              const key=JSON.stringify([op,side,object,zone,scope,effectTiming,event,source,effect.numbers,recipient,condition,effect.product,targetRestriction]);items.set(key,effect);
             }
           }
         }
@@ -158,9 +179,9 @@
     let amount=1;
     // Numeric values are comparable only for the same operation (damage is not a removal count).
     if(a.action===b.action){const length=Math.max(a.numbers.length,b.numbers.length);if(length){let sum=0;
-      for(let i=0;i<length;i++)sum+=numberSimilarity(a.numbers[i],b.numbers[i]);amount=sum/length;
+      for(let i=0;i<length;i++)sum+=effectNumberSimilarity(a.numbers[i],b.numbers[i],effectFamily(a)===effectFamily(b)?effectFamily(a):'');amount=sum/length;
     }}
-    return relation*side*object*timing*scope*source*event*amount*recipient*condition*reference*product;
+    return relation*side*object*timing*scope*source*event*amount*recipient*condition*reference*product*targetRestrictionSimilarity(a.targetRestriction,b.targetRestriction);
   }
   // Maximum-weight one-to-one matching: one effect cannot explain several different effects.
   function similarity(a,b,compareProducts){
@@ -178,5 +199,5 @@
     let matched=0;for(let j=1;j<=n;j++)matched+=matrix[p[j]-1][j-1];
     return Math.max(0,Math.min(1,2*matched/(a.reduce((s,x)=>s+x.weight,0)+b.reduce((s,x)=>s+x.weight,0))));
   }
-  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts,timingSimilarity};
+  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts,timingSimilarity,targetRestrictionOf,targetRestrictionSimilarity,effectFamily,effectNumberSimilarity};
 });

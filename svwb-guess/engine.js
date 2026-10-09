@@ -8,6 +8,7 @@
   const near=(a,b)=>1/(1+Math.abs(Number(a)-Number(b))*.55);
   const trigger=/((?:费用\s*\d+\s*)?【(?:入场曲|谢幕曲|超进化时|进化时|攻击时|交战时|魔力增幅时|启动)】)/g;
   const effectTiming=timing=>timing.replace(/^(?:使用时|入场曲)(?=>|$)/,'打出时');
+  const restrictionKey=value=>value?':目标限制:'+value:'';
   const actions=[
     ['伤害',/造成([\dXYZ]+)点伤害/g],['回复生命',/回复[^。]*?([\dXYZ]+)点生命值/g],
     ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤([\dXYZ]+)个/g],
@@ -79,11 +80,13 @@
                 }
                 continue;
               }
-              put(prefix+'作用:'+action,2*effectFactor,values,'','效果:'+action);
+              const restriction=restrictionKey(Semantics.targetRestrictionOf(sentence,action));
+              const family=action==='伤害'&&target==='己主战者'?'效果:自伤':'效果:'+action;
+              put(prefix+'作用:'+(family==='效果:自伤'?'自伤':action)+restriction,2*effectFactor,values,'',family);
               const scoped=['伤害','破坏','消失','回手','回牌组','加身材','减身材','自动进化','自动超进化'].includes(action);
               const scope=scoped?':'+Semantics.scopeOf(sentence):'';
               const location=['加身材','减身材','自动进化','自动超进化'].includes(action)?':'+(/本随从|本卡牌/.test(body)?'本体':/手牌/.test(body)?'手牌':/牌组/.test(body)?'牌组':'其他对象'):'';
-              put(prefix+effectTiming(context)+':'+target+scope+location+':'+action,3*effectFactor*(condition?.75:1),values,'','效果:'+action);
+              put(prefix+effectTiming(context)+':'+target+scope+location+':'+action+restriction,3*effectFactor*(condition?.75:1),values,'',family);
             }
           }
           if(/所有|随机|选择/.test(sentence))put(prefix+effectTiming(context)+':范围:'+Semantics.scopeOf(sentence),.8*effectFactor);
@@ -106,12 +109,12 @@
       }
       if(e.action==='重复触发')put(e.source+':重复触发:'+e.timing+':'+e.reference,e.weight*2);
       if(Semantics.keywordActions.includes(e.action))put(e.source+':能力结果:'+e.side+':'+e.object+':'+e.recipient+':'+e.action,2*e.weight,[],'','效果:'+e.action);
-      if(['进化时','超进化时'].includes(e.timing))put(e.source+':进化类触发:'+e.side+':'+e.object+':'+e.scope+':'+e.recipient+':'+e.action,2*e.weight,e.numbers,'','效果:'+e.action);
+      if(['进化时','超进化时'].includes(e.timing))put(e.source+':进化类触发:'+e.side+':'+e.object+':'+e.scope+':'+e.recipient+':'+e.action+restrictionKey(e.targetRestriction),2*e.weight,e.numbers,'',Semantics.effectFamily(e));
       if(e.side==='敌'&&e.zone==='战场'&&e.object!=='主战者'&&['伤害','破坏','消失','回手','回牌组'].includes(e.action)){
         // Damage is conditional removal; direct removal retains the higher weight.
         if(e.action==='伤害'&&e.numbers[0]==='0')continue;
         const object=e.object==='卡牌'?'随从':e.object;
-        put(e.source+':目的:敌方解场:'+object+':'+e.scope,(e.action==='伤害'?2:3)*e.weight,e.action==='伤害'?e.numbers:[],e.action,'用途:敌方解场');
+        put(e.source+':目的:敌方解场:'+object+':'+e.scope+restrictionKey(e.targetRestriction),(e.action==='伤害'?2:3)*e.weight,e.action==='伤害'?e.numbers:[],e.action,'用途:敌方解场');
       }
     }
     // Match the amount described across stages, not only the first individual generation clause.
@@ -128,7 +131,7 @@
         const comparable=!x.numberKind||!y.numberKind||x.numberKind===y.numberKind;
         const length=comparable?Math.max(x.values.length,y.values.length):0;
         if(length)numerical=Array.from({length},(_,i)=>{
-          return Semantics.numberSimilarity(x.values[i],y.values[i]);
+          return Semantics.effectNumberSimilarity(x.values[i],y.values[i],x.family===y.family?x.family:'');
         }).reduce((s,n)=>s+n,0)/length;
         shared+=Math.min(x.w,y.w)*numerical;
       }
@@ -169,13 +172,13 @@
     // Count mechanism families once per card; never treat each numeric/target phrasing as rare.
     const corpus=cards.some(c=>!c.token)?cards.filter(c=>!c.token):cards,mechanismCounts=new Map();
     for(const c of corpus){const p=prepared.get(c.id),families=new Set([...p.features.values()].map(f=>f.family).filter(Boolean));
-      for(const e of p.semantic)if(e.action!=='重复触发')families.add('效果:'+e.action);
+      for(const e of p.semantic)if(e.action!=='重复触发')families.add(Semantics.effectFamily(e));
       for(const family of families)mechanismCounts.set(family,(mechanismCounts.get(family)||0)+1);
     }
     const rarityFor=family=>({family,count:mechanismCounts.get(family)||0,total:corpus.length,multiplier:family?Math.min(3.5,1+.45*Math.log((corpus.length+5)/((mechanismCounts.get(family)||0)+5))):1});
     function applyRarity(p){
       for(const f of p.features.values()){f.baseWeight=f.w;f.multiplier=rarityFor(f.family).multiplier;f.w*=f.multiplier;}
-      for(const e of p.semantic){e.baseWeight=e.weight;e.multiplier=e.action==='重复触发'?1:rarityFor('效果:'+e.action).multiplier;e.weight*=e.multiplier;}
+      for(const e of p.semantic){e.baseWeight=e.weight;e.family=Semantics.effectFamily(e);e.multiplier=e.action==='重复触发'?1:rarityFor(e.family).multiplier;e.weight*=e.multiplier;}
     }
     for(const c of cards){const p=prepared.get(c.id);applyRarity(p);
       p.variants=singleModeTexts(c.text).map(mode=>{

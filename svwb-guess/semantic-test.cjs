@@ -135,9 +135,35 @@ const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/data.js','u
 const cards=JSON.parse(JSON.stringify(ctx.window.SVWB_GUESS_DATA.cards)),real=E.createEngine(cards),pool=E.poolFor(cards);
 const bubble=cards.find(c=>c.name==='泡沫鬼姬'),bubbleRanks=real.rank(bubble,pool);
 const infinite=bubbleRanks.find(r=>r.card.name==='淳朴的钢铁之躯·无限');
-assert(infinite.rank<=4,'Matching storm plus two-target destruction should remain near the top');
+assert(infinite.rank<=5,'Matching storm plus two-target destruction should remain near the top alongside rare self-damage matches');
 for(const name of ['人马骑士','魔狼首领','咆哮狼人'])assert(infinite.rank<bubbleRanks.find(r=>r.card.name===name).rank,'The shared removal/storm structure should beat a lone storm keyword');
 console.log('Bubble princess regression:',{infiniteRank:infinite.rank,infiniteScore:infinite.score.toFixed(2)});
+const cat=bubbleRanks.find(r=>r.card.name==='猫人水手'),general=bubbleRanks.find(r=>r.card.name==='夜曲将军·艾瑟拉');
+assert(general.rank<cat.rank,'Storm plus rare self-damage should outrank health-1-only mass removal');
+assert.equal(S.extract(cat.card).find(e=>e.action==='破坏').targetRestriction,'生命值=1');
+assert(real.rarityFor('效果:自伤').multiplier>real.rarityFor('效果:伤害').multiplier);
+console.log('Self-damage / restricted removal regression:',{general:general.score.toFixed(2),cat:cat.score.toFixed(2),selfDamageCards:real.rarityFor('效果:自伤').count});
+const restrictions=[
+  make('【入场曲】破坏对手的战场上的所有生命值为1的随从。'),
+  make('【入场曲】破坏对手的战场上的所有生命值为2的随从。'),
+  make('【入场曲】破坏对手的战场上的所有随从。'),
+  make('【入场曲】选择对手的战场上的2个随从，破坏这些随从。')
+];
+const restricted=restrictions.map(S.extract),restrictedEngine=E.createEngine(restrictions);
+assert(S.similarity(restricted[0],restricted[1])>S.similarity(restricted[0],restricted[2]));
+assert(S.similarity(restricted[0],restricted[2])>S.similarity(restricted[0],restricted[3]));
+assert(restrictedEngine.compare(restrictions[2],restrictions[0]).skill<restrictedEngine.compare(restrictions[2],restrictions[2]).skill);
+assert.equal(S.targetRestrictionOf('选择对手的战场上的1个攻击力为4或以下的随从，使其消失。','消失'),'攻击力<=4');
+assert.equal(S.targetRestrictionOf('选择对手的战场上的1个原始费用为5或以上的随从，使其返回手牌。','回手'),'原始费用>=5');
+assert.equal(S.targetRestrictionOf('若自己的战场上有原始费用为1的随从，则破坏对手的战场上的所有随从。','破坏'),'');
+assert.equal(S.targetRestrictionOf('对自己的主战者造成4点伤害。','伤害'),'');
+const selfDamages=[1,2,4].map(n=>make(`【入场曲】对自己的主战者造成${n}点伤害。`)),selfEngine=E.createEngine(selfDamages);
+assert(S.similarity(S.extract(selfDamages[1]),S.extract(selfDamages[2]))>.8);
+assert(selfEngine.compare(selfDamages[1],selfDamages[2]).skill>80);
+assert(selfEngine.compare(selfDamages[1],selfDamages[2]).skill<100);
+assert(selfEngine.compare(selfDamages[0],selfDamages[2]).skill<selfEngine.compare(selfDamages[1],selfDamages[2]).skill);
+assert.equal(S.effectFamily(S.extract(samples.faceDamage)[0]),'效果:伤害');
+assert.equal(S.effectFamily(S.extract(selfDamages[0])[0]),'效果:自伤');
 const erin=cards.find(c=>c.name==='霜寒冰晶·艾琳'),solitude=cards.find(c=>c.name==='宁静的孤独'),gatekeeper=cards.find(c=>c.name==='豪龙守门人');
 const solitudeScore=real.compare(erin,solitude).score,gatekeeperScore=real.compare(erin,gatekeeper).score;
 assert(solitudeScore>65&&Math.abs(gatekeeperScore-solitudeScore)<5,'The identical spell payload must not suffer the former 22-point timing gap');

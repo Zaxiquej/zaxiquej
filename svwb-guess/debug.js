@@ -17,9 +17,9 @@
     if(comparison?.modeMatch)body.append(el('p',`模式比较：测试目标采用${comparison.modeMatch.left}，本卡采用${comparison.modeMatch.right}；分支匹配占 90%，完整结构占 10%。`));
     else if(explanation.modes.length)body.append(el('p','模式按合法的单个分支分别比较，不将所有选项当成同时发动。'));
     const families=new Set(explanation.features.map(f=>f.family).filter(Boolean));
-    for(const e of explanation.semantic)if(e.action!=='重复触发')families.add('效果:'+e.action);
+    for(const e of explanation.semantic)if(e.action!=='重复触发')families.add(e.family||S.effectFamily(e));
     body.append(el('strong','效果稀有权重（按非衍生卡池统计，每卡计一次）'),el('pre',[...families].map(f=>{const r=engine.rarityFor(f);return `${f}：${r.count} / ${r.total} 张，×${r.multiplier.toFixed(2)}`;}).join('\n')||'无可统计效果类别。'));
-    const parsed=explanation.semantic.map(e=>`${e.source}／${e.timing}${e.event?'／'+e.event:''}：${e.action}${e.reference?'（'+e.reference+'）':''}${e.product?'『'+e.product+'』':''} → ${e.side}方${e.object}／${e.zone}／${e.scope}${e.recipient?'／'+e.recipient:''}${e.numbers.length?'／数值 '+e.numbers.join(','):''}${e.condition?'／条件 '+e.condition:''}${e.upgrade?'／条件升级':''}`);
+    const parsed=explanation.semantic.map(e=>`${e.source}／${e.timing}${e.event?'／'+e.event:''}：${e.action}${e.reference?'（'+e.reference+'）':''}${e.product?'『'+e.product+'』':''} → ${e.side}方${e.object}／${e.zone}／${e.scope}${e.recipient?'／'+e.recipient:''}${e.numbers.length?'／数值 '+e.numbers.join(','):''}${e.targetRestriction?'／目标限制 '+e.targetRestriction:''}${e.condition?'／条件 '+e.condition:''}${e.upgrade?'／条件升级':''}`);
     body.append(el('strong','识别出的效果'),el('pre',parsed.join('\n')||'未提取到结构化效果，仍参与特征与文字比较。'));
     if(base){
       const left=new Map(engine.explain(base,comparison?.modeMatch?.left).features.map(f=>[f.key,f])),shared=explanation.features.filter(f=>left.has(f.key));
