@@ -60,6 +60,17 @@
     if(!/加入(?:自己的)?手牌/.test(sentence))return [];
     return [...effectBody(sentence).matchAll(/([\dXYZ]+)张『([^』]+)』/g)].map(m=>({name:m[2],amount:m[1]}));
   }
+  function summonedProducts(sentence){
+    const products=new Map();
+    // Only consume the named summon list, not later references to cards in the same sentence.
+    for(const list of effectBody(sentence).matchAll(/召唤(?:随机)?([\dXYZ]+[个张]『[^』]+』(?:(?:和|与|、|及)[\dXYZ]+[个张]『[^』]+』)*)/g)){
+      for(const m of list[1].matchAll(/([\dXYZ]+)[个张]『([^』]+)』/g)){
+        const old=products.get(m[2]),amount=old===undefined?m[1]:Number.isFinite(+old)&&Number.isFinite(+m[1])?String(+old + +m[1]):'X';
+        products.set(m[2],amount);
+      }
+    }
+    return [...products].map(([name,amount])=>({name,amount}));
+  }
   function timingSimilarity(a,b){
     if(a===b)return 1;
     if(['使用时','入场曲'].includes(a)&&['使用时','入场曲'].includes(b))return .9;
@@ -81,7 +92,7 @@
   function isUpgrade(sentence){return !!conditionOf(sentence)&&/改为/.test(sentence);}
   const patterns=[
     ['伤害',/造成([\dXYZ]+)点伤害/g],['回复生命',/回复[^。；]*?([\dXYZ]+)点生命值|回复至上限/g],
-    ['抽牌',/抽取([\dXYZ]+)张([^。；]*)/g],['召唤',/召唤([\dXYZ]+)个/g],
+    ['抽牌',/抽取([\dXYZ]+)张([^。；]*)/g],['召唤',/召唤(?:随机)?([\dXYZ]+)[个张]/g],
     ['破坏',/破坏/g],['消失',/消失/g],['回手',/返回手牌/g],['回牌组',/返回牌组/g],
     ['生成手牌',/加入(?:自己的)?手牌/g],['跳费',/能量点最大值\+([\dXYZ]+)/g],
     ['回费',/回复(?:自己|对手)?([\dXYZ]+)点能量点/g],['减费',/费用-([\dXYZ]+)/g],
@@ -145,7 +156,7 @@
             const condition=conditionOf(sentence),upgrade=isUpgrade(sentence);
             const targetRestriction=targetRestrictionOf(sentence,op);
             const item={action:op,side,object,zone,scope,timing:effectTiming,event,source,weight:weight*(upgrade?.5:1),numbers,recipient,condition,upgrade,targetRestriction};
-            const products=op==='生成手牌'?generatedProducts(sentence):[];
+            const products=op==='生成手牌'?generatedProducts(sentence):op==='召唤'?summonedProducts(sentence):[];
             for(const effect of products.length?products.map(p=>({...item,product:p.name,numbers:[p.amount]})):[item]){
               const key=JSON.stringify([op,side,object,zone,scope,effectTiming,event,source,effect.numbers,recipient,condition,effect.product,targetRestriction]);items.set(key,effect);
             }
@@ -174,7 +185,7 @@
     const recipient=a.recipient===b.recipient?1:.5;
     const condition=a.condition===b.condition?1:!a.condition||!b.condition?.75:.85;
     const reference=a.reference===b.reference?1:.5;
-    const product=a.action===b.action&&a.action==='生成手牌'?(a.product===b.product?1:!a.product||!b.product?.65:compareProducts?compareProducts(a.product,b.product):.35):1;
+    const product=a.action===b.action&&['生成手牌','召唤'].includes(a.action)?(a.product===b.product?1:!a.product||!b.product?.65:compareProducts?compareProducts(a.product,b.product):.35):1;
     const source=a.source===b.source?1:.6,event=a.event===b.event?1:.7;
     let amount=1;
     // Numeric values are comparable only for the same operation (damage is not a removal count).
@@ -199,5 +210,5 @@
     let matched=0;for(let j=1;j<=n;j++)matched+=matrix[p[j]-1][j-1];
     return Math.max(0,Math.min(1,2*matched/(a.reduce((s,x)=>s+x.weight,0)+b.reduce((s,x)=>s+x.weight,0))));
   }
-  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts,timingSimilarity,targetRestrictionOf,targetRestrictionSimilarity,effectFamily,effectNumberSimilarity};
+  return {extract,affinity,similarity,links,scopeOf,keywordActions,conditionOf,isUpgrade,expandText,repeatedTriggers,numberSimilarity,conditionNames,conditionFamilies,effectBody,generatedProducts,summonedProducts,timingSimilarity,targetRestrictionOf,targetRestrictionSimilarity,effectFamily,effectNumberSimilarity};
 });

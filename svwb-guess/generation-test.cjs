@@ -23,8 +23,33 @@ assert.equal(E.singleModeTexts(mode.text.replace('选择1个','选择2个')).len
 for(const left of deck)for(const right of deck){const x=engine.compare(left,right).score,y=engine.compare(right,left).score;assert(Number.isFinite(x)&&x>=0&&x<=100);assert(Math.abs(x-y)<1e-8);}
 const cycleA=card('循环甲','将1张『循环乙』加入手牌。',{token:true}),cycleB=card('循环乙','将1张『循环甲』加入手牌。',{token:true});
 const cycleEngine=E.createEngine([cycleA,cycleB]);assert(Number.isFinite(cycleEngine.productSimilarity('循环甲','循环乙')),'Generated card references stop after one level');
+const summon=card('召唤甲','召唤1个『甲』。'),similarSummon=card('召唤乙','召唤1个『乙』。'),unrelatedSummon=card('召唤丙','召唤1个『丙』。');
+const multiSummon=card('双召唤','召唤1个『甲』和1个『乙』。'),doubleSummon=card('两份召唤','召唤2个『甲』。');
+const mixed=card('混合产物','召唤1个『甲』，将1张『丙』加入手牌。');
+assert.deepEqual(S.summonedProducts(multiSummon.text),[{name:'甲',amount:'1'},{name:'乙',amount:'1'}]);
+assert.deepEqual(S.summonedProducts('召唤1个『甲』和1个『甲』。'),[{name:'甲',amount:'2'}]);
+assert.deepEqual(S.summonedProducts(mixed.text),[{name:'甲',amount:'1'}]);
+assert.deepEqual(S.summonedProducts('召唤随机1张『甲』。'),[{name:'甲',amount:'1'}]);
+assert.equal(S.summonedProducts('使1个『甲』获得【疾驰】。').length,0);
+assert.deepEqual(S.extract(multiSummon).map(e=>e.product),['甲','乙']);
+assert.deepEqual(E.features(multiSummon).get('本体:资源:召唤份数').values,[2]);
+assert.deepEqual(E.features(doubleSummon).get('本体:资源:召唤份数').values,[2]);
+const summonDeck=[a,b,c,summon,similarSummon,unrelatedSummon,multiSummon,doubleSummon,mixed],summonEngine=E.createEngine(summonDeck);
+assert(summonEngine.compare(summon,similarSummon).score>summonEngine.compare(summon,unrelatedSummon).score,'Summoned token effects provide partial similarity');
+assert(S.similarity(S.extract(multiSummon),S.extract(summon))<1,'One summoned product cannot cover two different products');
+for(const left of summonDeck)for(const right of summonDeck){const x=summonEngine.compare(left,right).score;assert(x>=0&&x<=100);assert(Math.abs(x-summonEngine.compare(right,left).score)<1e-8);}
+const summonCycleA=card('召唤循环甲','召唤1个『召唤循环乙』。',{token:true}),summonCycleB=card('召唤循环乙','召唤1个『召唤循环甲』。',{token:true});
+assert(Number.isFinite(E.createEngine([summonCycleA,summonCycleB]).productSimilarity(summonCycleA.name,summonCycleB.name)));
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/data.js','utf8'),ctx);
 const cards=JSON.parse(JSON.stringify(ctx.window.SVWB_GUESS_DATA.cards)),real=E.createEngine(cards),find=name=>cards.find(c=>c.name===name);
+const stage=find('舞台缔造者'),threads=find('刀线客'),dirk=find('钢铁佣兵·迪尔克');
+const stageSummons=S.extract(stage).filter(e=>e.action==='召唤');
+assert.deepEqual(stageSummons.map(e=>e.product),['改良型·悬丝傀儡','悬丝傀儡']);
+assert.deepEqual(stageSummons,S.extract(threads).filter(e=>e.action==='召唤'));
+const stageRanks=real.rank(stage,E.poolFor(cards)),threadRank=stageRanks.find(r=>r.card.id===threads.id),dirkRank=stageRanks.find(r=>r.card.id===dirk.id);
+assert(threadRank.rank<dirkRank.rank&&threadRank.skill>dirkRank.skill,'The identical pair of summoned puppets must outrank an unrelated single summon');
+assert(real.compare(stage,threads).text>real.compare(stage,dirk).text,'Text comparison retains named summon identities');
+console.table([threadRank,dirkRank].map(r=>({name:r.card.name,rank:r.rank,score:r.score.toFixed(2)})));
 const prayer=find('篡夺的祈祷者'),bastion=find('篡夺的据点'),water=find('纯真的水之妖精'),call=find('妖精召集令');
 assert.equal(real.compare(prayer,bastion).modeMatch.right,'模式 1');
 assert(real.compare(prayer,bastion).score>35,'The matching golden-product branch should no longer be buried at 27 points');

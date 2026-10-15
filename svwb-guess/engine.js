@@ -11,7 +11,7 @@
   const restrictionKey=value=>value?':目标限制:'+value:'';
   const actions=[
     ['伤害',/造成([\dXYZ]+)点伤害/g],['回复生命',/回复[^。]*?([\dXYZ]+)点生命值/g],
-    ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤([\dXYZ]+)个/g],
+    ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤(?:随机)?([\dXYZ]+)[个张]/g],
     ['破坏',/破坏/g],['消失',/消失/g],['回手',/返回手牌/g],['回牌组',/返回牌组/g],
     ['生成手牌',/加入手牌/g],['弃牌',/舍弃/g],['复制',/复制/g],['变身',/变身/g],
     ['加身材',/\+([\dXYZ]+)\/\+([\dXYZ]+)/g],['减身材',/-([\dXYZ]+)\/-([\dXYZ]+)/g],
@@ -71,12 +71,12 @@
               const body=Semantics.effectBody(sentence);
               const target=targetOf(['回手','回牌组'].includes(action)?body.replace(/(?:使其)?返回(?:手牌|牌组)/g,''):body);
               const values=m.slice(1).filter(v=>v!==undefined);
-              const products=action==='生成手牌'?Semantics.generatedProducts(sentence):[];
+              const products=action==='生成手牌'?Semantics.generatedProducts(sentence):action==='召唤'?Semantics.summonedProducts(sentence):[];
               if(products.length){
-                put(prefix+'作用:生成手牌',2*effectFactor,[],'','效果:生成手牌');
+                put(prefix+'作用:'+action,2*effectFactor,[],'','效果:'+action);
                 for(const product of products){
-                  put(prefix+effectTiming(context)+':'+target+':生成手牌:'+product.name,3*effectFactor,[product.amount],'','效果:生成手牌');
-                  put(prefix+'产物:生成手牌:'+product.name,3*effectFactor,[product.amount],'','效果:生成手牌');
+                  put(prefix+effectTiming(context)+':'+target+':'+action+':'+product.name,3*effectFactor,[product.amount],'','效果:'+action);
+                  put(prefix+'产物:'+action+':'+product.name,3*effectFactor,[product.amount],'','效果:'+action);
                 }
                 continue;
               }
@@ -91,7 +91,7 @@
           }
           if(/所有|随机|选择/.test(sentence))put(prefix+effectTiming(context)+':范围:'+Semantics.scopeOf(sentence),.8*effectFactor);
           for(const m of sentence.matchAll(/『([^』]+)』/g)){
-            if(!m[1].startsWith('纹章')&&!m[1].includes(card.name)&&!Semantics.generatedProducts(sentence).some(p=>p.name===m[1]))put(prefix+'关联对象:'+m[1],1.2*factor);
+            if(!m[1].startsWith('纹章')&&!m[1].includes(card.name)&&![...Semantics.generatedProducts(sentence),...Semantics.summonedProducts(sentence)].some(p=>p.name===m[1]))put(prefix+'关联对象:'+m[1],1.2*factor);
           }
         }
       }
@@ -103,9 +103,10 @@
     // Recognize the resulting ability without erasing how or when it is obtained.
     const semantic=Semantics.extract(card),generated=new Map();
     for(const e of semantic){
-      if(e.action==='生成手牌'&&e.product){
-        const amount=Number(e.numbers[0]),old=generated.get(e.source)||{amount:0,weight:e.weight};
-        old.amount=Number.isFinite(old.amount)&&Number.isFinite(amount)?old.amount+amount:NaN;generated.set(e.source,old);
+      if(['生成手牌','召唤'].includes(e.action)&&e.product){
+        const key=e.source+':资源:'+e.action+'份数';
+        const amount=Number(e.numbers[0]),old=generated.get(key)||{amount:0,weight:e.weight,action:e.action};
+        old.amount=Number.isFinite(old.amount)&&Number.isFinite(amount)?old.amount+amount:NaN;generated.set(key,old);
       }
       if(e.action==='重复触发')put(e.source+':重复触发:'+e.timing+':'+e.reference,e.weight*2);
       if(Semantics.keywordActions.includes(e.action))put(e.source+':能力结果:'+e.side+':'+e.object+':'+e.recipient+':'+e.action,2*e.weight,[],'','效果:'+e.action);
@@ -118,7 +119,7 @@
       }
     }
     // Match the amount described across stages, not only the first individual generation clause.
-    for(const [source,total]of generated)put(source+':资源:生成手牌份数',3*total.weight,[Number.isFinite(total.amount)?total.amount:'X'],'','效果:生成手牌');
+    for(const [key,total]of generated)put(key,3*total.weight,[Number.isFinite(total.amount)?total.amount:'X'],'','效果:'+total.action);
     return result;
   }
   function featureSimilarity(a,b){
@@ -143,7 +144,7 @@
     const texts=[clean(card.text)];
     if(normalize(card.text)!==normalize(card.evolvedText))texts.push(clean(card.evolvedText));
     texts.push(...(card.effects||[]).map(e=>clean(e.text)));
-    const products=new Set(texts.flatMap(text=>text.split(/[。\n；]/).flatMap(Semantics.generatedProducts)).map(p=>p.name));
+    const products=new Set(texts.flatMap(text=>text.split(/[。\n；]/).flatMap(sentence=>[...Semantics.generatedProducts(sentence),...Semantics.summonedProducts(sentence)])).map(p=>p.name));
     const text=texts.join('\n').split(card.name).join('本卡牌').replace(/『([^』]+)』/g,(_,name)=>products.has(name)?'产物'+name:'关联卡牌').replace(/[XYZ]/g,'变量').replace(/[^\p{L}\p{N}]/gu,'');
     const grams=new Set();for(let i=0;i<text.length-1;i++)grams.add(text.slice(i,i+2));return grams;
   }
