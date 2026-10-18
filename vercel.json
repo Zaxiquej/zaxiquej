@@ -25,6 +25,9 @@
   "functions": {
     "api/bug-report.ts": {
       "maxDuration": 60
+    },
+    "api/daily-puzzle.ts": {
+      "includeFiles": "daily-puzzles/**/*.json"
     }
   }
 }
