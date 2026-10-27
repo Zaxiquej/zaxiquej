@@ -1,11 +1,11 @@
 {
   "source": "https://shadowverse-wb.com/web/CardList/cardList",
-  "retrieved": "2026-10-02T15:17:21.691Z",
+  "retrieved": "2026-10-27T14:38:11.508Z",
   "method": "Non-token follower text; overlapping features, six-card local shrinkage within each class; counts are design priors, not deck inclusion rates.",
   "classes": {
     "1": {
-      "cards": 77,
-      "highRarity": 31,
+      "cards": 84,
+      "highRarity": 34,
       "features": {
         "combo": {
           "all": 20,
@@ -34,7 +34,7 @@
           ]
         },
         "supply": {
-          "all": 16,
+          "all": 17,
           "highRarity": 6,
           "cardIds": [
             10011110,
@@ -52,7 +52,8 @@
             10714120,
             10811120,
             10812110,
-            10912110
+            10912110,
+            11012120
           ]
         },
         "return": {
@@ -61,16 +62,25 @@
           "cardIds": [
             10112130
           ]
+        },
+        "oneCost": {
+          "all": 3,
+          "highRarity": 1,
+          "cardIds": [
+            11011110,
+            11012110,
+            11013110
+          ]
         }
       }
     },
     "2": {
-      "cards": 81,
-      "highRarity": 32,
+      "cards": 88,
+      "highRarity": 35,
       "features": {
         "board": {
-          "all": 35,
-          "highRarity": 16,
+          "all": 39,
+          "highRarity": 18,
           "cardIds": [
             10022110,
             10121130,
@@ -106,12 +116,16 @@
             10922110,
             10922120,
             10923110,
-            10924110
+            10924110,
+            11021110,
+            11022110,
+            11023110,
+            11024110
           ]
         },
         "buff": {
-          "all": 19,
-          "highRarity": 10,
+          "all": 23,
+          "highRarity": 12,
           "cardIds": [
             10121110,
             10121120,
@@ -131,11 +145,15 @@
             10723110,
             10724120,
             10824120,
-            10922120
+            10922120,
+            11021110,
+            11022110,
+            11023110,
+            11024110
           ]
         },
         "enhance": {
-          "all": 13,
+          "all": 14,
           "highRarity": 8,
           "cardIds": [
             10121140,
@@ -150,12 +168,13 @@
             10623110,
             10624110,
             10624120,
-            10922120
+            10922120,
+            11021110
           ]
         },
         "treasure": {
-          "all": 12,
-          "highRarity": 6,
+          "all": 14,
+          "highRarity": 7,
           "cardIds": [
             10322110,
             10323110,
@@ -168,7 +187,9 @@
             10921110,
             10922110,
             10923110,
-            10924110
+            10924110,
+            11021120,
+            11024120
           ]
         },
         "rally": {
@@ -179,12 +200,22 @@
             10724110,
             10824110
           ]
+        },
+        "evidence": {
+          "all": 4,
+          "highRarity": 2,
+          "cardIds": [
+            11021110,
+            11022110,
+            11023110,
+            11024110
+          ]
         }
       }
     },
     "3": {
-      "cards": 69,
-      "highRarity": 29,
+      "cards": 76,
+      "highRarity": 32,
       "features": {
         "boost": {
           "all": 21,
@@ -214,8 +245,8 @@
           ]
         },
         "earth": {
-          "all": 23,
-          "highRarity": 10,
+          "all": 26,
+          "highRarity": 11,
           "cardIds": [
             10031110,
             10032110,
@@ -239,7 +270,10 @@
             10732120,
             10733110,
             10734110,
-            10734120
+            10734120,
+            11031120,
+            11032120,
+            11034120
           ]
         },
         "hands": {
@@ -270,19 +304,30 @@
             10332110,
             10333110
           ]
+        },
+        "activation": {
+          "all": 4,
+          "highRarity": 2,
+          "cardIds": [
+            11031110,
+            11032110,
+            11033110,
+            11034110
+          ]
         }
       }
     },
     "4": {
-      "cards": 78,
-      "highRarity": 31,
+      "cards": 85,
+      "highRarity": 34,
       "features": {
         "ramp": {
-          "all": 2,
-          "highRarity": 2,
+          "all": 3,
+          "highRarity": 3,
           "cardIds": [
             10143120,
-            10444120
+            10444120,
+            11043110
           ]
         },
         "overflow": {
@@ -303,8 +348,8 @@
           ]
         },
         "discard": {
-          "all": 10,
-          "highRarity": 6,
+          "all": 12,
+          "highRarity": 8,
           "cardIds": [
             10142110,
             10144110,
@@ -315,7 +360,9 @@
             10644110,
             10644120,
             10842120,
-            10844120
+            10844120,
+            11043110,
+            11044110
           ]
         },
         "hurt": {
@@ -340,16 +387,24 @@
             10841130,
             10842110
           ]
+        },
+        "evidence": {
+          "all": 2,
+          "highRarity": 2,
+          "cardIds": [
+            11043110,
+            11044110
+          ]
         }
       }
     },
     "5": {
-      "cards": 80,
-      "highRarity": 32,
+      "cards": 87,
+      "highRarity": 35,
       "features": {
         "death": {
-          "all": 32,
-          "highRarity": 11,
+          "all": 37,
+          "highRarity": 12,
           "cardIds": [
             10051130,
             10052110,
@@ -382,11 +437,16 @@
             10854120,
             10951120,
             10952110,
-            10954110
+            10954110,
+            11051110,
+            11051120,
+            11052110,
+            11052120,
+            11054120
           ]
         },
         "blood": {
-          "all": 15,
+          "all": 16,
           "highRarity": 5,
           "cardIds": [
             10051120,
@@ -403,18 +463,28 @@
             10851120,
             10951110,
             10953110,
-            10954120
+            10954120,
+            11051120
+          ]
+        },
+        "banish": {
+          "all": 3,
+          "highRarity": 2,
+          "cardIds": [
+            11052110,
+            11053110,
+            11054110
           ]
         }
       }
     },
     "6": {
-      "cards": 73,
-      "highRarity": 30,
+      "cards": 80,
+      "highRarity": 33,
       "features": {
         "amulet": {
-          "all": 19,
-          "highRarity": 9,
+          "all": 20,
+          "highRarity": 10,
           "cardIds": [
             10062120,
             10161110,
@@ -434,7 +504,8 @@
             10763110,
             10764110,
             10764120,
-            10964120
+            10964120,
+            11064110
           ]
         },
         "ward": {
@@ -472,8 +543,8 @@
           ]
         },
         "heal": {
-          "all": 15,
-          "highRarity": 8,
+          "all": 16,
+          "highRarity": 9,
           "cardIds": [
             10061110,
             10161130,
@@ -489,28 +560,41 @@
             10961110,
             10962110,
             10963110,
-            10964120
+            10964120,
+            11063110
           ]
         },
         "banish": {
-          "all": 5,
-          "highRarity": 2,
+          "all": 8,
+          "highRarity": 5,
           "cardIds": [
             10062110,
             10262120,
             10464120,
             10762120,
-            10764120
+            10764120,
+            11063110,
+            11064110,
+            11064120
+          ]
+        },
+        "rabbit": {
+          "all": 3,
+          "highRarity": 2,
+          "cardIds": [
+            11062110,
+            11063110,
+            11064110
           ]
         }
       }
     },
     "7": {
-      "cards": 77,
-      "highRarity": 31,
+      "cards": 84,
+      "highRarity": 34,
       "features": {
         "artifact": {
-          "all": 31,
+          "all": 32,
           "highRarity": 12,
           "cardIds": [
             10071110,
@@ -543,7 +627,8 @@
             10873110,
             10874120,
             10971120,
-            10974120
+            10974120,
+            11072120
           ]
         },
         "puppet": {
@@ -590,526 +675,619 @@
             10973110,
             10974110
           ]
+        },
+        "fusion": {
+          "all": 3,
+          "highRarity": 2,
+          "cardIds": [
+            11072110,
+            11073110,
+            11074110
+          ]
         }
       }
     }
   },
   "profiles": {
     "0:1:0": {
-      "combo": 0.36661,
-      "supply": 0.2729,
-      "return": 0.00787
+      "combo": 0.34101,
+      "supply": 0.26128,
+      "return": 0.00694,
+      "oneCost": 0.06178
     },
     "0:1:1": {
-      "combo": 0.37248,
-      "supply": 0.32106,
-      "return": 0.06808
+      "combo": 0.32427,
+      "supply": 0.34141,
+      "return": 0.0603,
+      "oneCost": 0.06828
     },
     "0:1:2": {
-      "combo": 0.63322,
-      "supply": 0.1458,
-      "return": 0.01573
+      "combo": 0.61612,
+      "supply": 0.14869,
+      "return": 0.01457,
+      "oneCost": 0.02974
     },
     "0:1:3": {
-      "combo": 0.33324,
-      "supply": 0.18908,
-      "return": 0.0121
+      "combo": 0.32009,
+      "supply": 0.1913,
+      "return": 0.01121,
+      "oneCost": 0.02287
     },
     "1:1:0": {
-      "combo": 0.35445,
-      "supply": 0.21116,
-      "return": 0.00226
+      "combo": 0.34624,
+      "supply": 0.20343,
+      "return": 0.00196,
+      "oneCost": 0.01846
     },
     "1:1:1": {
-      "combo": 0.16096,
-      "supply": 0.181,
-      "return": 0.00194
+      "combo": 0.15392,
+      "supply": 0.17437,
+      "return": 0.00168,
+      "oneCost": 0.01583
     },
     "1:1:2": {
-      "combo": 0.10445,
-      "supply": 0.29449,
-      "return": 0.00226
+      "combo": 0.08884,
+      "supply": 0.26471,
+      "return": 0.00181,
+      "oneCost": 0.09397
     },
     "1:1:3": {
-      "combo": 0.18778,
-      "supply": 0.37783,
-      "return": 0.00226
+      "combo": 0.16576,
+      "supply": 0.34163,
+      "return": 0.00181,
+      "oneCost": 0.01704
     },
     "2:1:0": {
-      "combo": 0.04986,
-      "supply": 0.04013,
-      "return": 0.00365
+      "combo": 0.03859,
+      "supply": 0.03294,
+      "return": 0.00282,
+      "oneCost": 0.00659
     },
     "2:1:1": {
-      "combo": 0.06856,
-      "supply": 0.05518,
-      "return": 0.00502
+      "combo": 0.05788,
+      "supply": 0.04941,
+      "return": 0.00424,
+      "oneCost": 0.00988
     },
     "2:1:2": {
-      "combo": 0.06856,
-      "supply": 0.05518,
-      "return": 0.00502
+      "combo": 0.05788,
+      "supply": 0.04941,
+      "return": 0.00424,
+      "oneCost": 0.00988
     },
     "2:1:3": {
-      "combo": 0.04571,
-      "supply": 0.03679,
-      "return": 0.00334
+      "combo": 0.03562,
+      "supply": 0.03041,
+      "return": 0.00261,
+      "oneCost": 0.00608
     },
     "0:2:0": {
-      "board": 0.3708,
-      "buff": 0.20551,
-      "enhance": 0.18911,
-      "treasure": 0.1367,
-      "rally": 0.00217
+      "board": 0.40388,
+      "buff": 0.24827,
+      "enhance": 0.22667,
+      "treasure": 0.13405,
+      "rally": 0.00178,
+      "evidence": 0.05711
     },
     "0:2:1": {
-      "board": 0.4532,
-      "buff": 0.25118,
-      "enhance": 0.12003,
-      "treasure": 0.22263,
-      "rally": 0.00265
+      "board": 0.48891,
+      "buff": 0.30054,
+      "enhance": 0.1165,
+      "treasure": 0.2149,
+      "rally": 0.00216,
+      "evidence": 0.06914
     },
     "0:2:2": {
-      "board": 0.21577,
-      "buff": 0.35213,
-      "enhance": 0.31605,
-      "treasure": 0.10074,
-      "rally": 0.00476
+      "board": 0.22892,
+      "buff": 0.37103,
+      "enhance": 0.32135,
+      "treasure": 0.1083,
+      "rally": 0.0041,
+      "evidence": 0.03136
     },
     "0:2:3": {
-      "board": 0.23974,
-      "buff": 0.28014,
-      "enhance": 0.24006,
-      "treasure": 0.22304,
-      "rally": 0.00529
+      "board": 0.22892,
+      "buff": 0.27103,
+      "enhance": 0.22135,
+      "treasure": 0.3083,
+      "rally": 0.0041,
+      "evidence": 0.03136
     },
     "1:2:0": {
-      "board": 0.34631,
-      "buff": 0.16449,
-      "enhance": 0.07649,
-      "treasure": 0.05456,
-      "rally": 0.03493
+      "board": 0.3245,
+      "buff": 0.16074,
+      "enhance": 0.06794,
+      "treasure": 0.1253,
+      "rally": 0.03083,
+      "evidence": 0.01307
     },
     "1:2:1": {
-      "board": 0.48916,
-      "buff": 0.23591,
-      "enhance": 0.14791,
-      "treasure": 0.05456,
-      "rally": 0.03493
+      "board": 0.49054,
+      "buff": 0.24364,
+      "enhance": 0.14422,
+      "treasure": 0.06282,
+      "rally": 0.03304,
+      "evidence": 0.014
     },
     "1:2:2": {
-      "board": 0.60372,
-      "buff": 0.33098,
-      "enhance": 0.23621,
-      "treasure": 0.2126,
-      "rally": 0.03761
+      "board": 0.63339,
+      "buff": 0.3865,
+      "enhance": 0.21565,
+      "treasure": 0.20568,
+      "rally": 0.03304,
+      "evidence": 0.08543
     },
     "1:2:3": {
-      "board": 0.49052,
-      "buff": 0.14392,
-      "enhance": 0.25442,
-      "treasure": 0.17274,
-      "rally": 0.21806
+      "board": 0.49172,
+      "buff": 0.15069,
+      "enhance": 0.25119,
+      "treasure": 0.17997,
+      "rally": 0.21641,
+      "evidence": 0.01225
     },
     "2:2:0": {
-      "board": 0.49869,
-      "buff": 0.17509,
-      "enhance": 0.04704,
-      "treasure": 0.11498,
-      "rally": 0.0122
+      "board": 0.50165,
+      "buff": 0.19932,
+      "enhance": 0.0425,
+      "treasure": 0.10772,
+      "rally": 0.01026,
+      "evidence": 0.0458
     },
     "2:2:1": {
-      "board": 0.33217,
-      "buff": 0.15563,
-      "enhance": 0.04181,
-      "treasure": 0.21332,
-      "rally": 0.01084
+      "board": 0.30132,
+      "buff": 0.15945,
+      "enhance": 0.034,
+      "treasure": 0.18617,
+      "rally": 0.00821,
+      "evidence": 0.03664
     },
     "2:2:2": {
-      "board": 0.62369,
-      "buff": 0.30009,
-      "enhance": 0.04704,
-      "treasure": 0.11498,
-      "rally": 0.0122
+      "board": 0.62665,
+      "buff": 0.32432,
+      "enhance": 0.0425,
+      "treasure": 0.10772,
+      "rally": 0.01026,
+      "evidence": 0.0458
     },
     "2:2:3": {
-      "board": 0.58246,
-      "buff": 0.28339,
-      "enhance": 0.03136,
-      "treasure": 0.15999,
-      "rally": 0.00813
+      "board": 0.6164,
+      "buff": 0.35343,
+      "enhance": 0.02615,
+      "treasure": 0.14321,
+      "rally": 0.00631,
+      "evidence": 0.10511
     },
     "0:3:0": {
-      "boost": 0.22881,
-      "earth": 0.39738,
-      "hands": 0.01262,
-      "experiment": 0.06262,
-      "truth": 0.07
+      "boost": 0.20263,
+      "earth": 0.40971,
+      "hands": 0.01053,
+      "experiment": 0.05599,
+      "truth": 0.06242,
+      "activation": 0.05599
     },
     "0:3:1": {
-      "boost": 0.32511,
-      "earth": 0.35887,
-      "hands": 0.02294,
-      "experiment": 0.02294,
-      "truth": 0.03636
+      "boost": 0.31436,
+      "earth": 0.36488,
+      "hands": 0.02107,
+      "experiment": 0.02107,
+      "truth": 0.03393,
+      "activation": 0.02107
     },
     "0:3:2": {
-      "boost": 0.2342,
-      "earth": 0.26797,
-      "hands": 0.02294,
-      "experiment": 0.02294,
-      "truth": 0.12727
+      "boost": 0.22345,
+      "earth": 0.27397,
+      "hands": 0.02107,
+      "experiment": 0.02107,
+      "truth": 0.12484,
+      "activation": 0.02107
     },
     "0:3:3": {
-      "boost": 0.25762,
-      "earth": 0.19476,
-      "hands": 0.12524,
-      "experiment": 0.02524,
-      "truth": 0.04
+      "boost": 0.2458,
+      "earth": 0.20137,
+      "hands": 0.12317,
+      "experiment": 0.02317,
+      "truth": 0.03732,
+      "activation": 0.02317
     },
     "1:3:0": {
-      "boost": 0.40913,
-      "earth": 0.25952,
-      "hands": 0.03492,
-      "experiment": 0.03492,
-      "truth": 0.01944
+      "boost": 0.39042,
+      "earth": 0.25525,
+      "hands": 0.03084,
+      "experiment": 0.03084,
+      "truth": 0.01705,
+      "activation": 0.04334
     },
     "1:3:1": {
-      "boost": 0.31103,
-      "earth": 0.3218,
-      "hands": 0.07469,
-      "experiment": 0.07469,
-      "truth": 0.06491
+      "boost": 0.27072,
+      "earth": 0.33633,
+      "hands": 0.06524,
+      "experiment": 0.06524,
+      "truth": 0.05736,
+      "activation": 0.07239
     },
     "1:3:2": {
-      "boost": 0.17359,
-      "earth": 0.46494,
-      "hands": 0.129,
-      "experiment": 0.129,
-      "truth": 0.02121
+      "boost": 0.14042,
+      "earth": 0.42192,
+      "hands": 0.11418,
+      "experiment": 0.11418,
+      "truth": 0.01705,
+      "activation": 0.12668
     },
     "1:3:3": {
-      "boost": 0.39095,
-      "earth": 0.41143,
-      "hands": 0.0419,
-      "experiment": 0.0419,
-      "truth": 0.02333
+      "boost": 0.33501,
+      "earth": 0.36936,
+      "hands": 0.03365,
+      "experiment": 0.03365,
+      "truth": 0.0186,
+      "activation": 0.13819
     },
     "2:3:0": {
-      "boost": 0.44723,
-      "earth": 0.27289,
-      "hands": 0.06181,
-      "experiment": 0.06181,
-      "truth": 0.01633
+      "boost": 0.42469,
+      "earth": 0.30207,
+      "hands": 0.05718,
+      "experiment": 0.05718,
+      "truth": 0.01417,
+      "activation": 0.01822
     },
     "2:3:1": {
-      "boost": 0.44723,
-      "earth": 0.27289,
-      "hands": 0.06181,
-      "experiment": 0.06181,
-      "truth": 0.01633
+      "boost": 0.42469,
+      "earth": 0.30207,
+      "hands": 0.05718,
+      "experiment": 0.05718,
+      "truth": 0.01417,
+      "activation": 0.01822
     },
     "2:3:2": {
-      "boost": 0.30437,
-      "earth": 0.41574,
-      "hands": 0.06181,
-      "experiment": 0.06181,
-      "truth": 0.01633
+      "boost": 0.28184,
+      "earth": 0.44493,
+      "hands": 0.05718,
+      "experiment": 0.05718,
+      "truth": 0.01417,
+      "activation": 0.01822
     },
     "2:3:3": {
-      "boost": 0.32066,
-      "earth": 0.30689,
-      "hands": 0.08954,
-      "experiment": 0.08954,
-      "truth": 0.00714
+      "boost": 0.29252,
+      "earth": 0.35968,
+      "hands": 0.08237,
+      "experiment": 0.08237,
+      "truth": 0.00583,
+      "activation": 0.0075
     },
     "0:4:0": {
-      "ramp": 0.01266,
-      "overflow": 0.12792,
-      "discard": 0.1067,
-      "hurt": 0.06924,
-      "ocean": 0.10465
+      "ramp": 0.01105,
+      "overflow": 0.10891,
+      "discard": 0.09302,
+      "hurt": 0.06105,
+      "ocean": 0.08992,
+      "evidence": 0.00194
     },
     "0:4:1": {
-      "ramp": 0.01627,
-      "overflow": 0.30733,
-      "discard": 0.13719,
-      "hurt": 0.01759,
-      "ocean": 0.20598
+      "ramp": 0.01473,
+      "overflow": 0.27855,
+      "discard": 0.12403,
+      "hurt": 0.01473,
+      "ocean": 0.18656,
+      "evidence": 0.00258
     },
     "0:4:2": {
-      "ramp": 0.15348,
-      "overflow": 0.28783,
-      "discard": 0.11507,
-      "hurt": 0.03078,
-      "ocean": 0.11047
+      "ramp": 0.15262,
+      "overflow": 0.27229,
+      "discard": 0.10756,
+      "hurt": 0.02762,
+      "ocean": 0.09981,
+      "evidence": 0.00484
     },
     "0:4:3": {
-      "ramp": 0.02532,
-      "overflow": 0.25585,
-      "discard": 0.32451,
-      "hurt": 0.02736,
-      "ocean": 0.20931
+      "ramp": 0.02455,
+      "overflow": 0.24203,
+      "discard": 0.31783,
+      "hurt": 0.02455,
+      "ocean": 0.19983,
+      "evidence": 0.00431
     },
     "1:4:0": {
-      "ramp": 0.01392,
-      "overflow": 0.2685,
-      "discard": 0.04515,
-      "hurt": 0.01505,
-      "ocean": 0.10956
+      "ramp": 0.02448,
+      "overflow": 0.26389,
+      "discard": 0.05435,
+      "hurt": 0.01395,
+      "ocean": 0.10657,
+      "evidence": 0.01297
     },
     "1:4:1": {
-      "ramp": 0.01392,
-      "overflow": 0.20183,
-      "discard": 0.17848,
-      "hurt": 0.01505,
-      "ocean": 0.17623
+      "ramp": 0.02448,
+      "overflow": 0.19723,
+      "discard": 0.18768,
+      "hurt": 0.01395,
+      "ocean": 0.17324,
+      "evidence": 0.01297
     },
     "1:4:2": {
-      "ramp": 0.01741,
-      "overflow": 0.08562,
-      "discard": 0.13977,
-      "hurt": 0.01881,
-      "ocean": 0.05362
+      "ramp": 0.10517,
+      "overflow": 0.07372,
+      "discard": 0.21655,
+      "hurt": 0.0161,
+      "ocean": 0.04604,
+      "evidence": 0.09189
     },
     "1:4:3": {
-      "ramp": 0.12089,
-      "overflow": 0.10274,
-      "discard": 0.06772,
-      "hurt": 0.12257,
-      "ocean": 0.06435
+      "ramp": 0.12429,
+      "overflow": 0.08713,
+      "discard": 0.07411,
+      "hurt": 0.10994,
+      "ocean": 0.05441,
+      "evidence": 0.01769
     },
     "2:4:0": {
-      "ramp": 0.0046,
-      "overflow": 0.02117,
-      "discard": 0.07388,
-      "hurt": 0.02463,
-      "ocean": 0.03383
+      "ramp": 0.00558,
+      "overflow": 0.01834,
+      "discard": 0.0885,
+      "hurt": 0.02272,
+      "ocean": 0.0307,
+      "evidence": 0.02113
     },
     "2:4:1": {
-      "ramp": 0.00418,
-      "overflow": 0.01925,
-      "discard": 0.06716,
-      "hurt": 0.02239,
-      "ocean": 0.03076
+      "ramp": 0.00465,
+      "overflow": 0.01528,
+      "discard": 0.07375,
+      "hurt": 0.01894,
+      "ocean": 0.02558,
+      "evidence": 0.01761
     },
     "2:4:2": {
-      "ramp": 0.0046,
-      "overflow": 0.02117,
-      "discard": 0.07388,
-      "hurt": 0.02463,
-      "ocean": 0.13383
+      "ramp": 0.00558,
+      "overflow": 0.01834,
+      "discard": 0.0885,
+      "hurt": 0.02272,
+      "ocean": 0.1307,
+      "evidence": 0.02113
     },
     "2:4:3": {
-      "ramp": 0.00256,
-      "overflow": 0.01176,
-      "discard": 0.20771,
-      "hurt": 0.06924,
-      "ocean": 0.0188
+      "ramp": 0.00294,
+      "overflow": 0.00965,
+      "discard": 0.25711,
+      "hurt": 0.06459,
+      "ocean": 0.01616,
+      "evidence": 0.06375
     },
     "0:5:0": {
-      "death": 0.51631,
-      "blood": 0.26909
+      "death": 0.54422,
+      "blood": 0.25521,
+      "banish": 0.00199
     },
     "0:5:1": {
-      "death": 0.52502,
-      "blood": 0.14594
+      "death": 0.53742,
+      "blood": 0.14167,
+      "banish": 0.00318
     },
     "0:5:2": {
-      "death": 0.43058,
-      "blood": 0.13212
+      "death": 0.45126,
+      "blood": 0.125,
+      "banish": 0.0053
     },
     "0:5:3": {
-      "death": 0.41075,
-      "blood": 0.16987
+      "death": 0.50767,
+      "blood": 0.14063,
+      "banish": 0.00597
     },
     "1:5:0": {
-      "death": 0.39473,
-      "blood": 0.3292
+      "death": 0.44926,
+      "blood": 0.3804,
+      "banish": 0.0231
     },
     "1:5:1": {
-      "death": 0.34064,
-      "blood": 0.07109
+      "death": 0.38367,
+      "blood": 0.06977,
+      "banish": 0.06966
     },
     "1:5:2": {
-      "death": 0.22368,
-      "blood": 0.30569
+      "death": 0.23497,
+      "blood": 0.30897,
+      "banish": 0.0231
     },
     "1:5:3": {
-      "death": 0.4665,
-      "blood": 0.20724
+      "death": 0.4408,
+      "blood": 0.1938,
+      "banish": 0.11029
     },
     "2:5:0": {
-      "death": 0.30362,
-      "blood": 0.25926
+      "death": 0.31865,
+      "blood": 0.25,
+      "banish": 0.04035
     },
     "2:5:1": {
-      "death": 0.26567,
-      "blood": 0.10185
+      "death": 0.35895,
+      "blood": 0.08333,
+      "banish": 0.03139
     },
     "2:5:2": {
-      "death": 0.39067,
-      "blood": 0.10185
+      "death": 0.35895,
+      "blood": 0.08333,
+      "banish": 0.1425
     },
     "2:5:3": {
-      "death": 0.37502,
-      "blood": 0.09552
+      "death": 0.38055,
+      "blood": 0.09211,
+      "banish": 0.01487
     },
     "0:6:0": {
-      "amulet": 0.22847,
-      "ward": 0.42659,
-      "heal": 0.15493,
-      "banish": 0.00575
+      "amulet": 0.21233,
+      "ward": 0.39667,
+      "heal": 0.14398,
+      "banish": 0.00727,
+      "rabbit": 0.01165
     },
     "0:6:1": {
-      "amulet": 0.29744,
-      "ward": 0.37765,
-      "heal": 0.17488,
-      "banish": 0.00959
+      "amulet": 0.26608,
+      "ward": 0.33307,
+      "heal": 0.15566,
+      "banish": 0.01174,
+      "rabbit": 0.09574
     },
     "0:6:2": {
-      "amulet": 0.32116,
-      "ward": 0.44148,
-      "heal": 0.26231,
-      "banish": 0.01439
+      "amulet": 0.30738,
+      "ward": 0.41625,
+      "heal": 0.25295,
+      "banish": 0.01908,
+      "rabbit": 0.03058
     },
     "0:6:3": {
-      "amulet": 0.22419,
-      "ward": 0.50455,
-      "heal": 0.15693,
-      "banish": 0.01644
+      "amulet": 0.20843,
+      "ward": 0.47571,
+      "heal": 0.14622,
+      "banish": 0.02181,
+      "rabbit": 0.03495
     },
     "1:6:0": {
-      "amulet": 0.23806,
-      "ward": 0.25869,
-      "heal": 0.31543,
-      "banish": 0.02712
+      "amulet": 0.2405,
+      "ward": 0.2482,
+      "heal": 0.30808,
+      "banish": 0.04714,
+      "rabbit": 0.01311
     },
     "1:6:1": {
-      "amulet": 0.08886,
-      "ward": 0.17477,
-      "heal": 0.0944,
-      "banish": 0.15865
+      "amulet": 0.08544,
+      "ward": 0.15467,
+      "heal": 0.08207,
+      "banish": 0.16625,
+      "rabbit": 0.01147
     },
     "1:6:2": {
-      "amulet": 0.3333,
-      "ward": 0.27859,
-      "heal": 0.26277,
-      "banish": 0.02921
+      "amulet": 0.33592,
+      "ward": 0.26729,
+      "heal": 0.25486,
+      "banish": 0.05076,
+      "rabbit": 0.01412
     },
     "1:6:3": {
-      "amulet": 0.22219,
-      "ward": 0.30811,
-      "heal": 0.2944,
-      "banish": 0.02531
+      "amulet": 0.25688,
+      "ward": 0.26322,
+      "heal": 0.25371,
+      "banish": 0.15647,
+      "rabbit": 0.06962
     },
     "2:6:0": {
-      "amulet": 0.27799,
-      "ward": 0.44849,
-      "heal": 0.16031,
-      "banish": 0.12324
+      "amulet": 0.22291,
+      "ward": 0.35597,
+      "heal": 0.15638,
+      "banish": 0.13443,
+      "rabbit": 0.03738
     },
     "2:6:1": {
-      "amulet": 0.44963,
-      "ward": 0.64904,
-      "heal": 0.19292,
-      "banish": 0.16934
+      "amulet": 0.43484,
+      "ward": 0.62252,
+      "heal": 0.20464,
+      "banish": 0.18868,
+      "rabbit": 0.02719
     },
     "2:6:2": {
-      "amulet": 0.24324,
-      "ward": 0.51743,
-      "heal": 0.26527,
-      "banish": 0.10784
+      "amulet": 0.19814,
+      "ward": 0.42753,
+      "heal": 0.36123,
+      "banish": 0.23061,
+      "rabbit": 0.14434
     },
     "2:6:3": {
-      "amulet": 0.32973,
-      "ward": 0.54263,
-      "heal": 0.14148,
-      "banish": 0.19085
+      "amulet": 0.31888,
+      "ward": 0.52318,
+      "heal": 0.15007,
+      "banish": 0.20503,
+      "rabbit": 0.01994
     },
     "0:7:0": {
-      "artifact": 0.41499,
-      "puppet": 0.2124,
-      "high": 0.01132,
-      "copy": 0.00508,
-      "singleton": 0.07773
+      "artifact": 0.38204,
+      "puppet": 0.19728,
+      "high": 0.00975,
+      "copy": 0.00409,
+      "singleton": 0.07176,
+      "fusion": 0.0105
     },
     "0:7:1": {
-      "artifact": 0.42076,
-      "puppet": 0.14025,
-      "high": 0.01567,
-      "copy": 0.00704,
-      "singleton": 0.03071
+      "artifact": 0.37563,
+      "puppet": 0.12487,
+      "high": 0.01324,
+      "copy": 0.00555,
+      "singleton": 0.02597,
+      "fusion": 0.08567
     },
     "0:7:2": {
-      "artifact": 0.60776,
-      "puppet": 0.09148,
-      "high": 0.02264,
-      "copy": 0.01016,
-      "singleton": 0.04435
+      "artifact": 0.58431,
+      "puppet": 0.08314,
+      "high": 0.02059,
+      "copy": 0.00863,
+      "singleton": 0.04039,
+      "fusion": 0.02216
     },
     "0:7:3": {
-      "artifact": 0.26691,
-      "puppet": 0.06333,
-      "high": 0.0926,
-      "copy": 0.00704,
-      "singleton": 0.10763
+      "artifact": 0.23277,
+      "puppet": 0.05345,
+      "high": 0.08466,
+      "copy": 0.00555,
+      "singleton": 0.09739,
+      "fusion": 0.01424
     },
     "1:7:0": {
-      "artifact": 0.45405,
-      "puppet": 0.10678,
-      "high": 0.00224,
-      "copy": 0.0398,
-      "singleton": 0.02147
+      "artifact": 0.42791,
+      "puppet": 0.09795,
+      "high": 0.00185,
+      "copy": 0.03543,
+      "singleton": 0.01901,
+      "fusion": 0.00258
     },
     "1:7:1": {
-      "artifact": 0.32972,
-      "puppet": 0.14255,
-      "high": 0.00188,
-      "copy": 0.13878,
-      "singleton": 0.07071
+      "artifact": 0.36373,
+      "puppet": 0.13325,
+      "high": 0.00157,
+      "copy": 0.13012,
+      "singleton": 0.06616,
+      "fusion": 0.0022
     },
     "1:7:2": {
-      "artifact": 0.3554,
-      "puppet": 0.05903,
-      "high": 0.00298,
-      "copy": 0.1364,
-      "singleton": 0.11196
+      "artifact": 0.35621,
+      "puppet": 0.05542,
+      "high": 0.00261,
+      "copy": 0.13353,
+      "singleton": 0.11026,
+      "fusion": 0.00366
     },
     "1:7:3": {
-      "artifact": 0.3554,
-      "puppet": 0.14237,
-      "high": 0.00298,
-      "copy": 0.1364,
-      "singleton": 0.02862
+      "artifact": 0.35621,
+      "puppet": 0.13876,
+      "high": 0.00261,
+      "copy": 0.13353,
+      "singleton": 0.02693,
+      "fusion": 0.00366
     },
     "2:7:0": {
-      "artifact": 0.51526,
-      "puppet": 0.09768,
-      "high": 0.03989,
-      "copy": 0.04965,
-      "singleton": 0.01465
+      "artifact": 0.4848,
+      "puppet": 0.08662,
+      "high": 0.03581,
+      "copy": 0.04399,
+      "singleton": 0.01228,
+      "fusion": 0.06752
     },
     "2:7:1": {
-      "artifact": 0.37677,
-      "puppet": 0.12559,
-      "high": 0.05128,
-      "copy": 0.06384,
-      "singleton": 0.01884
+      "artifact": 0.3376,
+      "puppet": 0.11136,
+      "high": 0.04604,
+      "copy": 0.05656,
+      "singleton": 0.01578,
+      "fusion": 0.08681
     },
     "2:7:2": {
-      "artifact": 0.40415,
-      "puppet": 0.20879,
-      "high": 0.03989,
-      "copy": 0.04965,
-      "singleton": 0.01465
+      "artifact": 0.33632,
+      "puppet": 0.17795,
+      "high": 0.03223,
+      "copy": 0.03959,
+      "singleton": 0.01105,
+      "fusion": 0.16077
     },
     "2:7:3": {
-      "artifact": 0.46978,
-      "puppet": 0.15659,
-      "high": 0.11325,
-      "copy": 0.12057,
-      "singleton": 0.01099
+      "artifact": 0.41255,
+      "puppet": 0.13689,
+      "high": 0.10171,
+      "copy": 0.10738,
+      "singleton": 0.0085,
+      "fusion": 0.12367
     }
   }
 }

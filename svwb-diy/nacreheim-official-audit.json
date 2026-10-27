@@ -1,0 +1,1974 @@
+{
+  "retrieved": "2026-10-27T14:38:11.508Z",
+  "source": "https://shadowverse-wb.com/web/CardList/cardList",
+  "set": 10010,
+  "total": 982,
+  "newSetCards": 76,
+  "addedIds": [
+    11001110,
+    11002110,
+    11002210,
+    11003110,
+    11003210,
+    11004110,
+    11011110,
+    11011120,
+    11011310,
+    11012110,
+    11012120,
+    11012310,
+    11013110,
+    11013310,
+    11014110,
+    11014120,
+    11021110,
+    11021120,
+    11021310,
+    11022110,
+    11022120,
+    11022310,
+    11023110,
+    11023310,
+    11024110,
+    11024120,
+    11031110,
+    11031120,
+    11031310,
+    11032110,
+    11032120,
+    11032310,
+    11033110,
+    11033310,
+    11034110,
+    11034120,
+    11041110,
+    11041120,
+    11041310,
+    11042110,
+    11042120,
+    11042310,
+    11043110,
+    11043310,
+    11044110,
+    11044120,
+    11051110,
+    11051120,
+    11051310,
+    11052110,
+    11052120,
+    11052310,
+    11053110,
+    11053310,
+    11054110,
+    11054120,
+    11061110,
+    11061120,
+    11061310,
+    11062110,
+    11062120,
+    11062310,
+    11063110,
+    11063310,
+    11064110,
+    11064120,
+    11071110,
+    11071120,
+    11071310,
+    11072110,
+    11072120,
+    11072310,
+    11073110,
+    11073310,
+    11074110,
+    11074120,
+    90001210,
+    90061140
+  ],
+  "changedExisting": [],
+  "distribution": {
+    "classes": {
+      "0": 6,
+      "1": 10,
+      "2": 10,
+      "3": 10,
+      "4": 10,
+      "5": 10,
+      "6": 10,
+      "7": 10
+    },
+    "types": {
+      "1": 53,
+      "2": 1,
+      "3": 1,
+      "4": 21
+    },
+    "rarities": {
+      "1": 22,
+      "2": 23,
+      "3": 16,
+      "4": 15
+    },
+    "costs": {
+      "1": 10,
+      "2": 12,
+      "3": 16,
+      "4": 7,
+      "5": 6,
+      "6": 10,
+      "7": 7,
+      "8": 4,
+      "9": 3,
+      "10": 1
+    }
+  },
+  "mechanics": {
+    "evidence": [
+      11001110,
+      11002110,
+      11002210,
+      11003110,
+      11003210,
+      11011110,
+      11012310,
+      11013110,
+      11021110,
+      11022110,
+      11022310,
+      11023110,
+      11023310,
+      11024110,
+      11031110,
+      11032110,
+      11032310,
+      11033310,
+      11034110,
+      11041110,
+      11042110,
+      11042310,
+      11043110,
+      11043310,
+      11044110,
+      11051110,
+      11052110,
+      11052310,
+      11053310,
+      11061110,
+      11071110,
+      11072110,
+      11072310,
+      11073110,
+      11073310,
+      11074110
+    ],
+    "activation": [
+      11003210,
+      11021110,
+      11022110,
+      11022310,
+      11023110,
+      11023310,
+      11024110,
+      11031110,
+      11032110,
+      11032310,
+      11033110,
+      11034110
+    ],
+    "oneCostBoard": [
+      11011110,
+      11012110,
+      11013110,
+      11013310
+    ],
+    "swap": [
+      11021110,
+      11022110,
+      11023110,
+      11024110
+    ],
+    "banishBoard": [
+      11003210,
+      11052110,
+      11053110,
+      11054110,
+      11064120
+    ],
+    "rabbit": [
+      11062110,
+      11062310,
+      11063110,
+      11063310,
+      11064110
+    ],
+    "fusion": [
+      11072110,
+      11072310,
+      11073110,
+      11073310,
+      11074110,
+      11074120
+    ],
+    "discard": [
+      11042310,
+      11043110,
+      11044110
+    ],
+    "ramp": [
+      11041310,
+      11043110
+    ],
+    "spellboost": [],
+    "earth": [
+      11031120,
+      11032120,
+      11034120
+    ],
+    "copy": [
+      11021110,
+      11024110,
+      11064120
+    ],
+    "replay": [
+      11002110,
+      11011120,
+      11014120,
+      11022120,
+      11032120,
+      11053110
+    ],
+    "evolve": [
+      11011310,
+      11021310
+    ],
+    "variable": [
+      11022110,
+      11023110,
+      11034120,
+      11044110,
+      11044120,
+      11053310
+    ]
+  },
+  "cards": [
+    {
+      "id": 11001110,
+      "name": "爱意天使·艾克夏丝",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将1张『神域的物证』加入手牌。\n\n【突进】",
+      "evolvedText": "【入场曲】将1张『神域的物证』加入手牌。\n\n【突进】",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11001110"
+    },
+    {
+      "id": 11002110,
+      "name": "信仰天使·迪纳梅斯",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】选择对手的战场上的1个随从，对其造成2点伤害。将1张『神域的物证』加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】选择对手的战场上的1个随从，对其造成2点伤害。将1张『神域的物证』加入手牌。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "evidence",
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11002110"
+    },
+    {
+      "id": 11002210,
+      "name": "弑神现场",
+      "class": 0,
+      "type": 3,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【吟唱 3】\n自己的回合结束时，使对手的战场上的随机1个随从消失。在对手的战场上召唤1张『神域的物证』。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11002210"
+    },
+    {
+      "id": 11003110,
+      "name": "希求天使·丘丽奥丝",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 3,
+      "attack": 2,
+      "health": 5,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】对对手的战场上的所有随从造成2点伤害。将2张『神域的物证』加入手牌。\n\n【守护】",
+      "evolvedText": "【入场曲】对对手的战场上的所有随从造成2点伤害。将2张『神域的物证』加入手牌。\n\n【守护】",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11003110"
+    },
+    {
+      "id": 11003210,
+      "name": "理想国·涅格尔赫亚",
+      "class": 0,
+      "type": 2,
+      "tribes": [
+        21
+      ],
+      "cost": 1,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【证据】\n本卡牌在战场上消失时，回复自己的主战者2点生命值。\n\n费用1【启动】抽取1张卡牌。使自己的战场上的证据-1。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "activation",
+        "banishBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11003210"
+    },
+    {
+      "id": 11004110,
+      "name": "理想国之神·列加尔",
+      "class": 0,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 9,
+      "rarity": 4,
+      "attack": 9,
+      "health": 9,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】选择对手的战场上的1个随从，对其造成9点伤害。\n\n【超进化时】使自己获得『纹章：理想国之神·列加尔』。",
+      "evolvedText": "【入场曲】选择对手的战场上的1个随从，对其造成9点伤害。\n\n【超进化时】使自己获得『纹章：理想国之神·列加尔』。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11004110"
+    },
+    {
+      "id": 11011110,
+      "name": "优雅看护者",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1张『神域的物证』。\n\n【进化时】若自己的战场上的原始费用为1的卡牌的张数为2张或以上，则回复自己的主战者2点生命值。",
+      "evolvedText": "【入场曲】召唤1张『神域的物证』。\n\n【进化时】若自己的战场上的原始费用为1的卡牌的张数为2张或以上，则回复自己的主战者2点生命值。",
+      "mechanics": [
+        "evidence",
+        "oneCostBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11011110"
+    },
+    {
+      "id": 11011120,
+      "name": "群狼侍者",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 1,
+      "attack": 4,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤2个『群狼侍者』。\n\n【突进】\n\n【进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】召唤2个『群狼侍者』。\n\n【突进】\n\n【进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11011120"
+    },
+    {
+      "id": 11011310,
+      "name": "自然的再生",
+      "class": 1,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤1个『妖精』，使其进化。\n【爆能强化 6】改为召唤3个。",
+      "evolvedText": "",
+      "mechanics": [
+        "evolve"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11011310"
+    },
+    {
+      "id": 11012110,
+      "name": "好奇的老鼠",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 2,
+      "attack": 1,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "本随从进入战场时，若自己的战场上的其他原始费用为1的卡牌的张数为2张或以上，则本随从+2/+1。\n\n【突进】",
+      "evolvedText": "本随从进入战场时，若自己的战场上的其他原始费用为1的卡牌的张数为2张或以上，则本随从+2/+1。\n\n【突进】",
+      "mechanics": [
+        "oneCostBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11012110"
+    },
+    {
+      "id": 11012120,
+      "name": "花园精灵",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 0,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "自己的回合结束时，将1张『森林的奥秘』和1张『妖精』加入手牌。",
+      "evolvedText": "自己的回合结束时，将1张『森林的奥秘』和1张『妖精』加入手牌。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11012120"
+    },
+    {
+      "id": 11012310,
+      "name": "鸟兽述怀",
+      "class": 1,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤1张『神域的物证』。使自己获得『纹章：鸟兽述怀』。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11012310"
+    },
+    {
+      "id": 11013110,
+      "name": "传心搭档犬",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 3,
+      "attack": 2,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1张『神域的物证』。\n\n【疾驰】\n\n【进化时】若自己的战场上的原始费用为1的卡牌的张数为2张或以上，则召唤1个『好奇的老鼠』。",
+      "evolvedText": "【入场曲】召唤1张『神域的物证』。\n\n【疾驰】\n\n【进化时】若自己的战场上的原始费用为1的卡牌的张数为2张或以上，则召唤1个『好奇的老鼠』。",
+      "mechanics": [
+        "evidence",
+        "oneCostBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11013110"
+    },
+    {
+      "id": 11013310,
+      "name": "诺榭的审讯",
+      "class": 1,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "对对手的战场上的随机1个随从造成5点伤害。将1张『好奇的老鼠』加入手牌。若自己的战场上的原始费用为1的卡牌的张数为2张或以上，则使其获得【疾驰】。",
+      "evolvedText": "",
+      "mechanics": [
+        "oneCostBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11013310"
+    },
+    {
+      "id": 11014110,
+      "name": "兽语侦探·诺榭",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 4,
+      "attack": 5,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『传心搭档犬』和1个『好奇的老鼠』。\n\n【超进化时】使自己的战场上的其他所有随从+2/+0。",
+      "evolvedText": "【入场曲】召唤1个『传心搭档犬』和1个『好奇的老鼠』。\n\n【超进化时】使自己的战场上的其他所有随从+2/+0。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11014110"
+    },
+    {
+      "id": 11014120,
+      "name": "播撒生命的异形",
+      "class": 1,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 8,
+      "rarity": 4,
+      "attack": 6,
+      "health": 6,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】发动2次「抽取1张卡牌，召唤其中的所有精灵·随从」。\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】发动2次「抽取1张卡牌，召唤其中的所有精灵·随从」。\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11014120"
+    },
+    {
+      "id": 11021110,
+      "name": "纯真卖报人",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【爆能强化 4】召唤1个本随从的复制随从。\n\n【突进】\n【谢幕曲】召唤1张『神域的物证』。",
+      "evolvedText": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【爆能强化 4】召唤1个本随从的复制随从。\n\n【突进】\n【谢幕曲】召唤1张『神域的物证』。",
+      "mechanics": [
+        "evidence",
+        "activation",
+        "swap",
+        "copy"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11021110"
+    },
+    {
+      "id": 11021120,
+      "name": "宝石淑女",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 1,
+      "attack": 3,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将1张『黄金项链』加入手牌。\n\n自己使用法术时，自己的每回合中可触发1次，对对手的战场上的所有随从和对手的主战者造成2点伤害。",
+      "evolvedText": "【入场曲】将1张『黄金项链』加入手牌。\n\n自己使用法术时，自己的每回合中可触发1次，对对手的战场上的所有随从和对手的主战者造成2点伤害。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11021120"
+    },
+    {
+      "id": 11021310,
+      "name": "突击号令",
+      "class": 2,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤2个『铁甲骑士』，使其进化，使其获得【屏障】。",
+      "evolvedText": "",
+      "mechanics": [
+        "evolve"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11021310"
+    },
+    {
+      "id": 11022110,
+      "name": "俏皮设计师",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 1,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】选择对手的战场上的1个随从，对其造成X点伤害。X为本随从的攻击力。召唤1张『神域的物证』。\n\n【进化时】召唤1个『纯真卖报人』。",
+      "evolvedText": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】选择对手的战场上的1个随从，对其造成X点伤害。X为本随从的攻击力。召唤1张『神域的物证』。\n\n【进化时】召唤1个『纯真卖报人』。",
+      "mechanics": [
+        "evidence",
+        "activation",
+        "swap",
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11022110"
+    },
+    {
+      "id": 11022120,
+      "name": "变心卫士",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 2,
+      "attack": 8,
+      "health": 8,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】若自己的战场上有护符，则选择对手的战场上的1个随从，使其消失。\n\n【守护】\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】若自己的战场上有护符，则选择对手的战场上的1个随从，使其消失。\n\n【守护】\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11022120"
+    },
+    {
+      "id": 11022310,
+      "name": "表里的现场验证",
+      "class": 2,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "选择对手的战场上的1个随从，对其造成5点伤害。若本回合中自己【启动】过证据·护符，则改为10点伤害。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11022310"
+    },
+    {
+      "id": 11023110,
+      "name": "安逸爱好家",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 3,
+      "attack": 5,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】召唤2个『纯真卖报人』，使其变为攻击力X/生命值Y。X/Y为本随从的攻击力/生命值。\n\n【进化时】使自己的战场上的其他所有随从获得【毁灭】。",
+      "evolvedText": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】召唤2个『纯真卖报人』，使其变为攻击力X/生命值Y。X/Y为本随从的攻击力/生命值。\n\n【进化时】使自己的战场上的其他所有随从获得【毁灭】。",
+      "mechanics": [
+        "evidence",
+        "activation",
+        "swap",
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11023110"
+    },
+    {
+      "id": 11023310,
+      "name": "诺·莱芙的问答",
+      "class": 2,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤1张『神域的物证』。若本回合中自己【启动】过证据·护符，则召唤1个『纯真卖报人』。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11023310"
+    },
+    {
+      "id": 11024110,
+      "name": "表里侦探·诺·莱芙",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 9,
+      "rarity": 4,
+      "attack": 5,
+      "health": 6,
+      "token": false,
+      "set": 10010,
+      "text": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】召唤1个本随从的复制随从。若本随从的攻击力小于生命值，则使复制随从获得【毁灭】。本随从获得【虹吸】。若攻击力大于生命值，则使复制随从获得【守护】。本随从获得【疾驰】。\n\n【突进】",
+      "evolvedText": "在手牌中发动。自己【启动】证据·护符时，本随从的攻击力与生命值交换。本随从+1/+0。\n\n【入场曲】召唤1个本随从的复制随从。若本随从的攻击力小于生命值，则使复制随从获得【毁灭】。本随从获得【虹吸】。若攻击力大于生命值，则使复制随从获得【守护】。本随从获得【疾驰】。\n\n【突进】",
+      "mechanics": [
+        "evidence",
+        "activation",
+        "swap",
+        "copy"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11024110"
+    },
+    {
+      "id": 11024120,
+      "name": "千金大参谋·阿尔梅莉洁",
+      "class": 2,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 4,
+      "attack": 2,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将1张『闪耀的金币』加入手牌。\n\n【进化时】使自己获得『纹章：千金大参谋·阿尔梅莉洁』。\n【超进化时】使自己的『纹章：千金大参谋·阿尔梅莉洁』的倒计数+2。",
+      "evolvedText": "【入场曲】将1张『闪耀的金币』加入手牌。\n\n【进化时】使自己获得『纹章：千金大参谋·阿尔梅莉洁』。\n【超进化时】使自己的『纹章：千金大参谋·阿尔梅莉洁』的倒计数+2。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11024120"
+    },
+    {
+      "id": 11031110,
+      "name": "碎心勤务员",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 1,
+      "attack": 3,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1张『神域的物证』。\n\n【守护】\n自己【启动】护符时，本随从+1/+1。",
+      "evolvedText": "【入场曲】召唤1张『神域的物证』。\n\n【守护】\n自己【启动】护符时，本随从+1/+1。",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11031110"
+    },
+    {
+      "id": 11031120,
+      "name": "戏法女巫",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】【模式】选择1个能力发动。\n（1）【土之秘术 1】对对手的战场上的随机1个随从造成2点伤害。\n（2）使自己的战场上的土之印+2。",
+      "evolvedText": "【入场曲】【模式】选择1个能力发动。\n（1）【土之秘术 1】对对手的战场上的随机1个随从造成2点伤害。\n（2）使自己的战场上的土之印+2。",
+      "mechanics": [
+        "earth"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11031120"
+    },
+    {
+      "id": 11031310,
+      "name": "工坊搬迁",
+      "class": 3,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤3个『泥尘巨像』。\n【爆能强化 8】使其获得【疾驰】。",
+      "evolvedText": "",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11031310"
+    },
+    {
+      "id": 11032110,
+      "name": "无聊顾问",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 2,
+      "attack": 2,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "在手牌中发动。自己【启动】护符时，使本卡牌的费用-1。\n\n【入场曲】召唤1张『神域的物证』。\n\n自己【启动】护符时，回复自己的主战者1点生命值。",
+      "evolvedText": "在手牌中发动。自己【启动】护符时，使本卡牌的费用-1。\n\n【入场曲】召唤1张『神域的物证』。\n\n自己【启动】护符时，回复自己的主战者1点生命值。",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11032110"
+    },
+    {
+      "id": 11032120,
+      "name": "风暴支配者",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 2,
+      "attack": 5,
+      "health": 5,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】【土之秘术 1】召唤1个『守护者巨像』。\n\n自己的巨像·随从进入战场时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】【土之秘术 1】召唤1个『守护者巨像』。\n\n自己的巨像·随从进入战场时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "earth",
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11032120"
+    },
+    {
+      "id": 11032310,
+      "name": "解谜旋律",
+      "class": 3,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤1张『神域的物证』。若本回合中自己【启动】过护符，则对对手的战场上的随机1个随从造成3点伤害。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11032310"
+    },
+    {
+      "id": 11033110,
+      "name": "歌剧助手",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 3,
+      "attack": 5,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『碎心勤务员』。\n\n自己【启动】护符时，对对手的战场上的随机1个随从造成5点伤害。\n\n【进化时】回复自己1点能量点。",
+      "evolvedText": "【入场曲】召唤1个『碎心勤务员』。\n\n自己【启动】护符时，对对手的战场上的随机1个随从造成5点伤害。\n\n【进化时】回复自己1点能量点。",
+      "mechanics": [
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11033110"
+    },
+    {
+      "id": 11033310,
+      "name": "诺茵华薇儿的审讯",
+      "class": 3,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "将1张『神域的物证』加入手牌。使自己获得『纹章：诺茵华薇儿的审讯』。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11033310"
+    },
+    {
+      "id": 11034110,
+      "name": "迷歌侦探·诺茵华薇儿",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 4,
+      "attack": 2,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1张『神域的物证』。\n\n自己【启动】护符时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】使自己获得『纹章：迷歌侦探·诺茵华薇儿』。",
+      "evolvedText": "【入场曲】召唤1张『神域的物证』。\n\n自己【启动】护符时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】使自己获得『纹章：迷歌侦探·诺茵华薇儿』。",
+      "mechanics": [
+        "evidence",
+        "activation"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11034110"
+    },
+    {
+      "id": 11034120,
+      "name": "劫焰奇美拉",
+      "class": 3,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 8,
+      "rarity": 4,
+      "attack": 8,
+      "health": 8,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】对对手的战场上的所有随从和对手的主战者分配X点伤害。X为自己的战场上的土之印数。",
+      "evolvedText": "【入场曲】对对手的战场上的所有随从和对手的主战者分配X点伤害。X为自己的战场上的土之印数。",
+      "mechanics": [
+        "earth",
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11034120"
+    },
+    {
+      "id": 11041110,
+      "name": "天噬暴行者",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 1,
+      "attack": 1,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "【突进】\n【谢幕曲】将1张『神域的物证』加入手牌。",
+      "evolvedText": "【突进】\n【谢幕曲】将1张『神域的物证』加入手牌。",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11041110"
+    },
+    {
+      "id": 11041120,
+      "name": "冰锥蜥蜴",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 1,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】发动1次「对对手的战场上的随机1个随从造成3点伤害」。\n【爆能强化 7】改为发动3次。本随从+5/+5。",
+      "evolvedText": "【入场曲】发动1次「对对手的战场上的随机1个随从造成3点伤害」。\n【爆能强化 7】改为发动3次。本随从+5/+5。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11041120"
+    },
+    {
+      "id": 11041310,
+      "name": "水龙神的慈雨",
+      "class": 4,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "抽取1张卡牌。回复自己的主战者1点生命值。若为【觉醒】，则使自己的能量点最大值+1。",
+      "evolvedText": "",
+      "mechanics": [
+        "ramp"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11041310"
+    },
+    {
+      "id": 11042110,
+      "name": "天噬运货人",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 2,
+      "attack": 5,
+      "health": 5,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】选择对手的战场上的2个随从，破坏这些随从。将2张『神域的物证』加入手牌。",
+      "evolvedText": "【入场曲】选择对手的战场上的2个随从，破坏这些随从。将2张『神域的物证』加入手牌。",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11042110"
+    },
+    {
+      "id": 11042120,
+      "name": "侦察龙人",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 1,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【潜行】\n【攻击时】使自己的战场上的随机1个进化前的其他随从进化。",
+      "evolvedText": "【潜行】\n【攻击时】使自己的战场上的随机1个进化前的其他随从进化。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11042120"
+    },
+    {
+      "id": 11042310,
+      "name": "收集的显现",
+      "class": 4,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "对对手的战场上的随机1个随从造成4点伤害。若自己的手牌中有证据·护符，则舍弃其中随机1张。抽取1张原始费用为5或以上的卡牌。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "discard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11042310"
+    },
+    {
+      "id": 11043110,
+      "name": "天噬抢劫犯",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 3,
+      "attack": 3,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】若自己的手牌中有证据·护符，则舍弃其中随机1张。使自己的能量点最大值+1。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。",
+      "evolvedText": "【入场曲】若自己的手牌中有证据·护符，则舍弃其中随机1张。使自己的能量点最大值+1。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。",
+      "mechanics": [
+        "evidence",
+        "discard",
+        "ramp"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11043110"
+    },
+    {
+      "id": 11043310,
+      "name": "俯瞰的目光",
+      "class": 4,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【模式】选择2个能力发动。\n（1）召唤1个『好奇的老鼠』。\n（2）使自己的战场上的从左起的2个随从+1/+0。\n（3）将3张『神域的物证』加入手牌。\n（4）对对手的战场上的随机1个随从造成4点伤害。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11043310"
+    },
+    {
+      "id": 11044110,
+      "name": "天噬三恶·莱特欧芙",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 10,
+      "rarity": 4,
+      "attack": 8,
+      "health": 10,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】使自己的牌组中的所有原始费用为4或以下的卡牌消失。舍弃自己的手牌中的所有证据·护符。发动X次「对对手的战场上的随机1个随从造成8点伤害」。X为因本能力舍弃的张数。\n\n【疾驰】",
+      "evolvedText": "【入场曲】使自己的牌组中的所有原始费用为4或以下的卡牌消失。舍弃自己的手牌中的所有证据·护符。发动X次「对对手的战场上的随机1个随从造成8点伤害」。X为因本能力舍弃的张数。\n\n【疾驰】",
+      "mechanics": [
+        "evidence",
+        "discard",
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11044110"
+    },
+    {
+      "id": 11044120,
+      "name": "龙惧·吉尔沃",
+      "class": 4,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 4,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】对对手的战场上的所有随从分配X点伤害。X为「对手的主战者的生命值的最大值减去对手的主战者的生命值」。\n\n【超进化时】本随从获得【疾驰】和【守护】。",
+      "evolvedText": "【入场曲】对对手的战场上的所有随从分配X点伤害。X为「对手的主战者的生命值的最大值减去对手的主战者的生命值」。\n\n【超进化时】本随从获得【疾驰】和【守护】。",
+      "mechanics": [
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11044120"
+    },
+    {
+      "id": 11051110,
+      "name": "告别入殓师",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【谢幕曲】召唤1张『神域的物证』。将1张『神域的物证』加入手牌。",
+      "evolvedText": "【谢幕曲】召唤1张『神域的物证』。将1张『神域的物证』加入手牌。",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11051110"
+    },
+    {
+      "id": 11051120,
+      "name": "复仇山羊",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 1,
+      "attack": 7,
+      "health": 7,
+      "token": false,
+      "set": 10010,
+      "text": "【谢幕曲】对自己的主战者造成2点伤害。",
+      "evolvedText": "【谢幕曲】对自己的主战者造成2点伤害。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11051120"
+    },
+    {
+      "id": 11051310,
+      "name": "灵魂逃亡",
+      "class": 5,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "将1张『怨灵』加入手牌。",
+      "evolvedText": "",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11051310"
+    },
+    {
+      "id": 11052110,
+      "name": "永住守墓人",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 2,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『腐臭的僵尸』。\n\n自己的卡牌在战场上消失时，若为自己的回合，则使自己的战场上的随机1个亡者·随从+2/+2且获得【突进】。\n\n【进化时】召唤1张『神域的物证』。",
+      "evolvedText": "【入场曲】召唤1个『腐臭的僵尸』。\n\n自己的卡牌在战场上消失时，若为自己的回合，则使自己的战场上的随机1个亡者·随从+2/+2且获得【突进】。\n\n【进化时】召唤1张『神域的物证』。",
+      "mechanics": [
+        "evidence",
+        "banishBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11052110"
+    },
+    {
+      "id": 11052120,
+      "name": "桀骜半人马",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 2,
+      "attack": 6,
+      "health": 6,
+      "token": false,
+      "set": 10010,
+      "text": "【突进】\n【攻击时】【唤灵 4】对对手的战场上的所有随从造成4点伤害。",
+      "evolvedText": "【突进】\n【攻击时】【唤灵 4】对对手的战场上的所有随从造成4点伤害。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11052120"
+    },
+    {
+      "id": 11052310,
+      "name": "听取遗言",
+      "class": 5,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤1张『神域的物证』。将1张『神域的物证』加入手牌。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11052310"
+    },
+    {
+      "id": 11053110,
+      "name": "鬼录护士",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 3,
+      "attack": 6,
+      "health": 6,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『怨灵』，使其获得【毁灭】。\n\n自己的卡牌在战场上消失时，若为自己的回合，则回复自己的主战者2点生命值。\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "evolvedText": "【入场曲】召唤1个『怨灵』，使其获得【毁灭】。\n\n自己的卡牌在战场上消失时，若为自己的回合，则回复自己的主战者2点生命值。\n\n【超进化时】发动与【入场曲】相同的能力。",
+      "mechanics": [
+        "banishBoard",
+        "replay"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11053110"
+    },
+    {
+      "id": 11053310,
+      "name": "诺克坦的审讯",
+      "class": 5,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "对对手的战场上的所有随从造成X点伤害。X为自己的战场上的证据数。使自己的战场上的所有证据·护符消失。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "variable"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11053310"
+    },
+    {
+      "id": 11054110,
+      "name": "残思侦探·诺克坦",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 4,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『怨灵』，使其获得【毁灭】。\n\n自己的卡牌在战场上消失时，若为自己的回合，则召唤1个『骸骨士兵』，使其+2/+4且获得【守护】。\n\n【进化时】将1张『听取遗言』加入手牌。",
+      "evolvedText": "【入场曲】召唤1个『怨灵』，使其获得【毁灭】。\n\n自己的卡牌在战场上消失时，若为自己的回合，则召唤1个『骸骨士兵』，使其+2/+4且获得【守护】。\n\n【进化时】将1张『听取遗言』加入手牌。",
+      "mechanics": [
+        "banishBoard"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11054110"
+    },
+    {
+      "id": 11054120,
+      "name": "末日变换·格莫瑞",
+      "class": 5,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 4,
+      "attack": 1,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【守护】\n【谢幕曲】【唤灵 2】抽取1张卡牌。\n\n【进化时】使自己获得『纹章：末日变换·格莫瑞』。",
+      "evolvedText": "【守护】\n【谢幕曲】【唤灵 2】抽取1张卡牌。\n\n【进化时】使自己获得『纹章：末日变换·格莫瑞』。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11054120"
+    },
+    {
+      "id": 11061110,
+      "name": "地害加工者",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 3,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "【谢幕曲】将2张『神域的物证』加入手牌。",
+      "evolvedText": "【谢幕曲】将2张『神域的物证』加入手牌。",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11061110"
+    },
+    {
+      "id": 11061120,
+      "name": "斗志修行僧",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 7,
+      "rarity": 1,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【突进】\n1回合可以攻击2次。\n【攻击时】本随从+2/+2且获得【屏障】。",
+      "evolvedText": "【突进】\n1回合可以攻击2次。\n【攻击时】本随从+2/+2且获得【屏障】。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11061120"
+    },
+    {
+      "id": 11061310,
+      "name": "孤高的锻炼",
+      "class": 6,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "选择自己的战场上的1个随从，使其+2/+2且获得【屏障】。",
+      "evolvedText": "",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11061310"
+    },
+    {
+      "id": 11062110,
+      "name": "地害驯兽师",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 3,
+      "health": 3,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将1张『地害之兔』加入手牌。\n\n【进化时】回复自己1点能量点。",
+      "evolvedText": "【入场曲】将1张『地害之兔』加入手牌。\n\n【进化时】回复自己1点能量点。",
+      "mechanics": [
+        "rabbit"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11062110"
+    },
+    {
+      "id": 11062120,
+      "name": "有翼奏者",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 4,
+      "rarity": 2,
+      "attack": 1,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『神圣猎鹰』。\n\n【进化时】使自己的战场上的其他所有随从+1/+1。",
+      "evolvedText": "【入场曲】召唤1个『神圣猎鹰』。\n\n【进化时】使自己的战场上的其他所有随从+1/+1。",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11062120"
+    },
+    {
+      "id": 11062310,
+      "name": "荒废的繁殖",
+      "class": 6,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "召唤2个『地害之兔』。\n【爆能强化 8】改为召唤4个。",
+      "evolvedText": "",
+      "mechanics": [
+        "rabbit"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11062310"
+    },
+    {
+      "id": 11063110,
+      "name": "地害矫正者",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 8,
+      "rarity": 3,
+      "attack": 3,
+      "health": 5,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】选择对手的战场上的1个随从，使其消失。召唤2个『地害之兔』。\n\n【超进化时】抽取2张卡牌。回复自己的主战者2点生命值。",
+      "evolvedText": "【入场曲】选择对手的战场上的1个随从，使其消失。召唤2个『地害之兔』。\n\n【超进化时】抽取2张卡牌。回复自己的主战者2点生命值。",
+      "mechanics": [
+        "rabbit"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11063110"
+    },
+    {
+      "id": 11063310,
+      "name": "徒然的证言",
+      "class": 6,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【模式】选择1个能力发动。\n（1）对对手的战场上的随机1个随从造成4点伤害。使自己获得『纹章：徒然的证言』。\n（2）召唤1个『地害之兔』。",
+      "evolvedText": "",
+      "mechanics": [
+        "rabbit"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11063310"
+    },
+    {
+      "id": 11064110,
+      "name": "地害三恶·拉碧妲赫特",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 4,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】选择对手的战场上的1个随从，使其消失。召唤1个『地害之兔』。\n\n【进化时】使自己获得『纹章：地害三恶·拉碧妲赫特』。\n【超进化时】使自己的『纹章：地害三恶·拉碧妲赫特』的倒计数+1。",
+      "evolvedText": "【入场曲】选择对手的战场上的1个随从，使其消失。召唤1个『地害之兔』。\n\n【进化时】使自己获得『纹章：地害三恶·拉碧妲赫特』。\n【超进化时】使自己的『纹章：地害三恶·拉碧妲赫特』的倒计数+1。",
+      "mechanics": [
+        "rabbit"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11064110"
+    },
+    {
+      "id": 11064120,
+      "name": "亚教偶像",
+      "class": 6,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 4,
+      "attack": 0,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【威慑】\n【灵气】\n无法攻击随从或主战者。\n对手的随从在战场上消失时，若为自己的回合，则召唤对应数量的复制随从。\n\n【进化时】选择对手的战场上的1个随从，使其消失。",
+      "evolvedText": "【威慑】\n【灵气】\n无法攻击随从或主战者。\n对手的随从在战场上消失时，若为自己的回合，则召唤对应数量的复制随从。\n\n【进化时】选择对手的战场上的1个随从，使其消失。",
+      "mechanics": [
+        "banishBoard",
+        "copy"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11064120"
+    },
+    {
+      "id": 11071110,
+      "name": "人灭执事",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 2,
+      "rarity": 1,
+      "attack": 2,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【守护】\n【谢幕曲】将2张『神域的物证』加入手牌。",
+      "evolvedText": "【守护】\n【谢幕曲】将2张『神域的物证』加入手牌。",
+      "mechanics": [
+        "evidence"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11071110"
+    },
+    {
+      "id": 11071120,
+      "name": "异界来访者",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 1,
+      "attack": 4,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【疾驰】\n【灵气】",
+      "evolvedText": "【疾驰】\n【灵气】",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11071120"
+    },
+    {
+      "id": 11071310,
+      "name": "组装失败",
+      "class": 7,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 1,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "将1张『改良型·悬丝傀儡』加入手牌，使其获得【毁灭】【守护】中随机1个能力。",
+      "evolvedText": "",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11071310"
+    },
+    {
+      "id": 11072110,
+      "name": "人灭富豪",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 2,
+      "attack": 1,
+      "health": 2,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将2张『神域的物证』加入手牌。\n\n自己【融合】护符时，对对手的战场上的所有随从造成1点伤害。\n\n【进化时】抽取1张拥有【融合】的卡牌。",
+      "evolvedText": "【入场曲】将2张『神域的物证』加入手牌。\n\n自己【融合】护符时，对对手的战场上的所有随从造成1点伤害。\n\n【进化时】抽取1张拥有【融合】的卡牌。",
+      "mechanics": [
+        "evidence",
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11072110"
+    },
+    {
+      "id": 11072120,
+      "name": "发射器猫人",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 6,
+      "rarity": 2,
+      "attack": 6,
+      "health": 4,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】召唤1个『攻击创造物』和1个『古老的创造物』。\n\n【突进】",
+      "evolvedText": "【入场曲】召唤1个『攻击创造物』和1个『古老的创造物』。\n\n【突进】",
+      "mechanics": [],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11072120"
+    },
+    {
+      "id": 11072310,
+      "name": "毁灭怪腕",
+      "class": 7,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 5,
+      "rarity": 2,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【融合】护符\n与本卡牌【融合】时，召唤1张『神域的物证』。\n\n对对手的战场上的所有随从造成4点伤害。若已与本卡牌【融合】，则改为8点伤害。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11072310"
+    },
+    {
+      "id": 11073110,
+      "name": "人灭绅士",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 8,
+      "rarity": 3,
+      "attack": 6,
+      "health": 6,
+      "token": false,
+      "set": 10010,
+      "text": "【入场曲】将2张『神域的物证』加入手牌。\n\n自己【融合】护符时，破坏对手的战场上的随机1个随从。回复自己的主战者2点生命值。\n【守护】",
+      "evolvedText": "【入场曲】将2张『神域的物证』加入手牌。\n\n自己【融合】护符时，破坏对手的战场上的随机1个随从。回复自己的主战者2点生命值。\n【守护】",
+      "mechanics": [
+        "evidence",
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11073110"
+    },
+    {
+      "id": 11073310,
+      "name": "最凶恶的收容",
+      "class": 7,
+      "type": 4,
+      "tribes": [
+        0
+      ],
+      "cost": 1,
+      "rarity": 3,
+      "attack": 0,
+      "health": 0,
+      "token": false,
+      "set": 10010,
+      "text": "【融合】护符\n与本卡牌【融合】时，召唤1张『神域的物证』。\n\n回复自己的主战者2点生命值。使自己的战场上的证据-2，破坏对手的战场上的随机1个攻击力最大的随从。",
+      "evolvedText": "",
+      "mechanics": [
+        "evidence",
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11073310"
+    },
+    {
+      "id": 11074110,
+      "name": "人灭三恶·兰佩吉",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 9,
+      "rarity": 4,
+      "attack": 7,
+      "health": 7,
+      "token": false,
+      "set": 10010,
+      "text": "【融合】护符\n与本卡牌【融合】时，召唤1张『神域的物证』。\n\n【入场曲】选择对手的战场上的1个随从，破坏对手的战场上的所有与其同名的随从。若已与本卡牌【融合】，则使对手的主战者的生命值的最大值变为一半。",
+      "evolvedText": "【融合】护符\n与本卡牌【融合】时，召唤1张『神域的物证』。\n\n【入场曲】选择对手的战场上的1个随从，破坏对手的战场上的所有与其同名的随从。若已与本卡牌【融合】，则使对手的主战者的生命值的最大值变为一半。",
+      "mechanics": [
+        "evidence",
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11074110"
+    },
+    {
+      "id": 11074120,
+      "name": "次元异客",
+      "class": 7,
+      "type": 1,
+      "tribes": [
+        0
+      ],
+      "cost": 3,
+      "rarity": 4,
+      "attack": 2,
+      "health": 1,
+      "token": false,
+      "set": 10010,
+      "text": "自己进行【融合】时，本随从获得【突进】。\n【谢幕曲】使自己获得『纹章：次元异客』。\n\n【超进化时】本随从获得【疾驰】。",
+      "evolvedText": "自己进行【融合】时，本随从获得【突进】。\n【谢幕曲】使自己获得『纹章：次元异客』。\n\n【超进化时】本随从获得【疾驰】。",
+      "mechanics": [
+        "fusion"
+      ],
+      "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11074120"
+    }
+  ],
+  "specialEffects": [
+    {
+      "id": 11004112,
+      "type": 1,
+      "text": "自己使用随从时，使其获得「【谢幕曲】召唤1个与本随从同名的随从」。回合结束前，使其获得「无法攻击随从或主战者」。",
+      "sourceCardIds": [
+        11004110
+      ]
+    },
+    {
+      "id": 11012312,
+      "type": 1,
+      "text": "【吟唱 2】\n自己的回合开始时，召唤1个『好奇的老鼠』。",
+      "sourceCardIds": [
+        11012310
+      ]
+    },
+    {
+      "id": 11024122,
+      "type": 1,
+      "text": "【吟唱 2】\n自己的回合结束时，按顺序发动以下1个能力。\n（1）将1张『黄金短剑』加入手牌，使其费用变为0。\n（2）将1张『黄金之杯』加入手牌，使其费用变为0。",
+      "sourceCardIds": [
+        11024120
+      ]
+    },
+    {
+      "id": 11033312,
+      "type": 1,
+      "text": "自己【启动】护符时，按顺序发动以下1个未发动的能力。\n（1）对对手的战场上的随机1个随从造成3点伤害。\n（2）回复自己的主战者2点生命值。\n（3）回复自己1点进化点。破坏本纹章。",
+      "sourceCardIds": [
+        11033310
+      ]
+    },
+    {
+      "id": 11034112,
+      "type": 1,
+      "text": "自己【启动】护符时，自己的每回合中可触发1次，回复自己1点能量点。",
+      "sourceCardIds": [
+        11034110
+      ]
+    },
+    {
+      "id": 11054122,
+      "type": 1,
+      "text": "自己的回合结束时，使自己的墓场+2。",
+      "sourceCardIds": [
+        11054120
+      ]
+    },
+    {
+      "id": 11063312,
+      "type": 1,
+      "text": "【吟唱 2】\n自己的回合开始时，回复自己的主战者1点生命值。将1张『神域的物证』加入手牌。",
+      "sourceCardIds": [
+        11063310
+      ]
+    },
+    {
+      "id": 11064112,
+      "type": 1,
+      "text": "【吟唱 1】\n自己的回合开始时，召唤1个『地害之兔』。",
+      "sourceCardIds": [
+        11064110
+      ]
+    },
+    {
+      "id": 11074122,
+      "type": 1,
+      "text": "【吟唱 2】\n自己进行【融合】时，本纹章的倒计数-1。\n【谢幕曲】召唤1个『次元异客』。",
+      "sourceCardIds": [
+        11074120
+      ]
+    }
+  ],
+  "valuationNotes": [
+    {
+      "ids": [
+        11062110,
+        11062310,
+        11063110
+      ],
+      "change": "地害之兔入手3、召唤6.4；自动进化3/3、手牌损失和谢幕伤害一起估值。原先按7.2召唤、4.2入手过重。"
+    },
+    {
+      "ids": [
+        11031110,
+        11032110,
+        11033110,
+        11034110
+      ],
+      "change": "启动护符是巫师独立事件；减费沿用实际落地费用与疾驰联动估值，不按印刷费用发放全额模型。"
+    },
+    {
+      "ids": [
+        11072110,
+        11073110,
+        11072310
+      ],
+      "change": "融合护符监听和融合自身立即收益分开；手牌内零PP生效，按材料、次数、即时场面计价。"
+    },
+    {
+      "ids": [
+        11012110,
+        11013110,
+        11022310,
+        11032310
+      ],
+      "change": "一费卡场面和本回合启动记录属于可共享条件，不为每条收益重复补贴。"
+    },
+    {
+      "ids": [
+        11043110
+      ],
+      "change": "舍弃证据未必成功也能跳费；不误当成必须成功支付的成本，不能无条件抵扣跳费价值。"
+    }
+  ],
+  "boundaries": [
+    "未照抄整套金虹效果；通用原子、事件、条件参与组合。",
+    "整副牌组改写/清洗依用户要求不接入。",
+    "官方收录完整不等于每个特殊句式均已生成：敌方消失后复制、减半生命上限、抽到随从直接拉出等专属复杂句式仍需独立建模。"
+  ]
+}

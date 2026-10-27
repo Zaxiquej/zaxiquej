@@ -1,0 +1,141 @@
+{
+  "version": "5.31.0",
+  "counts": {
+    "cards": 5000,
+    "combat": 13,
+    "stationary": 29,
+    "cheapSplit": 113,
+    "gatedSplit": 1,
+    "alternates": 179
+  },
+  "comparison": {
+    "sample": 2500,
+    "combatBefore": 23,
+    "combatAfter": 6,
+    "stationaryBefore": 21,
+    "stationaryAfter": 18
+  },
+  "payoffs": [
+    "splitDamage",
+    "damage",
+    "heal",
+    "boost",
+    "tokenSummon",
+    "teamBuff",
+    "earth"
+  ],
+  "examples": {
+    "stationary": [
+      {
+        "name": "模型边界复核113",
+        "cost": 5,
+        "attack": 2,
+        "health": 2,
+        "text": [
+          "在手牌中发动。自己通过【爆能强化】使用卡牌时，使本卡牌的费用-1。",
+          "【入场曲】将2张『黄金短剑』加入手牌。",
+          "无法攻击随从或主战者。",
+          "自己的回合结束时，对对手的战场上的所有随从分配3点伤害。"
+        ],
+        "model": {
+          "credit": 5.9,
+          "beforeBody": 8,
+          "bodyBonus": 0,
+          "payoffRaw": 3.75,
+          "multiplier": 1.65,
+          "spare": 2.700000000000001,
+          "minPayoff": 3.25
+        }
+      },
+      {
+        "name": "模型边界复核308",
+        "cost": 4,
+        "attack": 2,
+        "health": 5,
+        "text": [
+          "【入场曲】召唤1个『骑士』。使这些随从+2/+0。",
+          "【入场曲】选择对手的战场上的1个随从，对其造成3点伤害。",
+          "无法攻击随从或主战者。",
+          "自己的回合结束时，对对手的战场上的随机1个随从造成3点伤害。"
+        ],
+        "model": {
+          "credit": 4.2,
+          "beforeBody": 7,
+          "bodyBonus": 0,
+          "payoffRaw": 3.75,
+          "multiplier": 1.65,
+          "spare": 3.6743701864033937,
+          "minPayoff": 3
+        }
+      },
+      {
+        "name": "模型边界复核355",
+        "cost": 3,
+        "attack": 3,
+        "health": 3,
+        "text": [
+          "自己使用财宝·卡牌时，或者自己【融合】财宝·卡牌时，自己的每回合中可触发1次，召唤1个『骑士』。",
+          "【进化时】选择自己的战场上的1个进化前的其他随从，使其进化。",
+          "【守护】",
+          "无法攻击随从或主战者。",
+          "自己的回合结束时，回复自己的主战者2点生命值。"
+        ],
+        "model": {
+          "credit": 4.04,
+          "beforeBody": 6,
+          "bodyBonus": 0,
+          "payoffRaw": 3,
+          "multiplier": 1.65,
+          "spare": 1.1540067120268933,
+          "minPayoff": 3
+        }
+      },
+      {
+        "name": "模型边界复核395",
+        "cost": 3,
+        "attack": 4,
+        "health": 2,
+        "text": [
+          "【超进化时】选择对手的战场上的1个随从，使其消失。",
+          "自己使用费用发生变化的随从时，【土之秘术 1】使自己的所有手牌发动2次魔力增幅。",
+          "无法攻击随从或主战者。",
+          "自己的回合结束时，使自己的所有手牌发动2次魔力增幅。"
+        ],
+        "model": {
+          "credit": 5.9,
+          "beforeBody": 6,
+          "bodyBonus": 0,
+          "payoffRaw": 4,
+          "multiplier": 1.65,
+          "spare": 2.6608698540553455,
+          "minPayoff": 3
+        }
+      },
+      {
+        "name": "模型边界复核498",
+        "cost": 3,
+        "attack": 3,
+        "health": 3,
+        "text": [
+          "【入场曲】若为进化已解禁的回合，则本随从+0/+2。",
+          "无法攻击随从或主战者。",
+          "自己的回合结束时，对对手的战场上的随机1个随从造成3点伤害。"
+        ],
+        "model": {
+          "credit": 5.05,
+          "beforeBody": 6,
+          "bodyBonus": 0,
+          "payoffRaw": 3.75,
+          "multiplier": 1.65,
+          "spare": 5.315998934656383,
+          "minPayoff": 3
+        }
+      }
+    ],
+    "gatedSplit": {
+      "name": "模型边界复核1852",
+      "cost": 2,
+      "text": "【谢幕曲】若自己的战场上有超进化后的随从，则对对手的战场上的所有随从分配7点伤害。"
+    }
+  }
+}

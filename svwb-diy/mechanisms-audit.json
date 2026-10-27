@@ -1,6 +1,6 @@
 {
   "source": "https://shadowverse-wb.com/web/CardList/cardList",
-  "retrieved": "2026-10-02T15:17:21.691Z",
+  "retrieved": "2026-10-27T14:38:11.508Z",
   "mechanisms": {
     "ward": {
       "class": 6,
@@ -358,7 +358,7 @@
     },
     "artifact": {
       "class": 7,
-      "followers": 26,
+      "followers": 27,
       "cards": [
         {
           "id": 10171120,
@@ -623,6 +623,14 @@
           "cost": 7,
           "text": "【入场曲】召唤1个『击针看守』。\n\n自己的创造物·随从进入战场时，破坏对手的战场上的随机1个随从。\n\n【超进化时】发动与【入场曲】相同的能力。",
           "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10974120"
+        },
+        {
+          "id": 11072120,
+          "name": "发射器猫人",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】召唤1个『攻击创造物』和1个『古老的创造物』。\n\n【突进】",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11072120"
         }
       ]
     },
@@ -642,7 +650,7 @@
     },
     "selfDamage": {
       "class": 5,
-      "followers": 11,
+      "followers": 12,
       "cards": [
         {
           "id": 10051120,
@@ -747,6 +755,14 @@
           "cost": 8,
           "text": "在手牌中发动。自己的回合结束时，若自己的主战者的生命值为12或以下，则使本卡牌的费用-1。\n\n【入场曲】【模式】选择1个能力发动。\n（1）本随从获得【疾驰】。对自己的主战者造成2点伤害。\n（2）本随从获得【守护】。对对手的战场上的所有随从造成8点伤害。",
           "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10954120"
+        },
+        {
+          "id": 11051120,
+          "name": "复仇山羊",
+          "type": 1,
+          "cost": 4,
+          "text": "【谢幕曲】对自己的主战者造成2点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11051120"
         }
       ]
     },
@@ -1060,7 +1076,7 @@
     },
     "earth": {
       "class": 3,
-      "followers": 23,
+      "followers": 26,
       "cards": [
         {
           "id": 10031110,
@@ -1333,12 +1349,36 @@
           "cost": 5,
           "text": "对对手的战场上的随机1个攻击力最大的随从造成8点伤害。对对手的主战者造成2点伤害。【土之秘术 2】将1张『伏地雷击』加入手牌。",
           "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10832320"
+        },
+        {
+          "id": 11031120,
+          "name": "戏法女巫",
+          "type": 1,
+          "cost": 2,
+          "text": "【入场曲】【模式】选择1个能力发动。\n（1）【土之秘术 1】对对手的战场上的随机1个随从造成2点伤害。\n（2）使自己的战场上的土之印+2。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11031120"
+        },
+        {
+          "id": 11032120,
+          "name": "风暴支配者",
+          "type": 1,
+          "cost": 6,
+          "text": "【入场曲】【土之秘术 1】召唤1个『守护者巨像』。\n\n自己的巨像·随从进入战场时，对对手的战场上的随机1个随从造成3点伤害。\n\n【进化时】发动与【入场曲】相同的能力。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11032120"
+        },
+        {
+          "id": 11034120,
+          "name": "劫焰奇美拉",
+          "type": 1,
+          "cost": 8,
+          "text": "【入场曲】对对手的战场上的所有随从和对手的主战者分配X点伤害。X为自己的战场上的土之印数。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11034120"
         }
       ]
     },
     "ramp": {
       "class": 4,
-      "followers": 2,
+      "followers": 3,
       "cards": [
         {
           "id": 10042310,
@@ -1371,6 +1411,22 @@
           "cost": 4,
           "text": "使自己的能量点最大值+1。使自己的手牌和自己的牌组中的所有『百无聊赖的睥睨』变身为『焦龙的午睡』。",
           "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=10741310"
+        },
+        {
+          "id": 11041310,
+          "name": "水龙神的慈雨",
+          "type": 4,
+          "cost": 3,
+          "text": "抽取1张卡牌。回复自己的主战者1点生命值。若为【觉醒】，则使自己的能量点最大值+1。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11041310"
+        },
+        {
+          "id": 11043110,
+          "name": "天噬抢劫犯",
+          "type": 1,
+          "cost": 4,
+          "text": "【入场曲】若自己的手牌中有证据·护符，则舍弃其中随机1张。使自己的能量点最大值+1。\n\n【进化时】选择对手的战场上的1个随从，对其造成3点伤害。",
+          "url": "https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=11043110"
         }
       ]
     }

@@ -1,0 +1,626 @@
+{
+  "version": "5.30.0",
+  "counts": {
+    "cards": 4000,
+    "storm": 120,
+    "cheapStorm": 67,
+    "copies": 49,
+    "incubate": 25,
+    "shorter": 15,
+    "cheaper": 6,
+    "transforms": 31,
+    "discounted": 8
+  },
+  "examples": {
+    "copy": {
+      "version": "5.30.0",
+      "name": "召唤疾驰完成形回归7",
+      "seed": 3800091903,
+      "type": "follower",
+      "class": 2,
+      "rarity": 3,
+      "cost": 5,
+      "attack": 5,
+      "health": 6,
+      "abilities": [
+        {
+          "ids": [
+            "selfCopy"
+          ],
+          "raw": 8.8,
+          "boardValue": 8.8,
+          "text": "【超进化时】召唤1个『召唤疾驰完成形回归7』。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "超进化时",
+          "condition": "none",
+          "bodyText": "召唤1个『召唤疾驰完成形回归7』。",
+          "price": 2.2,
+          "midEvolutionCore": true
+        },
+        {
+          "ids": [
+            "tokenSummon",
+            "mixedSummon",
+            "flagSummon",
+            "enhance"
+          ],
+          "raw": 12.6,
+          "boardValue": 4.6,
+          "text": "【爆能强化 8】召唤1个『骑士』。召唤1个『铁甲骑士』。召唤2张『令人战栗的海盗旗』。",
+          "tokens": [
+            {
+              "id": 90021110,
+              "name": "骑士",
+              "class": 2,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            },
+            {
+              "id": 90021120,
+              "name": "铁甲骑士",
+              "class": 2,
+              "cost": 1,
+              "attack": 2,
+              "health": 2,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            },
+            {
+              "id": 90021210,
+              "name": "令人战栗的海盗旗",
+              "class": 2,
+              "type": "amulet",
+              "cost": 1,
+              "attack": 0,
+              "health": 0,
+              "text": "【吟唱 7】\n自己使用法术时，本护符的倒计数-1。\n【谢幕曲】对对手的主战者造成2点伤害。"
+            }
+          ],
+          "kind": "effect",
+          "trigger": "爆能强化",
+          "condition": "enhance",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 8,
+          "minPayoff": 11.120000000000001,
+          "bodyText": "【爆能强化 8】召唤1个『骑士』。召唤1个『铁甲骑士』。召唤2张『令人战栗的海盗旗』。",
+          "price": 0.4
+        },
+        {
+          "ids": [
+            "tokenSummon"
+          ],
+          "raw": 2.8,
+          "boardValue": 2.8,
+          "text": "【谢幕曲】召唤2个『骑士』。",
+          "tokens": [
+            {
+              "id": 90021110,
+              "name": "骑士",
+              "class": 2,
+              "cost": 0,
+              "attack": 1,
+              "health": 1,
+              "text": "",
+              "tribe": "士兵",
+              "tribeId": 2
+            }
+          ],
+          "summonDelivery": {
+            "tokenId": 90021110,
+            "count": 2,
+            "stats": 4
+          },
+          "kind": "effect",
+          "trigger": "谢幕曲",
+          "condition": "none",
+          "resourceCost": 0,
+          "conditionAmount": 0,
+          "enhanceCost": 0,
+          "minPayoff": 0,
+          "bodyText": "召唤2个『骑士』。",
+          "price": 1.8199999999999998
+        }
+      ],
+      "tokens": [
+        {
+          "id": 90021110,
+          "name": "骑士",
+          "class": 2,
+          "cost": 0,
+          "attack": 1,
+          "health": 1,
+          "text": "",
+          "tribe": "士兵",
+          "tribeId": 2
+        },
+        {
+          "id": 90021120,
+          "name": "铁甲骑士",
+          "class": 2,
+          "cost": 1,
+          "attack": 2,
+          "health": 2,
+          "text": "",
+          "tribe": "士兵",
+          "tribeId": 2
+        },
+        {
+          "id": 90021210,
+          "name": "令人战栗的海盗旗",
+          "class": 2,
+          "type": "amulet",
+          "cost": 1,
+          "attack": 0,
+          "health": 0,
+          "text": "【吟唱 7】\n自己使用法术时，本护符的倒计数-1。\n【谢幕曲】对对手的主战者造成2点伤害。"
+        }
+      ],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 24.615204666927458,
+      "spent": 4.42,
+      "bodyAllowance": 11,
+      "theme": "王旗 · 铺场与爆能",
+      "bodyHeadroom": 1,
+      "bodyBalance": {
+        "before": [
+          7,
+          4
+        ],
+        "after": [
+          5,
+          6
+        ]
+      },
+      "vanilla": false
+    },
+    "cheaper": {
+      "version": "5.30.0",
+      "name": "召唤疾驰完成形回归18",
+      "seed": 1270730035,
+      "type": "follower",
+      "class": 6,
+      "rarity": 1,
+      "cost": 5,
+      "attack": 2,
+      "health": 7,
+      "abilities": [
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【疾驰】",
+          "price": 0.8999999999999999,
+          "raw": 0.8999999999999999,
+          "ids": [
+            "疾驰"
+          ]
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 2】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        },
+        {
+          "ids": [
+            "amuletBreak"
+          ],
+          "raw": 2.5,
+          "boardValue": 0,
+          "text": "【入场曲】破坏自己的战场上的随机1张护符。若因本能力破坏了护符，则抽取1张卡牌。",
+          "tokens": [],
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "price": 2.5,
+          "bodyText": "破坏自己的战场上的随机1张护符。若因本能力破坏了护符，则抽取1张卡牌。"
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [
+        {
+          "id": "alternate",
+          "kind": "结晶",
+          "cost": 2,
+          "type": "护符",
+          "route": "incubate",
+          "countdown": 2,
+          "text": "【吟唱 2】\n【谢幕曲】召唤1个『召唤疾驰完成形回归18』。",
+          "valuation": {
+            "bodyValue": 7.2,
+            "abilityValue": 0.8999999999999999,
+            "summonValue": 8.1,
+            "retainedIds": [
+              "疾驰"
+            ],
+            "baseCountdown": 2,
+            "originalCost": 3,
+            "delayAdded": 0,
+            "delayReduced": 0
+          }
+        }
+      ],
+      "budget": 22.506021318770944,
+      "spent": 4.6,
+      "bodyAllowance": 9,
+      "theme": "圣祷 · 回复与护符",
+      "stormBodyTrade": {
+        "targetLoss": 0,
+        "preexistingLoss": 0,
+        "capLoss": 0,
+        "extraLoss": 1,
+        "attackLost": 1,
+        "healthLost": 0
+      },
+      "stormPackageTrade": {
+        "beforeAttack": 3,
+        "beforeHealth": 7,
+        "attackLost": 1,
+        "healthLost": 0,
+        "value": 4.793333333333334,
+        "effectValue": 1.2333333333333334,
+        "faceDamage": 0,
+        "attacks": 1,
+        "limit": 5
+      },
+      "vanilla": false
+    },
+    "shorter": {
+      "version": "5.30.0",
+      "name": "召唤疾驰完成形回归115",
+      "seed": 1306205303,
+      "type": "follower",
+      "class": 7,
+      "rarity": 3,
+      "cost": 8,
+      "attack": 4,
+      "health": 8,
+      "abilities": [
+        {
+          "ids": [
+            "silence",
+            "damage"
+          ],
+          "raw": 9.399999999999999,
+          "boardValue": 0,
+          "text": "【入场曲】选择对手的战场上的1个随从，使其失去所有能力，对其造成4点伤害。",
+          "tokens": [],
+          "components": [
+            {
+              "id": "silence",
+              "text": "选择对手的战场上的1个随从，使其失去所有能力。",
+              "raw": 3.8
+            },
+            {
+              "id": "damage",
+              "text": "对其造成4点伤害。",
+              "raw": 5.6
+            }
+          ],
+          "targetChain": {
+            "baseId": "silence",
+            "followupId": "damage",
+            "baseRaw": 3.8,
+            "extraRaw": 5.6,
+            "targetCount": 1,
+            "damage": 4,
+            "interactionPremium": 0.6
+          },
+          "kind": "effect",
+          "trigger": "入场曲",
+          "condition": "none",
+          "bodyText": "选择对手的战场上的1个随从，使其失去所有能力，对其造成4点伤害。",
+          "price": 9.399999999999999,
+          "major": true
+        },
+        {
+          "kind": "static",
+          "trigger": "",
+          "condition": "none",
+          "bodyText": "不会被能力破坏。",
+          "text": "不会被能力破坏。",
+          "raw": 6.7,
+          "price": 6.7,
+          "ids": [
+            "abilityDestructionImmune"
+          ],
+          "tokens": []
+        },
+        {
+          "ids": [
+            "coreAnchor",
+            "splitDamage"
+          ],
+          "raw": 12.5,
+          "boardValue": 0,
+          "text": "【入场曲】对对手的战场上的所有随从分配10点伤害。",
+          "tokens": [],
+          "kind": "core",
+          "trigger": "入场曲",
+          "condition": "none",
+          "bodyText": "对对手的战场上的所有随从分配10点伤害。",
+          "price": 12.5,
+          "major": true
+        },
+        {
+          "kind": "alternate",
+          "trigger": "结晶",
+          "condition": "alternate",
+          "text": "【结晶 3】以护符形态使用，能力见下方。",
+          "bodyText": "",
+          "raw": 1.2,
+          "price": 1.2,
+          "ids": [
+            "crystallize"
+          ],
+          "tokens": [],
+          "emblemIds": []
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [
+        {
+          "id": "alternate",
+          "kind": "结晶",
+          "cost": 3,
+          "type": "护符",
+          "route": "incubate",
+          "countdown": 3,
+          "text": "【吟唱 3】\n【谢幕曲】召唤1个『召唤疾驰完成形回归115』。",
+          "valuation": {
+            "bodyValue": 9.600000000000001,
+            "abilityValue": 6.7,
+            "summonValue": 16.3,
+            "retainedIds": [
+              "abilityDestructionImmune"
+            ],
+            "baseCountdown": 4,
+            "originalCost": 3,
+            "delayAdded": 0,
+            "delayReduced": 1
+          }
+        }
+      ],
+      "budget": 41.880464071407914,
+      "spent": 29.8,
+      "bodyAllowance": 12,
+      "theme": "机巧 · 傀儡与创造物",
+      "highRole": "defense",
+      "highCostBonus": 2.6,
+      "effectBodyReservation": {
+        "offered": 5,
+        "restored": 3
+      },
+      "archetype": "modularCore",
+      "corePower": 29.799999999999997,
+      "bodyCoreReallocation": {
+        "lost": 2,
+        "bodyBefore": 14,
+        "rawBefore": 10,
+        "rawAfter": 12.5,
+        "replayFactor": 1,
+        "ids": [
+          "splitDamage"
+        ]
+      },
+      "vanilla": false
+    },
+    "upgrade": {
+      "version": "5.30.0",
+      "name": "召唤疾驰完成形回归228",
+      "seed": 2246020650,
+      "type": "follower",
+      "class": 0,
+      "rarity": 2,
+      "cost": 3,
+      "attack": 3,
+      "health": 2,
+      "abilities": [
+        {
+          "ids": [
+            "bodyPayoff",
+            "draw"
+          ],
+          "raw": 2.8,
+          "boardValue": 0,
+          "text": "【入场曲】抽取1张卡牌。",
+          "tokens": [],
+          "kind": "bodyPayoff",
+          "trigger": "入场曲",
+          "condition": "none",
+          "bodyText": "抽取1张卡牌。",
+          "price": 2.8,
+          "major": true
+        },
+        {
+          "kind": "progressTransform",
+          "trigger": "在手牌中发动",
+          "condition": "progression",
+          "text": "X起始为0。\n在手牌中发动。自己的随从进化时，使本卡牌的X+1。之后，若X为3或以上，则本卡牌变身为『召唤疾驰完成形回归228·完成形』。",
+          "bodyText": "X起始为0。\n在手牌中发动。自己的随从进化时，使本卡牌的X+1。之后，若X为3或以上，则本卡牌变身为『召唤疾驰完成形回归228·完成形』。",
+          "raw": 10,
+          "price": 3.2,
+          "ids": [
+            "progressTransform"
+          ],
+          "progression": {
+            "eventId": "evolutions",
+            "threshold": 3,
+            "task": {
+              "effort": 6,
+              "factor": 0.32,
+              "minimumGain": 7.699999999999999,
+              "effectCost": 6
+            },
+            "targetId": "upgrade-2246020650",
+            "style": "engine",
+            "changedIndex": null,
+            "discount": 0,
+            "discountRaw": 0,
+            "bonusRaw": 10,
+            "replayMultiplier": 1,
+            "price": 3.2,
+            "factor": 0.32,
+            "baseText": "【入场曲】抽取1张卡牌。",
+            "deliveredGain": 8.049999999999997,
+            "minimumDelivered": 6.9
+          },
+          "tokens": [
+            {
+              "id": "upgrade-2246020650",
+              "name": "召唤疾驰完成形回归228·完成形",
+              "class": 0,
+              "type": "follower",
+              "cost": 3,
+              "attack": 3,
+              "health": 2,
+              "custom": true,
+              "upgrade": true,
+              "text": "【入场曲】抽取1张卡牌。\n\n自己的回合结束时，对对手的战场上的随机1个随从造成8点伤害。",
+              "abilities": [
+                {
+                  "ids": [
+                    "bodyPayoff",
+                    "draw"
+                  ],
+                  "raw": 2.8,
+                  "boardValue": 0,
+                  "text": "【入场曲】抽取1张卡牌。",
+                  "tokens": [],
+                  "kind": "bodyPayoff",
+                  "trigger": "入场曲",
+                  "condition": "none",
+                  "bodyText": "抽取1张卡牌。",
+                  "price": 2.8,
+                  "major": true
+                },
+                {
+                  "ids": [
+                    "damage"
+                  ],
+                  "raw": 10,
+                  "boardValue": 0,
+                  "text": "自己的回合结束时，对对手的战场上的随机1个随从造成8点伤害。",
+                  "tokens": [],
+                  "kind": "effect",
+                  "trigger": "自己的回合结束时",
+                  "condition": "none",
+                  "price": 10,
+                  "bodyText": "对对手的战场上的随机1个随从造成8点伤害。"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tokens": [
+        {
+          "id": "upgrade-2246020650",
+          "name": "召唤疾驰完成形回归228·完成形",
+          "class": 0,
+          "type": "follower",
+          "cost": 3,
+          "attack": 3,
+          "health": 2,
+          "custom": true,
+          "upgrade": true,
+          "text": "【入场曲】抽取1张卡牌。\n\n自己的回合结束时，对对手的战场上的随机1个随从造成8点伤害。",
+          "abilities": [
+            {
+              "ids": [
+                "bodyPayoff",
+                "draw"
+              ],
+              "raw": 2.8,
+              "boardValue": 0,
+              "text": "【入场曲】抽取1张卡牌。",
+              "tokens": [],
+              "kind": "bodyPayoff",
+              "trigger": "入场曲",
+              "condition": "none",
+              "bodyText": "抽取1张卡牌。",
+              "price": 2.8,
+              "major": true
+            },
+            {
+              "ids": [
+                "damage"
+              ],
+              "raw": 10,
+              "boardValue": 0,
+              "text": "自己的回合结束时，对对手的战场上的随机1个随从造成8点伤害。",
+              "tokens": [],
+              "kind": "effect",
+              "trigger": "自己的回合结束时",
+              "condition": "none",
+              "price": 10,
+              "bodyText": "对对手的战场上的随机1个随从造成8点伤害。"
+            }
+          ]
+        }
+      ],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 15.130378056064249,
+      "spent": 6,
+      "bodyAllowance": 5,
+      "theme": "旅人 · 均衡与支援",
+      "chaos": true,
+      "chaosPower": {
+        "baseBudget": 12.890150894969702,
+        "bodyBonus": 1,
+        "effectMultiplier": 1.18
+      },
+      "bodyTrade": {
+        "lost": 2,
+        "payoffRaw": 2.8
+      },
+      "corePower": 2.8,
+      "progressTransform": {
+        "eventId": "evolutions",
+        "threshold": 3,
+        "task": {
+          "effort": 6,
+          "factor": 0.32,
+          "minimumGain": 7.699999999999999,
+          "effectCost": 6
+        },
+        "targetId": "upgrade-2246020650",
+        "style": "engine",
+        "changedIndex": null,
+        "discount": 0,
+        "discountRaw": 0,
+        "bonusRaw": 10,
+        "replayMultiplier": 1,
+        "price": 3.2,
+        "factor": 0.32,
+        "baseText": "【入场曲】抽取1张卡牌。",
+        "deliveredGain": 8.049999999999997,
+        "minimumDelivered": 6.9
+      },
+      "vanilla": false
+    }
+  }
+}

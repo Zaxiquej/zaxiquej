@@ -55,6 +55,10 @@
       if(p.effectId==='damage'&&!extra&&p.initial<card.cost*2)return false;
     }
     if(card.type!=='amulet')return true;
+    if(card.archetype==='evidenceAmulet'){
+      const reward=card.abilities.find(a=>a.ids.includes('banishedFromBoard'));
+      return !!reward&&reward.raw>=Math.max(1.5,(card.budget-.6)*.75);
+    }
     const finite=card.countdown!=null||card.abilities.some(a=>a.activation?.breaksSelf);
     if(card.cost<4&&!finite)return true;
     const r=readiness(card);return r.score>=r.minimum;
@@ -67,6 +71,20 @@
     const helpers=new Set(['enhance','activate','lastWordsAct','countdownAct','discardTrigger','exhaustibleCycle','handLuck']);
     const atoms=a=>a.kind==='keyword'?0:a.kind==='handTrigger'?1:Math.max(a.kind==='emblem'||a.kind==='ongoing'?1:0,(a.ids||[]).filter(id=>!helpers.has(id)).length);
     const effectCount=()=>card.abilities.reduce((n,a)=>n+atoms(a),0);
+    card.effectLimit=effectLimit;
+    // Evidence merges by banishing the previous carrier. That event is distinct
+    // from Last Words; consuming its final counter must not fire banish rewards.
+    if(!spell&&!alternate&&cost>=1&&cost<=3&&!card.abilities.length&&r()<([0,2,6].includes(cls)?.1:.035)){
+      card.countdown=null;card.archetype='evidenceAmulet';card.tribe='证据';
+      // The initial counter funds the paid draw below; do not charge it twice.
+      add({kind:'keyword',trigger:'',condition:'none',text:'【证据】',raw:0,price:0,ids:['evidenceCarrier']});
+      const text='抽取1张卡牌。使自己的战场上的证据-1。';
+      add({kind:'activation',trigger:'启动',condition:'none',text:'费用1【启动】'+text,bodyText:text,raw:2.8,price:.6,ids:['draw','activate','evidenceSpend'],activation:{fee:1,oncePerTurn:true,breaksSelf:false,evidenceAmount:1,credit:2.2}});
+      const trigger='本卡牌在战场上消失时';
+      const reward=makeEffect(remaining()/.8,trigger,'none',Math.max(1,(remaining()-.5)/.8),true,cost,false,{maxAtoms:rarity===0?1:2},['draw','heal','damage','tokenSummon','evidenceHand']);
+      if(reward)add({...reward,kind:'effect',trigger,condition:'none',bodyText:reward.text,text:trigger+'，'+reward.text,price:reward.raw*.8,ids:['banishedFromBoard',...reward.ids]});
+      return;
+    }
     // Finite amulets pay a card, PP and a board slot now. Small delayed
     // effects must not exhaust their complexity allowance while wasting PP.
     const minimumSpend=()=>!spell&&cost>0&&card.countdown!=null?card.budget*.68:cost>=7?card.budget*.55:0;

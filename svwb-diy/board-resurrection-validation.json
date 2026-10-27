@@ -1,0 +1,130 @@
+{
+  "version": "5.34.0",
+  "counts": {
+    "cards": 4000,
+    "wardLoops": 2,
+    "loops": 43,
+    "oneShotWard": 0,
+    "alternates": 145
+  },
+  "examples": {
+    "ward": {
+      "version": "5.34.0",
+      "name": "五格与复活回归3729",
+      "seed": 4138229783,
+      "type": "follower",
+      "class": 5,
+      "rarity": 2,
+      "cost": 6,
+      "attack": 2,
+      "health": 2,
+      "abilities": [
+        {
+          "kind": "resurrection",
+          "trigger": "谢幕曲",
+          "condition": "necromancy",
+          "resourceCost": 6,
+          "text": "【谢幕曲】【唤灵 6】召唤1个『五格与复活回归3729』。",
+          "bodyText": "【唤灵 6】召唤1个『五格与复活回归3729』。",
+          "raw": 12.950000000000001,
+          "price": 11.150000000000002,
+          "ids": [
+            "resurrectSelf"
+          ],
+          "tokens": [],
+          "resurrection": {
+            "material": "necromancy",
+            "amount": 6,
+            "credit": 1.7999999999999998,
+            "body": 3.2,
+            "retained": 0,
+            "repeats": 1.75,
+            "ward": true,
+            "wardPremium": 2.2,
+            "finalValuation": true
+          },
+          "major": true
+        },
+        {
+          "kind": "core",
+          "trigger": "进化时",
+          "condition": "none",
+          "text": "【进化时】发动【亡者召还 3】。",
+          "bodyText": "发动【亡者召还 3】。",
+          "price": 3.42,
+          "raw": 9,
+          "ids": [
+            "coreSupport",
+            "reanimate"
+          ],
+          "components": [
+            {
+              "id": "reanimate",
+              "text": "发动【亡者召还 3】。",
+              "raw": 9
+            }
+          ],
+          "tokens": [],
+          "major": true
+        },
+        {
+          "ids": [
+            "bodyPayoff",
+            "draw",
+            "missingHealthDamage"
+          ],
+          "raw": 8.4,
+          "boardValue": 0,
+          "text": "【入场曲】抽取2张卡牌。对对手的战场上的随机1个随从造成X点伤害。X为自己的主战者已损失的生命值（上限4）。",
+          "tokens": [],
+          "kind": "bodyPayoff",
+          "trigger": "入场曲",
+          "condition": "none",
+          "bodyText": "抽取2张卡牌。对对手的战场上的随机1个随从造成X点伤害。X为自己的主战者已损失的生命值（上限4）。",
+          "price": 8.4,
+          "major": true
+        },
+        {
+          "kind": "keyword",
+          "trigger": "",
+          "condition": "none",
+          "text": "【守护】",
+          "price": 0,
+          "raw": 0,
+          "ids": [
+            "守护"
+          ]
+        }
+      ],
+      "tokens": [],
+      "emblems": [],
+      "faiths": [],
+      "alternateForms": [],
+      "budget": 29.001815581694245,
+      "spent": 22.97,
+      "bodyAllowance": 4,
+      "theme": "幽夜 · 唤灵与谢幕",
+      "effectBodyReservation": {
+        "offered": 2,
+        "restored": 0
+      },
+      "archetype": "modularCore",
+      "corePower": 33.06,
+      "bodyTrade": {
+        "lost": 6,
+        "payoffRaw": 8.4
+      },
+      "bodyBalance": {
+        "before": [
+          3,
+          1
+        ],
+        "after": [
+          2,
+          2
+        ]
+      },
+      "vanilla": false
+    }
+  }
+}

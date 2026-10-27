@@ -1,20 +1,20 @@
 {
-  "version": "5.28.0",
+  "version": "5.32.0",
   "counts": {
     "followers": 1500,
     "spells": 650,
     "amulets": 350,
-    "alternate": 138,
-    "crystallize": 39,
-    "accelerate": 99,
-    "retried": 6,
+    "alternate": 128,
+    "crystallize": 37,
+    "accelerate": 91,
+    "retried": 8,
     "counters": 59,
     "singleCounter": 51,
     "splitCounter": 8
   },
   "examples": {
     "reported": {
-      "version": "5.28.0",
+      "version": "5.32.0",
       "name": "真卡#437213",
       "seed": 1436210751,
       "type": "follower",
@@ -69,8 +69,8 @@
           "condition": "none",
           "text": "【超进化时】召唤1个『真卡#437213』。",
           "bodyText": "召唤1个『真卡#437213』。",
-          "price": 4.574999999999999,
-          "raw": 18.299999999999997,
+          "price": 3.6,
+          "raw": 14.4,
           "ids": [
             "coreAnchor",
             "selfCopy"
@@ -79,7 +79,7 @@
             {
               "id": "selfCopy",
               "text": "召唤1个『真卡#437213』。",
-              "raw": 18.299999999999997
+              "raw": 14.4
             }
           ],
           "tokens": [],
@@ -121,22 +121,23 @@
           "cost": 3,
           "type": "护符",
           "route": "amulet",
-          "text": "【启动】破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
+          "text": "【启动】破坏本卡牌。抽取1张卡牌。选择对手的战场上的1个随从，对其造成2点伤害。",
           "abilities": [
             {
               "ids": [
-                "splitDamage",
+                "draw",
+                "damage",
                 "activate"
               ],
-              "raw": 6.6000000000000005,
+              "raw": 5.3,
               "boardValue": 0,
-              "text": "【启动】破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
+              "text": "【启动】破坏本卡牌。抽取1张卡牌。选择对手的战场上的1个随从，对其造成2点伤害。",
               "tokens": [],
               "kind": "activation",
               "trigger": "启动",
               "condition": "none",
-              "bodyText": "破坏本卡牌。对对手的战场上的所有随从分配6点伤害。",
-              "price": 6.6000000000000005,
+              "bodyText": "破坏本卡牌。抽取1张卡牌。选择对手的战场上的1个随从，对其造成2点伤害。",
+              "price": 5.3,
               "activation": {
                 "fee": 0,
                 "oncePerTurn": true,
@@ -148,7 +149,7 @@
           ],
           "countdown": null,
           "budget": 7.6,
-          "spent": 6.6,
+          "spent": 5.3,
           "tokens": [],
           "emblemIds": [],
           "strategyContext": [],
@@ -156,7 +157,7 @@
         }
       ],
       "budget": 44.99797732420266,
-      "spent": 14.13,
+      "spent": 13.16,
       "bodyAllowance": 16,
       "theme": "幽夜 · 唤灵与谢幕",
       "highRole": "offense",
@@ -174,7 +175,7 @@
         "oncePerTurn": false
       },
       "archetype": "modularCore",
-      "corePower": 27.899999999999995,
+      "corePower": 23.999999999999996,
       "discountBodyTrade": {
         "expected": 4.199999999999999,
         "valueFactor": 1,
@@ -187,7 +188,7 @@
           8,
           8
         ],
-        "bodyCap": 30,
+        "bodyCap": 31,
         "budgetCap": 44.99797732420266,
         "after": [
           8,
@@ -197,7 +198,7 @@
       "vanilla": false
     },
     "damage": {
-      "version": "5.28.0",
+      "version": "5.32.0",
       "name": "低费兑现回归365",
       "seed": 2516215814,
       "type": "spell",
@@ -236,17 +237,17 @@
         },
         {
           "ids": [
-            "boost"
+            "earth"
           ],
-          "raw": 2,
+          "raw": 3.2,
           "boardValue": 0,
-          "text": "若为超进化已解禁的回合，则使自己的所有手牌发动1次魔力增幅。",
+          "text": "若为超进化已解禁的回合，则使自己的战场上的土之印+2。",
           "tokens": [],
           "kind": "effect",
           "trigger": "法术",
           "condition": "superUnlocked",
-          "price": 1,
-          "bodyText": "若为超进化已解禁的回合，则使自己的所有手牌发动1次魔力增幅。",
+          "price": 1.6,
+          "bodyText": "若为超进化已解禁的回合，则使自己的战场上的土之印+2。",
           "resourceCost": 0,
           "conditionAmount": 0,
           "minPayoff": 2
@@ -257,7 +258,7 @@
       "faiths": [],
       "alternateForms": [],
       "budget": 5.388239510154351,
-      "spent": 4.1,
+      "spent": 4.7,
       "bodyAllowance": 0,
       "theme": "秘法 · 增幅与土印",
       "chaos": true,
@@ -279,7 +280,7 @@
       "vanilla": false
     },
     "splitDamage": {
-      "version": "5.28.0",
+      "version": "5.32.0",
       "name": "低费兑现回归1316",
       "seed": 4008346185,
       "type": "spell",

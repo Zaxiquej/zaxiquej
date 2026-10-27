@@ -1,0 +1,3838 @@
+[
+  {
+    "name": "条件价值审阅40",
+    "cost": 10,
+    "type": "follower",
+    "body": [
+      8,
+      12
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 14.97,
+        "price": 10.1796,
+        "text": "【入场曲】若为【觉醒】，则【模式】选择1个能力发动。\n（1）回复自己的主战者8点生命值。\n（2）召唤2个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅54",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 9.175,
+        "price": 3.4710000000000005,
+        "text": "【入场曲】【连击 4】抽取1张卡牌。将1张『妖精』加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅55",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 7,
+        "price": 5.2,
+        "text": "随机舍弃自己的2张手牌。选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅69",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6,
+        "price": 1.1400000000000001,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则本随从进化。"
+      },
+      {
+        "condition": "singleton",
+        "raw": 7.5,
+        "price": 4.14,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅73",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 3.8,
+        "price": 2.584,
+        "text": "若为【觉醒】，则对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅93",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 11.25,
+        "price": 6.27,
+        "text": "【进化时】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成5点伤害。将对手的手牌中的随机1张卡牌的复制卡牌各1张以非公开形式加入自己的手牌。对对手的战场上的所有随从分配2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅118",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 10.3,
+        "price": 2.827200000000001,
+        "text": "【进化时】【连击 3】选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。对对手的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅121",
+    "cost": 8,
+    "type": "amulet",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 8.100000000000001,
+        "price": 1.9380000000000006,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则对对手的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅127",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.399999999999999,
+        "price": 5.745599999999998,
+        "text": "【超进化时】【连击 2】对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅128",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.25,
+        "price": 3.36,
+        "text": "【入场曲】【连击 3】选择对手的战场上的1个随从，对其造成5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅144",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7,
+        "price": 2.34,
+        "text": "【入场曲】【连击 4】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。使自己的战场上的其他所有随从+1/+0。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅152",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      7,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 11.05,
+        "price": 2.3125,
+        "text": "【超进化时】随机舍弃自己的2张手牌。【模式】选择1个能力发动。\n（1）召唤1个『条件价值审阅152』。\n（2）使自己的能量点最大值+1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅176",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "ppFull",
+        "raw": 14.3,
+        "price": 2.8600000000000003,
+        "text": "【超进化时】若自己的能量点最大值为10，则召唤1个『巨翼飞龙』。召唤1个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅186",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 2.5,
+        "price": 1.7,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，对对手的战场上的所有随从分配2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅190",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      3,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 3.2,
+        "text": "自己的回合结束时，【连击 3】对对手的战场上的随机1个随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅191",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 10,
+        "price": 2.128,
+        "text": "【进化时】若自己的牌组中没有重复随从，则对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅216",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 9.8,
+        "price": 2.436,
+        "text": "【入场曲】【连击 5】将2张『年幼宝石兽』加入手牌。选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅223",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 15.014700000000001,
+        "price": 13.064700000000002,
+        "text": "【谢幕曲】召唤1个『条件价值审阅223』。对自己的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅291",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 9.2,
+        "price": 2.0999999999999996,
+        "text": "【超进化时】对自己的主战者造成1点伤害。然后，从自己的牌组中随机将2张费用为5或以上的随从加入手牌。将2张『蝙蝠』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅300",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅320",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      4,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.399999999999999,
+        "price": 3.1616,
+        "text": "【进化时】【连击 3】对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅333",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.8,
+        "price": 2.432,
+        "text": "【入场曲】【连击 3】将2张『年幼宝石兽』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅361",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5.3,
+        "price": 2.752,
+        "text": "【入场曲】【连击 3】抽取1张卡牌。对对手的战场上的所有随从分配2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅363",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5.65,
+        "price": 4.2940000000000005,
+        "text": "【入场曲】【连击 2】【模式】选择1个能力发动。\n（1）从自己的牌组中随机将1张费用为3或以下的随从加入手牌。\n（2）选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅366",
+    "cost": 9,
+    "type": "follower",
+    "body": [
+      6,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 22.05,
+        "price": 3.8100000000000005,
+        "text": "【超进化时】【土之秘术 2】对对手的主战者造成4点伤害。选择对手的战场上的1个随从，对其造成9点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅367",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 10.8,
+        "price": 3.4960000000000004,
+        "text": "【进化时】对自己的主战者造成2点伤害。然后，召唤2个『守卫犬的右腕·米米』。"
+      },
+      {
+        "condition": "lowHealth",
+        "raw": 10.8,
+        "price": 2.4024,
+        "text": "【谢幕曲】若自己的主战者的生命值为12或以下，则召唤2个『守卫犬的右腕·米米』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅391",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.25,
+        "price": 1.65,
+        "text": "对自己的主战者造成2点伤害。然后，选择自己的1张手牌，使其返回牌组。抽取1张卡牌。选择对手的战场上的1个随从，对其造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅417",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 9.8,
+        "price": 3.0056000000000007,
+        "text": "【谢幕曲】【土之秘术 2】回复自己的主战者4点生命值。对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅498",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅504",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.75,
+        "price": 2.15,
+        "text": "【入场曲】对自己的主战者造成2点伤害。然后，选择对手的战场上的1个随从，对其造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅518",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.8,
+        "price": 2.0799999999999996,
+        "text": "【土之秘术 1】对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅521",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 8.25,
+        "price": 1.995,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从造成2点伤害。\n（2）将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。回复自己1点能量点。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅525",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 8.75,
+        "price": 2.185,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成7点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅532",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.25,
+        "price": 3.23,
+        "text": "【入场曲】【连击 2】从自己的牌组中随机将1张费用为5或以上的随从加入手牌。使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅604",
+    "cost": 10,
+    "type": "follower",
+    "body": [
+      11,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 23.220000000000006,
+        "price": 20.820000000000007,
+        "text": "【谢幕曲】【土之秘术 3】召唤1个『条件价值审阅604』。"
+      },
+      {
+        "condition": "earth",
+        "raw": 6,
+        "price": 3.84,
+        "text": "【入场曲】【土之秘术 1】本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅605",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      5,
+      9
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 14,
+        "price": 8.450000000000001,
+        "text": "【入场曲】若本卡牌的费用不为7，则本随从超进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅615",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.4,
+        "price": 2.5480000000000005,
+        "text": "【入场曲】【连击 4】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。对对手的主战者造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅626",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 3.75,
+        "price": 2.85,
+        "text": "【连击 2】选择对手的战场上的1个随从，对其造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅648",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则将2张『改良型·悬丝傀儡』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅652",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 4.4,
+        "price": 2.5600000000000005,
+        "text": "【入场曲】【土之秘术 1】【模式】选择1个能力发动。\n（1）选择对手的战场上的1个随从，对其造成3点伤害。\n（2）将1张『式神·小纸人』加入手牌，使这些卡牌的费用-1。"
+      },
+      {
+        "condition": "earth",
+        "raw": 10.4,
+        "price": 1.8400000000000003,
+        "text": "【超进化时】【土之秘术 1】抽取2张卡牌。将1张『玛纳利亚魔弹』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅657",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.25,
+        "price": 1.235,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅680",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 8.35,
+        "price": 2.033,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成5点伤害。选择战场上的1个其他随从，使其+1/-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅683",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 4.4,
+        "price": 3.7,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。对生命值最小的所有主战者造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅706",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 6,
+        "price": 3.84,
+        "text": "【入场曲】【土之秘术 1】本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅713",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      3,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.3125,
+        "price": 3.718,
+        "text": "自己的『天晶魔手』进入战场时，【土之秘术 1】抽取1张卡牌。若为超进化已解禁的回合，则使以此抽取的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅729",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.72,
+        "price": 2.7144,
+        "text": "【入场曲】【连击 4】回复自己的主战者5点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅733",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 2.56,
+        "text": "【入场曲】【连击 3】选择对手的战场上的1个随从，使其返回手牌。"
+      },
+      {
+        "condition": "combo",
+        "raw": 15.2,
+        "price": 3.0135,
+        "text": "【超进化时】【连击 3】对对手的战场上的所有随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅743",
+    "cost": 9,
+    "type": "follower",
+    "body": [
+      7,
+      9
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 6,
+        "price": 5.2,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅749",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 2.8,
+        "price": 1.904,
+        "text": "若为【觉醒】，则抽取1张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅754",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 10.6,
+        "price": 2.3104000000000005,
+        "text": "【进化时】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成4点伤害。使自己的所有手牌的奥义槽+2。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅786",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 11.2,
+        "price": 5,
+        "text": "【入场曲】【唤灵 6】发动【亡者召还 2】。召唤1个『腐臭的僵尸』。召唤1个『骸骨士兵』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅793",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 6.25,
+        "price": 4.85,
+        "text": "【入场曲】【唤灵 2】选择对手的战场上的1个随从，对其造成5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅799",
+    "cost": 3,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 2.5,
+        "price": 0.9750000000000001,
+        "text": "若本卡牌的费用不为3，则选择对手的战场上的1个随从，对其造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅814",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.6,
+        "price": 2.1319999999999997,
+        "text": "【入场曲】【连击 4】抽取2张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅825",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 8.600000000000001,
+        "price": 1.5200000000000005,
+        "text": "【超进化时】若本卡牌的费用不为2，则选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张法术加入手牌。召唤2个『泥尘巨像』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅838",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.4,
+        "price": 2.5999999999999996,
+        "text": "对自己的主战者造成1点伤害。然后，召唤2个『蝙蝠』。使这些随从获得【突进】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅850",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 3.6,
+        "price": 2.9000000000000004,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。选择自己的战场上的1个其他随从，使其+2/+2。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅870",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 5.4,
+        "price": 4,
+        "text": "【入场曲】【唤灵 2】召唤1个『守卫犬的右腕·米米』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅876",
+    "cost": 4,
+    "type": "amulet",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 8.100000000000001,
+        "price": 1.9380000000000006,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则对对手的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅882",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅884",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 4,
+        "price": 2.2399999999999998,
+        "text": "【土之秘术 1】使自己的所有手牌发动2次魔力增幅。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅889",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5.3,
+        "price": 2.752,
+        "text": "【连击 3】抽取1张卡牌。对对手的战场上的所有随从分配2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅895",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 7,
+        "price": 6.2,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅902",
+    "cost": 7,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 11.399999999999999,
+        "price": 9.999999999999998,
+        "text": "【唤灵 2】对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅928",
+    "cost": 8,
+    "type": "follower",
+    "body": [
+      4,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 15.2,
+        "price": 3.04,
+        "text": "【超进化时】若为【觉醒】，则对对手的战场上的所有随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅953",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11,
+        "price": 2.9399999999999995,
+        "text": "【入场曲】【连击 5】选择自己的2张手牌，使其返回牌组。抽取2张卡牌。选择自己的战场上的1张其他卡牌，使其返回手牌。将2张『森林的奥秘』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1020",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.399999999999999,
+        "price": 6.655999999999999,
+        "text": "【入场曲】【连击 3】对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1022",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      3,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 11.399999999999999,
+        "price": 2.5536,
+        "text": "【进化时】若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1025",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 14.4,
+        "price": 3.1160000000000005,
+        "text": "【进化时】【唤灵 6】【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从分配11点伤害。\n（2）发动【亡者召还 4】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1027",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 7.050000000000001,
+        "price": 3.250000000000001,
+        "text": "【入场曲】【唤灵 4】【模式】选择1个能力发动。\n（1）使自己的战场上的所有亡者·随从+3/+1。\n（2）选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1028",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.4,
+        "price": 2.5999999999999996,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，召唤2个『蝙蝠』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1042",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5.65,
+        "price": 2.9760000000000004,
+        "text": "【入场曲】【连击 3】【模式】选择1个能力发动。\n（1）将2张『年幼宝石兽』加入手牌。\n（2）使自己的战场上的其他所有随从+2/+0。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1055",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.8,
+        "price": 2.0799999999999996,
+        "text": "【入场曲】【土之秘术 1】召唤1个『式神·小纸人』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1068",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 2.56,
+        "text": "【入场曲】【连击 3】使自己的战场上的其他所有随从+2/+0。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1080",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 4.25,
+        "price": 2.65,
+        "text": "【入场曲】对自己的主战者造成2点伤害。然后，从自己的牌组中随机将1张费用为3或以下的随从加入手牌。使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1087",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.3,
+        "price": 1.6799999999999997,
+        "text": "【土之秘术 1】回复自己的主战者2点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1137",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.8,
+        "price": 1.444,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则将随机2种与本次对战中被破坏的自己的随从同名的卡牌各1张以非公开形式加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1139",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 2.8,
+        "price": 2.0999999999999996,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。抽取1张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1141",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      6,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 10.7,
+        "price": 3.653999999999999,
+        "text": "【入场曲】若自己的主战者的生命值为12或以下，则召唤1个『炽炎幼龙』。召唤1个『大海虎鲸』。召唤1个『乙姬近卫队』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1142",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 2.56,
+        "text": "【入场曲】【连击 3】选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1153",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.399999999999999,
+        "price": 2.7056,
+        "text": "【进化时】【连击 4】对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1176",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.3,
+        "price": 1.6799999999999997,
+        "text": "【土之秘术 1】回复自己的主战者2点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1243",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 16,
+        "price": 2.4000000000000004,
+        "text": "【超进化时】【连击 5】抽取1张卡牌。选择对手的战场上的1个随从，使其获得「回合结束时，对自己的主战者造成2点伤害。本随从-2/-0」。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1258",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      3,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7,
+        "price": 2.34,
+        "text": "【入场曲】【连击 4】选择对手的战场上的1个随从，对其造成4点伤害。将2张『妖精』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1266",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      7,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 11.2,
+        "price": 3.1159999999999997,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。选择战场上的1个其他随从，使其+4/-4。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1269",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 2.8,
+        "price": 1.9999999999999998,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，召唤2个『骸骨士兵』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1272",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      3,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 7.6,
+        "price": 1.4720000000000002,
+        "text": "【入场曲】若自己的主战者的生命值为10或以下，则对对手的战场上的所有随从造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1273",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      4,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.2,
+        "price": 2.4440000000000004,
+        "text": "【入场曲】【连击 4】将2张『森林的奥秘』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1296",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      0,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 3.15,
+        "price": 2.142,
+        "text": "【入场曲】若为【觉醒】，则【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从分配2点伤害。\n（2）选择对手的战场上的1个随从，对其造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1300",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.25,
+        "price": 1.235,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成5点伤害。"
+      },
+      {
+        "condition": "singleton",
+        "raw": 10,
+        "price": 2.5840000000000005,
+        "text": "【进化时】若自己的牌组中没有重复随从，则对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1316",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 10,
+        "price": 2.4320000000000004,
+        "text": "【进化时】若自己的主战者的生命值为12或以下，则对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1340",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 7.6,
+        "price": 2.3104000000000005,
+        "text": "【进化时】若为【觉醒】，则召唤2个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1387",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      4,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4,
+        "price": 1.92,
+        "text": "【入场曲】【连击 3】本随从+3/+1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1388",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 10,
+        "price": 2.5199999999999996,
+        "text": "【入场曲】【连击 5】对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1389",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7,
+        "price": 3.84,
+        "text": "【连击 3】选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1412",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 4.279999999999999,
+        "price": 2.6799999999999993,
+        "text": "【入场曲】对自己的主战者造成2点伤害。然后，召唤1个『守卫犬的左腕·可可』。使这些随从获得【虹吸】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1423",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 2.5,
+        "price": 1.9,
+        "text": "【连击 2】选择对手的战场上的1个随从，对其造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1476",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.7479999999999998,
+        "text": "【攻击时】若自己的牌组中没有重复随从，则破坏对手的战场上的随机1个随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1478",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 15.2,
+        "price": 3.04,
+        "text": "【超进化时】【连击 2】召唤2个『温厚的树精』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1513",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 5.3,
+        "price": 4.6,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。将2张『大海虎鲸』加入手牌。使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1514",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 7.6,
+        "price": 2.3104000000000005,
+        "text": "【进化时】若为【觉醒】，则召唤2个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1520",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 7.5,
+        "price": 3.06,
+        "text": "【土之秘术 2】选择对手的战场上的1个随从，对其造成6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1540",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 2.56,
+        "text": "【入场曲】【连击 3】选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1567",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.6,
+        "price": 2.1319999999999997,
+        "text": "【入场曲】【连击 4】抽取2张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1584",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.97,
+        "price": 0.9805900000000001,
+        "text": "【谢幕曲】若自己的牌组中没有重复随从，则回复自己的主战者5点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1603",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 10.23,
+        "price": 2.8059200000000004,
+        "text": "【进化时】【连击 3】回复自己的主战者5点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1638",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.8,
+        "price": 2.0799999999999996,
+        "text": "【土之秘术 1】对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1646",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 4.86,
+        "price": 3.2600000000000002,
+        "text": "【谢幕曲】【土之秘术 2】召唤1个『条件价值审阅1646』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1650",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1652",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 0.9880000000000001,
+        "text": "【谢幕曲】若自己的牌组中没有重复随从，则破坏对手的战场上的随机1个随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1653",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 16.2,
+        "price": 4.0128,
+        "text": "【进化时】【土之秘术 2】召唤1个『式神·天后』。召唤1个『沉溺的实验体』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1665",
+    "cost": 10,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 14.580000000000002,
+        "price": 12.180000000000001,
+        "text": "【谢幕曲】【土之秘术 3】召唤1个『条件价值审阅1665』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1677",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 7.5,
+        "price": 1.4400000000000004,
+        "text": "若自己的主战者的生命值为10或以下，则选择对手的战场上的1个随从，对其造成6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1691",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 6,
+        "price": 3.25,
+        "text": "【入场曲】若本卡牌的费用不为3，则本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1735",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.399999999999999,
+        "price": 3.4656000000000002,
+        "text": "【进化时】【连击 2】对对手的战场上的所有随从造成3点伤害。"
+      },
+      {
+        "condition": "combo",
+        "raw": 7.2,
+        "price": 5.494000000000001,
+        "text": "【入场曲】【连击 3】将2张『森林的奥秘』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1739",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 3.8,
+        "text": "【连击 2】使自己的战场上的所有随从+1/+0。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1779",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 12.4,
+        "price": 5.868800000000001,
+        "text": "【进化时】【土之秘术 1】召唤2个『式神·暴鬼』。使这些随从获得【守护】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1804",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.7,
+        "price": 3.572,
+        "text": "【入场曲】【连击 2】抽取1张卡牌。使以此抽取的卡牌的费用-2。"
+      },
+      {
+        "condition": "combo",
+        "raw": 6.3999999999999995,
+        "price": 5.632,
+        "text": "【入场曲】【连击 2】召唤1个『新绿的妖精』。召唤1个『妖精』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1828",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      8,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 20.15,
+        "price": 7.915507692307693,
+        "text": "【进化时】【土之秘术 3】选择对手的战场上的1个随从，对其造成7点伤害。对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1833",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 7.2,
+        "price": 2.4320000000000004,
+        "text": "【进化时】对自己的主战者造成1点伤害。然后，召唤1个『条件价值审阅1833』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1842",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 6,
+        "price": 1.0919999999999999,
+        "text": "【谢幕曲】若自己的主战者的生命值为12或以下，则对对手的战场上的随机1个随从造成X点伤害。X为自己的主战者已损失的生命值（上限6）。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1859",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.4,
+        "price": 3.4560000000000004,
+        "text": "【入场曲】【连击 3】抽取1张卡牌。将1张『森林的奥秘』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1864",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 3.8,
+        "price": 2.584,
+        "text": "【入场曲】若为【觉醒】，则召唤1个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1866",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      7,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 9,
+        "price": 3.078,
+        "text": "【进化时】随机舍弃自己的1张手牌。使自己的能量点最大值+1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1879",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.25,
+        "price": 3.36,
+        "text": "【连击 3】对对手的战场上的所有随从分配5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1885",
+    "cost": 4,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 7.6,
+        "price": 5.12,
+        "text": "【土之秘术 1】对对手的战场上的所有随从造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1898",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 8.6,
+        "price": 4.435199999999999,
+        "text": "【交战时】若自己的主战者的生命值为12或以下，则召唤1个『怨灵』。召唤1个『腐臭的僵尸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1911",
+    "cost": 7,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 8.100000000000001,
+        "price": 6.300000000000002,
+        "text": "随机舍弃自己的2张手牌。对对手的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1955",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 1.65,
+        "price": 1.122,
+        "text": "若为【觉醒】，则回复自己的主战者1点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1969",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 14.17,
+        "price": 3.0916800000000006,
+        "text": "【进化时】【连击 5】抽取1张卡牌。使自己的战场上的其他所有随从+1/+1。回复自己的主战者5点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1970",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.15,
+        "price": 2.418,
+        "text": "【入场曲】【连击 4】选择对手的战场上的1个随从，对其造成3点伤害。将2张『新绿的妖精』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1992",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      4,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 5.65,
+        "price": 4.8500000000000005,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，【模式】选择1个能力发动。\n（1）选择对手的战场上的1个随从，对其造成4点伤害。\n（2）抽取1张卡牌。若自己的主战者的生命值为12或以下，则使以此抽取的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅1993",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      3,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.625,
+        "price": 5.795,
+        "text": "【入场曲】【连击 2】将1张『条件价值审阅1993的森灵』加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-2。"
+      },
+      {
+        "condition": "combo",
+        "raw": 3.75,
+        "price": 4.125,
+        "text": "自己的回合结束时，【连击 2】对对手的战场上的随机1个随从造成3点伤害。"
+      },
+      {
+        "condition": "combo",
+        "raw": 18.3,
+        "price": 4.2090000000000005,
+        "text": "【超进化时】【连击 2】召唤2个『条件价值审阅1993的森灵』。使这些随从获得【突进】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2009",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      7,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 5,
+        "price": 4.2,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2017",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 13.5,
+        "price": 11.7,
+        "text": "【谢幕曲】【唤灵 6】召唤1个『条件价值审阅2017』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2026",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 15.660000000000004,
+        "price": 14.160000000000004,
+        "text": "【谢幕曲】【唤灵 5】召唤1个『条件价值审阅2026』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2027",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      3,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 13.75,
+        "price": 6.8810769230769235,
+        "text": "【超进化时】【连击 3】对对手的战场上的所有随从分配11点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2033",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 13.75,
+        "price": 2.9640000000000004,
+        "text": "【进化时】【连击 5】选择对手的战场上的1个随从，对其造成6点伤害。对对手的战场上的所有随从分配5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2047",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 3.75,
+        "price": 1.5275,
+        "text": "【谢幕曲】【唤灵 2】对对手的战场上的随机1个随从造成3点伤害。"
+      },
+      {
+        "condition": "necromancy",
+        "raw": 7.72,
+        "price": 0.9880000000000003,
+        "text": "【谢幕曲】【唤灵 6】回复自己的主战者5点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2090",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      5,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.2,
+        "price": 1.9456000000000004,
+        "text": "【交战时】若自己的牌组中没有重复随从，则抽取1张卡牌。本随从+1/+3。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2097",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      7,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6,
+        "price": 4.5600000000000005,
+        "text": "【入场曲】【连击 2】本随从进化。"
+      },
+      {
+        "condition": "combo",
+        "raw": 6.15,
+        "price": 5.412,
+        "text": "【入场曲】【连击 2】【模式】选择1个能力发动。\n（1）对对手的主战者造成1点伤害。\n（2）选择对手的战场上的1个随从，使其变身为『妖精』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2110",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 12.599999999999998,
+        "price": 3.8304,
+        "text": "【进化时】【连击 2】选择自己的1张手牌，使其变身为对手的牌组中的随机1张卡牌的复制卡牌。对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2131",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 9,
+        "price": 1.9760000000000002,
+        "text": "【进化时】【唤灵 4】使对手的战场上的所有随从-1/-2。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2140",
+    "cost": 10,
+    "type": "follower",
+    "body": [
+      12,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 19,
+        "price": 3.8000000000000003,
+        "text": "【超进化时】若为【觉醒】，则对对手的战场上的所有随从造成5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2145",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 10.6,
+        "price": 2.7719999999999994,
+        "text": "【入场曲】【连击 5】将2张『森林的奥秘』加入手牌。将2张『新绿的妖精』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2162",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 1.3,
+        "price": 0.8840000000000001,
+        "text": "若为【觉醒】，则选择自己的手牌中的1张随从，使其+0/+1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2172",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.05,
+        "price": 1.952,
+        "text": "【连击 3】抽取1张卡牌。对对手的战场上的所有随从分配1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2181",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 11.95,
+        "price": 2.7208,
+        "text": "【进化时】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成4点伤害。将随机1张与本次对战中被破坏的自己的创造物·随从同名的卡牌以非公开形式加入手牌。将1张『改良型·悬丝傀儡』加入手牌。使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2217",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6,
+        "price": 1.1400000000000001,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2224",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 2.2,
+        "price": 1.4000000000000001,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2248",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6,
+        "price": 1.1400000000000001,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2254",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      3,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 9.4,
+        "price": 2.268,
+        "text": "【入场曲】【连击 5】将1张『森林的奥秘』加入手牌。选择自己的1张手牌，使其返回牌组。从自己的牌组中随机将1张费用为3或以下的随从加入手牌。选择自己的战场上的1个其他随从，使其+2/+2。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2274",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 3.8,
+        "price": 1.8199999999999998,
+        "text": "【入场曲】若本卡牌的费用不为2，则对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2281",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 11.120000000000001,
+        "price": 4.482400000000001,
+        "text": "【入场曲】【连击 4】召唤2个『年幼宝石兽』。使这些随从获得【虹吸】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2283",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.25,
+        "price": 2.08,
+        "text": "【连击 3】从自己的牌组中随机将1张费用为3或以下的随从加入手牌。使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2301",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 5.8,
+        "price": 2,
+        "text": "【入场曲】【唤灵 4】选择自己的1张手牌，使其返回牌组。抽取2张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2330",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      3,
+      8
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 5,
+        "price": 4.864000000000001,
+        "text": "【交战时】【土之秘术 1】对交战对手造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2334",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      2,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 8.25,
+        "price": 5.61,
+        "text": "【入场曲】若为【觉醒】，则【模式】选择1个能力发动。\n（1）召唤2个『大海虎鲸』。\n（2）对对手的战场上的所有随从造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2363",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.6,
+        "price": 4.8576,
+        "text": "【攻击时】【连击 3】召唤2个『年幼宝石兽』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2368",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "ppFull",
+        "raw": 6,
+        "price": 3.5999999999999996,
+        "text": "【入场曲】若自己的能量点最大值为10，则本随从进化。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2369",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 13,
+        "price": 5.04,
+        "text": "【进化时】若自己的牌组中没有重复随从，则从自己的牌组中随机将1张费用为3或以下的随从加入手牌。对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2391",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 5,
+        "price": 3.8,
+        "text": "【入场曲】【连击 2】选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2398",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 14.580000000000002,
+        "price": 12.630000000000003,
+        "text": "【谢幕曲】召唤1个『条件价值审阅2398』。对自己的主战者造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2399",
+    "cost": 6,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 2.2,
+        "price": 1.4960000000000002,
+        "text": "若为【觉醒】，则抽取1张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2409",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 10.2,
+        "price": 2.1888,
+        "text": "【进化时】【土之秘术 2】召唤1个『式神·暴鬼』。使这些随从获得【守护】。使自己的所有手牌发动2次魔力增幅。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2425",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 5.2,
+        "price": 2.795,
+        "text": "【谢幕曲】随机舍弃自己的1张手牌。召唤1个『乙姬近卫队』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2427",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 2,
+        "price": 0.65,
+        "text": "若本卡牌的费用不为2，则使自己的所有手牌发动1次魔力增幅。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2430",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 6.6000000000000005,
+        "price": 5.161200000000001,
+        "text": "【攻击时】若为【觉醒】，则使对手的战场上的随机1个随从-2/-3。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2450",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3,
+        "price": 1.4400000000000002,
+        "text": "【土之秘术 1】从自己的牌组中随机将1张法术加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2453",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.6000000000000005,
+        "price": 3.5840000000000005,
+        "text": "【连击 3】抽取3张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2458",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 5,
+        "price": 2.6,
+        "text": "【入场曲】若本卡牌的费用不为4，则选择对手的战场上的1个随从，对其造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2467",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "ppFull",
+        "raw": 5,
+        "price": 1.9500000000000002,
+        "text": "【谢幕曲】若自己的能量点最大值为10，则对对手的战场上的随机1个随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2479",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7,
+        "price": 3.84,
+        "text": "【入场曲】【连击 3】将对手的牌组中的随机1张卡牌的复制卡牌各1张以非公开形式加入自己的手牌。召唤1个『新绿的妖精』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2482",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.6,
+        "price": 2.6519999999999997,
+        "text": "【入场曲】【连击 4】对对手的战场上的所有随从造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2496",
+    "cost": 5,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 3.75,
+        "price": 2.85,
+        "text": "【连击 2】选择对手的战场上的1个随从，对其造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2498",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 16.6,
+        "price": 3.3200000000000003,
+        "text": "【超进化时】【连击 2】抽取2张卡牌。召唤1个『温厚的树精』。召唤1个『新绿的妖精』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2513",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.3,
+        "price": 2.496,
+        "text": "【入场曲】【连击 4】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。将1张『森林的奥秘』加入手牌。将1张『新绿的妖精』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2525",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 10,
+        "price": 2.5199999999999996,
+        "text": "【入场曲】【连击 5】对对手的战场上的所有随从分配8点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2549",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.5,
+        "price": 2.6,
+        "text": "【连击 4】对对手的战场上的所有随从分配6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2553",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 8.3,
+        "price": 1.3650000000000009,
+        "text": "【谢幕曲】【唤灵 6】发动【亡者召还 2】。对对手的战场上的所有随从造成1点伤害。"
+      },
+      {
+        "condition": "selfDamage",
+        "raw": 14.600000000000001,
+        "price": 3.45,
+        "text": "【超进化时】对自己的主战者造成1点伤害。然后，从自己的牌组中随机将2张拥有【入场曲】的随从加入手牌。选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2568",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 2.7,
+        "price": 1.8360000000000003,
+        "text": "【入场曲】若为【觉醒】，则对对手的主战者造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2597",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      1,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 13.599999999999998,
+        "price": 2.5199999999999996,
+        "text": "【超进化时】【连击 3】抽取1张卡牌。对对手的战场上的所有随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2603",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      2,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 9,
+        "price": 2.7360000000000007,
+        "text": "【进化时】若为【觉醒】，则使自己的能量点最大值+1。"
+      },
+      {
+        "condition": "overflow",
+        "raw": 6.6,
+        "price": 3.6036,
+        "text": "【谢幕曲】若为【觉醒】，则抽取2张卡牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2610",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      4,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 3.8,
+        "price": 2.0799999999999996,
+        "text": "【入场曲】【土之秘术 1】召唤1个『式神·小纸人』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2647",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      6,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.5,
+        "price": 1.33,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则抽取2张卡牌。选择战场上的1个其他随从，使其+1/-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2648",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      6
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 15.2,
+        "price": 2.64,
+        "text": "【超进化时】若自己的主战者的生命值为12或以下，则对对手的战场上的所有随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2653",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 6.25,
+        "price": 3.36,
+        "text": "【连击 3】对对手的战场上的所有随从分配5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2655",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.5,
+        "price": 2.2800000000000002,
+        "text": "【进化时】【连击 2】选择对手的战场上的1个随从，对其造成6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2657",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      4,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.5,
+        "price": 2.2800000000000002,
+        "text": "【进化时】【连击 2】选择对手的战场上的1个随从，对其造成6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2660",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      6,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择战场上的1个其他随从，使其+2/-2。将随机1张与本次对战中被破坏的自己的随从同名的卡牌以非公开形式加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2663",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "overflow",
+        "raw": 3.8,
+        "price": 2.584,
+        "text": "【入场曲】若为【觉醒】，则召唤1个『大海虎鲸』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2673",
+    "cost": 8,
+    "type": "follower",
+    "body": [
+      13,
+      9
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 10.8,
+        "price": 2.475,
+        "text": "【超进化时】随机舍弃自己的1张手牌。对对手的主战者造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2687",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 6.16,
+        "price": 2.95,
+        "text": "自己的回合结束时，【唤灵 4】召唤1个『腐臭的僵尸』。使这些随从获得【虹吸】。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2699",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "lowHealth",
+        "raw": 15.2,
+        "price": 3.7088000000000005,
+        "text": "【进化时】若自己的主战者的生命值为10或以下，则对对手的战场上的所有随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2718",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      1,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 9.6,
+        "price": 2.3779999999999997,
+        "text": "【入场曲】【土之秘术 3】召唤2个『沉溺的实验体』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2733",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 6,
+        "price": 2.04,
+        "text": "【土之秘术 2】回复自己的主战者4点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2743",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.5,
+        "price": 2.6,
+        "text": "【连击 4】对对手的战场上的所有随从分配6点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2744",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.975,
+        "price": 1.8881249999999998,
+        "text": "自己的回合结束时，若自己的牌组中没有重复随从，则抽取1张卡牌。若为超进化已解禁的回合，则使以此抽取的卡牌的费用-1。对对手的战场上的所有随从造成1点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2752",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      4,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 12.049999999999999,
+        "price": 2.41,
+        "text": "【超进化时】【连击 2】【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从造成3点伤害。\n（2）选择自己的1张手牌，使其变身为对手的牌组中的随机1张卡牌的复制卡牌。回复自己的主战者6点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2755",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.25,
+        "price": 1.235,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成5点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2770",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 12.049999999999999,
+        "price": 3.9709999999999996,
+        "text": "【进化时】对自己的主战者造成2点伤害。然后，【模式】选择1个能力发动。\n（1）对对手的战场上的所有随从造成3点伤害。\n（2）召唤1个『条件价值审阅2770』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2774",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      4,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 14.580000000000002,
+        "price": 13.080000000000002,
+        "text": "【谢幕曲】【唤灵 5】召唤1个『条件价值审阅2774』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2779",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      7,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 7.2,
+        "price": 5.472,
+        "text": "【入场曲】【连击 2】将2张『森林的奥秘』加入手牌。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2789",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      4,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 4.050000000000001,
+        "price": 1.9520000000000004,
+        "text": "【入场曲】【连击 3】回复自己的主战者3点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2791",
+    "cost": 1,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "combo",
+        "raw": 9.1,
+        "price": 2.1419999999999995,
+        "text": "【连击 5】抽取2张卡牌。对对手的战场上的所有随从分配2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2792",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      3,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 7.6,
+        "price": 6.8,
+        "text": "【入场曲】对自己的主战者造成1点伤害。然后，对对手的战场上的所有随从造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2797",
+    "cost": 2,
+    "type": "spell",
+    "body": [
+      null,
+      null
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.7,
+        "price": 2.9000000000000004,
+        "text": "对自己的主战者造成1点伤害。然后，从自己的牌组中随机将1张费用为3或以下的随从加入手牌。若为超进化已解禁的回合，则使以此加入手牌的卡牌的费用-1。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2798",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 17.9415,
+        "price": 15.541500000000001,
+        "text": "【谢幕曲】【土之秘术 3】召唤1个『条件价值审阅2798』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2800",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      7,
+      7
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 5.5,
+        "price": 4.8,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。召唤1个『大海虎鲸』。召唤1个『炽炎幼龙』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2823",
+    "cost": 7,
+    "type": "follower",
+    "body": [
+      3,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 10.260000000000002,
+        "price": 8.96,
+        "text": "【谢幕曲】召唤1个『条件价值审阅2823』。对自己的主战者造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2843",
+    "cost": 3,
+    "type": "follower",
+    "body": [
+      3,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 11.35,
+        "price": 2.06245,
+        "text": "【谢幕曲】若自己的牌组中没有重复随从，则对对手的战场上的所有随从造成2点伤害。对对手的战场上的随机1个随从造成3点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2849",
+    "cost": 6,
+    "type": "follower",
+    "body": [
+      5,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "necromancy",
+        "raw": 12.42,
+        "price": 11.22,
+        "text": "【谢幕曲】【唤灵 4】召唤1个『条件价值审阅2849』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2862",
+    "cost": 5,
+    "type": "follower",
+    "body": [
+      5,
+      5
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 16.35,
+        "price": 5.073,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，对其造成7点伤害。对对手的战场上的所有随从造成2点伤害。"
+      },
+      {
+        "condition": "singleton",
+        "raw": 12,
+        "price": 4.70925,
+        "text": "【谢幕曲】若自己的牌组中没有重复随从，则破坏对手的战场上的随机1个随从。对对手的战场上的随机1个随从造成4点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2886",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 3.2,
+        "price": 2.5,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。召唤1个『条件价值审阅2886』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2887",
+    "cost": 1,
+    "type": "follower",
+    "body": [
+      1,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "costChanged",
+        "raw": 2.5,
+        "price": 0.9750000000000001,
+        "text": "【入场曲】若本卡牌的费用不为1，则选择对手的战场上的1个随从，对其造成2点伤害。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2899",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      2
+    ],
+    "abilities": [
+      {
+        "condition": "earth",
+        "raw": 4,
+        "price": 2.2399999999999998,
+        "text": "【入场曲】【土之秘术 1】使自己的所有手牌发动2次魔力增幅。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2923",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      2,
+      1
+    ],
+    "abilities": [
+      {
+        "condition": "selfDamage",
+        "raw": 3.4,
+        "price": 1.7999999999999998,
+        "text": "【入场曲】对自己的主战者造成2点伤害。然后，召唤2个『蝙蝠』。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2940",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      2,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 6.5,
+        "price": 1.33,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则从自己的牌组中随机将1张费用为3或以下的随从加入手牌。回复自己1点能量点。"
+      },
+      {
+        "condition": "singleton",
+        "raw": 7.1000000000000005,
+        "price": 3.864,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则抽取2张卡牌。回复自己的主战者2点生命值。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2965",
+    "cost": 2,
+    "type": "follower",
+    "body": [
+      1,
+      3
+    ],
+    "abilities": [
+      {
+        "condition": "singleton",
+        "raw": 7,
+        "price": 1.52,
+        "text": "【入场曲】若自己的牌组中没有重复随从，则选择对手的战场上的1个随从，破坏该随从。"
+      }
+    ]
+  },
+  {
+    "name": "条件价值审阅2998",
+    "cost": 4,
+    "type": "follower",
+    "body": [
+      6,
+      4
+    ],
+    "abilities": [
+      {
+        "condition": "discard",
+        "raw": 3.75,
+        "price": 3.05,
+        "text": "【入场曲】选择自己的1张手牌，将其舍弃。选择对手的战场上的1个随从，对其造成3点伤害。"
+      }
+    ]
+  }
+]

@@ -19,7 +19,10 @@ assert.deepEqual(E.features(both).get('本体:资源:生成手牌份数').values
 const branches=E.singleModeTexts(mode.text);assert.equal(branches.length,2);
 assert(branches[0].text.includes('破坏本卡牌'));assert(branches[0].text.includes('『甲』'));assert(!branches[0].text.includes('『丙』'));
 assert(branches.every(v=>v.text.includes('【谢幕曲】抽取1张卡牌。')));
-assert.equal(E.singleModeTexts(mode.text.replace('选择1个','选择2个')).length,0,'Do not model multi-choice as a single branch');
+const doubleBranch=E.singleModeTexts(mode.text.replace('选择1个','选择2个'));
+assert.equal(doubleBranch.length,1,'Choosing both of two options has one legal combination');
+assert(doubleBranch[0].text.includes('『甲』')&&doubleBranch[0].text.includes('『丙』'));
+assert(doubleBranch[0].text.includes('破坏本卡牌')&&doubleBranch[0].text.includes('【谢幕曲】'));
 for(const left of deck)for(const right of deck){const x=engine.compare(left,right).score,y=engine.compare(right,left).score;assert(Number.isFinite(x)&&x>=0&&x<=100);assert(Math.abs(x-y)<1e-8);}
 const cycleA=card('循环甲','将1张『循环乙』加入手牌。',{token:true}),cycleB=card('循环乙','将1张『循环甲』加入手牌。',{token:true});
 const cycleEngine=E.createEngine([cycleA,cycleB]);assert(Number.isFinite(cycleEngine.productSimilarity('循环甲','循环乙')),'Generated card references stop after one level');

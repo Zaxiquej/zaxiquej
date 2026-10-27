@@ -29,6 +29,7 @@ const allRows=reference.cards.filter(c=>!c.token).map(c=>{
   }
  }
  const effects=new Set(values.map(v=>v.kind));
+ for(const [id,re]of Object.entries({evidenceHand:/将\d+张『神域的物证』加入手牌/,evidenceSummon:/召唤\d+张『神域的物证』/,rabbitHand:/将\d+张『地害之兔』加入手牌/,rabbitSummon:/召唤\d+个『地害之兔』/,ownBanish:/自己的卡牌在战场上消失时/,activate:/自己【启动】护符时/,amuletFusion:/自己【融合】护符时/}))if(re.test(c.text))effects.add(id);
  for(const m of c.text.matchAll(/(?:选择自己的|使自己的(?:随机)?)(\d+)张手牌[^。]*返回牌组。抽取(\d+)张卡牌/g))effects.add(Number(m[2])>Number(m[1])?'handRefill':'handCycle');
  if(/返回牌组。抽取\d+张(?:法术|护符|[^。]*·随从)/.test(c.text))effects.add('handCycleTutor');
  if(/所有手牌返回牌组。抽取X张卡牌/.test(c.text))effects.add('handRefresh');

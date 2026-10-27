@@ -66,11 +66,12 @@ function displayAbilities(c){
 const tokenType=t=>t.type||'follower';
 const tokenMeta=t=>`${t.cost}费 · ${SVWB.TYPES[tokenType(t)]}${tokenType(t)==='follower'?` · ${t.attack}/${t.health}`:''}`;
 const tokenText=t=>t.upgrade&&t.abilities?displayAbilities(t).map(a=>a.text).join('\n'):t.text;
+const tokenOrigin=t=>t.preview?(t.provisionalTranslation?'预览卡 · 暂译':'预览卡'):t.upgrade?'强化形态':t.custom?'原创':t.related?'官方 · 融合后续':'官方';
 function cardText(c){
   const alternate=c.alternateForms.map(f=>`【${f.kind} ${f.cost}】\n${f.text}`).join('\n\n---\n\n');
   const body=displayAbilities(c).map(a=>a.text).join('\n')||'无能力';
   const parts=[`${c.name}\n${SVWB.CLASSES[c.class]} · ${SVWB.RARITIES[c.rarity]} · ${SVWB.TYPES[c.type]}\n${c.cost}费${c.type==='follower'?` ${c.attack}/${c.health}`:''}\n${alternate?alternate+'\n\n---\n\n':''}${body}`];
-  if(c.tokens.length)parts.push('附属卡：\n'+c.tokens.map(t=>`${t.name}（${t.upgrade?'强化形态':t.custom?'原创':t.related?'官方 · 融合后续':'官方'}${t.tribe?' · '+t.tribe+'·'+SVWB.TYPES[tokenType(t)]:''}）\n${tokenMeta(t)}\n${tokenText(t)||'无能力'}`).join('\n\n'));
+  if(c.tokens.length)parts.push('附属卡：\n'+c.tokens.map(t=>`${t.name}（${tokenOrigin(t)}${t.tribe?' · '+t.tribe+'·'+SVWB.TYPES[tokenType(t)]:''}）\n${tokenMeta(t)}\n${tokenText(t)||'无能力'}`).join('\n\n'));
   if(c.emblems.length)parts.push('纹章：\n'+c.emblems.map(e=>(e.owner==='opponent'?'对手获得 · ':'')+e.name+'\n'+e.text).join('\n\n'));
   if(c.faiths.length)parts.push('信仰：\n'+c.faiths.map(f=>f.name+'\n'+f.text).join('\n\n'));
   parts.push(`同人设计${c.chaos?' · 究极混乱':''} · 规则 v${c.version}`);return parts.join('\n\n');
@@ -84,7 +85,7 @@ function render(){
   $('abilities').replaceChildren(...(c.abilities.length?displayAbilities(c).map(a=>rich(a.text)):[el('p','无能力。','ability')]));
   $('tokens').replaceChildren();$('tokens').hidden=!c.tokens.length;
   if(c.tokens.length)$('tokens').append(el('h3','附属卡'));
-  c.tokens.forEach(t=>{const box=el('div',undefined,'token');box.append(el('h4',t.name),el('div',`${t.upgrade?'强化形态':t.custom?'原创 token':t.related?'融合后续卡牌':'官方卡牌'}${t.tribe?' · '+t.tribe+'·'+SVWB.TYPES[tokenType(t)]:''} · ${tokenMeta(t)}`,'token-meta'),el('p',tokenText(t)||'无能力。'));if(!t.custom){const a=el('a','在官方图鉴中查看 ↗');a.href=`https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=${t.id}`;a.target='_blank';a.rel='noopener';box.append(a);} $('tokens').append(box);});
+  c.tokens.forEach(t=>{const box=el('div',undefined,'token');box.append(el('h4',t.name),el('div',`${tokenOrigin(t)}${t.tribe?' · '+t.tribe+'·'+SVWB.TYPES[tokenType(t)]:''} · ${tokenMeta(t)}`,'token-meta'),el('p',tokenText(t)||'无能力。'));if(!t.custom){const a=el('a',t.preview?'查看预览来源 ↗':'在官方图鉴中查看 ↗');a.href=t.preview?t.sourceUrl:`https://shadowverse-wb.com/chs/deck/cardslist/card/?card_id=${t.id}`;a.target='_blank';a.rel='noopener';box.append(a);} $('tokens').append(box);});
   $('emblems').replaceChildren();$('emblems').hidden=!c.emblems.length;
   if(c.emblems.length)$('emblems').append(el('h3','纹章'));
   c.emblems.forEach(e=>{const box=el('div',undefined,'token');box.append(el('h4',(e.owner==='opponent'?'对手获得 · ':'')+e.name),rich(e.text));$('emblems').append(box);});

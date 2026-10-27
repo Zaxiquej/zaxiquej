@@ -1,0 +1,296 @@
+{
+  "version": "5.34.0",
+  "stats": {
+    "cards": 6000,
+    "rabbitSources": 24,
+    "rabbitCrests": 5,
+    "rabbitHand": 21,
+    "evidenceHand": 128,
+    "evidenceDeath": 12,
+    "banishEngines": 141,
+    "banishCrests": 7,
+    "banishSupplied": 33,
+    "rabbitSupplied": 1
+  },
+  "payoffs": [
+    "damage",
+    "heal",
+    "tokenSummon",
+    "grave",
+    "face",
+    "allyBuff"
+  ],
+  "samples": {
+    "evidenceHand": {
+      "name": "预览体系58",
+      "class": 5,
+      "rarity": 0,
+      "cost": 2,
+      "type": "spell",
+      "body": [
+        null,
+        null
+      ],
+      "text": [
+        "选择对手的战场上的1个随从，对其造成4点伤害。",
+        "将1张『神域的物证』加入手牌。"
+      ],
+      "emblems": []
+    },
+    "banishEngine": {
+      "name": "预览体系215",
+      "class": 5,
+      "rarity": 3,
+      "cost": 5,
+      "type": "follower",
+      "body": [
+        3,
+        8
+      ],
+      "text": [
+        "自己的卡牌在战场上消失时，若为自己的回合，则对对手的战场上的随机1个随从造成3点伤害。",
+        "【入场曲】使自己获得『纹章：预览体系215』。",
+        "【突进】"
+      ],
+      "emblems": [
+        {
+          "id": "emblem-5",
+          "name": "纹章：预览体系215",
+          "kind": "emblem",
+          "class": 5,
+          "custom": true,
+          "duration": 3,
+          "eventId": "lastWords",
+          "conditionId": "none",
+          "limit": null,
+          "effects": [
+            {
+              "id": "damage",
+              "raw": 6.25,
+              "produces": []
+            }
+          ],
+          "supportTags": [
+            "lastWords"
+          ],
+          "deliveryValue": 2.016129032258065,
+          "usableValue": 2.840909090909091,
+          "oneShot": true,
+          "text": "【吟唱 3】\n【谢幕曲】对对手的战场上的随机1个随从造成5点伤害。"
+        }
+      ]
+    },
+    "banishSupplied": {
+      "name": "预览体系336",
+      "class": 5,
+      "rarity": 2,
+      "cost": 6,
+      "type": "follower",
+      "body": [
+        3,
+        5
+      ],
+      "text": [
+        "自己的卡牌在战场上消失时，若为自己的回合，则回复自己的主战者4点生命值。",
+        "【超进化时】使自己的所有手牌返回牌组。抽取X张卡牌。X为因本能力返回牌组的张数。之后，若自己的手牌中有至少4种不同费用的卡牌，则召唤1个『蝙蝠』。召唤1个『怨灵』。",
+        "【入场曲】选择自己的1张手牌，使其返回牌组。抽取1张卡牌。召唤1个『骸骨士兵』。召唤1个『怨灵』。",
+        "【毁灭】",
+        "【守护】"
+      ],
+      "emblems": []
+    },
+    "rabbitSummon": {
+      "name": "预览体系713",
+      "class": 6,
+      "rarity": 0,
+      "cost": 3,
+      "type": "spell",
+      "body": [
+        null,
+        null
+      ],
+      "text": [
+        "召唤1个『地害之兔』。",
+        "选择对手的战场上的1个随从，对其造成2点伤害。"
+      ],
+      "emblems": []
+    },
+    "evidenceDeath": {
+      "name": "预览体系809",
+      "class": 0,
+      "rarity": 2,
+      "cost": 2,
+      "type": "follower",
+      "body": [
+        1,
+        1
+      ],
+      "text": [
+        "【入场曲】选择自己的1张手牌，使其返回牌组。抽取2张卡牌。",
+        "【谢幕曲】若为进化已解禁的回合，则将2张『神域的物证』加入手牌。"
+      ],
+      "emblems": []
+    },
+    "rabbitHand": {
+      "name": "预览体系1560",
+      "class": 6,
+      "rarity": 1,
+      "cost": 1,
+      "type": "spell",
+      "body": [
+        null,
+        null
+      ],
+      "text": [
+        "将1张『地害之兔』加入手牌。"
+      ],
+      "emblems": []
+    },
+    "rabbitCrest": {
+      "name": "预览体系1574",
+      "class": 6,
+      "rarity": 3,
+      "cost": 7,
+      "type": "follower",
+      "body": [
+        6,
+        4
+      ],
+      "text": [
+        "【入场曲】选择对手的战场上的1个随从，使其消失。",
+        "【进化时】使自己获得『纹章：预览体系1574』。",
+        "【入场曲】从自己的牌组中随机召唤2张费用为2或以下的护符。",
+        "【结晶 2】以护符形态使用，能力见下方。",
+        "【守护】"
+      ],
+      "emblems": [
+        {
+          "id": "emblem-6",
+          "name": "纹章：预览体系1574",
+          "kind": "emblem",
+          "class": 6,
+          "custom": true,
+          "duration": null,
+          "eventId": "end",
+          "conditionId": "amulet",
+          "limit": null,
+          "effects": [
+            {
+              "id": "rabbitSummon",
+              "raw": 6.4,
+              "produces": [
+                "enter",
+                "handBanish"
+              ]
+            }
+          ],
+          "supportTags": [
+            "end",
+            "amulet"
+          ],
+          "deliveryValue": 5.376,
+          "usableValue": 10.752,
+          "oneShot": false,
+          "text": "自己的回合结束时，若自己的战场上有至少1张护符，则召唤1个『地害之兔』。"
+        }
+      ]
+    },
+    "banishCrest": {
+      "name": "预览体系2105",
+      "class": 5,
+      "rarity": 1,
+      "cost": 5,
+      "type": "follower",
+      "body": [
+        5,
+        4
+      ],
+      "text": [
+        "【超进化时】使自己获得『纹章：预览体系2105』。",
+        "【入场曲】对自己的主战者造成2点伤害。然后，召唤1个『预览体系2105』。"
+      ],
+      "emblems": [
+        {
+          "id": "emblem-5",
+          "name": "纹章：预览体系2105",
+          "kind": "emblem",
+          "class": 5,
+          "custom": true,
+          "duration": 2,
+          "eventId": "ownBanish",
+          "conditionId": "none",
+          "limit": 1,
+          "effects": [
+            {
+              "id": "face",
+              "raw": 5.4,
+              "produces": []
+            }
+          ],
+          "supportTags": [
+            "ownBanish",
+            "none"
+          ],
+          "deliveryValue": 4.59,
+          "usableValue": 9.18,
+          "oneShot": false,
+          "text": "【吟唱 2】\n自己的卡牌在战场上消失时，若为自己的回合，则每回合最多发动1次，对对手的主战者造成2点伤害。"
+        }
+      ]
+    },
+    "rabbitSupplied": {
+      "name": "预览体系3233",
+      "class": 6,
+      "rarity": 3,
+      "cost": 7,
+      "type": "follower",
+      "body": [
+        3,
+        3
+      ],
+      "text": [
+        "【谢幕曲】召唤随机1张与本次对战中被破坏的原始费用最大的自己的护符同名的护符。",
+        "【进化时】使自己获得『纹章：预览体系3233』。",
+        "【入场曲】选择对手的战场上的1个随从，使其消失。",
+        "【入场曲】召唤1个『地害之兔』。使这些随从获得【守护】。",
+        "【守护】"
+      ],
+      "emblems": [
+        {
+          "id": "emblem-6",
+          "name": "纹章：预览体系3233",
+          "kind": "emblem",
+          "class": 6,
+          "custom": true,
+          "duration": null,
+          "eventId": "start",
+          "conditionId": "none",
+          "limit": null,
+          "effects": [
+            {
+              "id": "rabbitSummon",
+              "raw": 6.4,
+              "produces": [
+                "enter",
+                "handBanish"
+              ]
+            },
+            {
+              "id": "evidenceHand",
+              "raw": 1.3,
+              "produces": []
+            }
+          ],
+          "supportTags": [
+            "start",
+            "none"
+          ],
+          "deliveryValue": 4.62,
+          "usableValue": 9.24,
+          "oneShot": false,
+          "text": "自己的回合开始时，召唤1个『地害之兔』。将1张『神域的物证』加入手牌。"
+        }
+      ]
+    }
+  }
+}

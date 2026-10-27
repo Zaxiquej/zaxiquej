@@ -1,0 +1,403 @@
+{
+  "previous": "2026-10-08T20:42:22.873Z",
+  "retrieved": "2026-10-27T14:38:38.895Z",
+  "pack": "涅格尔赫亚弑神事件",
+  "source": "https://shadowverse-wb.com/web/CardList/cardList",
+  "added": [
+    {
+      "id": 11001110,
+      "name": "爱意天使·艾克夏丝",
+      "token": false
+    },
+    {
+      "id": 11002110,
+      "name": "信仰天使·迪纳梅斯",
+      "token": false
+    },
+    {
+      "id": 11002210,
+      "name": "弑神现场",
+      "token": false
+    },
+    {
+      "id": 11003110,
+      "name": "希求天使·丘丽奥丝",
+      "token": false
+    },
+    {
+      "id": 11003210,
+      "name": "理想国·涅格尔赫亚",
+      "token": false
+    },
+    {
+      "id": 11004110,
+      "name": "理想国之神·列加尔",
+      "token": false
+    },
+    {
+      "id": 11011110,
+      "name": "优雅看护者",
+      "token": false
+    },
+    {
+      "id": 11011120,
+      "name": "群狼侍者",
+      "token": false
+    },
+    {
+      "id": 11011310,
+      "name": "自然的再生",
+      "token": false
+    },
+    {
+      "id": 11012110,
+      "name": "好奇的老鼠",
+      "token": false
+    },
+    {
+      "id": 11012120,
+      "name": "花园精灵",
+      "token": false
+    },
+    {
+      "id": 11012310,
+      "name": "鸟兽述怀",
+      "token": false
+    },
+    {
+      "id": 11013110,
+      "name": "传心搭档犬",
+      "token": false
+    },
+    {
+      "id": 11013310,
+      "name": "诺榭的审讯",
+      "token": false
+    },
+    {
+      "id": 11014110,
+      "name": "兽语侦探·诺榭",
+      "token": false
+    },
+    {
+      "id": 11014120,
+      "name": "播撒生命的异形",
+      "token": false
+    },
+    {
+      "id": 11021110,
+      "name": "纯真卖报人",
+      "token": false
+    },
+    {
+      "id": 11021120,
+      "name": "宝石淑女",
+      "token": false
+    },
+    {
+      "id": 11021310,
+      "name": "突击号令",
+      "token": false
+    },
+    {
+      "id": 11022110,
+      "name": "俏皮设计师",
+      "token": false
+    },
+    {
+      "id": 11022120,
+      "name": "变心卫士",
+      "token": false
+    },
+    {
+      "id": 11022310,
+      "name": "表里的现场验证",
+      "token": false
+    },
+    {
+      "id": 11023110,
+      "name": "安逸爱好家",
+      "token": false
+    },
+    {
+      "id": 11023310,
+      "name": "诺·莱芙的问答",
+      "token": false
+    },
+    {
+      "id": 11024110,
+      "name": "表里侦探·诺·莱芙",
+      "token": false
+    },
+    {
+      "id": 11024120,
+      "name": "千金大参谋·阿尔梅莉洁",
+      "token": false
+    },
+    {
+      "id": 11031110,
+      "name": "碎心勤务员",
+      "token": false
+    },
+    {
+      "id": 11031120,
+      "name": "戏法女巫",
+      "token": false
+    },
+    {
+      "id": 11031310,
+      "name": "工坊搬迁",
+      "token": false
+    },
+    {
+      "id": 11032110,
+      "name": "无聊顾问",
+      "token": false
+    },
+    {
+      "id": 11032120,
+      "name": "风暴支配者",
+      "token": false
+    },
+    {
+      "id": 11032310,
+      "name": "解谜旋律",
+      "token": false
+    },
+    {
+      "id": 11033110,
+      "name": "歌剧助手",
+      "token": false
+    },
+    {
+      "id": 11033310,
+      "name": "诺茵华薇儿的审讯",
+      "token": false
+    },
+    {
+      "id": 11034110,
+      "name": "迷歌侦探·诺茵华薇儿",
+      "token": false
+    },
+    {
+      "id": 11034120,
+      "name": "劫焰奇美拉",
+      "token": false
+    },
+    {
+      "id": 11041110,
+      "name": "天噬暴行者",
+      "token": false
+    },
+    {
+      "id": 11041120,
+      "name": "冰锥蜥蜴",
+      "token": false
+    },
+    {
+      "id": 11041310,
+      "name": "水龙神的慈雨",
+      "token": false
+    },
+    {
+      "id": 11042110,
+      "name": "天噬运货人",
+      "token": false
+    },
+    {
+      "id": 11042120,
+      "name": "侦察龙人",
+      "token": false
+    },
+    {
+      "id": 11042310,
+      "name": "收集的显现",
+      "token": false
+    },
+    {
+      "id": 11043110,
+      "name": "天噬抢劫犯",
+      "token": false
+    },
+    {
+      "id": 11043310,
+      "name": "俯瞰的目光",
+      "token": false
+    },
+    {
+      "id": 11044110,
+      "name": "天噬三恶·莱特欧芙",
+      "token": false
+    },
+    {
+      "id": 11044120,
+      "name": "龙惧·吉尔沃",
+      "token": false
+    },
+    {
+      "id": 11051110,
+      "name": "告别入殓师",
+      "token": false
+    },
+    {
+      "id": 11051120,
+      "name": "复仇山羊",
+      "token": false
+    },
+    {
+      "id": 11051310,
+      "name": "灵魂逃亡",
+      "token": false
+    },
+    {
+      "id": 11052110,
+      "name": "永住守墓人",
+      "token": false
+    },
+    {
+      "id": 11052120,
+      "name": "桀骜半人马",
+      "token": false
+    },
+    {
+      "id": 11052310,
+      "name": "听取遗言",
+      "token": false
+    },
+    {
+      "id": 11053110,
+      "name": "鬼录护士",
+      "token": false
+    },
+    {
+      "id": 11053310,
+      "name": "诺克坦的审讯",
+      "token": false
+    },
+    {
+      "id": 11054110,
+      "name": "残思侦探·诺克坦",
+      "token": false
+    },
+    {
+      "id": 11054120,
+      "name": "末日变换·格莫瑞",
+      "token": false
+    },
+    {
+      "id": 11061110,
+      "name": "地害加工者",
+      "token": false
+    },
+    {
+      "id": 11061120,
+      "name": "斗志修行僧",
+      "token": false
+    },
+    {
+      "id": 11061310,
+      "name": "孤高的锻炼",
+      "token": false
+    },
+    {
+      "id": 11062110,
+      "name": "地害驯兽师",
+      "token": false
+    },
+    {
+      "id": 11062120,
+      "name": "有翼奏者",
+      "token": false
+    },
+    {
+      "id": 11062310,
+      "name": "荒废的繁殖",
+      "token": false
+    },
+    {
+      "id": 11063110,
+      "name": "地害矫正者",
+      "token": false
+    },
+    {
+      "id": 11063310,
+      "name": "徒然的证言",
+      "token": false
+    },
+    {
+      "id": 11064110,
+      "name": "地害三恶·拉碧妲赫特",
+      "token": false
+    },
+    {
+      "id": 11064120,
+      "name": "亚教偶像",
+      "token": false
+    },
+    {
+      "id": 11071110,
+      "name": "人灭执事",
+      "token": false
+    },
+    {
+      "id": 11071120,
+      "name": "异界来访者",
+      "token": false
+    },
+    {
+      "id": 11071310,
+      "name": "组装失败",
+      "token": false
+    },
+    {
+      "id": 11072110,
+      "name": "人灭富豪",
+      "token": false
+    },
+    {
+      "id": 11072120,
+      "name": "发射器猫人",
+      "token": false
+    },
+    {
+      "id": 11072310,
+      "name": "毁灭怪腕",
+      "token": false
+    },
+    {
+      "id": 11073110,
+      "name": "人灭绅士",
+      "token": false
+    },
+    {
+      "id": 11073310,
+      "name": "最凶恶的收容",
+      "token": false
+    },
+    {
+      "id": 11074110,
+      "name": "人灭三恶·兰佩吉",
+      "token": false
+    },
+    {
+      "id": 11074120,
+      "name": "次元异客",
+      "token": false
+    },
+    {
+      "id": 90001210,
+      "name": "神域的物证",
+      "token": true
+    },
+    {
+      "id": 90061140,
+      "name": "地害之兔",
+      "token": true
+    }
+  ],
+  "changedExistingCardTexts": [],
+  "newKeyword": "证据",
+  "total": 982,
+  "nonToken": 887,
+  "tokens": 95
+}

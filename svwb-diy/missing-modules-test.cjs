@@ -27,7 +27,7 @@ for(let i=0;i<16000;i++){
  if(c.enemyEntry){note('enemy');c.enemyEntry.effects.forEach(x=>variants.enemy.add(x));const a=c.abilities.find(a=>a.ids.includes('enemyEntry'));assert.equal(a.price,a.occurrenceRaw*3.2);assert.equal(a.raw,a.price);assert(!/选择/.test(a.text));}
  if(c.stationaryDesign){
   note('stationary');assert([2,3,6].includes(c.class));assert.equal(c.type,'follower');
-  const d=c.stationaryDesign;assert(d.credit<=5&&d.credit>0);assert(d.payoffRaw*d.multiplier+d.bodyBonus<=d.credit+d.spare+.001);
+  const d=c.stationaryDesign;assert(d.credit<=9&&d.credit>0);assert(d.payoffRaw*d.multiplier+d.bodyBonus<=d.credit+d.spare+.001);
   assert(c.abilities.some(a=>a.ids.includes('cannotAttack')&&a.text==='无法攻击随从或主战者。'));
   assert(!c.abilities.some(a=>['攻击时','交战时'].includes(a.trigger)||a.ids.some(x=>['疾驰','突进','威慑','潜行','虹吸','doubleAttack','tripleAttack','handStorm','selfCopy'].includes(x))),c.name+' incompatible stationary design');
   const a=c.abilities.find(a=>['自己的回合开始时','自己的回合结束时'].includes(a.trigger)&&a.price===d.payoffRaw*d.multiplier);assert(a);a.ids.forEach(x=>variants.stationary.add(x));

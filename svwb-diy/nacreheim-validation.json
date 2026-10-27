@@ -1,0 +1,179 @@
+{
+  "version": "5.34.0",
+  "cards": 8000,
+  "counts": {
+    "amuletFusion": 54,
+    "oneCostBoard": 35,
+    "activationHistory": 48,
+    "activate": 85,
+    "evidenceDiscard": 63,
+    "evidenceFusion": 6
+  },
+  "payoffs": {
+    "amuletFusion": [
+      "amuletFusion,damage",
+      "amuletFusion,aoe",
+      "amuletFusion,destroy",
+      "amuletFusion,heal"
+    ],
+    "oneCostBoard": [
+      "tokenHand",
+      "evidenceHand",
+      "commonSupply",
+      "face",
+      "tokenSummon,mixedSummon",
+      "heal",
+      "opponentCopyTransform,bounce",
+      "tokenSummon,summonWard",
+      "opponentCopyTransform,tokenSummon",
+      "tokenHand,acquisitionDiscount",
+      "keywordSearch",
+      "evidenceSummon",
+      "tokenHand,statDebuff",
+      "tokenSummon",
+      "tokenSummon,summonRush",
+      "damage",
+      "aoe",
+      "opponentHandCopy",
+      "damage,draw,acquisitionDiscount",
+      "typeSearch,acquisitionDiscount",
+      "selfEvolve"
+    ],
+    "activationHistory": [
+      "damage",
+      "selfCopy",
+      "draw",
+      "selfSuperEvolve",
+      "tokenSummon,summonBane",
+      "damage,tokenSummon,summonRush",
+      "tokenSummon",
+      "boost",
+      "tokenHand,acquisitionDiscount",
+      "evidenceSummon",
+      "draw,tokenSummon",
+      "heal",
+      "handRefresh,earth",
+      "tokenSummon,summonRush",
+      "draw,damage",
+      "coinSupply",
+      "selfEvolve",
+      "teamBuff",
+      "buff",
+      "statDebuff",
+      "draw,tokenSummon,mixedSummon",
+      "aoe"
+    ],
+    "activate": [
+      "activate,boost",
+      "activate,heal",
+      "activate,earth",
+      "activate,damage",
+      "activate,allyBuff"
+    ],
+    "evidenceDiscard": [
+      "evidenceDiscard,damage",
+      "evidenceDiscard,heal"
+    ],
+    "evidenceFusion": [
+      "fusionEvent,fusionEvent:evidenceSummon"
+    ]
+  },
+  "samples": {
+    "amuletFusion": {
+      "name": "全卡包核对2",
+      "class": 7,
+      "type": "follower",
+      "cost": 8,
+      "rarity": 2,
+      "body": [
+        4,
+        14
+      ],
+      "text": [
+        "【入场曲】选择自己的1张手牌，使其返回牌组。",
+        "自己【融合】护符时，对对手的战场上的随机1个随从造成5点伤害。",
+        "【入场曲】对对手的战场上的所有随从分配8点伤害。"
+      ]
+    },
+    "oneCostBoard": {
+      "name": "全卡包核对14",
+      "class": 1,
+      "type": "follower",
+      "cost": 5,
+      "rarity": 0,
+      "body": [
+        6,
+        6
+      ],
+      "text": [
+        "【入场曲】若自己的战场上的其他原始费用为1的卡牌的张数为3张或以上，则将2张『妖精』加入手牌。",
+        "【入场曲】对对手的战场上的所有随从造成1点伤害。",
+        "【入场曲】若自己的战场上有其他超进化后的随从，则从自己的牌组中随机将2张拥有【守护】的随从加入手牌。"
+      ]
+    },
+    "activationHistory": {
+      "name": "全卡包核对26",
+      "class": 3,
+      "type": "follower",
+      "cost": 4,
+      "rarity": 1,
+      "body": [
+        1,
+        1
+      ],
+      "text": [
+        "【疾驰】",
+        "【进化时】【土之秘术 3】对对手的战场上的所有随从造成3点伤害。召唤1个『守护者巨像』。召唤1个『泥尘巨像』。",
+        "【入场曲】若本回合中自己【启动】过护符，则选择对手的战场上的1个随从，对其造成3点伤害。"
+      ]
+    },
+    "activate": {
+      "name": "全卡包核对71",
+      "class": 3,
+      "type": "follower",
+      "cost": 7,
+      "rarity": 2,
+      "body": [
+        5,
+        8
+      ],
+      "text": [
+        "自己【启动】护符时，使自己的所有手牌发动2次魔力增幅。",
+        "【入场曲】选择对手的战场上的1个随从，使其消失。",
+        "【入场曲】抽取1张卡牌。使自己的战场上的土之印+2。"
+      ]
+    },
+    "evidenceDiscard": {
+      "name": "全卡包核对313",
+      "class": 4,
+      "type": "follower",
+      "cost": 7,
+      "rarity": 0,
+      "body": [
+        6,
+        9
+      ],
+      "text": [
+        "【入场曲】若自己的手牌中有证据·护符，则选择其中1张，将其舍弃。选择对手的战场上的1个随从，对其造成4点伤害。",
+        "【入场曲】召唤1个『巨翼飞龙』。使这些随从获得【突进】。"
+      ]
+    },
+    "evidenceFusion": {
+      "name": "全卡包核对1966",
+      "class": 7,
+      "type": "follower",
+      "cost": 8,
+      "rarity": 3,
+      "body": [
+        11,
+        6
+      ],
+      "text": [
+        "【融合】护符\n与本卡牌【融合】时，召唤1张『神域的物证』。",
+        "【入场曲】选择对手的战场上的1个随从，使其失去所有能力。",
+        "【入场曲】本随从超进化。",
+        "本随从受到的超过3的伤害变为3。"
+      ]
+    }
+  }
+}

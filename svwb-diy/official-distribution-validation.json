@@ -1,39 +1,39 @@
 {
-  "version": "5.24.0",
+  "version": "5.34.0",
   "headers": 60000,
   "cards": 2850,
   "counts": {
     "types": {
-      "spell": 12954,
-      "follower": 43342,
-      "amulet": 3704
+      "spell": 13284,
+      "follower": 43220,
+      "amulet": 3496
     },
     "classes": [
-      4994,
-      7686,
-      7753,
-      7717,
-      8122,
-      7795,
-      7877,
-      8056
+      4971,
+      7685,
+      7760,
+      7711,
+      8132,
+      7798,
+      7879,
+      8064
     ],
     "rarities": [
-      19356,
-      17773,
-      12179,
-      10692
+      19196,
+      17758,
+      12224,
+      10822
     ]
   },
   "chaos": [
-    9578,
-    13648,
-    17113,
-    19661
+    9473,
+    13441,
+    17206,
+    19880
   ],
-  "amulets": 811,
-  "withDeath": 227,
-  "underfilled": 1,
-  "neutral": 290,
-  "neutralSummon": 16
+  "amulets": 801,
+  "withDeath": 248,
+  "underfilled": 0,
+  "neutral": 302,
+  "neutralSummon": 28
 }

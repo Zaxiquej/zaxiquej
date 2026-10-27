@@ -15,12 +15,16 @@
     const comparison=base?engine.compare(base,card):null;
     const explanation=engine.explain(card,comparison?.modeMatch?.right);
     if(comparison?.modeMatch)body.append(el('p',`模式比较：测试目标采用${comparison.modeMatch.left}，本卡采用${comparison.modeMatch.right}；分支匹配占 90%，完整结构占 10%。`));
-    else if(explanation.modes.length)body.append(el('p','模式按合法的单个分支分别比较，不将所有选项当成同时发动。'));
+    else if(explanation.modes.length)body.append(el('p','模式按合法的选项组合分别比较（选一或选二）。'));
     const families=new Set(explanation.features.map(f=>f.family).filter(Boolean));
     for(const e of explanation.semantic)if(e.action!=='重复触发')families.add(e.family||S.effectFamily(e));
     body.append(el('strong','效果稀有权重（按非衍生卡池统计，每卡计一次）'),el('pre',[...families].map(f=>{const r=engine.rarityFor(f);return `${f}：${r.count} / ${r.total} 张，×${r.multiplier.toFixed(2)}`;}).join('\n')||'无可统计效果类别。'));
     const parsed=explanation.semantic.map(e=>`${e.source}／${e.timing}${e.event?'／'+e.event:''}：${e.action}${e.reference?'（'+e.reference+'）':''}${e.product?'『'+e.product+'』':''} → ${e.side}方${e.object}／${e.zone}／${e.scope}${e.recipient?'／'+e.recipient:''}${e.numbers.length?'／数值 '+e.numbers.join(','):''}${e.targetRestriction?'／目标限制 '+e.targetRestriction:''}${e.condition?'／条件 '+e.condition:''}${e.upgrade?'／条件升级':''}`);
     body.append(el('strong','识别出的效果'),el('pre',parsed.join('\n')||'未提取到结构化效果，仍参与特征与文字比较。'));
+    const extra=explanation.semantic.filter(e=>e.repetitions||e.summonKind).map(e=>`${e.source}／${e.action}${e.repetitions?'／发动 '+e.repetitions+' 次':''}${e.summonKind?'／召唤方式 '+e.summonKind:''}`);
+    if(extra.length)body.append(el('pre',extra.join('\n')));
+    const costs=explanation.semantic.filter(e=>e.costMode).map(e=>`${e.activation}发动／${e.event||e.timing}：自身费用${e.costMode} ${e.numbers.join(',')}／${e.duration}${e.condition?'／条件 '+e.condition:''}`);
+    if(costs.length)body.append(el('strong','自身费用变化'),el('pre',costs.join('\n')));
     if(base){
       const left=new Map(engine.explain(base,comparison?.modeMatch?.left).features.map(f=>[f.key,f])),shared=explanation.features.filter(f=>left.has(f.key));
       body.append(el('strong','共同特征（双方权重；数值差异仍影响得分）'),el('pre',shared.map(f=>`${f.key}（${left.get(f.key).w.toFixed(2)} / ${f.w.toFixed(2)}）`).join('\n')||'无完全相同特征；近似效果仍可获得关联分。'));

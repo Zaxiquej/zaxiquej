@@ -9,9 +9,13 @@ for(let i=0;i<6000;i++){
  assert(c.abilities.length<=5);const ids=c.abilities.flatMap(a=>a.ids);require('./assert-node-effects.cjs')(c);
  if(f?.mode!=='event')continue;
  counts.events++;classes.add(c.class);fees[f.ppCost]=(fees[f.ppCost]||0)+1;
- const a=c.abilities.find(a=>a.fusionEvent);assert(a);assert.equal(c.type,'follower');assert(c.cost>=3);assert(f.oncePerTurn);
+ const a=c.abilities.find(a=>a.fusionEvent);assert(a);assert(c.type==='follower'||c.type==='spell'&&c.class===7);assert(c.cost>=3);assert(f.oncePerTurn);
  assert(f.payoffRaw>=f.minimum&&f.minimum>=f.ppCost*2.2+.3);
  if(f.ppCost===2)assert(!/抽取1张卡牌。$/.test(a.bodyText));
+ if(f.effects.length===1&&f.effects[0]==='draw'){
+  const n=Number(a.bodyText.match(/抽取(\d+)张/)[1]);
+  assert(a.raw>=2.8*n+1.5*n*(n-1)-1e-8,'Fusion draw must use its actual 0–2 PP payment, never printed follower cost');
+ }
  if(f.effects.some(id=>['damage','heal','grave'].includes(id)))assert(f.payoffRaw>=2.6+f.ppCost*.6);
  assert.equal(a.price,f.flexibility+Math.max(.7,f.payoffRaw-f.ppCost*2.2-f.materialCredit)*f.repeats);
  assert(!/选择|本随从\+|NaN|undefined|\$/.test(a.bodyText),name+' invalid in-hand event');
@@ -30,5 +34,5 @@ for(let i=0;i<6000;i++){
  assert.deepEqual(c,S.generate(name));
 }
 assert(counts.events>40&&counts.experiment>0&&counts.sameAtom>0);assert(Object.keys(families).length>=6);assert(classes.size>=4);for(const fee of [0,1,2])assert(fees[fee]>0);
-assert(families.draw>0&&families.boost>0&&families.tokenSummon>0&&families.handBuff>0);
+assert(families.draw>0&&families.boost>0&&families.tokenSummon>0&&families.handBuff>0,JSON.stringify(families));
 const report={version:S.VERSION,samples:6000,counts,families,fees,classes:[...classes],examples};fs.writeFileSync(__dirname+'/fusion-event-validation.json',JSON.stringify(report,null,2)+'\n');console.log(report);

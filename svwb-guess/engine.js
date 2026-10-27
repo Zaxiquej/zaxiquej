@@ -6,19 +6,18 @@
   const clean=s=>String(s||'').normalize('NFKC').replace(/<hr\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,'').replace(/_/g,' ').trim();
   const normalize=s=>clean(s).toLowerCase().replace(/[\s·・‧，。！？、：；「」『』【】()（）\-]/g,'');
   const near=(a,b)=>1/(1+Math.abs(Number(a)-Number(b))*.55);
-  const trigger=/((?:费用\s*\d+\s*)?【(?:入场曲|谢幕曲|超进化时|进化时|攻击时|交战时|魔力增幅时|启动)】)/g;
   const effectTiming=timing=>timing.replace(/^(?:使用时|入场曲)(?=>|$)/,'打出时');
   const restrictionKey=value=>value?':目标限制:'+value:'';
   const actions=[
     ['伤害',/造成([\dXYZ]+)点伤害/g],['回复生命',/回复[^。]*?([\dXYZ]+)点生命值/g],
-    ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤(?:随机)?([\dXYZ]+)[个张]/g],
+    ['抽牌',/抽取([\dXYZ]+)张/g],['召唤',/召唤(?:随机)?(?:([\dXYZ]+)[个张种]|对应数量的复制随从|该随从)/g],
     ['破坏',/破坏/g],['消失',/消失/g],['回手',/返回手牌/g],['回牌组',/返回牌组/g],
     ['生成手牌',/加入手牌/g],['弃牌',/舍弃/g],['复制',/复制/g],['变身',/变身/g],
     ['加身材',/\+([\dXYZ]+)\/\+([\dXYZ]+)/g],['减身材',/-([\dXYZ]+)\/-([\dXYZ]+)/g],
     ['跳费',/能量点最大值\+([\dXYZ]+)/g],['扣费上限',/能量点最大值-([\dXYZ]+)/g],
-    ['回费',/回复(?:自己|对手)?([\dXYZ]+)点能量点/g],['减费',/费用-([\dXYZ]+)/g],['加费',/费用\+([\dXYZ]+)/g],
-    ['获得进化点',/进化点\+([\dXYZ]+)/g],['自动超进化',/使[^。]*?超进化/g],
-    ['自动进化',/使[^。]*?(?<!超)进化/g],['获胜',/对战胜利/g]
+    ['回费',/回复(?:自己|对手)?([\dXYZ]+)点能量点|回复自己的能量点至上限/g],['减费',/费用-([\dXYZ]+)/g],['加费',/费用\+([\dXYZ]+)/g],
+    ['自动超进化',/(?:使[^。；，,]*?|(?:该随从和)?本随从)超进化(?![前后时])/g],
+    ['自动进化',/(?:使[^。；，,]*?|(?:该随从和)?本随从)(?<!超)进化(?![前后时])/g],['获胜',/对战胜利/g]
   ];
   function targetOf(s){
     if(/所有主战者|战场上的所有随从/.test(s)&&!s.includes('对手的战场')&&!s.includes('自己的战场'))return '双方';
@@ -28,22 +27,23 @@
   function features(card){
     const result=new Map();
     function put(k,w,values=[],numberKind='',family=''){const old=result.get(k);if(!old||old.w<w)result.set(k,{w,values,numberKind,family});}
-    function parse(text,prefix='',factor=1,initialTiming=card.type===4?'使用时':'常驻'){
-      let timing=initialTiming;
-      if(timing==='使用时'&&clean(text))put(prefix+'时点:使用时',1.5*factor);
+    function parse(text,prefix='',factor=1,initialTiming=card.type===4?'使用时':'常驻',controller='己'){
+      if(initialTiming==='使用时'&&clean(text))put(prefix+'时点:使用时',1.5*factor);
       for(const name of Semantics.conditionFamilies(text)){
         const value=String(text||'').match(new RegExp('【'+name+'\\s+([\\dXYZ]+)】'))?.[1];
         put(prefix+'条件类别:'+name,2*factor,value?[value]:[],'','条件:'+name);
       }
-      for(const part of Semantics.expandText(clean(text)).split(trigger).filter(Boolean)){
-        if(/^(?:费用\s*\d+\s*)?【(?:入场曲|谢幕曲|超进化时|进化时|攻击时|交战时|魔力增幅时|启动)】$/.test(part)){
-          timing=part.match(/【([^】]+)】/)[1];put(prefix+'时点:'+timing,1.5*factor);
-          if(timing==='启动')put(prefix+'启动费用',2*factor,[Number(part.match(/费用\s*(\d+)/)?.[1]||0)]);
+      for(const {text:part,timing,trigger:tag} of Semantics.effectSections(Semantics.expandText(clean(text)),initialTiming)){
+        if(tag){
+          put(prefix+'时点:'+timing,1.5*factor);
+          if(timing==='启动')put(prefix+'启动费用',2*factor,[Number(tag.match(/费用\s*(\d+)/)?.[1]||0)]);
           continue;
         }
+        for(const grant of Semantics.grantedAbilities(part))parse(grant.text,prefix+'赋予/',factor*.7,'常驻',grant.side);
         for(const m of part.matchAll(/【([^】\d\s]+)(?:\s*([\dXYZ]+))?】/g)){
           // Named conditions already have a canonical feature; do not count their label again as an ability.
           if(Semantics.conditionNames.includes(m[1]))continue;
+          if(!Semantics.isPerformedMatch(part,m,m[1])||/^(入场曲|谢幕曲|进化时|超进化时|启动|魔力增幅时|攻击时|交战时)$/.test(m[1]))continue;
           const granted=/获得|拥有/.test(part.slice(Math.max(0,m.index-9),m.index))?'赋予或指定:':'能力:';
           const line=part.slice(0,m.index).split('\n').pop()+part.slice(m.index).split('\n')[0];
           const keywordTiming=Semantics.keywordActions.includes(m[1])&&line.trim()===m[0]?'常驻':timing;
@@ -54,23 +54,27 @@
           put(prefix+(selfGranted?'能力:':granted)+m[1],2*factor,m[2]?[m[2]]:[],'',family);
           put(prefix+effectTiming(keywordTiming)+':'+granted+m[1],1.4*factor,m[2]?[m[2]]:[],'',family);
         }
-        for(const term of ['纹章','信仰','超进化','进化','土之印','魔力增幅','连击','协作','融合','奥义槽','创造物','人偶','妖精','亡者','葬送']){
+        for(const term of ['纹章','信仰','超进化','进化','土之印','证据','魔力增幅','连击','协作','融合','奥义槽','创造物','人偶','妖精','亡者','葬送']){
           // Ordinary evolution must not be inferred from the substring in super-evolution.
           const content=term==='进化'?part.replace(/超进化/g,''):part;
           if(content.includes(term))put(prefix+'体系:'+term,1.4*factor);
         }
-        for(const sentence of part.split(/[。\n；]/).filter(Boolean)){
+        for(const {sentence,selection,event,inHand} of Semantics.sentenceContexts(part)){
           let context=timing;
           const effectFactor=factor*(Semantics.isUpgrade(sentence)?.5:1);
           const condition=Semantics.conditionOf(sentence);
           if(condition&&!Semantics.conditionFamilies(sentence).length)put(prefix+'条件:'+condition,1.5*effectFactor);
-          const event=sentence.match(/(?:自己的|对手的)?回合(?:开始|结束)时|进入战场时|被破坏时|离开战场时|回复时/);
-          if(event){context+='>'+event[0];put(prefix+'事件:'+event[0],2*factor);}
+          if(event){context+='>'+event;put(prefix+'事件:'+event,2*factor);}
           for(const [action,regex]of actions){
             for(const m of sentence.matchAll(regex)){
-              const body=Semantics.effectBody(sentence);
-              const target=targetOf(['回手','回牌组'].includes(action)?body.replace(/(?:使其)?返回(?:手牌|牌组)/g,''):body);
+              if(!Semantics.isPerformedMatch(sentence,m,action))continue;
+              // Self cost changes are built from semantic records, preserving set-vs-subtract and hand activation.
+              if(action==='减费'&&Semantics.selfCostChange(sentence,card))continue;
+              const body=Semantics.actionTargetText(sentence,m,selection);
+              let target=targetOf(body);
+              if(controller==='敌')target=target.replace(/^[己敌]/,side=>side==='己'?'敌':'己');
               const values=m.slice(1).filter(v=>v!==undefined);
+              if(action==='回费'&&m[0].includes('至上限'))values.push('上限');
               const products=action==='生成手牌'?Semantics.generatedProducts(sentence):action==='召唤'?Semantics.summonedProducts(sentence):[];
               if(products.length){
                 put(prefix+'作用:'+action,2*effectFactor,[],'','效果:'+action);
@@ -84,9 +88,11 @@
               const family=action==='伤害'&&target==='己主战者'?'效果:自伤':'效果:'+action;
               put(prefix+'作用:'+(family==='效果:自伤'?'自伤':action)+restriction,2*effectFactor,values,'',family);
               const scoped=['伤害','破坏','消失','回手','回牌组','加身材','减身材','自动进化','自动超进化'].includes(action);
-              const scope=scoped?':'+Semantics.scopeOf(sentence):'';
-              const location=['加身材','减身材','自动进化','自动超进化'].includes(action)?':'+(/本随从|本卡牌/.test(body)?'本体':/手牌/.test(body)?'手牌':/牌组/.test(body)?'牌组':'其他对象'):'';
-              put(prefix+effectTiming(context)+':'+target+scope+location+':'+action+restriction,3*effectFactor*(condition?.75:1),values,'',family);
+              const scope=scoped?':'+Semantics.scopeOf(body):'';
+              const location=['加身材','减身材','自动进化','自动超进化'].includes(action)?':'+(inHand&&/本随从|本卡牌/.test(body)?'手牌本体':/本随从|本卡牌/.test(body)?'本体':/手牌/.test(body)?'手牌':/牌组/.test(body)?'牌组':'其他对象'):'';
+              const repetition=sentence.match(/发动([\dXYZ]+)次「/);
+              const repeat=repetition&&m.index>repetition.index&&m.index<sentence.lastIndexOf('」')?repetition[1]:'';
+              put(prefix+effectTiming(context)+':'+target+scope+location+':'+action+restriction+(repeat?':重复':''),3*effectFactor*(condition?.75:1),repeat?[...values,repeat]:values,'',family);
             }
           }
           if(/所有|随机|选择/.test(sentence))put(prefix+effectTiming(context)+':范围:'+Semantics.scopeOf(sentence),.8*effectFactor);
@@ -103,6 +109,22 @@
     // Recognize the resulting ability without erasing how or when it is obtained.
     const semantic=Semantics.extract(card),generated=new Map();
     for(const e of semantic){
+      if(e.repetitions)put(e.source+':重复次数:'+e.action,2*e.weight,[e.repetitions],'',Semantics.effectFamily(e));
+      if(e.summonKind)put(e.source+':召唤方式:'+e.summonKind,2*e.weight,e.numbers,'','效果:召唤');
+      // New effect families share the semantic parser instead of a second set of regular expressions.
+      if(['分配伤害','获得进化点','获得超进化点','魔力增幅','增加连击','增加土之印','混合身材','攻击次数','无法攻击','破坏抗性','失去能力','失去关键词','生命设定','生命上限设定','费用减半','替换牌组','消耗证据','增加证据','交换攻血','身材设定','生命上限减半','增加墓场','增加倒计数','减少倒计数'].includes(e.action)){
+        const family=Semantics.effectFamily(e),base=e.source+':作用:'+e.action;
+        put(base,2*e.weight,e.numbers,'',family);
+        put(base+':'+effectTiming(e.timing)+':'+e.event+':'+e.side+':'+e.object+':'+e.zone+':'+e.scope+':'+e.recipient,3*e.weight,e.numbers,'',family);
+      }
+      if(e.costMode){
+        const family=Semantics.effectFamily(e),base=e.source+':自身费用:'+e.action;
+        put(base,2*e.weight,[],'',family);
+        put(base+':'+e.activation+':'+e.event,3*e.weight,[],'',family);
+        put(base+':写法:'+e.costMode,1*e.weight,e.numbers,'',family);
+        put(base+':期限:'+e.duration,.7*e.weight);
+        if(e.condition)put(base+':条件:'+e.condition,.8*e.weight);
+      }
       if(['生成手牌','召唤'].includes(e.action)&&e.product){
         const key=e.source+':资源:'+e.action+'份数';
         const amount=Number(e.numbers[0]),old=generated.get(key)||{amount:0,weight:e.weight,action:e.action};
@@ -111,7 +133,7 @@
       if(e.action==='重复触发')put(e.source+':重复触发:'+e.timing+':'+e.reference,e.weight*2);
       if(Semantics.keywordActions.includes(e.action))put(e.source+':能力结果:'+e.side+':'+e.object+':'+e.recipient+':'+e.action,2*e.weight,[],'','效果:'+e.action);
       if(['进化时','超进化时'].includes(e.timing))put(e.source+':进化类触发:'+e.side+':'+e.object+':'+e.scope+':'+e.recipient+':'+e.action+restrictionKey(e.targetRestriction),2*e.weight,e.numbers,'',Semantics.effectFamily(e));
-      if(e.side==='敌'&&e.zone==='战场'&&e.object!=='主战者'&&['伤害','破坏','消失','回手','回牌组'].includes(e.action)){
+      if(e.side==='敌'&&e.zone==='战场'&&!e.object.includes('主战者')&&['伤害','破坏','消失','回手','回牌组'].includes(e.action)){
         // Damage is conditional removal; direct removal retains the higher weight.
         if(e.action==='伤害'&&e.numbers[0]==='0')continue;
         const object=e.object==='卡牌'?'随从':e.object;
@@ -149,14 +171,19 @@
     const grams=new Set();for(let i=0;i<text.length-1;i++)grams.add(text.slice(i,i+2));return grams;
   }
   function singleModeTexts(text){
-    const value=clean(text),header='【模式】选择1个能力发动。',at=value.indexOf(header);
-    if(at<0)return [];
+    const value=clean(text),match=value.match(/【模式】选择([12])个能力发动。/);
+    if(!match)return [];
+    const header=match[0],at=match.index,choose=Number(match[1]);
+    // Do not turn independent mode groups or an enhanced all-options branch into one fictitious choice.
+    if(value.indexOf('【模式】',at+header.length)>=0||/改为发动所有能力/.test(value))return [];
     const body=value.slice(at+header.length),markers=[...body.matchAll(/(?:^|\n)\s*\((\d+)\)/g)];
     if(markers.length<2||markers.length>6)return [];
     const last=markers[markers.length-1],lastBody=body.slice(last.index+last[0].length);
     const tailAt=lastBody.search(/\n\s*\n(?=【(?:入场曲|谢幕曲|进化时|超进化时|攻击时|交战时|启动)】)/);
     const tail=tailAt<0?'':lastBody.slice(tailAt);
-    return markers.map((m,i)=>({label:'模式 '+m[1],text:value.slice(0,at)+body.slice(m.index+m[0].length,i+1<markers.length?markers[i+1].index:tailAt<0?body.length:last.index+last[0].length+tailAt).trim()+tail}));
+    const options=markers.map((m,i)=>({label:m[1],text:body.slice(m.index+m[0].length,i+1<markers.length?markers[i+1].index:tailAt<0?body.length:last.index+last[0].length+tailAt).trim()}));
+    const selections=choose===1?options.map(o=>[o]):options.flatMap((o,i)=>options.slice(i+1).map(p=>[o,p]));
+    return selections.map(selected=>({label:'模式 '+selected.map(o=>o.label).join('+'),text:value.slice(0,at)+selected.map(o=>o.text).join('\n\n')+tail}));
   }
   function basic(a,b){
     const follower=a.type===1&&b.type===1;

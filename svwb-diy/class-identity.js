@@ -10,16 +10,27 @@
     6:{amulet:/护符|倒计数|吟唱|启动/,ward:/守护/,heal:/回复自己的主战者|自己的主战者回复/,banish:/消失/},
     7:{artifact:/创造物|核心/,puppet:/悬丝傀儡/,high:/费用为5或以上/,copy:/复制/,singleton:/没有重复/}
   };
+  Object.assign(rules[1],{oneCost:/原始费用为1/});
+  Object.assign(rules[2],{evidence:/证据/});
+  Object.assign(rules[3],{activation:/【启动】护符/});
+  Object.assign(rules[4],{evidence:/证据/});
+  Object.assign(rules[5],{banish:/自己的卡牌在战场上消失/});
+  Object.assign(rules[6],{rabbit:/地害之兔/});
+  Object.assign(rules[7],{fusion:/【融合】护符/});
   function families(cls,{ids=[],tokens=[],trigger='',condition='none',engineSpec,progression}={}){
     const result=new Set(),all=[...ids.map(id=>id.replace(/^fusionEvent:/,'')),condition,engineSpec?.eventId,progression?.eventId].filter(Boolean);
     const has=re=>all.some(id=>re.test(id)),token=re=>tokens.some(t=>re.test(t.name||''));
     const put=(name,yes)=>{if(yes)result.add(name);};
+    put('oneCost',cls===1&&has(/^oneCostBoard$/));
+    put('activation',cls===3&&has(/^(activate|activationHistory)$/));
+    put('evidence',cls===4&&has(/^evidence/));
+    put('fusion',cls===7&&(has(/^amuletFusion$/)||engineSpec?.material==='护符'));
     if(cls===1){put('combo',has(/^(combo|forestHistory|fairy|play|leave)$/));put('supply',token(/妖精|森林的奥秘/)&&has(/Supply|^(tokenHand|tokenSummon|summon|commonSupply)$/));put('return',has(/^bounce$/));}
-    if(cls===2){put('board',has(/^(tokenSummon|summon|selfCopy|recruit|tribe|rally)/));put('buff',has(/^(allyBuff|teamBuff|buff|handBuff|tribeBuff|summonGrowth)$/));put('enhance',trigger==='爆能强化'||has(/^enhance/));put('treasure',has(/^(treasure|coin|flag)/)||token(/海盗旗|黄金短剑|黄金项链|金币/));put('rally',has(/^rally/));}
+    if(cls===2){put('evidence',has(/^evidence/));put('board',has(/^(tokenSummon|summon|selfCopy|recruit|tribe|rally)/));put('buff',has(/^(allyBuff|teamBuff|buff|handBuff|tribeBuff|summonGrowth)$/));put('enhance',trigger==='爆能强化'||has(/^enhance/));put('treasure',has(/^(treasure|coin|flag)/)||token(/海盗旗|黄金短剑|黄金项链|金币/));put('rally',has(/^rally/));}
     if(cls===3){put('boost',has(/^(boost|spellboost|spells|costReduction)/));put('earth',has(/^earth/));put('hands',has(/^crystalHand/)||trigger.includes('天晶魔手')||token(/天晶魔手/));put('experiment',has(/^experiment/)||trigger.includes('沉溺的实验体')||token(/沉溺的实验体/));put('truth',has(/^(handCostUp|costChanged|truthTransform)/));}
     if(cls===4){put('ramp',has(/^ramp$/));put('overflow',has(/^(overflow|ppFull)$/));put('discard',has(/^discard/));put('hurt',has(/^(hurt|allyPing|allBoardDamage)/)||trigger.includes('受到伤害且没被破坏'));put('ocean',token(/大海虎鲸|乙姬近卫兵/)||has(/^tribe/));}
-    if(cls===5){put('death',trigger==='谢幕曲'||has(/^(grave|necromancy|reanimate|resurrectSelf|tribe)/)||token(/腐臭的僵尸|怨灵/));put('blood',has(/^(blood|selfDamage|lowHealth|missingHealth|lowestLeader|highestLeader)/));}
-    if(cls===6){put('amulet',has(/^(amulet|activeAmulet|activate|havenHighCost)/));put('ward',has(/^(ward|守护|grantWard|summonWard)/));put('heal',has(/^heal/));put('banish',has(/^banish/));}
+    if(cls===5){put('banish',has(/^ownBanish|^evidence|^ghostSummon/));put('death',trigger==='谢幕曲'||has(/^(grave|necromancy|reanimate|resurrectSelf|tribe)/)||token(/腐臭的僵尸|怨灵/));put('blood',has(/^(blood|selfDamage|lowHealth|missingHealth|lowestLeader|highestLeader)/));}
+    if(cls===6){put('rabbit',has(/^rabbit/));put('amulet',has(/^(amulet|activeAmulet|activate|havenHighCost)/));put('ward',has(/^(ward|守护|grantWard|summonWard)/));put('heal',has(/^heal/));put('banish',has(/^banish/));}
     if(cls===7){put('artifact',has(/^(artifact|coreSupply|corePair|fusionArtifact)/)||tokens.some(t=>t.tribe==='创造物'));put('puppet',token(/悬丝傀儡/));put('high',has(/^(portalHighCost|highCostEnter)$/));put('copy',has(/^(artifactCopy|selfCopy|opponent.*Copy)/));put('singleton',has(/^singleton$/));}
     return [...result];
   }

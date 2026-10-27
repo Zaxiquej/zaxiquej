@@ -38,4 +38,7 @@ async function get(offset) {
   fs.writeFileSync(file+'.tmp','/* Official WB card snapshot; refresh with node svwb-guess/sync.cjs */\nwindow.SVWB_GUESS_DATA = '+JSON.stringify(snapshot)+';\n');
   fs.renameSync(file+'.tmp',file);
   console.log(JSON.stringify({cards:cards.length,tokens:cards.filter(c=>c.token).length,attachedEffects:cards.filter(c=>c.effects.length).length,types:[...new Set(cards.map(c=>c.type))]}));
+  // Every refresh runs the local parser audit; newly unsupported wording must be visible immediately.
+  const audit=require('node:child_process').spawnSync(process.execPath,[path.join(__dirname,'parser-audit.cjs'),'--report'],{stdio:'inherit',windowsHide:true});
+  if(audit.error||audit.status!==0)throw new Error('Card data was updated, but parser audit failed. Inspect the diagnostic above.',{cause:audit.error});
 })().catch(e=>{console.error(e);process.exitCode=1;});
