@@ -9,13 +9,13 @@ export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'method_not_allowed' });
   const date = req.query.date;
   const schema = req.query.schema;
-  if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date) || schema !== '8') {
+  if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !['8', '9'].includes(schema)) {
     return res.status(400).json({ error: 'invalid_request' });
   }
   try {
-    const body = await readFile(join(process.cwd(), 'daily-puzzles', 'v8', `${date}.json`), 'utf8');
+    const body = await readFile(join(process.cwd(), 'daily-puzzles', `v${schema}`, `${date}.json`), 'utf8');
     const puzzle = JSON.parse(body);
-    if (puzzle.schema !== 8 || puzzle.date !== date || typeof puzzle.board !== 'string') {
+    if (puzzle.schema !== Number(schema) || puzzle.date !== date || typeof puzzle.board !== 'string') {
       return res.status(503).json({ error: 'invalid_publication' });
     }
     res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
